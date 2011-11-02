@@ -27,6 +27,7 @@ public interface IPreferenceConstants {
     String VIEW_TOOLTIPS = "viewTooltips";
     
     String OPEN_DIAGRAMS_ON_LOAD = "openDiagramsOnLoad";
+    String ALLOW_MOVE_AROUND = "allowMoveAround";
     
     String ANIMATE = "animate";
     String ANIMATION_SPEED = "animationSpeed";

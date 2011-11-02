@@ -7,6 +7,18 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     editorPluginID="uk.ac.bolton.archimate.editor2" language="" interfaceNamePattern="I{0}"
     classNamePattern="{0}" runtimePlatform="RCP">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+    <genAnnotations source="selectedPackages">
+      <details key="http://www.bolton.ac.uk/archimate" value="archimate.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="file:/build/mag/org.rulez.magwas.styledhtml/org.rulez.magwas.enterprise/archimate.xsd/"/>
+  </genAnnotations>
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter.xmi">
+    <genAnnotations source="selectedPackages">
+      <details key="http://www.bolton.ac.uk/archimate" value="archimateXMI.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="file:/build/mag/org.rulez.magwas.styledhtml/org.rulez.magwas.enterprise/"/>
+  </genAnnotations>
   <foreignModel>archimate.ecore</foreignModel>
   <genPackages prefix="Archimate" basePackage="uk.ac.bolton.archimate" resource="XML"
       disposableProviderFactory="true" ecorePackage="archimate.ecore#/">
@@ -195,6 +207,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//FontAttribute/font"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//FontAttribute/fontColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//FontAttribute/textAlignment"/>
+      <genOperations ecoreOperation="archimate.ecore#//FontAttribute/getDefaultTextAlignment"/>
     </genClasses>
     <genClasses ecoreClass="archimate.ecore#//Bounds">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Bounds/x"/>
