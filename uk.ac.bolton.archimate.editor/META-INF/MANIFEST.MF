@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %productName
 Bundle-SymbolicName: uk.ac.bolton.archimate.editor;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-Activator: uk.ac.bolton.archimate.editor.ArchimateEditorPlugin
 Bundle-Vendor: Bolton University
 Bundle-Localization: plugin
@@ -53,6 +53,7 @@ Export-Package: .,
  uk.ac.bolton.archimate.editor.model.commands,
  uk.ac.bolton.archimate.editor.model.viewpoints,
  uk.ac.bolton.archimate.editor.perspectives,
+ uk.ac.bolton.archimate.editor.preferences,
  uk.ac.bolton.archimate.editor.propertysections,
  uk.ac.bolton.archimate.editor.ui,
  uk.ac.bolton.archimate.editor.ui.components,

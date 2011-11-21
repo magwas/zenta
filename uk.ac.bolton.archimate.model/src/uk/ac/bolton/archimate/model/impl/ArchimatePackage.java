@@ -1387,7 +1387,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getDiagramModelBendpoint_Weight() {
+    public EAttribute getDiagramModelBendpoint_StartX() {
         return (EAttribute)diagramModelBendpointEClass.getEStructuralFeatures().get(0);
     }
 
@@ -1396,7 +1396,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getDiagramModelBendpoint_StartX() {
+    public EAttribute getDiagramModelBendpoint_StartY() {
         return (EAttribute)diagramModelBendpointEClass.getEStructuralFeatures().get(1);
     }
 
@@ -1405,7 +1405,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getDiagramModelBendpoint_StartY() {
+    public EAttribute getDiagramModelBendpoint_EndX() {
         return (EAttribute)diagramModelBendpointEClass.getEStructuralFeatures().get(2);
     }
 
@@ -1414,17 +1414,8 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getDiagramModelBendpoint_EndX() {
-        return (EAttribute)diagramModelBendpointEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EAttribute getDiagramModelBendpoint_EndY() {
-        return (EAttribute)diagramModelBendpointEClass.getEStructuralFeatures().get(4);
+        return (EAttribute)diagramModelBendpointEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -2136,7 +2127,6 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
         createEAttribute(diagramModelConnectionEClass, DIAGRAM_MODEL_CONNECTION__TYPE);
 
         diagramModelBendpointEClass = createEClass(DIAGRAM_MODEL_BENDPOINT);
-        createEAttribute(diagramModelBendpointEClass, DIAGRAM_MODEL_BENDPOINT__WEIGHT);
         createEAttribute(diagramModelBendpointEClass, DIAGRAM_MODEL_BENDPOINT__START_X);
         createEAttribute(diagramModelBendpointEClass, DIAGRAM_MODEL_BENDPOINT__START_Y);
         createEAttribute(diagramModelBendpointEClass, DIAGRAM_MODEL_BENDPOINT__END_X);
@@ -2534,7 +2524,6 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
         addEOperation(diagramModelConnectionEClass, null, "reconnect", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
         initEClass(diagramModelBendpointEClass, IDiagramModelBendpoint.class, "DiagramModelBendpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getDiagramModelBendpoint_Weight(), ecorePackage.getEFloat(), "weight", null, 0, 1, IDiagramModelBendpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
         initEAttribute(getDiagramModelBendpoint_StartX(), ecorePackage.getEInt(), "startX", null, 0, 1, IDiagramModelBendpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
         initEAttribute(getDiagramModelBendpoint_StartY(), ecorePackage.getEInt(), "startY", null, 0, 1, IDiagramModelBendpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
         initEAttribute(getDiagramModelBendpoint_EndX(), ecorePackage.getEInt(), "endX", null, 0, 1, IDiagramModelBendpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2597,6 +2586,117 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 
         // Create resource
         createResource(eNS_URI);
+
+        // Create annotations
+        // http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+        createExtendedMetaDataAnnotations();
+    }
+
+    /**
+     * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void createExtendedMetaDataAnnotations() {
+        String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$		
+        addAnnotation
+          (getProperties_Properties(), 
+           source, 
+           new String[] {
+             "name", "property", //$NON-NLS-1$ //$NON-NLS-2$
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getTextContent_Content(), 
+           source, 
+           new String[] {
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getDocumentable_Documentation(), 
+           source, 
+           new String[] {
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getFolderContainer_Folders(), 
+           source, 
+           new String[] {
+             "name", "folder", //$NON-NLS-1$ //$NON-NLS-2$
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (archimateModelEClass, 
+           source, 
+           new String[] {
+             "name", "model" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getArchimateModel_Purpose(), 
+           source, 
+           new String[] {
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getFolder_Elements(), 
+           source, 
+           new String[] {
+             "name", "element", //$NON-NLS-1$ //$NON-NLS-2$
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getDiagramModelContainer_Children(), 
+           source, 
+           new String[] {
+             "name", "child", //$NON-NLS-1$ //$NON-NLS-2$
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getDiagramModelReference_ReferencedModel(), 
+           source, 
+           new String[] {
+             "name", "model", //$NON-NLS-1$ //$NON-NLS-2$
+             "kind", "attribute" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getDiagramModelObject_SourceConnections(), 
+           source, 
+           new String[] {
+             "name", "sourceConnection", //$NON-NLS-1$ //$NON-NLS-2$
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (diagramModelGroupEClass, 
+           source, 
+           new String[] {
+             "name", "Group" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (diagramModelNoteEClass, 
+           source, 
+           new String[] {
+             "name", "Note" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (getDiagramModelConnection_Bendpoints(), 
+           source, 
+           new String[] {
+             "name", "bendpoint", //$NON-NLS-1$ //$NON-NLS-2$
+             "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (diagramModelArchimateObjectEClass, 
+           source, 
+           new String[] {
+             "name", "DiagramObject" //$NON-NLS-1$ //$NON-NLS-2$
+           });		
+        addAnnotation
+          (diagramModelArchimateConnectionEClass, 
+           source, 
+           new String[] {
+             "name", "Connection" //$NON-NLS-1$ //$NON-NLS-2$
+           });
     }
 
 } //ArchimatePackage

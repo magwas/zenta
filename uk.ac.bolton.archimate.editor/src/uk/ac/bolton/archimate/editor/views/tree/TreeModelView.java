@@ -339,7 +339,7 @@ implements ITreeModelView, IUIRequestListener {
             return;
         }
         
-        IMenuManager newMenu = new MenuManager("New"); //$NON-NLS-1$
+        MenuManager newMenu = new MenuManager("New"); //$NON-NLS-1$
         manager.add(newMenu);
 
         manager.add(new Separator());
@@ -354,7 +354,7 @@ implements ITreeModelView, IUIRequestListener {
         // Selected Diagram
         if(selected instanceof IDiagramModel) {
             manager.add(fActionOpenDiagram);
-            manager.add(new Separator());
+            manager.add(new Separator("open"));
         }
         
         if(selected instanceof IFolder) {
@@ -370,7 +370,11 @@ implements ITreeModelView, IUIRequestListener {
             }
         }
         
+        newMenu.add(new Separator());
+        getSite().registerContextMenu(ID + ".new_menu", newMenu, getViewer());
+       
         if(!isEmpty) {
+            manager.add(new Separator());
             manager.add(fActionDelete);
             manager.add(fActionRename);
             manager.add(new Separator());
