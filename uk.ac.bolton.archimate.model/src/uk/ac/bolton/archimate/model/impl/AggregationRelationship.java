@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
  */
 public class AggregationRelationship extends Relationship implements IAggregationRelationship {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected AggregationRelationship() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.AGGREGATION_RELATIONSHIP;
-    }
+		return IArchimatePackage.Literals.AGGREGATION_RELATIONSHIP;
+	}
 
 } //AggregationRelationship

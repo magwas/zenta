@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IDataObject;
  */
 public class DataObject extends ArchimateElement implements IDataObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected DataObject() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.DATA_OBJECT;
-    }
+		return IArchimatePackage.Literals.DATA_OBJECT;
+	}
 
 } //DataObject

@@ -26,55 +26,55 @@ package uk.ac.bolton.archimate.model;
  */
 public interface IRelationship extends IArchimateElement {
     /**
-     * Returns the value of the '<em><b>Source</b></em>' reference.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Source</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Source</em>' reference.
-     * @see #setSource(IArchimateElement)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getRelationship_Source()
-     * @model resolveProxies="false"
-     * @generated
-     */
+	 * @return the value of the '<em>Source</em>' reference.
+	 * @see #setSource(IArchimateElement)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getRelationship_Source()
+	 * @model resolveProxies="false"
+	 * @generated
+	 */
     IArchimateElement getSource();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IRelationship#getSource <em>Source</em>}' reference.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IRelationship#getSource <em>Source</em>}' reference.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Source</em>' reference.
-     * @see #getSource()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Source</em>' reference.
+	 * @see #getSource()
+	 * @generated
+	 */
     void setSource(IArchimateElement value);
 
     /**
-     * Returns the value of the '<em><b>Target</b></em>' reference.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Target</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Target</em>' reference.
-     * @see #setTarget(IArchimateElement)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getRelationship_Target()
-     * @model resolveProxies="false"
-     * @generated
-     */
+	 * @return the value of the '<em>Target</em>' reference.
+	 * @see #setTarget(IArchimateElement)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getRelationship_Target()
+	 * @model resolveProxies="false"
+	 * @generated
+	 */
     IArchimateElement getTarget();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IRelationship#getTarget <em>Target</em>}' reference.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IRelationship#getTarget <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Target</em>' reference.
-     * @see #getTarget()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Target</em>' reference.
+	 * @see #getTarget()
+	 * @generated
+	 */
     void setTarget(IArchimateElement value);
 
 } // IRelationship

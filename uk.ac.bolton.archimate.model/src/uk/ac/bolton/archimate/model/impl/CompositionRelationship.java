@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.ICompositionRelationship;
  */
 public class CompositionRelationship extends Relationship implements ICompositionRelationship {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected CompositionRelationship() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.COMPOSITION_RELATIONSHIP;
-    }
+		return IArchimatePackage.Literals.COMPOSITION_RELATIONSHIP;
+	}
 
 } //CompositionRelationship

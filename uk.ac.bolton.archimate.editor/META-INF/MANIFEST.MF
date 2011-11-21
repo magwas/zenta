@@ -66,3 +66,4 @@ Export-Package: .,
  uk.ac.bolton.archimate.editor.views.tree.commands,
  uk.ac.bolton.archimate.editor.views.tree.search
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.eclipse.emf.cdo

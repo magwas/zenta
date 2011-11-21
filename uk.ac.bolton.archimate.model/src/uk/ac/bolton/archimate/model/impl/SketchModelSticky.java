@@ -43,108 +43,61 @@ import uk.ac.bolton.archimate.model.ITextContent;
  */
 public class SketchModelSticky extends DiagramModelObject implements ISketchModelSticky {
     /**
-     * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getChildren()
-     * @generated
-     * @ordered
-     */
-    protected EList<IDiagramModelObject> children;
-
-    /**
-     * The default value of the '{@link #getContent() <em>Content</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getContent()
-     * @generated
-     * @ordered
-     */
-    protected static final String CONTENT_EDEFAULT = ""; //$NON-NLS-1$
-
-    /**
-     * The cached value of the '{@link #getContent() <em>Content</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getContent()
-     * @generated
-     * @ordered
-     */
-    protected String content = CONTENT_EDEFAULT;
-
-    /**
-     * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getProperties()
-     * @generated
-     * @ordered
-     */
-    protected EList<IProperty> properties;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected SketchModelSticky() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.SKETCH_MODEL_STICKY;
-    }
+		return IArchimatePackage.Literals.SKETCH_MODEL_STICKY;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public EList<IDiagramModelObject> getChildren() {
-        if (children == null) {
-            children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN);
-        }
-        return children;
-    }
+	 * @generated
+	 */
+    @SuppressWarnings("unchecked")
+				public EList<IDiagramModelObject> getChildren() {
+		return (EList<IDiagramModelObject>)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_CONTAINER__CHILDREN, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getContent() {
-        return content;
-    }
+		return (String)eGet(IArchimatePackage.Literals.TEXT_CONTENT__CONTENT, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setContent(String newContent) {
-        String oldContent = content;
-        content = newContent;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT, oldContent, content));
-    }
+		eSet(IArchimatePackage.Literals.TEXT_CONTENT__CONTENT, newContent);
+	}
     
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public EList<IProperty> getProperties() {
-        if (properties == null) {
-            properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES);
-        }
-        return properties;
-    }
+	 * @generated
+	 */
+    @SuppressWarnings("unchecked")
+				public EList<IProperty> getProperties() {
+		return (EList<IProperty>)eGet(IArchimatePackage.Literals.PROPERTIES__PROPERTIES, true);
+	}
 
     /** 
      * Left Justified
@@ -163,172 +116,59 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
     }
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
-                return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-            case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
-                return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
-                return getChildren();
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT:
-                return getContent();
-            case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
-                return getProperties();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
-                getChildren().clear();
-                getChildren().addAll((Collection<? extends IDiagramModelObject>)newValue);
-                return;
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT:
-                setContent((String)newValue);
-                return;
-            case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
-                getProperties().clear();
-                getProperties().addAll((Collection<? extends IProperty>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
-                getChildren().clear();
-                return;
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT:
-                setContent(CONTENT_EDEFAULT);
-                return;
-            case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
-                getProperties().clear();
-                return;
-        }
-        super.eUnset(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
-                return children != null && !children.isEmpty();
-            case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT:
-                return CONTENT_EDEFAULT == null ? content != null : !CONTENT_EDEFAULT.equals(content);
-            case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
-                return properties != null && !properties.isEmpty();
-        }
-        return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == IDiagramModelContainer.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
-                default: return -1;
-            }
-        }
-        if (baseClass == ITextContent.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT: return IArchimatePackage.TEXT_CONTENT__CONTENT;
-                default: return -1;
-            }
-        }
-        if (baseClass == IProperties.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES: return IArchimatePackage.PROPERTIES__PROPERTIES;
-                default: return -1;
-            }
-        }
-        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-    }
+		if (baseClass == IDiagramModelContainer.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
+				default: return -1;
+			}
+		}
+		if (baseClass == ITextContent.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT: return IArchimatePackage.TEXT_CONTENT__CONTENT;
+				default: return -1;
+			}
+		}
+		if (baseClass == IProperties.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES: return IArchimatePackage.PROPERTIES__PROPERTIES;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == IDiagramModelContainer.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN;
-                default: return -1;
-            }
-        }
-        if (baseClass == ITextContent.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.TEXT_CONTENT__CONTENT: return IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT;
-                default: return -1;
-            }
-        }
-        if (baseClass == IProperties.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.PROPERTIES__PROPERTIES: return IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES;
-                default: return -1;
-            }
-        }
-        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (eIsProxy()) return super.toString();
-
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (content: "); //$NON-NLS-1$
-        result.append(content);
-        result.append(')');
-        return result.toString();
-    }
+		if (baseClass == IDiagramModelContainer.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN;
+				default: return -1;
+			}
+		}
+		if (baseClass == ITextContent.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.TEXT_CONTENT__CONTENT: return IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT;
+				default: return -1;
+			}
+		}
+		if (baseClass == IProperties.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.PROPERTIES__PROPERTIES: return IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 } //SketchModelSticky

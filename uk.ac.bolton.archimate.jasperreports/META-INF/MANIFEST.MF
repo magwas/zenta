@@ -19,3 +19,4 @@ Require-Bundle: org.eclipse.core.runtime,
  uk.ac.bolton.archimate.editor
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: uk.ac.bolton.archimate.jasperreports.JasperReportsPlugin
+Import-Package: org.eclipse.emf.cdo

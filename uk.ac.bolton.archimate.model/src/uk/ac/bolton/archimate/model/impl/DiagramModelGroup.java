@@ -43,62 +43,23 @@ import uk.ac.bolton.archimate.model.IProperty;
  */
 public class DiagramModelGroup extends DiagramModelObject implements IDiagramModelGroup {
     /**
-     * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getChildren()
-     * @generated
-     * @ordered
-     */
-    protected EList<IDiagramModelObject> children;
-
-    /**
-     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getDocumentation()
-     * @generated
-     * @ordered
-     */
-    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
-    /**
-     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getDocumentation()
-     * @generated
-     * @ordered
-     */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
-
-    /**
-     * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getProperties()
-     * @generated
-     * @ordered
-     */
-    protected EList<IProperty> properties;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected DiagramModelGroup() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.DIAGRAM_MODEL_GROUP;
-    }
+		return IArchimatePackage.Literals.DIAGRAM_MODEL_GROUP;
+	}
 
     @Override
     public EObject getCopy() {
@@ -108,217 +69,97 @@ public class DiagramModelGroup extends DiagramModelObject implements IDiagramMod
     }
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public EList<IDiagramModelObject> getChildren() {
-        if (children == null) {
-            children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN);
-        }
-        return children;
-    }
+	 * @generated
+	 */
+    @SuppressWarnings("unchecked")
+				public EList<IDiagramModelObject> getChildren() {
+		return (EList<IDiagramModelObject>)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_CONTAINER__CHILDREN, true);
+	}
     
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getDocumentation() {
-        return documentation;
-    }
+		return (String)eGet(IArchimatePackage.Literals.DOCUMENTABLE__DOCUMENTATION, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setDocumentation(String newDocumentation) {
-        String oldDocumentation = documentation;
-        documentation = newDocumentation;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION, oldDocumentation, documentation));
-    }
+		eSet(IArchimatePackage.Literals.DOCUMENTABLE__DOCUMENTATION, newDocumentation);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public EList<IProperty> getProperties() {
-        if (properties == null) {
-            properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES);
-        }
-        return properties;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN:
-                return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES:
-                return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN:
-                return getChildren();
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION:
-                return getDocumentation();
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES:
-                return getProperties();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN:
-                getChildren().clear();
-                getChildren().addAll((Collection<? extends IDiagramModelObject>)newValue);
-                return;
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION:
-                setDocumentation((String)newValue);
-                return;
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES:
-                getProperties().clear();
-                getProperties().addAll((Collection<? extends IProperty>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+				public EList<IProperty> getProperties() {
+		return (EList<IProperty>)eGet(IArchimatePackage.Literals.PROPERTIES__PROPERTIES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN:
-                getChildren().clear();
-                return;
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION:
-                setDocumentation(DOCUMENTATION_EDEFAULT);
-                return;
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES:
-                getProperties().clear();
-                return;
-        }
-        super.eUnset(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN:
-                return children != null && !children.isEmpty();
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION:
-                return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES:
-                return properties != null && !properties.isEmpty();
-        }
-        return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == IDiagramModelContainer.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
-                default: return -1;
-            }
-        }
-        if (baseClass == IDocumentable.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION: return IArchimatePackage.DOCUMENTABLE__DOCUMENTATION;
-                default: return -1;
-            }
-        }
-        if (baseClass == IProperties.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES: return IArchimatePackage.PROPERTIES__PROPERTIES;
-                default: return -1;
-            }
-        }
-        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-    }
+		if (baseClass == IDiagramModelContainer.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
+				default: return -1;
+			}
+		}
+		if (baseClass == IDocumentable.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION: return IArchimatePackage.DOCUMENTABLE__DOCUMENTATION;
+				default: return -1;
+			}
+		}
+		if (baseClass == IProperties.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES: return IArchimatePackage.PROPERTIES__PROPERTIES;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == IDiagramModelContainer.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN;
-                default: return -1;
-            }
-        }
-        if (baseClass == IDocumentable.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.DOCUMENTABLE__DOCUMENTATION: return IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION;
-                default: return -1;
-            }
-        }
-        if (baseClass == IProperties.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.PROPERTIES__PROPERTIES: return IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES;
-                default: return -1;
-            }
-        }
-        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (eIsProxy()) return super.toString();
-
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (documentation: "); //$NON-NLS-1$
-        result.append(documentation);
-        result.append(')');
-        return result.toString();
-    }
+		if (baseClass == IDiagramModelContainer.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL_GROUP__CHILDREN;
+				default: return -1;
+			}
+		}
+		if (baseClass == IDocumentable.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.DOCUMENTABLE__DOCUMENTATION: return IArchimatePackage.DIAGRAM_MODEL_GROUP__DOCUMENTATION;
+				default: return -1;
+			}
+		}
+		if (baseClass == IProperties.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.PROPERTIES__PROPERTIES: return IArchimatePackage.DIAGRAM_MODEL_GROUP__PROPERTIES;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 } //DiagramModelGroup

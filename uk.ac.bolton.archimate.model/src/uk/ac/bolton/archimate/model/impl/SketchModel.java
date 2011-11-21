@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.ISketchModel;
  */
 public class SketchModel extends DiagramModel implements ISketchModel {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected SketchModel() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.SKETCH_MODEL;
-    }
+		return IArchimatePackage.Literals.SKETCH_MODEL;
+	}
 
 } //SketchModel

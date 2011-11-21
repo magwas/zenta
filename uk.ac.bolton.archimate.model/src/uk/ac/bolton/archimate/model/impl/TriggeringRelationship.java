@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.ITriggeringRelationship;
  */
 public class TriggeringRelationship extends Relationship implements ITriggeringRelationship {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected TriggeringRelationship() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.TRIGGERING_RELATIONSHIP;
-    }
+		return IArchimatePackage.Literals.TRIGGERING_RELATIONSHIP;
+	}
 
 } //TriggeringRelationship

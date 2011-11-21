@@ -6,6 +6,7 @@
  */
 package uk.ac.bolton.archimate.model;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,23 +17,24 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see uk.ac.bolton.archimate.model.IArchimatePackage#getAdapter()
  * @model interface="true" abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface IAdapter extends EObject {
+public interface IAdapter extends CDOObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
+	 * @model
+	 * @generated
+	 */
     Object getAdapter(Object adapter);
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
+	 * @model
+	 * @generated
+	 */
     void setAdapter(Object adapter, Object object);
 
 } // IAdapter

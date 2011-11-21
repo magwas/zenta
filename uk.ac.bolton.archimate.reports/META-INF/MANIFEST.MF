@@ -11,3 +11,4 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ClassPath: uk.ac.bolton.archimate.reports.jar
 Bundle-Activator: uk.ac.bolton.archimate.reports.ArchimateEditorReportsPlugin
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.emf.cdo

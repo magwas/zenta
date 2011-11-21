@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IBusinessCollaboration;
  */
 public class BusinessCollaboration extends ArchimateElement implements IBusinessCollaboration {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected BusinessCollaboration() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.BUSINESS_COLLABORATION;
-    }
+		return IArchimatePackage.Literals.BUSINESS_COLLABORATION;
+	}
 
 } //BusinessCollaboration

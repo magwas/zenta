@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.ICommunicationPath;
  */
 public class CommunicationPath extends ArchimateElement implements ICommunicationPath {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected CommunicationPath() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.COMMUNICATION_PATH;
-    }
+		return IArchimatePackage.Literals.COMMUNICATION_PATH;
+	}
 
 } //CommunicationPath

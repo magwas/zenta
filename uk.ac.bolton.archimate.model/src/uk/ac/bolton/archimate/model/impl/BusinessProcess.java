@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IBusinessProcess;
  */
 public class BusinessProcess extends ArchimateElement implements IBusinessProcess {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected BusinessProcess() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.BUSINESS_PROCESS;
-    }
+		return IArchimatePackage.Literals.BUSINESS_PROCESS;
+	}
 
 } //BusinessProcess

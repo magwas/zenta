@@ -6,6 +6,7 @@
  */
 package uk.ac.bolton.archimate.model;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,15 +17,16 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see uk.ac.bolton.archimate.model.IArchimatePackage#getCloneable()
  * @model interface="true" abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface ICloneable extends EObject {
+public interface ICloneable extends CDOObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model kind="operation"
-     * @generated
-     */
+	 * @model kind="operation"
+	 * @generated
+	 */
     EObject getCopy();
 
 } // ICloneable

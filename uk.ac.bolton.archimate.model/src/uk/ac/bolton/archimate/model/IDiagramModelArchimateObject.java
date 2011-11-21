@@ -26,72 +26,72 @@ package uk.ac.bolton.archimate.model;
  */
 public interface IDiagramModelArchimateObject extends IDiagramModelObject, IDiagramModelContainer {
     /**
-     * Returns the value of the '<em><b>Archimate Element</b></em>' reference.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Archimate Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Archimate Element</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Archimate Element</em>' reference.
-     * @see #setArchimateElement(IArchimateElement)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelArchimateObject_ArchimateElement()
-     * @model resolveProxies="false" volatile="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Archimate Element</em>' reference.
+	 * @see #setArchimateElement(IArchimateElement)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelArchimateObject_ArchimateElement()
+	 * @model resolveProxies="false" volatile="true"
+	 * @generated
+	 */
     IArchimateElement getArchimateElement();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModelArchimateObject#getArchimateElement <em>Archimate Element</em>}' reference.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModelArchimateObject#getArchimateElement <em>Archimate Element</em>}' reference.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Archimate Element</em>' reference.
-     * @see #getArchimateElement()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Archimate Element</em>' reference.
+	 * @see #getArchimateElement()
+	 * @generated
+	 */
     void setArchimateElement(IArchimateElement value);
 
     /**
-     * Returns the value of the '<em><b>Type</b></em>' attribute.
-     * The default value is <code>"0"</code>.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Type</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Type</em>' attribute.
-     * @see #setType(int)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelArchimateObject_Type()
-     * @model default="0"
-     * @generated
-     */
+	 * @return the value of the '<em>Type</em>' attribute.
+	 * @see #setType(int)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelArchimateObject_Type()
+	 * @model default="0"
+	 * @generated
+	 */
     int getType();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModelArchimateObject#getType <em>Type</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModelArchimateObject#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Type</em>' attribute.
-     * @see #getType()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see #getType()
+	 * @generated
+	 */
     void setType(int value);
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
+	 * @model
+	 * @generated
+	 */
     void addArchimateElementToModel(IFolder parent);
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
+	 * @model
+	 * @generated
+	 */
     void removeArchimateElementFromModel();
 
 } // IDiagramModelArchimateObject

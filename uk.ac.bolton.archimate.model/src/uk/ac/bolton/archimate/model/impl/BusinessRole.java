@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IBusinessRole;
  */
 public class BusinessRole extends ArchimateElement implements IBusinessRole {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected BusinessRole() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.BUSINESS_ROLE;
-    }
+		return IArchimatePackage.Literals.BUSINESS_ROLE;
+	}
 
 } //BusinessRole

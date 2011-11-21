@@ -28,136 +28,40 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
  */
 public class AccessRelationship extends Relationship implements IAccessRelationship {
     /**
-     * The default value of the '{@link #getAccessType() <em>Access Type</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getAccessType()
-     * @generated
-     * @ordered
-     */
-    protected static final int ACCESS_TYPE_EDEFAULT = 0;
-    /**
-     * The cached value of the '{@link #getAccessType() <em>Access Type</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getAccessType()
-     * @generated
-     * @ordered
-     */
-    protected int accessType = ACCESS_TYPE_EDEFAULT;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected AccessRelationship() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.ACCESS_RELATIONSHIP;
-    }
+		return IArchimatePackage.Literals.ACCESS_RELATIONSHIP;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public int getAccessType() {
-        return accessType;
-    }
+		return (Integer)eGet(IArchimatePackage.Literals.ACCESS_RELATIONSHIP__ACCESS_TYPE, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setAccessType(int newAccessType) {
-        int oldAccessType = accessType;
-        accessType = newAccessType;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.ACCESS_RELATIONSHIP__ACCESS_TYPE, oldAccessType, accessType));
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.ACCESS_RELATIONSHIP__ACCESS_TYPE:
-                return getAccessType();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.ACCESS_RELATIONSHIP__ACCESS_TYPE:
-                setAccessType((Integer)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.ACCESS_RELATIONSHIP__ACCESS_TYPE:
-                setAccessType(ACCESS_TYPE_EDEFAULT);
-                return;
-        }
-        super.eUnset(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.ACCESS_RELATIONSHIP__ACCESS_TYPE:
-                return accessType != ACCESS_TYPE_EDEFAULT;
-        }
-        return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (eIsProxy()) return super.toString();
-
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (accessType: "); //$NON-NLS-1$
-        result.append(accessType);
-        result.append(')');
-        return result.toString();
-    }
+		eSet(IArchimatePackage.Literals.ACCESS_RELATIONSHIP__ACCESS_TYPE, newAccessType);
+	}
 
 } //AccessRelationship

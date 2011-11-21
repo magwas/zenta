@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.INode;
  */
 public class Node extends ArchimateElement implements INode {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Node() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.NODE;
-    }
+		return IArchimatePackage.Literals.NODE;
+	}
 
 } //Node

@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
  */
 public class ApplicationInteraction extends ArchimateElement implements IApplicationInteraction {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ApplicationInteraction() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.APPLICATION_INTERACTION;
-    }
+		return IArchimatePackage.Literals.APPLICATION_INTERACTION;
+	}
 
 } //ApplicationInteraction

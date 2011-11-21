@@ -7,3 +7,4 @@ Fragment-Host: uk.ac.bolton.archimate.editor
 Bundle-Vendor: Bolton University
 Require-Bundle: org.junit4
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.eclipse.emf.cdo

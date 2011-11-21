@@ -6,6 +6,7 @@
  */
 package uk.ac.bolton.archimate.model;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -24,23 +25,24 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see uk.ac.bolton.archimate.model.IArchimatePackage#getFolderContainer()
  * @model interface="true" abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface IFolderContainer extends EObject {
+public interface IFolderContainer extends CDOObject {
     /**
-     * Returns the value of the '<em><b>Folders</b></em>' containment reference list.
-     * The list contents are of type {@link uk.ac.bolton.archimate.model.IFolder}.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Folders</b></em>' containment reference list.
+	 * The list contents are of type {@link uk.ac.bolton.archimate.model.IFolder}.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Folders</em>' containment reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Folders</em>' containment reference list.
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getFolderContainer_Folders()
-     * @model containment="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Folders</em>' containment reference list.
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getFolderContainer_Folders()
+	 * @model containment="true"
+	 * @generated
+	 */
     EList<IFolder> getFolders();
 
 } // IFolderContainer

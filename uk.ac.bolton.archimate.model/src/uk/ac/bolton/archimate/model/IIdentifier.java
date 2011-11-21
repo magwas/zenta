@@ -6,6 +6,7 @@
  */
 package uk.ac.bolton.archimate.model;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,33 +23,34 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see uk.ac.bolton.archimate.model.IArchimatePackage#getIdentifier()
  * @model interface="true" abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface IIdentifier extends EObject {
+public interface IIdentifier extends CDOObject {
     /**
-     * Returns the value of the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Id</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Id</em>' attribute.
-     * @see #setId(String)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getIdentifier_Id()
-     * @model id="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getIdentifier_Id()
+	 * @model id="true"
+	 * @generated
+	 */
     String getId();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IIdentifier#getId <em>Id</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IIdentifier#getId <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Id</em>' attribute.
-     * @see #getId()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
+	 * @generated
+	 */
     void setId(String value);
 
 } // IIdentifier

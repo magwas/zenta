@@ -13,3 +13,4 @@ Bundle-ClassPath: uk.ac.bolton.archimate.templates.jar,
  lib/org.eclipse.nebula.widgets.gallery_0.5.3.201011181341.jar
 Bundle-Activator: uk.ac.bolton.archimate.templates.ArchimateEditorTemplatesPlugin
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.emf.cdo

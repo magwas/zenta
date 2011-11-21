@@ -30,152 +30,58 @@ import uk.ac.bolton.archimate.model.IRelationship;
  */
 public abstract class Relationship extends ArchimateElement implements IRelationship {
     /**
-     * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getSource()
-     * @generated
-     * @ordered
-     */
-    protected IArchimateElement source;
-
-    /**
-     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getTarget()
-     * @generated
-     * @ordered
-     */
-    protected IArchimateElement target;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Relationship() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.RELATIONSHIP;
-    }
+		return IArchimatePackage.Literals.RELATIONSHIP;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IArchimateElement getSource() {
-        return source;
-    }
+		return (IArchimateElement)eGet(IArchimatePackage.Literals.RELATIONSHIP__SOURCE, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setSource(IArchimateElement newSource) {
-        IArchimateElement oldSource = source;
-        source = newSource;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.RELATIONSHIP__SOURCE, oldSource, source));
-    }
+		eSet(IArchimatePackage.Literals.RELATIONSHIP__SOURCE, newSource);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IArchimateElement getTarget() {
-        return target;
-    }
+		return (IArchimateElement)eGet(IArchimatePackage.Literals.RELATIONSHIP__TARGET, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setTarget(IArchimateElement newTarget) {
-        IArchimateElement oldTarget = target;
-        target = newTarget;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.RELATIONSHIP__TARGET, oldTarget, target));
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.RELATIONSHIP__SOURCE:
-                return getSource();
-            case IArchimatePackage.RELATIONSHIP__TARGET:
-                return getTarget();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.RELATIONSHIP__SOURCE:
-                setSource((IArchimateElement)newValue);
-                return;
-            case IArchimatePackage.RELATIONSHIP__TARGET:
-                setTarget((IArchimateElement)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.RELATIONSHIP__SOURCE:
-                setSource((IArchimateElement)null);
-                return;
-            case IArchimatePackage.RELATIONSHIP__TARGET:
-                setTarget((IArchimateElement)null);
-                return;
-        }
-        super.eUnset(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.RELATIONSHIP__SOURCE:
-                return source != null;
-            case IArchimatePackage.RELATIONSHIP__TARGET:
-                return target != null;
-        }
-        return super.eIsSet(featureID);
-    }
+		eSet(IArchimatePackage.Literals.RELATIONSHIP__TARGET, newTarget);
+	}
 
 } //Relationship
