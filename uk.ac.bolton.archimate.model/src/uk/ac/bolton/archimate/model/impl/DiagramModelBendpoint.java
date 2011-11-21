@@ -9,7 +9,6 @@ package uk.ac.bolton.archimate.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -34,125 +33,230 @@ import uk.ac.bolton.archimate.model.IDiagramModelBendpoint;
  *
  * @generated
  */
-public class DiagramModelBendpoint extends CDOObjectImpl implements IDiagramModelBendpoint {
+public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelBendpoint {
     /**
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getWeight() <em>Weight</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected DiagramModelBendpoint() {
-		super();
-	}
+     * @see #getWeight()
+     * @generated
+     * @ordered
+     */
+    protected static final float WEIGHT_EDEFAULT = 0.0F;
 
     /**
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getWeight() <em>Weight</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @see #getWeight()
+     * @generated
+     * @ordered
+     */
+    protected float weight = WEIGHT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getStartX() <em>Start X</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getStartX()
+     * @generated
+     * @ordered
+     */
+    protected static final int START_X_EDEFAULT = 0;
+
+    /**
+     * The cached value of the '{@link #getStartX() <em>Start X</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getStartX()
+     * @generated
+     * @ordered
+     */
+    protected int startX = START_X_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getStartY() <em>Start Y</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getStartY()
+     * @generated
+     * @ordered
+     */
+    protected static final int START_Y_EDEFAULT = 0;
+
+    /**
+     * The cached value of the '{@link #getStartY() <em>Start Y</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getStartY()
+     * @generated
+     * @ordered
+     */
+    protected int startY = START_Y_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getEndX() <em>End X</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEndX()
+     * @generated
+     * @ordered
+     */
+    protected static final int END_X_EDEFAULT = 0;
+
+    /**
+     * The cached value of the '{@link #getEndX() <em>End X</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEndX()
+     * @generated
+     * @ordered
+     */
+    protected int endX = END_X_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getEndY() <em>End Y</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEndY()
+     * @generated
+     * @ordered
+     */
+    protected static final int END_Y_EDEFAULT = 0;
+
+    /**
+     * The cached value of the '{@link #getEndY() <em>End Y</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEndY()
+     * @generated
+     * @ordered
+     */
+    protected int endY = END_Y_EDEFAULT;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DiagramModelBendpoint() {
+        super();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT;
-	}
+        return IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public float getWeight() {
-		return (Float)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__WEIGHT, true);
-	}
+        return weight;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setWeight(float newWeight) {
-		eSet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__WEIGHT, newWeight);
-	}
+        float oldWeight = weight;
+        weight = newWeight;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__WEIGHT, oldWeight, weight));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public int getStartX() {
-		return (Integer)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__START_X, true);
-	}
+        return startX;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setStartX(int newStartX) {
-		eSet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__START_X, newStartX);
-	}
+        int oldStartX = startX;
+        startX = newStartX;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X, oldStartX, startX));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public int getStartY() {
-		return (Integer)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__START_Y, true);
-	}
+        return startY;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setStartY(int newStartY) {
-		eSet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__START_Y, newStartY);
-	}
+        int oldStartY = startY;
+        startY = newStartY;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y, oldStartY, startY));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public int getEndX() {
-		return (Integer)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__END_X, true);
-	}
+        return endX;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setEndX(int newEndX) {
-		eSet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__END_X, newEndX);
-	}
+        int oldEndX = endX;
+        endX = newEndX;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X, oldEndX, endX));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public int getEndY() {
-		return (Integer)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__END_Y, true);
-	}
+        return endY;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setEndY(int newEndY) {
-		eSet(IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT__END_Y, newEndY);
-	}
+        int oldEndY = endY;
+        endY = newEndY;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y, oldEndY, endY));
+    }
 
     /**
      * <!-- begin-user-doc -->
@@ -161,6 +265,128 @@ public class DiagramModelBendpoint extends CDOObjectImpl implements IDiagramMode
      */
     public EObject getCopy() {
         return EcoreUtil.copy(this);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__WEIGHT:
+                return getWeight();
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
+                return getStartX();
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
+                return getStartY();
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
+                return getEndX();
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
+                return getEndY();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void eSet(int featureID, Object newValue) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__WEIGHT:
+                setWeight((Float)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
+                setStartX((Integer)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
+                setStartY((Integer)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
+                setEndX((Integer)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
+                setEndY((Integer)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void eUnset(int featureID) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__WEIGHT:
+                setWeight(WEIGHT_EDEFAULT);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
+                setStartX(START_X_EDEFAULT);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
+                setStartY(START_Y_EDEFAULT);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
+                setEndX(END_X_EDEFAULT);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
+                setEndY(END_Y_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public boolean eIsSet(int featureID) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__WEIGHT:
+                return weight != WEIGHT_EDEFAULT;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
+                return startX != START_X_EDEFAULT;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
+                return startY != START_Y_EDEFAULT;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
+                return endX != END_X_EDEFAULT;
+            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
+                return endY != END_Y_EDEFAULT;
+        }
+        return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy()) return super.toString();
+
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (weight: "); //$NON-NLS-1$
+        result.append(weight);
+        result.append(", startX: "); //$NON-NLS-1$
+        result.append(startX);
+        result.append(", startY: "); //$NON-NLS-1$
+        result.append(startY);
+        result.append(", endX: "); //$NON-NLS-1$
+        result.append(endX);
+        result.append(", endY: "); //$NON-NLS-1$
+        result.append(endY);
+        result.append(')');
+        return result.toString();
     }
 
 } //DiagramModelBendpoint

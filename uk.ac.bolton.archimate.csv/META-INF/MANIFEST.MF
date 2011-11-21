@@ -7,4 +7,3 @@ Bundle-Vendor: Bolton University
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.ui,
  uk.ac.bolton.archimate.editor
-Import-Package: org.eclipse.emf.cdo

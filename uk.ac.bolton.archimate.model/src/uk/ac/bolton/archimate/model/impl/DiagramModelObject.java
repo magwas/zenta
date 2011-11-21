@@ -47,133 +47,288 @@ import uk.ac.bolton.archimate.model.IFontAttribute;
  */
 public abstract class DiagramModelObject extends DiagramModelComponent implements IDiagramModelObject {
     /**
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getFont() <em>Font</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected DiagramModelObject() {
-		super();
-	}
+     * @see #getFont()
+     * @generated
+     * @ordered
+     */
+    protected static final String FONT_EDEFAULT = null;
 
     /**
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getFont() <em>Font</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @see #getFont()
+     * @generated
+     * @ordered
+     */
+    protected String font = FONT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getFontColor() <em>Font Color</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFontColor()
+     * @generated
+     * @ordered
+     */
+    protected static final String FONT_COLOR_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getFontColor() <em>Font Color</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFontColor()
+     * @generated
+     * @ordered
+     */
+    protected String fontColor = FONT_COLOR_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTextAlignment() <em>Text Alignment</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTextAlignment()
+     * @generated
+     * @ordered
+     */
+    protected static final int TEXT_ALIGNMENT_EDEFAULT = 0;
+
+    /**
+     * The cached value of the '{@link #getTextAlignment() <em>Text Alignment</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTextAlignment()
+     * @generated
+     * @ordered
+     */
+    protected int textAlignment = TEXT_ALIGNMENT_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getBounds() <em>Bounds</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getBounds()
+     * @generated
+     * @ordered
+     */
+    protected IBounds bounds;
+
+    /**
+     * The cached value of the '{@link #getSourceConnections() <em>Source Connections</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourceConnections()
+     * @generated
+     * @ordered
+     */
+    protected EList<IDiagramModelConnection> sourceConnections;
+
+    /**
+     * The cached value of the '{@link #getTargetConnections() <em>Target Connections</em>}' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTargetConnections()
+     * @generated
+     * @ordered
+     */
+    protected EList<IDiagramModelConnection> targetConnections;
+
+    /**
+     * The default value of the '{@link #getFillColor() <em>Fill Color</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFillColor()
+     * @generated
+     * @ordered
+     */
+    protected static final String FILL_COLOR_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getFillColor() <em>Fill Color</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFillColor()
+     * @generated
+     * @ordered
+     */
+    protected String fillColor = FILL_COLOR_EDEFAULT;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DiagramModelObject() {
+        super();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT;
-	}
+        return IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public IBounds getBounds() {
-		return (IBounds)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT__BOUNDS, true);
-	}
+        return bounds;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
+    public NotificationChain basicSetBounds(IBounds newBounds, NotificationChain msgs) {
+        IBounds oldBounds = bounds;
+        bounds = newBounds;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS, oldBounds, newBounds);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public void setBounds(IBounds newBounds) {
-		eSet(IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT__BOUNDS, newBounds);
-	}
+        if (newBounds != bounds) {
+            NotificationChain msgs = null;
+            if (bounds != null)
+                msgs = ((InternalEObject)bounds).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS, null, msgs);
+            if (newBounds != null)
+                msgs = ((InternalEObject)newBounds).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS, null, msgs);
+            msgs = basicSetBounds(newBounds, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS, newBounds, newBounds));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @SuppressWarnings("unchecked")
-				public EList<IDiagramModelConnection> getSourceConnections() {
-		return (EList<IDiagramModelConnection>)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS, true);
-	}
+     * @generated
+     */
+    public EList<IDiagramModelConnection> getSourceConnections() {
+        if (sourceConnections == null) {
+            sourceConnections = new EObjectContainmentEList<IDiagramModelConnection>(IDiagramModelConnection.class, this, IArchimatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS);
+        }
+        return sourceConnections;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @SuppressWarnings("unchecked")
-				public EList<IDiagramModelConnection> getTargetConnections() {
-		return (EList<IDiagramModelConnection>)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS, true);
-	}
+     * @generated
+     */
+    public EList<IDiagramModelConnection> getTargetConnections() {
+        if (targetConnections == null) {
+            targetConnections = new EObjectEList<IDiagramModelConnection>(IDiagramModelConnection.class, this, IArchimatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS);
+        }
+        return targetConnections;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getFillColor() {
-		return (String)eGet(IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT__FILL_COLOR, true);
-	}
+        return fillColor;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setFillColor(String newFillColor) {
-		eSet(IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT__FILL_COLOR, newFillColor);
-	}
+        String oldFillColor = fillColor;
+        fillColor = newFillColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR, oldFillColor, fillColor));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getFont() {
-		return (String)eGet(IArchimatePackage.Literals.FONT_ATTRIBUTE__FONT, true);
-	}
+        return font;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setFont(String newFont) {
-		eSet(IArchimatePackage.Literals.FONT_ATTRIBUTE__FONT, newFont);
-	}
+        String oldFont = font;
+        font = newFont;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT, oldFont, font));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getFontColor() {
-		return (String)eGet(IArchimatePackage.Literals.FONT_ATTRIBUTE__FONT_COLOR, true);
-	}
+        return fontColor;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setFontColor(String newFontColor) {
-		eSet(IArchimatePackage.Literals.FONT_ATTRIBUTE__FONT_COLOR, newFontColor);
-	}
+        String oldFontColor = fontColor;
+        fontColor = newFontColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR, oldFontColor, fontColor));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated NOT
+     */
     public int getTextAlignment() {
-		return (Integer)eGet(IArchimatePackage.Literals.FONT_ATTRIBUTE__TEXT_ALIGNMENT, true);
-	}
+        // Check for backward compatibility where default is 0 and not persisted
+        if(textAlignment == TEXT_ALIGNMENT_NONE) {
+            textAlignment = getDefaultTextAlignment();
+        }
+        return textAlignment;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setTextAlignment(int newTextAlignment) {
-		eSet(IArchimatePackage.Literals.FONT_ATTRIBUTE__TEXT_ALIGNMENT, newTextAlignment);
-	}
+        int oldTextAlignment = textAlignment;
+        textAlignment = newTextAlignment;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT, oldTextAlignment, textAlignment));
+    }
 
     /**
      * <!-- begin-user-doc -->
@@ -247,39 +402,198 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == IFontAttribute.class) {
-			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT: return IArchimatePackage.FONT_ATTRIBUTE__FONT;
-				case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR: return IArchimatePackage.FONT_ATTRIBUTE__FONT_COLOR;
-				case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT: return IArchimatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+                return basicSetBounds(null, msgs);
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+                return ((InternalEList<?>)getSourceConnections()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT:
+                return getFont();
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
+                return getFontColor();
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
+                return getTextAlignment();
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+                return getBounds();
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+                return getSourceConnections();
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
+                return getTargetConnections();
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
+                return getFillColor();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT:
+                setFont((String)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
+                setFontColor((String)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
+                setTextAlignment((Integer)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+                setBounds((IBounds)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+                getSourceConnections().clear();
+                getSourceConnections().addAll((Collection<? extends IDiagramModelConnection>)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
+                getTargetConnections().clear();
+                getTargetConnections().addAll((Collection<? extends IDiagramModelConnection>)newValue);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
+                setFillColor((String)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void eUnset(int featureID) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT:
+                setFont(FONT_EDEFAULT);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
+                setFontColor(FONT_COLOR_EDEFAULT);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
+                setTextAlignment(TEXT_ALIGNMENT_EDEFAULT);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+                setBounds((IBounds)null);
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+                getSourceConnections().clear();
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
+                getTargetConnections().clear();
+                return;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
+                setFillColor(FILL_COLOR_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public boolean eIsSet(int featureID) {
+        switch (featureID) {
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT:
+                return FONT_EDEFAULT == null ? font != null : !FONT_EDEFAULT.equals(font);
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
+                return FONT_COLOR_EDEFAULT == null ? fontColor != null : !FONT_COLOR_EDEFAULT.equals(fontColor);
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
+                return textAlignment != TEXT_ALIGNMENT_EDEFAULT;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+                return bounds != null;
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+                return sourceConnections != null && !sourceConnections.isEmpty();
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
+                return targetConnections != null && !targetConnections.isEmpty();
+            case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
+                return FILL_COLOR_EDEFAULT == null ? fillColor != null : !FILL_COLOR_EDEFAULT.equals(fillColor);
+        }
+        return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == IFontAttribute.class) {
+            switch (derivedFeatureID) {
+                case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT: return IArchimatePackage.FONT_ATTRIBUTE__FONT;
+                case IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR: return IArchimatePackage.FONT_ATTRIBUTE__FONT_COLOR;
+                case IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT: return IArchimatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT;
+                default: return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == IFontAttribute.class) {
-			switch (baseFeatureID) {
-				case IArchimatePackage.FONT_ATTRIBUTE__FONT: return IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT;
-				case IArchimatePackage.FONT_ATTRIBUTE__FONT_COLOR: return IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR;
-				case IArchimatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT: return IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+        if (baseClass == IFontAttribute.class) {
+            switch (baseFeatureID) {
+                case IArchimatePackage.FONT_ATTRIBUTE__FONT: return IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT;
+                case IArchimatePackage.FONT_ATTRIBUTE__FONT_COLOR: return IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR;
+                case IArchimatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT: return IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT;
+                default: return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy()) return super.toString();
+
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (font: "); //$NON-NLS-1$
+        result.append(font);
+        result.append(", fontColor: "); //$NON-NLS-1$
+        result.append(fontColor);
+        result.append(", textAlignment: "); //$NON-NLS-1$
+        result.append(textAlignment);
+        result.append(", fillColor: "); //$NON-NLS-1$
+        result.append(fillColor);
+        result.append(')');
+        return result.toString();
+    }
 
 } //DiagramModelObject

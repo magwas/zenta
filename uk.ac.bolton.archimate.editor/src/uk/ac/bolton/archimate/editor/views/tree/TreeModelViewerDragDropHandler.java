@@ -28,7 +28,6 @@ import org.eclipse.swt.widgets.TreeItem;
 
 import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
 import uk.ac.bolton.archimate.editor.model.commands.NonNotifyingCompoundCommand;
-import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.editor.utils.PlatformUtils;
 import uk.ac.bolton.archimate.editor.views.tree.commands.MoveFolderCommand;
 import uk.ac.bolton.archimate.editor.views.tree.commands.MoveObjectCommand;
@@ -322,13 +321,12 @@ public class TreeModelViewerDragDropHandler {
      */
     private boolean hasCommonParentFolder(IFolder targetfolder, EObject object) {
         EObject f1 = targetfolder;
-        boolean movearound = Preferences.isAllowMoveAround();
-        while(!(((!movearound) && (f1.eContainer() instanceof IArchimateModel))||(movearound && (f1 instanceof IArchimateModel)))) {
+        while(!(f1.eContainer() instanceof IArchimateModel)) {
             f1 = f1.eContainer();
         }
         
         EObject f2 = object.eContainer();
-        while(f2 != null && !(((!movearound) && (f2.eContainer() instanceof IArchimateModel))||(movearound && (f2 instanceof IArchimateModel)))) {
+        while(f2 != null && !(f2.eContainer() instanceof IArchimateModel)) {
             f2 = f2.eContainer();
         }
         

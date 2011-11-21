@@ -6,7 +6,6 @@
  */
 package uk.ac.bolton.archimate.model;
 
-import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -23,34 +22,33 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see uk.ac.bolton.archimate.model.IArchimatePackage#getNameable()
  * @model interface="true" abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface INameable extends CDOObject {
+public interface INameable extends EObject {
     /**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Name</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getNameable_Name()
-	 * @model
-	 * @generated
-	 */
+     * @return the value of the '<em>Name</em>' attribute.
+     * @see #setName(String)
+     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getNameable_Name()
+     * @model
+     * @generated
+     */
     String getName();
 
     /**
-	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.INameable#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link uk.ac.bolton.archimate.model.INameable#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Name</em>' attribute.
+     * @see #getName()
+     * @generated
+     */
     void setName(String value);
 
 } // INameable
