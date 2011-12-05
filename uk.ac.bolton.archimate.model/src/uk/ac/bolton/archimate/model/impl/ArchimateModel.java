@@ -359,9 +359,11 @@ public class ArchimateModel extends EObjectImpl implements IArchimateModel {
     public EList<IDiagramModel> getDiagramModels() {
         EList<IDiagramModel> list = new BasicEList<IDiagramModel>();
         
-        IFolder folder = getFolder(FolderType.DIAGRAMS);
-        if(folder != null) {
-            _getDiagramModels(folder, list);
+        EList<IFolder> fl = this.getFolders();
+        for(IFolder folder: fl) {
+            if(folder != null) {
+                _getDiagramModels(folder, list);
+            }        	
         }
         
         return list;

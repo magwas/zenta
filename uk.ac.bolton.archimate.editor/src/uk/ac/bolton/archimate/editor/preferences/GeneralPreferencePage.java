@@ -40,6 +40,8 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     private Button fUseCurvedTabsButton;
     
+    private Button fAllowMoveAroundButton;
+    
 	public GeneralPreferencePage() {
 		setPreferenceStore(Preferences.STORE);
 	}
@@ -82,7 +84,18 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 2;
         fUseCurvedTabsButton.setLayoutData(gd);
+
+        Group modelGroup = new Group(client, SWT.NULL);
+        modelGroup.setText("Model style");
+        modelGroup.setLayout(new GridLayout(2, false));
+        modelGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         
+        fAllowMoveAroundButton = new Button(modelGroup, SWT.CHECK);
+        fAllowMoveAroundButton.setText("Allow moving object across layers");
+        gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.horizontalSpan = 2;
+        fAllowMoveAroundButton.setLayoutData(gd);
+
         setValues();
         
         return client;
@@ -102,6 +115,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         }
 
         fOpenDiagramsOnLoadButton.setSelection(getPreferenceStore().getBoolean(OPEN_DIAGRAMS_ON_LOAD));
+        fAllowMoveAroundButton.setSelection(getPreferenceStore().getBoolean(ALLOW_MOVE_AROUND));
         fUseCurvedTabsButton.setSelection(!PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS));
     }
     
@@ -113,6 +127,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     public boolean performOk() {
         getPreferenceStore().setValue(OPEN_DIAGRAMS_ON_LOAD, fOpenDiagramsOnLoadButton.getSelection());
         getPreferenceStore().setValue(MRU_MAX, fMRUSizeSpinner.getSelection());
+        getPreferenceStore().setValue(ALLOW_MOVE_AROUND, fAllowMoveAroundButton.getSelection());
         PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS, !fUseCurvedTabsButton.getSelection());
         return true;
     }
@@ -121,6 +136,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     protected void performDefaults() {
         fOpenDiagramsOnLoadButton.setSelection(getPreferenceStore().getDefaultBoolean(OPEN_DIAGRAMS_ON_LOAD));
         fMRUSizeSpinner.setSelection(getPreferenceStore().getDefaultInt(MRU_MAX));
+        fAllowMoveAroundButton.setSelection(getPreferenceStore().getDefaultBoolean(ALLOW_MOVE_AROUND));
         fUseCurvedTabsButton.setSelection(!PlatformUI.getPreferenceStore().getDefaultBoolean(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS));
         super.performDefaults();
     }
