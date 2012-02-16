@@ -99,15 +99,10 @@
       <plugin id="org.eclipse.ui.views.properties.tabbed"/>
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.update.configurator"/>
-      <plugin id="org.hamcrest.core"/>
-      <plugin id="org.junit"/>
-      <plugin id="org.junit4"/>
       <plugin id="org.mortbay.jetty.server"/>
       <plugin id="org.mortbay.jetty.util"/>
-      <plugin id="org.rulez.magwas.archimate.editor.browser"/>
-      <plugin id="org.rulez.magwas.enterprise"/>
-      <plugin id="org.rulez.magwas.styledhtml"/>
-      <plugin id="uk.ac.bolton.archimate.bizzdesign"/>
+      <plugin id="uk.ac.bolton.archimate.canvas"/>
+      <plugin id="uk.ac.bolton.archimate.compatibility"/>
       <plugin id="uk.ac.bolton.archimate.csv"/>
       <plugin id="uk.ac.bolton.archimate.editor"/>
       <plugin id="uk.ac.bolton.archimate.editor.fullscreen.macos" fragment="true"/>
@@ -118,7 +113,7 @@
       <plugin id="uk.ac.bolton.archimate.model"/>
       <plugin id="uk.ac.bolton.archimate.reports"/>
       <plugin id="uk.ac.bolton.archimate.templates"/>
-      <plugin id="uk.ac.bolton.archimate.tests" fragment="true"/>
+      <plugin id="uk.ac.bolton.archimate.widgets"/>
       <plugin id="uk.ac.bolton.jdom"/>
    </plugins>
 

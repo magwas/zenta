@@ -12,18 +12,22 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.tools.AbstractTool;
 
+import uk.ac.bolton.archimate.editor.diagram.commands.BorderColorCommand;
 import uk.ac.bolton.archimate.editor.diagram.commands.ConnectionLineColorCommand;
 import uk.ac.bolton.archimate.editor.diagram.commands.ConnectionLineWidthCommand;
 import uk.ac.bolton.archimate.editor.diagram.commands.FillColorCommand;
 import uk.ac.bolton.archimate.editor.diagram.commands.FontColorCommand;
 import uk.ac.bolton.archimate.editor.diagram.commands.FontStyleCommand;
 import uk.ac.bolton.archimate.editor.diagram.commands.TextAlignmentCommand;
+import uk.ac.bolton.archimate.editor.diagram.commands.TextPositionCommand;
 import uk.ac.bolton.archimate.editor.diagram.tools.FormatPainterInfo.PaintFormat;
 import uk.ac.bolton.archimate.model.IArchimateElement;
+import uk.ac.bolton.archimate.model.IBorderObject;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateObject;
 import uk.ac.bolton.archimate.model.IDiagramModelConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
 import uk.ac.bolton.archimate.model.IJunction;
+import uk.ac.bolton.archimate.model.ILockable;
 
 
 /**
@@ -49,7 +53,7 @@ public class FormatPainterTool extends AbstractTool {
                     if(pf == null) {
                         FormatPainterInfo.INSTANCE.updatePaintFormat(object);
                     }
-                    else {
+                    else if(!isObjectLocked(object)) {
                         Command cmd = createCommand(pf, object);
                         if(cmd.canExecute()) {
                             executeCommand(cmd);
@@ -104,6 +108,18 @@ public class FormatPainterTool extends AbstractTool {
             if(cmd.canExecute()) {
                 result.add(cmd);
             }
+            cmd = new TextPositionCommand(target, source.getTextPosition());
+            if(cmd.canExecute()) {
+                result.add(cmd);
+            }
+            
+            // Optional Border
+            if(source instanceof IBorderObject && target instanceof IBorderObject) {
+                cmd = new BorderColorCommand((IBorderObject)target, ((IBorderObject)source).getBorderColor());
+                if(cmd.canExecute()) {
+                    result.add(cmd);
+                }
+            }
         }
         else if(pf.sourceComponent instanceof IDiagramModelConnection && targetObject instanceof IDiagramModelConnection) {
             IDiagramModelConnection source = (IDiagramModelConnection)pf.sourceComponent;
@@ -128,6 +144,10 @@ public class FormatPainterTool extends AbstractTool {
         }
         
         return result;
+    }
+    
+    protected boolean isObjectLocked(Object object) {
+        return object instanceof ILockable && ((ILockable)object).isLocked();
     }
 
     protected boolean isPaintableObject(Object object) {

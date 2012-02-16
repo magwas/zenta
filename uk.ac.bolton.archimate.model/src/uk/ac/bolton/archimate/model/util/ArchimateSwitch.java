@@ -29,6 +29,7 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IArtifact;
 import uk.ac.bolton.archimate.model.IAssignmentRelationship;
 import uk.ac.bolton.archimate.model.IAssociationRelationship;
+import uk.ac.bolton.archimate.model.IBorderObject;
 import uk.ac.bolton.archimate.model.IBounds;
 import uk.ac.bolton.archimate.model.IBusinessActivity;
 import uk.ac.bolton.archimate.model.IBusinessActor;
@@ -56,6 +57,8 @@ import uk.ac.bolton.archimate.model.IDiagramModelComponent;
 import uk.ac.bolton.archimate.model.IDiagramModelConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelContainer;
 import uk.ac.bolton.archimate.model.IDiagramModelGroup;
+import uk.ac.bolton.archimate.model.IDiagramModelImage;
+import uk.ac.bolton.archimate.model.IDiagramModelImageProvider;
 import uk.ac.bolton.archimate.model.IDiagramModelNote;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
 import uk.ac.bolton.archimate.model.IDiagramModelReference;
@@ -70,6 +73,7 @@ import uk.ac.bolton.archimate.model.IInfrastructureService;
 import uk.ac.bolton.archimate.model.IInterfaceElement;
 import uk.ac.bolton.archimate.model.IJunction;
 import uk.ac.bolton.archimate.model.IJunctionElement;
+import uk.ac.bolton.archimate.model.ILockable;
 import uk.ac.bolton.archimate.model.IMeaning;
 import uk.ac.bolton.archimate.model.INameable;
 import uk.ac.bolton.archimate.model.INetwork;
@@ -1086,6 +1090,21 @@ public class ArchimateSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case IArchimatePackage.DIAGRAM_MODEL_IMAGE: {
+                IDiagramModelImage diagramModelImage = (IDiagramModelImage)theEObject;
+                T result = caseDiagramModelImage(diagramModelImage);
+                if (result == null) result = caseDiagramModelObject(diagramModelImage);
+                if (result == null) result = caseBorderObject(diagramModelImage);
+                if (result == null) result = caseDiagramModelImageProvider(diagramModelImage);
+                if (result == null) result = caseDiagramModelComponent(diagramModelImage);
+                if (result == null) result = caseFontAttribute(diagramModelImage);
+                if (result == null) result = caseIdentifier(diagramModelImage);
+                if (result == null) result = caseCloneable(diagramModelImage);
+                if (result == null) result = caseAdapter(diagramModelImage);
+                if (result == null) result = caseNameable(diagramModelImage);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             case IArchimatePackage.DIAGRAM_MODEL_CONNECTION: {
                 IDiagramModelConnection diagramModelConnection = (IDiagramModelConnection)theEObject;
                 T result = caseDiagramModelConnection(diagramModelConnection);
@@ -1113,9 +1132,27 @@ public class ArchimateSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case IArchimatePackage.BORDER_OBJECT: {
+                IBorderObject borderObject = (IBorderObject)theEObject;
+                T result = caseBorderObject(borderObject);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER: {
+                IDiagramModelImageProvider diagramModelImageProvider = (IDiagramModelImageProvider)theEObject;
+                T result = caseDiagramModelImageProvider(diagramModelImageProvider);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             case IArchimatePackage.BOUNDS: {
                 IBounds bounds = (IBounds)theEObject;
                 T result = caseBounds(bounds);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case IArchimatePackage.LOCKABLE: {
+                ILockable lockable = (ILockable)theEObject;
+                T result = caseLockable(lockable);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -1726,6 +1763,21 @@ public class ArchimateSwitch<T> extends Switch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>Diagram Model Image</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Diagram Model Image</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDiagramModelImage(IDiagramModelImage object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Diagram Model Connection</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
@@ -1786,6 +1838,36 @@ public class ArchimateSwitch<T> extends Switch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>Border Object</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Border Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseBorderObject(IBorderObject object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Diagram Model Image Provider</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Diagram Model Image Provider</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDiagramModelImageProvider(IDiagramModelImageProvider object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Bounds</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
@@ -1797,6 +1879,21 @@ public class ArchimateSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseBounds(IBounds object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Lockable</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Lockable</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseLockable(ILockable object) {
         return null;
     }
 

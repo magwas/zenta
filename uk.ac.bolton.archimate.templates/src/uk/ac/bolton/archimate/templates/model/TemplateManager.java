@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
+ * Copyright (c) 2010-11 Bolton University, UK.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
@@ -12,12 +12,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
 import org.jdom.Element;
 
-import uk.ac.bolton.archimate.editor.ArchimateEditorPlugin;
-import uk.ac.bolton.archimate.editor.utils.ZipUtils;
-import uk.ac.bolton.archimate.templates.ArchimateEditorTemplatesPlugin;
 import uk.ac.bolton.jdom.JDOMUtils;
 
 
@@ -27,13 +25,7 @@ import uk.ac.bolton.jdom.JDOMUtils;
  * 
  * @author Phillip Beauvoir
  */
-public class TemplateManager implements ITemplateXMLTags {
-    
-    public static final String ARCHIMATE_TEMPLATE_FILE_EXTENSION = ".architemplate";
-    public static final String ARCHIMATE_TEMPLATE_FILE_WILDCARD = "*.architemplate";
-    
-    // Prefix of name of tmp file created when opening a template
-    public static final String ARCHIMATE_TEMPLATE_FILE_TMP_PREFIX = "~architemplate";
+public abstract class TemplateManager implements ITemplateXMLTags {
     
     public static final String ZIP_ENTRY_MANIFEST = "manifest.xml";
     public static final String ZIP_ENTRY_MODEL = "model.archimate";
@@ -50,13 +42,33 @@ public class TemplateManager implements ITemplateXMLTags {
         }
     };
     
-    private File fUserTemplatesFile = new File(ArchimateEditorPlugin.INSTANCE.getUserDataFolder(), "templates.xml");
-    
     private ITemplateGroup fInbuiltTemplateGroup;
     private List<ITemplate> fUserTemplates;
     private List<ITemplateGroup> fUserTemplateGroups;
     
     public TemplateManager() {
+    }
+    
+    /**
+     * Add an entry referencing a template fle
+     * @param templateFile
+     * @param group optional group to add it to, can be null in which case it is added to the "All" group
+     * @throws IOException 
+     */
+    public void addTemplateEntry(File templateFile, ITemplateGroup group) throws IOException {
+        // Duplicate file
+        if(hasTemplateFile(templateFile, group)) {
+            return;
+        }
+        
+        ITemplate template = createTemplate(templateFile);
+        template.setFile(templateFile);
+        addUserTemplate(template);
+        // Add to user group
+        if(group != null) {
+            group.addTemplate(template);
+        }
+        saveUserTemplatesManifest();
     }
 
     /**
@@ -90,7 +102,6 @@ public class TemplateManager implements ITemplateXMLTags {
         
         return fUserTemplateGroups;
     }
-    
 
     /**
      * Reset so we can reload from disk
@@ -101,32 +112,44 @@ public class TemplateManager implements ITemplateXMLTags {
         fUserTemplateGroups = null;
     }
     
-    private ITemplateGroup loadInbuiltTemplates() {
-        ITemplateGroup group = new TemplateGroup("Installed Templates");
-        File folder = ArchimateEditorTemplatesPlugin.INSTANCE.getTemplatesFolder();
-        if(folder.exists()) {
-            for(File file : folder.listFiles()) {
-                if(file.getName().toLowerCase().endsWith(ARCHIMATE_TEMPLATE_FILE_EXTENSION)) {
-                    ITemplate template = new ModelTemplate();
-                    template.setFile(file);
-                    group.addTemplate(template);
-                }
+    /**
+     * Check if a template already exists in a group
+     * @param templateFile The template file
+     * @param group The group to check. If this is null then all user templates are checked
+     * @return true if it exists.
+     */
+    public boolean hasTemplateFile(File templateFile, ITemplateGroup group) {
+        if(templateFile == null) {
+            return false;
+        }
+        
+        if(group == null) {
+            group = AllUserTemplatesGroup;
+        }
+        
+        for(ITemplate template : group.getTemplates()) {
+            if(templateFile.equals(template.getFile())) {
+                return true;
             }
         }
-        return group;
+        
+        return false;
     }
 
-    private void loadUserTemplates() {
+    /**
+     * Load all user templates as declared in the manifest
+     */
+    protected void loadUserTemplates() {
         fUserTemplates = new ArrayList<ITemplate>();
         fUserTemplateGroups = new ArrayList<ITemplateGroup>();
         
-        if(!fUserTemplatesFile.exists()) {
+        if(!getUserTemplatesManifestFile().exists()) {
             return;
         }
         
         Document doc = null;
         try {
-            doc = JDOMUtils.readXMLFile(fUserTemplatesFile);
+            doc = JDOMUtils.readXMLFile(getUserTemplatesManifestFile());
         }
         catch(Exception ex) {
             ex.printStackTrace();
@@ -141,13 +164,14 @@ public class TemplateManager implements ITemplateXMLTags {
         for(Object child : rootElement.getChildren(XML_TEMPLATE_ELEMENT_TEMPLATE)) {
             Element templateElement = (Element)child;
             String type = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_TYPE);
-            if(XML_TEMPLATE_ATTRIBUTE_TYPE_MODEL.equals(type)) {
+            ITemplate template = createTemplate(type);
+            if(template != null) {
                 String id = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_ID);
                 String path = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_FILE);
                 if(id != null && path != null) {
                     File file = new File(path);
                     if(file.exists()) {
-                        ITemplate template = new ModelTemplate(id);
+                        template.setID(id);
                         template.setFile(file);
                         fUserTemplates.add(template);
                         userTemplateMap.put(id, template);
@@ -205,9 +229,9 @@ public class TemplateManager implements ITemplateXMLTags {
             }
         }
         
-        JDOMUtils.write2XMLFile(doc, fUserTemplatesFile);
+        JDOMUtils.write2XMLFile(doc, getUserTemplatesManifestFile());
     }
-
+    
     public void addUserTemplate(ITemplate template) {
         if(template != null && !getUserTemplates().contains(template)) {
             getUserTemplates().add(template);
@@ -222,7 +246,7 @@ public class TemplateManager implements ITemplateXMLTags {
         disposeUserTemplates();
     }
     
-    private void disposeInbuiltTemplates() {
+    protected void disposeInbuiltTemplates() {
         if(fInbuiltTemplateGroup != null) {
             for(ITemplate template : fInbuiltTemplateGroup.getTemplates()) {
                 template.dispose();
@@ -230,7 +254,7 @@ public class TemplateManager implements ITemplateXMLTags {
         }
     }
     
-    private void disposeUserTemplates() {
+    protected void disposeUserTemplates() {
         if(fUserTemplates != null) {
             for(ITemplate template : fUserTemplates) {
                 template.dispose();
@@ -238,21 +262,47 @@ public class TemplateManager implements ITemplateXMLTags {
         }
     }
     
+    
     /**
-     * @param file
-     * @return true if file is a valid template file
-     * @throws IOException 
+     * @return Load all plug-ins inbuilt templates
      */
-    public static boolean isValidTemplateFile(File file) throws IOException {
-        if(file == null || !file.exists()) {
-            return false;
-        }
-        
-        String s = ZipUtils.extractZipEntry(file, ZIP_ENTRY_MANIFEST);
-        if(s == null) {
-            return false;
-        }
-        
-        return true;
-    }
+    protected abstract ITemplateGroup loadInbuiltTemplates();
+    
+    /**
+     * @return The file extension to use for the template including the dot
+     */
+    public abstract String getTemplateFileExtension();
+    
+    /**
+     * Create a new template entry from template file
+     * @param file The template file
+     * @return The new Template entry or will throw an IOException if cannot create it
+     * @throws IOException
+     */
+    public abstract ITemplate createTemplate(File file) throws IOException;
+
+    /**
+     * @return The File location of the user templates file
+     */
+    public abstract File getUserTemplatesManifestFile();
+    
+    /**
+     * Create a new Template entry of type
+     * @param type
+     * @return a new Template entry of type or null
+     */
+    protected abstract ITemplate createTemplate(String type);
+    
+    /**
+     * @return An image that represents this Template Manager
+     */
+    public abstract Image getMainImage();
+
+    /**
+     * Check for valid template file
+     * @param file The file to check
+     * @return true if file is a valid template file
+     * @throws IOException if an error loading occurs or if it is the wrong format
+     */
+    protected abstract boolean isValidTemplateFile(File file) throws IOException;
 }

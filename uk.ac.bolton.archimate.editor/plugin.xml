@@ -3,6 +3,8 @@
 <plugin>
    <extension-point id="exportHandler" name="Export Handler" schema="schema/exportHandler.exsd"/>
    <extension-point id="importHandler" name="Import Handler" schema="schema/importHandler.exsd"/>
+   <extension-point id="labelProvider" name="Label Provider" schema="schema/labelProvider.exsd"/>
+   <extension-point id="diagramEditorFactory" name="Diagram Editor Factory" schema="schema/diagramEditorFactory.exsd"/>
    <extension
          id="app"
          name="%appName"
@@ -250,11 +252,9 @@
          <propertySection
                afterSection="connectionAppearanceSection"
                class="uk.ac.bolton.archimate.editor.propertysections.DiagramConnectionLineStyleSection"
+               filter="uk.ac.bolton.archimate.editor.propertysections.DiagramConnectionLineStyleSection$Filter"
                id="connectionTypeSection"
                tab="appearance.tab">
-            <input
-                  type="uk.ac.bolton.archimate.editor.diagram.editparts.diagram.LineConnectionEditPart">
-            </input>
          </propertySection>
          <propertySection
                class="uk.ac.bolton.archimate.editor.propertysections.GroupSection"
@@ -266,14 +266,9 @@
          </propertySection>
          <propertySection
                class="uk.ac.bolton.archimate.editor.propertysections.TextContentSection"
+               filter="uk.ac.bolton.archimate.editor.propertysections.TextContentSection$Filter"
                id="textContentSection"
                tab="main.tab">
-            <input
-                  type="uk.ac.bolton.archimate.editor.diagram.editparts.diagram.NoteEditPart">
-            </input>
-            <input
-                  type="uk.ac.bolton.archimate.editor.diagram.sketch.editparts.StickyEditPart">
-            </input>
          </propertySection>
          <propertySection
                class="uk.ac.bolton.archimate.editor.propertysections.UsedInViewsSection"
@@ -351,6 +346,13 @@
             </input>
          </propertySection>
          <propertySection
+               afterSection="textAlignmentSection"
+               class="uk.ac.bolton.archimate.editor.propertysections.TextPositionSection"
+               filter="uk.ac.bolton.archimate.editor.propertysections.TextPositionSection$Filter"
+               id="textPositionSection"
+               tab="appearance.tab">
+         </propertySection>
+         <propertySection
                class="uk.ac.bolton.archimate.editor.propertysections.FolderSection"
                id="folderSection"
                tab="main.tab">
@@ -367,8 +369,8 @@
             </input>
          </propertySection>
          <propertySection
-               class="uk.ac.bolton.archimate.editor.propertysections.SketchStickySection"
-               id="sketchStickySection"
+               class="uk.ac.bolton.archimate.editor.propertysections.NameSection"
+               id="nameSection"
                tab="main.tab">
             <input
                   type="uk.ac.bolton.archimate.editor.diagram.sketch.editparts.StickyEditPart">
@@ -390,6 +392,26 @@
                class="uk.ac.bolton.archimate.editor.propertysections.ViewpointSection"
                filter="uk.ac.bolton.archimate.editor.propertysections.ViewpointSection$Filter"
                id="viewpointSection"
+               tab="main.tab">
+         </propertySection>
+         <propertySection
+               class="uk.ac.bolton.archimate.editor.propertysections.LockedSection"
+               filter="uk.ac.bolton.archimate.editor.propertysections.LockedSection$Filter"
+               id="lockedSection"
+               tab="main.tab">
+         </propertySection>
+         <propertySection
+               afterSection="fontColorSection1"
+               class="uk.ac.bolton.archimate.editor.propertysections.BorderColorSection"
+               filter="uk.ac.bolton.archimate.editor.propertysections.BorderColorSection$Filter"
+               id="borderColorSection"
+               tab="appearance.tab">
+         </propertySection>
+         <propertySection
+               afterSection="lockedSection"
+               class="uk.ac.bolton.archimate.editor.propertysections.DiagramModelImageSection"
+               filter="uk.ac.bolton.archimate.editor.propertysections.DiagramModelImageSection$Filter"
+               id="imageSection"
                tab="main.tab">
          </propertySection>
       </propertySections>
@@ -493,7 +515,7 @@
       <key
             commandId="org.eclipse.ui.edit.delete"
             platform="cocoa"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            schemeId="uk.ac.bolton.archimate.editor.keybindings"
             sequence="BS">
       </key>
       <key

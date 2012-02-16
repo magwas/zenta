@@ -27,6 +27,7 @@ import uk.ac.bolton.archimate.editor.diagram.commands.FontColorCommand;
 import uk.ac.bolton.archimate.editor.ui.ColorFactory;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IFontAttribute;
+import uk.ac.bolton.archimate.model.ILockable;
 
 
 /**
@@ -46,7 +47,8 @@ public class FontColorSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Color event (From Undo/Redo and here)
-            if(feature == IArchimatePackage.Literals.FONT_ATTRIBUTE__FONT_COLOR) {
+            if(feature == IArchimatePackage.Literals.FONT_ATTRIBUTE__FONT_COLOR ||
+                    feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }
@@ -87,12 +89,13 @@ public class FontColorSection extends AbstractArchimatePropertySection {
         
         fColorSelector = new ColorSelector(client);
         GridData gd = new GridData(SWT.NONE, SWT.NONE, false, false);
-        gd.widthHint = 75;
+        gd.widthHint = ITabbedLayoutConstants.BUTTON_WIDTH;
         fColorSelector.getButton().setLayoutData(gd);
         getWidgetFactory().adapt(fColorSelector.getButton(), true, true);
         fColorSelector.addListener(colorListener);
 
         fDefaultColorButton = new Button(client, SWT.PUSH);
+        fDefaultColorButton.setLayoutData(gd);
         getWidgetFactory().adapt(fDefaultColorButton, true, true); // Need to do it this way for Mac
         fDefaultColorButton.setText("Default");
         fDefaultColorButton.addSelectionListener(new SelectionAdapter() {
@@ -131,7 +134,9 @@ public class FontColorSection extends AbstractArchimatePropertySection {
             fColorSelector.setColorValue(new RGB(0, 0, 0));
         }
         
-        fDefaultColorButton.setEnabled(colorValue != null);
+        boolean enabled = fFontObject instanceof ILockable ? !((ILockable)fFontObject).isLocked() : true;
+        fColorSelector.setEnabled(enabled);
+        fDefaultColorButton.setEnabled(colorValue != null && enabled);
     }
     
     @Override

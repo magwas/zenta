@@ -16,9 +16,9 @@ import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 
+import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
 import uk.ac.bolton.archimate.editor.ui.ArchimateNames;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
-import uk.ac.bolton.archimate.editor.ui.ImageFactory;
 import uk.ac.bolton.archimate.editor.views.tree.commands.NewDiagramCommand;
 import uk.ac.bolton.archimate.editor.views.tree.commands.NewElementCommand;
 import uk.ac.bolton.archimate.model.IArchimateElement;
@@ -124,7 +124,7 @@ public class TreeModelViewActionFactory {
             }
         };
 
-        action.setImageDescriptor(ImageFactory.getImageDescriptor(eClass));
+        action.setImageDescriptor(ArchimateLabelProvider.INSTANCE.getImageDescriptor(eClass));
         return action;
     }
     
@@ -137,7 +137,7 @@ public class TreeModelViewActionFactory {
                 diagramModel.setName("New ArchiMate View");
                 
                 // Execute Command
-                Command cmd = new NewDiagramCommand(folder, diagramModel, "New ArchiMate View");
+                Command cmd = new NewDiagramCommand(folder, diagramModel, "New &ArchiMate View");
                 CommandStack commandStack = (CommandStack)folder.getAdapter(CommandStack.class);
                 commandStack.execute(cmd);
             }
@@ -148,7 +148,7 @@ public class TreeModelViewActionFactory {
     }
     
     private IAction createNewSketchAction(final IFolder folder) {
-        IAction action = new Action("&Sketch") {
+        IAction action = new Action("&Sketch View") {
             @Override
             public void run() {
                 // Create a new Diagram Model, set its name

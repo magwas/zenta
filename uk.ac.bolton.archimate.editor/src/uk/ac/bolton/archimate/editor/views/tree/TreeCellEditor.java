@@ -18,8 +18,12 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.PlatformUI;
 
-import uk.ac.bolton.archimate.editor.utils.PlatformUtils;
+import uk.ac.bolton.archimate.editor.ui.UIUtils;
+import uk.ac.bolton.archimate.editor.ui.components.CellEditorGlobalActionHandler;
 import uk.ac.bolton.archimate.editor.views.tree.commands.RenameCommandHandler;
 import uk.ac.bolton.archimate.model.INameable;
 
@@ -48,21 +52,14 @@ public class TreeCellEditor {
     
     private String fOldText;
     
+    private CellEditorGlobalActionHandler fGlobalActionHandler;
+    private IActionBars fActionBars;
+    
     private boolean EDIT_ON_CLICK = false;
     
     public TreeCellEditor(Tree tree) {
         fTree = tree;
         fEditor = new TreeEditor(fTree);
-       
-        // Mac Cocoa Context Menu doesn't send FocusOut
-        if(PlatformUtils.isMacCocoa()) {
-            fTree.addListener(SWT.MenuDetect, new Listener() {
-                @Override
-                public void handleEvent(Event event) {
-                    finaliseEdit();
-                }
-            });
-        }
         
         // There's just too many problems with this
         if(EDIT_ON_CLICK) {
@@ -140,23 +137,22 @@ public class TreeCellEditor {
                 @Override
                 public void handleEvent(Event event) {
                     switch(event.type) {
-                        case SWT.FocusOut:
+                        case SWT.Deactivate:
                             finaliseEdit();
                             break;
 
                         case SWT.Verify:
-                            String newText = fText.getText();
-                            String leftText = newText.substring(0, event.start);
-                            String rightText = newText.substring(event.end, newText.length());
+                            String oldText = fText.getText();
+                            String leftText = oldText.substring(0, event.start);
+                            String rightText = oldText.substring(event.end, oldText.length());
+                            
                             GC gc = new GC(fText);
                             Point size = gc.textExtent(leftText + event.text + rightText);
                             gc.dispose();
+                            
                             size = fText.computeSize(size.x, SWT.DEFAULT);
+                            
                             fEditor.horizontalAlignment = SWT.LEFT;
-                            //Rectangle itemRect = item.getBounds(), rect = fTree.getClientArea();
-                            //fEditor.minimumWidth = Math.max(size.x, itemRect.width) + inset * 2;
-                            //int left = itemRect.x, right = rect.x + rect.width;
-                            //fEditor.minimumWidth = Math.min(fEditor.minimumWidth, right - left);
                             fEditor.minimumWidth = size.x + 20; // Added this
                             fEditor.minimumHeight = size.y + inset * 2; 
                             fEditor.layout();
@@ -179,7 +175,10 @@ public class TreeCellEditor {
                 }
             };
             
-            fText.addListener(SWT.FocusOut, textListener);
+            // Do this *before* adding our text listener
+            UIUtils.conformSingleTextControl(fText);
+
+            fText.addListener(SWT.Deactivate, textListener);
             fText.addListener(SWT.Traverse, textListener);
             fText.addListener(SWT.Verify, textListener);
             
@@ -195,6 +194,15 @@ public class TreeCellEditor {
         
         // Store last item even if null
         fLastItem = item;
+        
+        // Null out the edit global action handlers...
+        // Active Part Site will always be the TreeView
+        fActionBars = ((IViewSite)PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                       .getActivePage()
+                       .getActivePart()
+                       .getSite()).getActionBars();
+        
+        fGlobalActionHandler = new CellEditorGlobalActionHandler(fActionBars);
     }
     
     private void finaliseEdit() {
@@ -224,6 +232,11 @@ public class TreeCellEditor {
     }
     
     private void disposeEditor() {
+        // Restore global action handlers
+        if(fGlobalActionHandler != null) {
+            fGlobalActionHandler.dispose();
+        }
+        
         if(fComposite != null && !fComposite.isDisposed()) {
             fComposite.dispose();
             fComposite = null;

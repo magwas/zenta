@@ -6,13 +6,14 @@
  *******************************************************************************/
 package uk.ac.bolton.archimate.editor.diagram.figures.diagram;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.swt.graphics.Image;
 
 import uk.ac.bolton.archimate.editor.diagram.figures.AbstractTextFlowFigure;
 import uk.ac.bolton.archimate.editor.diagram.figures.RectangleFigureDelegate;
 import uk.ac.bolton.archimate.editor.diagram.figures.ToolTipFigure;
+import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
-import uk.ac.bolton.archimate.editor.ui.ImageFactory;
 import uk.ac.bolton.archimate.model.IDiagramModel;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
 import uk.ac.bolton.archimate.model.IDiagramModelReference;
@@ -33,18 +34,23 @@ extends AbstractTextFlowFigure {
             @Override
             public Image getImage() {
                 IDiagramModel dm = ((IDiagramModelReference)getDiagramModelObject()).getReferencedModel();
-                return dm == null ? IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_DIAGRAM_16) : ImageFactory.getImage(dm.eClass());
+                return dm == null ? IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_DIAGRAM_16) : ArchimateLabelProvider.INSTANCE.getImage(dm.eClass());
             }
         };
         
         setFigureDelegate(figureDelegate);
     }
-
+    
     @Override
-    protected void setToolTip() {
-        super.setToolTip();
-        if(getToolTip() != null) {
-            ((ToolTipFigure)getToolTip()).setType("Type: View Reference");
+    public IFigure getToolTip() {
+        ToolTipFigure tooltip = (ToolTipFigure)super.getToolTip();
+        
+        if(tooltip == null) {
+            return null;
         }
+        
+        tooltip.setType("Type: View Reference");
+        
+        return tooltip;
     }
 }

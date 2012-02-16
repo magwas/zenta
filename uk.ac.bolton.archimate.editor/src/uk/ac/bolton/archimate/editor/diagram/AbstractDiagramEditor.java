@@ -83,6 +83,7 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import uk.ac.bolton.archimate.editor.ArchimateEditorPlugin;
+import uk.ac.bolton.archimate.editor.diagram.actions.BorderColorAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.BringForwardAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.BringToFrontAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.ConnectionLineColorAction;
@@ -97,13 +98,16 @@ import uk.ac.bolton.archimate.editor.diagram.actions.FillColorAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.FontAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.FontColorAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.FullScreenAction;
+import uk.ac.bolton.archimate.editor.diagram.actions.LockObjectAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.PasteAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.PrintDiagramAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.PropertiesAction;
+import uk.ac.bolton.archimate.editor.diagram.actions.ResetAspectRatioAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.SelectAllAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.SendBackwardAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.SendToBackAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.TextAlignmentAction;
+import uk.ac.bolton.archimate.editor.diagram.actions.TextPositionAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.ToggleGridEnabledAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.ToggleGridVisibleAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.ToggleSnapToAlignmentGuidesAction;
@@ -117,7 +121,6 @@ import uk.ac.bolton.archimate.editor.utils.PlatformUtils;
 import uk.ac.bolton.archimate.model.IArchimateModel;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IDiagramModel;
-import uk.ac.bolton.archimate.model.IFontAttribute;
 
 
 /**
@@ -548,11 +551,13 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         action.setId(ActionFactory.RENAME.getId()); // Set this for Global Handler
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
         
         // Change the Delete Action label
         action = registry.getAction(ActionFactory.DELETE.getId());
         action.setText("&Delete from View");
         action.setToolTipText(action.getText());
+        getUpdateCommandStackActions().add((UpdateAction)action);
         
         // Paste
         PasteAction pasteAction = new PasteAction(this, viewer);
@@ -563,11 +568,13 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         action = new CutAction(this, pasteAction);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
         
         // Copy
         action = new CopyAction(this, pasteAction);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
         
         // Use Grid Action
         action = new ToggleGridEnabledAction();
@@ -617,7 +624,14 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
         
+        // Default Size
         action = new DefaultEditPartSizeAction(this);
+        registry.registerAction(action);
+        getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
+        
+        // Reset Aspect Ratio
+        action = new ResetAspectRatioAction(this);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
         getUpdateCommandStackActions().add((UpdateAction)action);
@@ -631,26 +645,31 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         action = new FillColorAction(this);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
         
         // Connection Line Width
         action = new ConnectionLineWidthAction(this);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
         
         // Connection Line Color
         action = new ConnectionLineColorAction(this);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
 
         // Font
         action = new FontAction(this);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
 
         // Font Colour
         action = new FontColorAction(this);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
 
         // Export As Image
         action = new ExportAsImageAction(viewer);
@@ -693,18 +712,31 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         getUpdateCommandStackActions().add((UpdateAction)action);
         
         // Text Alignment Actions
-        action = new TextAlignmentAction(this, IFontAttribute.TEXT_ALIGNMENT_LEFT);
-        registry.registerAction(action);
-        getSelectionActions().add(action.getId());
-
-        action = new TextAlignmentAction(this, IFontAttribute.TEXT_ALIGNMENT_CENTER);
-        registry.registerAction(action);
-        getSelectionActions().add(action.getId());
-
-        action = new TextAlignmentAction(this, IFontAttribute.TEXT_ALIGNMENT_RIGHT);
-        registry.registerAction(action);
-        getSelectionActions().add(action.getId());
+        for(TextAlignmentAction a : TextAlignmentAction.createActions(this)) {
+            registry.registerAction(a);
+            getSelectionActions().add(a.getId());
+            getUpdateCommandStackActions().add(a);
+        }
         
+        // Text Position Actions
+        for(TextPositionAction a : TextPositionAction.createActions(this)) {
+            registry.registerAction(a);
+            getSelectionActions().add(a.getId());
+            getUpdateCommandStackActions().add(a);
+        }
+        
+        // Lock Object
+        action = new LockObjectAction(this);
+        registry.registerAction(action);
+        getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
+        
+        // Border Color
+        action = new BorderColorAction(this);
+        registry.registerAction(action);
+        getSelectionActions().add(action.getId());
+        getUpdateCommandStackActions().add((UpdateAction)action);
+
         // Full Screen
         action = new FullScreenAction(this);
         registry.registerAction(action);

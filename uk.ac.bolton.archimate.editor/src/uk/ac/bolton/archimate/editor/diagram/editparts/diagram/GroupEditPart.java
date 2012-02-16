@@ -26,9 +26,9 @@ import uk.ac.bolton.archimate.editor.diagram.figures.IDiagramModelObjectFigure;
 import uk.ac.bolton.archimate.editor.diagram.figures.diagram.GroupFigure;
 import uk.ac.bolton.archimate.editor.diagram.policies.ArchimateDNDEditPolicy;
 import uk.ac.bolton.archimate.editor.diagram.policies.ArchimateDiagramConnectionPolicy;
+import uk.ac.bolton.archimate.editor.diagram.policies.ArchimateDiagramLayoutPolicy;
 import uk.ac.bolton.archimate.editor.diagram.policies.BasicContainerEditPolicy;
 import uk.ac.bolton.archimate.editor.diagram.policies.ContainerHighlightEditPolicy;
-import uk.ac.bolton.archimate.editor.diagram.policies.DiagramLayoutPolicy;
 import uk.ac.bolton.archimate.editor.diagram.policies.PartComponentEditPolicy;
 import uk.ac.bolton.archimate.editor.diagram.policies.PartDirectEditTitlePolicy;
 
@@ -42,7 +42,6 @@ public class GroupEditPart extends AbstractConnectedEditPart
 implements IColoredEditPart, ITextEditPart {
     
     private ConnectionAnchor fAnchor;
-    private DirectEditManager fDirectEditManager;
 
     @Override
     protected void createEditPolicies() {
@@ -59,7 +58,7 @@ implements IColoredEditPart, ITextEditPart {
         installEditPolicy("DND", new ArchimateDNDEditPolicy());
         
         // Install a custom layout policy that handles dragging things around and creating new objects
-        installEditPolicy(EditPolicy.LAYOUT_ROLE, new DiagramLayoutPolicy());
+        installEditPolicy(EditPolicy.LAYOUT_ROLE, new ArchimateDiagramLayoutPolicy());
         
         // Orphaning
         installEditPolicy(EditPolicy.CONTAINER_ROLE, new BasicContainerEditPolicy());
@@ -104,7 +103,7 @@ implements IColoredEditPart, ITextEditPart {
             if(request instanceof LocationRequest) {
                 // Edit the text control if we clicked on it
                 if(getFigure().didClickTextControl(((LocationRequest)request).getLocation().getCopy())) {
-                    getDirectEditManager().show();
+                    createDirectEditManager().show();
                 }
                 // Else open Properties View on double-click
                 else if(request.getType() == RequestConstants.REQ_OPEN){
@@ -112,18 +111,15 @@ implements IColoredEditPart, ITextEditPart {
                 }
             }
             else {
-                getDirectEditManager().show();
+                createDirectEditManager().show();
             }
         }
     }
     
-    protected DirectEditManager getDirectEditManager() {
-        if(fDirectEditManager == null) {
-            fDirectEditManager = new LabelDirectEditManager(this, getFigure().getTextControl());
-        }
-        return fDirectEditManager;
+    protected DirectEditManager createDirectEditManager() {
+        return new LabelDirectEditManager(this, getFigure().getTextControl());
     }
-    
+
     @Override
     protected ConnectionAnchor getDefaultConnectionAnchor() {
         if(fAnchor == null) {

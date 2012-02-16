@@ -9,6 +9,7 @@ package uk.ac.bolton.archimate.editor.ui;
 import org.eclipse.emf.ecore.EClass;
 
 import uk.ac.bolton.archimate.model.IArchimatePackage;
+import uk.ac.bolton.archimate.model.IRelationship;
 
 
 
@@ -19,10 +20,20 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
  */
 public final class ArchimateNames {
     
+    /**
+     * Get a default human-readable name for an EClass
+     * @param eClass
+     * @return A name or null
+     */
     public static final String getDefaultName(EClass eClass) {
         return getDefaultName(eClass, false);
     }
     
+    /**
+     * Get a default human-readable short name for an EClass
+     * @param eClass
+     * @return A name or null
+     */
     public static final String getDefaultShortName(EClass eClass) {
         return getDefaultName(eClass, true);
     }
@@ -107,28 +118,88 @@ public final class ArchimateNames {
                 
             // Relationships
             case IArchimatePackage.ACCESS_RELATIONSHIP:
-                return "Access relation";
+                return shortName ? "Access": "Access relation";
             case IArchimatePackage.AGGREGATION_RELATIONSHIP:
-                return "Aggregation relation";
+                return shortName ? "Aggregation" : "Aggregation relation";
             case IArchimatePackage.ASSIGNMENT_RELATIONSHIP:
-                return "Assignment relation";
+                return shortName ? "Assignment" : "Assignment relation";
             case IArchimatePackage.ASSOCIATION_RELATIONSHIP:
-                return "Association relation";
+                return shortName ? "Association" : "Association relation";
             case IArchimatePackage.COMPOSITION_RELATIONSHIP:
-                return "Composition relation";
+                return shortName ? "Composition" : "Composition relation";
             case IArchimatePackage.FLOW_RELATIONSHIP:
-                return "Flow relation";
+                return shortName ? "Flow" : "Flow relation";
             case IArchimatePackage.REALISATION_RELATIONSHIP:
-                return "Realisation relation";
+                return shortName ? "Realisation" : "Realisation relation";
             case IArchimatePackage.SPECIALISATION_RELATIONSHIP:
-                return "Specialisation relation";
+                return shortName ? "Specialisation" : "Specialisation relation";
             case IArchimatePackage.TRIGGERING_RELATIONSHIP:
-                return "Triggering relation";
+                return shortName ? "Triggering" : "Triggering relation";
             case IArchimatePackage.USED_BY_RELATIONSHIP:
-                return "Used By relation";
+                return shortName ? "Used By" : "Used By relation";
                 
 
         }
         return "";
+    }
+    
+    public static final String getRelationshipSentence(IRelationship relation) {
+        String action = "";
+        
+        if(relation != null) {
+            if(relation.getSource() != null && relation.getTarget() != null) {
+                String nameSource = ArchimateLabelProvider.INSTANCE.getLabel(relation.getSource());
+                String nameTarget = ArchimateLabelProvider.INSTANCE.getLabel(relation.getTarget());
+                
+                switch(relation.eClass().getClassifierID()) {
+                    case IArchimatePackage.SPECIALISATION_RELATIONSHIP:
+                        action = "is a specialisation of";
+                        break;
+
+                    case IArchimatePackage.COMPOSITION_RELATIONSHIP:
+                        action = "is composed of";
+                        break;
+
+                    case IArchimatePackage.AGGREGATION_RELATIONSHIP:
+                        action = "aggregates";
+                        break;
+
+                    case IArchimatePackage.TRIGGERING_RELATIONSHIP:
+                        action = "triggers";
+                        break;
+
+                    case IArchimatePackage.FLOW_RELATIONSHIP:
+                        action = "flows to";
+                        break;
+
+                    case IArchimatePackage.ACCESS_RELATIONSHIP:
+                        action = "accesses";
+                        break;
+
+                    case IArchimatePackage.ASSOCIATION_RELATIONSHIP:
+                        action = "is associated with";
+                        break;
+
+                    case IArchimatePackage.ASSIGNMENT_RELATIONSHIP:
+                        action = "is assigned to";
+                        break;
+
+                    case IArchimatePackage.REALISATION_RELATIONSHIP:
+                        action = "realises";
+                        break;
+
+                    case IArchimatePackage.USED_BY_RELATIONSHIP:
+                        action = "is used by";
+                        break;
+
+                    default:
+                        break;
+                }
+                
+                action = nameSource + " " + action + " " + nameTarget;
+            }
+        }
+        
+        return action;
     }
 }

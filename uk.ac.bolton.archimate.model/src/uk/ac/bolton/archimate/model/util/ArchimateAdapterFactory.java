@@ -30,6 +30,7 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IArtifact;
 import uk.ac.bolton.archimate.model.IAssignmentRelationship;
 import uk.ac.bolton.archimate.model.IAssociationRelationship;
+import uk.ac.bolton.archimate.model.IBorderObject;
 import uk.ac.bolton.archimate.model.IBounds;
 import uk.ac.bolton.archimate.model.IBusinessActivity;
 import uk.ac.bolton.archimate.model.IBusinessActor;
@@ -57,6 +58,8 @@ import uk.ac.bolton.archimate.model.IDiagramModelComponent;
 import uk.ac.bolton.archimate.model.IDiagramModelConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelContainer;
 import uk.ac.bolton.archimate.model.IDiagramModelGroup;
+import uk.ac.bolton.archimate.model.IDiagramModelImage;
+import uk.ac.bolton.archimate.model.IDiagramModelImageProvider;
 import uk.ac.bolton.archimate.model.IDiagramModelNote;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
 import uk.ac.bolton.archimate.model.IDiagramModelReference;
@@ -71,6 +74,7 @@ import uk.ac.bolton.archimate.model.IInfrastructureService;
 import uk.ac.bolton.archimate.model.IInterfaceElement;
 import uk.ac.bolton.archimate.model.IJunction;
 import uk.ac.bolton.archimate.model.IJunctionElement;
+import uk.ac.bolton.archimate.model.ILockable;
 import uk.ac.bolton.archimate.model.IMeaning;
 import uk.ac.bolton.archimate.model.INameable;
 import uk.ac.bolton.archimate.model.INetwork;
@@ -430,6 +434,10 @@ public class ArchimateAdapterFactory extends AdapterFactoryImpl {
                 return createDiagramModelNoteAdapter();
             }
             @Override
+            public Adapter caseDiagramModelImage(IDiagramModelImage object) {
+                return createDiagramModelImageAdapter();
+            }
+            @Override
             public Adapter caseDiagramModelConnection(IDiagramModelConnection object) {
                 return createDiagramModelConnectionAdapter();
             }
@@ -442,8 +450,20 @@ public class ArchimateAdapterFactory extends AdapterFactoryImpl {
                 return createFontAttributeAdapter();
             }
             @Override
+            public Adapter caseBorderObject(IBorderObject object) {
+                return createBorderObjectAdapter();
+            }
+            @Override
+            public Adapter caseDiagramModelImageProvider(IDiagramModelImageProvider object) {
+                return createDiagramModelImageProviderAdapter();
+            }
+            @Override
             public Adapter caseBounds(IBounds object) {
                 return createBoundsAdapter();
+            }
+            @Override
+            public Adapter caseLockable(ILockable object) {
+                return createLockableAdapter();
             }
             @Override
             public Adapter caseArchimateDiagramModel(IArchimateDiagramModel object) {
@@ -966,6 +986,20 @@ public class ArchimateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
+     * Creates a new adapter for an object of class '{@link uk.ac.bolton.archimate.model.IDiagramModelImage <em>Diagram Model Image</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see uk.ac.bolton.archimate.model.IDiagramModelImage
+     * @generated
+     */
+    public Adapter createDiagramModelImageAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link uk.ac.bolton.archimate.model.IDiagramModelConnection <em>Diagram Model Connection</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -1022,6 +1056,34 @@ public class ArchimateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
+     * Creates a new adapter for an object of class '{@link uk.ac.bolton.archimate.model.IBorderObject <em>Border Object</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see uk.ac.bolton.archimate.model.IBorderObject
+     * @generated
+     */
+    public Adapter createBorderObjectAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link uk.ac.bolton.archimate.model.IDiagramModelImageProvider <em>Diagram Model Image Provider</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see uk.ac.bolton.archimate.model.IDiagramModelImageProvider
+     * @generated
+     */
+    public Adapter createDiagramModelImageProviderAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link uk.ac.bolton.archimate.model.IBounds <em>Bounds</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -1032,6 +1094,20 @@ public class ArchimateAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createBoundsAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link uk.ac.bolton.archimate.model.ILockable <em>Lockable</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see uk.ac.bolton.archimate.model.ILockable
+     * @generated
+     */
+    public Adapter createLockableAdapter() {
         return null;
     }
 

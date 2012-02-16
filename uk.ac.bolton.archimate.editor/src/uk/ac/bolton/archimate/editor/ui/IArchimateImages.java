@@ -118,6 +118,7 @@ public interface IArchimateImages {
     String ICON_ALIGN_TEXT_LEFT = IMGPATH + "alignleft.gif"; //$NON-NLS-1$
     String ICON_ALIGN_TEXT_CENTER = IMGPATH + "aligncenter.gif"; //$NON-NLS-1$
     String ICON_ALIGN_TEXT_RIGHT = IMGPATH + "alignright.gif"; //$NON-NLS-1$
+    String ICON_ASPECT_RATIO = IMGPATH + "aspect-ratio.png"; //$NON-NLS-1$
     String ICON_CANCEL_SEARCH_16 = IMGPATH + "cancelsearch-16.png"; //$NON-NLS-1$
     String ICON_COG = IMGPATH + "cog.png"; //$NON-NLS-1$
     String ICON_DIAGRAM_16 = IMGPATH + "diagram-16.png"; //$NON-NLS-1$
@@ -129,6 +130,8 @@ public interface IArchimateImages {
     String ICON_FORMAT_PAINTER_GREY_16 = IMGPATH + "formatpainter-grey-16.png"; //$NON-NLS-1$
     String ICON_GROUP_16 = IMGPATH + "group-16.png"; //$NON-NLS-1$
     String ICON_LINKED_16 = IMGPATH + "linked.gif"; //$NON-NLS-1$
+    String ICON_LANDSCAPE_16 = IMGPATH + "landscape-16.png"; //$NON-NLS-1$
+    String ICON_LOCK_16 = IMGPATH + "lock-16.png"; //$NON-NLS-1$
     String ICON_MAGIC_CONNECTION_16 = IMGPATH + "magic_connection.gif"; //$NON-NLS-1$
     String ICON_MINUS = IMGPATH + "minus.png"; //$NON-NLS-1$
     String ICON_MODELS_16 = IMGPATH + "models.gif"; //$NON-NLS-1$
@@ -148,10 +151,28 @@ public interface IArchimateImages {
     String ICON_SMALL_X = IMGPATH + "smallx.png"; //$NON-NLS-1$
     String ICON_SORT_16 = IMGPATH + "alphab_sort_co.gif"; //$NON-NLS-1$
     String ICON_STICKY_16 = IMGPATH + "sticky-16.png"; //$NON-NLS-1$
+    String ICON_TRASH_16 = IMGPATH + "trash.gif"; //$NON-NLS-1$
+    String ICON_UNLOCK_16 = IMGPATH + "unlock-16.png"; //$NON-NLS-1$
     String ICON_VIEWPOINTS_16 = IMGPATH + "viewpoints-16.png"; //$NON-NLS-1$
     String ICON_VIEWPOINT_BUSINESS_16 = IMGPATH + "vp-business-16.png"; //$NON-NLS-1$
     String ICON_VIEWPOINT_APPLICATION_16 = IMGPATH + "vp-application-16.png"; //$NON-NLS-1$
     String ICON_VIEWPOINT_TECHNOLOGY_16 = IMGPATH + "vp-technology-16.png"; //$NON-NLS-1$
+    
+    String ICON_CONNECTION_PLAIN_16 = IMGPATH + "connection-plain-16.png"; //$NON-NLS-1$
+    String ICON_CONNECTION_ARROW_16 = IMGPATH + "connection-arrow-16.png"; //$NON-NLS-1$
+    String ICON_CONNECTION_DASHED_ARROW_16 = IMGPATH + "connection-dashed-arrow-16.png"; //$NON-NLS-1$
+    String ICON_CONNECTION_DOTTED_ARROW_16 = IMGPATH + "connection-dotted-arrow-16.png"; //$NON-NLS-1$
+    
+    String LINE_SOLID = IMGPATH + "line-solid.png"; //$NON-NLS-1$
+    String LINE_DASHED = IMGPATH + "line-dashed.png"; //$NON-NLS-1$
+    String LINE_DOTTED = IMGPATH + "line-dotted.png"; //$NON-NLS-1$
+    
+    String ARROW_SOURCE_FILL = IMGPATH + "arrow-source-fill.png"; //$NON-NLS-1$
+    String ARROW_TARGET_FILL = IMGPATH + "arrow-target-fill.png"; //$NON-NLS-1$
+    String ARROW_SOURCE_HOLLOW = IMGPATH + "arrow-source-hollow.png"; //$NON-NLS-1$
+    String ARROW_TARGET_HOLLOW = IMGPATH + "arrow-target-hollow.png"; //$NON-NLS-1$
+    String ARROW_SOURCE_LINE = IMGPATH + "arrow-source-line.png"; //$NON-NLS-1$
+    String ARROW_TARGET_LINE = IMGPATH + "arrow-target-line.png"; //$NON-NLS-1$
 
     String CURSOR_IMG_FORMAT_PAINTER = IMGPATH + "formatpainter-cursor.gif"; //$NON-NLS-1$
     String CURSOR_IMG_FORMAT_PAINTER_GREY = IMGPATH + "formatpainter-grey-cursor.gif"; //$NON-NLS-1$

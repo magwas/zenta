@@ -9,6 +9,7 @@ package uk.ac.bolton.archimate.editor.diagram.figures.connections;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.ConnectionEndpointLocator;
 import org.eclipse.draw2d.ConnectionLocator;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.Locator;
 import org.eclipse.draw2d.PolygonDecoration;
@@ -17,8 +18,10 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 
+import uk.ac.bolton.archimate.editor.diagram.figures.ToolTipFigure;
 import uk.ac.bolton.archimate.editor.diagram.util.AnimationUtil;
 import uk.ac.bolton.archimate.editor.model.viewpoints.ViewpointsManager;
+import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.editor.ui.ColorFactory;
 import uk.ac.bolton.archimate.editor.ui.FontFactory;
 import uk.ac.bolton.archimate.editor.utils.PlatformUtils;
@@ -46,7 +49,7 @@ extends PolylineConnection implements IDiagramConnectionFigure {
 	    fDiagramModelConnection = connection;
 
 	    setFigureProperties();
-		
+	    
 		// Have to add this if we want Animation to work!
 		AnimationUtil.addConnectionForRoutingAnimation(this);
 	}
@@ -75,8 +78,6 @@ extends PolylineConnection implements IDiagramConnectionFigure {
         setConnectionText();
         
         setLineWidth();
-        
-        setToolTip();
         
         // Set Enabled according to current Viewpoint
         boolean enabled = ViewpointsManager.INSTANCE.isAllowedType(getModelConnection());
@@ -112,13 +113,13 @@ extends PolylineConnection implements IDiagramConnectionFigure {
         Locator locator = null;
 
         switch(position) {
-            case IDiagramModelConnection.TEXT_POSITION_SOURCE:
+            case IDiagramModelConnection.CONNECTION_TEXT_POSITION_SOURCE:
                 locator = new ConnectionEndpointLocator(this, false);
                 break;
-            case IDiagramModelConnection.TEXT_POSITION_MID:
+            case IDiagramModelConnection.CONNECTION_TEXT_POSITION_MIDDLE:
                 locator = new ConnectionLocator(this, ConnectionLocator.MIDDLE);
                 break;
-            case IDiagramModelConnection.TEXT_POSITION_TARGET:
+            case IDiagramModelConnection.CONNECTION_TEXT_POSITION_TARGET:
                 locator = new ConnectionEndpointLocator(this, true);
                 break;
         }
@@ -127,7 +128,7 @@ extends PolylineConnection implements IDiagramConnectionFigure {
     }
     
     protected void setConnectionText() {
-        getConnectionLabel().setText(fDiagramModelConnection.getText());
+        getConnectionLabel().setText(fDiagramModelConnection.getName());
     }
 
     /**
@@ -182,9 +183,11 @@ extends PolylineConnection implements IDiagramConnectionFigure {
     public void highlight(boolean set) {
     }
     
-    /**
-     * Set the tooltip
-     */
-    protected void setToolTip() {
+    @Override
+    public IFigure getToolTip() {
+        if(super.getToolTip() == null && Preferences.doShowViewTooltips()) {
+            setToolTip(new ToolTipFigure());
+        }
+        return Preferences.doShowViewTooltips() ? super.getToolTip() : null;
     }
 }

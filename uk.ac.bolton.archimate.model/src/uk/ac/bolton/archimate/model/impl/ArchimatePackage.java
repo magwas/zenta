@@ -38,6 +38,7 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IArtifact;
 import uk.ac.bolton.archimate.model.IAssignmentRelationship;
 import uk.ac.bolton.archimate.model.IAssociationRelationship;
+import uk.ac.bolton.archimate.model.IBorderObject;
 import uk.ac.bolton.archimate.model.IBounds;
 import uk.ac.bolton.archimate.model.IBusinessActivity;
 import uk.ac.bolton.archimate.model.IBusinessActor;
@@ -65,6 +66,8 @@ import uk.ac.bolton.archimate.model.IDiagramModelComponent;
 import uk.ac.bolton.archimate.model.IDiagramModelConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelContainer;
 import uk.ac.bolton.archimate.model.IDiagramModelGroup;
+import uk.ac.bolton.archimate.model.IDiagramModelImage;
+import uk.ac.bolton.archimate.model.IDiagramModelImageProvider;
 import uk.ac.bolton.archimate.model.IDiagramModelNote;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
 import uk.ac.bolton.archimate.model.IDiagramModelReference;
@@ -79,6 +82,7 @@ import uk.ac.bolton.archimate.model.IInfrastructureService;
 import uk.ac.bolton.archimate.model.IInterfaceElement;
 import uk.ac.bolton.archimate.model.IJunction;
 import uk.ac.bolton.archimate.model.IJunctionElement;
+import uk.ac.bolton.archimate.model.ILockable;
 import uk.ac.bolton.archimate.model.IMeaning;
 import uk.ac.bolton.archimate.model.INameable;
 import uk.ac.bolton.archimate.model.INetwork;
@@ -351,6 +355,13 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
+    private EClass diagramModelImageEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EClass diagramModelConnectionEClass = null;
 
     /**
@@ -379,7 +390,28 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
+    private EClass borderObjectEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass diagramModelImageProviderEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EClass boundsEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass lockableEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -1279,6 +1311,15 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getDiagramModelImage() {
+        return diagramModelImageEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getDiagramModelConnection() {
         return diagramModelConnectionEClass;
     }
@@ -1297,17 +1338,8 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getDiagramModelConnection_TextPosition() {
-        return (EAttribute)diagramModelConnectionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EReference getDiagramModelConnection_Source() {
-        return (EReference)diagramModelConnectionEClass.getEStructuralFeatures().get(2);
+        return (EReference)diagramModelConnectionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1316,7 +1348,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * @generated
      */
     public EReference getDiagramModelConnection_Target() {
-        return (EReference)diagramModelConnectionEClass.getEStructuralFeatures().get(3);
+        return (EReference)diagramModelConnectionEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1325,7 +1357,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * @generated
      */
     public EReference getDiagramModelConnection_Bendpoints() {
-        return (EReference)diagramModelConnectionEClass.getEStructuralFeatures().get(4);
+        return (EReference)diagramModelConnectionEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1334,7 +1366,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * @generated
      */
     public EAttribute getDiagramModelConnection_LineWidth() {
-        return (EAttribute)diagramModelConnectionEClass.getEStructuralFeatures().get(5);
+        return (EAttribute)diagramModelConnectionEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1343,7 +1375,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * @generated
      */
     public EAttribute getDiagramModelConnection_LineColor() {
-        return (EAttribute)diagramModelConnectionEClass.getEStructuralFeatures().get(6);
+        return (EAttribute)diagramModelConnectionEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -1352,7 +1384,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * @generated
      */
     public EAttribute getDiagramModelConnection_Type() {
-        return (EAttribute)diagramModelConnectionEClass.getEStructuralFeatures().get(7);
+        return (EAttribute)diagramModelConnectionEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -1459,6 +1491,51 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getFontAttribute_TextPosition() {
+        return (EAttribute)fontAttributeEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getBorderObject() {
+        return borderObjectEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getBorderObject_BorderColor() {
+        return (EAttribute)borderObjectEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getDiagramModelImageProvider() {
+        return diagramModelImageProviderEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getDiagramModelImageProvider_ImagePath() {
+        return (EAttribute)diagramModelImageProviderEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getBounds() {
         return boundsEClass;
     }
@@ -1497,6 +1574,24 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      */
     public EAttribute getBounds_Height() {
         return (EAttribute)boundsEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getLockable() {
+        return lockableEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getLockable_Locked() {
+        return (EAttribute)lockableEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -2116,9 +2211,10 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 
         diagramModelNoteEClass = createEClass(DIAGRAM_MODEL_NOTE);
 
+        diagramModelImageEClass = createEClass(DIAGRAM_MODEL_IMAGE);
+
         diagramModelConnectionEClass = createEClass(DIAGRAM_MODEL_CONNECTION);
         createEAttribute(diagramModelConnectionEClass, DIAGRAM_MODEL_CONNECTION__TEXT);
-        createEAttribute(diagramModelConnectionEClass, DIAGRAM_MODEL_CONNECTION__TEXT_POSITION);
         createEReference(diagramModelConnectionEClass, DIAGRAM_MODEL_CONNECTION__SOURCE);
         createEReference(diagramModelConnectionEClass, DIAGRAM_MODEL_CONNECTION__TARGET);
         createEReference(diagramModelConnectionEClass, DIAGRAM_MODEL_CONNECTION__BENDPOINTS);
@@ -2136,12 +2232,22 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
         createEAttribute(fontAttributeEClass, FONT_ATTRIBUTE__FONT);
         createEAttribute(fontAttributeEClass, FONT_ATTRIBUTE__FONT_COLOR);
         createEAttribute(fontAttributeEClass, FONT_ATTRIBUTE__TEXT_ALIGNMENT);
+        createEAttribute(fontAttributeEClass, FONT_ATTRIBUTE__TEXT_POSITION);
+
+        borderObjectEClass = createEClass(BORDER_OBJECT);
+        createEAttribute(borderObjectEClass, BORDER_OBJECT__BORDER_COLOR);
+
+        diagramModelImageProviderEClass = createEClass(DIAGRAM_MODEL_IMAGE_PROVIDER);
+        createEAttribute(diagramModelImageProviderEClass, DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH);
 
         boundsEClass = createEClass(BOUNDS);
         createEAttribute(boundsEClass, BOUNDS__X);
         createEAttribute(boundsEClass, BOUNDS__Y);
         createEAttribute(boundsEClass, BOUNDS__WIDTH);
         createEAttribute(boundsEClass, BOUNDS__HEIGHT);
+
+        lockableEClass = createEClass(LOCKABLE);
+        createEAttribute(lockableEClass, LOCKABLE__LOCKED);
 
         archimateDiagramModelEClass = createEClass(ARCHIMATE_DIAGRAM_MODEL);
         createEAttribute(archimateDiagramModelEClass, ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT);
@@ -2283,6 +2389,9 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
         diagramModelGroupEClass.getESuperTypes().add(this.getProperties());
         diagramModelNoteEClass.getESuperTypes().add(this.getDiagramModelObject());
         diagramModelNoteEClass.getESuperTypes().add(this.getTextContent());
+        diagramModelImageEClass.getESuperTypes().add(this.getDiagramModelObject());
+        diagramModelImageEClass.getESuperTypes().add(this.getBorderObject());
+        diagramModelImageEClass.getESuperTypes().add(this.getDiagramModelImageProvider());
         diagramModelConnectionEClass.getESuperTypes().add(this.getDiagramModelComponent());
         diagramModelConnectionEClass.getESuperTypes().add(this.getFontAttribute());
         diagramModelConnectionEClass.getESuperTypes().add(this.getProperties());
@@ -2322,7 +2431,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
         initEReference(getProperties_Properties(), this.getProperty(), null, "properties", null, 0, -1, IProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
         initEClass(nameableEClass, INameable.class, "Nameable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getNameable_Name(), ecorePackage.getEString(), "name", null, 0, 1, INameable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getNameable_Name(), ecorePackage.getEString(), "name", "", 0, 1, INameable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
         initEClass(textContentEClass, ITextContent.class, "TextContent", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getTextContent_Content(), ecorePackage.getEString(), "content", "", 0, 1, ITextContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -2505,15 +2614,16 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 
         initEClass(diagramModelNoteEClass, IDiagramModelNote.class, "DiagramModelNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
+        initEClass(diagramModelImageEClass, IDiagramModelImage.class, "DiagramModelImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
         initEClass(diagramModelConnectionEClass, IDiagramModelConnection.class, "DiagramModelConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getDiagramModelConnection_Text(), ecorePackage.getEString(), "text", "", 0, 1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(getDiagramModelConnection_TextPosition(), ecorePackage.getEInt(), "textPosition", "1", 0, 1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEAttribute(getDiagramModelConnection_Text(), ecorePackage.getEString(), "text", "", 0, 1, IDiagramModelConnection.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
         initEReference(getDiagramModelConnection_Source(), this.getDiagramModelObject(), null, "source", null, 0, 1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
         initEReference(getDiagramModelConnection_Target(), this.getDiagramModelObject(), null, "target", null, 0, 1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
         initEReference(getDiagramModelConnection_Bendpoints(), this.getDiagramModelBendpoint(), null, "bendpoints", null, 0, -1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
         initEAttribute(getDiagramModelConnection_LineWidth(), ecorePackage.getEInt(), "lineWidth", "1", 0, 1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
         initEAttribute(getDiagramModelConnection_LineColor(), ecorePackage.getEString(), "lineColor", null, 0, 1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(getDiagramModelConnection_Type(), ecorePackage.getEString(), "type", null, 0, 1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getDiagramModelConnection_Type(), ecorePackage.getEInt(), "type", null, 0, 1, IDiagramModelConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
         op = addEOperation(diagramModelConnectionEClass, null, "connect", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, this.getDiagramModelObject(), "source", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -2533,8 +2643,15 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
         initEAttribute(getFontAttribute_Font(), ecorePackage.getEString(), "font", null, 0, 1, IFontAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
         initEAttribute(getFontAttribute_FontColor(), ecorePackage.getEString(), "fontColor", null, 0, 1, IFontAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
         initEAttribute(getFontAttribute_TextAlignment(), ecorePackage.getEInt(), "textAlignment", null, 0, 1, IFontAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getFontAttribute_TextPosition(), ecorePackage.getEInt(), "textPosition", null, 0, 1, IFontAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
         addEOperation(fontAttributeEClass, ecorePackage.getEInt(), "getDefaultTextAlignment", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+        initEClass(borderObjectEClass, IBorderObject.class, "BorderObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getBorderObject_BorderColor(), ecorePackage.getEString(), "borderColor", null, 0, 1, IBorderObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+        initEClass(diagramModelImageProviderEClass, IDiagramModelImageProvider.class, "DiagramModelImageProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getDiagramModelImageProvider_ImagePath(), ecorePackage.getEString(), "imagePath", null, 0, 1, IDiagramModelImageProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
         initEClass(boundsEClass, IBounds.class, "Bounds", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getBounds_X(), ecorePackage.getEInt(), "x", null, 0, 1, IBounds.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2543,6 +2660,9 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
         initEAttribute(getBounds_Height(), ecorePackage.getEInt(), "height", "-1", 0, 1, IBounds.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
         addEOperation(boundsEClass, this.getBounds(), "getCopy", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+        initEClass(lockableEClass, ILockable.class, "Lockable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getLockable_Locked(), ecorePackage.getEBoolean(), "locked", null, 0, 1, ILockable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
         initEClass(archimateDiagramModelEClass, IArchimateDiagramModel.class, "ArchimateDiagramModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getArchimateDiagramModel_Viewpoint(), ecorePackage.getEInt(), "viewpoint", null, 0, 1, IArchimateDiagramModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$

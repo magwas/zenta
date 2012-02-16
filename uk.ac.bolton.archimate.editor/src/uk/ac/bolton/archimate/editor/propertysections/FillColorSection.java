@@ -28,6 +28,7 @@ import uk.ac.bolton.archimate.editor.diagram.editparts.IColoredEditPart;
 import uk.ac.bolton.archimate.editor.ui.ColorFactory;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
+import uk.ac.bolton.archimate.model.ILockable;
 
 
 /**
@@ -47,7 +48,8 @@ public class FillColorSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Color event (From Undo/Redo and here)
-            if(feature == IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT__FILL_COLOR) {
+            if(feature == IArchimatePackage.Literals.DIAGRAM_MODEL_OBJECT__FILL_COLOR ||
+                    feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }
@@ -88,7 +90,7 @@ public class FillColorSection extends AbstractArchimatePropertySection {
 
         fColorSelector = new ColorSelector(client);
         GridData gd = new GridData(SWT.NONE, SWT.NONE, false, false);
-        gd.widthHint = 75;
+        gd.widthHint = ITabbedLayoutConstants.BUTTON_WIDTH;
         fColorSelector.getButton().setLayoutData(gd);
         getWidgetFactory().adapt(fColorSelector.getButton(), true, true);
         fColorSelector.addListener(colorListener);
@@ -96,6 +98,7 @@ public class FillColorSection extends AbstractArchimatePropertySection {
         fDefaultColorButton = new Button(client, SWT.PUSH);
         getWidgetFactory().adapt(fDefaultColorButton, true, true); // Need to do it this way for Mac
         fDefaultColorButton.setText("Default");
+        fDefaultColorButton.setLayoutData(gd);
         fDefaultColorButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
@@ -133,7 +136,9 @@ public class FillColorSection extends AbstractArchimatePropertySection {
             fColorSelector.setColorValue(c.getRGB());
         }
         
-        fDefaultColorButton.setEnabled(colorValue != null);
+        boolean enabled = fDiagramModelObject instanceof ILockable ? !((ILockable)fDiagramModelObject).isLocked() : true;
+        fColorSelector.setEnabled(enabled);
+        fDefaultColorButton.setEnabled(colorValue != null && enabled);
     }
     
     @Override
