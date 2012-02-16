@@ -12,11 +12,11 @@ import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
@@ -29,17 +29,6 @@ import uk.ac.bolton.archimate.editor.ui.components.CompositeMultiImageDescriptor
  * @author Phillip Beauvoir
  */
 public class ImageFactory {
-    
-    public static final String ECLIPSE_IMAGE_NEW_WIZARD = "new_wizard"; //$NON-NLS-1$
-    public static final String ECLIPSE_IMAGE_IMPORT_PREF_WIZARD = "import_pref_wizard";  //$NON-NLS-1$
-    public static final String ECLIPSE_IMAGE_EXPORT_PREF_WIZARD = "export_pref_wizard"; //$NON-NLS-1$
-    public static final String ECLIPSE_IMAGE_IMPORT_DIR_WIZARD = "import_dir_wizard"; //$NON-NLS-1$
-    public static final String ECLIPSE_IMAGE_EXPORT_DIR_WIZARD = "export_dir_wizard"; //$NON-NLS-1$
-    public static final String ECLIPSE_IMAGE_PROPERTIES_VIEW_ICON = "properties_view"; //$NON-NLS-1$
-    public static final String ECLIPSE_IMAGE_OUTLINE_VIEW_ICON = "outline_view"; //$NON-NLS-1$
-    public static final String ECLIPSE_IMAGE_FILE = "file"; //$NON-NLS-1$
-    public static final String ECLIPSE_IMAGE_FOLDER = "folder"; //$NON-NLS-1$
-
     
     private AbstractUIPlugin fPlugin;
     
@@ -58,12 +47,8 @@ public class ImageFactory {
      * @return the shared image represented by the given key
      */
     public Image getImage(String imageName) {
-        if(imageName == null || ECLIPSE_IMAGE_FILE.equals(imageName)) {
-            return getSharedImage(ISharedImages.IMG_OBJ_FILE);
-        }
-
-        if(ECLIPSE_IMAGE_FOLDER.equals(imageName)) {
-            return getSharedImage(ISharedImages.IMG_OBJ_FOLDER);
+        if(imageName == null) {
+            throw new IllegalArgumentException("Image name cannot be null");
         }
 
         ImageRegistry registry = fPlugin.getImageRegistry();
@@ -174,44 +159,10 @@ public class ImageFactory {
      * @return the shared image description represented by the given name
      */
     public ImageDescriptor getImageDescriptor(String imageName) {
-        // Null or File
-        if(imageName == null || ECLIPSE_IMAGE_FILE.equals(imageName)) {
-            return getSharedImageDescriptor(ISharedImages.IMG_OBJ_FILE);
+        if(imageName == null) {
+            throw new IllegalArgumentException("Image name cannot be null");
         }
-        // Folder
-        if(ECLIPSE_IMAGE_FOLDER.equals(imageName)) {
-            return getSharedImageDescriptor(ISharedImages.IMG_OBJ_FOLDER);
-        }
-        // View
-        if(ECLIPSE_IMAGE_PROPERTIES_VIEW_ICON.equals(imageName)) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.views", "$nl$/icons/full/eview16/prop_ps.gif"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-        // Outline View
-        if(ECLIPSE_IMAGE_OUTLINE_VIEW_ICON.equals(imageName)) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.views", "$nl$/icons/full/eview16/outline_co.gif"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-        // New Wizard
-        if(ECLIPSE_IMAGE_NEW_WIZARD.equals(imageName)) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "$nl$/icons/full/wizban/new_wiz.png"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-        // Import Prefs Wizard
-        if(ECLIPSE_IMAGE_IMPORT_PREF_WIZARD.equals(imageName)) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "$nl$/icons/full/wizban/importpref_wiz.png"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-        // Export Prefs Wizard
-        if(ECLIPSE_IMAGE_EXPORT_PREF_WIZARD.equals(imageName)) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "$nl$/icons/full/wizban/exportpref_wiz.png"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-        // Import Dir Wizard
-        if(ECLIPSE_IMAGE_IMPORT_DIR_WIZARD.equals(imageName)) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "$nl$/icons/full/wizban/importdir_wiz.png"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-        // Export Dir Wizard
-        if(ECLIPSE_IMAGE_EXPORT_DIR_WIZARD.equals(imageName)) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "$nl$/icons/full/wizban/exportdir_wiz.png"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-
-        // User image, cache it
+        
         ImageRegistry registry = fPlugin.getImageRegistry();
         ImageDescriptor id = registry.getDescriptor(imageName);
         if(id == null) {
@@ -246,13 +197,37 @@ public class ImageFactory {
      * @return A new scaled image
      */
     public static Image getScaledImage(Image source, int width, int height) {
-        // This method uses far less memory than scaling the Image's ImageData and gives a better result whe anti-aliasing is on
-        Rectangle srcBounds = source.getBounds();
-        Image image = new Image(Display.getCurrent(), width, height);
+        // ImageData#scaledTo does not use interpolation, so resized images look bad.
+        // Here we draw to a GC which is better quality.
+        
+        Image image;
+        
+        // If there is a transparency pixel set copy the source ImageData to preserve it
+        ImageData sourceImageData = source.getImageData();
+        if(sourceImageData.transparentPixel != -1) {
+            ImageData id = new ImageData(width, height, sourceImageData.depth, sourceImageData.palette);
+            id.transparentPixel = sourceImageData.transparentPixel;
+            image = new Image(source.getDevice(), id);
+        }
+        // Else use a blank image
+        else {
+            image = new Image(source.getDevice(), width, height);
+        }
+        
         GC gc = new GC(image);
-        gc.setAntialias(SWT.ON); // Slower, but draws without artifacts
-        gc.drawImage(source, 0, 0, srcBounds.width, srcBounds.height, 0, 0, width, height);
+        gc.setAntialias(SWT.ON);
+        gc.setInterpolation(SWT.HIGH);
+        
+        // This is necessary for images that have the transparency pixel set
+        Color transparentColor = source.getBackground();
+        if(transparentColor != null) {
+            gc.setBackground(transparentColor);
+            gc.fillRectangle(0, 0, width, height);
+        }
+        
+        gc.drawImage(source, 0, 0, source.getBounds().width, source.getBounds().height, 0, 0, width, height);
         gc.dispose();
+        
         return image;
     }
     

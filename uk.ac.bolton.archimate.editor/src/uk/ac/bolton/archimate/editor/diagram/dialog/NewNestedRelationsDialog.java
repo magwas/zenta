@@ -41,7 +41,6 @@ import uk.ac.bolton.archimate.editor.preferences.ConnectionPreferences;
 import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
 import uk.ac.bolton.archimate.editor.ui.ArchimateNames;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
-import uk.ac.bolton.archimate.editor.ui.ImageFactory;
 import uk.ac.bolton.archimate.editor.ui.components.ExtendedTitleAreaDialog;
 import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.util.ArchimateModelUtils;
@@ -54,7 +53,7 @@ import uk.ac.bolton.archimate.model.util.ArchimateModelUtils;
  */
 public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements Listener {
     
-    public static String HELPID = "uk.ac.bolton.archimate.help.NewNestedRelationsDialog"; //$NON-NLS-1$
+    private String HELP_ID = "uk.ac.bolton.archimate.help.NewNestedRelationsDialog"; //$NON-NLS-1$
 
     private TableViewer fTableViewer;
     
@@ -127,7 +126,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
 
     public NewNestedRelationsDialog(Shell parentShell, IArchimateElement parentElement, List<IArchimateElement> childElements) {
         super(parentShell, "NewNestedRelationsDialog");
-        setTitleImage(IArchimateImages.ImageFactory.getImage(ImageFactory.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fParentElement = parentElement;
@@ -167,7 +166,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
     @Override
     protected Control createDialogArea(Composite parent) {
         // Help
-        PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELPID);
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELP_ID);
 
         setTitle("Nested Elements Relationship");
         setMessage("Select a relationship type if you wish to create new relationships between '" +

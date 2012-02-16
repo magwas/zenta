@@ -30,7 +30,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
-import uk.ac.bolton.archimate.editor.ui.ImageFactory;
 import uk.ac.bolton.archimate.editor.ui.UIUtils;
 import uk.ac.bolton.archimate.model.IArchimateModel;
 
@@ -42,7 +41,7 @@ import uk.ac.bolton.archimate.model.IArchimateModel;
  */
 public class ExportJasperReportsWizardPage1 extends WizardPage {
 
-    public static String HELPID = "uk.ac.bolton.archimate.help.ExportJasperReportsWizardPage1"; //$NON-NLS-1$
+    private static String HELP_ID = "uk.ac.bolton.archimate.help.ExportJasperReportsWizardPage1"; //$NON-NLS-1$
     
     static String SAVE_DIR = System.getProperty("user.home");
     static String REPORT_FILENAME = "archi-report";
@@ -64,7 +63,7 @@ public class ExportJasperReportsWizardPage1 extends WizardPage {
         
         setTitle("Generate Jasper Reports");
         setDescription("Choose the output location, report title and which formats to generate.");
-        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(ImageFactory.ECLIPSE_IMAGE_EXPORT_DIR_WIZARD));
+        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ECLIPSE_IMAGE_EXPORT_DIR_WIZARD));
         
         fModel = model;
     }
@@ -75,7 +74,7 @@ public class ExportJasperReportsWizardPage1 extends WizardPage {
         container.setLayout(new GridLayout());
         setControl(container);
         
-        PlatformUI.getWorkbench().getHelpSystem().setHelp(container, HELPID);
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(container, HELP_ID);
         
         Composite fieldContainer = new Composite(container, SWT.NULL);
         fieldContainer.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));

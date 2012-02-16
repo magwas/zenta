@@ -9,7 +9,6 @@ package uk.ac.bolton.archimate.canvas.templates.wizard;
 import uk.ac.bolton.archimate.canvas.templates.dialog.CanvasTemplateManagerDialog;
 import uk.ac.bolton.archimate.canvas.templates.model.CanvasTemplateManager;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
-import uk.ac.bolton.archimate.editor.ui.ImageFactory;
 import uk.ac.bolton.archimate.templates.dialog.TemplateManagerDialog;
 import uk.ac.bolton.archimate.templates.model.TemplateManager;
 import uk.ac.bolton.archimate.templates.wizard.NewModelFromTemplateWizardPage;
@@ -22,7 +21,7 @@ import uk.ac.bolton.archimate.templates.wizard.NewModelFromTemplateWizardPage;
  */
 public class NewCanvasFromTemplateWizardPage extends NewModelFromTemplateWizardPage {
     
-    private static String HELPID = "uk.ac.bolton.archimate.help.NewCanvasFromTemplateWizardPage"; //$NON-NLS-1$
+    private static String HELP_ID = "uk.ac.bolton.archimate.help.NewCanvasFromTemplateWizardPage"; //$NON-NLS-1$
 
     public NewCanvasFromTemplateWizardPage(TemplateManager templateManager) {
         super("NewCanvasFromTemplateWizardPage", templateManager);
@@ -32,7 +31,7 @@ public class NewCanvasFromTemplateWizardPage extends NewModelFromTemplateWizardP
     protected void init() {
         setTitle("New Canvas");
         setDescription("Choose a Template for your Canvas");
-        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(ImageFactory.ECLIPSE_IMAGE_NEW_WIZARD));
+        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
     }
 
     @Override
@@ -43,6 +42,6 @@ public class NewCanvasFromTemplateWizardPage extends NewModelFromTemplateWizardP
     
     @Override
     protected String getHelpID() {
-        return HELPID;
+        return HELP_ID;
     }
  }

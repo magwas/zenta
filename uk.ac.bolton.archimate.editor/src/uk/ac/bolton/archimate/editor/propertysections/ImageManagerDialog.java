@@ -55,7 +55,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.PlatformUI;
 
 import uk.ac.bolton.archimate.editor.model.IArchiveManager;
-import uk.ac.bolton.archimate.editor.model.ICachedImage;
 import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
 import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
@@ -72,7 +71,7 @@ import uk.ac.bolton.archimate.model.INameable;
  */
 public class ImageManagerDialog extends ExtendedTitleAreaDialog {
     
-    private static String HELPID = "uk.ac.bolton.archimate.help.ImageManagerDialog"; //$NON-NLS-1$
+    private static String HELP_ID = "uk.ac.bolton.archimate.help.ImageManagerDialog"; //$NON-NLS-1$
     
     protected static final String OPEN = "Open from File...";
     
@@ -94,7 +93,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
 
     public ImageManagerDialog(Shell parentShell, IArchimateModel selectedModel, String selectedImagePath) {
         super(parentShell, "ImageManagerDialog");
-        setTitleImage(IArchimateImages.ImageFactory.getImage(ImageFactory.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fSelectedModel = selectedModel;
@@ -110,7 +109,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
     @Override
     protected Control createDialogArea(Composite parent) {
         // Help
-        PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELPID);
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELP_ID);
 
         setTitle("My Images");
         setMessage("Choose an Image");
@@ -310,17 +309,23 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                 IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
                 
                 for(String path : archiveManager.getImagePaths()) {
-                    GalleryItem item = new GalleryItem(fGalleryRoot, SWT.NONE);
                     Image thumbnail = fImageCache.get(path);
                     if(thumbnail == null) {
-                        ICachedImage cachedImage = archiveManager.getImage(path);
-                        if(cachedImage != null) {
-                            thumbnail = ImageFactory.getScaledImage(cachedImage.getImage(), MAX_GALLERY_ITEM_SIZE);
-                            fImageCache.put(path, thumbnail);
-                            cachedImage.release();
+                        try {
+                            Image image = archiveManager.createImage(path);
+                            if(image != null) {
+                                thumbnail = ImageFactory.getScaledImage(image, MAX_GALLERY_ITEM_SIZE);
+                                image.dispose();
+                                fImageCache.put(path, thumbnail);
+                            }
+                        }
+                        catch(Exception ex) {
+                            ex.printStackTrace();
+                            continue;
                         }
                     }
                     
+                    GalleryItem item = new GalleryItem(fGalleryRoot, SWT.NONE);
                     item.setImage(thumbnail);
                     item.setData(path);
                 }

@@ -33,7 +33,6 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
 
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
-import uk.ac.bolton.archimate.editor.ui.ImageFactory;
 import uk.ac.bolton.archimate.editor.ui.UIUtils;
 import uk.ac.bolton.archimate.editor.utils.StringUtils;
 import uk.ac.bolton.archimate.model.FolderType;
@@ -52,7 +51,7 @@ import uk.ac.bolton.archimate.templates.wizard.TemplateUtils;
  */
 public class SaveArchimateModelAsTemplateWizardPage extends WizardPage {
 
-    public static String HELPID = "uk.ac.bolton.archimate.help.SaveArchimateModelAsTemplateWizardPage"; //$NON-NLS-1$
+    private static String HELP_ID = "uk.ac.bolton.archimate.help.SaveArchimateModelAsTemplateWizardPage"; //$NON-NLS-1$
 
     private IArchimateModel fModel;
 
@@ -69,9 +68,9 @@ public class SaveArchimateModelAsTemplateWizardPage extends WizardPage {
     
     public SaveArchimateModelAsTemplateWizardPage(IArchimateModel model, TemplateManager templateManager) {
         super("SaveModelAsTemplateWizardPage");
-        setTitle("Save Model As Template");
+        setTitle("Save ArchiMate Model As Template");
         setDescription("Provide the Template's file location, name, description and key thumbnail.");
-        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(ImageFactory.ECLIPSE_IMAGE_NEW_WIZARD));
+        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         fModel = model;
         fTemplateManager = templateManager;
     }
@@ -85,7 +84,7 @@ public class SaveArchimateModelAsTemplateWizardPage extends WizardPage {
         container.setLayout(new GridLayout());
         setControl(container);
         
-        PlatformUI.getWorkbench().getHelpSystem().setHelp(container, HELPID);
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(container, HELP_ID);
         
         Group fileComposite = new Group(container, SWT.NULL);
         fileComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));

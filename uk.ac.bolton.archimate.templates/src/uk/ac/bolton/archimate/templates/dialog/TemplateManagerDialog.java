@@ -42,7 +42,6 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
 
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
-import uk.ac.bolton.archimate.editor.ui.ImageFactory;
 import uk.ac.bolton.archimate.editor.ui.UIUtils;
 import uk.ac.bolton.archimate.editor.ui.components.ExtendedTitleAreaDialog;
 import uk.ac.bolton.archimate.editor.utils.StringUtils;
@@ -59,7 +58,7 @@ import uk.ac.bolton.archimate.templates.model.TemplateManager;
  */
 public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
     
-    private static String HELPID = "uk.ac.bolton.archimate.help.TemplateManagerDialog"; //$NON-NLS-1$
+    private static String HELP_ID = "uk.ac.bolton.archimate.help.TemplateManagerDialog"; //$NON-NLS-1$
 
     protected TemplatesTableViewer fTableViewer;
     protected TemplatesTreeViewer fTreeViewer;
@@ -87,7 +86,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
     
     public TemplateManagerDialog(Shell parentShell, TemplateManager templateManager) {
         super(parentShell, "TemplateManagerDialog");
-        setTitleImage(IArchimateImages.ImageFactory.getImage(ImageFactory.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fTemplateManager = templateManager;
@@ -482,6 +481,6 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
     }
     
     protected String getHelpID() {
-        return HELPID;
+        return HELP_ID;
     }
 }
