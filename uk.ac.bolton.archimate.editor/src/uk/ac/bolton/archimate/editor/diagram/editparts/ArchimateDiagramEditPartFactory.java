@@ -115,120 +115,123 @@ implements EditPartFactory {
         // Archimate Model Element Parts
         else if(model instanceof IDiagramModelArchimateObject) {
             IDiagramModelArchimateObject modelobject = (IDiagramModelArchimateObject)model;
-            
-            switch(modelobject.getArchimateElement().eClass().getClassifierID()) {
-                // Junctions
-                case IArchimatePackage.JUNCTION:
-                    child = new JunctionEditPart();
-                    break;
-                case IArchimatePackage.AND_JUNCTION:
-                    child = new AndJunctionEditPart();
-                    break;
-                case IArchimatePackage.OR_JUNCTION:
-                    child = new OrJunctionEditPart();
-                    break;
-                    
-                // Business
-                case IArchimatePackage.BUSINESS_ACTIVITY:
-                    child = new BusinessActivityEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_ACTOR:
-                    child = new BusinessActorEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_COLLABORATION:
-                    child = new BusinessCollaborationEditPart();
-                    break;
-                case IArchimatePackage.CONTRACT:
-                    child = new BusinessContractEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_EVENT:
-                    child = new BusinessEventEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_FUNCTION:
-                    child = new BusinessFunctionEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_INTERACTION:
-                    child = new BusinessInteractionEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_INTERFACE:
-                    child = new BusinessInterfaceEditPart();
-                    break;
-                case IArchimatePackage.MEANING:
-                    child = new BusinessMeaningEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_OBJECT:
-                    child = new BusinessObjectEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_PROCESS:
-                    child = new BusinessProcessEditPart();
-                    break;
-                case IArchimatePackage.PRODUCT:
-                    child = new BusinessProductEditPart();
-                    break;
-                case IArchimatePackage.REPRESENTATION:
-                    child = new BusinessRepresentationEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_ROLE:
-                    child = new BusinessRoleEditPart();
-                    break;
-                case IArchimatePackage.BUSINESS_SERVICE:
-                    child = new BusinessServiceEditPart();
-                    break;
-                case IArchimatePackage.VALUE:
-                    child = new BusinessValueEditPart();
-                    break;
-                    
-                // Application
-                case IArchimatePackage.APPLICATION_COMPONENT:
-                    child = new ApplicationComponentEditPart();
-                    break;
-                case IArchimatePackage.APPLICATION_COLLABORATION:
-                    child = new ApplicationCollaborationEditPart();
-                    break;
-                case IArchimatePackage.APPLICATION_FUNCTION:
-                    child = new ApplicationFunctionEditPart();
-                    break;
-                case IArchimatePackage.DATA_OBJECT:
-                    child = new ApplicationDataObjectEditPart();
-                    break;
-                case IArchimatePackage.APPLICATION_INTERACTION:
-                    child = new ApplicationInteractionEditPart();
-                    break;
-                case IArchimatePackage.APPLICATION_INTERFACE:
-                    child = new ApplicationInterfaceEditPart();
-                    break;
-                case IArchimatePackage.APPLICATION_SERVICE:
-                    child = new ApplicationServiceEditPart();
-                    break;
-                    
-                // Technology
-                case IArchimatePackage.COMMUNICATION_PATH:
-                    child = new TechnologyCommunicationPathEditPart();
-                    break;
-                case IArchimatePackage.NETWORK:
-                    child = new TechnologyNetworkEditPart();
-                    break;
-                case IArchimatePackage.INFRASTRUCTURE_INTERFACE:
-                    child = new TechnologyInfrastructureInterfaceEditPart();
-                    break;
-                case IArchimatePackage.INFRASTRUCTURE_SERVICE:
-                    child = new TechnologyInfrastructureServiceEditPart();
-                    break;
-                case IArchimatePackage.SYSTEM_SOFTWARE:
-                    child = new TechnologySystemSoftwareEditPart();
-                    break;
-                case IArchimatePackage.NODE:
-                    child = new TechnologyNodeEditPart();
-                    break;
-                case IArchimatePackage.DEVICE:
-                    child = new TechnologyDeviceEditPart();
-                    break;
-                case IArchimatePackage.ARTIFACT:
-                    child = new TechnologyArtifactEditPart();
-                    break;
-                    
-                default:
-                    child = new EmptyEditPart();
+            if ((null != modelobject) && (null != modelobject.getArchimateElement())) {
+                switch(modelobject.getArchimateElement().eClass().getClassifierID()) {
+	                // Junctions
+	                case IArchimatePackage.JUNCTION:
+	                    child = new JunctionEditPart();
+	                    break;
+	                case IArchimatePackage.AND_JUNCTION:
+	                    child = new AndJunctionEditPart();
+	                    break;
+	                case IArchimatePackage.OR_JUNCTION:
+	                    child = new OrJunctionEditPart();
+	                    break;
+	                    
+	                // Business
+	                case IArchimatePackage.BUSINESS_ACTIVITY:
+	                    child = new BusinessActivityEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_ACTOR:
+	                    child = new BusinessActorEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_COLLABORATION:
+	                    child = new BusinessCollaborationEditPart();
+	                    break;
+	                case IArchimatePackage.CONTRACT:
+	                    child = new BusinessContractEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_EVENT:
+	                    child = new BusinessEventEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_FUNCTION:
+	                    child = new BusinessFunctionEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_INTERACTION:
+	                    child = new BusinessInteractionEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_INTERFACE:
+	                    child = new BusinessInterfaceEditPart();
+	                    break;
+	                case IArchimatePackage.MEANING:
+	                    child = new BusinessMeaningEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_OBJECT:
+	                    child = new BusinessObjectEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_PROCESS:
+	                    child = new BusinessProcessEditPart();
+	                    break;
+	                case IArchimatePackage.PRODUCT:
+	                    child = new BusinessProductEditPart();
+	                    break;
+	                case IArchimatePackage.REPRESENTATION:
+	                    child = new BusinessRepresentationEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_ROLE:
+	                    child = new BusinessRoleEditPart();
+	                    break;
+	                case IArchimatePackage.BUSINESS_SERVICE:
+	                    child = new BusinessServiceEditPart();
+	                    break;
+	                case IArchimatePackage.VALUE:
+	                    child = new BusinessValueEditPart();
+	                    break;
+	                    
+	                // Application
+	                case IArchimatePackage.APPLICATION_COMPONENT:
+	                    child = new ApplicationComponentEditPart();
+	                    break;
+	                case IArchimatePackage.APPLICATION_COLLABORATION:
+	                    child = new ApplicationCollaborationEditPart();
+	                    break;
+	                case IArchimatePackage.APPLICATION_FUNCTION:
+	                    child = new ApplicationFunctionEditPart();
+	                    break;
+	                case IArchimatePackage.DATA_OBJECT:
+	                    child = new ApplicationDataObjectEditPart();
+	                    break;
+	                case IArchimatePackage.APPLICATION_INTERACTION:
+	                    child = new ApplicationInteractionEditPart();
+	                    break;
+	                case IArchimatePackage.APPLICATION_INTERFACE:
+	                    child = new ApplicationInterfaceEditPart();
+	                    break;
+	                case IArchimatePackage.APPLICATION_SERVICE:
+	                    child = new ApplicationServiceEditPart();
+	                    break;
+	                    
+	                // Technology
+	                case IArchimatePackage.COMMUNICATION_PATH:
+	                    child = new TechnologyCommunicationPathEditPart();
+	                    break;
+	                case IArchimatePackage.NETWORK:
+	                    child = new TechnologyNetworkEditPart();
+	                    break;
+	                case IArchimatePackage.INFRASTRUCTURE_INTERFACE:
+	                    child = new TechnologyInfrastructureInterfaceEditPart();
+	                    break;
+	                case IArchimatePackage.INFRASTRUCTURE_SERVICE:
+	                    child = new TechnologyInfrastructureServiceEditPart();
+	                    break;
+	                case IArchimatePackage.SYSTEM_SOFTWARE:
+	                    child = new TechnologySystemSoftwareEditPart();
+	                    break;
+	                case IArchimatePackage.NODE:
+	                    child = new TechnologyNodeEditPart();
+	                    break;
+	                case IArchimatePackage.DEVICE:
+	                    child = new TechnologyDeviceEditPart();
+	                    break;
+	                case IArchimatePackage.ARTIFACT:
+	                    child = new TechnologyArtifactEditPart();
+	                    break;
+	                    
+	                default:
+	                	child = new EmptyEditPart();
+                }
+            } else {
+                child = new EmptyEditPart();
             }
             
         }

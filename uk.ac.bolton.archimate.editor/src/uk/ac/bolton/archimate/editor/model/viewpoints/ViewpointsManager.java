@@ -138,6 +138,9 @@ public class ViewpointsManager {
      */
     public boolean isAllowedType(IDiagramModelComponent dmo) {
         if(dmo instanceof IDiagramModelArchimateObject && dmo.getDiagramModel() instanceof IArchimateDiagramModel) {
+        	if (null == ((IDiagramModelArchimateObject)dmo).getArchimateElement()) {
+        		return false;
+        	}
             EClass eClass = ((IDiagramModelArchimateObject)dmo).getArchimateElement().eClass();
             return isAllowedType((IArchimateDiagramModel)dmo.getDiagramModel(), eClass);
         }
