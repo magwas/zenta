@@ -38,36 +38,38 @@ public class ElementsDataSource implements JRRewindableDataSource, IPropertiesDa
         IFolder businessFolder = model.getFolder(FolderType.BUSINESS);
         IFolder applicationFolder = model.getFolder(FolderType.APPLICATION);
         IFolder technologyFolder = model.getFolder(FolderType.TECHNOLOGY);
+        IFolder motivationFolder = model.getFolder(FolderType.MOTIVATION);
+        IFolder implmigrationFolder = model.getFolder(FolderType.IMPLEMENTATION_MIGRATION);
         IFolder connectorsFolder = model.getFolder(FolderType.CONNECTORS);
         IFolder relationsFolder = model.getFolder(FolderType.RELATIONS);
 
-        if("business_actors".equals(type)) {
+        if("business_actors".equals(type)) { //$NON-NLS-1$
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessActor());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessRole());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessInterface());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessCollaboration());
+            getElements(businessFolder, IArchimatePackage.eINSTANCE.getLocation());
         }
-        else if("business_functions".equals(type)) {
+        else if("business_functions".equals(type)) { //$NON-NLS-1$
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessFunction());
         }
-        else if("business_information".equals(type)) {
+        else if("business_information".equals(type)) { //$NON-NLS-1$
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessObject());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getRepresentation());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getMeaning());
         }
-        else if("business_processes".equals(type)) {
-            getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessActivity());
+        else if("business_processes".equals(type)) { //$NON-NLS-1$
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessEvent());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessInteraction());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessProcess());
         }
-        else if("business_products".equals(type)) {
+        else if("business_products".equals(type)) { //$NON-NLS-1$
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getContract());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getProduct());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getBusinessService());
             getElements(businessFolder, IArchimatePackage.eINSTANCE.getValue());
         }
-        else if("applications".equals(type)) {
+        else if("applications".equals(type)) { //$NON-NLS-1$
             getElements(applicationFolder, IArchimatePackage.eINSTANCE.getApplicationCollaboration());
             getElements(applicationFolder, IArchimatePackage.eINSTANCE.getApplicationComponent());
             getElements(applicationFolder, IArchimatePackage.eINSTANCE.getApplicationFunction());
@@ -75,23 +77,39 @@ public class ElementsDataSource implements JRRewindableDataSource, IPropertiesDa
             getElements(applicationFolder, IArchimatePackage.eINSTANCE.getApplicationInterface());
             getElements(applicationFolder, IArchimatePackage.eINSTANCE.getApplicationService());
         }
-        else if("application_data".equals(type)) {
+        else if("application_data".equals(type)) { //$NON-NLS-1$
             getElements(applicationFolder, IArchimatePackage.eINSTANCE.getDataObject());
         }
-        else if("infrastructures".equals(type)) {
+        else if("infrastructures".equals(type)) { //$NON-NLS-1$
             getElements(technologyFolder, IArchimatePackage.eINSTANCE.getArtifact());
             getElements(technologyFolder, IArchimatePackage.eINSTANCE.getCommunicationPath());
             getElements(technologyFolder, IArchimatePackage.eINSTANCE.getDevice());
             getElements(technologyFolder, IArchimatePackage.eINSTANCE.getNode());
+            getElements(technologyFolder, IArchimatePackage.eINSTANCE.getInfrastructureFunction());
             getElements(technologyFolder, IArchimatePackage.eINSTANCE.getInfrastructureInterface());
             getElements(technologyFolder, IArchimatePackage.eINSTANCE.getNetwork());
             getElements(technologyFolder, IArchimatePackage.eINSTANCE.getInfrastructureService());
             getElements(technologyFolder, IArchimatePackage.eINSTANCE.getSystemSoftware());
         }
-        else if("connectors".equals(type)) {
+        else if("motivation".equals(type)) { //$NON-NLS-1$
+            getElements(motivationFolder, IArchimatePackage.eINSTANCE.getStakeholder());
+            getElements(motivationFolder, IArchimatePackage.eINSTANCE.getDriver());
+            getElements(motivationFolder, IArchimatePackage.eINSTANCE.getAssessment());
+            getElements(motivationFolder, IArchimatePackage.eINSTANCE.getGoal());
+            getElements(motivationFolder, IArchimatePackage.eINSTANCE.getPrinciple());
+            getElements(motivationFolder, IArchimatePackage.eINSTANCE.getRequirement());
+            getElements(motivationFolder, IArchimatePackage.eINSTANCE.getConstraint());
+        }
+        else if("impl_migration".equals(type)) { //$NON-NLS-1$
+            getElements(implmigrationFolder, IArchimatePackage.eINSTANCE.getWorkPackage());
+            getElements(implmigrationFolder, IArchimatePackage.eINSTANCE.getDeliverable());
+            getElements(implmigrationFolder, IArchimatePackage.eINSTANCE.getPlateau());
+            getElements(implmigrationFolder, IArchimatePackage.eINSTANCE.getGap());
+        }
+        else if("connectors".equals(type)) { //$NON-NLS-1$
             getElements(connectorsFolder, null);
         }
-        else if("relations".equals(type)) {
+        else if("relations".equals(type)) { //$NON-NLS-1$
             getElements(relationsFolder, null);
         }
         

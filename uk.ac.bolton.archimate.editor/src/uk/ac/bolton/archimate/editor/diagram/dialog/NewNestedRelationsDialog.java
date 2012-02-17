@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.graphics.Image;
@@ -39,7 +40,6 @@ import org.eclipse.ui.PlatformUI;
 
 import uk.ac.bolton.archimate.editor.preferences.ConnectionPreferences;
 import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
-import uk.ac.bolton.archimate.editor.ui.ArchimateNames;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
 import uk.ac.bolton.archimate.editor.ui.components.ExtendedTitleAreaDialog;
 import uk.ac.bolton.archimate.model.IArchimateElement;
@@ -103,9 +103,9 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         String[] getValidRelationNames() {
             if(names == null) {
                 names = new String[validRelations.size()];
-                names[0] = "(none)";
+                names[0] = Messages.NewNestedRelationsDialog_0;
                 for(int i = 1; i < validRelations.size(); i++) {
-                    names[i] = ArchimateNames.getDefaultName(validRelations.get(i));
+                    names[i] = ArchimateLabelProvider.INSTANCE.getDefaultName(validRelations.get(i));
                 }
             }
             return names;
@@ -125,7 +125,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
     }
 
     public NewNestedRelationsDialog(Shell parentShell, IArchimateElement parentElement, List<IArchimateElement> childElements) {
-        super(parentShell, "NewNestedRelationsDialog");
+        super(parentShell, "NewNestedRelationsDialog"); //$NON-NLS-1$
         setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
@@ -140,7 +140,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
     @Override
     protected void configureShell(Shell shell) {
         super.configureShell(shell);
-        shell.setText("New Relationships");
+        shell.setText(Messages.NewNestedRelationsDialog_1);
         
         shell.getDisplay().addFilter(SWT.KeyDown, this);
         shell.getDisplay().addFilter(SWT.KeyUp, this);
@@ -168,9 +168,9 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         // Help
         PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELP_ID);
 
-        setTitle("Nested Elements Relationship");
-        setMessage("Select a relationship type if you wish to create new relationships between '" +
-                fParentElement.getName() + "' and the following elements.");
+        setTitle(Messages.NewNestedRelationsDialog_2);
+        String message = NLS.bind(Messages.NewNestedRelationsDialog_3, fParentElement.getName());
+        setMessage(message);
         Composite composite = (Composite)super.createDialogArea(parent);
 
         Composite client = new Composite(composite, SWT.NULL);
@@ -183,7 +183,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         tableComp.setLayoutData(new GridData(GridData.FILL_BOTH));
         fTableViewer = new RelationsTableViewer(tableComp, SWT.NONE);
         fTableViewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
-        fTableViewer.setInput(""); // anything will do
+        fTableViewer.setInput(""); // anything will do //$NON-NLS-1$
         
         return composite;
     }
@@ -227,8 +227,8 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
     
     private class RelationsTableViewer extends TableViewer {
         private String[] columnNames = {
-            "Child Element",
-            "Relationship"
+            Messages.NewNestedRelationsDialog_4,
+            Messages.NewNestedRelationsDialog_5
         };
         
         RelationsTableViewer(Composite parent, int style) {

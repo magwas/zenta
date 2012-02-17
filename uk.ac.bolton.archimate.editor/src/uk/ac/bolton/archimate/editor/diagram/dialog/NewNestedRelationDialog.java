@@ -24,6 +24,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
@@ -37,7 +38,6 @@ import org.eclipse.ui.PlatformUI;
 
 import uk.ac.bolton.archimate.editor.preferences.ConnectionPreferences;
 import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
-import uk.ac.bolton.archimate.editor.ui.ArchimateNames;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
 import uk.ac.bolton.archimate.editor.ui.components.ExtendedTitleAreaDialog;
 import uk.ac.bolton.archimate.model.IArchimateElement;
@@ -61,7 +61,7 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
     private EClass fSelected;
 
     public NewNestedRelationDialog(Shell parentShell, IArchimateElement parentElement, IArchimateElement childElement) {
-        super(parentShell, "NewNestedRelationDialog");
+        super(parentShell, "NewNestedRelationDialog"); //$NON-NLS-1$
         setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
@@ -72,7 +72,7 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
     @Override
     protected void configureShell(Shell shell) {
         super.configureShell(shell);
-        shell.setText("New Relationship");
+        shell.setText(Messages.NewNestedRelationDialog_0);
     }
 
     @Override
@@ -80,9 +80,10 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
         // Help
         PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELP_ID);
 
-        setTitle("Nested Elements Relationship");
-        setMessage("Select a relationship type if you wish to create a new relationship between '" +
-                fParentElement.getName() + "' and '" + fChildElement.getName() + "'.");
+        setTitle(Messages.NewNestedRelationDialog_1);
+        String message = NLS.bind(Messages.NewNestedRelationDialog_2,
+                fParentElement.getName(), fChildElement.getName());
+        setMessage(message);
         Composite composite = (Composite)super.createDialogArea(parent);
 
         Composite client = new Composite(composite, SWT.NULL);
@@ -95,7 +96,7 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
         tableComp.setLayoutData(new GridData(GridData.FILL_BOTH));
         fTableViewer = new RelationsTableViewer(tableComp, SWT.NONE);
         fTableViewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
-        fTableViewer.setInput(""); // anything will do
+        fTableViewer.setInput(""); // anything will do //$NON-NLS-1$
         
         fTableViewer.addDoubleClickListener(new IDoubleClickListener() {
             @Override
@@ -129,7 +130,7 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
         createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
                 true);
         createButton(parent, IDialogConstants.CANCEL_ID,
-                "None", false);
+                Messages.NewNestedRelationDialog_3, false);
     }
     
     public EClass getSelectedType() {
@@ -185,7 +186,7 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
         class RelationsTableViewerLabelCellProvider extends LabelProvider {
             @Override
             public String getText(Object element) {
-                return ArchimateNames.getDefaultName((EClass)element);
+                return ArchimateLabelProvider.INSTANCE.getDefaultName((EClass)element);
             }
             
             @Override

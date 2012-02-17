@@ -12,11 +12,14 @@ import org.eclipse.swt.graphics.Image;
 
 import uk.ac.bolton.archimate.canvas.model.ICanvasModel;
 import uk.ac.bolton.archimate.canvas.model.ICanvasModelBlock;
+import uk.ac.bolton.archimate.canvas.model.ICanvasModelConnection;
 import uk.ac.bolton.archimate.canvas.model.ICanvasModelImage;
 import uk.ac.bolton.archimate.canvas.model.ICanvasModelSticky;
 import uk.ac.bolton.archimate.canvas.model.ICanvasPackage;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
 import uk.ac.bolton.archimate.editor.ui.IEditorLabelProvider;
+import uk.ac.bolton.archimate.editor.utils.StringUtils;
+import uk.ac.bolton.archimate.model.INameable;
 
 
 /**
@@ -30,20 +33,36 @@ public class CanvasLabelProvider implements IEditorLabelProvider {
 
     @Override
     public String getLabel(Object element) {
-        if(element instanceof ICanvasModelImage) {
-            return "Image";
-        }
-        else if(element instanceof ICanvasModelBlock) {
-            return "Block";
-        }
-        else if(element instanceof ICanvasModelSticky) {
-            return "Sticky";
-        }
-        else if(element instanceof ICanvasModel) {
-            return "Canvas";
+        if(element == null) {
+            return ""; //$NON-NLS-1$
         }
         
-        return null;
+        // Get Name
+        if(element instanceof INameable) {
+            String name = ((INameable)element).getName();
+            if(StringUtils.isSet(name)) {
+                return name;
+            }
+        }
+        
+        // Defaults for empty strings
+        if(element instanceof ICanvasModelImage) {
+            return Messages.CanvasLabelProvider_0;
+        }
+        else if(element instanceof ICanvasModelBlock) {
+            return Messages.CanvasLabelProvider_1;
+        }
+        else if(element instanceof ICanvasModelSticky) {
+            return Messages.CanvasLabelProvider_2;
+        }
+        else if(element instanceof ICanvasModel) {
+            return Messages.CanvasLabelProvider_3;
+        }
+        else if(element instanceof ICanvasModelConnection) {
+            return Messages.CanvasLabelProvider_4;
+        }
+        
+        return ""; //$NON-NLS-1$
     }
 
     @Override

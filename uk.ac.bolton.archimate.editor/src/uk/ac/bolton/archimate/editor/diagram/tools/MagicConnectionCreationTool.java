@@ -39,7 +39,6 @@ import uk.ac.bolton.archimate.editor.model.viewpoints.ViewpointsManager;
 import uk.ac.bolton.archimate.editor.preferences.IPreferenceConstants;
 import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
-import uk.ac.bolton.archimate.editor.ui.ArchimateNames;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
 import uk.ac.bolton.archimate.editor.ui.services.ComponentSelectionManager;
 import uk.ac.bolton.archimate.model.IArchimateDiagramModel;
@@ -261,6 +260,8 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
                 addConnectionActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getBusinessClasses(), relationshipType);
                 addConnectionActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getApplicationClasses(), relationshipType);
                 addConnectionActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getTechnologyClasses(), relationshipType);
+                addConnectionActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getMotivationClasses(), relationshipType);
+                addConnectionActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getImplementationMigrationClasses(), relationshipType);
                 addConnectionActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getConnectorClasses(), relationshipType);
                 
                 // Remove the very last separator if there is one
@@ -302,7 +303,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
      */
     private void addElementActions(Menu menu, IDiagramModelArchimateObject sourceDiagramModelObject) {
         MenuItem item = new MenuItem(menu, SWT.CASCADE);
-        item.setText("Business");
+        item.setText(Messages.MagicConnectionCreationTool_0);
         Menu subMenu = new Menu(item);
         item.setMenu(subMenu);
         addElementActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getBusinessClasses());
@@ -312,7 +313,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         }
 
         item = new MenuItem(menu, SWT.CASCADE);
-        item.setText("Application");
+        item.setText(Messages.MagicConnectionCreationTool_1);
         subMenu = new Menu(item);
         item.setMenu(subMenu);
         addElementActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getApplicationClasses());
@@ -322,7 +323,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         }
 
         item = new MenuItem(menu, SWT.CASCADE);
-        item.setText("Technology");
+        item.setText(Messages.MagicConnectionCreationTool_2);
         subMenu = new Menu(item);
         item.setMenu(subMenu);
         addElementActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getTechnologyClasses());
@@ -332,7 +333,27 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         }
 
         item = new MenuItem(menu, SWT.CASCADE);
-        item.setText("Connectors");
+        item.setText(Messages.MagicConnectionCreationTool_3);
+        subMenu = new Menu(item);
+        item.setMenu(subMenu);
+        addElementActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getMotivationClasses());
+
+        if(subMenu.getItemCount() == 0) {
+            item.dispose(); // Nothing there
+        }
+
+        item = new MenuItem(menu, SWT.CASCADE);
+        item.setText(Messages.MagicConnectionCreationTool_4);
+        subMenu = new Menu(item);
+        item.setMenu(subMenu);
+        addElementActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getImplementationMigrationClasses());
+
+        if(subMenu.getItemCount() == 0) {
+            item.dispose(); // Nothing there
+        }
+
+        item = new MenuItem(menu, SWT.CASCADE);
+        item.setText(Messages.MagicConnectionCreationTool_5);
         subMenu = new Menu(item);
         item.setMenu(subMenu);
         addElementActions(subMenu, sourceDiagramModelObject, ArchimateModelUtils.getConnectorClasses());
@@ -367,7 +388,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 
     private MenuItem addElementAction(Menu menu, final EClass type) {
         final MenuItem item = new MenuItem(menu, SWT.CASCADE);
-        item.setText(ArchimateNames.getDefaultName(type));
+        item.setText(ArchimateLabelProvider.INSTANCE.getDefaultName(type));
         item.setImage(ArchimateLabelProvider.INSTANCE.getImage(type));
         
         // Add hover listener to notify Hints View and also set element if elements first
@@ -399,7 +420,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
     
     private MenuItem addConnectionAction(Menu menu, final EClass relationshipType) {
         final MenuItem item = new MenuItem(menu, SWT.CASCADE);
-        item.setText(ArchimateNames.getDefaultName(relationshipType));
+        item.setText(ArchimateLabelProvider.INSTANCE.getDefaultName(relationshipType));
         item.setImage(ArchimateLabelProvider.INSTANCE.getImage(relationshipType));
         
         // Add hover listener to notify Hints View
@@ -465,7 +486,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         PoofAnimater animater;
         
         CreateElementCompoundCommand(FigureCanvas canvas, int x, int y) {
-            super("Create Element");
+            super(Messages.MagicConnectionCreationTool_6);
             animater = new PoofAnimater(canvas, x, y);
         }
         

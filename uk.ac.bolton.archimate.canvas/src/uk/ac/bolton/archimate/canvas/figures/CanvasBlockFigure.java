@@ -24,7 +24,6 @@ import org.eclipse.swt.graphics.Color;
 
 import uk.ac.bolton.archimate.canvas.model.ICanvasModelBlock;
 import uk.ac.bolton.archimate.editor.diagram.figures.AbstractContainerFigure;
-import uk.ac.bolton.archimate.editor.diagram.figures.ToolTipFigure;
 import uk.ac.bolton.archimate.editor.diagram.util.AnimationUtil;
 import uk.ac.bolton.archimate.editor.ui.ColorFactory;
 import uk.ac.bolton.archimate.editor.utils.StringUtils;
@@ -176,17 +175,6 @@ public class CanvasBlockFigure extends AbstractContainerFigure {
         graphics.popState();
     }
     
-    @Override
-    public IFigure getToolTip() {
-        ToolTipFigure toolTipFigure = (ToolTipFigure)super.getToolTip();
-        
-        if(toolTipFigure != null) {
-            toolTipFigure.setText("Block");
-        }
-        
-        return toolTipFigure;
-    }
-
     @Override
     public void dispose() {
         fIconicDelegate.dispose();

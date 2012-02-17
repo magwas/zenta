@@ -17,8 +17,6 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
  */
 public class ImplementationAndDeploymentViewpoint extends AbstractViewpoint {
     
-    public static final int INDEX = 10;
-    
     EClass[] allowed = new EClass[] {
             IArchimatePackage.eINSTANCE.getDataObject(),
             IArchimatePackage.eINSTANCE.getApplicationComponent(),
@@ -34,17 +32,28 @@ public class ImplementationAndDeploymentViewpoint extends AbstractViewpoint {
             
             IArchimatePackage.eINSTANCE.getJunction(),
             IArchimatePackage.eINSTANCE.getAndJunction(),
-            IArchimatePackage.eINSTANCE.getOrJunction()
+            IArchimatePackage.eINSTANCE.getOrJunction(),
+            
+            IArchimatePackage.eINSTANCE.getSpecialisationRelationship(),
+            IArchimatePackage.eINSTANCE.getCompositionRelationship(),
+            IArchimatePackage.eINSTANCE.getAggregationRelationship(),
+            IArchimatePackage.eINSTANCE.getAssignmentRelationship(),
+            IArchimatePackage.eINSTANCE.getRealisationRelationship(),
+            IArchimatePackage.eINSTANCE.getTriggeringRelationship(),
+            IArchimatePackage.eINSTANCE.getFlowRelationship(),
+            IArchimatePackage.eINSTANCE.getUsedByRelationship(),
+            IArchimatePackage.eINSTANCE.getAccessRelationship(),
+            IArchimatePackage.eINSTANCE.getAssociationRelationship()
     };
     
     @Override
     public String getName() {
-        return "Implementation and Deployment";
+        return Messages.ImplementationAndDeploymentViewpoint_0;
     }
 
     @Override
     public int getIndex() {
-        return INDEX;
+        return IMPLEMENTATION_DEPLOYMENT_VIEWPOINT;
     }
 
     @Override

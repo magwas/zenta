@@ -11,7 +11,7 @@ import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.swt.SWT;
 
 import uk.ac.bolton.archimate.editor.diagram.figures.ToolTipFigure;
-import uk.ac.bolton.archimate.editor.ui.ArchimateNames;
+import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
 import uk.ac.bolton.archimate.model.IAccessRelationship;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateConnection;
 
@@ -77,30 +77,30 @@ public class AccessConnectionFigure extends AbstractArchimateConnectionFigure {
         // Show access type in tooltip
         
         IAccessRelationship relation = (IAccessRelationship)getModelConnection().getRelationship();
-        String type = ArchimateNames.getDefaultName(relation.eClass());
+        String type = ArchimateLabelProvider.INSTANCE.getDefaultName(relation.eClass());
         
         switch(relation.getAccessType()) {
             case IAccessRelationship.WRITE_ACCESS:
-                type += " (write)";
+                type += " " + Messages.AccessConnectionFigure_0; //$NON-NLS-1$
                 break;
                 
             case IAccessRelationship.READ_ACCESS:
-                type += " (read)";
+                type += " " + Messages.AccessConnectionFigure_1; //$NON-NLS-1$
                 break;
 
             case IAccessRelationship.UNSPECIFIED_ACCESS:
-                type += " (access)";
+                type += " " + Messages.AccessConnectionFigure_2; //$NON-NLS-1$
                 break;
 
             case IAccessRelationship.READ_WRITE_ACCESS:
-                type += " (read/write)";
+                type += " " + Messages.AccessConnectionFigure_3; //$NON-NLS-1$
                 break;
 
             default:
                 break;
         }
         
-        tooltip.setType("Type: " + type);
+        tooltip.setType(Messages.AccessConnectionFigure_4 + " " + type); //$NON-NLS-1$
 
         return tooltip;
     }

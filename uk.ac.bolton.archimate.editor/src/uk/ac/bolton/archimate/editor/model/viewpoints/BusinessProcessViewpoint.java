@@ -17,34 +17,46 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
  */
 public class BusinessProcessViewpoint extends AbstractViewpoint {
     
-    public static final int INDEX = 8;
-    
     EClass[] allowed = new EClass[] {
             IArchimatePackage.eINSTANCE.getRepresentation(),
             IArchimatePackage.eINSTANCE.getBusinessObject(),
             IArchimatePackage.eINSTANCE.getBusinessService(),
             IArchimatePackage.eINSTANCE.getBusinessEvent(),
             IArchimatePackage.eINSTANCE.getBusinessProcess(),
+            IArchimatePackage.eINSTANCE.getBusinessFunction(),
             IArchimatePackage.eINSTANCE.getBusinessInteraction(),
             IArchimatePackage.eINSTANCE.getBusinessCollaboration(),
             IArchimatePackage.eINSTANCE.getBusinessRole(),
             IArchimatePackage.eINSTANCE.getBusinessActor(),
-            IArchimatePackage.eINSTANCE.getBusinessActivity(), // Should this be here?
-            IArchimatePackage.eINSTANCE.getBusinessInterface(), // Should this be here?
+            IArchimatePackage.eINSTANCE.getLocation(),
+            IArchimatePackage.eINSTANCE.getBusinessInterface(), // Should this be here? BiZZdesign have it
+            
+            IArchimatePackage.eINSTANCE.getApplicationService(),
             
             IArchimatePackage.eINSTANCE.getJunction(),
             IArchimatePackage.eINSTANCE.getAndJunction(),
-            IArchimatePackage.eINSTANCE.getOrJunction()
+            IArchimatePackage.eINSTANCE.getOrJunction(),
+            
+            IArchimatePackage.eINSTANCE.getSpecialisationRelationship(),
+            IArchimatePackage.eINSTANCE.getCompositionRelationship(),
+            IArchimatePackage.eINSTANCE.getAggregationRelationship(),
+            IArchimatePackage.eINSTANCE.getAssignmentRelationship(),
+            IArchimatePackage.eINSTANCE.getRealisationRelationship(),
+            IArchimatePackage.eINSTANCE.getTriggeringRelationship(),
+            IArchimatePackage.eINSTANCE.getFlowRelationship(),
+            IArchimatePackage.eINSTANCE.getUsedByRelationship(),
+            IArchimatePackage.eINSTANCE.getAccessRelationship(),
+            IArchimatePackage.eINSTANCE.getAssociationRelationship()
     };
     
     @Override
     public String getName() {
-        return "Business Process";
+        return Messages.BusinessProcessViewpoint_0;
     }
     
     @Override
     public int getIndex() {
-        return INDEX;
+        return BUSINESS_PROCESS_VIEWPOINT;
     }
 
     @Override

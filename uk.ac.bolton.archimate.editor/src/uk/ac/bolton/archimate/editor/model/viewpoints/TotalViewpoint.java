@@ -15,16 +15,14 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class TotalViewpoint extends AbstractViewpoint {
     
-    public static final int INDEX = 0;
-    
     @Override
     public String getName() {
-        return "Total";
+        return Messages.TotalViewpoint_0;
     }
     
     @Override
     public int getIndex() {
-        return INDEX;
+        return TOTAL_VIEWPOINT;
     }
 
     @Override

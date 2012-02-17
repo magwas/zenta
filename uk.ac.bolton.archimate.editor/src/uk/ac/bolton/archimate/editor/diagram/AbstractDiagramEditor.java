@@ -104,6 +104,7 @@ import uk.ac.bolton.archimate.editor.diagram.actions.PrintDiagramAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.PropertiesAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.ResetAspectRatioAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.SelectAllAction;
+import uk.ac.bolton.archimate.editor.diagram.actions.SelectElementInTreeAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.SendBackwardAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.SendToBackAction;
 import uk.ac.bolton.archimate.editor.diagram.actions.TextAlignmentAction;
@@ -257,14 +258,14 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         fErrorComposite = new Composite(parent, SWT.NULL);
         fErrorComposite.setLayout(new GridLayout());
         fErrorComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
-        String message1 = "This View is no longer available.";
-        String message2 = "Cannot find the model's file: ";
+        String message1 = Messages.AbstractDiagramEditor_0;
+        String message2 = Messages.AbstractDiagramEditor_1;
         CLabel imageLabel = new CLabel(fErrorComposite, SWT.NULL);
         imageLabel.setImage(Display.getDefault().getSystemImage(SWT.ICON_INFORMATION));
         imageLabel.setText(message1);
         String fileName = fNullInput.getFileName();
         if(fileName != null) {
-            message2 += fileName;
+            message2 += " " + fileName; //$NON-NLS-1$
         }
         Label l = new Label(fErrorComposite, SWT.NULL);
         l.setText(message2);
@@ -555,7 +556,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         
         // Change the Delete Action label
         action = registry.getAction(ActionFactory.DELETE.getId());
-        action.setText("&Delete from View");
+        action.setText(Messages.AbstractDiagramEditor_2);
         action.setToolTipText(action.getText());
         getUpdateCommandStackActions().add((UpdateAction)action);
         
@@ -740,6 +741,11 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         // Full Screen
         action = new FullScreenAction(this);
         registry.registerAction(action);
+        
+        // Select Element in Tree
+        action = new SelectElementInTreeAction(this);
+        registry.registerAction(action);
+        getSelectionActions().add(action.getId());
     }
     
     @Override
@@ -840,7 +846,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
     private void fixBug321560() {
         if(PlatformUtils.isGTK() && SWT.getVersion() >= 3520) {
             try {
-                final Composite splitter = (Composite)getPrivateFieldValue(this, GraphicalEditorWithFlyoutPalette.class, "splitter");
+                final Composite splitter = (Composite)getPrivateFieldValue(this, GraphicalEditorWithFlyoutPalette.class, "splitter"); //$NON-NLS-1$
                 Control[] children = splitter.getChildren();
                 Control sash = children[0];
                 Composite paletteContainer = (Composite)children[1];
@@ -856,7 +862,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
                     innerListener = ((TypedListener)innerListener).getEventListener();
                 }
 
-                IMenuManager mgr = (IMenuManager)getPrivateFieldValue(innerListener, innerListener.getClass(), "this$0");
+                IMenuManager mgr = (IMenuManager)getPrivateFieldValue(innerListener, innerListener.getClass(), "this$0"); //$NON-NLS-1$
 
                 final IAction resizeAction = ((ActionContributionItem)mgr.getItems()[0]).getAction();
                 if(resizeAction == null) {
@@ -901,7 +907,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
     }
 
     private Listener[] getListeners(Widget w, int eventType) throws Exception {
-        Method method = w.getClass().getMethod("getListeners", int.class);
+        Method method = w.getClass().getMethod("getListeners", int.class); //$NON-NLS-1$
         return (Listener[])method.invoke(w, eventType);
     }
 }

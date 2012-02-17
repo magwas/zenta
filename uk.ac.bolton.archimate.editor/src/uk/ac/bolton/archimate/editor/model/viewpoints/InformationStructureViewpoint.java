@@ -17,8 +17,6 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
  */
 public class InformationStructureViewpoint extends AbstractViewpoint {
     
-    public static final int INDEX = 11;
-    
     EClass[] allowed = new EClass[] {
             IArchimatePackage.eINSTANCE.getMeaning(),
             IArchimatePackage.eINSTANCE.getRepresentation(),
@@ -30,17 +28,28 @@ public class InformationStructureViewpoint extends AbstractViewpoint {
             
             IArchimatePackage.eINSTANCE.getJunction(),
             IArchimatePackage.eINSTANCE.getAndJunction(),
-            IArchimatePackage.eINSTANCE.getOrJunction()
+            IArchimatePackage.eINSTANCE.getOrJunction(),
+            
+            IArchimatePackage.eINSTANCE.getSpecialisationRelationship(),
+            IArchimatePackage.eINSTANCE.getCompositionRelationship(),
+            IArchimatePackage.eINSTANCE.getAggregationRelationship(),
+            IArchimatePackage.eINSTANCE.getAssignmentRelationship(),
+            IArchimatePackage.eINSTANCE.getRealisationRelationship(),
+            IArchimatePackage.eINSTANCE.getTriggeringRelationship(),
+            IArchimatePackage.eINSTANCE.getFlowRelationship(),
+            IArchimatePackage.eINSTANCE.getUsedByRelationship(),
+            IArchimatePackage.eINSTANCE.getAccessRelationship(),
+            IArchimatePackage.eINSTANCE.getAssociationRelationship()
     };
     
     @Override
     public String getName() {
-        return "Information Structure";
+        return Messages.InformationStructureViewpoint_0;
     }
 
     @Override
     public int getIndex() {
-        return INDEX;
+        return INFORMATION_STRUCTURE_VIEWPOINT;
     }
 
     @Override

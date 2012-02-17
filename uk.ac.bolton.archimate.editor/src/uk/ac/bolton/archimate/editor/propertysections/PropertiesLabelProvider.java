@@ -14,8 +14,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.graphics.Image;
 
 import uk.ac.bolton.archimate.editor.ui.ArchimateLabelProvider;
-import uk.ac.bolton.archimate.editor.ui.ArchimateNames;
-import uk.ac.bolton.archimate.editor.ui.LabelProviderExtensionHandler;
 import uk.ac.bolton.archimate.editor.utils.StringUtils;
 import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateConnection;
@@ -55,7 +53,7 @@ public class PropertiesLabelProvider implements ILabelProvider {
 
     public String getText(Object element) {
         if(!(element instanceof IStructuredSelection)) {
-            return "";
+            return ""; //$NON-NLS-1$
         }
         
         element = ((IStructuredSelection)element).getFirstElement();
@@ -76,28 +74,22 @@ public class PropertiesLabelProvider implements ILabelProvider {
             element = ((EditPart)element).getModel();
         }
         
-        // Check our label provider
+        // Check the main label provider
         String text = ArchimateLabelProvider.INSTANCE.getLabel(element);
         if(StringUtils.isSet(text)) {
             return escapeText(text);
         }
         
-        // Check registered label providers
-        text = LabelProviderExtensionHandler.INSTANCE.getLabel(element);
-        if(StringUtils.isSet(text)) {
-            return escapeText(text);
-        }
-
-        return " "; // Ensure the title bar is displayed
+        return " "; // Ensure the title bar is displayed //$NON-NLS-1$
     }
 
     private String getArchimateElementText(IArchimateElement element) {
         String name = escapeText(element.getName());
         
-        String typeName = ArchimateNames.getDefaultName(element.eClass());
+        String typeName = ArchimateLabelProvider.INSTANCE.getDefaultName(element.eClass());
         
         if(name.length() > 0) {
-            return name + " (" + typeName + ")";
+            return name + " (" + typeName + ")"; //$NON-NLS-1$ //$NON-NLS-2$
         }
         
         return typeName;
@@ -106,7 +98,7 @@ public class PropertiesLabelProvider implements ILabelProvider {
     private String escapeText(String text) {
         if(StringUtils.isSet(text)) {
             // Ampersands need to be doubled or they don't show
-            return text.replaceAll("&", "&&");
+            return text.replaceAll("&", "&&");  //$NON-NLS-1$//$NON-NLS-2$
         }
         return text;
     }
