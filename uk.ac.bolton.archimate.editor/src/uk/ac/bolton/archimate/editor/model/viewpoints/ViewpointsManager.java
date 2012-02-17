@@ -16,6 +16,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
 import uk.ac.bolton.archimate.model.IArchimateDiagramModel;
+import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateObject;
 import uk.ac.bolton.archimate.model.IDiagramModelComponent;
 import uk.ac.bolton.archimate.model.IDiagramModelConnection;
@@ -149,10 +150,11 @@ public class ViewpointsManager {
      */
     public boolean isAllowedType(IDiagramModelComponent dmo) {
         if(dmo instanceof IDiagramModelArchimateObject && dmo.getDiagramModel() instanceof IArchimateDiagramModel) {
-        	if (null == ((IDiagramModelArchimateObject)dmo).getArchimateElement()) {
+        	IArchimateElement e = ((IDiagramModelArchimateObject)dmo).getArchimateElement();
+        	if(null == e) {
         		return false;
         	}
-            EClass eClass = ((IDiagramModelArchimateObject)dmo).getArchimateElement().eClass();
+            EClass eClass = e.eClass();
             return isAllowedType((IArchimateDiagramModel)dmo.getDiagramModel(), eClass);
         }
         if(dmo instanceof IDiagramModelConnection) {

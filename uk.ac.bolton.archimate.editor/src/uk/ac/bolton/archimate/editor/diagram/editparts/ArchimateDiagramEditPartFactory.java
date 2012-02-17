@@ -16,6 +16,7 @@ import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.editor.ui.factory.ElementUIFactory;
 import uk.ac.bolton.archimate.editor.ui.factory.IElementUIProvider;
 import uk.ac.bolton.archimate.model.IArchimateDiagramModel;
+import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateObject;
 
@@ -34,21 +35,26 @@ implements EditPartFactory {
 
         EditPart child = null;
         IElementUIProvider provider = null;
+    	EObject e = null;
         
         // Archimate Model Element Parts
         if(model instanceof IDiagramModelArchimateObject) {
-            provider = ElementUIFactory.INSTANCE.getProvider(((IDiagramModelArchimateObject)model).getArchimateElement().eClass());
+        	e = ((IDiagramModelArchimateObject)model).getArchimateElement();
         }
         
         // Archimate Connection Model Element Parts
         else if(model instanceof IDiagramModelArchimateConnection) {
-            provider = ElementUIFactory.INSTANCE.getProvider(((IDiagramModelArchimateConnection)model).getRelationship().eClass());
+        	e = ((IDiagramModelArchimateConnection)model).getRelationship();
         }
         
         // Other
         else if(model instanceof EObject) {
-            provider = ElementUIFactory.INSTANCE.getProvider(((EObject)model).eClass());
+            e = ((EObject)model);            
         }
+        
+		if (null != e) {
+    		provider = ElementUIFactory.INSTANCE.getProvider(e.eClass());
+    	}
         
         // We have a provider
         if(provider != null) {

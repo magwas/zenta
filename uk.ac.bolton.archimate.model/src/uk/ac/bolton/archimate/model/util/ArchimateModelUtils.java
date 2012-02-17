@@ -122,7 +122,7 @@ public class ArchimateModelUtils {
     private static List<IRelationship> __getRelationships(IArchimateElement element, int type) {
         List<IRelationship> relationships = new ArrayList<IRelationship>();
         
-        if(element.getArchimateModel() != null) { // An important guard because the element might have been deleted
+        if(element != null && element.getArchimateModel() != null) { // An important guard because the element might have been deleted
             IFolder folder = element.getArchimateModel().getFolder(FolderType.RELATIONS);
             __getRelationshipsForElement(folder, element, type, relationships);
             
