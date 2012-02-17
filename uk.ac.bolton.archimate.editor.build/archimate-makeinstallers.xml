@@ -18,14 +18,14 @@
 	<target name="init">
 	    
 		<!-- EDIT THESE TWO VALUES FOR A BUILD -->
-	    <property name="jre.sourcedir"          location="D:\dev\jre6"/>
-		<property name="version" 				value="2.1.0"/>
+	    <property name="jre.sourcedir"          location="../../jre6"/>
+		<property name="version" 				value="2.1.0.styledhtml"/>
 		
 		<property name="app.name" 				value="Archi"/>
 		
 		<property name="src.dir"     			location="."/>
 		<property name="help.dir"     			location="../uk.ac.bolton.archimate.help/docs"/>
-	    <property name="output.dir"             location="/${app.name}"/>
+	    <property name="output.dir"             location="../../repo/${app.name}"/>
 	    <property name="folder.name"            value="${app.name}"/>
 	    <property name="tmp.dir"                location="${output.dir}/${folder.name}"/>
 	</target>
