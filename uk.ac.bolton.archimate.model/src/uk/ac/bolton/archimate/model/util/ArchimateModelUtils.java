@@ -123,11 +123,16 @@ public class ArchimateModelUtils {
         List<IRelationship> relationships = new ArrayList<IRelationship>();
         
         if(element.getArchimateModel() != null) { // An important guard because the element might have been deleted
-            IFolder folder = element.getArchimateModel().getFolder(FolderType.RELATIONS);
+        /*    IFolder folder = element.getArchimateModel().getFolder(FolderType.RELATIONS);
             __getRelationshipsForElement(folder, element, type, relationships);
             
             folder = element.getArchimateModel().getFolder(FolderType.DERIVED);
             __getRelationshipsForElement(folder, element, type, relationships);
+            */
+        	for (IFolder  folder : element.getArchimateModel().getFolders()) {
+        		__getRelationshipsForElement(folder, element, type, relationships);
+        	}
+        			
         }
         
         return relationships;
