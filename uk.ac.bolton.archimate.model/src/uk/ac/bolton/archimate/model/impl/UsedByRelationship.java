@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IUsedByRelationship;
  */
 public class UsedByRelationship extends Relationship implements IUsedByRelationship {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected UsedByRelationship() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.USED_BY_RELATIONSHIP;
-    }
+		return IArchimatePackage.Literals.USED_BY_RELATIONSHIP;
+	}
 
 } //UsedByRelationship

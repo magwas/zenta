@@ -31,137 +31,137 @@ import uk.ac.bolton.archimate.model.IBorderObject;
  */
 public abstract class BorderObject extends EObjectImpl implements IBorderObject {
     /**
-     * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getBorderColor()
-     * @generated
-     * @ordered
-     */
+	 * @see #getBorderColor()
+	 * @generated
+	 * @ordered
+	 */
     protected static final String BORDER_COLOR_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getBorderColor()
-     * @generated
-     * @ordered
-     */
+	 * @see #getBorderColor()
+	 * @generated
+	 * @ordered
+	 */
     protected String borderColor = BORDER_COLOR_EDEFAULT;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected BorderObject() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.BORDER_OBJECT;
-    }
+		return IArchimatePackage.Literals.BORDER_OBJECT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getBorderColor() {
-        return borderColor;
-    }
+		return borderColor;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setBorderColor(String newBorderColor) {
-        String oldBorderColor = borderColor;
-        borderColor = newBorderColor;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.BORDER_OBJECT__BORDER_COLOR, oldBorderColor, borderColor));
-    }
+		String oldBorderColor = borderColor;
+		borderColor = newBorderColor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.BORDER_OBJECT__BORDER_COLOR, oldBorderColor, borderColor));
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR:
-                return getBorderColor();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR:
+				return getBorderColor();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR:
-                setBorderColor((String)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR:
+				setBorderColor((String)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR:
-                setBorderColor(BORDER_COLOR_EDEFAULT);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR:
+				setBorderColor(BORDER_COLOR_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR:
-                return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR:
+				return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
+		}
+		return super.eIsSet(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderColor: "); //$NON-NLS-1$
-        result.append(borderColor);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (borderColor: "); //$NON-NLS-1$
+		result.append(borderColor);
+		result.append(')');
+		return result.toString();
+	}
 
 } //BorderObject

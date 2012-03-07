@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IInfrastructureFunction;
  */
 public class InfrastructureFunction extends ArchimateElement implements IInfrastructureFunction {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected InfrastructureFunction() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.INFRASTRUCTURE_FUNCTION;
-    }
+		return IArchimatePackage.Literals.INFRASTRUCTURE_FUNCTION;
+	}
 
 } //InfrastructureFunction

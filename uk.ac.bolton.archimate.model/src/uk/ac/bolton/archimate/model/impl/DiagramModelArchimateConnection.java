@@ -37,23 +37,23 @@ public class DiagramModelArchimateConnection extends DiagramModelConnection impl
     private IRelationship fRelationship;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected DiagramModelArchimateConnection() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_CONNECTION;
-    }
+		return IArchimatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_CONNECTION;
+	}
 
     @Override
     public String getName() {
@@ -156,61 +156,61 @@ public class DiagramModelArchimateConnection extends DiagramModelConnection impl
     }
     
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP:
-                return getRelationship();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP:
+				return getRelationship();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP:
-                setRelationship((IRelationship)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP:
+				setRelationship((IRelationship)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP:
-                setRelationship((IRelationship)null);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP:
+				setRelationship((IRelationship)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP:
-                return getRelationship() != null;
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP:
+				return getRelationship() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //DiagramModelConnection

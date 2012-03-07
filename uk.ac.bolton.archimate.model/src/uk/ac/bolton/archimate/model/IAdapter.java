@@ -20,19 +20,19 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface IAdapter extends EObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
+	 * @model
+	 * @generated
+	 */
     Object getAdapter(Object adapter);
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
+	 * @model
+	 * @generated
+	 */
     void setAdapter(Object adapter, Object object);
 
 } // IAdapter

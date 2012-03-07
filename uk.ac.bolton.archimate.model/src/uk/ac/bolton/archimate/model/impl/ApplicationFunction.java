@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
  */
 public class ApplicationFunction extends ArchimateElement implements IApplicationFunction {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ApplicationFunction() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.APPLICATION_FUNCTION;
-    }
+		return IArchimatePackage.Literals.APPLICATION_FUNCTION;
+	}
 
 } //ApplicationFunction

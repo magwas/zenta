@@ -31,14 +31,14 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
 public class ArchimateResourceFactory extends ResourceFactoryImpl {
     
     /**
-     * Creates an instance of the resource factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the resource factory.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ArchimateResourceFactory() {
-        super();
-    }
+		super();
+	}
     
     /**
      * @return a Resource that allows saving and loading files with any type of file extension

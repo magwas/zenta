@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IRequirement;
  */
 public class Requirement extends MotivationElement implements IRequirement {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Requirement() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.REQUIREMENT;
-    }
+		return IArchimatePackage.Literals.REQUIREMENT;
+	}
 
 } //Requirement

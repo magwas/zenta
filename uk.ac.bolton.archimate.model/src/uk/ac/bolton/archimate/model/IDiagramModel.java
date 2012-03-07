@@ -35,29 +35,29 @@ public interface IDiagramModel extends IArchimateModelElement, IDiagramModelCont
     int CONNECTION_ROUTER_MANHATTAN = 2;
 
     /**
-     * Returns the value of the '<em><b>Connection Router Type</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Connection Router Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Connection Router Type</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Connection Router Type</em>' attribute.
-     * @see #setConnectionRouterType(int)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModel_ConnectionRouterType()
-     * @model
-     * @generated
-     */
+	 * @return the value of the '<em>Connection Router Type</em>' attribute.
+	 * @see #setConnectionRouterType(int)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModel_ConnectionRouterType()
+	 * @model
+	 * @generated
+	 */
     int getConnectionRouterType();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModel#getConnectionRouterType <em>Connection Router Type</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModel#getConnectionRouterType <em>Connection Router Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Connection Router Type</em>' attribute.
-     * @see #getConnectionRouterType()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Connection Router Type</em>' attribute.
+	 * @see #getConnectionRouterType()
+	 * @generated
+	 */
     void setConnectionRouterType(int value);
 
 } // IDiagramModel

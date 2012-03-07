@@ -29,30 +29,30 @@ public interface IInterfaceElement extends IArchimateElement {
     int REQUIRED = 1;
     
     /**
-     * Returns the value of the '<em><b>Interface Type</b></em>' attribute.
-     * The default value is <code>"0"</code>.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Interface Type</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Interface Type</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Interface Type</em>' attribute.
-     * @see #setInterfaceType(int)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getInterfaceElement_InterfaceType()
-     * @model default="0"
-     * @generated
-     */
+	 * @return the value of the '<em>Interface Type</em>' attribute.
+	 * @see #setInterfaceType(int)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getInterfaceElement_InterfaceType()
+	 * @model default="0"
+	 * @generated
+	 */
     int getInterfaceType();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IInterfaceElement#getInterfaceType <em>Interface Type</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IInterfaceElement#getInterfaceType <em>Interface Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Interface Type</em>' attribute.
-     * @see #getInterfaceType()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Interface Type</em>' attribute.
+	 * @see #getInterfaceType()
+	 * @generated
+	 */
     void setInterfaceType(int value);
 
 } // IInterfaceElement

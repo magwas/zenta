@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IImplementationMigrationElement;
  */
 public abstract class ImplementationMigrationElement extends ArchimateElement implements IImplementationMigrationElement {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ImplementationMigrationElement() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.IMPLEMENTATION_MIGRATION_ELEMENT;
-    }
+		return IArchimatePackage.Literals.IMPLEMENTATION_MIGRATION_ELEMENT;
+	}
 
 } //ImplementationMigrationElement

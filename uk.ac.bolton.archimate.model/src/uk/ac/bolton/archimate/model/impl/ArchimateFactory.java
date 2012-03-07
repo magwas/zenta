@@ -99,740 +99,740 @@ import uk.ac.bolton.archimate.model.IWorkPackage;
  */
 public class ArchimateFactory extends EFactoryImpl implements IArchimateFactory {
     /**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static IArchimateFactory init() {
-        try {
-            IArchimateFactory theArchimateFactory = (IArchimateFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.bolton.ac.uk/archimate"); //$NON-NLS-1$ 
-            if (theArchimateFactory != null) {
-                return theArchimateFactory;
-            }
-        }
-        catch (Exception exception) {
-            EcorePlugin.INSTANCE.log(exception);
-        }
-        return new ArchimateFactory();
-    }
+		try {
+			IArchimateFactory theArchimateFactory = (IArchimateFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.bolton.ac.uk/archimate"); //$NON-NLS-1$ 
+			if (theArchimateFactory != null) {
+				return theArchimateFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ArchimateFactory();
+	}
 
     /**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ArchimateFactory() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public EObject create(EClass eClass) {
-        switch (eClass.getClassifierID()) {
-            case IArchimatePackage.PROPERTY: return createProperty();
-            case IArchimatePackage.ARCHIMATE_MODEL: return createArchimateModel();
-            case IArchimatePackage.FOLDER: return createFolder();
-            case IArchimatePackage.JUNCTION: return createJunction();
-            case IArchimatePackage.AND_JUNCTION: return createAndJunction();
-            case IArchimatePackage.OR_JUNCTION: return createOrJunction();
-            case IArchimatePackage.ACCESS_RELATIONSHIP: return createAccessRelationship();
-            case IArchimatePackage.AGGREGATION_RELATIONSHIP: return createAggregationRelationship();
-            case IArchimatePackage.ASSIGNMENT_RELATIONSHIP: return createAssignmentRelationship();
-            case IArchimatePackage.ASSOCIATION_RELATIONSHIP: return createAssociationRelationship();
-            case IArchimatePackage.COMPOSITION_RELATIONSHIP: return createCompositionRelationship();
-            case IArchimatePackage.FLOW_RELATIONSHIP: return createFlowRelationship();
-            case IArchimatePackage.REALISATION_RELATIONSHIP: return createRealisationRelationship();
-            case IArchimatePackage.SPECIALISATION_RELATIONSHIP: return createSpecialisationRelationship();
-            case IArchimatePackage.TRIGGERING_RELATIONSHIP: return createTriggeringRelationship();
-            case IArchimatePackage.USED_BY_RELATIONSHIP: return createUsedByRelationship();
-            case IArchimatePackage.INFLUENCE_RELATIONSHIP: return createInfluenceRelationship();
-            case IArchimatePackage.BUSINESS_ACTIVITY: return createBusinessActivity();
-            case IArchimatePackage.BUSINESS_ACTOR: return createBusinessActor();
-            case IArchimatePackage.BUSINESS_COLLABORATION: return createBusinessCollaboration();
-            case IArchimatePackage.CONTRACT: return createContract();
-            case IArchimatePackage.BUSINESS_EVENT: return createBusinessEvent();
-            case IArchimatePackage.BUSINESS_FUNCTION: return createBusinessFunction();
-            case IArchimatePackage.BUSINESS_INTERACTION: return createBusinessInteraction();
-            case IArchimatePackage.BUSINESS_INTERFACE: return createBusinessInterface();
-            case IArchimatePackage.MEANING: return createMeaning();
-            case IArchimatePackage.BUSINESS_OBJECT: return createBusinessObject();
-            case IArchimatePackage.BUSINESS_PROCESS: return createBusinessProcess();
-            case IArchimatePackage.PRODUCT: return createProduct();
-            case IArchimatePackage.REPRESENTATION: return createRepresentation();
-            case IArchimatePackage.BUSINESS_ROLE: return createBusinessRole();
-            case IArchimatePackage.BUSINESS_SERVICE: return createBusinessService();
-            case IArchimatePackage.VALUE: return createValue();
-            case IArchimatePackage.LOCATION: return createLocation();
-            case IArchimatePackage.APPLICATION_COLLABORATION: return createApplicationCollaboration();
-            case IArchimatePackage.APPLICATION_COMPONENT: return createApplicationComponent();
-            case IArchimatePackage.APPLICATION_FUNCTION: return createApplicationFunction();
-            case IArchimatePackage.APPLICATION_INTERACTION: return createApplicationInteraction();
-            case IArchimatePackage.APPLICATION_INTERFACE: return createApplicationInterface();
-            case IArchimatePackage.DATA_OBJECT: return createDataObject();
-            case IArchimatePackage.APPLICATION_SERVICE: return createApplicationService();
-            case IArchimatePackage.ARTIFACT: return createArtifact();
-            case IArchimatePackage.COMMUNICATION_PATH: return createCommunicationPath();
-            case IArchimatePackage.NETWORK: return createNetwork();
-            case IArchimatePackage.INFRASTRUCTURE_INTERFACE: return createInfrastructureInterface();
-            case IArchimatePackage.INFRASTRUCTURE_SERVICE: return createInfrastructureService();
-            case IArchimatePackage.INFRASTRUCTURE_FUNCTION: return createInfrastructureFunction();
-            case IArchimatePackage.NODE: return createNode();
-            case IArchimatePackage.SYSTEM_SOFTWARE: return createSystemSoftware();
-            case IArchimatePackage.DEVICE: return createDevice();
-            case IArchimatePackage.STAKEHOLDER: return createStakeholder();
-            case IArchimatePackage.DRIVER: return createDriver();
-            case IArchimatePackage.ASSESSMENT: return createAssessment();
-            case IArchimatePackage.GOAL: return createGoal();
-            case IArchimatePackage.REQUIREMENT: return createRequirement();
-            case IArchimatePackage.CONSTRAINT: return createConstraint();
-            case IArchimatePackage.PRINCIPLE: return createPrinciple();
-            case IArchimatePackage.WORK_PACKAGE: return createWorkPackage();
-            case IArchimatePackage.DELIVERABLE: return createDeliverable();
-            case IArchimatePackage.PLATEAU: return createPlateau();
-            case IArchimatePackage.GAP: return createGap();
-            case IArchimatePackage.DIAGRAM_MODEL_REFERENCE: return createDiagramModelReference();
-            case IArchimatePackage.DIAGRAM_MODEL_GROUP: return createDiagramModelGroup();
-            case IArchimatePackage.DIAGRAM_MODEL_NOTE: return createDiagramModelNote();
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE: return createDiagramModelImage();
-            case IArchimatePackage.DIAGRAM_MODEL_CONNECTION: return createDiagramModelConnection();
-            case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT: return createDiagramModelBendpoint();
-            case IArchimatePackage.BOUNDS: return createBounds();
-            case IArchimatePackage.ARCHIMATE_DIAGRAM_MODEL: return createArchimateDiagramModel();
-            case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_OBJECT: return createDiagramModelArchimateObject();
-            case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION: return createDiagramModelArchimateConnection();
-            case IArchimatePackage.SKETCH_MODEL: return createSketchModel();
-            case IArchimatePackage.SKETCH_MODEL_STICKY: return createSketchModelSticky();
-            case IArchimatePackage.SKETCH_MODEL_ACTOR: return createSketchModelActor();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-    }
+		switch (eClass.getClassifierID()) {
+			case IArchimatePackage.PROPERTY: return createProperty();
+			case IArchimatePackage.ARCHIMATE_MODEL: return createArchimateModel();
+			case IArchimatePackage.FOLDER: return createFolder();
+			case IArchimatePackage.JUNCTION: return createJunction();
+			case IArchimatePackage.AND_JUNCTION: return createAndJunction();
+			case IArchimatePackage.OR_JUNCTION: return createOrJunction();
+			case IArchimatePackage.ACCESS_RELATIONSHIP: return createAccessRelationship();
+			case IArchimatePackage.AGGREGATION_RELATIONSHIP: return createAggregationRelationship();
+			case IArchimatePackage.ASSIGNMENT_RELATIONSHIP: return createAssignmentRelationship();
+			case IArchimatePackage.ASSOCIATION_RELATIONSHIP: return createAssociationRelationship();
+			case IArchimatePackage.COMPOSITION_RELATIONSHIP: return createCompositionRelationship();
+			case IArchimatePackage.FLOW_RELATIONSHIP: return createFlowRelationship();
+			case IArchimatePackage.REALISATION_RELATIONSHIP: return createRealisationRelationship();
+			case IArchimatePackage.SPECIALISATION_RELATIONSHIP: return createSpecialisationRelationship();
+			case IArchimatePackage.TRIGGERING_RELATIONSHIP: return createTriggeringRelationship();
+			case IArchimatePackage.USED_BY_RELATIONSHIP: return createUsedByRelationship();
+			case IArchimatePackage.INFLUENCE_RELATIONSHIP: return createInfluenceRelationship();
+			case IArchimatePackage.BUSINESS_ACTIVITY: return createBusinessActivity();
+			case IArchimatePackage.BUSINESS_ACTOR: return createBusinessActor();
+			case IArchimatePackage.BUSINESS_COLLABORATION: return createBusinessCollaboration();
+			case IArchimatePackage.CONTRACT: return createContract();
+			case IArchimatePackage.BUSINESS_EVENT: return createBusinessEvent();
+			case IArchimatePackage.BUSINESS_FUNCTION: return createBusinessFunction();
+			case IArchimatePackage.BUSINESS_INTERACTION: return createBusinessInteraction();
+			case IArchimatePackage.BUSINESS_INTERFACE: return createBusinessInterface();
+			case IArchimatePackage.MEANING: return createMeaning();
+			case IArchimatePackage.BUSINESS_OBJECT: return createBusinessObject();
+			case IArchimatePackage.BUSINESS_PROCESS: return createBusinessProcess();
+			case IArchimatePackage.PRODUCT: return createProduct();
+			case IArchimatePackage.REPRESENTATION: return createRepresentation();
+			case IArchimatePackage.BUSINESS_ROLE: return createBusinessRole();
+			case IArchimatePackage.BUSINESS_SERVICE: return createBusinessService();
+			case IArchimatePackage.VALUE: return createValue();
+			case IArchimatePackage.LOCATION: return createLocation();
+			case IArchimatePackage.APPLICATION_COLLABORATION: return createApplicationCollaboration();
+			case IArchimatePackage.APPLICATION_COMPONENT: return createApplicationComponent();
+			case IArchimatePackage.APPLICATION_FUNCTION: return createApplicationFunction();
+			case IArchimatePackage.APPLICATION_INTERACTION: return createApplicationInteraction();
+			case IArchimatePackage.APPLICATION_INTERFACE: return createApplicationInterface();
+			case IArchimatePackage.DATA_OBJECT: return createDataObject();
+			case IArchimatePackage.APPLICATION_SERVICE: return createApplicationService();
+			case IArchimatePackage.ARTIFACT: return createArtifact();
+			case IArchimatePackage.COMMUNICATION_PATH: return createCommunicationPath();
+			case IArchimatePackage.NETWORK: return createNetwork();
+			case IArchimatePackage.INFRASTRUCTURE_INTERFACE: return createInfrastructureInterface();
+			case IArchimatePackage.INFRASTRUCTURE_SERVICE: return createInfrastructureService();
+			case IArchimatePackage.INFRASTRUCTURE_FUNCTION: return createInfrastructureFunction();
+			case IArchimatePackage.NODE: return createNode();
+			case IArchimatePackage.SYSTEM_SOFTWARE: return createSystemSoftware();
+			case IArchimatePackage.DEVICE: return createDevice();
+			case IArchimatePackage.STAKEHOLDER: return createStakeholder();
+			case IArchimatePackage.DRIVER: return createDriver();
+			case IArchimatePackage.ASSESSMENT: return createAssessment();
+			case IArchimatePackage.GOAL: return createGoal();
+			case IArchimatePackage.REQUIREMENT: return createRequirement();
+			case IArchimatePackage.CONSTRAINT: return createConstraint();
+			case IArchimatePackage.PRINCIPLE: return createPrinciple();
+			case IArchimatePackage.WORK_PACKAGE: return createWorkPackage();
+			case IArchimatePackage.DELIVERABLE: return createDeliverable();
+			case IArchimatePackage.PLATEAU: return createPlateau();
+			case IArchimatePackage.GAP: return createGap();
+			case IArchimatePackage.DIAGRAM_MODEL_REFERENCE: return createDiagramModelReference();
+			case IArchimatePackage.DIAGRAM_MODEL_GROUP: return createDiagramModelGroup();
+			case IArchimatePackage.DIAGRAM_MODEL_NOTE: return createDiagramModelNote();
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE: return createDiagramModelImage();
+			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION: return createDiagramModelConnection();
+			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT: return createDiagramModelBendpoint();
+			case IArchimatePackage.BOUNDS: return createBounds();
+			case IArchimatePackage.ARCHIMATE_DIAGRAM_MODEL: return createArchimateDiagramModel();
+			case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_OBJECT: return createDiagramModelArchimateObject();
+			case IArchimatePackage.DIAGRAM_MODEL_ARCHIMATE_CONNECTION: return createDiagramModelArchimateConnection();
+			case IArchimatePackage.SKETCH_MODEL: return createSketchModel();
+			case IArchimatePackage.SKETCH_MODEL_STICKY: return createSketchModelSticky();
+			case IArchimatePackage.SKETCH_MODEL_ACTOR: return createSketchModelActor();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
-        switch (eDataType.getClassifierID()) {
-            case IArchimatePackage.FOLDER_TYPE:
-                return createFolderTypeFromString(eDataType, initialValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-    }
+		switch (eDataType.getClassifierID()) {
+			case IArchimatePackage.FOLDER_TYPE:
+				return createFolderTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
-        switch (eDataType.getClassifierID()) {
-            case IArchimatePackage.FOLDER_TYPE:
-                return convertFolderTypeToString(eDataType, instanceValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
-    }
+		switch (eDataType.getClassifierID()) {
+			case IArchimatePackage.FOLDER_TYPE:
+				return convertFolderTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IProperty createProperty() {
-        Property property = new Property();
-        return property;
-    }
+		Property property = new Property();
+		return property;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IArchimateModel createArchimateModel() {
-        ArchimateModel archimateModel = new ArchimateModel();
-        return archimateModel;
-    }
+		ArchimateModel archimateModel = new ArchimateModel();
+		return archimateModel;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IFolder createFolder() {
-        Folder folder = new Folder();
-        return folder;
-    }
+		Folder folder = new Folder();
+		return folder;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessActivity createBusinessActivity() {
-        BusinessActivity businessActivity = new BusinessActivity();
-        return businessActivity;
-    }
+		BusinessActivity businessActivity = new BusinessActivity();
+		return businessActivity;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessActor createBusinessActor() {
-        BusinessActor businessActor = new BusinessActor();
-        return businessActor;
-    }
+		BusinessActor businessActor = new BusinessActor();
+		return businessActor;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessCollaboration createBusinessCollaboration() {
-        BusinessCollaboration businessCollaboration = new BusinessCollaboration();
-        return businessCollaboration;
-    }
+		BusinessCollaboration businessCollaboration = new BusinessCollaboration();
+		return businessCollaboration;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IContract createContract() {
-        Contract contract = new Contract();
-        return contract;
-    }
+		Contract contract = new Contract();
+		return contract;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessEvent createBusinessEvent() {
-        BusinessEvent businessEvent = new BusinessEvent();
-        return businessEvent;
-    }
+		BusinessEvent businessEvent = new BusinessEvent();
+		return businessEvent;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessFunction createBusinessFunction() {
-        BusinessFunction businessFunction = new BusinessFunction();
-        return businessFunction;
-    }
+		BusinessFunction businessFunction = new BusinessFunction();
+		return businessFunction;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessInteraction createBusinessInteraction() {
-        BusinessInteraction businessInteraction = new BusinessInteraction();
-        return businessInteraction;
-    }
+		BusinessInteraction businessInteraction = new BusinessInteraction();
+		return businessInteraction;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessInterface createBusinessInterface() {
-        BusinessInterface businessInterface = new BusinessInterface();
-        return businessInterface;
-    }
+		BusinessInterface businessInterface = new BusinessInterface();
+		return businessInterface;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IMeaning createMeaning() {
-        Meaning meaning = new Meaning();
-        return meaning;
-    }
+		Meaning meaning = new Meaning();
+		return meaning;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessObject createBusinessObject() {
-        BusinessObject businessObject = new BusinessObject();
-        return businessObject;
-    }
+		BusinessObject businessObject = new BusinessObject();
+		return businessObject;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessProcess createBusinessProcess() {
-        BusinessProcess businessProcess = new BusinessProcess();
-        return businessProcess;
-    }
+		BusinessProcess businessProcess = new BusinessProcess();
+		return businessProcess;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IProduct createProduct() {
-        Product product = new Product();
-        return product;
-    }
+		Product product = new Product();
+		return product;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IRepresentation createRepresentation() {
-        Representation representation = new Representation();
-        return representation;
-    }
+		Representation representation = new Representation();
+		return representation;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessRole createBusinessRole() {
-        BusinessRole businessRole = new BusinessRole();
-        return businessRole;
-    }
+		BusinessRole businessRole = new BusinessRole();
+		return businessRole;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBusinessService createBusinessService() {
-        BusinessService businessService = new BusinessService();
-        return businessService;
-    }
+		BusinessService businessService = new BusinessService();
+		return businessService;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IValue createValue() {
-        Value value = new Value();
-        return value;
-    }
+		Value value = new Value();
+		return value;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ILocation createLocation() {
-        Location location = new Location();
-        return location;
-    }
+		Location location = new Location();
+		return location;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IApplicationComponent createApplicationComponent() {
-        ApplicationComponent applicationComponent = new ApplicationComponent();
-        return applicationComponent;
-    }
+		ApplicationComponent applicationComponent = new ApplicationComponent();
+		return applicationComponent;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IApplicationFunction createApplicationFunction() {
-        ApplicationFunction applicationFunction = new ApplicationFunction();
-        return applicationFunction;
-    }
+		ApplicationFunction applicationFunction = new ApplicationFunction();
+		return applicationFunction;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IApplicationInteraction createApplicationInteraction() {
-        ApplicationInteraction applicationInteraction = new ApplicationInteraction();
-        return applicationInteraction;
-    }
+		ApplicationInteraction applicationInteraction = new ApplicationInteraction();
+		return applicationInteraction;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IApplicationInterface createApplicationInterface() {
-        ApplicationInterface applicationInterface = new ApplicationInterface();
-        return applicationInterface;
-    }
+		ApplicationInterface applicationInterface = new ApplicationInterface();
+		return applicationInterface;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDataObject createDataObject() {
-        DataObject dataObject = new DataObject();
-        return dataObject;
-    }
+		DataObject dataObject = new DataObject();
+		return dataObject;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IApplicationService createApplicationService() {
-        ApplicationService applicationService = new ApplicationService();
-        return applicationService;
-    }
+		ApplicationService applicationService = new ApplicationService();
+		return applicationService;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IArtifact createArtifact() {
-        Artifact artifact = new Artifact();
-        return artifact;
-    }
+		Artifact artifact = new Artifact();
+		return artifact;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ICommunicationPath createCommunicationPath() {
-        CommunicationPath communicationPath = new CommunicationPath();
-        return communicationPath;
-    }
+		CommunicationPath communicationPath = new CommunicationPath();
+		return communicationPath;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public INetwork createNetwork() {
-        Network network = new Network();
-        return network;
-    }
+		Network network = new Network();
+		return network;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IInfrastructureInterface createInfrastructureInterface() {
-        InfrastructureInterface infrastructureInterface = new InfrastructureInterface();
-        return infrastructureInterface;
-    }
+		InfrastructureInterface infrastructureInterface = new InfrastructureInterface();
+		return infrastructureInterface;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IInfrastructureService createInfrastructureService() {
-        InfrastructureService infrastructureService = new InfrastructureService();
-        return infrastructureService;
-    }
+		InfrastructureService infrastructureService = new InfrastructureService();
+		return infrastructureService;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IInfrastructureFunction createInfrastructureFunction() {
-        InfrastructureFunction infrastructureFunction = new InfrastructureFunction();
-        return infrastructureFunction;
-    }
+		InfrastructureFunction infrastructureFunction = new InfrastructureFunction();
+		return infrastructureFunction;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public INode createNode() {
-        Node node = new Node();
-        return node;
-    }
+		Node node = new Node();
+		return node;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ISystemSoftware createSystemSoftware() {
-        SystemSoftware systemSoftware = new SystemSoftware();
-        return systemSoftware;
-    }
+		SystemSoftware systemSoftware = new SystemSoftware();
+		return systemSoftware;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDevice createDevice() {
-        Device device = new Device();
-        return device;
-    }
+		Device device = new Device();
+		return device;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IStakeholder createStakeholder() {
-        Stakeholder stakeholder = new Stakeholder();
-        return stakeholder;
-    }
+		Stakeholder stakeholder = new Stakeholder();
+		return stakeholder;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDriver createDriver() {
-        Driver driver = new Driver();
-        return driver;
-    }
+		Driver driver = new Driver();
+		return driver;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IAssessment createAssessment() {
-        Assessment assessment = new Assessment();
-        return assessment;
-    }
+		Assessment assessment = new Assessment();
+		return assessment;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IGoal createGoal() {
-        Goal goal = new Goal();
-        return goal;
-    }
+		Goal goal = new Goal();
+		return goal;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IRequirement createRequirement() {
-        Requirement requirement = new Requirement();
-        return requirement;
-    }
+		Requirement requirement = new Requirement();
+		return requirement;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IConstraint createConstraint() {
-        Constraint constraint = new Constraint();
-        return constraint;
-    }
+		Constraint constraint = new Constraint();
+		return constraint;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IPrinciple createPrinciple() {
-        Principle principle = new Principle();
-        return principle;
-    }
+		Principle principle = new Principle();
+		return principle;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IWorkPackage createWorkPackage() {
-        WorkPackage workPackage = new WorkPackage();
-        return workPackage;
-    }
+		WorkPackage workPackage = new WorkPackage();
+		return workPackage;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDeliverable createDeliverable() {
-        Deliverable deliverable = new Deliverable();
-        return deliverable;
-    }
+		Deliverable deliverable = new Deliverable();
+		return deliverable;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IPlateau createPlateau() {
-        Plateau plateau = new Plateau();
-        return plateau;
-    }
+		Plateau plateau = new Plateau();
+		return plateau;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IGap createGap() {
-        Gap gap = new Gap();
-        return gap;
-    }
+		Gap gap = new Gap();
+		return gap;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IArchimateDiagramModel createArchimateDiagramModel() {
-        ArchimateDiagramModel archimateDiagramModel = new ArchimateDiagramModel();
-        return archimateDiagramModel;
-    }
+		ArchimateDiagramModel archimateDiagramModel = new ArchimateDiagramModel();
+		return archimateDiagramModel;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDiagramModelReference createDiagramModelReference() {
-        DiagramModelReference diagramModelReference = new DiagramModelReference();
-        return diagramModelReference;
-    }
+		DiagramModelReference diagramModelReference = new DiagramModelReference();
+		return diagramModelReference;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDiagramModelArchimateObject createDiagramModelArchimateObject() {
-        DiagramModelArchimateObject diagramModelArchimateObject = new DiagramModelArchimateObject();
-        return diagramModelArchimateObject;
-    }
+		DiagramModelArchimateObject diagramModelArchimateObject = new DiagramModelArchimateObject();
+		return diagramModelArchimateObject;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDiagramModelGroup createDiagramModelGroup() {
-        DiagramModelGroup diagramModelGroup = new DiagramModelGroup();
-        return diagramModelGroup;
-    }
+		DiagramModelGroup diagramModelGroup = new DiagramModelGroup();
+		return diagramModelGroup;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDiagramModelNote createDiagramModelNote() {
-        DiagramModelNote diagramModelNote = new DiagramModelNote();
-        return diagramModelNote;
-    }
+		DiagramModelNote diagramModelNote = new DiagramModelNote();
+		return diagramModelNote;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDiagramModelImage createDiagramModelImage() {
-        DiagramModelImage diagramModelImage = new DiagramModelImage();
-        return diagramModelImage;
-    }
+		DiagramModelImage diagramModelImage = new DiagramModelImage();
+		return diagramModelImage;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDiagramModelConnection createDiagramModelConnection() {
-        DiagramModelConnection diagramModelConnection = new DiagramModelConnection();
-        return diagramModelConnection;
-    }
+		DiagramModelConnection diagramModelConnection = new DiagramModelConnection();
+		return diagramModelConnection;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDiagramModelArchimateConnection createDiagramModelArchimateConnection() {
-        DiagramModelArchimateConnection diagramModelArchimateConnection = new DiagramModelArchimateConnection();
-        return diagramModelArchimateConnection;
-    }
+		DiagramModelArchimateConnection diagramModelArchimateConnection = new DiagramModelArchimateConnection();
+		return diagramModelArchimateConnection;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IDiagramModelBendpoint createDiagramModelBendpoint() {
-        DiagramModelBendpoint diagramModelBendpoint = new DiagramModelBendpoint();
-        return diagramModelBendpoint;
-    }
+		DiagramModelBendpoint diagramModelBendpoint = new DiagramModelBendpoint();
+		return diagramModelBendpoint;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IBounds createBounds() {
-        Bounds bounds = new Bounds();
-        return bounds;
-    }
+		Bounds bounds = new Bounds();
+		return bounds;
+	}
     
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ISketchModel createSketchModel() {
-        SketchModel sketchModel = new SketchModel();
-        return sketchModel;
-    }
+		SketchModel sketchModel = new SketchModel();
+		return sketchModel;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ISketchModelSticky createSketchModelSticky() {
-        SketchModelSticky sketchModelSticky = new SketchModelSticky();
-        return sketchModelSticky;
-    }
+		SketchModelSticky sketchModelSticky = new SketchModelSticky();
+		return sketchModelSticky;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ISketchModelActor createSketchModelActor() {
-        SketchModelActor sketchModelActor = new SketchModelActor();
-        return sketchModelActor;
-    }
+		SketchModelActor sketchModelActor = new SketchModelActor();
+		return sketchModelActor;
+	}
 
     public IBounds createBounds(int x, int y, int width, int height) {
         Bounds bounds = new Bounds();
@@ -844,193 +844,193 @@ public class ArchimateFactory extends EFactoryImpl implements IArchimateFactory 
     }
     
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public FolderType createFolderTypeFromString(EDataType eDataType, String initialValue) {
-        FolderType result = FolderType.get(initialValue);
-        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        return result;
-    }
+		FolderType result = FolderType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertFolderTypeToString(EDataType eDataType, Object instanceValue) {
-        return instanceValue == null ? null : instanceValue.toString();
-    }
+		return instanceValue == null ? null : instanceValue.toString();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IApplicationCollaboration createApplicationCollaboration() {
-        ApplicationCollaboration applicationCollaboration = new ApplicationCollaboration();
-        return applicationCollaboration;
-    }
+		ApplicationCollaboration applicationCollaboration = new ApplicationCollaboration();
+		return applicationCollaboration;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IJunction createJunction() {
-        Junction junction = new Junction();
-        return junction;
-    }
+		Junction junction = new Junction();
+		return junction;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IAndJunction createAndJunction() {
-        AndJunction andJunction = new AndJunction();
-        return andJunction;
-    }
+		AndJunction andJunction = new AndJunction();
+		return andJunction;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IOrJunction createOrJunction() {
-        OrJunction orJunction = new OrJunction();
-        return orJunction;
-    }
+		OrJunction orJunction = new OrJunction();
+		return orJunction;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IAccessRelationship createAccessRelationship() {
-        AccessRelationship accessRelationship = new AccessRelationship();
-        return accessRelationship;
-    }
+		AccessRelationship accessRelationship = new AccessRelationship();
+		return accessRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IAggregationRelationship createAggregationRelationship() {
-        AggregationRelationship aggregationRelationship = new AggregationRelationship();
-        return aggregationRelationship;
-    }
+		AggregationRelationship aggregationRelationship = new AggregationRelationship();
+		return aggregationRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IAssignmentRelationship createAssignmentRelationship() {
-        AssignmentRelationship assignmentRelationship = new AssignmentRelationship();
-        return assignmentRelationship;
-    }
+		AssignmentRelationship assignmentRelationship = new AssignmentRelationship();
+		return assignmentRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IAssociationRelationship createAssociationRelationship() {
-        AssociationRelationship associationRelationship = new AssociationRelationship();
-        return associationRelationship;
-    }
+		AssociationRelationship associationRelationship = new AssociationRelationship();
+		return associationRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ICompositionRelationship createCompositionRelationship() {
-        CompositionRelationship compositionRelationship = new CompositionRelationship();
-        return compositionRelationship;
-    }
+		CompositionRelationship compositionRelationship = new CompositionRelationship();
+		return compositionRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IFlowRelationship createFlowRelationship() {
-        FlowRelationship flowRelationship = new FlowRelationship();
-        return flowRelationship;
-    }
+		FlowRelationship flowRelationship = new FlowRelationship();
+		return flowRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IRealisationRelationship createRealisationRelationship() {
-        RealisationRelationship realisationRelationship = new RealisationRelationship();
-        return realisationRelationship;
-    }
+		RealisationRelationship realisationRelationship = new RealisationRelationship();
+		return realisationRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ISpecialisationRelationship createSpecialisationRelationship() {
-        SpecialisationRelationship specialisationRelationship = new SpecialisationRelationship();
-        return specialisationRelationship;
-    }
+		SpecialisationRelationship specialisationRelationship = new SpecialisationRelationship();
+		return specialisationRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ITriggeringRelationship createTriggeringRelationship() {
-        TriggeringRelationship triggeringRelationship = new TriggeringRelationship();
-        return triggeringRelationship;
-    }
+		TriggeringRelationship triggeringRelationship = new TriggeringRelationship();
+		return triggeringRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IUsedByRelationship createUsedByRelationship() {
-        UsedByRelationship usedByRelationship = new UsedByRelationship();
-        return usedByRelationship;
-    }
+		UsedByRelationship usedByRelationship = new UsedByRelationship();
+		return usedByRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IInfluenceRelationship createInfluenceRelationship() {
-        InfluenceRelationship influenceRelationship = new InfluenceRelationship();
-        return influenceRelationship;
-    }
+		InfluenceRelationship influenceRelationship = new InfluenceRelationship();
+		return influenceRelationship;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public IArchimatePackage getArchimatePackage() {
-        return (IArchimatePackage)getEPackage();
-    }
+		return (IArchimatePackage)getEPackage();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @deprecated
-     * @generated
-     */
+	 * @deprecated
+	 * @generated
+	 */
     @Deprecated
     public static IArchimatePackage getPackage() {
-        return IArchimatePackage.eINSTANCE;
-    }
+		return IArchimatePackage.eINSTANCE;
+	}
 
 } //ArchimateFactory

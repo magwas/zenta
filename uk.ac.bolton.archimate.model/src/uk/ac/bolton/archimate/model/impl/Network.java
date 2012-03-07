@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.INetwork;
  */
 public class Network extends ArchimateElement implements INetwork {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Network() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.NETWORK;
-    }
+		return IArchimatePackage.Literals.NETWORK;
+	}
 
 } //Network

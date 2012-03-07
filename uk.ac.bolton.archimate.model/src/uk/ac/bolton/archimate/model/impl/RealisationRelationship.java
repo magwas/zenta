@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IRealisationRelationship;
  */
 public class RealisationRelationship extends Relationship implements IRealisationRelationship {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected RealisationRelationship() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.REALISATION_RELATIONSHIP;
-    }
+		return IArchimatePackage.Literals.REALISATION_RELATIONSHIP;
+	}
 
 } //RealisationRelationship

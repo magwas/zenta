@@ -23,22 +23,22 @@ import uk.ac.bolton.archimate.model.IContract;
  */
 public class Contract extends ArchimateElement implements IContract {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Contract() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.CONTRACT;
-    }
+		return IArchimatePackage.Literals.CONTRACT;
+	}
 
 } //Contract

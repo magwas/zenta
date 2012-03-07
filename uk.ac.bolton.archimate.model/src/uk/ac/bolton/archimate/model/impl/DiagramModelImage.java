@@ -33,234 +33,234 @@ import uk.ac.bolton.archimate.model.IDiagramModelImageProvider;
  */
 public class DiagramModelImage extends DiagramModelObject implements IDiagramModelImage {
     /**
-     * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getBorderColor()
-     * @generated
-     * @ordered
-     */
+	 * @see #getBorderColor()
+	 * @generated
+	 * @ordered
+	 */
     protected static final String BORDER_COLOR_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getBorderColor()
-     * @generated
-     * @ordered
-     */
+	 * @see #getBorderColor()
+	 * @generated
+	 * @ordered
+	 */
     protected String borderColor = BORDER_COLOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getImagePath()
-     * @generated
-     * @ordered
-     */
+	 * @see #getImagePath()
+	 * @generated
+	 * @ordered
+	 */
     protected static final String IMAGE_PATH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getImagePath()
-     * @generated
-     * @ordered
-     */
+	 * @see #getImagePath()
+	 * @generated
+	 * @ordered
+	 */
     protected String imagePath = IMAGE_PATH_EDEFAULT;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected DiagramModelImage() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.DIAGRAM_MODEL_IMAGE;
-    }
+		return IArchimatePackage.Literals.DIAGRAM_MODEL_IMAGE;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getBorderColor() {
-        return borderColor;
-    }
+		return borderColor;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setBorderColor(String newBorderColor) {
-        String oldBorderColor = borderColor;
-        borderColor = newBorderColor;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR, oldBorderColor, borderColor));
-    }
+		String oldBorderColor = borderColor;
+		borderColor = newBorderColor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR, oldBorderColor, borderColor));
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getImagePath() {
-        return imagePath;
-    }
+		return imagePath;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setImagePath(String newImagePath) {
-        String oldImagePath = imagePath;
-        imagePath = newImagePath;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH, oldImagePath, imagePath));
-    }
+		String oldImagePath = imagePath;
+		imagePath = newImagePath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH, oldImagePath, imagePath));
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
-                return getBorderColor();
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
-                return getImagePath();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
+				return getBorderColor();
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
+				return getImagePath();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
-                setBorderColor((String)newValue);
-                return;
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
-                setImagePath((String)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
+				setBorderColor((String)newValue);
+				return;
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
+				setImagePath((String)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
-                setBorderColor(BORDER_COLOR_EDEFAULT);
-                return;
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
-                setImagePath(IMAGE_PATH_EDEFAULT);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
+				setBorderColor(BORDER_COLOR_EDEFAULT);
+				return;
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
+				setImagePath(IMAGE_PATH_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
-                return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
-            case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
-                return IMAGE_PATH_EDEFAULT == null ? imagePath != null : !IMAGE_PATH_EDEFAULT.equals(imagePath);
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
+				return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
+			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
+				return IMAGE_PATH_EDEFAULT == null ? imagePath != null : !IMAGE_PATH_EDEFAULT.equals(imagePath);
+		}
+		return super.eIsSet(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == IBorderObject.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR: return IArchimatePackage.BORDER_OBJECT__BORDER_COLOR;
-                default: return -1;
-            }
-        }
-        if (baseClass == IDiagramModelImageProvider.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH: return IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH;
-                default: return -1;
-            }
-        }
-        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-    }
+		if (baseClass == IBorderObject.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR: return IArchimatePackage.BORDER_OBJECT__BORDER_COLOR;
+				default: return -1;
+			}
+		}
+		if (baseClass == IDiagramModelImageProvider.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH: return IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == IBorderObject.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR: return IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR;
-                default: return -1;
-            }
-        }
-        if (baseClass == IDiagramModelImageProvider.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH: return IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH;
-                default: return -1;
-            }
-        }
-        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-    }
+		if (baseClass == IBorderObject.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR: return IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR;
+				default: return -1;
+			}
+		}
+		if (baseClass == IDiagramModelImageProvider.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH: return IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderColor: "); //$NON-NLS-1$
-        result.append(borderColor);
-        result.append(", imagePath: "); //$NON-NLS-1$
-        result.append(imagePath);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (borderColor: "); //$NON-NLS-1$
+		result.append(borderColor);
+		result.append(", imagePath: "); //$NON-NLS-1$
+		result.append(imagePath);
+		result.append(')');
+		return result.toString();
+	}
 
 } //DiagramModelImage

@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IDriver;
  */
 public class Driver extends MotivationElement implements IDriver {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Driver() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.DRIVER;
-    }
+		return IArchimatePackage.Literals.DRIVER;
+	}
 
 } //Driver

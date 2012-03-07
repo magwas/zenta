@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IDeliverable;
  */
 public class Deliverable extends ImplementationMigrationElement implements IDeliverable {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Deliverable() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.DELIVERABLE;
-    }
+		return IArchimatePackage.Literals.DELIVERABLE;
+	}
 
 } //Deliverable

@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IJunction;
  */
 public class Junction extends ArchimateElement implements IJunction {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Junction() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.JUNCTION;
-    }
+		return IArchimatePackage.Literals.JUNCTION;
+	}
 
 } //Junction

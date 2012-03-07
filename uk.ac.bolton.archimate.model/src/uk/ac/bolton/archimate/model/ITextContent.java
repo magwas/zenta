@@ -26,31 +26,31 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ITextContent extends EObject {
     /**
-     * Returns the value of the '<em><b>Content</b></em>' attribute.
-     * The default value is <code>""</code>.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Content</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Content</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Content</em>' attribute.
-     * @see #setContent(String)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getTextContent_Content()
-     * @model default=""
-     *        extendedMetaData="kind='element'"
-     * @generated
-     */
+	 * @return the value of the '<em>Content</em>' attribute.
+	 * @see #setContent(String)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getTextContent_Content()
+	 * @model default=""
+	 *        extendedMetaData="kind='element'"
+	 * @generated
+	 */
     String getContent();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.ITextContent#getContent <em>Content</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.ITextContent#getContent <em>Content</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Content</em>' attribute.
-     * @see #getContent()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Content</em>' attribute.
+	 * @see #getContent()
+	 * @generated
+	 */
     void setContent(String value);
 
 } // ITextContent

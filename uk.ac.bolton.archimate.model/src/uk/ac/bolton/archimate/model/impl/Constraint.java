@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IConstraint;
  */
 public class Constraint extends MotivationElement implements IConstraint {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Constraint() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.CONSTRAINT;
-    }
+		return IArchimatePackage.Literals.CONSTRAINT;
+	}
 
 } //Constraint

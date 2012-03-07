@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IOrJunction;
  */
 public class OrJunction extends ArchimateElement implements IOrJunction {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected OrJunction() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.OR_JUNCTION;
-    }
+		return IArchimatePackage.Literals.OR_JUNCTION;
+	}
 
 } //OrJunction

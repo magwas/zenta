@@ -26,29 +26,29 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface IBorderObject extends EObject {
     /**
-     * Returns the value of the '<em><b>Border Color</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Border Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Border Color</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Border Color</em>' attribute.
-     * @see #setBorderColor(String)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getBorderObject_BorderColor()
-     * @model
-     * @generated
-     */
+	 * @return the value of the '<em>Border Color</em>' attribute.
+	 * @see #setBorderColor(String)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getBorderObject_BorderColor()
+	 * @model
+	 * @generated
+	 */
     String getBorderColor();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IBorderObject#getBorderColor <em>Border Color</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IBorderObject#getBorderColor <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Border Color</em>' attribute.
-     * @see #getBorderColor()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Border Color</em>' attribute.
+	 * @see #getBorderColor()
+	 * @generated
+	 */
     void setBorderColor(String value);
 
 } // IBorderObject

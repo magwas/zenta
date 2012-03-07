@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IProduct;
  */
 public class Product extends ArchimateElement implements IProduct {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Product() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.PRODUCT;
-    }
+		return IArchimatePackage.Literals.PRODUCT;
+	}
 
 } //Product

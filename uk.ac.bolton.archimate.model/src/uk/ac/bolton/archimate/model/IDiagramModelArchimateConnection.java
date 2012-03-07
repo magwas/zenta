@@ -25,45 +25,45 @@ package uk.ac.bolton.archimate.model;
  */
 public interface IDiagramModelArchimateConnection extends IDiagramModelConnection {
     /**
-     * Returns the value of the '<em><b>Relationship</b></em>' reference.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Relationship</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Relationship</em>' reference.
-     * @see #setRelationship(IRelationship)
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelArchimateConnection_Relationship()
-     * @model resolveProxies="false" volatile="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Relationship</em>' reference.
+	 * @see #setRelationship(IRelationship)
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelArchimateConnection_Relationship()
+	 * @model resolveProxies="false" volatile="true"
+	 * @generated
+	 */
     IRelationship getRelationship();
 
     /**
-     * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModelArchimateConnection#getRelationship <em>Relationship</em>}' reference.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModelArchimateConnection#getRelationship <em>Relationship</em>}' reference.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Relationship</em>' reference.
-     * @see #getRelationship()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Relationship</em>' reference.
+	 * @see #getRelationship()
+	 * @generated
+	 */
     void setRelationship(IRelationship value);
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
+	 * @model
+	 * @generated
+	 */
     void addRelationshipToModel(IFolder parent);
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
+	 * @model
+	 * @generated
+	 */
     void removeRelationshipFromModel();
 
 } // IDiagramModelArchimateConnection

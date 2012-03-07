@@ -29,168 +29,168 @@ import uk.ac.bolton.archimate.model.IInterfaceElement;
  */
 public class InfrastructureInterface extends ArchimateElement implements IInfrastructureInterface {
     /**
-     * The default value of the '{@link #getInterfaceType() <em>Interface Type</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getInterfaceType() <em>Interface Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getInterfaceType()
-     * @generated
-     * @ordered
-     */
+	 * @see #getInterfaceType()
+	 * @generated
+	 * @ordered
+	 */
     protected static final int INTERFACE_TYPE_EDEFAULT = 0;
     /**
-     * The cached value of the '{@link #getInterfaceType() <em>Interface Type</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getInterfaceType() <em>Interface Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getInterfaceType()
-     * @generated
-     * @ordered
-     */
+	 * @see #getInterfaceType()
+	 * @generated
+	 * @ordered
+	 */
     protected int interfaceType = INTERFACE_TYPE_EDEFAULT;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected InfrastructureInterface() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.INFRASTRUCTURE_INTERFACE;
-    }
+		return IArchimatePackage.Literals.INFRASTRUCTURE_INTERFACE;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public int getInterfaceType() {
-        return interfaceType;
-    }
+		return interfaceType;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setInterfaceType(int newInterfaceType) {
-        int oldInterfaceType = interfaceType;
-        interfaceType = newInterfaceType;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE, oldInterfaceType, interfaceType));
-    }
+		int oldInterfaceType = interfaceType;
+		interfaceType = newInterfaceType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE, oldInterfaceType, interfaceType));
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE:
-                return getInterfaceType();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE:
+				return getInterfaceType();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE:
-                setInterfaceType((Integer)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE:
+				setInterfaceType((Integer)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE:
-                setInterfaceType(INTERFACE_TYPE_EDEFAULT);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE:
+				setInterfaceType(INTERFACE_TYPE_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE:
-                return interfaceType != INTERFACE_TYPE_EDEFAULT;
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE:
+				return interfaceType != INTERFACE_TYPE_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == IInterfaceElement.class) {
-            switch (derivedFeatureID) {
-                case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE: return IArchimatePackage.INTERFACE_ELEMENT__INTERFACE_TYPE;
-                default: return -1;
-            }
-        }
-        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-    }
+		if (baseClass == IInterfaceElement.class) {
+			switch (derivedFeatureID) {
+				case IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE: return IArchimatePackage.INTERFACE_ELEMENT__INTERFACE_TYPE;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == IInterfaceElement.class) {
-            switch (baseFeatureID) {
-                case IArchimatePackage.INTERFACE_ELEMENT__INTERFACE_TYPE: return IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE;
-                default: return -1;
-            }
-        }
-        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-    }
+		if (baseClass == IInterfaceElement.class) {
+			switch (baseFeatureID) {
+				case IArchimatePackage.INTERFACE_ELEMENT__INTERFACE_TYPE: return IArchimatePackage.INFRASTRUCTURE_INTERFACE__INTERFACE_TYPE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (interfaceType: "); //$NON-NLS-1$
-        result.append(interfaceType);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (interfaceType: "); //$NON-NLS-1$
+		result.append(interfaceType);
+		result.append(')');
+		return result.toString();
+	}
 
 } //InfrastructureInterface

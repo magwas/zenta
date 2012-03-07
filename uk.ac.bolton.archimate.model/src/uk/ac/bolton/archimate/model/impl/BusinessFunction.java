@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IBusinessFunction;
  */
 public class BusinessFunction extends ArchimateElement implements IBusinessFunction {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected BusinessFunction() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.BUSINESS_FUNCTION;
-    }
+		return IArchimatePackage.Literals.BUSINESS_FUNCTION;
+	}
 
 } //BusinessFunction

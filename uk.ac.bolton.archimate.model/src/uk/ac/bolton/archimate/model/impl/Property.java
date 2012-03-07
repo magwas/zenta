@@ -23,6 +23,7 @@ import uk.ac.bolton.archimate.model.IProperty;
  * <ul>
  *   <li>{@link uk.ac.bolton.archimate.model.impl.Property#getKey <em>Key</em>}</li>
  *   <li>{@link uk.ac.bolton.archimate.model.impl.Property#getValue <em>Value</em>}</li>
+ *   <li>{@link uk.ac.bolton.archimate.model.impl.Property#isGenerated <em>Generated</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,190 +31,243 @@ import uk.ac.bolton.archimate.model.IProperty;
  */
 public class Property extends EObjectImpl implements IProperty {
     /**
-     * The default value of the '{@link #getKey() <em>Key</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getKey() <em>Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getKey()
-     * @generated
-     * @ordered
-     */
+	 * @see #getKey()
+	 * @generated
+	 * @ordered
+	 */
     protected static final String KEY_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getKey() <em>Key</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getKey() <em>Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getKey()
-     * @generated
-     * @ordered
-     */
+	 * @see #getKey()
+	 * @generated
+	 * @ordered
+	 */
     protected String key = KEY_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getValue()
-     * @generated
-     * @ordered
-     */
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
     protected static final String VALUE_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getValue()
-     * @generated
-     * @ordered
-     */
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
     protected String value = VALUE_EDEFAULT;
 
     /**
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isGenerated() <em>Generated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isGenerated()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean GENERATED_EDEFAULT = false;
+
+				/**
+	 * The cached value of the '{@link #isGenerated() <em>Generated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isGenerated()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean generated = GENERATED_EDEFAULT;
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Property() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.PROPERTY;
-    }
+		return IArchimatePackage.Literals.PROPERTY;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.PROPERTY__KEY:
-                return getKey();
-            case IArchimatePackage.PROPERTY__VALUE:
-                return getValue();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case IArchimatePackage.PROPERTY__KEY:
+				return getKey();
+			case IArchimatePackage.PROPERTY__VALUE:
+				return getValue();
+			case IArchimatePackage.PROPERTY__GENERATED:
+				return isGenerated();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.PROPERTY__KEY:
-                setKey((String)newValue);
-                return;
-            case IArchimatePackage.PROPERTY__VALUE:
-                setValue((String)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case IArchimatePackage.PROPERTY__KEY:
+				setKey((String)newValue);
+				return;
+			case IArchimatePackage.PROPERTY__VALUE:
+				setValue((String)newValue);
+				return;
+			case IArchimatePackage.PROPERTY__GENERATED:
+				setGenerated((Boolean)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.PROPERTY__KEY:
-                setKey(KEY_EDEFAULT);
-                return;
-            case IArchimatePackage.PROPERTY__VALUE:
-                setValue(VALUE_EDEFAULT);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.PROPERTY__KEY:
+				setKey(KEY_EDEFAULT);
+				return;
+			case IArchimatePackage.PROPERTY__VALUE:
+				setValue(VALUE_EDEFAULT);
+				return;
+			case IArchimatePackage.PROPERTY__GENERATED:
+				setGenerated(GENERATED_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.PROPERTY__KEY:
-                return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
-            case IArchimatePackage.PROPERTY__VALUE:
-                return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.PROPERTY__KEY:
+				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
+			case IArchimatePackage.PROPERTY__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case IArchimatePackage.PROPERTY__GENERATED:
+				return generated != GENERATED_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (key: "); //$NON-NLS-1$
-        result.append(key);
-        result.append(", value: "); //$NON-NLS-1$
-        result.append(value);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (key: "); //$NON-NLS-1$
+		result.append(key);
+		result.append(", value: "); //$NON-NLS-1$
+		result.append(value);
+		result.append(", generated: "); //$NON-NLS-1$
+		result.append(generated);
+		result.append(')');
+		return result.toString();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getKey() {
-        return key;
-    }
+		return key;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setKey(String newKey) {
-        String oldKey = key;
-        key = newKey;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.PROPERTY__KEY, oldKey, key));
-    }
+		String oldKey = key;
+		key = newKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.PROPERTY__KEY, oldKey, key));
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getValue() {
-        return value;
-    }
+		return value;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setValue(String newValue) {
-        String oldValue = value;
-        value = newValue;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.PROPERTY__VALUE, oldValue, value));
-    }
+		String oldValue = value;
+		value = newValue;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.PROPERTY__VALUE, oldValue, value));
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isGenerated() {
+		return generated;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGenerated(boolean newGenerated) {
+		boolean oldGenerated = generated;
+		generated = newGenerated;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.PROPERTY__GENERATED, oldGenerated, generated));
+	}
 
 } //Property

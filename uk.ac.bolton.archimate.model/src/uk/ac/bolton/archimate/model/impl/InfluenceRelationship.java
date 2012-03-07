@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IInfluenceRelationship;
  */
 public class InfluenceRelationship extends Relationship implements IInfluenceRelationship {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected InfluenceRelationship() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.INFLUENCE_RELATIONSHIP;
-    }
+		return IArchimatePackage.Literals.INFLUENCE_RELATIONSHIP;
+	}
 
 } //InfluenceRelationship

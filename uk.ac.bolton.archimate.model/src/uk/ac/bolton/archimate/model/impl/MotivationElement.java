@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IMotivationElement;
  */
 public abstract class MotivationElement extends ArchimateElement implements IMotivationElement {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected MotivationElement() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.MOTIVATION_ELEMENT;
-    }
+		return IArchimatePackage.Literals.MOTIVATION_ELEMENT;
+	}
 
 } //MotivationElement

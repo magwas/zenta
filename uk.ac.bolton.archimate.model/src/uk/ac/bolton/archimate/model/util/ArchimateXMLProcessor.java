@@ -25,30 +25,30 @@ import uk.ac.bolton.archimate.model.IArchimatePackage;
 public class ArchimateXMLProcessor extends XMLProcessor {
 
     /**
-     * Public constructor to instantiate the helper.
-     * <!-- begin-user-doc -->
+	 * Public constructor to instantiate the helper.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ArchimateXMLProcessor() {
-        super((EPackage.Registry.INSTANCE));
-        IArchimatePackage.eINSTANCE.eClass();
-    }
+		super((EPackage.Registry.INSTANCE));
+		IArchimatePackage.eINSTANCE.eClass();
+	}
     
     /**
-     * Register for "*" and "xml" file extensions the ArchimateResourceFactory factory.
-     * <!-- begin-user-doc -->
+	 * Register for "*" and "xml" file extensions the ArchimateResourceFactory factory.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected Map<String, Resource.Factory> getRegistrations() {
-        if (registrations == null) {
-            super.getRegistrations();
-            registrations.put(XML_EXTENSION, new ArchimateResourceFactory());
-            registrations.put(STAR_EXTENSION, new ArchimateResourceFactory());
-        }
-        return registrations;
-    }
+		if (registrations == null) {
+			super.getRegistrations();
+			registrations.put(XML_EXTENSION, new ArchimateResourceFactory());
+			registrations.put(STAR_EXTENSION, new ArchimateResourceFactory());
+		}
+		return registrations;
+	}
 
 } //ArchimateXMLProcessor

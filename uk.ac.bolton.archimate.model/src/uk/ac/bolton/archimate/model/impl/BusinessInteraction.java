@@ -22,22 +22,22 @@ import uk.ac.bolton.archimate.model.IBusinessInteraction;
  */
 public class BusinessInteraction extends ArchimateElement implements IBusinessInteraction {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected BusinessInteraction() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return IArchimatePackage.Literals.BUSINESS_INTERACTION;
-    }
+		return IArchimatePackage.Literals.BUSINESS_INTERACTION;
+	}
 
 } //BusinessInteraction

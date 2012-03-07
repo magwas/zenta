@@ -27,20 +27,20 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface IProperties extends EObject {
     /**
-     * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-     * The list contents are of type {@link uk.ac.bolton.archimate.model.IProperty}.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link uk.ac.bolton.archimate.model.IProperty}.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Properties</em>' map isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Properties</em>' containment reference list.
-     * @see uk.ac.bolton.archimate.model.IArchimatePackage#getProperties_Properties()
-     * @model containment="true"
-     *        extendedMetaData="name='property' kind='element'"
-     * @generated
-     */
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getProperties_Properties()
+	 * @model containment="true"
+	 *        extendedMetaData="name='property' kind='element'"
+	 * @generated
+	 */
     EList<IProperty> getProperties();
 
 } // IProperties
