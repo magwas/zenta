@@ -103,7 +103,9 @@ public class MRUMenuManager extends MenuManager implements PropertyChangeListene
     
     private void createMenuItems() {
         removeAll();
-        
+        if (null == fWindow || null == fWindow.getShell() || fWindow.getShell().isDisposed()) {
+        	return;
+        }
         for(File file : fMRU_List) {
             add(new RecentFileAction(file));
         }
