@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %productName
 Bundle-SymbolicName: uk.ac.bolton.archimate.editor;singleton:=true
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.2.1.qualifier
 Bundle-Activator: uk.ac.bolton.archimate.editor.ArchimateEditorPlugin
 Bundle-Vendor: Bolton University
 Bundle-Localization: plugin
@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
  org.eclipse.ui.forms,
  org.eclipse.ui.views,
- org.eclipse.ui.views.properties.tabbed,
+ org.eclipse.ui.views.properties.tabbed;visibility:=reexport,
  uk.ac.bolton.archimate.model;visibility:=reexport,
  uk.ac.bolton.jdom,
  uk.ac.bolton.archimate.compatibility,

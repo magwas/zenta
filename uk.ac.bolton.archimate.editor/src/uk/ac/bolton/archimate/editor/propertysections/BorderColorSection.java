@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
+ * Copyright (c) 2010-12 Bolton University, UK.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
@@ -94,7 +94,7 @@ public class BorderColorSection extends AbstractArchimatePropertySection {
     }
     
     private void createColorControl(Composite parent) {
-        createCLabel(parent, Messages.BorderColorSection_0, ITabbedLayoutConstants.STANDARD_LABEL_WIDTH, SWT.NONE);
+        createLabel(parent, Messages.BorderColorSection_0, ITabbedLayoutConstants.STANDARD_LABEL_WIDTH, SWT.CENTER);
         
         Composite client = createComposite(parent, 2);
 
@@ -106,9 +106,11 @@ public class BorderColorSection extends AbstractArchimatePropertySection {
         fColorSelector.addListener(colorListener);
 
         fNoBorderButton = new Button(client, SWT.PUSH);
+        fNoBorderButton.setText(Messages.BorderColorSection_1);
+        gd = new GridData(SWT.NONE, SWT.NONE, true, false);
+        gd.minimumWidth = ITabbedLayoutConstants.BUTTON_WIDTH;
         fNoBorderButton.setLayoutData(gd);
         getWidgetFactory().adapt(fNoBorderButton, true, true); // Need to do it this way for Mac
-        fNoBorderButton.setText(Messages.BorderColorSection_1);
         fNoBorderButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
