@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="%appName" id="uk.ac.bolton.archimate.editor.product" application="uk.ac.bolton.archimate.editor.app" version="2.2.1.s0" useFeatures="false" includeLaunchers="true">
+<product name="%appName" id="uk.ac.bolton.archimate.editor.product" application="uk.ac.bolton.archimate.editor.app" version="2.2.2.s0" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/uk.ac.bolton.archimate.editor/img/app-128.png"/>
