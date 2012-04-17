@@ -2582,12 +2582,9 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 		diagramModelArchimateConnectionEClass = createEClass(DIAGRAM_MODEL_ARCHIMATE_CONNECTION);
 		createEReference(diagramModelArchimateConnectionEClass, DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP);
 
-<<<<<<< HEAD
-		sketchModelEClass = createEClass(SKETCH_MODEL);
-=======
+
         sketchModelEClass = createEClass(SKETCH_MODEL);
         createEAttribute(sketchModelEClass, SKETCH_MODEL__BACKGROUND);
->>>>>>> remotes/phil/master
 
 		sketchModelStickyEClass = createEClass(SKETCH_MODEL_STICKY);
 
@@ -3061,12 +3058,10 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 
 		addEOperation(diagramModelArchimateConnectionEClass, null, "removeRelationshipFromModel", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-<<<<<<< HEAD
-		initEClass(sketchModelEClass, ISketchModel.class, "SketchModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-=======
+
         initEClass(sketchModelEClass, ISketchModel.class, "SketchModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getSketchModel_Background(), ecorePackage.getEInt(), "background", "1", 0, 1, ISketchModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
->>>>>>> remotes/phil/master
+
 
 		initEClass(sketchModelStickyEClass, ISketchModelSticky.class, "SketchModelSticky", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
