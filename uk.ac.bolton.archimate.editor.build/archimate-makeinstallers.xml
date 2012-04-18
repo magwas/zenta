@@ -18,13 +18,8 @@
 	<target name="init">
 	    
 		<!-- EDIT THESE TWO VALUES FOR A BUILD -->
-<<<<<<< HEAD
 	    <property name="jre.sourcedir"          location="../../jre6"/>
-		<property name="version" 				value="2.2.2.s2"/>
-=======
-	    <property name="jre.sourcedir"          location="D:\dev\jre6"/>
-		<property name="version" 				value="2.2.3"/>
->>>>>>> remotes/phil/master
+		<property name="version" 				value="2.3.0.s1"/>
 		
 		<property name="app.name" 				value="Archi"/>
 		
