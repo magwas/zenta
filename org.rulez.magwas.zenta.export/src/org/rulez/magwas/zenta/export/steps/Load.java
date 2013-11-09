@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.rulez.magwas.zenta.export.steps.Step;
 import org.rulez.magwas.zenta.export.steps.StepFactory;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -35,7 +35,7 @@ public class Load extends Step {
 	public boolean doit(Element arg0, File current) {
 		factory.log.issueInfo("loading model from", current.getAbsolutePath());
     	IEditorModelManager.INSTANCE.openModel(current);
-        for(IArchimateModel model : IEditorModelManager.INSTANCE.getModels()) {
+        for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
             if(current.equals(model.getFile())) {
         		StepFactory sf = new StepFactory(factory.log,model,factory.styledir, factory.targetdir);
            		try {

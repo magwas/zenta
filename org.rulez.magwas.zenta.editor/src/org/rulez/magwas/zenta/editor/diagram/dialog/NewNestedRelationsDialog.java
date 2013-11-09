@@ -37,11 +37,11 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 
 
 
@@ -52,29 +52,29 @@ import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
  */
 public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements Listener {
     
-    private String HELP_ID = "uk.ac.bolton.archimate.help.NewNestedRelationsDialog"; //$NON-NLS-1$
+    private String HELP_ID = "org.rulez.magwas.zenta.help.NewNestedRelationsDialog"; //$NON-NLS-1$
 
     private TableViewer fTableViewer;
     
-    private IArchimateElement fParentElement;
+    private IZentamateElement fParentElement;
     private Mapping[] fMappings;
 
     // Keep track of Ctrl key
     private boolean fModKeyPressed;
     
     private class Mapping {
-        private IArchimateElement element;
+        private IZentamateElement element;
         private List<EClass> validRelations;
         private String[] names;
         private int selectedIndex;
         
-        Mapping(IArchimateElement element) {
+        Mapping(IZentamateElement element) {
             this.element = element;
             validRelations = createValidRelations(fParentElement, element);
             selectedIndex = 1;
         }
         
-        IArchimateElement getElement() {
+        IZentamateElement getElement() {
             return element;
         }
         
@@ -104,18 +104,18 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
                 names = new String[validRelations.size()];
                 names[0] = Messages.NewNestedRelationsDialog_0;
                 for(int i = 1; i < validRelations.size(); i++) {
-                    names[i] = ArchimateLabelProvider.INSTANCE.getDefaultName(validRelations.get(i));
+                    names[i] = ZentamateLabelProvider.INSTANCE.getDefaultName(validRelations.get(i));
                 }
             }
             return names;
         }
         
-        private List<EClass> createValidRelations(IArchimateElement sourceElement, IArchimateElement targetElement) {
+        private List<EClass> createValidRelations(IZentamateElement sourceElement, IZentamateElement targetElement) {
             List<EClass> list = new ArrayList<EClass>();
             // Entry for "none"
             list.add(null);
             for(EClass eClass : ConnectionPreferences.getRelationsClassesForNewRelations()) {
-                if(ArchimateModelUtils.isValidRelationship(sourceElement, targetElement, eClass)) {
+                if(ZentamateModelUtils.isValidRelationship(sourceElement, targetElement, eClass)) {
                     list.add(eClass); 
                 }
             }
@@ -123,9 +123,9 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         }
     }
 
-    public NewNestedRelationsDialog(Shell parentShell, IArchimateElement parentElement, List<IArchimateElement> childElements) {
+    public NewNestedRelationsDialog(Shell parentShell, IZentamateElement parentElement, List<IZentamateElement> childElements) {
         super(parentShell, "NewNestedRelationsDialog"); //$NON-NLS-1$
-        setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fParentElement = parentElement;
@@ -199,8 +199,8 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         return list.isEmpty() ? null : list.toArray(new EClass[list.size()]);
     }
     
-    public IArchimateElement[] getSelectedElements() {
-        List<IArchimateElement> list = new ArrayList<IArchimateElement>();
+    public IZentamateElement[] getSelectedElements() {
+        List<IZentamateElement> list = new ArrayList<IZentamateElement>();
         
         for(Mapping mapping : fMappings) {
             if(mapping.getSelectedType() != null) {
@@ -208,7 +208,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
             }
         }
         
-        return list.isEmpty() ? null : list.toArray(new IArchimateElement[list.size()]);
+        return list.isEmpty() ? null : list.toArray(new IZentamateElement[list.size()]);
     }
     
     @Override
@@ -274,9 +274,9 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         class RelationsTableViewerLabelCellProvider extends LabelProvider implements ITableLabelProvider {
             public Image getColumnImage(Object element, int columnIndex) {
                 if(columnIndex == 0) {
-                    return ArchimateLabelProvider.INSTANCE.getImage(((Mapping)element).getElement());
+                    return ZentamateLabelProvider.INSTANCE.getImage(((Mapping)element).getElement());
                 }
-                return ArchimateLabelProvider.INSTANCE.getImage(((Mapping)element).getSelectedType());
+                return ZentamateLabelProvider.INSTANCE.getImage(((Mapping)element).getSelectedType());
             }
 
             @Override

@@ -18,7 +18,7 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.rulez.magwas.zenta.templates.impl.NewArchimateModelFromTemplateHandler"
+            defaultHandler="org.rulez.magwas.zenta.templates.impl.NewZentamateModelFromTemplateHandler"
             id="org.rulez.magwas.zenta.templates.modelFromTemplate"
             name="New Model From Template">
       </command>

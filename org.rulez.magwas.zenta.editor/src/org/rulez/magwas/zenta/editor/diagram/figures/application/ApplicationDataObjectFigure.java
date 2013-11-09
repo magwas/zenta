@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.application;
 
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessObjectFigure;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 /**
@@ -16,7 +16,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
  */
 public class ApplicationDataObjectFigure extends BusinessObjectFigure {
 
-    public ApplicationDataObjectFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public ApplicationDataObjectFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
 }

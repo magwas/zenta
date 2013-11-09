@@ -13,7 +13,7 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getAndJunction()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getAndJunction()
  * @model
  * @generated
  */

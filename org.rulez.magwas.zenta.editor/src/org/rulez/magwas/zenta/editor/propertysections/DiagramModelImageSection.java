@@ -27,9 +27,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -42,9 +42,9 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramModelImageSection extends AbstractArchimatePropertySection {
+public class DiagramModelImageSection extends AbstractZentamatePropertySection {
     
-    protected static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    protected static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
     /**
      * Filter to show or reject this section depending on input value
@@ -63,7 +63,7 @@ public class DiagramModelImageSection extends AbstractArchimatePropertySection {
         @Override
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
-            if(feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshButtons();
             }
         }
@@ -154,7 +154,7 @@ public class DiagramModelImageSection extends AbstractArchimatePropertySection {
         if(isAlive()) {
             fIsExecutingCommand = true;
             getCommandStack().execute(new EObjectFeatureCommand(Messages.DiagramModelImageSection_4,
-                    getEObject(), IArchimatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH,
+                    getEObject(), IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH,
                     null));
             fIsExecutingCommand = false;
         }
@@ -166,7 +166,7 @@ public class DiagramModelImageSection extends AbstractArchimatePropertySection {
         }
         
         ImageManagerDialog dialog = new ImageManagerDialog(getPart().getSite().getShell(),
-                getEObject().getDiagramModel().getArchimateModel(),
+                getEObject().getDiagramModel().getZentamateModel(),
                 ((IDiagramModelImageProvider)getEObject()).getImagePath());
         
         if(dialog.open() == Window.OK) {
@@ -185,7 +185,7 @@ public class DiagramModelImageSection extends AbstractArchimatePropertySection {
                     return;
                 }
                 
-                IArchiveManager archiveManager = (IArchiveManager)getEObject().getAdapter(IArchiveManager.class);
+                IZentaveManager archiveManager = (IZentaveManager)getEObject().getAdapter(IZentaveManager.class);
                 path = archiveManager.addImageFromFile(file);
             }
             // User selected a Gallery image path
@@ -207,7 +207,7 @@ public class DiagramModelImageSection extends AbstractArchimatePropertySection {
         
         fIsExecutingCommand = true;
         getCommandStack().execute(new EObjectFeatureCommand(Messages.DiagramModelImageSection_7,
-                                getEObject(), IArchimatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH,
+                                getEObject(), IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH,
                                 path));
         fIsExecutingCommand = false;
     }

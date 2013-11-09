@@ -23,7 +23,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.TemplateGroup;
@@ -49,7 +49,7 @@ public abstract class SaveModelAsTemplateToCollectionWizardPage extends WizardPa
         super(pageName);
         fTemplateManager = templateManager;
         init();
-        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ECLIPSE_IMAGE_NEW_WIZARD));
     }
     
     protected abstract void init();

@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Folder Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getFolderType()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFolderType()
  * @model
  * @generated
  */

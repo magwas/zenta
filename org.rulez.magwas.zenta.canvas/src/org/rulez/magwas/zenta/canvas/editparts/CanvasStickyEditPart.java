@@ -29,7 +29,7 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.ITextPositionedEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.policies.PartComponentEditPolicy;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 
@@ -48,7 +48,7 @@ implements IColoredEditPart, ITextAlignedEditPart, ITextPositionedEditPart {
         switch(msg.getEventType()) {
             case Notification.SET:
                 // Refresh Icon
-                if(feature == IArchimatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH
+                if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH
                             || feature == ICanvasPackage.Literals.ICONIC__IMAGE_POSITION) {
                     ((CanvasStickyFigure)getFigure()).updateImage();
                 }
@@ -124,7 +124,7 @@ implements IColoredEditPart, ITextAlignedEditPart, ITextPositionedEditPart {
         protected Command getDirectEditCommand(DirectEditRequest request) {
             String content = (String)request.getCellEditor().getValue();
             return new EObjectFeatureCommand(Messages.CanvasStickyEditPart_0, getModel(),
-                    IArchimatePackage.Literals.TEXT_CONTENT__CONTENT, content);
+                    IZentamatePackage.Literals.TEXT_CONTENT__CONTENT, content);
         }
 
         @Override

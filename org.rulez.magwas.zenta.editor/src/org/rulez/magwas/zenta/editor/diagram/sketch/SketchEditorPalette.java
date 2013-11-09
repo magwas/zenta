@@ -31,10 +31,10 @@ import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.diagram.AbstractPaletteRoot;
 import org.rulez.magwas.zenta.editor.diagram.tools.FormatPainterToolEntry;
 import org.rulez.magwas.zenta.editor.diagram.tools.PanningSelectionExtendedTool;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 
 
@@ -94,13 +94,13 @@ public class SketchEditorPalette extends AbstractPaletteRoot {
         add(group);
         
         // Actor
-        PaletteEntry groupEntry = createCombinedTemplateCreationEntry(IArchimatePackage.eINSTANCE.getSketchModelActor(),
+        PaletteEntry groupEntry = createCombinedTemplateCreationEntry(IZentamatePackage.eINSTANCE.getSketchModelActor(),
                 Messages.SketchEditorPalette_2,
                 Messages.SketchEditorPalette_3);
         group.add(groupEntry);
         
         // Group
-        groupEntry = createCombinedTemplateCreationEntry(IArchimatePackage.eINSTANCE.getDiagramModelGroup(),
+        groupEntry = createCombinedTemplateCreationEntry(IZentamatePackage.eINSTANCE.getDiagramModelGroup(),
                 Messages.SketchEditorPalette_4,
                 Messages.SketchEditorPalette_5);
         group.add(groupEntry);
@@ -130,35 +130,35 @@ public class SketchEditorPalette extends AbstractPaletteRoot {
         add(group);
         
         ConnectionCreationToolEntry entry = createConnectionCreationToolEntry(
-                IArchimatePackage.eINSTANCE.getDiagramModelConnection(),
+                IZentamatePackage.eINSTANCE.getDiagramModelConnection(),
                 IDiagramModelConnection.LINE_SOLID,
                 Messages.SketchEditorPalette_8,
                 null,
-                IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_CONNECTION_PLAIN_16));
+                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_CONNECTION_PLAIN_16));
         group.add(entry);
         
         entry = createConnectionCreationToolEntry(
-                IArchimatePackage.eINSTANCE.getDiagramModelConnection(),
+                IZentamatePackage.eINSTANCE.getDiagramModelConnection(),
                 IDiagramModelConnection.ARROW_FILL_TARGET,
                 Messages.SketchEditorPalette_9,
                 null,
-                IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_CONNECTION_ARROW_16));
+                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_CONNECTION_ARROW_16));
         group.add(entry);
         
         entry = createConnectionCreationToolEntry(
-                IArchimatePackage.eINSTANCE.getDiagramModelConnection(),
+                IZentamatePackage.eINSTANCE.getDiagramModelConnection(),
                 IDiagramModelConnection.ARROW_FILL_TARGET | IDiagramModelConnection.LINE_DASHED,
                 Messages.SketchEditorPalette_10,
                 null,
-                IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_CONNECTION_DASHED_ARROW_16));
+                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_CONNECTION_DASHED_ARROW_16));
         group.add(entry);
         
         entry = createConnectionCreationToolEntry(
-                IArchimatePackage.eINSTANCE.getDiagramModelConnection(),
+                IZentamatePackage.eINSTANCE.getDiagramModelConnection(),
                 IDiagramModelConnection.ARROW_FILL_TARGET | IDiagramModelConnection.LINE_DOTTED,
                 Messages.SketchEditorPalette_11,
                 null,
-                IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_CONNECTION_DOTTED_ARROW_16));
+                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_CONNECTION_DOTTED_ARROW_16));
         group.add(entry);
 
         return group;
@@ -183,15 +183,15 @@ public class SketchEditorPalette extends AbstractPaletteRoot {
                 name,
                 description,
                 new SketchModelFactory(eClass),
-                ArchimateLabelProvider.INSTANCE.getImageDescriptor(eClass),
-                ArchimateLabelProvider.INSTANCE.getImageDescriptor(eClass));
+                ZentamateLabelProvider.INSTANCE.getImageDescriptor(eClass),
+                ZentamateLabelProvider.INSTANCE.getImageDescriptor(eClass));
     }
 
     private PaletteEntry createStickyEntry(Color color) {
         return new CombinedTemplateCreationEntry(
                 Messages.SketchEditorPalette_12,
                 null,
-                new SketchModelFactory(IArchimatePackage.eINSTANCE.getSketchModelSticky(), color),
+                new SketchModelFactory(IZentamatePackage.eINSTANCE.getSketchModelSticky(), color),
                 getStickyImageDescriptor(color),
                 getStickyImageDescriptor(color));
     }

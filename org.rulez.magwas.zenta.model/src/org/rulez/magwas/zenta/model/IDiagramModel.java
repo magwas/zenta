@@ -19,11 +19,11 @@ package org.rulez.magwas.zenta.model;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModel()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModel()
  * @model abstract="true"
  * @generated
  */
-public interface IDiagramModel extends IArchimateModelElement, IDiagramModelContainer, IDocumentable, IProperties {
+public interface IDiagramModel extends IZentamateModelElement, IDiagramModelContainer, IDocumentable, IProperties {
 
     /*
      * Connection Router Types
@@ -44,7 +44,7 @@ public interface IDiagramModel extends IArchimateModelElement, IDiagramModelCont
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection Router Type</em>' attribute.
 	 * @see #setConnectionRouterType(int)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModel_ConnectionRouterType()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModel_ConnectionRouterType()
 	 * @model
 	 * @generated
 	 */

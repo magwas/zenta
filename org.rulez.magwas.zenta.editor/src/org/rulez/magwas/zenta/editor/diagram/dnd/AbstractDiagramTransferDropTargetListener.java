@@ -12,8 +12,8 @@ import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.dnd.DropTargetEvent;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimateModelElement;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamateModelElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -84,12 +84,12 @@ public abstract class AbstractDiagramTransferDropTargetListener extends Abstract
      * Check that the dragged selection is being dragged into the same model
      */
     protected boolean isSelectionFromSameModel(IStructuredSelection selection) {
-        IArchimateModel targetArchimateModel = getTargetDiagramModel().getArchimateModel();
+        IZentamateModel targetZentamateModel = getTargetDiagramModel().getZentamateModel();
         
         for(Object object : selection.toArray()) {
-            if(object instanceof IArchimateModelElement) {
-                IArchimateModel sourceArchimateModel = ((IArchimateModelElement)object).getArchimateModel();
-                if(sourceArchimateModel != targetArchimateModel) {
+            if(object instanceof IZentamateModelElement) {
+                IZentamateModel sourceZentamateModel = ((IZentamateModelElement)object).getZentamateModel();
+                if(sourceZentamateModel != targetZentamateModel) {
                     return false;
                 }
             }

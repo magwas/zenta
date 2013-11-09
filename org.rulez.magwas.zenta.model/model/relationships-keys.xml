@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ArchiMate relationship key letters -->
+<!-- ZentaMate relationship key letters -->
 <relationshipskeys version="1.0">
 	<key char="a" relationship="AccessRelationship" />
 	<key char="c" relationship="CompositionRelationship" />

@@ -12,7 +12,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractLabelFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 
 
@@ -91,7 +91,7 @@ public class SketchActorFigure extends AbstractLabelFigure {
             return null;
         }
         
-        String text = ArchimateLabelProvider.INSTANCE.getLabel(getDiagramModelObject());
+        String text = ZentamateLabelProvider.INSTANCE.getLabel(getDiagramModelObject());
         tooltip.setText(text);
         tooltip.setType(Messages.SketchActorFigure_0);
         

@@ -10,7 +10,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.canvas.model.IIconic;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 
 
@@ -32,7 +32,7 @@ public class IconicDelegate {
         disposeImage();
         
         if(fIconic.getImagePath() != null) {
-            IArchiveManager archiveManager = (IArchiveManager)fIconic.getAdapter(IArchiveManager.class);
+            IZentaveManager archiveManager = (IZentaveManager)fIconic.getAdapter(IZentaveManager.class);
 
             Image image = null;
             try {

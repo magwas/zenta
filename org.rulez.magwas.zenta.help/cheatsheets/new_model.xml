@@ -3,7 +3,7 @@
       title="Create a New Model">
    <intro>
       <description>
-         This cheat sheet is a step-by-step description of how to create a basic ArchiMate model.
+         This cheat sheet is a step-by-step description of how to create a basic ZentaMate model.
       </description>
    </intro>
    <item
@@ -27,7 +27,7 @@
       <action
       		required="false"
       		pluginId="org.rulez.magwas.zenta.editor"
-      		class="org.rulez.magwas.zenta.editor.actions.NewArchimateModelAction"/>
+      		class="org.rulez.magwas.zenta.editor.actions.NewZentamateModelAction"/>
    </item>
    <item
          title="Add Elements to the Model">

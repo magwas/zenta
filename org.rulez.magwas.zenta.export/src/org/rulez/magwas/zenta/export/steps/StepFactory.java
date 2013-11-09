@@ -13,7 +13,7 @@ import org.rulez.magwas.zenta.export.steps.Load;
 import org.rulez.magwas.zenta.export.steps.Step;
 import org.rulez.magwas.zenta.export.steps.Style;
 import org.rulez.magwas.zenta.export.steps.Transform;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 
 
 /**
@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.model.IArchimateModel;
 public class StepFactory extends Object {
 	protected static HashMap<String,Step> members = new HashMap<String,Step>();
 	EventLog log;
-	IArchimateModel model;
+	IZentamateModel model;
 	File targetdir;
 	File styledir;
 	List<File> dontkeep = new ArrayList<File>();
@@ -35,7 +35,7 @@ public class StepFactory extends Object {
 	 * @param s the style directory
 	 * @param t the target directory
 	 */
-	public StepFactory(EventLog l,IArchimateModel m, File s,File t){
+	public StepFactory(EventLog l,IZentamateModel m, File s,File t){
 		log = l;
 		model = m;
 		targetdir = t;

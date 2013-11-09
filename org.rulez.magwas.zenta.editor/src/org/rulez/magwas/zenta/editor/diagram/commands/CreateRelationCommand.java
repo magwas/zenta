@@ -7,8 +7,8 @@ package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.commands.Command;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimateFactory;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamateFactory;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 
@@ -21,14 +21,14 @@ import org.rulez.magwas.zenta.model.IRelationship;
  */
 public class CreateRelationCommand extends Command {
     
-    private IArchimateElement fParent;
-    private IArchimateElement fChild;
+    private IZentamateElement fParent;
+    private IZentamateElement fChild;
     private EClass fType;
     
     private IFolder fFolder;
     private IRelationship fRelation;
     
-    public CreateRelationCommand(IArchimateElement parent, IArchimateElement child, EClass type) {
+    public CreateRelationCommand(IZentamateElement parent, IZentamateElement child, EClass type) {
         fParent = parent;
         fChild = child;
         fType = type;
@@ -36,10 +36,10 @@ public class CreateRelationCommand extends Command {
     
     @Override
     public void execute() {
-        fRelation = (IRelationship)IArchimateFactory.eINSTANCE.create(fType);
+        fRelation = (IRelationship)IZentamateFactory.eINSTANCE.create(fType);
         fRelation.setSource(fParent);
         fRelation.setTarget(fChild);
-        fFolder = fChild.getArchimateModel().getDefaultFolderForElement(fRelation);
+        fFolder = fChild.getZentamateModel().getDefaultFolderForElement(fRelation);
 
         redo();
     }

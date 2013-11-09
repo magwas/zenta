@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 
 
@@ -128,7 +128,7 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.DIAGRAM_MODEL_BENDPOINT;
+		return IZentamatePackage.Literals.DIAGRAM_MODEL_BENDPOINT;
 	}
 
     /**
@@ -149,7 +149,7 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
 		int oldStartX = startX;
 		startX = newStartX;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X, oldStartX, startX));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_X, oldStartX, startX));
 	}
 
     /**
@@ -170,7 +170,7 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
 		int oldStartY = startY;
 		startY = newStartY;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y, oldStartY, startY));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y, oldStartY, startY));
 	}
 
     /**
@@ -191,7 +191,7 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
 		int oldEndX = endX;
 		endX = newEndX;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X, oldEndX, endX));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_X, oldEndX, endX));
 	}
 
     /**
@@ -212,7 +212,7 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
 		int oldEndY = endY;
 		endY = newEndY;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y, oldEndY, endY));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y, oldEndY, endY));
 	}
 
     /**
@@ -232,13 +232,13 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
 				return getStartX();
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
 				return getStartY();
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
 				return getEndX();
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
 				return getEndY();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -252,16 +252,16 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
 				setStartX((Integer)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
 				setStartY((Integer)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
 				setEndX((Integer)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
 				setEndY((Integer)newValue);
 				return;
 		}
@@ -276,16 +276,16 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
 				setStartX(START_X_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
 				setStartY(START_Y_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
 				setEndX(END_X_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
 				setEndY(END_Y_EDEFAULT);
 				return;
 		}
@@ -300,13 +300,13 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_X:
 				return startX != START_X_EDEFAULT;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__START_Y:
 				return startY != START_Y_EDEFAULT;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_X:
 				return endX != END_X_EDEFAULT;
-			case IArchimatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
+			case IZentamatePackage.DIAGRAM_MODEL_BENDPOINT__END_Y:
 				return endY != END_Y_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

@@ -2,7 +2,7 @@
 <archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" name="Essential" id="de586ca1" version="2.2.0">
   <folder name="Business" id="94a7ce37" type="business">
     <folder name="Conceptual" id="b18a6f90">
-      <element xsi:type="archimate:ArchimateDiagramModel" id="898b42eb" name="business conceptual">
+      <element xsi:type="archimate:ZentamateDiagramModel" id="898b42eb" name="business conceptual">
         <child xsi:type="archimate:DiagramObject" id="d8e38389" textAlignment="2" archimateElement="586b632e">
           <bounds x="96" y="276"/>
           <sourceConnection xsi:type="archimate:Connection" id="f75e3097" source="d8e38389" target="5b7c5795" relationship="c17f65a8"/>
@@ -34,7 +34,7 @@
       <element xsi:type="archimate:Product" id="cc839814" name="Product Concept"/>
     </folder>
     <folder name="Implementation" id="785217aa">
-      <element xsi:type="archimate:ArchimateDiagramModel" id="1b95db9c" name="A business concept">
+      <element xsi:type="archimate:ZentamateDiagramModel" id="1b95db9c" name="A business concept">
         <child xsi:type="archimate:DiagramObject" id="a55eb492" textAlignment="2" targetConnections="b39d298a" archimateElement="aaea40a3">
           <bounds x="240" y="72"/>
         </child>

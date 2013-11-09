@@ -23,12 +23,12 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 import org.rulez.magwas.zenta.model.IFolder;
 
 
@@ -90,7 +90,7 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
     
     @Override
     public String getContributorId() {
-        return ArchimateEditorPlugin.PLUGIN_ID;
+        return ZentamateEditorPlugin.PLUGIN_ID;
     }
 
     @SuppressWarnings("rawtypes")
@@ -103,14 +103,14 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
             return new TabbedPropertySheetPage(this);
         }
         
-        // The Selected Archimate Model in scope
-        if(adapter == IArchimateModel.class) {
-            return getActiveArchimateModel();
+        // The Selected Zentamate Model in scope
+        if(adapter == IZentamateModel.class) {
+            return getActiveZentamateModel();
         }
         
         // CommandStack (requested by GEF's UndoAction and RedoAction and our SaveAction)
         if(adapter == CommandStack.class) {
-            IArchimateModel model = getActiveArchimateModel();
+            IZentamateModel model = getActiveZentamateModel();
             if(model != null) {
                 return model.getAdapter(CommandStack.class);
             }
@@ -123,9 +123,9 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
     }
     
     /**
-     * @return The active ArchimateModel in scope. May be null
+     * @return The active ZentamateModel in scope. May be null
      */
-    protected abstract IArchimateModel getActiveArchimateModel();
+    protected abstract IZentamateModel getActiveZentamateModel();
     
     // =================================================================================
     //                       Listen to Editor Model Changes
@@ -187,12 +187,12 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
         // Set
         else if(type == Notification.SET) {            
             // Element Name - need to refresh parent node as well as update element because of using a ViewerSorter
-            if(feature == IArchimatePackage.Literals.NAMEABLE__NAME) {
+            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME) {
                 getViewer().refresh(((EObject)notifier).eContainer());
                 getViewer().update(notifier, null);
             }
             // Interface type icon
-            else if(feature == IArchimatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE) {
+            else if(feature == IZentamatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE) {
                 getViewer().update(notifier, null);
             }
         }
@@ -255,11 +255,11 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
             }
         }
         
-        if(element instanceof IDiagramModelArchimateObject) {
-            element = ((IDiagramModelArchimateObject)element).getArchimateElement();
+        if(element instanceof IDiagramModelZentamateObject) {
+            element = ((IDiagramModelZentamateObject)element).getZentamateElement();
         }
-        else if(element instanceof IDiagramModelArchimateConnection) {
-            element = ((IDiagramModelArchimateConnection)element).getRelationship();
+        else if(element instanceof IDiagramModelZentamateConnection) {
+            element = ((IDiagramModelZentamateConnection)element).getRelationship();
         }
         
         return (element instanceof IFolder) ? element : null;
@@ -281,11 +281,11 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
             element = msg.getNewValue();
         }
         
-        if(element instanceof IDiagramModelArchimateObject) {
-            element = ((IDiagramModelArchimateObject)element).getArchimateElement();
+        if(element instanceof IDiagramModelZentamateObject) {
+            element = ((IDiagramModelZentamateObject)element).getZentamateElement();
         }
-        else if(element instanceof IDiagramModelArchimateConnection) {
-            element = ((IDiagramModelArchimateConnection)element).getRelationship();
+        else if(element instanceof IDiagramModelZentamateConnection) {
+            element = ((IDiagramModelZentamateConnection)element).getRelationship();
         }
         
         return element;

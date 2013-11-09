@@ -11,8 +11,8 @@ import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.EllipseFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.IFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 import org.rulez.magwas.zenta.model.IInterfaceElement;
 
 
@@ -26,15 +26,15 @@ extends AbstractTextFlowFigure {
     
     protected IFigureDelegate fRectangleDelegate, fEllipseDelegate;
     
-    public BusinessInterfaceFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public BusinessInterfaceFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
         
         fRectangleDelegate = new RectangleFigureDelegate(this) {
             @Override
             public Image getImage() {
-                IInterfaceElement element = (IInterfaceElement)((IDiagramModelArchimateObject)getDiagramModelObject()).getArchimateElement();
-                return element.getInterfaceType() == IInterfaceElement.PROVIDED ? IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_INTERFACE_16)
-                        : IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_INTERFACE_REQUIRED_16);
+                IInterfaceElement element = (IInterfaceElement)((IDiagramModelZentamateObject)getDiagramModelObject()).getZentamateElement();
+                return element.getInterfaceType() == IInterfaceElement.PROVIDED ? IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_INTERFACE_16)
+                        : IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_INTERFACE_REQUIRED_16);
             }
         };
         
@@ -49,13 +49,13 @@ extends AbstractTextFlowFigure {
     
     @Override
     public IFigureDelegate getFigureDelegate() {
-        int type = ((IDiagramModelArchimateObject)getDiagramModelObject()).getType();
+        int type = ((IDiagramModelZentamateObject)getDiagramModelObject()).getType();
         return type == 0 ? fRectangleDelegate : fEllipseDelegate;
     }
     
     @Override
     public Dimension getDefaultSize() {
-        int type = ((IDiagramModelArchimateObject)getDiagramModelObject()).getType();
+        int type = ((IDiagramModelZentamateObject)getDiagramModelObject()).getType();
         return type == 0 ? super.getDefaultSize() : new Dimension(60, 60);
     }
 }

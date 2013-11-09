@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.TriggeringConne
  * 
  * @author Phillip Beauvoir
  */
-public class TriggeringConnectionEditPart extends AbstractArchimateConnectionEditPart {
+public class TriggeringConnectionEditPart extends AbstractZentamateConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {

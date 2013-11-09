@@ -17,12 +17,12 @@ import org.rulez.magwas.zenta.editor.diagram.dialog.NewNestedRelationDialog;
 import org.rulez.magwas.zenta.editor.diagram.dialog.NewNestedRelationsDialog;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 
 
 
@@ -75,13 +75,13 @@ public final class DiagramCommandFactory {
      * @param childElements
      * @return The Command or null
      */
-    public static Command createNewNestedRelationCommandWithDialog(IArchimateElement parentElement, IArchimateElement[] childElements) {
+    public static Command createNewNestedRelationCommandWithDialog(IZentamateElement parentElement, IZentamateElement[] childElements) {
         Command command = null;
         
-        List<IArchimateElement> children = new ArrayList<IArchimateElement>();
+        List<IZentamateElement> children = new ArrayList<IZentamateElement>();
         
         // Remove any that already have a relationship
-        for(IArchimateElement element : childElements) {
+        for(IZentamateElement element : childElements) {
             if(__canAddNewRelationship(parentElement, element)) {
                 children.add(element);
             }
@@ -104,7 +104,7 @@ public final class DiagramCommandFactory {
             NewNestedRelationsDialog dialog = new NewNestedRelationsDialog(Display.getCurrent().getActiveShell(),
                                                 parentElement, children);
             if(dialog.open() == Window.OK) {
-                IArchimateElement[] elements = dialog.getSelectedElements();
+                IZentamateElement[] elements = dialog.getSelectedElements();
                 if(elements != null) {
                     command = new CompoundCommand();
                     EClass[] types = dialog.getSelectedTypes();
@@ -123,14 +123,14 @@ public final class DiagramCommandFactory {
      * @param child
      * @return true if a new relation can/should be added between parent and child when adding an element to a View
      */
-    private static boolean __canAddNewRelationship(IArchimateElement parent, IArchimateElement child) {
+    private static boolean __canAddNewRelationship(IZentamateElement parent, IZentamateElement child) {
         // Not certain types
         if(!DiagramModelUtils.isNestedConnectionTypeElement(parent) || !DiagramModelUtils.isNestedConnectionTypeElement(child)) {
             return false;
         }
         
         // Not if there is already a relationship of a certain type between the two
-        for(IRelationship relation : ArchimateModelUtils.getSourceRelationships(parent)) {
+        for(IRelationship relation : ZentamateModelUtils.getSourceRelationships(parent)) {
             if(relation.getTarget() == child) {
                 for(EClass eClass : ConnectionPreferences.getRelationsClassesForNewRelations()) {
                     if(relation.eClass() == eClass) {
@@ -141,7 +141,7 @@ public final class DiagramCommandFactory {
         }
         
         // Not if there is already *any* relationship between the two
-//        for(IRelationship relation : ArchimateModelUtils.getSourceRelationships(parent)) {
+//        for(IRelationship relation : ZentamateModelUtils.getSourceRelationships(parent)) {
 //            if(relation.getTarget() == child) {
 //                return false;
 //            }
@@ -149,7 +149,7 @@ public final class DiagramCommandFactory {
         
         // Check valid relations
         for(EClass eClass : ConnectionPreferences.getRelationsClassesForNewRelations()) {
-            if(ArchimateModelUtils.isValidRelationship(parent, child, eClass)) {
+            if(ZentamateModelUtils.isValidRelationship(parent, child, eClass)) {
                 return true;
             }
         }

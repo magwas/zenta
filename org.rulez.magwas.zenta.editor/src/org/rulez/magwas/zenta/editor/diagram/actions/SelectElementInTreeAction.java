@@ -15,8 +15,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 /**
@@ -47,11 +47,11 @@ public class SelectElementInTreeAction extends SelectionAction {
                 if(model instanceof IDiagramModel) {
                     elements.add(model);
                 }
-                else if(model instanceof IDiagramModelArchimateObject) {
-                    elements.add(((IDiagramModelArchimateObject)model).getArchimateElement());
+                else if(model instanceof IDiagramModelZentamateObject) {
+                    elements.add(((IDiagramModelZentamateObject)model).getZentamateElement());
                 }
-                else if(model instanceof IDiagramModelArchimateConnection) {
-                    elements.add(((IDiagramModelArchimateConnection)model).getRelationship());
+                else if(model instanceof IDiagramModelZentamateConnection) {
+                    elements.add(((IDiagramModelZentamateConnection)model).getRelationship());
                 }
             }
         }
@@ -73,7 +73,7 @@ public class SelectElementInTreeAction extends SelectionAction {
         for(Object object : list) {
             if(object instanceof EditPart) {
                 Object model = ((EditPart)object).getModel();
-                if(model instanceof IDiagramModel || model instanceof IDiagramModelArchimateConnection || model instanceof IDiagramModelArchimateObject) {
+                if(model instanceof IDiagramModel || model instanceof IDiagramModelZentamateConnection || model instanceof IDiagramModelZentamateObject) {
                     return true;
                 }
             }

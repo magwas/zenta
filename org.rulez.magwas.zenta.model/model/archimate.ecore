@@ -77,7 +77,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ArchimateModel" eSuperTypes="#//FolderContainer #//Nameable #//Identifier #//ArchimateModelElement #//Properties">
+  <eClassifiers xsi:type="ecore:EClass" name="ZentamateModel" eSuperTypes="#//FolderContainer #//Nameable #//Identifier #//ZentamateModelElement #//Properties">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="model"/>
     </eAnnotations>
@@ -101,12 +101,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ArchimateModelElement" abstract="true"
+  <eClassifiers xsi:type="ecore:EClass" name="ZentamateModelElement" abstract="true"
       interface="true" eSuperTypes="#//Adapter">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="archimateModel" eType="#//ArchimateModel"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="archimateModel" eType="#//ZentamateModel"
         changeable="false" volatile="true" transient="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="#//ArchimateModelElement #//FolderContainer #//Nameable #//Identifier #//Documentable #//Properties">
+  <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="#//ZentamateModelElement #//FolderContainer #//Nameable #//Identifier #//Documentable #//Properties">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"
         resolveProxies="false">
@@ -117,27 +117,27 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//FolderType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ArchimateElement" abstract="true" eSuperTypes="#//ArchimateModelElement #//Identifier #//Cloneable #//Nameable #//Documentable #//Properties"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ZentamateElement" abstract="true" eSuperTypes="#//ZentamateModelElement #//Identifier #//Cloneable #//Nameable #//Documentable #//Properties"/>
   <eClassifiers xsi:type="ecore:EClass" name="JunctionElement" abstract="true" interface="true"
-      eSuperTypes="#//ArchimateElement"/>
+      eSuperTypes="#//ZentamateElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="InterfaceElement" abstract="true" interface="true"
-      eSuperTypes="#//ArchimateElement">
+      eSuperTypes="#//ZentamateElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Junction" eSuperTypes="#//JunctionElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="AndJunction" eSuperTypes="#//JunctionElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="OrJunction" eSuperTypes="#//JunctionElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Relationship" abstract="true" eSuperTypes="#//ArchimateElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ArchimateElement"
+  <eClassifiers xsi:type="ecore:EClass" name="Relationship" abstract="true" eSuperTypes="#//ZentamateElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ZentamateElement"
         resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ArchimateElement"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ZentamateElement"
         resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssociationRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EClass" name="SpecialisationRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessLayerElement" abstract="true"
-      interface="true" eSuperTypes="#//ArchimateElement"/>
+      interface="true" eSuperTypes="#//ZentamateElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiagramModelComponent" abstract="true"
       eSuperTypes="#//Identifier #//Cloneable #//Adapter #//Nameable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagramModel" eType="#//DiagramModel"
@@ -153,7 +153,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DiagramModel" abstract="true" eSuperTypes="#//ArchimateModelElement #//DiagramModelContainer #//Documentable #//Properties">
+  <eClassifiers xsi:type="ecore:EClass" name="DiagramModel" abstract="true" eSuperTypes="#//ZentamateModelElement #//DiagramModelContainer #//Documentable #//Properties">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionRouterType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiagramModelReference" eSuperTypes="#//DiagramModelObject">
@@ -260,23 +260,23 @@
   <eClassifiers xsi:type="ecore:EClass" name="Lockable" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="locked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ArchimateDiagramModel" eSuperTypes="#//DiagramModel">
+  <eClassifiers xsi:type="ecore:EClass" name="ZentamateDiagramModel" eSuperTypes="#//DiagramModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewpoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DiagramModelArchimateObject" eSuperTypes="#//DiagramModelObject #//DiagramModelContainer">
+  <eClassifiers xsi:type="ecore:EClass" name="DiagramModelZentamateObject" eSuperTypes="#//DiagramModelObject #//DiagramModelContainer">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="DiagramObject"/>
     </eAnnotations>
-    <eOperations name="addArchimateElementToModel">
+    <eOperations name="addZentamateElementToModel">
       <eParameters name="parent" eType="#//Folder"/>
     </eOperations>
-    <eOperations name="removeArchimateElementFromModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="archimateElement" eType="#//ArchimateElement"
+    <eOperations name="removeZentamateElementFromModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="archimateElement" eType="#//ZentamateElement"
         volatile="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DiagramModelArchimateConnection" eSuperTypes="#//DiagramModelConnection">
+  <eClassifiers xsi:type="ecore:EClass" name="DiagramModelZentamateConnection" eSuperTypes="#//DiagramModelConnection">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Connection"/>
     </eAnnotations>

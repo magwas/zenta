@@ -10,9 +10,9 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.EllipseAnchor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.common.notify.Notification;
-import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractArchimateEditableTextFlowEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractZentamateEditableTextFlowEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessInterfaceFigure;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 /**
@@ -21,7 +21,7 @@ import org.rulez.magwas.zenta.model.IArchimatePackage;
  * @author Phillip Beauvoir
  */
 public class BusinessInterfaceEditPart
-extends AbstractArchimateEditableTextFlowEditPart {
+extends AbstractZentamateEditableTextFlowEditPart {
     
     @Override
     protected IFigure createFigure() {
@@ -44,7 +44,7 @@ extends AbstractArchimateEditableTextFlowEditPart {
         super.eCoreChanged(msg);
         
         // Update Connection Anchors
-        if(msg.getFeature() == IArchimatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_OBJECT__TYPE) {
+        if(msg.getFeature() == IZentamatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_OBJECT__TYPE) {
             refreshConnectionAnchors();
         }
     }

@@ -35,7 +35,7 @@ import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.keys.IBindingService;
 import org.rulez.magwas.zenta.editor.diagram.FloatingPalette;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.components.PartListenerAdapter;
 
 
@@ -177,7 +177,7 @@ public class FullScreenAction extends WorkbenchPartAction {
         fNewShell.setFullScreen(true);
         fNewShell.setMaximized(true);
         fNewShell.setLayout(new FillLayout());
-        fNewShell.setImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_APP_128));
+        fNewShell.setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_APP_128));
         
         // On Ubuntu the min/max/close buttons are shown, so trap close button
         fNewShell.addShellListener(new ShellAdapter() {

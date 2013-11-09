@@ -26,9 +26,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorFactoryExtensionHandler;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramEditorFactory;
-import org.rulez.magwas.zenta.editor.diagram.editparts.ArchimateDiagramEditPartFactory;
+import org.rulez.magwas.zenta.editor.diagram.editparts.ZentamateDiagramEditPartFactory;
 import org.rulez.magwas.zenta.editor.diagram.sketch.editparts.SketchEditPartFactory;
-import org.rulez.magwas.zenta.model.IArchimateDiagramModel;
+import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.ISketchModel;
 
@@ -50,8 +50,8 @@ public final class DiagramUtils {
     public static GraphicalViewerImpl createViewer(IDiagramModel model, Composite parent) {
         EditPartFactory editPartFactory = null;
         
-        if(model instanceof IArchimateDiagramModel) {
-            editPartFactory = new ArchimateDiagramEditPartFactory();
+        if(model instanceof IZentamateDiagramModel) {
+            editPartFactory = new ZentamateDiagramEditPartFactory();
         }
         else if(model instanceof ISketchModel) {
             editPartFactory = new SketchEditPartFactory();

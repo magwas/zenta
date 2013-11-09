@@ -10,22 +10,22 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            class="org.rulez.magwas.zenta.model.IArchimatePackage"
+            class="org.rulez.magwas.zenta.model.IZentamatePackage"
             genModel="model/archimate.genmodel"
             uri="http://www.bolton.ac.uk/archimate">
       </package>
       <package
             uri="http://www.bolton.ac.uk/archimate/1.0"
-            class="org.rulez.magwas.zenta.model.IArchimatePackage"
+            class="org.rulez.magwas.zenta.model.IZentamatePackage"
             genModel="model/archimate.genmodel"/>
    </extension>
    
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="archimate"
-            class="org.rulez.magwas.zenta.model.util.ArchimateResourceFactory"/>
+            class="org.rulez.magwas.zenta.model.util.ZentamateResourceFactory"/>
       <parser
-            class="org.rulez.magwas.zenta.model.util.ArchimateResourceFactory"
+            class="org.rulez.magwas.zenta.model.util.ZentamateResourceFactory"
             type="xml">
       </parser>
    </extension>

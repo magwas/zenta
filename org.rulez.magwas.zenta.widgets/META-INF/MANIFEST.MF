@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Archi Widgets
+Bundle-Name: Zenta Widgets
 Bundle-SymbolicName: org.rulez.magwas.zenta.widgets;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: Phillip Beauvoir
@@ -21,4 +21,4 @@ Export-Package: org.eclipse.nebula.animation,
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui
-Bundle-Activator: org.rulez.magwas.zenta.widgets.ArchimateWidgetsPlugin
+Bundle-Activator: org.rulez.magwas.zenta.widgets.ZentamateWidgetsPlugin

@@ -80,7 +80,7 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
 import org.rulez.magwas.zenta.editor.diagram.actions.BorderColorAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.BringForwardAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.BringToFrontAction;
@@ -117,8 +117,8 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -179,7 +179,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
     }
     
     /**
-     * Adapter class to respond to Archimate Model notifications.
+     * Adapter class to respond to Zentamate Model notifications.
      */
     protected Adapter eCoreAdapter = new EContentAdapter() {
         @Override
@@ -210,7 +210,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         fDiagramModel = ((DiagramEditorInput)input).getDiagramModel();
         
         // Listen to its notifications
-        fDiagramModel.getArchimateModel().eAdapters().add(eCoreAdapter);
+        fDiagramModel.getZentamateModel().eAdapters().add(eCoreAdapter);
         
         // Edit Domain before init
         // Use CommandStack from Model
@@ -751,7 +751,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
     
     @Override
     public String getContributorId() {
-        return ArchimateEditorPlugin.PLUGIN_ID;
+        return ZentamateEditorPlugin.PLUGIN_ID;
     }
 
     @SuppressWarnings("rawtypes")
@@ -779,11 +779,11 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         }
 
         /*
-         * Return the Archimate Model
+         * Return the Zentamate Model
          * DO NOT REMOVE! SaveAction requires this
          */
-        if(adapter == IArchimateModel.class && getModel() != null) {
-            return getModel().getArchimateModel();
+        if(adapter == IZentamateModel.class && getModel() != null) {
+            return getModel().getZentamateModel();
         }
         
         /*
@@ -802,9 +802,9 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
      */
     protected void eCoreModelChanged(Notification msg) {
         if(msg.getEventType() == Notification.SET) {
-            // Archimate Model or Diagram Model name changed
-            if(msg.getNotifier() == getModel() || msg.getNotifier() == getModel().getArchimateModel()) {
-                if(msg.getFeature() == IArchimatePackage.Literals.NAMEABLE__NAME) {
+            // Zentamate Model or Diagram Model name changed
+            if(msg.getNotifier() == getModel() || msg.getNotifier() == getModel().getZentamateModel()) {
+                if(msg.getFeature() == IZentamatePackage.Literals.NAMEABLE__NAME) {
                     setPartName(getEditorInput().getName());
                 }
             }
@@ -818,8 +818,8 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         // Remove listeners
         Preferences.STORE.removePropertyChangeListener(appPreferencesListener);
         
-        if(getModel() != null && getModel().getArchimateModel() != null) {
-            getModel().getArchimateModel().eAdapters().remove(eCoreAdapter);
+        if(getModel() != null && getModel().getZentamateModel() != null) {
+            getModel().getZentamateModel().eAdapters().remove(eCoreAdapter);
         }
     }
     

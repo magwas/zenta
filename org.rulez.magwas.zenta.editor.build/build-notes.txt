@@ -17,7 +17,7 @@ In order to create binaries and installers for all platforms ensure the Eclipse 
 	Configuration:						              /org.rulez.magwas.zenta.editor.build/archimate.product
 	Root directory:						              (leave blank)
 	Synchronize before exporting:		              ticked
-	Directory:							              /Archi
+	Directory:							              /Zenta
 	Export Source:				                      unticked
 	Generate metadata repository:                     unticked
 	Export for multiple platforms:		              ticked
@@ -34,8 +34,8 @@ In order to create binaries and installers for all platforms ensure the Eclipse 
 	win32 (win32/x86)
 	win32 (win32/x86_64)
 	
-	Click "Finish" and wait for the export wizard to create the output folders in "/Archi".
-	The "/Archi" folder should be created on your local drive with the following build sub-folders:
+	Click "Finish" and wait for the export wizard to create the output folders in "/Zenta".
+	The "/Zenta" folder should be created on your local drive with the following build sub-folders:
 	
 	linux.gtk.x86
 	linux.gtk.x86_64

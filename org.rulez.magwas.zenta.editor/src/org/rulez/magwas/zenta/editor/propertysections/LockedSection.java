@@ -18,7 +18,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.LockObjectCommand;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ILockable;
 
 
@@ -28,9 +28,9 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class LockedSection extends AbstractArchimatePropertySection {
+public class LockedSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
     /**
      * Filter to show or reject this section depending on input value
@@ -50,7 +50,7 @@ public class LockedSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model event (Undo/Redo and here)
-            if(feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshLockedButton();
             }
         }

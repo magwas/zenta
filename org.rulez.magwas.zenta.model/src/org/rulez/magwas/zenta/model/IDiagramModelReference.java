@@ -19,7 +19,7 @@ package org.rulez.magwas.zenta.model;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelReference()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelReference()
  * @model
  * @generated
  */
@@ -34,7 +34,7 @@ public interface IDiagramModelReference extends IDiagramModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Referenced Model</em>' reference.
 	 * @see #setReferencedModel(IDiagramModel)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelReference_ReferencedModel()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelReference_ReferencedModel()
 	 * @model resolveProxies="false"
 	 *        extendedMetaData="name='model' kind='attribute'"
 	 * @generated

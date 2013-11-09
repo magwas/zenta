@@ -6,9 +6,9 @@
 package org.rulez.magwas.zenta.editor.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
  */
 public class Preferences implements IPreferenceConstants {
     
-    public static IPreferenceStore STORE = ArchimateEditorPlugin.INSTANCE.getPreferenceStore();
+    public static IPreferenceStore STORE = ZentamateEditorPlugin.INSTANCE.getPreferenceStore();
 
     public static String getUserDataFolder() {
         return STORE.getString(USER_DATA_FOLDER);
@@ -95,10 +95,10 @@ public class Preferences implements IPreferenceConstants {
     
     /**
      * @param dmo
-     * @return The default figure type to use for a IDiagramModelArchimateObject
+     * @return The default figure type to use for a IDiagramModelZentamateObject
      */
-    public static int getDefaultFigureType(IDiagramModelArchimateObject dmo) {
-        switch(dmo.getArchimateElement().eClass().getClassifierID()) {
+    public static int getDefaultFigureType(IDiagramModelZentamateObject dmo) {
+        switch(dmo.getZentamateElement().eClass().getClassifierID()) {
         //FIXME from objectClass
 
             default:

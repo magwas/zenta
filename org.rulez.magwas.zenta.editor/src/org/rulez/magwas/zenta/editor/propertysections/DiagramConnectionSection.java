@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionLineWidthCommand;
 import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionTextPositionCommand;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.ILockable;
 
@@ -30,9 +30,9 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramConnectionSection extends AbstractArchimatePropertySection {
+public class DiagramConnectionSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
     /*
      * Adapter to listen to changes made elsewhere (including Undo/Redo commands)
@@ -42,13 +42,13 @@ public class DiagramConnectionSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model event (Undo/Redo and here)
-            if(feature == IArchimatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION) {
+            if(feature == IZentamatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION) {
                 refreshTextPositionCombo();
             }
-            else if(feature == IArchimatePackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH) {
+            else if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH) {
                 refreshLineWidthCombo();
             }
-            else if(feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+            else if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }

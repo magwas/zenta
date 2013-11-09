@@ -10,7 +10,7 @@ import java.io.IOException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.rulez.magwas.zenta.editor.model.IModelExporter;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 
 
 /**
@@ -30,7 +30,7 @@ public class ExportModelAction extends AbstractModelSelectionAction {
     
     @Override
     public void run() {
-        IArchimateModel model = getActiveArchimateModel();
+        IZentamateModel model = getActiveZentamateModel();
         if(model != null && fExporter != null) {
             try {
                 fExporter.export(model);
@@ -44,6 +44,6 @@ public class ExportModelAction extends AbstractModelSelectionAction {
     
     @Override
     protected void updateState() {
-        setEnabled(getActiveArchimateModel() != null);
+        setEnabled(getActiveZentamateModel() != null);
     }
 }

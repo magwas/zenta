@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.editparts.extensions;
 
 import org.eclipse.draw2d.IFigure;
-import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractArchimateEditableTextFlowEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractZentamateEditableTextFlowEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.extensions.AssessmentFigure;
 
 
@@ -16,7 +16,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.extensions.AssessmentFigure
  * @author Phillip Beauvoir
  */
 public class AssessmentEditPart
-extends AbstractArchimateEditableTextFlowEditPart {            
+extends AbstractZentamateEditableTextFlowEditPart {            
     
     @Override
     protected IFigure createFigure() {

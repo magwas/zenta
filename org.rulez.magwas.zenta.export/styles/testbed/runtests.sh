@@ -3,7 +3,7 @@ set -xe
 export UBUNTU_MENUPROXY=0
 dir=`dirname $0`
 cd $dir
-binary=../../../../repo/Archi/linux.gtk.x86_64/Archi
+binary=../../../../repo/Zenta/linux.gtk.x86_64/Zenta
 rm -rf .archi out
 for i in ../*.style ../tests/*.style
 do

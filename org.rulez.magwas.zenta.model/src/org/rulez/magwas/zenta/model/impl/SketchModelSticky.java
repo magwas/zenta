@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IProperties;
@@ -97,7 +97,7 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.SKETCH_MODEL_STICKY;
+		return IZentamatePackage.Literals.SKETCH_MODEL_STICKY;
 	}
 
     /**
@@ -107,7 +107,7 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
 	 */
     public EList<IDiagramModelObject> getChildren() {
 		if (children == null) {
-			children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN);
+			children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IZentamatePackage.SKETCH_MODEL_STICKY__CHILDREN);
 		}
 		return children;
 	}
@@ -130,7 +130,7 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
 		String oldContent = content;
 		content = newContent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT, oldContent, content));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.SKETCH_MODEL_STICKY__CONTENT, oldContent, content));
 	}
     
     /**
@@ -140,7 +140,7 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
 	 */
     public EList<IProperty> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES);
+			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentamatePackage.SKETCH_MODEL_STICKY__PROPERTIES);
 		}
 		return properties;
 	}
@@ -169,9 +169,9 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -185,11 +185,11 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CHILDREN:
 				return getChildren();
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CONTENT:
 				return getContent();
-			case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
 				return getProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -204,14 +204,14 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends IDiagramModelObject>)newValue);
 				return;
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CONTENT:
 				setContent((String)newValue);
 				return;
-			case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends IProperty>)newValue);
 				return;
@@ -227,13 +227,13 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CHILDREN:
 				getChildren().clear();
 				return;
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CONTENT:
 				setContent(CONTENT_EDEFAULT);
 				return;
-			case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
 				getProperties().clear();
 				return;
 		}
@@ -248,11 +248,11 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CHILDREN:
 				return children != null && !children.isEmpty();
-			case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__CONTENT:
 				return CONTENT_EDEFAULT == null ? content != null : !CONTENT_EDEFAULT.equals(content);
-			case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
+			case IZentamatePackage.SKETCH_MODEL_STICKY__PROPERTIES:
 				return properties != null && !properties.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -267,19 +267,19 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IDiagramModelContainer.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
+				case IZentamatePackage.SKETCH_MODEL_STICKY__CHILDREN: return IZentamatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
 				default: return -1;
 			}
 		}
 		if (baseClass == ITextContent.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT: return IArchimatePackage.TEXT_CONTENT__CONTENT;
+				case IZentamatePackage.SKETCH_MODEL_STICKY__CONTENT: return IZentamatePackage.TEXT_CONTENT__CONTENT;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES: return IArchimatePackage.PROPERTIES__PROPERTIES;
+				case IZentamatePackage.SKETCH_MODEL_STICKY__PROPERTIES: return IZentamatePackage.PROPERTIES__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -295,19 +295,19 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IDiagramModelContainer.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IArchimatePackage.SKETCH_MODEL_STICKY__CHILDREN;
+				case IZentamatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IZentamatePackage.SKETCH_MODEL_STICKY__CHILDREN;
 				default: return -1;
 			}
 		}
 		if (baseClass == ITextContent.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.TEXT_CONTENT__CONTENT: return IArchimatePackage.SKETCH_MODEL_STICKY__CONTENT;
+				case IZentamatePackage.TEXT_CONTENT__CONTENT: return IZentamatePackage.SKETCH_MODEL_STICKY__CONTENT;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.PROPERTIES__PROPERTIES: return IArchimatePackage.SKETCH_MODEL_STICKY__PROPERTIES;
+				case IZentamatePackage.PROPERTIES__PROPERTIES: return IZentamatePackage.SKETCH_MODEL_STICKY__PROPERTIES;
 				default: return -1;
 			}
 		}

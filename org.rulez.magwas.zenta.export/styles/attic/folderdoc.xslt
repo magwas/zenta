@@ -22,10 +22,10 @@
         </td></tr>
        </xsl:for-each>
         </table>
-        <xsl:apply-templates select="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel">
+        <xsl:apply-templates select="archimate:ZentamateDiagramModel|archimate:DiagramModel|archimate:SketchModel">
             <xsl:sort select="./@name"/>
         </xsl:apply-templates>
-        <xsl:apply-templates select="set:difference(archimate:*,(archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|archimate:Folder))">
+        <xsl:apply-templates select="set:difference(archimate:*,(archimate:ZentamateDiagramModel|archimate:DiagramModel|archimate:SketchModel|archimate:Folder))">
             <xsl:sort select="./@name"/>
         </xsl:apply-templates>
         <xsl:for-each select="archimate:Folder">

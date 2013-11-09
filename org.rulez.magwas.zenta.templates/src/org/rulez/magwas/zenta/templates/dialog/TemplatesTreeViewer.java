@@ -14,7 +14,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 
@@ -94,7 +94,7 @@ public class TemplatesTreeViewer extends TreeViewer {
         @Override
         public Image getImage(Object element) {
             if(element instanceof ITemplateGroup) {
-                return IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_FOLDER);
+                return IZentamateImages.ImageFactory.getImage(IZentamateImages.ECLIPSE_IMAGE_FOLDER);
             }
             if(element instanceof ITemplate) {
                 return ((ITemplate)element).getImage();

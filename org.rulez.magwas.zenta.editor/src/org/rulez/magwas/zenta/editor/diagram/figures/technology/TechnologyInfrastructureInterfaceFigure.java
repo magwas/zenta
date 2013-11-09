@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.technology;
 
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessInterfaceFigure;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
  */
 public class TechnologyInfrastructureInterfaceFigure extends BusinessInterfaceFigure {
 
-    public TechnologyInfrastructureInterfaceFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public TechnologyInfrastructureInterfaceFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
 }

@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.application;
 
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessInteractionFigure;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
  */
 public class ApplicationInteractionFigure extends BusinessInteractionFigure {
 
-    public ApplicationInteractionFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public ApplicationInteractionFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
 }

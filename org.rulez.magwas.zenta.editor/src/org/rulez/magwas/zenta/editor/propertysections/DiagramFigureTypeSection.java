@@ -23,12 +23,12 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.editparts.IArchimateEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.IZentamateEditPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IInterfaceElement;
 
@@ -39,9 +39,9 @@ import org.rulez.magwas.zenta.model.IInterfaceElement;
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
+public class DiagramFigureTypeSection extends AbstractZentamatePropertySection {
 
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.diagramFigureTypeSection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.diagramFigureTypeSection"; //$NON-NLS-1$
     
     /**
      * Filter to show or reject this section depending on input value
@@ -49,8 +49,8 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
     public static class Filter implements IFilter {
         @Override
         public boolean select(Object object) {
-           if(object instanceof IArchimateEditPart) {
-               IArchimateElement element = (IArchimateElement)((IArchimateEditPart)object).getAdapter(IArchimateElement.class);
+           if(object instanceof IZentamateEditPart) {
+               IZentamateElement element = (IZentamateElement)((IZentamateEditPart)object).getAdapter(IZentamateElement.class);
                return element instanceof IInterfaceElement;
            }
            return false;
@@ -65,13 +65,13 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model event (Undo/Redo and here!)
-            if(feature == IArchimatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_OBJECT__TYPE) {
+            if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_OBJECT__TYPE) {
                 refreshControls();
             }
         }
     };
     
-    private IDiagramModelArchimateObject fDiagramObject;
+    private IDiagramModelZentamateObject fDiagramObject;
     
     private ImageFigure figure1, figure2;
 
@@ -85,7 +85,7 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
     }
     
     protected void refreshControls() {
-        IArchimateElement element = fDiagramObject.getArchimateElement();
+        IZentamateElement element = fDiagramObject.getZentamateElement();
         
         String imageName1 = null, imageName2 = null;
 
@@ -110,8 +110,8 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
 
     @Override
     protected void setElement(Object element) {
-        if(element instanceof IArchimateEditPart) {
-            fDiagramObject = (IDiagramModelArchimateObject)((IAdaptable)element).getAdapter(IDiagramModelObject.class);
+        if(element instanceof IZentamateEditPart) {
+            fDiagramObject = (IDiagramModelZentamateObject)((IAdaptable)element).getAdapter(IDiagramModelObject.class);
         }
         if(fDiagramObject == null) {
             System.err.println("Diagram Object was null in " + getClass()); //$NON-NLS-1$
@@ -154,14 +154,14 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
                     if(!selected && isAlive()) {
                         int newType = fDiagramObject.getType() == 0 ? 1 : 0;
                         getCommandStack().execute(new EObjectFeatureCommand(Messages.DiagramFigureTypeSection_0, getEObject(),
-                                IArchimatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_OBJECT__TYPE, newType));
+                                IZentamatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_OBJECT__TYPE, newType));
                     }
                 }
             });
         }
         
         void setImage(String imageName) {
-            label.setImage(imageName == null ? null : IArchimateImages.ImageFactory.getImage(imageName));
+            label.setImage(imageName == null ? null : IZentamateImages.ImageFactory.getImage(imageName));
         }
         
         void setSelected(boolean set) {

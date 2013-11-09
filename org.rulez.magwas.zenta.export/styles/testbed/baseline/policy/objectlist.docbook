@@ -46,8 +46,8 @@
             <td>abstractNamed archimate:DataObject</td>
             <td/>
             <td/>
-            <td>An objectclass predefined by Archi.This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.</td>
-            <td>ArchimateObjectClass</td>
+            <td>An objectclass predefined by Zenta.This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.</td>
+            <td>ZentamateObjectClass</td>
          </tr>
          <tr>
             <td>d2886808</td>
@@ -518,7 +518,7 @@
             <td>81c4876a</td>
             <td>there is a specialisation relationship from the ancestor to the objectClass</td>
             <td>0</td>
-            <td>//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
+            <td>//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
             <td>true</td>
          </tr>
          <tr>
@@ -677,12 +677,12 @@
          </tr>
       </table>
    </section>
-   <section id="ArchimateObjectClass">
-      <title>ArchimateObjectClass</title>
+   <section id="ZentamateObjectClass">
+      <title>ZentamateObjectClass</title>
       <para>
-         <link xlink:href="csv/ArchimateObjectClass.csv" xrefstyle="what?">csv download</link>
+         <link xlink:href="csv/ZentamateObjectClass.csv" xrefstyle="what?">csv download</link>
       </para>
-      <table id="ArchimateObjectClass.table">
+      <table id="ZentamateObjectClass.table">
          <tr>
             <td>id</td>
             <td>description</td>
@@ -735,7 +735,7 @@
          </tr>
          <tr>
             <td>fd882843</td>
-            <td>A Node as defined by Archimate</td>
+            <td>A Node as defined by Zentamate</td>
             <td>archimate:Node</td>
          </tr>
          <tr>
@@ -967,18 +967,18 @@
          </tr>
          <tr>
             <td>fbe5dc11</td>
-            <td>The users of Archi. All and any of them.</td>
-            <td>Archi users</td>
+            <td>The users of Zenta. All and any of them.</td>
+            <td>Zenta users</td>
          </tr>
          <tr>
             <td>0ec67e85</td>
             <td>Everyone who develops archi or one of the modules belonging to it.</td>
-            <td>Archi developers</td>
+            <td>Zenta developers</td>
          </tr>
          <tr>
             <td>19fcbcca</td>
             <td>Where you look for an architect.</td>
-            <td>IT Architecture dept.</td>
+            <td>IT Zentatecture dept.</td>
          </tr>
          <tr>
             <td>460239bb</td>
@@ -1013,23 +1013,23 @@
          <tr>
             <td>16abaafb</td>
             <td>Phil Beauvoir</td>
-            <td>Archi project leader</td>
-            <td>Archi developers</td>
-            <td>Archi developers</td>
+            <td>Zenta project leader</td>
+            <td>Zenta developers</td>
+            <td>Zenta developers</td>
          </tr>
          <tr>
             <td>91d6a6a9</td>
             <td>Árpád Magosányi</td>
             <td>Styled export module developer</td>
-            <td>Archi developers</td>
-            <td>Archi developers</td>
+            <td>Zenta developers</td>
+            <td>Zenta developers</td>
          </tr>
          <tr>
             <td>cc2694e8</td>
             <td>Legate Nesall</td>
-            <td>Architect</td>
-            <td>IT Architecture dept.</td>
-            <td>IT Architecture dept.</td>
+            <td>Zentatect</td>
+            <td>IT Zentatecture dept.</td>
+            <td>IT Zentatecture dept.</td>
          </tr>
          <tr>
             <td>151d0d88</td>

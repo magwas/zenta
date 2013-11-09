@@ -11,7 +11,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -26,7 +26,7 @@ public class TechnologyArtifactFigure extends AbstractTextFlowFigure {
     protected int FOLD_HEIGHT = 18;
     protected int SHADOW_OFFSET = 2;
 
-    public TechnologyArtifactFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public TechnologyArtifactFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
 

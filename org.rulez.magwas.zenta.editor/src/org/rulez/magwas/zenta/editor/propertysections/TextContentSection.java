@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.ui.components.StyledTextControl;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.ITextContent;
 
@@ -27,9 +27,9 @@ import org.rulez.magwas.zenta.model.ITextContent;
  * 
  * @author Phillip Beauvoir
  */
-public class TextContentSection extends AbstractArchimatePropertySection {
+public class TextContentSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
     /**
      * Filter to show or reject this section depending on input value
@@ -50,8 +50,8 @@ public class TextContentSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model Name event (Undo/Redo and here!)
-            if(feature == IArchimatePackage.Literals.TEXT_CONTENT__CONTENT ||
-                    feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentamatePackage.Literals.TEXT_CONTENT__CONTENT ||
+                    feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }
@@ -67,13 +67,13 @@ public class TextContentSection extends AbstractArchimatePropertySection {
         
         StyledTextControl styledTextControl = createStyledTextControl(parent, SWT.NONE);
         
-        fTextContentControl = new PropertySectionTextControl(styledTextControl.getControl(), IArchimatePackage.Literals.TEXT_CONTENT__CONTENT) {
+        fTextContentControl = new PropertySectionTextControl(styledTextControl.getControl(), IZentamatePackage.Literals.TEXT_CONTENT__CONTENT) {
             @Override
             protected void textChanged(String oldText, String newText) {
                 if(isAlive()) {
                     fIsExecutingCommand = true;
                     getCommandStack().execute(new EObjectFeatureCommand(Messages.TextContentSection_1, fTextContent,
-                                                IArchimatePackage.Literals.TEXT_CONTENT__CONTENT, newText));
+                                                IZentamatePackage.Literals.TEXT_CONTENT__CONTENT, newText));
                     fIsExecutingCommand = false;
                 }
             }

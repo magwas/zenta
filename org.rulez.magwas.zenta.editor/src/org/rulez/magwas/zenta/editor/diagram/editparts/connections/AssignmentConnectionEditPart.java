@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.AssignmentConne
  * 
  * @author Phillip Beauvoir
  */
-public class AssignmentConnectionEditPart extends AbstractArchimateConnectionEditPart {
+public class AssignmentConnectionEditPart extends AbstractZentamateConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {

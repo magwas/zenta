@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IOrJunction;
 
 
@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.model.IOrJunction;
  *
  * @generated
  */
-public class OrJunction extends ArchimateElement implements IOrJunction {
+public class OrJunction extends ZentamateElement implements IOrJunction {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -36,7 +36,7 @@ public class OrJunction extends ArchimateElement implements IOrJunction {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.OR_JUNCTION;
+		return IZentamatePackage.Literals.OR_JUNCTION;
 	}
 
 } //OrJunction

@@ -8,8 +8,8 @@ package org.rulez.magwas.zenta.editor.diagram.figures.business;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.IFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.RoundedRectangleFigureDelegate;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -25,11 +25,11 @@ extends AbstractTextFlowFigure {
     protected RoundedRectangleFigureDelegate fFigureDelegate1;
     protected BusinessProcessFigureDelegate fFigureDelegate2;
 
-    public BusinessProcessFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public BusinessProcessFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
         
         fFigureDelegate1 = new RoundedRectangleFigureDelegate(this);
-        fFigureDelegate1.setImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_PROCESS_16));
+        fFigureDelegate1.setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_PROCESS_16));
         
         fFigureDelegate2 = new BusinessProcessFigureDelegate(this);
     }
@@ -42,7 +42,7 @@ extends AbstractTextFlowFigure {
 
     @Override
     public IFigureDelegate getFigureDelegate() {
-        int type = ((IDiagramModelArchimateObject)getDiagramModelObject()).getType();
+        int type = ((IDiagramModelZentamateObject)getDiagramModelObject()).getType();
         return type == 0 ? fFigureDelegate1 : fFigureDelegate2;
     }
 

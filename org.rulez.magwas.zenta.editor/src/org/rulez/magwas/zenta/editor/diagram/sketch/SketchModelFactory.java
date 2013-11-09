@@ -10,7 +10,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.IEditorPart;
 import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.model.IArchimateFactory;
+import org.rulez.magwas.zenta.model.IZentamateFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
@@ -47,7 +47,7 @@ public class SketchModelFactory implements ICreationFactory {
     }
     
     public Object getNewObject() {
-        Object object = IArchimateFactory.eINSTANCE.create(fTemplate);
+        Object object = IZentamateFactory.eINSTANCE.create(fTemplate);
         
         // Actor
         if(object instanceof ISketchModelActor) {

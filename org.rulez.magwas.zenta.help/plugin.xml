@@ -91,7 +91,7 @@
          point="org.eclipse.ui.cheatsheets.cheatSheetContent">
       <category
             id="org.rulez.magwas.zenta.help.cheatsheets"
-            name="Archi Cheat Sheets">
+            name="Zenta Cheat Sheets">
       </category>
       <cheatsheet
             category="org.rulez.magwas.zenta.help.cheatsheets"
@@ -456,7 +456,7 @@
             title="%hint.title.61">
       </hint>
       <hint
-            class="org.rulez.magwas.zenta.model.IArchimateModel"
+            class="org.rulez.magwas.zenta.model.IZentamateModel"
             file="hints/model.html"
             title="%hint.title.62">
       </hint>

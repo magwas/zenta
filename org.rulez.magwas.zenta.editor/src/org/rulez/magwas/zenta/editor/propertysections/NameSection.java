@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -23,9 +23,9 @@ import org.rulez.magwas.zenta.model.INameable;
  * 
  * @author Phillip Beauvoir
  */
-public class NameSection extends AbstractArchimatePropertySection {
+public class NameSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
     /*
      * Adapter to listen to changes made elsewhere (including Undo/Redo commands)
@@ -35,8 +35,8 @@ public class NameSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model Name event (Undo/Redo and here)
-            if(feature == IArchimatePackage.Literals.NAMEABLE__NAME ||
-                    feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME ||
+                    feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshNameField();
                 fPage.labelProviderChanged(null); // Update Main label
             }

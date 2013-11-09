@@ -20,11 +20,11 @@ package org.rulez.magwas.zenta.model;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getRelationship()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getRelationship()
  * @model abstract="true"
  * @generated
  */
-public interface IRelationship extends IArchimateElement {
+public interface IRelationship extends IZentamateElement {
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -34,12 +34,12 @@ public interface IRelationship extends IArchimateElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #setSource(IArchimateElement)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getRelationship_Source()
+	 * @see #setSource(IZentamateElement)
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getRelationship_Source()
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
-	IArchimateElement getSource();
+	IZentamateElement getSource();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IRelationship#getSource <em>Source</em>}' reference.
@@ -49,7 +49,7 @@ public interface IRelationship extends IArchimateElement {
 	 * @see #getSource()
 	 * @generated
 	 */
-	void setSource(IArchimateElement value);
+	void setSource(IZentamateElement value);
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
@@ -60,12 +60,12 @@ public interface IRelationship extends IArchimateElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(IArchimateElement)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getRelationship_Target()
+	 * @see #setTarget(IZentamateElement)
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getRelationship_Target()
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
-	IArchimateElement getTarget();
+	IZentamateElement getTarget();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IRelationship#getTarget <em>Target</em>}' reference.
@@ -75,6 +75,6 @@ public interface IRelationship extends IArchimateElement {
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(IArchimateElement value);
+	void setTarget(IZentamateElement value);
 
 } // IRelationship

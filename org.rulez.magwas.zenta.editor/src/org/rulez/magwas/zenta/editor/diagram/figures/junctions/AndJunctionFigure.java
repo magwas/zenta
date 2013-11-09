@@ -9,7 +9,7 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
  */
 public class AndJunctionFigure extends OrJunctionFigure {
     
-    public AndJunctionFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public AndJunctionFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
 

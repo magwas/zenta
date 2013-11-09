@@ -7,8 +7,8 @@ package org.rulez.magwas.zenta.editor.views.properties;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IViewPart;
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 
 
 /**
@@ -17,8 +17,8 @@ import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
  * @author Phillip Beauvoir
  */
 public interface ICustomPropertiesView extends IViewPart {
-    String ID = ArchimateEditorPlugin.PLUGIN_ID + ".propertiesView"; //$NON-NLS-1$
-    String HELP_ID = "uk.ac.bolton.archimate.help.propertiesViewHelp"; //$NON-NLS-1$
+    String ID = ZentamateEditorPlugin.PLUGIN_ID + ".propertiesView"; //$NON-NLS-1$
+    String HELP_ID = "org.rulez.magwas.zenta.help.propertiesViewHelp"; //$NON-NLS-1$
     String NAME = Messages.ICustomPropertiesView_0;
-    ImageDescriptor IMAGE_DESCRIPTOR = IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ECLIPSE_IMAGE_PROPERTIES_VIEW_ICON);
+    ImageDescriptor IMAGE_DESCRIPTOR = IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ECLIPSE_IMAGE_PROPERTIES_VIEW_ICON);
 }

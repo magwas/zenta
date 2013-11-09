@@ -5,7 +5,7 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.sketch;
 
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
 
 
@@ -15,8 +15,8 @@ import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
  * @author Phillip Beauvoir
  */
 public interface ISketchEditor extends IDiagramModelEditor {
-    String ID = ArchimateEditorPlugin.PLUGIN_ID + ".sketchEditor"; //$NON-NLS-1$
-    String HELP_ID = "uk.ac.bolton.archimate.help.sketchEditorHelp"; //$NON-NLS-1$
+    String ID = ZentamateEditorPlugin.PLUGIN_ID + ".sketchEditor"; //$NON-NLS-1$
+    String HELP_ID = "org.rulez.magwas.zenta.help.sketchEditorHelp"; //$NON-NLS-1$
     
     void updateBackgroundImage();
     

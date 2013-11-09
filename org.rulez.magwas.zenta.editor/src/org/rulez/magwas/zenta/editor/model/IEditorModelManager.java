@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.rulez.magwas.zenta.editor.model.impl.EditorModelManager;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 
 
 
@@ -57,37 +57,37 @@ public interface IEditorModelManager {
     /**
      * @return Models
      */
-    List<IArchimateModel> getModels();
+    List<IZentamateModel> getModels();
 
     /**
      * @return New Model
      */
-    IArchimateModel createNewModel();
+    IZentamateModel createNewModel();
     
     /**
      * Register a model in the manager
      * @param model
      */
-    void registerModel(IArchimateModel model);
+    void registerModel(IZentamateModel model);
     
     /**
      * Open a model by loading it and opening its Views
      * @return The newly opened model or null
      */
-    IArchimateModel openModel(File file);
+    IZentamateModel openModel(File file);
     
     /**
      * Open an existing model
      * @param model
      */
-    void openModel(IArchimateModel model);
+    void openModel(IZentamateModel model);
     
     /**
      * Load a model
      * @param file
      * @return The newly loaded model or null
      */
-    IArchimateModel loadModel(File file);
+    IZentamateModel loadModel(File file);
     
     /**
      * Close a model
@@ -95,7 +95,7 @@ public interface IEditorModelManager {
      * @return false if user cancels
      * @throws IOException
      */
-    boolean closeModel(IArchimateModel model) throws IOException;
+    boolean closeModel(IZentamateModel model) throws IOException;
     
     /**
      * Save model asking user for file name if needed
@@ -103,7 +103,7 @@ public interface IEditorModelManager {
      * @return false if user cancels
      * @throws IOException
      */
-    boolean saveModel(IArchimateModel model) throws IOException;
+    boolean saveModel(IZentamateModel model) throws IOException;
     
     /**
      * Save model as asking user for file name
@@ -111,14 +111,14 @@ public interface IEditorModelManager {
      * @return false if user cancels
      * @throws IOException
      */
-    boolean saveModelAs(IArchimateModel model) throws IOException;
+    boolean saveModelAs(IZentamateModel model) throws IOException;
     
     /**
      * Check if the model needs saving
      * @param model
      * @return True if model has been changed and needs saving
      */
-    boolean isModelDirty(IArchimateModel model);
+    boolean isModelDirty(IZentamateModel model);
     
     /**
      * Save the state of loaded models

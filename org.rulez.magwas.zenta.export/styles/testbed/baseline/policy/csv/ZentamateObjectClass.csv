@@ -1,0 +1,12 @@
+id;description;name;
+61091710;See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/;archimate:BusinessCollaboration;
+2a8bae66;A folder containing some elements of a model.;archimate:Folder;
+38feb060;See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/;archimate:DataObject;
+87ea8b49;See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/;archimate:BusinessActor;
+14a5901d;See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/;archimate:Product;
+26cbd61e;See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/;archimate:BusinessEvent;
+093d55e2;See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/;archimate:BusinessProcess;
+3ecd2e2a;A plateau;archimate:Plateau;
+b42ede3c;The archimate model.;archimate:model;
+fd882843;A Node as defined by Zentamate;archimate:Node;
+ac66eeae;Application Component;archimate:ApplicationComponent;

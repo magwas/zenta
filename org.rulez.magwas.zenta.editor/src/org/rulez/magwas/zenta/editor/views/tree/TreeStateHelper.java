@@ -16,10 +16,10 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.ui.IMemento;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimateModelElement;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamateModelElement;
 import org.rulez.magwas.zenta.model.IIdentifier;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 
 
 
@@ -86,7 +86,7 @@ public class TreeStateHelper {
         
         for(Object o : fExpandedElements) {
             // Actual object
-            if(o instanceof IArchimateModelElement) {
+            if(o instanceof IZentamateModelElement) {
                 fTreeViewer.expandToLevel(o, 1);
             }
             
@@ -95,10 +95,10 @@ public class TreeStateHelper {
                 try {
                     File file = ((FileMap)o).file;
                     String[] elements = ((FileMap)o).elements;
-                    for(IArchimateModel model : IEditorModelManager.INSTANCE.getModels()) {
+                    for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
                         if(file.equals(model.getFile())) {
                             for(String id : elements) {
-                                EObject element = ArchimateModelUtils.getObjectByID(model, id);
+                                EObject element = ZentamateModelUtils.getObjectByID(model, id);
                                 if(element != null) {
                                     fTreeViewer.expandToLevel(element, 1);
                                 }
@@ -140,9 +140,9 @@ public class TreeStateHelper {
         IMemento expandedMem = memento.createChild(MEMENTO_EXPANDED);
 
         for(Object element : fTreeViewer.getVisibleExpandedElements()) {
-            if(element instanceof IIdentifier && element instanceof IArchimateModelElement) {
+            if(element instanceof IIdentifier && element instanceof IZentamateModelElement) {
                 // Only store if saved in a file
-                File file = ((IArchimateModelElement)element).getArchimateModel().getFile();
+                File file = ((IZentamateModelElement)element).getZentamateModel().getFile();
                 if(file != null) {
                     String id = ((IIdentifier)element).getId();
                     String string = map.get(file);

@@ -49,7 +49,7 @@ implements IWorkbenchWindowActionDelegate, IActionDelegate2 {
     @Override
     protected void updateState() {
         if(fProxyAction != null) {
-            fProxyAction.setEnabled(getActiveArchimateModel() != null);
+            fProxyAction.setEnabled(getActiveZentamateModel() != null);
         }
     }
 

@@ -10,7 +10,7 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.graphics.Path;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -24,7 +24,7 @@ public class BusinessEventFigure extends AbstractTextFlowFigure {
 
     protected int SHADOW_OFFSET = 3;
     
-    public BusinessEventFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public BusinessEventFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
     

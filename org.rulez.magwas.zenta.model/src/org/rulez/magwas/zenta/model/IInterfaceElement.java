@@ -19,11 +19,11 @@ package org.rulez.magwas.zenta.model;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getInterfaceElement()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getInterfaceElement()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IInterfaceElement extends IArchimateElement {
+public interface IInterfaceElement extends IZentamateElement {
 
     int PROVIDED = 0;
     int REQUIRED = 1;
@@ -40,7 +40,7 @@ public interface IInterfaceElement extends IArchimateElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Interface Type</em>' attribute.
 	 * @see #setInterfaceType(int)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getInterfaceElement_InterfaceType()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getInterfaceElement_InterfaceType()
 	 * @model default="0"
 	 * @generated
 	 */

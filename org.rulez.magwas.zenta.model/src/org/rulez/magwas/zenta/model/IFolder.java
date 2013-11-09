@@ -23,11 +23,11 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getFolder()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFolder()
  * @model
  * @generated
  */
-public interface IFolder extends IArchimateModelElement, IFolderContainer, INameable, IIdentifier, IDocumentable, IProperties {
+public interface IFolder extends IZentamateModelElement, IFolderContainer, INameable, IIdentifier, IDocumentable, IProperties {
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
@@ -38,7 +38,7 @@ public interface IFolder extends IArchimateModelElement, IFolderContainer, IName
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getFolder_Elements()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFolder_Elements()
 	 * @model containment="true"
 	 *        extendedMetaData="name='element' kind='element'"
 	 * @generated
@@ -57,7 +57,7 @@ public interface IFolder extends IArchimateModelElement, IFolderContainer, IName
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.rulez.magwas.zenta.model.FolderType
 	 * @see #setType(FolderType)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getFolder_Type()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFolder_Type()
 	 * @model
 	 * @generated
 	 */

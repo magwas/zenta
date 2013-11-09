@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.editor.diagram.figures.extensions;
 
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.RoundedRectangleFigureDelegate;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
 public class WorkPackageFigure
 extends AbstractTextFlowFigure {
 
-    public WorkPackageFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public WorkPackageFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
         
         // Use a Rounded Rectangle Figure Delegate to Draw

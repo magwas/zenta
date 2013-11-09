@@ -13,22 +13,22 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IArchimateConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IZentamateConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.ILockable;
 
 
 
 /**
- * Property Section for the name & documentation of a non-Archimate diagram connection
+ * Property Section for the name & documentation of a non-Zentamate diagram connection
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramConnectionNameDocumentationSection extends AbstractArchimatePropertySection {
+public class DiagramConnectionNameDocumentationSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
     
     /**
      * Filter to show or reject this section depending on input value
@@ -37,7 +37,7 @@ public class DiagramConnectionNameDocumentationSection extends AbstractArchimate
         @Override
         public boolean select(Object object) {
             return (object instanceof IDiagramConnectionEditPart)
-                        && !(object instanceof IArchimateConnectionEditPart); // Not Archimate connections
+                        && !(object instanceof IZentamateConnectionEditPart); // Not Zentamate connections
         }
     }
 
@@ -49,15 +49,15 @@ public class DiagramConnectionNameDocumentationSection extends AbstractArchimate
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Name event (Undo/Redo and here)
-            if(feature == IArchimatePackage.Literals.NAMEABLE__NAME) {
+            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME) {
                 refreshNameField();
                 fPage.labelProviderChanged(null); // Update Main label
             }
             // Documentation event (Undo/Redo and here)
-            else if(feature == IArchimatePackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
+            else if(feature == IZentamatePackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
                 refreshDocumentationField();
             }
-            else if(feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+            else if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }

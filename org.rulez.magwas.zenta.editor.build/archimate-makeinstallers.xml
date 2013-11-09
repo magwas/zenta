@@ -1,7 +1,7 @@
-<project name="Archi Make Installers Ant Script" default="run" basedir=".">
+<project name="Zenta Make Installers Ant Script" default="run" basedir=".">
   	
 	<description>
-	    Make "Archi" Release Zip File Distributions for Windows/Linux/Mac Platforms
+	    Make "Zenta" Release Zip File Distributions for Windows/Linux/Mac Platforms
  
   		Prerequisites:
 	    
@@ -21,7 +21,7 @@
 	    <property name="jre.sourcedir"          location="../../jre6"/>
 		<property name="version" 				value="2.4.1"/>
 		
-		<property name="app.name" 				value="Archi"/>
+		<property name="app.name" 				value="Zenta"/>
 		
 		<property name="src.dir"     			location="."/>
 		<property name="help.dir"     			location="../org.rulez.magwas.zenta.help/docs"/>
@@ -41,7 +41,7 @@
         <antcall target="copy_extra_files"/>
         
         <!-- copy our .ini file over -->
-        <copy file="${src.dir}/branding/windows/Archi.ini" todir="${tmp.dir}" overwrite="true"/>
+        <copy file="${src.dir}/branding/windows/Zenta.ini" todir="${tmp.dir}" overwrite="true"/>
 
         <!-- copy build -->
         <copy todir="${tmp.dir}" >
@@ -72,15 +72,15 @@
         <antcall target="copy_extra_files"/>
         
     	<!-- copy our .ini files over -->
-        <copy file="${src.dir}/branding/windows/Archi.ini" tofile="${tmp.dir}/Archi32.ini" overwrite="true"/>
-        <copy file="${src.dir}/branding/windows/Archi.ini" tofile="${tmp.dir}/Archi64.ini" overwrite="true"/>
+        <copy file="${src.dir}/branding/windows/Zenta.ini" tofile="${tmp.dir}/Zenta32.ini" overwrite="true"/>
+        <copy file="${src.dir}/branding/windows/Zenta.ini" tofile="${tmp.dir}/Zenta64.ini" overwrite="true"/>
 
         <!-- copy 32-bit build -->
 		<copy todir="${tmp.dir}" >
 			<fileset dir="${output_win32.dir}"/>
 		</copy>
     	
-    	<!-- rename Archi.exe to Archi32.exe -->
+    	<!-- rename Zenta.exe to Zenta32.exe -->
     	<move file="${tmp.dir}/${app.name}.exe" tofile="${tmp.dir}/${app.name}32.exe"/>
     	
         <!-- copy 64-bit build -->
@@ -88,7 +88,7 @@
 			<fileset dir="${output_win64.dir}"/>
 		</copy>
     	
-    	<!-- rename Archi.exe to Archi64.exe -->
+    	<!-- rename Zenta.exe to Zenta64.exe -->
     	<move file="${tmp.dir}/${app.name}.exe" tofile="${tmp.dir}/${app.name}64.exe"/>
     	
         <!-- make zip -->
@@ -131,7 +131,7 @@
 		</copy>
     	
     	<!-- copy our .ini file over -->
-        <copy file="${src.dir}/branding/mac/Archi.ini" todir="${tmp.dir}/${mac.launcher.dir}" overwrite="true"/>
+        <copy file="${src.dir}/branding/mac/Zenta.ini" todir="${tmp.dir}/${mac.launcher.dir}" overwrite="true"/>
 
     	<!-- copy our Info.plist file over -->
         <copy file="${src.dir}/branding/mac/Info.plist" todir="${tmp.dir}/${mac.contents.dir}" overwrite="true"/>
@@ -185,16 +185,16 @@
         </copy>
 
         <!-- rename our .ini files -->
-        <copy file="${tmp.dir}/Archi.ini" tofile="${tmp.dir}/Archi32.ini" overwrite="true"/>
-        <copy file="${tmp.dir}/Archi.ini" tofile="${tmp.dir}/Archi64.ini" overwrite="true"/>
-    	<delete file="${tmp.dir}/Archi.ini"/>
+        <copy file="${tmp.dir}/Zenta.ini" tofile="${tmp.dir}/Zenta32.ini" overwrite="true"/>
+        <copy file="${tmp.dir}/Zenta.ini" tofile="${tmp.dir}/Zenta64.ini" overwrite="true"/>
+    	<delete file="${tmp.dir}/Zenta.ini"/>
 
         <!-- copy 32-bit build -->
 		<copy todir="${tmp.dir}" >
 			<fileset dir="${output_lnx32.dir}"/>
 		</copy>
     	
-    	<!-- rename Archi to Archi32 -->
+    	<!-- rename Zenta to Zenta32 -->
     	<move file="${tmp.dir}/${app.name}" tofile="${tmp.dir}/${app.name}32"/>
     	
         <!-- copy 64-bit build -->
@@ -202,7 +202,7 @@
 			<fileset dir="${output_lnx64.dir}"/>
 		</copy>
     	
-    	<!-- rename Archi to Archi64 -->
+    	<!-- rename Zenta to Zenta64 -->
     	<move file="${tmp.dir}/${app.name}" tofile="${tmp.dir}/${app.name}64"/>
 
 		<!-- Delete Unneccessary Cairo file see https://bugs.eclipse.org/bugs/show_bug.cgi?id=376560s -->
@@ -242,8 +242,8 @@
 				<include name="LICENSE.txt" />
 			</fileset>
 			<fileset dir="${help.dir}">
-				<include name="Archi User Guide.pdf" />
-                <include name="What's New in Archi.pdf" />
+				<include name="Zenta User Guide.pdf" />
+                <include name="What's New in Zenta.pdf" />
 			</fileset>
 		</copy>
 	    <copy todir="${tmp.dir}/examples">

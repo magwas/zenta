@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModelConnection;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModelImage;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModelSticky;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.IEditorLabelProvider;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.model.INameable;
@@ -86,9 +86,9 @@ public class CanvasLabelProvider implements IEditorLabelProvider {
             case ICanvasPackage.CANVAS_MODEL_STICKY:
                 return ICanvasImages.ImageFactory.getImage(ICanvasImages.ICON_CANVAS_STICKY_16);
             case ICanvasPackage.CANVAS_MODEL_IMAGE:
-                return IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_LANDSCAPE_16);
+                return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_LANDSCAPE_16);
             case ICanvasPackage.CANVAS_MODEL_CONNECTION:
-                return IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_CONNECTION_ARROW_16);
+                return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_CONNECTION_ARROW_16);
         }
         
         return null;

@@ -18,11 +18,11 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IHintProvider;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.editor.propertysections.AbstractArchimatePropertySection;
+import org.rulez.magwas.zenta.editor.propertysections.AbstractZentamatePropertySection;
 import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
 import org.rulez.magwas.zenta.editor.propertysections.PropertySectionTextControl;
 import org.rulez.magwas.zenta.editor.ui.components.StyledTextControl;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ILockable;
 
 
@@ -32,7 +32,7 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class HintContentSection extends AbstractArchimatePropertySection {
+public class HintContentSection extends AbstractZentamatePropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
@@ -57,7 +57,7 @@ public class HintContentSection extends AbstractArchimatePropertySection {
             // Model Name event (Undo/Redo and here!)
             if(feature == ICanvasPackage.Literals.HINT_PROVIDER__HINT_TITLE || 
                     feature == ICanvasPackage.Literals.HINT_PROVIDER__HINT_CONTENT ||
-                    feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+                    feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }

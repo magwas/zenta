@@ -37,14 +37,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.DrillDownAdapter;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.views.AbstractModelView;
 import org.rulez.magwas.zenta.editor.views.tree.actions.IViewerAction;
 import org.rulez.magwas.zenta.editor.views.tree.actions.PropertiesAction;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimateModelElement;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamateModelElement;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 
@@ -66,7 +66,7 @@ implements INavigatorView, ISelectionListener {
     
     private NavigatorDrillDownAdapter fDrillDownAdapter;
     
-    private IArchimateElement fCurrentElement;
+    private IZentamateElement fCurrentElement;
     
     private class NavigatorDrillDownAdapter extends DrillDownAdapter {
         public NavigatorDrillDownAdapter() {
@@ -165,14 +165,14 @@ implements INavigatorView, ISelectionListener {
         fActionPinContent = new Action(Messages.NavigatorView_0, IAction.AS_CHECK_BOX) {
             {
                 setToolTipText(Messages.NavigatorView_1);
-                setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_PIN_16));
+                setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_PIN_16));
             }
         };
         
         fActionNavDown = new Action(Messages.NavigatorView_2, IAction.AS_RADIO_BUTTON) {
             {
                 setToolTipText(Messages.NavigatorView_3);
-                setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_NAVIGATOR_DOWNWARD_16));
+                setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_NAVIGATOR_DOWNWARD_16));
                 setChecked(true);
             }
             
@@ -186,7 +186,7 @@ implements INavigatorView, ISelectionListener {
         fActionNavUp = new Action(Messages.NavigatorView_4, IAction.AS_RADIO_BUTTON) {
             {
                 setToolTipText(Messages.NavigatorView_5);
-                setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_NAVIGATOR_UPWARD_16));
+                setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_NAVIGATOR_UPWARD_16));
             }
             
             @Override
@@ -293,13 +293,13 @@ implements INavigatorView, ISelectionListener {
     private void setElement(Object object) {
         fDrillDownAdapter.reset();
         
-        IArchimateElement element = null;
+        IZentamateElement element = null;
         
-        if(object instanceof IArchimateElement) {
-            element = (IArchimateElement)object;
+        if(object instanceof IZentamateElement) {
+            element = (IZentamateElement)object;
         }
         else if(object instanceof IAdaptable) {
-            element = (IArchimateElement)((IAdaptable)object).getAdapter(IArchimateElement.class);
+            element = (IZentamateElement)((IAdaptable)object).getAdapter(IZentamateElement.class);
         }
         
         if(element != null) {
@@ -319,8 +319,8 @@ implements INavigatorView, ISelectionListener {
     }
     
     @Override
-    protected IArchimateModel getActiveArchimateModel() {
-        return fCurrentElement != null ? fCurrentElement.getArchimateModel() : null;
+    protected IZentamateModel getActiveZentamateModel() {
+        return fCurrentElement != null ? fCurrentElement.getZentamateModel() : null;
     }
 
     @Override
@@ -343,7 +343,7 @@ implements INavigatorView, ISelectionListener {
         // Model Closed
         if(propertyName == IEditorModelManager.PROPERTY_MODEL_REMOVED) {
             Object input = getViewer().getActualInput();
-            if(input instanceof IArchimateModelElement && ((IArchimateModelElement)input).getArchimateModel() == newValue) {
+            if(input instanceof IZentamateModelElement && ((IZentamateModelElement)input).getZentamateModel() == newValue) {
                 reset();
             }
         }
@@ -373,8 +373,8 @@ implements INavigatorView, ISelectionListener {
             Object feature = msg.getFeature();
 
             // Relationship/Connection changed - requires full refresh
-            if(feature == IArchimatePackage.Literals.RELATIONSHIP__SOURCE ||
-                                        feature == IArchimatePackage.Literals.RELATIONSHIP__TARGET) {
+            if(feature == IZentamatePackage.Literals.RELATIONSHIP__SOURCE ||
+                                        feature == IZentamatePackage.Literals.RELATIONSHIP__TARGET) {
                 getViewer().refresh();
             }
             else {

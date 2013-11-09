@@ -8,7 +8,7 @@ package org.rulez.magwas.zenta.editor.diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 
 
 
@@ -41,7 +41,7 @@ implements IEditorInput {
     }
 
     public ImageDescriptor getImageDescriptor() {
-        return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_DIAGRAM_16);
+        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_DIAGRAM_16);
     }
 
     public String getName() {

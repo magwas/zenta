@@ -23,10 +23,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 
 
 /**
@@ -38,7 +38,7 @@ public class ColoursPreferencePage
 extends PreferencePage
 implements IWorkbenchPreferencePage, IPreferenceConstants {
     
-    public static String HELPID = "uk.ac.bolton.archimate.help.prefsColours"; //$NON-NLS-1$
+    public static String HELPID = "org.rulez.magwas.zenta.help.prefsColours"; //$NON-NLS-1$
     
     private Hashtable<ColorSelector, EClass> fDefaultFillColorsLookup = new Hashtable<ColorSelector, EClass>();
     
@@ -72,7 +72,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         client1.setLayout(new GridLayout(2, false));
         client1.setLayoutData(new GridData(SWT.TOP, SWT.TOP, false, false));
         
-        for(EClass eClass : ArchimateModelUtils.getBusinessClasses()) {
+        for(EClass eClass : ZentamateModelUtils.getBusinessClasses()) {
             createColorSelector(client1, eClass);
         }
         
@@ -91,7 +91,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     private void createColorSelector(Composite parent, EClass eClass) {
         Label l = new Label(parent, SWT.NULL);
-        l.setText(ArchimateLabelProvider.INSTANCE.getDefaultName(eClass));
+        l.setText(ZentamateLabelProvider.INSTANCE.getDefaultName(eClass));
         ColorSelector colorSelector = new ColorSelector(parent);
         fDefaultFillColorsLookup.put(colorSelector, eClass);
         

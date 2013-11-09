@@ -52,13 +52,13 @@ import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.INameable;
 
 
@@ -70,7 +70,7 @@ import org.rulez.magwas.zenta.model.INameable;
  */
 public class ImageManagerDialog extends ExtendedTitleAreaDialog {
     
-    private static String HELP_ID = "uk.ac.bolton.archimate.help.ImageManagerDialog"; //$NON-NLS-1$
+    private static String HELP_ID = "org.rulez.magwas.zenta.help.ImageManagerDialog"; //$NON-NLS-1$
     
     protected static final String OPEN = Messages.ImageManagerDialog_0;
     
@@ -85,14 +85,14 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
 
     private Object fSelectedObject;
     
-    private IArchimateModel fSelectedModel;
+    private IZentamateModel fSelectedModel;
     private String fSelectedImagePath;
     
     private Map<String, Image> fImageCache = new HashMap<String, Image>();
 
-    public ImageManagerDialog(Shell parentShell, IArchimateModel selectedModel, String selectedImagePath) {
+    public ImageManagerDialog(Shell parentShell, IZentamateModel selectedModel, String selectedImagePath) {
         super(parentShell, "ImageManagerDialog"); //$NON-NLS-1$
-        setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fSelectedModel = selectedModel;
@@ -147,10 +147,10 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
                 Object o = ((IStructuredSelection)event.getSelection()).getFirstElement();
-                if(o instanceof IArchimateModel) {
+                if(o instanceof IZentamateModel) {
                     fScale.setEnabled(true);
                     clearGallery();
-                    updateGallery((IArchimateModel)o);
+                    updateGallery((IZentamateModel)o);
                 }
             }
         });
@@ -255,7 +255,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             public void run() {
                 // Make selection of model in table if it has images
                 if(fSelectedModel != null) {
-                    IArchiveManager archiveManager = (IArchiveManager)fSelectedModel.getAdapter(IArchiveManager.class);
+                    IZentaveManager archiveManager = (IZentaveManager)fSelectedModel.getAdapter(IZentaveManager.class);
                     if(archiveManager.hasImages()) {
                         // Select model
                         fModelsViewer.setSelection(new StructuredSelection(fSelectedModel));
@@ -274,8 +274,8 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                     }
                     // Else select the first valid model that's open
                     else {
-                        for(IArchimateModel model : IEditorModelManager.INSTANCE.getModels()) {
-                            archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
+                        for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
+                            archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
                             if(archiveManager.hasImages()) {
                                 fModelsViewer.setSelection(new StructuredSelection(model));
                                 break;
@@ -301,11 +301,11 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
         }
     }
 
-    protected void updateGallery(final IArchimateModel model) {
+    protected void updateGallery(final IZentamateModel model) {
         BusyIndicator.showWhile(null, new Runnable() {
             @Override
             public void run() {
-                IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
+                IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
                 
                 for(String path : archiveManager.getImagePaths()) {
                     Image thumbnail = fImageCache.get(path);
@@ -408,8 +408,8 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             public Object[] getElements(Object inputElement) {
                 List<Object> list = new ArrayList<Object>();
                 
-                for(IArchimateModel model : IEditorModelManager.INSTANCE.getModels()) {
-                    IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
+                for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
+                    IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
                     if(archiveManager.hasImages()) {
                         list.add(model);
                     }
@@ -432,7 +432,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             
             @Override
             public Image getImage(Object element) {
-                return ArchimateLabelProvider.INSTANCE.getImage(element);
+                return ZentamateLabelProvider.INSTANCE.getImage(element);
             }
         }
     }

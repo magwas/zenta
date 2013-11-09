@@ -27,11 +27,11 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 import org.rulez.magwas.zenta.editor.views.tree.search.SearchFilter;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 
@@ -78,8 +78,8 @@ public class TreeModelViewer extends TreeViewer {
                     return 0;
                 }
                 
-                String name1 = ArchimateLabelProvider.INSTANCE.getLabel(e1);
-                String name2 = ArchimateLabelProvider.INSTANCE.getLabel(e2);
+                String name1 = ZentamateLabelProvider.INSTANCE.getLabel(e1);
+                String name2 = ZentamateLabelProvider.INSTANCE.getLabel(e2);
                 
                 if(name1 == null) {
                     name1 = "";//$NON-NLS-1$
@@ -180,8 +180,8 @@ public class TreeModelViewer extends TreeViewer {
             	return ((IEditorModelManager)parentElement).getModels().toArray();
             }
             
-            if(parentElement instanceof IArchimateModel) {
-            	return ((IArchimateModel)parentElement).getFolders().toArray();
+            if(parentElement instanceof IZentamateModel) {
+            	return ((IZentamateModel)parentElement).getFolders().toArray();
             }
 
             if(parentElement instanceof IFolder) {
@@ -219,11 +219,11 @@ public class TreeModelViewer extends TreeViewer {
         
         @Override
         public String getText(Object element) {
-            String name = ArchimateLabelProvider.INSTANCE.getLabel(element);
+            String name = ZentamateLabelProvider.INSTANCE.getLabel(element);
             
             // If a dirty model show asterisk
-            if(element instanceof IArchimateModel) {
-                IArchimateModel model = (IArchimateModel)element;
+            if(element instanceof IZentamateModel) {
+                IZentamateModel model = (IZentamateModel)element;
                 if(IEditorModelManager.INSTANCE.isModelDirty(model)) {
                     name = "*" + name; //$NON-NLS-1$
                 }
@@ -232,9 +232,9 @@ public class TreeModelViewer extends TreeViewer {
             if(element instanceof IRelationship) {
                 IRelationship relationship = (IRelationship)element;
                 name += " ("; //$NON-NLS-1$
-                name += ArchimateLabelProvider.INSTANCE.getLabel(relationship.getSource());
+                name += ZentamateLabelProvider.INSTANCE.getLabel(relationship.getSource());
                 name += " - "; //$NON-NLS-1$
-                name += ArchimateLabelProvider.INSTANCE.getLabel(relationship.getTarget());
+                name += ZentamateLabelProvider.INSTANCE.getLabel(relationship.getTarget());
                 name += ")"; //$NON-NLS-1$
             }
             
@@ -243,7 +243,7 @@ public class TreeModelViewer extends TreeViewer {
         
         @Override
         public Image getImage(Object element) {
-            return ArchimateLabelProvider.INSTANCE.getImage(element);
+            return ZentamateLabelProvider.INSTANCE.getImage(element);
         }
         
         @Override
@@ -253,8 +253,8 @@ public class TreeModelViewer extends TreeViewer {
                 return fontBold;
             }
             
-            if(element instanceof IArchimateElement) {
-                if(!DiagramModelUtils.isElementReferencedInDiagrams((IArchimateElement)element)) {
+            if(element instanceof IZentamateElement) {
+                if(!DiagramModelUtils.isElementReferencedInDiagrams((IZentamateElement)element)) {
                     return fontItalic;
                 }
             }

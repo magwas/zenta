@@ -9,7 +9,7 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.swt.SWT;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
 
 
 
@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
  * 
  * @author Phillip Beauvoir
  */
-public class RealisationConnectionFigure extends AbstractArchimateConnectionFigure {
+public class RealisationConnectionFigure extends AbstractZentamateConnectionFigure {
     
     /**
      * @return Decoration to use on Target Node
@@ -38,7 +38,7 @@ public class RealisationConnectionFigure extends AbstractArchimateConnectionFigu
         return decoration;
     }
 	
-    public RealisationConnectionFigure(IDiagramModelArchimateConnection connection) {
+    public RealisationConnectionFigure(IDiagramModelZentamateConnection connection) {
         super(connection);
     }
 	

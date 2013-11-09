@@ -17,7 +17,7 @@ import org.rulez.magwas.zenta.export.StyledHtmlPlugin;
 import org.rulez.magwas.zenta.export.Util;
 import org.rulez.magwas.zenta.export.Widgets;
 import org.rulez.magwas.zenta.export.steps.StepFactory;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
 import org.rulez.magwas.zenta.editor.model.IModelExporter;
 
 /**
- * Styled HTML Exporter of Archimate model
+ * Styled HTML Exporter of Zentamate model
  * <p>
  * Input is the style file, describing the steps of the transformation. Output
  * is the report directory, where the output file(s) are placed.
@@ -48,9 +48,9 @@ public class StyledHtml implements IModelExporter {
      * 
      * @see
      * org.rulez.magwas.zenta.editor.model.IModelExporter#export(uk.ac.bolton
-     * .archimate.model.IArchimateModel)
+     * .archimate.model.IZentamateModel)
      */
-    public void export(IArchimateModel model) {
+    public void export(IZentamateModel model) {
         log = new EventLog("Styled export");
         log.issueInfo("starting styled export", Util.now());
         String stylepath = StyledHtmlPlugin.INSTANCE.getPreferenceStore()
@@ -69,7 +69,7 @@ public class StyledHtml implements IModelExporter {
      * @param log
      *            the logger instance
      */
-    public static void export(IArchimateModel model, String stylepath,
+    public static void export(IZentamateModel model, String stylepath,
             EventLog log) {
         Boolean ask = StyledHtmlPlugin.INSTANCE.getPreferenceStore()
                 .getBoolean(IPreferenceConstants.OUT_ASK);
@@ -103,7 +103,7 @@ public class StyledHtml implements IModelExporter {
      * @param targetdir
      *            the target directory
      */
-    public static void export(IArchimateModel model, String stylepath,
+    public static void export(IZentamateModel model, String stylepath,
             EventLog log, File targetdir) {
         try {
             File stylefile = new File(stylepath);

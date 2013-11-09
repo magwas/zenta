@@ -1,4 +1,4 @@
-<project name="Archi Make Help HTML File Ant Script" default="run" basedir=".">
+<project name="Zenta Make Help HTML File Ant Script" default="run" basedir=".">
   	
 	<description>
 	    Make one big HTML file from the smaller HTML files.

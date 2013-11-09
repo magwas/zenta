@@ -34,10 +34,10 @@ import org.eclipse.ui.PlatformUI;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
 import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
 import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
@@ -48,11 +48,11 @@ import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.utils.FileUtils;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IArchimateFactory;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateFactory;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
-import org.rulez.magwas.zenta.model.util.ArchimateResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentamateResourceFactory;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
@@ -60,7 +60,7 @@ import uk.ac.bolton.jdom.JDOMUtils;
 /**
  * Editor Model Manager.<p>
  * <p>
- * Acts as an adapter to the Archimate Models passing on notifications to listeners
+ * Acts as an adapter to the Zentamate Models passing on notifications to listeners
  * so that clients only have to register here once rather than for each model.<p>
  * Also can pass on arbitrary PropertyChangeEvents to registered listeners.<br>
  * Also manages CommandStacks for models.<br>
@@ -79,12 +79,12 @@ implements IEditorModelManager {
     /**
      * Models Open
      */
-    private List<IArchimateModel> fModels;
+    private List<IZentamateModel> fModels;
     
     /**
      * Backing File
      */
-    private File backingFile = new File(ArchimateEditorPlugin.INSTANCE.getUserDataFolder(), "models.xml"); //$NON-NLS-1$
+    private File backingFile = new File(ZentamateEditorPlugin.INSTANCE.getUserDataFolder(), "models.xml"); //$NON-NLS-1$
     
     /**
      * Listen to the App closing so we can ask to save
@@ -95,7 +95,7 @@ implements IEditorModelManager {
 
         public boolean preShutdown(IWorkbench  workbench, boolean forced) {
             // Handle modified models
-            for(IArchimateModel model : getModels()) {
+            for(IZentamateModel model : getModels()) {
                 if(isModelDirty(model)) {
                     try {
                         boolean result = askSaveModel(model);
@@ -118,9 +118,9 @@ implements IEditorModelManager {
     }
     
     @Override
-    public List<IArchimateModel> getModels() {
+    public List<IZentamateModel> getModels() {
         if(fModels == null) {
-            fModels = new ArrayList<IArchimateModel>();
+            fModels = new ArrayList<IZentamateModel>();
             
             try {
                 loadState();
@@ -134,13 +134,13 @@ implements IEditorModelManager {
     }
 
     @Override
-    public IArchimateModel createNewModel() {
-        IArchimateModel model = IArchimateFactory.eINSTANCE.createArchimateModel();
+    public IZentamateModel createNewModel() {
+        IZentamateModel model = IZentamateFactory.eINSTANCE.createZentamateModel();
         model.setName(Messages.EditorModelManager_0);
         model.setDefaults();
         
         // Add one default diagram
-        IDiagramModel diagramModel = IArchimateFactory.eINSTANCE.createArchimateDiagramModel();
+        IDiagramModel diagramModel = IZentamateFactory.eINSTANCE.createZentamateDiagramModel();
         diagramModel.setName(Messages.EditorModelManager_1);
         model.getFolder(FolderType.DIAGRAMS).getElements().add(diagramModel);
         
@@ -151,27 +151,27 @@ implements IEditorModelManager {
     }
     
     @Override
-    public void registerModel(IArchimateModel model) {
+    public void registerModel(IZentamateModel model) {
         // Add to Models
         getModels().add(model);
         
         // New Command Stack
         createNewCommandStack(model);
         
-        // New Archive Manager
-        createNewArchiveManager(model);
+        // New Zentave Manager
+        createNewZentaveManager(model);
         
         firePropertyChange(this, PROPERTY_MODEL_CREATED, null, model);
         model.eAdapters().add(new ECoreAdapter());
     }
     
     @Override
-    public IArchimateModel openModel(File file) {
+    public IZentamateModel openModel(File file) {
         if(file == null || !file.exists() || isModelLoaded(file)) {
             return null;
         }
         
-        IArchimateModel model = loadModel(file);
+        IZentamateModel model = loadModel(file);
         if(model != null) {
             // Open Views of newly opened model if set in Preferences
             if(Preferences.doOpenDiagramsOnLoad()) {
@@ -187,15 +187,15 @@ implements IEditorModelManager {
     }
     
     @Override
-    public void openModel(IArchimateModel model) {
+    public void openModel(IZentamateModel model) {
         // Add to Models
         getModels().add(model);
         
         // New Command Stack
         createNewCommandStack(model);
         
-        // New Archive Manager
-        createNewArchiveManager(model);
+        // New Zentave Manager
+        createNewZentaveManager(model);
         
         model.eAdapters().add(new ECoreAdapter());
 
@@ -203,18 +203,18 @@ implements IEditorModelManager {
     }
     
     @Override
-    public IArchimateModel loadModel(File file) {
+    public IZentamateModel loadModel(File file) {
         if(file == null || !file.exists()) {
             return null;
         }
         
         // Ascertain if this is an archive file
-        boolean useArchiveFormat = IArchiveManager.FACTORY.isArchiveFile(file);
+        boolean useZentaveFormat = IZentaveManager.FACTORY.isZentaveFile(file);
         
         // Create the Resource
-        ResourceSet resourceSet = ArchimateResourceFactory.createResourceSet();
-        Resource resource = resourceSet.createResource(useArchiveFormat ?
-                                                       IArchiveManager.FACTORY.createArchiveModelURI(file) :
+        ResourceSet resourceSet = ZentamateResourceFactory.createResourceSet();
+        Resource resource = resourceSet.createResource(useZentaveFormat ?
+                                                       IZentaveManager.FACTORY.createZentaveModelURI(file) :
                                                        URI.createFileURI(file.getAbsolutePath()));
 
         // Load the model file
@@ -257,7 +257,7 @@ implements IEditorModelManager {
         catch(CompatibilityHandlerException ex) {
         }
 
-        IArchimateModel model = (IArchimateModel)resource.getContents().get(0);
+        IZentamateModel model = (IZentamateModel)resource.getContents().get(0);
         model.setFile(file);
         model.setDefaults();
         getModels().add(model);
@@ -266,8 +266,8 @@ implements IEditorModelManager {
         // New Command Stack
         createNewCommandStack(model);
         
-        // New Archive Manager
-        createNewArchiveManager(model);
+        // New Zentave Manager
+        createNewZentaveManager(model);
         
         // Initiate all diagram models to be marked as "saved" - this is for the editor view persistence
         markDiagramModelsAsSaved(model);
@@ -279,7 +279,7 @@ implements IEditorModelManager {
     }
     
     @Override
-    public boolean closeModel(IArchimateModel model) throws IOException {
+    public boolean closeModel(IZentamateModel model) throws IOException {
         // Check if model needs saving
         if(isModelDirty(model)) {
             boolean result = askSaveModel(model);
@@ -298,8 +298,8 @@ implements IEditorModelManager {
         // Delete the CommandStack *LAST* because GEF Editor(s) will still reference it!
         deleteCommandStack(model);
         
-        // Delete Archive Manager
-        deleteArchiveManager(model);
+        // Delete Zentave Manager
+        deleteZentaveManager(model);
 
         return true;
     }
@@ -310,7 +310,7 @@ implements IEditorModelManager {
      * @return true if the user chose to save the model or chose not to save the model, false if cancelled
      * @throws IOException 
      */
-    private boolean askSaveModel(IArchimateModel model) throws IOException {
+    private boolean askSaveModel(IZentamateModel model) throws IOException {
         MessageDialog dialog = new MessageDialog(Display.getCurrent().getActiveShell(),
                 Messages.EditorModelManager_6,
                 null,
@@ -338,7 +338,7 @@ implements IEditorModelManager {
     }
 
     @Override
-    public boolean saveModel(IArchimateModel model) throws IOException {
+    public boolean saveModel(IZentamateModel model) throws IOException {
         // First time to save...
         if(model.getFile() == null) {
             File file = askSaveModel();
@@ -358,8 +358,8 @@ implements IEditorModelManager {
         // Set model version
         model.setVersion(ModelVersion.VERSION);
         
-        // Use Archive Manager to save contents
-        IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
+        // Use Zentave Manager to save contents
+        IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
         archiveManager.saveModel();
         
         // Set CommandStack Save point
@@ -377,7 +377,7 @@ implements IEditorModelManager {
     }
     
     @Override
-    public boolean saveModelAs(IArchimateModel model) throws IOException {
+    public boolean saveModelAs(IZentamateModel model) throws IOException {
         File file = askSaveModel();
         if(file == null) {
             return false;
@@ -393,7 +393,7 @@ implements IEditorModelManager {
     @Override
     public boolean isModelLoaded(File file) {
         if(file != null) {
-            for(IArchimateModel model : getModels()) {
+            for(IZentamateModel model : getModels()) {
                 if(file.equals(model.getFile())) {
                     return true;
                 }
@@ -404,7 +404,7 @@ implements IEditorModelManager {
     }
 
     @Override
-    public boolean isModelDirty(IArchimateModel model) {
+    public boolean isModelDirty(IZentamateModel model) {
         if(model == null) {
             return false;
         }
@@ -437,7 +437,7 @@ implements IEditorModelManager {
         File file = new File(path);
         
         // Make sure we don't already have it open
-        for(IArchimateModel m : getModels()) {
+        for(IZentamateModel m : getModels()) {
             if(file.equals(m.getFile())) {
                 MessageDialog.openWarning(shell,
                         Messages.EditorModelManager_8,
@@ -463,7 +463,7 @@ implements IEditorModelManager {
      * Create a new ComandStack for the Model
      * @param model
      */
-    private void createNewCommandStack(final IArchimateModel model) {
+    private void createNewCommandStack(final IZentamateModel model) {
         CommandStack cmdStack = new CommandStack();
         
         // Forward on CommandStack Event to Tree
@@ -484,7 +484,7 @@ implements IEditorModelManager {
      * Remove a CommandStack
      * @param model
      */
-    private void deleteCommandStack(IArchimateModel model) {
+    private void deleteCommandStack(IZentamateModel model) {
         CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
         if(stack != null) {
             stack.dispose();
@@ -494,18 +494,18 @@ implements IEditorModelManager {
     /**
      * Set all diagram models in a model to be marked as "saved" - this for the editor view persistence
      */
-    private void markDiagramModelsAsSaved(IArchimateModel model) {
+    private void markDiagramModelsAsSaved(IZentamateModel model) {
         for(IDiagramModel dm : model.getDiagramModels()) {
             dm.setAdapter(ADAPTER_PROPERTY_MODEL_SAVED, true);
         }
     }
     
     /**
-     * Create a new ArchiveManager for the model
+     * Create a new ZentaveManager for the model
      */
-    private IArchiveManager createNewArchiveManager(IArchimateModel model) {
-        IArchiveManager archiveManager = IArchiveManager.FACTORY.createArchiveManager(model);
-        model.setAdapter(IArchiveManager.class, archiveManager);
+    private IZentaveManager createNewZentaveManager(IZentamateModel model) {
+        IZentaveManager archiveManager = IZentaveManager.FACTORY.createZentaveManager(model);
+        model.setAdapter(IZentaveManager.class, archiveManager);
         
         // Load images now
         try {
@@ -520,10 +520,10 @@ implements IEditorModelManager {
     }
     
     /**
-     * Remove the model's ArchiveManager
+     * Remove the model's ZentaveManager
      */
-    private void deleteArchiveManager(IArchimateModel model) {
-        IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
+    private void deleteZentaveManager(IZentamateModel model) {
+        IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
         if(archiveManager != null) {
             archiveManager.dispose();
         }
@@ -535,7 +535,7 @@ implements IEditorModelManager {
         Document doc = new Document();
         Element rootElement = new Element("models"); //$NON-NLS-1$
         doc.setRootElement(rootElement);
-        for(IArchimateModel model : getModels()) {
+        for(IZentamateModel model : getModels()) {
             File file = model.getFile(); // has been saved
             if(file != null) {
                 Element modelElement = new Element("model"); //$NON-NLS-1$

@@ -6,14 +6,14 @@
 package org.rulez.magwas.zenta.editor.model.commands;
 
 import org.eclipse.gef.commands.Command;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 
 
 
 /**
- * Delete Archimate Element Command
+ * Delete Zentamate Element Command
  * 
  * @author Phillip Beauvoir
  */
@@ -26,7 +26,7 @@ public class DeleteElementCommand extends Command {
     public DeleteElementCommand(INameable element) {
         fFolder = (IFolder)element.eContainer();
         fElement = element;
-        setLabel(Messages.DeleteElementCommand_0 + " " + ArchimateLabelProvider.INSTANCE.getLabel(fElement)); //$NON-NLS-1$
+        setLabel(Messages.DeleteElementCommand_0 + " " + ZentamateLabelProvider.INSTANCE.getLabel(fElement)); //$NON-NLS-1$
     }
     
     @Override

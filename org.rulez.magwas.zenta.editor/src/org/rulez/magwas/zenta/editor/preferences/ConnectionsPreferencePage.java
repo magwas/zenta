@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 
 
 
@@ -39,7 +39,7 @@ public class ConnectionsPreferencePage
 extends PreferencePage
 implements IWorkbenchPreferencePage, IPreferenceConstants {
 
-    private static String HELP_ID = "uk.ac.bolton.archimate.help.prefsConnections"; //$NON-NLS-1$
+    private static String HELP_ID = "org.rulez.magwas.zenta.help.prefsConnections"; //$NON-NLS-1$
 
     private Button fDoAnimateMagicConnectorButton;
     private Button fMagicConnectorPolarity1Button;
@@ -180,12 +180,12 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         viewer.setLabelProvider(new LabelProvider() {
             @Override
             public String getText(Object element) {
-                return ArchimateLabelProvider.INSTANCE.getDefaultName((EClass)element);
+                return ZentamateLabelProvider.INSTANCE.getDefaultName((EClass)element);
             }
             
             @Override
             public Image getImage(Object element) {
-                return ArchimateLabelProvider.INSTANCE.getImage(element);
+                return ZentamateLabelProvider.INSTANCE.getImage(element);
             }
         });
         

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <archimate:ArchimateDiagramModel xmlns:archimate="http://www.bolton.ac.uk/archimate"
+  <archimate:ZentamateDiagramModel xmlns:archimate="http://www.bolton.ac.uk/archimate"
                                     connectionRouterType="1"
                                     id="thenode"
                                     name="funkció - workflow">
@@ -13,7 +13,7 @@
           </child>
       </child>
       <property key="associatedObjectClass" value="Function"/>
-  </archimate:ArchimateDiagramModel>
+  </archimate:ZentamateDiagramModel>
     <element id="8c360738"
             name="Megadja az adatait"
             xsi:type="archimate:BusinessProcess">

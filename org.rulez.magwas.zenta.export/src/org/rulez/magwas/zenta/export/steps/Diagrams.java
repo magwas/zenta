@@ -9,7 +9,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.rulez.magwas.zenta.export.steps.Step;
 import org.rulez.magwas.zenta.export.steps.StepFactory;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.w3c.dom.Element;
 
@@ -54,7 +54,7 @@ public class Diagrams extends Step {
      * @param model the model
      * @param targetdir the target directory
      */
-    private void saveDiagrams(IArchimateModel model,File targetdir) {
+    private void saveDiagrams(IZentamateModel model,File targetdir) {
     	List<IDiagramModel> dias = model.getDiagramModels();
     	for (IDiagramModel dia : dias) {
     		Image image = DiagramUtils.createImage(dia);

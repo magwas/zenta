@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Archi Windows Launcher
+Bundle-Name: Zenta Windows Launcher
 Bundle-SymbolicName: org.rulez.magwas.zenta.editor.launch.win32;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: Phillip Beauvoir

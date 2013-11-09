@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getProperties()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getProperties()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -37,7 +37,7 @@ public interface IProperties extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Properties</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getProperties_Properties()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getProperties_Properties()
 	 * @model containment="true"
 	 *        extendedMetaData="name='property' kind='element'"
 	 * @generated

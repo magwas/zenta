@@ -8,11 +8,11 @@
 
   <xsl:param name="targetdir"/>
 <!--
-//archimate:*[@id=//archimate:ArchimateDiagramModel[property[@key='Template']]//archimate:Connection/@relationship]
-//archimate:*[@id=//archimate:ArchimateDiagramModel[property[@key='Template']]//archimate:DiagramObject/@archimateElement]
-//archimate:ArchimateDiagramModel[property[@key='Template']]//archimate:DiagramObject
+//archimate:*[@id=//archimate:ZentamateDiagramModel[property[@key='Template']]//archimate:Connection/@relationship]
+//archimate:*[@id=//archimate:ZentamateDiagramModel[property[@key='Template']]//archimate:DiagramObject/@archimateElement]
+//archimate:ZentamateDiagramModel[property[@key='Template']]//archimate:DiagramObject
 -->
-  <xsl:variable name="templates" select="//archimate:ArchimateDiagramModel[property[@key='Template']]"/>
+  <xsl:variable name="templates" select="//archimate:ZentamateDiagramModel[property[@key='Template']]"/>
   <xsl:variable name="objects" select="//archimate:*[@id=$templates//archimate:DiagramObject/@archimateElement]"/>
   <xsl:variable name="conns" select="//archimate:*[@id=$templates//archimate:Connection/@relationship]"/>
   <xsl:variable name="directions" select="tokenize('source target source',' ')"/>

@@ -13,13 +13,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
 
@@ -151,12 +151,12 @@ implements IDiagramModelObjectFigure {
             return null;
         }
 
-        String text = ArchimateLabelProvider.INSTANCE.getLabel(getDiagramModelObject());
+        String text = ZentamateLabelProvider.INSTANCE.getLabel(getDiagramModelObject());
         toolTipFigure.setText(text);
         
-        if(fDiagramModelObject instanceof IDiagramModelArchimateObject) {
-            IArchimateElement element = ((IDiagramModelArchimateObject)fDiagramModelObject).getArchimateElement();
-            String type = ArchimateLabelProvider.INSTANCE.getDefaultName(element.eClass());
+        if(fDiagramModelObject instanceof IDiagramModelZentamateObject) {
+            IZentamateElement element = ((IDiagramModelZentamateObject)fDiagramModelObject).getZentamateElement();
+            String type = ZentamateLabelProvider.INSTANCE.getDefaultName(element.eClass());
             if(!StringUtils.isSet(text)) { // Name was blank
                 toolTipFigure.setText(type);
             }

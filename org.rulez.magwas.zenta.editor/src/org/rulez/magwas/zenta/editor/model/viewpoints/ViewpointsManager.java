@@ -12,9 +12,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IArchimateDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 
@@ -54,39 +54,39 @@ public class ViewpointsManager {
      * @return an ImageDesciptor for a Viewpoint
      */
     public ImageDescriptor getImageDescriptor(IViewpoint viewPoint) {
-        String[] bus_appNames = { IArchimateImages.ICON_VIEWPOINT_BUSINESS_16,
-                IArchimateImages.ICON_VIEWPOINT_APPLICATION_16 };
+        String[] bus_appNames = { IZentamateImages.ICON_VIEWPOINT_BUSINESS_16,
+                IZentamateImages.ICON_VIEWPOINT_APPLICATION_16 };
         
-        String[] app_techNames = { IArchimateImages.ICON_VIEWPOINT_APPLICATION_16,
-                IArchimateImages.ICON_VIEWPOINT_TECHNOLOGY_16 };
+        String[] app_techNames = { IZentamateImages.ICON_VIEWPOINT_APPLICATION_16,
+                IZentamateImages.ICON_VIEWPOINT_TECHNOLOGY_16 };
         
         switch(viewPoint.getIndex()) {
             case IViewpoint.BUSINESS_FUNCTION_VIEWPOINT:
             case IViewpoint.BUSINESS_PROCESS_VIEWPOINT:
             case IViewpoint.ORGANISATION_VIEWPOINT:
-                return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_VIEWPOINT_BUSINESS_16);
+                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINT_BUSINESS_16);
 
             case IViewpoint.APPLICATION_BEHAVIOUR_VIEWPOINT:
             case IViewpoint.APPLICATION_COOPERATION_VIEWPOINT:
             case IViewpoint.APPLICATION_STRUCTURE_VIEWPOINT:
-                return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_VIEWPOINT_APPLICATION_16);
+                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINT_APPLICATION_16);
                 
             case IViewpoint.INFRASTRUCTURE_VIEWPOINT:
-                return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_VIEWPOINT_TECHNOLOGY_16);
+                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINT_TECHNOLOGY_16);
 
             case IViewpoint.ACTOR_COOPERATION_VIEWPOINT:
             case IViewpoint.APPLICATION_USAGE_VIEWPOINT:
             case IViewpoint.BUSINESS_PROCESS_COOPERATION_VIEWPOINT:
             case IViewpoint.BUSINESS_PRODUCT_VIEWPOINT:
             case IViewpoint.SERVICE_REALISATION_VIEWPOINT:
-                return IArchimateImages.ImageFactory.getCompositeImageDescriptor(bus_appNames);
+                return IZentamateImages.ImageFactory.getCompositeImageDescriptor(bus_appNames);
                 
             case IViewpoint.IMPLEMENTATION_DEPLOYMENT_VIEWPOINT:
             case IViewpoint.INFRASTRUCTURE_USAGE_VIEWPOINT:
-                return IArchimateImages.ImageFactory.getCompositeImageDescriptor(app_techNames);
+                return IZentamateImages.ImageFactory.getCompositeImageDescriptor(app_techNames);
                 
             default:
-                return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_VIEWPOINTS_16);
+                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINTS_16);
         }
     }
     
@@ -123,12 +123,12 @@ public class ViewpointsManager {
      * @return True if dmo is an allowed component for this Viewpoint
      */
     public boolean isAllowedType(IDiagramModelComponent dmo) {
-        if(dmo instanceof IDiagramModelArchimateObject && dmo.getDiagramModel() instanceof IArchimateDiagramModel) {
-        	if (null == ((IDiagramModelArchimateObject)dmo).getArchimateElement()) {
+        if(dmo instanceof IDiagramModelZentamateObject && dmo.getDiagramModel() instanceof IZentamateDiagramModel) {
+        	if (null == ((IDiagramModelZentamateObject)dmo).getZentamateElement()) {
         		return false;
         	}
-            EClass eClass = ((IDiagramModelArchimateObject)dmo).getArchimateElement().eClass();
-            return isAllowedType((IArchimateDiagramModel)dmo.getDiagramModel(), eClass);
+            EClass eClass = ((IDiagramModelZentamateObject)dmo).getZentamateElement().eClass();
+            return isAllowedType((IZentamateDiagramModel)dmo.getDiagramModel(), eClass);
         }
         if(dmo instanceof IDiagramModelConnection) {
             return isAllowedType(((IDiagramModelConnection)dmo).getSource()) && 
@@ -142,7 +142,7 @@ public class ViewpointsManager {
      * @param eClass
      * @return True if eClass is an allowed component for this Viewpoint
      */
-    public boolean isAllowedType(IArchimateDiagramModel dm, EClass eClass) {
+    public boolean isAllowedType(IZentamateDiagramModel dm, EClass eClass) {
         if(dm != null) {
             IViewpoint viewPoint = getViewpoint(dm.getViewpoint());
             return viewPoint.isAllowedType(eClass);

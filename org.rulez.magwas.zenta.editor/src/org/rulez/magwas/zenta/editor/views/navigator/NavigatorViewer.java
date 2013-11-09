@@ -14,10 +14,10 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 
 
 
@@ -93,13 +93,13 @@ public class NavigatorViewer extends TreeViewer {
                     return new Object[] { relation.getSource() };
                 }
             }
-            else if(parent instanceof IArchimateElement) {
-                IArchimateElement element = (IArchimateElement)parent;
+            else if(parent instanceof IZentamateElement) {
+                IZentamateElement element = (IZentamateElement)parent;
                 if(fShowTargetElements) {
-                    return ArchimateModelUtils.getSourceRelationships(element).toArray();
+                    return ZentamateModelUtils.getSourceRelationships(element).toArray();
                 }
                 else {
-                    return ArchimateModelUtils.getTargetRelationships(element).toArray();
+                    return ZentamateModelUtils.getTargetRelationships(element).toArray();
                 }
             }
             
@@ -123,12 +123,12 @@ public class NavigatorViewer extends TreeViewer {
         
         @Override
         public String getText(Object element) {
-            return ArchimateLabelProvider.INSTANCE.getLabel(element);
+            return ZentamateLabelProvider.INSTANCE.getLabel(element);
         }
         
         @Override
         public Image getImage(Object element) {
-            return ArchimateLabelProvider.INSTANCE.getImage(element);
+            return ZentamateLabelProvider.INSTANCE.getImage(element);
         }
     }
     

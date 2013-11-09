@@ -19,20 +19,20 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IInterfaceElement;
 
 
 
 /**
- * Property Section for an Archimate Element
+ * Property Section for an Zentamate Element
  * 
  * @author Phillip Beauvoir
  */
-public class InterfaceElementSection extends AbstractArchimatePropertySection {
+public class InterfaceElementSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
     
     /**
      * Filter to show or reject this section depending on input value
@@ -42,7 +42,7 @@ public class InterfaceElementSection extends AbstractArchimatePropertySection {
         public boolean select(Object object) {
             return object instanceof IInterfaceElement ||
                 (object instanceof IAdaptable &&
-                        ((IAdaptable)object).getAdapter(IArchimateElement.class) instanceof IInterfaceElement);
+                        ((IAdaptable)object).getAdapter(IZentamateElement.class) instanceof IInterfaceElement);
         }
     }
 
@@ -54,7 +54,7 @@ public class InterfaceElementSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Element Interface event (Undo/Redo and here!)
-            if(feature == IArchimatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE) {
+            if(feature == IZentamatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE) {
                 refreshControls();
                 fPage.labelProviderChanged(null); // Update icon on Main label
             }
@@ -82,7 +82,7 @@ public class InterfaceElementSection extends AbstractArchimatePropertySection {
                 if(isAlive()) {
                     fIsExecutingCommand = true;
                     getCommandStack().execute(new EObjectFeatureCommand(Messages.InterfaceElementSection_3,
-                            fInterfaceElement, IArchimatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE,
+                            fInterfaceElement, IZentamatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE,
                             fComboInterfaceType.getSelectionIndex()));
                     fIsExecutingCommand = false;
                 }
@@ -95,13 +95,13 @@ public class InterfaceElementSection extends AbstractArchimatePropertySection {
 
     @Override
     protected void setElement(Object element) {
-        // IArchimateElement
+        // IZentamateElement
         if(element instanceof IInterfaceElement) {
             fInterfaceElement = (IInterfaceElement)element;
         }
-        // IArchimateElement in a GEF Edit Part
+        // IZentamateElement in a GEF Edit Part
         else if(element instanceof IAdaptable) {
-            fInterfaceElement = (IInterfaceElement)((IAdaptable)element).getAdapter(IArchimateElement.class);
+            fInterfaceElement = (IInterfaceElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
         }
         else {
             System.err.println("InterfaceElementSection wants to display for " + element); //$NON-NLS-1$

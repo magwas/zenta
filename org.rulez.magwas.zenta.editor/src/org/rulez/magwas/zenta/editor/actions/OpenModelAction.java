@@ -18,8 +18,8 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 
 
 /**
@@ -48,7 +48,7 @@ implements IWorkbenchAction
             final File file = new File(path);
             
             // Check it's not already open
-            IArchimateModel model = getModel(file);
+            IZentamateModel model = getModel(file);
             if(model != null) {
                 MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
                                                 Messages.OpenModelAction_2,
@@ -67,15 +67,15 @@ implements IWorkbenchAction
     
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_OPEN_16);
+        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_OPEN_16);
     }
     
     /**
      * Get model if it is already open
      */
-    private IArchimateModel getModel(File file) {
+    private IZentamateModel getModel(File file) {
         if(file != null) {
-            for(IArchimateModel model : IEditorModelManager.INSTANCE.getModels()) {
+            for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
                 if(file.equals(model.getFile())) {
                     return model;
                 }

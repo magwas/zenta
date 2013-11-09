@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.editor.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
 
 
 
@@ -21,9 +21,9 @@ implements IPreferenceConstants {
 
     @Override
     public void initializeDefaultPreferences() {
-		IPreferenceStore store = ArchimateEditorPlugin.INSTANCE.getPreferenceStore();
+		IPreferenceStore store = ZentamateEditorPlugin.INSTANCE.getPreferenceStore();
         
-		store.setDefault(USER_DATA_FOLDER, ArchimateEditorPlugin.INSTANCE.getWorkspaceFolder().getPath());
+		store.setDefault(USER_DATA_FOLDER, ZentamateEditorPlugin.INSTANCE.getWorkspaceFolder().getPath());
 		
 		store.setDefault(MRU_MAX, 6);
         

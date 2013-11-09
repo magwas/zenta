@@ -10,8 +10,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
 
@@ -32,14 +32,14 @@ public abstract class AbstractViewpoint implements IViewpoint {
         
         EClass eClass = null;
         
-        if(object instanceof IDiagramModelArchimateObject) {
-            eClass = ((IDiagramModelArchimateObject)object).getArchimateElement().eClass();
+        if(object instanceof IDiagramModelZentamateObject) {
+            eClass = ((IDiagramModelZentamateObject)object).getZentamateElement().eClass();
         }
-        else if(object instanceof IArchimateElement) {
+        else if(object instanceof IZentamateElement) {
             eClass = object.eClass();
         }
         
-        // eClass is IArchimateElement type
+        // eClass is IZentamateElement type
         if(eClass != null && !getAllowedList().contains(eClass)) {
             return false;
         }

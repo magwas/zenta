@@ -17,11 +17,11 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.INotesContent;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.editor.propertysections.AbstractArchimatePropertySection;
+import org.rulez.magwas.zenta.editor.propertysections.AbstractZentamatePropertySection;
 import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
 import org.rulez.magwas.zenta.editor.propertysections.PropertySectionTextControl;
 import org.rulez.magwas.zenta.editor.ui.components.StyledTextControl;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ILockable;
 
 
@@ -31,7 +31,7 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class NotesSection extends AbstractArchimatePropertySection {
+public class NotesSection extends AbstractZentamatePropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
@@ -54,7 +54,7 @@ public class NotesSection extends AbstractArchimatePropertySection {
             Object feature = msg.getFeature();
             // Model event
             if(feature == ICanvasPackage.Literals.NOTES_CONTENT__NOTES 
-                    || feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+                    || feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }

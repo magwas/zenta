@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
-<toc label="Archi User Guide">
+<toc label="Zenta User Guide">
     
 	<topic href="help/intro.html" label="Introduction">
  </topic>
- <topic href="help/install.html" label="Installing and Launching Archi">
+ <topic href="help/install.html" label="Installing and Launching Zenta">
  </topic>
-    <topic href="help/archi_working.html" label="Working in Archi">
+    <topic href="help/archi_working.html" label="Working in Zenta">
     </topic>
-    <topic href="help/new_model.html" label="Creating a New ArchiMate Model">
+    <topic href="help/new_model.html" label="Creating a New ZentaMate Model">
     </topic>
     <topic label="The Model Tree">
        <topic href="help/model_tree.html" label="Introduction">

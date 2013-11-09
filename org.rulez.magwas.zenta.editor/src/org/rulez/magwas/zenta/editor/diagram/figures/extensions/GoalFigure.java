@@ -6,8 +6,8 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.extensions;
 
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 /**
@@ -17,12 +17,12 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
  */
 public class GoalFigure extends AbstractMotivationFigure {
     
-    public GoalFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public GoalFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
 
     @Override
     protected Image getImage() {
-        return IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_GOAL_16);
+        return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_GOAL_16);
     }
 }

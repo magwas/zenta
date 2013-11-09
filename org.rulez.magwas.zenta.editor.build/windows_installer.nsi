@@ -1,19 +1,19 @@
 # NSIS Installer
 
-Name Archi
+Name Zenta
 
 # General Symbol Definitions
 !define VERSION 2.4.0
 !define INSTALLER_VERSION 2.4.0.0
-!define COMPANY "Archi"
+!define COMPANY "Zenta"
 !define URL http://archi.cetis.ac.uk
-!define SRC_FOLDER "\Archi\Archi_win\*"
-!define EXEFILE "\Archi\Archi-win32-${VERSION}.exe"
+!define SRC_FOLDER "\Zenta\Zenta_win\*"
+!define EXEFILE "\Zenta\Zenta-win32-${VERSION}.exe"
 
 ## Registry entries
 !define REGKEY "SOFTWARE\$(^Name)"
 !define FILE_EXT ".archimate"
-!define FILE_EXT_REG_KEY "Archi.file"
+!define FILE_EXT_REG_KEY "Zenta.file"
 
 
 # MUI Symbol Definitions
@@ -23,7 +23,7 @@ Name Archi
 !define MUI_STARTMENUPAGE_NODISABLE
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER Archi
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER Zenta
 !define MUI_UNICON branding\windows\icon.ico
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
@@ -52,17 +52,17 @@ Var StartMenuGroup
 
 # Installer attributes
 OutFile "${EXEFILE}"
-InstallDir $PROGRAMFILES\Archi
+InstallDir $PROGRAMFILES\Zenta
 CRCCheck on
 XPStyle on
 ShowInstDetails hide
 VIProductVersion "${INSTALLER_VERSION}"
-VIAddVersionKey ProductName Archi
+VIAddVersionKey ProductName Zenta
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
 VIAddVersionKey CompanyWebsite "${URL}"
 VIAddVersionKey FileVersion "${VERSION}"
-VIAddVersionKey FileDescription "Archi Installer"
+VIAddVersionKey FileDescription "Zenta Installer"
 VIAddVersionKey LegalCopyright ""
 InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails hide
@@ -167,7 +167,7 @@ FunctionEnd
 
 Function WriteFileAssociation
     WriteRegStr HKCR "${FILE_EXT}" "" "${FILE_EXT_REG_KEY}"
-    WriteRegStr HKCR "${FILE_EXT_REG_KEY}" "" "Archi Model"
+    WriteRegStr HKCR "${FILE_EXT_REG_KEY}" "" "Zenta Model"
     WriteRegStr HKCR "${FILE_EXT_REG_KEY}\shell" "" "open"
     WriteRegStr HKCR "${FILE_EXT_REG_KEY}\DefaultIcon" "" "$INSTDIR\$(^Name).exe,0"
     WriteRegStr HKCR "${FILE_EXT_REG_KEY}\shell\open\command" "" '"$INSTDIR\$(^Name).exe" "%1"'

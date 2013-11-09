@@ -13,9 +13,9 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getBusinessLayerElement()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getBusinessLayerElement()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IBusinessLayerElement extends IArchimateElement {
+public interface IBusinessLayerElement extends IZentamateElement {
 } // IBusinessLayerElement

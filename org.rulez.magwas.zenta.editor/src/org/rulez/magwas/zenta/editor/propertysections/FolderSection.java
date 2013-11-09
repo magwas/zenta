@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IFolder;
 
 
@@ -22,9 +22,9 @@ import org.rulez.magwas.zenta.model.IFolder;
  * 
  * @author Phillip Beauvoir
  */
-public class FolderSection extends AbstractArchimatePropertySection {
+public class FolderSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.folderSection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.folderSection"; //$NON-NLS-1$
     
     /*
      * Adapter to listen to changes made elsewhere (including Undo/Redo commands)
@@ -34,12 +34,12 @@ public class FolderSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Folder Name event (Undo/Redo and here)
-            if(feature == IArchimatePackage.Literals.NAMEABLE__NAME ) {
+            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME ) {
                 refreshNameField();
                 fPage.labelProviderChanged(null); // Update Main label
             }
             // Folder Documentation event (Undo/Redo and here)
-            else if(feature == IArchimatePackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
+            else if(feature == IZentamatePackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
                 refreshDocumentationField();
             }
         }

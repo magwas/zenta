@@ -52,7 +52,7 @@
           <br/>
         </documentation>
       </description>
-      <default multi="true" order="0" select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name">
+      <default multi="true" order="0" select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name|//ZentamateObjectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name">
         <description/>
       </default>
     </property>
@@ -283,10 +283,10 @@
       </description>
     </property>
   </objectClass>
-  <objectClass abstract="" name="ArchimateObjectClass">
+  <objectClass abstract="" name="ZentamateObjectClass">
     <description>
       <documentation>
-        An objectclass predefined by Archi.
+        An objectclass predefined by Zenta.
         <br/>
         This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.
         <br/>

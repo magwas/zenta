@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.actions.ConnectionRouterAction;
 import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionRouterTypeCommand;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -29,9 +29,9 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramModelConnectionSection extends AbstractArchimatePropertySection {
+public class DiagramModelConnectionSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.diagramModelSection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.diagramModelSection"; //$NON-NLS-1$
 
     /*
      * Adapter to listen to changes made elsewhere (including Undo/Redo commands)
@@ -41,7 +41,7 @@ public class DiagramModelConnectionSection extends AbstractArchimatePropertySect
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Change made from Menu Action
-            if(feature == IArchimatePackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE) {
+            if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE) {
                 refreshControls();
             }
         }

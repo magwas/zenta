@@ -84,16 +84,16 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectNonNotifyingCompoundCommand;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.editor.ui.components.StringComboBoxCellEditor;
 import org.rulez.magwas.zenta.editor.utils.HTMLUtils;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.model.IArchimateFactory;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimateModelElement;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamateFactory;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamateModelElement;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
@@ -101,13 +101,13 @@ import org.rulez.magwas.zenta.model.IProperty;
 
 
 /**
- * User Properties Section for an Archimate Element, Archimate Model or Diagram Model
+ * User Properties Section for an Zentamate Element, Zentamate Model or Diagram Model
  * 
  * @author Phillip Beauvoir
  */
-public class UserPropertiesSection extends AbstractArchimatePropertySection {
+public class UserPropertiesSection extends AbstractZentamatePropertySection {
 
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.userProperties"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.userProperties"; //$NON-NLS-1$
 
     /**
      * Filter to show or reject this section depending on input value
@@ -148,12 +148,12 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
 
             if(!ignoreMessages) {
                 Object feature = msg.getFeature();
-                if(feature == IArchimatePackage.Literals.PROPERTIES__PROPERTIES) {
+                if(feature == IZentamatePackage.Literals.PROPERTIES__PROPERTIES) {
                     fTableViewer.refresh();
                     fTableLayout.doRelayout();
                 }
-                if(feature == IArchimatePackage.Literals.PROPERTY__KEY
-                        || feature == IArchimatePackage.Literals.PROPERTY__VALUE) {
+                if(feature == IZentamatePackage.Literals.PROPERTY__KEY
+                        || feature == IZentamatePackage.Literals.PROPERTY__VALUE) {
                     fTableViewer.update(msg.getNotifier(), null);
                 }
             }
@@ -202,15 +202,15 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
     }
     
     /**
-     * Return the Archimate model bound to the properties element
+     * Return the Zentamate model bound to the properties element
      * @return 
      */
-    protected IArchimateModel getArchimateModel() {
-        if(fPropertiesElement instanceof IArchimateModelElement) {
-            return ((IArchimateModelElement)fPropertiesElement).getArchimateModel();
+    protected IZentamateModel getZentamateModel() {
+        if(fPropertiesElement instanceof IZentamateModelElement) {
+            return ((IZentamateModelElement)fPropertiesElement).getZentamateModel();
         }
         if(fPropertiesElement instanceof IDiagramModelComponent) {
-            return ((IDiagramModelComponent)fPropertiesElement).getDiagramModel().getArchimateModel();
+            return ((IDiagramModelComponent)fPropertiesElement).getDiagramModel().getZentamateModel();
         }
         return null;
     }
@@ -291,7 +291,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
                     if(selected != null) {
                         index = fPropertiesElement.getProperties().indexOf(selected) + 1;
                     }
-                    IProperty property = IArchimateFactory.eINSTANCE.createProperty();
+                    IProperty property = IZentamateFactory.eINSTANCE.createProperty();
                     getCommandStack().execute(new NewPropertyCommand(fPropertiesElement.getProperties(), property, index));
                     fTableViewer.editElement(property, 1);
                 }
@@ -304,7 +304,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
 
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_PLUS);
+                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_PLUS);
             }
         };
 
@@ -327,7 +327,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
 
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_MUTIPLE);
+                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_MUTIPLE);
             }
         };
 
@@ -357,7 +357,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
 
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_SMALL_X);
+                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_SMALL_X);
             }
         };
         fActionRemoveProperty.setEnabled(false);
@@ -368,7 +368,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
             public void run() {
                 if(isAlive()) {
                     UserPropertiesManagerDialog dialog = new UserPropertiesManagerDialog(fPage.getSite().getShell(),
-                            getArchimateModel());
+                            getZentamateModel());
                     dialog.open();
                 }
             }
@@ -380,7 +380,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
 
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_COG);
+                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_COG);
             }
         };
 
@@ -474,7 +474,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
      * @return All unique Property Keys for an entire model (sorted)
      */
     private String[] getAllUniquePropertyKeysForModel() {
-        IArchimateModel model = getArchimateModel();
+        IZentamateModel model = getZentamateModel();
 
         List<String> list = new ArrayList<String>();
 
@@ -771,7 +771,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
         protected void setValue(Object element, Object value) {
             if(isAlive()) {
                 getCommandStack().execute(new EObjectFeatureCommand(Messages.UserPropertiesSection_10, (IProperty)element,
-                                            IArchimatePackage.Literals.PROPERTY__KEY, value));
+                                            IZentamatePackage.Literals.PROPERTY__KEY, value));
             }
         }
     }
@@ -809,7 +809,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
         protected void setValue(Object element, Object value) {
             if(isAlive()) {
                 getCommandStack().execute(new EObjectFeatureCommand(Messages.UserPropertiesSection_11, (IProperty)element,
-                                        IArchimatePackage.Literals.PROPERTY__VALUE, value));
+                                        IZentamatePackage.Literals.PROPERTY__VALUE, value));
             }
         }
     }
@@ -1032,8 +1032,8 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
         private String[] keys;
 
         public MultipleAddDialog(Shell parentShell) {
-            super(parentShell, "ArchimatePropertiesMultipleAddDialog"); //$NON-NLS-1$
-            setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_IMPORT_PREF_WIZARD));
+            super(parentShell, "ZentamatePropertiesMultipleAddDialog"); //$NON-NLS-1$
+            setTitleImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ECLIPSE_IMAGE_IMPORT_PREF_WIZARD));
             setShellStyle(getShellStyle() | SWT.RESIZE);
 
             keys = getAllUniquePropertyKeysForModel();
@@ -1152,7 +1152,7 @@ public class UserPropertiesSection extends AbstractArchimatePropertySection {
             compoundCmd = new EObjectNonNotifyingCompoundCommand(fPropertiesElement, Messages.UserPropertiesSection_20);
 
             for(Object o : tableViewer.getCheckedElements()) {
-                IProperty property = IArchimateFactory.eINSTANCE.createProperty();
+                IProperty property = IZentamateFactory.eINSTANCE.createProperty();
                 property.setKey((String)o);
                 compoundCmd.add(new NewPropertyCommand(fPropertiesElement.getProperties(), property, -1));
             }

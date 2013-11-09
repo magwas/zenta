@@ -7,10 +7,10 @@
          xmlns:fn="http://www.w3.org/2005/xpath-functions"
          version="5.0">
    <info>
-      <title>Archi StyledHtml module</title>
+      <title>Zenta StyledHtml module</title>
       <abstract>
          <itemizedlist>
-            <listitem>You have designed something, you have the Archimate model on it. But you have to create a documentation in the form requested by your client.</listitem>
+            <listitem>You have designed something, you have the Zentamate model on it. But you have to create a documentation in the form requested by your client.</listitem>
             <para/>
             <listitem>You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.</listitem>
             <para/>
@@ -28,24 +28,24 @@
             <para/>
             <listitem>generate configuration and code directly from the model</listitem>
          </itemizedlist>
-         <para/>This model tries to fulfill multiple purposes:<para/>- Show how Archimate can be used in the goovernance of IT<para/>- Document the styledhtml Archi module<para/>- Serve as an example for both of the above<para/>- The webpage of the styledhtml module is generated from it. See <link xlink:href="http://archistyledhtml.sourceforge.net/"
+         <para/>This model tries to fulfill multiple purposes:<para/>- Show how Zentamate can be used in the goovernance of IT<para/>- Document the styledhtml Zenta module<para/>- Serve as an example for both of the above<para/>- The webpage of the styledhtml module is generated from it. See <link xlink:href="http://archistyledhtml.sourceforge.net/"
                xrefstyle="what?"
                href="http://archistyledhtml.sourceforge.net/">http://archistyledhtml.sourceforge.net/</link>
          <para/>You can find user documentation in the Use Cases section.</abstract>
    </info>
    <section id="1. Introduction">
       <title>1. Introduction</title>
-      <para>This module is mainly about two things.<para/>One is to create reports from your Archimate model for the different stakeholders. If you are interested in this part, just jump to use cases, where you can find the user documentation.<para/>The other thing is to implement Archimate Extensions. You can find some introductory text here, and an example implementation in the "Sample policy" section.<para/>To see some of the possible avenues it would open, see "Possible enhancements"</para>
+      <para>This module is mainly about two things.<para/>One is to create reports from your Zentamate model for the different stakeholders. If you are interested in this part, just jump to use cases, where you can find the user documentation.<para/>The other thing is to implement Zentamate Extensions. You can find some introductory text here, and an example implementation in the "Sample policy" section.<para/>To see some of the possible avenues it would open, see "Possible enhancements"</para>
       <section id="1. Quick howto">
          <title>1. Quick howto</title>
-         <para>This introduction is for the impatient, who just wants to generate documentation from an already existing Archi model.<para/>
+         <para>This introduction is for the impatient, who just wants to generate documentation from an already existing Zenta model.<para/>
             <itemizedlist>	
-               <listitem>Download the Archi Styledhtml distribution from <link xlink:href="http://sourceforge.net/projects/archistyledhtml/files/"
+               <listitem>Download the Zenta Styledhtml distribution from <link xlink:href="http://sourceforge.net/projects/archistyledhtml/files/"
                         xrefstyle="what?"
                         href="http://sourceforge.net/projects/archistyledhtml/files/">http://sourceforge.net/projects/archistyledhtml/files/</link>
                </listitem>    
-               <listitem>Extract it to a directory, as you would do with a vanilla Archi.</listitem>	
-               <listitem>Start the Archi executable in the extracted folder.</listitem>    
+               <listitem>Extract it to a directory, as you would do with a vanilla Zenta.</listitem>	
+               <listitem>Start the Zenta executable in the extracted folder.</listitem>    
                <listitem>Set a property for the model named <emphasis role="bold">report:part</emphasis> with the value <emphasis role="bold">all</emphasis>. </listitem>    
                <listitem>Go to Edit/Preferences/Styled Export</listitem>   
                <listitem>Push the "Install provided styles" button. Choose a folder to install the styles to.</listitem>		
@@ -79,8 +79,8 @@
                </td>
             </tr>
             <tr>
-               <td class="starter" valign="top">Archi download site</td>
-               <td class="starter" valign="top">You can download Archi at<para/>
+               <td class="starter" valign="top">Zenta download site</td>
+               <td class="starter" valign="top">You can download Zenta at<para/>
                   <link xlink:href="http://archi.cetis.ac.uk/download.html"
                         xrefstyle="what?"
                         href="http://archi.cetis.ac.uk/download.html">http://archi.cetis.ac.uk/download.html</link>
@@ -99,8 +99,8 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">Download Archi</td>
-               <td class="starter" valign="top">With any web browser from the Archi download site.</td>
+               <td class="starter" valign="top">Download Zenta</td>
+               <td class="starter" valign="top">With any web browser from the Zenta download site.</td>
             </tr>
             <tr>
                <td> </td>
@@ -115,11 +115,11 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">Install Archi</td>
-               <td class="starter" valign="top">See <link xlink:href="http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf"
+               <td class="starter" valign="top">Install Zenta</td>
+               <td class="starter" valign="top">See <link xlink:href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf"
                         xrefstyle="what?"
-                        href="http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf</link>
-                  <para/>"Installing and Launching Archi"</td>
+                        href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf</link>
+                  <para/>"Installing and Launching Zenta"</td>
             </tr>
             <tr>
                <td> </td>
@@ -138,7 +138,7 @@
             </tr>
             <tr>
                <td class="starter" valign="top">install the StyledHtml package</td>
-               <td class="starter" valign="top">Just unzip the package in the install directory of Archi.<para/>Further info for troubleshooting, consider it only if something goes wrong:<para/>The package contains two jar files, which go to the "plugins" directory.<para/>The Archi directory should already contain a "plugins" directory.<para/>You don't have to unzip the jar files. If you see new directories with names like "bin" and "META-INF" then you have managed to unzip the jars...</td>
+               <td class="starter" valign="top">Just unzip the package in the install directory of Zenta.<para/>Further info for troubleshooting, consider it only if something goes wrong:<para/>The package contains two jar files, which go to the "plugins" directory.<para/>The Zenta directory should already contain a "plugins" directory.<para/>You don't have to unzip the jar files. If you see new directories with names like "bin" and "META-INF" then you have managed to unzip the jars...</td>
             </tr>
             <tr>
                <td> </td>
@@ -146,18 +146,18 @@
             </tr>
             <tr>
                <td class="starter" valign="top">installation</td>
-               <td class="starter" valign="top">This is how you install the StyledHtml module for Archi</td>
+               <td class="starter" valign="top">This is how you install the StyledHtml module for Zenta</td>
             </tr>
             <tr>
                <td> </td>
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">start Archi</td>
-               <td class="starter" valign="top">If you were already running archi this is the time to exit and restart it.<para/>You start Archi in the usual way, see<para/>
-                  <link xlink:href="http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf"
+               <td class="starter" valign="top">start Zenta</td>
+               <td class="starter" valign="top">If you were already running archi this is the time to exit and restart it.<para/>You start Zenta in the usual way, see<para/>
+                  <link xlink:href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf"
                         xrefstyle="what?"
-                        href="http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf</link>
+                        href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf</link>
                </td>
             </tr>
             <tr>
@@ -227,7 +227,7 @@
       </section>
       <section id="2. Modeling">
          <title>2. Modeling</title>
-         <para>In the modeling phase, you describe something (the thing which is modeled) based on some ontology (the metamodel), resulting in a model.<para/>The Archimate methodology gives us a metamodel, which is directly useable with Archi. However often you need a metamodel more detailed than that.</para>
+         <para>In the modeling phase, you describe something (the thing which is modeled) based on some ontology (the metamodel), resulting in a model.<para/>The Zentamate methodology gives us a metamodel, which is directly useable with Zenta. However often you need a metamodel more detailed than that.</para>
          <section id="1. Simple uses">
             <title>1. Simple uses</title>
             <para>For simple uses you don't even need a metamodel.</para>
@@ -335,10 +335,10 @@
          </section>
          <section id="2. Metamodels">
             <title>2. Metamodels</title>
-            <para>Every model have some ontology as a background. In a lot of cases it is implicit, but there are cases when it is better to define it exactly. For example a well defined ontology is the basis for any model driven code/configuration generation.<para/>Another case is when you want to check your or others' work for mistakes and omissions.<para/>These cases need a well-defined set of rules about the subject matter. The ontology is captured in Archi as a metamodel, and based on it a policy is generated. The policy is then used by the rich export functionality to emit warnings about nonconformances, and to export the model in a way which is easily used by stylesheets to generate the necessary data.</para>
+            <para>Every model have some ontology as a background. In a lot of cases it is implicit, but there are cases when it is better to define it exactly. For example a well defined ontology is the basis for any model driven code/configuration generation.<para/>Another case is when you want to check your or others' work for mistakes and omissions.<para/>These cases need a well-defined set of rules about the subject matter. The ontology is captured in Zenta as a metamodel, and based on it a policy is generated. The policy is then used by the rich export functionality to emit warnings about nonconformances, and to export the model in a way which is easily used by stylesheets to generate the necessary data.</para>
             <section id="1. Defining a metamodel">
                <title>1. Defining a metamodel</title>
-               <para>The current way to define the metamodel is not considered to be the final one, however most probably I will keep this method as well. In the future metamodels will be defined by template diagrams, where the relations of a template object will define its attributes and the way the attributes obtain their value. Also the extension methods defined by Archimate 2.0 will be fully taken into account. The concepts are already very similar (maybe v2.0 was partly modeled by the Extended Archimate concept, see the history section), but I yet to check that the standard is actually followed.<para/>The core concept of the metamodel is objectClass. The objectClass tells us that we are facing a specialisation of an Archimate object (or any object defined by Archi, like Folder or model). As an example, we can have an Application Service with the objectClass <emphasis role="bold">WebService</emphasis>. In the metamodel level an objectclass have a parent (a built-in objectclass or a descendant thereof), and maybe some attributes. The attributes themselves have various properties, which may have default values.<para/>In the next sections we figure out how to define the objectClass for an Archimate object, and we learn how to define a metamodel.</para>
+               <para>The current way to define the metamodel is not considered to be the final one, however most probably I will keep this method as well. In the future metamodels will be defined by template diagrams, where the relations of a template object will define its attributes and the way the attributes obtain their value. Also the extension methods defined by Zentamate 2.0 will be fully taken into account. The concepts are already very similar (maybe v2.0 was partly modeled by the Extended Zentamate concept, see the history section), but I yet to check that the standard is actually followed.<para/>The core concept of the metamodel is objectClass. The objectClass tells us that we are facing a specialisation of an Zentamate object (or any object defined by Zenta, like Folder or model). As an example, we can have an Application Service with the objectClass <emphasis role="bold">WebService</emphasis>. In the metamodel level an objectclass have a parent (a built-in objectclass or a descendant thereof), and maybe some attributes. The attributes themselves have various properties, which may have default values.<para/>In the next sections we figure out how to define the objectClass for an Zentamate object, and we learn how to define a metamodel.</para>
                <section id="1. Ways to define the objectClass">
                   <title>1. Ways to define the objectClass</title>
                   <para/>
@@ -497,8 +497,8 @@
                      <para/>
                      <table class="elementtable">
                         <tr>
-                           <td class="starter" valign="top">ArchimateObjectClass</td>
-                           <td class="starter" valign="top">An objectclass predefined by Archi.<para/>This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.</td>
+                           <td class="starter" valign="top">ZentamateObjectClass</td>
+                           <td class="starter" valign="top">An objectclass predefined by Zenta.<para/>This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.</td>
                         </tr>
                         <tr>
                            <td> </td>
@@ -760,7 +760,7 @@
                                  </tr>
                                  <tr>
                                     <td>default:select</td>
-                                    <td>//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
+                                    <td>//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
                                  </tr>
                                  <tr>
                                     <td>default:multi</td>
@@ -952,9 +952,9 @@
             </tr>
             <tr>
                <td class="starter" valign="top">Edit your model</td>
-               <td class="starter" valign="top">You do it in the usual way in Archi.<para/>See <link xlink:href="http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf"
+               <td class="starter" valign="top">You do it in the usual way in Zenta.<para/>See <link xlink:href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf"
                         xrefstyle="what?"
-                        href="http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Archi%20User%20Guide.pdf</link>
+                        href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf</link>
                </td>
             </tr>
             <tr>
@@ -1063,7 +1063,7 @@
             </tr>
             <tr>
                <td class="starter" valign="top">application log file</td>
-               <td class="starter" valign="top">In the installation directory of Archi there is a file called Archi.ini<para/>Look at the definition of osgi.instance.area, looking something like this:<para/>-Dosgi.instance.area=@user.home/uk.ac.bolton/Archi<para/>The @user.home here is your home directory.<para/>Within the directory defined by osgi.instance.area there is a file called .metadata/.log<para/>This is the log file.</td>
+               <td class="starter" valign="top">In the installation directory of Zenta there is a file called Zenta.ini<para/>Look at the definition of osgi.instance.area, looking something like this:<para/>-Dosgi.instance.area=@user.home/uk.ac.bolton/Zenta<para/>The @user.home here is your home directory.<para/>Within the directory defined by osgi.instance.area there is a file called .metadata/.log<para/>This is the log file.</td>
             </tr>
             <tr>
                <td> </td>
@@ -1186,7 +1186,7 @@
             </tr>
             <tr>
                <td class="starter" valign="top">archimate:Node</td>
-               <td class="starter" valign="top">A Node as defined by Archimate</td>
+               <td class="starter" valign="top">A Node as defined by Zentamate</td>
             </tr>
             <tr>
                <td> </td>
@@ -1652,15 +1652,15 @@
             </td>
          </tr>
          <tr>
-            <td class="starter" valign="top">Archi community</td>
-            <td class="starter" valign="top">Anyone who does anything related to Archi belongs here</td>
+            <td class="starter" valign="top">Zenta community</td>
+            <td class="starter" valign="top">Anyone who does anything related to Zenta belongs here</td>
          </tr>
          <tr>
             <td> </td>
             <td/>
          </tr>
          <tr>
-            <td class="starter" valign="top">Archi developers</td>
+            <td class="starter" valign="top">Zenta developers</td>
             <td class="starter" valign="top">Everyone who develops archi or one of the modules belonging to it.</td>
          </tr>
          <tr>
@@ -1668,8 +1668,8 @@
             <td/>
          </tr>
          <tr>
-            <td class="starter" valign="top">Archi users</td>
-            <td class="starter" valign="top">The users of Archi. All and any of them.</td>
+            <td class="starter" valign="top">Zenta users</td>
+            <td class="starter" valign="top">The users of Zenta. All and any of them.</td>
          </tr>
          <tr>
             <td> </td>
@@ -1685,7 +1685,7 @@
                <table class="propertytable">
                   <tr>
                      <td>OrganisationalPerson:position</td>
-                     <td>Archi project leader</td>
+                     <td>Zenta project leader</td>
                   </tr>
                </table>
             </td>
@@ -1729,9 +1729,9 @@
    <section id="6. history">
       <title>6. history</title>
       <para/>
-      <section id="Extended Archimate">
-         <title>Extended Archimate</title>
-         <para>The Archimate 2 standard have introduced methods to extend the underlying metamodel of Archimate.<para/>The StyledHtml module will go along these lines.<para/>For historical purposes you can find my proposal from Archimate 1 times here:<para/>This is a proposal for an extension to Archimate methodology, adding a metamodel layer in the following way:<para/>- Instances of Archimate objects can have properties. This extension is already implemented in Archi.<para/>- There is a 4th layer above the well-known ones: the ontology/metamodel layer, describing concepts derived from core archimate concepts, and the properties associated with that concept.<para/>- A new concept of the ontology should be either a simple one, or a composite one. There are the following constraints to derive concepts of an ontology:<para/> - A simple concept should be derived from a core concept of the Archimate ontology.<para/> - A composite concept is a structure built from simple concepts. A composite concept is a "macro": it is defined by and can always be replaced with a structure of simple concepts, and all properties of the composite concept can be bound to a simple concept in the underlying structure.<para/>As you can see Extended Archimate is not another arbitrary methodology, because:<para/>- A model described in the extended archimate methodology can always be described in the core archimate methodology. Moreover a model described in ontology B can be described in ontology A, if B is derived from A.<para/>- Because of the above, all reasoning which holds for the core archimate methodology will hold for any ontology B based on it. Moreover for each ontology A, and B where B is derived from A, all reasoning for A will hold for B.<para/>- If there would be a methodology which incompatible with archimate - in the sense that models using that methodology cannot be meaningfully described in archimate - it would not be describeable in the extended methodology either (but archimate is capable to describe everything, so it is merely a theoretical point:).<para/>- Models using other methodology could be described by first defining the ontology of the other methodology in EA ontology layer, making archimate the mother of all methodologies:)<para/>Reasoning for the necessity of EA:<para/>Archimate right now is a closed ontology. It does have a lot of advantages, and EA would not loose any of them, because any model in EA should have a representation in the core ontology. But a closed ontology is not capable to describe our world in the necessary detail . When you start any design work, the first step is to create a view of the world around you. Let's take a sentence from the standard itself to illustrate it: "Examples of business actors are humans, departments, and business units." So to have the descriptive power, the ontology should be open "downward".<para/>This means that archimate as it is would not be able to support a design beyond a point. The more you focus only on some aspects of the world, the deeper you can go using Archimate, but it comes with the cost that you should neglect other aspects, otherwise they would interfere with your model. And there is invariably a point where another methodology should be used, and the model you built can no longer fully serve the purpose of being a reference point. When you gave your model to a developer and he should rebuild it in UML (or just don't have a frame of thought to develop your model further), it is not just a waste of effort, but makes communication harder because the differing views on the world. For us security people who should care with all the layers and from the conception to the details, this is a nightmare.<para/>With extended archimate the whole development cycle would be traceable in one model, refining not just the model but the ontology with it as development progresses. This makes automated checks for model structure and content reasonable, and even generation of code and configuration is possible. This not just gives the opportunity to help the uninitiated to make quality work, and give the tedious work to machines, but also helps traceability across the different levels of detail. If you ever tried to figure out whether a high-level requirement is fully implemented across a complex system, you will know what I am talking about. </para>
+      <section id="Extended Zentamate">
+         <title>Extended Zentamate</title>
+         <para>The Zentamate 2 standard have introduced methods to extend the underlying metamodel of Zentamate.<para/>The StyledHtml module will go along these lines.<para/>For historical purposes you can find my proposal from Zentamate 1 times here:<para/>This is a proposal for an extension to Zentamate methodology, adding a metamodel layer in the following way:<para/>- Instances of Zentamate objects can have properties. This extension is already implemented in Zenta.<para/>- There is a 4th layer above the well-known ones: the ontology/metamodel layer, describing concepts derived from core archimate concepts, and the properties associated with that concept.<para/>- A new concept of the ontology should be either a simple one, or a composite one. There are the following constraints to derive concepts of an ontology:<para/> - A simple concept should be derived from a core concept of the Zentamate ontology.<para/> - A composite concept is a structure built from simple concepts. A composite concept is a "macro": it is defined by and can always be replaced with a structure of simple concepts, and all properties of the composite concept can be bound to a simple concept in the underlying structure.<para/>As you can see Extended Zentamate is not another arbitrary methodology, because:<para/>- A model described in the extended archimate methodology can always be described in the core archimate methodology. Moreover a model described in ontology B can be described in ontology A, if B is derived from A.<para/>- Because of the above, all reasoning which holds for the core archimate methodology will hold for any ontology B based on it. Moreover for each ontology A, and B where B is derived from A, all reasoning for A will hold for B.<para/>- If there would be a methodology which incompatible with archimate - in the sense that models using that methodology cannot be meaningfully described in archimate - it would not be describeable in the extended methodology either (but archimate is capable to describe everything, so it is merely a theoretical point:).<para/>- Models using other methodology could be described by first defining the ontology of the other methodology in EA ontology layer, making archimate the mother of all methodologies:)<para/>Reasoning for the necessity of EA:<para/>Zentamate right now is a closed ontology. It does have a lot of advantages, and EA would not loose any of them, because any model in EA should have a representation in the core ontology. But a closed ontology is not capable to describe our world in the necessary detail . When you start any design work, the first step is to create a view of the world around you. Let's take a sentence from the standard itself to illustrate it: "Examples of business actors are humans, departments, and business units." So to have the descriptive power, the ontology should be open "downward".<para/>This means that archimate as it is would not be able to support a design beyond a point. The more you focus only on some aspects of the world, the deeper you can go using Zentamate, but it comes with the cost that you should neglect other aspects, otherwise they would interfere with your model. And there is invariably a point where another methodology should be used, and the model you built can no longer fully serve the purpose of being a reference point. When you gave your model to a developer and he should rebuild it in UML (or just don't have a frame of thought to develop your model further), it is not just a waste of effort, but makes communication harder because the differing views on the world. For us security people who should care with all the layers and from the conception to the details, this is a nightmare.<para/>With extended archimate the whole development cycle would be traceable in one model, refining not just the model but the ontology with it as development progresses. This makes automated checks for model structure and content reasonable, and even generation of code and configuration is possible. This not just gives the opportunity to help the uninitiated to make quality work, and give the tedious work to machines, but also helps traceability across the different levels of detail. If you ever tried to figure out whether a high-level requirement is fully implemented across a complex system, you will know what I am talking about. </para>
       </section>
    </section>
    <section id="Real-world examples">
@@ -1825,7 +1825,7 @@
                   <td/>
                </tr>
                <tr>
-                  <td class="starter" valign="top">IT Architecture dept.</td>
+                  <td class="starter" valign="top">IT Zentatecture dept.</td>
                   <td class="starter" valign="top">Where you look for an architect.</td>
                </tr>
                <tr>
@@ -1850,7 +1850,7 @@
                      <table class="propertytable">
                         <tr>
                            <td>OrganisationalPerson:position</td>
-                           <td>Architect</td>
+                           <td>Zentatect</td>
                         </tr>
                      </table>
                   </td>
@@ -1931,7 +1931,7 @@
                </tr>
                <tr>
                   <td class="starter" valign="top">1.0.7</td>
-                  <td class="starter" valign="top">This module works with Archi 2.0.0.<para/>There is an event log window. It displays the warnings and errors when exporting the model.If a message contains a link to an element, you can jump to that element by clicking on the link.<para/>major restructure, now we have two modules. The new one is the browser modul originally developed by Phil to support the event log window.<para/>You can find user documentation and use cases under Use Cases.<para/>The Extended Archimate methodology is documented under introduction.<para/>The created report is shown in a browser window.</td>
+                  <td class="starter" valign="top">This module works with Zenta 2.0.0.<para/>There is an event log window. It displays the warnings and errors when exporting the model.If a message contains a link to an element, you can jump to that element by clicking on the link.<para/>major restructure, now we have two modules. The new one is the browser modul originally developed by Phil to support the event log window.<para/>You can find user documentation and use cases under Use Cases.<para/>The Extended Zentamate methodology is documented under introduction.<para/>The created report is shown in a browser window.</td>
                </tr>
                <tr>
                   <td> </td>
@@ -1939,7 +1939,7 @@
                </tr>
                <tr>
                   <td class="starter" valign="top">2.2.0</td>
-                  <td class="starter" valign="top">The followup release of Archi 2.2.0, featuring the new Motivation and Implementation &amp; Migration extensions</td>
+                  <td class="starter" valign="top">The followup release of Zenta 2.2.0, featuring the new Motivation and Implementation &amp; Migration extensions</td>
                </tr>
                <tr>
                   <td> </td>
@@ -1956,7 +1956,7 @@
                   xrefstyle="what?"
                   href="objectlist.html#Application">the Application list</link>, and the <link xlink:href="objectlist.html#ApplicationCollection"
                   xrefstyle="what?"
-                  href="objectlist.html#ApplicationCollection">The ApplicationCollection list</link>.<para/>For the details, see the section about metamodels. <para/>On Monday, 31 January 2011 23:26:06 UTC+1, TerChris wrote:<para/>    Hi<para/>    First of all I’m pleased to find a tool that I think will help me in creating a repository of servers, systems and the dependencies between them.<para/>    I was on a project earlier where we used www.troux.com Architect (ver8). Troux Architect is not a cheap tool and we cannot justify the cost of it on the project I’m working at now.<para/>    I want to do the same as I did in the “troux-project”. That is to create a repository of all servers, systems, dependencies and the people responsible for running/administering/developing each item.<para/>    I want to model this structure.<para/>    Server attributes:<para/>    PhysicalHardware (eg the physical server)<para/>    Location (where the PhysicalHardware is placed)<para/>    ServerName (the name of the server)<para/>    IP Address<para/>    Status (In preparation, In Test, In production, Under liquidation, Liquidated)<para/>    NetworkZone (what network zone the server is placed)<para/>    OperatingSystem (what OS it runs)<para/>    ServerRole (Application server, File Server…)<para/>    TechnicalContact (Name of person)<para/>    Application attributes: (a application or system)<para/>    ApplicationName (name of the system)<para/>    TechnicalContact (Name of person)<para/>    AdmContact (Name of person)<para/>    Application collection: (A collection of applications/systems that belong together eg Sallary payment)<para/>    CollectionName (name of the collection of applications)<para/>    AdmContact (Name of person)<para/>    I then want to create a model view for each Application collection that shows:<para/>    What applications the collection consists of.<para/>    What dependencies there are between the applications in the collection and to applications outside the collection.<para/>    What servers the applications run on<para/>    What PhysicalHardware the servers run on (physical or a vmware)<para/>    Is this possible using Archi?<para/>    I can’t see a way to add more properties to a device. Is it not possible?<para/>    Regards<para/>    Terje</para>
+                  href="objectlist.html#ApplicationCollection">The ApplicationCollection list</link>.<para/>For the details, see the section about metamodels. <para/>On Monday, 31 January 2011 23:26:06 UTC+1, TerChris wrote:<para/>    Hi<para/>    First of all I’m pleased to find a tool that I think will help me in creating a repository of servers, systems and the dependencies between them.<para/>    I was on a project earlier where we used www.troux.com Zentatect (ver8). Troux Zentatect is not a cheap tool and we cannot justify the cost of it on the project I’m working at now.<para/>    I want to do the same as I did in the “troux-project”. That is to create a repository of all servers, systems, dependencies and the people responsible for running/administering/developing each item.<para/>    I want to model this structure.<para/>    Server attributes:<para/>    PhysicalHardware (eg the physical server)<para/>    Location (where the PhysicalHardware is placed)<para/>    ServerName (the name of the server)<para/>    IP Address<para/>    Status (In preparation, In Test, In production, Under liquidation, Liquidated)<para/>    NetworkZone (what network zone the server is placed)<para/>    OperatingSystem (what OS it runs)<para/>    ServerRole (Application server, File Server…)<para/>    TechnicalContact (Name of person)<para/>    Application attributes: (a application or system)<para/>    ApplicationName (name of the system)<para/>    TechnicalContact (Name of person)<para/>    AdmContact (Name of person)<para/>    Application collection: (A collection of applications/systems that belong together eg Sallary payment)<para/>    CollectionName (name of the collection of applications)<para/>    AdmContact (Name of person)<para/>    I then want to create a model view for each Application collection that shows:<para/>    What applications the collection consists of.<para/>    What dependencies there are between the applications in the collection and to applications outside the collection.<para/>    What servers the applications run on<para/>    What PhysicalHardware the servers run on (physical or a vmware)<para/>    Is this possible using Zenta?<para/>    I can’t see a way to add more properties to a device. Is it not possible?<para/>    Regards<para/>    Terje</para>
          <section id="life cycle stages">
             <title>life cycle stages</title>
             <para>Actually there should be an objectClass for them.</para>

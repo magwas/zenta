@@ -10,7 +10,7 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Shell;
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
 
 
 
@@ -30,7 +30,7 @@ public class ExtendedWizardDialog extends WizardDialog {
 
     @Override
     protected IDialogSettings getDialogBoundsSettings() {
-        IDialogSettings settings = ArchimateEditorPlugin.INSTANCE.getDialogSettings();
+        IDialogSettings settings = ZentamateEditorPlugin.INSTANCE.getDialogSettings();
         IDialogSettings section = settings.getSection(fId);
         if(section == null) {
             section = settings.addNewSection(fId);

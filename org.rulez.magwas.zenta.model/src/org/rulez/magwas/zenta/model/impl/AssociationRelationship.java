@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IAssociationRelationship;
 
 
@@ -36,7 +36,7 @@ public class AssociationRelationship extends Relationship implements IAssociatio
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.ASSOCIATION_RELATIONSHIP;
+		return IZentamatePackage.Literals.ASSOCIATION_RELATIONSHIP;
 	}
 
 } //AssociationRelationship

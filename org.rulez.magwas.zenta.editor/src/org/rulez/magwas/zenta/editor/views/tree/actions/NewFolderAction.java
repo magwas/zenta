@@ -9,10 +9,10 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewFolderCommand;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IArchimateFactory;
+import org.rulez.magwas.zenta.model.IZentamateFactory;
 import org.rulez.magwas.zenta.model.IFolder;
 
 
@@ -27,7 +27,7 @@ public class NewFolderAction extends ViewerAction {
     public NewFolderAction(ISelectionProvider selectionProvider) {
         super(selectionProvider);
         setText(Messages.NewFolderAction_0);
-        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ECLIPSE_IMAGE_FOLDER));
+        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ECLIPSE_IMAGE_FOLDER));
     }
     
     @Override
@@ -38,7 +38,7 @@ public class NewFolderAction extends ViewerAction {
             IFolder parent = (IFolder)selected;
             
             // Create a new Folder, set its name
-            IFolder folder = IArchimateFactory.eINSTANCE.createFolder();
+            IFolder folder = IZentamateFactory.eINSTANCE.createFolder();
             folder.setName(Messages.NewFolderAction_1);
             folder.setType(FolderType.USER);
             

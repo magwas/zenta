@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 
@@ -42,8 +42,8 @@ public class ConnectionPreferences extends Preferences {
     
     static Map<EClass, Integer> RELATION_KEYMAP = new LinkedHashMap<EClass, Integer>();
     static {
-        RELATION_KEYMAP.put(IArchimatePackage.eINSTANCE.getSpecialisationRelationship(), 1 << 6);
-        RELATION_KEYMAP.put(IArchimatePackage.eINSTANCE.getAssociationRelationship(), 1 << 0);
+        RELATION_KEYMAP.put(IZentamatePackage.eINSTANCE.getSpecialisationRelationship(), 1 << 6);
+        RELATION_KEYMAP.put(IZentamatePackage.eINSTANCE.getAssociationRelationship(), 1 << 0);
     }
     
     private static EClass[] fRelationClassesForNew = null;

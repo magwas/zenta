@@ -8,7 +8,7 @@ package org.rulez.magwas.zenta.editor.diagram.editparts.business;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.EllipseAnchor;
 import org.eclipse.draw2d.IFigure;
-import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractArchimateEditableTextFlowEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractZentamateEditableTextFlowEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessValueFigure;
 
 
@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessValueFigur
  * @author Phillip Beauvoir
  */
 public class BusinessValueEditPart
-extends AbstractArchimateEditableTextFlowEditPart {
+extends AbstractZentamateEditableTextFlowEditPart {
     
     @Override
     protected IFigure createFigure() {

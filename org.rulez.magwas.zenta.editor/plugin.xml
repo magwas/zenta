@@ -112,8 +112,8 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.rulez.magwas.zenta.editor.diagram.ArchimateDiagramEditor"
-            contributorClass="org.rulez.magwas.zenta.editor.diagram.ArchimateDiagramEditorActionBarContributor"
+            class="org.rulez.magwas.zenta.editor.diagram.ZentamateDiagramEditor"
+            contributorClass="org.rulez.magwas.zenta.editor.diagram.ZentamateDiagramEditorActionBarContributor"
             default="false"
             icon="img/diagram-16.png"
             id="org.rulez.magwas.zenta.editor.diagramEditor"
@@ -204,16 +204,16 @@
       <propertySections
             contributorId="org.rulez.magwas.zenta.editor">
          <propertySection
-               class="org.rulez.magwas.zenta.editor.propertysections.ArchimateModelSection"
+               class="org.rulez.magwas.zenta.editor.propertysections.ZentamateModelSection"
                id="archimateModelSection"
                tab="main.tab">
             <input
-                  type="org.rulez.magwas.zenta.model.IArchimateModel">
+                  type="org.rulez.magwas.zenta.model.IZentamateModel">
             </input>
          </propertySection>
          <propertySection
-               class="org.rulez.magwas.zenta.editor.propertysections.ArchimateElementSection"
-               filter="org.rulez.magwas.zenta.editor.propertysections.ArchimateElementSection$Filter"
+               class="org.rulez.magwas.zenta.editor.propertysections.ZentamateElementSection"
+               filter="org.rulez.magwas.zenta.editor.propertysections.ZentamateElementSection$Filter"
                id="archimateElementSection"
                tab="main.tab">
          </propertySection>
@@ -444,9 +444,9 @@
    <extension
          point="org.eclipse.ui.bindings">
       <scheme
-            description="Archi Key Configuration"
+            description="Zenta Key Configuration"
             id="org.rulez.magwas.zenta.editor.keybindings"
-            name="Archi"
+            name="Zenta"
             parentId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </scheme>
       <key

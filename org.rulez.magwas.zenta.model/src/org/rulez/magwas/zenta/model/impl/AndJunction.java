@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IAndJunction;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 /**
@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.model.IArchimatePackage;
  *
  * @generated
  */
-public class AndJunction extends ArchimateElement implements IAndJunction {
+public class AndJunction extends ZentamateElement implements IAndJunction {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -36,7 +36,7 @@ public class AndJunction extends ArchimateElement implements IAndJunction {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.AND_JUNCTION;
+		return IZentamatePackage.Literals.AND_JUNCTION;
 	}
 
 } //AndJunction

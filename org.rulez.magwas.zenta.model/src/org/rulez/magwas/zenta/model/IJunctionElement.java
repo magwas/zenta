@@ -13,9 +13,9 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getJunctionElement()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getJunctionElement()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IJunctionElement extends IArchimateElement {
+public interface IJunctionElement extends IZentamateElement {
 } // IJunctionElement

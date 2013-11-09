@@ -11,22 +11,22 @@ import org.eclipse.jface.viewers.Viewer;
 import org.rulez.magwas.zenta.editor.ui.services.UIRequestManager;
 import org.rulez.magwas.zenta.editor.views.tree.TreeEditElementRequest;
 import org.rulez.magwas.zenta.editor.views.tree.TreeSelectionRequest;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IFolder;
 
 
 
 /**
- * Add Archimate Element Command
+ * Add Zentamate Element Command
  * 
  * @author Phillip Beauvoir
  */
 public class NewElementCommand extends Command {
     
     private IFolder fFolder;
-    private IArchimateElement fElement;
+    private IZentamateElement fElement;
 
-    public NewElementCommand(IFolder folder, IArchimateElement element) {
+    public NewElementCommand(IFolder folder, IZentamateElement element) {
         fFolder = folder;
         fElement = element;
         setLabel(Messages.NewElementCommand_0 + " " + element.getName()); //$NON-NLS-1$

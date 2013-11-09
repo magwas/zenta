@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ISpecialisationRelationship;
 
 
@@ -36,7 +36,7 @@ public class SpecialisationRelationship extends Relationship implements ISpecial
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.SPECIALISATION_RELATIONSHIP;
+		return IZentamatePackage.Literals.SPECIALISATION_RELATIONSHIP;
 	}
 
 } //SpecialisationRelationship

@@ -13,7 +13,7 @@ import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 
 
 /**
@@ -34,7 +34,7 @@ public class SaveAsAction extends AbstractModelSelectionAction {
     
     @Override
     public void run() {
-        IArchimateModel model = getActiveArchimateModel();
+        IZentamateModel model = getActiveZentamateModel();
         if(model != null) {
             try {
                 IEditorModelManager.INSTANCE.saveModelAs(model);
@@ -48,6 +48,6 @@ public class SaveAsAction extends AbstractModelSelectionAction {
     
     @Override
     protected void updateState() {
-        setEnabled(getActiveArchimateModel() != null);
+        setEnabled(getActiveZentamateModel() != null);
     }
 }

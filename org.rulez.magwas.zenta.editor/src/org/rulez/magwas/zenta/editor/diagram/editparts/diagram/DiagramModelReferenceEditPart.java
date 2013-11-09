@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.IColoredEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.ITextAlignedEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.diagram.DiagramModelReferenceFigure;
-import org.rulez.magwas.zenta.editor.diagram.policies.ArchimateDiagramConnectionPolicy;
+import org.rulez.magwas.zenta.editor.diagram.policies.ZentamateDiagramConnectionPolicy;
 import org.rulez.magwas.zenta.editor.diagram.policies.PartComponentEditPolicy;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -55,7 +55,7 @@ implements IColoredEditPart, ITextAlignedEditPart {
     @Override
     protected void createEditPolicies() {
         // Allow parts to be connected
-        installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ArchimateDiagramConnectionPolicy());
+        installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ZentamateDiagramConnectionPolicy());
 
         // Add a policy to handle editing the Parts (for example, deleting a part)
         installEditPolicy(EditPolicy.COMPONENT_ROLE, new PartComponentEditPolicy());

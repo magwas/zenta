@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModelSticky;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.INotesContent;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
 import org.rulez.magwas.zenta.model.ILockable;
@@ -478,13 +478,13 @@ public class CanvasModelSticky extends DiagramModelObject implements ICanvasMode
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == IDiagramModelImageProvider.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_STICKY__IMAGE_PATH: return IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH;
+                case ICanvasPackage.CANVAS_MODEL_STICKY__IMAGE_PATH: return IZentamatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH;
                 default: return -1;
             }
         }
         if (baseClass == ITextContent.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_STICKY__CONTENT: return IArchimatePackage.TEXT_CONTENT__CONTENT;
+                case ICanvasPackage.CANVAS_MODEL_STICKY__CONTENT: return IZentamatePackage.TEXT_CONTENT__CONTENT;
                 default: return -1;
             }
         }
@@ -496,19 +496,19 @@ public class CanvasModelSticky extends DiagramModelObject implements ICanvasMode
         }
         if (baseClass == IProperties.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_STICKY__PROPERTIES: return IArchimatePackage.PROPERTIES__PROPERTIES;
+                case ICanvasPackage.CANVAS_MODEL_STICKY__PROPERTIES: return IZentamatePackage.PROPERTIES__PROPERTIES;
                 default: return -1;
             }
         }
         if (baseClass == ILockable.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_STICKY__LOCKED: return IArchimatePackage.LOCKABLE__LOCKED;
+                case ICanvasPackage.CANVAS_MODEL_STICKY__LOCKED: return IZentamatePackage.LOCKABLE__LOCKED;
                 default: return -1;
             }
         }
         if (baseClass == IBorderObject.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_STICKY__BORDER_COLOR: return IArchimatePackage.BORDER_OBJECT__BORDER_COLOR;
+                case ICanvasPackage.CANVAS_MODEL_STICKY__BORDER_COLOR: return IZentamatePackage.BORDER_OBJECT__BORDER_COLOR;
                 default: return -1;
             }
         }
@@ -524,13 +524,13 @@ public class CanvasModelSticky extends DiagramModelObject implements ICanvasMode
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == IDiagramModelImageProvider.class) {
             switch (baseFeatureID) {
-                case IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH: return ICanvasPackage.CANVAS_MODEL_STICKY__IMAGE_PATH;
+                case IZentamatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH: return ICanvasPackage.CANVAS_MODEL_STICKY__IMAGE_PATH;
                 default: return -1;
             }
         }
         if (baseClass == ITextContent.class) {
             switch (baseFeatureID) {
-                case IArchimatePackage.TEXT_CONTENT__CONTENT: return ICanvasPackage.CANVAS_MODEL_STICKY__CONTENT;
+                case IZentamatePackage.TEXT_CONTENT__CONTENT: return ICanvasPackage.CANVAS_MODEL_STICKY__CONTENT;
                 default: return -1;
             }
         }
@@ -542,19 +542,19 @@ public class CanvasModelSticky extends DiagramModelObject implements ICanvasMode
         }
         if (baseClass == IProperties.class) {
             switch (baseFeatureID) {
-                case IArchimatePackage.PROPERTIES__PROPERTIES: return ICanvasPackage.CANVAS_MODEL_STICKY__PROPERTIES;
+                case IZentamatePackage.PROPERTIES__PROPERTIES: return ICanvasPackage.CANVAS_MODEL_STICKY__PROPERTIES;
                 default: return -1;
             }
         }
         if (baseClass == ILockable.class) {
             switch (baseFeatureID) {
-                case IArchimatePackage.LOCKABLE__LOCKED: return ICanvasPackage.CANVAS_MODEL_STICKY__LOCKED;
+                case IZentamatePackage.LOCKABLE__LOCKED: return ICanvasPackage.CANVAS_MODEL_STICKY__LOCKED;
                 default: return -1;
             }
         }
         if (baseClass == IBorderObject.class) {
             switch (baseFeatureID) {
-                case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR: return ICanvasPackage.CANVAS_MODEL_STICKY__BORDER_COLOR;
+                case IZentamatePackage.BORDER_OBJECT__BORDER_COLOR: return ICanvasPackage.CANVAS_MODEL_STICKY__BORDER_COLOR;
                 default: return -1;
             }
         }

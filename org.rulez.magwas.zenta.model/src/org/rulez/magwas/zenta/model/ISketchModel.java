@@ -19,7 +19,7 @@ package org.rulez.magwas.zenta.model;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getSketchModel()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getSketchModel()
  * @model
  * @generated
  */
@@ -35,7 +35,7 @@ public interface ISketchModel extends IDiagramModel {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Background</em>' attribute.
 	 * @see #setBackground(int)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getSketchModel_Background()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getSketchModel_Background()
 	 * @model default="1"
 	 * @generated
 	 */

@@ -9,7 +9,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.rulez.magwas.zenta.export.EventLog;
 import org.rulez.magwas.zenta.export.StyledHtml;
 import org.rulez.magwas.zenta.export.StyledHtmlPlugin;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.Logger;
@@ -41,7 +41,7 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
     void runcmd() {
   		 Logger.logInfo("starting Styledhtml");
          String[] args = Platform.getCommandLineArgs();
-      	 IArchimateModel model = null;
+      	 IZentamateModel model = null;
        	 File targetdir = null;
        	 int i = 0;
        	 while (i < args.length)
@@ -91,8 +91,8 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
 
     }    
 
-    IArchimateModel getModel(File file) {
-       	for(IArchimateModel m : IEditorModelManager.INSTANCE.getModels()) {
+    IZentamateModel getModel(File file) {
+       	for(IZentamateModel m : IEditorModelManager.INSTANCE.getModels()) {
             if(file.equals(m.getFile())) {
                 return m;
             }

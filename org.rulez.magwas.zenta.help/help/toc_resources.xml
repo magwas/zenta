@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
-<toc label="ArchiMate Resources">
+<toc label="ZentaMate Resources">
     
-    <topic href="http://www.archimate.org" label="ArchiMate Website">
+    <topic href="http://www.archimate.org" label="ZentaMate Website">
     </topic>
-    <topic href="http://pubs.opengroup.org/architecture/archimate2-doc/toc.html" label="ArchiMate Specification">
+    <topic href="http://pubs.opengroup.org/architecture/archimate2-doc/toc.html" label="ZentaMate Specification">
     </topic>
-    <topic href="https://doc.novay.nl/dsweb/Get/Document-43839/" label="ArchiMate Language Primer (PDF)">
+    <topic href="https://doc.novay.nl/dsweb/Get/Document-43839/" label="ZentaMate Language Primer (PDF)">
     </topic>
-    <topic href="http://archi.cetis.ac.uk" label="Archi Website">
+    <topic href="http://archi.cetis.ac.uk" label="Zenta Website">
     </topic>
-    <topic href="http://groups.google.com/group/archicetis/topics" label="Archi Forum">
+    <topic href="http://groups.google.com/group/archicetis/topics" label="Zenta Forum">
     </topic>
 </toc>

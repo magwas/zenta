@@ -5,7 +5,7 @@
       <folder name="model" id="20f46d77">
         <documentation>This is the model of the thing.
 Note how every object gets an objectClass either directly by a property or indirectly throug a group's associatedObjectClass property.</documentation>
-        <element xsi:type="archimate:ArchimateDiagramModel" id="b2fca780" name="Salary">
+        <element xsi:type="archimate:ZentamateDiagramModel" id="b2fca780" name="Salary">
           <child xsi:type="archimate:DiagramObject" id="503abc6d" textAlignment="2" archimateElement="2da4ddd4">
             <bounds x="480" y="408"/>
             <sourceConnection xsi:type="archimate:Connection" id="f36ba34a" source="503abc6d" target="519c2ad7" relationship="ae814378"/>
@@ -126,7 +126,7 @@ If it would, there would no need for the group giving the objectClass indirectly
         <element xsi:type="archimate:Plateau" id="d99d40ed" name="in test"/>
         <element xsi:type="archimate:Plateau" id="fde629f6" name="liquidated"/>
         <element xsi:type="archimate:Plateau" id="5e780ae3" name="under liquidation"/>
-        <element xsi:type="archimate:ArchimateDiagramModel" id="bde9e643" name="Life cycle stages">
+        <element xsi:type="archimate:ZentamateDiagramModel" id="bde9e643" name="Life cycle stages">
           <child xsi:type="archimate:DiagramObject" id="49ccf0e9" textAlignment="2" targetConnections="e5ab14b5 9d1a718e dee73316 7eec366b 3e5034eb" archimateElement="7378d9ce">
             <bounds x="352" y="317" width="213" height="55"/>
           </child>
@@ -159,7 +159,7 @@ If it would, there would no need for the group giving the objectClass indirectly
       <folder name="metamodel" id="4e33d5c1">
         <documentation>The metamodel defines how objects should be interrelated.
 It is identified by the 'Template' property.</documentation>
-        <element xsi:type="archimate:ArchimateDiagramModel" id="c21a5652" name="metamodel" connectionRouterType="1">
+        <element xsi:type="archimate:ZentamateDiagramModel" id="c21a5652" name="metamodel" connectionRouterType="1">
           <child xsi:type="archimate:DiagramObject" id="ac543711" textAlignment="2" targetConnections="22c25f2b 66171446" archimateElement="c1164ece">
             <bounds x="120" y="275"/>
             <sourceConnection xsi:type="archimate:Connection" id="2682336b" source="ac543711" target="beaa8412" relationship="44e21017"/>
@@ -226,7 +226,7 @@ On Monday, 31 January 2011 23:26:06 UTC+1, TerChris wrote:
 
     Hi
     First of all I’m pleased to find a tool that I think will help me in creating a repository of servers, systems and the dependencies between them.
-    I was on a project earlier where we used www.troux.com Architect (ver8). Troux Architect is not a cheap tool and we cannot justify the cost of it on the project I’m working at now.
+    I was on a project earlier where we used www.troux.com Zentatect (ver8). Troux Zentatect is not a cheap tool and we cannot justify the cost of it on the project I’m working at now.
     I want to do the same as I did in the “troux-project”. That is to create a repository of all servers, systems, dependencies and the people responsible for running/administering/developing each item.
 
     I want to model this structure.
@@ -256,12 +256,12 @@ On Monday, 31 January 2011 23:26:06 UTC+1, TerChris wrote:
     What servers the applications run on
     What PhysicalHardware the servers run on (physical or a vmware)
 
-    Is this possible using Archi?
+    Is this possible using Zenta?
     I can’t see a way to add more properties to a device. Is it not possible?
     Regards
     Terje</documentation>
     </folder>
-    <documentation>This is an example of &quot;v2&quot; metamodel support PoC code for Archi.
+    <documentation>This is an example of &quot;v2&quot; metamodel support PoC code for Zenta.
 We have a metamodel here, which defines how things should be interrelated.
 From the metamodel, a policy file is generated, which captures the ontology defined by the metamodel.
 The objects of the model are identified and their respective attributes are then filled in, resulting in tables of objects. This is done in export time now. It will be done in runtime in a non-PoC implementation.

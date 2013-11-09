@@ -7,8 +7,8 @@ package org.rulez.magwas.zenta.editor.diagram.figures.extensions;
 
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.technology.TechnologyDeviceFigureDelegate2;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -21,11 +21,11 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
 public class PlateauFigure
 extends AbstractTextFlowFigure {
     
-    public PlateauFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public PlateauFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
         
         TechnologyDeviceFigureDelegate2 figureDelegate = new TechnologyDeviceFigureDelegate2(this);
-        figureDelegate.setImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_PLATEAU_16));
+        figureDelegate.setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_PLATEAU_16));
         setFigureDelegate(figureDelegate);
     }
 }

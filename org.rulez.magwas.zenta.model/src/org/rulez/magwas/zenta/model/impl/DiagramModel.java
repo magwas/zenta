@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimateModelElement;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamateModelElement;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
@@ -44,7 +44,7 @@ import org.rulez.magwas.zenta.model.IProperty;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getArchimateModel <em>Archimate Model</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getZentamateModel <em>Zentamate Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getName <em>Name</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getDiagramModel <em>Diagram Model</em>}</li>
@@ -179,7 +179,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.DIAGRAM_MODEL;
+		return IZentamatePackage.Literals.DIAGRAM_MODEL;
 	}
 
     /**
@@ -200,7 +200,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL__NAME, oldName, name));
 	}
 
     /**
@@ -217,11 +217,11 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public IArchimateModel getArchimateModel() {
+    public IZentamateModel getZentamateModel() {
         if(eContainer() == null) {
             return null;
         }
-        return ((IArchimateModelElement)eContainer()).getArchimateModel();
+        return ((IZentamateModelElement)eContainer()).getZentamateModel();
     }
 
     /**
@@ -242,7 +242,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL__ID, oldId, id));
 	}
 
     /**
@@ -252,7 +252,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     public EList<IDiagramModelObject> getChildren() {
 		if (children == null) {
-			children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IArchimatePackage.DIAGRAM_MODEL__CHILDREN);
+			children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IZentamatePackage.DIAGRAM_MODEL__CHILDREN);
 		}
 		return children;
 	}
@@ -275,7 +275,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		int oldConnectionRouterType = connectionRouterType;
 		connectionRouterType = newConnectionRouterType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE, oldConnectionRouterType, connectionRouterType));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE, oldConnectionRouterType, connectionRouterType));
 	}
 
     /**
@@ -296,7 +296,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldDocumentation = documentation;
 		documentation = newDocumentation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL__DOCUMENTATION, oldDocumentation, documentation));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION, oldDocumentation, documentation));
 	}
 
     /**
@@ -306,7 +306,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     public EList<IProperty> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IArchimatePackage.DIAGRAM_MODEL__PROPERTIES);
+			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentamatePackage.DIAGRAM_MODEL__PROPERTIES);
 		}
 		return properties;
 	}
@@ -354,9 +354,9 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case IArchimatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -370,21 +370,21 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL__ARCHIMATE_MODEL:
-				return getArchimateModel();
-			case IArchimatePackage.DIAGRAM_MODEL__ID:
+			case IZentamatePackage.DIAGRAM_MODEL__ARCHIMATE_MODEL:
+				return getZentamateModel();
+			case IZentamatePackage.DIAGRAM_MODEL__ID:
 				return getId();
-			case IArchimatePackage.DIAGRAM_MODEL__NAME:
+			case IZentamatePackage.DIAGRAM_MODEL__NAME:
 				return getName();
-			case IArchimatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
+			case IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
 				return getDiagramModel();
-			case IArchimatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
 				return getChildren();
-			case IArchimatePackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION:
 				return getDocumentation();
-			case IArchimatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
 				return getProperties();
-			case IArchimatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
+			case IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				return getConnectionRouterType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -399,24 +399,24 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL__ID:
+			case IZentamatePackage.DIAGRAM_MODEL__ID:
 				setId((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__NAME:
+			case IZentamatePackage.DIAGRAM_MODEL__NAME:
 				setName((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends IDiagramModelObject>)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION:
 				setDocumentation((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends IProperty>)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
+			case IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				setConnectionRouterType((Integer)newValue);
 				return;
 		}
@@ -431,22 +431,22 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL__ID:
+			case IZentamatePackage.DIAGRAM_MODEL__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__NAME:
+			case IZentamatePackage.DIAGRAM_MODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
 				getChildren().clear();
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
 				getProperties().clear();
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
+			case IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				setConnectionRouterType(CONNECTION_ROUTER_TYPE_EDEFAULT);
 				return;
 		}
@@ -461,21 +461,21 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL__ARCHIMATE_MODEL:
-				return getArchimateModel() != null;
-			case IArchimatePackage.DIAGRAM_MODEL__ID:
+			case IZentamatePackage.DIAGRAM_MODEL__ARCHIMATE_MODEL:
+				return getZentamateModel() != null;
+			case IZentamatePackage.DIAGRAM_MODEL__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case IArchimatePackage.DIAGRAM_MODEL__NAME:
+			case IZentamatePackage.DIAGRAM_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IArchimatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
+			case IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
 				return getDiagramModel() != null;
-			case IArchimatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
 				return children != null && !children.isEmpty();
-			case IArchimatePackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
-			case IArchimatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
 				return properties != null && !properties.isEmpty();
-			case IArchimatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
+			case IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				return connectionRouterType != CONNECTION_ROUTER_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -490,7 +490,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IIdentifier.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL__ID: return IArchimatePackage.IDENTIFIER__ID;
+				case IZentamatePackage.DIAGRAM_MODEL__ID: return IZentamatePackage.IDENTIFIER__ID;
 				default: return -1;
 			}
 		}
@@ -501,31 +501,31 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		}
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL__NAME: return IArchimatePackage.NAMEABLE__NAME;
+				case IZentamatePackage.DIAGRAM_MODEL__NAME: return IZentamatePackage.NAMEABLE__NAME;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelComponent.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL: return IArchimatePackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL;
+				case IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL: return IZentamatePackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelContainer.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
+				case IZentamatePackage.DIAGRAM_MODEL__CHILDREN: return IZentamatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL__DOCUMENTATION: return IArchimatePackage.DOCUMENTABLE__DOCUMENTATION;
+				case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION: return IZentamatePackage.DOCUMENTABLE__DOCUMENTATION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL__PROPERTIES: return IArchimatePackage.PROPERTIES__PROPERTIES;
+				case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES: return IZentamatePackage.PROPERTIES__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -541,7 +541,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IIdentifier.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.IDENTIFIER__ID: return IArchimatePackage.DIAGRAM_MODEL__ID;
+				case IZentamatePackage.IDENTIFIER__ID: return IZentamatePackage.DIAGRAM_MODEL__ID;
 				default: return -1;
 			}
 		}
@@ -552,31 +552,31 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		}
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.NAMEABLE__NAME: return IArchimatePackage.DIAGRAM_MODEL__NAME;
+				case IZentamatePackage.NAMEABLE__NAME: return IZentamatePackage.DIAGRAM_MODEL__NAME;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelComponent.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL: return IArchimatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL;
+				case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL: return IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelContainer.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IArchimatePackage.DIAGRAM_MODEL__CHILDREN;
+				case IZentamatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IZentamatePackage.DIAGRAM_MODEL__CHILDREN;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.DOCUMENTABLE__DOCUMENTATION: return IArchimatePackage.DIAGRAM_MODEL__DOCUMENTATION;
+				case IZentamatePackage.DOCUMENTABLE__DOCUMENTATION: return IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.PROPERTIES__PROPERTIES: return IArchimatePackage.DIAGRAM_MODEL__PROPERTIES;
+				case IZentamatePackage.PROPERTIES__PROPERTIES: return IZentamatePackage.DIAGRAM_MODEL__PROPERTIES;
 				default: return -1;
 			}
 		}

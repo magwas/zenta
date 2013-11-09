@@ -12,7 +12,7 @@
 		<description>
 			Edit the following values.
 			"lang_code" shold be one of the language codes such as fr, de, nl, ru
-			"archi_version" should be the version of Archi these translations are for
+			"archi_version" should be the version of Zenta these translations are for
 			"nls_version" should be the version of the language packs
 	  	</description>
 		<property name="lang_code"					value="en"/>
@@ -187,7 +187,7 @@
 
 	</target>
 	
-	<!-- Create target Archi NLS Project -->
+	<!-- Create target Zenta NLS Project -->
 	<target name="create_archi_project">
 		<mkdir dir="${loc.tgt}/nl"/>
 		

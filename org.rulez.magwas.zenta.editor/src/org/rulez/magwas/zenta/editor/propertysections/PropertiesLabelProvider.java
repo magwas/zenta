@@ -11,11 +11,11 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -37,17 +37,17 @@ public class PropertiesLabelProvider implements ILabelProvider {
             element = ((EditPart)element).getModel();
         }
 
-        // Archimate Element 
-        if(element instanceof IDiagramModelArchimateObject) {
-            element = ((IDiagramModelArchimateObject)element).getArchimateElement();
+        // Zentamate Element 
+        if(element instanceof IDiagramModelZentamateObject) {
+            element = ((IDiagramModelZentamateObject)element).getZentamateElement();
         }
 
-        // Archimate Relationship
-        if(element instanceof IDiagramModelArchimateConnection) {
-            element = ((IDiagramModelArchimateConnection)element).getRelationship();
+        // Zentamate Relationship
+        if(element instanceof IDiagramModelZentamateConnection) {
+            element = ((IDiagramModelZentamateConnection)element).getRelationship();
         }
 
-        return ArchimateLabelProvider.INSTANCE.getImage(element);
+        return ZentamateLabelProvider.INSTANCE.getImage(element);
     }
 
     public String getText(Object element) {
@@ -57,14 +57,14 @@ public class PropertiesLabelProvider implements ILabelProvider {
         
         element = ((IStructuredSelection)element).getFirstElement();
         
-        // Archimate Element
-        if(element instanceof IArchimateElement) {
-            return getArchimateElementText((IArchimateElement)element);
+        // Zentamate Element
+        if(element instanceof IZentamateElement) {
+            return getZentamateElementText((IZentamateElement)element);
         }
         else if(element instanceof IAdaptable) {
-            IArchimateElement archimateElement = (IArchimateElement)((IAdaptable)element).getAdapter(IArchimateElement.class);
+            IZentamateElement archimateElement = (IZentamateElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
             if(archimateElement != null) {
-                return getArchimateElementText(archimateElement);
+                return getZentamateElementText(archimateElement);
             }
         }
 
@@ -74,7 +74,7 @@ public class PropertiesLabelProvider implements ILabelProvider {
         }
         
         // Check the main label provider
-        String text = ArchimateLabelProvider.INSTANCE.getLabel(element);
+        String text = ZentamateLabelProvider.INSTANCE.getLabel(element);
         if(StringUtils.isSet(text)) {
             return StringUtils.escapeAmpersandsInText(text);
         }
@@ -82,10 +82,10 @@ public class PropertiesLabelProvider implements ILabelProvider {
         return " "; // Ensure the title bar is displayed //$NON-NLS-1$
     }
 
-    private String getArchimateElementText(IArchimateElement element) {
+    private String getZentamateElementText(IZentamateElement element) {
         String name = StringUtils.escapeAmpersandsInText(element.getName());
         
-        String typeName = ArchimateLabelProvider.INSTANCE.getDefaultName(element.eClass());
+        String typeName = ZentamateLabelProvider.INSTANCE.getDefaultName(element.eClass());
         
         if(name.length() > 0) {
             return name + " (" + typeName + ")"; //$NON-NLS-1$ //$NON-NLS-2$

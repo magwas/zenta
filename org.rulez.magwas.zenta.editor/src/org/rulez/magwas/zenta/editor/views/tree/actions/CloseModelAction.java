@@ -10,7 +10,7 @@ import java.io.IOException;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 
 
 
@@ -30,9 +30,9 @@ public class CloseModelAction extends ViewerAction {
     @Override
     public void run() {
         for(Object selected : getSelection().toArray()) {
-            if(selected instanceof IArchimateModel) {
+            if(selected instanceof IZentamateModel) {
                 try {
-                    boolean result = IEditorModelManager.INSTANCE.closeModel((IArchimateModel)selected);
+                    boolean result = IEditorModelManager.INSTANCE.closeModel((IZentamateModel)selected);
                     if(!result) {
                         break;
                     }
@@ -47,7 +47,7 @@ public class CloseModelAction extends ViewerAction {
     @Override
     public void update(IStructuredSelection selection) {
         Object selected = selection.getFirstElement();
-        setEnabled(selected instanceof IArchimateModel);
+        setEnabled(selected instanceof IZentamateModel);
     }
 
 }

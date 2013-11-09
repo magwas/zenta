@@ -39,13 +39,13 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
-import org.rulez.magwas.zenta.editor.actions.ArchimateEditorActionFactory;
-import org.rulez.magwas.zenta.editor.actions.NewArchimateModelAction;
+import org.rulez.magwas.zenta.editor.actions.ZentamateEditorActionFactory;
+import org.rulez.magwas.zenta.editor.actions.NewZentamateModelAction;
 import org.rulez.magwas.zenta.editor.actions.OpenModelAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.ui.services.IUIRequestListener;
 import org.rulez.magwas.zenta.editor.ui.services.UIRequest;
@@ -66,10 +66,10 @@ import org.rulez.magwas.zenta.editor.views.tree.actions.TreeModelViewActionFacto
 import org.rulez.magwas.zenta.editor.views.tree.commands.DuplicateCommandHandler;
 import org.rulez.magwas.zenta.editor.views.tree.search.SearchFilter;
 import org.rulez.magwas.zenta.editor.views.tree.search.SearchWidget;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimateModelElement;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamateModelElement;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 
@@ -189,7 +189,7 @@ implements ITreeModelView, IUIRequestListener {
     private void handleOpenAction() {
         for(Object selected : ((IStructuredSelection)getViewer().getSelection()).toArray()) {
             // Element or Folder - open Properties view
-            if(selected instanceof IArchimateElement) {
+            if(selected instanceof IZentamateElement) {
                 ViewManager.showViewPart(ViewManager.PROPERTIES_VIEW, true);
             }
             // Folder - open Properties view
@@ -197,7 +197,7 @@ implements ITreeModelView, IUIRequestListener {
                 ViewManager.showViewPart(ViewManager.PROPERTIES_VIEW, true);
             }
             // Model - open Properties view
-            else if(selected instanceof IArchimateModel) {
+            else if(selected instanceof IZentamateModel) {
                 ViewManager.showViewPart(ViewManager.PROPERTIES_VIEW, true);
             }
             // Diagram - open diagram
@@ -255,7 +255,7 @@ implements ITreeModelView, IUIRequestListener {
     private void makeActions() {
         IWorkbenchWindow window = getViewSite().getWorkbenchWindow();
         
-        fActionNewModel = new NewArchimateModelAction();
+        fActionNewModel = new NewZentamateModelAction();
         fActionOpenModel = new OpenModelAction(window);
         
         fActionOpenDiagram = new OpenDiagramAction(getSelectionProvider());
@@ -287,7 +287,7 @@ implements ITreeModelView, IUIRequestListener {
             };
         };
         fActionToggleSearchField.setToolTipText(Messages.TreeModelView_0);
-        fActionToggleSearchField.setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_SEARCH_16));
+        fActionToggleSearchField.setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_SEARCH_16));
     }
     
     /**
@@ -297,12 +297,12 @@ implements ITreeModelView, IUIRequestListener {
         IActionBars actionBars = getViewSite().getActionBars();
         
         // Register our interest in the global menu actions
-        actionBars.setGlobalActionHandler(ArchimateEditorActionFactory.CLOSE_MODEL.getId(), fActionCloseModel);
-        actionBars.setGlobalActionHandler(ArchimateEditorActionFactory.OPEN_DIAGRAM.getId(), fActionOpenDiagram);
+        actionBars.setGlobalActionHandler(ZentamateEditorActionFactory.CLOSE_MODEL.getId(), fActionCloseModel);
+        actionBars.setGlobalActionHandler(ZentamateEditorActionFactory.OPEN_DIAGRAM.getId(), fActionOpenDiagram);
         actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), fActionDelete);
         actionBars.setGlobalActionHandler(ActionFactory.PROPERTIES.getId(), fActionProperties);
         actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), fActionRename);
-        actionBars.setGlobalActionHandler(ArchimateEditorActionFactory.DUPLICATE.getId(), fActionDuplicate);
+        actionBars.setGlobalActionHandler(ZentamateEditorActionFactory.DUPLICATE.getId(), fActionDuplicate);
     }
     
     /**
@@ -348,7 +348,7 @@ implements ITreeModelView, IUIRequestListener {
         manager.add(new Separator());
         
         // Selected model
-        if(selected instanceof IArchimateModel) {
+        if(selected instanceof IZentamateModel) {
             manager.add(fActionCloseModel);
             manager.add(fActionSaveModel);
             manager.add(new Separator());
@@ -418,10 +418,10 @@ implements ITreeModelView, IUIRequestListener {
     }
     
     @Override
-    protected IArchimateModel getActiveArchimateModel() {
+    protected IZentamateModel getActiveZentamateModel() {
         Object selected = ((IStructuredSelection)getViewer().getSelection()).getFirstElement();
-        if(selected instanceof IArchimateModelElement) {
-            return ((IArchimateModelElement)selected).getArchimateModel();
+        if(selected instanceof IZentamateModelElement) {
+            return ((IZentamateModelElement)selected).getZentamateModel();
         }
         return null;
     }
@@ -460,7 +460,7 @@ implements ITreeModelView, IUIRequestListener {
                 propertyName == IEditorModelManager.PROPERTY_MODEL_OPENED) {
             getViewer().refresh();
             
-            IArchimateModel model = (IArchimateModel)evt.getNewValue();
+            IZentamateModel model = (IZentamateModel)evt.getNewValue();
             
             // Expand and Select new node
             getViewer().expandToLevel(model.getDefaultDiagramModel(), -1);
@@ -530,16 +530,16 @@ implements ITreeModelView, IUIRequestListener {
             Object feature = msg.getFeature();
 
             // Relationship/Connection changed - update element's name
-            if(feature == IArchimatePackage.Literals.RELATIONSHIP__SOURCE ||
-                                        feature == IArchimatePackage.Literals.RELATIONSHIP__TARGET) {
+            if(feature == IZentamatePackage.Literals.RELATIONSHIP__SOURCE ||
+                                        feature == IZentamatePackage.Literals.RELATIONSHIP__TARGET) {
                 getViewer().update(notifier, null);
             }
             
             // Viewpoint changed
-            else if(feature == IArchimatePackage.Literals.ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT) {
+            else if(feature == IZentamatePackage.Literals.ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT) {
                 if(Preferences.STORE.getBoolean(IPreferenceConstants.VIEWPOINTS_FILTER_MODEL_TREE)) {
                     if(notifier instanceof IDiagramModel) {
-                        IArchimateModel model = ((IDiagramModel)notifier).getArchimateModel();
+                        IZentamateModel model = ((IDiagramModel)notifier).getZentamateModel();
                         getViewer().refresh(model);
                     }
                 }

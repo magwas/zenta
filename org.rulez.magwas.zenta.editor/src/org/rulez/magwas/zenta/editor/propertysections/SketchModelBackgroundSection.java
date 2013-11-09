@@ -20,7 +20,7 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.sketch.ISketchEditor;
 import org.rulez.magwas.zenta.editor.diagram.sketch.editparts.SketchDiagramPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ISketchModel;
 
 
@@ -30,9 +30,9 @@ import org.rulez.magwas.zenta.model.ISketchModel;
  * 
  * @author Phillip Beauvoir
  */
-public class SketchModelBackgroundSection extends AbstractArchimatePropertySection {
+public class SketchModelBackgroundSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.sketchModelDiagramSection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.sketchModelDiagramSection"; //$NON-NLS-1$
 
     /**
      * Filter to show or reject this section depending on input value
@@ -52,7 +52,7 @@ public class SketchModelBackgroundSection extends AbstractArchimatePropertySecti
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Change made from Menu Action
-            if(feature == IArchimatePackage.Literals.SKETCH_MODEL__BACKGROUND) {
+            if(feature == IZentamatePackage.Literals.SKETCH_MODEL__BACKGROUND) {
                 refreshControls();
             }
         }
@@ -84,7 +84,7 @@ public class SketchModelBackgroundSection extends AbstractArchimatePropertySecti
                     fIsExecutingCommand = true;
                     getCommandStack().execute(new EObjectFeatureCommand(Messages.SketchModelBackgroundSection_1,
                             fSketchModel,
-                            IArchimatePackage.Literals.SKETCH_MODEL__BACKGROUND,
+                            IZentamatePackage.Literals.SKETCH_MODEL__BACKGROUND,
                             fComboBackground.getSelectionIndex()));
                     fIsExecutingCommand = false;
                 }

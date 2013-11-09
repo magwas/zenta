@@ -12,7 +12,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Path;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -27,7 +27,7 @@ extends AbstractTextFlowFigure {
     
     protected int SHADOW_OFFSET = 3;
 
-    public DeliverableFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public DeliverableFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
     

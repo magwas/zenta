@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
@@ -57,7 +57,7 @@ import org.rulez.magwas.zenta.templates.model.TemplateManager;
  */
 public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
     
-    private static String HELP_ID = "uk.ac.bolton.archimate.help.TemplateManagerDialog"; //$NON-NLS-1$
+    private static String HELP_ID = "org.rulez.magwas.zenta.help.TemplateManagerDialog"; //$NON-NLS-1$
 
     protected TemplatesTableViewer fTableViewer;
     protected TemplatesTreeViewer fTreeViewer;
@@ -85,7 +85,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
     
     public TemplateManagerDialog(Shell parentShell, TemplateManager templateManager) {
         super(parentShell, "TemplateManagerDialog"); //$NON-NLS-1$
-        setTitleImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fTemplateManager = templateManager;
@@ -152,7 +152,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
         
         label = new CLabel(treeComp, SWT.NULL);
         label.setText(Messages.TemplateManagerDialog_5);
-        //label.setImage(IArchimateImages.ImageFactory.getImage(ImageFactory.ECLIPSE_IMAGE_FOLDER));
+        //label.setImage(IZentamateImages.ImageFactory.getImage(ImageFactory.ECLIPSE_IMAGE_FOLDER));
         
         fTreeViewer = new TemplatesTreeViewer(treeComp, SWT.MULTI);
         fTreeViewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));

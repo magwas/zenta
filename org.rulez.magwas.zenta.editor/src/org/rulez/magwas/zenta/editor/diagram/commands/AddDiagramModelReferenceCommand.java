@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.eclipse.gef.commands.Command;
-import org.rulez.magwas.zenta.model.IArchimateFactory;
+import org.rulez.magwas.zenta.model.IZentamateFactory;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
@@ -28,7 +28,7 @@ public class AddDiagramModelReferenceCommand extends Command {
         setLabel(Messages.AddDiagramModelReferenceCommand_0);
         
         fParent = parent;
-        fReference = IArchimateFactory.eINSTANCE.createDiagramModelReference();
+        fReference = IZentamateFactory.eINSTANCE.createDiagramModelReference();
         fReference.setReferencedModel(diagramModel);
         fReference.setBounds(x, y, -1, -1);
     }

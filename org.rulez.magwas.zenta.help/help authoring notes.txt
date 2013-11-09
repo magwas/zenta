@@ -1,6 +1,6 @@
 HTML source notes
 -----------------
-* Screenshots are based on the Archi application sized to 1011x763 pixels
+* Screenshots are based on the Zenta application sized to 1011x763 pixels
 * Ensure images in the HTML docs are no wider than 700 pixels
 * If an image is sized differently to its original size then set both the height and width attributes of <img> in order to be sized properly in Word
   otherwise if an image is a 1:1 size you can omit both the width and height attributes
@@ -9,7 +9,7 @@ HTML source notes
 
 Edit the source HTML files
 --------------------------
-* Edit "front.html" for the Archi version number
+* Edit "front.html" for the Zenta version number
 * Ensure "files.list" for the list of files that will be concatenated is up to date
 * Ensure "contexts.xml" is up to date
 * Ensure "toc.xml" is up to date and corresponds to "files.list"
@@ -17,7 +17,7 @@ Edit the source HTML files
 
 Create one monolithic HTML file to import into MS Word 2007 on Windows
 ----------------------------------------------------------------------
-* Run the "merge-html.xml" Ant script to output one HTML file, "Archi User Guide.html", to the "help" folder
+* Run the "merge-html.xml" Ant script to output one HTML file, "Zenta User Guide.html", to the "help" folder
 * Open it in MS Word
 
 
@@ -33,19 +33,19 @@ In MS Word 2007 on Windows
 4. Insert Page Numbers at bottom right.
 5. From the same Insert Page Numbers menu choose "Format Page Numbers..." and "Start at" 0
 6. Double-click in the footer and tick "Different First Page" in the options.
-7. Save As Word Doc "Archi User Guide.docx" in the "docs" folder
-8. Save As PDF "Archi User Guide.pdf" in the "docs" folder (ensure that "Create bookmarks using Headings" is ticked in the 
+7. Save As Word Doc "Zenta User Guide.docx" in the "docs" folder
+8. Save As PDF "Zenta User Guide.pdf" in the "docs" folder (ensure that "Create bookmarks using Headings" is ticked in the 
    Save As PDF Options)
 
-* Delete the "Archi User Guide.html" file
+* Delete the "Zenta User Guide.html" file
 
 
-Create the "What's New in Archi Document"
+Create the "What's New in Zenta Document"
 -----------------------------------------
-1. Edit the "What's New in Archi.docx" document in the "docs" folder
-2. Copy and Paste sections from the "Archi User Guide.docx" document in the "docs" folder
+1. Edit the "What's New in Zenta.docx" document in the "docs" folder
+2. Copy and Paste sections from the "Zenta User Guide.docx" document in the "docs" folder
 3. Click the Office button and select "Prepare -> Edit Links to Files". (This option will not be there if there are no linked pictures).
    Select all images and click the "Break link" button
-4. Save As PDF "What's New in Archi.pdf" in the "docs" folder (ensure that "Create bookmarks using Headings" is ticked in the 
+4. Save As PDF "What's New in Zenta.pdf" in the "docs" folder (ensure that "Create bookmarks using Headings" is ticked in the 
    Save As PDF Options)
 

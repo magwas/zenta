@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <element xsi:type="archimate:ArchimateDiagramModel" id="thenode" name="funkció - workflow" connectionRouterType="1">
+  <element xsi:type="archimate:ZentamateDiagramModel" id="thenode" name="funkció - workflow" connectionRouterType="1">
    <child xsi:type="archimate:Group" id="5345bf57" name="Funkciók">
           <bounds x="24"/>
           <child xsi:type="archimate:DiagramObject" id="5d8690ac" textAlignment="2" archimateElement="8c360738">

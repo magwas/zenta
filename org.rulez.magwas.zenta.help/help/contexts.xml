@@ -3,7 +3,7 @@
 <contexts>
     
     <context id="treeModelViewHelp" title="The Model Tree">
-        <description>The Model Tree displays all ArchiMate models.</description>
+        <description>The Model Tree displays all ZentaMate models.</description>
         <topic label="The Model Tree" href="help/model_tree.html"/>
     </context>
     <context id="outlineViewHelp" title="The Outline Window">
@@ -27,7 +27,7 @@
        <topic href="help/canvas.html" label="Canvas Modelling Toolkit"/>
     </context>
     <context id="diagramEditorHelp" title="Diagram View">
-       <description>The elements and relationships that constitute an ArchiMate model as represented in the Model Tree can be arranged into one or more &quot;Views&quot; or visual diagrams.</description>
+       <description>The elements and relationships that constitute an ZentaMate model as represented in the Model Tree can be arranged into one or more &quot;Views&quot; or visual diagrams.</description>
        <topic href="help/views.html" label="Views"/>
        <topic href="help/viewpoints.html" label="Viewpoints"/>
     </context>
@@ -105,7 +105,7 @@
        <topic href="help/prefs_general.html" label="General Preferences"/>
     </context>
     <context id="prefsRelations" title="Relationships Preferences">
-       <description>Show the allowed ArchiMate relationships.</description>
+       <description>Show the allowed ZentaMate relationships.</description>
        <topic href="help/prefs_relations.html" label="Relationships Preferences"/>
     </context>
     <context id="userProperties" title="User Properties">
@@ -125,15 +125,15 @@
        <description>Manage your Templates.</description>
        <topic href="help/templates_managing.html" label="Managing your Templates"/>
     </context>
-    <context id="NewArchimateModelFromTemplateWizardPage" title="Creating a New Model from a Template">
+    <context id="NewZentamateModelFromTemplateWizardPage" title="Creating a New Model from a Template">
        <description>Create a new Model based on an existing template.</description>
        <topic href="help/templates_new_model.html" label="Creating a New Model from a Template"/>
     </context>
-    <context id="SaveArchimateModelAsTemplateWizardPage" title="Save Model As Template">
+    <context id="SaveZentamateModelAsTemplateWizardPage" title="Save Model As Template">
        <description>Provide the Template's name, description and key thumbnail.</description>
        <topic href="help/templates_new.html" label="Creating a New Template"/>
     </context>
-    <context id="SaveArchimateModelAsTemplateToCollectionWizardPage" title="Save Model As Template">
+    <context id="SaveZentamateModelAsTemplateToCollectionWizardPage" title="Save Model As Template">
        <description>Choose whether to include the template in your collection.</description>
        <topic href="help/templates_new.html" label="Creating a New Template"/>
     </context>

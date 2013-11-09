@@ -31,7 +31,7 @@ import org.eclipse.swt.SWT;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IProperties;
 
@@ -87,11 +87,11 @@ implements IEditPartFilterProvider {
             case Notification.SET:
                 Object feature = msg.getFeature();
                 // Connection Router Type
-                if(feature == IArchimatePackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE) {
+                if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE) {
                     refreshVisuals();
                 }
                 // Viewpoint changed
-                else if(feature == IArchimatePackage.Literals.ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT) {
+                else if(feature == IZentamatePackage.Literals.ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT) {
                     refreshChildrenFigures();
                 }
                 break;

@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 
@@ -21,9 +21,9 @@ import org.rulez.magwas.zenta.model.IArchimatePackage;
  * 
  * @author Phillip Beauvoir
  */
-public class SketchStickySection extends AbstractArchimatePropertySection {
+public class SketchStickySection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
     /*
      * Adapter to listen to changes made elsewhere (including Undo/Redo commands)
@@ -33,7 +33,7 @@ public class SketchStickySection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model Name event (Undo/Redo and here)
-            if(feature == IArchimatePackage.Literals.NAMEABLE__NAME) {
+            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME) {
                 refreshNameField();
                 fPage.labelProviderChanged(null); // Update Main label
             }

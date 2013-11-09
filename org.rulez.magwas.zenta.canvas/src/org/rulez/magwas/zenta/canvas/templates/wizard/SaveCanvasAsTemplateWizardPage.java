@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -62,7 +62,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         super("SaveCanvasAsTemplateWizardPage"); //$NON-NLS-1$
         setTitle(Messages.SaveCanvasAsTemplateWizardPage_0);
         setDescription(Messages.SaveCanvasAsTemplateWizardPage_1);
-        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ECLIPSE_IMAGE_NEW_WIZARD));
         fCanvasModel = canvasModel;
         fTemplateManager = templateManager;
     }

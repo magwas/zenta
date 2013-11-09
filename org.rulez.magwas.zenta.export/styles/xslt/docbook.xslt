@@ -110,7 +110,7 @@
 		<xsl:message>no match for <xsl:copy-of select="."/></xsl:message>
 	</xsl:template>
 
-	<xsl:template match="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
+	<xsl:template match="archimate:ZentamateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
 			<row><entry namest="c1" nameend="c2">
       <para>
@@ -182,14 +182,14 @@
             <colspec colname="c1"/>
             <colspec colname="c2"/>
             <tbody>
-						<xsl:apply-templates select="archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
+						<xsl:apply-templates select="archimate:ZentamateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
 							<xsl:sort select="./@name"/>
 						</xsl:apply-templates>
-						<xsl:apply-templates select="archimate:* except (archimate:ArchimateDiagramModel|archimate:DiagramModel|archimate:SketchModel|archimate:Folder|canvas:CanvasModel)">
+						<xsl:apply-templates select="archimate:* except (archimate:ZentamateDiagramModel|archimate:DiagramModel|archimate:SketchModel|archimate:Folder|canvas:CanvasModel)">
 							<xsl:sort select="./@name"/>
 						</xsl:apply-templates>
 						<xsl:if test="'false'=$flat">
-							<xsl:for-each select="//*[@id=current()/property[@key='from-folder']/@value]/*[@id] except (//archimate:ArchimateDiagramModel|//archimate:DiagramModel|//archimate:SketchModel|//archimate:Folder|//canvas:CanvasModel)">
+							<xsl:for-each select="//*[@id=current()/property[@key='from-folder']/@value]/*[@id] except (//archimate:ZentamateDiagramModel|//archimate:DiagramModel|//archimate:SketchModel|//archimate:Folder|//canvas:CanvasModel)">
 								<xsl:sort select="./@name"/>
 								<xsl:apply-templates select=".">
 								</xsl:apply-templates>

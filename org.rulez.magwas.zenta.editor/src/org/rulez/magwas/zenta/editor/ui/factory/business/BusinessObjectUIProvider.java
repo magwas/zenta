@@ -10,8 +10,8 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.editparts.business.BusinessObjectEditPart;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 
@@ -23,7 +23,7 @@ import org.rulez.magwas.zenta.model.IArchimatePackage;
 public class BusinessObjectUIProvider extends AbstractBusinessUIProvider {
 
     public EClass providerFor() {
-        return IArchimatePackage.eINSTANCE.getBusinessObject();
+        return IZentamatePackage.eINSTANCE.getBusinessObject();
     }
     
     @Override
@@ -43,11 +43,11 @@ public class BusinessObjectUIProvider extends AbstractBusinessUIProvider {
 
     @Override
     public Image getImage() {
-        return IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_BUSINESS_OBJECT_16);
+        return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_BUSINESS_OBJECT_16);
     }
 
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_BUSINESS_OBJECT_16);
+        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_BUSINESS_OBJECT_16);
     }
 }

@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 
 
@@ -19,6 +19,6 @@ import org.rulez.magwas.zenta.model.IFontAttribute;
 public class TextAlignmentCommand extends EObjectFeatureCommand {
     
     public TextAlignmentCommand(IFontAttribute object, int value) {
-        super(Messages.TextAlignmentCommand_0, object, IArchimatePackage.Literals.FONT_ATTRIBUTE__TEXT_ALIGNMENT, value);
+        super(Messages.TextAlignmentCommand_0, object, IZentamatePackage.Literals.FONT_ATTRIBUTE__TEXT_ALIGNMENT, value);
     }
 }

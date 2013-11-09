@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
-import org.rulez.magwas.zenta.model.IArchimateDiagramModel;
+import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
@@ -29,7 +29,7 @@ public class ViewpointEditPartFilter implements IChildEditPartFilter, IConnectio
         IViewpoint viewPoint = null;
         
         if(childObject instanceof IDiagramModelObject) {
-            IArchimateDiagramModel dm = (IArchimateDiagramModel)((IDiagramModelObject)childObject).getDiagramModel();
+            IZentamateDiagramModel dm = (IZentamateDiagramModel)((IDiagramModelObject)childObject).getDiagramModel();
             if(dm != null) {
                 int index = dm.getViewpoint();
                 viewPoint = ViewpointsManager.INSTANCE.getViewpoint(index);

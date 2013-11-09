@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelObject()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject()
  * @model abstract="true"
  * @generated
  */
@@ -38,7 +38,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bounds</em>' containment reference.
 	 * @see #setBounds(IBounds)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelObject_Bounds()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject_Bounds()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -64,7 +64,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source Connections</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelObject_SourceConnections()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject_SourceConnections()
 	 * @model containment="true"
 	 *        extendedMetaData="name='sourceConnection' kind='element'"
 	 * @generated
@@ -81,7 +81,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Connections</em>' reference list.
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelObject_TargetConnections()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject_TargetConnections()
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
@@ -97,7 +97,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fill Color</em>' attribute.
 	 * @see #setFillColor(String)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelObject_FillColor()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject_FillColor()
 	 * @model
 	 * @generated
 	 */

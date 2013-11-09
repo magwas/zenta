@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -288,7 +288,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.DIAGRAM_MODEL_CONNECTION;
+		return IZentamatePackage.Literals.DIAGRAM_MODEL_CONNECTION;
 	}
 
     /**
@@ -309,7 +309,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		String oldFont = font;
 		font = newFont;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT, oldFont, font));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT, oldFont, font));
 	}
 
     /**
@@ -330,7 +330,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		String oldFontColor = fontColor;
 		fontColor = newFontColor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR, oldFontColor, fontColor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR, oldFontColor, fontColor));
 	}
 
     /**
@@ -351,7 +351,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		int oldTextAlignment = textAlignment;
 		textAlignment = newTextAlignment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT, oldTextAlignment, textAlignment));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT, oldTextAlignment, textAlignment));
 	}
 
     /**
@@ -361,7 +361,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 	 */
     public EList<IProperty> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES);
+			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES);
 		}
 		return properties;
 	}
@@ -384,7 +384,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		String oldDocumentation = documentation;
 		documentation = newDocumentation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION, oldDocumentation, documentation));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION, oldDocumentation, documentation));
 	}
 
     /**
@@ -407,7 +407,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT, oldText, text));
 	}
 
     /**
@@ -428,7 +428,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		int oldTextPosition = textPosition;
 		textPosition = newTextPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION, oldTextPosition, textPosition));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION, oldTextPosition, textPosition));
 	}
 
     /**
@@ -449,7 +449,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		IDiagramModelObject oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE, oldSource, source));
 	}
 
     /**
@@ -470,7 +470,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		IDiagramModelObject oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TARGET, oldTarget, target));
 	}
 
     /**
@@ -480,7 +480,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 	 */
     public EList<IDiagramModelBendpoint> getBendpoints() {
 		if (bendpoints == null) {
-			bendpoints = new EObjectContainmentEList<IDiagramModelBendpoint>(IDiagramModelBendpoint.class, this, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS);
+			bendpoints = new EObjectContainmentEList<IDiagramModelBendpoint>(IDiagramModelBendpoint.class, this, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS);
 		}
 		return bendpoints;
 	}
@@ -503,7 +503,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		int oldLineWidth = lineWidth;
 		lineWidth = newLineWidth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH, oldLineWidth, lineWidth));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH, oldLineWidth, lineWidth));
 	}
 
     /**
@@ -524,7 +524,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		String oldLineColor = lineColor;
 		lineColor = newLineColor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR, oldLineColor, lineColor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR, oldLineColor, lineColor));
 	}
 
     /**
@@ -545,7 +545,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		int oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TYPE, oldType, type));
 	}
 
     /**
@@ -613,9 +613,9 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
 				return ((InternalEList<?>)getBendpoints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -637,31 +637,31 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT:
 				return getFont();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR:
 				return getFontColor();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT:
 				return getTextAlignment();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION:
 				return getTextPosition();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
 				return getProperties();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION:
 				return getDocumentation();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT:
 				return getText();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE:
 				return getSource();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TARGET:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TARGET:
 				return getTarget();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
 				return getBendpoints();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
 				return getLineWidth();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
 				return getLineColor();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TYPE:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TYPE:
 				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -676,45 +676,45 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT:
 				setFont((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR:
 				setFontColor((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT:
 				setTextAlignment((Integer)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION:
 				setTextPosition((Integer)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends IProperty>)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION:
 				setDocumentation((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT:
 				setText((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE:
 				setSource((IDiagramModelObject)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TARGET:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TARGET:
 				setTarget((IDiagramModelObject)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
 				getBendpoints().clear();
 				getBendpoints().addAll((Collection<? extends IDiagramModelBendpoint>)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
 				setLineWidth((Integer)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
 				setLineColor((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TYPE:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TYPE:
 				setType((Integer)newValue);
 				return;
 		}
@@ -729,43 +729,43 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT:
 				setFont(FONT_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR:
 				setFontColor(FONT_COLOR_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT:
 				setTextAlignment(TEXT_ALIGNMENT_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION:
 				setTextPosition(TEXT_POSITION_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
 				getProperties().clear();
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE:
 				setSource((IDiagramModelObject)null);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TARGET:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TARGET:
 				setTarget((IDiagramModelObject)null);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
 				getBendpoints().clear();
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
 				setLineWidth(LINE_WIDTH_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
 				setLineColor(LINE_COLOR_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TYPE:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
 		}
@@ -780,31 +780,31 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT:
 				return FONT_EDEFAULT == null ? font != null : !FONT_EDEFAULT.equals(font);
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR:
 				return FONT_COLOR_EDEFAULT == null ? fontColor != null : !FONT_COLOR_EDEFAULT.equals(fontColor);
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT:
 				return textAlignment != TEXT_ALIGNMENT_EDEFAULT;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION:
 				return textPosition != TEXT_POSITION_EDEFAULT;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES:
 				return properties != null && !properties.isEmpty();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE:
 				return source != null;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TARGET:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TARGET:
 				return target != null;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
 				return bendpoints != null && !bendpoints.isEmpty();
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
 				return lineWidth != LINE_WIDTH_EDEFAULT;
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
 				return LINE_COLOR_EDEFAULT == null ? lineColor != null : !LINE_COLOR_EDEFAULT.equals(lineColor);
-			case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TYPE:
+			case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -819,22 +819,22 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IFontAttribute.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT: return IArchimatePackage.FONT_ATTRIBUTE__FONT;
-				case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR: return IArchimatePackage.FONT_ATTRIBUTE__FONT_COLOR;
-				case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT: return IArchimatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT;
-				case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION: return IArchimatePackage.FONT_ATTRIBUTE__TEXT_POSITION;
+				case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT: return IZentamatePackage.FONT_ATTRIBUTE__FONT;
+				case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR: return IZentamatePackage.FONT_ATTRIBUTE__FONT_COLOR;
+				case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT: return IZentamatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT;
+				case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION: return IZentamatePackage.FONT_ATTRIBUTE__TEXT_POSITION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES: return IArchimatePackage.PROPERTIES__PROPERTIES;
+				case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES: return IZentamatePackage.PROPERTIES__PROPERTIES;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION: return IArchimatePackage.DOCUMENTABLE__DOCUMENTATION;
+				case IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION: return IZentamatePackage.DOCUMENTABLE__DOCUMENTATION;
 				default: return -1;
 			}
 		}
@@ -850,22 +850,22 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IFontAttribute.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.FONT_ATTRIBUTE__FONT: return IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT;
-				case IArchimatePackage.FONT_ATTRIBUTE__FONT_COLOR: return IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR;
-				case IArchimatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT: return IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT;
-				case IArchimatePackage.FONT_ATTRIBUTE__TEXT_POSITION: return IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION;
+				case IZentamatePackage.FONT_ATTRIBUTE__FONT: return IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT;
+				case IZentamatePackage.FONT_ATTRIBUTE__FONT_COLOR: return IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR;
+				case IZentamatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT: return IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT;
+				case IZentamatePackage.FONT_ATTRIBUTE__TEXT_POSITION: return IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.PROPERTIES__PROPERTIES: return IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES;
+				case IZentamatePackage.PROPERTIES__PROPERTIES: return IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.DOCUMENTABLE__DOCUMENTATION: return IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION;
+				case IZentamatePackage.DOCUMENTABLE__DOCUMENTATION: return IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION;
 				default: return -1;
 			}
 		}

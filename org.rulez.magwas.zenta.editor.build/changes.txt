@@ -1,4 +1,4 @@
-Archi Changes
+Zenta Changes
 -------------
 
 Version 2.4 December 05 2012
@@ -11,7 +11,7 @@ Version 2.4 December 05 2012
 + Preferences option to use orthogonal anchor points for connections (contributed by Jean-Baptiste Sarrodie, aka Jaiguru)
 + The Java version shipped with the Windows installer is now version 1.6.0_37
 + Built on Eclipse 3.8.1 RCP
-+ Allow all ArchiMate elements to be accessed by Jasper Reports
++ Allow all ZentaMate elements to be accessed by Jasper Reports
 * Fixed bug where Navigator View didn't update in response to some model changes
 * Relationship rule added - Deliverable Realises Plateau
 * Canvas Editor locked text controls are selectable/scrollable
@@ -25,7 +25,7 @@ Version 2.3.1 September 06 2012
 + Support for Java 7
 + Support for Windows 8 32-bit and 64-bit versions
 + Improved native launcher for Mac OS X version
-+ Added "Archi on the Web" menu item to Help menu
++ Added "Zenta on the Web" menu item to Help menu
 + The Java version shipped with the Windows installer is now version 1.6.0_34
 * Fix hyperlinks not working in some Operating Systems in Properties window's multi-line text controls
 * Internal bug fixes
@@ -64,14 +64,14 @@ Version 2.2.1 March 19 2012
 * Typo fixes
 * Buttons and labels in Properties window can accommodate longer strings (as used by non-English localised versions)
 * Tidy up some Properties window controls
-* Archisurance example now complies with ArchiMate 2.0
+* Zentasurance example now complies with ZentaMate 2.0
 * Fix pressing "x" cancel on Save confirmation dialog does not cancel
 
 
 
 Version 2.2 February 19 2012
 ----------------------------
-+ Support for ArchiMate 2.0
++ Support for ZentaMate 2.0
 + Model Tree selection synchroniser can now select active View in Model Tree
 
 
@@ -79,7 +79,7 @@ Version 2.2 February 19 2012
 Version 2.1 February 06 2012
 ----------------------------
 + Canvas Modelling Toolkit
-+ ArchiMate connection tooltips now display the full meaning of the relationship
++ ZentaMate connection tooltips now display the full meaning of the relationship
 + Cut/Copy/Paste/Select All shortcut keys now work in elements' label editors
 + Holding down a key (Ctrl on Windows and Linux, Alt on Mac) when dragging elements from the Models Tree to a View ensures connections are not added
 + Shortcut keys implemented for Mac OS X Lion full screen. Also menu item added to main "Window" menu
@@ -87,7 +87,7 @@ Version 2.1 February 06 2012
 + The F1 key now invokes dynamic help on Mac OS X
 + Improved Diagram Connection Line Styles
 + A Relationship's name is now used as the text on a connection
-* BiZZdesign Architect Import/Export is no longer supported
+* BiZZdesign Zentatect Import/Export is no longer supported
 * Fixed "Bring Forward" and "Send Backward" commands to move only one position in Z-order
 * Fixed unnecessary page breaks in Jasper Reports
 * The "Add to my template collection" option is now enabled by default in the "Save As Template" wizard
@@ -109,7 +109,7 @@ Version 2.0 September 30 2011
 + Palette is now detachable and improved
 + A View can be maximised to Full Screen
 + Support for Mac OS X Lion Application Full Screen
-+ Can now launch Archi from *.archimate files from the Desktop on Mac OS X
++ Can now launch Zenta from *.archimate files from the Desktop on Mac OS X
 + Export View to Bitmap (*.bmp) format now supported on Mac OS X
 + Group objects now have a "Documentation" field
 + Group objects can also be added to Sketch Views
@@ -120,7 +120,7 @@ Version 2.0 September 30 2011
 + Added tooltips for all Sketch View elements
 + When adding a new model in the Model Tree the focus is put on in-place editing so you can edit its name
 + Added a preference to use curved or square tab style
-+ "Archisurance" example updated to include Viewpoints and re-organised folders
++ "Zentasurance" example updated to include Viewpoints and re-organised folders
 + The Java version shipped with the Windows installer is now version 1.6.0_26
 + Built on Eclipse 3.7.1 RCP
 * When closing a model close any of its open Views more gracefully
@@ -171,7 +171,7 @@ Version 1.6 February 06 2011
 ----------------------------
 + Format Painter
 + The "Automatic Relationship Management" system (ARM)
-+ Import BiZZdesign Architect models
++ Import BiZZdesign Zentatect models
 + Export model to CSV format
 + Added Help files and contextual Help support to Help system
 + Multi-line text controls in the Properties window now support hyperlinks
@@ -184,7 +184,7 @@ Version 1.6 February 06 2011
 + Improved and more informative tooltips in Views
 + Added a preference to not show tooltips in Views
 + Added 25% Zoom factor to Zoom control
-+ The ArchiMate type for a selected object is shown in parentheses in the title of the Properties window
++ The ZentaMate type for a selected object is shown in parentheses in the title of the Properties window
 + Animation on undo/redo now works for Mac Cocoa version
 * Fixed drag and drop not working on Mac Cocoa version
 * Fixed an issue where it was possible to drag the wrong type of palette entry to an incorrect type of View
@@ -243,9 +243,9 @@ Version 1.4 November 1 2010
 + Extraneous white space is trimmed off exported images
 + Export current View as image to clipboard ("Export View As Image to Clipboard")
 + Changed "Save As Image" menu item to "Export View As Image"
-+ Changed "Export to Architect" menu item to "Export Model To Architect"
++ Changed "Export to Zentatect" menu item to "Export Model To Zentatect"
 + More friendly error message for a restored View tab on launch when the View's file is missing
-+ An "examples" folder is shipped with the application containing some ArchiMate examples
++ An "examples" folder is shipped with the application containing some ZentaMate examples
 
 
 
@@ -274,7 +274,7 @@ Version 1.2 September 24 2010
 + Implemented Derived Relations (FR #3038359)
 + Export Model to BizzDesign XML format
 + Windows version has installer
-+ Launch Archi from .archimate files on Windows (that's why we need a Windows installer)
++ Launch Zenta from .archimate files on Windows (that's why we need a Windows installer)
 + Added preference to use alternative figures for some element types
 + Added contextual menu item to View "Delete from Model"
 + Re-organised View menu items
@@ -333,7 +333,7 @@ Version 0.9 May 24 2010
 + Added more shortcut keys
 + Added support for printing diagrams
 * Fixed "Save As Image" not saving part of diagram in negative co-ordinates
-* Fixed child diagram objects not deleted if parent deleted when deleting corresponding Archimate element
+* Fixed child diagram objects not deleted if parent deleted when deleting corresponding Zentamate element
 
 
 
@@ -353,7 +353,7 @@ Version 0.8 April 20 2010
 + Added Group Container Box type in Views
 + Added "Appearance" tab in Properties window
 + Added Fill colour setting for graphical objects in Properties window and on Edit menu
-+ Changed app name to "Archi"
++ Changed app name to "Zenta"
 + Added Extension support for Hints texts
 + Hints implemented as HTML content
 + Added basic Help support

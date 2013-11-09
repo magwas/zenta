@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 
 
@@ -19,6 +19,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 public class ConnectionLineColorCommand extends EObjectFeatureCommand {
     
     public ConnectionLineColorCommand(IDiagramModelConnection connection, String rgb) {
-        super(Messages.ConnectionLineColorCommand_0, connection, IArchimatePackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_COLOR, rgb);
+        super(Messages.ConnectionLineColorCommand_0, connection, IZentamatePackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_COLOR, rgb);
     }
 }

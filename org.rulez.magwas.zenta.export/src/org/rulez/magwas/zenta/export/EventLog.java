@@ -25,10 +25,10 @@ import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.browser.BrowserEditorInput;
 import org.rulez.magwas.zenta.browser.IBrowserEditor;
 import org.rulez.magwas.zenta.export.IEventLog;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -105,11 +105,11 @@ public class EventLog implements IEventLog {
     }
     
     private void focusElement(String modelid, String elemid) {
-    	List<IArchimateModel> model_list = IEditorModelManager.INSTANCE.getModels();
-        for (IArchimateModel model : model_list) {
+    	List<IZentamateModel> model_list = IEditorModelManager.INSTANCE.getModels();
+        for (IZentamateModel model : model_list) {
             String thismodelid = model.getId();
             if (thismodelid.equals(modelid)) {
-                EObject theElementToSelect = ArchimateModelUtils.getObjectByID(
+                EObject theElementToSelect = ZentamateModelUtils.getObjectByID(
                         model, elemid);
                 UIRequestManager.INSTANCE
                         .fireRequest(new TreeSelectionRequest(this,

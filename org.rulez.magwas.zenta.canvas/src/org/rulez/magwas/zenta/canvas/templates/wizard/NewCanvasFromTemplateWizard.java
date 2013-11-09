@@ -20,16 +20,16 @@ import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
 import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
 import org.rulez.magwas.zenta.editor.model.compatibility.ModelCompatibility;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.util.ArchimateResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentamateResourceFactory;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.TemplateUtils;
@@ -110,11 +110,11 @@ public class NewCanvasFromTemplateWizard extends Wizard {
 
     private void createNewCanvasFromTemplate(File file) throws IncompatibleModelException, IOException {
         // Ascertain if this is a zip file
-        boolean isArchiveFormat = IArchiveManager.FACTORY.isArchiveFile(file);
+        boolean isZentaveFormat = IZentaveManager.FACTORY.isZentaveFile(file);
         
-        ResourceSet resourceSet = ArchimateResourceFactory.createResourceSet();
-        Resource resource = resourceSet.createResource(isArchiveFormat ?
-                                                       IArchiveManager.FACTORY.createArchiveModelURI(file) :
+        ResourceSet resourceSet = ZentamateResourceFactory.createResourceSet();
+        Resource resource = resourceSet.createResource(isZentaveFormat ?
+                                                       IZentaveManager.FACTORY.createZentaveModelURI(file) :
                                                        URI.createFileURI(file.getAbsolutePath()));
 
         // Load the template file
@@ -143,7 +143,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         }
         
         // Pull out the Canvas model
-        IArchimateModel templateModel = (IArchimateModel)resource.getContents().get(0);
+        IZentamateModel templateModel = (IZentamateModel)resource.getContents().get(0);
         IFolder folderViews = templateModel.getFolder(FolderType.DIAGRAMS);
         ICanvasModel canvasModel = (ICanvasModel)folderViews.getElements().get(0);
 
@@ -151,8 +151,8 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         TemplateUtils.generateNewUUIDs(canvasModel);
         
         // Load the images from the template model's file now
-        if(isArchiveFormat) {
-            IArchiveManager archiveManager = (IArchiveManager)fFolder.getAdapter(IArchiveManager.class);
+        if(isZentaveFormat) {
+            IZentaveManager archiveManager = (IZentaveManager)fFolder.getAdapter(IZentaveManager.class);
             archiveManager.loadImagesFromModelFile(file); 
         }
         

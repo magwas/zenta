@@ -19,7 +19,7 @@
 
    <windowImages i16="/org.rulez.magwas.zenta.editor/img/app-16.png" i32="/org.rulez.magwas.zenta.editor/img/app-32.png" i48="/org.rulez.magwas.zenta.editor/img/app-48.png" i64="/org.rulez.magwas.zenta.editor/img/app-64.png" i128="/org.rulez.magwas.zenta.editor/img/app-128.png"/>
 
-   <launcher name="Archi">
+   <launcher name="Zenta">
       <linux icon="/org.rulez.magwas.zenta.editor.build/branding/linux/icon.xpm"/>
       <macosx icon="/org.rulez.magwas.zenta.editor.build/branding/mac/app/Contents/Resources/icon.icns"/>
       <solaris/>

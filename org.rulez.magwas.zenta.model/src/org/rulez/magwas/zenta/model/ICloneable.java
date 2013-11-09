@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getCloneable()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getCloneable()
  * @model interface="true" abstract="true"
  * @generated
  */

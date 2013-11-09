@@ -37,12 +37,12 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IIconic;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.propertysections.DiagramModelImageSection;
 import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ILockable;
 
 
@@ -72,10 +72,10 @@ public class IconSection extends DiagramModelImageSection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model event
-            if(feature == IArchimatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH) {
+            if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH) {
                 refreshPreviewImage();
             }
-            else if(feature == IArchimatePackage.Literals.LOCKABLE__LOCKED
+            else if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED
                     || feature == ICanvasPackage.Literals.ICONIC__IMAGE_POSITION) {
                 refreshButtons();
             }
@@ -217,7 +217,7 @@ public class IconSection extends DiagramModelImageSection {
         disposeImage();
         
         if(fIconic.getImagePath() != null) {
-            IArchiveManager archiveManager = (IArchiveManager)fIconic.getAdapter(IArchiveManager.class);
+            IZentaveManager archiveManager = (IZentaveManager)fIconic.getAdapter(IZentaveManager.class);
             
             Image image = null;
             try {

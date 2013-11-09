@@ -23,14 +23,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.IArchimateDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.IZentamateDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
-import org.rulez.magwas.zenta.editor.diagram.editparts.IArchimateEditPart;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IArchimateConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.IZentamateEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IZentamateConnectionEditPart;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -40,9 +40,9 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
  * 
  * @author Phillip Beauvoir
  */
-public class UsedInViewsSection extends AbstractArchimatePropertySection {
+public class UsedInViewsSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.usedInViewsSection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.usedInViewsSection"; //$NON-NLS-1$
     
     /**
      * Filter to show or reject this section depending on input value
@@ -50,12 +50,12 @@ public class UsedInViewsSection extends AbstractArchimatePropertySection {
     public static class Filter implements IFilter {
         @Override
         public boolean select(Object object) {
-            return object instanceof IArchimateElement || object instanceof IArchimateEditPart 
-                    || object instanceof IArchimateConnectionEditPart;
+            return object instanceof IZentamateElement || object instanceof IZentamateEditPart 
+                    || object instanceof IZentamateConnectionEditPart;
         }
     }
 
-    private IArchimateElement fArchimateElement;
+    private IZentamateElement fZentamateElement;
     
     private TableViewer fTableViewer;
     private UpdatingTableColumnLayout fTableLayout;
@@ -91,7 +91,7 @@ public class UsedInViewsSection extends AbstractArchimatePropertySection {
             }
             
             public Object[] getElements(Object inputElement) {
-                return DiagramModelUtils.findReferencedDiagramsForElement((IArchimateElement)inputElement).toArray();
+                return DiagramModelUtils.findReferencedDiagramsForElement((IZentamateElement)inputElement).toArray();
             }
         });
         
@@ -103,7 +103,7 @@ public class UsedInViewsSection extends AbstractArchimatePropertySection {
             
             @Override
             public Image getImage(Object element) {
-                return IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_DIAGRAM_16);
+                return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_DIAGRAM_16);
             }
         });
         
@@ -116,8 +116,8 @@ public class UsedInViewsSection extends AbstractArchimatePropertySection {
                 if(o instanceof IDiagramModel) {
                     IDiagramModel diagramModel = (IDiagramModel)o;
                     IDiagramModelEditor editor = EditorManager.openDiagramEditor(diagramModel);
-                    if(editor instanceof IArchimateDiagramEditor) {
-                        ((IArchimateDiagramEditor)editor).selectElements(new IArchimateElement[] { fArchimateElement });
+                    if(editor instanceof IZentamateDiagramEditor) {
+                        ((IZentamateDiagramEditor)editor).selectElements(new IZentamateElement[] { fZentamateElement });
                     }
                 }
             }
@@ -128,11 +128,11 @@ public class UsedInViewsSection extends AbstractArchimatePropertySection {
     
     @Override
     protected void setElement(Object element) {
-        if(element instanceof IArchimateElement) {
-            fArchimateElement = (IArchimateElement)element;
+        if(element instanceof IZentamateElement) {
+            fZentamateElement = (IZentamateElement)element;
         }
         else if(element instanceof IAdaptable) {
-            fArchimateElement = (IArchimateElement)((IAdaptable)element).getAdapter(IArchimateElement.class);
+            fZentamateElement = (IZentamateElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
         }
         else {
             System.err.println("UsedInViewsSection wants to display for " + element); //$NON-NLS-1$
@@ -142,7 +142,7 @@ public class UsedInViewsSection extends AbstractArchimatePropertySection {
     }
     
     protected void refreshControls() {
-        fTableViewer.setInput(fArchimateElement);
+        fTableViewer.setInput(fZentamateElement);
         fTableLayout.doRelayout();
     }
     
@@ -153,7 +153,7 @@ public class UsedInViewsSection extends AbstractArchimatePropertySection {
 
     @Override
     protected EObject getEObject() {
-        return fArchimateElement;
+        return fZentamateElement;
     }
     
     @Override

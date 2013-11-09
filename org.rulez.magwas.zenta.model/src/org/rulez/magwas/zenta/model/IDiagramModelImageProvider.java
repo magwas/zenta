@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelImageProvider()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelImageProvider()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface IDiagramModelImageProvider extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Image Path</em>' attribute.
 	 * @see #setImagePath(String)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelImageProvider_ImagePath()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelImageProvider_ImagePath()
 	 * @model
 	 * @generated
 	 */

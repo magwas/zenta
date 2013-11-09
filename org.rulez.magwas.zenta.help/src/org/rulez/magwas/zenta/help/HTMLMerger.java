@@ -24,7 +24,7 @@ public class HTMLMerger {
     
     // Source and Output folder has to be the same because the generated HTML file will reference the image files in "img" folder
     static String HELP_SRC_FOLDER = "help/"; //$NON-NLS-1$
-    static String HTML_OUTPUT_FILE = "Archi User Guide.html"; //$NON-NLS-1$
+    static String HTML_OUTPUT_FILE = "Zenta User Guide.html"; //$NON-NLS-1$
     static String HTML_FILES_LIST = "files.list"; //$NON-NLS-1$
     
     /**
@@ -38,7 +38,7 @@ public class HTMLMerger {
             System.out.println("Writing Header..."); //$NON-NLS-1$
             out.append("<html>\n"); //$NON-NLS-1$
             out.append("<head>\n"); //$NON-NLS-1$
-            out.append("<title>Archi User Guide</title>\n"); //$NON-NLS-1$
+            out.append("<title>Zenta User Guide</title>\n"); //$NON-NLS-1$
             out.append("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n"); //$NON-NLS-1$
             out.append("</head>\n"); //$NON-NLS-1$
             out.append("<body>\n"); //$NON-NLS-1$

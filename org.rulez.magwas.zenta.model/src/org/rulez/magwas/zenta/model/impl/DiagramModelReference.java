@@ -8,7 +8,7 @@ package org.rulez.magwas.zenta.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 
@@ -52,7 +52,7 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.DIAGRAM_MODEL_REFERENCE;
+		return IZentamatePackage.Literals.DIAGRAM_MODEL_REFERENCE;
 	}
 
     /**
@@ -73,7 +73,7 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
 		IDiagramModel oldReferencedModel = referencedModel;
 		referencedModel = newReferencedModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL, oldReferencedModel, referencedModel));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL, oldReferencedModel, referencedModel));
 	}
 
     @Override
@@ -94,7 +94,7 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
+			case IZentamatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
 				return getReferencedModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -108,7 +108,7 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
+			case IZentamatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
 				setReferencedModel((IDiagramModel)newValue);
 				return;
 		}
@@ -123,7 +123,7 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
+			case IZentamatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
 				setReferencedModel((IDiagramModel)null);
 				return;
 		}
@@ -138,7 +138,7 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
+			case IZentamatePackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
 				return referencedModel != null;
 		}
 		return super.eIsSet(featureID);

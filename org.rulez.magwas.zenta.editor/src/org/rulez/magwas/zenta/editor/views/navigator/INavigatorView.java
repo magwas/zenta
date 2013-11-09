@@ -6,8 +6,8 @@
 package org.rulez.magwas.zenta.editor.views.navigator;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.rulez.magwas.zenta.editor.ArchimateEditorPlugin;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.views.IModelView;
 
 
@@ -18,9 +18,9 @@ import org.rulez.magwas.zenta.editor.views.IModelView;
  */
 public interface INavigatorView extends IModelView {
 
-    String ID = ArchimateEditorPlugin.PLUGIN_ID + ".navigatorView"; //$NON-NLS-1$
-    String HELP_ID = "uk.ac.bolton.archimate.help.navigatorViewHelp"; //$NON-NLS-1$
+    String ID = ZentamateEditorPlugin.PLUGIN_ID + ".navigatorView"; //$NON-NLS-1$
+    String HELP_ID = "org.rulez.magwas.zenta.help.navigatorViewHelp"; //$NON-NLS-1$
     String NAME = Messages.INavigatorView_0;
-    ImageDescriptor IMAGE_DESCRIPTOR = IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_NAVIGATOR_16);
+    ImageDescriptor IMAGE_DESCRIPTOR = IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_NAVIGATOR_16);
     
 }

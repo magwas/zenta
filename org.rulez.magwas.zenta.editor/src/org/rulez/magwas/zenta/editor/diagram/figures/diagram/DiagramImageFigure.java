@@ -19,9 +19,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractDiagramModelObjectFigure;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 
@@ -122,7 +122,7 @@ public class DiagramImageFigure extends AbstractDiagramModelObjectFigure {
         }
         else {
             super.paintFigure(graphics);
-            Image image = IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_LANDSCAPE_16);
+            Image image = IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_LANDSCAPE_16);
             graphics.drawImage(image, bounds.x + (bounds.width / 2) - 7, bounds.y + (bounds.height / 2) - 7);
         }
         
@@ -142,7 +142,7 @@ public class DiagramImageFigure extends AbstractDiagramModelObjectFigure {
             Image originalImage = imageCache.get(fImagePath);
             
             if(originalImage == null) {
-                IArchiveManager archiveManager = (IArchiveManager)getDiagramModelObject().getAdapter(IArchiveManager.class);
+                IZentaveManager archiveManager = (IZentaveManager)getDiagramModelObject().getAdapter(IZentaveManager.class);
                 try {
                     originalImage = archiveManager.createImage(fImagePath);
                     imageCache.put(fImagePath, originalImage);

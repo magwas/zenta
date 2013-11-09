@@ -9,7 +9,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.views.tree.commands.SortFolderCommand;
 import org.rulez.magwas.zenta.model.IFolder;
 
@@ -25,7 +25,7 @@ public class SortFolderAction extends ViewerAction {
     public SortFolderAction(ISelectionProvider selectionProvider) {
         super(selectionProvider);
         setText(Messages.SortFolderAction_0);
-        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_SORT_16));
+        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_SORT_16));
     }
     
     @Override

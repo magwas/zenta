@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.canvas.model.*;
 import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IArchimateModelElement;
+import org.rulez.magwas.zenta.model.IZentamateModelElement;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -156,8 +156,8 @@ public class CanvasAdapterFactory extends AdapterFactoryImpl {
                 return createDiagramModelImageProviderAdapter();
             }
             @Override
-            public Adapter caseArchimateModelElement(IArchimateModelElement object) {
-                return createArchimateModelElementAdapter();
+            public Adapter caseZentamateModelElement(IZentamateModelElement object) {
+                return createZentamateModelElementAdapter();
             }
             @Override
             public Adapter caseDiagramModelContainer(IDiagramModelContainer object) {
@@ -356,16 +356,16 @@ public class CanvasAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IArchimateModelElement <em>Model Element</em>}'.
+     * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IZentamateModelElement <em>Model Element</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * @return the new adapter.
-     * @see org.rulez.magwas.zenta.model.IArchimateModelElement
+     * @see org.rulez.magwas.zenta.model.IZentamateModelElement
      * @generated
      */
-    public Adapter createArchimateModelElementAdapter() {
+    public Adapter createZentamateModelElementAdapter() {
         return null;
     }
 

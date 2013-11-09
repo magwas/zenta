@@ -11,10 +11,10 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IJunctionElement;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 
 
 
@@ -38,11 +38,11 @@ public class DiagramModelUtils {
      * @param element The element to check on.
      * @return A List of diagram models (may be empty, but never null)
      */
-    public static List<IDiagramModel> findReferencedDiagramsForElement(IArchimateElement element) {
+    public static List<IDiagramModel> findReferencedDiagramsForElement(IZentamateElement element) {
         List<IDiagramModel> models = new ArrayList<IDiagramModel>();
         
-        if(element != null && element.getArchimateModel() != null) {
-            for(IDiagramModel diagramModel : element.getArchimateModel().getDiagramModels()) {
+        if(element != null && element.getZentamateModel() != null) {
+            for(IDiagramModel diagramModel : element.getZentamateModel().getDiagramModels()) {
                 // Find it
                 boolean result = !findDiagramModelComponentsForElement(diagramModel, element).isEmpty();
                 
@@ -64,12 +64,12 @@ public class DiagramModelUtils {
      * @param element
      * @return true if element is referenced in any diagram model
      */
-    public static boolean isElementReferencedInDiagrams(IArchimateElement element) {
-        if(element == null || element.getArchimateModel() == null) {
+    public static boolean isElementReferencedInDiagrams(IZentamateElement element) {
+        if(element == null || element.getZentamateModel() == null) {
             return false;
         }
         
-        for(IDiagramModel diagramModel : element.getArchimateModel().getDiagramModels()) {
+        for(IDiagramModel diagramModel : element.getZentamateModel().getDiagramModels()) {
             if(isElementReferencedInDiagram(diagramModel, element)) {
                 return true;
             }
@@ -82,7 +82,7 @@ public class DiagramModelUtils {
      * @param element
      * @return true if element is referenced in diagramModel
      */
-    public static boolean isElementReferencedInDiagram(IDiagramModel diagramModel, IArchimateElement element) {
+    public static boolean isElementReferencedInDiagram(IDiagramModel diagramModel, IZentamateElement element) {
         if(!findDiagramModelComponentsForElement(diagramModel, element).isEmpty()) {
             return true;
         }
@@ -105,7 +105,7 @@ public class DiagramModelUtils {
      * @param element
      * @return The list
      */
-    public static List<IDiagramModelComponent> findDiagramModelComponentsForElement(IDiagramModel diagramModel, IArchimateElement element) {
+    public static List<IDiagramModelComponent> findDiagramModelComponentsForElement(IDiagramModel diagramModel, IZentamateElement element) {
         List<IDiagramModelComponent> list = new ArrayList<IDiagramModelComponent>();
         
         if(element instanceof IRelationship) {
@@ -124,17 +124,17 @@ public class DiagramModelUtils {
      * @param element
      * @return The list
      */
-    public static List<IDiagramModelArchimateObject> findDiagramModelObjectsForElement(IDiagramModelContainer parent, IArchimateElement element) {
-        List<IDiagramModelArchimateObject> list = new ArrayList<IDiagramModelArchimateObject>();
+    public static List<IDiagramModelZentamateObject> findDiagramModelObjectsForElement(IDiagramModelContainer parent, IZentamateElement element) {
+        List<IDiagramModelZentamateObject> list = new ArrayList<IDiagramModelZentamateObject>();
         __findDiagramModelObjectsForElement(list, parent, element);
         return list;
     }
     
-    private static void __findDiagramModelObjectsForElement(List<IDiagramModelArchimateObject> list, IDiagramModelContainer parent, IArchimateElement element) {
+    private static void __findDiagramModelObjectsForElement(List<IDiagramModelZentamateObject> list, IDiagramModelContainer parent, IZentamateElement element) {
         for(IDiagramModelObject object : parent.getChildren()) {
-            if(object instanceof IDiagramModelArchimateObject) {
-                if(((IDiagramModelArchimateObject)object).getArchimateElement() == element && !list.contains(object)) {
-                    list.add((IDiagramModelArchimateObject)object);
+            if(object instanceof IDiagramModelZentamateObject) {
+                if(((IDiagramModelZentamateObject)object).getZentamateElement() == element && !list.contains(object)) {
+                    list.add((IDiagramModelZentamateObject)object);
                 }
             }
             if(object instanceof IDiagramModelContainer) {
@@ -149,19 +149,19 @@ public class DiagramModelUtils {
      * @param relationship
      * @return
      */
-    public static List<IDiagramModelArchimateConnection> findDiagramModelConnectionsForRelation(IDiagramModelContainer parent, IRelationship relationship) {
-        List<IDiagramModelArchimateConnection> list = new ArrayList<IDiagramModelArchimateConnection>();
+    public static List<IDiagramModelZentamateConnection> findDiagramModelConnectionsForRelation(IDiagramModelContainer parent, IRelationship relationship) {
+        List<IDiagramModelZentamateConnection> list = new ArrayList<IDiagramModelZentamateConnection>();
         __findDiagramModelConnectionsForRelation(list, parent, relationship);
         return list;
     }
 
-    private static void __findDiagramModelConnectionsForRelation(List<IDiagramModelArchimateConnection> list, IDiagramModelContainer parent, IRelationship relationship) {
+    private static void __findDiagramModelConnectionsForRelation(List<IDiagramModelZentamateConnection> list, IDiagramModelContainer parent, IRelationship relationship) {
         for(IDiagramModelObject object : parent.getChildren()) {
             for(IDiagramModelConnection connection : object.getSourceConnections()) {
-                if(connection instanceof IDiagramModelArchimateConnection &&
-                                        ((IDiagramModelArchimateConnection)connection).getRelationship() == relationship
+                if(connection instanceof IDiagramModelZentamateConnection &&
+                                        ((IDiagramModelZentamateConnection)connection).getRelationship() == relationship
                                         && !list.contains(object)) {
-                    list.add((IDiagramModelArchimateConnection)connection);
+                    list.add((IDiagramModelZentamateConnection)connection);
                 }
             }
             if(object instanceof IDiagramModelContainer) {
@@ -203,24 +203,24 @@ public class DiagramModelUtils {
     
 
     /**
-     * Find matching pairs of IDiagramModelArchimateObject types that are nested in a Diagram Model
+     * Find matching pairs of IDiagramModelZentamateObject types that are nested in a Diagram Model
      * @param diagramModel
      * @param relation
      * @return
      */
-    public static List<IDiagramModelArchimateObject[]> findNestedComponentsForRelationship(IDiagramModel diagramModel, IRelationship relation) {
-        IArchimateElement src = relation.getSource();
-        IArchimateElement tgt = relation.getTarget();
+    public static List<IDiagramModelZentamateObject[]> findNestedComponentsForRelationship(IDiagramModel diagramModel, IRelationship relation) {
+        IZentamateElement src = relation.getSource();
+        IZentamateElement tgt = relation.getTarget();
         
-        List<IDiagramModelArchimateObject> srcList = findDiagramModelObjectsForElement(diagramModel, src);
-        List<IDiagramModelArchimateObject> tgtList = findDiagramModelObjectsForElement(diagramModel, tgt);
+        List<IDiagramModelZentamateObject> srcList = findDiagramModelObjectsForElement(diagramModel, src);
+        List<IDiagramModelZentamateObject> tgtList = findDiagramModelObjectsForElement(diagramModel, tgt);
         
-        List<IDiagramModelArchimateObject[]> list = new ArrayList<IDiagramModelArchimateObject[]>();
+        List<IDiagramModelZentamateObject[]> list = new ArrayList<IDiagramModelZentamateObject[]>();
         
-        for(IDiagramModelArchimateObject dmo1 : srcList) {
-            for(IDiagramModelArchimateObject dmo2 : tgtList) {
+        for(IDiagramModelZentamateObject dmo1 : srcList) {
+            for(IDiagramModelZentamateObject dmo2 : tgtList) {
                 if(isNestedRelationship(dmo1, dmo2)) {
-                    list.add(new IDiagramModelArchimateObject[] {dmo1, dmo2});
+                    list.add(new IDiagramModelZentamateObject[] {dmo1, dmo2});
                 }
             }
         }
@@ -233,9 +233,9 @@ public class DiagramModelUtils {
      * @param child
      * @return True if there is a nested relationship type between parent and child
      */
-    public static boolean isNestedRelationship(IDiagramModelArchimateObject parent, IDiagramModelArchimateObject child) {
-        IArchimateElement srcElement = parent.getArchimateElement();
-        IArchimateElement tgtElement = child.getArchimateElement();
+    public static boolean isNestedRelationship(IDiagramModelZentamateObject parent, IDiagramModelZentamateObject child) {
+        IZentamateElement srcElement = parent.getZentamateElement();
+        IZentamateElement tgtElement = child.getZentamateElement();
 
         // Then see if it's nested
         if(parent.getChildren().contains(child)) {
@@ -248,8 +248,8 @@ public class DiagramModelUtils {
     /**
      * Check if there is already a nested type relationship between parent (source) and child (target)
      */
-    public static boolean hasNestedConnectionTypeRelationship(IArchimateElement parent, IArchimateElement child) {
-        for(IRelationship relation : ArchimateModelUtils.getSourceRelationships(parent)) {
+    public static boolean hasNestedConnectionTypeRelationship(IZentamateElement parent, IZentamateElement child) {
+        for(IRelationship relation : ZentamateModelUtils.getSourceRelationships(parent)) {
             if(relation.getTarget() == child && isNestedConnectionTypeRelationship(relation)) {
                 return true;
             }
@@ -279,7 +279,7 @@ public class DiagramModelUtils {
      * @param element
      * @return true if element can be used to calculate an nested type connection as one end of the relation
      */
-    public static boolean isNestedConnectionTypeElement(IArchimateElement element) {
+    public static boolean isNestedConnectionTypeElement(IZentamateElement element) {
         return !(element instanceof IJunctionElement);
     }
     
@@ -289,12 +289,12 @@ public class DiagramModelUtils {
      * @param relation
      * @return True if there is an IDiagramModelConnection containing relation between srcObject and tgtObject
      */
-    public static boolean hasDiagramModelArchimateConnection(IDiagramModelArchimateObject srcObject, IDiagramModelArchimateObject tgtObject,
+    public static boolean hasDiagramModelZentamateConnection(IDiagramModelZentamateObject srcObject, IDiagramModelZentamateObject tgtObject,
             IRelationship relation) {
 
         for(IDiagramModelConnection conn : srcObject.getSourceConnections()) {
-            if(conn instanceof IDiagramModelArchimateConnection) {
-                IRelationship r = ((IDiagramModelArchimateConnection)conn).getRelationship();
+            if(conn instanceof IDiagramModelZentamateConnection) {
+                IRelationship r = ((IDiagramModelZentamateConnection)conn).getRelationship();
                 if(r == relation && conn.getSource() == srcObject && conn.getTarget() == tgtObject) {
                     return true;
                 }
@@ -308,19 +308,19 @@ public class DiagramModelUtils {
      * @param connection
      * @return true if a connection should be hidden when its source (parent) element contains its target (child) element
      */
-    public static boolean shouldBeHiddenConnection(IDiagramModelArchimateConnection connection) {
+    public static boolean shouldBeHiddenConnection(IDiagramModelZentamateConnection connection) {
         if(!ConnectionPreferences.useNestedConnections()) {
             return false;
         }
         
-        // Only if source and target elements are ArchiMate elements
-        if(connection.getSource() instanceof IDiagramModelArchimateObject && connection.getTarget() instanceof IDiagramModelArchimateObject) {
-            IDiagramModelArchimateObject source = (IDiagramModelArchimateObject)connection.getSource();
-            IDiagramModelArchimateObject target = (IDiagramModelArchimateObject)connection.getTarget();
+        // Only if source and target elements are ZentaMate elements
+        if(connection.getSource() instanceof IDiagramModelZentamateObject && connection.getTarget() instanceof IDiagramModelZentamateObject) {
+            IDiagramModelZentamateObject source = (IDiagramModelZentamateObject)connection.getSource();
+            IDiagramModelZentamateObject target = (IDiagramModelZentamateObject)connection.getTarget();
             
             // Junction types are excluded
-            if(!DiagramModelUtils.isNestedConnectionTypeElement(source.getArchimateElement()) || 
-                    !DiagramModelUtils.isNestedConnectionTypeElement(target.getArchimateElement())) {
+            if(!DiagramModelUtils.isNestedConnectionTypeElement(source.getZentamateElement()) || 
+                    !DiagramModelUtils.isNestedConnectionTypeElement(target.getZentamateElement())) {
                 return false;
             }
             
@@ -358,8 +358,8 @@ public class DiagramModelUtils {
      */
     public static boolean hasExistingConnectionType(IDiagramModelObject source, IDiagramModelObject target, EClass relationshipType) {
         for(IDiagramModelConnection connection : source.getSourceConnections()) {
-            if(connection instanceof IDiagramModelArchimateConnection && connection.getTarget().equals(target)) {
-                EClass type = ((IDiagramModelArchimateConnection)connection).getRelationship().eClass();
+            if(connection instanceof IDiagramModelZentamateConnection && connection.getTarget().equals(target)) {
+                EClass type = ((IDiagramModelZentamateConnection)connection).getRelationship().eClass();
                 return type.equals(relationshipType);
             }
         }

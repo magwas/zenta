@@ -7,8 +7,8 @@ package org.rulez.magwas.zenta.editor.diagram.figures.application;
 
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 /**
@@ -19,12 +19,12 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
 public class ApplicationCollaborationFigure
 extends AbstractTextFlowFigure {
     
-    public ApplicationCollaborationFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public ApplicationCollaborationFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
         
         // Use a Rectangle Figure Delegate to Draw
         RectangleFigureDelegate figureDelegate = new RectangleFigureDelegate(this);
-        figureDelegate.setImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_COLLABORATION_16));
+        figureDelegate.setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_COLLABORATION_16));
         setFigureDelegate(figureDelegate);
     }
 }

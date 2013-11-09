@@ -37,7 +37,7 @@ import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessInterfaceFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessValueFigure;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 /**
@@ -237,7 +237,7 @@ public class OrthogonalAnchor extends ChopboxAnchor {
 	
 	/**
 	 * Checks if a figure is an ellipse. Have to be updated
-	 * each time a new case is introduced in Archi.
+	 * each time a new case is introduced in Zenta.
 	 * 
 	 * @param figure
 	 *            a figure
@@ -249,7 +249,7 @@ public class OrthogonalAnchor extends ChopboxAnchor {
         }
 
         if(figure instanceof BusinessInterfaceFigure) {
-            return (((IDiagramModelArchimateObject)((BusinessInterfaceFigure)figure).getDiagramModelObject()).getType() != 0);
+            return (((IDiagramModelZentamateObject)((BusinessInterfaceFigure)figure).getDiagramModelObject()).getType() != 0);
         }
 
         return false;

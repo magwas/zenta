@@ -7,8 +7,8 @@ package org.rulez.magwas.zenta.editor.diagram.tools;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.ui.IEditorPart;
-import org.rulez.magwas.zenta.editor.diagram.ArchimateDiagramModelFactory;
-import org.rulez.magwas.zenta.editor.diagram.IArchimateDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.ZentamateDiagramModelFactory;
+import org.rulez.magwas.zenta.editor.diagram.IZentamateDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
 
 
@@ -24,7 +24,7 @@ public class MagicConnectionModelFactory implements ICreationFactory {
     private EClass fElementTemplate;
     
     public boolean isUsedFor(IEditorPart editor) {
-        return editor instanceof IArchimateDiagramEditor;
+        return editor instanceof IZentamateDiagramEditor;
     }
     
     public void setRelationshipType(EClass type) {
@@ -44,7 +44,7 @@ public class MagicConnectionModelFactory implements ICreationFactory {
     }
     
     public Object getNewObject() {
-        return new ArchimateDiagramModelFactory(fRelationshipTemplate).getNewObject();
+        return new ZentamateDiagramModelFactory(fRelationshipTemplate).getNewObject();
     }
 
     public Object getObjectType() {

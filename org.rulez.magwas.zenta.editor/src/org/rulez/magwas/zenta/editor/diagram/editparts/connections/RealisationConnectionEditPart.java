@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.RealisationConn
  * 
  * @author Phillip Beauvoir
  */
-public class RealisationConnectionEditPart extends AbstractArchimateConnectionEditPart {
+public class RealisationConnectionEditPart extends AbstractZentamateConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {

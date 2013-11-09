@@ -18,7 +18,7 @@ target attributes are relative to the output directory.
 <!-- exports the model.
     style can be:
         "rich" (default): Exports the model in rich format, using policy
-        "archi":    Uses the default serialization format or Archi. Policy is not used in this case.
+        "archi":    Uses the default serialization format or Zenta. Policy is not used in this case.
     defaults:  style="rich" keep="true" policy="" -->
 
     <transform language="xslt" script="policy.xslt" target="policy.xml" keep="true"/>

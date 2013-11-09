@@ -10,7 +10,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPersistableElement;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -37,15 +37,15 @@ implements IEditorInput, IPersistableElement {
     }
     
     public boolean exists() {
-        return fModel.getArchimateModel() != null;
+        return fModel.getZentamateModel() != null;
     }
 
     public ImageDescriptor getImageDescriptor() {
-        return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_DIAGRAM_16);
+        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_DIAGRAM_16);
     }
 
     public String getName() {
-        return fModel.getArchimateModel() == null ? Messages.DiagramEditorInput_0 : fModel.getArchimateModel().getName() + ": " + fModel.getName(); //$NON-NLS-1$
+        return fModel.getZentamateModel() == null ? Messages.DiagramEditorInput_0 : fModel.getZentamateModel().getName() + ": " + fModel.getName(); //$NON-NLS-1$
     }
 
     public String getToolTipText() {
@@ -76,12 +76,12 @@ implements IEditorInput, IPersistableElement {
 
     public IPersistableElement getPersistable() {
         // This can happen somehow (but can't remember how - so, a sanity check)
-        if(fModel.getArchimateModel() == null) {
+        if(fModel.getZentamateModel() == null) {
             return null;
         }
         
         // Not saved, or a new file based on a template
-        if(fModel.getArchimateModel().getFile() == null) {
+        if(fModel.getZentamateModel().getFile() == null) {
             return null;
         }
         

@@ -26,10 +26,10 @@ import org.jdom.Element;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasModelTemplate;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
-import org.rulez.magwas.zenta.model.IArchimateFactory;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateFactory;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ModelVersion;
@@ -198,8 +198,8 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         File tmpFile = File.createTempFile("architemplate", null); //$NON-NLS-1$
         tmpFile.deleteOnExit();
         
-        // Create a new container Archimate model
-        IArchimateModel tempModel = IArchimateFactory.eINSTANCE.createArchimateModel();
+        // Create a new container Zentamate model
+        IZentamateModel tempModel = IZentamateFactory.eINSTANCE.createZentamateModel();
         tempModel.setDefaults();
         tempModel.eAdapters().clear(); // Remove this after default folders have been added, as we'll generate our own IDs
         tempModel.setId(EcoreUtil.generateUUID());
@@ -225,8 +225,8 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         IFolder folder = tempModel.getDefaultFolderForElement(copyCanvas);
         folder.getElements().add(copyCanvas);
         
-        // Use an Archive Manager to save it
-        IArchiveManager archiveManager = IArchiveManager.FACTORY.createArchiveManager(tempModel);
+        // Use an Zentave Manager to save it
+        IZentaveManager archiveManager = IZentaveManager.FACTORY.createZentaveManager(tempModel);
         archiveManager.saveModel();
         archiveManager.dispose();
         

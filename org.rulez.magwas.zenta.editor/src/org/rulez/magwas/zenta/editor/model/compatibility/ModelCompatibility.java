@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.xmi.ClassNotFoundException;
 import org.eclipse.emf.ecore.xmi.PackageNotFoundException;
 import org.eclipse.emf.ecore.xmi.XMIException;
 import org.rulez.magwas.zenta.editor.Logger;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.xml.sax.SAXParseException;
 
@@ -52,10 +52,10 @@ public class ModelCompatibility {
     }
     
     public static void checkVersion(Resource resource) throws LaterModelVersionException {
-        IArchimateModel model = (IArchimateModel)resource.getContents().get(0);
+        IZentamateModel model = (IZentamateModel)resource.getContents().get(0);
         String version = model.getVersion();
         
-        // Loading a newer version model into older version of Archi might be OK
+        // Loading a newer version model into older version of Zenta might be OK
         if(version != null && version.compareTo(ModelVersion.VERSION) > 0) {
             throw new LaterModelVersionException(version);
         }

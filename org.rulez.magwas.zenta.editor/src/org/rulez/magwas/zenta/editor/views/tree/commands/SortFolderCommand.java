@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IFolder;
 
@@ -77,9 +77,9 @@ public class SortFolderCommand extends Command implements Comparator<EObject>  {
             name1 = ((IDiagramModelComponent)o1).getName();
             name2 = ((IDiagramModelComponent)o2).getName();
         }
-        else if(o1 instanceof IArchimateElement && o2 instanceof IArchimateElement) {
-            name1 = ((IArchimateElement)o1).getName();
-            name2 = ((IArchimateElement)o2).getName();
+        else if(o1 instanceof IZentamateElement && o2 instanceof IZentamateElement) {
+            name1 = ((IZentamateElement)o1).getName();
+            name2 = ((IZentamateElement)o2).getName();
         }
         
         if(name1 == null) {

@@ -13,7 +13,7 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getSpecialisationRelationship()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getSpecialisationRelationship()
  * @model
  * @generated
  */

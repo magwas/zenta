@@ -59,51 +59,51 @@ public class Messages extends NLS {
 
     public static String AbstractPaletteRoot_7;
 
-    public static String ArchimateDiagramEditor_0;
+    public static String ZentamateDiagramEditor_0;
 
-    public static String ArchimateDiagramEditorActionBarContributor_0;
+    public static String ZentamateDiagramEditorActionBarContributor_0;
 
-    public static String ArchimateDiagramEditorActionBarContributor_1;
+    public static String ZentamateDiagramEditorActionBarContributor_1;
 
-    public static String ArchimateDiagramEditorContextMenuProvider_0;
+    public static String ZentamateDiagramEditorContextMenuProvider_0;
 
-    public static String ArchimateDiagramEditorContextMenuProvider_1;
+    public static String ZentamateDiagramEditorContextMenuProvider_1;
 
-    public static String ArchimateDiagramEditorPalette_0;
+    public static String ZentamateDiagramEditorPalette_0;
 
-    public static String ArchimateDiagramEditorPalette_1;
+    public static String ZentamateDiagramEditorPalette_1;
 
-    public static String ArchimateDiagramEditorPalette_10;
+    public static String ZentamateDiagramEditorPalette_10;
 
-    public static String ArchimateDiagramEditorPalette_11;
+    public static String ZentamateDiagramEditorPalette_11;
 
-    public static String ArchimateDiagramEditorPalette_12;
+    public static String ZentamateDiagramEditorPalette_12;
 
-    public static String ArchimateDiagramEditorPalette_13;
+    public static String ZentamateDiagramEditorPalette_13;
 
-    public static String ArchimateDiagramEditorPalette_14;
+    public static String ZentamateDiagramEditorPalette_14;
 
-    public static String ArchimateDiagramEditorPalette_15;
+    public static String ZentamateDiagramEditorPalette_15;
 
-    public static String ArchimateDiagramEditorPalette_16;
+    public static String ZentamateDiagramEditorPalette_16;
 
-    public static String ArchimateDiagramEditorPalette_2;
+    public static String ZentamateDiagramEditorPalette_2;
 
-    public static String ArchimateDiagramEditorPalette_3;
+    public static String ZentamateDiagramEditorPalette_3;
 
-    public static String ArchimateDiagramEditorPalette_4;
+    public static String ZentamateDiagramEditorPalette_4;
 
-    public static String ArchimateDiagramEditorPalette_5;
+    public static String ZentamateDiagramEditorPalette_5;
 
-    public static String ArchimateDiagramEditorPalette_6;
+    public static String ZentamateDiagramEditorPalette_6;
 
-    public static String ArchimateDiagramEditorPalette_7;
+    public static String ZentamateDiagramEditorPalette_7;
 
-    public static String ArchimateDiagramEditorPalette_8;
+    public static String ZentamateDiagramEditorPalette_8;
 
-    public static String ArchimateDiagramEditorPalette_9;
+    public static String ZentamateDiagramEditorPalette_9;
 
-    public static String ArchimateDiagramModelFactory_0;
+    public static String ZentamateDiagramModelFactory_0;
 
     public static String DiagramEditorInput_0;
 

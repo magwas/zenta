@@ -10,9 +10,9 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.NoteEditPart;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.factory.AbstractElementUIProvider;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 
@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.model.IArchimatePackage;
 public class NoteUIProvider extends AbstractElementUIProvider {
 
     public EClass providerFor() {
-        return IArchimatePackage.eINSTANCE.getDiagramModelNote();
+        return IZentamatePackage.eINSTANCE.getDiagramModelNote();
     }
     
     @Override
@@ -39,11 +39,11 @@ public class NoteUIProvider extends AbstractElementUIProvider {
 
     @Override
     public Image getImage() {
-        return IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_NOTE_16);
+        return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_NOTE_16);
     }
 
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_NOTE_16);
+        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_NOTE_16);
     }
 }

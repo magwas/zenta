@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModelImage;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.impl.DiagramModelImage;
 
@@ -163,7 +163,7 @@ public class CanvasModelImage extends DiagramModelImage implements ICanvasModelI
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == ILockable.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_IMAGE__LOCKED: return IArchimatePackage.LOCKABLE__LOCKED;
+                case ICanvasPackage.CANVAS_MODEL_IMAGE__LOCKED: return IZentamatePackage.LOCKABLE__LOCKED;
                 default: return -1;
             }
         }
@@ -179,7 +179,7 @@ public class CanvasModelImage extends DiagramModelImage implements ICanvasModelI
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == ILockable.class) {
             switch (baseFeatureID) {
-                case IArchimatePackage.LOCKABLE__LOCKED: return ICanvasPackage.CANVAS_MODEL_IMAGE__LOCKED;
+                case IZentamatePackage.LOCKABLE__LOCKED: return ICanvasPackage.CANVAS_MODEL_IMAGE__LOCKED;
                 default: return -1;
             }
         }

@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModelConnection;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.impl.DiagramModelConnection;
 
@@ -160,7 +160,7 @@ public class CanvasModelConnection extends DiagramModelConnection implements ICa
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == ILockable.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_CONNECTION__LOCKED: return IArchimatePackage.LOCKABLE__LOCKED;
+                case ICanvasPackage.CANVAS_MODEL_CONNECTION__LOCKED: return IZentamatePackage.LOCKABLE__LOCKED;
                 default: return -1;
             }
         }
@@ -176,7 +176,7 @@ public class CanvasModelConnection extends DiagramModelConnection implements ICa
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == ILockable.class) {
             switch (baseFeatureID) {
-                case IArchimatePackage.LOCKABLE__LOCKED: return ICanvasPackage.CANVAS_MODEL_CONNECTION__LOCKED;
+                case IZentamatePackage.LOCKABLE__LOCKED: return ICanvasPackage.CANVAS_MODEL_CONNECTION__LOCKED;
                 default: return -1;
             }
         }

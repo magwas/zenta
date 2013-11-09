@@ -14,7 +14,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -27,7 +27,7 @@ public class OrJunctionFigure extends AbstractDiagramModelObjectFigure {
     
     protected static final Dimension SIZE = new Dimension(15, 15);
     
-    public OrJunctionFigure(IDiagramModelArchimateObject diagramModelObject) {
+    public OrJunctionFigure(IDiagramModelZentamateObject diagramModelObject) {
         super(diagramModelObject);
     }
     

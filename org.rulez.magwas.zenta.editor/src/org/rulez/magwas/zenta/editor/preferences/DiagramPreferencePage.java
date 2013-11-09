@@ -39,7 +39,7 @@ import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 public class DiagramPreferencePage
 extends PreferencePage
 implements IWorkbenchPreferencePage, IPreferenceConstants {
-    private static String HELP_ID = "uk.ac.bolton.archimate.help.prefsDiagram"; //$NON-NLS-1$
+    private static String HELP_ID = "org.rulez.magwas.zenta.help.prefsDiagram"; //$NON-NLS-1$
     
     private Spinner fGridSizeSpinner;
     

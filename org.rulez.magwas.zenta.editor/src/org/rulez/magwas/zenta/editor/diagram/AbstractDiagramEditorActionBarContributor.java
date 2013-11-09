@@ -30,7 +30,7 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.LabelRetargetAction;
 import org.eclipse.ui.actions.RetargetAction;
-import org.rulez.magwas.zenta.editor.actions.ArchimateEditorActionFactory;
+import org.rulez.magwas.zenta.editor.actions.ZentamateEditorActionFactory;
 import org.rulez.magwas.zenta.editor.diagram.actions.BorderColorAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.BringForwardAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.BringToFrontAction;
@@ -50,7 +50,7 @@ import org.rulez.magwas.zenta.editor.diagram.actions.SendBackwardAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.SendToBackAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.TextAlignmentAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.TextPositionAction;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 
@@ -103,12 +103,12 @@ extends ActionBarContributor {
         
         // Default Size
         RetargetAction retargetAction = new RetargetAction(DefaultEditPartSizeAction.ID, DefaultEditPartSizeAction.TEXT);
-        retargetAction.setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_DEFAULT_SIZE));
+        retargetAction.setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_DEFAULT_SIZE));
         addRetargetAction(retargetAction);
         
         // Reset Aspect Ratio
         retargetAction = new RetargetAction(ResetAspectRatioAction.ID, ResetAspectRatioAction.TEXT);
-        retargetAction.setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_ASPECT_RATIO));
+        retargetAction.setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_ASPECT_RATIO));
         addRetargetAction(retargetAction);
         
         // Export as Image
@@ -260,7 +260,7 @@ extends ActionBarContributor {
     
     protected IMenuManager contributeToEditMenu(IMenuManager menuManager) {
         IMenuManager editMenu = (IMenuManager)menuManager.find(IWorkbenchActionConstants.M_EDIT);
-        editMenu.insertAfter(ArchimateEditorActionFactory.RENAME.getId(), new Separator(GROUP_EDIT_MENU));
+        editMenu.insertAfter(ZentamateEditorActionFactory.RENAME.getId(), new Separator(GROUP_EDIT_MENU));
         
         // Fill Color Action
         editMenu.appendToGroup(GROUP_EDIT_MENU, getAction(FillColorAction.ID));

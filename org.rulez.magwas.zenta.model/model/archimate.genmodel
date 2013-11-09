@@ -2,13 +2,13 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010-2012 Bolton University, UK.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the License&#xD;&#xA;which accompanies this distribution in the file LICENSE.txt"
     modelDirectory="/org.rulez.magwas.zenta.model/src" editorDirectory="/org.rulez.magwas.zenta.editor2/src"
-    modelPluginID="org.rulez.magwas.zenta.model" modelName="Archimate" nonNLSMarkers="true"
+    modelPluginID="org.rulez.magwas.zenta.model" modelName="Zentamate" nonNLSMarkers="true"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     editorPluginID="org.rulez.magwas.zenta.editor2" language="" interfaceNamePattern="I{0}"
     classNamePattern="{0}" runtimePlatform="RCP">
   <foreignModel>archimate.ecore</foreignModel>
   <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
-  <genPackages prefix="Archimate" basePackage="org.rulez.magwas.zenta" resource="XML"
+  <genPackages prefix="Zentamate" basePackage="org.rulez.magwas.zenta" resource="XML"
       disposableProviderFactory="true" ecorePackage="archimate.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="archimate.ecore#//FolderType">
       <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/user"/>
@@ -58,30 +58,30 @@
     <genClasses image="false" ecoreClass="archimate.ecore#//FolderContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference archimate.ecore#//FolderContainer/folders"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//ArchimateModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ArchimateModel/purpose"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ArchimateModel/file"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ArchimateModel/version"/>
-      <genOperations ecoreOperation="archimate.ecore#//ArchimateModel/setDefaults"/>
-      <genOperations ecoreOperation="archimate.ecore#//ArchimateModel/addDerivedRelationsFolder"/>
-      <genOperations ecoreOperation="archimate.ecore#//ArchimateModel/removeDerivedRelationsFolder"/>
-      <genOperations ecoreOperation="archimate.ecore#//ArchimateModel/getDefaultFolderForElement">
-        <genParameters ecoreParameter="archimate.ecore#//ArchimateModel/getDefaultFolderForElement/element"/>
+    <genClasses ecoreClass="archimate.ecore#//ZentamateModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ZentamateModel/purpose"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ZentamateModel/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ZentamateModel/version"/>
+      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/setDefaults"/>
+      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/addDerivedRelationsFolder"/>
+      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/removeDerivedRelationsFolder"/>
+      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/getDefaultFolderForElement">
+        <genParameters ecoreParameter="archimate.ecore#//ZentamateModel/getDefaultFolderForElement/element"/>
       </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//ArchimateModel/getDefaultDiagramModel"/>
-      <genOperations ecoreOperation="archimate.ecore#//ArchimateModel/getDiagramModels"/>
-      <genOperations ecoreOperation="archimate.ecore#//ArchimateModel/getFolder">
-        <genParameters ecoreParameter="archimate.ecore#//ArchimateModel/getFolder/type"/>
+      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/getDefaultDiagramModel"/>
+      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/getDiagramModels"/>
+      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/getFolder">
+        <genParameters ecoreParameter="archimate.ecore#//ZentamateModel/getFolder/type"/>
       </genOperations>
     </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//ArchimateModelElement">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference archimate.ecore#//ArchimateModelElement/archimateModel"/>
+    <genClasses image="false" ecoreClass="archimate.ecore#//ZentamateModelElement">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference archimate.ecore#//ZentamateModelElement/archimateModel"/>
     </genClasses>
     <genClasses ecoreClass="archimate.ecore#//Folder">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference archimate.ecore#//Folder/elements"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Folder/type"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//ArchimateElement"/>
+    <genClasses image="false" ecoreClass="archimate.ecore#//ZentamateElement"/>
     <genClasses image="false" ecoreClass="archimate.ecore#//JunctionElement"/>
     <genClasses image="false" ecoreClass="archimate.ecore#//InterfaceElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//InterfaceElement/interfaceType"/>
@@ -173,23 +173,23 @@
     <genClasses image="false" ecoreClass="archimate.ecore#//Lockable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Lockable/locked"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//ArchimateDiagramModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ArchimateDiagramModel/viewpoint"/>
+    <genClasses ecoreClass="archimate.ecore#//ZentamateDiagramModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ZentamateDiagramModel/viewpoint"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelArchimateObject">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelArchimateObject/archimateElement"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelArchimateObject/type"/>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelArchimateObject/addArchimateElementToModel">
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelArchimateObject/addArchimateElementToModel/parent"/>
+    <genClasses ecoreClass="archimate.ecore#//DiagramModelZentamateObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelZentamateObject/archimateElement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelZentamateObject/type"/>
+      <genOperations ecoreOperation="archimate.ecore#//DiagramModelZentamateObject/addZentamateElementToModel">
+        <genParameters ecoreParameter="archimate.ecore#//DiagramModelZentamateObject/addZentamateElementToModel/parent"/>
       </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelArchimateObject/removeArchimateElementFromModel"/>
+      <genOperations ecoreOperation="archimate.ecore#//DiagramModelZentamateObject/removeZentamateElementFromModel"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelArchimateConnection">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelArchimateConnection/relationship"/>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelArchimateConnection/addRelationshipToModel">
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelArchimateConnection/addRelationshipToModel/parent"/>
+    <genClasses ecoreClass="archimate.ecore#//DiagramModelZentamateConnection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelZentamateConnection/relationship"/>
+      <genOperations ecoreOperation="archimate.ecore#//DiagramModelZentamateConnection/addRelationshipToModel">
+        <genParameters ecoreParameter="archimate.ecore#//DiagramModelZentamateConnection/addRelationshipToModel/parent"/>
       </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelArchimateConnection/removeRelationshipFromModel"/>
+      <genOperations ecoreOperation="archimate.ecore#//DiagramModelZentamateConnection/removeRelationshipFromModel"/>
     </genClasses>
     <genClasses ecoreClass="archimate.ecore#//BusinessObject"/>
     <genClasses ecoreClass="archimate.ecore#//SketchModel">

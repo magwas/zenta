@@ -1,15 +1,15 @@
-This is the Styled HTML exporter for Archi.
+This is the Styled HTML exporter for Zenta.
 
-Archi is at http://archi.cetis.ac.uk/
+Zenta is at http://archi.cetis.ac.uk/
 
 This module uses a - possibly user defined - XML stylesheet to create a html report from the model.
 
 Deployment:
-unzip the zip in Archi's home. It will put a jar to the plugins directory.
+unzip the zip in Zenta's home. It will put a jar to the plugins directory.
 
 Style directory:
 A directory containing a file called style.xslt, and possibly other files (css, js, images) needed to render the report.
-There is one style now, the default. It ocntains a single style.xslt, which have the same functionality as the html report function of Archi.
+There is one style now, the default. It ocntains a single style.xslt, which have the same functionality as the html report function of Zenta.
 You can create your own, and if you submit it, I will include in subsequent releases.
 
 Configuration:

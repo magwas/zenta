@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.model.commands.DeleteFolderCommand;
 import org.rulez.magwas.zenta.editor.views.tree.TreeModelViewer;
 import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
@@ -33,7 +33,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IFolderContainer;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 
 
 
@@ -70,7 +70,7 @@ public class DeleteCommandHandler {
      */
     public static boolean canDelete(Object element) {
         // Elements and Diagrams
-        if(element instanceof IArchimateElement || element instanceof IDiagramModel) {
+        if(element instanceof IZentamateElement || element instanceof IDiagramModel) {
             return true;
         }
         
@@ -123,8 +123,8 @@ public class DeleteCommandHandler {
             }
         }
         
-        else if(object instanceof IArchimateElement) {
-            return DiagramModelUtils.isElementReferencedInDiagrams((IArchimateElement)object);
+        else if(object instanceof IZentamateElement) {
+            return DiagramModelUtils.isElementReferencedInDiagrams((IZentamateElement)object);
         }
         
         return false;
@@ -191,8 +191,8 @@ public class DeleteCommandHandler {
                 Command cmd = new DeleteFolderCommand((IFolder)object);
                 compoundCommand.add(cmd);
             }
-            else if(object instanceof IArchimateElement) {
-                Command cmd = new DeleteElementCommand((IArchimateElement)object);
+            else if(object instanceof IZentamateElement) {
+                Command cmd = new DeleteElementCommand((IZentamateElement)object);
                 compoundCommand.add(cmd);
             }
             else if(object instanceof IDiagramModelObject) {
@@ -217,7 +217,7 @@ public class DeleteCommandHandler {
         // Elements to check against for diagram references and other uses
         fElementsToCheck = new ArrayList<Object>();
         
-        // First, gather up the list of Archimate objects to be deleted...
+        // First, gather up the list of Zentamate objects to be deleted...
         for(Object object : fSelectedObjects) {
             if(canDelete(object)) {
                 addToList(object, fElementsToDelete);
@@ -228,10 +228,10 @@ public class DeleteCommandHandler {
         
         // Gather referenced diagram objects to be deleted checking that the parent diagram model is not also selected to be deleted
         for(Object object : fElementsToCheck) {
-            // Archimate Elements
-            if(object instanceof IArchimateElement) {
-                IArchimateElement element = (IArchimateElement)object;
-                for(IDiagramModel diagramModel : element.getArchimateModel().getDiagramModels()) {
+            // Zentamate Elements
+            if(object instanceof IZentamateElement) {
+                IZentamateElement element = (IZentamateElement)object;
+                for(IDiagramModel diagramModel : element.getZentamateModel().getDiagramModels()) {
                     // Check diagram model is not selected to be deleted - no point in deleting any of its children
                     if(!fElementsToDelete.contains(diagramModel)) {
                         for(IDiagramModelComponent dc : DiagramModelUtils.findDiagramModelComponentsForElement(diagramModel, element)) {
@@ -244,7 +244,7 @@ public class DeleteCommandHandler {
             // Diagram Models and their references
             if(object instanceof IDiagramModel) {
                 IDiagramModel diagramModelDeleted = (IDiagramModel)object;
-                for(IDiagramModel diagramModel : diagramModelDeleted.getArchimateModel().getDiagramModels()) {
+                for(IDiagramModel diagramModel : diagramModelDeleted.getZentamateModel().getDiagramModels()) {
                     List<IDiagramModelReference> list = DiagramModelUtils.findDiagramModelReferences(diagramModel, diagramModelDeleted); // is there one?
                     fElementsToDelete.addAll(list);
                 }
@@ -293,8 +293,8 @@ public class DeleteCommandHandler {
             }
         }
         // Element
-        else if(object instanceof IArchimateElement && !(object instanceof IRelationship)) {
-            for(IRelationship relationship : ArchimateModelUtils.getRelationships((IArchimateElement)object)) {
+        else if(object instanceof IZentamateElement && !(object instanceof IRelationship)) {
+            for(IRelationship relationship : ZentamateModelUtils.getRelationships((IZentamateElement)object)) {
                 addToList(relationship, fElementsToDelete);
                 addToList(relationship, fElementsToCheck);
             }

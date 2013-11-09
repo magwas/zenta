@@ -15,7 +15,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
 import org.rulez.magwas.zenta.editor.views.IModelSelectionView;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 
 
 
@@ -116,18 +116,18 @@ public abstract class AbstractModelSelectionAction extends Action implements IWo
     protected abstract void updateState();
     
     /**
-     * @return The Active Archimate Model
+     * @return The Active Zentamate Model
      */
-    protected IArchimateModel getActiveArchimateModel() {
-        IArchimateModel model = null;
+    protected IZentamateModel getActiveZentamateModel() {
+        IZentamateModel model = null;
         
         // Active Editor first
         if(activeEditor != null) {
-            model = (IArchimateModel)activeEditor.getAdapter(IArchimateModel.class);
+            model = (IZentamateModel)activeEditor.getAdapter(IZentamateModel.class);
         }
         // Then Active View
         else if(activeModelView != null) {
-            model = (IArchimateModel)activeModelView.getAdapter(IArchimateModel.class);
+            model = (IZentamateModel)activeModelView.getAdapter(IZentamateModel.class);
         }
         
         return model;

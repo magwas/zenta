@@ -13,7 +13,7 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.ui.actions.SelectionAction;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.diagram.commands.LockObjectCommand;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.model.ILockable;
 
 
@@ -31,7 +31,7 @@ public class LockObjectAction extends SelectionAction {
         setText(Messages.LockObjectAction_0);
         setId(ID);
         setToolTipText(Messages.LockObjectAction_1);
-        setImageDescriptor(IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_LOCK_16));
+        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_LOCK_16));
     }
 
     @Override
@@ -60,8 +60,8 @@ public class LockObjectAction extends SelectionAction {
     private void updateText() {
         boolean lock = isToLock();
         setText(lock ? Messages.LockObjectAction_0 : Messages.LockObjectAction_2);
-        setImageDescriptor(lock ? IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_LOCK_16) :
-            IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_UNLOCK_16));
+        setImageDescriptor(lock ? IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_LOCK_16) :
+            IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_UNLOCK_16));
     }
 
     @Override

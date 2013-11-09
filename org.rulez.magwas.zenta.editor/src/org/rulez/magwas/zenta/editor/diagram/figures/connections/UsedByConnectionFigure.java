@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
 import org.eclipse.draw2d.PolylineDecoration;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
 
 
 
@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
  * 
  * @author Phillip Beauvoir
  */
-public class UsedByConnectionFigure extends AbstractArchimateConnectionFigure {
+public class UsedByConnectionFigure extends AbstractZentamateConnectionFigure {
 	
     /**
      * @return Decoration to use on Target Node
@@ -24,7 +24,7 @@ public class UsedByConnectionFigure extends AbstractArchimateConnectionFigure {
         return new PolylineDecoration();
     }
 
-    public UsedByConnectionFigure(IDiagramModelArchimateConnection connection) {
+    public UsedByConnectionFigure(IDiagramModelZentamateConnection connection) {
         super(connection);
     }
 	

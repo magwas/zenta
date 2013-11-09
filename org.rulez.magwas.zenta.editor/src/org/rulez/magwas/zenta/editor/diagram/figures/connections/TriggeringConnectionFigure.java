@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
 import org.eclipse.draw2d.PolygonDecoration;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
 
 
 /**
@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
  * 
  * @author Phillip Beauvoir
  */
-public class TriggeringConnectionFigure extends AbstractArchimateConnectionFigure {
+public class TriggeringConnectionFigure extends AbstractZentamateConnectionFigure {
 	
     /**
      * @return Decoration to use on Target Node
@@ -23,7 +23,7 @@ public class TriggeringConnectionFigure extends AbstractArchimateConnectionFigur
         return new PolygonDecoration();
     }
 
-    public TriggeringConnectionFigure(IDiagramModelArchimateConnection connection) {
+    public TriggeringConnectionFigure(IDiagramModelZentamateConnection connection) {
         super(connection);
     }
 	

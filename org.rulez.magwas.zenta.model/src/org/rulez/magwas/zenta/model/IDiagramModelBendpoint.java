@@ -22,7 +22,7 @@ package org.rulez.magwas.zenta.model;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelBendpoint()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelBendpoint()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface IDiagramModelBendpoint extends ICloneable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start X</em>' attribute.
 	 * @see #setStartX(int)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelBendpoint_StartX()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelBendpoint_StartX()
 	 * @model
 	 * @generated
 	 */
@@ -63,7 +63,7 @@ public interface IDiagramModelBendpoint extends ICloneable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start Y</em>' attribute.
 	 * @see #setStartY(int)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelBendpoint_StartY()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelBendpoint_StartY()
 	 * @model
 	 * @generated
 	 */
@@ -89,7 +89,7 @@ public interface IDiagramModelBendpoint extends ICloneable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>End X</em>' attribute.
 	 * @see #setEndX(int)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelBendpoint_EndX()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelBendpoint_EndX()
 	 * @model
 	 * @generated
 	 */
@@ -115,7 +115,7 @@ public interface IDiagramModelBendpoint extends ICloneable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>End Y</em>' attribute.
 	 * @see #setEndY(int)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getDiagramModelBendpoint_EndY()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelBendpoint_EndY()
 	 * @model
 	 * @generated
 	 */

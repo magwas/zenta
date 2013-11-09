@@ -11,7 +11,7 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.diagram.figures.connections.messages"; //$NON-NLS-1$
 
-    public static String AbstractArchimateConnectionFigure_0;
+    public static String AbstractZentamateConnectionFigure_0;
 
     public static String AccessConnectionFigure_0;
 

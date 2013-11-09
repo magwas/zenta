@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IArchimatePackage#getLockable()
+ * @see org.rulez.magwas.zenta.model.IZentamatePackage#getLockable()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface ILockable extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Locked</em>' attribute.
 	 * @see #setLocked(boolean)
-	 * @see org.rulez.magwas.zenta.model.IArchimatePackage#getLockable_Locked()
+	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getLockable_Locked()
 	 * @model
 	 * @generated
 	 */

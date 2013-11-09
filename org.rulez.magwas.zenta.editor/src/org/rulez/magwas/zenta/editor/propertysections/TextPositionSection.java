@@ -20,9 +20,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.editparts.ITextPositionedEditPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.editor.propertysections.AbstractArchimatePropertySection;
+import org.rulez.magwas.zenta.editor.propertysections.AbstractZentamatePropertySection;
 import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.ILockable;
 
@@ -33,9 +33,9 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class TextPositionSection extends AbstractArchimatePropertySection {
+public class TextPositionSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.elementPropertySection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
     
     /**
      * Filter to show or reject this section depending on input value
@@ -55,10 +55,10 @@ public class TextPositionSection extends AbstractArchimatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model event
-            if(feature == IArchimatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION) {
+            if(feature == IZentamatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION) {
                 refreshControls();
             }
-            else if(feature == IArchimatePackage.Literals.LOCKABLE__LOCKED) {
+            else if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
                 refreshButtons();
             }
         }
@@ -96,7 +96,7 @@ public class TextPositionSection extends AbstractArchimatePropertySection {
                     fIsExecutingCommand = true;
                     getCommandStack().execute(new EObjectFeatureCommand(Messages.TextPositionSection_10,
                                                 fFontAttribute,
-                                                IArchimatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION,
+                                                IZentamatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION,
                                                 fComboPositions.getSelectionIndex()));
                     fIsExecutingCommand = false;
                 }

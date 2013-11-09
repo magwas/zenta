@@ -10,9 +10,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IAggregationRelationship;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimateFactory;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamateFactory;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IAssociationRelationship;
 import org.rulez.magwas.zenta.model.IRelationship;
 
@@ -32,7 +32,7 @@ public class DerivedRelationsUtils {
     static List<EClass> weaklist = new ArrayList<EClass>();
     
     static {
-        weaklist.add(IArchimatePackage.eINSTANCE.getAssociationRelationship());
+        weaklist.add(IZentamatePackage.eINSTANCE.getAssociationRelationship());
     }
     
     /**
@@ -45,10 +45,10 @@ public class DerivedRelationsUtils {
         }
         
         // Get relations from source element
-        IArchimateElement source = relation.getSource();
-        if(source != null && source.getArchimateModel() != null) { // An important guard because the element might have been deleted
+        IZentamateElement source = relation.getSource();
+        if(source != null && source.getZentamateModel() != null) { // An important guard because the element might have been deleted
             // Source has structural target relations
-            for(IRelationship rel : ArchimateModelUtils.getTargetRelationships(source)) {
+            for(IRelationship rel : ZentamateModelUtils.getTargetRelationships(source)) {
                 if(rel != relation) {
                     if(isStructuralRelationship(rel) && rel.getSource() != relation.getTarget()) {
                         return true;
@@ -57,7 +57,7 @@ public class DerivedRelationsUtils {
             }
             
             // Bi-directional relations
-            for(IRelationship rel : ArchimateModelUtils.getSourceRelationships(source)) {
+            for(IRelationship rel : ZentamateModelUtils.getSourceRelationships(source)) {
                 if(rel != relation) {
                     if(isBidirectionalRelationship(rel)) {
                         return true;
@@ -70,10 +70,10 @@ public class DerivedRelationsUtils {
         }
         
         // Get relations from target element
-        IArchimateElement target = relation.getTarget();
-        if(target != null && target.getArchimateModel() != null) { // An important guard because the element might have been deleted
+        IZentamateElement target = relation.getTarget();
+        if(target != null && target.getZentamateModel() != null) { // An important guard because the element might have been deleted
             // Target has structural source relations
-            for(IRelationship rel : ArchimateModelUtils.getSourceRelationships(target)) {
+            for(IRelationship rel : ZentamateModelUtils.getSourceRelationships(target)) {
                 if(rel != relation) {
                     if(isStructuralRelationship(rel) && rel.getTarget() != relation.getSource()) {
                         return true;
@@ -82,7 +82,7 @@ public class DerivedRelationsUtils {
             }
             
             // Bi-directional relations
-            for(IRelationship rel : ArchimateModelUtils.getTargetRelationships(target)) {
+            for(IRelationship rel : ZentamateModelUtils.getTargetRelationships(target)) {
                 if(rel != relation) {
                     if(isBidirectionalRelationship(rel)) {
                         return true;
@@ -119,8 +119,8 @@ public class DerivedRelationsUtils {
      * @param element2
      * @return True if element1 has a direct Structural relationship to element2
      */
-    public static boolean hasDirectStructuralRelationship(IArchimateElement element1, IArchimateElement element2) {
-        for(IRelationship relation : ArchimateModelUtils.getSourceRelationships(element1)) {
+    public static boolean hasDirectStructuralRelationship(IZentamateElement element1, IZentamateElement element2) {
+        for(IRelationship relation : ZentamateModelUtils.getSourceRelationships(element1)) {
             if(relation.getTarget() == element2 && isStructuralRelationship(relation)) {
                 return true;
             }
@@ -135,7 +135,7 @@ public class DerivedRelationsUtils {
      * @return The list of chains
      * @throws TooComplicatedException 
      */
-    public static List<List<IRelationship>> getDerivedRelationshipChains(IArchimateElement element1, IArchimateElement element2) throws TooComplicatedException {
+    public static List<List<IRelationship>> getDerivedRelationshipChains(IZentamateElement element1, IZentamateElement element2) throws TooComplicatedException {
         if(element1 == null || element2 == null) {
             return null;
         }
@@ -152,7 +152,7 @@ public class DerivedRelationsUtils {
         // Check validity of weakest relationship in each chain and remove chain if the weakest relationship is not valid
         for(List<IRelationship> chain : chains) {
             EClass relationshipClass = getWeakestType(chain);
-            boolean isValid = ArchimateModelUtils.isValidRelationship(element1, element2, relationshipClass);
+            boolean isValid = ZentamateModelUtils.isValidRelationship(element1, element2, relationshipClass);
             if(isValid) {
                 result.add(chain);
             }
@@ -172,7 +172,7 @@ public class DerivedRelationsUtils {
      * @return the derived relationship or null
      * @throws TooComplicatedException 
      */
-    public static IRelationship createDerivedRelationship(IArchimateElement element1, IArchimateElement element2) throws TooComplicatedException {
+    public static IRelationship createDerivedRelationship(IZentamateElement element1, IZentamateElement element2) throws TooComplicatedException {
         if(element1 == null || element2 == null) {
             return null;
         }
@@ -207,12 +207,12 @@ public class DerivedRelationsUtils {
         /*
          * Check the validity of the relationship.
          */
-        boolean isValid = ArchimateModelUtils.isValidRelationship(element1, element2, relationshipClass);
+        boolean isValid = ZentamateModelUtils.isValidRelationship(element1, element2, relationshipClass);
         if(!isValid) {
             return null;
         }
         
-        return (IRelationship)IArchimateFactory.eINSTANCE.create(relationshipClass);
+        return (IRelationship)IZentamateFactory.eINSTANCE.create(relationshipClass);
     }
     
     /**
@@ -240,7 +240,7 @@ public class DerivedRelationsUtils {
     // Too complicated
     private static final int ITERATION_LIMIT = 20000;
     
-    private static IArchimateElement finalTarget;
+    private static IZentamateElement finalTarget;
     private static List<IRelationship> temp_chain;
     private static List<List<IRelationship>> chains;
     private static int weakestFound;
@@ -252,7 +252,7 @@ public class DerivedRelationsUtils {
      * @return Find all the chains between element and finalTarget
      * @throws TooComplicatedException 
      */
-    private static List<List<IRelationship>> findChains(IArchimateElement sourceElement, IArchimateElement targetElement) throws TooComplicatedException {
+    private static List<List<IRelationship>> findChains(IZentamateElement sourceElement, IZentamateElement targetElement) throws TooComplicatedException {
         finalTarget = targetElement;
         temp_chain = new ArrayList<IRelationship>();
         chains = new ArrayList<List<IRelationship>>();
@@ -269,7 +269,7 @@ public class DerivedRelationsUtils {
         return chains;
     }
     
-    private static void _traverse(IArchimateElement element) throws TooComplicatedException {
+    private static void _traverse(IZentamateElement element) throws TooComplicatedException {
         // We found the lowest weakest so no point going on
         if(weakestFound == 0) {
             return;
@@ -285,7 +285,7 @@ public class DerivedRelationsUtils {
         /*
          * Traverse thru source relationships first
          */
-        for(IRelationship rel : ArchimateModelUtils.getSourceRelationships(element)) {
+        for(IRelationship rel : ZentamateModelUtils.getSourceRelationships(element)) {
             if(isStructuralRelationship(rel)) {
                 _addRelationshipToTempChain(rel, true);
             }
@@ -294,7 +294,7 @@ public class DerivedRelationsUtils {
         /*
          * Then thru the Bi-directional target relationships
          */
-        for(IRelationship rel : ArchimateModelUtils.getTargetRelationships(element)) {
+        for(IRelationship rel : ZentamateModelUtils.getTargetRelationships(element)) {
             if(isBidirectionalRelationship(rel)) {
                 _addRelationshipToTempChain(rel, false);
             }
@@ -309,7 +309,7 @@ public class DerivedRelationsUtils {
         }
         
         // If we get the target element we are traversing fowards, otherwise backwards from a bi-directional check
-        IArchimateElement element = forwards ? relation.getTarget() : relation.getSource();
+        IZentamateElement element = forwards ? relation.getTarget() : relation.getSource();
         
         // Arrived at target
         if(finalTarget == element) {
@@ -347,14 +347,14 @@ public class DerivedRelationsUtils {
      * time to traverse to eventually find out that the target element had none. If the targte element has no incoming or 
      * bi-directional relationships then don't bother traversing.
      */
-    private static boolean _hasTargetElementValidRelations(IArchimateElement targetElement) {
-        for(IRelationship relation : ArchimateModelUtils.getSourceRelationships(targetElement)) {
+    private static boolean _hasTargetElementValidRelations(IZentamateElement targetElement) {
+        for(IRelationship relation : ZentamateModelUtils.getSourceRelationships(targetElement)) {
             if(isBidirectionalRelationship(relation)) {
                 return true;
             }
         }
         
-        for(IRelationship relation : ArchimateModelUtils.getTargetRelationships(targetElement)) {
+        for(IRelationship relation : ZentamateModelUtils.getTargetRelationships(targetElement)) {
             if(isStructuralRelationship(relation)) {
                 return true;
             }
@@ -389,7 +389,7 @@ public class DerivedRelationsUtils {
     // DEBUGGING PRINT
     // =================================================================================== 
     
-    private static void _printChain(List<IRelationship> chain, IArchimateElement finalTarget) {
+    private static void _printChain(List<IRelationship> chain, IZentamateElement finalTarget) {
         String s = chain.get(0).getSource().getName();
         s += " --> "; //$NON-NLS-1$
         for(int i = 1; i < chain.size(); i++) {

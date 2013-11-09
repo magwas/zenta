@@ -8,7 +8,7 @@ package org.rulez.magwas.zenta.canvas.model;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 /**
@@ -76,7 +76,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__ID = IArchimatePackage.DIAGRAM_MODEL_OBJECT__ID;
+    int ICONIC__ID = IZentamatePackage.DIAGRAM_MODEL_OBJECT__ID;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -85,7 +85,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__NAME = IArchimatePackage.DIAGRAM_MODEL_OBJECT__NAME;
+    int ICONIC__NAME = IZentamatePackage.DIAGRAM_MODEL_OBJECT__NAME;
 
     /**
      * The feature id for the '<em><b>Diagram Model</b></em>' reference.
@@ -94,7 +94,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__DIAGRAM_MODEL = IArchimatePackage.DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
+    int ICONIC__DIAGRAM_MODEL = IZentamatePackage.DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
 
     /**
      * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -103,7 +103,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__FONT = IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT;
+    int ICONIC__FONT = IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT;
 
     /**
      * The feature id for the '<em><b>Font Color</b></em>' attribute.
@@ -112,7 +112,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__FONT_COLOR = IArchimatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR;
+    int ICONIC__FONT_COLOR = IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR;
 
     /**
      * The feature id for the '<em><b>Text Alignment</b></em>' attribute.
@@ -121,7 +121,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__TEXT_ALIGNMENT = IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT;
+    int ICONIC__TEXT_ALIGNMENT = IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Text Position</b></em>' attribute.
@@ -130,7 +130,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__TEXT_POSITION = IArchimatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION;
+    int ICONIC__TEXT_POSITION = IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION;
 
     /**
      * The feature id for the '<em><b>Bounds</b></em>' containment reference.
@@ -139,7 +139,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__BOUNDS = IArchimatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS;
+    int ICONIC__BOUNDS = IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS;
 
     /**
      * The feature id for the '<em><b>Source Connections</b></em>' containment reference list.
@@ -148,7 +148,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__SOURCE_CONNECTIONS = IArchimatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS;
+    int ICONIC__SOURCE_CONNECTIONS = IZentamatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Target Connections</b></em>' reference list.
@@ -157,7 +157,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__TARGET_CONNECTIONS = IArchimatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS;
+    int ICONIC__TARGET_CONNECTIONS = IZentamatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Fill Color</b></em>' attribute.
@@ -166,7 +166,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__FILL_COLOR = IArchimatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR;
+    int ICONIC__FILL_COLOR = IZentamatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR;
 
     /**
      * The feature id for the '<em><b>Image Path</b></em>' attribute.
@@ -175,7 +175,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__IMAGE_PATH = IArchimatePackage.DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 0;
+    int ICONIC__IMAGE_PATH = IZentamatePackage.DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Image Position</b></em>' attribute.
@@ -184,7 +184,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC__IMAGE_POSITION = IArchimatePackage.DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 1;
+    int ICONIC__IMAGE_POSITION = IZentamatePackage.DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Iconic</em>' class.
@@ -193,7 +193,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ICONIC_FEATURE_COUNT = IArchimatePackage.DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 2;
+    int ICONIC_FEATURE_COUNT = IZentamatePackage.DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.rulez.magwas.zenta.canvas.model.impl.CanvasModel <em>Model</em>}' class.
@@ -331,13 +331,13 @@ public interface ICanvasPackage extends EPackage {
     int NOTES_CONTENT_FEATURE_COUNT = 1;
 
     /**
-     * The feature id for the '<em><b>Archimate Model</b></em>' reference.
+     * The feature id for the '<em><b>Zentamate Model</b></em>' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__ARCHIMATE_MODEL = IArchimatePackage.DIAGRAM_MODEL__ARCHIMATE_MODEL;
+    int CANVAS_MODEL__ARCHIMATE_MODEL = IZentamatePackage.DIAGRAM_MODEL__ARCHIMATE_MODEL;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -346,7 +346,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__ID = IArchimatePackage.DIAGRAM_MODEL__ID;
+    int CANVAS_MODEL__ID = IZentamatePackage.DIAGRAM_MODEL__ID;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -355,7 +355,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__NAME = IArchimatePackage.DIAGRAM_MODEL__NAME;
+    int CANVAS_MODEL__NAME = IZentamatePackage.DIAGRAM_MODEL__NAME;
 
     /**
      * The feature id for the '<em><b>Diagram Model</b></em>' reference.
@@ -364,7 +364,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__DIAGRAM_MODEL = IArchimatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL;
+    int CANVAS_MODEL__DIAGRAM_MODEL = IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL;
 
     /**
      * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -373,7 +373,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__CHILDREN = IArchimatePackage.DIAGRAM_MODEL__CHILDREN;
+    int CANVAS_MODEL__CHILDREN = IZentamatePackage.DIAGRAM_MODEL__CHILDREN;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -382,7 +382,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__DOCUMENTATION = IArchimatePackage.DIAGRAM_MODEL__DOCUMENTATION;
+    int CANVAS_MODEL__DOCUMENTATION = IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -391,7 +391,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__PROPERTIES = IArchimatePackage.DIAGRAM_MODEL__PROPERTIES;
+    int CANVAS_MODEL__PROPERTIES = IZentamatePackage.DIAGRAM_MODEL__PROPERTIES;
 
     /**
      * The feature id for the '<em><b>Connection Router Type</b></em>' attribute.
@@ -400,7 +400,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__CONNECTION_ROUTER_TYPE = IArchimatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE;
+    int CANVAS_MODEL__CONNECTION_ROUTER_TYPE = IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE;
 
     /**
      * The feature id for the '<em><b>Hint Title</b></em>' attribute.
@@ -409,7 +409,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__HINT_TITLE = IArchimatePackage.DIAGRAM_MODEL_FEATURE_COUNT + 0;
+    int CANVAS_MODEL__HINT_TITLE = IZentamatePackage.DIAGRAM_MODEL_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Hint Content</b></em>' attribute.
@@ -418,7 +418,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL__HINT_CONTENT = IArchimatePackage.DIAGRAM_MODEL_FEATURE_COUNT + 1;
+    int CANVAS_MODEL__HINT_CONTENT = IZentamatePackage.DIAGRAM_MODEL_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Model</em>' class.
@@ -427,7 +427,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_FEATURE_COUNT = IArchimatePackage.DIAGRAM_MODEL_FEATURE_COUNT + 2;
+    int CANVAS_MODEL_FEATURE_COUNT = IZentamatePackage.DIAGRAM_MODEL_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -806,7 +806,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__ID = IArchimatePackage.DIAGRAM_MODEL_IMAGE__ID;
+    int CANVAS_MODEL_IMAGE__ID = IZentamatePackage.DIAGRAM_MODEL_IMAGE__ID;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -815,7 +815,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__NAME = IArchimatePackage.DIAGRAM_MODEL_IMAGE__NAME;
+    int CANVAS_MODEL_IMAGE__NAME = IZentamatePackage.DIAGRAM_MODEL_IMAGE__NAME;
 
     /**
      * The feature id for the '<em><b>Diagram Model</b></em>' reference.
@@ -824,7 +824,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__DIAGRAM_MODEL = IArchimatePackage.DIAGRAM_MODEL_IMAGE__DIAGRAM_MODEL;
+    int CANVAS_MODEL_IMAGE__DIAGRAM_MODEL = IZentamatePackage.DIAGRAM_MODEL_IMAGE__DIAGRAM_MODEL;
 
     /**
      * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -833,7 +833,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__FONT = IArchimatePackage.DIAGRAM_MODEL_IMAGE__FONT;
+    int CANVAS_MODEL_IMAGE__FONT = IZentamatePackage.DIAGRAM_MODEL_IMAGE__FONT;
 
     /**
      * The feature id for the '<em><b>Font Color</b></em>' attribute.
@@ -842,7 +842,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__FONT_COLOR = IArchimatePackage.DIAGRAM_MODEL_IMAGE__FONT_COLOR;
+    int CANVAS_MODEL_IMAGE__FONT_COLOR = IZentamatePackage.DIAGRAM_MODEL_IMAGE__FONT_COLOR;
 
     /**
      * The feature id for the '<em><b>Text Alignment</b></em>' attribute.
@@ -851,7 +851,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__TEXT_ALIGNMENT = IArchimatePackage.DIAGRAM_MODEL_IMAGE__TEXT_ALIGNMENT;
+    int CANVAS_MODEL_IMAGE__TEXT_ALIGNMENT = IZentamatePackage.DIAGRAM_MODEL_IMAGE__TEXT_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Text Position</b></em>' attribute.
@@ -860,7 +860,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__TEXT_POSITION = IArchimatePackage.DIAGRAM_MODEL_IMAGE__TEXT_POSITION;
+    int CANVAS_MODEL_IMAGE__TEXT_POSITION = IZentamatePackage.DIAGRAM_MODEL_IMAGE__TEXT_POSITION;
 
     /**
      * The feature id for the '<em><b>Bounds</b></em>' containment reference.
@@ -869,7 +869,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__BOUNDS = IArchimatePackage.DIAGRAM_MODEL_IMAGE__BOUNDS;
+    int CANVAS_MODEL_IMAGE__BOUNDS = IZentamatePackage.DIAGRAM_MODEL_IMAGE__BOUNDS;
 
     /**
      * The feature id for the '<em><b>Source Connections</b></em>' containment reference list.
@@ -878,7 +878,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__SOURCE_CONNECTIONS = IArchimatePackage.DIAGRAM_MODEL_IMAGE__SOURCE_CONNECTIONS;
+    int CANVAS_MODEL_IMAGE__SOURCE_CONNECTIONS = IZentamatePackage.DIAGRAM_MODEL_IMAGE__SOURCE_CONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Target Connections</b></em>' reference list.
@@ -887,7 +887,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__TARGET_CONNECTIONS = IArchimatePackage.DIAGRAM_MODEL_IMAGE__TARGET_CONNECTIONS;
+    int CANVAS_MODEL_IMAGE__TARGET_CONNECTIONS = IZentamatePackage.DIAGRAM_MODEL_IMAGE__TARGET_CONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Fill Color</b></em>' attribute.
@@ -896,7 +896,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__FILL_COLOR = IArchimatePackage.DIAGRAM_MODEL_IMAGE__FILL_COLOR;
+    int CANVAS_MODEL_IMAGE__FILL_COLOR = IZentamatePackage.DIAGRAM_MODEL_IMAGE__FILL_COLOR;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute.
@@ -905,7 +905,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__BORDER_COLOR = IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR;
+    int CANVAS_MODEL_IMAGE__BORDER_COLOR = IZentamatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Image Path</b></em>' attribute.
@@ -914,7 +914,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__IMAGE_PATH = IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH;
+    int CANVAS_MODEL_IMAGE__IMAGE_PATH = IZentamatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH;
 
     /**
      * The feature id for the '<em><b>Locked</b></em>' attribute.
@@ -923,7 +923,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE__LOCKED = IArchimatePackage.DIAGRAM_MODEL_IMAGE_FEATURE_COUNT + 0;
+    int CANVAS_MODEL_IMAGE__LOCKED = IZentamatePackage.DIAGRAM_MODEL_IMAGE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Model Image</em>' class.
@@ -932,7 +932,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_IMAGE_FEATURE_COUNT = IArchimatePackage.DIAGRAM_MODEL_IMAGE_FEATURE_COUNT + 1;
+    int CANVAS_MODEL_IMAGE_FEATURE_COUNT = IZentamatePackage.DIAGRAM_MODEL_IMAGE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '{@link org.rulez.magwas.zenta.canvas.model.impl.CanvasModelConnection <em>Model Connection</em>}' class.
@@ -951,7 +951,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__ID = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__ID;
+    int CANVAS_MODEL_CONNECTION__ID = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__ID;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -960,7 +960,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__NAME = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__NAME;
+    int CANVAS_MODEL_CONNECTION__NAME = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__NAME;
 
     /**
      * The feature id for the '<em><b>Diagram Model</b></em>' reference.
@@ -969,7 +969,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__DIAGRAM_MODEL = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DIAGRAM_MODEL;
+    int CANVAS_MODEL_CONNECTION__DIAGRAM_MODEL = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DIAGRAM_MODEL;
 
     /**
      * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -978,7 +978,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__FONT = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT;
+    int CANVAS_MODEL_CONNECTION__FONT = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT;
 
     /**
      * The feature id for the '<em><b>Font Color</b></em>' attribute.
@@ -987,7 +987,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__FONT_COLOR = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR;
+    int CANVAS_MODEL_CONNECTION__FONT_COLOR = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__FONT_COLOR;
 
     /**
      * The feature id for the '<em><b>Text Alignment</b></em>' attribute.
@@ -996,7 +996,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__TEXT_ALIGNMENT = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT;
+    int CANVAS_MODEL_CONNECTION__TEXT_ALIGNMENT = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Text Position</b></em>' attribute.
@@ -1005,7 +1005,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__TEXT_POSITION = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION;
+    int CANVAS_MODEL_CONNECTION__TEXT_POSITION = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT_POSITION;
 
     /**
      * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -1014,7 +1014,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__PROPERTIES = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES;
+    int CANVAS_MODEL_CONNECTION__PROPERTIES = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1023,7 +1023,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__DOCUMENTATION = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION;
+    int CANVAS_MODEL_CONNECTION__DOCUMENTATION = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1032,7 +1032,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__TEXT = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TEXT;
+    int CANVAS_MODEL_CONNECTION__TEXT = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TEXT;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference.
@@ -1041,7 +1041,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__SOURCE = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE;
+    int CANVAS_MODEL_CONNECTION__SOURCE = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__SOURCE;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1050,7 +1050,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__TARGET = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TARGET;
+    int CANVAS_MODEL_CONNECTION__TARGET = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TARGET;
 
     /**
      * The feature id for the '<em><b>Bendpoints</b></em>' containment reference list.
@@ -1059,7 +1059,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__BENDPOINTS = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS;
+    int CANVAS_MODEL_CONNECTION__BENDPOINTS = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS;
 
     /**
      * The feature id for the '<em><b>Line Width</b></em>' attribute.
@@ -1068,7 +1068,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__LINE_WIDTH = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH;
+    int CANVAS_MODEL_CONNECTION__LINE_WIDTH = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH;
 
     /**
      * The feature id for the '<em><b>Line Color</b></em>' attribute.
@@ -1077,7 +1077,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__LINE_COLOR = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR;
+    int CANVAS_MODEL_CONNECTION__LINE_COLOR = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR;
 
     /**
      * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1086,7 +1086,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__TYPE = IArchimatePackage.DIAGRAM_MODEL_CONNECTION__TYPE;
+    int CANVAS_MODEL_CONNECTION__TYPE = IZentamatePackage.DIAGRAM_MODEL_CONNECTION__TYPE;
 
     /**
      * The feature id for the '<em><b>Locked</b></em>' attribute.
@@ -1095,7 +1095,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION__LOCKED = IArchimatePackage.DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT + 0;
+    int CANVAS_MODEL_CONNECTION__LOCKED = IZentamatePackage.DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Model Connection</em>' class.
@@ -1104,7 +1104,7 @@ public interface ICanvasPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CANVAS_MODEL_CONNECTION_FEATURE_COUNT = IArchimatePackage.DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT + 1;
+    int CANVAS_MODEL_CONNECTION_FEATURE_COUNT = IZentamatePackage.DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT + 1;
 
     /**
      * Returns the meta object for class '{@link org.rulez.magwas.zenta.canvas.model.ICanvasModel <em>Model</em>}'.

@@ -11,7 +11,7 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.diagram.commands.messages"; //$NON-NLS-1$
 
-    public static String AddDiagramArchimateConnectionCommand_0;
+    public static String AddDiagramZentamateConnectionCommand_0;
 
     public static String AddDiagramModelReferenceCommand_0;
 
@@ -31,7 +31,7 @@ public class Messages extends NLS {
 
     public static String CreateBendpointCommand_0;
 
-    public static String CreateDiagramArchimateObjectCommand_0;
+    public static String CreateDiagramZentamateObjectCommand_0;
 
     public static String CreateDiagramConnectionCommand_0;
 

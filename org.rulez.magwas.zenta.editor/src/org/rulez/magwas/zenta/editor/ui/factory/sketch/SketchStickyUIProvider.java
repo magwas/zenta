@@ -10,9 +10,9 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.sketch.editparts.StickyEditPart;
-import org.rulez.magwas.zenta.editor.ui.IArchimateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
 import org.rulez.magwas.zenta.editor.ui.factory.AbstractElementUIProvider;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 
 
 
@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.model.IArchimatePackage;
 public class SketchStickyUIProvider extends AbstractElementUIProvider {
 
     public EClass providerFor() {
-        return IArchimatePackage.eINSTANCE.getSketchModelSticky();
+        return IZentamatePackage.eINSTANCE.getSketchModelSticky();
     }
     
     @Override
@@ -39,11 +39,11 @@ public class SketchStickyUIProvider extends AbstractElementUIProvider {
 
     @Override
     public Image getImage() {
-        return IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_STICKY_16);
+        return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_STICKY_16);
     }
 
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IArchimateImages.ImageFactory.getImageDescriptor(IArchimateImages.ICON_STICKY_16);
+        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_STICKY_16);
     }
 }

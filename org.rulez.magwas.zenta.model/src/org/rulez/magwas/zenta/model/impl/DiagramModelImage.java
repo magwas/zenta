@@ -10,7 +10,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
@@ -87,7 +87,7 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.DIAGRAM_MODEL_IMAGE;
+		return IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE;
 	}
 
     /**
@@ -108,7 +108,7 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
 		String oldBorderColor = borderColor;
 		borderColor = newBorderColor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR, oldBorderColor, borderColor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR, oldBorderColor, borderColor));
 	}
 
     /**
@@ -129,7 +129,7 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
 		String oldImagePath = imagePath;
 		imagePath = newImagePath;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH, oldImagePath, imagePath));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH, oldImagePath, imagePath));
 	}
 
     /**
@@ -140,9 +140,9 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
 				return getBorderColor();
-			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
+			case IZentamatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
 				return getImagePath();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -156,10 +156,10 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
 				setBorderColor((String)newValue);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
+			case IZentamatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
 				setImagePath((String)newValue);
 				return;
 		}
@@ -174,10 +174,10 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
 				setBorderColor(BORDER_COLOR_EDEFAULT);
 				return;
-			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
+			case IZentamatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
 				setImagePath(IMAGE_PATH_EDEFAULT);
 				return;
 		}
@@ -192,9 +192,9 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
+			case IZentamatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
 				return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
-			case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
+			case IZentamatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
 				return IMAGE_PATH_EDEFAULT == null ? imagePath != null : !IMAGE_PATH_EDEFAULT.equals(imagePath);
 		}
 		return super.eIsSet(featureID);
@@ -209,13 +209,13 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IBorderObject.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR: return IArchimatePackage.BORDER_OBJECT__BORDER_COLOR;
+				case IZentamatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR: return IZentamatePackage.BORDER_OBJECT__BORDER_COLOR;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelImageProvider.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH: return IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH;
+				case IZentamatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH: return IZentamatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH;
 				default: return -1;
 			}
 		}
@@ -231,13 +231,13 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IBorderObject.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.BORDER_OBJECT__BORDER_COLOR: return IArchimatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR;
+				case IZentamatePackage.BORDER_OBJECT__BORDER_COLOR: return IZentamatePackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelImageProvider.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH: return IArchimatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH;
+				case IZentamatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH: return IZentamatePackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH;
 				default: return -1;
 			}
 		}

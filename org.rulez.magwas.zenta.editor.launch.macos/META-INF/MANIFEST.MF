@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Archi Mac Launcher
+Bundle-Name: Zenta Mac Launcher
 Bundle-SymbolicName: org.rulez.magwas.zenta.editor.launch.macos;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: Phillip Beauvoir

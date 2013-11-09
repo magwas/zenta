@@ -24,13 +24,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.editparts.IArchimateEditPart;
-import org.rulez.magwas.zenta.editor.ui.ArchimateLabelProvider;
+import org.rulez.magwas.zenta.editor.diagram.editparts.IZentamateEditPart;
+import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
 
 
 
@@ -39,9 +39,9 @@ import org.rulez.magwas.zenta.model.util.ArchimateModelUtils;
  * 
  * @author Phillip Beauvoir
  */
-public class UsedInRelationshipsSection extends AbstractArchimatePropertySection {
+public class UsedInRelationshipsSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "uk.ac.bolton.archimate.help.usedInRelationshipsSection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.usedInRelationshipsSection"; //$NON-NLS-1$
     
     /**
      * Filter to show or reject this section depending on input value
@@ -50,11 +50,11 @@ public class UsedInRelationshipsSection extends AbstractArchimatePropertySection
         @Override
         public boolean select(Object object) {
             return !(object instanceof IRelationship) &&
-                        (object instanceof IArchimateElement || object instanceof IArchimateEditPart);
+                        (object instanceof IZentamateElement || object instanceof IZentamateEditPart);
         }
     }
 
-    private IArchimateElement fArchimateElement;
+    private IZentamateElement fZentamateElement;
     
     private TableViewer fTableViewer;
     private UpdatingTableColumnLayout fTableLayout;
@@ -90,7 +90,7 @@ public class UsedInRelationshipsSection extends AbstractArchimatePropertySection
             }
             
             public Object[] getElements(Object inputElement) {
-                return ArchimateModelUtils.getRelationships((IArchimateElement)inputElement).toArray();
+                return ZentamateModelUtils.getRelationships((IZentamateElement)inputElement).toArray();
             }
         });
         
@@ -98,17 +98,17 @@ public class UsedInRelationshipsSection extends AbstractArchimatePropertySection
             @Override
             public String getText(Object element) {
                 IRelationship relationship = (IRelationship)element;
-                String name = ArchimateLabelProvider.INSTANCE.getLabel(relationship) + " ("; //$NON-NLS-1$
-                name += ArchimateLabelProvider.INSTANCE.getLabel(relationship.getSource());
+                String name = ZentamateLabelProvider.INSTANCE.getLabel(relationship) + " ("; //$NON-NLS-1$
+                name += ZentamateLabelProvider.INSTANCE.getLabel(relationship.getSource());
                 name += " - "; //$NON-NLS-1$
-                name += ArchimateLabelProvider.INSTANCE.getLabel(relationship.getTarget());
+                name += ZentamateLabelProvider.INSTANCE.getLabel(relationship.getTarget());
                 name += ")"; //$NON-NLS-1$
                 return name;
             }
             
             @Override
             public Image getImage(Object element) {
-                return ArchimateLabelProvider.INSTANCE.getImage(element);
+                return ZentamateLabelProvider.INSTANCE.getImage(element);
             }
         });
         
@@ -116,7 +116,7 @@ public class UsedInRelationshipsSection extends AbstractArchimatePropertySection
             public void doubleClick(DoubleClickEvent event) {
                 if(isAlive()) {
                     Object o = ((IStructuredSelection)event.getSelection()).getFirstElement();
-                    if(o instanceof IArchimateElement) {
+                    if(o instanceof IZentamateElement) {
                         IRelationship relation = (IRelationship)o;
                         ITreeModelView view = (ITreeModelView)ViewManager.findViewPart(ITreeModelView.ID);
                         if(view != null) {
@@ -132,11 +132,11 @@ public class UsedInRelationshipsSection extends AbstractArchimatePropertySection
     
     @Override
     protected void setElement(Object element) {
-        if(element instanceof IArchimateElement) {
-            fArchimateElement = (IArchimateElement)element;
+        if(element instanceof IZentamateElement) {
+            fZentamateElement = (IZentamateElement)element;
         }
         else if(element instanceof IAdaptable) {
-            fArchimateElement = (IArchimateElement)((IAdaptable)element).getAdapter(IArchimateElement.class);
+            fZentamateElement = (IZentamateElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
         }
         else {
             System.err.println("UsedInRelationshipsSection wants to display for " + element); //$NON-NLS-1$
@@ -146,7 +146,7 @@ public class UsedInRelationshipsSection extends AbstractArchimatePropertySection
     }
     
     protected void refreshControls() {
-        fTableViewer.setInput(fArchimateElement);
+        fTableViewer.setInput(fZentamateElement);
         fTableLayout.doRelayout();
     }
     
@@ -157,7 +157,7 @@ public class UsedInRelationshipsSection extends AbstractArchimatePropertySection
 
     @Override
     protected EObject getEObject() {
-        return fArchimateElement;
+        return fZentamateElement;
     }
     
     @Override

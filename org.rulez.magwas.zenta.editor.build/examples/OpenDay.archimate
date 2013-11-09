@@ -80,7 +80,7 @@
     <element xsi:type="archimate:AssignmentRelationship" id="083a6326" source="61978d4f" target="2ebb90c0"/>
   </folder>
   <folder name="Views" id="860b41ed" type="diagrams">
-    <element xsi:type="archimate:ArchimateDiagramModel" id="ae6ebda3" name="Map View">
+    <element xsi:type="archimate:ZentamateDiagramModel" id="ae6ebda3" name="Map View">
       <child xsi:type="archimate:DiagramModelReference" id="2141247c" textAlignment="2" model="03ceb8ea">
         <bounds x="20" y="20" width="400" height="100"/>
       </child>
@@ -91,7 +91,7 @@
         <bounds x="20" y="260" width="400" height="100"/>
       </child>
     </element>
-    <element xsi:type="archimate:ArchimateDiagramModel" id="03ceb8ea" name="Default View">
+    <element xsi:type="archimate:ZentamateDiagramModel" id="03ceb8ea" name="Default View">
       <child xsi:type="archimate:Group" id="0c3b5672" name="Business layer" fillColor="#fffeab">
         <bounds x="48" y="-36" width="1825" height="265"/>
         <child xsi:type="archimate:DiagramObject" id="199d5447" textAlignment="2" archimateElement="44e2d629">
@@ -240,7 +240,7 @@
         </child>
       </child>
     </element>
-    <element xsi:type="archimate:ArchimateDiagramModel" id="951e298e" name="Simplified but complete">
+    <element xsi:type="archimate:ZentamateDiagramModel" id="951e298e" name="Simplified but complete">
       <child xsi:type="archimate:Group" id="763cabc1" name="Business layer" fillColor="#fffeab">
         <bounds x="170" y="48" width="767" height="121"/>
         <child xsi:type="archimate:DiagramObject" id="11418373" textAlignment="2" archimateElement="44e2d629">
@@ -295,7 +295,7 @@
         </child>
       </child>
     </element>
-    <element xsi:type="archimate:ArchimateDiagramModel" id="22786dc1" name="Business layer, simple">
+    <element xsi:type="archimate:ZentamateDiagramModel" id="22786dc1" name="Business layer, simple">
       <child xsi:type="archimate:Group" id="7ae97d6a" name="Business layer" fillColor="#fffeab">
         <bounds x="12" y="72" width="805" height="121"/>
         <child xsi:type="archimate:DiagramObject" id="2f42184f" textAlignment="2" archimateElement="44e2d629">

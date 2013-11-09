@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.AddDiagramModelReferenceCo
 import org.rulez.magwas.zenta.editor.diagram.commands.AddDiagramObjectCommand;
 import org.rulez.magwas.zenta.editor.diagram.dnd.AbstractDNDEditPolicy;
 import org.rulez.magwas.zenta.editor.diagram.dnd.DiagramDropRequest;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -74,7 +74,7 @@ public class CanvasDNDEditPolicy extends AbstractDNDEditPolicy {
         int x = pt.x;
         int y = pt.y;
 
-        IArchiveManager archiveManager = (IArchiveManager)getTargetContainer().getAdapter(IArchiveManager.class);
+        IZentaveManager archiveManager = (IZentaveManager)getTargetContainer().getAdapter(IZentaveManager.class);
         
         CompoundCommand result = new CompoundCommand(Messages.CanvasDNDEditPolicy_0);
 

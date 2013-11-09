@@ -11,13 +11,13 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.propertysections.messages"; //$NON-NLS-1$
 
-    public static String AbstractArchimatePropertySection_0;
+    public static String AbstractZentamatePropertySection_0;
 
-    public static String AbstractArchimatePropertySection_1;
+    public static String AbstractZentamatePropertySection_1;
 
-    public static String AbstractArchimatePropertySection_2;
+    public static String AbstractZentamatePropertySection_2;
 
-    public static String AbstractArchimatePropertySection_3;
+    public static String AbstractZentamatePropertySection_3;
 
     public static String AccessRelationshipSection_0;
 
@@ -31,21 +31,21 @@ public class Messages extends NLS {
 
     public static String AccessRelationshipSection_5;
 
-    public static String ArchimateElementSection_0;
+    public static String ZentamateElementSection_0;
 
-    public static String ArchimateElementSection_1;
+    public static String ZentamateElementSection_1;
 
-    public static String ArchimateModelSection_0;
+    public static String ZentamateModelSection_0;
 
-    public static String ArchimateModelSection_1;
+    public static String ZentamateModelSection_1;
 
-    public static String ArchimateModelSection_2;
+    public static String ZentamateModelSection_2;
 
-    public static String ArchimateModelSection_3;
+    public static String ZentamateModelSection_3;
 
-    public static String ArchimateModelSection_4;
+    public static String ZentamateModelSection_4;
 
-    public static String ArchimateModelSection_5;
+    public static String ZentamateModelSection_5;
 
     public static String BorderColorSection_0;
 

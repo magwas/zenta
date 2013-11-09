@@ -8,8 +8,8 @@ package org.rulez.magwas.zenta.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IRelationship;
 
 
@@ -27,7 +27,7 @@ import org.rulez.magwas.zenta.model.IRelationship;
  *
  * @generated
  */
-public abstract class Relationship extends ArchimateElement implements IRelationship {
+public abstract class Relationship extends ZentamateElement implements IRelationship {
     /**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -36,7 +36,7 @@ public abstract class Relationship extends ArchimateElement implements IRelation
 	 * @generated
 	 * @ordered
 	 */
-    protected IArchimateElement source;
+    protected IZentamateElement source;
 
     /**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -46,7 +46,7 @@ public abstract class Relationship extends ArchimateElement implements IRelation
 	 * @generated
 	 * @ordered
 	 */
-    protected IArchimateElement target;
+    protected IZentamateElement target;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -64,7 +64,7 @@ public abstract class Relationship extends ArchimateElement implements IRelation
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.RELATIONSHIP;
+		return IZentamatePackage.Literals.RELATIONSHIP;
 	}
 
     /**
@@ -72,7 +72,7 @@ public abstract class Relationship extends ArchimateElement implements IRelation
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IArchimateElement getSource() {
+    public IZentamateElement getSource() {
 		return source;
 	}
 
@@ -81,11 +81,11 @@ public abstract class Relationship extends ArchimateElement implements IRelation
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setSource(IArchimateElement newSource) {
-		IArchimateElement oldSource = source;
+    public void setSource(IZentamateElement newSource) {
+		IZentamateElement oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.RELATIONSHIP__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.RELATIONSHIP__SOURCE, oldSource, source));
 	}
 
     /**
@@ -93,7 +93,7 @@ public abstract class Relationship extends ArchimateElement implements IRelation
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IArchimateElement getTarget() {
+    public IZentamateElement getTarget() {
 		return target;
 	}
 
@@ -102,11 +102,11 @@ public abstract class Relationship extends ArchimateElement implements IRelation
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setTarget(IArchimateElement newTarget) {
-		IArchimateElement oldTarget = target;
+    public void setTarget(IZentamateElement newTarget) {
+		IZentamateElement oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.RELATIONSHIP__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.RELATIONSHIP__TARGET, oldTarget, target));
 	}
 
     /**
@@ -117,9 +117,9 @@ public abstract class Relationship extends ArchimateElement implements IRelation
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IArchimatePackage.RELATIONSHIP__SOURCE:
+			case IZentamatePackage.RELATIONSHIP__SOURCE:
 				return getSource();
-			case IArchimatePackage.RELATIONSHIP__TARGET:
+			case IZentamatePackage.RELATIONSHIP__TARGET:
 				return getTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -133,11 +133,11 @@ public abstract class Relationship extends ArchimateElement implements IRelation
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IArchimatePackage.RELATIONSHIP__SOURCE:
-				setSource((IArchimateElement)newValue);
+			case IZentamatePackage.RELATIONSHIP__SOURCE:
+				setSource((IZentamateElement)newValue);
 				return;
-			case IArchimatePackage.RELATIONSHIP__TARGET:
-				setTarget((IArchimateElement)newValue);
+			case IZentamatePackage.RELATIONSHIP__TARGET:
+				setTarget((IZentamateElement)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -151,11 +151,11 @@ public abstract class Relationship extends ArchimateElement implements IRelation
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.RELATIONSHIP__SOURCE:
-				setSource((IArchimateElement)null);
+			case IZentamatePackage.RELATIONSHIP__SOURCE:
+				setSource((IZentamateElement)null);
 				return;
-			case IArchimatePackage.RELATIONSHIP__TARGET:
-				setTarget((IArchimateElement)null);
+			case IZentamatePackage.RELATIONSHIP__TARGET:
+				setTarget((IZentamateElement)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -169,9 +169,9 @@ public abstract class Relationship extends ArchimateElement implements IRelation
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.RELATIONSHIP__SOURCE:
+			case IZentamatePackage.RELATIONSHIP__SOURCE:
 				return source != null;
-			case IArchimatePackage.RELATIONSHIP__TARGET:
+			case IZentamatePackage.RELATIONSHIP__TARGET:
 				return target != null;
 		}
 		return super.eIsSet(featureID);

@@ -24,12 +24,12 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
-import org.rulez.magwas.zenta.model.IArchimateElement;
-import org.rulez.magwas.zenta.model.IArchimateModel;
+import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -87,19 +87,19 @@ public final class CopySnapshot {
     private int fXOffSet, fYOffSet;
     
     /**
-     * Whether or not we paste new copies of the copied Archimate Elements
+     * Whether or not we paste new copies of the copied Zentamate Elements
      */
-    private boolean fDoCreateArchimateElementCopies;
+    private boolean fDoCreateZentamateElementCopies;
     
     /**
-     * The source Archimate Model of the copied objects
+     * The source Zentamate Model of the copied objects
      */
-    private IArchimateModel fSourceArchimateModel;
+    private IZentamateModel fSourceZentamateModel;
     
     /**
-     * The target Archimate Model of the copied objects
+     * The target Zentamate Model of the copied objects
      */
-    private IArchimateModel fTargetArchimateModel;
+    private IZentamateModel fTargetZentamateModel;
     
     /**
      * Clear the system Clipboard of any CopySnapshot object if the CopySnapshot references a model that is closed
@@ -112,8 +112,8 @@ public final class CopySnapshot {
                     Object contents = Clipboard.getDefault().getContents();
                     if(contents instanceof CopySnapshot) {
                         CopySnapshot copySnapshot = (CopySnapshot)contents;
-                        IArchimateModel model = (IArchimateModel)evt.getNewValue();
-                        if(copySnapshot.fSourceArchimateModel == model) {
+                        IZentamateModel model = (IZentamateModel)evt.getNewValue();
+                        if(copySnapshot.fSourceZentamateModel == model) {
                             Clipboard.getDefault().setContents(""); //$NON-NLS-1$
                         }
                     }
@@ -155,7 +155,7 @@ public final class CopySnapshot {
             }
         }
         
-        fSourceArchimateModel = diagramModel.getArchimateModel();
+        fSourceZentamateModel = diagramModel.getZentamateModel();
         
         // First copy objects
         List<IDiagramModelObject> objectsToCopy = getTopLevelObjectsToCopy(modelObjectsSelected);
@@ -291,10 +291,10 @@ public final class CopySnapshot {
     }
     
     private boolean isValidPasteObject(IDiagramModel targetDiagramModel, IDiagramModelObject object) {
-        // Can't paste IDiagramModelReference to another Archimate model
+        // Can't paste IDiagramModelReference to another Zentamate model
         if(object instanceof IDiagramModelReference) {
             IDiagramModel ref = ((IDiagramModelReference)object).getReferencedModel();
-            for(IDiagramModel diagramModel : targetDiagramModel.getArchimateModel().getDiagramModels()) {
+            for(IDiagramModel diagramModel : targetDiagramModel.getZentamateModel().getDiagramModels()) {
                 if(ref == diagramModel) {
                     return true;
                 }
@@ -306,18 +306,18 @@ public final class CopySnapshot {
     }
     
     /*
-     * @return True if the target diagram model already contains at least one reference to the copied Archimate Elements.
+     * @return True if the target diagram model already contains at least one reference to the copied Zentamate Elements.
      * If this is true then we need to paste copies.
      */
-    private boolean needsCopiedArchimateElements(IDiagramModel targetDiagramModel) {
-        // If different Archimate Models then yes!
-        if(fTargetArchimateModel != fSourceArchimateModel) {
+    private boolean needsCopiedZentamateElements(IDiagramModel targetDiagramModel) {
+        // If different Zentamate Models then yes!
+        if(fTargetZentamateModel != fSourceZentamateModel) {
             return true;
         }
         
         for(IDiagramModelObject object : fOriginalToSnapshotObjectsMapping.keySet()) {
-            if(object instanceof IDiagramModelArchimateObject) {
-                IArchimateElement originalElement = ((IDiagramModelArchimateObject)object).getArchimateElement();
+            if(object instanceof IDiagramModelZentamateObject) {
+                IZentamateElement originalElement = ((IDiagramModelZentamateObject)object).getZentamateElement();
                 if(originalElement == null || originalElement.eContainer() == null) { // archimate element was deleted
                     return true;
                 }
@@ -328,8 +328,8 @@ public final class CopySnapshot {
         }
         
         for(IDiagramModelConnection connection : fOriginalToSnapshotConnectionsMapping.keySet()) {
-            if(connection instanceof IDiagramModelArchimateConnection) {
-                IRelationship originalRelationship = ((IDiagramModelArchimateConnection)connection).getRelationship();
+            if(connection instanceof IDiagramModelZentamateConnection) {
+                IRelationship originalRelationship = ((IDiagramModelZentamateConnection)connection).getRelationship();
                 if(originalRelationship == null || originalRelationship.eContainer() == null) { // archimate relationship was deleted
                     return true;
                 }
@@ -352,10 +352,10 @@ public final class CopySnapshot {
             return null;
         }
         
-        fTargetArchimateModel = targetDiagramModel.getArchimateModel();
+        fTargetZentamateModel = targetDiagramModel.getZentamateModel();
         
-        // Create copies of Archimate Elements or not
-        fDoCreateArchimateElementCopies = needsCopiedArchimateElements(targetDiagramModel);
+        // Create copies of Zentamate Elements or not
+        fDoCreateZentamateElementCopies = needsCopiedZentamateElements(targetDiagramModel);
 
         // Find smallest x,y origin offset to paste at
         // TODO Calculate offsets
@@ -398,18 +398,18 @@ public final class CopySnapshot {
             bounds.setY(bounds.getY() + fYOffSet);
         }
         
-        if(newObject instanceof IDiagramModelArchimateObject) {
-            IDiagramModelArchimateObject dmo = (IDiagramModelArchimateObject)newObject;
+        if(newObject instanceof IDiagramModelZentamateObject) {
+            IDiagramModelZentamateObject dmo = (IDiagramModelZentamateObject)newObject;
             // Use a copy so provide a new name
-            if(fDoCreateArchimateElementCopies) {
-                String name = dmo.getArchimateElement().getName();
-                dmo.getArchimateElement().setName(name + " " + Messages.CopySnapshot_1); //$NON-NLS-1$
+            if(fDoCreateZentamateElementCopies) {
+                String name = dmo.getZentamateElement().getName();
+                dmo.getZentamateElement().setName(name + " " + Messages.CopySnapshot_1); //$NON-NLS-1$
             }
-            // Else re-use original ArchiMate element
+            // Else re-use original ZentaMate element
             else {
-                IDiagramModelArchimateObject originalDiagramObject = (IDiagramModelArchimateObject)fSnapshotToOriginalObjectsMapping.get(snapshotObject);
-                IArchimateElement element = originalDiagramObject.getArchimateElement();
-                dmo.setArchimateElement(element);
+                IDiagramModelZentamateObject originalDiagramObject = (IDiagramModelZentamateObject)fSnapshotToOriginalObjectsMapping.get(snapshotObject);
+                IZentamateElement element = originalDiagramObject.getZentamateElement();
+                dmo.setZentamateElement(element);
             }
         }
         
@@ -417,7 +417,7 @@ public final class CopySnapshot {
         tmpSnapshotToNewObjectMapping.put(snapshotObject, newObject);
         
         // New diagram object Command
-        result.add(new PasteDiagramObjectCommand(container, newObject, fDoCreateArchimateElementCopies));
+        result.add(new PasteDiagramObjectCommand(container, newObject, fDoCreateZentamateElementCopies));
         
         // Container
         if(snapshotObject instanceof IDiagramModelContainer) {
@@ -439,14 +439,14 @@ public final class CopySnapshot {
         if(newSource != null && newTarget != null) {
             IDiagramModelConnection newConnection = (IDiagramModelConnection)snapshotConnection.getCopy();
             
-            // Re-use original Archimate relationship
-            if(!fDoCreateArchimateElementCopies && snapshotConnection instanceof IDiagramModelArchimateConnection) {
-                IDiagramModelArchimateConnection originalDiagramConnection = (IDiagramModelArchimateConnection)fSnapshotToOriginalConnectionsMapping.get(snapshotConnection);
+            // Re-use original Zentamate relationship
+            if(!fDoCreateZentamateElementCopies && snapshotConnection instanceof IDiagramModelZentamateConnection) {
+                IDiagramModelZentamateConnection originalDiagramConnection = (IDiagramModelZentamateConnection)fSnapshotToOriginalConnectionsMapping.get(snapshotConnection);
                 IRelationship relationship = originalDiagramConnection.getRelationship();
-                ((IDiagramModelArchimateConnection)newConnection).setRelationship(relationship);
+                ((IDiagramModelZentamateConnection)newConnection).setRelationship(relationship);
             }
             
-            result.add(new PasteDiagramConnectionCommand(newConnection, newSource, newTarget, fDoCreateArchimateElementCopies));
+            result.add(new PasteDiagramConnectionCommand(newConnection, newSource, newTarget, fDoCreateZentamateElementCopies));
         }
     }
 
@@ -542,12 +542,12 @@ public final class CopySnapshot {
     private static class PasteDiagramObjectCommand extends Command {
         private IDiagramModelContainer fParent; // Target Parent Container
         private IDiagramModelObject fNewDiagramObject; // New copy
-        private boolean fDoCreateArchimateElement;
+        private boolean fDoCreateZentamateElement;
         
-        public PasteDiagramObjectCommand(IDiagramModelContainer parent, IDiagramModelObject modelObject, boolean doCreateArchimateElement) {
+        public PasteDiagramObjectCommand(IDiagramModelContainer parent, IDiagramModelObject modelObject, boolean doCreateZentamateElement) {
             fParent = parent;
             fNewDiagramObject = modelObject;
-            fDoCreateArchimateElement = doCreateArchimateElement;
+            fDoCreateZentamateElement = doCreateZentamateElement;
         }
         
         @Override
@@ -555,9 +555,9 @@ public final class CopySnapshot {
             // This first
             fParent.getChildren().add(fNewDiagramObject);
             
-            // If it's an Archimate model type then add the Archimate model object to a default folder
-            if(fNewDiagramObject instanceof IDiagramModelArchimateObject && fDoCreateArchimateElement) {
-                ((IDiagramModelArchimateObject)fNewDiagramObject).addArchimateElementToModel(null);
+            // If it's an Zentamate model type then add the Zentamate model object to a default folder
+            if(fNewDiagramObject instanceof IDiagramModelZentamateObject && fDoCreateZentamateElement) {
+                ((IDiagramModelZentamateObject)fNewDiagramObject).addZentamateElementToModel(null);
             }
         }
         
@@ -565,9 +565,9 @@ public final class CopySnapshot {
         public void undo() {
             fParent.getChildren().remove(fNewDiagramObject);
             
-            // If it's an Archimate model type then remove the Archimate model object from its containing folder
-            if(fNewDiagramObject instanceof IDiagramModelArchimateObject && fDoCreateArchimateElement) {
-                ((IDiagramModelArchimateObject)fNewDiagramObject).removeArchimateElementFromModel();
+            // If it's an Zentamate model type then remove the Zentamate model object from its containing folder
+            if(fNewDiagramObject instanceof IDiagramModelZentamateObject && fDoCreateZentamateElement) {
+                ((IDiagramModelZentamateObject)fNewDiagramObject).removeZentamateElementFromModel();
             }
         }
         
@@ -585,23 +585,23 @@ public final class CopySnapshot {
         private IDiagramModelConnection fConnection;
         private IDiagramModelObject fSource;
         private IDiagramModelObject fTarget;
-        private boolean fDoCreateArchimateElement;
+        private boolean fDoCreateZentamateElement;
         
         public PasteDiagramConnectionCommand(IDiagramModelConnection connection, IDiagramModelObject source,
-                IDiagramModelObject target, boolean doCreateArchimateElement) {
+                IDiagramModelObject target, boolean doCreateZentamateElement) {
             fConnection = connection;
             fSource = source;
             fTarget = target;
-            fDoCreateArchimateElement = doCreateArchimateElement;
+            fDoCreateZentamateElement = doCreateZentamateElement;
         }
 
         @Override
         public void execute() {
             fConnection.connect(fSource, fTarget);
             
-            // If it's an Archimate model type Add relationship to default folder
-            if(fConnection instanceof IDiagramModelArchimateConnection && fDoCreateArchimateElement) {
-                ((IDiagramModelArchimateConnection)fConnection).addRelationshipToModel(null);
+            // If it's an Zentamate model type Add relationship to default folder
+            if(fConnection instanceof IDiagramModelZentamateConnection && fDoCreateZentamateElement) {
+                ((IDiagramModelZentamateConnection)fConnection).addRelationshipToModel(null);
             }
         }
         
@@ -609,9 +609,9 @@ public final class CopySnapshot {
         public void undo() {
             fConnection.disconnect(); // have to do this
             
-            // If it's an Archimate model type remove relationship from folder
-            if(fConnection instanceof IDiagramModelArchimateConnection && fDoCreateArchimateElement) {
-                ((IDiagramModelArchimateConnection)fConnection).removeRelationshipFromModel();
+            // If it's an Zentamate model type remove relationship from folder
+            if(fConnection instanceof IDiagramModelZentamateConnection && fDoCreateZentamateElement) {
+                ((IDiagramModelZentamateConnection)fConnection).removeRelationshipFromModel();
             }
         }
         
@@ -619,9 +619,9 @@ public final class CopySnapshot {
         public void redo() {
             fConnection.reconnect(); // have to do this
             
-            // If it's an Archimate model type Add relationship to default folder
-            if(fConnection instanceof IDiagramModelArchimateConnection && fDoCreateArchimateElement) {
-                ((IDiagramModelArchimateConnection)fConnection).addRelationshipToModel(null);
+            // If it's an Zentamate model type Add relationship to default folder
+            if(fConnection instanceof IDiagramModelZentamateConnection && fDoCreateZentamateElement) {
+                ((IDiagramModelZentamateConnection)fConnection).addRelationshipToModel(null);
             }
         }
         

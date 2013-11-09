@@ -19,14 +19,14 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.IArchimateDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.IZentamateDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.components.PartListenerAdapter;
-import org.rulez.magwas.zenta.model.IArchimateElement;
+import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelArchimateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 
@@ -133,14 +133,14 @@ public class TreeSelectionSynchroniser implements ISelectionChangedListener {
             for(Object o : ((IStructuredSelection)selection).toArray()) {
                 if(o instanceof EditPart) {
                     Object model = ((EditPart)o).getModel();
-                    // Archimate element
-                    if(model instanceof IDiagramModelArchimateObject) {
-                        model = ((IDiagramModelArchimateObject)model).getArchimateElement();
+                    // Zentamate element
+                    if(model instanceof IDiagramModelZentamateObject) {
+                        model = ((IDiagramModelZentamateObject)model).getZentamateElement();
                         list.add(model);
                     }
-                    // Archimate connection
-                    else if(model instanceof IDiagramModelArchimateConnection) {
-                        model = ((IDiagramModelArchimateConnection)model).getRelationship();
+                    // Zentamate connection
+                    else if(model instanceof IDiagramModelZentamateConnection) {
+                        model = ((IDiagramModelZentamateConnection)model).getRelationship();
                         list.add(model);
                     }
                     // Diagram model
@@ -154,21 +154,21 @@ public class TreeSelectionSynchroniser implements ISelectionChangedListener {
             fTreeView.getViewer().setSelection(new StructuredSelection(list), true);
         }
         
-        // Archimate objects selection from Tree View, so update any Archimate Diagram Editors
+        // Zentamate objects selection from Tree View, so update any Zentamate Diagram Editors
         else if(source instanceof TreeViewer) {
-            List<IArchimateElement> list = new ArrayList<IArchimateElement>();
+            List<IZentamateElement> list = new ArrayList<IZentamateElement>();
             
-            // Archimate elements
+            // Zentamate elements
             for(Object o : ((IStructuredSelection)selection).toArray()) {
-                if(o instanceof IArchimateElement) {
-                    list.add((IArchimateElement)o);
+                if(o instanceof IZentamateElement) {
+                    list.add((IZentamateElement)o);
                 }
             }
             
             // Select these in the Diagram Editors
             for(IDiagramModelEditor diagramEditor : fDiagramEditors) {
-                if(diagramEditor instanceof IArchimateDiagramEditor) {
-                    ((IArchimateDiagramEditor)diagramEditor).selectElements(list.toArray(new IArchimateElement[list.size()]));
+                if(diagramEditor instanceof IZentamateDiagramEditor) {
+                    ((IZentamateDiagramEditor)diagramEditor).selectElements(list.toArray(new IZentamateElement[list.size()]));
                 }
             }
         }

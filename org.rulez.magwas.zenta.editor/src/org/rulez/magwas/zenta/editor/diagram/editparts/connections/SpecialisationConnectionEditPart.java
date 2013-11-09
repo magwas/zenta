@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.SpecialisationC
  * 
  * @author Phillip Beauvoir
  */
-public class SpecialisationConnectionEditPart extends AbstractArchimateConnectionEditPart {
+public class SpecialisationConnectionEditPart extends AbstractZentamateConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {

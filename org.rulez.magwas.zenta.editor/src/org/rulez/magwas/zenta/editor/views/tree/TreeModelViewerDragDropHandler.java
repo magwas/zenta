@@ -31,8 +31,8 @@ import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveFolderCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveObjectCommand;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IArchimateModel;
-import org.rulez.magwas.zenta.model.IArchimateModelElement;
+import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentamateModelElement;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -147,11 +147,11 @@ public class TreeModelViewerDragDropHandler {
     private void setIsValidTreeSelection(IStructuredSelection selection) {
         fIsValidTreeSelection = true;
         
-        IArchimateModel model = null;
+        IZentamateModel model = null;
         
         for(Object object : selection.toArray()) {
             // Can't drag Models
-            if(object instanceof IArchimateModel) {
+            if(object instanceof IZentamateModel) {
                 fIsValidTreeSelection = false;
                 break;
             }
@@ -161,8 +161,8 @@ public class TreeModelViewerDragDropHandler {
                 break;
             }
             // Don't allow mixed parent models
-            if(object instanceof IArchimateModelElement) {
-                IArchimateModel m = ((IArchimateModelElement)object).getArchimateModel();
+            if(object instanceof IZentamateModelElement) {
+                IZentamateModel m = ((IZentamateModelElement)object).getZentamateModel();
                 if(model != null && m != model) {
                     fIsValidTreeSelection = false;
                     break;
@@ -202,7 +202,7 @@ public class TreeModelViewerDragDropHandler {
             public void run() {
                 for(String path : paths) {
                     File file = new File(path);
-                    // Archi
+                    // Zenta
                     if(file.getName().toLowerCase().endsWith(IEditorModelManager.ARCHIMATE_FILE_EXTENSION)
                             && !IEditorModelManager.INSTANCE.isModelLoaded(file)) {
                         IEditorModelManager.INSTANCE.openModel(file);
@@ -313,12 +313,12 @@ public class TreeModelViewerDragDropHandler {
     private boolean hasCommonParentFolder(IFolder targetfolder, EObject object) {
         EObject f1 = targetfolder;
         boolean movearound = Preferences.isAllowMoveAround();
-        while(!(((!movearound) && (f1.eContainer() instanceof IArchimateModel))||(movearound && (f1 instanceof IArchimateModel)))) {
+        while(!(((!movearound) && (f1.eContainer() instanceof IZentamateModel))||(movearound && (f1 instanceof IZentamateModel)))) {
             f1 = f1.eContainer();
         }
         
         EObject f2 = object.eContainer();
-        while(f2 != null && !(((!movearound) && (f2.eContainer() instanceof IArchimateModel))||(movearound && (f2 instanceof IArchimateModel)))) {
+        while(f2 != null && !(((!movearound) && (f2.eContainer() instanceof IZentamateModel))||(movearound && (f2 instanceof IZentamateModel)))) {
             f2 = f2.eContainer();
         }
         

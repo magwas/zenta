@@ -8,7 +8,7 @@ package org.rulez.magwas.zenta.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.rulez.magwas.zenta.model.IArchimatePackage;
+import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelNote;
 import org.rulez.magwas.zenta.model.ITextContent;
 
@@ -63,7 +63,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IArchimatePackage.Literals.DIAGRAM_MODEL_NOTE;
+		return IZentamatePackage.Literals.DIAGRAM_MODEL_NOTE;
 	}
 
     /**
@@ -84,7 +84,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
 		String oldContent = content;
 		content = newContent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.DIAGRAM_MODEL_NOTE__CONTENT, oldContent, content));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_NOTE__CONTENT, oldContent, content));
 	}
     
     /** 
@@ -103,7 +103,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_NOTE__CONTENT:
+			case IZentamatePackage.DIAGRAM_MODEL_NOTE__CONTENT:
 				return getContent();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -117,7 +117,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_NOTE__CONTENT:
+			case IZentamatePackage.DIAGRAM_MODEL_NOTE__CONTENT:
 				setContent((String)newValue);
 				return;
 		}
@@ -132,7 +132,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_NOTE__CONTENT:
+			case IZentamatePackage.DIAGRAM_MODEL_NOTE__CONTENT:
 				setContent(CONTENT_EDEFAULT);
 				return;
 		}
@@ -147,7 +147,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IArchimatePackage.DIAGRAM_MODEL_NOTE__CONTENT:
+			case IZentamatePackage.DIAGRAM_MODEL_NOTE__CONTENT:
 				return CONTENT_EDEFAULT == null ? content != null : !CONTENT_EDEFAULT.equals(content);
 		}
 		return super.eIsSet(featureID);
@@ -162,7 +162,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == ITextContent.class) {
 			switch (derivedFeatureID) {
-				case IArchimatePackage.DIAGRAM_MODEL_NOTE__CONTENT: return IArchimatePackage.TEXT_CONTENT__CONTENT;
+				case IZentamatePackage.DIAGRAM_MODEL_NOTE__CONTENT: return IZentamatePackage.TEXT_CONTENT__CONTENT;
 				default: return -1;
 			}
 		}
@@ -178,7 +178,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ITextContent.class) {
 			switch (baseFeatureID) {
-				case IArchimatePackage.TEXT_CONTENT__CONTENT: return IArchimatePackage.DIAGRAM_MODEL_NOTE__CONTENT;
+				case IZentamatePackage.TEXT_CONTENT__CONTENT: return IZentamatePackage.DIAGRAM_MODEL_NOTE__CONTENT;
 				default: return -1;
 			}
 		}
