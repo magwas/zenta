@@ -1,25 +1,21 @@
 
-# Archi - ArchiMate Modelling Editor
+# Zenta - Zenta Es No Tan Archi
 
-Archi is a free, open source, cross-platform tool and editor to create ArchiMate models.
+Notice: This software is in a transiton stage: lots of unnecessary code have already been thrown out, and more to follow.
+There will be renamimgs. This means - among other things - that model files will be incompatible with other versions for a while.
 
-ArchiMate is an open and independent Enterprise Architecture modelling language that supports the description, analysis and visualization of architecture within and across business domains. ArchiMate is one of the open standards hosted by The Open Group and is fully aligned with TOGAF2.
+Zenta is a free, open source, cross-platform tool and editor to create models along with their metamodels.
 
-Archi is targeted toward all levels of Enterprise Architects and Enterprise Modellers. It is intended to provide a low cost to entry (i.e. free) solution to users who may be making their first steps in the ArchiMate language or who are looking for a cross-platform ArchiMate modelling tool for their company or institution. Archi fulfils the needs of most Enterprise Architects and associated stakeholders, but it can also be regarded as an introductory ArchiMate tool for those wishing to engage with the language before committing to a commercial solution.
+Zenta is forked from Archi, which is an implementation for the Archimate methodology.
+Archimate is a closed standard of the Open Group. Yeah!
+This created a situation where in theory you could use a software with an expressed open source licence only with permission.
+And anyway, you might want to use other - or more - metamodels.
 
-For more information on ArchiMate see:
+Zenta is targeted toward all levels of Enterprise Architects and Enterprise Modellers. It is intended to provide a low cost to entry (i.e. free) solution to users who may be making their first steps in the architecture modelling or who are looking for a cross-platform modelling tool for their company or institution.
 
-http://www3.opengroup.org/subjectareas/enterprise/archimate
+Zenta boasts an export module which can export your model theoretically in any format, and does have styles to do it in docbook, html, opendoc and csv.
 
-The main Archi website:
+The export module also does conformance checks to your metamodels.
 
-http://archi.cetis.ac.uk
-
-
-
-## Building and running the code
-
-All developer resources are here:
-
-http://archi.cetis.ac.uk/developer.html
+Metamodels are easily expressed with graphical models.
 
