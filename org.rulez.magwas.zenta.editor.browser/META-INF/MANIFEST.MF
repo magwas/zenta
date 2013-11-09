@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.rulez.magwas.zenta.editor.browser;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Localization: plugin
 Bundle-Activator: org.rulez.magwas.zenta.editor.browser.BrowserPlugin
-Bundle-Vendor: Phillip Beauvoir
+Bundle-Vendor: Árpád Magosányi
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

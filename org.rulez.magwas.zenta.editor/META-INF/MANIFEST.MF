@@ -4,7 +4,7 @@ Bundle-Name: %productName
 Bundle-SymbolicName: org.rulez.magwas.zenta.editor;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Activator: org.rulez.magwas.zenta.editor.ZentamateEditorPlugin
-Bundle-Vendor: Phillip Beauvoir
+Bundle-Vendor: Árpád Magosányi
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.runtime.compatibility,
