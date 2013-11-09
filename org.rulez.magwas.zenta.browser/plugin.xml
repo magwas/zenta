@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.rulez.magwas.zenta.browser.BrowserEditor"
+            contributorClass="org.rulez.magwas.zenta.browser.BrowserEditorActionBarContributor"
+            default="false"
+            icon="img/browser-16.png"
+            id="org.rulez.magwas.archimate.editor.browser.browserEditor"
+            name="%editorBrowser">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.elementFactories">
+      <factory
+            class="org.rulez.magwas.zenta.browser.BrowserEditorInputFactory"
+            id="org.rulez.magwas.archimate.editor.browser.BrowserEditorInputFactory">
+      </factory>
+   </extension>
+
+</plugin>

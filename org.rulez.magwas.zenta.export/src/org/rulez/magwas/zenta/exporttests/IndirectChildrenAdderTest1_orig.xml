@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:archimate="http://www.bolton.ac.uk/archimate"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 id="90af6f69"
+                 name="test"
+                 version="2.2.0">
+  <element id="thenode"
+            name="Megadja az adatait"
+            xsi:type="archimate:BusinessProcess">
+      <documentation>Az ügyfél kitölti a szórólapon a formot.</documentation>
+  </element>
+</archimate:model>

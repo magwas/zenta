@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<style>
+<diagrams/>
+<copy source="structured.css" />
+<export  target="archirich.xml">
+    <transform language="xslt" script="structured.xslt" target="index.html" keep="true"/>
+</export>
+</style>

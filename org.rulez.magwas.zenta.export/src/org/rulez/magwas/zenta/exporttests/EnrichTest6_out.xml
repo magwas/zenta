@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <archimate:ArchimateDiagramModel xmlns:archimate="http://www.bolton.ac.uk/archimate"
+                                    connectionRouterType="1"
+                                    id="thenode"
+                                    name="funkció - workflow">
+      <child id="5345bf57" name="Funkciók" xsi:type="archimate:Group">
+          <bounds x="24"/>
+          <child archimateElement="8c360738"
+                id="5d8690ac"
+                textAlignment="2"
+                xsi:type="archimate:DiagramObject">
+          </child>
+      </child>
+      <property key="associatedObjectClass" value="Function"/>
+  </archimate:ArchimateDiagramModel>
+    <element id="8c360738"
+            name="Megadja az adatait"
+            xsi:type="archimate:BusinessProcess">
+      <documentation>Az ügyfél kitölti a szórólapon a formot.</documentation>
+  </element>  
+</model>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:BusinessProcess xmlns:archimate="http://www.bolton.ac.uk/archimate"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           id="thenode"
+                           name="Megadja az adatait">
+      <documentation>Az ügyfél kitölti a szórólapon a formot.</documentation>
+            <property key="objectClass" value="workflow"/>
+      
+  <workflow parentid="thenode"/>
+</archimate:BusinessProcess>

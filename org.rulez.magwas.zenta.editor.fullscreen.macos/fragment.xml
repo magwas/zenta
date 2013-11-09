@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.7"?>
+<fragment>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.rulez.magwas.zenta.editor.fullscreen.macos.commandFullScreen"
+            schemeId="org.rulez.magwas.zenta.editor.keybindings"
+            sequence="M1+M4+F">
+      </key>
+      <key
+            commandId="org.rulez.magwas.zenta.editor.fullscreen.macos.commandEscape"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Esc">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.rulez.magwas.zenta.editor.FullScreenCommandHandler"
+            id="org.rulez.magwas.zenta.editor.fullscreen.macos.commandFullScreen"
+            name="Full Screen">
+      </command>
+      <command
+            defaultHandler="org.rulez.magwas.zenta.editor.EscapeFullScreenCommandHandler"
+            id="org.rulez.magwas.zenta.editor.fullscreen.macos.commandEscape"
+            name="Exit Full Screen">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:window?before=nav">
+         <command
+               commandId="org.rulez.magwas.zenta.editor.fullscreen.macos.commandFullScreen"
+               label="Mac Full Screen"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>on>
+
+</fragment>

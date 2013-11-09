@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style>
+	<copy source="emptydir" target="pics"/>
+	<copy source="static/slideshow.css" target="slideshow.css"/>
+	<copy source="static/slideshow.js" target="slideshow.js"/>
+	<diagrams target="pics"/>
+	<export target="archirich.xml" policy="policy.xml" keep="false">
+		<transform language="xslt" script="xslt/slideshow.xslt" target="slides.html" keep="true" flat="false" part="all">
+		</transform>
+	</export>
+</style>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.rulez.magwas.zenta.editor.exportHandler">
+      <exportHandler
+            class="org.rulez.magwas.zenta.export.StyledHtml"
+            id="org.rulez.magwas.styledhtml.StyledHtml"
+            label="Model To Styled HTML...">
+      </exportHandler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.rulez.magwas.zenta.export.StyledPreferencePage"
+            id="org.rulez.magwas.styledhtml.prefsStyled"
+            name="Styled Export">
+         <keywordReference
+               id="StyledExport">
+         </keywordReference>
+      </page>
+   </extension>
+   <extension
+         point="org.rulez.magwas.zenta.editor.exportHandler">
+      <exportHandler
+            class="org.rulez.magwas.zenta.export.RichExport"
+            id="org.rulez.magwas.styledhtml.RichExport"
+            label="Model to rich format">
+      </exportHandler>
+   </extension>
+</plugin>

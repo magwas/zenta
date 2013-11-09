@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:archimate="http://www.bolton.ac.uk/archimate"
+        name="Generated Policy (new style)">
+      <objectClass name="ProcessStep" abstract="">
+      <description/>
+      <ancestor class="archimate:BusinessProcess"/>
+      <property name="adat"
+                type="xs:string"
+                minOccurs="2"
+                maxOccurs="2"
+                structural="">
+         <description/>
+         <default 
+                  select="//archimate:BusinessObject[@id=//archimate:AccessRelationship[@source=$id]/@target]"
+                  multi="true">
+            <description/>
+         </default>
+         <default multi="true" indirect="adat/child">
+            <description>The data indirectly mined through adat/child</description>
+         </default>
+      </property>
+      </objectClass>   
+   <objectClass name="Data" abstract="">
+      <description/>
+      <ancestor class="archimate:BusinessObject"/>
+      <property name="child"
+                type="xs:string"
+                minOccurs="0"
+                maxOccurs="1"
+                structural="">
+         <description/>
+         <default
+                  select="//archimate:BusinessObject[@id=//archimate:CompositionRelationship[@source=$id]/@target]"
+                  multi="true">
+            <description/>
+         </default>
+      </property>
+      <property name="parent"
+                type="xs:string"
+                minOccurs="0"
+                maxOccurs="1"
+                structural="">
+         <description/>
+         <default 
+                  select="//archimate:BusinessObject[@id=//archimate:CompositionRelationship[@target=$id]/@source]"
+                  multi="true">
+            <description/>
+         </default>
+      </property>
+      <property name="folyamat"
+                type="xs:string"
+                minOccurs="0"
+                maxOccurs="1"
+                structural="">
+         <description/>
+         <default
+                  select="//archimate:BusinessProcess[@id=//archimate:AccessRelationship[@target=$id]/@source]"
+                  multi="true">
+            <description/>
+         </default>
+      </property>
+   </objectClass>
+</policy>      

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.rulez.magwas.zenta.templates.actionSet"
+            label="Templates"
+            visible="true">
+         <action
+               class="org.rulez.magwas.zenta.templates.impl.SaveAsTemplateAction"
+               id="org.rulez.magwas.zenta.templates.saveAsTemplate"
+               label="%action.label.0"
+               menubarPath="file/save.ext">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.rulez.magwas.zenta.templates.impl.NewArchimateModelFromTemplateHandler"
+            id="org.rulez.magwas.zenta.templates.modelFromTemplate"
+            name="New Model From Template">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:new_menu?after=new_menu.ext">
+         <command
+               commandId="org.rulez.magwas.zenta.templates.modelFromTemplate"
+               icon="img/newfile.gif"
+               label="%action.label"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.rulez.magwas.zenta.menu.newDropdown">
+         <command
+               commandId="org.rulez.magwas.zenta.templates.modelFromTemplate"
+               icon="img/newfile.gif"
+               label="%action.label"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup></startup>
+   </extension>
+
+</plugin>

@@ -1,0 +1,10 @@
+This is the structured report style.
+
+The report contains the objects and diagrams in the same structure as they are in the model, ith a table of contents.
+
+If you want to hide something from the report, use the report:hide property on it with a value which evaluates to true (1 is okay).
+If you hide a folder, it hides the contents of it.
+
+The output might not be nice, but at least easy to overview.
+Cosmetic fixups are welcome, I am not good at visual design.
+

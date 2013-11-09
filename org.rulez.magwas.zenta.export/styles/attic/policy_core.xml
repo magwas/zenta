@@ -1,0 +1,338 @@
+<policy name="Core Policy">
+  <objectClass abstract="" name="objectClass">
+    <description>
+      <documentation>
+        The primary abstraction of the policy is the objectClass element.
+        <br/>
+        An objectClass describes a concept derived from either a builtin archimate element, or another objectClass: the ancestor of the objectClass.
+        <br/>
+        <br/>
+        We can define the objectClass of an archimate element in one of the following ways:
+        <br/>
+        <br/>
+        - add a property where the name is &quot;objectClass&quot; and the value is the name of the objectclass
+        <br/>
+        - add a property where the name is in the form 
+        &lt;
+        class
+        &gt;
+        :
+        &lt;
+        property
+        &gt;
+        , where 
+        &lt;
+        class
+        &gt;
+         is the name of the objectclass, and 
+        &lt;
+        property
+        &gt;
+         is the name of one of the properties of the objectclass. The value vill be the value of the objectClass property.
+        <br/>
+        - create a Group in a view, with the property named &quot;associatedObjectClass&quot;. The value of the property should be the name of the objectClass. All the elements within the group (including the nested ones) will belong to the objectClass
+        <br/>
+        <br/>
+        The policy related to the objectclass will help to check the model for structure and content, and also makes creating reports and generating configurations easier.
+        <br/>
+        One of the examples of this is that the policy for this model can be generated from this model, and the generated policy can be used to check that this model is indeed conforms to the policy which is generated from it :)
+        <br/>
+      </documentation>
+    </description>
+    <ancestor class="abstractNamed"/>
+    <property maxOccurs="" minOccurs="" name="parent" structural="true" type="xs:string">
+      <description>
+        <documentation>
+          The ancestor of the objectClass.
+          <br/>
+          The objectclass have all the properties of its non-builtin ancestors.
+          <br/>
+          <br/>
+          The ancestor is represented by a tag named 'ancestor' having an attribute named 'class' with the value of the ancestor class name in the policy file.
+          <br/>
+        </documentation>
+      </description>
+      <default multi="true" order="0" select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name|//ArchimateObjectClass[@parentid=//archimate:SpecialisationRelationship[@target=$id]/@source]/../@name">
+        <description/>
+      </default>
+    </property>
+    <property maxOccurs="" minOccurs="0" name="abstract" structural="" type="xs:string">
+      <description>
+        <documentation>
+          If &quot;true&quot;, the objectClass is merely used for the purpose of instantiating properties for other objectclasses. It should not be directly instantiated in a model.
+          <br/>
+          <br/>
+          The property is represented by the attribute with the same name in the policy file.
+          <br/>
+          <br/>
+          FIXME: check for this is not implemented yet.
+          <br/>
+        </documentation>
+      </description>
+    </property>
+    <property maxOccurs="" minOccurs="0" name="attrib" structural="true" type="xs:string">
+      <description>
+        <documentation>
+          The id of an attribute belonging to the objectClass
+          <br/>
+        </documentation>
+      </description>
+      <default multi="true" order="0" select="//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid">
+        <description/>
+      </default>
+    </property>
+  </objectClass>
+  <objectClass abstract="" name="attribute">
+    <description>
+      <documentation>
+        The attribute is used to describe a attribute of an objectClass.
+        <br/>
+        You can define a attribute value either by giving the value to a property named 
+        &lt;
+        classname
+        &gt;
+        :
+        &lt;
+        attributename
+        &gt;
+         to an object, or by using a model structure defined by the defaults of the given attribute.
+        <br/>
+      </documentation>
+    </description>
+    <ancestor class="abstractNamed"/>
+    <property maxOccurs="1" minOccurs="" name="type" structural="" type="xs:string">
+      <description>
+        <documentation>
+          The type of the property.
+          <br/>
+          It will be used when an xsd is generated from the policy.
+          <br/>
+          The xsd in turn will be used to check the values given.
+          <br/>
+          <br/>
+          The property is represented by the attribute named 'type' in the policy file.
+          <br/>
+        </documentation>
+      </description>
+    </property>
+    <property maxOccurs="1" minOccurs="0" name="minOccurs" structural="" type="xs:string">
+      <description>
+        <documentation>
+          How much time the property should be occur minimally in the objectClass.
+          <br/>
+          If no such property, then the value is deemed to be 1.
+          <br/>
+          It will be used when an xsd is generated from the policy.
+          <br/>
+          The xsd in turn will be used to check the values given.
+          <br/>
+          <br/>
+          The property is represented by the attribute with the same name in the policy file.
+          <br/>
+        </documentation>
+      </description>
+    </property>
+    <property maxOccurs="1" minOccurs="0" name="maxOccurs" structural="" type="xs:string">
+      <description>
+        <documentation>
+          How much time the property should be occur maximally in the objectClass.
+          <br/>
+          If no such property, then there is no limit.
+          <br/>
+          It will be used when an xsd is generated from the policy.
+          <br/>
+          The xsd in turn will be used to check the values given.
+          <br/>
+          <br/>
+          The property is represented by the attribute with the same name in the policy file.
+          <br/>
+        </documentation>
+      </description>
+    </property>
+    <property maxOccurs="1" minOccurs="0" name="structural" structural="" type="xs:string">
+      <description>
+        <documentation>
+          If the value of this property is &quot;true&quot;, then the property is structural:
+          <br/>
+          The value will be generated by a default associated to it, and it is an error to enter the value into the model through some properties.
+          <br/>
+          <br/>
+          FIXME: this check is not implemented yet.
+          <br/>
+          <br/>
+          The property is represented by the attribute with the same name in the policy file.
+          <br/>
+        </documentation>
+      </description>
+    </property>
+    <property maxOccurs="" minOccurs="0" name="def" structural="" type="xs:string">
+      <description>
+        <documentation>
+          The id of a default related to the attribute.
+          <br/>
+          <br/>
+          The property is represented by a tag named 'type' in the policy file.
+          <br/>
+        </documentation>
+      </description>
+      <default multi="true" order="0" select="//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid">
+        <description/>
+      </default>
+    </property>
+  </objectClass>
+  <objectClass abstract="" name="default">
+    <description>
+      <documentation>
+        The default is used to describe how a property will get its default value if we have not given anything.
+        <br/>
+        It is useful to
+        <br/>
+        - describe and enforce structural relationships within the model
+        <br/>
+        - give default value to a property
+        <br/>
+        <br/>
+        This attribute should be entered as a property.
+        <br/>
+      </documentation>
+    </description>
+    <ancestor class="archimate:DataObject"/>
+    <property maxOccurs="1" minOccurs="" name="description" structural="" type="xs:string">
+      <description>
+        <documentation>
+          The description of the default.
+          <br/>
+          <br/>
+          Ideally it describes how to give a value to the property through model structure, or what is the default value of the property, and why it is so.
+          <br/>
+          <br/>
+          <br/>
+          The description is represented by the tag named 'description' in the policy file.
+          <br/>
+        </documentation>
+      </description>
+      <default multi="" order="0" select="../@name | ../documentation">
+        <description>
+          <documentation>
+            By convention the 'how' and 'what' are described in the archimate element name, and the 'why' in its documentation.
+            <br/>
+          </documentation>
+        </description>
+      </default>
+    </property>
+    <property maxOccurs="1" minOccurs="0" name="order" structural="" type="xs:nonnegativeinteger">
+      <description>
+        <documentation>
+          The order in which the defaults are evaluated.
+          <br/>
+          The default evaluation goes in the following way:
+          <br/>
+          1. i:=0
+          <br/>
+          2. if there is a default with order i, then try it. else stop.
+          <br/>
+          3. if the default gave back a value, then stop.
+          <br/>
+          4. i:= i+1
+          <br/>
+          5. continue from 2.
+          <br/>
+          <br/>
+          Beware: if defaults are not numbered sequentially from zero, then some of them might not be tried.
+          <br/>
+          The reason of this behaviour that the sequence of getting the attributes from the policy programatically is not guaranteed to be the same as they are described there.
+          <br/>
+          <br/>
+          The property is represented by the attribute with the same name in the policy file.
+          <br/>
+        </documentation>
+      </description>
+    </property>
+    <property maxOccurs="1" minOccurs="0" name="select" structural="" type="xs:string">
+      <description>
+        <documentation>
+          The xpath expression to be evaluated to get the value of the property.
+          <br/>
+          If multi=&quot;true&quot;, then the result should be a nodeset, else a string.
+          <br/>
+          <br/>
+          The property is represented by the attribute with the same name in the policy file.
+          <br/>
+        </documentation>
+      </description>
+    </property>
+    <property maxOccurs="1" minOccurs="0" name="multi" structural="" type="xs:string">
+      <description>
+        <documentation>
+          Whether the select will return multiple values.
+          <br/>
+          If set to &quot;true&quot;, then for each item in the nodelist returned by the select, a different property will be generated.
+          <br/>
+          <br/>
+          The property is represented by the attribute with the same name in the policy file.
+          <br/>
+          FIXME: there should be a &quot;type&quot; attribute instead, defaulting to string, with the following possible values:
+          <br/>
+          string: default functionality
+          <br/>
+          multi: multi=&quot;true&quot;
+          <br/>
+          structured: works like xsl:copy-of
+          <br/>
+        </documentation>
+      </description>
+    </property>
+  </objectClass>
+  <objectClass abstract="" name="ArchimateObjectClass">
+    <description>
+      <documentation>
+        An objectclass predefined by Archi.
+        <br/>
+        This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.
+        <br/>
+      </documentation>
+    </description>
+    <ancestor class="abstractNamed"/>
+    <ancestor class="archimate:DataObject"/>
+  </objectClass>
+  <objectClass abstract="true" name="abstractNamed">
+    <description>
+      <documentation>
+        This is an abstract class, so we don't need to define the name and description property for all objectClasses.
+        <br/>
+      </documentation>
+    </description>
+    <ancestor class="archimate:DataObject"/>
+    <p>
+      This is an abstract class, do not instantiate it in a model
+    </p>
+    <property maxOccurs="1" minOccurs="" name="description" structural="" type="xs:string">
+      <description>
+        <documentation>
+          The description of the objectClass.
+          <br/>
+          <br/>
+          The description is represented by the tag named 'description' in the policy file.
+          <br/>
+        </documentation>
+      </description>
+      <default multi="" order="0" select="../documentation">
+        <description/>
+      </default>
+    </property>
+    <property maxOccurs="1" minOccurs="" name="name" structural="" type="xs:string">
+      <description>
+        <documentation>
+          name of the objectClass
+          <br/>
+          <br/>
+          The name is represented by an attribute named 'name' of the objectClass in the policy file.
+          <br/>
+        </documentation>
+      </description>
+      <default multi="" order="0" select="../@name">
+        <description/>
+      </default>
+    </property>
+  </objectClass>
+</policy>

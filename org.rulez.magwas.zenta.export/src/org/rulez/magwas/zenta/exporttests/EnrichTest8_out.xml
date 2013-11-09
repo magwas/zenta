@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns:archimate="http://www.bolton.ac.uk/archimate"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <folder id="thenode" name="2. Folyamatok">  
+      <property key="associatedObjectClass" value="Function"/>
+      <element id="8c360738"
+               name="Megadja az adatait"
+               xsi:type="archimate:BusinessProcess">
+         <documentation>Az ügyfél kitölti a szórólapon a formot.</documentation>
+      </element>
+      <testclass parentid="thenode"/>
+      <testclass2 parentid="thenode"/>
+   </folder>
+</model>

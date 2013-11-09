@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<style>
+<transform language="xslt" script="sql.xslt" target="outpur.sql" keep="true"/>
+</style>

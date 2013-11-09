@@ -1,0 +1,30 @@
+This report style is to present the result of a brainstorming session using Nominal Group Technique (NGT).
+
+See http://en.wikipedia.org/wiki/Nominal_group_technique for NGT.
+
+How to use Archi during the session:
+
+ - Create a Sketch. Assign a property to it with the key 'objectClass', and value 'NGTresult'.
+
+ - In the "sharing ideas" step record each idea on a sticky.
+
+ - In the "group discussion" step organize stickies hierarchically. If idea A is considered to be a subset/instance of idea B, then place A within B. If A and B are in the same group, place them inside the same (possibly newly created) sticky. 
+
+ - In the "voting and ranking" step place an element (we have only actor right now, it is okay) on the sketch. Each vote is represented by a connection between the element and a "main" sticky (which is not inside another one0.
+
+Do not use connections for other purposes.
+
+
+Presentation:
+
+For each sketch having the NGTresult objectClass, a table is written.
+Rows represent a "main" sticky. The first cell contains the ranking (number of connections associated with) the idea.
+In the second cell you can find the content of the sticky. If there are more stickies inside the main one, they are presented hierarchically in a list.
+
+
+possible enhancements (notify me if you want them, and I may implement it)
+
+- We might have a label for a sticky. E.g. if there is a "::" in the contents, then everything before it is the label. it could be displayed in a column.
+- We might allow connections between elements, by designating one connection type to votes (so the others could be used for other purposes.
+- (It needs additional code in Archi) The stickies in the sketch could be automatically turned into archimate elements. By using properties cleverly, even a mapping from sticky color to folder and element type could be done.
+

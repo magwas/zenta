@@ -1,0 +1,31 @@
+This is the Styled HTML exporter for Archi.
+
+Archi is at http://archi.cetis.ac.uk/
+
+This module uses a - possibly user defined - XML stylesheet to create a html report from the model.
+
+Deployment:
+unzip the zip in Archi's home. It will put a jar to the plugins directory.
+
+Style directory:
+A directory containing a file called style.xslt, and possibly other files (css, js, images) needed to render the report.
+There is one style now, the default. It ocntains a single style.xslt, which have the same functionality as the html report function of Archi.
+You can create your own, and if you submit it, I will include in subsequent releases.
+
+Configuration:
+Go to Edit/Preferences/Styled Export
+You can deploy the shipped styles by clicking "Install provided styles" and choosing the target directory.
+You can modify the stylesheet location by browsing the file style.xslt belonging to it. The stylesheet is checked for syntax both when choosing it and when you press Apply.
+You can choose whether you want to be asked for the output directory (default is to be asked).
+You can choose a default output directory for the case when you don't want to be asked every time.
+
+Usage:
+File/Export/Model to Nice HTML
+
+The output directory will contain
+- everything which is in the directory containing style.xslt
+- a file named model.archirich . It is mostly, but not entirely unlike a saved report (documentation tags are converted to html).
+- a file named index.html: the result of applying style.xslt to model.archirich
+- image files made from diagrams, named ID.png where ID is the object ID of diagrams
+
+I welcome any feedback. 

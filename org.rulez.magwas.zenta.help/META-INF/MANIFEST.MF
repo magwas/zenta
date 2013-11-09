@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %productName
+Bundle-SymbolicName: org.rulez.magwas.zenta.help;singleton:=true
+Bundle-Version: 2.4.0.qualifier
+Bundle-Activator: org.rulez.magwas.zenta.help.ArchimateEditorHelpPlugin
+Bundle-Vendor: Phillip Beauvoir
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.runtime.compatibility,
+ org.eclipse.ui,
+ org.eclipse.equinox.http.jetty,
+ org.eclipse.help.ui,
+ org.eclipse.help.webapp,
+ org.eclipse.ui.cheatsheets,
+ org.rulez.magwas.zenta.editor,
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0"
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: org.rulez.magwas.zenta.help.jar
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.rulez.magwas.zenta.help.hints

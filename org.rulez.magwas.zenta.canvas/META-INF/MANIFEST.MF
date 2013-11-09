@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Canvas Model Toolkit
+Bundle-SymbolicName: org.rulez.magwas.zenta.canvas;singleton:=true
+Bundle-Version: 2.4.0.qualifier
+Bundle-Vendor: Phillip Beauvoir
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.help.ui,
+ org.eclipse.ui,
+ org.rulez.magwas.zenta.editor,
+ uk.ac.bolton.jdom,
+ org.rulez.magwas.zenta.help,
+ org.rulez.magwas.zenta.templates,
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0"
+Bundle-ClassPath: org.rulez.magwas.zenta.canvas.jar
+Bundle-Activator: org.rulez.magwas.zenta.canvas.CanvasEditorPlugin
+Bundle-ActivationPolicy: lazy
+Export-Package: org.rulez.magwas.zenta.canvas,
+ org.rulez.magwas.zenta.canvas.dnd,
+ org.rulez.magwas.zenta.canvas.editparts,
+ org.rulez.magwas.zenta.canvas.figures,
+ org.rulez.magwas.zenta.canvas.model,
+ org.rulez.magwas.zenta.canvas.model.impl,
+ org.rulez.magwas.zenta.canvas.model.util,
+ org.rulez.magwas.zenta.canvas.policies

@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Export the model as styled html
+Bundle-SymbolicName: org.rulez.magwas.zenta.export;singleton:=true
+Bundle-Version: 2.2.0.qualifier
+Bundle-Vendor: Árpád Magosányi
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.ui;bundle-version="3.5.1",
+ org.eclipse.core.runtime;bundle-version="3.5.0",
+ org.rulez.magwas.zenta.editor,
+ org.rulez.magwas.zenta.browser;bundle-version="1.0.0",
+ org.rulez.demokracia.liquidgame;bundle-version="1.0.0",
+ org.junit;bundle-version="4.8.2";resolution:=optional,
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0"
+Export-Package: org.rulez.magwas.zenta.export;
+  uses:="org.eclipse.jface.preference,
+   javax.xml.transform,
+   org.eclipse.ui,
+   org.rulez.magwas.zenta.model,
+   org.rulez.magwas.zenta.editor.model,
+   org.eclipse.swt.widgets"
+Bundle-ClassPath: bin,
+ org.rulez.magwas.styledhtml.jar,
+ lib/jython.jar,
+ lib/saxon9-unpack.jar,
+ lib/saxon9he.jar
+Bundle-Activator: org.rulez.magwas.zenta.export.StyledHtmlPlugin
+Bundle-ActivationPolicy: lazy

@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Browser Component
+Bundle-SymbolicName: org.rulez.magwas.zenta.browser;singleton:=true
+Bundle-Version: 2.2.0.qualifier
+Bundle-Localization: plugin
+Bundle-Activator: org.rulez.magwas.zenta.browser.BrowserPlugin
+Bundle-Vendor: Bolton University
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.rulez.magwas.zenta.browser;
+  uses:="org.eclipse.core.runtime,
+   org.eclipse.jface.resource,
+   org.eclipse.ui,
+   org.eclipse.ui.plugin,
+   org.osgi.framework,
+   org.eclipse.ui.part,
+   org.eclipse.swt.widgets,
+   org.eclipse.swt.browser"
+Bundle-ActivationPolicy: lazy

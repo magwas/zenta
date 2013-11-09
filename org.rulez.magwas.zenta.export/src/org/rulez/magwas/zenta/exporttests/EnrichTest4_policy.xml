@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:archimate="http://www.bolton.ac.uk/archimate"
+        name="Generated Policy (new style)">
+      <objectClass name="workflow" abstract="">
+      <description/>
+      <ancestor class="archimate:BusinessProcess"/>
+      <property name="adat"
+                type="xs:string"
+                minOccurs=""
+                maxOccurs=""
+                structural="">
+         <description/>
+         <default 
+                  select="//archimate:BusinessObject[@id=//archimate:AccessRelationship[@source=$id]/@target]"
+                  multi="true">
+            <description/>
+         </default>
+         <default multi="true" indirect="adat/child">
+            <description>The data indirectly mined through adat/child</description>
+         </default>
+      </property>
+      </objectClass>   
+</policy>
