@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.tools;
 
 import java.beans.PropertyChangeListener;
@@ -52,7 +51,7 @@ public class FormatPainterInfo {
             
             fillColor = object.getFillColor();
             if(fillColor == null) { // If null it's a default color for a IDiagramModelObject
-                Color c = ColorFactory.getDefaultColor(object);
+                Color c = ColorFactory.getDefaultFillColor(object);
                 fillColor = ColorFactory.convertRGBToString(c.getRGB());
             }
         }

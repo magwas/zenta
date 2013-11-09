@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010-12 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.propertysections;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -108,7 +107,7 @@ public class TextContentSection extends AbstractArchimatePropertySection {
         fTextContentControl.refresh(fTextContent);
         
         boolean enabled = fTextContent instanceof ILockable ? !((ILockable)fTextContent).isLocked() : true;
-        fTextContentControl.getTextControl().setEnabled(enabled);
+        fTextContentControl.setEditable(enabled);
     }
     
     @Override

@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor;
 
 import java.io.File;
@@ -13,6 +12,7 @@ import java.util.Properties;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 
@@ -23,6 +23,10 @@ public class PlatformLauncher implements IPlatformLauncher {
     @Override
     public void startup() {
         logOpenFile();
+    }
+
+    @Override
+    public void displayCreated(Display display) {
     }
 
     @Override
@@ -97,8 +101,8 @@ public class PlatformLauncher implements IPlatformLauncher {
             return false;
         }
 
-        int hWnd = getOpenedWindowHandle(properties);
-        if(hWnd == 0 || !isValidWindow(hWnd)) {
+        Number hWnd = getOpenedWindowHandle(properties);
+        if(hWnd.intValue() == 0 || !isValidWindow(hWnd)) {
             return false;
         }
 
@@ -106,15 +110,15 @@ public class PlatformLauncher implements IPlatformLauncher {
         return true;
     }
 
-    private boolean isValidWindow(int hWnd) {
-        // This is the Win32 SWT specific OS method
+    private boolean isValidWindow(Number hWnd) {
+        // This is the Win SWT specific OS method
         // int length = OS.GetWindowTextLength(hWnd);
         
         int length = 0;
         
         // We'll get it by reflection...
         try {
-            length = (Integer)invokeWindowsOSMethod("GetWindowTextLength", hWnd, int.class); //$NON-NLS-1$
+            length = (Integer)invokeWindowsOSMethod("GetWindowTextLength", hWnd, getWordClass()); //$NON-NLS-1$
         }
         catch(Exception ex) {
             ex.printStackTrace();
@@ -123,11 +127,16 @@ public class PlatformLauncher implements IPlatformLauncher {
         return length > 0;
     }
 
-    private int getOpenedWindowHandle(Properties properties) {
+    private Number getOpenedWindowHandle(Properties properties) {
         String value = properties.getProperty(WindowState.K_PRIMARY_WINDOW);
         if(value != null && !"".equals(value)) { //$NON-NLS-1$
             try {
-                return Integer.parseInt(value);
+                if(is64bitOS()) {
+                    return new Long(value);
+                }
+                else {
+                    return new Integer(value);
+                }
             }
             catch(NumberFormatException e) {
                 e.printStackTrace();
@@ -139,15 +148,15 @@ public class PlatformLauncher implements IPlatformLauncher {
     /*
      * Bring the window into focus
      */
-    private void notifyOpenedWindow(int hWnd) {
-        // These are the Win32 SWT specific OS methods
+    private void notifyOpenedWindow(Number hWnd) {
+        // These are the Win SWT specific OS methods
         // OS.SetForegroundWindow(hWnd);
         // OS.SetFocus(hWnd);
         
         // We'll do it by reflection...
         try {
-            invokeWindowsOSMethod("SetForegroundWindow", hWnd, int.class); //$NON-NLS-1$
-            invokeWindowsOSMethod("SetFocus", hWnd, int.class); //$NON-NLS-1$
+            invokeWindowsOSMethod("SetForegroundWindow", hWnd, getWordClass()); //$NON-NLS-1$
+            invokeWindowsOSMethod("SetFocus", hWnd, getWordClass()); //$NON-NLS-1$
         }
         catch(Exception ex) {
             ex.printStackTrace();
@@ -157,9 +166,17 @@ public class PlatformLauncher implements IPlatformLauncher {
     /**
      * Invoke a Windows OS SWT Specific method by reflection
      */
-    private Object invokeWindowsOSMethod(String methodName, int hWnd, Class<?>... parameterTypes) throws Exception {
+    private Object invokeWindowsOSMethod(String methodName, Number hWnd, Class<?>... parameterTypes) throws Exception {
         Class<?> c = Class.forName("org.eclipse.swt.internal.win32.OS"); //$NON-NLS-1$
         Method m = c.getDeclaredMethod(methodName, parameterTypes);
         return m.invoke(c, hWnd);
+    }
+    
+    private boolean is64bitOS() {
+        return Platform.getOSArch().equals(Platform.ARCH_X86_64);
+    }
+    
+    private Class<?> getWordClass() {
+        return is64bitOS() ? long.class : int.class;
     }
 }

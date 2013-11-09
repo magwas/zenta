@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.editparts;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -70,6 +69,10 @@ implements IArchimateEditPart {
                 IPreferenceConstants.USE_NESTED_CONNECTIONS.equals(event.getProperty())) {
             refreshSourceConnections();
             refreshTargetConnections();
+        }
+        // Default fill colour preference changed
+        else if(event.getProperty().startsWith(IPreferenceConstants.DEFAULT_FILL_COLOR_PREFIX)) {
+            getFigure().repaint();
         }
         else {
             super.applicationPreferencesChanged(event);

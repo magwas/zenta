@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.preferences;
 
 import org.eclipse.jface.preference.PreferencePage;
@@ -13,7 +12,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
@@ -21,8 +19,6 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-
-import uk.ac.bolton.archimate.editor.utils.PlatformUtils;
 
 /**
  * General Preferences Page
@@ -35,12 +31,14 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     private static String HELP_ID = "uk.ac.bolton.archimate.help.prefsGeneral"; //$NON-NLS-1$
     
     private Button fOpenDiagramsOnLoadButton;
+    private Button fBackupOnSaveButton;
     
     private Spinner fMRUSizeSpinner;
     
     private Button fUseCurvedTabsButton;
     
     private Button fAllowMoveAroundButton;
+    private Button fAnimateVisualiserNodesButton;
     
 	public GeneralPreferencePage() {
 		setPreferenceStore(Preferences.STORE);
@@ -61,12 +59,21 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         fileGroup.setLayout(new GridLayout(2, false));
         fileGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         
+        // Automatically open views when opening a model file
         fOpenDiagramsOnLoadButton = new Button(fileGroup, SWT.CHECK);
         fOpenDiagramsOnLoadButton.setText(Messages.GeneralPreferencePage_1);
         gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 2;
         fOpenDiagramsOnLoadButton.setLayoutData(gd);
+
+        // Backup file on save
+        fBackupOnSaveButton = new Button(fileGroup, SWT.CHECK);
+        fBackupOnSaveButton.setText(Messages.GeneralPreferencePage_5);
+        gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.horizontalSpan = 2;
+        fBackupOnSaveButton.setLayoutData(gd);
         
+        // Size of recently opened file list
         Label label = new Label(fileGroup, SWT.NULL);
         label.setText(Messages.GeneralPreferencePage_2);
         
@@ -74,6 +81,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         fMRUSizeSpinner.setMinimum(3);
         fMRUSizeSpinner.setMaximum(15);
         
+        // Appearance
         Group appearanceGroup = new Group(client, SWT.NULL);
         appearanceGroup.setText(Messages.GeneralPreferencePage_3);
         appearanceGroup.setLayout(new GridLayout(2, false));
@@ -96,27 +104,30 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         gd.horizontalSpan = 2;
         fAllowMoveAroundButton.setLayoutData(gd);
 
+        // Visualiser
+        Group visualiserGroup = new Group(client, SWT.NULL);
+        visualiserGroup.setText(Messages.GeneralPreferencePage_6);
+        visualiserGroup.setLayout(new GridLayout(2, false));
+        visualiserGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        fAnimateVisualiserNodesButton = new Button(visualiserGroup, SWT.CHECK);
+        fAnimateVisualiserNodesButton.setText(Messages.GeneralPreferencePage_7);
+        gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.horizontalSpan = 2;
+        fAnimateVisualiserNodesButton.setLayoutData(gd);
+        
         setValues();
         
         return client;
     }
 
     private void setValues() {
-        // Bug on Mac OS X Carbon - field is initially empty unless we thread this
-        if(PlatformUtils.isMacCarbon()) {
-            Display.getCurrent().asyncExec(new Runnable() {
-                public void run() {
-                    setSpinnerValues();
-                }
-            });
-        }
-        else {
-            setSpinnerValues();
-        }
-
+        setSpinnerValues();
+        fBackupOnSaveButton.setSelection(getPreferenceStore().getBoolean(BACKUP_ON_SAVE));
         fOpenDiagramsOnLoadButton.setSelection(getPreferenceStore().getBoolean(OPEN_DIAGRAMS_ON_LOAD));
         fAllowMoveAroundButton.setSelection(getPreferenceStore().getBoolean(ALLOW_MOVE_AROUND));
         fUseCurvedTabsButton.setSelection(!PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS));
+        fAnimateVisualiserNodesButton.setSelection(getPreferenceStore().getBoolean(ANIMATE_VISUALISER_NODES));
     }
     
     private void setSpinnerValues() {
@@ -125,19 +136,23 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     @Override
     public boolean performOk() {
+        getPreferenceStore().setValue(BACKUP_ON_SAVE, fBackupOnSaveButton.getSelection());
         getPreferenceStore().setValue(OPEN_DIAGRAMS_ON_LOAD, fOpenDiagramsOnLoadButton.getSelection());
         getPreferenceStore().setValue(MRU_MAX, fMRUSizeSpinner.getSelection());
         getPreferenceStore().setValue(ALLOW_MOVE_AROUND, fAllowMoveAroundButton.getSelection());
         PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS, !fUseCurvedTabsButton.getSelection());
+        getPreferenceStore().setValue(ANIMATE_VISUALISER_NODES, fAnimateVisualiserNodesButton.getSelection());
         return true;
     }
     
     @Override
     protected void performDefaults() {
+        fBackupOnSaveButton.setSelection(getPreferenceStore().getDefaultBoolean(BACKUP_ON_SAVE));
         fOpenDiagramsOnLoadButton.setSelection(getPreferenceStore().getDefaultBoolean(OPEN_DIAGRAMS_ON_LOAD));
         fMRUSizeSpinner.setSelection(getPreferenceStore().getDefaultInt(MRU_MAX));
         fAllowMoveAroundButton.setSelection(getPreferenceStore().getDefaultBoolean(ALLOW_MOVE_AROUND));
         fUseCurvedTabsButton.setSelection(!PlatformUI.getPreferenceStore().getDefaultBoolean(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS));
+        fAnimateVisualiserNodesButton.setSelection(getPreferenceStore().getDefaultBoolean(ANIMATE_VISUALISER_NODES));
         super.performDefaults();
     }
     

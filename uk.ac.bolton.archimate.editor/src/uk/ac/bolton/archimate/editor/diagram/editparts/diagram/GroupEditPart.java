@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.editparts.diagram;
 
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -24,6 +23,7 @@ import uk.ac.bolton.archimate.editor.diagram.editparts.SnapEditPartAdapter;
 import uk.ac.bolton.archimate.editor.diagram.figures.IContainerFigure;
 import uk.ac.bolton.archimate.editor.diagram.figures.IDiagramModelObjectFigure;
 import uk.ac.bolton.archimate.editor.diagram.figures.diagram.GroupFigure;
+import uk.ac.bolton.archimate.editor.diagram.figures.diagram.GroupFigure.GroupFigureConnectionAnchor;
 import uk.ac.bolton.archimate.editor.diagram.policies.ArchimateDNDEditPolicy;
 import uk.ac.bolton.archimate.editor.diagram.policies.ArchimateDiagramConnectionPolicy;
 import uk.ac.bolton.archimate.editor.diagram.policies.ArchimateDiagramLayoutPolicy;
@@ -41,8 +41,6 @@ import uk.ac.bolton.archimate.editor.diagram.policies.PartDirectEditTitlePolicy;
 public class GroupEditPart extends AbstractConnectedEditPart
 implements IColoredEditPart, ITextEditPart {
     
-    private ConnectionAnchor fAnchor;
-
     @Override
     protected void createEditPolicies() {
         // Allow parts to be connected
@@ -122,10 +120,7 @@ implements IColoredEditPart, ITextEditPart {
 
     @Override
     protected ConnectionAnchor getDefaultConnectionAnchor() {
-        if(fAnchor == null) {
-            fAnchor = ((GroupFigure)getFigure()).createConnectionAnchor();
-        }
-        return fAnchor;
+        return new GroupFigureConnectionAnchor(getFigure());
     }
 
     @SuppressWarnings("rawtypes")

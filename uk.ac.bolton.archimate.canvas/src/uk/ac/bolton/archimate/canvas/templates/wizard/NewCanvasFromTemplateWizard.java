@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.canvas.templates.wizard;
 
 import java.io.File;
@@ -22,10 +21,10 @@ import org.eclipse.swt.widgets.Display;
 
 import uk.ac.bolton.archimate.canvas.model.ICanvasModel;
 import uk.ac.bolton.archimate.canvas.templates.model.CanvasTemplateManager;
-import uk.ac.bolton.archimate.compatibility.CompatibilityHandlerException;
-import uk.ac.bolton.archimate.compatibility.IncompatibleModelException;
-import uk.ac.bolton.archimate.compatibility.ModelCompatibility;
 import uk.ac.bolton.archimate.editor.model.IArchiveManager;
+import uk.ac.bolton.archimate.editor.model.compatibility.CompatibilityHandlerException;
+import uk.ac.bolton.archimate.editor.model.compatibility.IncompatibleModelException;
+import uk.ac.bolton.archimate.editor.model.compatibility.ModelCompatibility;
 import uk.ac.bolton.archimate.editor.utils.ZipUtils;
 import uk.ac.bolton.archimate.editor.views.tree.commands.NewDiagramCommand;
 import uk.ac.bolton.archimate.model.FolderType;

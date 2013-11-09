@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.ui.components;
 
 import java.util.ArrayList;
@@ -54,10 +53,7 @@ public class StyledTextControl implements Listener, LineStyleListener {
     
     private List<int[]> fLinkRanges;
     private List<String> fLinks;
-    
-    private boolean fMouseDown;
-    private boolean fDragEvent;
-    
+        
     private IAction fActionSelectAll = new Action(Messages.StyledTextControl_0) {
         @Override
         public void run() {
@@ -111,7 +107,6 @@ public class StyledTextControl implements Listener, LineStyleListener {
                 fHandCursor.dispose();
                 fBusyCursor.dispose();
                 
-                fStyledText.removeListener(SWT.MouseDown, StyledTextControl.this);
                 fStyledText.removeListener(SWT.MouseUp, StyledTextControl.this);
                 fStyledText.removeListener(SWT.MouseMove, StyledTextControl.this);
                 fStyledText.getDisplay().removeFilter(SWT.KeyDown, StyledTextControl.this);
@@ -126,7 +121,6 @@ public class StyledTextControl implements Listener, LineStyleListener {
             }
         });
         
-        fStyledText.addListener(SWT.MouseDown, this);
         fStyledText.addListener(SWT.MouseUp, this);
         fStyledText.addListener(SWT.MouseMove, this);
         fStyledText.getDisplay().addFilter(SWT.KeyDown, this);
@@ -314,9 +308,6 @@ public class StyledTextControl implements Listener, LineStyleListener {
     @Override
     public void handleEvent(Event event) {
         switch(event.type) {
-            case SWT.MouseDown:
-                doMouseDown(event);
-                break;
             case SWT.MouseUp:
                 doMouseUp(event);
                 break;
@@ -333,72 +324,47 @@ public class StyledTextControl implements Listener, LineStyleListener {
     }
 
     /**
-     * Mouse Up
-     */
-    private void doMouseDown(Event e) {
-        if(e.button != 1) {
-            return;
-        }
-        fMouseDown = true;
-    }
-    
-    /**
-     * Mouse Down
+     * Mouse Up - Open link if Mode Key is pressed and on link
      */
     private void doMouseUp(Event e) {
-        fMouseDown = false;
-        
-        int offset;
-        try {
-            offset = fStyledText.getOffsetAtLocation(new Point(e.x, e.y));
-        }
-        catch(IllegalArgumentException ex) {
-            fDragEvent = false; // must do this
-            return;
-        }
-        
-        boolean modKey = (e.stateMask & SWT.MOD1) != 0;
-        
-        if(fDragEvent) {
-            // don't activate a link during a drag/mouse up operation
-            fDragEvent = false;
-            if(modKey && isLinkAt(offset)) {
-                setCursor(fHandCursor);
+        if(isModKeyPressed(e)) {
+            int offset;
+            try {
+                offset = fStyledText.getOffsetAtLocation(new Point(e.x, e.y));
             }
-        }
-        else if(modKey && isLinkAt(offset)) {
-            fStyledText.setCursor(fBusyCursor);
-            HTMLUtils.openLinkInBrowser(getLinkAt(offset));
-            setCursor(null);
+            catch(IllegalArgumentException ex) {
+                return;
+            }
+            
+            // Open link
+            if(isLinkAt(offset)) {
+                fStyledText.setCursor(fBusyCursor);
+                HTMLUtils.openLinkInBrowser(getLinkAt(offset));
+                setCursor(null);
+            }
         }
     }
     
     /**
-     * Mouse Move
+     * Mouse Move - Update cursor if Mod Key is pressed
      */
     private void doMouseMove(Event e) {
-        // Do not change cursor on drag events
-        if(fMouseDown) {
-            if(!fDragEvent) {
+        if(isModKeyPressed(e)) {
+            int offset;
+            try {
+                offset = fStyledText.getOffsetAtLocation(new Point(e.x, e.y));
+            }
+            catch(IllegalArgumentException ex) {
+                setCursor(null); // need this
+                return;
+            }
+            
+            if(isLinkAt(offset)) {
+                setCursor(fHandCursor);
+            }
+            else {
                 setCursor(null);
             }
-            fDragEvent = true;
-            return;
-        }
-
-        int offset;
-        try {
-            offset = fStyledText.getOffsetAtLocation(new Point(e.x, e.y));
-        }
-        catch(IllegalArgumentException ex) {
-            setCursor(null);
-            return;
-        }
-
-        boolean modKey = (e.stateMask & SWT.MOD1) != 0;
-        
-        if(modKey && isLinkAt(offset)) {
-            setCursor(fHandCursor);
         }
         else {
             setCursor(null);
@@ -442,5 +408,13 @@ public class StyledTextControl implements Listener, LineStyleListener {
             fStyledText.setCursor(cursor);
             fCurrentCursor = cursor;
         }
+    }
+    
+    /**
+     * @param e
+     * @return true if Mod key is pressed
+     */
+    private boolean isModKeyPressed(Event e) {
+        return (e.stateMask & SWT.MOD1) != 0;
     }
 }

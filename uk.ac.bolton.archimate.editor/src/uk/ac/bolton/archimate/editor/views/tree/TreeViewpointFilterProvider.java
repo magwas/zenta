@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.views.tree;
 
 import org.eclipse.jface.util.IPropertyChangeListener;
@@ -68,7 +67,10 @@ public class TreeViewpointFilterProvider implements IPartListener {
         fViewer.getControl().addDisposeListener(new DisposeListener() {
             @Override
             public void widgetDisposed(DisposeEvent e) {
-                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(TreeViewpointFilterProvider.this);
+            	if(PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
+            		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(TreeViewpointFilterProvider.this);
+            	}
+                
                 Preferences.STORE.removePropertyChangeListener(prefsListener);
             }
         });
@@ -132,13 +134,15 @@ public class TreeViewpointFilterProvider implements IPartListener {
     public void partClosed(IWorkbenchPart part) {
         // Check if no editors open
         if(part instanceof IEditorPart) {
-            IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-            if(page != null && page.getActiveEditor() == null) {
-                fActiveDiagramModel = null;
-                if(isActive()) {
-                    fViewer.refresh();
+        	if(PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
+        		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                if(page != null && page.getActiveEditor() == null) {
+                    fActiveDiagramModel = null;
+                    if(isActive()) {
+                        fViewer.refresh();
+                    }
                 }
-            }
+        	}
         }
     }
 

@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.editparts;
 
 import java.util.ArrayList;
@@ -15,9 +14,13 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
+import org.eclipse.jface.util.PropertyChangeEvent;
 
+import uk.ac.bolton.archimate.editor.preferences.IPreferenceConstants;
+import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IDiagramModelConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
@@ -30,8 +33,6 @@ import uk.ac.bolton.archimate.model.IDiagramModelObject;
 public abstract class AbstractConnectedEditPart
 extends AbstractBaseEditPart
 implements NodeEditPart {
-    
-    private ConnectionAnchor fAnchor;
     
     private Adapter adapter = new AdapterImpl() {
         @Override
@@ -91,6 +92,15 @@ implements NodeEditPart {
     }
     
     @Override
+    protected void applicationPreferencesChanged(PropertyChangeEvent event) {
+        if(IPreferenceConstants.USE_ORTHOGONAL_ANCHOR.equals(event.getProperty())) {
+            refreshConnectionAnchors();
+        }
+        
+        super.applicationPreferencesChanged(event);
+    }
+    
+    @Override
     protected Adapter getECoreAdapter() {
         return adapter;
     }
@@ -111,30 +121,51 @@ implements NodeEditPart {
     }
     
     public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart connection) {
-    	return getDefaultConnectionAnchor();
-    }
-
-    public ConnectionAnchor getSourceConnectionAnchor(Request request) {
+    	if(Preferences.STORE.getBoolean(IPreferenceConstants.USE_ORTHOGONAL_ANCHOR)) {
+    	    return new OrthogonalAnchor(getFigure(), connection, true);
+    	}
     	return getDefaultConnectionAnchor();
     }
 
     public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connection) {
+    	if(Preferences.STORE.getBoolean(IPreferenceConstants.USE_ORTHOGONAL_ANCHOR)) {
+    		return new OrthogonalAnchor(getFigure(), connection, false);
+    	}
+    	return getDefaultConnectionAnchor();
+    }
+
+    public ConnectionAnchor getSourceConnectionAnchor(Request request) {
+    	if(Preferences.STORE.getBoolean(IPreferenceConstants.USE_ORTHOGONAL_ANCHOR)) {
+    	    return new OrthogonalAnchor(getFigure(), request, true);
+    	}
     	return getDefaultConnectionAnchor();
     }
 
     public ConnectionAnchor getTargetConnectionAnchor(Request request) {
+    	if(Preferences.STORE.getBoolean(IPreferenceConstants.USE_ORTHOGONAL_ANCHOR)) {
+    	    return new OrthogonalAnchor(getFigure(), request, false);
+    	}
     	return getDefaultConnectionAnchor();
     }
     
     /**
-     * @return The connection anchor to use for source and target connections
-     * Default is a Chopbox connection anchor
+     * @return The default connection anchor to use for source and target connections
+     *         Default is a Chopbox connection anchor
      */
     protected ConnectionAnchor getDefaultConnectionAnchor() {
-        if(fAnchor == null) {
-            fAnchor = new ChopboxAnchor(getFigure());
+        return new ChopboxAnchor(getFigure());
+    }
+    
+    /**
+     * Refresh the connection anchors to return updated ones
+     */
+    protected void refreshConnectionAnchors() {
+        for(Object editPart : getSourceConnections()) {
+            ((EditPart)editPart).refresh();
         }
-        return fAnchor;
+        for(Object editPart : getTargetConnections()) {
+            ((EditPart)editPart).refresh();
+        }
     }
     
     // =================================== Filtering ====================================================

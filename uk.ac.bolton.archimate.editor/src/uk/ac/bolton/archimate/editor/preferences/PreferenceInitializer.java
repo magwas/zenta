@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
@@ -47,6 +46,7 @@ implements IPreferenceConstants {
         store.setDefault(OPEN_DIAGRAMS_ON_LOAD, false);
 
         store.setDefault(ALLOW_MOVE_AROUND, false);
+        store.setDefault(BACKUP_ON_SAVE, true);
         
         store.setDefault(SKETCH_DEFAULT_BACKGROUND, 1);
         
@@ -71,5 +71,11 @@ implements IPreferenceConstants {
         store.setDefault(VIEWPOINTS_HIDE_MAGIC_CONNECTOR_ELEMENTS, true);
         
         store.setDefault(EDIT_NAME_ON_NEW_OBJECT, true);
+        
+        store.setDefault(SAVE_USER_DEFAULT_FILL_COLOR, false);
+        
+        store.setDefault(USE_ORTHOGONAL_ANCHOR, false);
+        
+        store.setDefault(ANIMATE_VISUALISER_NODES, true);
     }
 }

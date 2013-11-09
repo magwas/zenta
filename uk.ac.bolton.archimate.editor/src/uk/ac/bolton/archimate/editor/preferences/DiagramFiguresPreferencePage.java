@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.preferences;
 
 import java.util.ArrayList;
@@ -112,6 +111,8 @@ implements IWorkbenchPreferencePage, IPreferenceConstants
     private void loadFigures() {
         fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_1,
                 BUSINESS_INTERFACE_FIGURE, IArchimateImages.FIGURE_BUSINESS_INTERFACE1, IArchimateImages.FIGURE_BUSINESS_INTERFACE2));
+        fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_7,
+                BUSINESS_PROCESS_FIGURE, IArchimateImages.FIGURE_BUSINESS_PROCESS1, IArchimateImages.FIGURE_BUSINESS_PROCESS2));
         fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_2,
                 APPLICATION_COMPONENT_FIGURE, IArchimateImages.FIGURE_APPLICATION_COMPONENT1, IArchimateImages.FIGURE_APPLICATION_COMPONENT2));
         fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_3,

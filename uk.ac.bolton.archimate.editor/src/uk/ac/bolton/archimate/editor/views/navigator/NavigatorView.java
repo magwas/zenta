@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.views.navigator;
 
 import java.beans.PropertyChangeEvent;
@@ -44,6 +43,7 @@ import uk.ac.bolton.archimate.editor.views.AbstractModelView;
 import uk.ac.bolton.archimate.editor.views.tree.actions.IViewerAction;
 import uk.ac.bolton.archimate.editor.views.tree.actions.PropertiesAction;
 import uk.ac.bolton.archimate.model.IArchimateElement;
+import uk.ac.bolton.archimate.model.IArchimateModel;
 import uk.ac.bolton.archimate.model.IArchimateModelElement;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 
@@ -65,6 +65,8 @@ implements INavigatorView, ISelectionListener {
     private IAction fActionPinContent;
     
     private NavigatorDrillDownAdapter fDrillDownAdapter;
+    
+    private IArchimateElement fCurrentElement;
     
     private class NavigatorDrillDownAdapter extends DrillDownAdapter {
         public NavigatorDrillDownAdapter() {
@@ -291,22 +293,36 @@ implements INavigatorView, ISelectionListener {
     private void setElement(Object object) {
         fDrillDownAdapter.reset();
         
-        if(object instanceof IAdaptable) {
-            object = ((IAdaptable)object).getAdapter(IArchimateElement.class);
-        }
+        IArchimateElement element = null;
+        
         if(object instanceof IArchimateElement) {
-            getViewer().setInput(new Object[] { object }); // Need to use an array
+            element = (IArchimateElement)object;
+        }
+        else if(object instanceof IAdaptable) {
+            element = (IArchimateElement)((IAdaptable)object).getAdapter(IArchimateElement.class);
+        }
+        
+        if(element != null) {
+            getViewer().setInput(new Object[] { element }); // Need to use an array
         }
         else {
             getViewer().setInput(null);
         }
+        
+        fCurrentElement = element;
     }
     
     private void reset() {
         fDrillDownAdapter.reset();
         getViewer().setInput(null);
+        fCurrentElement = null;
     }
     
+    @Override
+    protected IArchimateModel getActiveArchimateModel() {
+        return fCurrentElement != null ? fCurrentElement.getArchimateModel() : null;
+    }
+
     @Override
     public void dispose() {
         super.dispose();
@@ -348,7 +364,8 @@ implements INavigatorView, ISelectionListener {
     protected void eCoreChanged(Notification msg) {
         int type = msg.getEventType();
         
-        if(type == Notification.ADD || type == Notification.REMOVE) {
+        if(type == Notification.ADD || type == Notification.ADD_MANY ||
+                type == Notification.REMOVE || type == Notification.REMOVE_MANY || type == Notification.MOVE) {
             getViewer().refresh();
         }
         // Attribute set
@@ -367,6 +384,11 @@ implements INavigatorView, ISelectionListener {
         else {
             super.eCoreChanged(msg);
         }
+    }
+    
+    @Override
+    protected void refreshElementsFromBufferedNotifications() {
+        getViewer().refresh();
     }
 
     // =================================================================================

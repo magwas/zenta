@@ -55,6 +55,7 @@ properties_group.html
 properties_user_properties.html
 
 navigator.html
+visualiser.html
 hints.html
 outline.html
 
@@ -85,6 +86,7 @@ canvas_templates_managing.html
 
 preferences.html
 prefs_canvas.html
+prefs_colours.html
 prefs_connections.html
 prefs_diagram.html
 prefs_figures.html

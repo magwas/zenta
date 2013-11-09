@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.views.tree;
 
 import java.beans.PropertyChangeEvent;
@@ -70,6 +69,7 @@ import uk.ac.bolton.archimate.editor.views.tree.search.SearchFilter;
 import uk.ac.bolton.archimate.editor.views.tree.search.SearchWidget;
 import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IArchimateModel;
+import uk.ac.bolton.archimate.model.IArchimateModelElement;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IDiagramModel;
 import uk.ac.bolton.archimate.model.IFolder;
@@ -339,8 +339,11 @@ implements ITreeModelView, IUIRequestListener {
             return;
         }
         
-        MenuManager newMenu = new MenuManager(Messages.TreeModelView_1);
+        MenuManager newMenu = new MenuManager(Messages.TreeModelView_1, "new"); //$NON-NLS-1$
         manager.add(newMenu);
+        
+        // TODO On Eclipse 4 registering a sub-menu if the main MenuManager is already registered causes a NPE
+        getSite().registerContextMenu(ID + ".new_menu", newMenu, getViewer()); //$NON-NLS-1$
 
         manager.add(new Separator());
         
@@ -370,8 +373,7 @@ implements ITreeModelView, IUIRequestListener {
             }
         }
         
-        newMenu.add(new Separator());
-        getSite().registerContextMenu(ID + ".new_menu", newMenu, getViewer()); //$NON-NLS-1$
+        newMenu.add(new Separator("new_additions")); //$NON-NLS-1$
        
         if(!isEmpty) {
             manager.add(new Separator());
@@ -413,6 +415,15 @@ implements ITreeModelView, IUIRequestListener {
         IToolBarManager manager = bars.getToolBarManager();
         manager.add(fActionToggleSearchField);
         manager.add(fActionLinkToEditor);
+    }
+    
+    @Override
+    protected IArchimateModel getActiveArchimateModel() {
+        Object selected = ((IStructuredSelection)getViewer().getSelection()).getFirstElement();
+        if(selected instanceof IArchimateModelElement) {
+            return ((IArchimateModelElement)selected).getArchimateModel();
+        }
+        return null;
     }
     
     @Override

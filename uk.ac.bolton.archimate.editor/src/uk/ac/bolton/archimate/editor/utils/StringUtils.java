@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.utils;
 
 
@@ -100,5 +99,17 @@ public final class StringUtils {
             return id;
         }
         return id.replaceAll("[^a-zA-Z0-9-]", "_"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+    
+    /**
+     * In some controls (Label and CLabel) single ampersands don't show up
+     * @param text
+     * @return
+     */
+    public static String escapeAmpersandsInText(String text) {
+        if(isSet(text)) {
+            return text.replaceAll("&", "&&");  //$NON-NLS-1$//$NON-NLS-2$
+        }
+        return text;
     }
 }

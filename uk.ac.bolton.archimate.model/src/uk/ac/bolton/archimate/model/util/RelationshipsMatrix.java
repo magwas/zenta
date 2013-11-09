@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.model.util;
 
 import java.net.URL;
@@ -46,9 +45,9 @@ public class RelationshipsMatrix {
     static final String RELATIONSHIPS_KEYS_FILE = "model/relationships-keys.xml"; //$NON-NLS-1$
 
     /**
-     * The Relationships 1.0 XML file
+     * The Relationships XML file
      */
-    static final String RELATIONSHIPS_1_0_FILE = "model/relationships-2.0.xml"; //$NON-NLS-1$
+    static final String RELATIONSHIPS_FILE = "model/relationships-2.0.xml"; //$NON-NLS-1$
     
     /*
      * XML element and attribute names
@@ -96,9 +95,8 @@ public class RelationshipsMatrix {
         // Load Key letters file
         loadKeyLetters();
         
-        // URL to the Relationships 1.0 XML file
-        URL url = Platform.getBundle(BUNDLE_ID).getResource(RELATIONSHIPS_1_0_FILE);
-        loadRelationships(url);
+        // Load Relationships file
+        loadRelationships();
     }
     
     public Map<EClass, List<TargetMatrix>> getRelationshipsMatrix() {
@@ -161,8 +159,8 @@ public class RelationshipsMatrix {
     }
     
     private void loadKeyLetters() {
-        // URL to the Relationships 1.0 XML file
-        URL url = Platform.getBundle(BUNDLE_ID).getResource(RELATIONSHIPS_KEYS_FILE);
+        //URL url = Platform.getBundle(BUNDLE_ID).getResource(RELATIONSHIPS_KEYS_FILE);
+        URL url = Platform.getBundle(BUNDLE_ID).getEntry(RELATIONSHIPS_KEYS_FILE);
 
         // Load the JDOM Document from XML
         Document doc = null;
@@ -200,7 +198,10 @@ public class RelationshipsMatrix {
         }
     }
 
-    private void loadRelationships(URL url) {
+    private void loadRelationships() {
+        //URL url = Platform.getBundle(BUNDLE_ID).getResource(RELATIONSHIPS_FILE);
+        URL url = Platform.getBundle(BUNDLE_ID).getEntry(RELATIONSHIPS_FILE);
+        
         // Load the JDOM Document from XML
         Document doc = null;
         try {

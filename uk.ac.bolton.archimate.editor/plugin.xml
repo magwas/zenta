@@ -5,6 +5,7 @@
    <extension-point id="importHandler" name="Import Handler" schema="schema/importHandler.exsd"/>
    <extension-point id="labelProvider" name="Label Provider" schema="schema/labelProvider.exsd"/>
    <extension-point id="diagramEditorFactory" name="Diagram Editor Factory" schema="schema/diagramEditorFactory.exsd"/>
+   <extension-point id="compatibilityHandler" name="Model Compatibility Handler" schema="schema/compatibilityHandler.exsd"/>
    <extension
          id="app"
          name="%appName"
@@ -97,6 +98,14 @@
             name="%prefsRelationships">
          <keywordReference
                id="keywords.prefsRelations">
+         </keywordReference>
+      </page>
+      <page
+            class="uk.ac.bolton.archimate.editor.preferences.ColoursPreferencePage"
+            id="uk.ac.bolton.archimate.editor.prefsColours"
+            name="%prefsColours">
+         <keywordReference
+               id="keywords.prefsColours">
          </keywordReference>
       </page>
    </extension>
@@ -613,6 +622,46 @@
             id="keywords.prefsRelations"
             label="%keyword.label.3">
       </keyword>
+      <keyword
+            id="keywords.prefsColours"
+            label="%keyword.label.4">
+      </keyword>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:toolbar_file?after=start">
+         <command
+               commandId="uk.ac.bolton.archimate.editor.action.newModel"
+               icon="img/newfile.gif"
+               id="uk.ac.bolton.archimate.menu.newDropdown"
+               label="%command.label"
+               style="pulldown">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:uk.ac.bolton.archimate.menu.newDropdown">
+         <command
+               commandId="uk.ac.bolton.archimate.editor.action.newModel"
+               icon="img/newfile.gif"
+               id="uk.ac.bolton.archimate.menu.newModel"
+               label="%command.label.0"
+               style="push">
+         </command>
+         <separator
+               name="uk.ac.bolton.archimate.menu.separatorNewDropdown"
+               visible="false">
+         </separator>
+      </menuContribution>
+   </extension>
+   <extension
+         point="uk.ac.bolton.archimate.editor.compatibilityHandler">
+      <compatibilityHandler
+            class="uk.ac.bolton.archimate.editor.model.compatibility.handlers.FixConnectionTextNames"
+            id="uk.ac.bolton.archimate.editor.compatibility.connectionTextHandler">
+      </compatibilityHandler>
    </extension>
 
 

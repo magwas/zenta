@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.propertysections;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -82,7 +81,7 @@ public class FolderSection extends AbstractArchimatePropertySection {
         if(fIsExecutingCommand) {
             return; 
         }
-        fTextName.getTextControl().setEnabled(fFolder != null && fFolder.getType() == FolderType.USER);
+        fTextName.setEditable(fFolder != null && fFolder.getType() == FolderType.USER);
         fTextName.refresh(fFolder);
     }
     

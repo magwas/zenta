@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010-12 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.canvas.propertysections;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -129,8 +128,8 @@ public class HintContentSection extends AbstractArchimatePropertySection {
         fTextContentControl.refresh(fHintProvider);
         
         boolean enabled = fHintProvider instanceof ILockable ? !((ILockable)fHintProvider).isLocked() : true;
-        fTextTitleControl.getTextControl().setEnabled(enabled);
-        fTextContentControl.getTextControl().setEnabled(enabled);
+        fTextTitleControl.setEditable(enabled);
+        fTextContentControl.setEditable(enabled);
     }
     
     @Override

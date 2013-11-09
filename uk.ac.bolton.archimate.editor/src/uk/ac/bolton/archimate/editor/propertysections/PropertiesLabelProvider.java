@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.propertysections;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -77,14 +76,14 @@ public class PropertiesLabelProvider implements ILabelProvider {
         // Check the main label provider
         String text = ArchimateLabelProvider.INSTANCE.getLabel(element);
         if(StringUtils.isSet(text)) {
-            return escapeText(text);
+            return StringUtils.escapeAmpersandsInText(text);
         }
         
         return " "; // Ensure the title bar is displayed //$NON-NLS-1$
     }
 
     private String getArchimateElementText(IArchimateElement element) {
-        String name = escapeText(element.getName());
+        String name = StringUtils.escapeAmpersandsInText(element.getName());
         
         String typeName = ArchimateLabelProvider.INSTANCE.getDefaultName(element.eClass());
         
@@ -93,14 +92,6 @@ public class PropertiesLabelProvider implements ILabelProvider {
         }
         
         return typeName;
-    }
-    
-    private String escapeText(String text) {
-        if(StringUtils.isSet(text)) {
-            // Ampersands need to be doubled or they don't show
-            return text.replaceAll("&", "&&");  //$NON-NLS-1$//$NON-NLS-2$
-        }
-        return text;
     }
     
     public void addListener(ILabelProviderListener listener) {

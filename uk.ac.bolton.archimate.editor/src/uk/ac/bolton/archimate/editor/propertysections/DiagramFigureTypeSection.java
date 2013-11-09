@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.propertysections;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -33,6 +32,7 @@ import uk.ac.bolton.archimate.model.IApplicationInterface;
 import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IBusinessInterface;
+import uk.ac.bolton.archimate.model.IBusinessProcess;
 import uk.ac.bolton.archimate.model.IDevice;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateObject;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
@@ -61,7 +61,8 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
                return element instanceof IInterfaceElement || 
                       element instanceof IApplicationComponent ||
                       element instanceof IDevice ||
-                      element instanceof INode;
+                      element instanceof INode ||
+                      element instanceof IBusinessProcess;
            }
            return false;
         }
@@ -121,6 +122,10 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
         else if(element instanceof INode) {
             imageName1 = IArchimateImages.FIGURE_TECHNOLOGY_NODE1;
             imageName2 = IArchimateImages.FIGURE_TECHNOLOGY_NODE2;
+        }
+        else if(element instanceof IBusinessProcess) {
+            imageName1 = IArchimateImages.FIGURE_BUSINESS_PROCESS1;
+            imageName2 = IArchimateImages.FIGURE_BUSINESS_PROCESS2;
         }
 
         figure1.setImage(imageName1);

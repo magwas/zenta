@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.actions;
 
 import java.util.List;
@@ -73,7 +72,7 @@ public class FillColorAction extends SelectionAction {
             if(model instanceof IDiagramModelObject) {
                 String s = ((IDiagramModelObject)model).getFillColor();
                 if(s == null) {
-                    defaultRGB = ColorFactory.getDefaultColor(model).getRGB();
+                    defaultRGB = ColorFactory.getDefaultFillColor(model).getRGB();
                 }
                 else {
                     defaultRGB = ColorFactory.convertStringToRGB(s);

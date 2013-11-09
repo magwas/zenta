@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010-2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -103,6 +102,9 @@ public class Preferences implements IPreferenceConstants {
             case IArchimatePackage.BUSINESS_INTERFACE:
                 return Preferences.STORE.getInt(BUSINESS_INTERFACE_FIGURE);
                 
+            case IArchimatePackage.BUSINESS_PROCESS:
+                return Preferences.STORE.getInt(BUSINESS_PROCESS_FIGURE);
+
             case IArchimatePackage.APPLICATION_INTERFACE:
                 return Preferences.STORE.getInt(APPLICATION_INTERFACE_FIGURE);
                 

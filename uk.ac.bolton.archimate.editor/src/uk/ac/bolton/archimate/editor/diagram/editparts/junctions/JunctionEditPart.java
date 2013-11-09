@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.editparts.junctions;
 
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -28,8 +27,6 @@ public class JunctionEditPart
 extends AbstractArchimateEditPart
 implements INonResizableEditPart {            
     
-    protected ConnectionAnchor fAnchor;
-
     @Override
     protected IFigure createFigure() {
         return new JunctionFigure(getModel());
@@ -37,10 +34,7 @@ implements INonResizableEditPart {
 
     @Override
     protected ConnectionAnchor getDefaultConnectionAnchor() {
-        if(fAnchor == null) {
-            fAnchor = new EllipseAnchor(getFigure());
-        }
-        return fAnchor;
+        return new EllipseAnchor(getFigure());
     }
 
     @Override

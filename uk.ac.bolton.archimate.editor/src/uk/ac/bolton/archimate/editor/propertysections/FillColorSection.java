@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010-12 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.propertysections;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -16,7 +15,6 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
@@ -25,6 +23,8 @@ import org.eclipse.ui.PlatformUI;
 
 import uk.ac.bolton.archimate.editor.diagram.commands.FillColorCommand;
 import uk.ac.bolton.archimate.editor.diagram.editparts.IColoredEditPart;
+import uk.ac.bolton.archimate.editor.preferences.IPreferenceConstants;
+import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.editor.ui.ColorFactory;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
@@ -70,6 +70,18 @@ public class FillColorSection extends AbstractArchimatePropertySection {
         }
     };
     
+    /**
+     * Listen to default fill colour change in Prefs
+     */
+    private IPropertyChangeListener prefsListener = new IPropertyChangeListener() {
+        @Override
+        public void propertyChange(PropertyChangeEvent event) {
+            if(event.getProperty().startsWith(IPreferenceConstants.DEFAULT_FILL_COLOR_PREFIX)) {
+                refreshControls();
+            }
+        }
+    };
+    
     private IDiagramModelObject fDiagramModelObject;
 
     private ColorSelector fColorSelector;
@@ -78,6 +90,8 @@ public class FillColorSection extends AbstractArchimatePropertySection {
     @Override
     protected void createControls(Composite parent) {
         createColorControl(parent);
+        
+        Preferences.STORE.addPropertyChangeListener(prefsListener);
         
         // Help ID
         PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELP_ID);
@@ -129,14 +143,11 @@ public class FillColorSection extends AbstractArchimatePropertySection {
     protected void refreshControls() {
         String colorValue = fDiagramModelObject.getFillColor();
         RGB rgb = ColorFactory.convertStringToRGB(colorValue);
-        if(rgb != null) {
-            fColorSelector.setColorValue(rgb);
+        if(rgb == null) {
+            rgb = ColorFactory.getDefaultFillColor(fDiagramModelObject).getRGB();
         }
-        else {
-            // Default color
-            Color c = ColorFactory.getDefaultColor(fDiagramModelObject);
-            fColorSelector.setColorValue(c.getRGB());
-        }
+        
+        fColorSelector.setColorValue(rgb);
         
         boolean enabled = fDiagramModelObject instanceof ILockable ? !((ILockable)fDiagramModelObject).isLocked() : true;
         fColorSelector.setEnabled(enabled);
@@ -150,6 +161,8 @@ public class FillColorSection extends AbstractArchimatePropertySection {
         if(fColorSelector != null) {
             fColorSelector.removeListener(colorListener);
         }
+        
+        Preferences.STORE.removePropertyChangeListener(prefsListener);
     }
 
     @Override

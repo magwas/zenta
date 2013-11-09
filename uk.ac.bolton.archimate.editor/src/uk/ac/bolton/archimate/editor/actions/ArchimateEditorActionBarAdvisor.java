@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.actions;
 
 import org.eclipse.core.runtime.CoreException;
@@ -433,7 +432,7 @@ extends ActionBarAdvisor {
         menu.add(ActionFactory.HELP_SEARCH.create(window));
         menu.add(ActionFactory.DYNAMIC_HELP.create(window));
         
-        menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+        menu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
         menu.add(new GroupMarker(IWorkbenchActionConstants.HELP_END));
         
         /*
@@ -457,11 +456,6 @@ extends ActionBarAdvisor {
         coolBarManager.add(new ToolBarContributionItem(toolBarFile, "toolbar_file")); //$NON-NLS-1$
         
         toolBarFile.add(new GroupMarker("start")); //$NON-NLS-1$
-        
-        // New
-        NewDropDownAction newDropDown = new NewDropDownAction();
-        newDropDown.add(fActionNewArchimateModel);
-        toolBarFile.add(newDropDown);
         
         toolBarFile.add(fActionOpenModel);
         toolBarFile.add(fActionSave);

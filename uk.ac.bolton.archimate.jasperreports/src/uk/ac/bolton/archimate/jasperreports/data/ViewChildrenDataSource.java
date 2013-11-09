@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.jasperreports.data;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ import uk.ac.bolton.archimate.model.IDiagramModelObject;
  * 
  * @author Phillip Beauvoir
  */
-public class ViewChildrenDataSource implements JRRewindableDataSource, IDataSource {
+public class ViewChildrenDataSource implements JRRewindableDataSource, IPropertiesDataSource {
     
     private List<IArchimateElement> fChildren = new ArrayList<IArchimateElement>();
     private IArchimateElement fCurrentElement;
@@ -62,6 +61,10 @@ public class ViewChildrenDataSource implements JRRewindableDataSource, IDataSour
         return fCurrentElement != null;
     }
 
+    public PropertiesModelDataSource getPropertiesDataSource() {
+        return new PropertiesModelDataSource(fCurrentElement);
+    }
+    
     @Override
     public Object getFieldValue(JRField jrField) throws JRException {
         return FieldDataFactory.getFieldValue(fCurrentElement, jrField.getName());

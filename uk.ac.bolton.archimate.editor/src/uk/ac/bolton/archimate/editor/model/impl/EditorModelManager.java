@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.model.impl;
 
 import java.beans.PropertyChangeEvent;
@@ -36,15 +35,16 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 
-import uk.ac.bolton.archimate.compatibility.CompatibilityHandlerException;
-import uk.ac.bolton.archimate.compatibility.IncompatibleModelException;
-import uk.ac.bolton.archimate.compatibility.LaterModelVersionException;
-import uk.ac.bolton.archimate.compatibility.ModelCompatibility;
 import uk.ac.bolton.archimate.editor.ArchimateEditorPlugin;
 import uk.ac.bolton.archimate.editor.Logger;
 import uk.ac.bolton.archimate.editor.diagram.util.AnimationUtil;
 import uk.ac.bolton.archimate.editor.model.IArchiveManager;
 import uk.ac.bolton.archimate.editor.model.IEditorModelManager;
+import uk.ac.bolton.archimate.editor.model.compatibility.CompatibilityHandlerException;
+import uk.ac.bolton.archimate.editor.model.compatibility.IncompatibleModelException;
+import uk.ac.bolton.archimate.editor.model.compatibility.LaterModelVersionException;
+import uk.ac.bolton.archimate.editor.model.compatibility.ModelCompatibility;
+import uk.ac.bolton.archimate.editor.preferences.IPreferenceConstants;
 import uk.ac.bolton.archimate.editor.preferences.Preferences;
 import uk.ac.bolton.archimate.editor.ui.services.EditorManager;
 import uk.ac.bolton.archimate.editor.utils.FileUtils;
@@ -144,6 +144,14 @@ implements IEditorModelManager {
         diagramModel.setName(Messages.EditorModelManager_1);
         model.getFolder(FolderType.DIAGRAMS).getElements().add(diagramModel);
         
+        // Register
+        registerModel(model);
+        
+        return model;
+    }
+    
+    @Override
+    public void registerModel(IArchimateModel model) {
         // Add to Models
         getModels().add(model);
         
@@ -155,7 +163,6 @@ implements IEditorModelManager {
         
         firePropertyChange(this, PROPERTY_MODEL_CREATED, null, model);
         model.eAdapters().add(new ECoreAdapter());
-        return model;
     }
     
     @Override
@@ -343,8 +350,8 @@ implements IEditorModelManager {
         
         File file = model.getFile();
         
-        // Save backup
-        if(file.exists()) {
+        // Save backup (if set in Preferences)
+        if(Preferences.STORE.getBoolean(IPreferenceConstants.BACKUP_ON_SAVE) && file.exists()) {
             FileUtils.copyFile(file, new File(model.getFile().getAbsolutePath() + ".bak"), false); //$NON-NLS-1$
         }
         

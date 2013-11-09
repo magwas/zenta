@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.commands;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -75,7 +74,12 @@ extends Command {
 
     @Override
     public void execute() {
-        fConnection = (IDiagramModelConnection)fRequest.getNewObject();
+        // If null create new one
+        if(fConnection == null) {
+            fConnection = createNewConnection();
+        }
+        
+        // Connect
         fConnection.connect(fSource, fTarget);
         
         // If it's a circular connection, add some bendpoints
@@ -92,6 +96,14 @@ extends Command {
     @Override
     public void undo() {
         fConnection.disconnect();
+    }
+    
+    /**
+     * Create a new connection from the request
+     * @return The new connection
+     */
+    protected IDiagramModelConnection createNewConnection() {
+        return (IDiagramModelConnection)fRequest.getNewObject();
     }
     
     /**

@@ -1,14 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.figures.diagram;
 
 import org.eclipse.draw2d.ChopboxAnchor;
 import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Locator;
@@ -39,8 +37,8 @@ extends AbstractLabelContainerFigure {
     /**
      * Connection Anchor adjusts for Group shape
      */
-    static class GroupFigureConnectionAnchor extends ChopboxAnchor {
-        GroupFigureConnectionAnchor(IFigure owner) {
+    public static class GroupFigureConnectionAnchor extends ChopboxAnchor {
+        public GroupFigureConnectionAnchor(IFigure owner) {
             super(owner);
         }
         
@@ -84,10 +82,6 @@ extends AbstractLabelContainerFigure {
         
         // Have to add this if we want Animation to work on figures!
         AnimationUtil.addFigureForAnimation(getMainFigure());
-    }
-    
-    public ConnectionAnchor createConnectionAnchor() {
-        return new GroupFigureConnectionAnchor(this);
     }
     
     @Override

@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.preferences;
 
 
@@ -28,6 +27,7 @@ public interface IPreferenceConstants {
     
     String OPEN_DIAGRAMS_ON_LOAD = "openDiagramsOnLoad"; //$NON-NLS-1$
     String ALLOW_MOVE_AROUND = "allowMoveAround"; //$NON-NLS-1$
+    String BACKUP_ON_SAVE = "backupOnSave"; //$NON-NLS-1$
     
     String ANIMATE = "animate"; //$NON-NLS-1$
     String ANIMATION_SPEED = "animationSpeed"; //$NON-NLS-1$
@@ -38,6 +38,7 @@ public interface IPreferenceConstants {
     String LINK_VIEW = "linkView"; //$NON-NLS-1$
     
     String BUSINESS_INTERFACE_FIGURE = "businessInterfaceFigure"; //$NON-NLS-1$
+    String BUSINESS_PROCESS_FIGURE = "businessProcessFigure"; //$NON-NLS-1$
     String APPLICATION_COMPONENT_FIGURE = "applicationComponentFigure"; //$NON-NLS-1$
     String APPLICATION_INTERFACE_FIGURE = "applicationInterfaceFigure"; //$NON-NLS-1$
     String TECHNOLOGY_NODE_FIGURE = "technologyNodeFigure"; //$NON-NLS-1$
@@ -67,4 +68,11 @@ public interface IPreferenceConstants {
     String VIEWPOINTS_HIDE_MAGIC_CONNECTOR_ELEMENTS = "viewpointsHideMagicConnectorElements"; //$NON-NLS-1$
 
     String EDIT_NAME_ON_NEW_OBJECT = "editNameOnNewObject"; //$NON-NLS-1$
+    
+    String DEFAULT_FILL_COLOR_PREFIX = "defaultFillColour_"; //$NON-NLS-1$
+    String SAVE_USER_DEFAULT_FILL_COLOR = ""; //$NON-NLS-1$
+    
+    String USE_ORTHOGONAL_ANCHOR = "orthogonalAnchor"; //$NON-NLS-1$
+    
+    String ANIMATE_VISUALISER_NODES = "animateVisualiserNodes"; //$NON-NLS-1$
 }

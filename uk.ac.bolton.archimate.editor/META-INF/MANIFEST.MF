@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %productName
 Bundle-SymbolicName: uk.ac.bolton.archimate.editor;singleton:=true
-Bundle-Version: 2.3.0.qualifier
+Bundle-Version: 2.4.0.qualifier
 Bundle-Activator: uk.ac.bolton.archimate.editor.ArchimateEditorPlugin
-Bundle-Vendor: Bolton University
+Bundle-Vendor: Phillip Beauvoir
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.runtime.compatibility,
@@ -16,7 +16,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.views.properties.tabbed;visibility:=reexport,
  uk.ac.bolton.archimate.model;visibility:=reexport,
  uk.ac.bolton.jdom,
- uk.ac.bolton.archimate.compatibility,
  uk.ac.bolton.archimate.widgets
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: uk.ac.bolton.archimate.editor.jar
@@ -53,6 +52,7 @@ Export-Package: .,
  uk.ac.bolton.archimate.editor.diagram.util,
  uk.ac.bolton.archimate.editor.model,
  uk.ac.bolton.archimate.editor.model.commands,
+ uk.ac.bolton.archimate.editor.model.compatibility,
  uk.ac.bolton.archimate.editor.model.viewpoints,
  uk.ac.bolton.archimate.editor.perspectives,
  uk.ac.bolton.archimate.editor.preferences,

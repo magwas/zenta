@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.model;
 
 import java.beans.PropertyChangeListener;
@@ -63,6 +62,12 @@ public interface IEditorModelManager {
      * @return New Model
      */
     IArchimateModel createNewModel();
+    
+    /**
+     * Register a model in the manager
+     * @param model
+     */
+    void registerModel(IArchimateModel model);
     
     /**
      * Open a model by loading it and opening its Views

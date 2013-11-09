@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.propertysections;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -102,7 +101,7 @@ public class DiagramConnectionNameDocumentationSection extends AbstractArchimate
         fTextName.refresh(fConnection);
         
         boolean enabled = fConnection instanceof ILockable ? !((ILockable)fConnection).isLocked() : true;
-        fTextName.getTextControl().setEnabled(enabled);
+        fTextName.setEditable(enabled);
     }
     
     protected void refreshDocumentationField() {
@@ -112,7 +111,7 @@ public class DiagramConnectionNameDocumentationSection extends AbstractArchimate
         fTextDocumentation.refresh(fConnection);
 
         boolean enabled = fConnection instanceof ILockable ? !((ILockable)fConnection).isLocked() : true;
-        fTextDocumentation.getTextControl().setEnabled(enabled);
+        fTextDocumentation.setEditable(enabled);
     }
     
     @Override

@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.ui;
 
 import uk.ac.bolton.archimate.editor.ArchimateEditorPlugin;
@@ -228,5 +227,7 @@ public interface IArchimateImages {
     String FIGURE_TECHNOLOGY_NODE2 = FIGURES_IMGPATH + "tn2.png"; //$NON-NLS-1$
     String FIGURE_TECHNOLOGY_INTERFACE1 = FIGURES_IMGPATH + "ti1.png"; //$NON-NLS-1$
     String FIGURE_TECHNOLOGY_INTERFACE2 = FIGURES_IMGPATH + "ti2.png"; //$NON-NLS-1$
+    String FIGURE_BUSINESS_PROCESS1 = FIGURES_IMGPATH + "bp1.png"; //$NON-NLS-1$
+    String FIGURE_BUSINESS_PROCESS2 = FIGURES_IMGPATH + "bp2.png"; //$NON-NLS-1$
 
 }

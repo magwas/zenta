@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.templates;
 
 import java.io.File;
@@ -41,7 +40,7 @@ public class ArchimateEditorTemplatesPlugin extends AbstractUIPlugin implements 
 
     @Override
     public void earlyStartup() {
-        // Do nothing
+        // Do nothing - this will initialise the "Save As Template..." menu item
     }
     
     /**

@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2010 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.figures.connections;
 
 import org.eclipse.draw2d.IFigure;
@@ -22,10 +21,24 @@ import uk.ac.bolton.archimate.model.IDiagramModelArchimateConnection;
  */
 public class AccessConnectionFigure extends AbstractArchimateConnectionFigure {
 	
-    private PolylineDecoration fDecoratorSource = new PolylineDecoration();
-    private PolylineDecoration fDecoratorTarget = new PolylineDecoration();
+    /**
+     * @return Decoration to use on Source Node
+     */
+    public static PolylineDecoration createFigureSourceDecoration() {
+        return new PolylineDecoration();
+    }
+
+    /**
+     * @return Decoration to use on Target Node
+     */
+    public static PolylineDecoration createFigureTargetDecoration() {
+        return new PolylineDecoration();
+    }
+
+    private PolylineDecoration fDecoratorSource = createFigureSourceDecoration();
+    private PolylineDecoration fDecoratorTarget = createFigureTargetDecoration();
     
-	public AccessConnectionFigure(IDiagramModelArchimateConnection connection) {
+    public AccessConnectionFigure(IDiagramModelArchimateConnection connection) {
 	    super(connection);
 	}
 	

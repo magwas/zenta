@@ -1,9 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2011-12 Bolton University, UK.
- * All rights reserved. This program and the accompanying materials
+/**
+ * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *******************************************************************************/
+ */
 package uk.ac.bolton.archimate.editor.diagram.actions;
 
 import java.util.ArrayList;
@@ -24,6 +23,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.ShellAdapter;
+import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -37,11 +38,14 @@ import uk.ac.bolton.archimate.editor.diagram.FloatingPalette;
 import uk.ac.bolton.archimate.editor.diagram.IDiagramModelEditor;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
 import uk.ac.bolton.archimate.editor.ui.components.PartListenerAdapter;
-import uk.ac.bolton.archimate.editor.utils.PlatformUtils;
 
 
 /**
  * Full Screen Action
+ * 
+ * Works on Windows and Linux but not Mac >= 10.7
+ * Mac's own full screen action conflicts starting from Eclipse 3.8 since Shell.setFullScreen(boolean) was changed
+ * to use Mac's full screen.
  * 
  * @author Phillip Beauvoir
  */
@@ -167,16 +171,21 @@ public class FullScreenAction extends WorkbenchPartAction {
         fGraphicalViewer.getControl().addKeyListener(keyListener);
 
         // Create new Shell
-        // SWT.SHELL_TRIM is best option for all platforms. GTK needs it for full-size shell and OS X Lion has a bug with SWT.RESIZE
+        // SWT.SHELL_TRIM is best option for all platforms. GTK needs it for a full-size shell
         int style = SWT.APPLICATION_MODAL | SWT.SHELL_TRIM ;
-        if(PlatformUtils.isMac()) {
-            style |= SWT.ON_TOP; // SWT.ON_TOP is needed on Mac to ensure Focus click-through
-        }
         fNewShell = new Shell(Display.getCurrent(), style); 
         fNewShell.setFullScreen(true);
         fNewShell.setMaximized(true);
         fNewShell.setLayout(new FillLayout());
         fNewShell.setImage(IArchimateImages.ImageFactory.getImage(IArchimateImages.ICON_APP_128));
+        
+        // On Ubuntu the min/max/close buttons are shown, so trap close button
+        fNewShell.addShellListener(new ShellAdapter() {
+            @Override
+            public void shellClosed(ShellEvent e) {
+                close();
+            }
+        });
         
         // Set the Viewer's control's parent to be the new Shell
         fGraphicalViewer.getControl().setParent(fNewShell);
