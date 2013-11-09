@@ -27,26 +27,26 @@ import uk.ac.bolton.archimate.model.ISketchModel;
  */
 public class SketchModel extends DiagramModel implements ISketchModel {
     /**
-     * The default value of the '{@link #getBackground() <em>Background</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getBackground() <em>Background</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getBackground()
-     * @generated
-     * @ordered
-     */
+	 * @see #getBackground()
+	 * @generated
+	 * @ordered
+	 */
     protected static final int BACKGROUND_EDEFAULT = 1;
     /**
-     * The cached value of the '{@link #getBackground() <em>Background</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getBackground() <em>Background</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getBackground()
-     * @generated
-     * @ordered
-     */
+	 * @see #getBackground()
+	 * @generated
+	 * @ordered
+	 */
     protected int background = BACKGROUND_EDEFAULT;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -65,98 +65,98 @@ public class SketchModel extends DiagramModel implements ISketchModel {
 	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public int getBackground() {
-        return background;
-    }
+		return background;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setBackground(int newBackground) {
-        int oldBackground = background;
-        background = newBackground;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.SKETCH_MODEL__BACKGROUND, oldBackground, background));
-    }
+		int oldBackground = background;
+		background = newBackground;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IArchimatePackage.SKETCH_MODEL__BACKGROUND, oldBackground, background));
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL__BACKGROUND:
-                return getBackground();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case IArchimatePackage.SKETCH_MODEL__BACKGROUND:
+				return getBackground();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL__BACKGROUND:
-                setBackground((Integer)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case IArchimatePackage.SKETCH_MODEL__BACKGROUND:
+				setBackground((Integer)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL__BACKGROUND:
-                setBackground(BACKGROUND_EDEFAULT);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.SKETCH_MODEL__BACKGROUND:
+				setBackground(BACKGROUND_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case IArchimatePackage.SKETCH_MODEL__BACKGROUND:
-                return background != BACKGROUND_EDEFAULT;
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case IArchimatePackage.SKETCH_MODEL__BACKGROUND:
+				return background != BACKGROUND_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (background: "); //$NON-NLS-1$
-        result.append(background);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (background: "); //$NON-NLS-1$
+		result.append(background);
+		result.append(')');
+		return result.toString();
+	}
 
 } //SketchModel

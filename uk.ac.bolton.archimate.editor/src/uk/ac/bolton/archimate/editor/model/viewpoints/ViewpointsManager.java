@@ -33,34 +33,10 @@ public class ViewpointsManager {
     private static List<IViewpoint> VIEWPOINTS = new ArrayList<IViewpoint>();
     
     static {
-        VIEWPOINTS.add(new ActorCooperationViewpoint());
-        VIEWPOINTS.add(new ApplicationBehaviourViewpoint());
-        VIEWPOINTS.add(new ApplicationCooperationViewpoint());
-        VIEWPOINTS.add(new ApplicationStructureViewpoint());
-        VIEWPOINTS.add(new ApplicationUsageViewpoint());
-        VIEWPOINTS.add(new BusinessFunctionViewpoint());
-        VIEWPOINTS.add(new BusinessProcessCooperationViewpoint());
-        VIEWPOINTS.add(new BusinessProcessViewpoint());
-        VIEWPOINTS.add(new BusinessProductViewpoint());
-        VIEWPOINTS.add(new ImplementationAndDeploymentViewpoint());
-        VIEWPOINTS.add(new InformationStructureViewpoint());
-        VIEWPOINTS.add(new InfrastructureUsageViewpoint());
-        VIEWPOINTS.add(new InfrastructureViewpoint());
+    	//FIXME: viewpoints based on objectClass groups (based on templates)
         VIEWPOINTS.add(new LayeredViewpoint());
-        VIEWPOINTS.add(new OrganisationViewpoint());
-        VIEWPOINTS.add(new ServiceRealisationViewpoint());
         VIEWPOINTS.add(new TotalViewpoint());
         
-        VIEWPOINTS.add(new StakeholderViewpoint());
-        VIEWPOINTS.add(new GoalRealisationViewpoint());
-        VIEWPOINTS.add(new GoalContributionViewpoint());
-        VIEWPOINTS.add(new PrinciplesViewpoint());
-        VIEWPOINTS.add(new RequirementsRealisationViewpoint());
-        VIEWPOINTS.add(new MotivationViewpoint());
-        
-        VIEWPOINTS.add(new ProjectViewpoint());
-        VIEWPOINTS.add(new MigrationViewpoint());
-        VIEWPOINTS.add(new ImplementationMigrationViewpoint());
 
         // Sort the Viewpoints by name
         Collections.sort(VIEWPOINTS, new Comparator<IViewpoint>() {

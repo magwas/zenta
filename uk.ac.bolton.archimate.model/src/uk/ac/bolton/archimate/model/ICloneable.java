@@ -1,5 +1,6 @@
 /**
- * This program and the accompanying materials
+ * Copyright (c) 2010-2012 Bolton University, UK.
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
@@ -18,12 +19,12 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ICloneable extends EObject {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
-    EObject getCopy();
+	EObject getCopy();
 
 } // ICloneable

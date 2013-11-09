@@ -1,5 +1,6 @@
 /**
- * This program and the accompanying materials
+ * Copyright (c) 2010-2012 Bolton University, UK.
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
@@ -26,61 +27,61 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface IProperty extends EObject {
-    /**
+	/**
 	 * Returns the value of the '<em><b>Key</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Key</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Key</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Key</em>' attribute.
 	 * @see #setKey(String)
 	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getProperty_Key()
 	 * @model default=""
 	 * @generated
 	 */
-    String getKey();
+	String getKey();
 
-    /**
+	/**
 	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IProperty#getKey <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Key</em>' attribute.
 	 * @see #getKey()
 	 * @generated
 	 */
-    void setKey(String value);
+	void setKey(String value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Value</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
 	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getProperty_Value()
 	 * @model default=""
 	 * @generated
 	 */
-    String getValue();
+	String getValue();
 
-    /**
+	/**
 	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IProperty#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated
 	 */
-    void setValue(String value);
+	void setValue(String value);
 
-				/**
+	/**
 	 * Returns the value of the '<em><b>Generated</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
@@ -97,7 +98,7 @@ public interface IProperty extends EObject {
 	 */
 	boolean isGenerated();
 
-				/**
+	/**
 	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IProperty#isGenerated <em>Generated</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

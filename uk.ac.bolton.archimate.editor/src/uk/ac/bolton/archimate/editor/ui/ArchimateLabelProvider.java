@@ -204,40 +204,14 @@ public class ArchimateLabelProvider implements IEditorLabelProvider {
             if(relation.getSource() != null && relation.getTarget() != null) {
                 String nameSource = ArchimateLabelProvider.INSTANCE.getLabel(relation.getSource());
                 String nameTarget = ArchimateLabelProvider.INSTANCE.getLabel(relation.getTarget());
-                
+//FIXME: figure out the derived relationship name                
                 switch(relation.eClass().getClassifierID()) {
                     case IArchimatePackage.SPECIALISATION_RELATIONSHIP:
                         return NLS.bind(Messages.ArchimateLabelProvider_3, nameSource, nameTarget);
 
-                    case IArchimatePackage.COMPOSITION_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_4, nameSource, nameTarget);
-
-                    case IArchimatePackage.AGGREGATION_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_5, nameSource, nameTarget);
-
-                    case IArchimatePackage.TRIGGERING_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_6, nameSource, nameTarget);
-
-                    case IArchimatePackage.FLOW_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_7, nameSource, nameTarget);
-
-                    case IArchimatePackage.ACCESS_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_8, nameSource, nameTarget);
-
                     case IArchimatePackage.ASSOCIATION_RELATIONSHIP:
                         return NLS.bind(Messages.ArchimateLabelProvider_9, nameSource, nameTarget);
 
-                    case IArchimatePackage.ASSIGNMENT_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_10, nameSource, nameTarget);
-
-                    case IArchimatePackage.REALISATION_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_11, nameSource, nameTarget);
-
-                    case IArchimatePackage.USED_BY_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_12, nameSource, nameTarget);
-
-                    case IArchimatePackage.INFLUENCE_RELATIONSHIP:
-                        return NLS.bind(Messages.ArchimateLabelProvider_13, nameSource, nameTarget);
 
                     default:
                         return ""; //$NON-NLS-1$

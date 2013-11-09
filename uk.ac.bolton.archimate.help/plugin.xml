@@ -333,11 +333,6 @@
             title="%hint.title.36">
       </hint>
       <hint
-            class="uk.ac.bolton.archimate.model.IAccessRelationship"
-            file="hints/access.html"
-            title="%hint.title.37">
-      </hint>
-      <hint
             class="uk.ac.bolton.archimate.model.IAssociationRelationship"
             file="hints/association.html"
             title="%hint.title.38">

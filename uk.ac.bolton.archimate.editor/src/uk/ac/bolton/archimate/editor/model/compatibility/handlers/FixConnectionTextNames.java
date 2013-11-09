@@ -83,26 +83,11 @@ public class FixConnectionTextNames implements ICompatibilityHandler {
      */
     private String getRelationshipDefaultName(IRelationship relationship) {
         switch(relationship.eClass().getClassifierID()) {
-            case IArchimatePackage.ACCESS_RELATIONSHIP:
-                return "Access relation"; //$NON-NLS-1$
-            case IArchimatePackage.AGGREGATION_RELATIONSHIP:
-                return "Aggregation relation"; //$NON-NLS-1$
-            case IArchimatePackage.ASSIGNMENT_RELATIONSHIP:
-                return "Assignment relation"; //$NON-NLS-1$
+        //FIXME from object class
             case IArchimatePackage.ASSOCIATION_RELATIONSHIP:
                 return "Association relation"; //$NON-NLS-1$
-            case IArchimatePackage.COMPOSITION_RELATIONSHIP:
-                return "Composition relation"; //$NON-NLS-1$
-            case IArchimatePackage.FLOW_RELATIONSHIP:
-                return "Flow relation"; //$NON-NLS-1$
-            case IArchimatePackage.REALISATION_RELATIONSHIP:
-                return "Realisation relation"; //$NON-NLS-1$
             case IArchimatePackage.SPECIALISATION_RELATIONSHIP:
                 return "Specialisation relation"; //$NON-NLS-1$
-            case IArchimatePackage.TRIGGERING_RELATIONSHIP:
-                return "Triggering relation"; //$NON-NLS-1$
-            case IArchimatePackage.USED_BY_RELATIONSHIP:
-                return "Used By relation"; //$NON-NLS-1$
         }
         return ""; //$NON-NLS-1$
     }

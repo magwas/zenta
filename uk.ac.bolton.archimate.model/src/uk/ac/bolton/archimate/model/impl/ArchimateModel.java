@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.bolton.archimate.model.FolderType;
 import uk.ac.bolton.archimate.model.IAdapter;
-import uk.ac.bolton.archimate.model.IApplicationLayerElement;
 import uk.ac.bolton.archimate.model.IArchimateFactory;
 import uk.ac.bolton.archimate.model.IArchimateModel;
 import uk.ac.bolton.archimate.model.IArchimateModelElement;
@@ -33,14 +32,11 @@ import uk.ac.bolton.archimate.model.IBusinessLayerElement;
 import uk.ac.bolton.archimate.model.IDiagramModel;
 import uk.ac.bolton.archimate.model.IFolder;
 import uk.ac.bolton.archimate.model.IIdentifier;
-import uk.ac.bolton.archimate.model.IImplementationMigrationElement;
 import uk.ac.bolton.archimate.model.IJunctionElement;
-import uk.ac.bolton.archimate.model.IMotivationElement;
 import uk.ac.bolton.archimate.model.INameable;
 import uk.ac.bolton.archimate.model.IProperties;
 import uk.ac.bolton.archimate.model.IProperty;
 import uk.ac.bolton.archimate.model.IRelationship;
-import uk.ac.bolton.archimate.model.ITechnologyLayerElement;
 import uk.ac.bolton.archimate.model.util.IDAdapter;
 
 /**
@@ -297,18 +293,6 @@ public class ArchimateModel extends EObjectImpl implements IArchimateModel {
         
         if(element instanceof IBusinessLayerElement) {
             return getFolder(FolderType.BUSINESS);
-        }
-        if(element instanceof IApplicationLayerElement) {
-            return getFolder(FolderType.APPLICATION);
-        }
-        if(element instanceof ITechnologyLayerElement) {
-            return getFolder(FolderType.TECHNOLOGY);
-        }
-        if(element instanceof IMotivationElement) {
-            return getFolder(FolderType.MOTIVATION);
-        }
-        if(element instanceof IImplementationMigrationElement) {
-            return getFolder(FolderType.IMPLEMENTATION_MIGRATION);
         }
         if(element instanceof IJunctionElement) {
             return getFolder(FolderType.CONNECTORS);

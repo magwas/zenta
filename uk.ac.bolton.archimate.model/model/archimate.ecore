@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model"
-    nsURI="http://www.bolton.ac.uk/archimate" nsPrefix="archimate">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://www.bolton.ac.uk/archimate" nsPrefix="archimate">
   <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"
       serializable="false"/>
   <eClassifiers xsi:type="ecore:EClass" name="Adapter" abstract="true" interface="true">
@@ -136,73 +134,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ArchimateElement"
         resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AccessRelationship" eSuperTypes="#//Relationship">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AggregationRelationship" eSuperTypes="#//Relationship"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AssignmentRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EClass" name="AssociationRelationship" eSuperTypes="#//Relationship"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CompositionRelationship" eSuperTypes="#//Relationship"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FlowRelationship" eSuperTypes="#//Relationship"/>
-  <eClassifiers xsi:type="ecore:EClass" name="RealisationRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EClass" name="SpecialisationRelationship" eSuperTypes="#//Relationship"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TriggeringRelationship" eSuperTypes="#//Relationship"/>
-  <eClassifiers xsi:type="ecore:EClass" name="UsedByRelationship" eSuperTypes="#//Relationship"/>
-  <eClassifiers xsi:type="ecore:EClass" name="InfluenceRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessLayerElement" abstract="true"
       interface="true" eSuperTypes="#//ArchimateElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessActivity" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessActor" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessCollaboration" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Contract" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessEvent" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessFunction" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessInteraction" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessInterface" eSuperTypes="#//BusinessLayerElement #//InterfaceElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Meaning" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessObject" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessProcess" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Representation" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessRole" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessService" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Location" eSuperTypes="#//BusinessLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ApplicationLayerElement" abstract="true"
-      interface="true" eSuperTypes="#//ArchimateElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ApplicationCollaboration" eSuperTypes="#//ApplicationLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ApplicationComponent" eSuperTypes="#//ApplicationLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ApplicationFunction" eSuperTypes="#//ApplicationLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ApplicationInteraction" eSuperTypes="#//ApplicationLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ApplicationInterface" eSuperTypes="#//ApplicationLayerElement #//InterfaceElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DataObject" eSuperTypes="#//ApplicationLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ApplicationService" eSuperTypes="#//ApplicationLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TechnologyLayerElement" abstract="true"
-      interface="true" eSuperTypes="#//ArchimateElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Artifact" eSuperTypes="#//TechnologyLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CommunicationPath" eSuperTypes="#//TechnologyLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="#//TechnologyLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="InfrastructureInterface" eSuperTypes="#//TechnologyLayerElement #//InterfaceElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="InfrastructureService" eSuperTypes="#//TechnologyLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="InfrastructureFunction" eSuperTypes="#//TechnologyLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//TechnologyLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemSoftware" eSuperTypes="#//TechnologyLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//TechnologyLayerElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MotivationElement" abstract="true" eSuperTypes="#//ArchimateElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Stakeholder" eSuperTypes="#//MotivationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Driver" eSuperTypes="#//MotivationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Assessment" eSuperTypes="#//MotivationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//MotivationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="#//MotivationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Constraint" eSuperTypes="#//MotivationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Principle" eSuperTypes="#//MotivationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ImplementationMigrationElement" abstract="true"
-      eSuperTypes="#//ArchimateElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkPackage" eSuperTypes="#//ImplementationMigrationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Deliverable" eSuperTypes="#//ImplementationMigrationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Plateau" eSuperTypes="#//ImplementationMigrationElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Gap" eSuperTypes="#//ImplementationMigrationElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiagramModelComponent" abstract="true"
       eSuperTypes="#//Identifier #//Cloneable #//Adapter #//Nameable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagramModel" eType="#//DiagramModel"
@@ -352,6 +287,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" eType="#//Relationship"
         volatile="true" resolveProxies="false"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessObject" eSuperTypes="#//BusinessLayerElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="SketchModel" eSuperTypes="#//DiagramModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="background" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>

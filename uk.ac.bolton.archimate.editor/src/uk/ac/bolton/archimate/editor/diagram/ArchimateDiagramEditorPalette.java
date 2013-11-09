@@ -42,7 +42,7 @@ public class ArchimateDiagramEditorPalette extends AbstractPaletteRoot {
     
     private PaletteContainer fRelationsGroup;
     
-    private PaletteContainer fBusinessGroup, fApplicationGroup, fTechnologyGroup, fMotivationGroup, fImplementationMigrationGroup;
+    private PaletteContainer fBusinessGroup;
 
     public ArchimateDiagramEditorPalette() {
         add(createControlsGroup());
@@ -71,10 +71,6 @@ public class ArchimateDiagramEditorPalette extends AbstractPaletteRoot {
             add(1, fRelationsGroup);
             
             remove(fBusinessGroup);
-            remove(fApplicationGroup);
-            remove(fTechnologyGroup);
-            remove(fMotivationGroup);
-            remove(fImplementationMigrationGroup);
             createArchimateGroup();
         }
     }
@@ -84,35 +80,12 @@ public class ArchimateDiagramEditorPalette extends AbstractPaletteRoot {
      */
     private void createArchimateGroup() {
         fBusinessGroup = createBusinessLayerGroup();
-        fApplicationGroup = createApplicationLayerGroup();
-        fTechnologyGroup = createTechnologyLayerGroup();
-        fMotivationGroup = createMotivationGroup();
-        fImplementationMigrationGroup = createImplementationMigrationGroup();
         
         if(!fBusinessGroup.getChildren().isEmpty()) {
             add(fBusinessGroup);
         }
-        
-        if(!fApplicationGroup.getChildren().isEmpty()) {
-            add(new PaletteSeparator("")); //$NON-NLS-1$
-            add(fApplicationGroup);
-        }
-        
-        if(!fTechnologyGroup.getChildren().isEmpty()) {
-            add(new PaletteSeparator("")); //$NON-NLS-1$
-            add(fTechnologyGroup);
-        }
-        
-        if(!fMotivationGroup.getChildren().isEmpty()) {
-            add(new PaletteSeparator("")); //$NON-NLS-1$
-            add(fMotivationGroup);
-        }
-
-        if(!fImplementationMigrationGroup.getChildren().isEmpty()) {
-            add(new PaletteSeparator("")); //$NON-NLS-1$
-            add(fImplementationMigrationGroup);
-        }
     }
+        
     
     /**
      * Create a Group of Controls
@@ -188,69 +161,6 @@ public class ArchimateDiagramEditorPalette extends AbstractPaletteRoot {
         return group;
     }
 
-    /**
-     * Application Palette
-     */
-    private PaletteContainer createApplicationLayerGroup() {
-        PaletteContainer group = new PaletteGroup(Messages.ArchimateDiagramEditorPalette_9);
-        
-        for(EClass eClass : ArchimateModelUtils.getApplicationClasses()) {
-            if(isAllowedType(eClass)) {
-                PaletteEntry entry = createCombinedTemplateCreationEntry(eClass, null);
-                group.add(entry);
-            }
-        }
-        
-        return group;
-    }
-
-    /**
-     * Technology Palette
-     */
-    private PaletteContainer createTechnologyLayerGroup() {
-        PaletteContainer group = new PaletteGroup(Messages.ArchimateDiagramEditorPalette_10);
-        
-        for(EClass eClass : ArchimateModelUtils.getTechnologyClasses()) {
-            if(isAllowedType(eClass)) {
-                PaletteEntry entry = createCombinedTemplateCreationEntry(eClass, null);
-                group.add(entry);
-            }
-        }
-        
-        return group;
-    }
-
-    /**
-     * Motivation Palette
-     */
-    private PaletteContainer createMotivationGroup() {
-        PaletteContainer group = new PaletteGroup(Messages.ArchimateDiagramEditorPalette_11);
-        
-        for(EClass eClass : ArchimateModelUtils.getMotivationClasses()) {
-            if(isAllowedType(eClass)) {
-                PaletteEntry entry = createCombinedTemplateCreationEntry(eClass, null);
-                group.add(entry);
-            }
-        }
-        
-        return group;
-    }
-
-    /**
-     * Implementation & Migration Palette
-     */
-    private PaletteContainer createImplementationMigrationGroup() {
-        PaletteContainer group = new PaletteGroup(Messages.ArchimateDiagramEditorPalette_12);
-        
-        for(EClass eClass : ArchimateModelUtils.getImplementationMigrationClasses()) {
-            if(isAllowedType(eClass)) {
-                PaletteEntry entry = createCombinedTemplateCreationEntry(eClass, null);
-                group.add(entry);
-            }
-        }
-        
-        return group;
-    }
 
     /**
      * Relations Palette

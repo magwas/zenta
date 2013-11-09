@@ -99,26 +99,7 @@ public class Preferences implements IPreferenceConstants {
      */
     public static int getDefaultFigureType(IDiagramModelArchimateObject dmo) {
         switch(dmo.getArchimateElement().eClass().getClassifierID()) {
-            case IArchimatePackage.BUSINESS_INTERFACE:
-                return Preferences.STORE.getInt(BUSINESS_INTERFACE_FIGURE);
-                
-            case IArchimatePackage.BUSINESS_PROCESS:
-                return Preferences.STORE.getInt(BUSINESS_PROCESS_FIGURE);
-
-            case IArchimatePackage.APPLICATION_INTERFACE:
-                return Preferences.STORE.getInt(APPLICATION_INTERFACE_FIGURE);
-                
-            case IArchimatePackage.INFRASTRUCTURE_INTERFACE:
-                return Preferences.STORE.getInt(TECHNOLOGY_INTERFACE_FIGURE);
-                
-            case IArchimatePackage.APPLICATION_COMPONENT:
-                return Preferences.STORE.getInt(APPLICATION_COMPONENT_FIGURE);
-                
-            case IArchimatePackage.NODE:
-                return Preferences.STORE.getInt(TECHNOLOGY_NODE_FIGURE);
-                
-            case IArchimatePackage.DEVICE:
-                return Preferences.STORE.getInt(TECHNOLOGY_DEVICE_FIGURE);
+        //FIXME from objectClass
 
             default:
                 return 0;

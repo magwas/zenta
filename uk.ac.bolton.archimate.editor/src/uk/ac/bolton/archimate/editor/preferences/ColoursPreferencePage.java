@@ -80,25 +80,11 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         client2.setLayout(new GridLayout(2, false));
         client2.setLayoutData(new GridData(SWT.TOP, SWT.TOP, false, false));
         
-        for(EClass eClass : ArchimateModelUtils.getApplicationClasses()) {
-            createColorSelector(client2, eClass);
-        }
-       
-        for(EClass eClass : ArchimateModelUtils.getTechnologyClasses()) {
-            createColorSelector(client2, eClass);
-        }
 
         Composite client3 = new Composite(client, SWT.NULL);
         client3.setLayout(new GridLayout(2, false));
         client3.setLayoutData(new GridData(SWT.TOP, SWT.TOP, false, false));
         
-        for(EClass eClass : ArchimateModelUtils.getMotivationClasses()) {
-            createColorSelector(client3, eClass);
-        }
-        
-        for(EClass eClass : ArchimateModelUtils.getImplementationMigrationClasses()) {
-            createColorSelector(client3, eClass);
-        }
         
         return client;
     }

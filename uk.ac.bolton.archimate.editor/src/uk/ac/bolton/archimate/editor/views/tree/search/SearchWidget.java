@@ -176,29 +176,7 @@ public class SearchWidget extends Composite {
             businessMenu.add(createObjectAction(eClass));
         }
         
-        MenuManager applicationMenu = new MenuManager(Messages.SearchWidget_7);
-        dropDownAction.add(applicationMenu);
-        for(EClass eClass : ArchimateModelUtils.getApplicationClasses()) {
-            applicationMenu.add(createObjectAction(eClass));
-        }
-        
-        MenuManager technologyMenu = new MenuManager(Messages.SearchWidget_8);
-        dropDownAction.add(technologyMenu);
-        for(EClass eClass : ArchimateModelUtils.getTechnologyClasses()) {
-            technologyMenu.add(createObjectAction(eClass));
-        }
-        
-        MenuManager motivationMenu = new MenuManager(Messages.SearchWidget_9);
-        dropDownAction.add(motivationMenu);
-        for(EClass eClass : ArchimateModelUtils.getMotivationClasses()) {
-            motivationMenu.add(createObjectAction(eClass));
-        }
 
-        MenuManager implementationMenu = new MenuManager(Messages.SearchWidget_10);
-        dropDownAction.add(implementationMenu);
-        for(EClass eClass : ArchimateModelUtils.getImplementationMigrationClasses()) {
-            implementationMenu.add(createObjectAction(eClass));
-        }
 
         MenuManager relationsMenu = new MenuManager(Messages.SearchWidget_11);
         dropDownAction.add(relationsMenu);

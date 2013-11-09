@@ -10,19 +10,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 
-import uk.ac.bolton.archimate.model.IAccessRelationship;
 import uk.ac.bolton.archimate.model.IAggregationRelationship;
 import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IArchimateFactory;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
-import uk.ac.bolton.archimate.model.IAssignmentRelationship;
 import uk.ac.bolton.archimate.model.IAssociationRelationship;
-import uk.ac.bolton.archimate.model.IBusinessActor;
-import uk.ac.bolton.archimate.model.IBusinessRole;
-import uk.ac.bolton.archimate.model.ICompositionRelationship;
-import uk.ac.bolton.archimate.model.IRealisationRelationship;
 import uk.ac.bolton.archimate.model.IRelationship;
-import uk.ac.bolton.archimate.model.IUsedByRelationship;
 
 
 /**
@@ -40,12 +33,6 @@ public class DerivedRelationsUtils {
     
     static {
         weaklist.add(IArchimatePackage.eINSTANCE.getAssociationRelationship());
-        weaklist.add(IArchimatePackage.eINSTANCE.getAccessRelationship());
-        weaklist.add(IArchimatePackage.eINSTANCE.getUsedByRelationship());
-        weaklist.add(IArchimatePackage.eINSTANCE.getRealisationRelationship());
-        weaklist.add(IArchimatePackage.eINSTANCE.getAssignmentRelationship());
-        weaklist.add(IArchimatePackage.eINSTANCE.getAggregationRelationship());
-        weaklist.add(IArchimatePackage.eINSTANCE.getCompositionRelationship());
     }
     
     /**
@@ -116,9 +103,6 @@ public class DerivedRelationsUtils {
      */
     public static boolean isBidirectionalRelationship(IRelationship relation) {
         //return relation instanceof IAssociationRelationship || relation instanceof IAssignmentRelationship;
-        if(relation instanceof IAssignmentRelationship) {
-            return (relation.getSource() instanceof IBusinessActor) && (relation.getTarget() instanceof IBusinessRole);
-        }
         return false;
     }
     
@@ -127,11 +111,8 @@ public class DerivedRelationsUtils {
      * @return True if relation is a structural relationship
      */
     public static boolean isStructuralRelationship(IRelationship relation) {
-        return relation instanceof IAssociationRelationship || relation instanceof IAccessRelationship ||
-                relation instanceof IUsedByRelationship || relation instanceof IRealisationRelationship ||
-                relation instanceof IAssignmentRelationship || relation instanceof IAggregationRelationship
-                || relation instanceof ICompositionRelationship;
-    }
+        return relation instanceof IAssociationRelationship; 
+   }
     
     /**
      * @param element1

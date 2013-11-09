@@ -27,18 +27,11 @@ import org.eclipse.ui.PlatformUI;
 import uk.ac.bolton.archimate.editor.diagram.editparts.IArchimateEditPart;
 import uk.ac.bolton.archimate.editor.model.commands.EObjectFeatureCommand;
 import uk.ac.bolton.archimate.editor.ui.IArchimateImages;
-import uk.ac.bolton.archimate.model.IApplicationComponent;
-import uk.ac.bolton.archimate.model.IApplicationInterface;
 import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
-import uk.ac.bolton.archimate.model.IBusinessInterface;
-import uk.ac.bolton.archimate.model.IBusinessProcess;
-import uk.ac.bolton.archimate.model.IDevice;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateObject;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
-import uk.ac.bolton.archimate.model.IInfrastructureInterface;
 import uk.ac.bolton.archimate.model.IInterfaceElement;
-import uk.ac.bolton.archimate.model.INode;
 
 
 /**
@@ -58,11 +51,7 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
         public boolean select(Object object) {
            if(object instanceof IArchimateEditPart) {
                IArchimateElement element = (IArchimateElement)((IArchimateEditPart)object).getAdapter(IArchimateElement.class);
-               return element instanceof IInterfaceElement || 
-                      element instanceof IApplicationComponent ||
-                      element instanceof IDevice ||
-                      element instanceof INode ||
-                      element instanceof IBusinessProcess;
+               return element instanceof IInterfaceElement;
            }
            return false;
         }
@@ -99,35 +88,8 @@ public class DiagramFigureTypeSection extends AbstractArchimatePropertySection {
         IArchimateElement element = fDiagramObject.getArchimateElement();
         
         String imageName1 = null, imageName2 = null;
-        if(element instanceof IBusinessInterface) {
-            imageName1 = IArchimateImages.FIGURE_BUSINESS_INTERFACE1;
-            imageName2 = IArchimateImages.FIGURE_BUSINESS_INTERFACE2;
-        }
-        else if(element instanceof IApplicationInterface) {
-            imageName1 = IArchimateImages.FIGURE_APPLICATION_INTERFACE1;
-            imageName2 = IArchimateImages.FIGURE_APPLICATION_INTERFACE2;
-        }
-        else if(element instanceof IInfrastructureInterface) {
-            imageName1 = IArchimateImages.FIGURE_TECHNOLOGY_INTERFACE1;
-            imageName2 = IArchimateImages.FIGURE_TECHNOLOGY_INTERFACE2;
-        }
-        else if(element instanceof IApplicationComponent) {
-            imageName1 = IArchimateImages.FIGURE_APPLICATION_COMPONENT1;
-            imageName2 = IArchimateImages.FIGURE_APPLICATION_COMPONENT2;
-        }
-        else if(element instanceof IDevice) {
-            imageName1 = IArchimateImages.FIGURE_TECHNOLOGY_DEVICE1;
-            imageName2 = IArchimateImages.FIGURE_TECHNOLOGY_DEVICE2;
-        }
-        else if(element instanceof INode) {
-            imageName1 = IArchimateImages.FIGURE_TECHNOLOGY_NODE1;
-            imageName2 = IArchimateImages.FIGURE_TECHNOLOGY_NODE2;
-        }
-        else if(element instanceof IBusinessProcess) {
-            imageName1 = IArchimateImages.FIGURE_BUSINESS_PROCESS1;
-            imageName2 = IArchimateImages.FIGURE_BUSINESS_PROCESS2;
-        }
 
+        //FIXME: based on objectClass
         figure1.setImage(imageName1);
         figure2.setImage(imageName2);
         

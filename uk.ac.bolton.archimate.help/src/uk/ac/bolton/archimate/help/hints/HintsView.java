@@ -54,7 +54,6 @@ import uk.ac.bolton.archimate.editor.ui.services.IComponentSelectionListener;
 import uk.ac.bolton.archimate.editor.utils.PlatformUtils;
 import uk.ac.bolton.archimate.editor.utils.StringUtils;
 import uk.ac.bolton.archimate.help.ArchimateEditorHelpPlugin;
-import uk.ac.bolton.archimate.model.IApplicationLayerElement;
 import uk.ac.bolton.archimate.model.IArchimateDiagramModel;
 import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IBusinessLayerElement;
@@ -63,7 +62,6 @@ import uk.ac.bolton.archimate.model.IDiagramModelArchimateConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateObject;
 import uk.ac.bolton.archimate.model.IDiagramModelConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
-import uk.ac.bolton.archimate.model.ITechnologyLayerElement;
 
 
 /**
@@ -431,12 +429,6 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
         
         if(IBusinessLayerElement.class.isAssignableFrom(clazz)) {
             return ColorFactory.COLOR_BUSINESS;
-        }
-        if(IApplicationLayerElement.class.isAssignableFrom(clazz)) {
-            return ColorFactory.COLOR_APPLICATION;
-        }
-        if(ITechnologyLayerElement.class.isAssignableFrom(clazz)) {
-            return ColorFactory.COLOR_TECHNOLOGY;
         }
         
         return ColorFactory.get(220, 235, 235);

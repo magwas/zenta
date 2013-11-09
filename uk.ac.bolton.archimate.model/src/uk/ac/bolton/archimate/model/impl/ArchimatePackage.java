@@ -17,49 +17,21 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import uk.ac.bolton.archimate.model.FolderType;
-import uk.ac.bolton.archimate.model.IAccessRelationship;
 import uk.ac.bolton.archimate.model.IAdapter;
 import uk.ac.bolton.archimate.model.IAggregationRelationship;
 import uk.ac.bolton.archimate.model.IAndJunction;
-import uk.ac.bolton.archimate.model.IApplicationCollaboration;
-import uk.ac.bolton.archimate.model.IApplicationComponent;
-import uk.ac.bolton.archimate.model.IApplicationFunction;
-import uk.ac.bolton.archimate.model.IApplicationInteraction;
-import uk.ac.bolton.archimate.model.IApplicationInterface;
-import uk.ac.bolton.archimate.model.IApplicationLayerElement;
-import uk.ac.bolton.archimate.model.IApplicationService;
 import uk.ac.bolton.archimate.model.IArchimateDiagramModel;
 import uk.ac.bolton.archimate.model.IArchimateElement;
 import uk.ac.bolton.archimate.model.IArchimateFactory;
 import uk.ac.bolton.archimate.model.IArchimateModel;
 import uk.ac.bolton.archimate.model.IArchimateModelElement;
 import uk.ac.bolton.archimate.model.IArchimatePackage;
-import uk.ac.bolton.archimate.model.IArtifact;
-import uk.ac.bolton.archimate.model.IAssessment;
-import uk.ac.bolton.archimate.model.IAssignmentRelationship;
 import uk.ac.bolton.archimate.model.IAssociationRelationship;
 import uk.ac.bolton.archimate.model.IBorderObject;
 import uk.ac.bolton.archimate.model.IBounds;
-import uk.ac.bolton.archimate.model.IBusinessActivity;
-import uk.ac.bolton.archimate.model.IBusinessActor;
-import uk.ac.bolton.archimate.model.IBusinessCollaboration;
-import uk.ac.bolton.archimate.model.IBusinessEvent;
-import uk.ac.bolton.archimate.model.IBusinessFunction;
-import uk.ac.bolton.archimate.model.IBusinessInteraction;
-import uk.ac.bolton.archimate.model.IBusinessInterface;
 import uk.ac.bolton.archimate.model.IBusinessLayerElement;
 import uk.ac.bolton.archimate.model.IBusinessObject;
-import uk.ac.bolton.archimate.model.IBusinessProcess;
-import uk.ac.bolton.archimate.model.IBusinessRole;
-import uk.ac.bolton.archimate.model.IBusinessService;
 import uk.ac.bolton.archimate.model.ICloneable;
-import uk.ac.bolton.archimate.model.ICommunicationPath;
-import uk.ac.bolton.archimate.model.ICompositionRelationship;
-import uk.ac.bolton.archimate.model.IConstraint;
-import uk.ac.bolton.archimate.model.IContract;
-import uk.ac.bolton.archimate.model.IDataObject;
-import uk.ac.bolton.archimate.model.IDeliverable;
-import uk.ac.bolton.archimate.model.IDevice;
 import uk.ac.bolton.archimate.model.IDiagramModel;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateConnection;
 import uk.ac.bolton.archimate.model.IDiagramModelArchimateObject;
@@ -74,51 +46,24 @@ import uk.ac.bolton.archimate.model.IDiagramModelNote;
 import uk.ac.bolton.archimate.model.IDiagramModelObject;
 import uk.ac.bolton.archimate.model.IDiagramModelReference;
 import uk.ac.bolton.archimate.model.IDocumentable;
-import uk.ac.bolton.archimate.model.IDriver;
-import uk.ac.bolton.archimate.model.IFlowRelationship;
 import uk.ac.bolton.archimate.model.IFolder;
 import uk.ac.bolton.archimate.model.IFolderContainer;
 import uk.ac.bolton.archimate.model.IFontAttribute;
-import uk.ac.bolton.archimate.model.IGap;
-import uk.ac.bolton.archimate.model.IGoal;
 import uk.ac.bolton.archimate.model.IIdentifier;
-import uk.ac.bolton.archimate.model.IImplementationMigrationElement;
-import uk.ac.bolton.archimate.model.IInfluenceRelationship;
-import uk.ac.bolton.archimate.model.IInfrastructureFunction;
-import uk.ac.bolton.archimate.model.IInfrastructureInterface;
-import uk.ac.bolton.archimate.model.IInfrastructureService;
 import uk.ac.bolton.archimate.model.IInterfaceElement;
 import uk.ac.bolton.archimate.model.IJunction;
 import uk.ac.bolton.archimate.model.IJunctionElement;
-import uk.ac.bolton.archimate.model.ILocation;
 import uk.ac.bolton.archimate.model.ILockable;
-import uk.ac.bolton.archimate.model.IMeaning;
-import uk.ac.bolton.archimate.model.IMotivationElement;
 import uk.ac.bolton.archimate.model.INameable;
-import uk.ac.bolton.archimate.model.INetwork;
-import uk.ac.bolton.archimate.model.INode;
 import uk.ac.bolton.archimate.model.IOrJunction;
-import uk.ac.bolton.archimate.model.IPlateau;
-import uk.ac.bolton.archimate.model.IPrinciple;
-import uk.ac.bolton.archimate.model.IProduct;
 import uk.ac.bolton.archimate.model.IProperties;
 import uk.ac.bolton.archimate.model.IProperty;
-import uk.ac.bolton.archimate.model.IRealisationRelationship;
 import uk.ac.bolton.archimate.model.IRelationship;
-import uk.ac.bolton.archimate.model.IRepresentation;
-import uk.ac.bolton.archimate.model.IRequirement;
 import uk.ac.bolton.archimate.model.ISketchModel;
 import uk.ac.bolton.archimate.model.ISketchModelActor;
 import uk.ac.bolton.archimate.model.ISketchModelSticky;
 import uk.ac.bolton.archimate.model.ISpecialisationRelationship;
-import uk.ac.bolton.archimate.model.IStakeholder;
-import uk.ac.bolton.archimate.model.ISystemSoftware;
-import uk.ac.bolton.archimate.model.ITechnologyLayerElement;
 import uk.ac.bolton.archimate.model.ITextContent;
-import uk.ac.bolton.archimate.model.ITriggeringRelationship;
-import uk.ac.bolton.archimate.model.IUsedByRelationship;
-import uk.ac.bolton.archimate.model.IValue;
-import uk.ac.bolton.archimate.model.IWorkPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -223,182 +168,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass businessActivityEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     private EClass businessLayerElementEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass applicationLayerElementEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass technologyLayerElementEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass artifactEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass communicationPathEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass networkEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass infrastructureInterfaceEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass infrastructureServiceEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass infrastructureFunctionEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass nodeEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass systemSoftwareEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass deviceEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass motivationElementEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass stakeholderEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass driverEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass assessmentEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass goalEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass requirementEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass constraintEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass principleEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass implementationMigrationElementEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass workPackageEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass deliverableEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass plateauEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass gapEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -566,161 +336,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass businessActorEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessCollaborationEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass contractEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessEventEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessFunctionEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessInteractionEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessInterfaceEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass meaningEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     private EClass businessObjectEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessProcessEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass productEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass representationEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessRoleEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessServiceEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass valueEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass locationEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass applicationComponentEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass applicationFunctionEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass applicationInteractionEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass applicationInterfaceEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass dataObjectEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass applicationServiceEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass applicationCollaborationEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -734,27 +350,6 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass accessRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass aggregationRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass assignmentRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     private EClass associationRelationshipEClass = null;
 
     /**
@@ -762,49 +357,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass compositionRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass flowRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass realisationRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     private EClass specialisationRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass triggeringRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass usedByRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass influenceRelationshipEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -1159,233 +712,8 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getBusinessActivity() {
-		return businessActivityEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EClass getBusinessLayerElement() {
 		return businessLayerElementEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getApplicationLayerElement() {
-		return applicationLayerElementEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getTechnologyLayerElement() {
-		return technologyLayerElementEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getArtifact() {
-		return artifactEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getCommunicationPath() {
-		return communicationPathEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getNetwork() {
-		return networkEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getInfrastructureInterface() {
-		return infrastructureInterfaceEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getInfrastructureService() {
-		return infrastructureServiceEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getInfrastructureFunction() {
-		return infrastructureFunctionEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getNode() {
-		return nodeEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getSystemSoftware() {
-		return systemSoftwareEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getDevice() {
-		return deviceEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getMotivationElement() {
-		return motivationElementEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getStakeholder() {
-		return stakeholderEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getDriver() {
-		return driverEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getAssessment() {
-		return assessmentEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getGoal() {
-		return goalEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getRequirement() {
-		return requirementEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getConstraint() {
-		return constraintEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getPrinciple() {
-		return principleEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getImplementationMigrationElement() {
-		return implementationMigrationElementEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getWorkPackage() {
-		return workPackageEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getDeliverable() {
-		return deliverableEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getPlateau() {
-		return plateauEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getGap() {
-		return gapEClass;
 	}
 
     /**
@@ -1868,17 +1196,17 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public EAttribute getSketchModel_Background() {
-        return (EAttribute)sketchModelEClass.getEStructuralFeatures().get(0);
-    }
+		return (EAttribute)sketchModelEClass.getEStructuralFeatures().get(0);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public EClass getSketchModelSticky() {
 		return sketchModelStickyEClass;
 	}
@@ -1915,206 +1243,8 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getBusinessActor() {
-		return businessActorEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessCollaboration() {
-		return businessCollaborationEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getContract() {
-		return contractEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessEvent() {
-		return businessEventEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessFunction() {
-		return businessFunctionEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessInteraction() {
-		return businessInteractionEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessInterface() {
-		return businessInterfaceEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getMeaning() {
-		return meaningEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EClass getBusinessObject() {
 		return businessObjectEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessProcess() {
-		return businessProcessEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getProduct() {
-		return productEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getRepresentation() {
-		return representationEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessRole() {
-		return businessRoleEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessService() {
-		return businessServiceEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getValue() {
-		return valueEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getLocation() {
-		return locationEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getApplicationComponent() {
-		return applicationComponentEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getApplicationFunction() {
-		return applicationFunctionEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getApplicationInteraction() {
-		return applicationInteractionEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getApplicationInterface() {
-		return applicationInterfaceEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getDataObject() {
-		return dataObjectEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getApplicationService() {
-		return applicationServiceEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getApplicationCollaboration() {
-		return applicationCollaborationEClass;
 	}
 
     /**
@@ -2149,42 +1279,6 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getAccessRelationship() {
-		return accessRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EAttribute getAccessRelationship_AccessType() {
-		return (EAttribute)accessRelationshipEClass.getEStructuralFeatures().get(0);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getAggregationRelationship() {
-		return aggregationRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getAssignmentRelationship() {
-		return assignmentRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EClass getAssociationRelationship() {
 		return associationRelationshipEClass;
 	}
@@ -2194,62 +1288,8 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getCompositionRelationship() {
-		return compositionRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getFlowRelationship() {
-		return flowRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getRealisationRelationship() {
-		return realisationRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EClass getSpecialisationRelationship() {
 		return specialisationRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getTriggeringRelationship() {
-		return triggeringRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getUsedByRelationship() {
-		return usedByRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getInfluenceRelationship() {
-		return influenceRelationshipEClass;
 	}
 
     /**
@@ -2390,126 +1430,11 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 		createEReference(relationshipEClass, RELATIONSHIP__SOURCE);
 		createEReference(relationshipEClass, RELATIONSHIP__TARGET);
 
-		accessRelationshipEClass = createEClass(ACCESS_RELATIONSHIP);
-		createEAttribute(accessRelationshipEClass, ACCESS_RELATIONSHIP__ACCESS_TYPE);
-
-		aggregationRelationshipEClass = createEClass(AGGREGATION_RELATIONSHIP);
-
-		assignmentRelationshipEClass = createEClass(ASSIGNMENT_RELATIONSHIP);
-
 		associationRelationshipEClass = createEClass(ASSOCIATION_RELATIONSHIP);
-
-		compositionRelationshipEClass = createEClass(COMPOSITION_RELATIONSHIP);
-
-		flowRelationshipEClass = createEClass(FLOW_RELATIONSHIP);
-
-		realisationRelationshipEClass = createEClass(REALISATION_RELATIONSHIP);
 
 		specialisationRelationshipEClass = createEClass(SPECIALISATION_RELATIONSHIP);
 
-		triggeringRelationshipEClass = createEClass(TRIGGERING_RELATIONSHIP);
-
-		usedByRelationshipEClass = createEClass(USED_BY_RELATIONSHIP);
-
-		influenceRelationshipEClass = createEClass(INFLUENCE_RELATIONSHIP);
-
 		businessLayerElementEClass = createEClass(BUSINESS_LAYER_ELEMENT);
-
-		businessActivityEClass = createEClass(BUSINESS_ACTIVITY);
-
-		businessActorEClass = createEClass(BUSINESS_ACTOR);
-
-		businessCollaborationEClass = createEClass(BUSINESS_COLLABORATION);
-
-		contractEClass = createEClass(CONTRACT);
-
-		businessEventEClass = createEClass(BUSINESS_EVENT);
-
-		businessFunctionEClass = createEClass(BUSINESS_FUNCTION);
-
-		businessInteractionEClass = createEClass(BUSINESS_INTERACTION);
-
-		businessInterfaceEClass = createEClass(BUSINESS_INTERFACE);
-
-		meaningEClass = createEClass(MEANING);
-
-		businessObjectEClass = createEClass(BUSINESS_OBJECT);
-
-		businessProcessEClass = createEClass(BUSINESS_PROCESS);
-
-		productEClass = createEClass(PRODUCT);
-
-		representationEClass = createEClass(REPRESENTATION);
-
-		businessRoleEClass = createEClass(BUSINESS_ROLE);
-
-		businessServiceEClass = createEClass(BUSINESS_SERVICE);
-
-		valueEClass = createEClass(VALUE);
-
-		locationEClass = createEClass(LOCATION);
-
-		applicationLayerElementEClass = createEClass(APPLICATION_LAYER_ELEMENT);
-
-		applicationCollaborationEClass = createEClass(APPLICATION_COLLABORATION);
-
-		applicationComponentEClass = createEClass(APPLICATION_COMPONENT);
-
-		applicationFunctionEClass = createEClass(APPLICATION_FUNCTION);
-
-		applicationInteractionEClass = createEClass(APPLICATION_INTERACTION);
-
-		applicationInterfaceEClass = createEClass(APPLICATION_INTERFACE);
-
-		dataObjectEClass = createEClass(DATA_OBJECT);
-
-		applicationServiceEClass = createEClass(APPLICATION_SERVICE);
-
-		technologyLayerElementEClass = createEClass(TECHNOLOGY_LAYER_ELEMENT);
-
-		artifactEClass = createEClass(ARTIFACT);
-
-		communicationPathEClass = createEClass(COMMUNICATION_PATH);
-
-		networkEClass = createEClass(NETWORK);
-
-		infrastructureInterfaceEClass = createEClass(INFRASTRUCTURE_INTERFACE);
-
-		infrastructureServiceEClass = createEClass(INFRASTRUCTURE_SERVICE);
-
-		infrastructureFunctionEClass = createEClass(INFRASTRUCTURE_FUNCTION);
-
-		nodeEClass = createEClass(NODE);
-
-		systemSoftwareEClass = createEClass(SYSTEM_SOFTWARE);
-
-		deviceEClass = createEClass(DEVICE);
-
-		motivationElementEClass = createEClass(MOTIVATION_ELEMENT);
-
-		stakeholderEClass = createEClass(STAKEHOLDER);
-
-		driverEClass = createEClass(DRIVER);
-
-		assessmentEClass = createEClass(ASSESSMENT);
-
-		goalEClass = createEClass(GOAL);
-
-		requirementEClass = createEClass(REQUIREMENT);
-
-		constraintEClass = createEClass(CONSTRAINT);
-
-		principleEClass = createEClass(PRINCIPLE);
-
-		implementationMigrationElementEClass = createEClass(IMPLEMENTATION_MIGRATION_ELEMENT);
-
-		workPackageEClass = createEClass(WORK_PACKAGE);
-
-		deliverableEClass = createEClass(DELIVERABLE);
-
-		plateauEClass = createEClass(PLATEAU);
-
-		gapEClass = createEClass(GAP);
 
 		diagramModelComponentEClass = createEClass(DIAGRAM_MODEL_COMPONENT);
 		createEReference(diagramModelComponentEClass, DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL);
@@ -2581,9 +1506,10 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 		diagramModelArchimateConnectionEClass = createEClass(DIAGRAM_MODEL_ARCHIMATE_CONNECTION);
 		createEReference(diagramModelArchimateConnectionEClass, DIAGRAM_MODEL_ARCHIMATE_CONNECTION__RELATIONSHIP);
 
+		businessObjectEClass = createEClass(BUSINESS_OBJECT);
 
-        sketchModelEClass = createEClass(SKETCH_MODEL);
-        createEAttribute(sketchModelEClass, SKETCH_MODEL__BACKGROUND);
+		sketchModelEClass = createEClass(SKETCH_MODEL);
+		createEAttribute(sketchModelEClass, SKETCH_MODEL__BACKGROUND);
 
 		sketchModelStickyEClass = createEClass(SKETCH_MODEL_STICKY);
 
@@ -2648,69 +1574,9 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 		andJunctionEClass.getESuperTypes().add(this.getJunctionElement());
 		orJunctionEClass.getESuperTypes().add(this.getJunctionElement());
 		relationshipEClass.getESuperTypes().add(this.getArchimateElement());
-		accessRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		aggregationRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		assignmentRelationshipEClass.getESuperTypes().add(this.getRelationship());
 		associationRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		compositionRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		flowRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		realisationRelationshipEClass.getESuperTypes().add(this.getRelationship());
 		specialisationRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		triggeringRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		usedByRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		influenceRelationshipEClass.getESuperTypes().add(this.getRelationship());
 		businessLayerElementEClass.getESuperTypes().add(this.getArchimateElement());
-		businessActivityEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessActorEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessCollaborationEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		contractEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessEventEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessFunctionEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessInteractionEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessInterfaceEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessInterfaceEClass.getESuperTypes().add(this.getInterfaceElement());
-		meaningEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessObjectEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessProcessEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		productEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		representationEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessRoleEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		businessServiceEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		valueEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		locationEClass.getESuperTypes().add(this.getBusinessLayerElement());
-		applicationLayerElementEClass.getESuperTypes().add(this.getArchimateElement());
-		applicationCollaborationEClass.getESuperTypes().add(this.getApplicationLayerElement());
-		applicationComponentEClass.getESuperTypes().add(this.getApplicationLayerElement());
-		applicationFunctionEClass.getESuperTypes().add(this.getApplicationLayerElement());
-		applicationInteractionEClass.getESuperTypes().add(this.getApplicationLayerElement());
-		applicationInterfaceEClass.getESuperTypes().add(this.getApplicationLayerElement());
-		applicationInterfaceEClass.getESuperTypes().add(this.getInterfaceElement());
-		dataObjectEClass.getESuperTypes().add(this.getApplicationLayerElement());
-		applicationServiceEClass.getESuperTypes().add(this.getApplicationLayerElement());
-		technologyLayerElementEClass.getESuperTypes().add(this.getArchimateElement());
-		artifactEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		communicationPathEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		networkEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		infrastructureInterfaceEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		infrastructureInterfaceEClass.getESuperTypes().add(this.getInterfaceElement());
-		infrastructureServiceEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		infrastructureFunctionEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		nodeEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		systemSoftwareEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		deviceEClass.getESuperTypes().add(this.getTechnologyLayerElement());
-		motivationElementEClass.getESuperTypes().add(this.getArchimateElement());
-		stakeholderEClass.getESuperTypes().add(this.getMotivationElement());
-		driverEClass.getESuperTypes().add(this.getMotivationElement());
-		assessmentEClass.getESuperTypes().add(this.getMotivationElement());
-		goalEClass.getESuperTypes().add(this.getMotivationElement());
-		requirementEClass.getESuperTypes().add(this.getMotivationElement());
-		constraintEClass.getESuperTypes().add(this.getMotivationElement());
-		principleEClass.getESuperTypes().add(this.getMotivationElement());
-		implementationMigrationElementEClass.getESuperTypes().add(this.getArchimateElement());
-		workPackageEClass.getESuperTypes().add(this.getImplementationMigrationElement());
-		deliverableEClass.getESuperTypes().add(this.getImplementationMigrationElement());
-		plateauEClass.getESuperTypes().add(this.getImplementationMigrationElement());
-		gapEClass.getESuperTypes().add(this.getImplementationMigrationElement());
 		diagramModelComponentEClass.getESuperTypes().add(this.getIdentifier());
 		diagramModelComponentEClass.getESuperTypes().add(this.getCloneable());
 		diagramModelComponentEClass.getESuperTypes().add(this.getAdapter());
@@ -2741,6 +1607,7 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 		diagramModelArchimateObjectEClass.getESuperTypes().add(this.getDiagramModelObject());
 		diagramModelArchimateObjectEClass.getESuperTypes().add(this.getDiagramModelContainer());
 		diagramModelArchimateConnectionEClass.getESuperTypes().add(this.getDiagramModelConnection());
+		businessObjectEClass.getESuperTypes().add(this.getBusinessLayerElement());
 		sketchModelEClass.getESuperTypes().add(this.getDiagramModel());
 		sketchModelStickyEClass.getESuperTypes().add(this.getDiagramModelObject());
 		sketchModelStickyEClass.getESuperTypes().add(this.getDiagramModelContainer());
@@ -2832,126 +1699,11 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 		initEReference(getRelationship_Source(), this.getArchimateElement(), null, "source", null, 0, 1, IRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getRelationship_Target(), this.getArchimateElement(), null, "target", null, 0, 1, IRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(accessRelationshipEClass, IAccessRelationship.class, "AccessRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getAccessRelationship_AccessType(), ecorePackage.getEInt(), "accessType", "0", 0, 1, IAccessRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-
-		initEClass(aggregationRelationshipEClass, IAggregationRelationship.class, "AggregationRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(assignmentRelationshipEClass, IAssignmentRelationship.class, "AssignmentRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
 		initEClass(associationRelationshipEClass, IAssociationRelationship.class, "AssociationRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(compositionRelationshipEClass, ICompositionRelationship.class, "CompositionRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(flowRelationshipEClass, IFlowRelationship.class, "FlowRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(realisationRelationshipEClass, IRealisationRelationship.class, "RealisationRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(specialisationRelationshipEClass, ISpecialisationRelationship.class, "SpecialisationRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(triggeringRelationshipEClass, ITriggeringRelationship.class, "TriggeringRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(usedByRelationshipEClass, IUsedByRelationship.class, "UsedByRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(influenceRelationshipEClass, IInfluenceRelationship.class, "InfluenceRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
 		initEClass(businessLayerElementEClass, IBusinessLayerElement.class, "BusinessLayerElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessActivityEClass, IBusinessActivity.class, "BusinessActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessActorEClass, IBusinessActor.class, "BusinessActor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessCollaborationEClass, IBusinessCollaboration.class, "BusinessCollaboration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(contractEClass, IContract.class, "Contract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessEventEClass, IBusinessEvent.class, "BusinessEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessFunctionEClass, IBusinessFunction.class, "BusinessFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessInteractionEClass, IBusinessInteraction.class, "BusinessInteraction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessInterfaceEClass, IBusinessInterface.class, "BusinessInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(meaningEClass, IMeaning.class, "Meaning", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessObjectEClass, IBusinessObject.class, "BusinessObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessProcessEClass, IBusinessProcess.class, "BusinessProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(productEClass, IProduct.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(representationEClass, IRepresentation.class, "Representation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessRoleEClass, IBusinessRole.class, "BusinessRole", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(businessServiceEClass, IBusinessService.class, "BusinessService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(valueEClass, IValue.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(locationEClass, ILocation.class, "Location", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(applicationLayerElementEClass, IApplicationLayerElement.class, "ApplicationLayerElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(applicationCollaborationEClass, IApplicationCollaboration.class, "ApplicationCollaboration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(applicationComponentEClass, IApplicationComponent.class, "ApplicationComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(applicationFunctionEClass, IApplicationFunction.class, "ApplicationFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(applicationInteractionEClass, IApplicationInteraction.class, "ApplicationInteraction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(applicationInterfaceEClass, IApplicationInterface.class, "ApplicationInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(dataObjectEClass, IDataObject.class, "DataObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(applicationServiceEClass, IApplicationService.class, "ApplicationService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(technologyLayerElementEClass, ITechnologyLayerElement.class, "TechnologyLayerElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(artifactEClass, IArtifact.class, "Artifact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(communicationPathEClass, ICommunicationPath.class, "CommunicationPath", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(networkEClass, INetwork.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(infrastructureInterfaceEClass, IInfrastructureInterface.class, "InfrastructureInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(infrastructureServiceEClass, IInfrastructureService.class, "InfrastructureService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(infrastructureFunctionEClass, IInfrastructureFunction.class, "InfrastructureFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(nodeEClass, INode.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(systemSoftwareEClass, ISystemSoftware.class, "SystemSoftware", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(deviceEClass, IDevice.class, "Device", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(motivationElementEClass, IMotivationElement.class, "MotivationElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(stakeholderEClass, IStakeholder.class, "Stakeholder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(driverEClass, IDriver.class, "Driver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(assessmentEClass, IAssessment.class, "Assessment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(goalEClass, IGoal.class, "Goal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(requirementEClass, IRequirement.class, "Requirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(constraintEClass, IConstraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(principleEClass, IPrinciple.class, "Principle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(implementationMigrationElementEClass, IImplementationMigrationElement.class, "ImplementationMigrationElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(workPackageEClass, IWorkPackage.class, "WorkPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(deliverableEClass, IDeliverable.class, "Deliverable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(plateauEClass, IPlateau.class, "Plateau", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(gapEClass, IGap.class, "Gap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(diagramModelComponentEClass, IDiagramModelComponent.class, "DiagramModelComponent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getDiagramModelComponent_DiagramModel(), this.getDiagramModel(), null, "diagramModel", null, 0, 1, IDiagramModelComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -3057,10 +1809,10 @@ public class ArchimatePackage extends EPackageImpl implements IArchimatePackage 
 
 		addEOperation(diagramModelArchimateConnectionEClass, null, "removeRelationshipFromModel", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
+		initEClass(businessObjectEClass, IBusinessObject.class, "BusinessObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(sketchModelEClass, ISketchModel.class, "SketchModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getSketchModel_Background(), ecorePackage.getEInt(), "background", "1", 0, 1, ISketchModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-
+		initEClass(sketchModelEClass, ISketchModel.class, "SketchModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getSketchModel_Background(), ecorePackage.getEInt(), "background", "1", 0, 1, ISketchModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
 		initEClass(sketchModelStickyEClass, ISketchModelSticky.class, "SketchModelSticky", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

@@ -29,6 +29,7 @@ import uk.ac.bolton.archimate.model.ISketchModel;
 import uk.ac.bolton.archimate.model.util.ArchimateModelUtils;
 
 
+
 /**
  * Factory for Tree Model Viewer to create "New" type actions
  * Each Action will create a new Ecore Archimate Element and add it to the Ecore Model
@@ -72,34 +73,6 @@ public class TreeModelViewActionFactory {
         switch(f.getType()) {
             case BUSINESS:
                 for(EClass eClass : ArchimateModelUtils.getBusinessClasses()) {
-                    IAction action = createNewElementAction(folder, eClass);
-                    list.add(action);
-                }
-                break;
-
-            case APPLICATION:
-                for(EClass eClass : ArchimateModelUtils.getApplicationClasses()) {
-                    IAction action = createNewElementAction(folder, eClass);
-                    list.add(action);
-                }
-                break;
-
-            case MOTIVATION:
-                for(EClass eClass : ArchimateModelUtils.getMotivationClasses()) {
-                    IAction action = createNewElementAction(folder, eClass);
-                    list.add(action);
-                }
-                break;
-
-            case IMPLEMENTATION_MIGRATION:
-                for(EClass eClass : ArchimateModelUtils.getImplementationMigrationClasses()) {
-                    IAction action = createNewElementAction(folder, eClass);
-                    list.add(action);
-                }
-                break;
-
-            case TECHNOLOGY:
-                for(EClass eClass : ArchimateModelUtils.getTechnologyClasses()) {
                     IAction action = createNewElementAction(folder, eClass);
                     list.add(action);
                 }

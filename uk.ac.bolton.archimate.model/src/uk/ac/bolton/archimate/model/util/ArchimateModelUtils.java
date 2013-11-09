@@ -41,7 +41,8 @@ public class ArchimateModelUtils {
      * @return True if relationshipType is a valid source relationship for sourceElement
      */
     public static final boolean isValidRelationshipStart(IArchimateElement sourceElement, EClass relationshipType) {
-        return RelationshipsMatrix.INSTANCE.isValidRelationshipStart(sourceElement, relationshipType);
+    	//FIXME check from policy
+        return true;
     }
     
     /**
@@ -63,7 +64,8 @@ public class ArchimateModelUtils {
      * @return True if relationshipType is an allowed relationship type between sourceType and targetType
      */
     public static final boolean isValidRelationship(EClass sourceType, EClass targetType, EClass relationshipType) {
-        return RelationshipsMatrix.INSTANCE.isValidRelationship(sourceType, targetType, relationshipType);
+    	//FIXME check from policy
+        return true;
     }
     
     /**
@@ -196,84 +198,10 @@ public class ArchimateModelUtils {
      */
     public static EClass[] getBusinessClasses() {
         return new EClass[] {
-                IArchimatePackage.eINSTANCE.getBusinessActor(),
-                IArchimatePackage.eINSTANCE.getBusinessRole(),
-                IArchimatePackage.eINSTANCE.getBusinessCollaboration(),
-                IArchimatePackage.eINSTANCE.getBusinessInterface(),
-                IArchimatePackage.eINSTANCE.getBusinessFunction(),
-                IArchimatePackage.eINSTANCE.getBusinessProcess(),
-                //IArchimatePackage.eINSTANCE.getBusinessActivity(), // Deprecated in ArchiMate 2.0
-                IArchimatePackage.eINSTANCE.getBusinessEvent(),
-                IArchimatePackage.eINSTANCE.getBusinessInteraction(),
-                IArchimatePackage.eINSTANCE.getProduct(),
-                IArchimatePackage.eINSTANCE.getContract(),
-                IArchimatePackage.eINSTANCE.getBusinessService(),
-                IArchimatePackage.eINSTANCE.getValue(),
-                IArchimatePackage.eINSTANCE.getMeaning(),
-                IArchimatePackage.eINSTANCE.getRepresentation(),
                 IArchimatePackage.eINSTANCE.getBusinessObject(),
-                IArchimatePackage.eINSTANCE.getLocation()
         };
     }
     
-    /**
-     * @return A list of all EClass types in the Application layer in preferred order
-     */
-    public static EClass[] getApplicationClasses() {
-        return new EClass[] {
-                IArchimatePackage.eINSTANCE.getApplicationComponent(),
-                IArchimatePackage.eINSTANCE.getApplicationCollaboration(),
-                IArchimatePackage.eINSTANCE.getApplicationInterface(),
-                IArchimatePackage.eINSTANCE.getApplicationService(),
-                IArchimatePackage.eINSTANCE.getApplicationFunction(),
-                IArchimatePackage.eINSTANCE.getApplicationInteraction(),
-                IArchimatePackage.eINSTANCE.getDataObject()
-        };
-    }
-    
-    /**
-     * @return A list of EClass types in the Technology layer in preferred order
-     */
-    public static EClass[] getTechnologyClasses() {
-        return new EClass[] {
-                IArchimatePackage.eINSTANCE.getArtifact(),
-                IArchimatePackage.eINSTANCE.getCommunicationPath(),
-                IArchimatePackage.eINSTANCE.getNetwork(),
-                IArchimatePackage.eINSTANCE.getInfrastructureInterface(),
-                IArchimatePackage.eINSTANCE.getInfrastructureFunction(),
-                IArchimatePackage.eINSTANCE.getInfrastructureService(),
-                IArchimatePackage.eINSTANCE.getNode(),
-                IArchimatePackage.eINSTANCE.getSystemSoftware(),
-                IArchimatePackage.eINSTANCE.getDevice()
-        };
-    }
-
-    /**
-     * @return A list of EClass types in the Motivation extension in preferred order
-     */
-    public static EClass[] getMotivationClasses() {
-        return new EClass[] {
-                IArchimatePackage.eINSTANCE.getStakeholder(),
-                IArchimatePackage.eINSTANCE.getDriver(),
-                IArchimatePackage.eINSTANCE.getAssessment(),
-                IArchimatePackage.eINSTANCE.getGoal(),
-                IArchimatePackage.eINSTANCE.getPrinciple(),
-                IArchimatePackage.eINSTANCE.getRequirement(),
-                IArchimatePackage.eINSTANCE.getConstraint()
-        };
-    }
-    
-    /**
-     * @return A list of EClass types in the Implementation and Migration extension in preferred order
-     */
-    public static EClass[] getImplementationMigrationClasses() {
-        return new EClass[] {
-                IArchimatePackage.eINSTANCE.getWorkPackage(),
-                IArchimatePackage.eINSTANCE.getDeliverable(),
-                IArchimatePackage.eINSTANCE.getPlateau(),
-                IArchimatePackage.eINSTANCE.getGap()
-        };
-    }
 
     /**
      * @return A list of EClass types for Relationships in preferred order
@@ -281,16 +209,7 @@ public class ArchimateModelUtils {
     public static EClass[] getRelationsClasses() {
         return new EClass[] {
                 IArchimatePackage.eINSTANCE.getSpecialisationRelationship(),
-                IArchimatePackage.eINSTANCE.getCompositionRelationship(),
-                IArchimatePackage.eINSTANCE.getAggregationRelationship(),
-                IArchimatePackage.eINSTANCE.getAssignmentRelationship(),
-                IArchimatePackage.eINSTANCE.getRealisationRelationship(),
-                IArchimatePackage.eINSTANCE.getTriggeringRelationship(),
-                IArchimatePackage.eINSTANCE.getFlowRelationship(),
-                IArchimatePackage.eINSTANCE.getUsedByRelationship(),
-                IArchimatePackage.eINSTANCE.getAccessRelationship(),
                 IArchimatePackage.eINSTANCE.getAssociationRelationship(),
-                IArchimatePackage.eINSTANCE.getInfluenceRelationship(),
         };
     }
 

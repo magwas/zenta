@@ -1,5 +1,6 @@
 /**
- * This program and the accompanying materials
+ * Copyright (c) 2010-2012 Bolton University, UK.
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
@@ -27,113 +28,113 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttribute {
-    /**
+	/**
 	 * Returns the value of the '<em><b>Bounds</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Bounds</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Bounds</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bounds</em>' containment reference.
 	 * @see #setBounds(IBounds)
 	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelObject_Bounds()
 	 * @model containment="true"
 	 * @generated
 	 */
-    IBounds getBounds();
+	IBounds getBounds();
 
-    /**
+	/**
 	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModelObject#getBounds <em>Bounds</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Bounds</em>' containment reference.
 	 * @see #getBounds()
 	 * @generated
 	 */
-    void setBounds(IBounds value);
+	void setBounds(IBounds value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Source Connections</b></em>' containment reference list.
 	 * The list contents are of type {@link uk.ac.bolton.archimate.model.IDiagramModelConnection}.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Source Connections</em>' containment reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Source Connections</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source Connections</em>' containment reference list.
 	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelObject_SourceConnections()
 	 * @model containment="true"
 	 *        extendedMetaData="name='sourceConnection' kind='element'"
 	 * @generated
 	 */
-    EList<IDiagramModelConnection> getSourceConnections();
+	EList<IDiagramModelConnection> getSourceConnections();
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Target Connections</b></em>' reference list.
 	 * The list contents are of type {@link uk.ac.bolton.archimate.model.IDiagramModelConnection}.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target Connections</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Target Connections</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Connections</em>' reference list.
 	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelObject_TargetConnections()
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
-    EList<IDiagramModelConnection> getTargetConnections();
+	EList<IDiagramModelConnection> getTargetConnections();
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Fill Color</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Fill Color</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fill Color</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fill Color</em>' attribute.
 	 * @see #setFillColor(String)
 	 * @see uk.ac.bolton.archimate.model.IArchimatePackage#getDiagramModelObject_FillColor()
 	 * @model
 	 * @generated
 	 */
-    String getFillColor();
+	String getFillColor();
 
-    /**
+	/**
 	 * Sets the value of the '{@link uk.ac.bolton.archimate.model.IDiagramModelObject#getFillColor <em>Fill Color</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Fill Color</em>' attribute.
 	 * @see #getFillColor()
 	 * @generated
 	 */
-    void setFillColor(String value);
+	void setFillColor(String value);
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-    void addConnection(IDiagramModelConnection connection);
+	void addConnection(IDiagramModelConnection connection);
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-    void removeConnection(IDiagramModelConnection connection);
+	void removeConnection(IDiagramModelConnection connection);
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-    void setBounds(int x, int y, int width, int height);
+	void setBounds(int x, int y, int width, int height);
 
 } // IDiagramModelObject

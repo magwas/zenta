@@ -79,8 +79,6 @@ public class ArchimateModelUtilsTests {
         sourceElement = IArchimateFactory.eINSTANCE.createSystemSoftware();
         relationship = IArchimateFactory.eINSTANCE.createFlowRelationship();
         assertTrue(ArchimateModelUtils.isValidRelationshipStart(sourceElement, relationship.eClass()));
-        relationship = IArchimateFactory.eINSTANCE.createAccessRelationship();
-        assertTrue(ArchimateModelUtils.isValidRelationshipStart(sourceElement, relationship.eClass()));
     }
     
     // ---------------------------------------------------------------------------------------------
@@ -102,14 +100,10 @@ public class ArchimateModelUtilsTests {
         targetElement = IArchimateFactory.eINSTANCE.createSystemSoftware();
         relationship = IArchimateFactory.eINSTANCE.createFlowRelationship();
         assertTrue(ArchimateModelUtils.isValidRelationship(sourceElement, targetElement, relationship.eClass()));
-        relationship = IArchimateFactory.eINSTANCE.createAccessRelationship();
-        assertFalse(ArchimateModelUtils.isValidRelationship(sourceElement, targetElement, relationship.eClass()));
         
         sourceElement = IArchimateFactory.eINSTANCE.createValue();
         targetElement = IArchimateFactory.eINSTANCE.createOrJunction();
         relationship = IArchimateFactory.eINSTANCE.createFlowRelationship();
-        assertFalse(ArchimateModelUtils.isValidRelationship(sourceElement, targetElement, relationship.eClass()));
-        relationship = IArchimateFactory.eINSTANCE.createAccessRelationship();
         assertFalse(ArchimateModelUtils.isValidRelationship(sourceElement, targetElement, relationship.eClass()));
     }
     
