@@ -76,12 +76,12 @@ public class RichExport implements IModelExporter {
 		
 	}
 
-    public static void export(IZentamateModel model, File target, EventLog log) {
+    public static void export(IZentamateModel model, File target, IEventLog log) {
         export(model, target, null, log);
     }
     
     public static void export(IZentamateModel model, File target,
-            File policyfile, EventLog log) {
+            File policyfile, IEventLog log) {
         try {
             ZentamateResource resource = (ZentamateResource) ZentamateResourceFactory
                     .createResource(target);

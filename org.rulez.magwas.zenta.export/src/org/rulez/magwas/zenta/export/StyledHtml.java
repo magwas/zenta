@@ -70,7 +70,7 @@ public class StyledHtml implements IModelExporter {
      *            the logger instance
      */
     public static void export(IZentamateModel model, String stylepath,
-            EventLog log) {
+            IEventLog log) {
         Boolean ask = StyledHtmlPlugin.INSTANCE.getPreferenceStore()
                 .getBoolean(IPreferenceConstants.OUT_ASK);
         String opath = StyledHtmlPlugin.INSTANCE.getPreferenceStore()
@@ -88,7 +88,7 @@ public class StyledHtml implements IModelExporter {
         } else {
             targetdir = new File(opath);
         }
-        export(model, stylepath, log, targetdir);
+        export(model, stylepath, (IEventLog) log, targetdir);
     }
     
     /**
@@ -104,7 +104,7 @@ public class StyledHtml implements IModelExporter {
      *            the target directory
      */
     public static void export(IZentamateModel model, String stylepath,
-            EventLog log, File targetdir) {
+            IEventLog log, File targetdir) {
         try {
             File stylefile = new File(stylepath);
             Document style;

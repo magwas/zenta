@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.rulez.magwas.zenta.export.EventLog;
+import org.rulez.magwas.zenta.export.IEventLog;
 import org.rulez.magwas.zenta.export.steps.Copy;
 import org.rulez.magwas.zenta.export.steps.Diagrams;
 import org.rulez.magwas.zenta.export.steps.Export;
@@ -21,7 +21,7 @@ import org.rulez.magwas.zenta.model.IZentamateModel;
  */
 public class StepFactory extends Object {
 	protected static HashMap<String,Step> members = new HashMap<String,Step>();
-	EventLog log;
+	IEventLog log;
 	IZentamateModel model;
 	File targetdir;
 	File styledir;
@@ -35,7 +35,7 @@ public class StepFactory extends Object {
 	 * @param s the style directory
 	 * @param t the target directory
 	 */
-	public StepFactory(EventLog l,IZentamateModel m, File s,File t){
+	public StepFactory(IEventLog l,IZentamateModel m, File s,File t){
 		log = l;
 		model = m;
 		targetdir = t;
