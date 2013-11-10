@@ -64,4 +64,4 @@ Export-Package: .,
  org.rulez.magwas.zenta.editor.views.tree.actions,
  org.rulez.magwas.zenta.editor.views.tree.commands,
  org.rulez.magwas.zenta.editor.views.tree.search
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

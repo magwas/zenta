@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IZentamateModel;
 import org.rulez.magwas.zenta.model.IZentamatePackage;

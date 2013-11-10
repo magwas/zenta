@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.model.IAggregationRelationship;
 import org.rulez.magwas.zenta.model.IZentamateElement;
 import org.rulez.magwas.zenta.model.IZentamateFactory;
 import org.rulez.magwas.zenta.model.IZentamatePackage;
@@ -26,6 +25,11 @@ import org.rulez.magwas.zenta.model.IRelationship;
 public class DerivedRelationsUtils {
     
     public static class TooComplicatedException extends Exception {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
     }
     

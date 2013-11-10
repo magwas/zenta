@@ -17,5 +17,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.rulez.magwas.zenta.model;bundle-version="2.4.0"
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: org.rulez.magwas.zenta.help.jar
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.rulez.magwas.zenta.help.hints

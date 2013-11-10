@@ -7,7 +7,6 @@ package org.rulez.magwas.zenta.editor.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 

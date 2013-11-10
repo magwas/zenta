@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IAggregationRelationship;
 import org.rulez.magwas.zenta.model.IAndJunction;
 import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
 import org.rulez.magwas.zenta.model.IZentamateElement;

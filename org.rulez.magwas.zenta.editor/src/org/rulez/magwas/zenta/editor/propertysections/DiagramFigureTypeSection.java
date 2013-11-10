@@ -85,8 +85,6 @@ public class DiagramFigureTypeSection extends AbstractZentamatePropertySection {
     }
     
     protected void refreshControls() {
-        IZentamateElement element = fDiagramObject.getZentamateElement();
-        
         String imageName1 = null, imageName2 = null;
 
         //FIXME: based on objectClass

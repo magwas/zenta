@@ -12,7 +12,12 @@ package org.rulez.magwas.zenta.editor.model.compatibility;
  */
 public class CompatibilityHandlerException extends Exception {
     
-    public CompatibilityHandlerException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public CompatibilityHandlerException(String message) {
         super(message);
     }
 }

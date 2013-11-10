@@ -69,14 +69,6 @@
          </keywordReference>
       </page>
       <page
-            class="org.rulez.magwas.zenta.editor.preferences.DiagramFiguresPreferencePage"
-            id="org.rulez.magwas.zenta.editor.prefsDiagramFigures"
-            name="%prefsDiagramFigures">
-         <keywordReference
-               id="keywords.prefsFigures">
-         </keywordReference>
-      </page>
-      <page
             class="org.rulez.magwas.zenta.editor.preferences.GeneralPreferencePage"
             id="org.rulez.magwas.zenta.editor.prefsGeneral"
             name="%prefsGeneral">

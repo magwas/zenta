@@ -7,7 +7,6 @@ package org.rulez.magwas.zenta.editor.views.tree;
 
 import java.io.File;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.jface.util.LocalSelectionTransfer;
@@ -26,7 +25,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeItem;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
-import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveFolderCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveObjectCommand;

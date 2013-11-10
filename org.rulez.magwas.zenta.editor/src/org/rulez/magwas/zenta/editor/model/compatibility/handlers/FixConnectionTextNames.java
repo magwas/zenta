@@ -51,7 +51,6 @@ public class FixConnectionTextNames implements ICompatibilityHandler {
                 // If an Zentamate connection has a (deprecated) text value then set the Relationship's name to that
                 if(element instanceof IDiagramModelZentamateConnection) {
                     IDiagramModelZentamateConnection connection = (IDiagramModelZentamateConnection)element;
-                    @SuppressWarnings("deprecation")
                     String text = connection.getText();
                     if(text != null && text.length() > 0) {
                         IRelationship relationship = connection.getRelationship();
@@ -67,7 +66,6 @@ public class FixConnectionTextNames implements ICompatibilityHandler {
                         connection.setName(""); //$NON-NLS-1$
                     }
                     
-                    @SuppressWarnings("deprecation")
                     String text = connection.getText();
                     if(text != null && text.length() > 0) {
                         connection.setName(text);

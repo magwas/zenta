@@ -11,7 +11,11 @@ package org.rulez.magwas.zenta.editor.model.compatibility;
  * @author Phillip Beauvoir
  */
 public class LaterModelVersionException extends Exception {
-    private String version;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String version;
     
     public LaterModelVersionException(String version) {
         this.version = version;

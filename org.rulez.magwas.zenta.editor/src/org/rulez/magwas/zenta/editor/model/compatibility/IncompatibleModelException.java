@@ -12,7 +12,12 @@ package org.rulez.magwas.zenta.editor.model.compatibility;
  */
 public class IncompatibleModelException extends Exception {
     
-    public IncompatibleModelException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public IncompatibleModelException(String message) {
         super(message);
     }
 }
