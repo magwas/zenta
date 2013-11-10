@@ -21,9 +21,9 @@
    id="svg2"
    inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="zentalogo.svg"
-   inkscape:export-filename="/home/build/mag/tmp/zentalogo64.png"
-   inkscape:export-xdpi="12.540586"
-   inkscape:export-ydpi="12.540586"><metadata
+   inkscape:export-filename="/home/mag/build/zenta/org.rulez.magwas.zenta.editor/img/app-128.png"
+   inkscape:export-xdpi="25.561201"
+   inkscape:export-ydpi="25.561201"><metadata
    id="metadata72"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
@@ -53,164 +53,161 @@
    ooo:slide="id1"
    ooo:id-list="id3 id4 id5 id6 id7 id8"
    id="g6" />
- </defs>
+ 
+   
+  
+    
+   
+     
+     
+     
+     
+     
+    </defs>
  <rect
    style="fill:#ffffff"
    id="rect3016"
-   width="451.62152"
-   height="459.30869"
-   x="3.8435874"
-   y="-1.9217937"
-   transform="scale(56.444445,56.444445)" /><g
+   width="25166.102"
+   height="25057.627"
+   x="216.94933"
+   y="216.94911" /><g
    class="SlideGroup"
    id="g8"
-   transform="matrix(1.6385258,0,0,1.6167525,-5007.7078,-6812.1659)">
+   transform="matrix(1.6107384,0,0,1.6030347,-4488.0561,-6537.7968)">
   <g
-   id="g10">
-   <g
-   id="id1"
-   class="Slide"
-   clip-path="url(#presentation_clip_path)">
-    <g
-   class="Page"
-   id="g13">
-     <g
+   id="g15"
    class="com.sun.star.drawing.CustomShape"
-   id="g15">
+   style="fill:#0000ff">
       <g
-   id="id3">
+   id="id3"
+   style="fill:#0000ff">
        <path
-   d="m 10900,4200 c 4422,0 7800,3421 7800,7900 0,4479 -3378,7900 -7800,7900 -4422,0 -7800,-3421 -7800,-7900 0,-4479 3378,-7900 7800,-7900 z m -7800,0 0,0 z m 15601,15801 0,0 z"
+   style="fill:#0000ff;stroke:none"
+   inkscape:connector-curvature="0"
    id="path18"
-   inkscape:connector-curvature="0"
-   style="fill:#abf9e9;stroke:none" />
+   d="m 10900,4200 c 4422,0 7800,3421 7800,7900 0,4479 -3378,7900 -7800,7900 -4422,0 -7800,-3421 -7800,-7900 0,-4479 3378,-7900 7800,-7900 z m -7800,0 0,0 z m 15601,15801 0,0 z" />
        <path
-   d="m 10900,4200 c 4422,0 7800,3421 7800,7900 0,4479 -3378,7900 -7800,7900 -4422,0 -7800,-3421 -7800,-7900 0,-4479 3378,-7900 7800,-7900 z"
+   style="fill:#0000ff;stroke:#abf9e9"
+   inkscape:connector-curvature="0"
    id="path20"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#abf9e9" />
+   d="m 10900,4200 c 4422,0 7800,3421 7800,7900 0,4479 -3378,7900 -7800,7900 -4422,0 -7800,-3421 -7800,-7900 0,-4479 3378,-7900 7800,-7900 z" />
        <path
-   d="m 3100,4200 0,0 z"
+   style="fill:#0000ff;stroke:#abf9e9"
+   inkscape:connector-curvature="0"
    id="path22"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#abf9e9" />
+   d="m 3100,4200 0,0 z" />
        <path
-   d="m 18701,20001 0,0 z"
-   id="path24"
+   style="fill:#0000ff;stroke:#abf9e9"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#abf9e9" />
+   id="path24"
+   d="m 18701,20001 0,0 z" />
       </g>
-     </g>
-     <g
-   class="com.sun.star.drawing.CustomShape"
-   id="g26">
+     </g><g
+   id="g26"
+   class="com.sun.star.drawing.CustomShape">
       <g
    id="id4">
        <path
-   d="m 10900,5400 c 2948,0 5200,2923 5200,6750 0,3827 -2252,6750 -5200,6750 -2948,0 -5200,-2923 -5200,-6750 0,-3827 2252,-6750 5200,-6750 z m -5200,0 0,0 z m 10401,13501 0,0 z"
+   style="fill:#ffffff;stroke:none"
+   inkscape:connector-curvature="0"
    id="path29"
-   inkscape:connector-curvature="0"
-   style="fill:#ffffff;stroke:none" />
+   d="m 10900,5400 c 2948,0 5200,2923 5200,6750 0,3827 -2252,6750 -5200,6750 -2948,0 -5200,-2923 -5200,-6750 0,-3827 2252,-6750 5200,-6750 z m -5200,0 0,0 z m 10401,13501 0,0 z" />
        <path
-   d="m 10900,5400 c 2948,0 5200,2923 5200,6750 0,3827 -2252,6750 -5200,6750 -2948,0 -5200,-2923 -5200,-6750 0,-3827 2252,-6750 5200,-6750 z"
+   style="fill:none;stroke:#ffffff"
+   inkscape:connector-curvature="0"
    id="path31"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   d="m 10900,5400 c 2948,0 5200,2923 5200,6750 0,3827 -2252,6750 -5200,6750 -2948,0 -5200,-2923 -5200,-6750 0,-3827 2252,-6750 5200,-6750 z" />
        <path
-   d="m 5700,5400 0,0 z"
+   style="fill:none;stroke:#ffffff"
+   inkscape:connector-curvature="0"
    id="path33"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   d="m 5700,5400 0,0 z" />
        <path
-   d="m 16101,18901 0,0 z"
+   style="fill:none;stroke:#ffffff"
+   inkscape:connector-curvature="0"
    id="path35"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   d="m 16101,18901 0,0 z" />
       </g>
-     </g>
-     <g
+     </g><g
+   id="g37"
    class="com.sun.star.drawing.CustomShape"
-   id="g37">
+   style="fill:#0000ff">
       <g
-   id="id5">
+   id="id5"
+   style="fill:#0000ff">
        <path
-   d="m 11050,9300 c 3940,0 6950,1234 6950,2849 0,1615 -3010,2850 -6950,2850 -3940,0 -6950,-1235 -6950,-2850 0,-1615 3010,-2849 6950,-2849 z m -6950,0 0,0 z m 13901,5701 0,0 z"
+   style="fill:#0000ff;stroke:none"
+   inkscape:connector-curvature="0"
    id="path40"
-   inkscape:connector-curvature="0"
-   style="fill:#abf9e9;stroke:none" />
+   d="m 11050,9300 c 3940,0 6950,1234 6950,2849 0,1615 -3010,2850 -6950,2850 -3940,0 -6950,-1235 -6950,-2850 0,-1615 3010,-2849 6950,-2849 z m -6950,0 0,0 z m 13901,5701 0,0 z" />
        <path
-   d="m 11050,9300 c 3940,0 6950,1234 6950,2849 0,1615 -3010,2850 -6950,2850 -3940,0 -6950,-1235 -6950,-2850 0,-1615 3010,-2849 6950,-2849 z"
+   style="fill:#0000ff;stroke:#abf9e9"
+   inkscape:connector-curvature="0"
    id="path42"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#abf9e9" />
+   d="m 11050,9300 c 3940,0 6950,1234 6950,2849 0,1615 -3010,2850 -6950,2850 -3940,0 -6950,-1235 -6950,-2850 0,-1615 3010,-2849 6950,-2849 z" />
        <path
-   d="m 4100,9300 0,0 z"
+   style="fill:#0000ff;stroke:#abf9e9"
+   inkscape:connector-curvature="0"
    id="path44"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#abf9e9" />
+   d="m 4100,9300 0,0 z" />
        <path
-   d="m 18001,15001 0,0 z"
-   id="path46"
+   style="fill:#0000ff;stroke:#abf9e9"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#abf9e9" />
+   id="path46"
+   d="m 18001,15001 0,0 z" />
       </g>
-     </g>
-     <g
-   class="com.sun.star.drawing.CustomShape"
-   id="g48">
+     </g><g
+   id="g48"
+   class="com.sun.star.drawing.CustomShape">
       <g
    id="id6">
        <path
-   d="m 10921,9069 c 2787,0 4915,465 4915,1074 0,609 -2128,1074 -4915,1074 -2787,0 -4915,-465 -4915,-1074 0,-609 2128,-1074 4915,-1074 z m -4915,0 0,0 z m 9831,2149 0,0 z"
+   style="fill:#ffffff;stroke:none"
+   inkscape:connector-curvature="0"
    id="path51"
-   inkscape:connector-curvature="0"
-   style="fill:#ffffff;stroke:none" />
+   d="m 10921,9069 c 2787,0 4915,465 4915,1074 0,609 -2128,1074 -4915,1074 -2787,0 -4915,-465 -4915,-1074 0,-609 2128,-1074 4915,-1074 z m -4915,0 0,0 z m 9831,2149 0,0 z" />
        <path
-   d="m 10921,9069 c 2787,0 4915,465 4915,1074 0,609 -2128,1074 -4915,1074 -2787,0 -4915,-465 -4915,-1074 0,-609 2128,-1074 4915,-1074 z"
+   style="fill:none;stroke:#ffffff"
+   inkscape:connector-curvature="0"
    id="path53"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   d="m 10921,9069 c 2787,0 4915,465 4915,1074 0,609 -2128,1074 -4915,1074 -2787,0 -4915,-465 -4915,-1074 0,-609 2128,-1074 4915,-1074 z" />
        <path
-   d="m 6006,9069 0,0 z"
+   style="fill:none;stroke:#ffffff"
+   inkscape:connector-curvature="0"
    id="path55"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   d="m 6006,9069 0,0 z" />
        <path
-   d="m 15837,11218 0,0 z"
-   id="path57"
+   style="fill:none;stroke:#ffffff"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   id="path57"
+   d="m 15837,11218 0,0 z" />
       </g>
-     </g>
-     <g
-   class="com.sun.star.drawing.CustomShape"
-   id="g59">
+     </g><g
+   id="g59"
+   class="com.sun.star.drawing.CustomShape">
       <g
    id="id7">
        <path
-   d="m 10921,13091 c 2787,0 4915,465 4915,1074 0,609 -2128,1074 -4915,1074 -2787,0 -4915,-465 -4915,-1074 0,-609 2128,-1074 4915,-1074 z m -4915,0 0,0 z m 9831,2149 0,0 z"
+   style="fill:#ffffff;stroke:none"
+   inkscape:connector-curvature="0"
    id="path62"
-   inkscape:connector-curvature="0"
-   style="fill:#ffffff;stroke:none" />
+   d="m 10921,13091 c 2787,0 4915,465 4915,1074 0,609 -2128,1074 -4915,1074 -2787,0 -4915,-465 -4915,-1074 0,-609 2128,-1074 4915,-1074 z m -4915,0 0,0 z m 9831,2149 0,0 z" />
        <path
-   d="m 10921,13091 c 2787,0 4915,465 4915,1074 0,609 -2128,1074 -4915,1074 -2787,0 -4915,-465 -4915,-1074 0,-609 2128,-1074 4915,-1074 z"
+   style="fill:none;stroke:#ffffff"
+   inkscape:connector-curvature="0"
    id="path64"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   d="m 10921,13091 c 2787,0 4915,465 4915,1074 0,609 -2128,1074 -4915,1074 -2787,0 -4915,-465 -4915,-1074 0,-609 2128,-1074 4915,-1074 z" />
        <path
-   d="m 6006,13091 0,0 z"
+   style="fill:none;stroke:#ffffff"
+   inkscape:connector-curvature="0"
    id="path66"
-   inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   d="m 6006,13091 0,0 z" />
        <path
-   d="m 15837,15240 0,0 z"
-   id="path68"
+   style="fill:none;stroke:#ffffff"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#ffffff" />
+   id="path68"
+   d="m 15837,15240 0,0 z" />
       </g>
      </g>
-    </g>
-   </g>
-  </g>
  </g>
 </svg>
