@@ -26,7 +26,6 @@ public interface IPreferenceConstants {
     String VIEW_TOOLTIPS = "viewTooltips"; //$NON-NLS-1$
     
     String OPEN_DIAGRAMS_ON_LOAD = "openDiagramsOnLoad"; //$NON-NLS-1$
-    String ALLOW_MOVE_AROUND = "allowMoveAround"; //$NON-NLS-1$
     String BACKUP_ON_SAVE = "backupOnSave"; //$NON-NLS-1$
     
     String ANIMATE = "animate"; //$NON-NLS-1$
@@ -36,14 +35,6 @@ public interface IPreferenceConstants {
     String DEFAULT_VIEW_FONT = "defaultViewFont"; //$NON-NLS-1$
     
     String LINK_VIEW = "linkView"; //$NON-NLS-1$
-    
-    String BUSINESS_INTERFACE_FIGURE = "businessInterfaceFigure"; //$NON-NLS-1$
-    String BUSINESS_PROCESS_FIGURE = "businessProcessFigure"; //$NON-NLS-1$
-    String APPLICATION_COMPONENT_FIGURE = "applicationComponentFigure"; //$NON-NLS-1$
-    String APPLICATION_INTERFACE_FIGURE = "applicationInterfaceFigure"; //$NON-NLS-1$
-    String TECHNOLOGY_NODE_FIGURE = "technologyNodeFigure"; //$NON-NLS-1$
-    String TECHNOLOGY_DEVICE_FIGURE = "technologyDeviceFigure"; //$NON-NLS-1$
-    String TECHNOLOGY_INTERFACE_FIGURE = "technologyInterfaceFigure"; //$NON-NLS-1$
     
     String SKETCH_DEFAULT_BACKGROUND = "sketchDefaultBackground"; //$NON-NLS-1$
     

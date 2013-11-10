@@ -289,12 +289,8 @@ public class TreeModelViewerDragDropHandler {
         // Dragging onto a Folder
         Object parent = getTargetParent(event);
         if(parent instanceof IFolder) {
-            IFolder targetfolder = (IFolder)parent;
             IStructuredSelection selection = (IStructuredSelection)LocalSelectionTransfer.getTransfer().getSelection();
             for(Object object : selection.toList()) {
-                if(!hasCommonParentFolder(targetfolder, (EObject)object)) {
-                    return false;
-                }
                 if(!canDropObject(object, (TreeItem)event.item)) {
                     return false;
                 }
@@ -305,25 +301,6 @@ public class TreeModelViewerDragDropHandler {
         return false;
     }
     
-    /**
-     * @param folder
-     * @param object
-     * @return
-     */
-    private boolean hasCommonParentFolder(IFolder targetfolder, EObject object) {
-        EObject f1 = targetfolder;
-        boolean movearound = Preferences.isAllowMoveAround();
-        while(!(((!movearound) && (f1.eContainer() instanceof IZentamateModel))||(movearound && (f1 instanceof IZentamateModel)))) {
-            f1 = f1.eContainer();
-        }
-        
-        EObject f2 = object.eContainer();
-        while(f2 != null && !(((!movearound) && (f2.eContainer() instanceof IZentamateModel))||(movearound && (f2 instanceof IZentamateModel)))) {
-            f2 = f2.eContainer();
-        }
-        
-        return f1 == f2;
-    }
 
     /**
      * @param object

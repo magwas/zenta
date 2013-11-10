@@ -37,7 +37,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     private Button fUseCurvedTabsButton;
     
-    private Button fAllowMoveAroundButton;
     private Button fAnimateVisualiserNodesButton;
     
 	public GeneralPreferencePage() {
@@ -92,18 +91,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 2;
         fUseCurvedTabsButton.setLayoutData(gd);
-
-        Group modelGroup = new Group(client, SWT.NULL);
-        modelGroup.setText("Model style");
-        modelGroup.setLayout(new GridLayout(2, false));
-        modelGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        
-        fAllowMoveAroundButton = new Button(modelGroup, SWT.CHECK);
-        fAllowMoveAroundButton.setText("Allow moving object across layers");
-        gd = new GridData(GridData.FILL_HORIZONTAL);
-        gd.horizontalSpan = 2;
-        fAllowMoveAroundButton.setLayoutData(gd);
-
         // Visualiser
         Group visualiserGroup = new Group(client, SWT.NULL);
         visualiserGroup.setText(Messages.GeneralPreferencePage_6);
@@ -125,7 +112,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         setSpinnerValues();
         fBackupOnSaveButton.setSelection(getPreferenceStore().getBoolean(BACKUP_ON_SAVE));
         fOpenDiagramsOnLoadButton.setSelection(getPreferenceStore().getBoolean(OPEN_DIAGRAMS_ON_LOAD));
-        fAllowMoveAroundButton.setSelection(getPreferenceStore().getBoolean(ALLOW_MOVE_AROUND));
         fUseCurvedTabsButton.setSelection(!PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS));
         fAnimateVisualiserNodesButton.setSelection(getPreferenceStore().getBoolean(ANIMATE_VISUALISER_NODES));
     }
@@ -139,7 +125,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         getPreferenceStore().setValue(BACKUP_ON_SAVE, fBackupOnSaveButton.getSelection());
         getPreferenceStore().setValue(OPEN_DIAGRAMS_ON_LOAD, fOpenDiagramsOnLoadButton.getSelection());
         getPreferenceStore().setValue(MRU_MAX, fMRUSizeSpinner.getSelection());
-        getPreferenceStore().setValue(ALLOW_MOVE_AROUND, fAllowMoveAroundButton.getSelection());
         PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS, !fUseCurvedTabsButton.getSelection());
         getPreferenceStore().setValue(ANIMATE_VISUALISER_NODES, fAnimateVisualiserNodesButton.getSelection());
         return true;
@@ -150,7 +135,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         fBackupOnSaveButton.setSelection(getPreferenceStore().getDefaultBoolean(BACKUP_ON_SAVE));
         fOpenDiagramsOnLoadButton.setSelection(getPreferenceStore().getDefaultBoolean(OPEN_DIAGRAMS_ON_LOAD));
         fMRUSizeSpinner.setSelection(getPreferenceStore().getDefaultInt(MRU_MAX));
-        fAllowMoveAroundButton.setSelection(getPreferenceStore().getDefaultBoolean(ALLOW_MOVE_AROUND));
         fUseCurvedTabsButton.setSelection(!PlatformUI.getPreferenceStore().getDefaultBoolean(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS));
         fAnimateVisualiserNodesButton.setSelection(getPreferenceStore().getDefaultBoolean(ANIMATE_VISUALISER_NODES));
         super.performDefaults();

@@ -45,9 +45,6 @@ public class Preferences implements IPreferenceConstants {
         return STORE.getBoolean(OPEN_DIAGRAMS_ON_LOAD);
     }
 
-    public static boolean isAllowMoveAround() {
-        return STORE.getBoolean(ALLOW_MOVE_AROUND);
-    }
     
     public static boolean doAnimate() {
         return STORE.getBoolean(ANIMATE);

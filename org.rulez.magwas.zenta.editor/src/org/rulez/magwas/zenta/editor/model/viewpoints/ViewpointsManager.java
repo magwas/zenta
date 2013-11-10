@@ -54,40 +54,8 @@ public class ViewpointsManager {
      * @return an ImageDesciptor for a Viewpoint
      */
     public ImageDescriptor getImageDescriptor(IViewpoint viewPoint) {
-        String[] bus_appNames = { IZentamateImages.ICON_VIEWPOINT_BUSINESS_16,
-                IZentamateImages.ICON_VIEWPOINT_APPLICATION_16 };
         
-        String[] app_techNames = { IZentamateImages.ICON_VIEWPOINT_APPLICATION_16,
-                IZentamateImages.ICON_VIEWPOINT_TECHNOLOGY_16 };
-        
-        switch(viewPoint.getIndex()) {
-            case IViewpoint.BUSINESS_FUNCTION_VIEWPOINT:
-            case IViewpoint.BUSINESS_PROCESS_VIEWPOINT:
-            case IViewpoint.ORGANISATION_VIEWPOINT:
-                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINT_BUSINESS_16);
-
-            case IViewpoint.APPLICATION_BEHAVIOUR_VIEWPOINT:
-            case IViewpoint.APPLICATION_COOPERATION_VIEWPOINT:
-            case IViewpoint.APPLICATION_STRUCTURE_VIEWPOINT:
-                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINT_APPLICATION_16);
-                
-            case IViewpoint.INFRASTRUCTURE_VIEWPOINT:
-                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINT_TECHNOLOGY_16);
-
-            case IViewpoint.ACTOR_COOPERATION_VIEWPOINT:
-            case IViewpoint.APPLICATION_USAGE_VIEWPOINT:
-            case IViewpoint.BUSINESS_PROCESS_COOPERATION_VIEWPOINT:
-            case IViewpoint.BUSINESS_PRODUCT_VIEWPOINT:
-            case IViewpoint.SERVICE_REALISATION_VIEWPOINT:
-                return IZentamateImages.ImageFactory.getCompositeImageDescriptor(bus_appNames);
-                
-            case IViewpoint.IMPLEMENTATION_DEPLOYMENT_VIEWPOINT:
-            case IViewpoint.INFRASTRUCTURE_USAGE_VIEWPOINT:
-                return IZentamateImages.ImageFactory.getCompositeImageDescriptor(app_techNames);
-                
-            default:
-                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINTS_16);
-        }
+        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINTS_16);
     }
     
     private ViewpointsManager() {

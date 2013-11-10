@@ -29,8 +29,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 public class ColorFactory {
     
     public static final Color COLOR_BUSINESS = new Color(null, 255, 255, 181);
-    public static final Color COLOR_APPLICATION = new Color(null, 181, 255, 255);
-    public static final Color COLOR_TECHNOLOGY = new Color(null, 201, 231, 183);
     
     /**
      * Color Registry

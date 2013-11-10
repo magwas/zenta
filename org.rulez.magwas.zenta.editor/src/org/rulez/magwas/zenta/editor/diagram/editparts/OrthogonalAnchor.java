@@ -35,9 +35,6 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
-import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessInterfaceFigure;
-import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessValueFigure;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
 
 
 /**
@@ -244,14 +241,7 @@ public class OrthogonalAnchor extends ChopboxAnchor {
 	 * @return true if figure is an ellipse
 	 */
     private boolean isEllipse(IFigure figure) {
-        if(figure instanceof BusinessValueFigure) {
-            return true;
-        }
-
-        if(figure instanceof BusinessInterfaceFigure) {
-            return (((IDiagramModelZentamateObject)((BusinessInterfaceFigure)figure).getDiagramModelObject()).getType() != 0);
-        }
-
+    	//FIXME: should be based on appearance preferences in the template
         return false;
     }
 	

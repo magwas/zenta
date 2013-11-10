@@ -82,7 +82,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants
         // Help
         PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELP_ID);
         
-        loadFigures();
         
         GridLayout gridLayout = new GridLayout();
         gridLayout.marginWidth = 0;
@@ -108,22 +107,6 @@ implements IWorkbenchPreferencePage, IPreferenceConstants
         return client;
     }
     
-    private void loadFigures() {
-        fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_1,
-                BUSINESS_INTERFACE_FIGURE, IZentamateImages.FIGURE_BUSINESS_INTERFACE1, IZentamateImages.FIGURE_BUSINESS_INTERFACE2));
-        fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_7,
-                BUSINESS_PROCESS_FIGURE, IZentamateImages.FIGURE_BUSINESS_PROCESS1, IZentamateImages.FIGURE_BUSINESS_PROCESS2));
-        fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_2,
-                APPLICATION_COMPONENT_FIGURE, IZentamateImages.FIGURE_APPLICATION_COMPONENT1, IZentamateImages.FIGURE_APPLICATION_COMPONENT2));
-        fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_3,
-                APPLICATION_INTERFACE_FIGURE, IZentamateImages.FIGURE_APPLICATION_INTERFACE1, IZentamateImages.FIGURE_APPLICATION_INTERFACE2));
-        fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_4,
-                TECHNOLOGY_DEVICE_FIGURE, IZentamateImages.FIGURE_TECHNOLOGY_DEVICE1, IZentamateImages.FIGURE_TECHNOLOGY_DEVICE2));
-        fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_5,
-                TECHNOLOGY_NODE_FIGURE, IZentamateImages.FIGURE_TECHNOLOGY_NODE1, IZentamateImages.FIGURE_TECHNOLOGY_NODE2));
-        fChoices.add(new ImageChoice(Messages.DiagramFiguresPreferencePage_6,
-                TECHNOLOGY_INTERFACE_FIGURE, IZentamateImages.FIGURE_TECHNOLOGY_INTERFACE1, IZentamateImages.FIGURE_TECHNOLOGY_INTERFACE2));
-    }
     
     private void createTable(Composite parent) {
         fTableViewer = new TableViewer(parent, SWT.BORDER);
