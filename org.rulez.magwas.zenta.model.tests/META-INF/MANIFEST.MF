@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: org.rulez.magwas.zenta.model.tests
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.rulez.magwas.zenta.model.tests.Activator
+Bundle-Vendor: Árpád Magosányi
+Require-Bundle: org.eclipse.core.runtime,
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0",
+ org.junit
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: org.rulez.magwas.zenta.export

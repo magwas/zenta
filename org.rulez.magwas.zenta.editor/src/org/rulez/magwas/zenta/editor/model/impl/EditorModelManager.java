@@ -204,6 +204,7 @@ implements IEditorModelManager {
     
     @Override
     public IZentamateModel loadModel(File file) {
+    	//FIXME move to ...zenta.model package
         if(file == null || !file.exists()) {
             return null;
         }
