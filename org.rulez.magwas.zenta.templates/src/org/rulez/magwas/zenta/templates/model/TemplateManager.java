@@ -27,7 +27,7 @@ import uk.ac.bolton.jdom.JDOMUtils;
 public abstract class TemplateManager implements ITemplateXMLTags {
     
     public static final String ZIP_ENTRY_MANIFEST = "manifest.xml"; //$NON-NLS-1$
-    public static final String ZIP_ENTRY_MODEL = "model.archimate"; //$NON-NLS-1$
+    public static final String ZIP_ENTRY_MODEL = "model.zenta"; //$NON-NLS-1$
     public static final String ZIP_ENTRY_THUMBNAILS = "Thumbnails/"; //$NON-NLS-1$
     
     public static final int THUMBNAIL_WIDTH = 512;

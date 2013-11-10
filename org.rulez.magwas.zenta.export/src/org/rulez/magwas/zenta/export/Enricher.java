@@ -45,7 +45,7 @@ public class Enricher {
         vars = new VarResolver();
         nss = new NSResolver();
         xpath.setXPathVariableResolver(vars);
-        nss.put("archimate", "http://www.bolton.ac.uk/archimate");
+        nss.put("zenta", "http://magwas.rulez.org/zenta");
         xpath.setNamespaceContext(nss);
         this.policy = policy;
         log.issueInfo("enricher done reading", Util.now());
@@ -66,7 +66,7 @@ public class Enricher {
     
     private void associateObjectClass(Element grouporfolder, String objectclass) {
         
-        String ocpath = "//*[@id=//archimate:Group[@id=$thisid]//archimate:DiagramObject/@archimateElement]";
+        String ocpath = "//*[@id=//zenta:Group[@id=$thisid]//zenta:DiagramObject/@zentaElement]";
         String thisid = grouporfolder.getAttribute("id");
         this.vars.put("thisid", thisid);
         NodeList nl = null;
@@ -146,7 +146,7 @@ public class Enricher {
          * objectclass applyPolicyForElement(node,objectclass) - for all
          * ancestors for the objectclass recursively add all properties of the
          * ancestor: - for all ancestors of the objectclass if ancestor is not
-         * an archi class (starts with 'archimate:')
+         * an archi class (starts with 'zenta:')
          * applyPolicyForElement(node,ancestor) - for all properties in policy -
          * if the property does not exist in node
          * addPropertyToElement(node,property) - for the defaults in order

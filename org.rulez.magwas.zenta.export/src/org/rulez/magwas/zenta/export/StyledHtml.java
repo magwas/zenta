@@ -48,7 +48,7 @@ public class StyledHtml implements IModelExporter {
      * 
      * @see
      * org.rulez.magwas.zenta.editor.model.IModelExporter#export(uk.ac.bolton
-     * .archimate.model.IZentamateModel)
+     * .zenta.model.IZentamateModel)
      */
     public void export(IZentamateModel model) {
         log = new EventLog("Styled export");

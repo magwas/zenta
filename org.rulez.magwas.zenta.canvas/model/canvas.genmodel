@@ -4,7 +4,7 @@
     modelDirectory="/org.rulez.magwas.zenta.canvas/src" modelPluginID="org.rulez.magwas.zenta.canvas"
     modelName="Canvas" editPluginClass="org.rulez.magwas.zenta.canvas.provider.CanvasEditPlugin"
     nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
-    copyrightFields="false" usedGenPackages="../../org.rulez.magwas.zenta.model/model/archimate.genmodel#//model"
+    copyrightFields="false" usedGenPackages="../../org.rulez.magwas.zenta.model/model/zenta.genmodel#//model"
     interfaceNamePattern="I{0}" classNamePattern="{0}" runtimePlatform="RCP">
   <foreignModel>canvas.ecore</foreignModel>
   <genPackages prefix="Canvas" basePackage="org.rulez.magwas.zenta.canvas" resource="XML"

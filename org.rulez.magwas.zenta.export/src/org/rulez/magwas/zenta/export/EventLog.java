@@ -86,7 +86,7 @@ public class EventLog implements IEventLog {
                                                                 // in tree and
                                                                 // properties
                                                                 // view
-                                    if (loc.startsWith("archimate://")) {
+                                    if (loc.startsWith("zenta://")) {
                                         String[] ids = loc.split("//")[1]
                                                 .split("/");
                                         focusElement(ids[0], ids[1]);
@@ -146,7 +146,7 @@ public class EventLog implements IEventLog {
                 name = ((Element) node).getAttribute("name");
             }
             Node location = messages.createElement("a");
-            ((Element) location).setAttribute("href", "archimate://" + modelid
+            ((Element) location).setAttribute("href", "zenta://" + modelid
                     + "/" + id);
             location.setTextContent(" at " + name + "(" + node.getClass() + ")");
             ltd.appendChild(location);

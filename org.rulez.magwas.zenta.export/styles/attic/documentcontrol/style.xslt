@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
     <xsl:template match="/">
         <xhtml>
         <head>
-        <title><xsl:value-of select="archimate:model/@name"/></title>
+        <title><xsl:value-of select="zenta:model/@name"/></title>
         <link rel="stylesheet" type="text/css" href="style.css" />
         </head>
         <body style="font-family:Verdana; font-size:10pt;" width="100%">
-        <h1><xsl:value-of select="archimate:model/@name"/></h1>
+        <h1><xsl:value-of select="zenta:model/@name"/></h1>
         <h2>Document Control</h2>
         <h3>Versions</h3>
         <xsl:call-template name="documentversions"/>

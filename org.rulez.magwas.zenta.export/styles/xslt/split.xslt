@@ -45,7 +45,7 @@
 	<xsl:template match="*" mode="remember">
 		<xsl:variable name="id" select="./@id"/>
 		<xsl:variable name="relations" select="//element[current()/@id = @source or current()/@id = @target]/@id"/>
-		<xsl:variable name="diagramelements" select="//child[current()/@id = @archimateElement]/@id"/>
+		<xsl:variable name="diagramelements" select="//child[current()/@id = @zentaElement]/@id"/>
 		<xsl:variable name="scons" select="//sourceConnection[@relationship=//*[@source= current()/@id]/@id]/@id"/>
 		<xsl:variable name="sconnotarg" select="//sourceConnection[@target=$diagramelements or @source=$diagramelements]/@id"/>
 		<xsl:variable name="scofkids" select="//sourceConnection[@target=$diagramelements/..//*/@id or @source=$diagramelements/..//*/@id]/@id"/>

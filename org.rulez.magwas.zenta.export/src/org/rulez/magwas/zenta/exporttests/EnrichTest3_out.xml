@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archimate:BusinessProcess xmlns:archimate="http://www.bolton.ac.uk/archimate"
+<zenta:BusinessProcess xmlns:zenta="http://magwas.rulez.org/zenta"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            id="thenode"
                            name="Megadja az adatait">
@@ -7,4 +7,4 @@
             <property key="objectClass" value="workflow"/>
       
   <workflow parentid="thenode"/>
-</archimate:BusinessProcess>
+</zenta:BusinessProcess>

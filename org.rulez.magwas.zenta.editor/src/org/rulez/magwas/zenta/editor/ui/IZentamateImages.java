@@ -19,7 +19,7 @@ public interface IZentamateImages {
 
     String IMGPATH = "img/"; //$NON-NLS-1$
     
-    String ARCHIMATE_IMGPATH = IMGPATH + "archimate/"; //$NON-NLS-1$
+    String ARCHIMATE_IMGPATH = IMGPATH + "zenta/"; //$NON-NLS-1$
     
     String ICON_APP_16 = IMGPATH + "app-16.png"; //$NON-NLS-1$
     String ICON_APP_32 = IMGPATH + "app-32.png"; //$NON-NLS-1$

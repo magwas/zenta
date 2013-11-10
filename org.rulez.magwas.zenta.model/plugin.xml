@@ -11,18 +11,18 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             class="org.rulez.magwas.zenta.model.IZentamatePackage"
-            genModel="model/archimate.genmodel"
-            uri="http://www.bolton.ac.uk/archimate">
+            genModel="model/zenta.genmodel"
+            uri="http://magwas.rulez.org/zenta">
       </package>
       <package
-            uri="http://www.bolton.ac.uk/archimate/1.0"
+            uri="http://magwas.rulez.org/zenta/1.0"
             class="org.rulez.magwas.zenta.model.IZentamatePackage"
-            genModel="model/archimate.genmodel"/>
+            genModel="model/zenta.genmodel"/>
    </extension>
    
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
-            type="archimate"
+            type="zenta"
             class="org.rulez.magwas.zenta.model.util.ZentamateResourceFactory"/>
       <parser
             class="org.rulez.magwas.zenta.model.util.ZentamateResourceFactory"

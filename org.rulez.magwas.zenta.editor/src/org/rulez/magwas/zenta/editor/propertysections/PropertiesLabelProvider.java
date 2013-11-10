@@ -62,9 +62,9 @@ public class PropertiesLabelProvider implements ILabelProvider {
             return getZentamateElementText((IZentamateElement)element);
         }
         else if(element instanceof IAdaptable) {
-            IZentamateElement archimateElement = (IZentamateElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
-            if(archimateElement != null) {
-                return getZentamateElementText(archimateElement);
+            IZentamateElement zentaElement = (IZentamateElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
+            if(zentaElement != null) {
+                return getZentamateElementText(zentaElement);
             }
         }
 

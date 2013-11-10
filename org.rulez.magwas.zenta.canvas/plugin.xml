@@ -17,7 +17,7 @@
       <package
             class="org.rulez.magwas.zenta.canvas.model.ICanvasPackage"
             genModel="model/canvas.genmodel"
-            uri="http://www.bolton.ac.uk/archimate/canvas">
+            uri="http://magwas.rulez.org/zenta/canvas">
       </package>
    </extension>
    <extension

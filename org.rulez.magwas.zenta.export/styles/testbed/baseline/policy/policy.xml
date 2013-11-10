@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <policy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:archimate="http://www.bolton.ac.uk/archimate"
+        xmlns:zenta="http://magwas.rulez.org/zenta"
         name="Generated Policy">
    <objectClass name="objectClass" abstract="">
       <description>
-         <documentation>The primary abstraction of the policy is the objectClass element.<br/>An objectClass describes a concept derived from either a builtin archimate element, or another objectClass: the ancestor of the objectClass.<br/>
-            <br/>We can define the objectClass of an archimate element in one of the following ways:<br/>
+         <documentation>The primary abstraction of the policy is the objectClass element.<br/>An objectClass describes a concept derived from either a builtin zenta element, or another objectClass: the ancestor of the objectClass.<br/>
+            <br/>We can define the objectClass of an zenta element in one of the following ways:<br/>
             <br/>- add a property where the name is "objectClass" and the value is the name of the objectclass<br/>- add a property where the name is in the form &lt;class&gt;:&lt;property&gt;, where &lt;class&gt; is the name of the objectclass, and &lt;property&gt; is the name of one of the properties of the objectclass. The value vill be the value of the objectClass property.<br/>- create a Group in a view, with the property named "associatedObjectClass". The value of the property should be the name of the objectClass. All the elements within the group (including the nested ones) will belong to the objectClass<br/>
             <br/>The policy related to the objectclass will help to check the model for structure and content, and also makes creating reports and generating configurations easier.<br/>One of the examples of this is that the policy for this model can be generated from this model, and the generated policy can be used to check that this model is indeed conforms to the policy which is generated from it :)<br/>
          </documentation>
@@ -22,7 +22,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name"
+                  select="//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name"
                   multi="true">
             <description/>
          </default>
@@ -49,7 +49,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"
+                  select="//attribute[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid"
                   multi="true">
             <description/>
          </default>
@@ -145,7 +145,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid"
+                  select="//default[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid"
                   multi="true">
             <description/>
          </default>
@@ -185,7 +185,7 @@
             <br/>This attribute should be entered as a property.<br/>
          </documentation>
       </description>
-      <ancestor class="archimate:DataObject"/>
+      <ancestor class="zenta:DataObject"/>
       <property name="description"
                 type="xs:string"
                 minOccurs=""
@@ -200,7 +200,7 @@
          </description>
          <default order="0" select="../@name | ../documentation" multi="">
             <description>
-               <documentation>By convention the 'how' and 'what' are described in the archimate element name, and the 'why' in its documentation.<br/>
+               <documentation>By convention the 'how' and 'what' are described in the zenta element name, and the 'why' in its documentation.<br/>
                </documentation>
             </description>
          </default>
@@ -246,7 +246,7 @@
          </documentation>
       </description>
       <ancestor class="abstractNamed"/>
-      <ancestor class="archimate:DataObject"/>
+      <ancestor class="zenta:DataObject"/>
       <property name="description"
                 type="xs:string"
                 minOccurs=""
@@ -282,7 +282,7 @@
          </documentation>
          <p>This is an abstract class, do not instantiate it in a model</p>
       </description>
-      <ancestor class="archimate:DataObject"/>
+      <ancestor class="zenta:DataObject"/>
       <property name="description"
                 type="xs:string"
                 minOccurs=""
@@ -318,7 +318,7 @@
          </documentation>
       </description>
       <ancestor class="abstractNamed"/>
-      <ancestor class="archimate:ApplicationComponent"/>
+      <ancestor class="zenta:ApplicationComponent"/>
       <property name="admContact"
                 type="xs:string"
                 minOccurs=""
@@ -329,7 +329,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/@name"
+                  select="//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='manages']/@target]/@name"
                   multi="true">
             <description>
                <documentation>An OrganisationalPerson which uses the Server with line text "manages"<br/>
@@ -347,7 +347,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/@name"
+                  select="//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='operates']/@target]/@name"
                   multi="true">
             <description>
                <documentation>An OrganisationalPerson which uses the Server with line text "operates"<br/>
@@ -381,7 +381,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:Node[@id=//archimate:RealisationRelationship[@target=$id]/@source]/@name"
+                  select="//zenta:Node[@id=//zenta:RealisationRelationship[@target=$id]/@source]/@name"
                   multi="true">
             <description>
                <documentation>A Server with a realisation relationship to the application<br/>
@@ -424,7 +424,7 @@
          </documentation>
       </description>
       <ancestor class="abstractNamed"/>
-      <ancestor class="archimate:ApplicationComponent"/>
+      <ancestor class="zenta:ApplicationComponent"/>
       <property name="admContact"
                 type="xs:string"
                 minOccurs=""
@@ -435,7 +435,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/@name"
+                  select="//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='manages']/@target]/@name"
                   multi="true">
             <description>
                <documentation>An OrganisationalPerson which uses the Server with line text "manages"<br/>
@@ -494,7 +494,7 @@
          </documentation>
       </description>
       <ancestor class="abstractNamed"/>
-      <ancestor class="archimate:Node"/>
+      <ancestor class="zenta:Node"/>
       <property name="ipAddress"
                 type="xs:string"
                 minOccurs=""
@@ -515,7 +515,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:Plateau[@id=//archimate:AggregationRelationship[@target=$id]/@source]/@name"
+                  select="//zenta:Plateau[@id=//zenta:AggregationRelationship[@target=$id]/@source]/@name"
                   multi="true">
             <description>
                <documentation>A Plateau which aggregates the server<br/>
@@ -533,7 +533,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:Location[@id=//archimate:AssignmentRelationship[@target=$id]/@source]/@name"
+                  select="//zenta:Location[@id=//zenta:AssignmentRelationship[@target=$id]/@source]/@name"
                   multi="true">
             <description>
                <documentation>A Location assigned to the application<br/>
@@ -551,7 +551,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:Network[@id=//archimate:AssociationRelationship[@source=$id]/@target]/@name"
+                  select="//zenta:Network[@id=//zenta:AssociationRelationship[@source=$id]/@target]/@name"
                   multi="true">
             <description>
                <documentation>A Network this Server is associated to<br/>
@@ -569,7 +569,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:SystemSoftware[@id=//archimate:CompositionRelationship[@source=$id]/@target]/@name"
+                  select="//zenta:SystemSoftware[@id=//zenta:CompositionRelationship[@source=$id]/@target]/@name"
                   multi="true">
             <description>
                <documentation>A System Software which have a composition from this Server<br/>
@@ -587,7 +587,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:Node[@id=//archimate:CompositionRelationship[@target=$id]/@source]/@name"
+                  select="//zenta:Node[@id=//zenta:CompositionRelationship[@target=$id]/@source]/@name"
                   multi="true">
             <description>
                <documentation>Another Server which is composed of this one<br/>
@@ -605,7 +605,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:ApplicationFunction[@id=//archimate:RealisationRelationship[@source=$id]/@target]/@name"
+                  select="//zenta:ApplicationFunction[@id=//zenta:RealisationRelationship[@source=$id]/@target]/@name"
                   multi="true">
             <description>
                <documentation>An application function this server realizes<br/>
@@ -623,7 +623,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/@name"
+                  select="//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='operates']/@target]/@name"
                   multi="true">
             <description>
                <documentation>An OrganisationalPerson which uses the Server with line text "operates"<br/>
@@ -681,8 +681,8 @@
          <documentation>folder properties to parameterize reports<br/>
          </documentation>
       </description>
-      <ancestor class="archimate:Folder"/>
-      <ancestor class="archimate:model"/>
+      <ancestor class="zenta:Folder"/>
+      <ancestor class="zenta:model"/>
       <property name="part"
                 type="xs:string"
                 minOccurs=""
@@ -699,8 +699,8 @@
          <documentation>A Document version.<br/>
          </documentation>
       </description>
-      <ancestor class="archimate:Product"/>
-      <ancestor class="archimate:Plateau"/>
+      <ancestor class="zenta:Product"/>
+      <ancestor class="zenta:Plateau"/>
       <property name="releasedate"
                 type="xs:string"
                 minOccurs="0"
@@ -734,7 +734,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//*[@parentid=//archimate:RealisationRelationship[@target='c400f4ad']/@source]/@parentid"
+                  select="//*[@parentid=//zenta:RealisationRelationship[@target='c400f4ad']/@source]/@parentid"
                   multi="">
             <description/>
          </default>
@@ -746,8 +746,8 @@
          </documentation>
       </description>
       <ancestor class="abstractNamed"/>
-      <ancestor class="archimate:BusinessEvent"/>
-      <ancestor class="archimate:BusinessProcess"/>
+      <ancestor class="zenta:BusinessEvent"/>
+      <ancestor class="zenta:BusinessProcess"/>
       <property name="state"
                 type="xs:string"
                 minOccurs=""
@@ -771,7 +771,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//archimate:UsedByRelationship[@target=$id]/@source"
+                  select="//zenta:UsedByRelationship[@target=$id]/@source"
                   multi="true">
             <description/>
          </default>
@@ -811,7 +811,7 @@
          </documentation>
       </description>
       <ancestor class="abstractNamed"/>
-      <ancestor class="archimate:BusinessCollaboration"/>
+      <ancestor class="zenta:BusinessCollaboration"/>
       <property name="description"
                 type="xs:string"
                 minOccurs=""
@@ -846,7 +846,7 @@
          <documentation>A person belonging to an organisation<br/>
          </documentation>
       </description>
-      <ancestor class="archimate:BusinessActor"/>
+      <ancestor class="zenta:BusinessActor"/>
       <property name="name"
                 type="xs:string"
                 minOccurs=""
@@ -882,7 +882,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name"
+                  select="//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name"
                   multi="">
             <description>
                <documentation>When the person belongs to more organisational units, one of them should be the primary one.<br/>It is designated by a property added to the composition relationship.<br/>
@@ -890,7 +890,7 @@
             </description>
          </default>
          <default order="1"
-                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"
+                  select="//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id]/@source]/../@name"
                   multi="true">
             <description>
                <documentation>When the person belongs to one organisational unit, then this organisational unit is its primary organisation.<br/>
@@ -909,7 +909,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name"
+                  select="//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id]/@source]/../@name"
                   multi="true">
             <description>
                <documentation>All the organisational units which contain the person.<br/>

@@ -22,8 +22,8 @@ import org.rulez.magwas.zenta.model.IZentamateModel;
  */
 public interface IEditorModelManager {
     
-    String ARCHIMATE_FILE_EXTENSION = ".archimate"; //$NON-NLS-1$
-    String ARCHIMATE_FILE_WILDCARD = "*.archimate"; //$NON-NLS-1$
+    String ARCHIMATE_FILE_EXTENSION = ".zenta"; //$NON-NLS-1$
+    String ARCHIMATE_FILE_WILDCARD = "*.zenta"; //$NON-NLS-1$
     
     String PROPERTY_MODEL_CREATED = "IEditorModelManager.model.created"; //$NON-NLS-1$
     String PROPERTY_MODEL_OPENED = "IEditorModelManager.model.opened"; //$NON-NLS-1$

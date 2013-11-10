@@ -41,7 +41,7 @@ public interface ICanvasPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    String eNS_URI = "http://www.bolton.ac.uk/archimate/canvas"; //$NON-NLS-1$
+    String eNS_URI = "http://magwas.rulez.org/zenta/canvas"; //$NON-NLS-1$
 
     /**
      * The package namespace name.

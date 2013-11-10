@@ -62,7 +62,7 @@ public interface IZentaveManager {
         
         /**
          * Create a URI for the model xml file in the archive file
-         * @param file The archimate archive file
+         * @param file The zenta archive file
          * @return The URI
          */
         public static URI createZentaveModelURI(File file) {
@@ -71,7 +71,7 @@ public interface IZentaveManager {
         
         /**
          * Get the Zentave File Path for the archive file
-         * @param file The archimate archive file
+         * @param file The zenta archive file
          * @return The path
          */
         public static String getZentaveFilePath(File file) {

@@ -8,7 +8,7 @@
             contributorClass="org.rulez.magwas.zenta.browser.BrowserEditorActionBarContributor"
             default="false"
             icon="img/browser-16.png"
-            id="org.rulez.magwas.archimate.editor.browser.browserEditor"
+            id="org.rulez.magwas.zenta.browser.browserEditor"
             name="%editorBrowser">
       </editor>
    </extension>
@@ -16,7 +16,7 @@
          point="org.eclipse.ui.elementFactories">
       <factory
             class="org.rulez.magwas.zenta.browser.BrowserEditorInputFactory"
-            id="org.rulez.magwas.archimate.editor.browser.BrowserEditorInputFactory">
+            id="org.rulez.magwas.zenta.browser.BrowserEditorInputFactory">
       </factory>
    </extension>
 

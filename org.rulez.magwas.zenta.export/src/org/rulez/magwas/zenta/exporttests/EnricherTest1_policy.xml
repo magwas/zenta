@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <policy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:archimate="http://www.bolton.ac.uk/archimate"
+        xmlns:zenta="http://magwas.rulez.org/zenta"
         name="Generated Policy (new style)">
       <objectClass name="ProcessStep" abstract="">
       <description/>
-      <ancestor class="archimate:BusinessProcess"/>
+      <ancestor class="zenta:BusinessProcess"/>
       <property name="adat"
                 type="xs:string"
                 minOccurs="2"
@@ -12,7 +12,7 @@
                 structural="">
          <description/>
          <default 
-                  select="//archimate:BusinessObject[@id=//archimate:AccessRelationship[@source=$id]/@target]"
+                  select="//zenta:BusinessObject[@id=//zenta:AccessRelationship[@source=$id]/@target]"
                   multi="true">
             <description/>
          </default>
@@ -23,7 +23,7 @@
       </objectClass>   
    <objectClass name="Data" abstract="">
       <description/>
-      <ancestor class="archimate:BusinessObject"/>
+      <ancestor class="zenta:BusinessObject"/>
       <property name="child"
                 type="xs:string"
                 minOccurs="0"
@@ -31,7 +31,7 @@
                 structural="">
          <description/>
          <default
-                  select="//archimate:BusinessObject[@id=//archimate:CompositionRelationship[@source=$id]/@target]"
+                  select="//zenta:BusinessObject[@id=//zenta:CompositionRelationship[@source=$id]/@target]"
                   multi="true">
             <description/>
          </default>
@@ -43,7 +43,7 @@
                 structural="">
          <description/>
          <default 
-                  select="//archimate:BusinessObject[@id=//archimate:CompositionRelationship[@target=$id]/@source]"
+                  select="//zenta:BusinessObject[@id=//zenta:CompositionRelationship[@target=$id]/@source]"
                   multi="true">
             <description/>
          </default>
@@ -55,7 +55,7 @@
                 structural="">
          <description/>
          <default
-                  select="//archimate:BusinessProcess[@id=//archimate:AccessRelationship[@target=$id]/@source]"
+                  select="//zenta:BusinessProcess[@id=//zenta:AccessRelationship[@target=$id]/@source]"
                   multi="true">
             <description/>
          </default>

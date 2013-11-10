@@ -233,7 +233,7 @@ public class ZentaveManager implements IZentaveManager {
      */
     private void saveModelToZentaveFile(File file) throws IOException {
         // Temp file for xml model file
-        File tmpFile = File.createTempFile("archimate", null); //$NON-NLS-1$
+        File tmpFile = File.createTempFile("zenta", null); //$NON-NLS-1$
         tmpFile.deleteOnExit();
         saveModelToXMLFile(tmpFile);
         

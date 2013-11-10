@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <article xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns:archimate="http://www.bolton.ac.uk/archimate"
+         xmlns:zenta="http://magwas.rulez.org/zenta"
          xmlns:canvas="http://namespaces.local/canvas"
          xmlns:report="http://magwas.rulez.org/my"
          xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -81,9 +81,9 @@
             <tr>
                <td class="starter" valign="top">Zenta download site</td>
                <td class="starter" valign="top">You can download Zenta at<para/>
-                  <link xlink:href="http://archi.cetis.ac.uk/download.html"
+                  <link xlink:href="http://zenta.magwas.rulez.org/download.html"
                         xrefstyle="what?"
-                        href="http://archi.cetis.ac.uk/download.html">http://archi.cetis.ac.uk/download.html</link>
+                        href="http://zenta.magwas.rulez.org/download.html">http://zenta.magwas.rulez.org/download.html</link>
                </td>
             </tr>
             <tr>
@@ -116,9 +116,9 @@
             </tr>
             <tr>
                <td class="starter" valign="top">Install Zenta</td>
-               <td class="starter" valign="top">See <link xlink:href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf"
+               <td class="starter" valign="top">See <link xlink:href="http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf"
                         xrefstyle="what?"
-                        href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf</link>
+                        href="http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf">http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf</link>
                   <para/>"Installing and Launching Zenta"</td>
             </tr>
             <tr>
@@ -155,9 +155,9 @@
             <tr>
                <td class="starter" valign="top">start Zenta</td>
                <td class="starter" valign="top">If you were already running archi this is the time to exit and restart it.<para/>You start Zenta in the usual way, see<para/>
-                  <link xlink:href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf"
+                  <link xlink:href="http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf"
                         xrefstyle="what?"
-                        href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf</link>
+                        href="http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf">http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf</link>
                </td>
             </tr>
             <tr>
@@ -492,8 +492,8 @@
                         </tr>
                      </table>
                   </section>
-                  <section id="archimateObjectClass">
-                     <title>archimateObjectClass</title>
+                  <section id="zentaObjectClass">
+                     <title>zentaObjectClass</title>
                      <para/>
                      <table class="elementtable">
                         <tr>
@@ -585,7 +585,7 @@
                         </tr>
                         <tr>
                            <td class="starter" valign="top">name of the parent node + the documentation of the parent node</td>
-                           <td class="starter" valign="top">By convention the 'how' and 'what' are described in the archimate element name, and the 'why' in its documentation.</td>
+                           <td class="starter" valign="top">By convention the 'how' and 'what' are described in the zenta element name, and the 'why' in its documentation.</td>
                         </tr>
                         <tr>
                            <td> </td>
@@ -668,7 +668,7 @@
                                  </tr>
                                  <tr>
                                     <td>default:select</td>
-                                    <td>//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid</td>
+                                    <td>//attribute[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid</td>
                                  </tr>
                                  <tr>
                                     <td>default:multi</td>
@@ -721,7 +721,7 @@
                         </tr>
                         <tr>
                            <td class="starter" valign="top">objectClass</td>
-                           <td class="starter" valign="top">The primary abstraction of the policy is the objectClass element.<para/>An objectClass describes a concept derived from either a builtin archimate element, or another objectClass: the ancestor of the objectClass.<para/>We can define the objectClass of an archimate element in one of the following ways:<para/>- add a property where the name is "objectClass" and the value is the name of the objectclass<para/>- add a property where the name is in the form </td>
+                           <td class="starter" valign="top">The primary abstraction of the policy is the objectClass element.<para/>An objectClass describes a concept derived from either a builtin zenta element, or another objectClass: the ancestor of the objectClass.<para/>We can define the objectClass of an zenta element in one of the following ways:<para/>- add a property where the name is "objectClass" and the value is the name of the objectclass<para/>- add a property where the name is in the form </td>
                         </tr>
                         <tr>
                            <td> </td>
@@ -760,7 +760,7 @@
                                  </tr>
                                  <tr>
                                     <td>default:select</td>
-                                    <td>//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
+                                    <td>//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
                                  </tr>
                                  <tr>
                                     <td>default:multi</td>
@@ -789,7 +789,7 @@
                                  </tr>
                                  <tr>
                                     <td>default:select</td>
-                                    <td>//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid</td>
+                                    <td>//default[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid</td>
                                  </tr>
                                  <tr>
                                     <td>default:multi</td>
@@ -921,7 +921,7 @@
                <title>2. Creating a policy, checking policy conformance, quick export for xml-aware tools</title>
                <para>You need policy.style for that. It uses the "built-in" policy (generated from this model) to generate a policy named "policy.xml" in the target directory, then uses the generated policy on the model, exporting "archirich.xml" <link xlink:href="objectlist.html"
                         xrefstyle="what?"
-                        href="objectlist.html">an object list</link> in html and docbook format, and a couple of cvs files in the csvdir directory.<para/>Any policy violation is logged as an error. As an example running policy.style in this model should result in exactly one error in both rounds; there is a deliberate omission in the model to show this feature. You can click on the log and it navigates you to the offending element.<para/>The file "archirich.xml" will contain elements for each instances of extended archimate objects. These elements are named after the objectClass's name, and contain one element for each of the attributes: the informations are already assembled (maybe from parts of the model far away from each other) for use by xml-aware tools.<para/>An example of such xml-aware tools is the xslts running in the next step, creating the objectlist docbook and html files contain the list of objects, as well as csv files for each objectClass.<para/>If you need anything more (for example harsher error handling) just drop a bug report.</para>
+                        href="objectlist.html">an object list</link> in html and docbook format, and a couple of cvs files in the csvdir directory.<para/>Any policy violation is logged as an error. As an example running policy.style in this model should result in exactly one error in both rounds; there is a deliberate omission in the model to show this feature. You can click on the log and it navigates you to the offending element.<para/>The file "archirich.xml" will contain elements for each instances of extended zenta objects. These elements are named after the objectClass's name, and contain one element for each of the attributes: the informations are already assembled (maybe from parts of the model far away from each other) for use by xml-aware tools.<para/>An example of such xml-aware tools is the xslts running in the next step, creating the objectlist docbook and html files contain the list of objects, as well as csv files for each objectClass.<para/>If you need anything more (for example harsher error handling) just drop a bug report.</para>
             </section>
          </section>
       </section>
@@ -952,9 +952,9 @@
             </tr>
             <tr>
                <td class="starter" valign="top">Edit your model</td>
-               <td class="starter" valign="top">You do it in the usual way in Zenta.<para/>See <link xlink:href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf"
+               <td class="starter" valign="top">You do it in the usual way in Zenta.<para/>See <link xlink:href="http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf"
                         xrefstyle="what?"
-                        href="http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf">http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf</link>
+                        href="http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf">http://zenta.magwas.rulez.org/download/latest/Zenta%20User%20Guide.pdf</link>
                </td>
             </tr>
             <tr>
@@ -1111,10 +1111,10 @@
       </table>
       <section id="builtin object classes">
          <title>builtin object classes</title>
-         <para>These are the object classes defined by the archimate standard. Only the one which are actually used in the metamodel are documented.</para>
+         <para>These are the object classes defined by the zenta standard. Only the one which are actually used in the metamodel are documented.</para>
          <table class="elementtable">
             <tr>
-               <td class="starter" valign="top">archimate:ApplicationComponent</td>
+               <td class="starter" valign="top">zenta:ApplicationComponent</td>
                <td class="starter" valign="top">Application Component</td>
             </tr>
             <tr>
@@ -1122,10 +1122,10 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:BusinessActor</td>
-               <td class="starter" valign="top">See the archimate standard at <link xlink:href="http://www.opengroup.org/archimate/doc/ts_archimate/"
+               <td class="starter" valign="top">zenta:BusinessActor</td>
+               <td class="starter" valign="top">See the zenta standard at <link xlink:href="http://www.opengroup.org/zenta/doc/ts_zenta/"
                         xrefstyle="what?"
-                        href="http://www.opengroup.org/archimate/doc/ts_archimate/">http://www.opengroup.org/archimate/doc/ts_archimate/</link>
+                        href="http://www.opengroup.org/zenta/doc/ts_zenta/">http://www.opengroup.org/zenta/doc/ts_zenta/</link>
                </td>
             </tr>
             <tr>
@@ -1133,10 +1133,10 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:BusinessCollaboration</td>
-               <td class="starter" valign="top">See the archimate standard at <link xlink:href="http://www.opengroup.org/archimate/doc/ts_archimate/"
+               <td class="starter" valign="top">zenta:BusinessCollaboration</td>
+               <td class="starter" valign="top">See the zenta standard at <link xlink:href="http://www.opengroup.org/zenta/doc/ts_zenta/"
                         xrefstyle="what?"
-                        href="http://www.opengroup.org/archimate/doc/ts_archimate/">http://www.opengroup.org/archimate/doc/ts_archimate/</link>
+                        href="http://www.opengroup.org/zenta/doc/ts_zenta/">http://www.opengroup.org/zenta/doc/ts_zenta/</link>
                </td>
             </tr>
             <tr>
@@ -1144,10 +1144,10 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:BusinessEvent</td>
-               <td class="starter" valign="top">See the archimate standard at <link xlink:href="http://www.opengroup.org/archimate/doc/ts_archimate/"
+               <td class="starter" valign="top">zenta:BusinessEvent</td>
+               <td class="starter" valign="top">See the zenta standard at <link xlink:href="http://www.opengroup.org/zenta/doc/ts_zenta/"
                         xrefstyle="what?"
-                        href="http://www.opengroup.org/archimate/doc/ts_archimate/">http://www.opengroup.org/archimate/doc/ts_archimate/</link>
+                        href="http://www.opengroup.org/zenta/doc/ts_zenta/">http://www.opengroup.org/zenta/doc/ts_zenta/</link>
                </td>
             </tr>
             <tr>
@@ -1155,10 +1155,10 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:BusinessProcess</td>
-               <td class="starter" valign="top">See the archimate standard at <link xlink:href="http://www.opengroup.org/archimate/doc/ts_archimate/"
+               <td class="starter" valign="top">zenta:BusinessProcess</td>
+               <td class="starter" valign="top">See the zenta standard at <link xlink:href="http://www.opengroup.org/zenta/doc/ts_zenta/"
                         xrefstyle="what?"
-                        href="http://www.opengroup.org/archimate/doc/ts_archimate/">http://www.opengroup.org/archimate/doc/ts_archimate/</link>
+                        href="http://www.opengroup.org/zenta/doc/ts_zenta/">http://www.opengroup.org/zenta/doc/ts_zenta/</link>
                </td>
             </tr>
             <tr>
@@ -1166,10 +1166,10 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:DataObject</td>
-               <td class="starter" valign="top">See the archimate standard at <link xlink:href="http://www.opengroup.org/archimate/doc/ts_archimate/"
+               <td class="starter" valign="top">zenta:DataObject</td>
+               <td class="starter" valign="top">See the zenta standard at <link xlink:href="http://www.opengroup.org/zenta/doc/ts_zenta/"
                         xrefstyle="what?"
-                        href="http://www.opengroup.org/archimate/doc/ts_archimate/">http://www.opengroup.org/archimate/doc/ts_archimate/</link>
+                        href="http://www.opengroup.org/zenta/doc/ts_zenta/">http://www.opengroup.org/zenta/doc/ts_zenta/</link>
                </td>
             </tr>
             <tr>
@@ -1177,7 +1177,7 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:Folder</td>
+               <td class="starter" valign="top">zenta:Folder</td>
                <td class="starter" valign="top">A folder containing some elements of a model.</td>
             </tr>
             <tr>
@@ -1185,7 +1185,7 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:Node</td>
+               <td class="starter" valign="top">zenta:Node</td>
                <td class="starter" valign="top">A Node as defined by Zentamate</td>
             </tr>
             <tr>
@@ -1193,7 +1193,7 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:Plateau</td>
+               <td class="starter" valign="top">zenta:Plateau</td>
                <td class="starter" valign="top">A plateau</td>
             </tr>
             <tr>
@@ -1201,10 +1201,10 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:Product</td>
-               <td class="starter" valign="top">See the archimate standard at <link xlink:href="http://www.opengroup.org/archimate/doc/ts_archimate/"
+               <td class="starter" valign="top">zenta:Product</td>
+               <td class="starter" valign="top">See the zenta standard at <link xlink:href="http://www.opengroup.org/zenta/doc/ts_zenta/"
                         xrefstyle="what?"
-                        href="http://www.opengroup.org/archimate/doc/ts_archimate/">http://www.opengroup.org/archimate/doc/ts_archimate/</link>
+                        href="http://www.opengroup.org/zenta/doc/ts_zenta/">http://www.opengroup.org/zenta/doc/ts_zenta/</link>
                </td>
             </tr>
             <tr>
@@ -1212,8 +1212,8 @@
                <td/>
             </tr>
             <tr>
-               <td class="starter" valign="top">archimate:model</td>
-               <td class="starter" valign="top">The archimate model.</td>
+               <td class="starter" valign="top">zenta:model</td>
+               <td class="starter" valign="top">The zenta model.</td>
             </tr>
             <tr>
                <td> </td>
@@ -1260,7 +1260,7 @@
                            </tr>
                            <tr>
                               <td>default:select</td>
-                              <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name</td>
+                              <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id]/@source]/../@name</td>
                            </tr>
                            <tr>
                               <td>default:multi</td>
@@ -1283,7 +1283,7 @@
                            </tr>
                            <tr>
                               <td>default:select</td>
-                              <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name</td>
+                              <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name</td>
                            </tr>
                         </table>
                      </td>
@@ -1302,7 +1302,7 @@
                            </tr>
                            <tr>
                               <td>default:select</td>
-                              <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name</td>
+                              <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id]/@source]/../@name</td>
                            </tr>
                            <tr>
                               <td>default:multi</td>
@@ -1425,7 +1425,7 @@
                            </tr>
                            <tr>
                               <td>default:select</td>
-                              <td>//*[@parentid=//archimate:RealisationRelationship[@target='c400f4ad']/@source]/@parentid</td>
+                              <td>//*[@parentid=//zenta:RealisationRelationship[@target='c400f4ad']/@source]/@parentid</td>
                            </tr>
                         </table>
                      </td>
@@ -1534,7 +1534,7 @@
                            </tr>
                            <tr>
                               <td>default:select</td>
-                              <td>//archimate:UsedByRelationship[@target=$id]/@source</td>
+                              <td>//zenta:UsedByRelationship[@target=$id]/@source</td>
                            </tr>
                            <tr>
                               <td>default:multi</td>
@@ -1731,7 +1731,7 @@
       <para/>
       <section id="Extended Zentamate">
          <title>Extended Zentamate</title>
-         <para>The Zentamate 2 standard have introduced methods to extend the underlying metamodel of Zentamate.<para/>The StyledHtml module will go along these lines.<para/>For historical purposes you can find my proposal from Zentamate 1 times here:<para/>This is a proposal for an extension to Zentamate methodology, adding a metamodel layer in the following way:<para/>- Instances of Zentamate objects can have properties. This extension is already implemented in Zenta.<para/>- There is a 4th layer above the well-known ones: the ontology/metamodel layer, describing concepts derived from core archimate concepts, and the properties associated with that concept.<para/>- A new concept of the ontology should be either a simple one, or a composite one. There are the following constraints to derive concepts of an ontology:<para/> - A simple concept should be derived from a core concept of the Zentamate ontology.<para/> - A composite concept is a structure built from simple concepts. A composite concept is a "macro": it is defined by and can always be replaced with a structure of simple concepts, and all properties of the composite concept can be bound to a simple concept in the underlying structure.<para/>As you can see Extended Zentamate is not another arbitrary methodology, because:<para/>- A model described in the extended archimate methodology can always be described in the core archimate methodology. Moreover a model described in ontology B can be described in ontology A, if B is derived from A.<para/>- Because of the above, all reasoning which holds for the core archimate methodology will hold for any ontology B based on it. Moreover for each ontology A, and B where B is derived from A, all reasoning for A will hold for B.<para/>- If there would be a methodology which incompatible with archimate - in the sense that models using that methodology cannot be meaningfully described in archimate - it would not be describeable in the extended methodology either (but archimate is capable to describe everything, so it is merely a theoretical point:).<para/>- Models using other methodology could be described by first defining the ontology of the other methodology in EA ontology layer, making archimate the mother of all methodologies:)<para/>Reasoning for the necessity of EA:<para/>Zentamate right now is a closed ontology. It does have a lot of advantages, and EA would not loose any of them, because any model in EA should have a representation in the core ontology. But a closed ontology is not capable to describe our world in the necessary detail . When you start any design work, the first step is to create a view of the world around you. Let's take a sentence from the standard itself to illustrate it: "Examples of business actors are humans, departments, and business units." So to have the descriptive power, the ontology should be open "downward".<para/>This means that archimate as it is would not be able to support a design beyond a point. The more you focus only on some aspects of the world, the deeper you can go using Zentamate, but it comes with the cost that you should neglect other aspects, otherwise they would interfere with your model. And there is invariably a point where another methodology should be used, and the model you built can no longer fully serve the purpose of being a reference point. When you gave your model to a developer and he should rebuild it in UML (or just don't have a frame of thought to develop your model further), it is not just a waste of effort, but makes communication harder because the differing views on the world. For us security people who should care with all the layers and from the conception to the details, this is a nightmare.<para/>With extended archimate the whole development cycle would be traceable in one model, refining not just the model but the ontology with it as development progresses. This makes automated checks for model structure and content reasonable, and even generation of code and configuration is possible. This not just gives the opportunity to help the uninitiated to make quality work, and give the tedious work to machines, but also helps traceability across the different levels of detail. If you ever tried to figure out whether a high-level requirement is fully implemented across a complex system, you will know what I am talking about. </para>
+         <para>The Zentamate 2 standard have introduced methods to extend the underlying metamodel of Zentamate.<para/>The StyledHtml module will go along these lines.<para/>For historical purposes you can find my proposal from Zentamate 1 times here:<para/>This is a proposal for an extension to Zentamate methodology, adding a metamodel layer in the following way:<para/>- Instances of Zentamate objects can have properties. This extension is already implemented in Zenta.<para/>- There is a 4th layer above the well-known ones: the ontology/metamodel layer, describing concepts derived from core zenta concepts, and the properties associated with that concept.<para/>- A new concept of the ontology should be either a simple one, or a composite one. There are the following constraints to derive concepts of an ontology:<para/> - A simple concept should be derived from a core concept of the Zentamate ontology.<para/> - A composite concept is a structure built from simple concepts. A composite concept is a "macro": it is defined by and can always be replaced with a structure of simple concepts, and all properties of the composite concept can be bound to a simple concept in the underlying structure.<para/>As you can see Extended Zentamate is not another arbitrary methodology, because:<para/>- A model described in the extended zenta methodology can always be described in the core zenta methodology. Moreover a model described in ontology B can be described in ontology A, if B is derived from A.<para/>- Because of the above, all reasoning which holds for the core zenta methodology will hold for any ontology B based on it. Moreover for each ontology A, and B where B is derived from A, all reasoning for A will hold for B.<para/>- If there would be a methodology which incompatible with zenta - in the sense that models using that methodology cannot be meaningfully described in zenta - it would not be describeable in the extended methodology either (but zenta is capable to describe everything, so it is merely a theoretical point:).<para/>- Models using other methodology could be described by first defining the ontology of the other methodology in EA ontology layer, making zenta the mother of all methodologies:)<para/>Reasoning for the necessity of EA:<para/>Zentamate right now is a closed ontology. It does have a lot of advantages, and EA would not loose any of them, because any model in EA should have a representation in the core ontology. But a closed ontology is not capable to describe our world in the necessary detail . When you start any design work, the first step is to create a view of the world around you. Let's take a sentence from the standard itself to illustrate it: "Examples of business actors are humans, departments, and business units." So to have the descriptive power, the ontology should be open "downward".<para/>This means that zenta as it is would not be able to support a design beyond a point. The more you focus only on some aspects of the world, the deeper you can go using Zentamate, but it comes with the cost that you should neglect other aspects, otherwise they would interfere with your model. And there is invariably a point where another methodology should be used, and the model you built can no longer fully serve the purpose of being a reference point. When you gave your model to a developer and he should rebuild it in UML (or just don't have a frame of thought to develop your model further), it is not just a waste of effort, but makes communication harder because the differing views on the world. For us security people who should care with all the layers and from the conception to the details, this is a nightmare.<para/>With extended zenta the whole development cycle would be traceable in one model, refining not just the model but the ontology with it as development progresses. This makes automated checks for model structure and content reasonable, and even generation of code and configuration is possible. This not just gives the opportunity to help the uninitiated to make quality work, and give the tedious work to machines, but also helps traceability across the different levels of detail. If you ever tried to figure out whether a high-level requirement is fully implemented across a complex system, you will know what I am talking about. </para>
       </section>
    </section>
    <section id="Real-world examples">
@@ -2089,7 +2089,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/@name</td>
+                           <td>//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='manages']/@target]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>
@@ -2112,7 +2112,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:Plateau[@id=//archimate:AggregationRelationship[@target=$id]/@source]/@name</td>
+                           <td>//zenta:Plateau[@id=//zenta:AggregationRelationship[@target=$id]/@source]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>
@@ -2135,7 +2135,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:Network[@id=//archimate:AssociationRelationship[@source=$id]/@target]/@name</td>
+                           <td>//zenta:Network[@id=//zenta:AssociationRelationship[@source=$id]/@target]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>
@@ -2158,7 +2158,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:Location[@id=//archimate:AssignmentRelationship[@target=$id]/@source]/@name</td>
+                           <td>//zenta:Location[@id=//zenta:AssignmentRelationship[@target=$id]/@source]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>
@@ -2181,7 +2181,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:Node[@id=//archimate:RealisationRelationship[@target=$id]/@source]/@name</td>
+                           <td>//zenta:Node[@id=//zenta:RealisationRelationship[@target=$id]/@source]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>
@@ -2204,7 +2204,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/@name</td>
+                           <td>//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='operates']/@target]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>
@@ -2227,7 +2227,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:SystemSoftware[@id=//archimate:CompositionRelationship[@source=$id]/@target]/@name</td>
+                           <td>//zenta:SystemSoftware[@id=//zenta:CompositionRelationship[@source=$id]/@target]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>
@@ -2250,7 +2250,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:Node[@id=//archimate:CompositionRelationship[@target=$id]/@source]/@name</td>
+                           <td>//zenta:Node[@id=//zenta:CompositionRelationship[@target=$id]/@source]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>
@@ -2273,7 +2273,7 @@
                         </tr>
                         <tr>
                            <td>default:select</td>
-                           <td>//archimate:ApplicationFunction[@id=//archimate:RealisationRelationship[@source=$id]/@target]/@name</td>
+                           <td>//zenta:ApplicationFunction[@id=//zenta:RealisationRelationship[@source=$id]/@target]/@name</td>
                         </tr>
                         <tr>
                            <td>default:multi</td>

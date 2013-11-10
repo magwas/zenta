@@ -2,13 +2,13 @@
 <xsl:stylesheet version="2.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:archimate="http://www.bolton.ac.uk/archimate"
+	xmlns:zenta="http://magwas.rulez.org/zenta"
 	xmlns:canvas="http://namespaces.local/canvas"
 	xmlns:report="http://magwas.rulez.org/my"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <!--FIXME:
-	xmlns:canvas="http://www.bolton.ac.uk/archimate/canvas"
+	xmlns:canvas="http://magwas.rulez.org/zenta/canvas"
 -->
 
 	<xsl:output method="html" version="4.0" encoding="utf-8" indent="yes" omit-xml-declaration="no"/>
@@ -31,7 +31,7 @@
 		<xsl:variable name="unescaped">
 			<xsl:apply-templates mode="unescape"/>
 		</xsl:variable>
-		<xsl:variable name="documentable" select="$unescaped//archimate:Folder[property[@key='report:part' and @value=$part]]|$unescaped//archimate:model[property[@key='report:part' and @value=$part]]"/>
+		<xsl:variable name="documentable" select="$unescaped//zenta:Folder[property[@key='report:part' and @value=$part]]|$unescaped//zenta:model[property[@key='report:part' and @value=$part]]"/>
 		<html>
 			<head>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -46,7 +46,7 @@
 		<div class="right" id="right" onclick="next()">0</div>
 		<xsl:choose>
 			<xsl:when test="$noroot">
-				<xsl:apply-templates select="$documentable/archimate:Folder">
+				<xsl:apply-templates select="$documentable/zenta:Folder">
 					<xsl:sort select="./@name"/>
 				</xsl:apply-templates>
 			</xsl:when>
@@ -75,7 +75,7 @@
 		<xsl:message>no match for <xsl:copy-of select="."/></xsl:message>
 	</xsl:template>
 
-	<xsl:template match="archimate:ZentamateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
+	<xsl:template match="zenta:ZentamateDiagramModel|zenta:DiagramModel|zenta:SketchModel|canvas:CanvasModel">
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
 			<img class="image" id="{@id}" src="pics/{./@id}.png"/>
 			<table class="diagram" id="{@id}">
@@ -86,15 +86,15 @@
 				<xsl:call-template name="proptable"/>
 			</td></tr>
 			</table>
-			<xsl:apply-templates select="archimate:DiagramObject"/>
+			<xsl:apply-templates select="zenta:DiagramObject"/>
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="archimate:DiagramObject">
-	<div id="{@id}" archimateElement="{@archimateElement}" class="diagramobject" >
+	<xsl:template match="zenta:DiagramObject">
+	<div id="{@id}" zentaElement="{@zentaElement}" class="diagramobject" >
 		<xsl:copy-of select="bounds"/>
 	</div>
-	<xsl:apply-templates select="archimate:DiagramObject"/>
+	<xsl:apply-templates select="zenta:DiagramObject"/>
 	</xsl:template>
 
 
@@ -104,7 +104,7 @@
 	</xsl:template>
 
 
-	<xsl:template match="archimate:*" >
+	<xsl:template match="zenta:*" >
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
 			<table class="element" id="{@id}">
 			<tr>
@@ -130,27 +130,27 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="archimate:Folder">
+	<xsl:template match="zenta:Folder">
 <xsl:message>
 folder <xsl:value-of select="@name"/>
 </xsl:message>
 		<xsl:if test="not (./property[@key='report:role' and (@value!=$role and $role != 'any')])">
-				<xsl:if test="(archimate:*|canvas:*) except archimate:Folder or property[@key='from-folder']">
-					<xsl:apply-templates select="archimate:ZentamateDiagramModel|archimate:DiagramModel|archimate:SketchModel|canvas:CanvasModel">
+				<xsl:if test="(zenta:*|canvas:*) except zenta:Folder or property[@key='from-folder']">
+					<xsl:apply-templates select="zenta:ZentamateDiagramModel|zenta:DiagramModel|zenta:SketchModel|canvas:CanvasModel">
 						<xsl:sort select="./@name"/>
 					</xsl:apply-templates>
-					<xsl:apply-templates select="archimate:* except (archimate:ZentamateDiagramModel|archimate:DiagramModel|archimate:SketchModel|archimate:Folder|canvas:CanvasModel)">
+					<xsl:apply-templates select="zenta:* except (zenta:ZentamateDiagramModel|zenta:DiagramModel|zenta:SketchModel|zenta:Folder|canvas:CanvasModel)">
 						<xsl:sort select="./@name"/>
 					</xsl:apply-templates>
 					<xsl:if test="'false'=$flat">
-						<xsl:for-each select="//*[@id=current()/property[@key='from-folder']/@value]/*[@id] except (//archimate:ZentamateDiagramModel|//archimate:DiagramModel|//archimate:SketchModel|//archimate:Folder|//canvas:CanvasModel)">
+						<xsl:for-each select="//*[@id=current()/property[@key='from-folder']/@value]/*[@id] except (//zenta:ZentamateDiagramModel|//zenta:DiagramModel|//zenta:SketchModel|//zenta:Folder|//canvas:CanvasModel)">
 							<xsl:sort select="./@name"/>
 							<xsl:apply-templates select=".">
 							</xsl:apply-templates>
 						</xsl:for-each>
 					</xsl:if>
 				</xsl:if>
-				<xsl:apply-templates select="archimate:Folder">
+				<xsl:apply-templates select="zenta:Folder">
 					<xsl:sort select="./@name"/>
 				</xsl:apply-templates>
 		</xsl:if>

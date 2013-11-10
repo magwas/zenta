@@ -135,8 +135,8 @@ public class DiagramModelZentamateObject extends DiagramModelObject implements I
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public void setZentamateElement(IZentamateElement archimateElement) {
-        fZentamateElement = archimateElement;
+    public void setZentamateElement(IZentamateElement zentaElement) {
+        fZentamateElement = zentaElement;
     }
 
     /**

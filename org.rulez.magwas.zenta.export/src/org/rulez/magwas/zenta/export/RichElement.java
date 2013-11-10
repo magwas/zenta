@@ -33,7 +33,7 @@ public class RichElement {
         // xsi:type attribute
         String typename = e.getAttribute("xsi:type");
         if (e.getNodeName() == "folder") {
-            typename = "archimate:Folder";
+            typename = "zenta:Folder";
         }
         if ("" != typename) {
             this.enricher.xml.renameNode(e, namespaceForType(typename),
@@ -106,8 +106,8 @@ public class RichElement {
     private static String namespaceForType(String tname) {
         // FIXME use the policy to figure this out
         String xmlns = tname.split(":")[0];
-        if (xmlns.equals("archimate")) {
-            return "http://www.bolton.ac.uk/archimate";
+        if (xmlns.equals("zenta")) {
+            return "http://magwas.rulez.org/zenta";
         }
         return "http://namespaces.local/" + xmlns;
     }
@@ -188,7 +188,7 @@ public class RichElement {
          * applyPolicyForElement(node,objectclass) - for all ancestors for the
          * objectclass recursively add all properties of the ancestor: - for all
          * ancestors of the objectclass if ancestor is not an archi class
-         * (starts with 'archimate:') applyPolicyForElement(node,ancestor) - for
+         * (starts with 'zenta:') applyPolicyForElement(node,ancestor) - for
          * all properties in policy - if the property does not exist in node
          * addPropertyToElement(node,property) if no defaults have given back
          * anything and minOccurs != 0 issue a warning
@@ -198,7 +198,7 @@ public class RichElement {
         for (int j = 0; j < k; j++) {
             String ancestorname = ((Element) ancestors.item(j))
                     .getAttribute("class");
-            if (!ancestorname.startsWith("archimate:")) {
+            if (!ancestorname.startsWith("zenta:")) {
                 Element occ = getPolicyFor(ancestorname);
                 if (null == occ) {
                     this.enricher.log.issueError(

@@ -1,7 +1,7 @@
 <article xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:my="my:http://dnovatchev.wordpress.com/"
-         xmlns:archimate="http://www.bolton.ac.uk/archimate">
+         xmlns:zenta="http://magwas.rulez.org/zenta">
    <title>Object list</title>
    <section id="objectClass">
       <title>objectClass</title>
@@ -22,7 +22,7 @@
             <td>abstractNamed</td>
             <td/>
             <td>72b37366 c496f50f 80c1003b</td>
-            <td>The primary abstraction of the policy is the objectClass element.An objectClass describes a concept derived from either a builtin archimate element, or another objectClass: the ancestor of the objectClass.We can define the objectClass of an archimate element in one of the following ways:- add a property where the name is "objectClass" and the value is the name of the objectclass- add a property where the name is in the form &lt;class&gt;:&lt;property&gt;, where &lt;class&gt; is the name of the objectclass, and &lt;property&gt; is the name of one of the properties of the objectclass. The value vill be the value of the objectClass property.- create a Group in a view, with the property named "associatedObjectClass". The value of the property should be the name of the objectClass. All the elements within the group (including the nested ones) will belong to the objectClassThe policy related to the objectclass will help to check the model for structure and content, and also makes creating reports and generating configurations easier.One of the examples of this is that the policy for this model can be generated from this model, and the generated policy can be used to check that this model is indeed conforms to the policy which is generated from it :)</td>
+            <td>The primary abstraction of the policy is the objectClass element.An objectClass describes a concept derived from either a builtin zenta element, or another objectClass: the ancestor of the objectClass.We can define the objectClass of an zenta element in one of the following ways:- add a property where the name is "objectClass" and the value is the name of the objectclass- add a property where the name is in the form &lt;class&gt;:&lt;property&gt;, where &lt;class&gt; is the name of the objectclass, and &lt;property&gt; is the name of one of the properties of the objectclass. The value vill be the value of the objectClass property.- create a Group in a view, with the property named "associatedObjectClass". The value of the property should be the name of the objectClass. All the elements within the group (including the nested ones) will belong to the objectClassThe policy related to the objectclass will help to check the model for structure and content, and also makes creating reports and generating configurations easier.One of the examples of this is that the policy for this model can be generated from this model, and the generated policy can be used to check that this model is indeed conforms to the policy which is generated from it :)</td>
             <td>objectClass</td>
          </tr>
          <tr>
@@ -35,7 +35,7 @@
          </tr>
          <tr>
             <td>7aba69d1</td>
-            <td>archimate:DataObject</td>
+            <td>zenta:DataObject</td>
             <td/>
             <td>0dff4259 77f11989 cdc8f974 547c517e</td>
             <td>The default is used to describe how a property will get its default value if we have not given anything.It is useful to- describe and enforce structural relationships within the model- give default value to a propertyThis attribute should be entered as a property.</td>
@@ -43,7 +43,7 @@
          </tr>
          <tr>
             <td>07ee5607</td>
-            <td>abstractNamed archimate:DataObject</td>
+            <td>abstractNamed zenta:DataObject</td>
             <td/>
             <td/>
             <td>An objectclass predefined by Zenta.This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.</td>
@@ -51,7 +51,7 @@
          </tr>
          <tr>
             <td>d2886808</td>
-            <td>archimate:DataObject</td>
+            <td>zenta:DataObject</td>
             <td>true</td>
             <td>a99529e2 9bdf194e</td>
             <td>This is an abstract class, so we don't need to define the name and description property for all objectClasses.</td>
@@ -59,7 +59,7 @@
          </tr>
          <tr>
             <td>b6b62bd4</td>
-            <td>abstractNamed archimate:ApplicationComponent</td>
+            <td>abstractNamed zenta:ApplicationComponent</td>
             <td/>
             <td>4666bdc0 df2abf25 05ec65d6 c012a502</td>
             <td>An application or system.</td>
@@ -67,7 +67,7 @@
          </tr>
          <tr>
             <td>0a4a1c24</td>
-            <td>abstractNamed archimate:ApplicationComponent</td>
+            <td>abstractNamed zenta:ApplicationComponent</td>
             <td/>
             <td>4666bdc0 05ec65d6</td>
             <td>A collection of applications/systems that belong together eg. Salary payment.</td>
@@ -75,7 +75,7 @@
          </tr>
          <tr>
             <td>fe5c65b7</td>
-            <td>abstractNamed archimate:Node</td>
+            <td>abstractNamed zenta:Node</td>
             <td/>
             <td>6ea847ae 31b06206 871fc2f2 5f4cdc11 d63b56c2 bfd0d4dc 05aed334 df2abf25 05ec65d6</td>
             <td>A server with an operating system, running on a physical or virtual hardware.</td>
@@ -83,7 +83,7 @@
          </tr>
          <tr>
             <td>c73e22bc</td>
-            <td>archimate:Folder archimate:model</td>
+            <td>zenta:Folder zenta:model</td>
             <td/>
             <td>5850f515</td>
             <td>folder properties to parameterize reports</td>
@@ -91,7 +91,7 @@
          </tr>
          <tr>
             <td>e2ac9f22</td>
-            <td>archimate:Product archimate:Plateau</td>
+            <td>zenta:Product zenta:Plateau</td>
             <td/>
             <td>6f01bf3a ed7baa8b 4ef928e8</td>
             <td>A Document version.</td>
@@ -99,7 +99,7 @@
          </tr>
          <tr>
             <td>dfaa4387</td>
-            <td>abstractNamed archimate:BusinessEvent archimate:BusinessProcess</td>
+            <td>abstractNamed zenta:BusinessEvent zenta:BusinessProcess</td>
             <td/>
             <td>e314799d 3352c46b</td>
             <td>A governance process step.It is used to describe the related actors by the documentcontrol style.</td>
@@ -107,7 +107,7 @@
          </tr>
          <tr>
             <td>229a7d9f</td>
-            <td>abstractNamed archimate:BusinessCollaboration</td>
+            <td>abstractNamed zenta:BusinessCollaboration</td>
             <td/>
             <td/>
             <td>An organisational unit.</td>
@@ -115,7 +115,7 @@
          </tr>
          <tr>
             <td>e7aa271c</td>
-            <td>archimate:BusinessActor</td>
+            <td>zenta:BusinessActor</td>
             <td/>
             <td>9bdf194e 694b17c2 2d7a05b4 523d0f25</td>
             <td>A person belonging to an organisation</td>
@@ -518,21 +518,21 @@
             <td>81c4876a</td>
             <td>there is a specialisation relationship from the ancestor to the objectClass</td>
             <td>0</td>
-            <td>//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
+            <td>//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>d07f34b8</td>
             <td>A composition relationship points from here to the attribute</td>
             <td>0</td>
-            <td>//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid</td>
+            <td>//attribute[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid</td>
             <td>true</td>
          </tr>
          <tr>
             <td>1c076398</td>
             <td>A composition relation points to the default from the attribute</td>
             <td>0</td>
-            <td>//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid</td>
+            <td>//default[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid</td>
             <td>true</td>
          </tr>
          <tr>
@@ -560,56 +560,56 @@
             <td>4f571b31</td>
             <td>The place where the physical hardware of the server is located</td>
             <td>0</td>
-            <td>//archimate:Location[@id=//archimate:AssignmentRelationship[@target=$id]/@source]/@name</td>
+            <td>//zenta:Location[@id=//zenta:AssignmentRelationship[@target=$id]/@source]/@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>e07cded6</td>
             <td>This is the physical hardware the server is running on</td>
             <td>0</td>
-            <td>//archimate:Node[@id=//archimate:CompositionRelationship[@target=$id]/@source]/@name</td>
+            <td>//zenta:Node[@id=//zenta:CompositionRelationship[@target=$id]/@source]/@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>803d1beb</td>
             <td>The network zone the server runs on</td>
             <td>0</td>
-            <td>//archimate:Network[@id=//archimate:AssociationRelationship[@source=$id]/@target]/@name</td>
+            <td>//zenta:Network[@id=//zenta:AssociationRelationship[@source=$id]/@target]/@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>64e3b89e</td>
             <td>This is the operating system of the server</td>
             <td>0</td>
-            <td>//archimate:SystemSoftware[@id=//archimate:CompositionRelationship[@source=$id]/@target]/@name</td>
+            <td>//zenta:SystemSoftware[@id=//zenta:CompositionRelationship[@source=$id]/@target]/@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>03787811</td>
             <td>This is the role of the server in the big picture</td>
             <td>0</td>
-            <td>//archimate:ApplicationFunction[@id=//archimate:RealisationRelationship[@source=$id]/@target]/@name</td>
+            <td>//zenta:ApplicationFunction[@id=//zenta:RealisationRelationship[@source=$id]/@target]/@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>1d75ebdd</td>
             <td>The life cycle phase</td>
             <td>0</td>
-            <td>//archimate:Plateau[@id=//archimate:AggregationRelationship[@target=$id]/@source]/@name</td>
+            <td>//zenta:Plateau[@id=//zenta:AggregationRelationship[@target=$id]/@source]/@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>524c00b1</td>
             <td>The technically responsible person</td>
             <td>0</td>
-            <td>//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/@name</td>
+            <td>//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='operates']/@target]/@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>72ecce09</td>
             <td>The administratively responsible person</td>
             <td>0</td>
-            <td>//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/@name</td>
+            <td>//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='manages']/@target]/@name</td>
             <td>true</td>
          </tr>
          <tr>
@@ -623,7 +623,7 @@
             <td>94ef9402</td>
             <td>The server which realizes the application</td>
             <td>0</td>
-            <td>//archimate:Node[@id=//archimate:RealisationRelationship[@target=$id]/@source]/@name</td>
+            <td>//zenta:Node[@id=//zenta:RealisationRelationship[@target=$id]/@source]/@name</td>
             <td>true</td>
          </tr>
          <tr>
@@ -637,7 +637,7 @@
             <td>f6a7fd9f</td>
             <td>A Realisation relation should point from the author to the document version</td>
             <td>0</td>
-            <td>//*[@parentid=//archimate:RealisationRelationship[@target='c400f4ad']/@source]/@parentid</td>
+            <td>//*[@parentid=//zenta:RealisationRelationship[@target='c400f4ad']/@source]/@parentid</td>
             <td/>
          </tr>
          <tr>
@@ -651,28 +651,28 @@
             <td>4b847644</td>
             <td>A used by relationship points from the author to the process step</td>
             <td>0</td>
-            <td>//archimate:UsedByRelationship[@target=$id]/@source</td>
+            <td>//zenta:UsedByRelationship[@target=$id]/@source</td>
             <td>true</td>
          </tr>
          <tr>
             <td>8c50cc08</td>
             <td>More organisational units contains (Composition) the person, and one of the relations have a property with "primary" property.</td>
             <td>0</td>
-            <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name</td>
+            <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id and ./property/@value='primary']/@source]/../@name</td>
             <td/>
          </tr>
          <tr>
             <td>4983c1c8</td>
             <td>Exactly one organisational unit contains (Composition) the person.</td>
             <td>1</td>
-            <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name</td>
+            <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id]/@source]/../@name</td>
             <td>true</td>
          </tr>
          <tr>
             <td>590f7495</td>
             <td>Organisational units containing (Composition) the person.</td>
             <td>0</td>
-            <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name</td>
+            <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id]/@source]/../@name</td>
             <td>true</td>
          </tr>
       </table>
@@ -690,58 +690,58 @@
          </tr>
          <tr>
             <td>61091710</td>
-            <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
-            <td>archimate:BusinessCollaboration</td>
+            <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
+            <td>zenta:BusinessCollaboration</td>
          </tr>
          <tr>
             <td>2a8bae66</td>
             <td>A folder containing some elements of a model.</td>
-            <td>archimate:Folder</td>
+            <td>zenta:Folder</td>
          </tr>
          <tr>
             <td>38feb060</td>
-            <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
-            <td>archimate:DataObject</td>
+            <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
+            <td>zenta:DataObject</td>
          </tr>
          <tr>
             <td>87ea8b49</td>
-            <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
-            <td>archimate:BusinessActor</td>
+            <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
+            <td>zenta:BusinessActor</td>
          </tr>
          <tr>
             <td>14a5901d</td>
-            <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
-            <td>archimate:Product</td>
+            <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
+            <td>zenta:Product</td>
          </tr>
          <tr>
             <td>26cbd61e</td>
-            <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
-            <td>archimate:BusinessEvent</td>
+            <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
+            <td>zenta:BusinessEvent</td>
          </tr>
          <tr>
             <td>093d55e2</td>
-            <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
-            <td>archimate:BusinessProcess</td>
+            <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
+            <td>zenta:BusinessProcess</td>
          </tr>
          <tr>
             <td>3ecd2e2a</td>
             <td>A plateau</td>
-            <td>archimate:Plateau</td>
+            <td>zenta:Plateau</td>
          </tr>
          <tr>
             <td>b42ede3c</td>
-            <td>The archimate model.</td>
-            <td>archimate:model</td>
+            <td>The zenta model.</td>
+            <td>zenta:model</td>
          </tr>
          <tr>
             <td>fd882843</td>
             <td>A Node as defined by Zentamate</td>
-            <td>archimate:Node</td>
+            <td>zenta:Node</td>
          </tr>
          <tr>
             <td>ac66eeae</td>
             <td>Application Component</td>
-            <td>archimate:ApplicationComponent</td>
+            <td>zenta:ApplicationComponent</td>
          </tr>
       </table>
    </section>

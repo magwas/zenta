@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
     <xsl:template match="/">
         <html>
         <head>
-        <title><xsl:value-of select="archimate:model/@name"/></title>
+        <title><xsl:value-of select="zenta:model/@name"/></title>
         <link rel="stylesheet" type="text/css" href="structured.css" />
         </head>
         <body style="font-family:Verdana; font-size:10pt;" width="100%">
-        <h1><xsl:value-of select="archimate:model/@name"/></h1>
+        <h1><xsl:value-of select="zenta:model/@name"/></h1>
         <br/>
         <h1>Purpose</h1>
-        <p><xsl:copy-of select="/archimate:model/purpose"/></p>
-        <xsl:if test="/archimate:model/property">
+        <p><xsl:copy-of select="/zenta:model/purpose"/></p>
+        <xsl:if test="/zenta:model/property">
         <table>
-       <xsl:for-each select="/archimate:model/property">
+       <xsl:for-each select="/zenta:model/property">
         <tr><td>
         <xsl:value-of select="./@key" />
         </td><td>
@@ -26,13 +26,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         <br/>
         <h1>Table of contents</h1>
         <dl>
-        <xsl:for-each select="/archimate:model/folder">
+        <xsl:for-each select="/zenta:model/folder">
             <xsl:call-template name="tocentry">
                 <xsl:with-param name="depth">2</xsl:with-param>
             </xsl:call-template>
         </xsl:for-each>
         </dl>
-        <xsl:for-each select="/archimate:model/folder">
+        <xsl:for-each select="/zenta:model/folder">
             <xsl:call-template name="folderdoc">
                 <xsl:with-param name="depth">2</xsl:with-param>
             </xsl:call-template>
@@ -111,10 +111,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </td></tr>
        </xsl:for-each>
         </table>
-        <xsl:apply-templates select="archimate:DiagramModel|archimate:SketchModel">
+        <xsl:apply-templates select="zenta:DiagramModel|zenta:SketchModel">
             <xsl:sort select="./@name"/>
         </xsl:apply-templates>
-        <xsl:apply-templates select="set:difference(archimate:*,(archimate:DiagramModel|archimate:SketchModel|folder))">
+        <xsl:apply-templates select="set:difference(zenta:*,(zenta:DiagramModel|zenta:SketchModel|folder))">
             <xsl:sort select="./@name"/>
         </xsl:apply-templates>
         <xsl:for-each select="folder">
@@ -127,7 +127,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="archimate:DiagramModel|archimate:SketchModel">
+    <xsl:template match="zenta:DiagramModel|zenta:SketchModel">
         <xsl:if test="not (./property[@key='report:hide']/@value)">
         <table class="diagramtable">
         <tr>
@@ -149,11 +149,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="archimate:*">
+    <xsl:template match="zenta:*">
         <xsl:if test="not (./property[@key='report:hide']/@value)">
         <table class="doctable">
         <tr class="{substring-after(./@xsi:type,':')}">
-        <td width="20%" valign="top"><xsl:value-of select="./@name" /><br/>(<xsl:value-of select="substring-after(name(.),'archimate:')" />)</td>
+        <td width="20%" valign="top"><xsl:value-of select="./@name" /><br/>(<xsl:value-of select="substring-after(name(.),'zenta:')" />)</td>
         <td valign="top"><xsl:copy-of select="./documentation" /></td>
         </tr>
        <xsl:for-each select="property">

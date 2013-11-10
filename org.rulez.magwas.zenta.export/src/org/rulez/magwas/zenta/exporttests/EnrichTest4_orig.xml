@@ -2,7 +2,7 @@
 
   <element id="thenode" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             name="Megadja az adatait"
-            xsi:type="archimate:BusinessProcess">
+            xsi:type="zenta:BusinessProcess">
       <documentation>Az ügyfél kitölti a szórólapon a formot.</documentation>
             <property key="objectClass" value="workflow"/>
       

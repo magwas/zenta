@@ -199,49 +199,23 @@ public class ZentamateModel extends EObjectImpl implements IZentamateModel {
             IFolder folder = IZentamateFactory.eINSTANCE.createFolder();
             folder.setName(Messages.ZentamateModel_0);
             folder.setType(FolderType.BUSINESS);
-            getFolders().add(0, folder);
+            getFolders().add(getFolders().size(), folder);
         }
 
-        if(getFolder(FolderType.APPLICATION) == null) {
-            IFolder folder = IZentamateFactory.eINSTANCE.createFolder();
-            folder.setName(Messages.ZentamateModel_1);
-            folder.setType(FolderType.APPLICATION);
-            getFolders().add(1, folder);
-        }
 
-        if(getFolder(FolderType.TECHNOLOGY) == null) {
-            IFolder folder = IZentamateFactory.eINSTANCE.createFolder();
-            folder.setName(Messages.ZentamateModel_2);
-            folder.setType(FolderType.TECHNOLOGY);
-            getFolders().add(2, folder);
-        }
-
-        if(getFolder(FolderType.MOTIVATION) == null) {
-            IFolder folder = IZentamateFactory.eINSTANCE.createFolder();
-            folder.setName(Messages.ZentamateModel_3);
-            folder.setType(FolderType.MOTIVATION);
-            getFolders().add(3, folder);
-        }
-
-        if(getFolder(FolderType.IMPLEMENTATION_MIGRATION) == null) {
-            IFolder folder = IZentamateFactory.eINSTANCE.createFolder();
-            folder.setName(Messages.ZentamateModel_4);
-            folder.setType(FolderType.IMPLEMENTATION_MIGRATION);
-            getFolders().add(4, folder);
-        }
         
         if(getFolder(FolderType.CONNECTORS) == null) {
             IFolder folder = IZentamateFactory.eINSTANCE.createFolder();
             folder.setName(Messages.ZentamateModel_5);
             folder.setType(FolderType.CONNECTORS);
-            getFolders().add(5, folder);
+            getFolders().add(getFolders().size(), folder);
         }
 
         if(getFolder(FolderType.RELATIONS) == null) {
             IFolder folder = IZentamateFactory.eINSTANCE.createFolder();
             folder.setName(Messages.ZentamateModel_6);
             folder.setType(FolderType.RELATIONS);
-            getFolders().add(6, folder);
+            getFolders().add(getFolders().size(), folder);
         }
 
         if(getFolder(FolderType.DIAGRAMS) == null) {

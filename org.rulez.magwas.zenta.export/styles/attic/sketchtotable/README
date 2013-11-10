@@ -26,5 +26,5 @@ possible enhancements (notify me if you want them, and I may implement it)
 
 - We might have a label for a sticky. E.g. if there is a "::" in the contents, then everything before it is the label. it could be displayed in a column.
 - We might allow connections between elements, by designating one connection type to votes (so the others could be used for other purposes.
-- (It needs additional code in Zenta) The stickies in the sketch could be automatically turned into archimate elements. By using properties cleverly, even a mapping from sticky color to folder and element type could be done.
+- (It needs additional code in Zenta) The stickies in the sketch could be automatically turned into zenta elements. By using properties cleverly, even a mapping from sticky color to folder and element type could be done.
 

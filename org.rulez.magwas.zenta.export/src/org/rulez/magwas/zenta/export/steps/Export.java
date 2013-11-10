@@ -13,7 +13,7 @@ import org.w3c.dom.Element;
 
 
 /**
- * The Exports the model either to archimate or rich format (default is rich).
+ * The Exports the model either to zenta or rich format (default is rich).
  */
 public class Export extends Step {
     

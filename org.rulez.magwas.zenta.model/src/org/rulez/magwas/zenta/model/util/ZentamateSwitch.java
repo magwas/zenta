@@ -170,21 +170,21 @@ public class ZentamateSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case IZentamatePackage.ARCHIMATE_MODEL: {
-				IZentamateModel archimateModel = (IZentamateModel)theEObject;
-				T result = caseZentamateModel(archimateModel);
-				if (result == null) result = caseFolderContainer(archimateModel);
-				if (result == null) result = caseNameable(archimateModel);
-				if (result == null) result = caseIdentifier(archimateModel);
-				if (result == null) result = caseZentamateModelElement(archimateModel);
-				if (result == null) result = caseProperties(archimateModel);
-				if (result == null) result = caseAdapter(archimateModel);
+				IZentamateModel zentaModel = (IZentamateModel)theEObject;
+				T result = caseZentamateModel(zentaModel);
+				if (result == null) result = caseFolderContainer(zentaModel);
+				if (result == null) result = caseNameable(zentaModel);
+				if (result == null) result = caseIdentifier(zentaModel);
+				if (result == null) result = caseZentamateModelElement(zentaModel);
+				if (result == null) result = caseProperties(zentaModel);
+				if (result == null) result = caseAdapter(zentaModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case IZentamatePackage.ARCHIMATE_MODEL_ELEMENT: {
-				IZentamateModelElement archimateModelElement = (IZentamateModelElement)theEObject;
-				T result = caseZentamateModelElement(archimateModelElement);
-				if (result == null) result = caseAdapter(archimateModelElement);
+				IZentamateModelElement zentaModelElement = (IZentamateModelElement)theEObject;
+				T result = caseZentamateModelElement(zentaModelElement);
+				if (result == null) result = caseAdapter(zentaModelElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -202,15 +202,15 @@ public class ZentamateSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case IZentamatePackage.ARCHIMATE_ELEMENT: {
-				IZentamateElement archimateElement = (IZentamateElement)theEObject;
-				T result = caseZentamateElement(archimateElement);
-				if (result == null) result = caseZentamateModelElement(archimateElement);
-				if (result == null) result = caseIdentifier(archimateElement);
-				if (result == null) result = caseCloneable(archimateElement);
-				if (result == null) result = caseNameable(archimateElement);
-				if (result == null) result = caseDocumentable(archimateElement);
-				if (result == null) result = caseProperties(archimateElement);
-				if (result == null) result = caseAdapter(archimateElement);
+				IZentamateElement zentaElement = (IZentamateElement)theEObject;
+				T result = caseZentamateElement(zentaElement);
+				if (result == null) result = caseZentamateModelElement(zentaElement);
+				if (result == null) result = caseIdentifier(zentaElement);
+				if (result == null) result = caseCloneable(zentaElement);
+				if (result == null) result = caseNameable(zentaElement);
+				if (result == null) result = caseDocumentable(zentaElement);
+				if (result == null) result = caseProperties(zentaElement);
+				if (result == null) result = caseAdapter(zentaElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -503,18 +503,18 @@ public class ZentamateSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case IZentamatePackage.ARCHIMATE_DIAGRAM_MODEL: {
-				IZentamateDiagramModel archimateDiagramModel = (IZentamateDiagramModel)theEObject;
-				T result = caseZentamateDiagramModel(archimateDiagramModel);
-				if (result == null) result = caseDiagramModel(archimateDiagramModel);
-				if (result == null) result = caseZentamateModelElement(archimateDiagramModel);
-				if (result == null) result = caseDiagramModelContainer(archimateDiagramModel);
-				if (result == null) result = caseDocumentable(archimateDiagramModel);
-				if (result == null) result = caseProperties(archimateDiagramModel);
-				if (result == null) result = caseDiagramModelComponent(archimateDiagramModel);
-				if (result == null) result = caseAdapter(archimateDiagramModel);
-				if (result == null) result = caseIdentifier(archimateDiagramModel);
-				if (result == null) result = caseCloneable(archimateDiagramModel);
-				if (result == null) result = caseNameable(archimateDiagramModel);
+				IZentamateDiagramModel zentaDiagramModel = (IZentamateDiagramModel)theEObject;
+				T result = caseZentamateDiagramModel(zentaDiagramModel);
+				if (result == null) result = caseDiagramModel(zentaDiagramModel);
+				if (result == null) result = caseZentamateModelElement(zentaDiagramModel);
+				if (result == null) result = caseDiagramModelContainer(zentaDiagramModel);
+				if (result == null) result = caseDocumentable(zentaDiagramModel);
+				if (result == null) result = caseProperties(zentaDiagramModel);
+				if (result == null) result = caseDiagramModelComponent(zentaDiagramModel);
+				if (result == null) result = caseAdapter(zentaDiagramModel);
+				if (result == null) result = caseIdentifier(zentaDiagramModel);
+				if (result == null) result = caseCloneable(zentaDiagramModel);
+				if (result == null) result = caseNameable(zentaDiagramModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

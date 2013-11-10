@@ -2,13 +2,13 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 <toc label="ZentaMate Resources">
     
-    <topic href="http://www.archimate.org" label="ZentaMate Website">
+    <topic href="http://www.zenta.org" label="ZentaMate Website">
     </topic>
-    <topic href="http://pubs.opengroup.org/architecture/archimate2-doc/toc.html" label="ZentaMate Specification">
+    <topic href="http://pubs.opengroup.org/architecture/zenta2-doc/toc.html" label="ZentaMate Specification">
     </topic>
     <topic href="https://doc.novay.nl/dsweb/Get/Document-43839/" label="ZentaMate Language Primer (PDF)">
     </topic>
-    <topic href="http://archi.cetis.ac.uk" label="Zenta Website">
+    <topic href="http://zenta.magwas.rulez.org" label="Zenta Website">
     </topic>
     <topic href="http://groups.google.com/group/archicetis/topics" label="Zenta Forum">
     </topic>

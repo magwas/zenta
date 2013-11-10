@@ -7,7 +7,7 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>archimate</string>
+				<string>zenta</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>icon.icns</string>

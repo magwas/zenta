@@ -93,14 +93,6 @@
          </keywordReference>
       </page>
       <page
-            class="org.rulez.magwas.zenta.editor.preferences.RelationsPreferencePage"
-            id="org.rulez.magwas.zenta.editor.prefsRelations"
-            name="%prefsRelationships">
-         <keywordReference
-               id="keywords.prefsRelations">
-         </keywordReference>
-      </page>
-      <page
             class="org.rulez.magwas.zenta.editor.preferences.ColoursPreferencePage"
             id="org.rulez.magwas.zenta.editor.prefsColours"
             name="%prefsColours">
@@ -205,7 +197,7 @@
             contributorId="org.rulez.magwas.zenta.editor">
          <propertySection
                class="org.rulez.magwas.zenta.editor.propertysections.ZentamateModelSection"
-               id="archimateModelSection"
+               id="zentaModelSection"
                tab="main.tab">
             <input
                   type="org.rulez.magwas.zenta.model.IZentamateModel">
@@ -214,7 +206,7 @@
          <propertySection
                class="org.rulez.magwas.zenta.editor.propertysections.ZentamateElementSection"
                filter="org.rulez.magwas.zenta.editor.propertysections.ZentamateElementSection$Filter"
-               id="archimateElementSection"
+               id="zentaElementSection"
                tab="main.tab">
          </propertySection>
          <propertySection
@@ -252,7 +244,7 @@
                tab="main.tab">
          </propertySection>
          <propertySection
-               afterSection="archimateElementSection"
+               afterSection="zentaElementSection"
                class="org.rulez.magwas.zenta.editor.propertysections.DiagramConnectionSection"
                id="connectionAppearanceSection"
                tab="appearance.tab">

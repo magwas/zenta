@@ -6,7 +6,7 @@
       <exportHandler
             class="org.rulez.magwas.zenta.export.StyledHtml"
             id="org.rulez.magwas.styledhtml.StyledHtml"
-            label="Model To Styled HTML...">
+            label="Through ExporterL...">
       </exportHandler>
    </extension>
    <extension
@@ -14,7 +14,7 @@
       <page
             class="org.rulez.magwas.zenta.export.StyledPreferencePage"
             id="org.rulez.magwas.styledhtml.prefsStyled"
-            name="Styled Export">
+            name="Export">
          <keywordReference
                id="StyledExport">
          </keywordReference>

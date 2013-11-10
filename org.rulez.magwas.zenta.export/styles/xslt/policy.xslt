@@ -2,7 +2,7 @@
 <xsl:stylesheet version="2.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:archimate="http://www.bolton.ac.uk/archimate">
+	xmlns:zenta="http://magwas.rulez.org/zenta">
 
 	<xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" omit-xml-declaration="no"/>
 
@@ -24,7 +24,7 @@
  					<p>This is an abstract class, do not instantiate it in a model</p>
  				</xsl:if>
 			</description>
-			<xsl:for-each select="//archimate:*[@id=//archimate:SpecialisationRelationship[@source=current()/@parentid]/@target]/@name">
+			<xsl:for-each select="//zenta:*[@id=//zenta:SpecialisationRelationship[@source=current()/@parentid]/@target]/@name">
 				<ancestor class="{.}"/>
 			</xsl:for-each>
 			<xsl:apply-templates select="." mode="policy_attributes"/>
@@ -32,8 +32,8 @@
 	</xsl:template>
 
 	<xsl:template match="objectClass" mode="policy_attributes">
-			<xsl:apply-templates select="//archimate:*[@id=//archimate:CompositionRelationship[@source=current()/@parentid]/@target]/attribute" mode="policy_attributes"/>
-			<xsl:apply-templates mode="policy_attributes" select="//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=current()/@parentid]/@target]"/>
+			<xsl:apply-templates select="//zenta:*[@id=//zenta:CompositionRelationship[@source=current()/@parentid]/@target]/attribute" mode="policy_attributes"/>
+			<xsl:apply-templates mode="policy_attributes" select="//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=current()/@parentid]/@target]"/>
 	</xsl:template>
 
 	<xsl:template match="*" mode="policy_attributes">
@@ -43,7 +43,7 @@
 	<xsl:template match="attribute" mode="policy_attributes">
 			<property name="{../@name}" type="{type}" minOccurs="{minOccurs}" maxOccurs="{maxOccurs}" structural="{structural}" >
 				<description><xsl:copy-of select="../documentation"/></description>
-				<xsl:apply-templates select="//default[@parentid=//archimate:CompositionRelationship[@source=current()/@parentid]/@target]" mode="policy_attributes"/>
+				<xsl:apply-templates select="//default[@parentid=//zenta:CompositionRelationship[@source=current()/@parentid]/@target]" mode="policy_attributes"/>
 			</property>
 	</xsl:template>
 

@@ -14,7 +14,7 @@ class modelcreator:
         rows=self.cur.fetchall()
         for row in rows:
             thetype = row['type']
-            if thetype[:10] == 'archimate:':
+            if thetype[:10] == 'zenta:':
                 etype = "element"
             else:
                 etype = thetype
@@ -35,7 +35,7 @@ class modelcreator:
         for trow in trows:
             tcons.append(trow['id'])
         self.addAttr(node,'targetConnections'," ".join(tcons))
-        for (xmlfield,dbfield) in [('id','id'),('xsi:type','type'),('archimateElement','element'),('name','name'),('font','font'),('fontColor','fontcolor'),('textAlignment','textalignment'),('fillColor','fillcolor')]:
+        for (xmlfield,dbfield) in [('id','id'),('xsi:type','type'),('zentaElement','element'),('name','name'),('font','font'),('fontColor','fontcolor'),('textAlignment','textalignment'),('fillColor','fillcolor')]:
             self.addAttr(node,xmlfield,row[dbfield])
         doc=row['documentation']
         self.newNode(node,"content",doc)
@@ -43,8 +43,8 @@ class modelcreator:
         self._forEachChild(row,node,"select * from object_view where version=%s and parent=%s and id != parent","create")
 
     def create_element(self,row,node):
-        #if row['type'] in ("archimate:DiagramObject","archimate:SketchModelSticky"):
-        if row['type'] in ("archimate:DiagramObject","archimate:Group","archimate:SketchModelSticky", "archimate:SketchModelActor"):
+        #if row['type'] in ("zenta:DiagramObject","zenta:SketchModelSticky"):
+        if row['type'] in ("zenta:DiagramObject","zenta:Group","zenta:SketchModelSticky", "zenta:SketchModelActor"):
             self.create_child(row,node)
             return
         node=self.newNode(node,"element")
@@ -66,7 +66,7 @@ class modelcreator:
 
     def create_sourceConnection(self,row,node):
         node=self.newNode(node,"sourceConnection")
-        self.addAttr(node,"xsi:type","archimate:Connection")
+        self.addAttr(node,"xsi:type","zenta:Connection")
         self.addAttr(node,"relationship",row['element'])
         for i in ["id","source","target"]:
             node.setAttribute(i,row[i])
@@ -110,7 +110,7 @@ class modelcreator:
 
     def create_model(self,row,node):
         node.setAttributeNS("http://www.w3.org/2001/XMLSchema-instance","xmlns:xsi","http://www.w3.org/2001/XMLSchema-instance")
-        node.setAttributeNS("http://www.w3.org/2001/XMLSchema-instance","xmlns:archimate","http://www.bolton.ac.uk/archimate")
+        node.setAttributeNS("http://www.w3.org/2001/XMLSchema-instance","xmlns:zenta","http://magwas.rulez.org/zenta")
         node.setAttribute("version","2.0.0")
         for i in ["id","name"]:
             node.setAttribute(i,row[i])
@@ -126,7 +126,7 @@ class modelcreator:
         row  = self.cur.fetchone()
         self.rootid = row['id']
         impl = xml.dom.minidom.getDOMImplementation()
-        self.dom = impl.createDocument(xml.dom.minidom.XMLNS_NAMESPACE, "archimate:model", None)
+        self.dom = impl.createDocument(xml.dom.minidom.XMLNS_NAMESPACE, "zenta:model", None)
         self.execute("select * from object_view where version=%s and id=%s",(self.version,self.rootid))
         row  = self.cur.fetchone()
         self.objects[row["id"]] = row

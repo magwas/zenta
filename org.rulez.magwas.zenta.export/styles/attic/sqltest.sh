@@ -2,8 +2,8 @@
 set -xe
 ./sqlexport.py DDL |
  psql service=archi
-xsltproc sql.xslt ../../doc/styledhtml.archimate|./sqlexport.py 13 root
-./sqlimport.py 13 root >/tmp/output1.archimate
+xsltproc sql.xslt ../../doc/styledhtml.zenta|./sqlexport.py 13 root
+./sqlimport.py 13 root >/tmp/output1.zenta
 psql "service=archi"<<EOF
 set role root;
 drop view property_view; drop view object_view; drop view repository;
@@ -17,8 +17,8 @@ set role root;
 alter group archi_submitter add user mag;
 alter group archi_viewer add user mag;
 EOF
-xsltproc sql.xslt ../../doc/styledhtml.archimate|./sqlexport.py 13 archi_submitter
-./sqlimport.py 13 archi_submitter >/tmp/output2.archimate
+xsltproc sql.xslt ../../doc/styledhtml.zenta|./sqlexport.py 13 archi_submitter
+./sqlimport.py 13 archi_submitter >/tmp/output2.zenta
 psql service=archi<<EOF
 set role root;
 drop view property_view; drop view object_view; drop view repository;
@@ -29,5 +29,5 @@ drop role archi_owner; drop role archi_submitter; drop role archi_viewer; drop r
 
 \d
 EOF
-#load/save the two files with archimate, and do a diff
+#load/save the two files with zenta, and do a diff
 #due to the unordered sql queryes they won't be exactly the same

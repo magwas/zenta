@@ -13,7 +13,7 @@ import org.w3c.dom.NodeList;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 
 /**
- * This step loads an archimate model, so the steps under it pertain the newly loaded one
+ * This step loads an zenta model, so the steps under it pertain the newly loaded one
  */
 public class Load extends Step {
 	

@@ -133,7 +133,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass archimateModelElementEClass = null;
+    private EClass zentaModelElementEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -147,7 +147,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass archimateModelEClass = null;
+    private EClass zentaModelEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -161,7 +161,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass archimateElementEClass = null;
+    private EClass zentaElementEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -182,7 +182,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass archimateDiagramModelEClass = null;
+    private EClass zentaDiagramModelEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -587,7 +587,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EClass getZentamateModelElement() {
-		return archimateModelElementEClass;
+		return zentaModelElementEClass;
 	}
 
     /**
@@ -596,7 +596,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EReference getZentamateModelElement_ZentamateModel() {
-		return (EReference)archimateModelElementEClass.getEStructuralFeatures().get(0);
+		return (EReference)zentaModelElementEClass.getEStructuralFeatures().get(0);
 	}
 
     /**
@@ -641,7 +641,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EClass getZentamateModel() {
-		return archimateModelEClass;
+		return zentaModelEClass;
 	}
 
     /**
@@ -650,7 +650,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EAttribute getZentamateModel_Purpose() {
-		return (EAttribute)archimateModelEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)zentaModelEClass.getEStructuralFeatures().get(0);
 	}
 
     /**
@@ -659,7 +659,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EAttribute getZentamateModel_File() {
-		return (EAttribute)archimateModelEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)zentaModelEClass.getEStructuralFeatures().get(1);
 	}
 
     /**
@@ -668,7 +668,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EAttribute getZentamateModel_Version() {
-		return (EAttribute)archimateModelEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)zentaModelEClass.getEStructuralFeatures().get(2);
 	}
 
     /**
@@ -704,7 +704,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EClass getZentamateElement() {
-		return archimateElementEClass;
+		return zentaElementEClass;
 	}
 
     /**
@@ -740,7 +740,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EClass getZentamateDiagramModel() {
-		return archimateDiagramModelEClass;
+		return zentaDiagramModelEClass;
 	}
 
     /**
@@ -749,7 +749,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 	 * @generated
 	 */
     public EAttribute getZentamateDiagramModel_Viewpoint() {
-		return (EAttribute)archimateDiagramModelEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)zentaDiagramModelEClass.getEStructuralFeatures().get(0);
 	}
 
     /**
@@ -1401,19 +1401,19 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 		folderContainerEClass = createEClass(FOLDER_CONTAINER);
 		createEReference(folderContainerEClass, FOLDER_CONTAINER__FOLDERS);
 
-		archimateModelEClass = createEClass(ARCHIMATE_MODEL);
-		createEAttribute(archimateModelEClass, ARCHIMATE_MODEL__PURPOSE);
-		createEAttribute(archimateModelEClass, ARCHIMATE_MODEL__FILE);
-		createEAttribute(archimateModelEClass, ARCHIMATE_MODEL__VERSION);
+		zentaModelEClass = createEClass(ARCHIMATE_MODEL);
+		createEAttribute(zentaModelEClass, ARCHIMATE_MODEL__PURPOSE);
+		createEAttribute(zentaModelEClass, ARCHIMATE_MODEL__FILE);
+		createEAttribute(zentaModelEClass, ARCHIMATE_MODEL__VERSION);
 
-		archimateModelElementEClass = createEClass(ARCHIMATE_MODEL_ELEMENT);
-		createEReference(archimateModelElementEClass, ARCHIMATE_MODEL_ELEMENT__ARCHIMATE_MODEL);
+		zentaModelElementEClass = createEClass(ARCHIMATE_MODEL_ELEMENT);
+		createEReference(zentaModelElementEClass, ARCHIMATE_MODEL_ELEMENT__ARCHIMATE_MODEL);
 
 		folderEClass = createEClass(FOLDER);
 		createEReference(folderEClass, FOLDER__ELEMENTS);
 		createEAttribute(folderEClass, FOLDER__TYPE);
 
-		archimateElementEClass = createEClass(ARCHIMATE_ELEMENT);
+		zentaElementEClass = createEClass(ARCHIMATE_ELEMENT);
 
 		junctionElementEClass = createEClass(JUNCTION_ELEMENT);
 
@@ -1496,8 +1496,8 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 		lockableEClass = createEClass(LOCKABLE);
 		createEAttribute(lockableEClass, LOCKABLE__LOCKED);
 
-		archimateDiagramModelEClass = createEClass(ARCHIMATE_DIAGRAM_MODEL);
-		createEAttribute(archimateDiagramModelEClass, ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT);
+		zentaDiagramModelEClass = createEClass(ARCHIMATE_DIAGRAM_MODEL);
+		createEAttribute(zentaDiagramModelEClass, ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT);
 
 		diagramModelZentamateObjectEClass = createEClass(DIAGRAM_MODEL_ARCHIMATE_OBJECT);
 		createEReference(diagramModelZentamateObjectEClass, DIAGRAM_MODEL_ARCHIMATE_OBJECT__ARCHIMATE_ELEMENT);
@@ -1550,24 +1550,24 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		archimateModelEClass.getESuperTypes().add(this.getFolderContainer());
-		archimateModelEClass.getESuperTypes().add(this.getNameable());
-		archimateModelEClass.getESuperTypes().add(this.getIdentifier());
-		archimateModelEClass.getESuperTypes().add(this.getZentamateModelElement());
-		archimateModelEClass.getESuperTypes().add(this.getProperties());
-		archimateModelElementEClass.getESuperTypes().add(this.getAdapter());
+		zentaModelEClass.getESuperTypes().add(this.getFolderContainer());
+		zentaModelEClass.getESuperTypes().add(this.getNameable());
+		zentaModelEClass.getESuperTypes().add(this.getIdentifier());
+		zentaModelEClass.getESuperTypes().add(this.getZentamateModelElement());
+		zentaModelEClass.getESuperTypes().add(this.getProperties());
+		zentaModelElementEClass.getESuperTypes().add(this.getAdapter());
 		folderEClass.getESuperTypes().add(this.getZentamateModelElement());
 		folderEClass.getESuperTypes().add(this.getFolderContainer());
 		folderEClass.getESuperTypes().add(this.getNameable());
 		folderEClass.getESuperTypes().add(this.getIdentifier());
 		folderEClass.getESuperTypes().add(this.getDocumentable());
 		folderEClass.getESuperTypes().add(this.getProperties());
-		archimateElementEClass.getESuperTypes().add(this.getZentamateModelElement());
-		archimateElementEClass.getESuperTypes().add(this.getIdentifier());
-		archimateElementEClass.getESuperTypes().add(this.getCloneable());
-		archimateElementEClass.getESuperTypes().add(this.getNameable());
-		archimateElementEClass.getESuperTypes().add(this.getDocumentable());
-		archimateElementEClass.getESuperTypes().add(this.getProperties());
+		zentaElementEClass.getESuperTypes().add(this.getZentamateModelElement());
+		zentaElementEClass.getESuperTypes().add(this.getIdentifier());
+		zentaElementEClass.getESuperTypes().add(this.getCloneable());
+		zentaElementEClass.getESuperTypes().add(this.getNameable());
+		zentaElementEClass.getESuperTypes().add(this.getDocumentable());
+		zentaElementEClass.getESuperTypes().add(this.getProperties());
 		junctionElementEClass.getESuperTypes().add(this.getZentamateElement());
 		interfaceElementEClass.getESuperTypes().add(this.getZentamateElement());
 		junctionEClass.getESuperTypes().add(this.getJunctionElement());
@@ -1603,7 +1603,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 		diagramModelConnectionEClass.getESuperTypes().add(this.getProperties());
 		diagramModelConnectionEClass.getESuperTypes().add(this.getDocumentable());
 		diagramModelBendpointEClass.getESuperTypes().add(this.getCloneable());
-		archimateDiagramModelEClass.getESuperTypes().add(this.getDiagramModel());
+		zentaDiagramModelEClass.getESuperTypes().add(this.getDiagramModel());
 		diagramModelZentamateObjectEClass.getESuperTypes().add(this.getDiagramModelObject());
 		diagramModelZentamateObjectEClass.getESuperTypes().add(this.getDiagramModelContainer());
 		diagramModelZentamateConnectionEClass.getESuperTypes().add(this.getDiagramModelConnection());
@@ -1654,35 +1654,35 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 		initEClass(folderContainerEClass, IFolderContainer.class, "FolderContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getFolderContainer_Folders(), this.getFolder(), null, "folders", null, 0, -1, IFolderContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(archimateModelEClass, IZentamateModel.class, "ZentamateModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(zentaModelEClass, IZentamateModel.class, "ZentamateModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getZentamateModel_Purpose(), ecorePackage.getEString(), "purpose", null, 0, 1, IZentamateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getZentamateModel_File(), this.getFile(), "file", null, 0, 1, IZentamateModel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getZentamateModel_Version(), ecorePackage.getEString(), "version", "", 0, 1, IZentamateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
-		addEOperation(archimateModelEClass, null, "setDefaults", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEOperation(zentaModelEClass, null, "setDefaults", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(archimateModelEClass, this.getFolder(), "addDerivedRelationsFolder", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEOperation(zentaModelEClass, this.getFolder(), "addDerivedRelationsFolder", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(archimateModelEClass, null, "removeDerivedRelationsFolder", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEOperation(zentaModelEClass, null, "removeDerivedRelationsFolder", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(archimateModelEClass, this.getFolder(), "getDefaultFolderForElement", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		op = addEOperation(zentaModelEClass, this.getFolder(), "getDefaultFolderForElement", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEObject(), "element", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(archimateModelEClass, this.getDiagramModel(), "getDefaultDiagramModel", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEOperation(zentaModelEClass, this.getDiagramModel(), "getDefaultDiagramModel", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(archimateModelEClass, this.getDiagramModel(), "getDiagramModels", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEOperation(zentaModelEClass, this.getDiagramModel(), "getDiagramModels", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(archimateModelEClass, this.getFolder(), "getFolder", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		op = addEOperation(zentaModelEClass, this.getFolder(), "getFolder", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, this.getFolderType(), "type", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(archimateModelElementEClass, IZentamateModelElement.class, "ZentamateModelElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getZentamateModelElement_ZentamateModel(), this.getZentamateModel(), null, "archimateModel", null, 0, 1, IZentamateModelElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(zentaModelElementEClass, IZentamateModelElement.class, "ZentamateModelElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getZentamateModelElement_ZentamateModel(), this.getZentamateModel(), null, "zentaModel", null, 0, 1, IZentamateModelElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(folderEClass, IFolder.class, "Folder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getFolder_Elements(), ecorePackage.getEObject(), null, "elements", null, 0, -1, IFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getFolder_Type(), this.getFolderType(), "type", null, 0, 1, IFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(archimateElementEClass, IZentamateElement.class, "ZentamateElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(zentaElementEClass, IZentamateElement.class, "ZentamateElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(junctionElementEClass, IJunctionElement.class, "JunctionElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
@@ -1789,11 +1789,11 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 		initEClass(lockableEClass, ILockable.class, "Lockable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getLockable_Locked(), ecorePackage.getEBoolean(), "locked", null, 0, 1, ILockable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(archimateDiagramModelEClass, IZentamateDiagramModel.class, "ZentamateDiagramModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(zentaDiagramModelEClass, IZentamateDiagramModel.class, "ZentamateDiagramModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getZentamateDiagramModel_Viewpoint(), ecorePackage.getEInt(), "viewpoint", null, 0, 1, IZentamateDiagramModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(diagramModelZentamateObjectEClass, IDiagramModelZentamateObject.class, "DiagramModelZentamateObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getDiagramModelZentamateObject_ZentamateElement(), this.getZentamateElement(), null, "archimateElement", null, 0, 1, IDiagramModelZentamateObject.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getDiagramModelZentamateObject_ZentamateElement(), this.getZentamateElement(), null, "zentaElement", null, 0, 1, IDiagramModelZentamateObject.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getDiagramModelZentamateObject_Type(), ecorePackage.getEInt(), "type", "0", 0, 1, IDiagramModelZentamateObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
 		op = addEOperation(diagramModelZentamateObjectEClass, null, "addZentamateElementToModel", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -1822,14 +1822,10 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 		initEEnum(folderTypeEEnum, FolderType.class, "FolderType"); //$NON-NLS-1$
 		addEEnumLiteral(folderTypeEEnum, FolderType.USER);
 		addEEnumLiteral(folderTypeEEnum, FolderType.BUSINESS);
-		addEEnumLiteral(folderTypeEEnum, FolderType.APPLICATION);
-		addEEnumLiteral(folderTypeEEnum, FolderType.TECHNOLOGY);
 		addEEnumLiteral(folderTypeEEnum, FolderType.CONNECTORS);
 		addEEnumLiteral(folderTypeEEnum, FolderType.RELATIONS);
 		addEEnumLiteral(folderTypeEEnum, FolderType.DIAGRAMS);
 		addEEnumLiteral(folderTypeEEnum, FolderType.DERIVED);
-		addEEnumLiteral(folderTypeEEnum, FolderType.MOTIVATION);
-		addEEnumLiteral(folderTypeEEnum, FolderType.IMPLEMENTATION_MIGRATION);
 
 		// Initialize data types
 		initEDataType(fileEDataType, File.class, "File", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1877,7 +1873,7 @@ public class ZentamatePackage extends EPackageImpl implements IZentamatePackage 
 			 "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
-		  (archimateModelEClass, 
+		  (zentaModelEClass, 
 		   source, 
 		   new String[] {
 			 "name", "model" //$NON-NLS-1$ //$NON-NLS-2$

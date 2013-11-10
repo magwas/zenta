@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="%appName" id="org.rulez.magwas.zenta.editor.product" application="org.rulez.magwas.zenta.editor.app" version="2.4.2" useFeatures="false" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="/org.rulez.magwas.zenta.editor/img/app-128.png"/>
+      <text>
+         %aboutText
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/org.rulez.magwas.zenta.editor/img/app-16.png" i32="/org.rulez.magwas.zenta.editor/img/app-32.png" i48="/org.rulez.magwas.zenta.editor/img/app-48.png" i64="/org.rulez.magwas.zenta.editor/img/app-64.png" i128="/org.rulez.magwas.zenta.editor/img/app-128.png"/>
+
+   <launcher name="Zenta">
+      <linux icon="/org.rulez.magwas.zenta.editor.build/branding/linux/icon.xpm"/>
+      <macosx icon="/org.rulez.magwas.zenta.editor.build/branding/mac/app/Contents/Resources/icon.icns"/>
+      <solaris/>
+      <win useIco="true">
+         <ico path="/org.rulez.magwas.zenta.editor.build/branding/windows/icon.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="com.ibm.icu"/>
+      <plugin id="javax.servlet"/>
+      <plugin id="javax.servlet.jsp"/>
+      <plugin id="org.apache.commons.el"/>
+      <plugin id="org.apache.commons.logging"/>
+      <plugin id="org.apache.jasper"/>
+      <plugin id="org.apache.lucene"/>
+      <plugin id="org.apache.lucene.analysis"/>
+      <plugin id="org.apache.lucene.core"/>
+      <plugin id="org.eclipse.core.commands"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.databinding"/>
+      <plugin id="org.eclipse.core.databinding.observable"/>
+      <plugin id="org.eclipse.core.databinding.property"/>
+      <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.runtime.compatibility"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
+      <plugin id="org.eclipse.draw2d"/>
+      <plugin id="org.eclipse.emf.common"/>
+      <plugin id="org.eclipse.emf.ecore"/>
+      <plugin id="org.eclipse.emf.ecore.xmi"/>
+      <plugin id="org.eclipse.equinox.app"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.http.jetty"/>
+      <plugin id="org.eclipse.equinox.http.registry"/>
+      <plugin id="org.eclipse.equinox.http.servlet"/>
+      <plugin id="org.eclipse.equinox.jsp.jasper"/>
+      <plugin id="org.eclipse.equinox.jsp.jasper.registry"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.gef"/>
+      <plugin id="org.eclipse.help"/>
+      <plugin id="org.eclipse.help.base"/>
+      <plugin id="org.eclipse.help.ui"/>
+      <plugin id="org.eclipse.help.webapp"/>
+      <plugin id="org.eclipse.jface"/>
+      <plugin id="org.eclipse.jface.databinding"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.swt"/>
+      <plugin id="org.eclipse.swt.carbon.macosx" fragment="true"/>
+      <plugin id="org.eclipse.swt.cocoa.macosx" fragment="true"/>
+      <plugin id="org.eclipse.swt.cocoa.macosx.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.aix.ppc" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.aix.ppc64" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.hpux.ia64_32" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.ppc64" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.s390" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.s390x" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.solaris.sparc" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.solaris.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.ui"/>
+      <plugin id="org.eclipse.ui.carbon" fragment="true"/>
+      <plugin id="org.eclipse.ui.cheatsheets"/>
+      <plugin id="org.eclipse.ui.cocoa" fragment="true"/>
+      <plugin id="org.eclipse.ui.forms"/>
+      <plugin id="org.eclipse.ui.views"/>
+      <plugin id="org.eclipse.ui.views.properties.tabbed"/>
+      <plugin id="org.eclipse.ui.workbench"/>
+      <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.mortbay.jetty.server"/>
+      <plugin id="org.mortbay.jetty.util"/>
+      <plugin id="org.rulez.demokracia.liquidgame"/>
+      <plugin id="org.rulez.magwas.zenta.browser"/>
+      <plugin id="org.rulez.magwas.zenta.canvas"/>
+      <plugin id="org.rulez.magwas.zenta.compatibility"/>
+      <plugin id="org.rulez.magwas.zenta.editor"/>
+      <plugin id="org.rulez.magwas.zenta.editor.fullscreen.macos" fragment="true"/>
+      <plugin id="org.rulez.magwas.zenta.editor.launch.macos" fragment="true"/>
+      <plugin id="org.rulez.magwas.zenta.editor.launch.win32" fragment="true"/>
+      <plugin id="org.rulez.magwas.zenta.export"/>
+      <plugin id="org.rulez.magwas.zenta.help"/>
+      <plugin id="org.rulez.magwas.zenta.model"/>
+      <plugin id="org.rulez.magwas.zenta.templates"/>
+      <plugin id="org.rulez.magwas.zenta.widgets"/>
+      <plugin id="uk.ac.bolton.jdom"/>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.help" version="1.0.0.v20080603-7r7xEHJEJkZu5nE6Q4Qrtvu6JZ9L"/>
+   </features>
+
+
+</product>

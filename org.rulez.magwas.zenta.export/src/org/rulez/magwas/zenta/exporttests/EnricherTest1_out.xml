@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:archimate="http://www.bolton.ac.uk/archimate"
+<zenta:model xmlns:zenta="http://magwas.rulez.org/zenta"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  id="90af6f69"
                  name="test"
                  version="2.2.0">
 
-  <archimate:BusinessProcess id="source" name="Megadja az adatait">
+  <zenta:BusinessProcess id="source" name="Megadja az adatait">
       <documentation>Az ügyfél kitölti a szórólapon<br/>      a formot.<br/>
       </documentation>
             <property key="objectClass" value="ProcessStep"/>
@@ -14,21 +14,21 @@
          <adat originid="middle">Middle</adat>
          <adat originid="target">target</adat>
       </ProcessStep>
-   </archimate:BusinessProcess> 
-  <archimate:BusinessObject id="middle" name="Middle">
+   </zenta:BusinessProcess> 
+  <zenta:BusinessObject id="middle" name="Middle">
             <property key="objectClass" value="Data"/>
       <Data parentid="middle">
          <child originid="target">target</child>
          <folyamat originid="source">Megadja az adatait</folyamat>
       </Data>
-   </archimate:BusinessObject>
-  <archimate:BusinessObject id="target" name="target">
+   </zenta:BusinessObject>
+  <zenta:BusinessObject id="target" name="target">
            <property key="objectClass" value="Data"/>
       <Data parentid="target">
          <parent originid="middle">Middle</parent>
       </Data>
-   </archimate:BusinessObject>
-  <archimate:AccessRelationship accessType="1" id="3d3b4d33" source="source" target="middle"/>
-  <archimate:CompositionRelationship id="f88df5f5" source="middle" target="target"/>
+   </zenta:BusinessObject>
+  <zenta:AccessRelationship accessType="1" id="3d3b4d33" source="source" target="middle"/>
+  <zenta:CompositionRelationship id="f88df5f5" source="middle" target="target"/>
   
-</archimate:model>
+</zenta:model>

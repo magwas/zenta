@@ -29,7 +29,7 @@ import org.rulez.magwas.zenta.model.IZentamatePackage;
  */
 public class ZentamateModelSection extends AbstractZentamatePropertySection {
     
-    private static final String HELP_ID = "org.rulez.magwas.zenta.help.archimateModelSection"; //$NON-NLS-1$
+    private static final String HELP_ID = "org.rulez.magwas.zenta.help.zentaModelSection"; //$NON-NLS-1$
 
     /*
      * Adapter to listen to changes made elsewhere (including Undo/Redo commands)

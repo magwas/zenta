@@ -1,6 +1,5 @@
-This is the Styled HTML exporter for Zenta.
+This is the exporter for Zenta.
 
-Zenta is at http://archi.cetis.ac.uk/
 
 This module uses a - possibly user defined - XML stylesheet to create a html report from the model.
 
@@ -13,14 +12,14 @@ There is one style now, the default. It ocntains a single style.xslt, which have
 You can create your own, and if you submit it, I will include in subsequent releases.
 
 Configuration:
-Go to Edit/Preferences/Styled Export
+Go to Edit/Preferences/Export
 You can deploy the shipped styles by clicking "Install provided styles" and choosing the target directory.
 You can modify the stylesheet location by browsing the file style.xslt belonging to it. The stylesheet is checked for syntax both when choosing it and when you press Apply.
 You can choose whether you want to be asked for the output directory (default is to be asked).
 You can choose a default output directory for the case when you don't want to be asked every time.
 
 Usage:
-File/Export/Model to Nice HTML
+File/Export/Throug Exporter
 
 The output directory will contain
 - everything which is in the directory containing style.xslt

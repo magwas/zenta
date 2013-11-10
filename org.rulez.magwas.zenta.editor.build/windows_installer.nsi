@@ -6,13 +6,13 @@ Name Zenta
 !define VERSION 2.4.0
 !define INSTALLER_VERSION 2.4.0.0
 !define COMPANY "Zenta"
-!define URL http://archi.cetis.ac.uk
+!define URL http://zenta.magwas.rulez.org
 !define SRC_FOLDER "\Zenta\Zenta_win\*"
 !define EXEFILE "\Zenta\Zenta-win32-${VERSION}.exe"
 
 ## Registry entries
 !define REGKEY "SOFTWARE\$(^Name)"
-!define FILE_EXT ".archimate"
+!define FILE_EXT ".zenta"
 !define FILE_EXT_REG_KEY "Zenta.file"
 
 

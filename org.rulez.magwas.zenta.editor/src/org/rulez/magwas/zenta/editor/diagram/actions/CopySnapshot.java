@@ -318,7 +318,7 @@ public final class CopySnapshot {
         for(IDiagramModelObject object : fOriginalToSnapshotObjectsMapping.keySet()) {
             if(object instanceof IDiagramModelZentamateObject) {
                 IZentamateElement originalElement = ((IDiagramModelZentamateObject)object).getZentamateElement();
-                if(originalElement == null || originalElement.eContainer() == null) { // archimate element was deleted
+                if(originalElement == null || originalElement.eContainer() == null) { // zenta element was deleted
                     return true;
                 }
                 if(!DiagramModelUtils.findDiagramModelObjectsForElement(targetDiagramModel, originalElement).isEmpty()) { // already on diagram
@@ -330,7 +330,7 @@ public final class CopySnapshot {
         for(IDiagramModelConnection connection : fOriginalToSnapshotConnectionsMapping.keySet()) {
             if(connection instanceof IDiagramModelZentamateConnection) {
                 IRelationship originalRelationship = ((IDiagramModelZentamateConnection)connection).getRelationship();
-                if(originalRelationship == null || originalRelationship.eContainer() == null) { // archimate relationship was deleted
+                if(originalRelationship == null || originalRelationship.eContainer() == null) { // zenta relationship was deleted
                     return true;
                 }
                 if(!DiagramModelUtils.findDiagramModelConnectionsForRelation(targetDiagramModel, originalRelationship).isEmpty()) { // already on diagram

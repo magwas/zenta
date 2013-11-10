@@ -43,7 +43,7 @@ public interface IZentamatePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.bolton.ac.uk/archimate"; //$NON-NLS-1$
+	String eNS_URI = "http://magwas.rulez.org/zenta"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -51,7 +51,7 @@ public interface IZentamatePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "archimate"; //$NON-NLS-1$
+	String eNS_PREFIX = "zenta"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.

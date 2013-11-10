@@ -57,7 +57,7 @@
        <description>Edit View Properties.</description>
        <topic href="help/properties_view.html" label="View Properties"/>
     </context>
-    <context id="archimateModelSection" title="Model Properties">
+    <context id="zentaModelSection" title="Model Properties">
        <description>Edit Model Properties.</description>
        <topic href="help/properties_model.html" label="Model Properties"/>
     </context>

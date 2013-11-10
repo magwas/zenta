@@ -38,7 +38,7 @@ implements IApplication {
 	
 	public Object start(IApplicationContext context) throws Exception {
 	    /*
-	     * Platform specific startup if user launches app twice or from .archimate file on the desktop
+	     * Platform specific startup if user launches app twice or from .zenta file on the desktop
 	     */
 	    IPlatformLauncher launcher = ZentamateEditorPlugin.INSTANCE.getPlatformLauncher();
 	    if(launcher != null) {

@@ -31,7 +31,7 @@ public class PlatformLauncher implements IPlatformLauncher {
     @Override
     public void displayCreated(final Display display) {
         /*
-         * Add a listener to the main Display to monitor *.archimate files opened from the desktop.
+         * Add a listener to the main Display to monitor *.zenta files opened from the desktop.
          * This will work on first application launch and thereafter.
          */
         display.addListener(SWT.OpenDocument, new Listener() {
@@ -63,7 +63,7 @@ public class PlatformLauncher implements IPlatformLauncher {
                             IEditorModelManager.INSTANCE.openModel(file);
                         }
                     }
-                    // Workbench not created, App is being launched from *.archimate file on desktop
+                    // Workbench not created, App is being launched from *.zenta file on desktop
                     else {
                         // Open the file *on* a thread so the Workbench can have time to open and then open any diagrams if set in Prefs
                         display.asyncExec(new Runnable() {

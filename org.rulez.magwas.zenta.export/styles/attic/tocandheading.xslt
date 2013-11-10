@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
     <xsl:template name="tocentry">
         <xsl:param name="depth" />
         <xsl:if test="not (./property[@key='report:part' and @value='structured:hide'])">
@@ -13,7 +13,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         </a>
         </dt>
         <dl>
-        <xsl:for-each select="archimate:Folder">
+        <xsl:for-each select="zenta:Folder">
             <xsl:sort select="./@name"/>
             <xsl:call-template name="tocentry">
                 <xsl:with-param name="depth"><xsl:value-of select="1 + $depth"/></xsl:with-param>

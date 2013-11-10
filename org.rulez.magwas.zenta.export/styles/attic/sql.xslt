@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.bolton.ac.uk/archimate" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" xmlns:set="http://exslt.org/sets" xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 <xsl:template name="propertysql">
     <property>
@@ -44,7 +44,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
         <name><xsl:value-of select="./@name"/></name>
         <documentation><xsl:value-of select="./content"/></documentation>
         <type><xsl:value-of select="./@xsi:type"/></type>
-        <element><xsl:value-of select="./@archimateElement"/></element>
+        <element><xsl:value-of select="./@zentaElement"/></element>
         <font><xsl:value-of select="./@font"/></font>
         <fontColor><xsl:value-of select="./@fontColor"/></fontColor>
         <textAlignment><xsl:value-of select="./@textAlignment"/></textAlignment>
@@ -136,13 +136,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/20
     <xsl:template match="/">
         <xml>
         <object>
-        <id><xsl:value-of select="archimate:model/@id"/></id>
-        <parent><xsl:value-of select="archimate:model/@id"/></parent>
-        <name><xsl:value-of select="archimate:model/@name"/></name>
-        <documentation><xsl:value-of select="archimate:model/purpose"/></documentation>
+        <id><xsl:value-of select="zenta:model/@id"/></id>
+        <parent><xsl:value-of select="zenta:model/@id"/></parent>
+        <name><xsl:value-of select="zenta:model/@name"/></name>
+        <documentation><xsl:value-of select="zenta:model/purpose"/></documentation>
         <type>model</type>
         </object>
-        <xsl:for-each select="/archimate:model/folder">
+        <xsl:for-each select="/zenta:model/folder">
             <xsl:call-template name="foldersql"/>
         </xsl:for-each>
         </xml>

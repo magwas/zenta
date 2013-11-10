@@ -45,7 +45,7 @@ public class EnrichTest {
     public void setUp() throws Exception {
         xpath.setXPathVariableResolver(vars);
         NSResolver nss = new NSResolver();
-        nss.put("archimate", "http://www.bolton.ac.uk/archimate");
+        nss.put("zenta", "http://magwas.rulez.org/zenta");
         xpath.setNamespaceContext(nss);
         log = new EventLogMockup();
         

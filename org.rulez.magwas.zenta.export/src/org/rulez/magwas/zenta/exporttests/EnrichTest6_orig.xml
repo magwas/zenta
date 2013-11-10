@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <element xsi:type="archimate:ZentamateDiagramModel" id="thenode" name="funkció - workflow" connectionRouterType="1">
-   <child xsi:type="archimate:Group" id="5345bf57" name="Funkciók">
+  <element xsi:type="zenta:ZentamateDiagramModel" id="thenode" name="funkció - workflow" connectionRouterType="1">
+   <child xsi:type="zenta:Group" id="5345bf57" name="Funkciók">
           <bounds x="24"/>
-          <child xsi:type="archimate:DiagramObject" id="5d8690ac" textAlignment="2" archimateElement="8c360738">
+          <child xsi:type="zenta:DiagramObject" id="5d8690ac" textAlignment="2" zentaElement="8c360738">
           </child>
    </child>
    <property key="associatedObjectClass" value="Function"/>
   </element>
     <element id="8c360738" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             name="Megadja az adatait"
-            xsi:type="archimate:BusinessProcess">
+            xsi:type="zenta:BusinessProcess">
       <documentation>Az ügyfél kitölti a szórólapon a formot.</documentation>
   </element>  
 </model>

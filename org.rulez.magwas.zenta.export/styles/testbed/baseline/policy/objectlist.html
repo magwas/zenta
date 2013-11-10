@@ -77,8 +77,8 @@
                   <td>72b37366 c496f50f 80c1003b</td>
                   
                   <td>The primary abstraction of the policy is the objectClass element.An objectClass describes
-                     a concept derived from either a builtin archimate element, or another objectClass:
-                     the ancestor of the objectClass.We can define the objectClass of an archimate element
+                     a concept derived from either a builtin zenta element, or another objectClass:
+                     the ancestor of the objectClass.We can define the objectClass of an zenta element
                      in one of the following ways:- add a property where the name is "objectClass" and
                      the value is the name of the objectclass- add a property where the name is in the
                      form &lt;class&gt;:&lt;property&gt;, where &lt;class&gt; is the name of the objectclass, and &lt;property&gt;
@@ -118,7 +118,7 @@
                   
                   <td>7aba69d1</td>
                   
-                  <td>archimate:DataObject</td>
+                  <td>zenta:DataObject</td>
                   
                   <td></td>
                   
@@ -137,7 +137,7 @@
                   
                   <td>07ee5607</td>
                   
-                  <td>abstractNamed archimate:DataObject</td>
+                  <td>abstractNamed zenta:DataObject</td>
                   
                   <td></td>
                   
@@ -154,7 +154,7 @@
                   
                   <td>d2886808</td>
                   
-                  <td>archimate:DataObject</td>
+                  <td>zenta:DataObject</td>
                   
                   <td>true</td>
                   
@@ -171,7 +171,7 @@
                   
                   <td>b6b62bd4</td>
                   
-                  <td>abstractNamed archimate:ApplicationComponent</td>
+                  <td>abstractNamed zenta:ApplicationComponent</td>
                   
                   <td></td>
                   
@@ -186,7 +186,7 @@
                   
                   <td>0a4a1c24</td>
                   
-                  <td>abstractNamed archimate:ApplicationComponent</td>
+                  <td>abstractNamed zenta:ApplicationComponent</td>
                   
                   <td></td>
                   
@@ -201,7 +201,7 @@
                   
                   <td>fe5c65b7</td>
                   
-                  <td>abstractNamed archimate:Node</td>
+                  <td>abstractNamed zenta:Node</td>
                   
                   <td></td>
                   
@@ -216,7 +216,7 @@
                   
                   <td>c73e22bc</td>
                   
-                  <td>archimate:Folder archimate:model</td>
+                  <td>zenta:Folder zenta:model</td>
                   
                   <td></td>
                   
@@ -231,7 +231,7 @@
                   
                   <td>e2ac9f22</td>
                   
-                  <td>archimate:Product archimate:Plateau</td>
+                  <td>zenta:Product zenta:Plateau</td>
                   
                   <td></td>
                   
@@ -246,7 +246,7 @@
                   
                   <td>dfaa4387</td>
                   
-                  <td>abstractNamed archimate:BusinessEvent archimate:BusinessProcess</td>
+                  <td>abstractNamed zenta:BusinessEvent zenta:BusinessProcess</td>
                   
                   <td></td>
                   
@@ -263,7 +263,7 @@
                   
                   <td>229a7d9f</td>
                   
-                  <td>abstractNamed archimate:BusinessCollaboration</td>
+                  <td>abstractNamed zenta:BusinessCollaboration</td>
                   
                   <td></td>
                   
@@ -278,7 +278,7 @@
                   
                   <td>e7aa271c</td>
                   
-                  <td>archimate:BusinessActor</td>
+                  <td>zenta:BusinessActor</td>
                   
                   <td></td>
                   
@@ -1102,7 +1102,7 @@
                   
                   <td>0</td>
                   
-                  <td>//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
+                  <td>//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
                   
                   <td>true</td>
                   
@@ -1115,7 +1115,7 @@
                   
                   <td>0</td>
                   
-                  <td>//attribute[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid</td>
+                  <td>//attribute[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid</td>
                   
                   <td>true</td>
                   
@@ -1128,7 +1128,7 @@
                   
                   <td>0</td>
                   
-                  <td>//default[@parentid=//archimate:CompositionRelationship[@source=$id]/@target]/@parentid</td>
+                  <td>//default[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid</td>
                   
                   <td>true</td>
                   
@@ -1180,7 +1180,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:Location[@id=//archimate:AssignmentRelationship[@target=$id]/@source]/@name</td>
+                  <td>//zenta:Location[@id=//zenta:AssignmentRelationship[@target=$id]/@source]/@name</td>
                   
                   <td>true</td>
                   
@@ -1193,7 +1193,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:Node[@id=//archimate:CompositionRelationship[@target=$id]/@source]/@name</td>
+                  <td>//zenta:Node[@id=//zenta:CompositionRelationship[@target=$id]/@source]/@name</td>
                   
                   <td>true</td>
                   
@@ -1206,7 +1206,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:Network[@id=//archimate:AssociationRelationship[@source=$id]/@target]/@name</td>
+                  <td>//zenta:Network[@id=//zenta:AssociationRelationship[@source=$id]/@target]/@name</td>
                   
                   <td>true</td>
                   
@@ -1219,7 +1219,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:SystemSoftware[@id=//archimate:CompositionRelationship[@source=$id]/@target]/@name</td>
+                  <td>//zenta:SystemSoftware[@id=//zenta:CompositionRelationship[@source=$id]/@target]/@name</td>
                   
                   <td>true</td>
                   
@@ -1232,7 +1232,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:ApplicationFunction[@id=//archimate:RealisationRelationship[@source=$id]/@target]/@name</td>
+                  <td>//zenta:ApplicationFunction[@id=//zenta:RealisationRelationship[@source=$id]/@target]/@name</td>
                   
                   <td>true</td>
                   
@@ -1245,7 +1245,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:Plateau[@id=//archimate:AggregationRelationship[@target=$id]/@source]/@name</td>
+                  <td>//zenta:Plateau[@id=//zenta:AggregationRelationship[@target=$id]/@source]/@name</td>
                   
                   <td>true</td>
                   
@@ -1258,7 +1258,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='operates']/@target]/@name</td>
+                  <td>//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='operates']/@target]/@name</td>
                   
                   <td>true</td>
                   
@@ -1271,7 +1271,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:BusinessActor[@id=//archimate:UsedByRelationship[@source=$id and @name='manages']/@target]/@name</td>
+                  <td>//zenta:BusinessActor[@id=//zenta:UsedByRelationship[@source=$id and @name='manages']/@target]/@name</td>
                   
                   <td>true</td>
                   
@@ -1297,7 +1297,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:Node[@id=//archimate:RealisationRelationship[@target=$id]/@source]/@name</td>
+                  <td>//zenta:Node[@id=//zenta:RealisationRelationship[@target=$id]/@source]/@name</td>
                   
                   <td>true</td>
                   
@@ -1323,7 +1323,7 @@
                   
                   <td>0</td>
                   
-                  <td>//*[@parentid=//archimate:RealisationRelationship[@target='c400f4ad']/@source]/@parentid</td>
+                  <td>//*[@parentid=//zenta:RealisationRelationship[@target='c400f4ad']/@source]/@parentid</td>
                   
                   <td></td>
                   
@@ -1349,7 +1349,7 @@
                   
                   <td>0</td>
                   
-                  <td>//archimate:UsedByRelationship[@target=$id]/@source</td>
+                  <td>//zenta:UsedByRelationship[@target=$id]/@source</td>
                   
                   <td>true</td>
                   
@@ -1364,7 +1364,7 @@
                   
                   <td>0</td>
                   
-                  <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id and
+                  <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id and
                      ./property/@value='primary']/@source]/../@name
                   </td>
                   
@@ -1379,7 +1379,7 @@
                   
                   <td>1</td>
                   
-                  <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name</td>
+                  <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id]/@source]/../@name</td>
                   
                   <td>true</td>
                   
@@ -1392,7 +1392,7 @@
                   
                   <td>0</td>
                   
-                  <td>//OrganisationalUnit[@parentid=//archimate:CompositionRelationship[@target=$id]/@source]/../@name</td>
+                  <td>//OrganisationalUnit[@parentid=//zenta:CompositionRelationship[@target=$id]/@source]/../@name</td>
                   
                   <td>true</td>
                   
@@ -1427,9 +1427,9 @@
                   
                   <td>61091710</td>
                   
-                  <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
+                  <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
                   
-                  <td>archimate:BusinessCollaboration</td>
+                  <td>zenta:BusinessCollaboration</td>
                   
                </tr>
                <tr>
@@ -1438,52 +1438,52 @@
                   
                   <td>A folder containing some elements of a model.</td>
                   
-                  <td>archimate:Folder</td>
+                  <td>zenta:Folder</td>
                   
                </tr>
                <tr>
                   
                   <td>38feb060</td>
                   
-                  <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
+                  <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
                   
-                  <td>archimate:DataObject</td>
+                  <td>zenta:DataObject</td>
                   
                </tr>
                <tr>
                   
                   <td>87ea8b49</td>
                   
-                  <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
+                  <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
                   
-                  <td>archimate:BusinessActor</td>
+                  <td>zenta:BusinessActor</td>
                   
                </tr>
                <tr>
                   
                   <td>14a5901d</td>
                   
-                  <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
+                  <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
                   
-                  <td>archimate:Product</td>
+                  <td>zenta:Product</td>
                   
                </tr>
                <tr>
                   
                   <td>26cbd61e</td>
                   
-                  <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
+                  <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
                   
-                  <td>archimate:BusinessEvent</td>
+                  <td>zenta:BusinessEvent</td>
                   
                </tr>
                <tr>
                   
                   <td>093d55e2</td>
                   
-                  <td>See the archimate standard at http://www.opengroup.org/archimate/doc/ts_archimate/</td>
+                  <td>See the zenta standard at http://www.opengroup.org/zenta/doc/ts_zenta/</td>
                   
-                  <td>archimate:BusinessProcess</td>
+                  <td>zenta:BusinessProcess</td>
                   
                </tr>
                <tr>
@@ -1492,16 +1492,16 @@
                   
                   <td>A plateau</td>
                   
-                  <td>archimate:Plateau</td>
+                  <td>zenta:Plateau</td>
                   
                </tr>
                <tr>
                   
                   <td>b42ede3c</td>
                   
-                  <td>The archimate model.</td>
+                  <td>The zenta model.</td>
                   
-                  <td>archimate:model</td>
+                  <td>zenta:model</td>
                   
                </tr>
                <tr>
@@ -1510,7 +1510,7 @@
                   
                   <td>A Node as defined by Zentamate</td>
                   
-                  <td>archimate:Node</td>
+                  <td>zenta:Node</td>
                   
                </tr>
                <tr>
@@ -1519,7 +1519,7 @@
                   
                   <td>Application Component</td>
                   
-                  <td>archimate:ApplicationComponent</td>
+                  <td>zenta:ApplicationComponent</td>
                   
                </tr>
             </table>

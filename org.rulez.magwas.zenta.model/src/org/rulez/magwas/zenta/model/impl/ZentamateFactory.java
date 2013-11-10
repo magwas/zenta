@@ -54,7 +54,7 @@ public class ZentamateFactory extends EFactoryImpl implements IZentamateFactory 
 	 */
     public static IZentamateFactory init() {
 		try {
-			IZentamateFactory theZentamateFactory = (IZentamateFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.bolton.ac.uk/archimate"); //$NON-NLS-1$ 
+			IZentamateFactory theZentamateFactory = (IZentamateFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta"); //$NON-NLS-1$ 
 			if (theZentamateFactory != null) {
 				return theZentamateFactory;
 			}
@@ -156,8 +156,8 @@ public class ZentamateFactory extends EFactoryImpl implements IZentamateFactory 
 	 * @generated
 	 */
     public IZentamateModel createZentamateModel() {
-		ZentamateModel archimateModel = new ZentamateModel();
-		return archimateModel;
+		ZentamateModel zentaModel = new ZentamateModel();
+		return zentaModel;
 	}
 
     /**
@@ -186,8 +186,8 @@ public class ZentamateFactory extends EFactoryImpl implements IZentamateFactory 
 	 * @generated
 	 */
     public IZentamateDiagramModel createZentamateDiagramModel() {
-		ZentamateDiagramModel archimateDiagramModel = new ZentamateDiagramModel();
-		return archimateDiagramModel;
+		ZentamateDiagramModel zentaDiagramModel = new ZentamateDiagramModel();
+		return zentaDiagramModel;
 	}
 
     /**

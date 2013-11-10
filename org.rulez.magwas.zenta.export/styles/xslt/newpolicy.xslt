@@ -2,19 +2,19 @@
 <xsl:stylesheet version="2.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:archimate="http://www.bolton.ac.uk/archimate">
+  xmlns:zenta="http://magwas.rulez.org/zenta">
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" omit-xml-declaration="no"/>
 
   <xsl:param name="targetdir"/>
 <!--
-//archimate:*[@id=//archimate:ZentamateDiagramModel[property[@key='Template']]//archimate:Connection/@relationship]
-//archimate:*[@id=//archimate:ZentamateDiagramModel[property[@key='Template']]//archimate:DiagramObject/@archimateElement]
-//archimate:ZentamateDiagramModel[property[@key='Template']]//archimate:DiagramObject
+//zenta:*[@id=//zenta:ZentamateDiagramModel[property[@key='Template']]//zenta:Connection/@relationship]
+//zenta:*[@id=//zenta:ZentamateDiagramModel[property[@key='Template']]//zenta:DiagramObject/@zentaElement]
+//zenta:ZentamateDiagramModel[property[@key='Template']]//zenta:DiagramObject
 -->
-  <xsl:variable name="templates" select="//archimate:ZentamateDiagramModel[property[@key='Template']]"/>
-  <xsl:variable name="objects" select="//archimate:*[@id=$templates//archimate:DiagramObject/@archimateElement]"/>
-  <xsl:variable name="conns" select="//archimate:*[@id=$templates//archimate:Connection/@relationship]"/>
+  <xsl:variable name="templates" select="//zenta:ZentamateDiagramModel[property[@key='Template']]"/>
+  <xsl:variable name="objects" select="//zenta:*[@id=$templates//zenta:DiagramObject/@zentaElement]"/>
+  <xsl:variable name="conns" select="//zenta:*[@id=$templates//zenta:Connection/@relationship]"/>
   <xsl:variable name="directions" select="tokenize('source target source',' ')"/>
 
   <xsl:template match="/">
@@ -26,7 +26,7 @@
       </policy>
   </xsl:template>
   
-  <xsl:template match="archimate:*[@id=$objects/@id]" mode="newpolicy">
+  <xsl:template match="zenta:*[@id=$objects/@id]" mode="newpolicy">
     <objectClass name="{@name}" abstract="{property[@key='abstract']}">
       <!--<this><xsl:copy-of select="."/></this>-->
       <description>
@@ -35,7 +35,7 @@
            <p>This is an abstract class, do not instantiate it in a model</p>
          </xsl:if>
       </description>
-      <xsl:variable name="parent" select="$objects[@id=$conns['archimate:SpecialisationRelationship' = name() and @source = current()/@id]/@target]"/>
+      <xsl:variable name="parent" select="$objects[@id=$conns['zenta:SpecialisationRelationship' = name() and @source = current()/@id]/@target]"/>
       <xsl:choose>
         <xsl:when test="$parent">
           <ancestor class="{$parent/@name}" byspec="true"/>
@@ -55,7 +55,7 @@
     </objectClass>
   </xsl:template>
 
-  <xsl:template match="archimate:*[@id=$conns/@id]" mode="newpolicy">
+  <xsl:template match="zenta:*[@id=$conns/@id]" mode="newpolicy">
       <xsl:param name="objectClass"/>
       <xsl:param name="direction"/>
       <xsl:variable name="targetobj">

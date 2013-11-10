@@ -5,18 +5,18 @@
   	</description>
 	
 	<!-- Default/Start Target -->
-	<target name="run" depends="init_user, init_main, create_archi_projects" />
+	<target name="run" depends="init_user, init_main, create_zenta_projects" />
 	
 	<!-- USER MUST SET THESE VALUES -->
 	<target name="init_user">
 		<description>
 			Edit the following values.
 			"lang_code" shold be one of the language codes such as fr, de, nl, ru
-			"archi_version" should be the version of Zenta these translations are for
+			"zenta_version" should be the version of Zenta these translations are for
 			"nls_version" should be the version of the language packs
 	  	</description>
 		<property name="lang_code"					value="en"/>
-		<property name="archi_version"				value="2.4.0"/>
+		<property name="zenta_version"				value="2.4.0"/>
 		<property name="nls_version"				value="1.0.0"/>
 	</target>
 	
@@ -30,7 +30,7 @@
 	
 	
 	
-	<target name="create_archi_projects">
+	<target name="create_zenta_projects">
 		
 		<!-- org.rulez.magwas.zenta.canvas -->
 		<property name="canvas.prj.src"    			value="org.rulez.magwas.zenta.canvas"/>
@@ -204,7 +204,7 @@
 		<replace file="${loc.tgt}/${file.manifest}" token="!bundle-classpath!" value="${prj.tgt}.jar"/>
 		<replace file="${loc.tgt}/${file.manifest}" token="!fragment-host!" value="${prj.src}"/>
 		<replace file="${loc.tgt}/${file.manifest}" token="!nls-version!" value="${nls_version}"/>
-		<replace file="${loc.tgt}/${file.manifest}" token="!archi-version!" value="${archi_version}"/>
+		<replace file="${loc.tgt}/${file.manifest}" token="!archi-version!" value="${zenta_version}"/>
 		
 		<antcall target="copy_properties_files">
 			<param name="in.dir"  					value="${loc.src}"/>

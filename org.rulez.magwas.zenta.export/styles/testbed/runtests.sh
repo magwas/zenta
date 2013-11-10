@@ -8,8 +8,8 @@ rm -rf .archi out
 for i in ../*.style ../tests/*.style
 do
 	stylename=`basename $i .style`
-	echo $binary -data $dir/.archi -load $PWD/../../doc/styledhtml.archimate -targetdir $PWD/out/$stylename -runstyle $PWD/$i -exit
-	$binary -data $dir/.archi -load $PWD/../../doc/styledhtml.archimate -targetdir $PWD/out/$stylename -runstyle $PWD/$i -exit
+	echo $binary -data $dir/.archi -load $PWD/../../doc/styledhtml.zenta -targetdir $PWD/out/$stylename -runstyle $PWD/$i -exit
+	$binary -data $dir/.archi -load $PWD/../../doc/styledhtml.zenta -targetdir $PWD/out/$stylename -runstyle $PWD/$i -exit
 done
 rm -rf .archi
 for i in `find out -name '*.html' -o -name '*.docbook' |xargs grep -l pubdate`

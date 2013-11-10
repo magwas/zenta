@@ -30,7 +30,7 @@ public class CanvasFactory extends EFactoryImpl implements ICanvasFactory {
      */
     public static ICanvasFactory init() {
         try {
-            ICanvasFactory theCanvasFactory = (ICanvasFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.bolton.ac.uk/archimate/canvas"); //$NON-NLS-1$ 
+            ICanvasFactory theCanvasFactory = (ICanvasFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta/canvas"); //$NON-NLS-1$ 
             if (theCanvasFactory != null) {
                 return theCanvasFactory;
             }

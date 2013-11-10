@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archimate:model
+<zenta:model
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:archimate="http://www.bolton.ac.uk/archimate" name="test" id="90af6f69" version="2.2.0">
+xmlns:zenta="http://magwas.rulez.org/zenta" name="test" id="90af6f69" version="2.2.0">
 
   <element id="source" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             name="Megadja az adatait"
-            xsi:type="archimate:BusinessProcess">
+            xsi:type="zenta:BusinessProcess">
       <documentation>Az ügyfél kitölti a szórólapon
       a formot.</documentation>
             <property key="objectClass" value="ProcessStep"/>
       
   </element> 
-  <element xsi:type="archimate:BusinessObject" id="middle" name="Middle">
+  <element xsi:type="zenta:BusinessObject" id="middle" name="Middle">
             <property key="objectClass" value="Data"/>
   </element>
-  <element xsi:type="archimate:BusinessObject" id="target" name="target">
+  <element xsi:type="zenta:BusinessObject" id="target" name="target">
            <property key="objectClass" value="Data"/>
   </element>
-  <element xsi:type="archimate:AccessRelationship" id="3d3b4d33" source="source" target="middle" accessType="1"/>
-  <element xsi:type="archimate:CompositionRelationship" id="f88df5f5" source="middle" target="target"/>
+  <element xsi:type="zenta:AccessRelationship" id="3d3b4d33" source="source" target="middle" accessType="1"/>
+  <element xsi:type="zenta:CompositionRelationship" id="f88df5f5" source="middle" target="target"/>
   
-</archimate:model> 
+</zenta:model> 
