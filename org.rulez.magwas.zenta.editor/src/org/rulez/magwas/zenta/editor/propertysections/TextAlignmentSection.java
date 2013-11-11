@@ -18,8 +18,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.TextAlignmentCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.ITextAlignedEditPart;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.ILockable;
 
@@ -30,7 +30,7 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class TextAlignmentSection extends AbstractZentamatePropertySection {
+public class TextAlignmentSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
     
@@ -42,8 +42,8 @@ public class TextAlignmentSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Alignment event (From Undo/Redo and here)
-            if(feature == IZentamatePackage.Literals.FONT_ATTRIBUTE__TEXT_ALIGNMENT ||
-                    feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentaPackage.Literals.FONT_ATTRIBUTE__TEXT_ALIGNMENT ||
+                    feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }
@@ -88,15 +88,15 @@ public class TextAlignmentSection extends AbstractZentamatePropertySection {
         }
         
         // Left Button
-        fAlignmentButtons[0].setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_ALIGN_TEXT_LEFT));
+        fAlignmentButtons[0].setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_LEFT));
         fAlignmentButtons[0].setData(IFontAttribute.TEXT_ALIGNMENT_LEFT);
 
         // Center Button
-        fAlignmentButtons[1].setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_ALIGN_TEXT_CENTER));
+        fAlignmentButtons[1].setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_CENTER));
         fAlignmentButtons[1].setData(IFontAttribute.TEXT_ALIGNMENT_CENTER);
 
         // Right Button
-        fAlignmentButtons[2].setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_ALIGN_TEXT_RIGHT));
+        fAlignmentButtons[2].setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_RIGHT));
         fAlignmentButtons[2].setData(IFontAttribute.TEXT_ALIGNMENT_RIGHT);
         
         // Help

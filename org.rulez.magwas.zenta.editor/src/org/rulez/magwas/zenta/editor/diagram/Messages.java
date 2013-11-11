@@ -59,51 +59,51 @@ public class Messages extends NLS {
 
     public static String AbstractPaletteRoot_7;
 
-    public static String ZentamateDiagramEditor_0;
+    public static String ZentaDiagramEditor_0;
 
-    public static String ZentamateDiagramEditorActionBarContributor_0;
+    public static String ZentaDiagramEditorActionBarContributor_0;
 
-    public static String ZentamateDiagramEditorActionBarContributor_1;
+    public static String ZentaDiagramEditorActionBarContributor_1;
 
-    public static String ZentamateDiagramEditorContextMenuProvider_0;
+    public static String ZentaDiagramEditorContextMenuProvider_0;
 
-    public static String ZentamateDiagramEditorContextMenuProvider_1;
+    public static String ZentaDiagramEditorContextMenuProvider_1;
 
-    public static String ZentamateDiagramEditorPalette_0;
+    public static String ZentaDiagramEditorPalette_0;
 
-    public static String ZentamateDiagramEditorPalette_1;
+    public static String ZentaDiagramEditorPalette_1;
 
-    public static String ZentamateDiagramEditorPalette_10;
+    public static String ZentaDiagramEditorPalette_10;
 
-    public static String ZentamateDiagramEditorPalette_11;
+    public static String ZentaDiagramEditorPalette_11;
 
-    public static String ZentamateDiagramEditorPalette_12;
+    public static String ZentaDiagramEditorPalette_12;
 
-    public static String ZentamateDiagramEditorPalette_13;
+    public static String ZentaDiagramEditorPalette_13;
 
-    public static String ZentamateDiagramEditorPalette_14;
+    public static String ZentaDiagramEditorPalette_14;
 
-    public static String ZentamateDiagramEditorPalette_15;
+    public static String ZentaDiagramEditorPalette_15;
 
-    public static String ZentamateDiagramEditorPalette_16;
+    public static String ZentaDiagramEditorPalette_16;
 
-    public static String ZentamateDiagramEditorPalette_2;
+    public static String ZentaDiagramEditorPalette_2;
 
-    public static String ZentamateDiagramEditorPalette_3;
+    public static String ZentaDiagramEditorPalette_3;
 
-    public static String ZentamateDiagramEditorPalette_4;
+    public static String ZentaDiagramEditorPalette_4;
 
-    public static String ZentamateDiagramEditorPalette_5;
+    public static String ZentaDiagramEditorPalette_5;
 
-    public static String ZentamateDiagramEditorPalette_6;
+    public static String ZentaDiagramEditorPalette_6;
 
-    public static String ZentamateDiagramEditorPalette_7;
+    public static String ZentaDiagramEditorPalette_7;
 
-    public static String ZentamateDiagramEditorPalette_8;
+    public static String ZentaDiagramEditorPalette_8;
 
-    public static String ZentamateDiagramEditorPalette_9;
+    public static String ZentaDiagramEditorPalette_9;
 
-    public static String ZentamateDiagramModelFactory_0;
+    public static String ZentaDiagramModelFactory_0;
 
     public static String DiagramEditorInput_0;
 

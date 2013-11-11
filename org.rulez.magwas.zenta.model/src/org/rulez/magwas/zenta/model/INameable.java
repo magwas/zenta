@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getNameable()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getNameable()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface INameable extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getNameable_Name()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getNameable_Name()
 	 * @model default=""
 	 * @generated
 	 */

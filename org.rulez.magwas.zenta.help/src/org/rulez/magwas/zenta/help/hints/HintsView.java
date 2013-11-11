@@ -47,18 +47,18 @@ import org.eclipse.ui.part.ViewPart;
 import org.osgi.framework.Bundle;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.editor.ui.services.IComponentSelectionListener;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.help.ZentamateEditorHelpPlugin;
-import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
-import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.help.ZentaEditorHelpPlugin;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IBusinessLayerElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
@@ -73,7 +73,7 @@ public class HintsView
 extends ViewPart
 implements IContextProvider, IHintsView, ISelectionListener, IComponentSelectionListener {
     
-    static File cssFile = new File(ZentamateEditorHelpPlugin.INSTANCE.getHintsFolder(), "style.css"); //$NON-NLS-1$
+    static File cssFile = new File(ZentaEditorHelpPlugin.INSTANCE.getHintsFolder(), "style.css"); //$NON-NLS-1$
 
     private Browser fBrowser;
     
@@ -91,7 +91,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
         PinAction() {
             super(Messages.HintsView_0, IAction.AS_CHECK_BOX);
             setToolTipText(Messages.HintsView_1);
-            setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_PIN_16));
+            setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_PIN_16));
         }
     }
     
@@ -248,7 +248,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
         }
         // Adaptable, dig in to get to get Element...
         else if(selected instanceof IAdaptable) {
-            object = ((IAdaptable)selected).getAdapter(IZentamateElement.class);
+            object = ((IAdaptable)selected).getAdapter(IZentaElement.class);
             if(object == null) {
                 object = ((IAdaptable)selected).getAdapter(IDiagramModelObject.class);
             }
@@ -279,9 +279,9 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
             }
         }
 
-        // Convert Zentamate Diagram Model object to Viewpoint object
-        if(object instanceof IZentamateDiagramModel) {
-            int index = ((IZentamateDiagramModel)object).getViewpoint();
+        // Convert Zenta Diagram Model object to Viewpoint object
+        if(object instanceof IZentaDiagramModel) {
+            int index = ((IZentaDiagramModel)object).getViewpoint();
             object = ViewpointsManager.INSTANCE.getViewpoint(index);
         }
         
@@ -413,11 +413,11 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
     private Color getTitleColor(Object object) {
         Class<?> clazz;
         
-        if(object instanceof IDiagramModelZentamateObject) {
-            object = ((IDiagramModelZentamateObject)object).getZentamateElement();
+        if(object instanceof IDiagramModelZentaObject) {
+            object = ((IDiagramModelZentaObject)object).getZentaElement();
         }
-        else if(object instanceof IDiagramModelZentamateConnection) {
-            object = ((IDiagramModelZentamateConnection)object).getRelationship();
+        else if(object instanceof IDiagramModelZentaConnection) {
+            object = ((IDiagramModelZentaConnection)object).getRelationship();
         }
         
         if(object instanceof Class<?>) {

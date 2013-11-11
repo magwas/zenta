@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDocumentable()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getDocumentable()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface IDocumentable extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Documentation</em>' attribute.
 	 * @see #setDocumentation(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDocumentable_Documentation()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDocumentable_Documentation()
 	 * @model default=""
 	 *        extendedMetaData="kind='element'"
 	 * @generated

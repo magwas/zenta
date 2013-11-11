@@ -18,8 +18,8 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 /**
@@ -42,13 +42,13 @@ implements IWorkbenchAction
     @Override
     public void run() {
         FileDialog dialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.OPEN);
-        dialog.setFilterExtensions(new String[] { IEditorModelManager.ARCHIMATE_FILE_WILDCARD, "*.xml", "*.*" } ); //$NON-NLS-1$ //$NON-NLS-2$
+        dialog.setFilterExtensions(new String[] { IEditorModelManager.ZENTA_FILE_WILDCARD, "*.xml", "*.*" } ); //$NON-NLS-1$ //$NON-NLS-2$
         String path = dialog.open();
         if(path != null) {
             final File file = new File(path);
             
             // Check it's not already open
-            IZentamateModel model = getModel(file);
+            IZentaModel model = getModel(file);
             if(model != null) {
                 MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
                                                 Messages.OpenModelAction_2,
@@ -67,15 +67,15 @@ implements IWorkbenchAction
     
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_OPEN_16);
+        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_OPEN_16);
     }
     
     /**
      * Get model if it is already open
      */
-    private IZentamateModel getModel(File file) {
+    private IZentaModel getModel(File file) {
         if(file != null) {
-            for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
+            for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
                 if(file.equals(model.getFile())) {
                     return model;
                 }

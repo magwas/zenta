@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.ui.components.StyledTextControl;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.ITextContent;
 
@@ -27,7 +27,7 @@ import org.rulez.magwas.zenta.model.ITextContent;
  * 
  * @author Phillip Beauvoir
  */
-public class TextContentSection extends AbstractZentamatePropertySection {
+public class TextContentSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
@@ -50,8 +50,8 @@ public class TextContentSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model Name event (Undo/Redo and here!)
-            if(feature == IZentamatePackage.Literals.TEXT_CONTENT__CONTENT ||
-                    feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentaPackage.Literals.TEXT_CONTENT__CONTENT ||
+                    feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }
@@ -67,13 +67,13 @@ public class TextContentSection extends AbstractZentamatePropertySection {
         
         StyledTextControl styledTextControl = createStyledTextControl(parent, SWT.NONE);
         
-        fTextContentControl = new PropertySectionTextControl(styledTextControl.getControl(), IZentamatePackage.Literals.TEXT_CONTENT__CONTENT) {
+        fTextContentControl = new PropertySectionTextControl(styledTextControl.getControl(), IZentaPackage.Literals.TEXT_CONTENT__CONTENT) {
             @Override
             protected void textChanged(String oldText, String newText) {
                 if(isAlive()) {
                     fIsExecutingCommand = true;
                     getCommandStack().execute(new EObjectFeatureCommand(Messages.TextContentSection_1, fTextContent,
-                                                IZentamatePackage.Literals.TEXT_CONTENT__CONTENT, newText));
+                                                IZentaPackage.Literals.TEXT_CONTENT__CONTENT, newText));
                     fIsExecutingCommand = false;
                 }
             }

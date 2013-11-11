@@ -17,15 +17,15 @@ import org.rulez.magwas.zenta.editor.diagram.commands.DiagramCommandFactory;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.commands.DeleteElementCommand;
 import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
-import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 
@@ -56,7 +56,7 @@ public class DeleteFromModelAction extends SelectionAction {
         for(Object object : list) {
             if(object instanceof EditPart) {
                 Object model = ((EditPart)object).getModel();
-                if(model instanceof IDiagramModelZentamateObject || model instanceof IDiagramModelZentamateConnection) {
+                if(model instanceof IDiagramModelZentaObject || model instanceof IDiagramModelZentaConnection) {
                     return true;
                 }
             }
@@ -68,27 +68,27 @@ public class DeleteFromModelAction extends SelectionAction {
     @Override
     public void run() {
         List<?> selection = getSelectedObjects();
-        List<IZentamateElement> elements = new ArrayList<IZentamateElement>();
+        List<IZentaElement> elements = new ArrayList<IZentaElement>();
         List<IDiagramModelComponent> diagramObjects = new ArrayList<IDiagramModelComponent>();
         
         // Gather Model elements, relations
         for(Object object : selection) {
             if(object instanceof EditPart) {
                 Object model = ((EditPart)object).getModel();
-                if(model instanceof IDiagramModelZentamateObject) {
-                    IZentamateElement element = ((IDiagramModelZentamateObject)model).getZentamateElement();
+                if(model instanceof IDiagramModelZentaObject) {
+                    IZentaElement element = ((IDiagramModelZentaObject)model).getZentaElement();
                     if(!elements.contains(element)) {
                         elements.add(element);
                     }
                     // Element's relationships
-                    for(IRelationship relation :  ZentamateModelUtils.getRelationships(element)) {
+                    for(IRelationship relation :  ZentaModelUtils.getRelationships(element)) {
                         if(!elements.contains(relation)) {
                             elements.add(relation);
                         }
                     }
                 }
-                else if(model instanceof IDiagramModelZentamateConnection) {
-                    IRelationship relation = ((IDiagramModelZentamateConnection)model).getRelationship();
+                else if(model instanceof IDiagramModelZentaConnection) {
+                    IRelationship relation = ((IDiagramModelZentaConnection)model).getRelationship();
                     if(!elements.contains(relation)) {
                         elements.add(relation);
                     }
@@ -97,8 +97,8 @@ public class DeleteFromModelAction extends SelectionAction {
         }
         
         // Gather referenced diagram objects
-        for(IZentamateElement element : elements) {
-            for(IDiagramModel diagramModel : element.getZentamateModel().getDiagramModels()) {
+        for(IZentaElement element : elements) {
+            for(IDiagramModel diagramModel : element.getZentaModel().getDiagramModels()) {
                 for(IDiagramModelComponent dc : DiagramModelUtils.findDiagramModelComponentsForElement(diagramModel, element)) {
                     diagramObjects.add(dc);
                 }
@@ -109,7 +109,7 @@ public class DeleteFromModelAction extends SelectionAction {
         
         CompoundCommand compoundCommand = new NonNotifyingCompoundCommand(TEXT);
         
-        for(IZentamateElement element : elements) {
+        for(IZentaElement element : elements) {
             Command cmd = new DeleteElementCommand(element);
             compoundCommand.add(cmd);
         }

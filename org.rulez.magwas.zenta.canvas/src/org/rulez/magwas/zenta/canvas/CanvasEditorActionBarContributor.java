@@ -9,7 +9,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-import org.rulez.magwas.zenta.editor.actions.ZentamateEditorActionFactory;
+import org.rulez.magwas.zenta.editor.actions.ZentaEditorActionFactory;
 import org.rulez.magwas.zenta.editor.diagram.AbstractDiagramEditorActionBarContributor;
 import org.rulez.magwas.zenta.editor.diagram.actions.BorderColorAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.LockObjectAction;
@@ -41,7 +41,7 @@ extends AbstractDiagramEditorActionBarContributor {
         editMenu.appendToGroup(GROUP_EDIT_MENU, getAction(BorderColorAction.ID));
         
         // Lock
-        editMenu.insertAfter(ZentamateEditorActionFactory.RENAME.getId(), new Separator("lock")); //$NON-NLS-1$
+        editMenu.insertAfter(ZentaEditorActionFactory.RENAME.getId(), new Separator("lock")); //$NON-NLS-1$
         editMenu.appendToGroup("lock", getAction(LockObjectAction.ID)); //$NON-NLS-1$
         
         return editMenu;

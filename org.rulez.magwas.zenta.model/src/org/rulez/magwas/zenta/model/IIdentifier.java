@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getIdentifier()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getIdentifier()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface IIdentifier extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getIdentifier_Id()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getIdentifier_Id()
 	 * @model id="true"
 	 * @generated
 	 */

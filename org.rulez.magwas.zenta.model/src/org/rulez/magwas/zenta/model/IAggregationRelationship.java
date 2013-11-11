@@ -13,7 +13,7 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getAggregationRelationship()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getAggregationRelationship()
  * @model
  * @generated
  */

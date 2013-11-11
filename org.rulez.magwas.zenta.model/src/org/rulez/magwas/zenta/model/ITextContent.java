@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getTextContent()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getTextContent()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface ITextContent extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Content</em>' attribute.
 	 * @see #setContent(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getTextContent_Content()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTextContent_Content()
 	 * @model default=""
 	 *        extendedMetaData="kind='element'"
 	 * @generated

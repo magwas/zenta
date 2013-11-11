@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IJunction;
 
 
@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.model.IJunction;
  *
  * @generated
  */
-public class Junction extends ZentamateElement implements IJunction {
+public class Junction extends ZentaElement implements IJunction {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -36,7 +36,7 @@ public class Junction extends ZentamateElement implements IJunction {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.JUNCTION;
+		return IZentaPackage.Literals.JUNCTION;
 	}
 
 } //Junction

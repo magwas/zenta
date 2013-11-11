@@ -19,18 +19,18 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IInterfaceElement;
 
 
 
 /**
- * Property Section for an Zentamate Element
+ * Property Section for an Zenta Element
  * 
  * @author Phillip Beauvoir
  */
-public class InterfaceElementSection extends AbstractZentamatePropertySection {
+public class InterfaceElementSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
     
@@ -42,7 +42,7 @@ public class InterfaceElementSection extends AbstractZentamatePropertySection {
         public boolean select(Object object) {
             return object instanceof IInterfaceElement ||
                 (object instanceof IAdaptable &&
-                        ((IAdaptable)object).getAdapter(IZentamateElement.class) instanceof IInterfaceElement);
+                        ((IAdaptable)object).getAdapter(IZentaElement.class) instanceof IInterfaceElement);
         }
     }
 
@@ -54,7 +54,7 @@ public class InterfaceElementSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Element Interface event (Undo/Redo and here!)
-            if(feature == IZentamatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE) {
+            if(feature == IZentaPackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE) {
                 refreshControls();
                 fPage.labelProviderChanged(null); // Update icon on Main label
             }
@@ -82,7 +82,7 @@ public class InterfaceElementSection extends AbstractZentamatePropertySection {
                 if(isAlive()) {
                     fIsExecutingCommand = true;
                     getCommandStack().execute(new EObjectFeatureCommand(Messages.InterfaceElementSection_3,
-                            fInterfaceElement, IZentamatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE,
+                            fInterfaceElement, IZentaPackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE,
                             fComboInterfaceType.getSelectionIndex()));
                     fIsExecutingCommand = false;
                 }
@@ -95,13 +95,13 @@ public class InterfaceElementSection extends AbstractZentamatePropertySection {
 
     @Override
     protected void setElement(Object element) {
-        // IZentamateElement
+        // IZentaElement
         if(element instanceof IInterfaceElement) {
             fInterfaceElement = (IInterfaceElement)element;
         }
-        // IZentamateElement in a GEF Edit Part
+        // IZentaElement in a GEF Edit Part
         else if(element instanceof IAdaptable) {
-            fInterfaceElement = (IInterfaceElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
+            fInterfaceElement = (IInterfaceElement)((IAdaptable)element).getAdapter(IZentaElement.class);
         }
         else {
             System.err.println("InterfaceElementSection wants to display for " + element); //$NON-NLS-1$

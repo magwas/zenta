@@ -19,10 +19,10 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.IColoredEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.ITextAlignedEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.diagram.NoteFigure;
-import org.rulez.magwas.zenta.editor.diagram.policies.ZentamateDiagramConnectionPolicy;
+import org.rulez.magwas.zenta.editor.diagram.policies.ZentaDiagramConnectionPolicy;
 import org.rulez.magwas.zenta.editor.diagram.policies.PartComponentEditPolicy;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelNote;
 
 
@@ -38,7 +38,7 @@ implements IColoredEditPart, ITextAlignedEditPart {
     @Override
     protected void createEditPolicies() {
         // Allow parts to be connected
-        installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ZentamateDiagramConnectionPolicy());
+        installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ZentaDiagramConnectionPolicy());
         
         // Add a policy to handle editing the Parts (for example, deleting a part)
         installEditPolicy(EditPolicy.COMPONENT_ROLE, new PartComponentEditPolicy());
@@ -81,7 +81,7 @@ implements IColoredEditPart, ITextAlignedEditPart {
         protected Command getDirectEditCommand(DirectEditRequest request) {
             String content = (String)request.getCellEditor().getValue();
             return new EObjectFeatureCommand(Messages.NoteEditPart_0, getModel(),
-                    IZentamatePackage.Literals.TEXT_CONTENT__CONTENT, content);
+                    IZentaPackage.Literals.TEXT_CONTENT__CONTENT, content);
         }
 
         @Override

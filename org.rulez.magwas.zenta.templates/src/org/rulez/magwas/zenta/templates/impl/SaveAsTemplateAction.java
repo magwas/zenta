@@ -8,8 +8,8 @@ package org.rulez.magwas.zenta.templates.impl;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.rulez.magwas.zenta.editor.actions.AbstractModelSelectionDelegateAction;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedWizardDialog;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.templates.impl.wizard.SaveZentamateModelAsTemplateWizard;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.templates.impl.wizard.SaveZentaModelAsTemplateWizard;
 
 
 
@@ -22,10 +22,10 @@ public class SaveAsTemplateAction extends AbstractModelSelectionDelegateAction {
     
     @Override
     public void run() {
-        IZentamateModel model = getActiveZentamateModel();
+        IZentaModel model = getActiveZentaModel();
         if(model != null) {
             WizardDialog dialog = new ExtendedWizardDialog(workbenchWindow.getShell(),
-                    new SaveZentamateModelAsTemplateWizard(model),
+                    new SaveZentaModelAsTemplateWizard(model),
                     "SaveModelAsTemplateWizard"); //$NON-NLS-1$
             dialog.open();
         }

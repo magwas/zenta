@@ -15,8 +15,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
 
 /**
@@ -47,11 +47,11 @@ public class SelectElementInTreeAction extends SelectionAction {
                 if(model instanceof IDiagramModel) {
                     elements.add(model);
                 }
-                else if(model instanceof IDiagramModelZentamateObject) {
-                    elements.add(((IDiagramModelZentamateObject)model).getZentamateElement());
+                else if(model instanceof IDiagramModelZentaObject) {
+                    elements.add(((IDiagramModelZentaObject)model).getZentaElement());
                 }
-                else if(model instanceof IDiagramModelZentamateConnection) {
-                    elements.add(((IDiagramModelZentamateConnection)model).getRelationship());
+                else if(model instanceof IDiagramModelZentaConnection) {
+                    elements.add(((IDiagramModelZentaConnection)model).getRelationship());
                 }
             }
         }
@@ -73,7 +73,7 @@ public class SelectElementInTreeAction extends SelectionAction {
         for(Object object : list) {
             if(object instanceof EditPart) {
                 Object model = ((EditPart)object).getModel();
-                if(model instanceof IDiagramModel || model instanceof IDiagramModelZentamateConnection || model instanceof IDiagramModelZentamateObject) {
+                if(model instanceof IDiagramModel || model instanceof IDiagramModelZentaConnection || model instanceof IDiagramModelZentaObject) {
                     return true;
                 }
             }

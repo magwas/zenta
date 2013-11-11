@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.UsedByConnectio
  * 
  * @author Phillip Beauvoir
  */
-public class UsedByConnectionEditPart extends AbstractZentamateConnectionEditPart {
+public class UsedByConnectionEditPart extends AbstractZentaConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {

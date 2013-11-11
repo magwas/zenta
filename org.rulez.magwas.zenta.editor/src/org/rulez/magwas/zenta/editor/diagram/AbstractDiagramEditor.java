@@ -80,7 +80,7 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.diagram.actions.BorderColorAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.BringForwardAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.BringToFrontAction;
@@ -117,8 +117,8 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -179,7 +179,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
     }
     
     /**
-     * Adapter class to respond to Zentamate Model notifications.
+     * Adapter class to respond to Zenta Model notifications.
      */
     protected Adapter eCoreAdapter = new EContentAdapter() {
         @Override
@@ -210,7 +210,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         fDiagramModel = ((DiagramEditorInput)input).getDiagramModel();
         
         // Listen to its notifications
-        fDiagramModel.getZentamateModel().eAdapters().add(eCoreAdapter);
+        fDiagramModel.getZentaModel().eAdapters().add(eCoreAdapter);
         
         // Edit Domain before init
         // Use CommandStack from Model
@@ -751,7 +751,7 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
     
     @Override
     public String getContributorId() {
-        return ZentamateEditorPlugin.PLUGIN_ID;
+        return ZentaEditorPlugin.PLUGIN_ID;
     }
 
     @SuppressWarnings("rawtypes")
@@ -779,11 +779,11 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         }
 
         /*
-         * Return the Zentamate Model
+         * Return the Zenta Model
          * DO NOT REMOVE! SaveAction requires this
          */
-        if(adapter == IZentamateModel.class && getModel() != null) {
-            return getModel().getZentamateModel();
+        if(adapter == IZentaModel.class && getModel() != null) {
+            return getModel().getZentaModel();
         }
         
         /*
@@ -802,9 +802,9 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
      */
     protected void eCoreModelChanged(Notification msg) {
         if(msg.getEventType() == Notification.SET) {
-            // Zentamate Model or Diagram Model name changed
-            if(msg.getNotifier() == getModel() || msg.getNotifier() == getModel().getZentamateModel()) {
-                if(msg.getFeature() == IZentamatePackage.Literals.NAMEABLE__NAME) {
+            // Zenta Model or Diagram Model name changed
+            if(msg.getNotifier() == getModel() || msg.getNotifier() == getModel().getZentaModel()) {
+                if(msg.getFeature() == IZentaPackage.Literals.NAMEABLE__NAME) {
                     setPartName(getEditorInput().getName());
                 }
             }
@@ -818,8 +818,8 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         // Remove listeners
         Preferences.STORE.removePropertyChangeListener(appPreferencesListener);
         
-        if(getModel() != null && getModel().getZentamateModel() != null) {
-            getModel().getZentamateModel().eAdapters().remove(eCoreAdapter);
+        if(getModel() != null && getModel().getZentaModel() != null) {
+            getModel().getZentaModel().eAdapters().remove(eCoreAdapter);
         }
     }
     

@@ -17,7 +17,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
 
@@ -89,7 +89,7 @@ public class FloatingPalette {
         checkSafeBounds(fParentShell);
         fShell.setBounds(fPaletteState.bounds);
         
-        fShell.setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_APP_16));
+        fShell.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_APP_16));
         fShell.setText(Messages.FloatingPalette_0);
         
         // Disposed by system

@@ -9,7 +9,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IProperty;
 
 
@@ -105,7 +105,7 @@ public class Property extends EObjectImpl implements IProperty {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.PROPERTY;
+		return IZentaPackage.Literals.PROPERTY;
 	}
 
     /**
@@ -116,11 +116,11 @@ public class Property extends EObjectImpl implements IProperty {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentamatePackage.PROPERTY__KEY:
+			case IZentaPackage.PROPERTY__KEY:
 				return getKey();
-			case IZentamatePackage.PROPERTY__VALUE:
+			case IZentaPackage.PROPERTY__VALUE:
 				return getValue();
-			case IZentamatePackage.PROPERTY__GENERATED:
+			case IZentaPackage.PROPERTY__GENERATED:
 				return isGenerated();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -134,13 +134,13 @@ public class Property extends EObjectImpl implements IProperty {
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentamatePackage.PROPERTY__KEY:
+			case IZentaPackage.PROPERTY__KEY:
 				setKey((String)newValue);
 				return;
-			case IZentamatePackage.PROPERTY__VALUE:
+			case IZentaPackage.PROPERTY__VALUE:
 				setValue((String)newValue);
 				return;
-			case IZentamatePackage.PROPERTY__GENERATED:
+			case IZentaPackage.PROPERTY__GENERATED:
 				setGenerated((Boolean)newValue);
 				return;
 		}
@@ -155,13 +155,13 @@ public class Property extends EObjectImpl implements IProperty {
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.PROPERTY__KEY:
+			case IZentaPackage.PROPERTY__KEY:
 				setKey(KEY_EDEFAULT);
 				return;
-			case IZentamatePackage.PROPERTY__VALUE:
+			case IZentaPackage.PROPERTY__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case IZentamatePackage.PROPERTY__GENERATED:
+			case IZentaPackage.PROPERTY__GENERATED:
 				setGenerated(GENERATED_EDEFAULT);
 				return;
 		}
@@ -176,11 +176,11 @@ public class Property extends EObjectImpl implements IProperty {
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.PROPERTY__KEY:
+			case IZentaPackage.PROPERTY__KEY:
 				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
-			case IZentamatePackage.PROPERTY__VALUE:
+			case IZentaPackage.PROPERTY__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case IZentamatePackage.PROPERTY__GENERATED:
+			case IZentaPackage.PROPERTY__GENERATED:
 				return generated != GENERATED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -224,7 +224,7 @@ public class Property extends EObjectImpl implements IProperty {
 		String oldKey = key;
 		key = newKey;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.PROPERTY__KEY, oldKey, key));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.PROPERTY__KEY, oldKey, key));
 	}
 
     /**
@@ -245,7 +245,7 @@ public class Property extends EObjectImpl implements IProperty {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.PROPERTY__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.PROPERTY__VALUE, oldValue, value));
 	}
 
 				/**
@@ -266,7 +266,7 @@ public class Property extends EObjectImpl implements IProperty {
 		boolean oldGenerated = generated;
 		generated = newGenerated;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.PROPERTY__GENERATED, oldGenerated, generated));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.PROPERTY__GENERATED, oldGenerated, generated));
 	}
 
 } //Property

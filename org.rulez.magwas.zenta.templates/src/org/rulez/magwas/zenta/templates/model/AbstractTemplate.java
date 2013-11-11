@@ -19,7 +19,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
 import org.jdom.Element;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.utils.FileUtils;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
@@ -96,7 +96,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         }
         
         if(fKeyThumbnailImage == null) {
-            return IZentamateImages.ImageFactory.getImage(IZentamateImages.DEFAULT_MODEL_THUMB);
+            return IZentaImages.ImageFactory.getImage(IZentaImages.DEFAULT_MODEL_THUMB);
         }
         else {
             return fKeyThumbnailImage;

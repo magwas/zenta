@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModelBlock;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IHintProvider;
 import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
@@ -592,31 +592,31 @@ public class CanvasModelBlock extends DiagramModelObject implements ICanvasModel
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == IDiagramModelImageProvider.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_BLOCK__IMAGE_PATH: return IZentamatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH;
+                case ICanvasPackage.CANVAS_MODEL_BLOCK__IMAGE_PATH: return IZentaPackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH;
                 default: return -1;
             }
         }
         if (baseClass == IDiagramModelContainer.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_BLOCK__CHILDREN: return IZentamatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
+                case ICanvasPackage.CANVAS_MODEL_BLOCK__CHILDREN: return IZentaPackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
                 default: return -1;
             }
         }
         if (baseClass == IProperties.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_BLOCK__PROPERTIES: return IZentamatePackage.PROPERTIES__PROPERTIES;
+                case ICanvasPackage.CANVAS_MODEL_BLOCK__PROPERTIES: return IZentaPackage.PROPERTIES__PROPERTIES;
                 default: return -1;
             }
         }
         if (baseClass == ILockable.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_BLOCK__LOCKED: return IZentamatePackage.LOCKABLE__LOCKED;
+                case ICanvasPackage.CANVAS_MODEL_BLOCK__LOCKED: return IZentaPackage.LOCKABLE__LOCKED;
                 default: return -1;
             }
         }
         if (baseClass == IBorderObject.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_BLOCK__BORDER_COLOR: return IZentamatePackage.BORDER_OBJECT__BORDER_COLOR;
+                case ICanvasPackage.CANVAS_MODEL_BLOCK__BORDER_COLOR: return IZentaPackage.BORDER_OBJECT__BORDER_COLOR;
                 default: return -1;
             }
         }
@@ -634,7 +634,7 @@ public class CanvasModelBlock extends DiagramModelObject implements ICanvasModel
         }
         if (baseClass == ITextContent.class) {
             switch (derivedFeatureID) {
-                case ICanvasPackage.CANVAS_MODEL_BLOCK__CONTENT: return IZentamatePackage.TEXT_CONTENT__CONTENT;
+                case ICanvasPackage.CANVAS_MODEL_BLOCK__CONTENT: return IZentaPackage.TEXT_CONTENT__CONTENT;
                 default: return -1;
             }
         }
@@ -650,31 +650,31 @@ public class CanvasModelBlock extends DiagramModelObject implements ICanvasModel
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == IDiagramModelImageProvider.class) {
             switch (baseFeatureID) {
-                case IZentamatePackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH: return ICanvasPackage.CANVAS_MODEL_BLOCK__IMAGE_PATH;
+                case IZentaPackage.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH: return ICanvasPackage.CANVAS_MODEL_BLOCK__IMAGE_PATH;
                 default: return -1;
             }
         }
         if (baseClass == IDiagramModelContainer.class) {
             switch (baseFeatureID) {
-                case IZentamatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return ICanvasPackage.CANVAS_MODEL_BLOCK__CHILDREN;
+                case IZentaPackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return ICanvasPackage.CANVAS_MODEL_BLOCK__CHILDREN;
                 default: return -1;
             }
         }
         if (baseClass == IProperties.class) {
             switch (baseFeatureID) {
-                case IZentamatePackage.PROPERTIES__PROPERTIES: return ICanvasPackage.CANVAS_MODEL_BLOCK__PROPERTIES;
+                case IZentaPackage.PROPERTIES__PROPERTIES: return ICanvasPackage.CANVAS_MODEL_BLOCK__PROPERTIES;
                 default: return -1;
             }
         }
         if (baseClass == ILockable.class) {
             switch (baseFeatureID) {
-                case IZentamatePackage.LOCKABLE__LOCKED: return ICanvasPackage.CANVAS_MODEL_BLOCK__LOCKED;
+                case IZentaPackage.LOCKABLE__LOCKED: return ICanvasPackage.CANVAS_MODEL_BLOCK__LOCKED;
                 default: return -1;
             }
         }
         if (baseClass == IBorderObject.class) {
             switch (baseFeatureID) {
-                case IZentamatePackage.BORDER_OBJECT__BORDER_COLOR: return ICanvasPackage.CANVAS_MODEL_BLOCK__BORDER_COLOR;
+                case IZentaPackage.BORDER_OBJECT__BORDER_COLOR: return ICanvasPackage.CANVAS_MODEL_BLOCK__BORDER_COLOR;
                 default: return -1;
             }
         }
@@ -692,7 +692,7 @@ public class CanvasModelBlock extends DiagramModelObject implements ICanvasModel
         }
         if (baseClass == ITextContent.class) {
             switch (baseFeatureID) {
-                case IZentamatePackage.TEXT_CONTENT__CONTENT: return ICanvasPackage.CANVAS_MODEL_BLOCK__CONTENT;
+                case IZentaPackage.TEXT_CONTENT__CONTENT: return ICanvasPackage.CANVAS_MODEL_BLOCK__CONTENT;
                 default: return -1;
             }
         }

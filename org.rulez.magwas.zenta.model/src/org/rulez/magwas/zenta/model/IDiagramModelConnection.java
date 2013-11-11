@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelConnection()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection()
  * @model
  * @generated
  */
@@ -75,7 +75,7 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text</em>' attribute.
 	 * @see #setText(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelConnection_Text()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_Text()
 	 * @model default="" transient="true"
 	 * @generated
 	 */
@@ -101,7 +101,7 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(IDiagramModelObject)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelConnection_Source()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_Source()
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
@@ -127,7 +127,7 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(IDiagramModelObject)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelConnection_Target()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_Target()
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
@@ -153,7 +153,7 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bendpoints</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelConnection_Bendpoints()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_Bendpoints()
 	 * @model containment="true"
 	 *        extendedMetaData="name='bendpoint' kind='element'"
 	 * @generated
@@ -171,7 +171,7 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Line Width</em>' attribute.
 	 * @see #setLineWidth(int)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelConnection_LineWidth()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_LineWidth()
 	 * @model default="1"
 	 * @generated
 	 */
@@ -197,7 +197,7 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Line Color</em>' attribute.
 	 * @see #setLineColor(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelConnection_LineColor()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_LineColor()
 	 * @model
 	 * @generated
 	 */
@@ -223,7 +223,7 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(int)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelConnection_Type()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_Type()
 	 * @model
 	 * @generated
 	 */

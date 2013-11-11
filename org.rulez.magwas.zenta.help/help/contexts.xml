@@ -125,15 +125,15 @@
        <description>Manage your Templates.</description>
        <topic href="help/templates_managing.html" label="Managing your Templates"/>
     </context>
-    <context id="NewZentamateModelFromTemplateWizardPage" title="Creating a New Model from a Template">
+    <context id="NewZentaModelFromTemplateWizardPage" title="Creating a New Model from a Template">
        <description>Create a new Model based on an existing template.</description>
        <topic href="help/templates_new_model.html" label="Creating a New Model from a Template"/>
     </context>
-    <context id="SaveZentamateModelAsTemplateWizardPage" title="Save Model As Template">
+    <context id="SaveZentaModelAsTemplateWizardPage" title="Save Model As Template">
        <description>Provide the Template's name, description and key thumbnail.</description>
        <topic href="help/templates_new.html" label="Creating a New Template"/>
     </context>
-    <context id="SaveZentamateModelAsTemplateToCollectionWizardPage" title="Save Model As Template">
+    <context id="SaveZentaModelAsTemplateToCollectionWizardPage" title="Save Model As Template">
        <description>Choose whether to include the template in your collection.</description>
        <topic href="help/templates_new.html" label="Creating a New Template"/>
     </context>

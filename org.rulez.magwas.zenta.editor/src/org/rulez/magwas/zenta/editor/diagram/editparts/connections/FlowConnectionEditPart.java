@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.FlowConnectionF
  * 
  * @author Phillip Beauvoir
  */
-public class FlowConnectionEditPart extends AbstractZentamateConnectionEditPart {
+public class FlowConnectionEditPart extends AbstractZentaConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {

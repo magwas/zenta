@@ -35,11 +35,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 
@@ -54,14 +54,14 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
     
     private TableViewer fTableViewer;
     
-    private IZentamateElement fParentElement, fChildElement;
+    private IZentaElement fParentElement, fChildElement;
     
     private EClass[] fValidRelations;
     private EClass fSelected;
 
-    public NewNestedRelationDialog(Shell parentShell, IZentamateElement parentElement, IZentamateElement childElement) {
+    public NewNestedRelationDialog(Shell parentShell, IZentaElement parentElement, IZentaElement childElement) {
         super(parentShell, "NewNestedRelationDialog"); //$NON-NLS-1$
-        setTitleImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IZentaImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fParentElement = parentElement;
@@ -136,11 +136,11 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
         return fSelected;
     }
     
-    private EClass[] getValidRelationships(IZentamateElement sourceElement, IZentamateElement targetElement) {
+    private EClass[] getValidRelationships(IZentaElement sourceElement, IZentaElement targetElement) {
         List<EClass> list = new ArrayList<EClass>();
         
         for(EClass eClass : ConnectionPreferences.getRelationsClassesForNewRelations()) {
-            if(ZentamateModelUtils.isValidRelationship(sourceElement, targetElement, eClass)) {
+            if(ZentaModelUtils.isValidRelationship(sourceElement, targetElement, eClass)) {
                 list.add(eClass); 
             }
         }
@@ -185,12 +185,12 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
         class RelationsTableViewerLabelCellProvider extends LabelProvider {
             @Override
             public String getText(Object element) {
-                return ZentamateLabelProvider.INSTANCE.getDefaultName((EClass)element);
+                return ZentaLabelProvider.INSTANCE.getDefaultName((EClass)element);
             }
             
             @Override
             public Image getImage(Object element) {
-                return ZentamateLabelProvider.INSTANCE.getImage(element);
+                return ZentaLabelProvider.INSTANCE.getImage(element);
             }
          }
     }

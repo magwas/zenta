@@ -33,7 +33,7 @@ import org.rulez.magwas.zenta.editor.diagram.AbstractPaletteRoot;
 import org.rulez.magwas.zenta.editor.diagram.tools.FormatPainterToolEntry;
 import org.rulez.magwas.zenta.editor.diagram.tools.PanningSelectionExtendedTool;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 
 
@@ -101,8 +101,8 @@ public class CanvasEditorPalette extends AbstractPaletteRoot {
                 Messages.CanvasEditorPalette_3,
                 null,
                 new CanvasModelFactory(ICanvasPackage.eINSTANCE.getCanvasModelImage()),
-                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_LANDSCAPE_16),
-                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_LANDSCAPE_16));
+                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_LANDSCAPE_16),
+                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_LANDSCAPE_16));
         group.add(entry);
         
         entry = createConnectionCreationToolEntry(
@@ -110,7 +110,7 @@ public class CanvasEditorPalette extends AbstractPaletteRoot {
                 IDiagramModelConnection.LINE_SOLID,
                 Messages.CanvasEditorPalette_4,
                 null,
-                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_CONNECTION_PLAIN_16));
+                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_CONNECTION_PLAIN_16));
         group.add(entry);
         
         entry = createConnectionCreationToolEntry(
@@ -118,7 +118,7 @@ public class CanvasEditorPalette extends AbstractPaletteRoot {
                 IDiagramModelConnection.ARROW_FILL_TARGET,
                 Messages.CanvasEditorPalette_5,
                 null,
-                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_CONNECTION_ARROW_16));
+                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_CONNECTION_ARROW_16));
         group.add(entry);
         
         entry = createConnectionCreationToolEntry(
@@ -126,7 +126,7 @@ public class CanvasEditorPalette extends AbstractPaletteRoot {
                 IDiagramModelConnection.ARROW_FILL_TARGET | IDiagramModelConnection.LINE_DASHED,
                 Messages.CanvasEditorPalette_6,
                 null,
-                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_CONNECTION_DASHED_ARROW_16));
+                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_CONNECTION_DASHED_ARROW_16));
         group.add(entry);
         
         entry = createConnectionCreationToolEntry(
@@ -134,7 +134,7 @@ public class CanvasEditorPalette extends AbstractPaletteRoot {
                 IDiagramModelConnection.ARROW_FILL_TARGET | IDiagramModelConnection.LINE_DOTTED,
                 Messages.CanvasEditorPalette_7,
                 null,
-                IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_CONNECTION_DOTTED_ARROW_16));
+                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_CONNECTION_DOTTED_ARROW_16));
         group.add(entry);
 
         

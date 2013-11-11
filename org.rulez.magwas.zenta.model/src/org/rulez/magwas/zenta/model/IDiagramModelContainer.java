@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelContainer()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelContainer()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface IDiagramModelContainer extends IDiagramModelComponent {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelContainer_Children()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelContainer_Children()
 	 * @model containment="true"
 	 *        extendedMetaData="name='child' kind='element'"
 	 * @generated

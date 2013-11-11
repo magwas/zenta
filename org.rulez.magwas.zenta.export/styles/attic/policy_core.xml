@@ -52,7 +52,7 @@
           <br/>
         </documentation>
       </description>
-      <default multi="true" order="0" select="//objectClass[@parentid=//zenta:SpecialisationRelationship[@target=$id]/@source]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@target=$id]/@source]/../@name">
+      <default multi="true" order="0" select="//objectClass[@parentid=//zenta:SpecialisationRelationship[@target=$id]/@source]/../@name|//ZentaObjectClass[@parentid=//zenta:SpecialisationRelationship[@target=$id]/@source]/../@name">
         <description/>
       </default>
     </property>
@@ -283,7 +283,7 @@
       </description>
     </property>
   </objectClass>
-  <objectClass abstract="" name="ZentamateObjectClass">
+  <objectClass abstract="" name="ZentaObjectClass">
     <description>
       <documentation>
         An objectclass predefined by Zenta.

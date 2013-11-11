@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.editor.diagram.policies.BasicContainerEditPolicy;
 import org.rulez.magwas.zenta.editor.diagram.policies.DiagramLayoutPolicy;
 import org.rulez.magwas.zenta.editor.diagram.sketch.ISketchEditor;
 import org.rulez.magwas.zenta.editor.diagram.sketch.policies.SketchDNDEditPolicy;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ISketchModel;
 
 
@@ -38,7 +38,7 @@ public class SketchDiagramPart extends AbstractDiagramPart {
             case Notification.SET:
                 Object feature = msg.getFeature();
                 // Sketch model background
-                if(feature == IZentamatePackage.Literals.SKETCH_MODEL__BACKGROUND) {
+                if(feature == IZentaPackage.Literals.SKETCH_MODEL__BACKGROUND) {
                     setBackgroundImage(msg.getNewValue());
                 }
                 break;

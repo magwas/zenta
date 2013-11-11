@@ -23,10 +23,10 @@
                 </xsl:for-each>
             </table>
             <table class="elementtable">
-                <xsl:apply-templates select="zenta:ZentamateDiagramModel|zenta:DiagramModel|zenta:SketchModel">
+                <xsl:apply-templates select="zenta:ZentaDiagramModel|zenta:DiagramModel|zenta:SketchModel">
                     <xsl:sort select="./@name"/>
                 </xsl:apply-templates>
-                <xsl:apply-templates select="set:difference(zenta:*,(zenta:ZentamateDiagramModel|zenta:DiagramModel|zenta:SketchModel|zenta:Folder))">
+                <xsl:apply-templates select="set:difference(zenta:*,(zenta:ZentaDiagramModel|zenta:DiagramModel|zenta:SketchModel|zenta:Folder))">
                     <xsl:sort select="./@name"/>
                 </xsl:apply-templates>
             </table>

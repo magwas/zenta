@@ -9,7 +9,7 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Shell;
-import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 
 
 
@@ -29,7 +29,7 @@ public class ExtendedTitleAreaDialog extends TitleAreaDialog {
 
     @Override
     protected IDialogSettings getDialogBoundsSettings() {
-        IDialogSettings settings = ZentamateEditorPlugin.INSTANCE.getDialogSettings();
+        IDialogSettings settings = ZentaEditorPlugin.INSTANCE.getDialogSettings();
         IDialogSettings section = settings.getSection(fId);
         if(section == null) {
             section = settings.addNewSection(fId);

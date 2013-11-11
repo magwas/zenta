@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 
@@ -72,7 +72,7 @@ public class MRUMenuManager extends MenuManager implements PropertyChangeListene
         if(IEditorModelManager.PROPERTY_MODEL_OPENED == evt.getPropertyName() || 
                                         IEditorModelManager.PROPERTY_MODEL_SAVED == evt.getPropertyName()) {
             
-            IZentamateModel model = (IZentamateModel)evt.getNewValue();
+            IZentaModel model = (IZentaModel)evt.getNewValue();
             if(model != null && model.getFile() != null && !isTempFile(model.getFile()) && model.getFile().exists()) {
                 addToList(model.getFile());
                 createMenuItems();

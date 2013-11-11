@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFolderContainer()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getFolderContainer()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -37,7 +37,7 @@ public interface IFolderContainer extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Folders</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFolderContainer_Folders()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getFolderContainer_Folders()
 	 * @model containment="true"
 	 *        extendedMetaData="name='folder' kind='element'"
 	 * @generated

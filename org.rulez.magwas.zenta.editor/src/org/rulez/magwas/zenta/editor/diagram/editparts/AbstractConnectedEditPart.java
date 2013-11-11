@@ -20,7 +20,7 @@ import org.eclipse.gef.Request;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
@@ -55,10 +55,10 @@ implements NodeEditPart {
             case Notification.REMOVE:
             case Notification.REMOVE_MANY:
             case Notification.MOVE:
-                if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS) {
+                if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS) {
                     refreshSourceConnections();
                 }
-                else if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS) {
+                else if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS) {
                     refreshTargetConnections();
                 }
                 else {
@@ -68,11 +68,11 @@ implements NodeEditPart {
 
             case Notification.SET:
                 // Bounds
-                if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_OBJECT__BOUNDS) {
+                if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_OBJECT__BOUNDS) {
                     refreshBounds();
                 }
                 // Locked
-                else if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+                else if(feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                     updateEditPolicies(); // Update Edit Policies of this and parent
                     if(getParent() instanceof AbstractDiagramPart) {
                         ((AbstractDiagramPart)getParent()).updateEditPolicies();

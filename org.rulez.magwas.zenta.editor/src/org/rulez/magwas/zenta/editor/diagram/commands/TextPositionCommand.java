@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 
 
@@ -19,6 +19,6 @@ import org.rulez.magwas.zenta.model.IFontAttribute;
 public class TextPositionCommand extends EObjectFeatureCommand {
     
     public TextPositionCommand(IFontAttribute object, int value) {
-        super(Messages.TextPositionCommand_0, object, IZentamatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION, value);
+        super(Messages.TextPositionCommand_0, object, IZentaPackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION, value);
     }
 }

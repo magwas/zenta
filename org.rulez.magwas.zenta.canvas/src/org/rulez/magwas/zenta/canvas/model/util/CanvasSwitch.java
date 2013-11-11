@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.rulez.magwas.zenta.canvas.model.*;
 import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IZentamateModelElement;
+import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -119,7 +119,7 @@ public class CanvasSwitch<T> extends Switch<T> {
                 if (result == null) result = caseDiagramModel(canvasModel);
                 if (result == null) result = caseHintProvider(canvasModel);
                 if (result == null) result = caseHelpHintProvider(canvasModel);
-                if (result == null) result = caseZentamateModelElement(canvasModel);
+                if (result == null) result = caseZentaModelElement(canvasModel);
                 if (result == null) result = caseDiagramModelContainer(canvasModel);
                 if (result == null) result = caseDocumentable(canvasModel);
                 if (result == null) result = caseProperties(canvasModel);
@@ -371,7 +371,7 @@ public class CanvasSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseZentamateModelElement(IZentamateModelElement object) {
+    public T caseZentaModelElement(IZentaModelElement object) {
         return null;
     }
 

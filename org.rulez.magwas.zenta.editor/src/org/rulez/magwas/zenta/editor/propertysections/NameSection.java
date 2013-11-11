@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -23,7 +23,7 @@ import org.rulez.magwas.zenta.model.INameable;
  * 
  * @author Phillip Beauvoir
  */
-public class NameSection extends AbstractZentamatePropertySection {
+public class NameSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
@@ -35,8 +35,8 @@ public class NameSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model Name event (Undo/Redo and here)
-            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME ||
-                    feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentaPackage.Literals.NAMEABLE__NAME ||
+                    feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                 refreshNameField();
                 fPage.labelProviderChanged(null); // Update Main label
             }

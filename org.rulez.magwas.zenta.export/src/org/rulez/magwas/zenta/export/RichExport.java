@@ -22,9 +22,9 @@ import org.rulez.magwas.zenta.export.Enricher;
 import org.rulez.magwas.zenta.export.EventLog;
 import org.rulez.magwas.zenta.export.IPreferenceConstants;
 import org.rulez.magwas.zenta.export.Widgets;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.model.util.ZentamateResource;
-import org.rulez.magwas.zenta.model.util.ZentamateResourceFactory;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.util.ZentaResource;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.Document;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
@@ -33,7 +33,7 @@ import org.w3c.dom.ls.LSSerializer;
 
 
 /**
- * Rich Exporter of Zentamate model
+ * Rich Exporter of Zenta model
  * <p>
  * Input is the style directory, containing:
  * <ul>
@@ -65,7 +65,7 @@ public class RichExport implements IModelExporter {
     }
     
 	@Override
-	public void export(IZentamateModel model) throws IOException {
+	public void export(IZentaModel model) throws IOException {
         File target = Widgets.askSaveFile(IPreferenceConstants.LAST_RICH_PATH,
                 new String[] { "*.xml" });
         if (null == target) {
@@ -76,14 +76,14 @@ public class RichExport implements IModelExporter {
 		
 	}
 
-    public static void export(IZentamateModel model, File target, IEventLog log) {
+    public static void export(IZentaModel model, File target, IEventLog log) {
         export(model, target, null, log);
     }
     
-    public static void export(IZentamateModel model, File target,
+    public static void export(IZentaModel model, File target,
             File policyfile, IEventLog log) {
         try {
-            ZentamateResource resource = (ZentamateResource) ZentamateResourceFactory
+            ZentaResource resource = (ZentaResource) ZentaResourceFactory
                     .createResource(target);
             resource.getContents().add(model);
             // we get it in xml

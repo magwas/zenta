@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.CompositionConn
  * 
  * @author Phillip Beauvoir
  */
-public class CompositionConnectionEditPart extends AbstractZentamateConnectionEditPart {
+public class CompositionConnectionEditPart extends AbstractZentaConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {

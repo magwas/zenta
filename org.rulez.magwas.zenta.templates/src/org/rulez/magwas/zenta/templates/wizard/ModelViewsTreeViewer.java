@@ -17,7 +17,7 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -109,7 +109,7 @@ public class ModelViewsTreeViewer extends TreeViewer {
         
         @Override
         public Image getImage(Object element) {
-            return ZentamateLabelProvider.INSTANCE.getImage(element);
+            return ZentaLabelProvider.INSTANCE.getImage(element);
         }
     }
 }

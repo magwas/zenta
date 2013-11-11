@@ -15,13 +15,13 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 
 
 /**
- * Adapter to allocate and/or store unique IDs for child objects of an Zentamate model as they are added or de-serialised.
+ * Adapter to allocate and/or store unique IDs for child objects of an Zenta model as they are added or de-serialised.
  *
  * IDs in IIdentifier need to be unique for the model so we need a system to allocate and track them.
  * This adapter will listen for child elements added to the model, both when deserialising from file
  * and when the user creates a child element. The IDs are cached to check for duplicates.
  * 
- * In order for this to work a model object should be added to the main ZentamateModel first *before* any of its
+ * In order for this to work a model object should be added to the main ZentaModel first *before* any of its
  * child objects are added (would be orphaned otherwise).
  * 
  * IDs are not removed from the cache if an element is deleted in case the user performs an Undo operation.

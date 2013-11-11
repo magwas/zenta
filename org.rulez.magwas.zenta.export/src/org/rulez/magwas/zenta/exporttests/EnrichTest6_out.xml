@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <zenta:ZentamateDiagramModel xmlns:zenta="http://magwas.rulez.org/zenta"
+  <zenta:ZentaDiagramModel xmlns:zenta="http://magwas.rulez.org/zenta"
                                     connectionRouterType="1"
                                     id="thenode"
                                     name="funkció - workflow">
@@ -13,7 +13,7 @@
           </child>
       </child>
       <property key="associatedObjectClass" value="Function"/>
-  </zenta:ZentamateDiagramModel>
+  </zenta:ZentaDiagramModel>
     <element id="8c360738"
             name="Megadja az adatait"
             xsi:type="zenta:BusinessProcess">

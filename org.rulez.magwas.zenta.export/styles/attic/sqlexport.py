@@ -95,7 +95,7 @@ CREATE TABLE object (
     primary key (version,id),
     foreign key (version,parent) references object(version,id) on delete cascade
 );
-comment on table object is 'elements (including ZentamateElements and relations),childs and sourceConnections, no access for mortals';
+comment on table object is 'elements (including ZentaElements and relations),childs and sourceConnections, no access for mortals';
 
 create index i_object_name on object(name);
 create index i_object_type on object(type);

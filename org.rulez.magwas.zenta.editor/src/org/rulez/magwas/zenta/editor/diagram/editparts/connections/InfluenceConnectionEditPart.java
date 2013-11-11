@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.InfluenceConnec
  * 
  * @author Phillip Beauvoir
  */
-public class InfluenceConnectionEditPart extends AbstractZentamateConnectionEditPart {
+public class InfluenceConnectionEditPart extends AbstractZentaConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {

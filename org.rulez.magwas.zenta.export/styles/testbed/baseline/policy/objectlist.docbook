@@ -47,7 +47,7 @@
             <td/>
             <td/>
             <td>An objectclass predefined by Zenta.This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.</td>
-            <td>ZentamateObjectClass</td>
+            <td>ZentaObjectClass</td>
          </tr>
          <tr>
             <td>d2886808</td>
@@ -518,7 +518,7 @@
             <td>81c4876a</td>
             <td>there is a specialisation relationship from the ancestor to the objectClass</td>
             <td>0</td>
-            <td>//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
+            <td>//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentaObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
             <td>true</td>
          </tr>
          <tr>
@@ -677,12 +677,12 @@
          </tr>
       </table>
    </section>
-   <section id="ZentamateObjectClass">
-      <title>ZentamateObjectClass</title>
+   <section id="ZentaObjectClass">
+      <title>ZentaObjectClass</title>
       <para>
-         <link xlink:href="csv/ZentamateObjectClass.csv" xrefstyle="what?">csv download</link>
+         <link xlink:href="csv/ZentaObjectClass.csv" xrefstyle="what?">csv download</link>
       </para>
-      <table id="ZentamateObjectClass.table">
+      <table id="ZentaObjectClass.table">
          <tr>
             <td>id</td>
             <td>description</td>
@@ -735,7 +735,7 @@
          </tr>
          <tr>
             <td>fd882843</td>
-            <td>A Node as defined by Zentamate</td>
+            <td>A Node as defined by Zenta</td>
             <td>zenta:Node</td>
          </tr>
          <tr>

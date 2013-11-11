@@ -96,8 +96,8 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.rulez.magwas.zenta.editor.diagram.ZentamateDiagramEditor"
-            contributorClass="org.rulez.magwas.zenta.editor.diagram.ZentamateDiagramEditorActionBarContributor"
+            class="org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor"
+            contributorClass="org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditorActionBarContributor"
             default="false"
             icon="img/diagram-16.png"
             id="org.rulez.magwas.zenta.editor.diagramEditor"
@@ -188,16 +188,16 @@
       <propertySections
             contributorId="org.rulez.magwas.zenta.editor">
          <propertySection
-               class="org.rulez.magwas.zenta.editor.propertysections.ZentamateModelSection"
+               class="org.rulez.magwas.zenta.editor.propertysections.ZentaModelSection"
                id="zentaModelSection"
                tab="main.tab">
             <input
-                  type="org.rulez.magwas.zenta.model.IZentamateModel">
+                  type="org.rulez.magwas.zenta.model.IZentaModel">
             </input>
          </propertySection>
          <propertySection
-               class="org.rulez.magwas.zenta.editor.propertysections.ZentamateElementSection"
-               filter="org.rulez.magwas.zenta.editor.propertysections.ZentamateElementSection$Filter"
+               class="org.rulez.magwas.zenta.editor.propertysections.ZentaElementSection"
+               filter="org.rulez.magwas.zenta.editor.propertysections.ZentaElementSection$Filter"
                id="zentaElementSection"
                tab="main.tab">
          </propertySection>
@@ -281,6 +281,14 @@
          <propertySection
                class="org.rulez.magwas.zenta.editor.propertysections.FillColorSection"
                id="fillColorSection"
+               tab="appearance.tab">
+            <input
+                  type="org.rulez.magwas.zenta.editor.diagram.editparts.IColoredEditPart">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.rulez.magwas.zenta.editor.propertysections.ElementShapeSection"
+               id="elementShapeSection"
                tab="appearance.tab">
             <input
                   type="org.rulez.magwas.zenta.editor.diagram.editparts.IColoredEditPart">

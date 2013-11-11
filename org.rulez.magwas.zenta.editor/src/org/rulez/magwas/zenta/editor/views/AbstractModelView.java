@@ -23,12 +23,12 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 
 
@@ -90,7 +90,7 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
     
     @Override
     public String getContributorId() {
-        return ZentamateEditorPlugin.PLUGIN_ID;
+        return ZentaEditorPlugin.PLUGIN_ID;
     }
 
     @SuppressWarnings("rawtypes")
@@ -103,14 +103,14 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
             return new TabbedPropertySheetPage(this);
         }
         
-        // The Selected Zentamate Model in scope
-        if(adapter == IZentamateModel.class) {
-            return getActiveZentamateModel();
+        // The Selected Zenta Model in scope
+        if(adapter == IZentaModel.class) {
+            return getActiveZentaModel();
         }
         
         // CommandStack (requested by GEF's UndoAction and RedoAction and our SaveAction)
         if(adapter == CommandStack.class) {
-            IZentamateModel model = getActiveZentamateModel();
+            IZentaModel model = getActiveZentaModel();
             if(model != null) {
                 return model.getAdapter(CommandStack.class);
             }
@@ -123,9 +123,9 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
     }
     
     /**
-     * @return The active ZentamateModel in scope. May be null
+     * @return The active ZentaModel in scope. May be null
      */
-    protected abstract IZentamateModel getActiveZentamateModel();
+    protected abstract IZentaModel getActiveZentaModel();
     
     // =================================================================================
     //                       Listen to Editor Model Changes
@@ -187,12 +187,12 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
         // Set
         else if(type == Notification.SET) {            
             // Element Name - need to refresh parent node as well as update element because of using a ViewerSorter
-            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME) {
+            if(feature == IZentaPackage.Literals.NAMEABLE__NAME) {
                 getViewer().refresh(((EObject)notifier).eContainer());
                 getViewer().update(notifier, null);
             }
             // Interface type icon
-            else if(feature == IZentamatePackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE) {
+            else if(feature == IZentaPackage.Literals.INTERFACE_ELEMENT__INTERFACE_TYPE) {
                 getViewer().update(notifier, null);
             }
         }
@@ -255,11 +255,11 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
             }
         }
         
-        if(element instanceof IDiagramModelZentamateObject) {
-            element = ((IDiagramModelZentamateObject)element).getZentamateElement();
+        if(element instanceof IDiagramModelZentaObject) {
+            element = ((IDiagramModelZentaObject)element).getZentaElement();
         }
-        else if(element instanceof IDiagramModelZentamateConnection) {
-            element = ((IDiagramModelZentamateConnection)element).getRelationship();
+        else if(element instanceof IDiagramModelZentaConnection) {
+            element = ((IDiagramModelZentaConnection)element).getRelationship();
         }
         
         return (element instanceof IFolder) ? element : null;
@@ -281,11 +281,11 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
             element = msg.getNewValue();
         }
         
-        if(element instanceof IDiagramModelZentamateObject) {
-            element = ((IDiagramModelZentamateObject)element).getZentamateElement();
+        if(element instanceof IDiagramModelZentaObject) {
+            element = ((IDiagramModelZentaObject)element).getZentaElement();
         }
-        else if(element instanceof IDiagramModelZentamateConnection) {
-            element = ((IDiagramModelZentamateConnection)element).getRelationship();
+        else if(element instanceof IDiagramModelZentaConnection) {
+            element = ((IDiagramModelZentaConnection)element).getRelationship();
         }
         
         return element;

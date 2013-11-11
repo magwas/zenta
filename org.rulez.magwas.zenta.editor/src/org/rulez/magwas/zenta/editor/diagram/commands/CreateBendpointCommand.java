@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.eclipse.draw2d.geometry.Dimension;
-import org.rulez.magwas.zenta.model.IZentamateFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 
 
@@ -25,7 +25,7 @@ public class CreateBendpointCommand extends BendpointCommand implements IAnimata
 
     @Override
     public void execute() {
-        fBendpoint = IZentamateFactory.eINSTANCE.createDiagramModelBendpoint();
+        fBendpoint = IZentaFactory.eINSTANCE.createDiagramModelBendpoint();
         
         Dimension dim1 = getFirstRelativeDimension();
         fBendpoint.setStartX(dim1.width);

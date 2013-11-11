@@ -12,9 +12,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.editparts.junctions.OrJunctionEditPart;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.factory.AbstractElementUIProvider;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 
 
 
@@ -26,7 +26,7 @@ import org.rulez.magwas.zenta.model.IZentamatePackage;
 public class OrJunctionUIProvider extends AbstractElementUIProvider {
 
     public EClass providerFor() {
-        return IZentamatePackage.eINSTANCE.getOrJunction();
+        return IZentaPackage.eINSTANCE.getOrJunction();
     }
     
     @Override
@@ -41,12 +41,12 @@ public class OrJunctionUIProvider extends AbstractElementUIProvider {
 
     @Override
     public Image getImage() {
-        return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_JUNCTION_OR_16);
+        return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_JUNCTION_OR_16);
     }
 
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_JUNCTION_OR_16);
+        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_JUNCTION_OR_16);
     }
 
     @Override

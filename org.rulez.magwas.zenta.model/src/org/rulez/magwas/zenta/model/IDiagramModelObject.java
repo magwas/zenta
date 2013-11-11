@@ -20,10 +20,11 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getSourceConnections <em>Source Connections</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getTargetConnections <em>Target Connections</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getFillColor <em>Fill Color</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getElementShape <em>Element Shape</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelObject()
  * @model abstract="true"
  * @generated
  */
@@ -38,7 +39,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bounds</em>' containment reference.
 	 * @see #setBounds(IBounds)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject_Bounds()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelObject_Bounds()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -64,7 +65,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source Connections</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject_SourceConnections()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelObject_SourceConnections()
 	 * @model containment="true"
 	 *        extendedMetaData="name='sourceConnection' kind='element'"
 	 * @generated
@@ -81,7 +82,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Connections</em>' reference list.
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject_TargetConnections()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelObject_TargetConnections()
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
@@ -97,7 +98,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fill Color</em>' attribute.
 	 * @see #setFillColor(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelObject_FillColor()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelObject_FillColor()
 	 * @model
 	 * @generated
 	 */
@@ -112,6 +113,32 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * @generated
 	 */
 	void setFillColor(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Element Shape</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Element Shape</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Element Shape</em>' attribute.
+	 * @see #setElementShape(String)
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelObject_ElementShape()
+	 * @model
+	 * @generated
+	 */
+	String getElementShape();
+
+	/**
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getElementShape <em>Element Shape</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Element Shape</em>' attribute.
+	 * @see #getElementShape()
+	 * @generated
+	 */
+	void setElementShape(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

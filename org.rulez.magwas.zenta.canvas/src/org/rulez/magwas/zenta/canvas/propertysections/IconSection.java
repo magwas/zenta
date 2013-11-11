@@ -42,7 +42,7 @@ import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.propertysections.DiagramModelImageSection;
 import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ILockable;
 
 
@@ -72,10 +72,10 @@ public class IconSection extends DiagramModelImageSection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model event
-            if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH) {
+            if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH) {
                 refreshPreviewImage();
             }
-            else if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED
+            else if(feature == IZentaPackage.Literals.LOCKABLE__LOCKED
                     || feature == ICanvasPackage.Literals.ICONIC__IMAGE_POSITION) {
                 refreshButtons();
             }

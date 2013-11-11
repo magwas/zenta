@@ -16,7 +16,7 @@ import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 /**
@@ -63,7 +63,7 @@ public class SaveAction extends AbstractModelSelectionAction {
     
     @Override
     public void run() {
-        IZentamateModel model = getActiveZentamateModel();
+        IZentaModel model = getActiveZentaModel();
         if(model != null) {
             try {
                 IEditorModelManager.INSTANCE.saveModel(model);
@@ -77,7 +77,7 @@ public class SaveAction extends AbstractModelSelectionAction {
     
     @Override
     protected void updateState() {
-        IZentamateModel model = getActiveZentamateModel();
+        IZentaModel model = getActiveZentaModel();
         setEnabled(IEditorModelManager.INSTANCE.isModelDirty(model));
     }
     

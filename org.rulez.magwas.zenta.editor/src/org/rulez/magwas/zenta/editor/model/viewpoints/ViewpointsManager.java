@@ -12,9 +12,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
-import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 
@@ -55,7 +55,7 @@ public class ViewpointsManager {
      */
     public ImageDescriptor getImageDescriptor(IViewpoint viewPoint) {
         
-        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_VIEWPOINTS_16);
+        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_VIEWPOINTS_16);
     }
     
     private ViewpointsManager() {
@@ -91,12 +91,12 @@ public class ViewpointsManager {
      * @return True if dmo is an allowed component for this Viewpoint
      */
     public boolean isAllowedType(IDiagramModelComponent dmo) {
-        if(dmo instanceof IDiagramModelZentamateObject && dmo.getDiagramModel() instanceof IZentamateDiagramModel) {
-        	if (null == ((IDiagramModelZentamateObject)dmo).getZentamateElement()) {
+        if(dmo instanceof IDiagramModelZentaObject && dmo.getDiagramModel() instanceof IZentaDiagramModel) {
+        	if (null == ((IDiagramModelZentaObject)dmo).getZentaElement()) {
         		return false;
         	}
-            EClass eClass = ((IDiagramModelZentamateObject)dmo).getZentamateElement().eClass();
-            return isAllowedType((IZentamateDiagramModel)dmo.getDiagramModel(), eClass);
+            EClass eClass = ((IDiagramModelZentaObject)dmo).getZentaElement().eClass();
+            return isAllowedType((IZentaDiagramModel)dmo.getDiagramModel(), eClass);
         }
         if(dmo instanceof IDiagramModelConnection) {
             return isAllowedType(((IDiagramModelConnection)dmo).getSource()) && 
@@ -110,7 +110,7 @@ public class ViewpointsManager {
      * @param eClass
      * @return True if eClass is an allowed component for this Viewpoint
      */
-    public boolean isAllowedType(IZentamateDiagramModel dm, EClass eClass) {
+    public boolean isAllowedType(IZentaDiagramModel dm, EClass eClass) {
         if(dm != null) {
             IViewpoint viewPoint = getViewpoint(dm.getViewpoint());
             return viewPoint.isAllowedType(eClass);

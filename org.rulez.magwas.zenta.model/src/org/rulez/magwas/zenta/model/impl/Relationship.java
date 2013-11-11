@@ -8,8 +8,8 @@ package org.rulez.magwas.zenta.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IRelationship;
 
 
@@ -27,7 +27,7 @@ import org.rulez.magwas.zenta.model.IRelationship;
  *
  * @generated
  */
-public abstract class Relationship extends ZentamateElement implements IRelationship {
+public abstract class Relationship extends ZentaElement implements IRelationship {
     /**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -36,7 +36,7 @@ public abstract class Relationship extends ZentamateElement implements IRelation
 	 * @generated
 	 * @ordered
 	 */
-    protected IZentamateElement source;
+    protected IZentaElement source;
 
     /**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -46,7 +46,7 @@ public abstract class Relationship extends ZentamateElement implements IRelation
 	 * @generated
 	 * @ordered
 	 */
-    protected IZentamateElement target;
+    protected IZentaElement target;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -64,7 +64,7 @@ public abstract class Relationship extends ZentamateElement implements IRelation
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.RELATIONSHIP;
+		return IZentaPackage.Literals.RELATIONSHIP;
 	}
 
     /**
@@ -72,7 +72,7 @@ public abstract class Relationship extends ZentamateElement implements IRelation
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IZentamateElement getSource() {
+    public IZentaElement getSource() {
 		return source;
 	}
 
@@ -81,11 +81,11 @@ public abstract class Relationship extends ZentamateElement implements IRelation
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setSource(IZentamateElement newSource) {
-		IZentamateElement oldSource = source;
+    public void setSource(IZentaElement newSource) {
+		IZentaElement oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.RELATIONSHIP__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.RELATIONSHIP__SOURCE, oldSource, source));
 	}
 
     /**
@@ -93,7 +93,7 @@ public abstract class Relationship extends ZentamateElement implements IRelation
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IZentamateElement getTarget() {
+    public IZentaElement getTarget() {
 		return target;
 	}
 
@@ -102,11 +102,11 @@ public abstract class Relationship extends ZentamateElement implements IRelation
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setTarget(IZentamateElement newTarget) {
-		IZentamateElement oldTarget = target;
+    public void setTarget(IZentaElement newTarget) {
+		IZentaElement oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.RELATIONSHIP__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.RELATIONSHIP__TARGET, oldTarget, target));
 	}
 
     /**
@@ -117,9 +117,9 @@ public abstract class Relationship extends ZentamateElement implements IRelation
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentamatePackage.RELATIONSHIP__SOURCE:
+			case IZentaPackage.RELATIONSHIP__SOURCE:
 				return getSource();
-			case IZentamatePackage.RELATIONSHIP__TARGET:
+			case IZentaPackage.RELATIONSHIP__TARGET:
 				return getTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -133,11 +133,11 @@ public abstract class Relationship extends ZentamateElement implements IRelation
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentamatePackage.RELATIONSHIP__SOURCE:
-				setSource((IZentamateElement)newValue);
+			case IZentaPackage.RELATIONSHIP__SOURCE:
+				setSource((IZentaElement)newValue);
 				return;
-			case IZentamatePackage.RELATIONSHIP__TARGET:
-				setTarget((IZentamateElement)newValue);
+			case IZentaPackage.RELATIONSHIP__TARGET:
+				setTarget((IZentaElement)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -151,11 +151,11 @@ public abstract class Relationship extends ZentamateElement implements IRelation
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.RELATIONSHIP__SOURCE:
-				setSource((IZentamateElement)null);
+			case IZentaPackage.RELATIONSHIP__SOURCE:
+				setSource((IZentaElement)null);
 				return;
-			case IZentamatePackage.RELATIONSHIP__TARGET:
-				setTarget((IZentamateElement)null);
+			case IZentaPackage.RELATIONSHIP__TARGET:
+				setTarget((IZentaElement)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -169,9 +169,9 @@ public abstract class Relationship extends ZentamateElement implements IRelation
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.RELATIONSHIP__SOURCE:
+			case IZentaPackage.RELATIONSHIP__SOURCE:
 				return source != null;
-			case IZentamatePackage.RELATIONSHIP__TARGET:
+			case IZentaPackage.RELATIONSHIP__TARGET:
 				return target != null;
 		}
 		return super.eIsSet(featureID);

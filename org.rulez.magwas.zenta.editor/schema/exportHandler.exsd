@@ -3,7 +3,7 @@
 <schema targetNamespace="org.rulez.magwas.zenta.editor" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.rulez.magwas.zenta.editor" id="org.rulez.magwas.zenta.editor.exportHandler" name="Zentamate Export Handler"/>
+         <meta.schema plugin="org.rulez.magwas.zenta.editor" id="org.rulez.magwas.zenta.editor.exportHandler" name="Zenta Export Handler"/>
       </appinfo>
       <documentation>
          Use this extension point to register an export handler

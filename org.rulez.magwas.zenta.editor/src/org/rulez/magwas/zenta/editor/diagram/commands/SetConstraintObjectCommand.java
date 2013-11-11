@@ -8,8 +8,8 @@ package org.rulez.magwas.zenta.editor.diagram.commands;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.osgi.util.NLS;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
-import org.rulez.magwas.zenta.model.IZentamateFactory;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -29,14 +29,14 @@ public class SetConstraintObjectCommand extends Command implements IAnimatableCo
     private IBounds fNewPos, fOldPos;
     
     public SetConstraintObjectCommand(IDiagramModelObject object, Rectangle bounds) {
-        this(object, IZentamateFactory.eINSTANCE.createBounds(bounds.x, bounds.y, bounds.width, bounds.height));
+        this(object, IZentaFactory.eINSTANCE.createBounds(bounds.x, bounds.y, bounds.width, bounds.height));
     }
 
     public SetConstraintObjectCommand(IDiagramModelObject object, IBounds bounds) {
         fObject = object;
         fOldPos = object.getBounds();
         fNewPos = bounds;
-        setLabel(NLS.bind(Messages.SetConstraintObjectCommand_0, ZentamateLabelProvider.INSTANCE.getLabel(object)));
+        setLabel(NLS.bind(Messages.SetConstraintObjectCommand_0, ZentaLabelProvider.INSTANCE.getLabel(object)));
     }
     
     @Override

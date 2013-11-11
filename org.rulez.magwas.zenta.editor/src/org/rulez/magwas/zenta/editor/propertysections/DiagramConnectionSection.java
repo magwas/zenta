@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionLineWidthCommand;
 import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionTextPositionCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.ILockable;
 
@@ -30,7 +30,7 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramConnectionSection extends AbstractZentamatePropertySection {
+public class DiagramConnectionSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
@@ -42,13 +42,13 @@ public class DiagramConnectionSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model event (Undo/Redo and here)
-            if(feature == IZentamatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION) {
+            if(feature == IZentaPackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION) {
                 refreshTextPositionCombo();
             }
-            else if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH) {
+            else if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH) {
                 refreshLineWidthCombo();
             }
-            else if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+            else if(feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }

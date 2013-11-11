@@ -16,15 +16,15 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.IZentamateDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IRelationship;
 
 
@@ -39,7 +39,7 @@ public class TreeViewpointFilterProvider implements IPartListener {
     /**
      * Active Diagram Model
      */
-    private IZentamateDiagramModel fActiveDiagramModel;
+    private IZentaDiagramModel fActiveDiagramModel;
     
     /**
      * Tree Viewer
@@ -77,11 +77,11 @@ public class TreeViewpointFilterProvider implements IPartListener {
     }
     
     /**
-     * Refresh the Zentamate model in the tree
+     * Refresh the Zenta model in the tree
      */
-    private void refreshTreeModel(IZentamateDiagramModel dm) {
+    private void refreshTreeModel(IZentaDiagramModel dm) {
         if(dm != null && isActive()) {
-            IZentamateModel model = dm.getZentamateModel();
+            IZentaModel model = dm.getZentaModel();
             fViewer.refresh(model);
         }
     }
@@ -101,11 +101,11 @@ public class TreeViewpointFilterProvider implements IPartListener {
          * 7. TreeModelViewer.refresh(element) then cancels editing
          */
         if(part instanceof IEditorPart) {
-            IZentamateDiagramModel previous = fActiveDiagramModel;
+            IZentaDiagramModel previous = fActiveDiagramModel;
 
-            // Zentamate editor
-            if(part instanceof IZentamateDiagramEditor) {
-                IZentamateDiagramModel dm = (IZentamateDiagramModel)((IZentamateDiagramEditor)part).getModel();
+            // Zenta editor
+            if(part instanceof IZentaDiagramEditor) {
+                IZentaDiagramModel dm = (IZentaDiagramModel)((IZentaDiagramEditor)part).getModel();
                 
                 if(previous == dm) {
                     return;
@@ -160,22 +160,22 @@ public class TreeViewpointFilterProvider implements IPartListener {
      * @return Color or null
      */
     public Color getTextColor(Object element) {
-        if(isActive() && fActiveDiagramModel != null && element instanceof IZentamateElement) {
+        if(isActive() && fActiveDiagramModel != null && element instanceof IZentaElement) {
             int index = fActiveDiagramModel.getViewpoint();
             IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(index);
             if(viewpoint != null) {
                 // From same model as active diagram
-                IZentamateModel model = ((IZentamateElement)element).getZentamateModel();
-                if(model == fActiveDiagramModel.getZentamateModel()) {
+                IZentaModel model = ((IZentaElement)element).getZentaModel();
+                if(model == fActiveDiagramModel.getZentaModel()) {
                     if(element instanceof IRelationship) {
-                        IZentamateElement source = ((IRelationship)element).getSource();
-                        IZentamateElement target = ((IRelationship)element).getTarget();
+                        IZentaElement source = ((IRelationship)element).getSource();
+                        IZentaElement target = ((IRelationship)element).getTarget();
                         if(!viewpoint.isAllowedType(source.eClass()) || !viewpoint.isAllowedType(target.eClass())) {
                             return ColorFactory.get(128, 128, 128);
                         }
                     }
                     else {
-                        if(!viewpoint.isAllowedType(((IZentamateElement)element).eClass())) {
+                        if(!viewpoint.isAllowedType(((IZentaElement)element).eClass())) {
                             return ColorFactory.get(128, 128, 128);
                         }
                     }

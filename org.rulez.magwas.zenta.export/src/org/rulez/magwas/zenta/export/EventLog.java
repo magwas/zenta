@@ -25,10 +25,10 @@ import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.browser.BrowserEditorInput;
 import org.rulez.magwas.zenta.browser.IBrowserEditor;
 import org.rulez.magwas.zenta.export.IEventLog;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
-import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -105,11 +105,11 @@ public class EventLog implements IEventLog {
     }
     
     private void focusElement(String modelid, String elemid) {
-    	List<IZentamateModel> model_list = IEditorModelManager.INSTANCE.getModels();
-        for (IZentamateModel model : model_list) {
+    	List<IZentaModel> model_list = IEditorModelManager.INSTANCE.getModels();
+        for (IZentaModel model : model_list) {
             String thismodelid = model.getId();
             if (thismodelid.equals(modelid)) {
-                EObject theElementToSelect = ZentamateModelUtils.getObjectByID(
+                EObject theElementToSelect = ZentaModelUtils.getObjectByID(
                         model, elemid);
                 UIRequestManager.INSTANCE
                         .fireRequest(new TreeSelectionRequest(this,

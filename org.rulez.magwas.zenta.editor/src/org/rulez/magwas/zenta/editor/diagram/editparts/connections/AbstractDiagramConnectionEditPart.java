@@ -41,7 +41,7 @@ import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.ILockable;
@@ -105,7 +105,7 @@ implements IDiagramConnectionEditPart {
             case Notification.REMOVE_MANY:
             case Notification.MOVE:
             case Notification.SET:
-                if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+                if(feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                     createEditPolicies();
                 }
                 else {
@@ -330,15 +330,15 @@ implements IDiagramConnectionEditPart {
             String name = (String)request.getCellEditor().getValue();
             IDiagramModelConnection connection = getModel();
             return new EObjectFeatureCommand(NLS.bind(Messages.AbstractDiagramConnectionEditPart_0, connection.getName()),
-                    connection, IZentamatePackage.Literals.NAMEABLE__NAME, name);
+                    connection, IZentaPackage.Literals.NAMEABLE__NAME, name);
         }
 
         @Override
         protected void showCurrentEditValue(DirectEditRequest request) {
 //          String value = (String)request.getCellEditor().getValue();
 //          
-//          if(getHostFigure() instanceof IZentamateConnectionFigure) {
-//              ((IZentamateConnectionFigure)getHostFigure()).setConnectionText(value);
+//          if(getHostFigure() instanceof IZentaConnectionFigure) {
+//              ((IZentaConnectionFigure)getHostFigure()).setConnectionText(value);
 //          }
         }
     }

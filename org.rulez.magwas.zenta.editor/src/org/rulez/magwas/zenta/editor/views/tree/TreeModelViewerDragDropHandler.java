@@ -29,8 +29,8 @@ import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveFolderCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveObjectCommand;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.model.IZentamateModelElement;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -145,11 +145,11 @@ public class TreeModelViewerDragDropHandler {
     private void setIsValidTreeSelection(IStructuredSelection selection) {
         fIsValidTreeSelection = true;
         
-        IZentamateModel model = null;
+        IZentaModel model = null;
         
         for(Object object : selection.toArray()) {
             // Can't drag Models
-            if(object instanceof IZentamateModel) {
+            if(object instanceof IZentaModel) {
                 fIsValidTreeSelection = false;
                 break;
             }
@@ -159,8 +159,8 @@ public class TreeModelViewerDragDropHandler {
                 break;
             }
             // Don't allow mixed parent models
-            if(object instanceof IZentamateModelElement) {
-                IZentamateModel m = ((IZentamateModelElement)object).getZentamateModel();
+            if(object instanceof IZentaModelElement) {
+                IZentaModel m = ((IZentaModelElement)object).getZentaModel();
                 if(model != null && m != model) {
                     fIsValidTreeSelection = false;
                     break;
@@ -201,7 +201,7 @@ public class TreeModelViewerDragDropHandler {
                 for(String path : paths) {
                     File file = new File(path);
                     // Zenta
-                    if(file.getName().toLowerCase().endsWith(IEditorModelManager.ARCHIMATE_FILE_EXTENSION)
+                    if(file.getName().toLowerCase().endsWith(IEditorModelManager.ZENTA_FILE_EXTENSION)
                             && !IEditorModelManager.INSTANCE.isModelLoaded(file)) {
                         IEditorModelManager.INSTANCE.openModel(file);
                     }

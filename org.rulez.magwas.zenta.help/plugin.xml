@@ -206,7 +206,7 @@
             title="%hint.title.61">
       </hint>
       <hint
-            class="org.rulez.magwas.zenta.model.IZentamateModel"
+            class="org.rulez.magwas.zenta.model.IZentaModel"
             file="hints/model.html"
             title="%hint.title.62">
       </hint>

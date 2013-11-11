@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.diagram.DiagramImageFigure;
 import org.rulez.magwas.zenta.editor.diagram.policies.BasicConnectionPolicy;
 import org.rulez.magwas.zenta.editor.diagram.policies.PartComponentEditPolicy;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 
 
@@ -37,7 +37,7 @@ implements IConstrainedSizeEditPart {
         Object feature = msg.getFeature();
 
         // Reset Image
-        if(msg.getEventType() == Notification.SET && (feature == IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH)) {
+        if(msg.getEventType() == Notification.SET && (feature == IZentaPackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH)) {
             getFigure().updateImage();
         }
         else {

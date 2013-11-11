@@ -13,7 +13,7 @@ import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionRouterTypeCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -39,7 +39,7 @@ public abstract class ConnectionRouterAction extends Action implements Disposabl
         @Override
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
-            if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE) {
+            if(feature == IZentaPackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE) {
                 update();
             }
         }

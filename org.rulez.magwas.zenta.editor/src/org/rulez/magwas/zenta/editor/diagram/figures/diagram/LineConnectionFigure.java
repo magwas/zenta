@@ -13,7 +13,7 @@ import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.swt.SWT;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.connections.AbstractDiagramConnectionFigure;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 
 
@@ -158,7 +158,7 @@ public class LineConnectionFigure extends AbstractDiagramConnectionFigure {
             return null;
         }
         
-        String text = ZentamateLabelProvider.INSTANCE.getLabel(getModelConnection());
+        String text = ZentaLabelProvider.INSTANCE.getLabel(getModelConnection());
         tooltip.setText(text);
         tooltip.setType(Messages.LineConnectionFigure_0);
         

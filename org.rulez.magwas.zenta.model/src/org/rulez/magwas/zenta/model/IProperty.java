@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getProperty()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getProperty()
  * @model
  * @generated
  */
@@ -38,7 +38,7 @@ public interface IProperty extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Key</em>' attribute.
 	 * @see #setKey(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getProperty_Key()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getProperty_Key()
 	 * @model default=""
 	 * @generated
 	 */
@@ -65,7 +65,7 @@ public interface IProperty extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getProperty_Value()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getProperty_Value()
 	 * @model default=""
 	 * @generated
 	 */
@@ -92,7 +92,7 @@ public interface IProperty extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Generated</em>' attribute.
 	 * @see #setGenerated(boolean)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getProperty_Generated()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getProperty_Generated()
 	 * @model default="false"
 	 * @generated
 	 */

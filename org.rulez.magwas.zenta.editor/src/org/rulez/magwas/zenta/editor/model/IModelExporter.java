@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.editor.model;
 
 import java.io.IOException;
 
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 /**
@@ -17,6 +17,6 @@ import org.rulez.magwas.zenta.model.IZentamateModel;
  */
 public interface IModelExporter {
 
-    void export(IZentamateModel model) throws IOException;
+    void export(IZentaModel model) throws IOException;
 
 }

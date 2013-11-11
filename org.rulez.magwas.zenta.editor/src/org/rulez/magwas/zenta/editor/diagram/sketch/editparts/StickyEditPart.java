@@ -32,7 +32,7 @@ import org.rulez.magwas.zenta.editor.diagram.sketch.figures.StickyFigure;
 import org.rulez.magwas.zenta.editor.diagram.sketch.policies.SketchConnectionPolicy;
 import org.rulez.magwas.zenta.editor.diagram.sketch.policies.SketchDNDEditPolicy;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
 
@@ -128,7 +128,7 @@ implements IColoredEditPart, ITextAlignedEditPart  {
         protected Command getDirectEditCommand(DirectEditRequest request) {
             String content = (String)request.getCellEditor().getValue();
             return new EObjectFeatureCommand(Messages.StickyEditPart_0, getModel(),
-                    IZentamatePackage.Literals.TEXT_CONTENT__CONTENT, content);
+                    IZentaPackage.Literals.TEXT_CONTENT__CONTENT, content);
         }
 
         @Override

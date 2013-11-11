@@ -14,8 +14,8 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
-import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 public class ViewpointAction extends Action implements Disposable {
     
     private IWorkbenchPart part;
-    private IZentamateDiagramModel diagramModel;
+    private IZentaDiagramModel diagramModel;
     private IViewpoint viewPoint;
     
     /*
@@ -38,7 +38,7 @@ public class ViewpointAction extends Action implements Disposable {
         @Override
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
-            if(feature == IZentamatePackage.Literals.ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT) {
+            if(feature == IZentaPackage.Literals.ZENTA_DIAGRAM_MODEL__VIEWPOINT) {
                 update();
             }
         }
@@ -54,7 +54,7 @@ public class ViewpointAction extends Action implements Disposable {
         this.part = part;
         this.viewPoint = viewPoint;
         
-        diagramModel = (IZentamateDiagramModel)part.getAdapter(IDiagramModel.class);
+        diagramModel = (IZentaDiagramModel)part.getAdapter(IDiagramModel.class);
         diagramModel.eAdapters().add(eAdapter);
         update();
     }
@@ -64,7 +64,7 @@ public class ViewpointAction extends Action implements Disposable {
         if(isChecked()) {
             CommandStack stack = (CommandStack)part.getAdapter(CommandStack.class);
             stack.execute(new EObjectFeatureCommand(Messages.ViewpointAction_0,
-                                diagramModel, IZentamatePackage.Literals.ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT,
+                                diagramModel, IZentaPackage.Literals.ZENTA_DIAGRAM_MODEL__VIEWPOINT,
                                 viewPoint.getIndex()));
         }
     }

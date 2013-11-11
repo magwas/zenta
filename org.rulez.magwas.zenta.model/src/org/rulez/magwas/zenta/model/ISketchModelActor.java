@@ -13,7 +13,7 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getSketchModelActor()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getSketchModelActor()
  * @model
  * @generated
  */

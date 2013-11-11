@@ -44,11 +44,11 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Scale;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedWizardDialog;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.templates.dialog.TemplateManagerDialog;
-import org.rulez.magwas.zenta.templates.impl.model.ZentamateTemplateManager;
+import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -87,7 +87,7 @@ public abstract class NewModelFromTemplateWizardPage extends WizardPage {
         super(pageName);
         fTemplateManager = templateManager;
         init();
-        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
     }
 
     protected abstract void init();
@@ -344,7 +344,7 @@ public abstract class NewModelFromTemplateWizardPage extends WizardPage {
     
     protected TemplateManagerDialog createTemplateManagerDialog() {
         // Use a new instance of a Template Manager as a clone in case user cancels
-        return new TemplateManagerDialog(getShell(), new ZentamateTemplateManager());
+        return new TemplateManagerDialog(getShell(), new ZentaTemplateManager());
     }
     
     /**

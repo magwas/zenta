@@ -19,14 +19,14 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.IZentamateDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.components.PartListenerAdapter;
-import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
 
 
@@ -133,14 +133,14 @@ public class TreeSelectionSynchroniser implements ISelectionChangedListener {
             for(Object o : ((IStructuredSelection)selection).toArray()) {
                 if(o instanceof EditPart) {
                     Object model = ((EditPart)o).getModel();
-                    // Zentamate element
-                    if(model instanceof IDiagramModelZentamateObject) {
-                        model = ((IDiagramModelZentamateObject)model).getZentamateElement();
+                    // Zenta element
+                    if(model instanceof IDiagramModelZentaObject) {
+                        model = ((IDiagramModelZentaObject)model).getZentaElement();
                         list.add(model);
                     }
-                    // Zentamate connection
-                    else if(model instanceof IDiagramModelZentamateConnection) {
-                        model = ((IDiagramModelZentamateConnection)model).getRelationship();
+                    // Zenta connection
+                    else if(model instanceof IDiagramModelZentaConnection) {
+                        model = ((IDiagramModelZentaConnection)model).getRelationship();
                         list.add(model);
                     }
                     // Diagram model
@@ -154,21 +154,21 @@ public class TreeSelectionSynchroniser implements ISelectionChangedListener {
             fTreeView.getViewer().setSelection(new StructuredSelection(list), true);
         }
         
-        // Zentamate objects selection from Tree View, so update any Zentamate Diagram Editors
+        // Zenta objects selection from Tree View, so update any Zenta Diagram Editors
         else if(source instanceof TreeViewer) {
-            List<IZentamateElement> list = new ArrayList<IZentamateElement>();
+            List<IZentaElement> list = new ArrayList<IZentaElement>();
             
-            // Zentamate elements
+            // Zenta elements
             for(Object o : ((IStructuredSelection)selection).toArray()) {
-                if(o instanceof IZentamateElement) {
-                    list.add((IZentamateElement)o);
+                if(o instanceof IZentaElement) {
+                    list.add((IZentaElement)o);
                 }
             }
             
             // Select these in the Diagram Editors
             for(IDiagramModelEditor diagramEditor : fDiagramEditors) {
-                if(diagramEditor instanceof IZentamateDiagramEditor) {
-                    ((IZentamateDiagramEditor)diagramEditor).selectElements(list.toArray(new IZentamateElement[list.size()]));
+                if(diagramEditor instanceof IZentaDiagramEditor) {
+                    ((IZentaDiagramEditor)diagramEditor).selectElements(list.toArray(new IZentaElement[list.size()]));
                 }
             }
         }

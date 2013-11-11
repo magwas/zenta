@@ -20,7 +20,7 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.sketch.ISketchEditor;
 import org.rulez.magwas.zenta.editor.diagram.sketch.editparts.SketchDiagramPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ISketchModel;
 
 
@@ -30,7 +30,7 @@ import org.rulez.magwas.zenta.model.ISketchModel;
  * 
  * @author Phillip Beauvoir
  */
-public class SketchModelBackgroundSection extends AbstractZentamatePropertySection {
+public class SketchModelBackgroundSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.sketchModelDiagramSection"; //$NON-NLS-1$
 
@@ -52,7 +52,7 @@ public class SketchModelBackgroundSection extends AbstractZentamatePropertySecti
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Change made from Menu Action
-            if(feature == IZentamatePackage.Literals.SKETCH_MODEL__BACKGROUND) {
+            if(feature == IZentaPackage.Literals.SKETCH_MODEL__BACKGROUND) {
                 refreshControls();
             }
         }
@@ -84,7 +84,7 @@ public class SketchModelBackgroundSection extends AbstractZentamatePropertySecti
                     fIsExecutingCommand = true;
                     getCommandStack().execute(new EObjectFeatureCommand(Messages.SketchModelBackgroundSection_1,
                             fSketchModel,
-                            IZentamatePackage.Literals.SKETCH_MODEL__BACKGROUND,
+                            IZentaPackage.Literals.SKETCH_MODEL__BACKGROUND,
                             fComboBackground.getSelectionIndex()));
                     fIsExecutingCommand = false;
                 }

@@ -13,7 +13,7 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelNote()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelNote()
  * @model extendedMetaData="name='Note'"
  * @generated
  */

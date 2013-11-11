@@ -1,5 +1,5 @@
 id;description;order;select;multi;
-81c4876a;there is a specialisation relationship from the ancestor to the objectClass;0;//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name;true;
+81c4876a;there is a specialisation relationship from the ancestor to the objectClass;0;//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentaObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name;true;
 d07f34b8;A composition relationship points from here to the attribute;0;//attribute[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid;true;
 1c076398;A composition relation points to the default from the attribute;0;//default[@parentid=//zenta:CompositionRelationship[@source=$id]/@target]/@parentid;true;
 36fbd768;name of the parent node + the documentation of the parent node;0;../@name | ../documentation;;

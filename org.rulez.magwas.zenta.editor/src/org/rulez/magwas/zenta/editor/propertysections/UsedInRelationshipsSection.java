@@ -24,13 +24,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.editparts.IZentamateEditPart;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.diagram.editparts.IZentaEditPart;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
-import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 
@@ -39,7 +39,7 @@ import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
  * 
  * @author Phillip Beauvoir
  */
-public class UsedInRelationshipsSection extends AbstractZentamatePropertySection {
+public class UsedInRelationshipsSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.usedInRelationshipsSection"; //$NON-NLS-1$
     
@@ -50,11 +50,11 @@ public class UsedInRelationshipsSection extends AbstractZentamatePropertySection
         @Override
         public boolean select(Object object) {
             return !(object instanceof IRelationship) &&
-                        (object instanceof IZentamateElement || object instanceof IZentamateEditPart);
+                        (object instanceof IZentaElement || object instanceof IZentaEditPart);
         }
     }
 
-    private IZentamateElement fZentamateElement;
+    private IZentaElement fZentaElement;
     
     private TableViewer fTableViewer;
     private UpdatingTableColumnLayout fTableLayout;
@@ -90,7 +90,7 @@ public class UsedInRelationshipsSection extends AbstractZentamatePropertySection
             }
             
             public Object[] getElements(Object inputElement) {
-                return ZentamateModelUtils.getRelationships((IZentamateElement)inputElement).toArray();
+                return ZentaModelUtils.getRelationships((IZentaElement)inputElement).toArray();
             }
         });
         
@@ -98,17 +98,17 @@ public class UsedInRelationshipsSection extends AbstractZentamatePropertySection
             @Override
             public String getText(Object element) {
                 IRelationship relationship = (IRelationship)element;
-                String name = ZentamateLabelProvider.INSTANCE.getLabel(relationship) + " ("; //$NON-NLS-1$
-                name += ZentamateLabelProvider.INSTANCE.getLabel(relationship.getSource());
+                String name = ZentaLabelProvider.INSTANCE.getLabel(relationship) + " ("; //$NON-NLS-1$
+                name += ZentaLabelProvider.INSTANCE.getLabel(relationship.getSource());
                 name += " - "; //$NON-NLS-1$
-                name += ZentamateLabelProvider.INSTANCE.getLabel(relationship.getTarget());
+                name += ZentaLabelProvider.INSTANCE.getLabel(relationship.getTarget());
                 name += ")"; //$NON-NLS-1$
                 return name;
             }
             
             @Override
             public Image getImage(Object element) {
-                return ZentamateLabelProvider.INSTANCE.getImage(element);
+                return ZentaLabelProvider.INSTANCE.getImage(element);
             }
         });
         
@@ -116,7 +116,7 @@ public class UsedInRelationshipsSection extends AbstractZentamatePropertySection
             public void doubleClick(DoubleClickEvent event) {
                 if(isAlive()) {
                     Object o = ((IStructuredSelection)event.getSelection()).getFirstElement();
-                    if(o instanceof IZentamateElement) {
+                    if(o instanceof IZentaElement) {
                         IRelationship relation = (IRelationship)o;
                         ITreeModelView view = (ITreeModelView)ViewManager.findViewPart(ITreeModelView.ID);
                         if(view != null) {
@@ -132,11 +132,11 @@ public class UsedInRelationshipsSection extends AbstractZentamatePropertySection
     
     @Override
     protected void setElement(Object element) {
-        if(element instanceof IZentamateElement) {
-            fZentamateElement = (IZentamateElement)element;
+        if(element instanceof IZentaElement) {
+            fZentaElement = (IZentaElement)element;
         }
         else if(element instanceof IAdaptable) {
-            fZentamateElement = (IZentamateElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
+            fZentaElement = (IZentaElement)((IAdaptable)element).getAdapter(IZentaElement.class);
         }
         else {
             System.err.println("UsedInRelationshipsSection wants to display for " + element); //$NON-NLS-1$
@@ -146,7 +146,7 @@ public class UsedInRelationshipsSection extends AbstractZentamatePropertySection
     }
     
     protected void refreshControls() {
-        fTableViewer.setInput(fZentamateElement);
+        fTableViewer.setInput(fZentaElement);
         fTableLayout.doRelayout();
     }
     
@@ -157,7 +157,7 @@ public class UsedInRelationshipsSection extends AbstractZentamatePropertySection
 
     @Override
     protected EObject getEObject() {
-        return fZentamateElement;
+        return fZentaElement;
     }
     
     @Override

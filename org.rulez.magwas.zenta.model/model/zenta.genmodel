@@ -2,200 +2,197 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010-2012 Bolton University, UK.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the License&#xD;&#xA;which accompanies this distribution in the file LICENSE.txt"
     modelDirectory="/org.rulez.magwas.zenta.model/src" editorDirectory="/org.rulez.magwas.zenta.editor2/src"
-    modelPluginID="org.rulez.magwas.zenta.model" modelName="Zentamate" nonNLSMarkers="true"
+    modelPluginID="org.rulez.magwas.zenta.model" modelName="Zenta" nonNLSMarkers="true"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     editorPluginID="org.rulez.magwas.zenta.editor2" language="" interfaceNamePattern="I{0}"
     classNamePattern="{0}" runtimePlatform="RCP">
-  <foreignModel>archimate.ecore</foreignModel>
+  <foreignModel>zenta.ecore</foreignModel>
   <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
-  <genPackages prefix="Zentamate" basePackage="org.rulez.magwas.zenta" resource="XML"
-      disposableProviderFactory="true" ecorePackage="archimate.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="archimate.ecore#//FolderType">
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/user"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/business"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/application"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/technology"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/connectors"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/relations"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/diagrams"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/derived"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/motivation"/>
-      <genEnumLiterals ecoreEnumLiteral="archimate.ecore#//FolderType/implementation_migration"/>
+  <genPackages prefix="Zenta" basePackage="org.rulez.magwas.zenta" resource="XML"
+      disposableProviderFactory="true" ecorePackage="zenta.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="zenta.ecore#//FolderType">
+      <genEnumLiterals ecoreEnumLiteral="zenta.ecore#//FolderType/user"/>
+      <genEnumLiterals ecoreEnumLiteral="zenta.ecore#//FolderType/business"/>
+      <genEnumLiterals ecoreEnumLiteral="zenta.ecore#//FolderType/connectors"/>
+      <genEnumLiterals ecoreEnumLiteral="zenta.ecore#//FolderType/relations"/>
+      <genEnumLiterals ecoreEnumLiteral="zenta.ecore#//FolderType/diagrams"/>
+      <genEnumLiterals ecoreEnumLiteral="zenta.ecore#//FolderType/derived"/>
     </genEnums>
-    <genDataTypes ecoreDataType="archimate.ecore#//File"/>
-    <genClasses image="false" ecoreClass="archimate.ecore#//Adapter">
-      <genOperations ecoreOperation="archimate.ecore#//Adapter/getAdapter">
-        <genParameters ecoreParameter="archimate.ecore#//Adapter/getAdapter/adapter"/>
+    <genDataTypes ecoreDataType="zenta.ecore#//File"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//Adapter">
+      <genOperations ecoreOperation="zenta.ecore#//Adapter/getAdapter">
+        <genParameters ecoreParameter="zenta.ecore#//Adapter/getAdapter/adapter"/>
       </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//Adapter/setAdapter">
-        <genParameters ecoreParameter="archimate.ecore#//Adapter/setAdapter/adapter"/>
-        <genParameters ecoreParameter="archimate.ecore#//Adapter/setAdapter/object"/>
-      </genOperations>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//Identifier">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Identifier/id"/>
-    </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//Property">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Property/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Property/value"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Property/generated"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//Properties">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference archimate.ecore#//Properties/properties"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//Nameable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Nameable/name"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//TextContent">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//TextContent/content"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//Documentable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Documentable/documentation"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//Cloneable">
-      <genOperations ecoreOperation="archimate.ecore#//Cloneable/getCopy"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//FolderContainer">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference archimate.ecore#//FolderContainer/folders"/>
-    </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//ZentamateModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ZentamateModel/purpose"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ZentamateModel/file"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ZentamateModel/version"/>
-      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/setDefaults"/>
-      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/addDerivedRelationsFolder"/>
-      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/removeDerivedRelationsFolder"/>
-      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/getDefaultFolderForElement">
-        <genParameters ecoreParameter="archimate.ecore#//ZentamateModel/getDefaultFolderForElement/element"/>
-      </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/getDefaultDiagramModel"/>
-      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/getDiagramModels"/>
-      <genOperations ecoreOperation="archimate.ecore#//ZentamateModel/getFolder">
-        <genParameters ecoreParameter="archimate.ecore#//ZentamateModel/getFolder/type"/>
+      <genOperations ecoreOperation="zenta.ecore#//Adapter/setAdapter">
+        <genParameters ecoreParameter="zenta.ecore#//Adapter/setAdapter/adapter"/>
+        <genParameters ecoreParameter="zenta.ecore#//Adapter/setAdapter/object"/>
       </genOperations>
     </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//ZentamateModelElement">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference archimate.ecore#//ZentamateModelElement/archimateModel"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//Identifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Identifier/id"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//Folder">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference archimate.ecore#//Folder/elements"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Folder/type"/>
+    <genClasses ecoreClass="zenta.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Property/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Property/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Property/generated"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//ZentamateElement"/>
-    <genClasses image="false" ecoreClass="archimate.ecore#//JunctionElement"/>
-    <genClasses image="false" ecoreClass="archimate.ecore#//InterfaceElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//InterfaceElement/interfaceType"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//Properties">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//Properties/properties"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//Junction"/>
-    <genClasses ecoreClass="archimate.ecore#//AndJunction"/>
-    <genClasses ecoreClass="archimate.ecore#//OrJunction"/>
-    <genClasses image="false" ecoreClass="archimate.ecore#//Relationship">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//Relationship/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//Relationship/target"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//Nameable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Nameable/name"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//AssociationRelationship"/>
-    <genClasses ecoreClass="archimate.ecore#//SpecialisationRelationship"/>
-    <genClasses image="false" ecoreClass="archimate.ecore#//BusinessLayerElement"/>
-    <genClasses image="false" ecoreClass="archimate.ecore#//DiagramModelComponent">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelComponent/diagramModel"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//TextContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//TextContent/content"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelContainer">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelContainer/children"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//Documentable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Documentable/documentation"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModel/connectionRouterType"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//Cloneable">
+      <genOperations ecoreOperation="zenta.ecore#//Cloneable/getCopy"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelReference">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelReference/referencedModel"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//FolderContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//FolderContainer/folders"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelObject">
-      <genFeatures createChild="false" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelObject/bounds"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelObject/sourceConnections"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelObject/targetConnections"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelObject/fillColor"/>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelObject/addConnection">
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelObject/addConnection/connection"/>
+    <genClasses ecoreClass="zenta.ecore#//ZentaModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/purpose"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/version"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/setDefaults"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/addDerivedRelationsFolder"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/removeDerivedRelationsFolder"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDefaultFolderForElement">
+        <genParameters ecoreParameter="zenta.ecore#//ZentaModel/getDefaultFolderForElement/element"/>
       </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelObject/removeConnection">
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelObject/removeConnection/connection"/>
-      </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelObject/setBounds">
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelObject/setBounds/x"/>
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelObject/setBounds/y"/>
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelObject/setBounds/width"/>
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelObject/setBounds/height"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDefaultDiagramModel"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDiagramModels"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getFolder">
+        <genParameters ecoreParameter="zenta.ecore#//ZentaModel/getFolder/type"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelGroup"/>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelNote"/>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelImage"/>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelConnection">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelConnection/text"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelConnection/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelConnection/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelConnection/bendpoints"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelConnection/lineWidth"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelConnection/lineColor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelConnection/type"/>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelConnection/connect">
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelConnection/connect/source"/>
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelConnection/connect/target"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//ZentaModelElement">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference zenta.ecore#//ZentaModelElement/zentaModel"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//Folder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//Folder/elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Folder/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="zenta.ecore#//ZentaElement"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//JunctionElement"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//InterfaceElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//InterfaceElement/interfaceType"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//Junction"/>
+    <genClasses ecoreClass="zenta.ecore#//AndJunction"/>
+    <genClasses ecoreClass="zenta.ecore#//OrJunction"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//Relationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Relationship/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Relationship/target"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//AssociationRelationship"/>
+    <genClasses ecoreClass="zenta.ecore#//SpecialisationRelationship"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//BusinessLayerElement"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//DiagramModelComponent">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelComponent/diagramModel"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelContainer">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelContainer/children"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModel/connectionRouterType"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelReference/referencedModel"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelObject/bounds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelObject/sourceConnections"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelObject/targetConnections"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelObject/fillColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelObject/elementShape"/>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelObject/addConnection">
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelObject/addConnection/connection"/>
       </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelConnection/disconnect"/>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelConnection/reconnect"/>
-    </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelBendpoint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelBendpoint/startX"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelBendpoint/startY"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelBendpoint/endX"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelBendpoint/endY"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//FontAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//FontAttribute/font"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//FontAttribute/fontColor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//FontAttribute/textAlignment"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//FontAttribute/textPosition"/>
-      <genOperations ecoreOperation="archimate.ecore#//FontAttribute/getDefaultTextAlignment"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//BorderObject">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//BorderObject/borderColor"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//DiagramModelImageProvider">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelImageProvider/imagePath"/>
-    </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//Bounds">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Bounds/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Bounds/y"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Bounds/width"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Bounds/height"/>
-      <genOperations ecoreOperation="archimate.ecore#//Bounds/getCopy"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="archimate.ecore#//Lockable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//Lockable/locked"/>
-    </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//ZentamateDiagramModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//ZentamateDiagramModel/viewpoint"/>
-    </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelZentamateObject">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelZentamateObject/archimateElement"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//DiagramModelZentamateObject/type"/>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelZentamateObject/addZentamateElementToModel">
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelZentamateObject/addZentamateElementToModel/parent"/>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelObject/removeConnection">
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelObject/removeConnection/connection"/>
       </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelZentamateObject/removeZentamateElementFromModel"/>
-    </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//DiagramModelZentamateConnection">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference archimate.ecore#//DiagramModelZentamateConnection/relationship"/>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelZentamateConnection/addRelationshipToModel">
-        <genParameters ecoreParameter="archimate.ecore#//DiagramModelZentamateConnection/addRelationshipToModel/parent"/>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelObject/setBounds">
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelObject/setBounds/x"/>
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelObject/setBounds/y"/>
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelObject/setBounds/width"/>
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelObject/setBounds/height"/>
       </genOperations>
-      <genOperations ecoreOperation="archimate.ecore#//DiagramModelZentamateConnection/removeRelationshipFromModel"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//BusinessObject"/>
-    <genClasses ecoreClass="archimate.ecore#//SketchModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute archimate.ecore#//SketchModel/background"/>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelGroup"/>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelNote"/>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelImage"/>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelConnection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/text"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelConnection/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelConnection/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelConnection/bendpoints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/lineWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/lineColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/type"/>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelConnection/connect">
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelConnection/connect/source"/>
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelConnection/connect/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelConnection/disconnect"/>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelConnection/reconnect"/>
     </genClasses>
-    <genClasses ecoreClass="archimate.ecore#//SketchModelSticky"/>
-    <genClasses ecoreClass="archimate.ecore#//SketchModelActor"/>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelBendpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelBendpoint/startX"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelBendpoint/startY"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelBendpoint/endX"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelBendpoint/endY"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="zenta.ecore#//FontAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//FontAttribute/font"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//FontAttribute/fontColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//FontAttribute/textAlignment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//FontAttribute/textPosition"/>
+      <genOperations ecoreOperation="zenta.ecore#//FontAttribute/getDefaultTextAlignment"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="zenta.ecore#//BorderObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//BorderObject/borderColor"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="zenta.ecore#//DiagramModelImageProvider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelImageProvider/imagePath"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//Bounds">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Bounds/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Bounds/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Bounds/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Bounds/height"/>
+      <genOperations ecoreOperation="zenta.ecore#//Bounds/getCopy"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="zenta.ecore#//Lockable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Lockable/locked"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//ZentaDiagramModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaDiagramModel/viewpoint"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelZentaObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelZentaObject/zentaElement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelZentaObject/type"/>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelZentaObject/addZentaElementToModel">
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelZentaObject/addZentaElementToModel/parent"/>
+      </genOperations>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelZentaObject/removeZentaElementFromModel"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//DiagramModelZentaConnection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelZentaConnection/relationship"/>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelZentaConnection/addRelationshipToModel">
+        <genParameters ecoreParameter="zenta.ecore#//DiagramModelZentaConnection/addRelationshipToModel/parent"/>
+      </genOperations>
+      <genOperations ecoreOperation="zenta.ecore#//DiagramModelZentaConnection/removeRelationshipFromModel"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//BusinessObject"/>
+    <genClasses ecoreClass="zenta.ecore#//SketchModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//SketchModel/background"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//SketchModelSticky"/>
+    <genClasses ecoreClass="zenta.ecore#//SketchModelActor"/>
   </genPackages>
 </genmodel:GenModel>

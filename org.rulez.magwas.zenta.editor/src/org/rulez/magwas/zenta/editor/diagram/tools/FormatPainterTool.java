@@ -19,9 +19,9 @@ import org.rulez.magwas.zenta.editor.diagram.commands.FontStyleCommand;
 import org.rulez.magwas.zenta.editor.diagram.commands.TextAlignmentCommand;
 import org.rulez.magwas.zenta.editor.diagram.commands.TextPositionCommand;
 import org.rulez.magwas.zenta.editor.diagram.tools.FormatPainterInfo.PaintFormat;
-import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IBorderObject;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IJunction;
@@ -151,8 +151,8 @@ public class FormatPainterTool extends AbstractTool {
 
     protected boolean isPaintableObject(Object object) {
         // Junctions are a no-no
-        if(object instanceof IDiagramModelZentamateObject) {
-            IZentamateElement element = ((IDiagramModelZentamateObject)object).getZentamateElement();
+        if(object instanceof IDiagramModelZentaObject) {
+            IZentaElement element = ((IDiagramModelZentaObject)object).getZentaElement();
             return !(element instanceof IJunction);
         }
         

@@ -16,23 +16,23 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.IZentamateFactory;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModel;
-import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 
 
 /**
  * Factory for Tree Model Viewer to create "New" type actions
- * Each Action will create a new Ecore Zentamate Element and add it to the Ecore Model
+ * Each Action will create a new Ecore Zenta Element and add it to the Ecore Model
  * 
  * Also returns Images for Ecore types and Tree Model types
  * 
@@ -53,7 +53,7 @@ public class TreeModelViewActionFactory {
         List<IAction> list = new ArrayList<IAction>();
 
         // If we have selected a leaf object, go up to parent
-        if(selected instanceof IZentamateElement || selected instanceof IDiagramModel) {
+        if(selected instanceof IZentaElement || selected instanceof IDiagramModel) {
             selected = ((EObject)selected).eContainer();
         }
         
@@ -72,21 +72,21 @@ public class TreeModelViewActionFactory {
 
         switch(f.getType()) {
             case BUSINESS:
-                for(EClass eClass : ZentamateModelUtils.getBusinessClasses()) {
+                for(EClass eClass : ZentaModelUtils.getBusinessClasses()) {
                     IAction action = createNewElementAction(folder, eClass);
                     list.add(action);
                 }
                 break;
 
             case CONNECTORS:
-                for(EClass eClass : ZentamateModelUtils.getConnectorClasses()) {
+                for(EClass eClass : ZentaModelUtils.getConnectorClasses()) {
                     IAction action = createNewElementAction(folder, eClass);
                     list.add(action);
                 }
                 break;
                 
             case DIAGRAMS:
-                list.add(createNewZentamateDiagramAction(folder));
+                list.add(createNewZentaDiagramAction(folder));
                 list.add(createNewSketchAction(folder));
                 break;
 
@@ -98,11 +98,11 @@ public class TreeModelViewActionFactory {
     }
 
     private IAction createNewElementAction(final IFolder folder, final EClass eClass) {
-        IAction action = new Action(ZentamateLabelProvider.INSTANCE.getDefaultName(eClass)) {
+        IAction action = new Action(ZentaLabelProvider.INSTANCE.getDefaultName(eClass)) {
             @Override
             public void run() {
-                // Create a new Zentamate Element, set its name
-                IZentamateElement element = (IZentamateElement)IZentamateFactory.eINSTANCE.create(eClass);
+                // Create a new Zenta Element, set its name
+                IZentaElement element = (IZentaElement)IZentaFactory.eINSTANCE.create(eClass);
                 element.setName(getText());
                 // Execute Command
                 Command cmd = new NewElementCommand(folder, element);
@@ -111,16 +111,16 @@ public class TreeModelViewActionFactory {
             }
         };
 
-        action.setImageDescriptor(ZentamateLabelProvider.INSTANCE.getImageDescriptor(eClass));
+        action.setImageDescriptor(ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass));
         return action;
     }
     
-    private IAction createNewZentamateDiagramAction(final IFolder folder) {
+    private IAction createNewZentaDiagramAction(final IFolder folder) {
         IAction action = new Action(Messages.TreeModelViewActionFactory_0) {
             @Override
             public void run() {
                 // Create a new Diagram Model, set its name
-                IDiagramModel diagramModel = IZentamateFactory.eINSTANCE.createZentamateDiagramModel();
+                IDiagramModel diagramModel = IZentaFactory.eINSTANCE.createZentaDiagramModel();
                 diagramModel.setName(Messages.TreeModelViewActionFactory_1);
                 
                 // Execute Command
@@ -130,7 +130,7 @@ public class TreeModelViewActionFactory {
             }
         };
 
-        action.setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_DIAGRAM_16));
+        action.setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DIAGRAM_16));
         return action;
     }
     
@@ -139,7 +139,7 @@ public class TreeModelViewActionFactory {
             @Override
             public void run() {
                 // Create a new Diagram Model, set its name
-                ISketchModel sketchModel = IZentamateFactory.eINSTANCE.createSketchModel();
+                ISketchModel sketchModel = IZentaFactory.eINSTANCE.createSketchModel();
                 sketchModel.setName(Messages.TreeModelViewActionFactory_3);
                 
                 // Defaults
@@ -153,7 +153,7 @@ public class TreeModelViewActionFactory {
             }
         };
 
-        action.setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_SKETCH_16));
+        action.setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_SKETCH_16));
         return action;
     }
 }

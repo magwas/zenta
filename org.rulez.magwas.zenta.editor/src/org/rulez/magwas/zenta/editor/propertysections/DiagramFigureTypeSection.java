@@ -23,12 +23,12 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.editparts.IZentamateEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.IZentaEditPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IInterfaceElement;
 
@@ -39,7 +39,7 @@ import org.rulez.magwas.zenta.model.IInterfaceElement;
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramFigureTypeSection extends AbstractZentamatePropertySection {
+public class DiagramFigureTypeSection extends AbstractZentaPropertySection {
 
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.diagramFigureTypeSection"; //$NON-NLS-1$
     
@@ -49,8 +49,8 @@ public class DiagramFigureTypeSection extends AbstractZentamatePropertySection {
     public static class Filter implements IFilter {
         @Override
         public boolean select(Object object) {
-           if(object instanceof IZentamateEditPart) {
-               IZentamateElement element = (IZentamateElement)((IZentamateEditPart)object).getAdapter(IZentamateElement.class);
+           if(object instanceof IZentaEditPart) {
+               IZentaElement element = (IZentaElement)((IZentaEditPart)object).getAdapter(IZentaElement.class);
                return element instanceof IInterfaceElement;
            }
            return false;
@@ -65,13 +65,13 @@ public class DiagramFigureTypeSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Model event (Undo/Redo and here!)
-            if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_OBJECT__TYPE) {
+            if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_ZENTA_OBJECT__TYPE) {
                 refreshControls();
             }
         }
     };
     
-    private IDiagramModelZentamateObject fDiagramObject;
+    private IDiagramModelZentaObject fDiagramObject;
     
     private ImageFigure figure1, figure2;
 
@@ -108,8 +108,8 @@ public class DiagramFigureTypeSection extends AbstractZentamatePropertySection {
 
     @Override
     protected void setElement(Object element) {
-        if(element instanceof IZentamateEditPart) {
-            fDiagramObject = (IDiagramModelZentamateObject)((IAdaptable)element).getAdapter(IDiagramModelObject.class);
+        if(element instanceof IZentaEditPart) {
+            fDiagramObject = (IDiagramModelZentaObject)((IAdaptable)element).getAdapter(IDiagramModelObject.class);
         }
         if(fDiagramObject == null) {
             System.err.println("Diagram Object was null in " + getClass()); //$NON-NLS-1$
@@ -152,14 +152,14 @@ public class DiagramFigureTypeSection extends AbstractZentamatePropertySection {
                     if(!selected && isAlive()) {
                         int newType = fDiagramObject.getType() == 0 ? 1 : 0;
                         getCommandStack().execute(new EObjectFeatureCommand(Messages.DiagramFigureTypeSection_0, getEObject(),
-                                IZentamatePackage.Literals.DIAGRAM_MODEL_ARCHIMATE_OBJECT__TYPE, newType));
+                                IZentaPackage.Literals.DIAGRAM_MODEL_ZENTA_OBJECT__TYPE, newType));
                     }
                 }
             });
         }
         
         void setImage(String imageName) {
-            label.setImage(imageName == null ? null : IZentamateImages.ImageFactory.getImage(imageName));
+            label.setImage(imageName == null ? null : IZentaImages.ImageFactory.getImage(imageName));
         }
         
         void setSelected(boolean set) {

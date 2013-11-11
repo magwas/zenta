@@ -23,9 +23,9 @@ import org.rulez.magwas.zenta.editor.diagram.figures.IContainerFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.diagram.GroupFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.diagram.GroupFigure.GroupFigureConnectionAnchor;
-import org.rulez.magwas.zenta.editor.diagram.policies.ZentamateDNDEditPolicy;
-import org.rulez.magwas.zenta.editor.diagram.policies.ZentamateDiagramConnectionPolicy;
-import org.rulez.magwas.zenta.editor.diagram.policies.ZentamateDiagramLayoutPolicy;
+import org.rulez.magwas.zenta.editor.diagram.policies.ZentaDNDEditPolicy;
+import org.rulez.magwas.zenta.editor.diagram.policies.ZentaDiagramConnectionPolicy;
+import org.rulez.magwas.zenta.editor.diagram.policies.ZentaDiagramLayoutPolicy;
 import org.rulez.magwas.zenta.editor.diagram.policies.BasicContainerEditPolicy;
 import org.rulez.magwas.zenta.editor.diagram.policies.ContainerHighlightEditPolicy;
 import org.rulez.magwas.zenta.editor.diagram.policies.PartComponentEditPolicy;
@@ -44,7 +44,7 @@ implements IColoredEditPart, ITextEditPart {
     @Override
     protected void createEditPolicies() {
         // Allow parts to be connected
-        installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ZentamateDiagramConnectionPolicy());
+        installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ZentaDiagramConnectionPolicy());
 
         // Add a policy to handle directly editing the Parts (for example, directly renaming a part)
         installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new PartDirectEditTitlePolicy());
@@ -53,10 +53,10 @@ implements IColoredEditPart, ITextEditPart {
         installEditPolicy(EditPolicy.COMPONENT_ROLE, new PartComponentEditPolicy());
         
         // Add a policy for Native DND
-        installEditPolicy("DND", new ZentamateDNDEditPolicy()); //$NON-NLS-1$
+        installEditPolicy("DND", new ZentaDNDEditPolicy()); //$NON-NLS-1$
         
         // Install a custom layout policy that handles dragging things around and creating new objects
-        installEditPolicy(EditPolicy.LAYOUT_ROLE, new ZentamateDiagramLayoutPolicy());
+        installEditPolicy(EditPolicy.LAYOUT_ROLE, new ZentaDiagramLayoutPolicy());
         
         // Orphaning
         installEditPolicy(EditPolicy.CONTAINER_ROLE, new BasicContainerEditPolicy());

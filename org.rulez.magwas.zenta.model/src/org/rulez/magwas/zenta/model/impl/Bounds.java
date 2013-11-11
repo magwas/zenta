@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBounds;
 
 
@@ -135,7 +135,7 @@ public class Bounds extends EObjectImpl implements IBounds {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.BOUNDS;
+		return IZentaPackage.Literals.BOUNDS;
 	}
 
     /**
@@ -156,7 +156,7 @@ public class Bounds extends EObjectImpl implements IBounds {
 		int oldX = x;
 		x = newX;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.BOUNDS__X, oldX, x));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.BOUNDS__X, oldX, x));
 	}
 
     /**
@@ -177,7 +177,7 @@ public class Bounds extends EObjectImpl implements IBounds {
 		int oldY = y;
 		y = newY;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.BOUNDS__Y, oldY, y));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.BOUNDS__Y, oldY, y));
 	}
 
     /**
@@ -198,7 +198,7 @@ public class Bounds extends EObjectImpl implements IBounds {
 		int oldWidth = width;
 		width = newWidth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.BOUNDS__WIDTH, oldWidth, width));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.BOUNDS__WIDTH, oldWidth, width));
 	}
 
     /**
@@ -236,13 +236,13 @@ public class Bounds extends EObjectImpl implements IBounds {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentamatePackage.BOUNDS__X:
+			case IZentaPackage.BOUNDS__X:
 				return getX();
-			case IZentamatePackage.BOUNDS__Y:
+			case IZentaPackage.BOUNDS__Y:
 				return getY();
-			case IZentamatePackage.BOUNDS__WIDTH:
+			case IZentaPackage.BOUNDS__WIDTH:
 				return getWidth();
-			case IZentamatePackage.BOUNDS__HEIGHT:
+			case IZentaPackage.BOUNDS__HEIGHT:
 				return getHeight();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -256,16 +256,16 @@ public class Bounds extends EObjectImpl implements IBounds {
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentamatePackage.BOUNDS__X:
+			case IZentaPackage.BOUNDS__X:
 				setX((Integer)newValue);
 				return;
-			case IZentamatePackage.BOUNDS__Y:
+			case IZentaPackage.BOUNDS__Y:
 				setY((Integer)newValue);
 				return;
-			case IZentamatePackage.BOUNDS__WIDTH:
+			case IZentaPackage.BOUNDS__WIDTH:
 				setWidth((Integer)newValue);
 				return;
-			case IZentamatePackage.BOUNDS__HEIGHT:
+			case IZentaPackage.BOUNDS__HEIGHT:
 				setHeight((Integer)newValue);
 				return;
 		}
@@ -280,16 +280,16 @@ public class Bounds extends EObjectImpl implements IBounds {
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.BOUNDS__X:
+			case IZentaPackage.BOUNDS__X:
 				setX(X_EDEFAULT);
 				return;
-			case IZentamatePackage.BOUNDS__Y:
+			case IZentaPackage.BOUNDS__Y:
 				setY(Y_EDEFAULT);
 				return;
-			case IZentamatePackage.BOUNDS__WIDTH:
+			case IZentaPackage.BOUNDS__WIDTH:
 				setWidth(WIDTH_EDEFAULT);
 				return;
-			case IZentamatePackage.BOUNDS__HEIGHT:
+			case IZentaPackage.BOUNDS__HEIGHT:
 				setHeight(HEIGHT_EDEFAULT);
 				return;
 		}
@@ -304,13 +304,13 @@ public class Bounds extends EObjectImpl implements IBounds {
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.BOUNDS__X:
+			case IZentaPackage.BOUNDS__X:
 				return x != X_EDEFAULT;
-			case IZentamatePackage.BOUNDS__Y:
+			case IZentaPackage.BOUNDS__Y:
 				return y != Y_EDEFAULT;
-			case IZentamatePackage.BOUNDS__WIDTH:
+			case IZentaPackage.BOUNDS__WIDTH:
 				return width != WIDTH_EDEFAULT;
-			case IZentamatePackage.BOUNDS__HEIGHT:
+			case IZentaPackage.BOUNDS__HEIGHT:
 				return height != HEIGHT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

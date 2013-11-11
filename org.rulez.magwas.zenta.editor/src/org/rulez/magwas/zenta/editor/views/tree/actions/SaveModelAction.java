@@ -12,7 +12,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 
@@ -38,7 +38,7 @@ public class SaveModelAction extends ViewerAction {
     @Override
     public void run() {
         // Get selected Model and save it and any Diagrams via EditorModel Manager
-        IZentamateModel model = getModel();
+        IZentaModel model = getModel();
         if(model != null) {
             try {
                 IEditorModelManager.INSTANCE.saveModel(model);
@@ -55,7 +55,7 @@ public class SaveModelAction extends ViewerAction {
         setEnabled(IEditorModelManager.INSTANCE.isModelDirty(getModel()));
     }
 
-    private IZentamateModel getModel() {
-        return (IZentamateModel)fView.getAdapter(IZentamateModel.class);
+    private IZentaModel getModel() {
+        return (IZentaModel)fView.getAdapter(IZentaModel.class);
     }
 }

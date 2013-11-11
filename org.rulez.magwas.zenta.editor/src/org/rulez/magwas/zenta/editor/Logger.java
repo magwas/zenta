@@ -107,8 +107,8 @@ public final class Logger {
      * @param t Exception that is thrown
      */
     public static void log(int severity, String message, Throwable t) {
-        ZentamateEditorPlugin.INSTANCE.getLog().log(
-                new Status(severity, ZentamateEditorPlugin.INSTANCE.getId(), IStatus.OK, message, t));
+        ZentaEditorPlugin.INSTANCE.getLog().log(
+                new Status(severity, ZentaEditorPlugin.INSTANCE.getId(), IStatus.OK, message, t));
     }
     
     

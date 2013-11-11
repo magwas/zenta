@@ -55,9 +55,9 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 
@@ -83,19 +83,19 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
 
     private TableViewer fTableViewer;
 
-    private IZentamateModel fZentamateModel;
+    private IZentaModel fZentaModel;
 
     private Hashtable<String, KeyEntry> fKeysTable = new Hashtable<String, KeyEntry>();
 
     private Button fButtonDelete, fButtonRename;
     private IAction fActionDelete, fActionRename;
 
-    public UserPropertiesManagerDialog(Shell parentShell, IZentamateModel model) {
+    public UserPropertiesManagerDialog(Shell parentShell, IZentaModel model) {
         super(parentShell, "UserPropertiesManagerDialog"); //$NON-NLS-1$
-        setTitleImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ECLIPSE_IMAGE_IMPORT_PREF_WIZARD));
+        setTitleImage(IZentaImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_IMPORT_PREF_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
 
-        fZentamateModel = model;
+        fZentaModel = model;
 
         getAllUniquePropertyKeysForModel();
     }
@@ -301,7 +301,7 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
     }
 
     private void getAllUniquePropertyKeysForModel() {
-        for(Iterator<EObject> iter = fZentamateModel.eAllContents(); iter.hasNext();) {
+        for(Iterator<EObject> iter = fZentaModel.eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IProperty) {
                 String key = ((IProperty)element).getKey();
@@ -365,7 +365,7 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
         checkRenames(compoundCmd);
         checkDeletions(compoundCmd);
 
-        CommandStack stack = (CommandStack)fZentamateModel.getAdapter(CommandStack.class);
+        CommandStack stack = (CommandStack)fZentaModel.getAdapter(CommandStack.class);
         stack.execute(compoundCmd.unwrap());
     }
 
@@ -373,7 +373,7 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
      * Check for deletions
      */
     private void checkDeletions(CompoundCommand compoundCmd) {
-        for(Iterator<EObject> iter = fZentamateModel.eAllContents(); iter.hasNext();) {
+        for(Iterator<EObject> iter = fZentaModel.eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IProperty) {
                 IProperty property = (IProperty)element;
@@ -403,7 +403,7 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
      * Change all instances of key to new name
      */
     private void addKeyNameChangeCommands(CompoundCommand compoundCmd, String oldName, String newName) {
-        for(Iterator<EObject> iter = fZentamateModel.eAllContents(); iter.hasNext();) {
+        for(Iterator<EObject> iter = fZentaModel.eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IProperty) {
                 String key = ((IProperty)element).getKey();

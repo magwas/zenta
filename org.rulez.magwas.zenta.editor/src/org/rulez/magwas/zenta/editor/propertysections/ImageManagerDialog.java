@@ -54,11 +54,11 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.INameable;
 
 
@@ -85,14 +85,14 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
 
     private Object fSelectedObject;
     
-    private IZentamateModel fSelectedModel;
+    private IZentaModel fSelectedModel;
     private String fSelectedImagePath;
     
     private Map<String, Image> fImageCache = new HashMap<String, Image>();
 
-    public ImageManagerDialog(Shell parentShell, IZentamateModel selectedModel, String selectedImagePath) {
+    public ImageManagerDialog(Shell parentShell, IZentaModel selectedModel, String selectedImagePath) {
         super(parentShell, "ImageManagerDialog"); //$NON-NLS-1$
-        setTitleImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IZentaImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fSelectedModel = selectedModel;
@@ -147,10 +147,10 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
                 Object o = ((IStructuredSelection)event.getSelection()).getFirstElement();
-                if(o instanceof IZentamateModel) {
+                if(o instanceof IZentaModel) {
                     fScale.setEnabled(true);
                     clearGallery();
-                    updateGallery((IZentamateModel)o);
+                    updateGallery((IZentaModel)o);
                 }
             }
         });
@@ -274,7 +274,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                     }
                     // Else select the first valid model that's open
                     else {
-                        for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
+                        for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
                             archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
                             if(archiveManager.hasImages()) {
                                 fModelsViewer.setSelection(new StructuredSelection(model));
@@ -301,7 +301,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
         }
     }
 
-    protected void updateGallery(final IZentamateModel model) {
+    protected void updateGallery(final IZentaModel model) {
         BusyIndicator.showWhile(null, new Runnable() {
             @Override
             public void run() {
@@ -408,7 +408,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             public Object[] getElements(Object inputElement) {
                 List<Object> list = new ArrayList<Object>();
                 
-                for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
+                for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
                     IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
                     if(archiveManager.hasImages()) {
                         list.add(model);
@@ -432,7 +432,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             
             @Override
             public Image getImage(Object element) {
-                return ZentamateLabelProvider.INSTANCE.getImage(element);
+                return ZentaLabelProvider.INSTANCE.getImage(element);
             }
         }
     }

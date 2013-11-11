@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 
 
@@ -19,6 +19,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 public class ConnectionTextPositionCommand extends EObjectFeatureCommand {
     
     public ConnectionTextPositionCommand(IDiagramModelConnection connection, int position) {
-        super(Messages.ConnectionTextPositionCommand_0, connection, IZentamatePackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION, position);
+        super(Messages.ConnectionTextPositionCommand_0, connection, IZentaPackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION, position);
     }
 }

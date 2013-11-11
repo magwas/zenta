@@ -10,8 +10,8 @@ import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
@@ -33,7 +33,7 @@ extends AbstractTextFlowFigure {
             @Override
             public Image getImage() {
                 IDiagramModel dm = ((IDiagramModelReference)getDiagramModelObject()).getReferencedModel();
-                return dm == null ? IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_DIAGRAM_16) : ZentamateLabelProvider.INSTANCE.getImage(dm.eClass());
+                return dm == null ? IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DIAGRAM_16) : ZentaLabelProvider.INSTANCE.getImage(dm.eClass());
             }
         };
         

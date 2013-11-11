@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getBorderObject()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getBorderObject()
  * @model abstract="true"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface IBorderObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Border Color</em>' attribute.
 	 * @see #setBorderColor(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getBorderObject_BorderColor()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBorderObject_BorderColor()
 	 * @model
 	 * @generated
 	 */

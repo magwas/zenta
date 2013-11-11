@@ -28,8 +28,8 @@ import org.rulez.magwas.zenta.canvas.templates.model.CanvasModelTemplate;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
 import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
-import org.rulez.magwas.zenta.model.IZentamateFactory;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ModelVersion;
@@ -198,8 +198,8 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         File tmpFile = File.createTempFile("architemplate", null); //$NON-NLS-1$
         tmpFile.deleteOnExit();
         
-        // Create a new container Zentamate model
-        IZentamateModel tempModel = IZentamateFactory.eINSTANCE.createZentamateModel();
+        // Create a new container Zenta model
+        IZentaModel tempModel = IZentaFactory.eINSTANCE.createZentaModel();
         tempModel.setDefaults();
         tempModel.eAdapters().clear(); // Remove this after default folders have been added, as we'll generate our own IDs
         tempModel.setId(EcoreUtil.generateUUID());

@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.BorderColorCommand;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.ILockable;
 
@@ -35,7 +35,7 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class BorderColorSection extends AbstractZentamatePropertySection {
+public class BorderColorSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
     
@@ -57,8 +57,8 @@ public class BorderColorSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Color event (From Undo/Redo and here)
-            if(feature == IZentamatePackage.Literals.BORDER_OBJECT__BORDER_COLOR ||
-                    feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentaPackage.Literals.BORDER_OBJECT__BORDER_COLOR ||
+                    feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }

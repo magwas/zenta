@@ -20,10 +20,10 @@ import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.ui.services.UIRequestManager;
 import org.rulez.magwas.zenta.editor.views.tree.TreeSelectionRequest;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -74,7 +74,7 @@ public class DuplicateCommandHandler {
      */
     public static boolean canDuplicate(Object element) {
         // Elements
-        if(element instanceof IZentamateElement && !(element instanceof IRelationship)) {
+        if(element instanceof IZentaElement && !(element instanceof IRelationship)) {
             return true;
         }
         // Diagrams
@@ -130,8 +130,8 @@ public class DuplicateCommandHandler {
                 Command cmd = new DuplicateDiagramModelCommand((IDiagramModel)object);
                 compoundCommand.add(cmd);
             }
-            else if(object instanceof IZentamateElement && !(object instanceof IRelationship)) {
-                Command cmd = new DuplicateElementCommand((IZentamateElement)object);
+            else if(object instanceof IZentaElement && !(object instanceof IRelationship)) {
+                Command cmd = new DuplicateElementCommand((IZentaElement)object);
                 compoundCommand.add(cmd);
             }
         }
@@ -240,8 +240,8 @@ public class DuplicateCommandHandler {
                     IDiagramModelObject tgtCopy = fMapping.get(conn.getTarget());
                     connCopy.connect(srcCopy, tgtCopy);
                     
-                    if(conn instanceof IDiagramModelZentamateConnection) {
-                        ((IDiagramModelZentamateConnection)connCopy).setRelationship(((IDiagramModelZentamateConnection)conn).getRelationship());
+                    if(conn instanceof IDiagramModelZentaConnection) {
+                        ((IDiagramModelZentaConnection)connCopy).setRelationship(((IDiagramModelZentaConnection)conn).getRelationship());
                     }
                 }
             }
@@ -251,8 +251,8 @@ public class DuplicateCommandHandler {
             for(IDiagramModelObject childObject : container.getChildren()) {
                 IDiagramModelObject childCopy = (IDiagramModelObject)childObject.getCopy();
                 
-                if(childObject instanceof IDiagramModelZentamateObject) {
-                    ((IDiagramModelZentamateObject)childCopy).setZentamateElement(((IDiagramModelZentamateObject)childObject).getZentamateElement());
+                if(childObject instanceof IDiagramModelZentaObject) {
+                    ((IDiagramModelZentaObject)childCopy).setZentaElement(((IDiagramModelZentaObject)childObject).getZentaElement());
                 }
                 
                 containerCopy.getChildren().add(childCopy);
@@ -279,13 +279,13 @@ public class DuplicateCommandHandler {
      */
     private class DuplicateElementCommand extends Command {
         private IFolder fParent;
-        private IZentamateElement fElementCopy;
+        private IZentaElement fElementCopy;
         
-        public DuplicateElementCommand(IZentamateElement element) {
+        public DuplicateElementCommand(IZentaElement element) {
             setLabel(Messages.DuplicateCommandHandler_4);
 
             fParent = (IFolder)element.eContainer();
-            fElementCopy = (IZentamateElement)element.getCopy();
+            fElementCopy = (IZentaElement)element.getCopy();
             fElementCopy.setName(element.getName() + " " + Messages.DuplicateCommandHandler_3); //$NON-NLS-1$
 
             fNewObjects.add(fElementCopy);

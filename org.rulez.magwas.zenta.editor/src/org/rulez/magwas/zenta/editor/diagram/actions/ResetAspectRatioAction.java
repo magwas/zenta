@@ -16,7 +16,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.diagram.commands.SetConstraintObjectCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.DiagramImageEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.diagram.DiagramImageFigure;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.ILockable;
@@ -37,7 +37,7 @@ public class ResetAspectRatioAction extends SelectionAction {
         setText(TEXT);
         setId(ID);
         setToolTipText(Messages.ResetAspectRatioAction_1);
-        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_ASPECT_RATIO));
+        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ASPECT_RATIO));
     }
 
     @Override

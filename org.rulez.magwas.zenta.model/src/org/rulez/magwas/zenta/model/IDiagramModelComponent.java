@@ -19,7 +19,7 @@ package org.rulez.magwas.zenta.model;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelComponent()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelComponent()
  * @model abstract="true"
  * @generated
  */
@@ -33,7 +33,7 @@ public interface IDiagramModelComponent extends IIdentifier, ICloneable, IAdapte
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Diagram Model</em>' reference.
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getDiagramModelComponent_DiagramModel()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelComponent_DiagramModel()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true"
 	 * @generated
 	 */

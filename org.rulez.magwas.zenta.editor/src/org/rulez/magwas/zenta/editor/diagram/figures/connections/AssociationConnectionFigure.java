@@ -5,7 +5,7 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 
 
 /**
@@ -13,9 +13,9 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
  * 
  * @author Phillip Beauvoir
  */
-public class AssociationConnectionFigure extends AbstractZentamateConnectionFigure {
+public class AssociationConnectionFigure extends AbstractZentaConnectionFigure {
 	
-    public AssociationConnectionFigure(IDiagramModelZentamateConnection connection) {
+    public AssociationConnectionFigure(IDiagramModelZentaConnection connection) {
         super(connection);
     }
 	

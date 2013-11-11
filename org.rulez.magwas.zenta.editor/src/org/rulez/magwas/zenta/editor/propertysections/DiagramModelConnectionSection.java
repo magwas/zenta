@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.actions.ConnectionRouterAction;
 import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionRouterTypeCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -29,7 +29,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramModelConnectionSection extends AbstractZentamatePropertySection {
+public class DiagramModelConnectionSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.diagramModelSection"; //$NON-NLS-1$
 
@@ -41,7 +41,7 @@ public class DiagramModelConnectionSection extends AbstractZentamatePropertySect
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Change made from Menu Action
-            if(feature == IZentamatePackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE) {
+            if(feature == IZentaPackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE) {
                 refreshControls();
             }
         }

@@ -4,7 +4,7 @@
     <folder name="4. Stakeholders" id="f878d39f">
       <documentation>We can see the players of the game here
 </documentation>
-      <element xsi:type="archimate:ZentamateDiagramModel" id="f54a171e" name="Stakeholders">
+      <element xsi:type="archimate:ZentaDiagramModel" id="f54a171e" name="Stakeholders">
         <child xsi:type="archimate:DiagramObject" id="0c331c71" textAlignment="2" archimateElement="62870b91">
           <bounds x="225" y="60" width="448" height="265"/>
           <child xsi:type="archimate:DiagramObject" id="02cbf7e0" textAlignment="2" archimateElement="fbe5dc11">
@@ -44,7 +44,7 @@
     </folder>
     <folder name="2 Use Cases" id="5fe95bf2">
       <folder name="0. Installation" id="1befebae">
-        <element xsi:type="archimate:ZentamateDiagramModel" id="39b45e09" name="installation">
+        <element xsi:type="archimate:ZentaDiagramModel" id="39b45e09" name="installation">
           <child xsi:type="archimate:DiagramObject" id="312100eb" textAlignment="2" archimateElement="135eefa1">
             <bounds x="12" y="24" width="781" height="301"/>
             <sourceConnection xsi:type="archimate:Connection" id="4b0de5ed" source="312100eb" target="6335a3d2" relationship="ee8b72e8"/>
@@ -150,7 +150,7 @@ http://archi.cetis.ac.uk/download/latest/Zenta%20User%20Guide.pdf</documentation
         </element>
       </folder>
       <folder name="1. Configuration" id="7b1f1711">
-        <element xsi:type="archimate:ZentamateDiagramModel" id="82da47db" name="Configuration">
+        <element xsi:type="archimate:ZentaDiagramModel" id="82da47db" name="Configuration">
           <child xsi:type="archimate:DiagramObject" id="65a82167" textAlignment="2" archimateElement="e18c6fa0">
             <bounds y="120" width="169" height="232"/>
             <sourceConnection xsi:type="archimate:Connection" id="e2b75ab9" source="65a82167" target="8da558b0" relationship="7b21adad"/>
@@ -240,7 +240,7 @@ You can use one of the provided styles as a starting point.
         </element>
       </folder>
       <folder name="3. Create a report" id="16d81164">
-        <element xsi:type="archimate:ZentamateDiagramModel" id="3f087392" name="Create a report">
+        <element xsi:type="archimate:ZentaDiagramModel" id="3f087392" name="Create a report">
           <child xsi:type="archimate:DiagramObject" id="da905d6c" textAlignment="2" targetConnections="9bcfcd63 67f2c7ad 0bcda955" archimateElement="9f9acbbf">
             <bounds x="180" y="84"/>
             <sourceConnection xsi:type="archimate:Connection" id="8dc7a739" source="da905d6c" target="289d1181" relationship="ea1a904a"/>
@@ -308,7 +308,7 @@ Hint: By clicking analysis on the properties tab, you will see the views where t
         </element>
       </folder>
       <folder name="4. Troubleshooting" id="8666b00c">
-        <element xsi:type="archimate:ZentamateDiagramModel" id="12cc0a0a" name="Troubleshooting">
+        <element xsi:type="archimate:ZentaDiagramModel" id="12cc0a0a" name="Troubleshooting">
           <child xsi:type="archimate:DiagramObject" id="567edf05" textAlignment="2" targetConnections="93a6c213" archimateElement="e4b300fb">
             <bounds x="48" y="112"/>
             <sourceConnection xsi:type="archimate:Connection" id="1debd499" source="567edf05" target="ae046620" relationship="5c74e971"/>
@@ -553,7 +553,7 @@ The ancestor is represented by a tag named 'ancestor' having an attribute named 
                 </element>
                 <element xsi:type="archimate:DataObject" id="81c4876a" name="there is a specialisation relationship from the ancestor to the objectClass">
                   <property key="default:order" value="0"/>
-                  <property key="default:select" value="//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name"/>
+                  <property key="default:select" value="//objectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentaObjectClass[@parentid=//archimate:SpecialisationRelationship[@source=$id]/@target]/../@name"/>
                   <property key="default:multi" value="true"/>
                 </element>
                 <element xsi:type="archimate:DataObject" id="c496f50f" name="abstract">
@@ -724,7 +724,7 @@ The property is represented by the attribute with the same name in the policy fi
                 </element>
               </folder>
               <folder name="archimateObjectClass" id="22be0ed0">
-                <element xsi:type="archimate:DataObject" id="07ee5607" name="ZentamateObjectClass">
+                <element xsi:type="archimate:DataObject" id="07ee5607" name="ZentaObjectClass">
                   <documentation>An objectclass predefined by Zenta.
 This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.
 </documentation>
@@ -764,7 +764,7 @@ The name is represented by an attribute named 'name' of the objectClass in the p
               </folder>
               <documentation>The metamodel below tells us exactly how to define what attributes an object belonging to an objectClass may and must have, and how can the value of an attribute be computed if it is not directly given (as we have seen above).
 Also there are plenty of examples of objectClass and attribute value definitions.</documentation>
-              <element xsi:type="archimate:ZentamateDiagramModel" id="36318202" name="Policy related objectClasses">
+              <element xsi:type="archimate:ZentaDiagramModel" id="36318202" name="Policy related objectClasses">
                 <child xsi:type="archimate:DiagramObject" id="99034da2" textAlignment="2" targetConnections="e0bbdac0" archimateElement="9bdf194e">
                   <bounds x="264" y="300"/>
                   <sourceConnection xsi:type="archimate:Connection" id="2a86e800" source="99034da2" target="dbc90353" relationship="44d03440"/>
@@ -870,9 +870,9 @@ Also there are plenty of examples of objectClass and attribute value definitions
                 </child>
               </element>
             </folder>
-            <documentation>The current way to define the metamodel is not considered to be the final one, however most probably I will keep this method as well. In the future metamodels will be defined by template diagrams, where the relations of a template object will define its attributes and the way the attributes obtain their value. Also the extension methods defined by Zentamate 2.0 will be fully taken into account. The concepts are already very similar (maybe v2.0 was partly modeled by the Extended Zentamate concept, see the history section), but I yet to check that the standard is actually followed.
-The core concept of the metamodel is objectClass. The objectClass tells us that we are facing a specialisation of an Zentamate object (or any object defined by Zenta, like Folder or model). As an example, we can have an Application Service with the objectClass &lt;b>WebService&lt;/b>. In the metamodel level an objectclass have a parent (a built-in objectclass or a descendant thereof), and maybe some attributes. The attributes themselves have various properties, which may have default values.
-In the next sections we figure out how to define the objectClass for an Zentamate object, and we learn how to define a metamodel.</documentation>
+            <documentation>The current way to define the metamodel is not considered to be the final one, however most probably I will keep this method as well. In the future metamodels will be defined by template diagrams, where the relations of a template object will define its attributes and the way the attributes obtain their value. Also the extension methods defined by Zenta 2.0 will be fully taken into account. The concepts are already very similar (maybe v2.0 was partly modeled by the Extended Zenta concept, see the history section), but I yet to check that the standard is actually followed.
+The core concept of the metamodel is objectClass. The objectClass tells us that we are facing a specialisation of an Zenta object (or any object defined by Zenta, like Folder or model). As an example, we can have an Application Service with the objectClass &lt;b>WebService&lt;/b>. In the metamodel level an objectclass have a parent (a built-in objectclass or a descendant thereof), and maybe some attributes. The attributes themselves have various properties, which may have default values.
+In the next sections we figure out how to define the objectClass for an Zenta object, and we learn how to define a metamodel.</documentation>
           </folder>
           <folder name="2. Creating a policy, checking policy conformance, quick export for xml-aware tools" id="90cc4b63">
             <documentation>You need policy.style for that. It uses the &quot;built-in&quot; policy (generated from this model) to generate a policy named &quot;policy.xml&quot; in the target directory, then uses the generated policy on the model, exporting &quot;archirich.xml&quot; &lt;a href=&quot;objectlist.html&quot;>an object list&lt;/a> in html and docbook format, and a couple of cvs files in the csvdir directory.
@@ -890,7 +890,7 @@ These cases need a well-defined set of rules about the subject matter. The ontol
 </documentation>
         </folder>
         <documentation>In the modeling phase, you describe something (the thing which is modeled) based on some ontology (the metamodel), resulting in a model.
-The Zentamate methodology gives us a metamodel, which is directly useable with Zenta. However often you need a metamodel more detailed than that.
+The Zenta methodology gives us a metamodel, which is directly useable with Zenta. However often you need a metamodel more detailed than that.
 </documentation>
       </folder>
     </folder>
@@ -1030,28 +1030,28 @@ It also serves as an example for the sketchtotable style.
       </element>
     </folder>
     <folder name="6. history" id="2e756ab1">
-      <folder name="Extended Zentamate" id="ec5ff11d">
-        <documentation>The Zentamate 2 standard have introduced methods to extend the underlying metamodel of Zentamate.
+      <folder name="Extended Zenta" id="ec5ff11d">
+        <documentation>The Zenta 2 standard have introduced methods to extend the underlying metamodel of Zenta.
 
 The StyledHtml module will go along these lines.
-For historical purposes you can find my proposal from Zentamate 1 times here:
+For historical purposes you can find my proposal from Zenta 1 times here:
 
-This is a proposal for an extension to Zentamate methodology, adding a metamodel layer in the following way:
-- Instances of Zentamate objects can have properties. This extension is already implemented in Zenta.
+This is a proposal for an extension to Zenta methodology, adding a metamodel layer in the following way:
+- Instances of Zenta objects can have properties. This extension is already implemented in Zenta.
 - There is a 4th layer above the well-known ones: the ontology/metamodel layer, describing concepts derived from core archimate concepts, and the properties associated with that concept.
 - A new concept of the ontology should be either a simple one, or a composite one. There are the following constraints to derive concepts of an ontology:
- - A simple concept should be derived from a core concept of the Zentamate ontology.
+ - A simple concept should be derived from a core concept of the Zenta ontology.
  - A composite concept is a structure built from simple concepts. A composite concept is a &quot;macro&quot;: it is defined by and can always be replaced with a structure of simple concepts, and all properties of the composite concept can be bound to a simple concept in the underlying structure.
 
-As you can see Extended Zentamate is not another arbitrary methodology, because:
+As you can see Extended Zenta is not another arbitrary methodology, because:
 - A model described in the extended archimate methodology can always be described in the core archimate methodology. Moreover a model described in ontology B can be described in ontology A, if B is derived from A.
 - Because of the above, all reasoning which holds for the core archimate methodology will hold for any ontology B based on it. Moreover for each ontology A, and B where B is derived from A, all reasoning for A will hold for B.
 - If there would be a methodology which incompatible with archimate - in the sense that models using that methodology cannot be meaningfully described in archimate - it would not be describeable in the extended methodology either (but archimate is capable to describe everything, so it is merely a theoretical point:).
 - Models using other methodology could be described by first defining the ontology of the other methodology in EA ontology layer, making archimate the mother of all methodologies:)
 
 Reasoning for the necessity of EA:
-Zentamate right now is a closed ontology. It does have a lot of advantages, and EA would not loose any of them, because any model in EA should have a representation in the core ontology. But a closed ontology is not capable to describe our world in the necessary detail . When you start any design work, the first step is to create a view of the world around you. Let's take a sentence from the standard itself to illustrate it: &quot;Examples of business actors are humans, departments, and business units.&quot; So to have the descriptive power, the ontology should be open &quot;downward&quot;.
-This means that archimate as it is would not be able to support a design beyond a point. The more you focus only on some aspects of the world, the deeper you can go using Zentamate, but it comes with the cost that you should neglect other aspects, otherwise they would interfere with your model. And there is invariably a point where another methodology should be used, and the model you built can no longer fully serve the purpose of being a reference point. When you gave your model to a developer and he should rebuild it in UML (or just don't have a frame of thought to develop your model further), it is not just a waste of effort, but makes communication harder because the differing views on the world. For us security people who should care with all the layers and from the conception to the details, this is a nightmare.
+Zenta right now is a closed ontology. It does have a lot of advantages, and EA would not loose any of them, because any model in EA should have a representation in the core ontology. But a closed ontology is not capable to describe our world in the necessary detail . When you start any design work, the first step is to create a view of the world around you. Let's take a sentence from the standard itself to illustrate it: &quot;Examples of business actors are humans, departments, and business units.&quot; So to have the descriptive power, the ontology should be open &quot;downward&quot;.
+This means that archimate as it is would not be able to support a design beyond a point. The more you focus only on some aspects of the world, the deeper you can go using Zenta, but it comes with the cost that you should neglect other aspects, otherwise they would interfere with your model. And there is invariably a point where another methodology should be used, and the model you built can no longer fully serve the purpose of being a reference point. When you gave your model to a developer and he should rebuild it in UML (or just don't have a frame of thought to develop your model further), it is not just a waste of effort, but makes communication harder because the differing views on the world. For us security people who should care with all the layers and from the conception to the details, this is a nightmare.
 With extended archimate the whole development cycle would be traceable in one model, refining not just the model but the ontology with it as development progresses. This makes automated checks for model structure and content reasonable, and even generation of code and configuration is possible. This not just gives the opportunity to help the uninitiated to make quality work, and give the tedious work to machines, but also helps traceability across the different levels of detail. If you ever tried to figure out whether a high-level requirement is fully implemented across a complex system, you will know what I am talking about. </documentation>
       </folder>
     </folder>
@@ -1109,7 +1109,7 @@ With extended archimate the whole development cycle would be traceable in one mo
             <documentation>A server with an operating system, running on a physical or virtual hardware.
 </documentation>
           </element>
-          <element xsi:type="archimate:ZentamateDiagramModel" id="bcd01052" name="Server and Application" connectionRouterType="1">
+          <element xsi:type="archimate:ZentaDiagramModel" id="bcd01052" name="Server and Application" connectionRouterType="1">
             <child xsi:type="archimate:DiagramObject" id="c76a58d9" textAlignment="2" archimateElement="fe5c65b7">
               <bounds x="276" y="57" width="157" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="5af29961" source="c76a58d9" target="e93b7db1" relationship="deaa5799"/>
@@ -1295,7 +1295,7 @@ With extended archimate the whole development cycle would be traceable in one mo
           </element>
         </folder>
         <folder name="models" id="20f46d77">
-          <element xsi:type="archimate:ZentamateDiagramModel" id="b2fca780" name="Salary">
+          <element xsi:type="archimate:ZentaDiagramModel" id="b2fca780" name="Salary">
             <child xsi:type="archimate:DiagramObject" id="503abc6d" textAlignment="2" archimateElement="2da4ddd4">
               <bounds x="480" y="408"/>
               <sourceConnection xsi:type="archimate:Connection" id="f36ba34a" source="503abc6d" target="519c2ad7" relationship="ae814378"/>
@@ -1414,7 +1414,7 @@ There is a trick here: a composition relation points from this to this. (dragged
           <element xsi:type="archimate:Plateau" id="5e780ae3" name="under liquidation"/>
         </folder>
         <folder name="metamodel2" id="4e33d5c1">
-          <element xsi:type="archimate:ZentamateDiagramModel" id="c21a5652" name="metamodel v2" connectionRouterType="1">
+          <element xsi:type="archimate:ZentaDiagramModel" id="c21a5652" name="metamodel v2" connectionRouterType="1">
             <child xsi:type="archimate:DiagramObject" id="ac543711" textAlignment="2" targetConnections="22c25f2b 66171446" archimateElement="c1164ece">
               <bounds x="120" y="275"/>
               <sourceConnection xsi:type="archimate:Connection" id="2682336b" source="ac543711" target="beaa8412" relationship="44e21017"/>
@@ -1580,7 +1580,7 @@ The actor(s) related to this process step is deliberately missing, so you can ha
 There is an event log window. It displays the warnings and errors when exporting the model.If a message contains a link to an element, you can jump to that element by clicking on the link.
 major restructure, now we have two modules. The new one is the browser modul originally developed by Phil to support the event log window.
 You can find user documentation and use cases under Use Cases.
-The Extended Zentamate methodology is documented under introduction.
+The Extended Zenta methodology is documented under introduction.
 The created report is shown in a browser window.
 </documentation>
           </element>
@@ -1594,7 +1594,7 @@ Note that as the application itself is about document control in a way, sometime
 To show the normal overlap between business process stakeholders and governance actors (the business itself) we use real persons.
 
 </documentation>
-        <element xsi:type="archimate:ZentamateDiagramModel" id="951f29b8" name="Document control process">
+        <element xsi:type="archimate:ZentaDiagramModel" id="951f29b8" name="Document control process">
           <child xsi:type="archimate:Group" id="b0afc80b" name="Document governance events">
             <bounds x="80" y="20" width="230" height="409"/>
             <child xsi:type="archimate:DiagramObject" id="1899faf7" textAlignment="2" targetConnections="7262eb22 83d7bc44 36bece3d e2938063 e03fb957" archimateElement="f1864e14">
@@ -1660,7 +1660,7 @@ Note that in a bigger enterprise the governance actors would be defined in anoth
 
 </documentation>
         </element>
-        <element xsi:type="archimate:ZentamateDiagramModel" id="88bba172" name="Version control">
+        <element xsi:type="archimate:ZentaDiagramModel" id="88bba172" name="Version control">
           <child xsi:type="archimate:DiagramObject" id="5611c6f5" textAlignment="2" archimateElement="91d6a6a9">
             <bounds x="60" y="97"/>
             <sourceConnection xsi:type="archimate:Connection" id="bd86b974" source="5611c6f5" target="0056a758" relationship="28e4c025"/>
@@ -1732,7 +1732,7 @@ The person writing a version is used by the version.
           <documentation>The archimate model.</documentation>
         </element>
         <element xsi:type="archimate:DataObject" id="fd882843" name="archimate:Node">
-          <documentation>A Node as defined by Zentamate</documentation>
+          <documentation>A Node as defined by Zenta</documentation>
         </element>
         <element xsi:type="archimate:DataObject" id="ac66eeae" name="archimate:ApplicationComponent">
           <documentation>Application Component</documentation>
@@ -1807,7 +1807,7 @@ It is used to describe the related actors by the documentcontrol style.
               <property key="default:multi" value="true"/>
             </element>
           </folder>
-          <element xsi:type="archimate:ZentamateDiagramModel" id="cd90109a" name="Document Control related classes">
+          <element xsi:type="archimate:ZentaDiagramModel" id="cd90109a" name="Document Control related classes">
             <child xsi:type="archimate:DiagramObject" id="038fc57e" textAlignment="2" archimateElement="c73e22bc">
               <bounds x="76" y="192"/>
               <sourceConnection xsi:type="archimate:Connection" id="731d170f" source="038fc57e" target="1fc8db02" relationship="c017ee74"/>
@@ -1934,7 +1934,7 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
               <property key="default:multi" value="true"/>
             </element>
           </folder>
-          <element xsi:type="archimate:ZentamateDiagramModel" id="0a510e6e" name="Organisation related classes">
+          <element xsi:type="archimate:ZentaDiagramModel" id="0a510e6e" name="Organisation related classes">
             <child xsi:type="archimate:DiagramObject" id="c90e8f1f" textAlignment="2" archimateElement="229a7d9f">
               <bounds x="62" y="96" width="187" height="55"/>
               <sourceConnection xsi:type="archimate:Connection" id="a13cb047" source="c90e8f1f" target="728fcd30" relationship="ce822551"/>
@@ -1989,7 +1989,7 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
           </element>
         </folder>
       </folder>
-      <element xsi:type="archimate:ZentamateDiagramModel" id="5fafcc8d" name="objectClass hierarchy">
+      <element xsi:type="archimate:ZentaDiagramModel" id="5fafcc8d" name="objectClass hierarchy">
         <child xsi:type="archimate:Group" id="bafdc27c" name="Builtin elements">
           <bounds x="72" y="36" width="997" height="241"/>
           <child xsi:type="archimate:DiagramObject" id="798de39b" textAlignment="2" targetConnections="5841f4ae" archimateElement="61091710">
@@ -2025,7 +2025,7 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
           <child xsi:type="archimate:DiagramObject" id="3e659292" textAlignment="2" targetConnections="0b2c2dc8 4e74dbcb" archimateElement="ac66eeae">
             <bounds x="385" y="138" width="229" height="42"/>
           </child>
-          <property key="associatedObjectClass" value="ZentamateObjectClass"/>
+          <property key="associatedObjectClass" value="ZentaObjectClass"/>
         </child>
         <child xsi:type="archimate:Group" id="149b4421" name="objectClasses">
           <bounds x="78" y="336" width="985" height="337"/>
@@ -2112,16 +2112,16 @@ FIXME: all Business Collaborations and Business Roles should have been listed he
 &lt;/ul></documentation>
       </folder>
       <documentation>This module is mainly about two things.
-One is to create reports from your Zentamate model for the different stakeholders. If you are interested in this part, just jump to use cases, where you can find the user documentation.
+One is to create reports from your Zenta model for the different stakeholders. If you are interested in this part, just jump to use cases, where you can find the user documentation.
 
-The other thing is to implement Zentamate Extensions. You can find some introductory text here, and an example implementation in the &quot;Sample policy&quot; section.
+The other thing is to implement Zenta Extensions. You can find some introductory text here, and an example implementation in the &quot;Sample policy&quot; section.
 
 To see some of the possible avenues it would open, see &quot;Possible enhancements&quot;</documentation>
     </element>
   </folder>
   <folder name="Application" id="4bd8be88" type="application">
     <folder name="Application overview" id="f26c5f63">
-      <element xsi:type="archimate:ZentamateDiagramModel" id="40b121a8" name="Application overview">
+      <element xsi:type="archimate:ZentaDiagramModel" id="40b121a8" name="Application overview">
         <child xsi:type="archimate:DiagramObject" id="ac93f087" textAlignment="2" targetConnections="ae00382f 0b2f9c53" archimateElement="4173c76a">
           <bounds x="312" y="84" width="193" height="169"/>
         </child>
@@ -2164,7 +2164,7 @@ To see some of the possible avenues it would open, see &quot;Possible enhancemen
     <folder name="report styles" id="280cc4bd">
       <documentation>The report styles shipped with the styledhtml module
 </documentation>
-      <element xsi:type="archimate:ZentamateDiagramModel" id="2f63a7d9" name="overview of styles">
+      <element xsi:type="archimate:ZentaDiagramModel" id="2f63a7d9" name="overview of styles">
         <child xsi:type="archimate:DiagramObject" id="b216e0ba" textAlignment="2" archimateElement="d3bfc49d">
           <bounds x="48" y="72" width="661" height="213"/>
           <child xsi:type="archimate:DiagramObject" id="e1936bca" textAlignment="2" archimateElement="17ba5f53">
@@ -2265,7 +2265,7 @@ See http://archistyledhtml.sourceforge.net/documentcontrol.html for an example.
         <element xsi:type="archimate:ApplicationComponent" id="6a651a1c" name="VarResolver"/>
         <element xsi:type="archimate:ApplicationComponent" id="4e5276d5" name="Widgets"/>
       </folder>
-      <element xsi:type="archimate:ZentamateDiagramModel" id="1bd96a69" name="styledhtml anatomy">
+      <element xsi:type="archimate:ZentaDiagramModel" id="1bd96a69" name="styledhtml anatomy">
         <child xsi:type="archimate:DiagramObject" id="c60e80d1" textAlignment="2" archimateElement="d7177a48">
           <bounds x="123" y="77" width="682" height="332"/>
           <sourceConnection xsi:type="archimate:Connection" id="89c0894f" source="c60e80d1" target="3f0eb57c" relationship="a9c981e1"/>
@@ -2294,7 +2294,7 @@ We describe the objectclasses used in them here.
 </documentation>
     </folder>
     <folder name="GUI" id="43255a7d">
-      <element xsi:type="archimate:ZentamateDiagramModel" id="f179ca7d" name="GUI">
+      <element xsi:type="archimate:ZentaDiagramModel" id="f179ca7d" name="GUI">
         <child xsi:type="archimate:DiagramObject" id="b882b7a0" textAlignment="2" archimateElement="e18c6fa0">
           <bounds x="36" y="84" width="181" height="253"/>
           <child xsi:type="archimate:DiagramObject" id="16393a81" textAlignment="2" targetConnections="8dd2950d" archimateElement="54c46059">
@@ -2351,7 +2351,7 @@ See troubleshooting for details.
       <element xsi:type="archimate:ApplicationInterface" id="4b027005" name="Template install"/>
     </folder>
     <folder name="dbexport" id="8b99c89d">
-      <element xsi:type="archimate:ZentamateDiagramModel" id="fdd2ec44" name="data structure">
+      <element xsi:type="archimate:ZentaDiagramModel" id="fdd2ec44" name="data structure">
         <child xsi:type="archimate:DiagramObject" id="baab114b" textAlignment="2" archimateElement="33f4221f">
           <bounds x="48" y="35" width="781" height="122"/>
           <child xsi:type="archimate:DiagramObject" id="4b55c485" textAlignment="2" archimateElement="46a217b3">
@@ -2670,7 +2670,7 @@ It should be sorted out to be able to correctly support batch report generation 
   <folder name="Views" id="931a97bb" type="diagrams">
     <property key="report:part" value="structured:hide"/>
   </folder>
-  <purpose>&lt;ul>&lt;li>You have designed something, you have the Zentamate model on it. But you have to create a documentation in the form requested by your client.&lt;/li>
+  <purpose>&lt;ul>&lt;li>You have designed something, you have the Zenta model on it. But you have to create a documentation in the form requested by your client.&lt;/li>
 &lt;li>You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.&lt;/li>
 &lt;li>You work with junior architects or developers. You are tired of checking their models for trivial errors and omissions.&lt;/li>
 &lt;li>You are doing detailed design, and it is boring to do the trivial task of converting the model to config file by hand.&lt;/li>
@@ -2685,7 +2685,7 @@ This module makes possible to &lt;ul>
 &lt;/ul>
 
 This model tries to fulfill multiple purposes:
-- Show how Zentamate can be used in the goovernance of IT
+- Show how Zenta can be used in the goovernance of IT
 - Document the styledhtml Zenta module
 - Serve as an example for both of the above
 - The webpage of the styledhtml module is generated from it. See http://archistyledhtml.sourceforge.net/

@@ -26,8 +26,8 @@ import org.rulez.magwas.zenta.canvas.templates.wizard.NewCanvasFromTemplateWizar
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedWizardDialog;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IZentamateFactory;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
 
 
@@ -67,7 +67,7 @@ public class NewModelWithCanvasExtensionContributionFactory extends ExtensionCon
         
         @Override
         public void run() {
-            IZentamateModel model = IZentamateFactory.eINSTANCE.createZentamateModel();
+            IZentaModel model = IZentaFactory.eINSTANCE.createZentaModel();
             model.setName(Messages.NewModelWithCanvasExtensionContributionFactory_1);
             model.setDefaults();
             IEditorModelManager.INSTANCE.registerModel(model);

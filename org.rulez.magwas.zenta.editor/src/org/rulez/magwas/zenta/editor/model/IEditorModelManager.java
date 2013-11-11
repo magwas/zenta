@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.rulez.magwas.zenta.editor.model.impl.EditorModelManager;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 
@@ -22,8 +22,8 @@ import org.rulez.magwas.zenta.model.IZentamateModel;
  */
 public interface IEditorModelManager {
     
-    String ARCHIMATE_FILE_EXTENSION = ".zenta"; //$NON-NLS-1$
-    String ARCHIMATE_FILE_WILDCARD = "*.zenta"; //$NON-NLS-1$
+    String ZENTA_FILE_EXTENSION = ".zenta"; //$NON-NLS-1$
+    String ZENTA_FILE_WILDCARD = "*.zenta"; //$NON-NLS-1$
     
     String PROPERTY_MODEL_CREATED = "IEditorModelManager.model.created"; //$NON-NLS-1$
     String PROPERTY_MODEL_OPENED = "IEditorModelManager.model.opened"; //$NON-NLS-1$
@@ -57,37 +57,37 @@ public interface IEditorModelManager {
     /**
      * @return Models
      */
-    List<IZentamateModel> getModels();
+    List<IZentaModel> getModels();
 
     /**
      * @return New Model
      */
-    IZentamateModel createNewModel();
+    IZentaModel createNewModel();
     
     /**
      * Register a model in the manager
      * @param model
      */
-    void registerModel(IZentamateModel model);
+    void registerModel(IZentaModel model);
     
     /**
      * Open a model by loading it and opening its Views
      * @return The newly opened model or null
      */
-    IZentamateModel openModel(File file);
+    IZentaModel openModel(File file);
     
     /**
      * Open an existing model
      * @param model
      */
-    void openModel(IZentamateModel model);
+    void openModel(IZentaModel model);
     
     /**
      * Load a model
      * @param file
      * @return The newly loaded model or null
      */
-    IZentamateModel loadModel(File file);
+    IZentaModel loadModel(File file);
     
     /**
      * Close a model
@@ -95,7 +95,7 @@ public interface IEditorModelManager {
      * @return false if user cancels
      * @throws IOException
      */
-    boolean closeModel(IZentamateModel model) throws IOException;
+    boolean closeModel(IZentaModel model) throws IOException;
     
     /**
      * Save model asking user for file name if needed
@@ -103,7 +103,7 @@ public interface IEditorModelManager {
      * @return false if user cancels
      * @throws IOException
      */
-    boolean saveModel(IZentamateModel model) throws IOException;
+    boolean saveModel(IZentaModel model) throws IOException;
     
     /**
      * Save model as asking user for file name
@@ -111,14 +111,14 @@ public interface IEditorModelManager {
      * @return false if user cancels
      * @throws IOException
      */
-    boolean saveModelAs(IZentamateModel model) throws IOException;
+    boolean saveModelAs(IZentaModel model) throws IOException;
     
     /**
      * Check if the model needs saving
      * @param model
      * @return True if model has been changed and needs saving
      */
-    boolean isModelDirty(IZentamateModel model);
+    boolean isModelDirty(IZentaModel model);
     
     /**
      * Save the state of loaded models

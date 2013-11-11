@@ -6,7 +6,7 @@
       <title>Zenta StyledHtml module</title>
       <link rel="stylesheet" href="structured.css" type="text/css" />
       <meta name="generator" content="DocBook XSL Stylesheets V1.75.2" />
-      <meta name="description" content="You have designed something, you have the Zentamate model on it. But you have to create a documentation in the form requested by your client.You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.You work with junior architects or developers. You are tired of checking their models for trivial errors and omissions.You are doing detailed design, and it is boring to do the trivial task of converting the model to config file by hand.   define and document enterprise architecture policiescheck architecture models against those policiesdefine documentation styles for various stakeholders, and generate those documentations from the modelgenerate configuration and code directly from the model      http://archistyledhtml.sourceforge.net/ " />
+      <meta name="description" content="You have designed something, you have the Zenta model on it. But you have to create a documentation in the form requested by your client.You are designing something complex. You want to make sure that you have thought about all aspects and interdependencies.You work with junior architects or developers. You are tired of checking their models for trivial errors and omissions.You are doing detailed design, and it is boring to do the trivial task of converting the model to config file by hand.   define and document enterprise architecture policiescheck architecture models against those policiesdefine documentation styles for various stakeholders, and generate those documentations from the modelgenerate configuration and code directly from the model      http://archistyledhtml.sourceforge.net/ " />
    </head>
    <body>
       <div class="article" title="Zenta StyledHtml module">
@@ -26,7 +26,7 @@
                         <p></p>
                         <p></p>
                         <ul class="itemizedlist" type="disc">
-                           <li class="listitem">You have designed something, you have the Zentamate model on it. But you have to create
+                           <li class="listitem">You have designed something, you have the Zenta model on it. But you have to create
                               a documentation in the form requested by your client.
                            </li>
                            <li class="listitem">You are designing something complex. You want to make sure that you have thought about
@@ -58,7 +58,7 @@
                         </ul>
                      </div>
                      <p></p>This model tries to fulfill multiple purposes:
-                     <p></p>- Show how Zentamate can be used in the goovernance of IT
+                     <p></p>- Show how Zenta can be used in the goovernance of IT
                      <p></p>- Document the styledhtml Zenta module
                      <p></p>- Serve as an example for both of the above
                      <p></p>- The webpage of the styledhtml module is generated from it. See <a class="link" href="http://archistyledhtml.sourceforge.net/" target="_top">http://archistyledhtml.sourceforge.net/</a><p></p>You can find user documentation in the Use Cases section.
@@ -111,7 +111,7 @@
                <dt><span class="section"><a href="#6. history">6. history</a></span></dt>
                <dd>
                   <dl>
-                     <dt><span class="section"><a href="#Extended Zentamate">Extended Zentamate</a></span></dt>
+                     <dt><span class="section"><a href="#Extended Zenta">Extended Zenta</a></span></dt>
                   </dl>
                </dd>
                <dt><span class="section"><a href="#Real-world examples">Real-world examples</a></span></dt>
@@ -167,10 +167,10 @@
                <div></div>
             </div>
             <p>This module is mainly about two things.
-               <p></p>One is to create reports from your Zentamate model for the different stakeholders.
+               <p></p>One is to create reports from your Zenta model for the different stakeholders.
                If you are interested in this part, just jump to use cases, where you can find the
                user documentation.
-               <p></p>The other thing is to implement Zentamate Extensions. You can find some introductory
+               <p></p>The other thing is to implement Zenta Extensions. You can find some introductory
                text here, and an example implementation in the "Sample policy" section.
                <p></p>To see some of the possible avenues it would open, see "Possible enhancements"
             </p>
@@ -532,7 +532,7 @@
                </div>
                <p>In the modeling phase, you describe something (the thing which is modeled) based on
                   some ontology (the metamodel), resulting in a model.
-                  <p></p>The Zentamate methodology gives us a metamodel, which is directly useable with Zenta.
+                  <p></p>The Zenta methodology gives us a metamodel, which is directly useable with Zenta.
                   However often you need a metamodel more detailed than that.
                </p>
                <div class="section" title="1. Simple uses">
@@ -823,16 +823,16 @@
                         most probably I will keep this method as well. In the future metamodels will be defined
                         by template diagrams, where the relations of a template object will define its attributes
                         and the way the attributes obtain their value. Also the extension methods defined
-                        by Zentamate 2.0 will be fully taken into account. The concepts are already very similar
-                        (maybe v2.0 was partly modeled by the Extended Zentamate concept, see the history
+                        by Zenta 2.0 will be fully taken into account. The concepts are already very similar
+                        (maybe v2.0 was partly modeled by the Extended Zenta concept, see the history
                         section), but I yet to check that the standard is actually followed.
                         <p></p>The core concept of the metamodel is objectClass. The objectClass tells us that we
-                        are facing a specialisation of an Zentamate object (or any object defined by Zenta,
+                        are facing a specialisation of an Zenta object (or any object defined by Zenta,
                         like Folder or model). As an example, we can have an Application Service with the
                         objectClass <span class="bold"><strong>WebService</strong></span>. In the metamodel level an objectclass have a parent (a built-in objectclass or a
                         descendant thereof), and maybe some attributes. The attributes themselves have various
                         properties, which may have default values.
-                        <p></p>In the next sections we figure out how to define the objectClass for an Zentamate
+                        <p></p>In the next sections we figure out how to define the objectClass for an Zenta
                         object, and we learn how to define a metamodel.
                      </p>
                      <div class="section" title="1. Ways to define the objectClass">
@@ -1135,7 +1135,7 @@
                            <table class="elementtable" id="d54e951">
                               <tr>
                                  
-                                 <td class="starter" valign="top">ZentamateObjectClass</td>
+                                 <td class="starter" valign="top">ZentaObjectClass</td>
                                  
                                  <td class="starter" valign="top">An objectclass predefined by Zenta.
                                     <p></p>This does not show up in the policy file explicitly. Used to have a starting point
@@ -1656,7 +1656,7 @@
                                           
                                           <td>default:select</td>
                                           
-                                          <td>//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
+                                          <td>//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentaObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name</td>
                                           
                                        </tr>
                                        <tr>
@@ -2441,7 +2441,7 @@
                      
                      <td class="starter" valign="top">zenta:Node</td>
                      
-                     <td class="starter" valign="top">A Node as defined by Zentamate</td>
+                     <td class="starter" valign="top">A Node as defined by Zenta</td>
                      
                   </tr>
                   <tr>
@@ -3398,35 +3398,35 @@
                <div></div>
             </div>
             <p></p>
-            <div class="section" title="Extended Zentamate">
+            <div class="section" title="Extended Zenta">
                <div class="titlepage">
                   <div>
                      <div>
-                        <h3 class="title"><a id="Extended Zentamate"></a>Extended Zentamate
+                        <h3 class="title"><a id="Extended Zenta"></a>Extended Zenta
                         </h3>
                      </div>
                   </div>
                   <div></div>
                </div>
-               <p>The Zentamate 2 standard have introduced methods to extend the underlying metamodel
-                  of Zentamate.
+               <p>The Zenta 2 standard have introduced methods to extend the underlying metamodel
+                  of Zenta.
                   <p></p>The StyledHtml module will go along these lines.
-                  <p></p>For historical purposes you can find my proposal from Zentamate 1 times here:
-                  <p></p>This is a proposal for an extension to Zentamate methodology, adding a metamodel layer
+                  <p></p>For historical purposes you can find my proposal from Zenta 1 times here:
+                  <p></p>This is a proposal for an extension to Zenta methodology, adding a metamodel layer
                   in the following way:
-                  <p></p>- Instances of Zentamate objects can have properties. This extension is already implemented
+                  <p></p>- Instances of Zenta objects can have properties. This extension is already implemented
                   in Zenta.
                   <p></p>- There is a 4th layer above the well-known ones: the ontology/metamodel layer, describing
                   concepts derived from core zenta concepts, and the properties associated with
                   that concept.
                   <p></p>- A new concept of the ontology should be either a simple one, or a composite one.
                   There are the following constraints to derive concepts of an ontology:
-                  <p></p> - A simple concept should be derived from a core concept of the Zentamate ontology.
+                  <p></p> - A simple concept should be derived from a core concept of the Zenta ontology.
                   <p></p> - A composite concept is a structure built from simple concepts. A composite concept
                   is a "macro": it is defined by and can always be replaced with a structure of simple
                   concepts, and all properties of the composite concept can be bound to a simple concept
                   in the underlying structure.
-                  <p></p>As you can see Extended Zentamate is not another arbitrary methodology, because:
+                  <p></p>As you can see Extended Zenta is not another arbitrary methodology, because:
                   <p></p>- A model described in the extended zenta methodology can always be described
                   in the core zenta methodology. Moreover a model described in ontology B can be
                   described in ontology A, if B is derived from A.
@@ -3441,7 +3441,7 @@
                   of the other methodology in EA ontology layer, making zenta the mother of all
                   methodologies:)
                   <p></p>Reasoning for the necessity of EA:
-                  <p></p>Zentamate right now is a closed ontology. It does have a lot of advantages, and EA
+                  <p></p>Zenta right now is a closed ontology. It does have a lot of advantages, and EA
                   would not loose any of them, because any model in EA should have a representation
                   in the core ontology. But a closed ontology is not capable to describe our world in
                   the necessary detail . When you start any design work, the first step is to create
@@ -3450,7 +3450,7 @@
                   units." So to have the descriptive power, the ontology should be open "downward".
                   <p></p>This means that zenta as it is would not be able to support a design beyond a
                   point. The more you focus only on some aspects of the world, the deeper you can go
-                  using Zentamate, but it comes with the cost that you should neglect other aspects,
+                  using Zenta, but it comes with the cost that you should neglect other aspects,
                   otherwise they would interfere with your model. And there is invariably a point where
                   another methodology should be used, and the model you built can no longer fully serve
                   the purpose of being a reference point. When you gave your model to a developer and
@@ -3839,7 +3839,7 @@
                            <p></p>major restructure, now we have two modules. The new one is the browser modul originally
                            developed by Phil to support the event log window.
                            <p></p>You can find user documentation and use cases under Use Cases.
-                           <p></p>The Extended Zentamate methodology is documented under introduction.
+                           <p></p>The Extended Zenta methodology is documented under introduction.
                            <p></p>The created report is shown in a browser window.
                         </td>
                         

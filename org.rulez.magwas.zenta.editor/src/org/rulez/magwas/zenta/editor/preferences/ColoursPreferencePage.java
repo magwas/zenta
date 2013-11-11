@@ -23,10 +23,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
-import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -72,7 +72,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         client1.setLayout(new GridLayout(2, false));
         client1.setLayoutData(new GridData(SWT.TOP, SWT.TOP, false, false));
         
-        for(EClass eClass : ZentamateModelUtils.getBusinessClasses()) {
+        for(EClass eClass : ZentaModelUtils.getBusinessClasses()) {
             createColorSelector(client1, eClass);
         }
         
@@ -91,7 +91,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     private void createColorSelector(Composite parent, EClass eClass) {
         Label l = new Label(parent, SWT.NULL);
-        l.setText(ZentamateLabelProvider.INSTANCE.getDefaultName(eClass));
+        l.setText(ZentaLabelProvider.INSTANCE.getDefaultName(eClass));
         ColorSelector colorSelector = new ColorSelector(parent);
         fDefaultFillColorsLookup.put(colorSelector, eClass);
         

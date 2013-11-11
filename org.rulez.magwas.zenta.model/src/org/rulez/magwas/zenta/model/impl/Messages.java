@@ -11,23 +11,23 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.model.impl.messages"; //$NON-NLS-1$
 
-    public static String ZentamateModel_0;
+    public static String ZentaModel_0;
 
-    public static String ZentamateModel_1;
+    public static String ZentaModel_1;
 
-    public static String ZentamateModel_2;
+    public static String ZentaModel_2;
 
-    public static String ZentamateModel_3;
+    public static String ZentaModel_3;
 
-    public static String ZentamateModel_4;
+    public static String ZentaModel_4;
 
-    public static String ZentamateModel_5;
+    public static String ZentaModel_5;
 
-    public static String ZentamateModel_6;
+    public static String ZentaModel_6;
 
-    public static String ZentamateModel_7;
+    public static String ZentaModel_7;
 
-    public static String ZentamateModel_8;
+    public static String ZentaModel_8;
     static {
         // initialize resource bundle
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);

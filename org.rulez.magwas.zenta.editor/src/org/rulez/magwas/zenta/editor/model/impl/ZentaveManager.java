@@ -32,10 +32,10 @@ import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.utils.FileUtils;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
-import org.rulez.magwas.zenta.model.util.ZentamateResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 
 
 
@@ -54,7 +54,7 @@ public class ZentaveManager implements IZentaveManager {
     /**
      * The ZentaMate model
      */
-    private IZentamateModel fModel;
+    private IZentaModel fModel;
     
     /**
      * Images are loaded
@@ -87,7 +87,7 @@ public class ZentaveManager implements IZentaveManager {
             }
             // Image path set
             else if(msg.getEventType() == Notification.SET) {
-                if(msg.getFeature() == IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH) {
+                if(msg.getFeature() == IZentaPackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH) {
                     String imagePath = (String)msg.getNewValue();
                     if(imagePath != null && !fLoadedImagePaths.contains(imagePath)) {
                         fLoadedImagePaths.add(imagePath);
@@ -100,7 +100,7 @@ public class ZentaveManager implements IZentaveManager {
     /**
      * @param model The owning model
      */
-    public ZentaveManager(IZentamateModel model) {
+    public ZentaveManager(IZentaModel model) {
         fModel = model;
         fModel.eAdapters().add(fModelAdapter);
     }
@@ -258,7 +258,7 @@ public class ZentaveManager implements IZentaveManager {
      * Save the model to XML File format
      */
     private void saveModelToXMLFile(File file) throws IOException {
-        ResourceSet resourceSet = ZentamateResourceFactory.createResourceSet();
+        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
         Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
         resource.getContents().add(fModel);
         resource.save(null);
@@ -317,7 +317,7 @@ public class ZentaveManager implements IZentaveManager {
         // Gather all image paths that are in use in other models
         List<String> allPathsInUse = new ArrayList<String>();
         
-        for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
+        for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
             if(model != fModel) { // don't bother with this model as we no longer use any images
                 ZentaveManager archiveManager = (ZentaveManager)model.getAdapter(IZentaveManager.class);
                 for(String imagePath : archiveManager.fLoadedImagePaths) {

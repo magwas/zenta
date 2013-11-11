@@ -10,22 +10,22 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            class="org.rulez.magwas.zenta.model.IZentamatePackage"
+            class="org.rulez.magwas.zenta.model.IZentaPackage"
             genModel="model/zenta.genmodel"
             uri="http://magwas.rulez.org/zenta">
       </package>
       <package
             uri="http://magwas.rulez.org/zenta/1.0"
-            class="org.rulez.magwas.zenta.model.IZentamatePackage"
+            class="org.rulez.magwas.zenta.model.IZentaPackage"
             genModel="model/zenta.genmodel"/>
    </extension>
    
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="zenta"
-            class="org.rulez.magwas.zenta.model.util.ZentamateResourceFactory"/>
+            class="org.rulez.magwas.zenta.model.util.ZentaResourceFactory"/>
       <parser
-            class="org.rulez.magwas.zenta.model.util.ZentamateResourceFactory"
+            class="org.rulez.magwas.zenta.model.util.ZentaResourceFactory"
             type="xml">
       </parser>
    </extension>

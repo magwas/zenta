@@ -13,7 +13,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.GroupEditPart;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 
 
@@ -23,7 +23,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelGroup;
  * 
  * @author Phillip Beauvoir
  */
-public class GroupSection extends AbstractZentamatePropertySection {
+public class GroupSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
     
@@ -35,12 +35,12 @@ public class GroupSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Element Name event (Undo/Redo and here)
-            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME) {
+            if(feature == IZentaPackage.Literals.NAMEABLE__NAME) {
                 refreshNameField();
                 fPage.labelProviderChanged(null); // Update Main label
             }
             // Element Documentation event (Undo/Redo and here)
-            else if(feature == IZentamatePackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
+            else if(feature == IZentaPackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
                 refreshDocumentationField();
             }
         }

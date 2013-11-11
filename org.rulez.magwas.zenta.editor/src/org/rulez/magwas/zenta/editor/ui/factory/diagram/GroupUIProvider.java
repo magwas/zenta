@@ -12,9 +12,9 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.GroupEditPart;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.factory.AbstractElementUIProvider;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 
 
 
@@ -26,7 +26,7 @@ import org.rulez.magwas.zenta.model.IZentamatePackage;
 public class GroupUIProvider extends AbstractElementUIProvider {
 
     public EClass providerFor() {
-        return IZentamatePackage.eINSTANCE.getDiagramModelGroup();
+        return IZentaPackage.eINSTANCE.getDiagramModelGroup();
     }
     
     @Override
@@ -41,12 +41,12 @@ public class GroupUIProvider extends AbstractElementUIProvider {
 
     @Override
     public Image getImage() {
-        return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_GROUP_16);
+        return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_GROUP_16);
     }
 
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_GROUP_16);
+        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16);
     }
 
     @Override

@@ -16,8 +16,8 @@ import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
 
 
@@ -115,11 +115,11 @@ public class ColorFactory {
         if(object instanceof EClass) {
             eClass = (EClass)object;
         }
-        else if(object instanceof IDiagramModelZentamateObject) {
-            eClass = ((IDiagramModelZentamateObject)object).getZentamateElement().eClass();
+        else if(object instanceof IDiagramModelZentaObject) {
+            eClass = ((IDiagramModelZentaObject)object).getZentaElement().eClass();
         }
-        else if(object instanceof IDiagramModelZentamateConnection) {
-            eClass = ((IDiagramModelZentamateConnection)object).getRelationship().eClass();
+        else if(object instanceof IDiagramModelZentaConnection) {
+            eClass = ((IDiagramModelZentaConnection)object).getRelationship().eClass();
         }
         else if(object instanceof EObject) {
             eClass = ((EObject)object).eClass();

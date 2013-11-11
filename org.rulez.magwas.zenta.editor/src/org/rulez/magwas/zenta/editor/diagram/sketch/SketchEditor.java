@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.editor.diagram.AbstractDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.sketch.dnd.SketchDiagramTransferDropTargetListener;
 import org.rulez.magwas.zenta.editor.diagram.sketch.editparts.SketchEditPartFactory;
 import org.rulez.magwas.zenta.editor.diagram.util.ExtendedViewportAutoexposeHelper;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.ISketchModel;
 
 
@@ -121,12 +121,12 @@ implements ISketchEditor {
                 break;
 
             case 1:
-                Image img = IZentamateImages.ImageFactory.getImage(IZentamateImages.BROWN_PAPER_BACKGROUND);
+                Image img = IZentaImages.ImageFactory.getImage(IZentaImages.BROWN_PAPER_BACKGROUND);
                 fBackgroundImageLayer.setImage(img);
                 break;
                 
             case 2:
-                img = IZentamateImages.ImageFactory.getImage(IZentamateImages.CORK_BACKGROUND);
+                img = IZentaImages.ImageFactory.getImage(IZentaImages.CORK_BACKGROUND);
                 fBackgroundImageLayer.setImage(img);
                 break;
                 

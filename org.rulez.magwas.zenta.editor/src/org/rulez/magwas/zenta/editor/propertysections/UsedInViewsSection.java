@@ -23,14 +23,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.IZentamateDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
-import org.rulez.magwas.zenta.editor.diagram.editparts.IZentamateEditPart;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IZentamateConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.IZentaEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IZentaConnectionEditPart;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
-import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -40,7 +40,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
  * 
  * @author Phillip Beauvoir
  */
-public class UsedInViewsSection extends AbstractZentamatePropertySection {
+public class UsedInViewsSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.usedInViewsSection"; //$NON-NLS-1$
     
@@ -50,12 +50,12 @@ public class UsedInViewsSection extends AbstractZentamatePropertySection {
     public static class Filter implements IFilter {
         @Override
         public boolean select(Object object) {
-            return object instanceof IZentamateElement || object instanceof IZentamateEditPart 
-                    || object instanceof IZentamateConnectionEditPart;
+            return object instanceof IZentaElement || object instanceof IZentaEditPart 
+                    || object instanceof IZentaConnectionEditPart;
         }
     }
 
-    private IZentamateElement fZentamateElement;
+    private IZentaElement fZentaElement;
     
     private TableViewer fTableViewer;
     private UpdatingTableColumnLayout fTableLayout;
@@ -91,7 +91,7 @@ public class UsedInViewsSection extends AbstractZentamatePropertySection {
             }
             
             public Object[] getElements(Object inputElement) {
-                return DiagramModelUtils.findReferencedDiagramsForElement((IZentamateElement)inputElement).toArray();
+                return DiagramModelUtils.findReferencedDiagramsForElement((IZentaElement)inputElement).toArray();
             }
         });
         
@@ -103,7 +103,7 @@ public class UsedInViewsSection extends AbstractZentamatePropertySection {
             
             @Override
             public Image getImage(Object element) {
-                return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_DIAGRAM_16);
+                return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DIAGRAM_16);
             }
         });
         
@@ -116,8 +116,8 @@ public class UsedInViewsSection extends AbstractZentamatePropertySection {
                 if(o instanceof IDiagramModel) {
                     IDiagramModel diagramModel = (IDiagramModel)o;
                     IDiagramModelEditor editor = EditorManager.openDiagramEditor(diagramModel);
-                    if(editor instanceof IZentamateDiagramEditor) {
-                        ((IZentamateDiagramEditor)editor).selectElements(new IZentamateElement[] { fZentamateElement });
+                    if(editor instanceof IZentaDiagramEditor) {
+                        ((IZentaDiagramEditor)editor).selectElements(new IZentaElement[] { fZentaElement });
                     }
                 }
             }
@@ -128,11 +128,11 @@ public class UsedInViewsSection extends AbstractZentamatePropertySection {
     
     @Override
     protected void setElement(Object element) {
-        if(element instanceof IZentamateElement) {
-            fZentamateElement = (IZentamateElement)element;
+        if(element instanceof IZentaElement) {
+            fZentaElement = (IZentaElement)element;
         }
         else if(element instanceof IAdaptable) {
-            fZentamateElement = (IZentamateElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
+            fZentaElement = (IZentaElement)((IAdaptable)element).getAdapter(IZentaElement.class);
         }
         else {
             System.err.println("UsedInViewsSection wants to display for " + element); //$NON-NLS-1$
@@ -142,7 +142,7 @@ public class UsedInViewsSection extends AbstractZentamatePropertySection {
     }
     
     protected void refreshControls() {
-        fTableViewer.setInput(fZentamateElement);
+        fTableViewer.setInput(fZentaElement);
         fTableLayout.doRelayout();
     }
     
@@ -153,7 +153,7 @@ public class UsedInViewsSection extends AbstractZentamatePropertySection {
 
     @Override
     protected EObject getEObject() {
-        return fZentamateElement;
+        return fZentaElement;
     }
     
     @Override

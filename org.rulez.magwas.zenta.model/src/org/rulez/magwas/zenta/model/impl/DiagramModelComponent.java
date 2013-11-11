@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
@@ -99,7 +99,7 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.DIAGRAM_MODEL_COMPONENT;
+		return IZentaPackage.Literals.DIAGRAM_MODEL_COMPONENT;
 	}
 
     /**
@@ -120,7 +120,7 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_COMPONENT__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID, oldId, id));
 	}
 
     /**
@@ -141,7 +141,7 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_COMPONENT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME, oldName, name));
 	}
 
     /**
@@ -197,11 +197,11 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__ID:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				return getId();
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__NAME:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				return getName();
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
 				return getDiagramModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -215,10 +215,10 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__ID:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				setId((String)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__NAME:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -233,10 +233,10 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__ID:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__NAME:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -251,11 +251,11 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__ID:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__NAME:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
 				return getDiagramModel() != null;
 		}
 		return super.eIsSet(featureID);
@@ -280,7 +280,7 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 		}
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__NAME: return IZentamatePackage.NAMEABLE__NAME;
+				case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME: return IZentaPackage.NAMEABLE__NAME;
 				default: return -1;
 			}
 		}
@@ -306,7 +306,7 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 		}
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
-				case IZentamatePackage.NAMEABLE__NAME: return IZentamatePackage.DIAGRAM_MODEL_COMPONENT__NAME;
+				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME;
 				default: return -1;
 			}
 		}

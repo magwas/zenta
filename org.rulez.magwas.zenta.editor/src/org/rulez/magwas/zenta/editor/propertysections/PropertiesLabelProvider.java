@@ -11,11 +11,11 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
 
 
@@ -37,17 +37,17 @@ public class PropertiesLabelProvider implements ILabelProvider {
             element = ((EditPart)element).getModel();
         }
 
-        // Zentamate Element 
-        if(element instanceof IDiagramModelZentamateObject) {
-            element = ((IDiagramModelZentamateObject)element).getZentamateElement();
+        // Zenta Element 
+        if(element instanceof IDiagramModelZentaObject) {
+            element = ((IDiagramModelZentaObject)element).getZentaElement();
         }
 
-        // Zentamate Relationship
-        if(element instanceof IDiagramModelZentamateConnection) {
-            element = ((IDiagramModelZentamateConnection)element).getRelationship();
+        // Zenta Relationship
+        if(element instanceof IDiagramModelZentaConnection) {
+            element = ((IDiagramModelZentaConnection)element).getRelationship();
         }
 
-        return ZentamateLabelProvider.INSTANCE.getImage(element);
+        return ZentaLabelProvider.INSTANCE.getImage(element);
     }
 
     public String getText(Object element) {
@@ -57,14 +57,14 @@ public class PropertiesLabelProvider implements ILabelProvider {
         
         element = ((IStructuredSelection)element).getFirstElement();
         
-        // Zentamate Element
-        if(element instanceof IZentamateElement) {
-            return getZentamateElementText((IZentamateElement)element);
+        // Zenta Element
+        if(element instanceof IZentaElement) {
+            return getZentaElementText((IZentaElement)element);
         }
         else if(element instanceof IAdaptable) {
-            IZentamateElement zentaElement = (IZentamateElement)((IAdaptable)element).getAdapter(IZentamateElement.class);
+            IZentaElement zentaElement = (IZentaElement)((IAdaptable)element).getAdapter(IZentaElement.class);
             if(zentaElement != null) {
-                return getZentamateElementText(zentaElement);
+                return getZentaElementText(zentaElement);
             }
         }
 
@@ -74,7 +74,7 @@ public class PropertiesLabelProvider implements ILabelProvider {
         }
         
         // Check the main label provider
-        String text = ZentamateLabelProvider.INSTANCE.getLabel(element);
+        String text = ZentaLabelProvider.INSTANCE.getLabel(element);
         if(StringUtils.isSet(text)) {
             return StringUtils.escapeAmpersandsInText(text);
         }
@@ -82,10 +82,10 @@ public class PropertiesLabelProvider implements ILabelProvider {
         return " "; // Ensure the title bar is displayed //$NON-NLS-1$
     }
 
-    private String getZentamateElementText(IZentamateElement element) {
+    private String getZentaElementText(IZentaElement element) {
         String name = StringUtils.escapeAmpersandsInText(element.getName());
         
-        String typeName = ZentamateLabelProvider.INSTANCE.getDefaultName(element.eClass());
+        String typeName = ZentaLabelProvider.INSTANCE.getDefaultName(element.eClass());
         
         if(name.length() > 0) {
             return name + " (" + typeName + ")"; //$NON-NLS-1$ //$NON-NLS-2$

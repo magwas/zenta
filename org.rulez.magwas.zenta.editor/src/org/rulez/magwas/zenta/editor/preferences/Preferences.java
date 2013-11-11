@@ -6,8 +6,8 @@
 package org.rulez.magwas.zenta.editor.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
 
 
@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
  */
 public class Preferences implements IPreferenceConstants {
     
-    public static IPreferenceStore STORE = ZentamateEditorPlugin.INSTANCE.getPreferenceStore();
+    public static IPreferenceStore STORE = ZentaEditorPlugin.INSTANCE.getPreferenceStore();
 
     public static String getUserDataFolder() {
         return STORE.getString(USER_DATA_FOLDER);
@@ -91,10 +91,10 @@ public class Preferences implements IPreferenceConstants {
     
     /**
      * @param dmo
-     * @return The default figure type to use for a IDiagramModelZentamateObject
+     * @return The default figure type to use for a IDiagramModelZentaObject
      */
-    public static int getDefaultFigureType(IDiagramModelZentamateObject dmo) {
-        switch(dmo.getZentamateElement().eClass().getClassifierID()) {
+    public static int getDefaultFigureType(IDiagramModelZentaObject dmo) {
+        switch(dmo.getZentaElement().eClass().getClassifierID()) {
         //FIXME from objectClass
 
             default:

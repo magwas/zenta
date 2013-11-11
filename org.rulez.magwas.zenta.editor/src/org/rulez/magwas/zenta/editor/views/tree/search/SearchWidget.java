@@ -28,14 +28,14 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.rulez.magwas.zenta.editor.actions.AbstractDropDownAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 
@@ -154,7 +154,7 @@ public class SearchWidget extends Composite {
             
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_FILTER_16);
+                return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FILTER_16);
             }
         };
         toolBarmanager.add(dropDownAction);
@@ -172,7 +172,7 @@ public class SearchWidget extends Composite {
         
         MenuManager businessMenu = new MenuManager(Messages.SearchWidget_6);
         dropDownAction.add(businessMenu);
-        for(EClass eClass : ZentamateModelUtils.getBusinessClasses()) {
+        for(EClass eClass : ZentaModelUtils.getBusinessClasses()) {
             businessMenu.add(createObjectAction(eClass));
         }
         
@@ -180,7 +180,7 @@ public class SearchWidget extends Composite {
 
         MenuManager relationsMenu = new MenuManager(Messages.SearchWidget_11);
         dropDownAction.add(relationsMenu);
-        for(EClass eClass : ZentamateModelUtils.getRelationsClasses()) {
+        for(EClass eClass : ZentaModelUtils.getRelationsClasses()) {
             relationsMenu.add(createObjectAction(eClass));
         }
         
@@ -228,7 +228,7 @@ public class SearchWidget extends Composite {
     }
 
 	private IAction createObjectAction(final EClass eClass) {
-        IAction action = new Action(ZentamateLabelProvider.INSTANCE.getDefaultName(eClass), IAction.AS_CHECK_BOX) {
+        IAction action = new Action(ZentaLabelProvider.INSTANCE.getDefaultName(eClass), IAction.AS_CHECK_BOX) {
             @Override
             public void run() {
                 if(isChecked()) {
@@ -241,7 +241,7 @@ public class SearchWidget extends Composite {
             
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return ZentamateLabelProvider.INSTANCE.getImageDescriptor(eClass);
+                return ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass);
             }
         };
         
@@ -254,7 +254,7 @@ public class SearchWidget extends Composite {
 	    // Models that are loaded are the ones in the Models Tree
 	    List<String> list = new ArrayList<String>();
 
-	    for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
+	    for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
 	        getAllUniquePropertyKeysForModel(model, list);
 	    }
 
@@ -277,7 +277,7 @@ public class SearchWidget extends Composite {
 	    propertiesMenu.update(true);
 	}
 
-    private void getAllUniquePropertyKeysForModel(IZentamateModel model, List<String> list) {
+    private void getAllUniquePropertyKeysForModel(IZentaModel model, List<String> list) {
         for(Iterator<EObject> iter = model.eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IProperty) {

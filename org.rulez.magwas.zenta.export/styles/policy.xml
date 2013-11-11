@@ -22,7 +22,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentamateObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name"
+                  select="//objectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name|//ZentaObjectClass[@parentid=//zenta:SpecialisationRelationship[@source=$id]/@target]/../@name"
                   multi="true">
             <description/>
          </default>
@@ -240,7 +240,7 @@
          </description>
       </property>
    </objectClass>
-   <objectClass name="ZentamateObjectClass" abstract="">
+   <objectClass name="ZentaObjectClass" abstract="">
       <description>
          <documentation>An objectclass predefined by Zenta.<br/>This does not show up in the policy file explicitly. Used to have a starting point to generate/document the objectClass hierarchy.<br/>
          </documentation>

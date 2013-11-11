@@ -14,10 +14,10 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
-import org.rulez.magwas.zenta.model.IZentamateElement;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.ZentamateModelUtils;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 
@@ -93,13 +93,13 @@ public class NavigatorViewer extends TreeViewer {
                     return new Object[] { relation.getSource() };
                 }
             }
-            else if(parent instanceof IZentamateElement) {
-                IZentamateElement element = (IZentamateElement)parent;
+            else if(parent instanceof IZentaElement) {
+                IZentaElement element = (IZentaElement)parent;
                 if(fShowTargetElements) {
-                    return ZentamateModelUtils.getSourceRelationships(element).toArray();
+                    return ZentaModelUtils.getSourceRelationships(element).toArray();
                 }
                 else {
-                    return ZentamateModelUtils.getTargetRelationships(element).toArray();
+                    return ZentaModelUtils.getTargetRelationships(element).toArray();
                 }
             }
             
@@ -123,12 +123,12 @@ public class NavigatorViewer extends TreeViewer {
         
         @Override
         public String getText(Object element) {
-            return ZentamateLabelProvider.INSTANCE.getLabel(element);
+            return ZentaLabelProvider.INSTANCE.getLabel(element);
         }
         
         @Override
         public Image getImage(Object element) {
-            return ZentamateLabelProvider.INSTANCE.getImage(element);
+            return ZentaLabelProvider.INSTANCE.getImage(element);
         }
     }
     

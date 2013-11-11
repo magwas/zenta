@@ -8,11 +8,11 @@
 
   <xsl:param name="targetdir"/>
 <!--
-//zenta:*[@id=//zenta:ZentamateDiagramModel[property[@key='Template']]//zenta:Connection/@relationship]
-//zenta:*[@id=//zenta:ZentamateDiagramModel[property[@key='Template']]//zenta:DiagramObject/@zentaElement]
-//zenta:ZentamateDiagramModel[property[@key='Template']]//zenta:DiagramObject
+//zenta:*[@id=//zenta:ZentaDiagramModel[property[@key='Template']]//zenta:Connection/@relationship]
+//zenta:*[@id=//zenta:ZentaDiagramModel[property[@key='Template']]//zenta:DiagramObject/@zentaElement]
+//zenta:ZentaDiagramModel[property[@key='Template']]//zenta:DiagramObject
 -->
-  <xsl:variable name="templates" select="//zenta:ZentamateDiagramModel[property[@key='Template']]"/>
+  <xsl:variable name="templates" select="//zenta:ZentaDiagramModel[property[@key='Template']]"/>
   <xsl:variable name="objects" select="//zenta:*[@id=$templates//zenta:DiagramObject/@zentaElement]"/>
   <xsl:variable name="conns" select="//zenta:*[@id=$templates//zenta:Connection/@relationship]"/>
   <xsl:variable name="directions" select="tokenize('source target source',' ')"/>

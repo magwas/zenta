@@ -25,9 +25,9 @@ import org.rulez.magwas.zenta.export.NSResolver;
 import org.rulez.magwas.zenta.export.Util;
 import org.rulez.magwas.zenta.model.IBusinessObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.model.impl.ZentamatePackage;
-import org.rulez.magwas.zenta.model.util.ZentamateResourceFactory;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.impl.ZentaPackage;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -46,14 +46,14 @@ public class ModelTests {
 	public void testIdOkay() throws IOException, ParserConfigurationException, SAXException, URISyntaxException, XPathExpressionException {
 		File file = new File(this.getClass().getResource("test.zenta").getFile());
         
-		ZentamatePackage.init();
-        ResourceSet resourceSet = ZentamateResourceFactory.createResourceSet();
+		ZentaPackage.init();
+        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
         Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
 		System.out.println(resource.toString());
 		 
 		resource.load(null);
 		 
-		IZentamateModel model = (IZentamateModel)resource.getContents().get(0);
+		IZentaModel model = (IZentaModel)resource.getContents().get(0);
 		IFolder folder = model.getFolders().get(0);
 		assertEquals("Business",folder.getName());
 		IBusinessObject bo = (IBusinessObject) folder.getElements().get(1);

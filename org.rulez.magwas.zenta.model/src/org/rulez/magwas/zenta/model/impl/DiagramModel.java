@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.model.IZentamateModelElement;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaModelElement;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
@@ -44,7 +44,7 @@ import org.rulez.magwas.zenta.model.IProperty;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getZentamateModel <em>Zentamate Model</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getZentaModel <em>Zenta Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getName <em>Name</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getDiagramModel <em>Diagram Model</em>}</li>
@@ -179,7 +179,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.DIAGRAM_MODEL;
+		return IZentaPackage.Literals.DIAGRAM_MODEL;
 	}
 
     /**
@@ -200,7 +200,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__NAME, oldName, name));
 	}
 
     /**
@@ -217,11 +217,11 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public IZentamateModel getZentamateModel() {
+    public IZentaModel getZentaModel() {
         if(eContainer() == null) {
             return null;
         }
-        return ((IZentamateModelElement)eContainer()).getZentamateModel();
+        return ((IZentaModelElement)eContainer()).getZentaModel();
     }
 
     /**
@@ -242,7 +242,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__ID, oldId, id));
 	}
 
     /**
@@ -252,7 +252,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     public EList<IDiagramModelObject> getChildren() {
 		if (children == null) {
-			children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IZentamatePackage.DIAGRAM_MODEL__CHILDREN);
+			children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IZentaPackage.DIAGRAM_MODEL__CHILDREN);
 		}
 		return children;
 	}
@@ -275,7 +275,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		int oldConnectionRouterType = connectionRouterType;
 		connectionRouterType = newConnectionRouterType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE, oldConnectionRouterType, connectionRouterType));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE, oldConnectionRouterType, connectionRouterType));
 	}
 
     /**
@@ -296,7 +296,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldDocumentation = documentation;
 		documentation = newDocumentation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION, oldDocumentation, documentation));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION, oldDocumentation, documentation));
 	}
 
     /**
@@ -306,7 +306,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     public EList<IProperty> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentamatePackage.DIAGRAM_MODEL__PROPERTIES);
+			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.DIAGRAM_MODEL__PROPERTIES);
 		}
 		return properties;
 	}
@@ -354,9 +354,9 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -370,21 +370,21 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL__ARCHIMATE_MODEL:
-				return getZentamateModel();
-			case IZentamatePackage.DIAGRAM_MODEL__ID:
+			case IZentaPackage.DIAGRAM_MODEL__ZENTA_MODEL:
+				return getZentaModel();
+			case IZentaPackage.DIAGRAM_MODEL__ID:
 				return getId();
-			case IZentamatePackage.DIAGRAM_MODEL__NAME:
+			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				return getName();
-			case IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
+			case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
 				return getDiagramModel();
-			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				return getChildren();
-			case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION:
 				return getDocumentation();
-			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
 				return getProperties();
-			case IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
+			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				return getConnectionRouterType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -399,24 +399,24 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL__ID:
+			case IZentaPackage.DIAGRAM_MODEL__ID:
 				setId((String)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__NAME:
+			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				setName((String)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends IDiagramModelObject>)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION:
 				setDocumentation((String)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends IProperty>)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
+			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				setConnectionRouterType((Integer)newValue);
 				return;
 		}
@@ -431,22 +431,22 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL__ID:
+			case IZentaPackage.DIAGRAM_MODEL__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__NAME:
+			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				getChildren().clear();
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
 				getProperties().clear();
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
+			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				setConnectionRouterType(CONNECTION_ROUTER_TYPE_EDEFAULT);
 				return;
 		}
@@ -461,21 +461,21 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL__ARCHIMATE_MODEL:
-				return getZentamateModel() != null;
-			case IZentamatePackage.DIAGRAM_MODEL__ID:
+			case IZentaPackage.DIAGRAM_MODEL__ZENTA_MODEL:
+				return getZentaModel() != null;
+			case IZentaPackage.DIAGRAM_MODEL__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case IZentamatePackage.DIAGRAM_MODEL__NAME:
+			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
+			case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
 				return getDiagramModel() != null;
-			case IZentamatePackage.DIAGRAM_MODEL__CHILDREN:
+			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				return children != null && !children.isEmpty();
-			case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
-			case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
 				return properties != null && !properties.isEmpty();
-			case IZentamatePackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
+			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				return connectionRouterType != CONNECTION_ROUTER_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -490,7 +490,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IIdentifier.class) {
 			switch (derivedFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL__ID: return IZentamatePackage.IDENTIFIER__ID;
+				case IZentaPackage.DIAGRAM_MODEL__ID: return IZentaPackage.IDENTIFIER__ID;
 				default: return -1;
 			}
 		}
@@ -501,31 +501,31 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		}
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL__NAME: return IZentamatePackage.NAMEABLE__NAME;
+				case IZentaPackage.DIAGRAM_MODEL__NAME: return IZentaPackage.NAMEABLE__NAME;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelComponent.class) {
 			switch (derivedFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL: return IZentamatePackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL;
+				case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL: return IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelContainer.class) {
 			switch (derivedFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL__CHILDREN: return IZentamatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
+				case IZentaPackage.DIAGRAM_MODEL__CHILDREN: return IZentaPackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (derivedFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION: return IZentamatePackage.DOCUMENTABLE__DOCUMENTATION;
+				case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION: return IZentaPackage.DOCUMENTABLE__DOCUMENTATION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (derivedFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL__PROPERTIES: return IZentamatePackage.PROPERTIES__PROPERTIES;
+				case IZentaPackage.DIAGRAM_MODEL__PROPERTIES: return IZentaPackage.PROPERTIES__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -541,7 +541,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IIdentifier.class) {
 			switch (baseFeatureID) {
-				case IZentamatePackage.IDENTIFIER__ID: return IZentamatePackage.DIAGRAM_MODEL__ID;
+				case IZentaPackage.IDENTIFIER__ID: return IZentaPackage.DIAGRAM_MODEL__ID;
 				default: return -1;
 			}
 		}
@@ -552,31 +552,31 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		}
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
-				case IZentamatePackage.NAMEABLE__NAME: return IZentamatePackage.DIAGRAM_MODEL__NAME;
+				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.DIAGRAM_MODEL__NAME;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelComponent.class) {
 			switch (baseFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL: return IZentamatePackage.DIAGRAM_MODEL__DIAGRAM_MODEL;
+				case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL: return IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDiagramModelContainer.class) {
 			switch (baseFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IZentamatePackage.DIAGRAM_MODEL__CHILDREN;
+				case IZentaPackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IZentaPackage.DIAGRAM_MODEL__CHILDREN;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (baseFeatureID) {
-				case IZentamatePackage.DOCUMENTABLE__DOCUMENTATION: return IZentamatePackage.DIAGRAM_MODEL__DOCUMENTATION;
+				case IZentaPackage.DOCUMENTABLE__DOCUMENTATION: return IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (baseFeatureID) {
-				case IZentamatePackage.PROPERTIES__PROPERTIES: return IZentamatePackage.DIAGRAM_MODEL__PROPERTIES;
+				case IZentaPackage.PROPERTIES__PROPERTIES: return IZentaPackage.DIAGRAM_MODEL__PROPERTIES;
 				default: return -1;
 			}
 		}

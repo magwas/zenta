@@ -44,13 +44,13 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IWorkbenchPart;
-import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.IZentamateFactory;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
@@ -73,7 +73,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         setText(TEXT);
         setId(ID);
         setSelectionProvider((ISelectionProvider)part.getAdapter(GraphicalViewer.class));
-        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_DERIVED_16));
+        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DERIVED_16));
     }
 
     @Override
@@ -89,7 +89,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                 return false;
             }
             EditPart part = (EditPart)object;
-            if(!(part.getModel() instanceof IDiagramModelZentamateObject)) {
+            if(!(part.getModel() instanceof IDiagramModelZentaObject)) {
                 return false;
             }
         }
@@ -102,9 +102,9 @@ public class CreateDerivedRelationAction extends SelectionAction {
         List<?> selection = getSelectedObjects();
         
         EditPart editPart = (EditPart)selection.get(0);
-        IDiagramModelZentamateObject diagramModelObject1 = (IDiagramModelZentamateObject)editPart.getModel();
+        IDiagramModelZentaObject diagramModelObject1 = (IDiagramModelZentaObject)editPart.getModel();
         editPart = (EditPart)selection.get(1);
-        IDiagramModelZentamateObject diagramModelObject2 = (IDiagramModelZentamateObject)editPart.getModel();
+        IDiagramModelZentaObject diagramModelObject2 = (IDiagramModelZentaObject)editPart.getModel();
         
         ChainList chainList1 = new ChainList(diagramModelObject1, diagramModelObject2);
         ChainList chainList2 = new ChainList(diagramModelObject2, diagramModelObject1);
@@ -148,7 +148,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
             if(chain != null) {
                 ChainList chainList = dialog.getSelectedChainList();
                 EClass relationshipClass = DerivedRelationsUtils.getWeakestType(chain);
-                IRelationship relation = (IRelationship)IZentamateFactory.eINSTANCE.create(relationshipClass);
+                IRelationship relation = (IRelationship)IZentaFactory.eINSTANCE.create(relationshipClass);
                 CommandStack stack = (CommandStack)getWorkbenchPart().getAdapter(CommandStack.class);
                 stack.execute(new CreateDerivedConnectionCommand(chainList.srcDiagramObject, chainList.tgtDiagramObject, relation));
             }
@@ -161,18 +161,18 @@ public class CreateDerivedRelationAction extends SelectionAction {
      * Convenience class to group things together
      */
     private static class ChainList {
-        IDiagramModelZentamateObject srcDiagramObject;
-        IDiagramModelZentamateObject tgtDiagramObject;
-        IZentamateElement srcElement;
-        IZentamateElement tgtElement;
+        IDiagramModelZentaObject srcDiagramObject;
+        IDiagramModelZentaObject tgtDiagramObject;
+        IZentaElement srcElement;
+        IZentaElement tgtElement;
         List<List<IRelationship>> chains;
         boolean isTooComplicated;
         
-        ChainList(IDiagramModelZentamateObject srcDiagramObject, IDiagramModelZentamateObject tgtDiagramObject) {
+        ChainList(IDiagramModelZentaObject srcDiagramObject, IDiagramModelZentaObject tgtDiagramObject) {
             this.srcDiagramObject = srcDiagramObject;
             this.tgtDiagramObject = tgtDiagramObject;
-            srcElement = srcDiagramObject.getZentamateElement();
-            tgtElement = tgtDiagramObject.getZentamateElement();
+            srcElement = srcDiagramObject.getZentaElement();
+            tgtElement = tgtDiagramObject.getZentaElement();
             
             if(!hasExistingDirectRelationship()) {
                 findChains();
@@ -223,7 +223,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         protected void configureShell(Shell shell) {
             super.configureShell(shell);
             shell.setText(Messages.CreateDerivedRelationAction_6);
-            shell.setImage(IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_DERIVED_16));
+            shell.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DERIVED_16));
         }
         
         @Override
@@ -316,7 +316,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         
         @Override
         protected IDialogSettings getDialogBoundsSettings() {
-            IDialogSettings settings = ZentamateEditorPlugin.INSTANCE.getDialogSettings();
+            IDialogSettings settings = ZentaEditorPlugin.INSTANCE.getDialogSettings();
             IDialogSettings section = settings.getSection(DIALOG_SETTINGS_SECTION);
             if(section == null) {
                 section = settings.addNewSection(DIALOG_SETTINGS_SECTION);
@@ -443,12 +443,12 @@ public class CreateDerivedRelationAction extends SelectionAction {
      */
     private static class CreateDerivedConnectionCommand extends Command {
         private IRelationship fRelation;
-        private IDiagramModelZentamateConnection fConnection;
-        private IDiagramModelZentamateObject fSource;
-        private IDiagramModelZentamateObject fTarget;
+        private IDiagramModelZentaConnection fConnection;
+        private IDiagramModelZentaObject fSource;
+        private IDiagramModelZentaObject fTarget;
         private boolean fDerivedFolderWasCreated;
         
-        public CreateDerivedConnectionCommand(IDiagramModelZentamateObject source, IDiagramModelZentamateObject target,
+        public CreateDerivedConnectionCommand(IDiagramModelZentaObject source, IDiagramModelZentaObject target,
                 IRelationship relation) {
             fSource = source;
             fTarget = target;
@@ -458,7 +458,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
 
         @Override
         public void execute() {
-            fConnection = IZentamateFactory.eINSTANCE.createDiagramModelZentamateConnection();
+            fConnection = IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
             fConnection.setRelationship(fRelation);
             fConnection.connect(fSource, fTarget);
             addToModel();
@@ -471,10 +471,10 @@ public class CreateDerivedRelationAction extends SelectionAction {
         }
         
         private void addToModel() {
-            IFolder folder = fConnection.getDiagramModel().getZentamateModel().getFolder(FolderType.DERIVED);
+            IFolder folder = fConnection.getDiagramModel().getZentaModel().getFolder(FolderType.DERIVED);
             // We need to create the Derived Relations folder
             if(folder == null) {
-                folder = fConnection.getDiagramModel().getZentamateModel().addDerivedRelationsFolder();
+                folder = fConnection.getDiagramModel().getZentaModel().addDerivedRelationsFolder();
                 fDerivedFolderWasCreated = true;
             }
             fConnection.addRelationshipToModel(folder);
@@ -487,7 +487,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
             
             // If the Derived Relations folder was created, remove it
             if(fDerivedFolderWasCreated) {
-                fConnection.getDiagramModel().getZentamateModel().removeDerivedRelationsFolder();
+                fConnection.getDiagramModel().getZentaModel().removeDerivedRelationsFolder();
             }
             
             // Disconnect last because we needed access to fConnection.getDiagramModel()

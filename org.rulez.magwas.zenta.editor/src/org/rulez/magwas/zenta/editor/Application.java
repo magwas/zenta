@@ -28,7 +28,7 @@ implements IApplication {
     /**
      * ID of the Application
      */
-    public static String ID = ZentamateEditorPlugin.PLUGIN_ID + ".app"; //$NON-NLS-1$
+    public static String ID = ZentaEditorPlugin.PLUGIN_ID + ".app"; //$NON-NLS-1$
     
 	/**
 	 * Constructor
@@ -40,7 +40,7 @@ implements IApplication {
 	    /*
 	     * Platform specific startup if user launches app twice or from .zenta file on the desktop
 	     */
-	    IPlatformLauncher launcher = ZentamateEditorPlugin.INSTANCE.getPlatformLauncher();
+	    IPlatformLauncher launcher = ZentaEditorPlugin.INSTANCE.getPlatformLauncher();
 	    if(launcher != null) {
 	        launcher.startup();
 	        
@@ -61,7 +61,7 @@ implements IApplication {
 	    }
 	    	    
 	    try {
-	        int code = PlatformUI.createAndRunWorkbench(display, new ZentamateEditorWorkbenchAdvisor());
+	        int code = PlatformUI.createAndRunWorkbench(display, new ZentaEditorWorkbenchAdvisor());
 	        // Exit the application with an appropriate return code
 	        return code == PlatformUI.RETURN_RESTART ? EXIT_RESTART : EXIT_OK;
 	    }

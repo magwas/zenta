@@ -11,13 +11,17 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.propertysections.messages"; //$NON-NLS-1$
 
-    public static String AbstractZentamatePropertySection_0;
+	public static String ShapeSection_1;
 
-    public static String AbstractZentamatePropertySection_1;
+	public static String ShapeSection_0;
 
-    public static String AbstractZentamatePropertySection_2;
+    public static String AbstractZentaPropertySection_0;
 
-    public static String AbstractZentamatePropertySection_3;
+    public static String AbstractZentaPropertySection_1;
+
+    public static String AbstractZentaPropertySection_2;
+
+    public static String AbstractZentaPropertySection_3;
 
     public static String AccessRelationshipSection_0;
 
@@ -31,21 +35,21 @@ public class Messages extends NLS {
 
     public static String AccessRelationshipSection_5;
 
-    public static String ZentamateElementSection_0;
+    public static String ZentaElementSection_0;
 
-    public static String ZentamateElementSection_1;
+    public static String ZentaElementSection_1;
 
-    public static String ZentamateModelSection_0;
+    public static String ZentaModelSection_0;
 
-    public static String ZentamateModelSection_1;
+    public static String ZentaModelSection_1;
 
-    public static String ZentamateModelSection_2;
+    public static String ZentaModelSection_2;
 
-    public static String ZentamateModelSection_3;
+    public static String ZentaModelSection_3;
 
-    public static String ZentamateModelSection_4;
+    public static String ZentaModelSection_4;
 
-    public static String ZentamateModelSection_5;
+    public static String ZentaModelSection_5;
 
     public static String BorderColorSection_0;
 

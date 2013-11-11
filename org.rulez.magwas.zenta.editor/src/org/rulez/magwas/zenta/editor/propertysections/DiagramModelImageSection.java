@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.IZentaveManager;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -42,7 +42,7 @@ import org.rulez.magwas.zenta.model.ILockable;
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramModelImageSection extends AbstractZentamatePropertySection {
+public class DiagramModelImageSection extends AbstractZentaPropertySection {
     
     protected static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
 
@@ -63,7 +63,7 @@ public class DiagramModelImageSection extends AbstractZentamatePropertySection {
         @Override
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
-            if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+            if(feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                 refreshButtons();
             }
         }
@@ -154,7 +154,7 @@ public class DiagramModelImageSection extends AbstractZentamatePropertySection {
         if(isAlive()) {
             fIsExecutingCommand = true;
             getCommandStack().execute(new EObjectFeatureCommand(Messages.DiagramModelImageSection_4,
-                    getEObject(), IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH,
+                    getEObject(), IZentaPackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH,
                     null));
             fIsExecutingCommand = false;
         }
@@ -166,7 +166,7 @@ public class DiagramModelImageSection extends AbstractZentamatePropertySection {
         }
         
         ImageManagerDialog dialog = new ImageManagerDialog(getPart().getSite().getShell(),
-                getEObject().getDiagramModel().getZentamateModel(),
+                getEObject().getDiagramModel().getZentaModel(),
                 ((IDiagramModelImageProvider)getEObject()).getImagePath());
         
         if(dialog.open() == Window.OK) {
@@ -207,7 +207,7 @@ public class DiagramModelImageSection extends AbstractZentamatePropertySection {
         
         fIsExecutingCommand = true;
         getCommandStack().execute(new EObjectFeatureCommand(Messages.DiagramModelImageSection_7,
-                                getEObject(), IZentamatePackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH,
+                                getEObject(), IZentaPackage.Literals.DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH,
                                 path));
         fIsExecutingCommand = false;
     }

@@ -27,9 +27,9 @@ import org.rulez.magwas.zenta.editor.model.compatibility.ModelCompatibility;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.util.ZentamateResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.TemplateUtils;
@@ -112,7 +112,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         // Ascertain if this is a zip file
         boolean isZentaveFormat = IZentaveManager.FACTORY.isZentaveFile(file);
         
-        ResourceSet resourceSet = ZentamateResourceFactory.createResourceSet();
+        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
         Resource resource = resourceSet.createResource(isZentaveFormat ?
                                                        IZentaveManager.FACTORY.createZentaveModelURI(file) :
                                                        URI.createFileURI(file.getAbsolutePath()));
@@ -143,7 +143,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         }
         
         // Pull out the Canvas model
-        IZentamateModel templateModel = (IZentamateModel)resource.getContents().get(0);
+        IZentaModel templateModel = (IZentaModel)resource.getContents().get(0);
         IFolder folderViews = templateModel.getFolder(FolderType.DIAGRAMS);
         ICanvasModel canvasModel = (ICanvasModel)folderViews.getElements().get(0);
 

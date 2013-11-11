@@ -23,23 +23,23 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.editparts.ZentamateDiagramPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.ZentaDiagramPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
-import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
 
 /**
- * Property Section for an Zentamate Element
+ * Property Section for an Zenta Element
  * 
  * @author Phillip Beauvoir
  */
-public class ViewpointSection extends AbstractZentamatePropertySection {
+public class ViewpointSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.diagramModelSection"; //$NON-NLS-1$
     
@@ -49,7 +49,7 @@ public class ViewpointSection extends AbstractZentamatePropertySection {
     public static class Filter implements IFilter {
         @Override
         public boolean select(Object object) {
-            return object instanceof IZentamateDiagramModel || object instanceof ZentamateDiagramPart;
+            return object instanceof IZentaDiagramModel || object instanceof ZentaDiagramPart;
         }
     }
 
@@ -61,7 +61,7 @@ public class ViewpointSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Viewpoint event (Undo/Redo and here)
-            if(feature == IZentamatePackage.Literals.ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT) {
+            if(feature == IZentaPackage.Literals.ZENTA_DIAGRAM_MODEL__VIEWPOINT) {
                 if(!fIsExecutingCommand) {
                     refreshControls();
                 }
@@ -69,7 +69,7 @@ public class ViewpointSection extends AbstractZentamatePropertySection {
         }
     };
     
-    private IZentamateDiagramModel fDiagramModel;
+    private IZentaDiagramModel fDiagramModel;
 
     private ComboViewer fComboViewer;
     
@@ -104,7 +104,7 @@ public class ViewpointSection extends AbstractZentamatePropertySection {
                     if(viewPoint != null) {
                         fIsExecutingCommand = true;
                         getCommandStack().execute(new EObjectFeatureCommand(Messages.ViewpointSection_1,
-                                fDiagramModel, IZentamatePackage.Literals.ARCHIMATE_DIAGRAM_MODEL__VIEWPOINT,
+                                fDiagramModel, IZentaPackage.Literals.ZENTA_DIAGRAM_MODEL__VIEWPOINT,
                                 viewPoint.getIndex()));
                         fIsExecutingCommand = false;
                         // update hints view
@@ -145,12 +145,12 @@ public class ViewpointSection extends AbstractZentamatePropertySection {
     @Override
     protected void setElement(Object element) {
         // IDiagramModel
-        if(element instanceof IZentamateDiagramModel) {
-            fDiagramModel = (IZentamateDiagramModel)element;
+        if(element instanceof IZentaDiagramModel) {
+            fDiagramModel = (IZentaDiagramModel)element;
         }
         // IDiagramModel in Diagram Part
-        else if(element instanceof ZentamateDiagramPart) {
-            fDiagramModel = (IZentamateDiagramModel)((ZentamateDiagramPart)element).getAdapter(IDiagramModel.class);
+        else if(element instanceof ZentaDiagramPart) {
+            fDiagramModel = (IZentaDiagramModel)((ZentaDiagramPart)element).getAdapter(IDiagramModel.class);
         }
         else {
             System.err.println(getClass() + " wants to display for " + element); //$NON-NLS-1$

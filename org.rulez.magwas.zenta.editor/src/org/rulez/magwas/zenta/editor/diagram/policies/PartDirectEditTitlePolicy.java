@@ -10,7 +10,7 @@ import org.eclipse.gef.editpolicies.DirectEditPolicy;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.osgi.util.NLS;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
 
@@ -25,7 +25,7 @@ public class PartDirectEditTitlePolicy extends DirectEditPolicy {
     protected Command getDirectEditCommand(DirectEditRequest request) {
         IDiagramModelObject object = (IDiagramModelObject)getHost().getModel();
         String name = (String)request.getCellEditor().getValue();
-        return new EObjectFeatureCommand(NLS.bind(Messages.PartDirectEditTitlePolicy_0, object.getName()), object, IZentamatePackage.Literals.NAMEABLE__NAME, name);
+        return new EObjectFeatureCommand(NLS.bind(Messages.PartDirectEditTitlePolicy_0, object.getName()), object, IZentaPackage.Literals.NAMEABLE__NAME, name);
     }
 
     @Override

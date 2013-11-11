@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.editor.views.tree.actions;
 
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.rulez.magwas.zenta.editor.actions.ZentamateEditorActionFactory;
+import org.rulez.magwas.zenta.editor.actions.ZentaEditorActionFactory;
 import org.rulez.magwas.zenta.editor.views.tree.commands.DuplicateCommandHandler;
 
 
@@ -23,7 +23,7 @@ public class DuplicateAction extends ViewerAction {
         super(selectionProvider);
         setText(Messages.DuplicateAction_0);
         
-        setActionDefinitionId(ZentamateEditorActionFactory.DUPLICATE.getCommandId()); // Ensures key binding is displayed
+        setActionDefinitionId(ZentaEditorActionFactory.DUPLICATE.getCommandId()); // Ensures key binding is displayed
         setEnabled(false);
     }
     

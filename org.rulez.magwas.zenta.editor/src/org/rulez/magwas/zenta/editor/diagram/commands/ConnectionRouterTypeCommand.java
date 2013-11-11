@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -19,6 +19,6 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 public class ConnectionRouterTypeCommand extends EObjectFeatureCommand {
     
     public ConnectionRouterTypeCommand(IDiagramModel diagramModel, int type) {
-        super(Messages.ConnectionRouterTypeCommand_0, diagramModel, IZentamatePackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE, type);
+        super(Messages.ConnectionRouterTypeCommand_0, diagramModel, IZentaPackage.Literals.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE, type);
     }
 }

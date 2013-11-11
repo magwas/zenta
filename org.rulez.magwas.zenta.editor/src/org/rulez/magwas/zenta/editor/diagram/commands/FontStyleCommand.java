@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 
 
@@ -19,6 +19,6 @@ import org.rulez.magwas.zenta.model.IFontAttribute;
 public class FontStyleCommand extends EObjectFeatureCommand {
     
     public FontStyleCommand(IFontAttribute object, String fontData) {
-        super(Messages.FontStyleCommand_0, object, IZentamatePackage.Literals.FONT_ATTRIBUTE__FONT, fontData);
+        super(Messages.FontStyleCommand_0, object, IZentaPackage.Literals.FONT_ATTRIBUTE__FONT, fontData);
     }
 }

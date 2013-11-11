@@ -11,7 +11,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
-import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractZentamateEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractZentaEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.INonResizableEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.junctions.JunctionFigure;
@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.diagram.policies.PartComponentEditPolicy;
  * @author Phillip Beauvoir
  */
 public class JunctionEditPart
-extends AbstractZentamateEditPart
+extends AbstractZentaEditPart
 implements INonResizableEditPart {            
     
     @Override

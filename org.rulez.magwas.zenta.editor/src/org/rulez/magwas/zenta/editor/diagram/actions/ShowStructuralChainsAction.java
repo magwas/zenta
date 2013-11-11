@@ -8,8 +8,8 @@ package org.rulez.magwas.zenta.editor.diagram.actions;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.ui.actions.WorkbenchPartAction;
 import org.eclipse.ui.IWorkbenchPart;
-import org.rulez.magwas.zenta.editor.diagram.IZentamateDiagramEditor;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 
 
 
@@ -27,7 +27,7 @@ public class ShowStructuralChainsAction extends WorkbenchPartAction {
         super(part);
         setId(ID);
         setText(DEFAULT_TEXT);
-        setImageDescriptor(IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_DERIVED_16));
+        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DERIVED_16));
     }
     
     @Override
@@ -37,7 +37,7 @@ public class ShowStructuralChainsAction extends WorkbenchPartAction {
     
     private boolean isShowingChains() {
         GraphicalViewer viewer = (GraphicalViewer)getWorkbenchPart().getAdapter(GraphicalViewer.class);
-        Boolean val = (Boolean)viewer.getProperty(IZentamateDiagramEditor.PROPERTY_SHOW_STRUCTURAL_CHAIN);
+        Boolean val = (Boolean)viewer.getProperty(IZentaDiagramEditor.PROPERTY_SHOW_STRUCTURAL_CHAIN);
         if (val != null)
             return val.booleanValue();
         return false;
@@ -47,7 +47,7 @@ public class ShowStructuralChainsAction extends WorkbenchPartAction {
     public void run() {
         GraphicalViewer viewer = (GraphicalViewer)getWorkbenchPart().getAdapter(GraphicalViewer.class);
         boolean val = !isShowingChains();
-        viewer.setProperty(IZentamateDiagramEditor.PROPERTY_SHOW_STRUCTURAL_CHAIN, new Boolean(val));
+        viewer.setProperty(IZentaDiagramEditor.PROPERTY_SHOW_STRUCTURAL_CHAIN, new Boolean(val));
         setText(isShowingChains() ? Messages.ShowStructuralChainsAction_1 : DEFAULT_TEXT);
     }
 }

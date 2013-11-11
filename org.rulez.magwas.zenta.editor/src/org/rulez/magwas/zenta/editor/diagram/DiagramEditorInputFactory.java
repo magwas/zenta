@@ -11,7 +11,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.ui.IElementFactory;
 import org.eclipse.ui.IMemento;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 
@@ -44,7 +44,7 @@ public class DiagramEditorInputFactory implements IElementFactory {
 
         if(viewID != null && fileName != null) {
             File file = new File(fileName);
-            for(IZentamateModel model : IEditorModelManager.INSTANCE.getModels()) {
+            for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
                 if(file.equals(model.getFile())) {
                     for(IDiagramModel diagramModel : model.getDiagramModels()) {
                         if(viewID.equals(diagramModel.getId())) {
@@ -67,13 +67,13 @@ public class DiagramEditorInputFactory implements IElementFactory {
      */
     public static void saveState(IMemento memento, DiagramEditorInput input) {
         IDiagramModel diagramModel = input.getDiagramModel();
-        if(diagramModel != null && diagramModel.getZentamateModel() != null) {
+        if(diagramModel != null && diagramModel.getZentaModel() != null) {
             memento.putString(TAG_VIEW_ID, diagramModel.getId());
             String name = diagramModel.getName();
             if(name != null) {
                 memento.putString(TAG_VIEW_NAME, name);
             }
-            File file = diagramModel.getZentamateModel().getFile();
+            File file = diagramModel.getZentaModel().getFile();
             if(file != null) {
                 memento.putString(TAG_VIEW_FILE, file.getAbsolutePath());
             }

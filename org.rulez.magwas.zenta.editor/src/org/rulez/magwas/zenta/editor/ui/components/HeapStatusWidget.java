@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 
 
 /**
@@ -108,7 +108,7 @@ public class HeapStatusWidget extends Composite {
         button = new Canvas(this, SWT.NONE);
         button.setToolTipText("Run Garbage Collector"); //$NON-NLS-1$
         
-		ImageDescriptor imageDesc = IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_TRASH_16);
+		ImageDescriptor imageDesc = IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_TRASH_16);
 		Display display = getDisplay();
 		gcImage = imageDesc.createImage();
 		if (gcImage != null) {

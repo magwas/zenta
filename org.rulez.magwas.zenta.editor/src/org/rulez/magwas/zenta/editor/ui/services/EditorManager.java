@@ -17,12 +17,12 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorFactoryExtensionHandler;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorInput;
-import org.rulez.magwas.zenta.editor.diagram.IZentamateDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramEditorFactory;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
 import org.rulez.magwas.zenta.editor.diagram.sketch.ISketchEditor;
-import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.ISketchModel;
 
@@ -65,8 +65,8 @@ public class EditorManager {
         String id = null;
         IEditorInput editorInput = null;
         
-        if(model instanceof IZentamateDiagramModel) {
-            id = IZentamateDiagramEditor.ID;
+        if(model instanceof IZentaDiagramModel) {
+            id = IZentaDiagramEditor.ID;
             editorInput = new DiagramEditorInput(model);
         }
         else if(model instanceof ISketchModel) {
@@ -118,7 +118,7 @@ public class EditorManager {
      * Close open Diagram Editor Parts for a model
      * @param model
      */
-    public static void closeDiagramEditors(IZentamateModel model) {
+    public static void closeDiagramEditors(IZentaModel model) {
         if(model == null) {
             return;
         }
@@ -129,7 +129,7 @@ public class EditorManager {
         for(IEditorReference ref : page.getEditorReferences()) {
             try {
                 IEditorInput input = ref.getEditorInput();
-                if(input instanceof DiagramEditorInput && ((DiagramEditorInput)input).getDiagramModel().getZentamateModel() == model) {
+                if(input instanceof DiagramEditorInput && ((DiagramEditorInput)input).getDiagramModel().getZentaModel() == model) {
                     list.add(ref);
                 }
             }

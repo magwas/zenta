@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBorderObject;
 
 
@@ -65,7 +65,7 @@ public abstract class BorderObject extends EObjectImpl implements IBorderObject 
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.BORDER_OBJECT;
+		return IZentaPackage.Literals.BORDER_OBJECT;
 	}
 
     /**
@@ -86,7 +86,7 @@ public abstract class BorderObject extends EObjectImpl implements IBorderObject 
 		String oldBorderColor = borderColor;
 		borderColor = newBorderColor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.BORDER_OBJECT__BORDER_COLOR, oldBorderColor, borderColor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.BORDER_OBJECT__BORDER_COLOR, oldBorderColor, borderColor));
 	}
 
     /**
@@ -97,7 +97,7 @@ public abstract class BorderObject extends EObjectImpl implements IBorderObject 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentamatePackage.BORDER_OBJECT__BORDER_COLOR:
+			case IZentaPackage.BORDER_OBJECT__BORDER_COLOR:
 				return getBorderColor();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -111,7 +111,7 @@ public abstract class BorderObject extends EObjectImpl implements IBorderObject 
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentamatePackage.BORDER_OBJECT__BORDER_COLOR:
+			case IZentaPackage.BORDER_OBJECT__BORDER_COLOR:
 				setBorderColor((String)newValue);
 				return;
 		}
@@ -126,7 +126,7 @@ public abstract class BorderObject extends EObjectImpl implements IBorderObject 
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.BORDER_OBJECT__BORDER_COLOR:
+			case IZentaPackage.BORDER_OBJECT__BORDER_COLOR:
 				setBorderColor(BORDER_COLOR_EDEFAULT);
 				return;
 		}
@@ -141,7 +141,7 @@ public abstract class BorderObject extends EObjectImpl implements IBorderObject 
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.BORDER_OBJECT__BORDER_COLOR:
+			case IZentaPackage.BORDER_OBJECT__BORDER_COLOR:
 				return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
 		}
 		return super.eIsSet(featureID);

@@ -17,9 +17,9 @@ import org.eclipse.ui.cheatsheets.ICheatSheetManager;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
-import org.rulez.magwas.zenta.model.IZentamateDiagramModel;
-import org.rulez.magwas.zenta.model.IZentamateFactory;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -43,14 +43,14 @@ implements ICheatSheetAction {
             return;
         }
         
-        IZentamateModel model = (IZentamateModel)viewPart.getAdapter(IZentamateModel.class);
+        IZentaModel model = (IZentaModel)viewPart.getAdapter(IZentaModel.class);
         if(model == null) {
             MessageDialog.openWarning(Display.getCurrent().getActiveShell(), Messages.CreateMapViewCheatSheetAction_2,
                     Messages.CreateMapViewCheatSheetAction_3);
             return;
         }
         
-        EList<IDiagramModel> diagramModels = model.getDiagramModels();
+		EList<IDiagramModel> diagramModels = model.getDiagramModels();
         if(diagramModels.size() < 2) {
             MessageDialog.openWarning(Display.getCurrent().getActiveShell(), Messages.CreateMapViewCheatSheetAction_4,
                     Messages.CreateMapViewCheatSheetAction_5);
@@ -59,13 +59,13 @@ implements ICheatSheetAction {
         
         CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
         if(stack != null) {
-            IZentamateDiagramModel diagramModel = IZentamateFactory.eINSTANCE.createZentamateDiagramModel();
+            IZentaDiagramModel diagramModel = IZentaFactory.eINSTANCE.createZentaDiagramModel();
             diagramModel.setName(Messages.CreateMapViewCheatSheetAction_6);
             
             int y = 20; 
             
             for(IDiagramModel dm : diagramModels) {
-                IDiagramModelReference ref = IZentamateFactory.eINSTANCE.createDiagramModelReference();
+                IDiagramModelReference ref = IZentaFactory.eINSTANCE.createDiagramModelReference();
                 ref.setReferencedModel(dm);
                 ref.setBounds(20, y, 400, 100);
                 diagramModel.getChildren().add(ref);

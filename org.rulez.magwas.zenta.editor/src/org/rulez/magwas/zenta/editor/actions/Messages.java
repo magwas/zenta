@@ -11,53 +11,53 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.actions.messages"; //$NON-NLS-1$
 
-    public static String ZentamateEditorActionBarAdvisor_0;
+    public static String ZentaEditorActionBarAdvisor_0;
 
-    public static String ZentamateEditorActionBarAdvisor_1;
+    public static String ZentaEditorActionBarAdvisor_1;
 
-    public static String ZentamateEditorActionBarAdvisor_10;
+    public static String ZentaEditorActionBarAdvisor_10;
 
-    public static String ZentamateEditorActionBarAdvisor_11;
+    public static String ZentaEditorActionBarAdvisor_11;
 
-    public static String ZentamateEditorActionBarAdvisor_12;
+    public static String ZentaEditorActionBarAdvisor_12;
 
-    public static String ZentamateEditorActionBarAdvisor_13;
+    public static String ZentaEditorActionBarAdvisor_13;
 
-    public static String ZentamateEditorActionBarAdvisor_14;
+    public static String ZentaEditorActionBarAdvisor_14;
 
-    public static String ZentamateEditorActionBarAdvisor_15;
+    public static String ZentaEditorActionBarAdvisor_15;
 
-    public static String ZentamateEditorActionBarAdvisor_16;
+    public static String ZentaEditorActionBarAdvisor_16;
 
-    public static String ZentamateEditorActionBarAdvisor_2;
+    public static String ZentaEditorActionBarAdvisor_2;
 
-    public static String ZentamateEditorActionBarAdvisor_3;
+    public static String ZentaEditorActionBarAdvisor_3;
 
-    public static String ZentamateEditorActionBarAdvisor_4;
+    public static String ZentaEditorActionBarAdvisor_4;
 
-    public static String ZentamateEditorActionBarAdvisor_5;
+    public static String ZentaEditorActionBarAdvisor_5;
 
-    public static String ZentamateEditorActionBarAdvisor_6;
+    public static String ZentaEditorActionBarAdvisor_6;
 
-    public static String ZentamateEditorActionBarAdvisor_7;
+    public static String ZentaEditorActionBarAdvisor_7;
 
-    public static String ZentamateEditorActionBarAdvisor_8;
+    public static String ZentaEditorActionBarAdvisor_8;
 
-    public static String ZentamateEditorActionBarAdvisor_9;
+    public static String ZentaEditorActionBarAdvisor_9;
 
-    public static String ZentamateEditorActionFactory_0;
+    public static String ZentaEditorActionFactory_0;
 
-    public static String ZentamateEditorActionFactory_1;
+    public static String ZentaEditorActionFactory_1;
 
-    public static String ZentamateEditorActionFactory_2;
+    public static String ZentaEditorActionFactory_2;
 
-    public static String ZentamateEditorActionFactory_3;
+    public static String ZentaEditorActionFactory_3;
 
-    public static String ZentamateEditorActionFactory_4;
+    public static String ZentaEditorActionFactory_4;
 
-    public static String ZentamateEditorActionFactory_5;
+    public static String ZentaEditorActionFactory_5;
 
-    public static String ZentamateEditorActionFactory_6;
+    public static String ZentaEditorActionFactory_6;
 
     public static String ExportModelAction_0;
 
@@ -71,9 +71,9 @@ public class Messages extends NLS {
 
     public static String MRUMenuManager_3;
 
-    public static String NewZentamateModelAction_0;
+    public static String NewZentaModelAction_0;
 
-    public static String NewZentamateModelAction_1;
+    public static String NewZentaModelAction_1;
 
     public static String NewDropDownAction_0;
 

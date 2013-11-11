@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.model.FolderType;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IFolder;
 
 
@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.model.IFolder;
  * 
  * @author Phillip Beauvoir
  */
-public class FolderSection extends AbstractZentamatePropertySection {
+public class FolderSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.folderSection"; //$NON-NLS-1$
     
@@ -34,12 +34,12 @@ public class FolderSection extends AbstractZentamatePropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Folder Name event (Undo/Redo and here)
-            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME ) {
+            if(feature == IZentaPackage.Literals.NAMEABLE__NAME ) {
                 refreshNameField();
                 fPage.labelProviderChanged(null); // Update Main label
             }
             // Folder Documentation event (Undo/Redo and here)
-            else if(feature == IZentamatePackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
+            else if(feature == IZentaPackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
                 refreshDocumentationField();
             }
         }

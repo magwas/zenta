@@ -15,7 +15,7 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.rulez.magwas.zenta.canvas.CanvasEditorPlugin;
 import org.rulez.magwas.zenta.canvas.ICanvasImages;
-import org.rulez.magwas.zenta.editor.ZentamateEditorPlugin;
+import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
@@ -35,7 +35,7 @@ import uk.ac.bolton.jdom.JDOMUtils;
 public class CanvasTemplateManager extends TemplateManager {
     
     public static final String CANVAS_TEMPLATE_FILE_EXTENSION = ".archicanvas"; //$NON-NLS-1$
-    private File fUserTemplatesFile = new File(ZentamateEditorPlugin.INSTANCE.getUserDataFolder(), "canvasses.xml"); //$NON-NLS-1$
+    private File fUserTemplatesFile = new File(ZentaEditorPlugin.INSTANCE.getUserDataFolder(), "canvasses.xml"); //$NON-NLS-1$
 
     @Override
     protected ITemplateGroup loadInbuiltTemplates() {

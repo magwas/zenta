@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.canvas.model.IHintProvider;
 import org.rulez.magwas.zenta.canvas.model.IIconic;
 import org.rulez.magwas.zenta.canvas.model.INotesContent;
 import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 
 
 /**
@@ -140,7 +140,7 @@ public class CanvasPackage extends EPackageImpl implements ICanvasPackage {
         isInited = true;
 
         // Initialize simple dependencies
-        IZentamatePackage.eINSTANCE.eClass();
+        IZentaPackage.eINSTANCE.eClass();
 
         // Create package meta-data objects
         theCanvasPackage.createPackageContents();
@@ -349,36 +349,36 @@ public class CanvasPackage extends EPackageImpl implements ICanvasPackage {
         setNsURI(eNS_URI);
 
         // Obtain other dependent packages
-        IZentamatePackage theZentamatePackage = (IZentamatePackage)EPackage.Registry.INSTANCE.getEPackage(IZentamatePackage.eNS_URI);
+        IZentaPackage theZentaPackage = (IZentaPackage)EPackage.Registry.INSTANCE.getEPackage(IZentaPackage.eNS_URI);
 
         // Create type parameters
 
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        iconicEClass.getESuperTypes().add(theZentamatePackage.getDiagramModelObject());
-        iconicEClass.getESuperTypes().add(theZentamatePackage.getDiagramModelImageProvider());
-        canvasModelEClass.getESuperTypes().add(theZentamatePackage.getDiagramModel());
+        iconicEClass.getESuperTypes().add(theZentaPackage.getDiagramModelObject());
+        iconicEClass.getESuperTypes().add(theZentaPackage.getDiagramModelImageProvider());
+        canvasModelEClass.getESuperTypes().add(theZentaPackage.getDiagramModel());
         canvasModelEClass.getESuperTypes().add(this.getHintProvider());
         canvasModelEClass.getESuperTypes().add(this.getHelpHintProvider());
         canvasModelStickyEClass.getESuperTypes().add(this.getIconic());
-        canvasModelStickyEClass.getESuperTypes().add(theZentamatePackage.getTextContent());
+        canvasModelStickyEClass.getESuperTypes().add(theZentaPackage.getTextContent());
         canvasModelStickyEClass.getESuperTypes().add(this.getNotesContent());
-        canvasModelStickyEClass.getESuperTypes().add(theZentamatePackage.getProperties());
-        canvasModelStickyEClass.getESuperTypes().add(theZentamatePackage.getLockable());
-        canvasModelStickyEClass.getESuperTypes().add(theZentamatePackage.getBorderObject());
+        canvasModelStickyEClass.getESuperTypes().add(theZentaPackage.getProperties());
+        canvasModelStickyEClass.getESuperTypes().add(theZentaPackage.getLockable());
+        canvasModelStickyEClass.getESuperTypes().add(theZentaPackage.getBorderObject());
         canvasModelBlockEClass.getESuperTypes().add(this.getIconic());
-        canvasModelBlockEClass.getESuperTypes().add(theZentamatePackage.getDiagramModelContainer());
-        canvasModelBlockEClass.getESuperTypes().add(theZentamatePackage.getProperties());
-        canvasModelBlockEClass.getESuperTypes().add(theZentamatePackage.getLockable());
-        canvasModelBlockEClass.getESuperTypes().add(theZentamatePackage.getBorderObject());
+        canvasModelBlockEClass.getESuperTypes().add(theZentaPackage.getDiagramModelContainer());
+        canvasModelBlockEClass.getESuperTypes().add(theZentaPackage.getProperties());
+        canvasModelBlockEClass.getESuperTypes().add(theZentaPackage.getLockable());
+        canvasModelBlockEClass.getESuperTypes().add(theZentaPackage.getBorderObject());
         canvasModelBlockEClass.getESuperTypes().add(this.getHelpHintProvider());
         canvasModelBlockEClass.getESuperTypes().add(this.getHintProvider());
-        canvasModelBlockEClass.getESuperTypes().add(theZentamatePackage.getTextContent());
-        canvasModelImageEClass.getESuperTypes().add(theZentamatePackage.getDiagramModelImage());
-        canvasModelImageEClass.getESuperTypes().add(theZentamatePackage.getLockable());
-        canvasModelConnectionEClass.getESuperTypes().add(theZentamatePackage.getDiagramModelConnection());
-        canvasModelConnectionEClass.getESuperTypes().add(theZentamatePackage.getLockable());
+        canvasModelBlockEClass.getESuperTypes().add(theZentaPackage.getTextContent());
+        canvasModelImageEClass.getESuperTypes().add(theZentaPackage.getDiagramModelImage());
+        canvasModelImageEClass.getESuperTypes().add(theZentaPackage.getLockable());
+        canvasModelConnectionEClass.getESuperTypes().add(theZentaPackage.getDiagramModelConnection());
+        canvasModelConnectionEClass.getESuperTypes().add(theZentaPackage.getLockable());
 
         // Initialize classes and features; add operations and parameters
         initEClass(iconicEClass, IIconic.class, "Iconic", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

@@ -24,12 +24,12 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
-import org.rulez.magwas.zenta.model.IZentamateElement;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -87,19 +87,19 @@ public final class CopySnapshot {
     private int fXOffSet, fYOffSet;
     
     /**
-     * Whether or not we paste new copies of the copied Zentamate Elements
+     * Whether or not we paste new copies of the copied Zenta Elements
      */
-    private boolean fDoCreateZentamateElementCopies;
+    private boolean fDoCreateZentaElementCopies;
     
     /**
-     * The source Zentamate Model of the copied objects
+     * The source Zenta Model of the copied objects
      */
-    private IZentamateModel fSourceZentamateModel;
+    private IZentaModel fSourceZentaModel;
     
     /**
-     * The target Zentamate Model of the copied objects
+     * The target Zenta Model of the copied objects
      */
-    private IZentamateModel fTargetZentamateModel;
+    private IZentaModel fTargetZentaModel;
     
     /**
      * Clear the system Clipboard of any CopySnapshot object if the CopySnapshot references a model that is closed
@@ -112,8 +112,8 @@ public final class CopySnapshot {
                     Object contents = Clipboard.getDefault().getContents();
                     if(contents instanceof CopySnapshot) {
                         CopySnapshot copySnapshot = (CopySnapshot)contents;
-                        IZentamateModel model = (IZentamateModel)evt.getNewValue();
-                        if(copySnapshot.fSourceZentamateModel == model) {
+                        IZentaModel model = (IZentaModel)evt.getNewValue();
+                        if(copySnapshot.fSourceZentaModel == model) {
                             Clipboard.getDefault().setContents(""); //$NON-NLS-1$
                         }
                     }
@@ -155,7 +155,7 @@ public final class CopySnapshot {
             }
         }
         
-        fSourceZentamateModel = diagramModel.getZentamateModel();
+        fSourceZentaModel = diagramModel.getZentaModel();
         
         // First copy objects
         List<IDiagramModelObject> objectsToCopy = getTopLevelObjectsToCopy(modelObjectsSelected);
@@ -291,10 +291,10 @@ public final class CopySnapshot {
     }
     
     private boolean isValidPasteObject(IDiagramModel targetDiagramModel, IDiagramModelObject object) {
-        // Can't paste IDiagramModelReference to another Zentamate model
+        // Can't paste IDiagramModelReference to another Zenta model
         if(object instanceof IDiagramModelReference) {
             IDiagramModel ref = ((IDiagramModelReference)object).getReferencedModel();
-            for(IDiagramModel diagramModel : targetDiagramModel.getZentamateModel().getDiagramModels()) {
+            for(IDiagramModel diagramModel : targetDiagramModel.getZentaModel().getDiagramModels()) {
                 if(ref == diagramModel) {
                     return true;
                 }
@@ -306,18 +306,18 @@ public final class CopySnapshot {
     }
     
     /*
-     * @return True if the target diagram model already contains at least one reference to the copied Zentamate Elements.
+     * @return True if the target diagram model already contains at least one reference to the copied Zenta Elements.
      * If this is true then we need to paste copies.
      */
-    private boolean needsCopiedZentamateElements(IDiagramModel targetDiagramModel) {
-        // If different Zentamate Models then yes!
-        if(fTargetZentamateModel != fSourceZentamateModel) {
+    private boolean needsCopiedZentaElements(IDiagramModel targetDiagramModel) {
+        // If different Zenta Models then yes!
+        if(fTargetZentaModel != fSourceZentaModel) {
             return true;
         }
         
         for(IDiagramModelObject object : fOriginalToSnapshotObjectsMapping.keySet()) {
-            if(object instanceof IDiagramModelZentamateObject) {
-                IZentamateElement originalElement = ((IDiagramModelZentamateObject)object).getZentamateElement();
+            if(object instanceof IDiagramModelZentaObject) {
+                IZentaElement originalElement = ((IDiagramModelZentaObject)object).getZentaElement();
                 if(originalElement == null || originalElement.eContainer() == null) { // zenta element was deleted
                     return true;
                 }
@@ -328,8 +328,8 @@ public final class CopySnapshot {
         }
         
         for(IDiagramModelConnection connection : fOriginalToSnapshotConnectionsMapping.keySet()) {
-            if(connection instanceof IDiagramModelZentamateConnection) {
-                IRelationship originalRelationship = ((IDiagramModelZentamateConnection)connection).getRelationship();
+            if(connection instanceof IDiagramModelZentaConnection) {
+                IRelationship originalRelationship = ((IDiagramModelZentaConnection)connection).getRelationship();
                 if(originalRelationship == null || originalRelationship.eContainer() == null) { // zenta relationship was deleted
                     return true;
                 }
@@ -352,10 +352,10 @@ public final class CopySnapshot {
             return null;
         }
         
-        fTargetZentamateModel = targetDiagramModel.getZentamateModel();
+        fTargetZentaModel = targetDiagramModel.getZentaModel();
         
-        // Create copies of Zentamate Elements or not
-        fDoCreateZentamateElementCopies = needsCopiedZentamateElements(targetDiagramModel);
+        // Create copies of Zenta Elements or not
+        fDoCreateZentaElementCopies = needsCopiedZentaElements(targetDiagramModel);
 
         // Find smallest x,y origin offset to paste at
         // TODO Calculate offsets
@@ -398,18 +398,18 @@ public final class CopySnapshot {
             bounds.setY(bounds.getY() + fYOffSet);
         }
         
-        if(newObject instanceof IDiagramModelZentamateObject) {
-            IDiagramModelZentamateObject dmo = (IDiagramModelZentamateObject)newObject;
+        if(newObject instanceof IDiagramModelZentaObject) {
+            IDiagramModelZentaObject dmo = (IDiagramModelZentaObject)newObject;
             // Use a copy so provide a new name
-            if(fDoCreateZentamateElementCopies) {
-                String name = dmo.getZentamateElement().getName();
-                dmo.getZentamateElement().setName(name + " " + Messages.CopySnapshot_1); //$NON-NLS-1$
+            if(fDoCreateZentaElementCopies) {
+                String name = dmo.getZentaElement().getName();
+                dmo.getZentaElement().setName(name + " " + Messages.CopySnapshot_1); //$NON-NLS-1$
             }
             // Else re-use original ZentaMate element
             else {
-                IDiagramModelZentamateObject originalDiagramObject = (IDiagramModelZentamateObject)fSnapshotToOriginalObjectsMapping.get(snapshotObject);
-                IZentamateElement element = originalDiagramObject.getZentamateElement();
-                dmo.setZentamateElement(element);
+                IDiagramModelZentaObject originalDiagramObject = (IDiagramModelZentaObject)fSnapshotToOriginalObjectsMapping.get(snapshotObject);
+                IZentaElement element = originalDiagramObject.getZentaElement();
+                dmo.setZentaElement(element);
             }
         }
         
@@ -417,7 +417,7 @@ public final class CopySnapshot {
         tmpSnapshotToNewObjectMapping.put(snapshotObject, newObject);
         
         // New diagram object Command
-        result.add(new PasteDiagramObjectCommand(container, newObject, fDoCreateZentamateElementCopies));
+        result.add(new PasteDiagramObjectCommand(container, newObject, fDoCreateZentaElementCopies));
         
         // Container
         if(snapshotObject instanceof IDiagramModelContainer) {
@@ -439,14 +439,14 @@ public final class CopySnapshot {
         if(newSource != null && newTarget != null) {
             IDiagramModelConnection newConnection = (IDiagramModelConnection)snapshotConnection.getCopy();
             
-            // Re-use original Zentamate relationship
-            if(!fDoCreateZentamateElementCopies && snapshotConnection instanceof IDiagramModelZentamateConnection) {
-                IDiagramModelZentamateConnection originalDiagramConnection = (IDiagramModelZentamateConnection)fSnapshotToOriginalConnectionsMapping.get(snapshotConnection);
+            // Re-use original Zenta relationship
+            if(!fDoCreateZentaElementCopies && snapshotConnection instanceof IDiagramModelZentaConnection) {
+                IDiagramModelZentaConnection originalDiagramConnection = (IDiagramModelZentaConnection)fSnapshotToOriginalConnectionsMapping.get(snapshotConnection);
                 IRelationship relationship = originalDiagramConnection.getRelationship();
-                ((IDiagramModelZentamateConnection)newConnection).setRelationship(relationship);
+                ((IDiagramModelZentaConnection)newConnection).setRelationship(relationship);
             }
             
-            result.add(new PasteDiagramConnectionCommand(newConnection, newSource, newTarget, fDoCreateZentamateElementCopies));
+            result.add(new PasteDiagramConnectionCommand(newConnection, newSource, newTarget, fDoCreateZentaElementCopies));
         }
     }
 
@@ -542,12 +542,12 @@ public final class CopySnapshot {
     private static class PasteDiagramObjectCommand extends Command {
         private IDiagramModelContainer fParent; // Target Parent Container
         private IDiagramModelObject fNewDiagramObject; // New copy
-        private boolean fDoCreateZentamateElement;
+        private boolean fDoCreateZentaElement;
         
-        public PasteDiagramObjectCommand(IDiagramModelContainer parent, IDiagramModelObject modelObject, boolean doCreateZentamateElement) {
+        public PasteDiagramObjectCommand(IDiagramModelContainer parent, IDiagramModelObject modelObject, boolean doCreateZentaElement) {
             fParent = parent;
             fNewDiagramObject = modelObject;
-            fDoCreateZentamateElement = doCreateZentamateElement;
+            fDoCreateZentaElement = doCreateZentaElement;
         }
         
         @Override
@@ -555,9 +555,9 @@ public final class CopySnapshot {
             // This first
             fParent.getChildren().add(fNewDiagramObject);
             
-            // If it's an Zentamate model type then add the Zentamate model object to a default folder
-            if(fNewDiagramObject instanceof IDiagramModelZentamateObject && fDoCreateZentamateElement) {
-                ((IDiagramModelZentamateObject)fNewDiagramObject).addZentamateElementToModel(null);
+            // If it's an Zenta model type then add the Zenta model object to a default folder
+            if(fNewDiagramObject instanceof IDiagramModelZentaObject && fDoCreateZentaElement) {
+                ((IDiagramModelZentaObject)fNewDiagramObject).addZentaElementToModel(null);
             }
         }
         
@@ -565,9 +565,9 @@ public final class CopySnapshot {
         public void undo() {
             fParent.getChildren().remove(fNewDiagramObject);
             
-            // If it's an Zentamate model type then remove the Zentamate model object from its containing folder
-            if(fNewDiagramObject instanceof IDiagramModelZentamateObject && fDoCreateZentamateElement) {
-                ((IDiagramModelZentamateObject)fNewDiagramObject).removeZentamateElementFromModel();
+            // If it's an Zenta model type then remove the Zenta model object from its containing folder
+            if(fNewDiagramObject instanceof IDiagramModelZentaObject && fDoCreateZentaElement) {
+                ((IDiagramModelZentaObject)fNewDiagramObject).removeZentaElementFromModel();
             }
         }
         
@@ -585,23 +585,23 @@ public final class CopySnapshot {
         private IDiagramModelConnection fConnection;
         private IDiagramModelObject fSource;
         private IDiagramModelObject fTarget;
-        private boolean fDoCreateZentamateElement;
+        private boolean fDoCreateZentaElement;
         
         public PasteDiagramConnectionCommand(IDiagramModelConnection connection, IDiagramModelObject source,
-                IDiagramModelObject target, boolean doCreateZentamateElement) {
+                IDiagramModelObject target, boolean doCreateZentaElement) {
             fConnection = connection;
             fSource = source;
             fTarget = target;
-            fDoCreateZentamateElement = doCreateZentamateElement;
+            fDoCreateZentaElement = doCreateZentaElement;
         }
 
         @Override
         public void execute() {
             fConnection.connect(fSource, fTarget);
             
-            // If it's an Zentamate model type Add relationship to default folder
-            if(fConnection instanceof IDiagramModelZentamateConnection && fDoCreateZentamateElement) {
-                ((IDiagramModelZentamateConnection)fConnection).addRelationshipToModel(null);
+            // If it's an Zenta model type Add relationship to default folder
+            if(fConnection instanceof IDiagramModelZentaConnection && fDoCreateZentaElement) {
+                ((IDiagramModelZentaConnection)fConnection).addRelationshipToModel(null);
             }
         }
         
@@ -609,9 +609,9 @@ public final class CopySnapshot {
         public void undo() {
             fConnection.disconnect(); // have to do this
             
-            // If it's an Zentamate model type remove relationship from folder
-            if(fConnection instanceof IDiagramModelZentamateConnection && fDoCreateZentamateElement) {
-                ((IDiagramModelZentamateConnection)fConnection).removeRelationshipFromModel();
+            // If it's an Zenta model type remove relationship from folder
+            if(fConnection instanceof IDiagramModelZentaConnection && fDoCreateZentaElement) {
+                ((IDiagramModelZentaConnection)fConnection).removeRelationshipFromModel();
             }
         }
         
@@ -619,9 +619,9 @@ public final class CopySnapshot {
         public void redo() {
             fConnection.reconnect(); // have to do this
             
-            // If it's an Zentamate model type Add relationship to default folder
-            if(fConnection instanceof IDiagramModelZentamateConnection && fDoCreateZentamateElement) {
-                ((IDiagramModelZentamateConnection)fConnection).addRelationshipToModel(null);
+            // If it's an Zenta model type Add relationship to default folder
+            if(fConnection instanceof IDiagramModelZentaConnection && fDoCreateZentaElement) {
+                ((IDiagramModelZentaConnection)fConnection).addRelationshipToModel(null);
             }
         }
         

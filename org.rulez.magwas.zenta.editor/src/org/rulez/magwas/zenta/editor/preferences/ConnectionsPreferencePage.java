@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 
 
 
@@ -180,12 +180,12 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         viewer.setLabelProvider(new LabelProvider() {
             @Override
             public String getText(Object element) {
-                return ZentamateLabelProvider.INSTANCE.getDefaultName((EClass)element);
+                return ZentaLabelProvider.INSTANCE.getDefaultName((EClass)element);
             }
             
             @Override
             public Image getImage(Object element) {
-                return ZentamateLabelProvider.INSTANCE.getImage(element);
+                return ZentaLabelProvider.INSTANCE.getImage(element);
             }
         });
         

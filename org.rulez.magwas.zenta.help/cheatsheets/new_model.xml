@@ -27,7 +27,7 @@
       <action
       		required="false"
       		pluginId="org.rulez.magwas.zenta.editor"
-      		class="org.rulez.magwas.zenta.editor.actions.NewZentamateModelAction"/>
+      		class="org.rulez.magwas.zenta.editor.actions.NewZentaModelAction"/>
    </item>
    <item
          title="Add Elements to the Model">

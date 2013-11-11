@@ -11,9 +11,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
 import org.rulez.magwas.zenta.editor.model.compatibility.ICompatibilityHandler;
-import org.rulez.magwas.zenta.model.IZentamateModel;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
-import org.rulez.magwas.zenta.model.IDiagramModelZentamateConnection;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IRelationship;
 
@@ -33,7 +33,7 @@ public class FixConnectionTextNames implements ICompatibilityHandler {
     
     @Override
     public void fixCompatibility(Resource resource) throws CompatibilityHandlerException {
-        IZentamateModel model = (IZentamateModel)resource.getContents().get(0);
+        IZentaModel model = (IZentaModel)resource.getContents().get(0);
         String version = model.getVersion();
         
         if(version != null && version.compareTo("2.1.0") < 0) { //$NON-NLS-1$
@@ -48,9 +48,9 @@ public class FixConnectionTextNames implements ICompatibilityHandler {
                         relationship.setName(""); //$NON-NLS-1$
                     }
                 }
-                // If an Zentamate connection has a (deprecated) text value then set the Relationship's name to that
-                if(element instanceof IDiagramModelZentamateConnection) {
-                    IDiagramModelZentamateConnection connection = (IDiagramModelZentamateConnection)element;
+                // If an Zenta connection has a (deprecated) text value then set the Relationship's name to that
+                if(element instanceof IDiagramModelZentaConnection) {
+                    IDiagramModelZentaConnection connection = (IDiagramModelZentaConnection)element;
                     String text = connection.getText();
                     if(text != null && text.length() > 0) {
                         IRelationship relationship = connection.getRelationship();
@@ -82,9 +82,9 @@ public class FixConnectionTextNames implements ICompatibilityHandler {
     private String getRelationshipDefaultName(IRelationship relationship) {
         switch(relationship.eClass().getClassifierID()) {
         //FIXME from object class
-            case IZentamatePackage.ASSOCIATION_RELATIONSHIP:
+            case IZentaPackage.ASSOCIATION_RELATIONSHIP:
                 return "Association relation"; //$NON-NLS-1$
-            case IZentamatePackage.SPECIALISATION_RELATIONSHIP:
+            case IZentaPackage.SPECIALISATION_RELATIONSHIP:
                 return "Specialisation relation"; //$NON-NLS-1$
         }
         return ""; //$NON-NLS-1$

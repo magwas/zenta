@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.rulez.magwas.zenta.model.IZentamateFactory;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -40,6 +40,7 @@ import org.rulez.magwas.zenta.model.IFontAttribute;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getSourceConnections <em>Source Connections</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getTargetConnections <em>Target Connections</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getFillColor <em>Fill Color</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getElementShape <em>Element Shape</em>}</li>
  * </ul>
  * </p>
  *
@@ -177,6 +178,26 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     protected String fillColor = FILL_COLOR_EDEFAULT;
 
     /**
+	 * The default value of the '{@link #getElementShape() <em>Element Shape</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementShape()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ELEMENT_SHAPE_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getElementShape() <em>Element Shape</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementShape()
+	 * @generated
+	 * @ordered
+	 */
+	protected String elementShape = ELEMENT_SHAPE_EDEFAULT;
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -192,7 +213,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.DIAGRAM_MODEL_OBJECT;
+		return IZentaPackage.Literals.DIAGRAM_MODEL_OBJECT;
 	}
 
     /**
@@ -213,7 +234,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		IBounds oldBounds = bounds;
 		bounds = newBounds;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS, oldBounds, newBounds);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS, oldBounds, newBounds);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -228,14 +249,14 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		if (newBounds != bounds) {
 			NotificationChain msgs = null;
 			if (bounds != null)
-				msgs = ((InternalEObject)bounds).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS, null, msgs);
+				msgs = ((InternalEObject)bounds).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS, null, msgs);
 			if (newBounds != null)
-				msgs = ((InternalEObject)newBounds).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS, null, msgs);
+				msgs = ((InternalEObject)newBounds).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS, null, msgs);
 			msgs = basicSetBounds(newBounds, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS, newBounds, newBounds));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS, newBounds, newBounds));
 	}
 
     /**
@@ -245,7 +266,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 	 */
     public EList<IDiagramModelConnection> getSourceConnections() {
 		if (sourceConnections == null) {
-			sourceConnections = new EObjectContainmentEList<IDiagramModelConnection>(IDiagramModelConnection.class, this, IZentamatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS);
+			sourceConnections = new EObjectContainmentEList<IDiagramModelConnection>(IDiagramModelConnection.class, this, IZentaPackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS);
 		}
 		return sourceConnections;
 	}
@@ -257,7 +278,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 	 */
     public EList<IDiagramModelConnection> getTargetConnections() {
 		if (targetConnections == null) {
-			targetConnections = new EObjectEList<IDiagramModelConnection>(IDiagramModelConnection.class, this, IZentamatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS);
+			targetConnections = new EObjectEList<IDiagramModelConnection>(IDiagramModelConnection.class, this, IZentaPackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS);
 		}
 		return targetConnections;
 	}
@@ -280,10 +301,31 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		String oldFillColor = fillColor;
 		fillColor = newFillColor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR, oldFillColor, fillColor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR, oldFillColor, fillColor));
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getElementShape() {
+		return elementShape;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setElementShape(String newElementShape) {
+		String oldElementShape = elementShape;
+		elementShape = newElementShape;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE, oldElementShape, elementShape));
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -301,7 +343,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		String oldFont = font;
 		font = newFont;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT, oldFont, font));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT, oldFont, font));
 	}
 
     /**
@@ -322,7 +364,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		String oldFontColor = fontColor;
 		fontColor = newFontColor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR, oldFontColor, fontColor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR, oldFontColor, fontColor));
 	}
 
     /**
@@ -347,7 +389,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		int oldTextAlignment = textAlignment;
 		textAlignment = newTextAlignment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT, oldTextAlignment, textAlignment));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT, oldTextAlignment, textAlignment));
 	}
 
     /**
@@ -368,7 +410,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		int oldTextPosition = textPosition;
 		textPosition = newTextPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION, oldTextPosition, textPosition));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION, oldTextPosition, textPosition));
 	}
 
     /**
@@ -419,7 +461,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
      * @generated NOT
      */
     public void setBounds(int x, int y, int width, int height) {
-        IBounds bounds = IZentamateFactory.eINSTANCE.createBounds(x, y, width, height);
+        IBounds bounds = IZentaFactory.eINSTANCE.createBounds(x, y, width, height);
         setBounds(bounds);
     }
 
@@ -450,9 +492,9 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
 				return basicSetBounds(null, msgs);
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
 				return ((InternalEList<?>)getSourceConnections()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -466,22 +508,24 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT:
 				return getFont();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
 				return getFontColor();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
 				return getTextAlignment();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION:
 				return getTextPosition();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
 				return getBounds();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
 				return getSourceConnections();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
 				return getTargetConnections();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
 				return getFillColor();
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE:
+				return getElementShape();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -495,31 +539,34 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT:
 				setFont((String)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
 				setFontColor((String)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
 				setTextAlignment((Integer)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION:
 				setTextPosition((Integer)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
 				setBounds((IBounds)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
 				getSourceConnections().clear();
 				getSourceConnections().addAll((Collection<? extends IDiagramModelConnection>)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
 				getTargetConnections().clear();
 				getTargetConnections().addAll((Collection<? extends IDiagramModelConnection>)newValue);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
 				setFillColor((String)newValue);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE:
+				setElementShape((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -533,29 +580,32 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT:
 				setFont(FONT_EDEFAULT);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
 				setFontColor(FONT_COLOR_EDEFAULT);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
 				setTextAlignment(TEXT_ALIGNMENT_EDEFAULT);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION:
 				setTextPosition(TEXT_POSITION_EDEFAULT);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
 				setBounds((IBounds)null);
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
 				getSourceConnections().clear();
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
 				getTargetConnections().clear();
 				return;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
 				setFillColor(FILL_COLOR_EDEFAULT);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE:
+				setElementShape(ELEMENT_SHAPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -569,22 +619,24 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT:
 				return FONT_EDEFAULT == null ? font != null : !FONT_EDEFAULT.equals(font);
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR:
 				return FONT_COLOR_EDEFAULT == null ? fontColor != null : !FONT_COLOR_EDEFAULT.equals(fontColor);
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT:
 				return textAlignment != TEXT_ALIGNMENT_EDEFAULT;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION:
 				return textPosition != TEXT_POSITION_EDEFAULT;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__BOUNDS:
 				return bounds != null;
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__SOURCE_CONNECTIONS:
 				return sourceConnections != null && !sourceConnections.isEmpty();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__TARGET_CONNECTIONS:
 				return targetConnections != null && !targetConnections.isEmpty();
-			case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__FILL_COLOR:
 				return FILL_COLOR_EDEFAULT == null ? fillColor != null : !FILL_COLOR_EDEFAULT.equals(fillColor);
+			case IZentaPackage.DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE:
+				return ELEMENT_SHAPE_EDEFAULT == null ? elementShape != null : !ELEMENT_SHAPE_EDEFAULT.equals(elementShape);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -598,10 +650,10 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IFontAttribute.class) {
 			switch (derivedFeatureID) {
-				case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT: return IZentamatePackage.FONT_ATTRIBUTE__FONT;
-				case IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR: return IZentamatePackage.FONT_ATTRIBUTE__FONT_COLOR;
-				case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT: return IZentamatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT;
-				case IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION: return IZentamatePackage.FONT_ATTRIBUTE__TEXT_POSITION;
+				case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT: return IZentaPackage.FONT_ATTRIBUTE__FONT;
+				case IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR: return IZentaPackage.FONT_ATTRIBUTE__FONT_COLOR;
+				case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT: return IZentaPackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT;
+				case IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION: return IZentaPackage.FONT_ATTRIBUTE__TEXT_POSITION;
 				default: return -1;
 			}
 		}
@@ -617,10 +669,10 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IFontAttribute.class) {
 			switch (baseFeatureID) {
-				case IZentamatePackage.FONT_ATTRIBUTE__FONT: return IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT;
-				case IZentamatePackage.FONT_ATTRIBUTE__FONT_COLOR: return IZentamatePackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR;
-				case IZentamatePackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT: return IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT;
-				case IZentamatePackage.FONT_ATTRIBUTE__TEXT_POSITION: return IZentamatePackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION;
+				case IZentaPackage.FONT_ATTRIBUTE__FONT: return IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT;
+				case IZentaPackage.FONT_ATTRIBUTE__FONT_COLOR: return IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR;
+				case IZentaPackage.FONT_ATTRIBUTE__TEXT_ALIGNMENT: return IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_ALIGNMENT;
+				case IZentaPackage.FONT_ATTRIBUTE__TEXT_POSITION: return IZentaPackage.DIAGRAM_MODEL_OBJECT__TEXT_POSITION;
 				default: return -1;
 			}
 		}
@@ -647,6 +699,8 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		result.append(textPosition);
 		result.append(", fillColor: "); //$NON-NLS-1$
 		result.append(fillColor);
+		result.append(", elementShape: "); //$NON-NLS-1$
+		result.append(elementShape);
 		result.append(')');
 		return result.toString();
 	}

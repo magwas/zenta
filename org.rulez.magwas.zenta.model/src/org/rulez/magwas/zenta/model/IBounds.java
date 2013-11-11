@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getBounds()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds()
  * @model
  * @generated
  */
@@ -38,7 +38,7 @@ public interface IBounds extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>X</em>' attribute.
 	 * @see #setX(int)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getBounds_X()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds_X()
 	 * @model
 	 * @generated
 	 */
@@ -64,7 +64,7 @@ public interface IBounds extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Y</em>' attribute.
 	 * @see #setY(int)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getBounds_Y()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds_Y()
 	 * @model
 	 * @generated
 	 */
@@ -91,7 +91,7 @@ public interface IBounds extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Width</em>' attribute.
 	 * @see #setWidth(int)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getBounds_Width()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds_Width()
 	 * @model default="-1"
 	 * @generated
 	 */
@@ -118,7 +118,7 @@ public interface IBounds extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Height</em>' attribute.
 	 * @see #setHeight(int)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getBounds_Height()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds_Height()
 	 * @model default="-1"
 	 * @generated
 	 */

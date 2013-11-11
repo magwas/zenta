@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBusinessObject;
 
 
@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.model.IBusinessObject;
  *
  * @generated
  */
-public class BusinessObject extends ZentamateElement implements IBusinessObject {
+public class BusinessObject extends ZentaElement implements IBusinessObject {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -36,7 +36,7 @@ public class BusinessObject extends ZentamateElement implements IBusinessObject 
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.BUSINESS_OBJECT;
+		return IZentaPackage.Literals.BUSINESS_OBJECT;
 	}
 
 } //BusinessObject

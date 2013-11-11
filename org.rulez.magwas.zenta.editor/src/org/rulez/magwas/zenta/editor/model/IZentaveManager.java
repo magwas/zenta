@@ -13,7 +13,7 @@ import java.util.zip.ZipFile;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.model.impl.ZentaveManager;
-import org.rulez.magwas.zenta.model.IZentamateModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 /**
@@ -30,7 +30,7 @@ public interface IZentaveManager {
          * @param model The owning model
          * @return The IZentaveManager instance
          */
-        public static IZentaveManager createZentaveManager(IZentamateModel model) {
+        public static IZentaveManager createZentaveManager(IZentaModel model) {
             return new ZentaveManager(model);
         }
         
@@ -116,7 +116,7 @@ public interface IZentaveManager {
     void loadImages() throws IOException;
 
     /**
-     * Load all images from another Zentamate Model archive file and add to this one
+     * Load all images from another Zenta Model archive file and add to this one
      * @param file The model file
      * @return if the images could be loaded
      * @throws IOException

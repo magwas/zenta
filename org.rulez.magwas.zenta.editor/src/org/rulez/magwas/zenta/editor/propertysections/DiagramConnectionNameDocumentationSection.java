@@ -13,20 +13,20 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IZentamateConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IZentaConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.ILockable;
 
 
 
 /**
- * Property Section for the name & documentation of a non-Zentamate diagram connection
+ * Property Section for the name & documentation of a non-Zenta diagram connection
  * 
  * @author Phillip Beauvoir
  */
-public class DiagramConnectionNameDocumentationSection extends AbstractZentamatePropertySection {
+public class DiagramConnectionNameDocumentationSection extends AbstractZentaPropertySection {
     
     private static final String HELP_ID = "org.rulez.magwas.zenta.help.elementPropertySection"; //$NON-NLS-1$
     
@@ -37,7 +37,7 @@ public class DiagramConnectionNameDocumentationSection extends AbstractZentamate
         @Override
         public boolean select(Object object) {
             return (object instanceof IDiagramConnectionEditPart)
-                        && !(object instanceof IZentamateConnectionEditPart); // Not Zentamate connections
+                        && !(object instanceof IZentaConnectionEditPart); // Not Zenta connections
         }
     }
 
@@ -49,15 +49,15 @@ public class DiagramConnectionNameDocumentationSection extends AbstractZentamate
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Name event (Undo/Redo and here)
-            if(feature == IZentamatePackage.Literals.NAMEABLE__NAME) {
+            if(feature == IZentaPackage.Literals.NAMEABLE__NAME) {
                 refreshNameField();
                 fPage.labelProviderChanged(null); // Update Main label
             }
             // Documentation event (Undo/Redo and here)
-            else if(feature == IZentamatePackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
+            else if(feature == IZentaPackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
                 refreshDocumentationField();
             }
-            else if(feature == IZentamatePackage.Literals.LOCKABLE__LOCKED) {
+            else if(feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }
         }

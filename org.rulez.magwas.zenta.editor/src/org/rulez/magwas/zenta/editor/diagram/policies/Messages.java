@@ -11,11 +11,11 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.diagram.policies.messages"; //$NON-NLS-1$
 
-    public static String ZentamateDiagramConnectionPolicy_0;
+    public static String ZentaDiagramConnectionPolicy_0;
 
-    public static String ZentamateDiagramConnectionPolicy_1;
+    public static String ZentaDiagramConnectionPolicy_1;
 
-    public static String ZentamateDNDEditPolicy_0;
+    public static String ZentaDNDEditPolicy_0;
 
     public static String BasicContainerEditPolicy_0;
 

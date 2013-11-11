@@ -9,7 +9,7 @@ import org.eclipse.gef.commands.CommandStack;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -43,7 +43,7 @@ public class RenameCommandHandler {
         CommandStack stack = (CommandStack)((IAdapter)element).getAdapter(CommandStack.class);
         if(stack != null) {
             stack.execute(new EObjectFeatureCommand(Messages.RenameCommandHandler_0 + " " + element.getName(), element, //$NON-NLS-1$
-                    IZentamatePackage.Literals.NAMEABLE__NAME, newText));
+                    IZentaPackage.Literals.NAMEABLE__NAME, newText));
         }
     }
 }

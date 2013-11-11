@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.rulez.magwas.zenta.widgets,
  org.rulez.magwas.zenta.model;bundle-version="2.4.0"
 Bundle-ClassPath: org.rulez.magwas.zenta.templates.jar
-Bundle-Activator: org.rulez.magwas.zenta.templates.ZentamateEditorTemplatesPlugin
+Bundle-Activator: org.rulez.magwas.zenta.templates.ZentaEditorTemplatesPlugin
 Bundle-ActivationPolicy: lazy
 Export-Package: org.rulez.magwas.zenta.templates.dialog,
  org.rulez.magwas.zenta.templates.model,

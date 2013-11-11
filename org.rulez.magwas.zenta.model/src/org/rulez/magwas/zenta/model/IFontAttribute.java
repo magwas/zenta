@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFontAttribute()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getFontAttribute()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -54,7 +54,7 @@ public interface IFontAttribute extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Font</em>' attribute.
 	 * @see #setFont(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFontAttribute_Font()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getFontAttribute_Font()
 	 * @model
 	 * @generated
 	 */
@@ -80,7 +80,7 @@ public interface IFontAttribute extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Font Color</em>' attribute.
 	 * @see #setFontColor(String)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFontAttribute_FontColor()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getFontAttribute_FontColor()
 	 * @model
 	 * @generated
 	 */
@@ -106,7 +106,7 @@ public interface IFontAttribute extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text Alignment</em>' attribute.
 	 * @see #setTextAlignment(int)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFontAttribute_TextAlignment()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getFontAttribute_TextAlignment()
 	 * @model
 	 * @generated
 	 */
@@ -132,7 +132,7 @@ public interface IFontAttribute extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text Position</em>' attribute.
 	 * @see #setTextPosition(int)
-	 * @see org.rulez.magwas.zenta.model.IZentamatePackage#getFontAttribute_TextPosition()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getFontAttribute_TextPosition()
 	 * @model
 	 * @generated
 	 */

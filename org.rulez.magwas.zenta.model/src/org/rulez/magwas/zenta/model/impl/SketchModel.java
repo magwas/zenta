@@ -9,7 +9,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ISketchModel;
 
 /**
@@ -61,7 +61,7 @@ public class SketchModel extends DiagramModel implements ISketchModel {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentamatePackage.Literals.SKETCH_MODEL;
+		return IZentaPackage.Literals.SKETCH_MODEL;
 	}
 
     /**
@@ -82,7 +82,7 @@ public class SketchModel extends DiagramModel implements ISketchModel {
 		int oldBackground = background;
 		background = newBackground;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentamatePackage.SKETCH_MODEL__BACKGROUND, oldBackground, background));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.SKETCH_MODEL__BACKGROUND, oldBackground, background));
 	}
 
     /**
@@ -93,7 +93,7 @@ public class SketchModel extends DiagramModel implements ISketchModel {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentamatePackage.SKETCH_MODEL__BACKGROUND:
+			case IZentaPackage.SKETCH_MODEL__BACKGROUND:
 				return getBackground();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -107,7 +107,7 @@ public class SketchModel extends DiagramModel implements ISketchModel {
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentamatePackage.SKETCH_MODEL__BACKGROUND:
+			case IZentaPackage.SKETCH_MODEL__BACKGROUND:
 				setBackground((Integer)newValue);
 				return;
 		}
@@ -122,7 +122,7 @@ public class SketchModel extends DiagramModel implements ISketchModel {
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.SKETCH_MODEL__BACKGROUND:
+			case IZentaPackage.SKETCH_MODEL__BACKGROUND:
 				setBackground(BACKGROUND_EDEFAULT);
 				return;
 		}
@@ -137,7 +137,7 @@ public class SketchModel extends DiagramModel implements ISketchModel {
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentamatePackage.SKETCH_MODEL__BACKGROUND:
+			case IZentaPackage.SKETCH_MODEL__BACKGROUND:
 				return background != BACKGROUND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

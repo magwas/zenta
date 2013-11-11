@@ -10,8 +10,8 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.SpecialisationConnectionEditPart;
-import org.rulez.magwas.zenta.editor.ui.IZentamateImages;
-import org.rulez.magwas.zenta.model.IZentamatePackage;
+import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 
 
 
@@ -23,7 +23,7 @@ import org.rulez.magwas.zenta.model.IZentamatePackage;
 public class SpecialisationConnectionUIProvider extends AbstractConnectionUIProvider {
 
     public EClass providerFor() {
-        return IZentamatePackage.eINSTANCE.getSpecialisationRelationship();
+        return IZentaPackage.eINSTANCE.getSpecialisationRelationship();
     }
     
     @Override
@@ -43,11 +43,11 @@ public class SpecialisationConnectionUIProvider extends AbstractConnectionUIProv
 
     @Override
     public Image getImage() {
-        return IZentamateImages.ImageFactory.getImage(IZentamateImages.ICON_SPECIALISATION_CONNECTION_16);
+        return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_SPECIALISATION_CONNECTION_16);
     }
 
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IZentamateImages.ImageFactory.getImageDescriptor(IZentamateImages.ICON_SPECIALISATION_CONNECTION_16);
+        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_SPECIALISATION_CONNECTION_16);
     }
 }

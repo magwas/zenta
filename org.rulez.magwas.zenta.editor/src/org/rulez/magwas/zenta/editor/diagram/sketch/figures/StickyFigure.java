@@ -20,7 +20,7 @@ import org.eclipse.swt.SWT;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractContainerFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
-import org.rulez.magwas.zenta.editor.ui.ZentamateLabelProvider;
+import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
 
@@ -154,7 +154,7 @@ public class StickyFigure extends AbstractContainerFigure {
             return null;
         }
         
-        String text = ZentamateLabelProvider.INSTANCE.getLabel(getDiagramModelObject());
+        String text = ZentaLabelProvider.INSTANCE.getLabel(getDiagramModelObject());
         tooltip.setText(text);
         tooltip.setType(Messages.StickyFigure_0);
        
