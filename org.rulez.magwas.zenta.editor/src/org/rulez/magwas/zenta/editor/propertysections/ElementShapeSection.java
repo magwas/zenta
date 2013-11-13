@@ -129,7 +129,7 @@ public class ElementShapeSection extends AbstractZentaPropertySection {
     
     protected void refreshControls() {
         String shapeValue = fShapeObject.getElementShape();
-        fShapeSelector.setShapeValue(shapeValue);   
+        fShapeSelector.setShapeValue(shapeValue); 
         boolean enabled = fShapeObject instanceof ILockable ? !((ILockable)fShapeObject).isLocked() : true;
         fShapeSelector.setEnabled(enabled);
         fDefaultShapeButton.setEnabled(shapeValue != null && enabled);

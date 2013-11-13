@@ -6,7 +6,6 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.business;
 
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
-import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
 import org.rulez.magwas.zenta.editor.ui.FigureFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
@@ -21,13 +20,10 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
  */
 public class BusinessObjectFigure extends AbstractTextFlowFigure {
     
-    
-    // Use a Rectangle Figure Delegate to Draw
-    RectangleFigureDelegate figureDelegate = new BusinessObjectFigureDelegate(this);
-    
+        
     public BusinessObjectFigure(IDiagramModelZentaObject diagramModelObject) {
         super(diagramModelObject);
-        setFigureShape(FigureFactory.RECTANGLE_ELEMENT_SHAPE);
+        setFigureShape(diagramModelObject.getElementShape());
         refreshVisuals();
     }
 

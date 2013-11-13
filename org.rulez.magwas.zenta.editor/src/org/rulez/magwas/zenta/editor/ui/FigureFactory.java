@@ -49,7 +49,6 @@ public class FigureFactory {
 		return defaultFigureName;
 	}
 	private static Class<?> convertStringToFigure(String shapeValue) {
-		System.out.println(shapeValue);
 		if("".equals(shapeValue)) {
 			shapeValue = defaultFigureName;
 		}
@@ -75,7 +74,7 @@ public class FigureFactory {
 	}
     public static IFigureDelegate getDelegate(String shape, AbstractDiagramModelObjectFigure parent) {
        @SuppressWarnings("unchecked")
-               Class<IFigureDelegate> figureClass = (Class<IFigureDelegate>) convertStringToFigure(shape);
+       Class<IFigureDelegate> figureClass = (Class<IFigureDelegate>) convertStringToFigure(shape);
        Constructor<IFigureDelegate> constructor;
        IFigureDelegate obj;
                        try {
