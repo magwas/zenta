@@ -6,7 +6,6 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.business;
 
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
-import org.rulez.magwas.zenta.editor.ui.FigureFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
 
