@@ -45,6 +45,7 @@ import org.rulez.magwas.zenta.model.IProperty;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getBendpoints <em>Bendpoints</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getLineWidth <em>Line Width</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getLineColor <em>Line Color</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getLineDecoration <em>Line Decoration</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getType <em>Type</em>}</li>
  * </ul>
  * </p>
@@ -253,6 +254,26 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     protected String lineColor = LINE_COLOR_EDEFAULT;
 
     /**
+	 * The default value of the '{@link #getLineDecoration() <em>Line Decoration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLineDecoration()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LINE_DECORATION_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getLineDecoration() <em>Line Decoration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLineDecoration()
+	 * @generated
+	 * @ordered
+	 */
+	protected String lineDecoration = LINE_DECORATION_EDEFAULT;
+
+				/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -529,6 +550,27 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLineDecoration() {
+		return lineDecoration;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLineDecoration(String newLineDecoration) {
+		String oldLineDecoration = lineDecoration;
+		lineDecoration = newLineDecoration;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION, oldLineDecoration, lineDecoration));
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -661,6 +703,8 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 				return getLineWidth();
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
 				return getLineColor();
+			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION:
+				return getLineDecoration();
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__TYPE:
 				return getType();
 		}
@@ -714,6 +758,9 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
 				setLineColor((String)newValue);
 				return;
+			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION:
+				setLineDecoration((String)newValue);
+				return;
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__TYPE:
 				setType((Integer)newValue);
 				return;
@@ -765,6 +812,9 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
 				setLineColor(LINE_COLOR_EDEFAULT);
 				return;
+			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION:
+				setLineDecoration(LINE_DECORATION_EDEFAULT);
+				return;
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
@@ -804,6 +854,8 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 				return lineWidth != LINE_WIDTH_EDEFAULT;
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
 				return LINE_COLOR_EDEFAULT == null ? lineColor != null : !LINE_COLOR_EDEFAULT.equals(lineColor);
+			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION:
+				return LINE_DECORATION_EDEFAULT == null ? lineDecoration != null : !LINE_DECORATION_EDEFAULT.equals(lineDecoration);
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
@@ -898,6 +950,8 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		result.append(lineWidth);
 		result.append(", lineColor: "); //$NON-NLS-1$
 		result.append(lineColor);
+		result.append(", lineDecoration: "); //$NON-NLS-1$
+		result.append(lineDecoration);
 		result.append(", type: "); //$NON-NLS-1$
 		result.append(type);
 		result.append(')');

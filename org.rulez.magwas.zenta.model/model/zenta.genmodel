@@ -133,6 +133,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelConnection/bendpoints"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/lineWidth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/lineColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/lineDecoration"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/type"/>
       <genOperations ecoreOperation="zenta.ecore#//DiagramModelConnection/connect">
         <genParameters ecoreParameter="zenta.ecore#//DiagramModelConnection/connect/source"/>

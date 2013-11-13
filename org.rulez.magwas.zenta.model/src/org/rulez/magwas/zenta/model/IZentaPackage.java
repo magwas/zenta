@@ -2262,13 +2262,22 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_CONNECTION__LINE_COLOR = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Line Decoration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_CONNECTION__LINE_DECORATION = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 12;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL_CONNECTION__TYPE = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 12;
+	int DIAGRAM_MODEL_CONNECTION__TYPE = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of structural features of the '<em>Diagram Model Connection</em>' class.
@@ -2277,7 +2286,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 13;
+	int DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint <em>Diagram Model Bendpoint</em>}' class.
@@ -2926,6 +2935,15 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_COLOR = DIAGRAM_MODEL_CONNECTION__LINE_COLOR;
+
+	/**
+	 * The feature id for the '<em><b>Line Decoration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_DECORATION = DIAGRAM_MODEL_CONNECTION__LINE_DECORATION;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -4112,6 +4130,17 @@ public interface IZentaPackage extends EPackage {
 	EAttribute getDiagramModelConnection_LineColor();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineDecoration <em>Line Decoration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Decoration</em>'.
+	 * @see org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineDecoration()
+	 * @see #getDiagramModelConnection()
+	 * @generated
+	 */
+	EAttribute getDiagramModelConnection_LineDecoration();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5088,6 +5117,14 @@ public interface IZentaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DIAGRAM_MODEL_CONNECTION__LINE_COLOR = eINSTANCE.getDiagramModelConnection_LineColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Decoration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIAGRAM_MODEL_CONNECTION__LINE_DECORATION = eINSTANCE.getDiagramModelConnection_LineDecoration();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
