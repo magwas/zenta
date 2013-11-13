@@ -9,7 +9,6 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.geometry.PointList;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 
 
 
@@ -18,12 +17,12 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
  * 
  * @author Phillip Beauvoir
  */
-public class AggregationConnectionFigure extends AbstractZentaConnectionFigure {
+public class AggregationConnectionDecoration extends AbstractConnectionDecoration {
 	
     /**
      * @return Decoration to use on Source Node
      */
-    public static PolygonDecoration createFigureSourceDecoration() {
+    private static PolygonDecoration createFigureSourceDecoration() {
         return new PolygonDecoration() {
             {
                 setScale(5, 3);
@@ -44,12 +43,8 @@ public class AggregationConnectionFigure extends AbstractZentaConnectionFigure {
         };
     }
 
-    public AggregationConnectionFigure(IDiagramModelZentaConnection connection) {
-        super(connection);
-    }
-	
     @Override
-    protected void setFigureProperties() {
-        setSourceDecoration(createFigureSourceDecoration());
+    public void setFigureProperties() {
+        owner.setSourceDecoration(createFigureSourceDecoration());
     }
 }

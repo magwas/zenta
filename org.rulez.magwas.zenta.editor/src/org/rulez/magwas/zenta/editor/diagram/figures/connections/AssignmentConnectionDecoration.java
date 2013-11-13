@@ -7,7 +7,6 @@ package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
 import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.geometry.PointList;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 
 
 /**
@@ -15,12 +14,12 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
  * 
  * @author Phillip Beauvoir
  */
-public class AssignmentConnectionFigure extends AbstractZentaConnectionFigure {
+public class AssignmentConnectionDecoration extends AbstractConnectionDecoration {
 	
     /**
      * @return Decoration to use on Target Node
      */
-    public static PolygonDecoration createFigureTargetDecoration() {
+    private static PolygonDecoration createFigureTargetDecoration() {
         return new PolygonDecoration() {
             {
                 setScale(2, 1.3);
@@ -40,17 +39,13 @@ public class AssignmentConnectionFigure extends AbstractZentaConnectionFigure {
     /**
      * @return Decoration to use on Source Node
      */
-    public static PolygonDecoration createFigureSourceDecoration() {
+    private static PolygonDecoration createFigureSourceDecoration() {
         return createFigureTargetDecoration();
-    }
-
-    public AssignmentConnectionFigure(IDiagramModelZentaConnection connection) {
-        super(connection);
     }
 	
     @Override
-    protected void setFigureProperties() {
-        setSourceDecoration(createFigureSourceDecoration());
-        setTargetDecoration(createFigureTargetDecoration()); 
+    public void setFigureProperties() {
+        owner.setSourceDecoration(createFigureSourceDecoration());
+        owner.setTargetDecoration(createFigureTargetDecoration()); 
     }
 }

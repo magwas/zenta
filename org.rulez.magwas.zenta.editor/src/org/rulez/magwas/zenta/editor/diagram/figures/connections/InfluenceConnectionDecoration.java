@@ -6,30 +6,28 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
 import org.eclipse.draw2d.PolygonDecoration;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.eclipse.swt.SWT;
 
 
 /**
- * Triggering Connection Figure class
+ * Influence Connection Figure class
  * 
  * @author Phillip Beauvoir
  */
-public class TriggeringConnectionFigure extends AbstractZentaConnectionFigure {
+public class InfluenceConnectionDecoration extends AbstractConnectionDecoration {
 	
     /**
      * @return Decoration to use on Target Node
      */
-    public static PolygonDecoration createFigureTargetDecoration() {
+    private static PolygonDecoration createFigureTargetDecoration() {
         return new PolygonDecoration();
-    }
-
-    public TriggeringConnectionFigure(IDiagramModelZentaConnection connection) {
-        super(connection);
     }
 	
     @Override
-    protected void setFigureProperties() {
-        setTargetDecoration(createFigureTargetDecoration()); 
+    public void setFigureProperties() {
+        owner.setTargetDecoration(createFigureTargetDecoration()); 
+        owner.setLineStyle(SWT.LINE_CUSTOM); // We have to explitly set this otherwise dashes/dots don't show
+        owner.setLineDash(new float[] { 6, 3 });
     }
     
 

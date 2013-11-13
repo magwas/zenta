@@ -22,7 +22,7 @@ public class SpecialisationConnectionFigure extends AbstractZentaConnectionFigur
     /**
      * @return Decoration to use on Target Node
      */
-    public static PolygonDecoration createFigureTargetDecoration() {
+    private static PolygonDecoration createFigureTargetDecoration() {
         PolygonDecoration decoration = new PolygonDecoration() {
             @Override
             protected void fillShape(Graphics g) {

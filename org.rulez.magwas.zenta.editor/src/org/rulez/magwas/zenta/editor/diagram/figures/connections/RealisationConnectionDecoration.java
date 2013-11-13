@@ -9,7 +9,6 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.swt.SWT;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 
 
 
@@ -18,7 +17,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
  * 
  * @author Phillip Beauvoir
  */
-public class RealisationConnectionFigure extends AbstractZentaConnectionFigure {
+public class RealisationConnectionDecoration extends AbstractConnectionDecoration {
     
     /**
      * @return Decoration to use on Target Node
@@ -38,16 +37,12 @@ public class RealisationConnectionFigure extends AbstractZentaConnectionFigure {
         return decoration;
     }
 	
-    public RealisationConnectionFigure(IDiagramModelZentaConnection connection) {
-        super(connection);
-    }
-	
     @Override
-    protected void setFigureProperties() {
-        setTargetDecoration(createFigureTargetDecoration());
+    public void setFigureProperties() {
+        owner.setTargetDecoration(createFigureTargetDecoration());
         
-        setLineStyle(SWT.LINE_CUSTOM); // We have to explitly set this otherwise dashes/dots don't show
-        setLineDash(new float[] { 4 });
+        owner.setLineStyle(SWT.LINE_CUSTOM); // We have to explitly set this otherwise dashes/dots don't show
+        owner.setLineDash(new float[] { 4 });
     }
     
 
