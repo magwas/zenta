@@ -37,8 +37,6 @@ implements IDiagramModelObjectFigure {
     private Color fFillColor;
     private Color fFontColor;
     
-    // Delegate to do drawing
-    private IFigureDelegate fFigureDelegate;
     
     public AbstractDiagramModelObjectFigure(IDiagramModelObject diagramModelObject){
         fDiagramModelObject = diagramModelObject;
@@ -49,12 +47,18 @@ implements IDiagramModelObjectFigure {
         return fDiagramModelObject;
     }
     
+    private IFigureDelegate delegate;
     public IFigureDelegate getFigureDelegate() {
-        return fFigureDelegate;
+		return delegate;
     }
     
-    public void setFigureDelegate(IFigureDelegate figureDelegate) {
-        fFigureDelegate = figureDelegate;
+    public void setFigureShape(String shape) {
+    	boolean isenabled = true;
+    	if(delegate != null) {
+        	isenabled = delegate.isEnabled();
+    	}
+        delegate = org.rulez.magwas.zenta.editor.ui.FigureFactory.getDelegate(shape, this);
+        delegate.setEnabled(isenabled);
     }
     
     /**

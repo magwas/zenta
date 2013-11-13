@@ -6,15 +6,9 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.diagram;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
-import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
-import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
-import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IDiagramModelReference;
 
 
 /**
@@ -27,17 +21,8 @@ extends AbstractTextFlowFigure {
     
     public DiagramModelReferenceFigure(IDiagramModelObject diagramModelObject) {
         super(diagramModelObject);
-        
-        // Use a Rectangle Figure Delegate to Draw
-        RectangleFigureDelegate figureDelegate = new RectangleFigureDelegate(this) {
-            @Override
-            public Image getImage() {
-                IDiagramModel dm = ((IDiagramModelReference)getDiagramModelObject()).getReferencedModel();
-                return dm == null ? IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DIAGRAM_16) : ZentaLabelProvider.INSTANCE.getImage(dm.eClass());
-            }
-        };
-        
-        setFigureDelegate(figureDelegate);
+                
+        setFigureShape("diagramReferenceShape");
     }
     
     @Override

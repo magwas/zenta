@@ -20,8 +20,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.ShapeCommand;
-import org.rulez.magwas.zenta.editor.model.Shape;
-import org.rulez.magwas.zenta.editor.ui.ShapeFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ILockable;
@@ -42,6 +40,9 @@ public class ElementShapeSection extends AbstractZentaPropertySection {
 
     private ShapeSelector fShapeSelector;
     private Button fDefaultShapeButton;
+	private EditPart editPart;
+    
+    
 
     /*
      * Adapter to listen to changes made elsewhere (including Undo/Redo commands)
@@ -60,16 +61,14 @@ public class ElementShapeSection extends AbstractZentaPropertySection {
     private IPropertyChangeListener shapeListener = new IPropertyChangeListener() {
         public void propertyChange(PropertyChangeEvent event) {
             if(isAlive()) {
-                Shape shape = fShapeSelector.getShapeValue();
-                String newShape = ShapeFactory.convertShapeToString(shape);
+                String newShape = fShapeSelector.getShapeValue();
                 if(!newShape.equals(fShapeObject.getElementShape())) {
                     getCommandStack().execute(new ShapeCommand(fShapeObject, newShape));
                 }
             }
         }
     };
-    
-    
+
     @Override
     protected void createControls(Composite parent) {
         createShapeControl(parent);
@@ -79,12 +78,16 @@ public class ElementShapeSection extends AbstractZentaPropertySection {
     }
     
     private void createShapeControl(Composite parent) {
-    	//TODO
         createLabel(parent, Messages.ShapeSection_0, ITabbedLayoutConstants.STANDARD_LABEL_WIDTH, SWT.CENTER);
         
         Composite client = createComposite(parent, 2);
         
         fShapeSelector = new ShapeSelector(client);
+        if(null != fShapeObject ) {
+        	//FIXME: do we go here?
+            fShapeSelector.setElement(fShapeObject, editPart);
+        }
+
         GridData gd = new GridData(SWT.NONE, SWT.NONE, false, false);
         gd.widthHint = ITabbedLayoutConstants.BUTTON_WIDTH;
         fShapeSelector.getButton().setLayoutData(gd);
@@ -110,10 +113,12 @@ public class ElementShapeSection extends AbstractZentaPropertySection {
     @Override
     protected void setElement(Object element) {
         if(element instanceof EditPart) {
-            fShapeObject = (IDiagramModelObject) ((EditPart)element).getModel();
+            editPart = (EditPart)element;
+			fShapeObject = (IDiagramModelObject) editPart.getModel();
             if(fShapeObject == null) {
                 throw new RuntimeException("Diagram Model Object was null"); //$NON-NLS-1$
             }
+            fShapeSelector.setElement(fShapeObject,editPart);
         }
         else {
             throw new RuntimeException("Should have been an EditPart"); //$NON-NLS-1$
@@ -124,15 +129,7 @@ public class ElementShapeSection extends AbstractZentaPropertySection {
     
     protected void refreshControls() {
         String shapeValue = fShapeObject.getElementShape();
-        Shape shape = ShapeFactory.convertStringToShape(shapeValue);
-        if(shape != null) {
-            fShapeSelector.setShapeValue(shape);
-        }
-        else {
-            // Default Shape
-            fShapeSelector.setShapeValue(ShapeFactory.getDefaultShape());
-        }
-        
+        fShapeSelector.setShapeValue(shapeValue);   
         boolean enabled = fShapeObject instanceof ILockable ? !((ILockable)fShapeObject).isLocked() : true;
         fShapeSelector.setEnabled(enabled);
         fDefaultShapeButton.setEnabled(shapeValue != null && enabled);

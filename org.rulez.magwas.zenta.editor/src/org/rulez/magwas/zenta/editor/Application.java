@@ -14,6 +14,7 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
+import org.rulez.magwas.zenta.editor.ui.FigureFactory;
 
 
 
@@ -37,6 +38,10 @@ implements IApplication {
 	}
 	
 	public Object start(IApplicationContext context) throws Exception {
+		/*
+		 * FigureFactory initialization
+		 */
+	    FigureFactory.getInstance();
 	    /*
 	     * Platform specific startup if user launches app twice or from .zenta file on the desktop
 	     */

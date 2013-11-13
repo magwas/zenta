@@ -22,5 +22,9 @@ extends AbstractZentaEditableTextFlowEditPart {
     protected IFigure createFigure() {
         return new BusinessObjectFigure(getModel());
     }
+    
+    public void shapeShift(String shapename) {
+    	((BusinessObjectFigure)this.getFigure()).setFigureShape(shapename);
+    }
  
 }

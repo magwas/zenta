@@ -12,13 +12,13 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
 
 /**
- * Fill Color Command
+ * Shape Command
  *
- * @author Phillip Beauvoir
+ * @author Árpád Magosányi
  */
 public class ShapeCommand extends EObjectFeatureCommand {
     
-    public ShapeCommand(IDiagramModelObject object, String rgb) {
-        super(Messages.FillColorCommand_0, object, IZentaPackage.Literals.DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE, rgb);
+    public ShapeCommand(IDiagramModelObject object, String shape) {
+        super(Messages.ShapeCommand_0, object, IZentaPackage.Literals.DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE, shape);
     }
 }

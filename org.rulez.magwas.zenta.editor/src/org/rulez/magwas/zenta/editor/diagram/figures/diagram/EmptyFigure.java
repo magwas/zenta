@@ -8,7 +8,6 @@ package org.rulez.magwas.zenta.editor.diagram.figures.diagram;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.swt.graphics.Color;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigure;
-import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
 
@@ -24,7 +23,7 @@ extends AbstractTextFlowFigure {
         super(diagramModelObject);
         
         // Use a Rectangle Figure Delegate to Draw
-        setFigureDelegate(new RectangleFigureDelegate(this));
+        setFigureShape("emptyShape");
     }
 
     @Override

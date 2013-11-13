@@ -27,7 +27,7 @@ import org.rulez.magwas.zenta.model.IFontAttribute;
  * 
  * @author Phillip Beauvoir
  */
-public abstract class AbstractTextFlowFigure extends AbstractContainerFigure {
+public abstract class AbstractTextFlowFigure extends AbstractContainerFigure  {
     
     static Dimension DEFAULT_SIZE = new Dimension(120, 55);
 
@@ -128,7 +128,7 @@ public abstract class AbstractTextFlowFigure extends AbstractContainerFigure {
         }
         return null;
     }
-    
+        
     @Override
     public Dimension getDefaultSize() {
         return DEFAULT_SIZE;

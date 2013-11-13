@@ -182,10 +182,10 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getElementShape()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	protected static final String ELEMENT_SHAPE_EDEFAULT = null;
+	protected static final String ELEMENT_SHAPE_EDEFAULT = "rectangleElementShape";
 
 				/**
 	 * The cached value of the '{@link #getElementShape() <em>Element Shape</em>}' attribute.
