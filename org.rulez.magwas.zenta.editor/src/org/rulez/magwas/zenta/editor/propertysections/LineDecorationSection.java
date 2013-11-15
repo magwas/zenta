@@ -46,7 +46,6 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
                 }
             }
         });
-        createLabel(parent, Messages.LineDecorationSection_0, ITabbedLayoutConstants.STANDARD_LABEL_WIDTH, SWT.CENTER);
   
 	}
 

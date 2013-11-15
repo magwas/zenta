@@ -340,6 +340,15 @@
             </input>
          </propertySection>
          <propertySection
+               afterSection="lineColorSection"
+               class="org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection"
+               id="lineDecorationSection"
+               tab="appearance.tab">
+            <input
+                  type="org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart">
+            </input>
+         </propertySection>
+         <propertySection
                afterSection="fontSection2"
                class="org.rulez.magwas.zenta.editor.propertysections.TextAlignmentSection"
                id="textAlignmentSection"
