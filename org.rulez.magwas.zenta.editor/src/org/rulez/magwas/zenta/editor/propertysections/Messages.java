@@ -11,6 +11,10 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.propertysections.messages"; //$NON-NLS-1$
 
+	public static String LineDecorationSection_0;
+
+	public static String LineDecorationSection_1;
+
 	public static String ShapeSection_1;
 
 	public static String ShapeSection_0;

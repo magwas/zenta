@@ -1,14 +1,14 @@
-package org.rulez.magwas.zenta.tests.editor.diagram.dialog.diagram.dialog;
+package org.rulez.magwas.zenta.tests.propertysections;
 
-import org.rulez.magwas.zenta.editor.editparts.connections.AssociationConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationConnectionEditPart;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 
-public class DecorationSelectorTestData {
+public class DiagramConnectionMockup {
 	private IDiagramModelZentaConnection modelConnectionObject;
 	private AssociationConnectionEditPart editPart;
 
-	public DecorationSelectorTestData() {
+	public DiagramConnectionMockup() {
 		setModelConnectionObject(IZentaFactory.eINSTANCE.createDiagramModelZentaConnection());
 		setEditPart(new AssociationConnectionEditPart());
 		getEditPart().setModel(getModelConnectionObject());		

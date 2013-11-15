@@ -1,43 +1,58 @@
-package org.rulez.magwas.zenta.tests.editor.diagram.dialog.propertysections;
+package org.rulez.magwas.zenta.tests.propertysections;
 
 import static org.junit.Assert.*;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.ui.IWorkbenchPart;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
-import org.rulez.magwas.zenta.editor.diagram.dialog.propertysections.LineDecorationSection;
-import org.rulez.magwas.zenta.editor.editparts.connections.IDiagramConnectionEditPart;
-import org.rulez.magwas.zenta.editor.figures.connections.ConnectionDecorationFactory;
-import org.rulez.magwas.zenta.editor.propertysections.TabbedPropertySheetPageContributorMockup;
-import org.rulez.magwas.zenta.tests.editor.diagram.dialog.diagram.dialog.DecorationSelectorTestData;
+import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.figures.connections.ConnectionDecorationFactory;
+import org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection;
 
 public class LineDecorationSectionTest {
 
 	private LineDecorationSection section;
+	private DiagramConnectionMockup data;
 
 	@Test
-	public void test() {
-		DecorationSelectorTestData data = new DecorationSelectorTestData();
-		System.out.println(data.getEditPart());
+	public void testEmptyInitialisation() {
 		assertTrue(data.getEditPart() instanceof IDiagramConnectionEditPart);
-		section.setElement(data.getEditPart());
+		assertNotNull(section.getWidgetFactory());
 	}
+
+	@Ignore
+	@Test
+	public void testRealInitialisation() {
+		ISelection a = section.getSelection();
+		assertEquals(data.getEditPart(),((IStructuredSelection)a).getFirstElement());
+	}
+
+	@Ignore
+	@Test
+	public void testDefaultButton() {
+		LineDecorationSectionExerciser exerciser = (LineDecorationSectionExerciser)section;
+		Button but = ((Button)exerciser.getInternal("DefaultButton"));
+		System.out.println("but="+but);
+		but.setSelection(true);
+		assertTrue(but.getSelection());
+		assertEquals(null,data.getModelConnectionObject().getLineDecoration());		
+	}
+
+
 
 	@Before
 	public void setUp() {
+		data = new DiagramConnectionMockup();
 		ConnectionDecorationFactory.getInstance();
-		section = new LineDecorationSection();
-		Shell sh = new Shell();
-		Composite parent = new Composite(sh,SWT.NONE);
-		ITabbedPropertySheetPageContributor foo = new TabbedPropertySheetPageContributorMockup();
-		TabbedPropertySheetPage page = new TabbedPropertySheetPage(foo );
-		section.createControls(parent, page);
+		section = new LineDecorationSectionExerciser();
+		assertTrue(section instanceof LineDecorationSection);
+		ISelection selection = new SelectionMockup(data.getEditPart());
+		IWorkbenchPart editor = new ZentaDiagramEditor();
+		section.setInput(editor, selection);
 	}
-	
-	//goal: fire the endless loop by calling refreshControls
-
 }
