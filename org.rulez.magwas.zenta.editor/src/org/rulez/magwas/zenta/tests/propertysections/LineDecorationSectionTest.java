@@ -4,55 +4,93 @@ import static org.junit.Assert.*;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.PartInitException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.rulez.magwas.zenta.editor.diagram.DiagramEditorInput;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.connections.ConnectionDecorationFactory;
 import org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.impl.ZentaFactory;
 
 public class LineDecorationSectionTest {
 
 	private LineDecorationSection section;
-	private DiagramConnectionMockup data;
+	ModelAndEditPartTestData data;
 
 	@Test
-	public void testEmptyInitialisation() {
-		assertTrue(data.getEditPart() instanceof IDiagramConnectionEditPart);
-		assertNotNull(section.getWidgetFactory());
+	public void testEmptyInitialisation() throws PartInitException {
 	}
 
-	@Ignore
+	
 	@Test
 	public void testRealInitialisation() {
 		ISelection a = section.getSelection();
 		assertEquals(data.getEditPart(),((IStructuredSelection)a).getFirstElement());
 	}
 
-	@Ignore
+	
 	@Test
-	public void testDefaultButton() {
-		LineDecorationSectionExerciser exerciser = (LineDecorationSectionExerciser)section;
+	public void testDefaultButtonExistence() {
+		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
-		System.out.println("but="+but);
-		but.setSelection(true);
-		assertTrue(but.getSelection());
-		assertEquals(null,data.getModelConnectionObject().getLineDecoration());		
+		assertEquals(Button.class,but.getClass());
+	}
+
+	@Test
+	public void testDefaultButtonPush() {
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		Button but = ((Button)exerciser.getInternal("DefaultButton"));
+		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
+		mco.setLineDecoration("foo");
+		assertEquals("foo",mco.getLineDecoration());		
+		Event event = new Event();
+		but.notifyListeners(SWT.Selection, event );
+		assertEquals(null,mco.getLineDecoration());		
 	}
 
 
+	private LineDecorationSectionExerciser getExerciser() {
+		return (LineDecorationSectionExerciser)section;
+	}
 
 	@Before
-	public void setUp() {
-		data = new DiagramConnectionMockup();
+	public void setUp() throws PartInitException {
+		data = new ModelAndEditPartTestData();
 		ConnectionDecorationFactory.getInstance();
-		section = new LineDecorationSectionExerciser();
-		assertTrue(section instanceof LineDecorationSection);
-		ISelection selection = new SelectionMockup(data.getEditPart());
-		IWorkbenchPart editor = new ZentaDiagramEditor();
-		section.setInput(editor, selection);
+		ZentaDiagramEditor editor = createEditor();
+		section = new LineDecorationSectionExerciser(editor,data);
+		checkSection();
 	}
+
+		ZentaDiagramEditor createEditor() throws PartInitException {
+			ZentaDiagramEditor editor = new ZentaDiagramEditor();
+			IEditorSite site = new EditorSiteMockup();
+			ZentaFactory.init();
+			IEditorInput input = createEditorInput();
+			editor.init(site, input);
+			return editor;
+		}
+
+			IEditorInput createEditorInput() {
+				IEditorInput input = new DiagramEditorInput(data.getDiagramModelObject());
+				return input;
+			}
+
+
+		void checkSection() {
+			assertNotNull(getExerciser().getEObject());
+			assertTrue(section instanceof LineDecorationSection);
+			assertTrue(data.getEditPart() instanceof IDiagramConnectionEditPart);
+			assertNotNull(section.getWidgetFactory());
+		}
+
+
 }

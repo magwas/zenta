@@ -12,8 +12,8 @@ public class SelectionMockup implements ISelection, IStructuredSelection {
 
 	AssociationConnectionEditPart editPart;
 	
-	public SelectionMockup(AssociationConnectionEditPart editPart) {
-		this.editPart = editPart;
+	public SelectionMockup(AssociationConnectionEditPart associationConnectionEditPart) {
+		this.editPart = associationConnectionEditPart;
 	}
 
 	@Override
