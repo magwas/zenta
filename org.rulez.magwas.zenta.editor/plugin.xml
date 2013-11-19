@@ -84,14 +84,6 @@
                id="keywords.prefsConnections">
          </keywordReference>
       </page>
-      <page
-            class="org.rulez.magwas.zenta.editor.preferences.ColoursPreferencePage"
-            id="org.rulez.magwas.zenta.editor.prefsColours"
-            name="%prefsColours">
-         <keywordReference
-               id="keywords.prefsColours">
-         </keywordReference>
-      </page>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
