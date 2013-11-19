@@ -8,8 +8,7 @@ public class TabbedPropertySheetPageMockup extends TabbedPropertySheetPage {
 	public TabbedPropertySheetPageMockup(
 			ITabbedPropertySheetPageContributor tabbedPropertySheetPageContributor) {
 		super(tabbedPropertySheetPageContributor);
-		this.getWidgetFactory();
-		// TODO Auto-generated constructor stub
+		//this.getWidgetFactory();
 	}
 
 }

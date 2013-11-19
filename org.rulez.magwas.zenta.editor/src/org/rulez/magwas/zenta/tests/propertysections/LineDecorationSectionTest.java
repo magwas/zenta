@@ -11,7 +11,6 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorInput;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
@@ -20,6 +19,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.ConnectionDecor
 import org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.impl.ZentaFactory;
+import org.rulez.magwas.zenta.tests.HaveGUI;
 
 public class LineDecorationSectionTest {
 
@@ -56,12 +56,12 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
+	@HaveGUI(waitUser=false)
 	public void testGUILook() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		exerciser.run();
 	}
 
-	@Ignore
 	@Test
 	public void testSetOneAttribute() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
