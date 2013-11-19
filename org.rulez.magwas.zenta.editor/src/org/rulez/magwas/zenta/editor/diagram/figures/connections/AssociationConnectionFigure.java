@@ -7,8 +7,8 @@ package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 
 
@@ -23,20 +23,27 @@ public class AssociationConnectionFigure extends AbstractZentaConnectionFigure {
 	
     public AssociationConnectionFigure(IDiagramModelZentaConnection connection) {
         super(connection);
-        initDecorations();
+        initDecorations(connection);
     }
 
-    public void addDecoration(String decorName) {
-    	decorations.add(ConnectionDecorationFactory.getInstance().getByName(decorName));
+    public void initDecorations(IDiagramModelZentaConnection connection) {
+        decorations = new ArrayList<IConnectionDecoration>();
+        String lineDecorationString = connection.getLineDecoration();
+        if (null == lineDecorationString)
+        	return;
+		List<String> decorNames = Arrays.asList(lineDecorationString.split(" "));
+        for(String name : decorNames)
+        	addDecoration(name);
+        setFigureProperties();
     }
-    
-    public void initDecorations() {
-        decorations = new ArrayList<IConnectionDecoration>();    	
-    }
+	    private void addDecoration(String decorName) {
+	    	IConnectionDecoration decorObj = ConnectionDecorationFactory.getInstance().getByName(decorName);
+	    	if(null != decorObj)
+	    		decorations.add(decorObj);
+	    }
     
     @Override
     protected void setFigureProperties() {
-    	System.out.println("decorations:"+decorations);
     	if(null!=decorations) {
         	for(IConnectionDecoration decor : decorations) {
         		decor.setFigureProperties(this);

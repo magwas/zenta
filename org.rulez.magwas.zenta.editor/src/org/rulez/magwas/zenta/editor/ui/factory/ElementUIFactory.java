@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.editor.ui.factory.business.BusinessObjectUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.connections.AssociationConnectionUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.connections.LineConnectionUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.connections.SpecialisationConnectionUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.diagram.DiagramModelReferenceUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.diagram.GroupUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.diagram.NoteUIProvider;
@@ -43,8 +42,6 @@ public class ElementUIFactory {
         registerProvider(new OrJunctionUIProvider());
         
         registerProvider(new AssociationConnectionUIProvider());
-        registerProvider(new SpecialisationConnectionUIProvider());
-        
         
         registerProvider(new BusinessObjectUIProvider());
         registerProvider(new NoteUIProvider());

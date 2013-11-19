@@ -35,7 +35,6 @@ import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
-import org.rulez.magwas.zenta.model.ISpecialisationRelationship;
 
 
 /**
@@ -89,7 +88,6 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 			case IZentaPackage.AND_JUNCTION: return createAndJunction();
 			case IZentaPackage.OR_JUNCTION: return createOrJunction();
 			case IZentaPackage.ASSOCIATION_RELATIONSHIP: return createAssociationRelationship();
-			case IZentaPackage.SPECIALISATION_RELATIONSHIP: return createSpecialisationRelationship();
 			case IZentaPackage.DIAGRAM_MODEL_REFERENCE: return createDiagramModelReference();
 			case IZentaPackage.DIAGRAM_MODEL_GROUP: return createDiagramModelGroup();
 			case IZentaPackage.DIAGRAM_MODEL_NOTE: return createDiagramModelNote();
@@ -378,17 +376,6 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 		AssociationRelationship associationRelationship = new AssociationRelationship();
 		return associationRelationship;
 	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public ISpecialisationRelationship createSpecialisationRelationship() {
-		SpecialisationRelationship specialisationRelationship = new SpecialisationRelationship();
-		return specialisationRelationship;
-	}
-
 
     /**
 	 * <!-- begin-user-doc -->

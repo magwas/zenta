@@ -60,7 +60,6 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
-import org.rulez.magwas.zenta.model.ISpecialisationRelationship;
 import org.rulez.magwas.zenta.model.ITextContent;
 
 
@@ -350,13 +349,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 	 * @generated
 	 */
     private EClass associationRelationshipEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass specialisationRelationshipEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -1305,15 +1297,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getSpecialisationRelationship() {
-		return specialisationRelationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EClass getJunctionElement() {
 		return junctionElementEClass;
 	}
@@ -1448,8 +1431,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		createEReference(relationshipEClass, RELATIONSHIP__TARGET);
 
 		associationRelationshipEClass = createEClass(ASSOCIATION_RELATIONSHIP);
-
-		specialisationRelationshipEClass = createEClass(SPECIALISATION_RELATIONSHIP);
 
 		businessLayerElementEClass = createEClass(BUSINESS_LAYER_ELEMENT);
 
@@ -1594,7 +1575,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		orJunctionEClass.getESuperTypes().add(this.getJunctionElement());
 		relationshipEClass.getESuperTypes().add(this.getZentaElement());
 		associationRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		specialisationRelationshipEClass.getESuperTypes().add(this.getRelationship());
 		businessLayerElementEClass.getESuperTypes().add(this.getZentaElement());
 		diagramModelComponentEClass.getESuperTypes().add(this.getIdentifier());
 		diagramModelComponentEClass.getESuperTypes().add(this.getCloneable());
@@ -1719,8 +1699,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		initEReference(getRelationship_Target(), this.getZentaElement(), null, "target", null, 0, 1, IRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(associationRelationshipEClass, IAssociationRelationship.class, "AssociationRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(specialisationRelationshipEClass, ISpecialisationRelationship.class, "SpecialisationRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(businessLayerElementEClass, IBusinessLayerElement.class, "BusinessLayerElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

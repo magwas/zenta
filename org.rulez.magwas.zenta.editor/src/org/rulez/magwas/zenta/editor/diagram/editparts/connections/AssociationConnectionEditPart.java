@@ -8,8 +8,6 @@ package org.rulez.magwas.zenta.editor.diagram.editparts.connections;
 import org.eclipse.draw2d.IFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.connections.AssociationConnectionFigure;
 
-
-
 /**
  * Association Connection Edit Part
  * 
@@ -20,6 +18,12 @@ public class AssociationConnectionEditPart extends AbstractZentaConnectionEditPa
     @Override
     protected IFigure createFigure() {
 		return new AssociationConnectionFigure(getModel());
+	}
+
+	public void refreshFigure() {
+		AssociationConnectionFigure figure = (AssociationConnectionFigure) getFigure();
+		figure.initDecorations(getModel());
+		figure.refreshVisuals();
 	}
 	
 }

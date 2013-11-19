@@ -207,7 +207,6 @@ public class ZentaModelUtils {
      */
     public static EClass[] getRelationsClasses() {
         return new EClass[] {
-                IZentaPackage.eINSTANCE.getSpecialisationRelationship(),
                 IZentaPackage.eINSTANCE.getAssociationRelationship(),
         };
     }

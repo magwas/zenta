@@ -5,8 +5,8 @@
  */
 package org.rulez.magwas.zenta.editor.utils;
 
-
-
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * Some useful String Utilities
@@ -111,5 +111,20 @@ public final class StringUtils {
             return text.replaceAll("&", "&&");  //$NON-NLS-1$//$NON-NLS-2$
         }
         return text;
+    }
+
+    // http://stackoverflow.com/a/15837355/1664273
+    public static String join(Collection<?> col, String delim) {
+        StringBuilder sb = new StringBuilder();
+        Iterator<?> iter = col.iterator();
+        if (iter.hasNext()) {
+			Object theNext = iter.next();
+			sb.append(theNext.toString());
+		}
+        while (iter.hasNext()) {
+            sb.append(delim);
+            sb.append(iter.next().toString());
+        }
+        return sb.toString();
     }
 }

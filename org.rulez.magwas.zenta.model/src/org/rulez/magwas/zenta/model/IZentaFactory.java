@@ -88,15 +88,6 @@ public interface IZentaFactory extends EFactory {
 	 */
 	IAssociationRelationship createAssociationRelationship();
 
-	/**
-	 * Returns a new object of class '<em>Specialisation Relationship</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Specialisation Relationship</em>'.
-	 * @generated
-	 */
-	ISpecialisationRelationship createSpecialisationRelationship();
-
 	IDiagramModelReference createDiagramModelReference();
 
 	/**

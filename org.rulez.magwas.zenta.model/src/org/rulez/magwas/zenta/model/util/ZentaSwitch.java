@@ -53,7 +53,6 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
-import org.rulez.magwas.zenta.model.ISpecialisationRelationship;
 import org.rulez.magwas.zenta.model.ITextContent;
 
 
@@ -312,21 +311,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseDocumentable(associationRelationship);
 				if (result == null) result = caseProperties(associationRelationship);
 				if (result == null) result = caseAdapter(associationRelationship);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case IZentaPackage.SPECIALISATION_RELATIONSHIP: {
-				ISpecialisationRelationship specialisationRelationship = (ISpecialisationRelationship)theEObject;
-				T result = caseSpecialisationRelationship(specialisationRelationship);
-				if (result == null) result = caseRelationship(specialisationRelationship);
-				if (result == null) result = caseZentaElement(specialisationRelationship);
-				if (result == null) result = caseZentaModelElement(specialisationRelationship);
-				if (result == null) result = caseIdentifier(specialisationRelationship);
-				if (result == null) result = caseCloneable(specialisationRelationship);
-				if (result == null) result = caseNameable(specialisationRelationship);
-				if (result == null) result = caseDocumentable(specialisationRelationship);
-				if (result == null) result = caseProperties(specialisationRelationship);
-				if (result == null) result = caseAdapter(specialisationRelationship);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -909,21 +893,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAssociationRelationship(IAssociationRelationship object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Specialisation Relationship</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Specialisation Relationship</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSpecialisationRelationship(ISpecialisationRelationship object) {
 		return null;
 	}
 

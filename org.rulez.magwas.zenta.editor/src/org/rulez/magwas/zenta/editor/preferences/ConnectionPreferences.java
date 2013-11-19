@@ -42,7 +42,6 @@ public class ConnectionPreferences extends Preferences {
     
     static Map<EClass, Integer> RELATION_KEYMAP = new LinkedHashMap<EClass, Integer>();
     static {
-        RELATION_KEYMAP.put(IZentaPackage.eINSTANCE.getSpecialisationRelationship(), 1 << 6);
         RELATION_KEYMAP.put(IZentaPackage.eINSTANCE.getAssociationRelationship(), 1 << 0);
     }
     

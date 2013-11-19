@@ -59,6 +59,9 @@ public class LineDecorationSectionExerciser extends LineDecorationSection {
 	}
 
 	
+	public void nullModelObject() {
+		modelObject = null;
+	}
 	public Object getInternal(String string) {
 		if(!internals.containsKey(string)) {
 			throw new IllegalArgumentException("no such internal");
@@ -75,13 +78,13 @@ public class LineDecorationSectionExerciser extends LineDecorationSection {
 	protected void createControls(Composite parent) {
 		super.createControls(parent);
 		internals.put("DefaultButton", defaultButton);		
+		internals.put("buttonMap", buttonMap);		
 	}
 
-	@Override
-	protected Button addButtonForNamedDecor(Composite buttonsetComposite,
-			final String thename) {
-		Button but = super.addButtonForNamedDecor(buttonsetComposite,thename);
-		internals.put("but_"+thename, but);
+	public Button getButton(String buttonName) {
+		@SuppressWarnings("unchecked")
+		Map<String,Button> buttonmap = (Map<String, Button>) getInternal("buttonMap");
+		Button but = ((Button)buttonmap.get(buttonName));
 		return but;
 	}
 }

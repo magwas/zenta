@@ -84,8 +84,6 @@ public class FixConnectionTextNames implements ICompatibilityHandler {
         //FIXME from object class
             case IZentaPackage.ASSOCIATION_RELATIONSHIP:
                 return "Association relation"; //$NON-NLS-1$
-            case IZentaPackage.SPECIALISATION_RELATIONSHIP:
-                return "Specialisation relation"; //$NON-NLS-1$
         }
         return ""; //$NON-NLS-1$
     }

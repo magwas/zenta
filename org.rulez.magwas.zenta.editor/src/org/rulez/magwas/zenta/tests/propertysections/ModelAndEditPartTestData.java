@@ -17,6 +17,8 @@ public class ModelAndEditPartTestData {
 	private AssociationConnectionEditPart editPart;
 	private DiagramModelZentaConnection connection;
 	private ZentaDiagramModel diagramModel;
+	private IDiagramModelZentaConnection connection2;
+	private AssociationConnectionEditPart editPart2;
 
 	public ModelAndEditPartTestData() {
 		CommandStack stack = new CommandStack();
@@ -37,6 +39,8 @@ public class ModelAndEditPartTestData {
 	private void createEditPart() {
 		editPart=new AssociationConnectionEditPart();
 		editPart.setModel(connection);
+		editPart2=new AssociationConnectionEditPart();
+		editPart2.setModel(connection2);
 	}
 
 	private void createConnection(CommandStack stack,
@@ -44,6 +48,9 @@ public class ModelAndEditPartTestData {
 		connection = (DiagramModelZentaConnection) IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
 		connection.setAdapter(CommandStack.class, stack);
 		folderContents.add(connection);
+		connection2 = (DiagramModelZentaConnection) IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
+		connection2.setAdapter(CommandStack.class, stack);
+		folderContents.add(connection2);
 	}
 
 	private void createDiagramModel(CommandStack stack,
@@ -55,6 +62,9 @@ public class ModelAndEditPartTestData {
 
 	public IDiagramModelZentaConnection getModelConnectionObject() {
 		return connection;
+	}
+	public IDiagramModelZentaConnection getModelConnectionObject2() {
+		return connection2;
 	}
 
 	public void setModelConnectionObject(
@@ -73,4 +83,9 @@ public class ModelAndEditPartTestData {
 	public IDiagramModel getDiagramModelObject() {
 		return diagramModel;
 	}
+
+	public AssociationConnectionEditPart getEditPart2() {
+		return editPart2;
+	}
+
 }

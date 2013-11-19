@@ -55,7 +55,6 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
-import org.rulez.magwas.zenta.model.ISpecialisationRelationship;
 import org.rulez.magwas.zenta.model.ITextContent;
 
 
@@ -194,10 +193,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAssociationRelationship(IAssociationRelationship object) {
 				return createAssociationRelationshipAdapter();
-			}
-			@Override
-			public Adapter caseSpecialisationRelationship(ISpecialisationRelationship object) {
-				return createSpecialisationRelationshipAdapter();
 			}
 			@Override
 			public Adapter caseBusinessLayerElement(IBusinessLayerElement object) {
@@ -588,20 +583,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssociationRelationshipAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.ISpecialisationRelationship <em>Specialisation Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.model.ISpecialisationRelationship
-	 * @generated
-	 */
-	public Adapter createSpecialisationRelationshipAdapter() {
 		return null;
 	}
 

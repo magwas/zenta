@@ -206,13 +206,8 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
                 String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
 //FIXME: figure out the derived relationship name                
                 switch(relation.eClass().getClassifierID()) {
-                    case IZentaPackage.SPECIALISATION_RELATIONSHIP:
-                        return NLS.bind(Messages.ZentaLabelProvider_3, nameSource, nameTarget);
-
                     case IZentaPackage.ASSOCIATION_RELATIONSHIP:
                         return NLS.bind(Messages.ZentaLabelProvider_9, nameSource, nameTarget);
-
-
                     default:
                         return ""; //$NON-NLS-1$
                 }

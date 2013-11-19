@@ -2,8 +2,10 @@ package org.rulez.magwas.zenta.tests.propertysections;
 
 import static org.junit.Assert.*;
 
+
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Event;
@@ -14,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorInput;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
 import org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -24,6 +27,7 @@ public class LineDecorationSectionTest {
 
 	private LineDecorationSection section;
 	ModelAndEditPartTestData data;
+	private ZentaDiagramEditor editor;
 
 	@Test
 	public void testEmptyInitialisation() throws PartInitException {
@@ -42,20 +46,23 @@ public class LineDecorationSectionTest {
 		assertEquals(Button.class,but.getClass());
 	}
 
+	@Test//(expected=AssertionError.class)
+	public void testInvalidDecoration() {
+		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
+		mco.setLineDecoration("foo");
+	}
 	@Test
 	public void testDefaultButtonPush() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
-		mco.setLineDecoration("foo");
-		assertEquals("foo",mco.getLineDecoration());		
 		Event event = new Event();
 		but.notifyListeners(SWT.Selection, event );
-		assertEquals(null,mco.getLineDecoration());		
+		assertEquals("",mco.getLineDecoration());		
 	}
 
 	@Test
-	@HaveGUI(waitUser=true)
+	@HaveGUI(waitUser=false)
 	public void testGUILook() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		exerciser.run();
@@ -64,7 +71,7 @@ public class LineDecorationSectionTest {
 	@Test
 	public void testSetOneAttribute() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
-		Button but = ((Button)exerciser.getInternal("but_DashedLineDecoration"));
+		Button but = exerciser.getButton("DashedLineDecoration");
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
 		assertEquals(null,mco.getLineDecoration());		
 		Event event = new Event();
@@ -72,14 +79,89 @@ public class LineDecorationSectionTest {
 		assertEquals("DashedLineDecoration",mco.getLineDecoration());	
 	}
 
+	@Test
+	public void testSetTwoAttributes() {
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		Button but = exerciser.getButton("DashedLineDecoration");
+		Button but2 = exerciser.getButton("SmallEndArrowDecoration");
+		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
+		assertEquals(null,mco.getLineDecoration());		
+		Event event = new Event();
+		but.notifyListeners(SWT.Selection, event );
+		but2.notifyListeners(SWT.Selection, event);
+		assertEquals("DashedLineDecoration SmallEndArrowDecoration",mco.getLineDecoration());	
+	}
+
+	
+	@Test
+	public void testSetButtonStateAfterSettingOneAttribute() {
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		Button but = exerciser.getButton("DashedLineDecoration");
+		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
+		mco.setLineDecoration("DashedLineDecoration");
+		assertTrue(but.getSelection());
+	}
+
+	@Test
+	public void testNullModelObject() throws PartInitException {
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		exerciser.nullModelObject();
+		section.refreshControls();
+	}
+
+	@Test
+	public void testButtonStateOnInit() throws PartInitException {
+		data = new ModelAndEditPartTestData();
+		data.getModelConnectionObject().setLineDecoration("DashedLineDecoration");
+		ZentaDiagramEditor editor = createEditor();
+		section = new LineDecorationSectionExerciser(editor,data);
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		Button but = exerciser.getButton("DashedLineDecoration");
+		assertTrue(but.getSelection());
+	}
+
+	@Test
+	public void testButtonStateOnPartChange() throws PartInitException {
+		data = new ModelAndEditPartTestData();
+		IDiagramModelZentaConnection conn = data.getModelConnectionObject();
+		conn.setLineDecoration("DashedLineDecoration");
+		ZentaDiagramEditor editor = createEditor();
+		section = new LineDecorationSectionExerciser(editor,data);
+		AssociationConnectionEditPart conn2Part = data.getEditPart2();
+		conn2Part.getModel().setLineDecoration("DottedLineDecoration");
+		ISelection selection = new StructuredSelection(conn2Part);
+		section.setInput(editor, selection);
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		Button but = exerciser.getButton("DottedLineDecoration");
+		assertTrue(but.getSelection());
+		Button but2 = exerciser.getButton("DashedLineDecoration");
+		assertFalse(but2.getSelection());
+	}
+
+
+	@Test
+	public void testButtonStateOnPartChangeToUndecorated() throws PartInitException {
+		data = new ModelAndEditPartTestData();
+		IDiagramModelZentaConnection conn = data.getModelConnectionObject();
+		conn.setLineDecoration("DashedLineDecoration");
+		ZentaDiagramEditor editor = createEditor();
+		section = new LineDecorationSectionExerciser(editor,data);
+		AssociationConnectionEditPart conn2Part = data.getEditPart2();
+		ISelection selection = new StructuredSelection(conn2Part);
+		section.setInput(editor, selection);
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		Button but2 = exerciser.getButton("DashedLineDecoration");
+		assertFalse(but2.getSelection());
+	}
+
 	private LineDecorationSectionExerciser getExerciser() {
 		return (LineDecorationSectionExerciser)section;
 	}
 
-	@Before
+	@Before	
 	public void setUp() throws PartInitException {
 		data = new ModelAndEditPartTestData();
-		ZentaDiagramEditor editor = createEditor();
+		editor = createEditor();
 		section = new LineDecorationSectionExerciser(editor,data);
 		checkSection();
 	}
