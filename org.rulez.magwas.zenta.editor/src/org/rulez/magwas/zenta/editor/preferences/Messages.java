@@ -11,10 +11,6 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.preferences.messages"; //$NON-NLS-1$
 
-    public static String ColoursPreferencePage_0;
-
-    public static String ColoursPreferencePage_1;
-
     public static String ConnectionsPreferencePage_0;
 
     public static String ConnectionsPreferencePage_1;
