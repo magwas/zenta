@@ -24,7 +24,7 @@ public class HTMLMerger {
     
     // Source and Output folder has to be the same because the generated HTML file will reference the image files in "img" folder
     static String HELP_SRC_FOLDER = "help/"; //$NON-NLS-1$
-    static String HTML_OUTPUT_FILE = "Zenta User Guide.html"; //$NON-NLS-1$
+    static String HTML_OUTPUT_FILE = "Zenta_User_Guide.html"; //$NON-NLS-1$
     static String HTML_FILES_LIST = "files.list"; //$NON-NLS-1$
     
     /**
