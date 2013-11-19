@@ -6,30 +6,18 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
 import org.eclipse.draw2d.PolygonDecoration;
+import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.swt.SWT;
 
+public class FlowConnectionDecoration implements IConnectionDecoration {
 
-
-/**
- * Flow Connection Figure class
- * 
- * @author Phillip Beauvoir
- */
-public class FlowConnectionDecoration extends AbstractConnectionDecoration {
-	
-    /**
-     * @return Decoration to use on Target Node
-     */
-    private static PolygonDecoration createFigureTargetDecoration() {
-        return new PolygonDecoration();
-    }
-	
-    @Override
-    public void setFigureProperties() {
+	@Override
+	public void setFigureProperties( PolylineConnection owner) {
         owner.setTargetDecoration(createFigureTargetDecoration()); 
-        owner.setLineStyle(SWT.LINE_CUSTOM); // We have to explitly set this otherwise dashes/dots don't show
+        owner.setLineStyle(SWT.LINE_CUSTOM);
         owner.setLineDash(new float[] { 6, 3 });
     }
-    
-
+	    private PolygonDecoration createFigureTargetDecoration() {
+	        return new PolygonDecoration();
+	    }
 }

@@ -1,33 +1,28 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Set;
-
+import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PolylineConnection;
+import org.eclipse.draw2d.SWTGraphics;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.eclipse.swt.widgets.Display;
 
 public class ConnectionDecorationFactory {
 
 	private static ConnectionDecorationFactory INSTANCE;
+	private static HashMap<String,IConnectionDecoration> decorClassMap = new HashMap<String,IConnectionDecoration>();
+	private static final int WIDTH = 60;
+	private static final int HEIGHT = 20;
 	
-	private static HashMap<String,Class<?>> decorClassMap = new HashMap<String,Class<?>>();
-	private static final String defaultDecorName = "";
-	
-	ConnectionDecorationFactory() {
-		decorClassMap.put(defaultDecorName, AssociationConnectionDecoration.class);
-		decorClassMap.put("sggregationDecor", AggregationConnectionDecoration.class);
-		decorClassMap.put("assignmentDecor", AssignmentConnectionDecoration.class);
-		decorClassMap.put("compositionDecor", CompositionDecoration.class);
-		decorClassMap.put("flowDecor", FlowConnectionDecoration.class);
-		decorClassMap.put("influenceDecor", InfluenceConnectionDecoration.class);
-		decorClassMap.put("realisationDecor", RealisationConnectionDecoration.class);
-		decorClassMap.put("triggeringDecor", TriggeringConnectionDecoration.class);
-		decorClassMap.put("flowDecor", FlowConnectionDecoration.class);
-		//FIXME: more decor types here, have some structure
+	private ConnectionDecorationFactory() {
+		IConnectionDecoration flowDecor = new FlowConnectionDecoration();
+		String name = flowDecor.getClass().getSimpleName();
+		decorClassMap.put(name,flowDecor);
 	}
-
 	
 	public static ConnectionDecorationFactory getInstance() {
 		if(null == INSTANCE) {
@@ -36,54 +31,48 @@ public class ConnectionDecorationFactory {
 		return INSTANCE;
 	}
 	
-	public static  Set<String> getFigureNames() {
+	public Set<String> getFigureNames() {
 		return decorClassMap.keySet();
 	}
 
-
-	public static String getDefaultFigureName() {
-		return defaultDecorName;
-	}
-	private static Class<?> convertStringToFigure(String shapeValue) {
-		if("".equals(shapeValue)) {
-			shapeValue = getDefaultFigureName();
-		}
-		return decorClassMap.get(shapeValue);
+	public IConnectionDecoration getByName(String decorName) {
+		return decorClassMap.get(decorName);
 	}
 
-	public static Image getImageForName(String name) {
+	public Image getImageForName(String name) {
 		checkShapeValue(name);
-		return IZentaImages.ImageFactory.getImage(IZentaImages.IMGPATH+name+".png");
+		IFigure panel = new Figure();
+		drawConnectionOnPanel(name, panel);
+		Image image = paintPanel(panel);
+		return image;
 	}
 
-	public static void checkShapeValue(String shapeName) throws IllegalArgumentException{
-		if (null == shapeName) {
-			return;
+		private void drawConnectionOnPanel(String name, IFigure panel) {
+			IConnectionDecoration decorator = getByName(name);
+			PolylineConnection conn = new PolylineConnection();
+			conn.setStart(new Point(10,HEIGHT/2));
+			conn.setEnd(new Point(WIDTH- 10,HEIGHT/2));
+			decorator.setFigureProperties(conn);
+			panel.add(conn);
+			conn.layout();
 		}
-		for(String i : decorClassMap.keySet()) {
-			if(i.equals(shapeName)){
-				return;
+
+		private Image paintPanel(IFigure panel) {
+			Image image = new Image(Display.getDefault(), WIDTH, HEIGHT);
+			GC gc = new GC(image);
+			SWTGraphics graphics = new SWTGraphics(gc);
+			panel.paint(graphics);
+			return image;
+		}
+
+		private void checkShapeValue(String shapeName) throws IllegalArgumentException{
+			for(String i : decorClassMap.keySet())
+				if(i.equals(shapeName))
+					return;
+			throw new IllagalShapeName();
+		}
+			public class IllagalShapeName extends RuntimeException {
+				private static final long serialVersionUID = 1L;
 			}
-		}
-		System.out.println("shape name = "+shapeName);
-		throw new IllegalArgumentException("illagal shape name");
-	}
-    public static AbstractConnectionDecoration getByName(String shape, AbstractZentaConnectionFigure parent) {
-       @SuppressWarnings("unchecked")
-       Class<AbstractConnectionDecoration> figureClass = (Class<AbstractConnectionDecoration>) convertStringToFigure(shape);
-       Constructor<AbstractConnectionDecoration> constructor;
-       AbstractConnectionDecoration obj;
-                       try {
-						constructor = figureClass.getConstructor(AbstractZentaConnectionFigure.class);
-						obj = constructor.newInstance(parent);
-					} catch (NoSuchMethodException | SecurityException|InstantiationException | IllegalAccessException
-							| IllegalArgumentException
-							| InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-	                       throw new IllegalArgumentException("Problem with creating the figure");
-					}
-        return obj;
-    }
-
+		
 }

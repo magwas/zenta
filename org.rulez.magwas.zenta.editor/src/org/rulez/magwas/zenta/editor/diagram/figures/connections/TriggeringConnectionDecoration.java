@@ -6,27 +6,14 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
 import org.eclipse.draw2d.PolygonDecoration;
+import org.eclipse.draw2d.PolylineConnection;
 
-
-/**
- * Triggering Connection Figure class
- * 
- * @author Phillip Beauvoir
- */
-public class TriggeringConnectionDecoration extends AbstractConnectionDecoration {
-	
-    /**
-     * @return Decoration to use on Target Node
-     */
-    private static PolygonDecoration createFigureTargetDecoration() {
-        return new PolygonDecoration();
-    }
-
-	
-    @Override
-    public void setFigureProperties() {
+public class TriggeringConnectionDecoration implements IConnectionDecoration {
+	@Override
+	public void setFigureProperties(PolylineConnection owner) {
         owner.setTargetDecoration(createFigureTargetDecoration()); 
-    }
-    
-
+	}
+	    private static PolygonDecoration createFigureTargetDecoration() {
+	        return new PolygonDecoration();
+	    }
 }

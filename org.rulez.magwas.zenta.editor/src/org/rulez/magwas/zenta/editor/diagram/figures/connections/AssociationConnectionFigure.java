@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
  */
 public class AssociationConnectionFigure extends AbstractZentaConnectionFigure {
 	
-	private List<AbstractConnectionDecoration> decorations;
+	private List<IConnectionDecoration> decorations;
 	
     public AssociationConnectionFigure(IDiagramModelZentaConnection connection) {
         super(connection);
@@ -27,19 +27,19 @@ public class AssociationConnectionFigure extends AbstractZentaConnectionFigure {
     }
 
     public void addDecoration(String decorName) {
-    	decorations.add(ConnectionDecorationFactory.getByName(decorName, this));
+    	decorations.add(ConnectionDecorationFactory.getInstance().getByName(decorName));
     }
     
     public void initDecorations() {
-        decorations = new ArrayList<AbstractConnectionDecoration>();    	
+        decorations = new ArrayList<IConnectionDecoration>();    	
     }
     
     @Override
     protected void setFigureProperties() {
     	System.out.println("decorations:"+decorations);
     	if(null!=decorations) {
-        	for(AbstractConnectionDecoration decor : decorations) {
-        		decor.setFigureProperties();
+        	for(IConnectionDecoration decor : decorations) {
+        		decor.setFigureProperties(this);
         	}    		
     	}
     }

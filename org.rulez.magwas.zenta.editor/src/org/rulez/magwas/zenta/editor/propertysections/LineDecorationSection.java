@@ -22,6 +22,7 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
 	
     protected Button defaultButton;
     private IDiagramModelConnection modelObject;
+    private ConnectionDecorationFactory decorFactory= ConnectionDecorationFactory.getInstance();
  
 	@Override
 	protected void createControls(Composite parent) {
@@ -43,7 +44,7 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
 		private void createDecorButtons(Composite parent) {
 			Composite compo = createComposite(parent,3);
 			ConnectionDecorationFactory.getInstance();
-	        Set<String> names = ConnectionDecorationFactory.getFigureNames();
+	        Set<String> names = decorFactory.getFigureNames();
 	        for(String thename:names) 
 	        	addButtonForNamedDecor(compo, thename);
 		}
@@ -53,7 +54,7 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
 				Button but = new Button(parent,SWT.TOGGLE);
 				setGridLayoutFor(but);
 		        getWidgetFactory().adapt(but, true, true);
-				but.setImage(ConnectionDecorationFactory.getImageForName(thename));
+				but.setImage(decorFactory.getImageForName(thename));
 				but.addSelectionListener(createSelectionAdapterForButton(thename));
 				return but;
 			}

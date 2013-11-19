@@ -15,7 +15,6 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorInput;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
-import org.rulez.magwas.zenta.editor.diagram.figures.connections.ConnectionDecorationFactory;
 import org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.impl.ZentaFactory;
@@ -65,12 +64,12 @@ public class LineDecorationSectionTest {
 	@Test
 	public void testSetOneAttribute() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
-		Button but = ((Button)exerciser.getInternal("but_assignmentDecor"));
+		Button but = ((Button)exerciser.getInternal("but_FlowConnectionDecoration"));
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
 		assertEquals(null,mco.getLineDecoration());		
 		Event event = new Event();
 		but.notifyListeners(SWT.Selection, event );
-		assertEquals("assignmentDecor",mco.getLineDecoration());	
+		assertEquals("FlowConnectionDecoration",mco.getLineDecoration());	
 	}
 
 	private LineDecorationSectionExerciser getExerciser() {
@@ -80,7 +79,6 @@ public class LineDecorationSectionTest {
 	@Before
 	public void setUp() throws PartInitException {
 		data = new ModelAndEditPartTestData();
-		ConnectionDecorationFactory.getInstance();
 		ZentaDiagramEditor editor = createEditor();
 		section = new LineDecorationSectionExerciser(editor,data);
 		checkSection();
