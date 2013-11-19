@@ -1,5 +1,7 @@
 package org.rulez.magwas.zenta.editor.propertysections;
 
+import java.util.Set;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
@@ -8,12 +10,16 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.LineDecorationCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.figures.connections.ConnectionDecorationFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 
 public class LineDecorationSection extends AbstractZentaPropertySection {
 
+	private static final String HELP_ID = "org.rulez.magwas.zenta.help.lineDecorationSection";
+	
     protected Button defaultButton;
     private IDiagramModelConnection modelObject;
  
@@ -21,33 +27,54 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
 	protected void createControls(Composite parent) {
         createLabel(parent, Messages.LineDecorationSection_Title, ITabbedLayoutConstants.STANDARD_LABEL_WIDTH, SWT.CENTER);
         Composite client = createComposite(parent, 2);
+        getWidgetFactory().adapt(client, true, true);
+        createDecorButtons(client);
         createDefaultButton(client);
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HELP_ID);
 	}
 
 		private void createDefaultButton(Composite parent) {
 			defaultButton = new Button(parent, SWT.TOGGLE);
 	        defaultButton.setText(Messages.LineDecorationSection_DefaultLabel);
-			setGridLatoutFor(defaultButton);
 	        getWidgetFactory().adapt(defaultButton, true, true); // Need to do it this way for Mac
-	        defaultButton.addSelectionListener(createSelectionAdapterForDefaultButton());
+	        defaultButton.addSelectionListener(createSelectionAdapterForButton(null));
+		}
+	
+		private void createDecorButtons(Composite parent) {
+			Composite compo = createComposite(parent,3);
+			ConnectionDecorationFactory.getInstance();
+	        Set<String> names = ConnectionDecorationFactory.getFigureNames();
+	        for(String thename:names) 
+	        	addButtonForNamedDecor(compo, thename);
 		}
 
-			private SelectionAdapter createSelectionAdapterForDefaultButton() {
-				return new SelectionAdapter() {
-		            @Override
-		            public void widgetSelected(SelectionEvent e) {
-		                if(isAlive())
-		                    getCommandStack().execute(new LineDecorationCommand(modelObject, null));
-		            }
-		        };
+			protected Button addButtonForNamedDecor(Composite parent,
+					String thename) {
+				Button but = new Button(parent,SWT.TOGGLE);
+				setGridLayoutFor(but);
+		        getWidgetFactory().adapt(but, true, true);
+				but.setImage(ConnectionDecorationFactory.getImageForName(thename));
+				but.addSelectionListener(createSelectionAdapterForButton(thename));
+				return but;
 			}
-
-		private void setGridLatoutFor(Button but) {
-			GridData gd;
-			gd = new GridData(SWT.NONE, SWT.NONE, true, false);
-			gd.minimumWidth = ITabbedLayoutConstants.BUTTON_WIDTH;
-	        but.setLayoutData(gd);
-		}
+	
+				private SelectionAdapter createSelectionAdapterForButton(String value) {
+		        	final String thename = value;
+					return new SelectionAdapter() {
+			            @Override
+			            public void widgetSelected(SelectionEvent e) {
+			                if(isAlive())
+			                    getCommandStack().execute(new LineDecorationCommand(modelObject, thename));
+			            }
+			        };
+				}
+	
+				private void setGridLayoutFor(Button but) {
+					GridData gd;
+					gd = new GridData(SWT.NONE, SWT.NONE, true, false);
+					gd.minimumWidth = ITabbedLayoutConstants.BUTTON_WIDTH;
+			        but.setLayoutData(gd);
+				}
 
 	@Override
 	protected Adapter getECoreAdapter() {
