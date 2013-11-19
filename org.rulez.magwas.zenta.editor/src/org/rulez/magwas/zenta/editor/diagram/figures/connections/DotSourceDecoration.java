@@ -9,11 +9,10 @@ import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.geometry.PointList;
 
-public class AssignmentConnectionDecoration implements IConnectionDecoration {
+public class DotSourceDecoration implements IConnectionDecoration {
 	@Override
 	public void setFigureProperties(PolylineConnection owner) {
         owner.setSourceDecoration(createFigureSourceDecoration());
-        owner.setTargetDecoration(createFigureTargetDecoration()); 
 	}
 	    private static PolygonDecoration createFigureTargetDecoration() {
 	        return new PolygonDecoration() {

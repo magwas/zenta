@@ -1,5 +1,6 @@
 package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 import org.eclipse.draw2d.Figure;
@@ -19,10 +20,34 @@ public class ConnectionDecorationFactory {
 	private static final int HEIGHT = 20;
 	
 	private ConnectionDecorationFactory() {
-		IConnectionDecoration flowDecor = new FlowConnectionDecoration();
-		String name = flowDecor.getClass().getSimpleName();
-		decorClassMap.put(name,flowDecor);
+		String[] decors = {
+				"SmallEndArrowDecoration",
+				"SmallStartArrowDecoration",
+				"DiamondSourceDecoration",
+				"DiamondTargetDecoration",
+				"DotSourceDecoration",
+				"DotTargetDecoration",
+				"BigArrowTargetDecoration",
+				"SparseDashedLineDecoration",
+				"BigArrowSourceDecoration",
+				"DottedLineDecoration",
+				"DashedLineDecoration"};
+		for(String decorName : Arrays.asList(decors))
+			addDecorForName(decorName);
 	}
+		private void addDecorForName(String decorName) {
+			try {
+				Class<?> klass = Class.forName("org.rulez.magwas.zenta.editor.diagram.figures.connections."+ decorName);
+				IConnectionDecoration flowDecor = (IConnectionDecoration) klass.newInstance();
+				String name = flowDecor.getClass().getSimpleName();
+				decorClassMap.put(name,flowDecor);				
+			} catch (Exception e) {
+				throw new IllegalDecorName();
+			}
+		}
+			public class IllegalDecorName extends RuntimeException {
+				private static final long serialVersionUID = 1L;
+			}
 	
 	public static ConnectionDecorationFactory getInstance() {
 		if(null == INSTANCE) {

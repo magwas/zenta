@@ -11,11 +11,11 @@ import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.geometry.PointList;
 
-public class AggregationConnectionDecoration implements IConnectionDecoration {
+public class DiamondTargetDecoration implements IConnectionDecoration {
 
     @Override
     public void setFigureProperties(PolylineConnection owner) {
-        owner.setSourceDecoration(createFigureSourceDecoration());
+        owner.setTargetDecoration(createFigureSourceDecoration());
     }
 	    private static PolygonDecoration createFigureSourceDecoration() {
 	        return new PolygonDecoration() {

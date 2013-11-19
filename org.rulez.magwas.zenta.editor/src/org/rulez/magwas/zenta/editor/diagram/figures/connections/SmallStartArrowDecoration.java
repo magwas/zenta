@@ -7,15 +7,12 @@ package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 
 import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.PolylineConnection;
-import org.eclipse.swt.SWT;
 
-public class FlowConnectionDecoration implements IConnectionDecoration {
+public class SmallStartArrowDecoration implements IConnectionDecoration {
 
 	@Override
 	public void setFigureProperties( PolylineConnection owner) {
-        owner.setTargetDecoration(createFigureTargetDecoration()); 
-        owner.setLineStyle(SWT.LINE_CUSTOM);
-        owner.setLineDash(new float[] { 6, 3 });
+        owner.setSourceDecoration(createFigureTargetDecoration()); 
     }
 	    private PolygonDecoration createFigureTargetDecoration() {
 	        return new PolygonDecoration();

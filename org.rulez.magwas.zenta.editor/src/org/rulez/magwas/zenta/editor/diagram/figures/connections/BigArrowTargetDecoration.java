@@ -9,21 +9,17 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.PolylineConnection;
-import org.eclipse.swt.SWT;
 
-public class RealisationConnectionDecoration implements IConnectionDecoration {
+public class BigArrowTargetDecoration implements IConnectionDecoration {
     
 	@Override
 	public void setFigureProperties(PolylineConnection owner) {
         owner.setTargetDecoration(createFigureTargetDecoration());
-        owner.setLineStyle(SWT.LINE_CUSTOM);
-        owner.setLineDash(new float[] { 4 });
 	}
 	    public static PolygonDecoration createFigureTargetDecoration() {
 	        PolygonDecoration decoration = new PolygonDecoration() {
 	            @Override
 	            protected void fillShape(Graphics g) {
-	                // Draw this as white in case it is disabled
 	                g.setBackgroundColor(ColorConstants.white);
 	                super.fillShape(g);
 	            }

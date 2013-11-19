@@ -55,7 +55,7 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	@HaveGUI(waitUser=false)
+	@HaveGUI(waitUser=true)
 	public void testGUILook() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		exerciser.run();
@@ -64,12 +64,12 @@ public class LineDecorationSectionTest {
 	@Test
 	public void testSetOneAttribute() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
-		Button but = ((Button)exerciser.getInternal("but_FlowConnectionDecoration"));
+		Button but = ((Button)exerciser.getInternal("but_DashedLineDecoration"));
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
 		assertEquals(null,mco.getLineDecoration());		
 		Event event = new Event();
 		but.notifyListeners(SWT.Selection, event );
-		assertEquals("FlowConnectionDecoration",mco.getLineDecoration());	
+		assertEquals("DashedLineDecoration",mco.getLineDecoration());	
 	}
 
 	private LineDecorationSectionExerciser getExerciser() {

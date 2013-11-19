@@ -33,13 +33,13 @@ public class ConnectionDecorationFactoryTest {
 	}
 
 	@Test
-	@HaveGUI(waitUser=true)
+	@HaveGUI(waitUser=false)
 	public void testImage() {
 		Shell shell = new Shell();
 		shell.setLayout(new FillLayout());
 		UITestUtils.addTestControls(shell);
 		Button but = new Button(shell,SWT.PUSH);
-		Image image = factory.getImageForName("FlowConnectionDecoration");
+		Image image = factory.getImageForName("DashedLineDecoration");
 		but.setImage(image);
 		run(shell);
 	}
