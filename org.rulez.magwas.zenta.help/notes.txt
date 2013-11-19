@@ -15,37 +15,10 @@ Edit the source HTML files
 * Ensure "toc.xml" is up to date and corresponds to "files.list"
 
 
-Create one monolithic HTML file to import into MS Word 2007 on Windows
+Create one monolithic HTML file
 ----------------------------------------------------------------------
-* Run the "merge-html.xml" Ant script to output one HTML file, "Zenta User Guide.html", to the "help" folder
-* Open it in MS Word
+* Run the "merge-html.xml" Ant script to output one HTML file, "Zenta_User_Guide.html", to the "help" folder
 
-
-In MS Word 2007 on Windows
---------------------------
-* In "Options, Advanced->General->Web Options...->Pictures" ensure "Pixels per Inch" is 144 so that images are sized properly (50%).
-
-1. On the "Developer" tab, "Document Template" button, attach the styles in template "docs/Word Template.dotx".
-   "Automatically update document styles" is ticked.
-2. Check for blank pages, spacing and orphan issues first!
-3. Click the Office button and select "Prepare -> Edit Links to Files". (This option will not be there if there are no linked pictures).
-   Select all images and click the "Break link" button
-4. Insert Page Numbers at bottom right.
-5. From the same Insert Page Numbers menu choose "Format Page Numbers..." and "Start at" 0
-6. Double-click in the footer and tick "Different First Page" in the options.
-7. Save As Word Doc "Zenta User Guide.docx" in the "docs" folder
-8. Save As PDF "Zenta User Guide.pdf" in the "docs" folder (ensure that "Create bookmarks using Headings" is ticked in the 
-   Save As PDF Options)
-
-* Delete the "Zenta User Guide.html" file
-
-
-Create the "What's New in Zenta Document"
------------------------------------------
-1. Edit the "What's New in Zenta.docx" document in the "docs" folder
-2. Copy and Paste sections from the "Zenta User Guide.docx" document in the "docs" folder
-3. Click the Office button and select "Prepare -> Edit Links to Files". (This option will not be there if there are no linked pictures).
-   Select all images and click the "Break link" button
-4. Save As PDF "What's New in Zenta.pdf" in the "docs" folder (ensure that "Create bookmarks using Headings" is ticked in the 
-   Save As PDF Options)
+These all should be eventually replaced with a model from which the documentation and the screenshots are generated,
+and drives the end user testing.
 
