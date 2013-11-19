@@ -9,6 +9,8 @@ package org.rulez.magwas.zenta.editor.diagram.figures.connections;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.eclipse.swt.SWT;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 
 
@@ -41,13 +43,19 @@ public class AssociationConnectionFigure extends AbstractZentaConnectionFigure {
 	    	if(null != decorObj)
 	    		decorations.add(decorObj);
 	    }
-    
-    @Override
+
+	@Override
     protected void setFigureProperties() {
+    	clearDecorations();
     	if(null!=decorations) {
         	for(IConnectionDecoration decor : decorations) {
         		decor.setFigureProperties(this);
         	}    		
     	}
     }
+		private void clearDecorations() {
+			setSourceDecoration(null);
+			setTargetDecoration(null);
+			setLineStyle(SWT.LINE_SOLID);
+		}
 }

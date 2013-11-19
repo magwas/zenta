@@ -50,11 +50,22 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
 	}
 
 		private void createDefaultButton(Composite parent) {
-			defaultButton = new Button(parent, SWT.TOGGLE);
+			defaultButton = new Button(parent, SWT.PUSH);
 	        defaultButton.setText(Messages.LineDecorationSection_DefaultLabel);
 	        getWidgetFactory().adapt(defaultButton, true, true); // Need to do it this way for Mac
-	        defaultButton.addSelectionListener(createSelectionAdapterForButton(null));
+	        defaultButton.addSelectionListener(createSelectionAdapterForDefaultButton());
 		}
+			private SelectionAdapter createSelectionAdapterForDefaultButton() {
+				return new SelectionAdapter() {
+		            @Override
+		            public void widgetSelected(SelectionEvent e) {
+		                if(isAlive()) {
+							getCommandStack().execute(new LineDecorationCommand(modelObject, ""));
+							editPart.refreshFigure();
+		                }
+		            }
+		        };
+			}
 	
 		private void createDecorButtons(Composite parent) {
 			Composite compo = createComposite(parent,3);

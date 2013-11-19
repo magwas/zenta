@@ -51,12 +51,28 @@ public class LineDecorationSectionTest {
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
 		mco.setLineDecoration("foo");
 	}
+	
 	@Test
 	public void testDefaultButtonPush() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
 		Event event = new Event();
+		but.notifyListeners(SWT.Selection, event );
+		assertEquals("",mco.getLineDecoration());		
+	}
+
+	@Test
+	public void testDefaultButtonAfterMoreOthers() {
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		Button but = ((Button)exerciser.getInternal("DefaultButton"));
+		Button but2 = exerciser.getButton("DashedLineDecoration");
+		Button but3 = exerciser.getButton("SmallEndArrowDecoration");
+		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
+		Event event = new Event();
+		but2.notifyListeners(SWT.Selection, event );
+		but3.notifyListeners(SWT.Selection, event);
+		assertEquals("DashedLineDecoration SmallEndArrowDecoration",mco.getLineDecoration());	
 		but.notifyListeners(SWT.Selection, event );
 		assertEquals("",mco.getLineDecoration());		
 	}
