@@ -49,8 +49,8 @@ public class LineDecorationSectionTest {
 		assertEquals(Button.class,but.getClass());
 	}
 
-	@Test(expected=AssertionError.class)
-	public void testInvalidDecorationNameIsNotAccepted() {//FIXME move to model test
+	@Test
+	public void testInvalidDecorationNameIsIgnoredOnGUI() {
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
 		mco.setLineDecoration("foo");
 	}
