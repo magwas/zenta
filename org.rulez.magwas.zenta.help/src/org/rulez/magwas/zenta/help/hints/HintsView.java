@@ -73,7 +73,7 @@ public class HintsView
 extends ViewPart
 implements IContextProvider, IHintsView, ISelectionListener, IComponentSelectionListener {
     
-    static File cssFile = new File(ZentaEditorHelpPlugin.INSTANCE.getHintsFolder(), "style.css"); //$NON-NLS-1$
+	static File cssFile = new File(ZentaEditorHelpPlugin.INSTANCE.getHintsFolder(), "style.css"); //$NON-NLS-1$
 
     private Browser fBrowser;
     
@@ -394,13 +394,11 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
             String id = configurationElement.getNamespaceIdentifier();
             Bundle bundle = Platform.getBundle(id);
             URL url = FileLocator.find(bundle, new Path("$nl$/" + fileName), null); //$NON-NLS-1$
-            
             try {
                 url = FileLocator.resolve(url);
             }
-            catch(IOException ex) {
-                ex.printStackTrace();
-                continue;
+            catch(IOException |NullPointerException ex) {
+            	throw new HelpFileNotExists(id,fileName);
             }
             
             File f = new File(url.getPath());
@@ -409,6 +407,12 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
             fLookupTable.put(className, hint);
         }
     }
+	    public class HelpFileNotExists extends RuntimeException {
+			private static final long serialVersionUID = 1L;
+			public HelpFileNotExists(String id, String fileName) {
+				super(String.format("%s/%s", id, fileName));
+			}
+		}
     
     private Color getTitleColor(Object object) {
         Class<?> clazz;

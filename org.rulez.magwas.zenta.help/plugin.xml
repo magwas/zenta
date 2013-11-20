@@ -148,19 +148,9 @@
             title="%hint.title.3">
       </hint>
       <hint
-            class="org.rulez.magwas.zenta.model.IAggregationRelationship"
-            file="hints/aggregation.html"
-            title="%hint.title.33">
-      </hint>
-      <hint
             class="org.rulez.magwas.zenta.model.IAssociationRelationship"
             file="hints/association.html"
             title="%hint.title.38">
-      </hint>
-      <hint
-            class="org.rulez.magwas.zenta.model.ISpecialisationRelationship"
-            file="hints/specialisation.html"
-            title="%hint.title.41">
       </hint>
       <hint
             class="org.rulez.magwas.zenta.model.IJunction"
