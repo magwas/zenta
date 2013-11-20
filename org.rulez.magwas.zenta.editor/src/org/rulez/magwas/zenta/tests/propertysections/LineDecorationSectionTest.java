@@ -28,32 +28,35 @@ public class LineDecorationSectionTest {
 	private LineDecorationSection section;
 	ModelAndEditPartTestData data;
 	private ZentaDiagramEditor editor;
-
-	@Test
-	public void testEmptyInitialisation() throws PartInitException {
-	}
 	
 	@Test
-	public void testRealInitialisation() {
+	public void testInitialisationIsPossible() {
 		ISelection a = section.getSelection();
 		assertEquals(data.getEditPart(),((IStructuredSelection)a).getFirstElement());
 	}
-	
+
 	@Test
-	public void testDefaultButtonExistence() {
+	@HaveGUI(waitUser=false)
+	public void testTheGUIShowsButtonsForEachDecorationsAndADefaultButton() {
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		exerciser.run();
+	}
+
+	@Test
+	public void testThereIsADefaultButton() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
 		assertEquals(Button.class,but.getClass());
 	}
 
-	@Test//(expected=AssertionError.class)
-	public void testInvalidDecoration() {
+	@Test(expected=AssertionError.class)
+	public void testInvalidDecorationNameIsNotAccepted() {//FIXME move to model test
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
 		mco.setLineDecoration("foo");
 	}
 	
 	@Test
-	public void testDefaultButtonPush() {
+	public void testPushingDefaultButtonWhenNoDecorationsResultsNoDecoration() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
@@ -63,7 +66,7 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	public void testDefaultButtonAfterMoreOthers() {
+	public void testPushingDefaultButtonWhenThereAreDecorationsResultNoDecoration() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
 		Button but2 = exerciser.getButton("DashedLineDecoration");
@@ -77,15 +80,9 @@ public class LineDecorationSectionTest {
 		assertEquals("",mco.getLineDecoration());		
 	}
 
-	@Test
-	@HaveGUI(waitUser=false)
-	public void testGUILook() {
-		LineDecorationSectionExerciser exerciser = getExerciser();
-		exerciser.run();
-	}
 
 	@Test
-	public void testSetOneAttribute() {
+	public void testPushingADecorationButtonResultsInTheDecorationBeingSet() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = exerciser.getButton("DashedLineDecoration");
 		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
@@ -96,7 +93,7 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	public void testSetTwoAttributes() {
+	public void testWhenTwoButtonsArePushedBothDecorationsAreSet() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = exerciser.getButton("DashedLineDecoration");
 		Button but2 = exerciser.getButton("SmallEndArrowDecoration");
@@ -108,25 +105,8 @@ public class LineDecorationSectionTest {
 		assertEquals("DashedLineDecoration SmallEndArrowDecoration",mco.getLineDecoration());	
 	}
 
-	
 	@Test
-	public void testSetButtonStateAfterSettingOneAttribute() {
-		LineDecorationSectionExerciser exerciser = getExerciser();
-		Button but = exerciser.getButton("DashedLineDecoration");
-		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
-		mco.setLineDecoration("DashedLineDecoration");
-		assertTrue(but.getSelection());
-	}
-
-	@Test
-	public void testNullModelObject() throws PartInitException {
-		LineDecorationSectionExerciser exerciser = getExerciser();
-		exerciser.nullModelObject();
-		section.refreshControls();
-	}
-
-	@Test
-	public void testButtonStateOnInit() throws PartInitException {
+	public void testWhenAnObjectHaveADecorationSetOnInitialisationTheCorrespondingButtonIsPushed() throws PartInitException {
 		data = new ModelAndEditPartTestData();
 		data.getModelConnectionObject().setLineDecoration("DashedLineDecoration");
 		ZentaDiagramEditor editor = createEditor();
@@ -137,7 +117,23 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	public void testButtonStateOnPartChange() throws PartInitException {
+	public void testWhenADecoratonSetOnTheModelObjectTheCOrrespondingButtonGetsSelected() {
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		Button but = exerciser.getButton("DashedLineDecoration");
+		IDiagramModelZentaConnection mco = data.getModelConnectionObject();
+		mco.setLineDecoration("DashedLineDecoration");
+		assertTrue(but.getSelection());
+	}
+
+	@Test
+	public void testNoCrashWhenNoModelObjectSelected() throws PartInitException {
+		LineDecorationSectionExerciser exerciser = getExerciser();
+		exerciser.nullModelObject();
+		section.refreshControls();
+	}
+
+	@Test
+	public void testWhenPartSelectionIsChangedButtonStateFollowsIt() throws PartInitException {
 		data = new ModelAndEditPartTestData();
 		IDiagramModelZentaConnection conn = data.getModelConnectionObject();
 		conn.setLineDecoration("DashedLineDecoration");
@@ -156,7 +152,7 @@ public class LineDecorationSectionTest {
 
 
 	@Test
-	public void testButtonStateOnPartChangeToUndecorated() throws PartInitException {
+	public void testWhenPartSelectionIsChangedToAnUndecoratedObjectButtonsGetDeselected() throws PartInitException {
 		data = new ModelAndEditPartTestData();
 		IDiagramModelZentaConnection conn = data.getModelConnectionObject();
 		conn.setLineDecoration("DashedLineDecoration");
