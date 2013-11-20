@@ -3,7 +3,7 @@
 <contexts>
     
     <context id="treeModelViewHelp" title="The Model Tree">
-        <description>The Model Tree displays all ZentaMate models.</description>
+        <description>The Model Tree displays all models.</description>
         <topic label="The Model Tree" href="help/model_tree.html"/>
     </context>
     <context id="outlineViewHelp" title="The Outline Window">
@@ -27,7 +27,7 @@
        <topic href="help/canvas.html" label="Canvas Modelling Toolkit"/>
     </context>
     <context id="diagramEditorHelp" title="Diagram View">
-       <description>The elements and relationships that constitute an ZentaMate model as represented in the Model Tree can be arranged into one or more &quot;Views&quot; or visual diagrams.</description>
+       <description>The elements and relationships that constitute an model as represented in the Model Tree can be arranged into one or more &quot;Views&quot; or visual diagrams.</description>
        <topic href="help/views.html" label="Views"/>
        <topic href="help/viewpoints.html" label="Viewpoints"/>
     </context>
@@ -88,25 +88,13 @@
        <description>Edit the Connections Preferences.</description>
        <topic href="help/prefs_connections.html" label="Connections Preferences"/>
     </context>
-    <context id="prefsColours" title="Colours Preferences">
-       <topic href="help/prefs_colours.html" label="Colours Preferences"/>
-       <description>Edit the application colours</description>
-    </context>
     <context id="prefsDiagram" title="Diagram Preferences">
        <description>Edit the Diagram Preferences.</description>
        <topic href="help/prefs_diagram.html" label="Diagram Preferences"/>
     </context>
-    <context id="prefsFigures" title="Figures Preferences">
-       <description>Edit the Figures Preferences.</description>
-       <topic href="help/prefs_figures.html" label="Figures Preferences"/>
-    </context>
     <context id="prefsGeneral" title="General Preferences">
        <description>Edit the General Preferences.</description>
        <topic href="help/prefs_general.html" label="General Preferences"/>
-    </context>
-    <context id="prefsRelations" title="Relationships Preferences">
-       <description>Show the allowed ZentaMate relationships.</description>
-       <topic href="help/prefs_relations.html" label="Relationships Preferences"/>
     </context>
     <context id="userProperties" title="User Properties">
        <description>Edit User Properties</description>
