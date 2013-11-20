@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;

@@ -36,7 +36,7 @@ public class TestCaseImageSaver {
 				File dir = new File("generated-images");
 				if (!dir.exists())
 					throw new TestsShouldRunWithSourceRootAsCWD();
-			    String filename = String.format("img-%s.png",name);
+			    String filename = String.format("%s.png",name);
 			    return new File(dir,filename).getPath();
 			}
 				public static class TestsShouldRunWithSourceRootAsCWD extends RuntimeException {
