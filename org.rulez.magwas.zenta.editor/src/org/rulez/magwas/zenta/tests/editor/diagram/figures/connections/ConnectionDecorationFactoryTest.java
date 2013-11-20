@@ -18,23 +18,23 @@ public class ConnectionDecorationFactoryTest {
 	private ConnectionDecorationFactory factory;
 
 	@Test
-	public void testFactoryExistence() {
+	public void testTheFactoryInstanceCanBeObtained() {
 		assertNotNull(factory);
 	}
 
 	@Test(expected=ConnectionDecorationFactory.IllagalShapeName.class)
-	public void testNameCheck() {
+	public void testForInvalidDecorationNameAnExceptionIsThrownWhenGettingImagek() {
 		factory.getImageForName("invalidName");
 	}
 
 	@Test(expected=ConnectionDecorationFactory.IllagalShapeName.class)
-	public void testNullNameCheck() {
+	public void testWhenDecorationNameIsNullAnExceptionIsThrownk() {
 		factory.getImageForName(null);
 	}
 
 	@Test
 	@HaveGUI(waitUser=false)
-	public void testImage() {
+	public void testGetImageReturnsAnImageForTheDecoration() {
 		Shell shell = new Shell();
 		shell.setLayout(new FillLayout());
 		UITestUtils.addTestControls(shell);
