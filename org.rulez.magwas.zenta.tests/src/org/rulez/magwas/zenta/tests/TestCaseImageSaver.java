@@ -14,7 +14,6 @@ import org.eclipse.swt.widgets.Composite;
 public class TestCaseImageSaver {
 
 	public static void save(Method method,Composite composite) {
-		composite.pack();
 		Image image = createImageFromWidget(composite);
 		saveWidgetToFile(method, image);
 	    image.dispose();

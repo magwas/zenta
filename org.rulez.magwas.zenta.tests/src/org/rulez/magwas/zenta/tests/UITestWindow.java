@@ -9,6 +9,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -23,7 +24,7 @@ public class UITestWindow {
 	public UITestWindow() {
 		shell = new Shell();
 		//no, Shell cannot be subclassed
-		shell.setLayout(new GridLayout());
+		shell.setLayout(new GridLayout(1,true));
 		setBackgroundWhite(shell);
         compositeForTest = new Composite(shell, 0);
         Composite buttonCompo = new Composite(shell, 3);
@@ -65,6 +66,12 @@ public class UITestWindow {
 		        };
 		    }
 
+	public void resize(int width, int height) {
+		GridData data = new GridData(SWT.FILL, SWT.BEGINNING, true, true);
+		data.heightHint = height;
+		data.widthHint = width;
+		compositeForTest.setLayoutData(data);	
+	}
 	public Composite getComposite() {
 		return compositeForTest;
 	}
