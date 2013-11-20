@@ -4,22 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection;
-import org.rulez.magwas.zenta.tests.UITestUtils;
+import org.rulez.magwas.zenta.tests.UITestWindow;
 
 public class LineDecorationSectionExerciser extends LineDecorationSection {
 
 	Map<String,Object> internals = new HashMap<String,Object>();
-	private Shell shell;
+	private UITestWindow win;
 	
 	LineDecorationSectionExerciser(ZentaDiagramEditor editor,ModelAndEditPartTestData data) throws PartInitException {
 		super();
@@ -32,30 +30,26 @@ public class LineDecorationSectionExerciser extends LineDecorationSection {
 		}
 	
 		void createControlsForSection( ZentaDiagramEditor editor) {
-			shell = new Shell();
-			UITestUtils.addTestControls(shell);
-			shell.setLayout(new GridLayout());
-			createTabbedPropertySheetPage(editor);
+			win = new UITestWindow();
+			Composite composite = win.getComposite();
+			createTabbedPropertySheetPage(editor, composite);
 		}
-			void createTabbedPropertySheetPage(ZentaDiagramEditor editor) {
+			void createTabbedPropertySheetPage(ZentaDiagramEditor editor, Composite sectionCompo) {
 				TabbedPropertySheetPage tpsPage = new TabbedPropertySheetPageMockup(editor);
 				IPageSite pageSite = (IPageSite) ((IWorkbenchPart) editor).getSite();
 				tpsPage.init(pageSite );
-				createControlsForTpsPage(tpsPage);
+				createControlsForTpsPage(tpsPage, sectionCompo);
 			}
 				private void createControlsForTpsPage(
-						TabbedPropertySheetPage tpsPage) {
-					Composite sectionCompo = new Composite(shell, 1);
-					Composite pageCompo = new Composite(shell, 1);
+						TabbedPropertySheetPage tpsPage, Composite sectionCompo) {
+					Composite pageCompo = win.getNewHiddenComposite();
 					tpsPage.createControl(pageCompo);
 					createControls(sectionCompo, tpsPage);
 				}
 
 
 	public void run() {
-		shell.pack();
-		shell.open();
-		UITestUtils.waitUserIfNeeded(shell);
+		win.showWindow();
 	}
 
 	

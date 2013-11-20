@@ -1,1 +1,3 @@
 /bin
+/generated-images/*
+!generated-images/.placeholder
