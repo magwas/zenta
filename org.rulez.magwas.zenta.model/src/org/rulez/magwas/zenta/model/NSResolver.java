@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.export;
+package org.rulez.magwas.zenta.model;
 
 import java.util.HashMap;
 import java.util.Iterator;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://magwas.rulez.org/zenta/metamodel"
+            class="org.rulez.magwas.metamodel.metamodel.MetamodelPackage"
+            genModel="model/metamodel.genmodel"/>
+   </extension>
+
+</plugin>

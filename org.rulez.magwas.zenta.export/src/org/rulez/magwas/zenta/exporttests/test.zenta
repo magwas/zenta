@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
 <zenta:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" name="test modell" id="69b3786c" version="2.2.1">
   <folder name="Business" id="196115c6" type="business">
-    <folder name="New Folder" id="915ee5e9">
-      <element xsi:type="zenta:BusinessObject" id="8e4e0614" name="Business Object3"/>
-    </folder>
     <folder name="metamodel" id="d1d69251">
       <element xsi:type="zenta:ZentaDiagramModel" id="2ea99535" name="template">
-        <child xsi:type="zenta:DiagramObject" id="b2608459" textAlignment="2" zentaElement="ea94cf6c">
+        <child xsi:type="zenta:DiagramObject" id="b2608459" textAlignment="2" elementShape="ellipseShape" zentaElement="ea94cf6c">
           <bounds x="108" y="24"/>
-          <sourceConnection xsi:type="zenta:Connection" id="24e3c661" source="b2608459" target="88f40127" relationship="b0e2bfd8"/>
+          <sourceConnection xsi:type="zenta:Connection" id="24e3c661" source="b2608459" target="88f40127" lineDecoration="BigArrowSourceDecoration" relationship="b0e2bfd8"/>
         </child>
         <child xsi:type="zenta:DiagramObject" id="99b3ed89" textAlignment="2" targetConnections="99e9c255" zentaElement="23138a61">
           <bounds x="132" y="264"/>
         </child>
-        <child xsi:type="zenta:DiagramObject" id="88f40127" textAlignment="2" targetConnections="24e3c661" zentaElement="f33bd0d2">
+        <child xsi:type="zenta:DiagramObject" id="88f40127" textAlignment="2" targetConnections="24e3c661" elementShape="emptyShape" zentaElement="f33bd0d2">
           <bounds x="276" y="156"/>
-          <sourceConnection xsi:type="zenta:Connection" id="99e9c255" source="88f40127" target="99b3ed89" relationship="a972e26e"/>
+          <sourceConnection xsi:type="zenta:Connection" id="99e9c255" source="88f40127" target="99b3ed89" lineDecoration="DottedLineDecoration SmallStartArrowDecoration" relationship="a972e26e"/>
         </child>
         <property key="Template"/>
       </element>
@@ -23,39 +20,10 @@
       <element xsi:type="zenta:BusinessObject" id="23138a61" name="Data"/>
       <element xsi:type="zenta:BusinessObject" id="f33bd0d2" name="Procedure"/>
     </folder>
-    <element xsi:type="zenta:BusinessObject" id="a885cd76" name="Business Object"/>
-    <element xsi:type="zenta:BusinessObject" id="8c485316" name="Business Object1"/>
-    <element xsi:type="zenta:ZentaDiagramModel" id="bfe14ecd" name="Default View">
-      <child xsi:type="zenta:DiagramObject" id="b54fa453" textAlignment="2" targetConnections="17128507" zentaElement="8e4e0614">
-        <bounds x="72" y="43"/>
-        <sourceConnection xsi:type="zenta:Connection" id="90c134f7" source="b54fa453" target="bea40bd2" relationship="c382f0a6"/>
-        <sourceConnection xsi:type="zenta:Connection" id="c513cc66" source="b54fa453" target="5133b72b" relationship="d6beca94"/>
-      </child>
-      <child xsi:type="zenta:DiagramObject" id="bea40bd2" textAlignment="2" targetConnections="90c134f7" zentaElement="a885cd76">
-        <bounds x="252" y="264"/>
-        <sourceConnection xsi:type="zenta:Connection" id="e48ffb0f" source="bea40bd2" target="fd5ec324" relationship="02df454d"/>
-        <sourceConnection xsi:type="zenta:Connection" id="4130cbd0" source="bea40bd2" target="5133b72b" relationship="b0fe521c"/>
-      </child>
-      <child xsi:type="zenta:DiagramObject" id="5133b72b" textAlignment="2" targetConnections="cfcfceda c513cc66 4130cbd0" zentaElement="8c485316">
-        <bounds x="410" y="97"/>
-      </child>
-      <child xsi:type="zenta:DiagramObject" id="fd5ec324" targetConnections="e48ffb0f" zentaElement="ed95a7e7">
-        <bounds x="312" y="192"/>
-        <sourceConnection xsi:type="zenta:Connection" id="cfcfceda" source="fd5ec324" target="5133b72b" relationship="30c464a4"/>
-        <sourceConnection xsi:type="zenta:Connection" id="17128507" source="fd5ec324" target="b54fa453" relationship="dd96652f"/>
-      </child>
-    </element>
+    <element xsi:type="zenta:ZentaDiagramModel" id="bfe14ecd" name="Default View"/>
   </folder>
-  <folder name="Connectors" id="e716ac78" type="connectors">
-    <element xsi:type="zenta:Junction" id="ed95a7e7" name="Junction"/>
-  </folder>
+  <folder name="Connectors" id="e716ac78" type="connectors"/>
   <folder name="Relations" id="3bd2f7ae" type="relations">
-    <element xsi:type="zenta:SpecialisationRelationship" id="c382f0a6" source="8e4e0614" target="a885cd76"/>
-    <element xsi:type="zenta:SpecialisationRelationship" id="02df454d" source="a885cd76" target="ed95a7e7"/>
-    <element xsi:type="zenta:AssociationRelationship" id="30c464a4" source="ed95a7e7" target="8c485316"/>
-    <element xsi:type="zenta:AssociationRelationship" id="dd96652f" source="ed95a7e7" target="8e4e0614"/>
-    <element xsi:type="zenta:SpecialisationRelationship" id="d6beca94" source="8e4e0614" target="8c485316"/>
-    <element xsi:type="zenta:AssociationRelationship" id="b0fe521c" source="a885cd76" target="8c485316"/>
     <element xsi:type="zenta:AssociationRelationship" id="b0e2bfd8" name="does" source="ea94cf6c" target="f33bd0d2"/>
     <element xsi:type="zenta:AssociationRelationship" id="a972e26e" name="uses" source="f33bd0d2" target="23138a61"/>
   </folder>

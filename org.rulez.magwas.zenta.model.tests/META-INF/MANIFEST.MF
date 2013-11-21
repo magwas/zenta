@@ -10,4 +10,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.junit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Import-Package: org.rulez.magwas.zenta.export
+Export-Package: org.rulez.magwas.zenta.model.tests.utils

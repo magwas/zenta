@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.export.EventLog;
 import org.rulez.magwas.zenta.export.IndirectChildrenAdder;
-import org.rulez.magwas.zenta.export.Util;
+import org.rulez.magwas.zenta.model.util.Util;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;

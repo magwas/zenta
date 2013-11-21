@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.rulez.magwas.metamodel.metamodel.presentation.MetamodelModelWizardID"
+            name="%_UI_MetamodelModelWizard_label"
+            class="org.rulez.magwas.metamodel.metamodel.presentation.MetamodelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MetamodelModelFile.gif">
+         <description>%_UI_MetamodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.rulez.magwas.metamodel.metamodel.presentation.MetamodelEditorID"
+            name="%_UI_MetamodelEditor_label"
+            icon="icons/full/obj16/MetamodelModelFile.gif"
+            extensions="metamodel"
+            class="org.rulez.magwas.metamodel.metamodel.presentation.MetamodelEditor"
+            contributorClass="org.rulez.magwas.metamodel.metamodel.presentation.MetamodelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

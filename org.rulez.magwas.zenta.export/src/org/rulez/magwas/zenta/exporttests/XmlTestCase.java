@@ -7,7 +7,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.junit.Assert;
-import org.rulez.magwas.zenta.export.Util;
+import org.rulez.magwas.zenta.model.util.Util;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 

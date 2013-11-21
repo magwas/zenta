@@ -19,7 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.export.Enricher;
 import org.rulez.magwas.zenta.export.IEventLog;
-import org.rulez.magwas.zenta.export.NSResolver;
+import org.rulez.magwas.zenta.model.NSResolver;
 import org.rulez.magwas.zenta.export.RichElement;
 import org.rulez.magwas.zenta.export.VarResolver;
 import org.rulez.magwas.zenta.exporttests.EventLogMockup;
