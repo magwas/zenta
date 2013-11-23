@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ASCII"?>
+<zenta:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" name="zenta model model" id="7e06dac7" version="2.2.1">
+  <folder name="Business" id="2247b20f" type="business">
+    <folder name="metamodel elements" id="c2e8f476">
+      <element xsi:type="zenta:BusinessObject" id="147c81dd" name="ChildOC ObjectClass"/>
+      <element xsi:type="zenta:BusinessObject" id="e87a6172" name="ChildRC RelationClass"/>
+      <element xsi:type="zenta:BusinessObject" id="b342891b" name="ParentOC Objectclass"/>
+      <element xsi:type="zenta:BusinessObject" id="bf9f52ee" name="ParentRC RelationClass"/>
+      <element xsi:type="zenta:BusinessObject" id="15db96e4" name="GrandKidOC ObjectClass"/>
+      <element xsi:type="zenta:BusinessObject" id="24ce872f" name="GrandKidRC RelationClass"/>
+    </folder>
+    <folder name="model elements" id="def5cd31">
+      <element xsi:type="zenta:BusinessObject" id="d60960aa" name="element with name ChildOC and type ParentOC"/>
+      <element xsi:type="zenta:BusinessObject" id="ed12ffbf" name="element with name ParentOC and type GranddadOC"/>
+      <element xsi:type="zenta:BusinessObject" id="04fce3cc" name="relation with name ChildRC and type ParentRC"/>
+      <element xsi:type="zenta:BusinessObject" id="e276d0cf" name="relation with name ParentRC and type GranddadRC"/>
+      <element xsi:type="zenta:BusinessObject" id="307231f4" name="unnamed element of ChildOC"/>
+      <element xsi:type="zenta:BusinessObject" id="2612882a" name="Unnamed relaton of ChildRC"/>
+      <element xsi:type="zenta:BusinessObject" id="359cb6e7" name="element named GrandKidOC of ChildOC"/>
+      <element xsi:type="zenta:BusinessObject" id="2a2266eb" name="relation named GrandKidRC of ChildRC"/>
+    </folder>
+    <folder name="Diagram elements" id="9f1bc05c">
+      <element xsi:type="zenta:BusinessObject" id="d5d051ae" name="DiagramConnection"/>
+      <element xsi:type="zenta:BusinessObject" id="b6ac560d" name="DiagramConnection"/>
+      <element xsi:type="zenta:BusinessObject" id="dff412bd" name="DiagramElement"/>
+      <element xsi:type="zenta:BusinessObject" id="db6c6a82" name="DiagramElement"/>
+    </folder>
+    <folder name="Rules" id="7af43a7b">
+      <element xsi:type="zenta:BusinessObject" id="442f5652" name="An unnamed object in a template does not define a metamodel class"/>
+      <element xsi:type="zenta:BusinessObject" id="2e012ae2" name="A named object in a template defines a metamodel class"/>
+      <element xsi:type="zenta:BusinessObject" id="d456283b" name="The elements and relations in a figure get their appearance from their metamodel class"/>
+      <element xsi:type="zenta:BusinessObject" id="0c34e3f9" name="Naming rules"/>
+      <element xsi:type="zenta:BusinessObject" id="b6487700" name="If there is a non-empty className property, then it is the name"/>
+      <element xsi:type="zenta:BusinessObject" id="0344493d" name="if there is an empty className property, then the object is unnamed"/>
+      <element xsi:type="zenta:BusinessObject" id="4c58242f" name="if there is no className property and name is not empty, then it is the name"/>
+      <element xsi:type="zenta:BusinessObject" id="2ec1700f" name="if there is no className property and the name is empty, then the object is unnamed"/>
+      <element xsi:type="zenta:BusinessObject" id="069234f1" name="A defining object for an objectclass becames of type of that objectclass"/>
+      <element xsi:type="zenta:BusinessObject" id="ff5940a2" name="In case of naming clash the behaviour is undefined yet">
+        <documentation>possible resolutions:
+- new objectclass with the same name, but different inheritance
+  - for logics using the objectclass name it means multiple inheritance
+- prohibited
+- morphs to the actually existing objectclass</documentation>
+      </element>
+      <element xsi:type="zenta:BusinessObject" id="3c022201" name="Business Object"/>
+      <element xsi:type="zenta:BusinessObject" id="a9e10e2f" name="Metamodel is transient"/>
+      <element xsi:type="zenta:BusinessObject" id="7240dde4" name="builds at load time"/>
+      <element xsi:type="zenta:BusinessObject" id="7f68d3ab" name="not saved with the model"/>
+    </folder>
+    <element xsi:type="zenta:BusinessObject" id="c2dca968" name="Template"/>
+    <element xsi:type="zenta:BusinessObject" id="4d14b736" name="Model"/>
+    <element xsi:type="zenta:BusinessObject" id="7a9dca5b" name="MetaModel"/>
+  </folder>
+  <folder name="Connectors" id="3705b750" type="connectors"/>
+  <folder name="Relations" id="20b2fe98" type="relations">
+    <element xsi:type="zenta:AssociationRelationship" id="47c438b7" source="b342891b" target="ed12ffbf"/>
+    <element xsi:type="zenta:AssociationRelationship" id="bb230559" source="bf9f52ee" target="e276d0cf"/>
+    <element xsi:type="zenta:AssociationRelationship" id="4f59e5e8" source="dff412bd" target="ed12ffbf"/>
+    <element xsi:type="zenta:AssociationRelationship" id="fe58d1c4" source="d5d051ae" target="e276d0cf"/>
+    <element xsi:type="zenta:AssociationRelationship" id="0db1665c" source="b342891b" target="ed12ffbf"/>
+    <element xsi:type="zenta:AssociationRelationship" id="2f8ff1e7" source="bf9f52ee" target="e276d0cf"/>
+    <element xsi:type="zenta:AssociationRelationship" id="e7df6df7" source="db6c6a82" target="d60960aa"/>
+    <element xsi:type="zenta:AssociationRelationship" id="dff3a2ba" source="b6ac560d" target="04fce3cc"/>
+    <element xsi:type="zenta:AssociationRelationship" id="9d36e6bf" source="04fce3cc" target="147c81dd"/>
+    <element xsi:type="zenta:AssociationRelationship" id="be3221cb" source="d60960aa" target="e87a6172"/>
+    <element xsi:type="zenta:AssociationRelationship" id="92819444" source="147c81dd" target="b342891b"/>
+    <element xsi:type="zenta:AssociationRelationship" id="e7ec16db" source="e87a6172" target="bf9f52ee"/>
+    <element xsi:type="zenta:AssociationRelationship" id="99a9f0e7" source="147c81dd" target="307231f4"/>
+    <element xsi:type="zenta:AssociationRelationship" id="979ad51c" source="e87a6172" target="2612882a"/>
+    <element xsi:type="zenta:AssociationRelationship" id="0d1bb3cb" source="15db96e4" target="359cb6e7"/>
+    <element xsi:type="zenta:AssociationRelationship" id="6fcf06e4" source="24ce872f" target="2a2266eb"/>
+  </folder>
+  <folder name="Views" id="8f176825" type="diagrams">
+    <element xsi:type="zenta:ZentaDiagramModel" id="9a9a23cb" name="Default View" connectionRouterType="1">
+      <child xsi:type="zenta:DiagramObject" id="c7ecd0e7" textAlignment="2" zentaElement="4d14b736">
+        <bounds x="360" y="17"/>
+        <child xsi:type="zenta:DiagramObject" id="8fde0df1" textAlignment="2" targetConnections="1a5cf8c9 fc898881" zentaElement="ed12ffbf">
+          <bounds x="336" y="264" width="169" height="61"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="deb7a8d2" textAlignment="2" zentaElement="c2dca968">
+          <bounds x="12" y="36" width="493" height="217"/>
+          <child xsi:type="zenta:DiagramObject" id="bf80422a" textAlignment="2" elementShape="emptyShape" zentaElement="d5d051ae">
+            <bounds x="204" y="38" width="157" height="35"/>
+            <sourceConnection xsi:type="zenta:Connection" id="36ae348b" source="bf80422a" target="c2f9f9de" relationship="fe58d1c4"/>
+          </child>
+          <child xsi:type="zenta:DiagramObject" id="58666091" textAlignment="2" zentaElement="dff412bd">
+            <bounds x="12" y="36" width="145" height="37"/>
+            <sourceConnection xsi:type="zenta:Connection" id="1a5cf8c9" source="58666091" target="8fde0df1" relationship="4f59e5e8"/>
+          </child>
+          <child xsi:type="zenta:DiagramObject" id="0ab9f35b" textAlignment="2" zentaElement="db6c6a82">
+            <bounds x="28" y="123" width="141" height="46"/>
+            <sourceConnection xsi:type="zenta:Connection" id="5ec470d7" source="0ab9f35b" target="8c6e5434" relationship="e7df6df7"/>
+          </child>
+          <child xsi:type="zenta:DiagramObject" id="b37f2d6d" textAlignment="2" elementShape="emptyShape" zentaElement="b6ac560d">
+            <bounds x="228" y="126" width="169" height="31"/>
+            <sourceConnection xsi:type="zenta:Connection" id="623a3203" source="b37f2d6d" target="c39daa0e" relationship="dff3a2ba"/>
+          </child>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="8c6e5434" textAlignment="2" targetConnections="5ec470d7" zentaElement="d60960aa">
+          <bounds x="385" y="344" width="120" height="77"/>
+          <sourceConnection xsi:type="zenta:Connection" id="4ba936a0" source="8c6e5434" target="4d77c6ff" lineDecoration="BigArrowTargetDecoration SmallStartArrowDecoration" relationship="be3221cb"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="c2f9f9de" textAlignment="2" targetConnections="36ae348b 1c7e2d94" zentaElement="e276d0cf">
+          <bounds x="24" y="276" width="168" height="61"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="c39daa0e" textAlignment="2" targetConnections="623a3203" zentaElement="04fce3cc">
+          <bounds x="32" y="356" width="152" height="65"/>
+          <sourceConnection xsi:type="zenta:Connection" id="eb4598b4" source="c39daa0e" target="e95c1ab9" lineDecoration="BigArrowTargetDecoration SmallStartArrowDecoration" relationship="9d36e6bf"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="5f36474e" textAlignment="2" targetConnections="30a8ecb2" zentaElement="307231f4">
+          <bounds x="32" y="427" width="120" height="66"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="2fe06c6b" textAlignment="2" targetConnections="064a42f3" zentaElement="2612882a">
+          <bounds x="199" y="429" width="120" height="61"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="6a2a26ee" textAlignment="2" targetConnections="107adb82" zentaElement="359cb6e7">
+          <bounds x="363" y="440" width="120" height="89"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="4100b811" textAlignment="2" targetConnections="8d466c89" zentaElement="2a2266eb">
+          <bounds x="175" y="505"/>
+        </child>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="021f6be5" textAlignment="2" zentaElement="7a9dca5b">
+        <bounds x="12" y="17"/>
+        <child xsi:type="zenta:DiagramObject" id="265d9f2c" textAlignment="2" targetConnections="887d10fa" zentaElement="b342891b">
+          <bounds y="36" width="120" height="68"/>
+          <sourceConnection xsi:type="zenta:Connection" id="fc898881" source="265d9f2c" target="8fde0df1" lineDecoration="SmallEndArrowDecoration BigArrowSourceDecoration" relationship="0db1665c"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="b426a54a" textAlignment="2" targetConnections="022b550a" zentaElement="bf9f52ee">
+          <bounds x="143" y="36" width="120" height="83"/>
+          <sourceConnection xsi:type="zenta:Connection" id="1c7e2d94" source="b426a54a" target="c2f9f9de" lineDecoration="SmallEndArrowDecoration BigArrowSourceDecoration" relationship="2f8ff1e7"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="e95c1ab9" textAlignment="2" targetConnections="eb4598b4" zentaElement="147c81dd">
+          <bounds y="202"/>
+          <sourceConnection xsi:type="zenta:Connection" id="887d10fa" source="e95c1ab9" target="265d9f2c" lineDecoration="BigArrowTargetDecoration" relationship="92819444"/>
+          <sourceConnection xsi:type="zenta:Connection" id="30a8ecb2" source="e95c1ab9" target="5f36474e" lineDecoration="BigArrowSourceDecoration" relationship="99a9f0e7"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="4d77c6ff" textAlignment="2" targetConnections="4ba936a0" zentaElement="e87a6172">
+          <bounds x="143" y="202"/>
+          <sourceConnection xsi:type="zenta:Connection" id="022b550a" source="4d77c6ff" target="b426a54a" lineDecoration="BigArrowTargetDecoration" relationship="e7ec16db"/>
+          <sourceConnection xsi:type="zenta:Connection" id="064a42f3" source="4d77c6ff" target="2fe06c6b" lineDecoration="BigArrowSourceDecoration" relationship="979ad51c"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="0215b4d1" textAlignment="2" zentaElement="15db96e4">
+          <bounds x="12" y="312"/>
+          <sourceConnection xsi:type="zenta:Connection" id="107adb82" source="0215b4d1" target="6a2a26ee" lineDecoration="BigArrowSourceDecoration SmallEndArrowDecoration" relationship="0d1bb3cb"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="e14fe54a" textAlignment="2" zentaElement="24ce872f">
+          <bounds x="154" y="314"/>
+          <sourceConnection xsi:type="zenta:Connection" id="8d466c89" source="e14fe54a" target="4100b811" lineDecoration="BigArrowSourceDecoration SmallEndArrowDecoration" relationship="6fcf06e4"/>
+        </child>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="5f20125e" textAlignment="2" elementShape="ellipseShape" zentaElement="442f5652">
+        <bounds x="888" y="110" width="120" height="107"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="44dafdf3" textAlignment="2" elementShape="ellipseShape" zentaElement="2e012ae2">
+        <bounds x="912" y="249" width="145" height="88"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="18e97f05" textAlignment="2" elementShape="ellipseShape" zentaElement="d456283b">
+        <bounds x="893" y="361" width="164" height="84"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="31cc201f" textAlignment="2" elementShape="ellipseShape" zentaElement="0c34e3f9">
+        <bounds x="36" y="416"/>
+        <child xsi:type="zenta:DiagramObject" id="7fc614b4" textAlignment="2" elementShape="ellipseShape" zentaElement="b6487700">
+          <bounds x="18" y="35" width="120" height="98"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="b86166d6" textAlignment="2" elementShape="ellipseShape" zentaElement="0344493d">
+          <bounds x="143" y="30" width="120" height="103"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="b00d9949" textAlignment="2" elementShape="ellipseShape" zentaElement="4c58242f">
+          <bounds x="143" y="132" width="120" height="121"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="0f3b52d7" textAlignment="2" elementShape="ellipseShape" zentaElement="2ec1700f">
+          <bounds x="17" y="146" width="120" height="119"/>
+        </child>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="243fe6fb" textAlignment="2" elementShape="ellipseShape" zentaElement="069234f1">
+        <bounds x="1020" y="110" width="120" height="114"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="6ef605b5" textAlignment="2" elementShape="ellipseShape" zentaElement="ff5940a2">
+        <bounds x="1072" y="305" width="120" height="92"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="41f388e1" textAlignment="2" elementShape="ellipseShape" zentaElement="a9e10e2f">
+        <bounds x="911" y="462"/>
+        <child xsi:type="zenta:DiagramObject" id="a92675fe" textAlignment="2" elementShape="ellipseShape" zentaElement="7240dde4">
+          <bounds x="24" y="48"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="b7a53696" textAlignment="2" elementShape="ellipseShape" zentaElement="7f68d3ab">
+          <bounds x="24" y="102"/>
+        </child>
+      </child>
+    </element>
+  </folder>
+</zenta:model>
