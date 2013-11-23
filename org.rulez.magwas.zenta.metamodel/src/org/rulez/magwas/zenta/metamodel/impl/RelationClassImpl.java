@@ -65,12 +65,6 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 	 */
 	protected EList<RelationClass> children;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param referenced 
-	 * @generated
-	 */
 	protected RelationClassImpl(AssociationRelationship referenced) {
 		super();
 		this.setReference(referenced);
@@ -280,5 +274,9 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 		}
 		return super.eIsSet(featureID);
 	}
+
+  public String getName() {
+      return super.getName();
+  }
 
 } //RelationClassImpl

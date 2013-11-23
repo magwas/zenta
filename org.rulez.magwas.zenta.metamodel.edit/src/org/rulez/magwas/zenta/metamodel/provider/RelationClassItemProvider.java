@@ -22,7 +22,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 
 /**
- * This is the item provider adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.RelationClass} object.
+ * This is the item provider adapter for a {@link org.rulez.magwas.zenta.metamodel.RelationClass} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

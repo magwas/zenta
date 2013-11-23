@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.Template;
 
 /**
- * This is the item provider adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.Metamodel} object.
+ * This is the item provider adapter for a {@link org.rulez.magwas.zenta.metamodel.Metamodel} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -137,14 +137,6 @@ public class MetamodelItemProvider
 		super.notifyChanged(notification);
 	}
 
-	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 

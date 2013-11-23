@@ -167,13 +167,6 @@ public class MetamodelActionBarContributor
 		toolBarManager.add(new Separator("metamodel-additions"));
 	}
 
-	/**
-	 * This adds to the menu bar a menu and some separators for editor additions,
-	 * as well as the sub-menus for object creation items.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);

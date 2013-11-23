@@ -196,6 +196,10 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 		return children;
 	}
 
+	public String getName() {
+      return super.getName();
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

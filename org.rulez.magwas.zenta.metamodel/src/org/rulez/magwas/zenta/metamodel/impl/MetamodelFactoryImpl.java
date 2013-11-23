@@ -26,12 +26,6 @@ import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
  */
 public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFactory {
 
-	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public static MetamodelFactory init() {
 		try {
 			MetamodelFactory theMetamodelFactory = (MetamodelFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
@@ -45,21 +39,10 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return new MetamodelFactoryImpl();
 	}
 
-	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public MetamodelFactoryImpl() {
 		super();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
@@ -73,41 +56,21 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		}
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Metamodel createMetamodel() {
 		MetamodelImpl metamodel = new MetamodelImpl();
 		return metamodel;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Template createTemplate(ZentaDiagramModel reference) {
 		TemplateImpl template = new TemplateImpl(reference);
 		return template;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ObjectClass createObjectClass(BusinessObject reference) {
 		ObjectClassImpl objectClass = new ObjectClassImpl(reference);
 		return objectClass;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Attribute createAttribute() {
 		AttributeImpl attribute = new AttributeImpl();
 		return attribute;
@@ -118,11 +81,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return relationClass;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public MetamodelPackage getMetamodelPackage() {
 		return (MetamodelPackage)getEPackage();
 	}

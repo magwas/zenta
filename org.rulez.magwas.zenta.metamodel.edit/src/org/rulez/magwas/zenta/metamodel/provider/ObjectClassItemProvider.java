@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 
 /**
- * This is the item provider adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.ObjectClass} object.
+ * This is the item provider adapter for a {@link org.rulez.magwas.zenta.metamodel.ObjectClass} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

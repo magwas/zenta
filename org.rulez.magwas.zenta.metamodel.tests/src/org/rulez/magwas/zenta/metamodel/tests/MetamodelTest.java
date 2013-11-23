@@ -13,6 +13,13 @@ import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 public class MetamodelTest {
 	protected Metamodel fixture = null;
 
+	protected void setFixture(Metamodel fixture) {
+		this.fixture = fixture;
+	}
+	protected Metamodel getFixture() {
+		return fixture;
+	}
+
 	@Before
 	public void setUp() throws Exception {
 		this.fixture = MetamodelFactory.eINSTANCE.createMetamodel();

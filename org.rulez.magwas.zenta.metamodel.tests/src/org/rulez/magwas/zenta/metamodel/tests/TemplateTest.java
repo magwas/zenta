@@ -1,7 +1,6 @@
 package org.rulez.magwas.zenta.metamodel.tests;
 
-import junit.framework.TestCase;
-
+import static org.junit.Assert.*;
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
@@ -11,7 +10,7 @@ import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 
-public class TemplateTest extends TestCase {
+public class TemplateTest {
 
 	protected Template fixture = null;
 

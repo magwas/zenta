@@ -72,7 +72,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.metamodel.Metamodel} instances.
+	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.Metamodel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,7 +80,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	protected MetamodelItemProvider metamodelItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.Metamodel}.
+	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.Metamodel}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,7 +95,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.metamodel.Template} instances.
+	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.Template} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,7 +103,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	protected TemplateItemProvider templateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.Template}.
+	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.Template}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -118,7 +118,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.metamodel.ObjectClass} instances.
+	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.ObjectClass} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -126,7 +126,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	protected ObjectClassItemProvider objectClassItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.ObjectClass}.
+	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.ObjectClass}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -141,7 +141,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.metamodel.Attribute} instances.
+	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.Attribute} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,7 +149,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	protected AttributeItemProvider attributeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.Attribute}.
+	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.Attribute}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -164,7 +164,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.metamodel.RelationClass} instances.
+	 * This keeps track of the one adapter used for all {@link org.rulez.magwas.zenta.metamodel.RelationClass} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -172,7 +172,7 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	protected RelationClassItemProvider relationClassItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.RelationClass}.
+	 * This creates an adapter for a {@link org.rulez.magwas.zenta.metamodel.RelationClass}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

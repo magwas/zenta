@@ -36,61 +36,16 @@ import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
  * @generated
  */
 public class TemplateImpl extends ReferencesModelObject implements Template {
-	/**
-	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReference()
-	 * @generated
-	 * @ordered
-	 */
 	protected EObject reference;
 
-	/**
-	 * The cached value of the '{@link #getObjectClasses() <em>Object Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClasses()
-	 * @generated
-	 * @ordered
-	 */
 	protected EList<ObjectClass> objectClasses;
 
-	/**
-	 * The cached value of the '{@link #getRelationClasses() <em>Relation Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRelationClasses()
-	 * @generated
-	 * @ordered
-	 */
 	protected EList<RelationClass> relationClasses;
 
-	/**
-	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPath()
-	 * @generated
-	 * @ordered
-	 */
 	protected static final String PATH_EDEFAULT = null;
 
-	/**
-	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPath()
-	 * @generated
-	 * @ordered
-	 */
 	protected String path = PATH_EDEFAULT;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	protected TemplateImpl() {
 		super();
 	}
@@ -298,4 +253,10 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 		result.append(')');
 		return result.toString();
 	}
+
+
+  @Override
+  public String getName() {
+      return super.getName();
+  }
 } //TemplateImpl

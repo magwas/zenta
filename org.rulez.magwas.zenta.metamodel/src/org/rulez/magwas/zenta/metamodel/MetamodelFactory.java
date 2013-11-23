@@ -35,41 +35,12 @@ public interface MetamodelFactory extends EFactory {
 	 */
 	Metamodel createMetamodel();
 
-	/**
-	 * Returns a new object of class '<em>Template</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Template</em>'.
-	 * @generated
-	 */
 	Template createTemplate(ZentaDiagramModel reference);
 
-	/**
-	 * Returns a new object of class '<em>Object Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param element 
-	 * @return a new object of class '<em>Object Class</em>'.
-	 * @generated
-	 */
 	ObjectClass createObjectClass(BusinessObject element);
 
-	/**
-	 * Returns a new object of class '<em>Attribute</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Attribute</em>'.
-	 * @generated
-	 */
 	Attribute createAttribute();
 
-	/**
-	 * Returns a new object of class '<em>Relation Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Relation Class</em>'.
-	 * @generated
-	 */
 	RelationClass createRelationClass(AssociationRelationship reference);
 
 	/**
