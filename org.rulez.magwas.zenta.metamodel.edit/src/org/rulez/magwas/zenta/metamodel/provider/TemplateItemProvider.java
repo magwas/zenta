@@ -29,7 +29,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.Template;
 
 /**
- * This is the item provider adapter for a {@link org.rulez.magwas.zenta.metamodel.metamodel.Template} object.
+ * This is the item provider adapter for a {@link org.rulez.magwas.zenta.metamodel.Template} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
