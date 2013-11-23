@@ -1,5 +1,3 @@
-/**
- */
 package org.rulez.magwas.zenta.metamodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
@@ -7,7 +5,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.rulez.magwas.zenta.metamodel.*;
 import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
@@ -19,12 +16,6 @@ import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
 import org.rulez.magwas.zenta.model.impl.BusinessObject;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
-/**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
- * @generated
- */
 public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFactory {
 
 	public static MetamodelFactory init() {
@@ -62,12 +53,22 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return metamodel;
 	}
 
-	private Template createTemplate() {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Template createTemplate() {
 		TemplateImpl template = new TemplateImpl();
 		return template;
 	}
 
-	private ObjectClass createObjectClass() {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectClass createObjectClass() {
 		ObjectClassImpl objectClass = new ObjectClassImpl();
 		return objectClass;
 	}
@@ -87,7 +88,12 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return attribute;
 	}
 
-	private RelationClass createRelationClass() {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RelationClass createRelationClass() {
 		RelationClassImpl relationClass = new RelationClassImpl();
 		return relationClass;
 	}

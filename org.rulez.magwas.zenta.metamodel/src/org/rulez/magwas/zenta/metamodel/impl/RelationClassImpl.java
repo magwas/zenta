@@ -1,5 +1,3 @@
-/**
- */
 package org.rulez.magwas.zenta.metamodel.impl;
 
 import java.util.Collection;
@@ -13,57 +11,18 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
 
-/**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Relation Class</b></em>'.
- * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassImpl#getReference <em>Reference</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassImpl#getAncestor <em>Ancestor</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassImpl#getChildren <em>Children</em>}</li>
- * </ul>
- * </p>
- *
- * @generated
- */
-public class RelationClassImpl extends EObjectImpl implements RelationClass {
-	/**
-	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReference()
-	 * @generated
-	 * @ordered
-	 */
+public class RelationClassImpl extends ReferencesModelObject implements RelationClass {
+
 	protected EObject reference;
 
-	/**
-	 * The cached value of the '{@link #getAncestor() <em>Ancestor</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAncestor()
-	 * @generated
-	 * @ordered
-	 */
 	protected RelationClass ancestor;
 
-	/**
-	 * The cached value of the '{@link #getChildren() <em>Children</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getChildren()
-	 * @generated
-	 * @ordered
-	 */
 	protected EList<RelationClass> children;
 
 	protected RelationClassImpl(AssociationRelationship referenced) {
@@ -75,30 +34,15 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		super();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	protected EClass eStaticClass() {
 		return MetamodelPackage.Literals.RELATION_CLASS;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EObject getReference() {
 		return reference;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public void setReference(EObject newReference) {
 		EObject oldReference = reference;
 		reference = newReference;
@@ -106,20 +50,10 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.RELATION_CLASS__REFERENCE, oldReference, reference));
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public RelationClass getAncestor() {
 		return ancestor;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain basicSetAncestor(RelationClass newAncestor, NotificationChain msgs) {
 		RelationClass oldAncestor = ancestor;
 		ancestor = newAncestor;
@@ -130,11 +64,6 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		return msgs;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public void setAncestor(RelationClass newAncestor) {
 		if (newAncestor != ancestor) {
 			NotificationChain msgs = null;
@@ -149,11 +78,6 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.RELATION_CLASS__ANCESTOR, newAncestor, newAncestor));
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<RelationClass> getChildren() {
 		if (children == null) {
 			children = new EObjectWithInverseEList<RelationClass>(RelationClass.class, this, MetamodelPackage.RELATION_CLASS__CHILDREN, MetamodelPackage.RELATION_CLASS__ANCESTOR);
@@ -161,11 +85,6 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		return children;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -180,11 +99,6 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -196,11 +110,6 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -214,11 +123,6 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -237,11 +141,6 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		super.eSet(featureID, newValue);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
@@ -258,11 +157,6 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		super.eUnset(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
@@ -276,8 +170,4 @@ public class RelationClassImpl extends EObjectImpl implements RelationClass {
 		return super.eIsSet(featureID);
 	}
 
-  public String getName() {
-      return super.getName();
-  }
-
-} //RelationClassImpl
+}

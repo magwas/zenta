@@ -1,5 +1,3 @@
-/**
- */
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.ecore.EFactory;
@@ -9,12 +7,15 @@ import org.rulez.magwas.zenta.model.impl.BusinessObject;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Factory</b> for the model.
- * It provides a create method for each non-abstract class of the model.
- * <!-- end-user-doc -->
- * @see org.rulez.magwas.zenta.metamodel.MetamodelPackage
+ * 
  * @generated
+ * 
+ * only the generated stuff will have comments
+ * 
+ * some generated methods are deleted on purpose
+ * 
+ * watch out for FIXMEs and commented methods in classes with warning after generation
+ *
  */
 public interface MetamodelFactory extends EFactory {
 
@@ -28,28 +29,13 @@ public interface MetamodelFactory extends EFactory {
 
 	Metamodel createMetamodel();
 
-	private Template createTemplate();
-
-	private ObjectClass createObjectClass();
-
 	Template createTemplate(ZentaDiagramModel reference);
 
 	ObjectClass createObjectClass(BusinessObject element);
 
 	Attribute createAttribute();
 
-	private RelationClass createRelationClass();
-
 	RelationClass createRelationClass(AssociationRelationship reference);
-
-	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
-	MetamodelPackage getMetamodelPackage();
 
 	ObjectClass getBuiltinObjectClass();
 
