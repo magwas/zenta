@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.rulez.magwas.zenta.metamodel.edit;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: org.rulez.magwas.zenta.metamodel.provider.MetamodelEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.rulez.magwas.zenta.metamodel.provider
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0",
+ org.rulez.magwas.zenta.metamodel;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy

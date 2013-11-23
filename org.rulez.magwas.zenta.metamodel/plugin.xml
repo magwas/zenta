@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://magwas.rulez.org/zenta/metamodel"
-            class="org.rulez.magwas.metamodel.metamodel.MetamodelPackage"
+            class="org.rulez.magwas.zenta.metamodel.MetamodelPackage"
             genModel="model/metamodel.genmodel"/>
    </extension>
 
