@@ -26,20 +26,19 @@ public interface MetamodelFactory extends EFactory {
 	 */
 	MetamodelFactory eINSTANCE = org.rulez.magwas.zenta.metamodel.impl.MetamodelFactoryImpl.init();
 
-	/**
-	 * Returns a new object of class '<em>Metamodel</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Metamodel</em>'.
-	 * @generated
-	 */
 	Metamodel createMetamodel();
+
+	private Template createTemplate();
+
+	private ObjectClass createObjectClass();
 
 	Template createTemplate(ZentaDiagramModel reference);
 
 	ObjectClass createObjectClass(BusinessObject element);
 
 	Attribute createAttribute();
+
+	private RelationClass createRelationClass();
 
 	RelationClass createRelationClass(AssociationRelationship reference);
 

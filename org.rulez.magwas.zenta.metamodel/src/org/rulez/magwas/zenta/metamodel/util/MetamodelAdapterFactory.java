@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.rulez.magwas.zenta.metamodel.*;
 import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;

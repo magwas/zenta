@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.rulez.magwas.zenta.metamodel.*;
 import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;

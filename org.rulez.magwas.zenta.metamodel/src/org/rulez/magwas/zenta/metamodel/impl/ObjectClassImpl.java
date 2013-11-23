@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -40,7 +41,7 @@ import org.rulez.magwas.zenta.model.impl.BusinessObject;
  *
  * @generated
  */
-public class ObjectClassImpl extends ReferencesModelObject implements ObjectClass {
+public class ObjectClassImpl extends EObjectImpl implements ObjectClass {
 	
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.

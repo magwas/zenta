@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
@@ -35,7 +36,7 @@ import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
  *
  * @generated
  */
-public class TemplateImpl extends ReferencesModelObject implements Template {
+public class TemplateImpl extends EObjectImpl implements Template {
 	protected EObject reference;
 
 	protected EList<ObjectClass> objectClasses;

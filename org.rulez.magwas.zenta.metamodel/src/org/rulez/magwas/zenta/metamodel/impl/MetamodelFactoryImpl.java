@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.rulez.magwas.zenta.metamodel.*;
 import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
@@ -61,6 +62,16 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return metamodel;
 	}
 
+	private Template createTemplate() {
+		TemplateImpl template = new TemplateImpl();
+		return template;
+	}
+
+	private ObjectClass createObjectClass() {
+		ObjectClassImpl objectClass = new ObjectClassImpl();
+		return objectClass;
+	}
+
 	public Template createTemplate(ZentaDiagramModel reference) {
 		TemplateImpl template = new TemplateImpl(reference);
 		return template;
@@ -74,6 +85,11 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	public Attribute createAttribute() {
 		AttributeImpl attribute = new AttributeImpl();
 		return attribute;
+	}
+
+	private RelationClass createRelationClass() {
+		RelationClassImpl relationClass = new RelationClassImpl();
+		return relationClass;
 	}
 
 	public RelationClass createRelationClass(AssociationRelationship referenced) {

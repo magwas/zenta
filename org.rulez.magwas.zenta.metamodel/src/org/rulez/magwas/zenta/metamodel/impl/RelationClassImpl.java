@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
@@ -34,7 +35,7 @@ import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
  *
  * @generated
  */
-public class RelationClassImpl extends ReferencesModelObject implements RelationClass {
+public class RelationClassImpl extends EObjectImpl implements RelationClass {
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
