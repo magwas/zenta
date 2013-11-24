@@ -7,7 +7,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class ModelTestData {
@@ -29,9 +29,9 @@ public class ModelTestData {
 		resource.save(options);
 	}
 
-	public ZentaDiagramModel getTestDiagramModel() {
+	public IZentaDiagramModel getTestDiagramModel() {
 		IZentaModel model = getModel();
-		ZentaDiagramModel diagramModel = (ZentaDiagramModel) ZentaModelUtils.getObjectByID(model, "2ea99535");
+		IZentaDiagramModel diagramModel = (IZentaDiagramModel) ZentaModelUtils.getObjectByID(model, "2ea99535");
 		return diagramModel;
 	}
 
