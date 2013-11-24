@@ -1,31 +1,20 @@
-/**
- */
 package org.rulez.magwas.zenta.metamodel.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 
-/**
- * @generated
- */
 public class MetamodelImpl extends EObjectImpl implements Metamodel {
 
 	protected EList<Template> templates;
@@ -98,7 +87,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	}
 
 	@Override
-	public Template getTemplateFor(ZentaDiagramModel diagramModel) {
+	public Template getTemplateFor(IDiagramModel diagramModel) {
 		for(Template template : getTemplates())
 			if(diagramModel.equals(template.getReference()))
 				return template;
@@ -119,5 +108,4 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	public BuiltinTemplate getBuiltinTemplate() {
 		return builtinTemplate;
 	}
-
 }

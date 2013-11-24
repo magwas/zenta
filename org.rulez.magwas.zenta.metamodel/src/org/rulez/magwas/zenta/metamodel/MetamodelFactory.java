@@ -1,8 +1,8 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.ecore.EFactory;
+import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 /**
@@ -34,7 +34,7 @@ public interface MetamodelFactory extends EFactory {
 
 	Attribute createAttribute();
 
-	RelationClass createRelationClass(AssociationRelationship reference, Template template);
+	RelationClass createRelationClass(IRelationship reference, Template template);
 
 	public class BuiltinClassShouldNotHaveReference extends RuntimeException {
 		private static final long serialVersionUID = 1L;

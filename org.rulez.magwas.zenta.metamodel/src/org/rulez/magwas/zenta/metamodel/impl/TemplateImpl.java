@@ -21,6 +21,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
 import org.rulez.magwas.zenta.model.impl.BusinessObject;
 import org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection;
@@ -38,17 +39,17 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 
 	protected String path = PATH_EDEFAULT;
 
-	private Metamodel treeParent;
+	private Metamodel metamodel;
 
 	protected TemplateImpl() {
 		super();
 	}
 
-	public TemplateImpl(ZentaDiagramModel reference, Metamodel treeParent) {
+	public TemplateImpl(ZentaDiagramModel reference, Metamodel metamodel) {
 		super();
-		this.treeParent = treeParent;
+		this.metamodel = metamodel;
 		setReference(reference);
-		this.extractObjectClasses(reference);
+		extractObjectClasses(reference);
 	}
 
 	@Override
@@ -216,19 +217,17 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 					}
 
 	public Metamodel getMetamodel() {
-		return treeParent;
+		return metamodel;
 	}
 
-	public ObjectClass getObjectClassReferencingElement(BusinessObject classTemplate) {
-		for(ObjectClass oc : getObjectClasses()) {
-			if(oc.getReference().equals(classTemplate)) {
+	public ObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {
+		for(ObjectClass oc : getObjectClasses())
+			if(oc.getReference().equals(classTemplate))
 				return oc;
-			}
-		}
 		return null;
 	}
 
-	public RelationClass getRelationClassReferencingElement(AssociationRelationship classTemplate) {
+	public RelationClass getRelationClassReferencingElement(IRelationship classTemplate) {
 		for(RelationClass oc : getRelationClasses())
 			if(oc.getReference() == classTemplate)
 				return oc;

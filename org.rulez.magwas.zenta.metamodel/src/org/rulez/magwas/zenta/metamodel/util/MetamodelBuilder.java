@@ -7,10 +7,14 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.impl.MetamodelImpl;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
 import org.rulez.magwas.zenta.model.impl.BusinessObject;
 import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
@@ -20,7 +24,7 @@ public class MetamodelBuilder {
 
 	private Metamodel metaModel;
 	IZentaModel model;
-	private Notification lastNotification;
+	private Notification notificaton;
 	
 	public MetamodelBuilder(IZentaModel zentaModel) {
 		model = zentaModel;
@@ -58,36 +62,46 @@ public class MetamodelBuilder {
 	    model.eAdapters().add(adapter);
 	}
 		private void processNotification(Notification notification) {
-			lastNotification = notification;
+			this.notificaton = notification;
 			EObject lastObject;
 			lastObject = (EObject) notification.getNotifier();
-			if(lastObject instanceof BusinessObject) {
-				processBusinessObjectChange((BusinessObject) lastObject);
-			} else if (lastObject instanceof ZentaDiagramModel) {
-				processDiagramModelChange((ZentaDiagramModel)lastObject);
+			System.out.printf("notification for \n\t%s\n\t%s", notification.getNotifier(),notification.getFeature() );
+			if(lastObject instanceof ZentaDiagramModel) {
+				processDiagramModelChange((MetamodelImpl)metaModel, notification);
+			} else if (lastObject instanceof DiagramModelZentaObject) {
+				processDiagramModelObjectChange(notification);
 			}
 		}
-			private void processDiagramModelChange(ZentaDiagramModel lastObject) {
-				int feature = lastNotification.getFeatureID(ZentaDiagramModel.class);
-				if(feature == ZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN)
-					addObject((DiagramModelZentaObject) lastNotification.getNewValue());
-			}
-				private void addObject(DiagramModelZentaObject dmo) {
-					ZentaDiagramModel dm = (ZentaDiagramModel) dmo.getDiagramModel();
+			private void processDiagramModelObjectChange(Notification notification) {
+				int feature = notification.getFeatureID(DiagramModelZentaObject.class);
+				if(feature == ZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__SOURCE_CONNECTIONS) {
+					IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
+					IDiagramModel dm = dmzc.getDiagramModel();
 					Template template = metaModel.getTemplateFor(dm);
-					IZentaElement element = dmo.getZentaElement();
+					if(null == template)
+						return;
+					AssociationRelationship element = (AssociationRelationship) ((IDiagramModelZentaConnection) dmzc).getRelationship();
+					MetamodelFactory.eINSTANCE.createRelationClass(element, template);
+				}
+			}
+			private void processDiagramModelChange(MetamodelImpl metamodel, Notification notification) {
+				int feature = notification.getFeatureID(ZentaDiagramModel.class);
+				if(feature == ZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN) {
+					IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
+					IDiagramModel dm = dmzc.getDiagramModel();
+					Template template = metaModel.getTemplateFor(dm);
+					if(null == template)
+						return;
+					BusinessObject element = (BusinessObject) ((IDiagramModelZentaObject) dmzc).getZentaElement();
 					MetamodelFactory.eINSTANCE.createObjectClass(element, template);
 				}
-			private void processBusinessObjectChange(BusinessObject lastObject) {
-				System.out.println("BusinessObjectChange");
 			}
-	public Object getLastObject() {
-		if(null == lastNotification)
-			return null;
-		return lastNotification.getNotifier();
-	}
 
 	public Metamodel getMetamodel() {
 		return metaModel;
+	}
+	
+	public Object getLastObject() {
+		return this.notificaton.getNotifier();
 	}
 }

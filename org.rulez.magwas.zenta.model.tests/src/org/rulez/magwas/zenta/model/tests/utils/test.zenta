@@ -13,12 +13,12 @@
         <child xsi:type="zenta:DiagramObject" id="99b3ed89" textAlignment="2" targetConnections="99e9c255" zentaElement="23138a61">
           <bounds x="132" y="264"/>
         </child>
-        <child xsi:type="zenta:DiagramObject" id="88f40127" textAlignment="2" targetConnections="24e3c661" zentaElement="f33bd0d2">
+        <child xsi:type="zenta:DiagramObject" id="88f40127" textAlignment="2" targetConnections="24e3c661 4966ae97" zentaElement="f33bd0d2">
           <bounds x="288" y="132"/>
           <sourceConnection xsi:type="zenta:Connection" id="99e9c255" source="88f40127" target="99b3ed89" relationship="a972e26e"/>
-          <sourceConnection xsi:type="zenta:Connection" id="281ae94f" source="88f40127" target="f843c2f1" relationship="44041ead"/>
-          <child xsi:type="zenta:DiagramObject" id="f843c2f1" textAlignment="2" targetConnections="281ae94f" zentaElement="c3d03626">
-            <bounds x="60" y="36"/>
+          <child xsi:type="zenta:DiagramObject" id="f843c2f1" textAlignment="2" zentaElement="c3d03626">
+            <bounds x="48" y="36"/>
+            <sourceConnection xsi:type="zenta:Connection" id="4966ae97" source="f843c2f1" target="88f40127" relationship="3da94729"/>
           </child>
         </child>
         <property key="Template"/>
@@ -27,10 +27,34 @@
       <element xsi:type="zenta:BusinessObject" id="23138a61" name="Data"/>
       <element xsi:type="zenta:BusinessObject" id="f33bd0d2" name="Procedure"/>
       <element xsi:type="zenta:BusinessObject" id="c3d03626" name="ProcessStep"/>
+      <element xsi:type="zenta:ZentaDiagramModel" id="e13c9626" name="metamodel2">
+        <child xsi:type="zenta:DiagramObject" id="77809b07" textAlignment="2" targetConnections="9dc4d23a" zentaElement="8495ea84">
+          <bounds x="180" y="87" width="169" height="58"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="ef005c04" textAlignment="2" zentaElement="f33bd0d2">
+          <bounds x="125" y="201"/>
+          <sourceConnection xsi:type="zenta:Connection" id="9dc4d23a" source="ef005c04" target="77809b07" relationship="9c441eb7"/>
+          <sourceConnection xsi:type="zenta:Connection" id="dcb9c1a2" source="ef005c04" target="15b10f44" relationship="9c441eb7"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="15b10f44" textAlignment="2" targetConnections="dcb9c1a2" zentaElement="8495ea84">
+          <bounds x="464" y="167"/>
+        </child>
+        <property key="Template"/>
+      </element>
     </folder>
     <element xsi:type="zenta:BusinessObject" id="a885cd76" name="Test Object"/>
     <element xsi:type="zenta:BusinessObject" id="8c485316" name="Business Object1"/>
     <element xsi:type="zenta:BusinessObject" id="6e8b1d43" name="Business Object"/>
+    <element xsi:type="zenta:ZentaDiagramModel" id="63f1b081" name="non-template">
+      <child xsi:type="zenta:DiagramObject" id="173f7753" textAlignment="2" zentaElement="f33bd0d2">
+        <bounds x="215" y="137"/>
+        <sourceConnection xsi:type="zenta:Connection" id="0a589074" source="173f7753" target="f170d1e3" relationship="44041ead"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="f170d1e3" textAlignment="2" targetConnections="0a589074" zentaElement="c3d03626">
+        <bounds x="309" y="233"/>
+      </child>
+    </element>
+    <element xsi:type="zenta:BusinessObject" id="8495ea84" name="documentation"/>
   </folder>
   <folder name="Connectors" id="e716ac78" type="connectors">
     <element xsi:type="zenta:Junction" id="ed95a7e7" name="Junction"/>
@@ -42,6 +66,9 @@
     <element xsi:type="zenta:AssociationRelationship" id="b0e2bfd8" name="does" source="ea94cf6c" target="f33bd0d2"/>
     <element xsi:type="zenta:AssociationRelationship" id="a972e26e" name="uses" source="f33bd0d2" target="23138a61"/>
     <element xsi:type="zenta:AssociationRelationship" id="44041ead" source="f33bd0d2" target="c3d03626"/>
+    <element xsi:type="zenta:AssociationRelationship" id="2cf4d639" source="ea94cf6c" target="c3d03626"/>
+    <element xsi:type="zenta:AssociationRelationship" id="3da94729" source="c3d03626" target="f33bd0d2"/>
+    <element xsi:type="zenta:AssociationRelationship" id="9c441eb7" name="describes" source="f33bd0d2" target="8495ea84"/>
   </folder>
   <folder name="Views" id="cee6d0f0" type="diagrams"/>
 </zenta:model>

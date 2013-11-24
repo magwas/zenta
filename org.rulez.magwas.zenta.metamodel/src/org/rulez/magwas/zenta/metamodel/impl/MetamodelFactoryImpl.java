@@ -12,8 +12,8 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFactory {
@@ -75,6 +75,9 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	}
 
 	public ObjectClass createObjectClass(IZentaElement reference, Template template) {
+		ObjectClass candidate = template.getObjectClassReferencingElement(reference);
+		if(null != candidate)
+			return candidate;
 		ObjectClassImpl objectClass = new ObjectClassImpl(reference, template);
 		template.getObjectClasses().add(objectClass);
 		return objectClass;
@@ -95,7 +98,10 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return relationClass;
 	}
 
-	public RelationClass createRelationClass(AssociationRelationship referenced, Template template) {
+	public RelationClass createRelationClass(IRelationship referenced, Template template) {
+		RelationClass candidate = template.getRelationClassReferencingElement(referenced);
+		if(null !=candidate)
+			return candidate;
 		RelationClassImpl relationClass = new RelationClassImpl(referenced, template);
 		template.getRelationClasses().add(relationClass);
 		return relationClass;

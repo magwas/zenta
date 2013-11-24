@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
+import org.rulez.magwas.zenta.model.IRelationship;
 
 public class RelationClassImpl extends ReferencesModelObject implements RelationClass {
 
@@ -28,7 +28,7 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 
 	private Template template;
 
-	protected RelationClassImpl(AssociationRelationship referenced, Template template) {
+	protected RelationClassImpl(IRelationship referenced, Template template) {
 		super();
 		this.template = template;
 		this.setReference(referenced);
