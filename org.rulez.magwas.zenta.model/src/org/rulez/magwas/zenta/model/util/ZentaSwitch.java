@@ -175,6 +175,7 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseIdentifier(zentaModel);
 				if (result == null) result = caseZentaModelElement(zentaModel);
 				if (result == null) result = caseProperties(zentaModel);
+				if (result == null) result = caseDocumentable(zentaModel);
 				if (result == null) result = caseAdapter(zentaModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

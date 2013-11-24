@@ -511,6 +511,15 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNameable_ObjectClass() {
+		return (EAttribute)nameableEClass.getEStructuralFeatures().get(1);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -640,7 +649,7 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getZentaModel_Purpose() {
+    public EAttribute getZentaModel_File() {
 		return (EAttribute)zentaModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -649,17 +658,8 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getZentaModel_File() {
-		return (EAttribute)zentaModelEClass.getEStructuralFeatures().get(1);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EAttribute getZentaModel_Version() {
-		return (EAttribute)zentaModelEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)zentaModelEClass.getEStructuralFeatures().get(1);
 	}
 
     /**
@@ -1389,6 +1389,7 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 
 		nameableEClass = createEClass(NAMEABLE);
 		createEAttribute(nameableEClass, NAMEABLE__NAME);
+		createEAttribute(nameableEClass, NAMEABLE__OBJECT_CLASS);
 
 		textContentEClass = createEClass(TEXT_CONTENT);
 		createEAttribute(textContentEClass, TEXT_CONTENT__CONTENT);
@@ -1402,7 +1403,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		createEReference(folderContainerEClass, FOLDER_CONTAINER__FOLDERS);
 
 		zentaModelEClass = createEClass(ZENTA_MODEL);
-		createEAttribute(zentaModelEClass, ZENTA_MODEL__PURPOSE);
 		createEAttribute(zentaModelEClass, ZENTA_MODEL__FILE);
 		createEAttribute(zentaModelEClass, ZENTA_MODEL__VERSION);
 
@@ -1555,6 +1555,7 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		zentaModelEClass.getESuperTypes().add(this.getIdentifier());
 		zentaModelEClass.getESuperTypes().add(this.getZentaModelElement());
 		zentaModelEClass.getESuperTypes().add(this.getProperties());
+		zentaModelEClass.getESuperTypes().add(this.getDocumentable());
 		zentaModelElementEClass.getESuperTypes().add(this.getAdapter());
 		folderEClass.getESuperTypes().add(this.getZentaModelElement());
 		folderEClass.getESuperTypes().add(this.getFolderContainer());
@@ -1639,6 +1640,7 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 
 		initEClass(nameableEClass, INameable.class, "Nameable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getNameable_Name(), ecorePackage.getEString(), "name", "", 0, 1, INameable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEAttribute(getNameable_ObjectClass(), ecorePackage.getEString(), "objectClass", null, 0, 1, INameable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(textContentEClass, ITextContent.class, "TextContent", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getTextContent_Content(), ecorePackage.getEString(), "content", "", 0, 1, ITextContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -1654,7 +1656,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		initEReference(getFolderContainer_Folders(), this.getFolder(), null, "folders", null, 0, -1, IFolderContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(zentaModelEClass, IZentaModel.class, "ZentaModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getZentaModel_Purpose(), ecorePackage.getEString(), "purpose", null, 0, 1, IZentaModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getZentaModel_File(), this.getFile(), "file", null, 0, 1, IZentaModel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getZentaModel_Version(), ecorePackage.getEString(), "version", "", 0, 1, IZentaModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
@@ -1876,12 +1877,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		   source, 
 		   new String[] {
 			 "name", "model" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getZentaModel_Purpose(), 
-		   source, 
-		   new String[] {
-			 "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
 		  (getFolder_Elements(), 

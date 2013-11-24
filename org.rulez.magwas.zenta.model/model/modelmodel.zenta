@@ -190,4 +190,5 @@
       </child>
     </element>
   </folder>
+  <documentation>models the metamodel of the modeler</documentation>
 </zenta:model>

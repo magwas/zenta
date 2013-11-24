@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.INameable#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.INameable#getObjectClass <em>Object Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,5 +52,31 @@ public interface INameable extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Object Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Object Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Object Class</em>' attribute.
+	 * @see #setObjectClass(String)
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getNameable_ObjectClass()
+	 * @model
+	 * @generated
+	 */
+	String getObjectClass();
+
+	/**
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.INameable#getObjectClass <em>Object Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Object Class</em>' attribute.
+	 * @see #getObjectClass()
+	 * @generated
+	 */
+	void setObjectClass(String value);
 
 } // INameable

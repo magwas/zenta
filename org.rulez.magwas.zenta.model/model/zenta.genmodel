@@ -41,6 +41,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="zenta.ecore#//Nameable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Nameable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Nameable/objectClass"/>
     </genClasses>
     <genClasses image="false" ecoreClass="zenta.ecore#//TextContent">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//TextContent/content"/>
@@ -55,7 +56,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//FolderContainer/folders"/>
     </genClasses>
     <genClasses ecoreClass="zenta.ecore#//ZentaModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/purpose"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/file"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/version"/>
       <genOperations ecoreOperation="zenta.ecore#//ZentaModel/setDefaults"/>

@@ -47,6 +47,7 @@ import org.rulez.magwas.zenta.model.IProperty;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getZentaModel <em>Zenta Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getObjectClass <em>Object Class</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getDiagramModel <em>Diagram Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getChildren <em>Children</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getDocumentation <em>Documentation</em>}</li>
@@ -99,6 +100,26 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     protected String name = NAME_EDEFAULT;
 
     /**
+	 * The default value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OBJECT_CLASS_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String objectClass = OBJECT_CLASS_EDEFAULT;
+
+				/**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -204,6 +225,27 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getObjectClass() {
+		return objectClass;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setObjectClass(String newObjectClass) {
+		String oldObjectClass = objectClass;
+		objectClass = newObjectClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS, oldObjectClass, objectClass));
+	}
+
+				/**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT
@@ -376,6 +418,8 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 				return getId();
 			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				return getName();
+			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
+				return getObjectClass();
 			case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
 				return getDiagramModel();
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
@@ -404,6 +448,9 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 				return;
 			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				setName((String)newValue);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
+				setObjectClass((String)newValue);
 				return;
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				getChildren().clear();
@@ -437,6 +484,9 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
+				setObjectClass(OBJECT_CLASS_EDEFAULT);
+				return;
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				getChildren().clear();
 				return;
@@ -467,6 +517,8 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
+				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
 			case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
 				return getDiagramModel() != null;
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
@@ -502,6 +554,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
 				case IZentaPackage.DIAGRAM_MODEL__NAME: return IZentaPackage.NAMEABLE__NAME;
+				case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -553,6 +606,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
 				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.DIAGRAM_MODEL__NAME;
+				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -597,6 +651,8 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		result.append(id);
 		result.append(", name: "); //$NON-NLS-1$
 		result.append(name);
+		result.append(", objectClass: "); //$NON-NLS-1$
+		result.append(objectClass);
 		result.append(", documentation: "); //$NON-NLS-1$
 		result.append(documentation);
 		result.append(", connectionRouterType: "); //$NON-NLS-1$

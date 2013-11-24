@@ -43,6 +43,7 @@ import org.rulez.magwas.zenta.model.IProperty;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getZentaModel <em>Zenta Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getObjectClass <em>Object Class</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getProperties <em>Properties</em>}</li>
  * </ul>
@@ -92,6 +93,26 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
     protected String name = NAME_EDEFAULT;
 
     /**
+	 * The default value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OBJECT_CLASS_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String objectClass = OBJECT_CLASS_EDEFAULT;
+
+				/**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -167,6 +188,27 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getObjectClass() {
+		return objectClass;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setObjectClass(String newObjectClass) {
+		String oldObjectClass = objectClass;
+		objectClass = newObjectClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS, oldObjectClass, objectClass));
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -294,6 +336,8 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 				return getId();
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				return getName();
+			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
+				return getObjectClass();
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				return getDocumentation();
 			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
@@ -316,6 +360,9 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 				return;
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				setName((String)newValue);
+				return;
+			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
+				setObjectClass((String)newValue);
 				return;
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				setDocumentation((String)newValue);
@@ -342,6 +389,9 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
+				setObjectClass(OBJECT_CLASS_EDEFAULT);
+				return;
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
@@ -366,6 +416,8 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
+				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
 			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
@@ -395,6 +447,7 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
 				case IZentaPackage.ZENTA_ELEMENT__NAME: return IZentaPackage.NAMEABLE__NAME;
+				case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -434,6 +487,7 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
 				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.ZENTA_ELEMENT__NAME;
+				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -466,6 +520,8 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		result.append(id);
 		result.append(", name: "); //$NON-NLS-1$
 		result.append(name);
+		result.append(", objectClass: "); //$NON-NLS-1$
+		result.append(objectClass);
 		result.append(", documentation: "); //$NON-NLS-1$
 		result.append(documentation);
 		result.append(')');

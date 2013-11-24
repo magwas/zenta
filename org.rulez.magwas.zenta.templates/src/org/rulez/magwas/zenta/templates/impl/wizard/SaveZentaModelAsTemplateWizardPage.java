@@ -148,8 +148,8 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         gd = new GridData(GridData.FILL_BOTH);
         gd.heightHint = 120;
         fDescriptionTextField.setLayoutData(gd);
-        if(StringUtils.isSet(fModel.getPurpose())) {
-            fDescriptionTextField.setText(fModel.getPurpose());
+        if(StringUtils.isSet(fModel.getDocumentation())) {
+            fDescriptionTextField.setText(fModel.getDocumentation());
         }
         
         // Thumbnails

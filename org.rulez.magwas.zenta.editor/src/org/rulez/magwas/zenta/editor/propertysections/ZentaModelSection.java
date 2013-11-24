@@ -48,7 +48,7 @@ public class ZentaModelSection extends AbstractZentaPropertySection {
                 refreshFileField();
             }
             // Model Purpose event (Undo/Redo and here!)
-            else if(feature == IZentaPackage.Literals.ZENTA_MODEL__PURPOSE) {
+            else if(feature == IZentaPackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
                 refreshPurposeField();
             }
         }
@@ -85,13 +85,13 @@ public class ZentaModelSection extends AbstractZentaPropertySection {
         // Text
         StyledTextControl styledTextControl = createStyledTextControl(parent, SWT.NONE);
         
-        fTextPurpose = new PropertySectionTextControl(styledTextControl.getControl(), IZentaPackage.Literals.ZENTA_MODEL__PURPOSE) {
+        fTextPurpose = new PropertySectionTextControl(styledTextControl.getControl(), IZentaPackage.Literals.DOCUMENTABLE__DOCUMENTATION) {
             @Override
             protected void textChanged(String oldText, String newText) {
                 if(isAlive()) {
                     fIsExecutingCommand = true;
                     getCommandStack().execute(new EObjectFeatureCommand(Messages.ZentaModelSection_3, fModel,
-                                                    IZentaPackage.Literals.ZENTA_MODEL__PURPOSE, newText));
+                                                    IZentaPackage.Literals.DOCUMENTABLE__DOCUMENTATION, newText));
                     fIsExecutingCommand = false;
                 }
             }

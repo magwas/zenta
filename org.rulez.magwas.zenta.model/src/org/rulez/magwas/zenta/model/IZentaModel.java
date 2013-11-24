@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.IZentaModel#getPurpose <em>Purpose</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IZentaModel#getFile <em>File</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IZentaModel#getVersion <em>Version</em>}</li>
  * </ul>
@@ -30,33 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model extendedMetaData="name='model'"
  * @generated
  */
-public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, IZentaModelElement, IProperties {
-	/**
-	 * Returns the value of the '<em><b>Purpose</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Purpose</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Purpose</em>' attribute.
-	 * @see #setPurpose(String)
-	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getZentaModel_Purpose()
-	 * @model extendedMetaData="kind='element'"
-	 * @generated
-	 */
-	String getPurpose();
-
-	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IZentaModel#getPurpose <em>Purpose</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Purpose</em>' attribute.
-	 * @see #getPurpose()
-	 * @generated
-	 */
-	void setPurpose(String value);
-
+public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, IZentaModelElement, IProperties, IDocumentable {
 	/**
 	 * Returns the value of the '<em><b>File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
