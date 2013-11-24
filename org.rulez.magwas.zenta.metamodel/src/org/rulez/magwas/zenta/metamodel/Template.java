@@ -3,6 +3,8 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.common.util.EList;
+import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
+import org.rulez.magwas.zenta.model.impl.BusinessObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,4 +83,7 @@ public interface Template extends referencesModelObject {
 	 */
 	void setPath(String value);
 
+	ObjectClass getObjectClassReferencingElement(BusinessObject elementToAdd);
+
+	RelationClass getRelationClassReferencingElement(AssociationRelationship classTemplate);
 } // Template

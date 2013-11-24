@@ -7,15 +7,12 @@ import java.net.URISyntaxException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
-
-import org.eclipse.emf.ecore.resource.Resource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.util.Util;
 import org.rulez.magwas.zenta.model.IBusinessObject;
-import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -33,14 +30,10 @@ public class ModelTests {
 
 	@Test
 	public void testIdOkay() throws IOException, ParserConfigurationException, SAXException, URISyntaxException, XPathExpressionException {
-		Resource resource = ModelTestUtils.getTestZentaModelResource();	
-		IZentaModel model = ModelTestUtils.getModelFromResource(resource);
-		IFolder folder = model.getFolders().get(0);
-		assertEquals("Business",folder.getName());
-		IBusinessObject bo = (IBusinessObject) folder.getElements().get(1);
-		assertEquals("Business Object1",bo.getName());
-		System.out.println("contents="+resource.getContents());
-		ModelTestUtils.saveResource(resource);
+		ModelTestData testdata = new ModelTestData();
+		IBusinessObject bo = (IBusinessObject) testdata.getById("f33bd0d2");
+		assertEquals("Procedure",bo.getName());
+		testdata.saveResource();
 		String respath = ModelTestUtils.convertNameToResourcePath("test.zenta.bak");
 		Document testDoc = Util.createXmlDocumentFromFileName(respath);
         String xpathExpression = "//sourceConnection[@id='24e3c661']";

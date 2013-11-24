@@ -11,10 +11,20 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
+import org.rulez.magwas.zenta.model.impl.BusinessObject;
+import org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 public class TemplateImpl extends ReferencesModelObject implements Template {
@@ -28,13 +38,17 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 
 	protected String path = PATH_EDEFAULT;
 
+	private Metamodel treeParent;
+
 	protected TemplateImpl() {
 		super();
 	}
 
-	public TemplateImpl(ZentaDiagramModel reference) {
+	public TemplateImpl(ZentaDiagramModel reference, Metamodel treeParent) {
 		super();
+		this.treeParent = treeParent;
 		setReference(reference);
+		this.extractObjectClasses(reference);
 	}
 
 	@Override
@@ -171,5 +185,51 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 		return result.toString();
 	}
 
+		private void extractObjectClasses(IDiagramModel diagram) {
+			EList<IDiagramModelObject> kids = diagram.getChildren();
+			for (IDiagramModelObject kid : kids)
+				extractDiagramElement((DiagramModelZentaObject) kid);
+			
+		}
+	
+			private void extractDiagramElement(DiagramModelZentaObject kid) {
+				ObjectClass oc = MetamodelFactory.eINSTANCE
+						.createObjectClass((BusinessObject) kid.getZentaElement(), this);
+				getObjectClasses().add(oc);
+				extractConnectionsForDiagramElement(kid);
+				EList<IDiagramModelObject> myKids = kid.getChildren();
+				for (IDiagramModelObject aKid : myKids)
+					extractDiagramElement((DiagramModelZentaObject) aKid);
+			}
 
+				private void extractConnectionsForDiagramElement(
+						DiagramModelZentaObject kid) {
+					EList<IDiagramModelConnection> conns = kid.getSourceConnections();
+					for (IDiagramModelConnection conn : conns)
+						extractDiagramConnection(((DiagramModelZentaConnection)conn).getRelationship());
+				}
+			
+					private void extractDiagramConnection(IRelationship iRelationship) {
+						RelationClass rc = MetamodelFactory.eINSTANCE
+								.createRelationClass((AssociationRelationship) iRelationship, this);
+						this.getRelationClasses().add(rc);
+					}
+
+	public Metamodel getMetamodel() {
+		return treeParent;
+	}
+
+	public ObjectClass getObjectClassReferencingElement(BusinessObject classTemplate) {
+		for(ObjectClass oc : getObjectClasses())
+			if(oc.getReference().equals(classTemplate))
+				return oc;
+		return null;
+	}
+
+	public RelationClass getRelationClassReferencingElement(AssociationRelationship classTemplate) {
+		for(RelationClass oc : getRelationClasses())
+			if(oc.getReference() == classTemplate)
+				return oc;
+		return null;
+	}
 }

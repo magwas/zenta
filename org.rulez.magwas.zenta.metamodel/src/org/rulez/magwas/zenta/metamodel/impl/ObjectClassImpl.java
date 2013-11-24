@@ -20,7 +20,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.model.impl.BusinessObject;
+import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class ObjectClassImpl extends ReferencesModelObject implements ObjectClass {
 	
@@ -32,13 +33,16 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 
 	protected EList<ObjectClass> children;
 
+	private Template template;
+
 	protected ObjectClassImpl() {
 		super();
 	}
 
-	public ObjectClassImpl(BusinessObject reference) {
+	public ObjectClassImpl(IZentaElement reference2, Template template) {
 		super();
-		this.setReference(reference);
+		this.template = template;
+		this.setReference(reference2);
 	}
 
 	@Override
@@ -195,6 +199,10 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 				return children != null && !children.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	public Template getTemplate() {
+		return template;
 	}
 
 }

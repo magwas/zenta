@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
 
 public class RelationClassImpl extends ReferencesModelObject implements RelationClass {
@@ -25,8 +26,11 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 
 	protected EList<RelationClass> children;
 
-	protected RelationClassImpl(AssociationRelationship referenced) {
+	private Template template;
+
+	protected RelationClassImpl(AssociationRelationship referenced, Template template) {
 		super();
+		this.template = template;
 		this.setReference(referenced);
 	}
 
@@ -57,10 +61,23 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 	public NotificationChain basicSetAncestor(RelationClass newAncestor, NotificationChain msgs) {
 		RelationClass oldAncestor = ancestor;
 		ancestor = newAncestor;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetamodelPackage.RELATION_CLASS__ANCESTOR, oldAncestor, newAncestor);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+		if (eNotificationRequired())
+			msgs = notifyAboutAncestorChange(newAncestor, msgs, oldAncestor);
+		return msgs;
+	}
+
+	private NotificationChain notifyAboutAncestorChange(
+			RelationClass newAncestor, NotificationChain msgs,
+			RelationClass oldAncestor) {
+		ENotificationImpl notification =
+				new ENotificationImpl(
+						this,
+						Notification.SET,
+						MetamodelPackage.RELATION_CLASS__ANCESTOR, oldAncestor, newAncestor);
+		if (msgs == null)
+			msgs = notification;
+		else
+			msgs.add(notification);
 		return msgs;
 	}
 
@@ -68,19 +85,34 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 		if (newAncestor != ancestor) {
 			NotificationChain msgs = null;
 			if (ancestor != null)
-				msgs = ((InternalEObject)ancestor).eInverseRemove(this, MetamodelPackage.RELATION_CLASS__CHILDREN, RelationClass.class, msgs);
+				msgs = ((InternalEObject)ancestor).eInverseRemove(
+						this,
+						MetamodelPackage.RELATION_CLASS__CHILDREN,
+						RelationClass.class, msgs);
 			if (newAncestor != null)
-				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, MetamodelPackage.RELATION_CLASS__CHILDREN, RelationClass.class, msgs);
+				msgs = ((InternalEObject)newAncestor).eInverseAdd(
+						this,
+						MetamodelPackage.RELATION_CLASS__CHILDREN,
+						RelationClass.class, msgs);
 			msgs = basicSetAncestor(newAncestor, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.RELATION_CLASS__ANCESTOR, newAncestor, newAncestor));
+			eNotify(new ENotificationImpl(
+					this,
+					Notification.SET,
+					MetamodelPackage.RELATION_CLASS__ANCESTOR,
+					newAncestor,
+					newAncestor));
 	}
 
 	public EList<RelationClass> getChildren() {
 		if (children == null) {
-			children = new EObjectWithInverseEList<RelationClass>(RelationClass.class, this, MetamodelPackage.RELATION_CLASS__CHILDREN, MetamodelPackage.RELATION_CLASS__ANCESTOR);
+			children = new EObjectWithInverseEList<RelationClass>(
+					RelationClass.class,
+					this,
+					MetamodelPackage.RELATION_CLASS__CHILDREN,
+					MetamodelPackage.RELATION_CLASS__ANCESTOR);
 		}
 		return children;
 	}
@@ -91,10 +123,15 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 		switch (featureID) {
 			case MetamodelPackage.RELATION_CLASS__ANCESTOR:
 				if (ancestor != null)
-					msgs = ((InternalEObject)ancestor).eInverseRemove(this, MetamodelPackage.RELATION_CLASS__CHILDREN, RelationClass.class, msgs);
+					msgs = ((InternalEObject)ancestor).eInverseRemove(
+							this,
+							MetamodelPackage.RELATION_CLASS__CHILDREN,
+							RelationClass.class,
+							msgs);
 				return basicSetAncestor((RelationClass)otherEnd, msgs);
 			case MetamodelPackage.RELATION_CLASS__CHILDREN:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(
+						otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -168,6 +205,10 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 				return children != null && !children.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	public Template getTemplate() {
+		return template;
 	}
 
 }

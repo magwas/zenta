@@ -26,6 +26,7 @@
       <element xsi:type="zenta:BusinessObject" id="b3342401" name="ProcessStep"/>
     </folder>
     <element xsi:type="zenta:ZentaDiagramModel" id="bfe14ecd" name="Default View"/>
+    <element xsi:type="zenta:BusinessObject" id="79ede923" name="Test Object not in templata yet"/>
   </folder>
   <folder name="Connectors" id="e716ac78" type="connectors"/>
   <folder name="Relations" id="3bd2f7ae" type="relations">

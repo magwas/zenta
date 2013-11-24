@@ -5,6 +5,7 @@ package org.rulez.magwas.zenta.metamodel;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,5 +39,7 @@ public interface Metamodel extends EObject {
 	 * @generated
 	 */
 	EList<Template> getTemplates();
+
+	Template getTemplateFor(ZentaDiagramModel dm);
 
 } // Metamodel

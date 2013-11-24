@@ -13,5 +13,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.junit;visibility:=reexport,
  org.rulez.magwas.zenta.model.tests;bundle-version="1.0.0",
  org.rulez.magwas.zenta.model;bundle-version="2.4.0",
- org.rulez.magwas.zenta.metamodel;bundle-version="1.0.0"
+ org.rulez.magwas.zenta.metamodel;bundle-version="1.0.0",
+ org.rulez.magwas.zenta.editor;bundle-version="2.4.0"
 Bundle-ActivationPolicy: lazy

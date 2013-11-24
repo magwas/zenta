@@ -22,6 +22,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 /**
  * @generated
@@ -127,6 +128,14 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 				return templates != null && !templates.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	@Override
+	public Template getTemplateFor(ZentaDiagramModel diagramModel) {
+		for(Template template : getTemplates())
+			if(diagramModel.equals(template.getReference()))
+				return template;
+		return null;
 	}
 
 } //MetamodelImpl

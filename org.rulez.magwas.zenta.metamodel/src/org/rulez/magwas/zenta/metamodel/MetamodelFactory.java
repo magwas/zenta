@@ -2,8 +2,8 @@ package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.ecore.EFactory;
 import org.rulez.magwas.zenta.metamodel.impl.BuiltinTemplate;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
-import org.rulez.magwas.zenta.model.impl.BusinessObject;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 /**
@@ -29,13 +29,13 @@ public interface MetamodelFactory extends EFactory {
 
 	Metamodel createMetamodel();
 
-	Template createTemplate(ZentaDiagramModel reference);
+	Template createTemplate(ZentaDiagramModel reference, Metamodel metamodel);
 
-	ObjectClass createObjectClass(BusinessObject element);
+	ObjectClass createObjectClass(IZentaElement element, Template template);
 
 	Attribute createAttribute();
 
-	RelationClass createRelationClass(AssociationRelationship reference);
+	RelationClass createRelationClass(AssociationRelationship reference, Template template);
 
 	ObjectClass getBuiltinObjectClass();
 

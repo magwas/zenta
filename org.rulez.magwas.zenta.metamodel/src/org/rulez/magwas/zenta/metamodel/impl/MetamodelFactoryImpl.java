@@ -12,8 +12,8 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
-import org.rulez.magwas.zenta.model.impl.BusinessObject;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFactory {
@@ -73,13 +73,13 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return objectClass;
 	}
 
-	public Template createTemplate(ZentaDiagramModel reference) {
-		TemplateImpl template = new TemplateImpl(reference);
+	public Template createTemplate(ZentaDiagramModel reference, Metamodel metamodel) {
+		TemplateImpl template = new TemplateImpl(reference, metamodel);
 		return template;
 	}
 
-	public ObjectClass createObjectClass(BusinessObject reference) {
-		ObjectClassImpl objectClass = new ObjectClassImpl(reference);
+	public ObjectClass createObjectClass(IZentaElement reference, Template template) {
+		ObjectClassImpl objectClass = new ObjectClassImpl(reference, template);
 		return objectClass;
 	}
 
@@ -98,8 +98,8 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return relationClass;
 	}
 
-	public RelationClass createRelationClass(AssociationRelationship referenced) {
-		RelationClassImpl relationClass = new RelationClassImpl(referenced);
+	public RelationClass createRelationClass(AssociationRelationship referenced, Template template) {
+		RelationClassImpl relationClass = new RelationClassImpl(referenced, template);
 		return relationClass;
 	}
 
@@ -132,5 +132,4 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	public BuiltinTemplate getBuiltinTemplate() {
 		return BuiltinTemplate.getInstance();
 	}
-
 }
