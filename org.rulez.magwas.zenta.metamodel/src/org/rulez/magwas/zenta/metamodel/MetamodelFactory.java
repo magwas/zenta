@@ -1,9 +1,10 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.ecore.EFactory;
+import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 /**
  * 
@@ -28,7 +29,7 @@ public interface MetamodelFactory extends EFactory {
 
 	Metamodel createMetamodel();
 
-	Template createTemplate(ZentaDiagramModel reference, Metamodel metamodel);
+	Template createTemplate(IZentaDiagramModel reference, Metamodel metamodel);
 
 	ObjectClass createObjectClass(IZentaElement element, Template template);
 
@@ -43,6 +44,8 @@ public interface MetamodelFactory extends EFactory {
 	public class BuiltinClassShouldNotHaveAncestor extends RuntimeException {
 		private static final long serialVersionUID = 1L;
 	}
+
+	String getDefiningName(INameable ref);
 
 } //MetamodelFactory
 

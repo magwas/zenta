@@ -55,5 +55,4 @@ public interface referencesModelObject extends EObject {
 	 * @generated
 	 */
 	String getName();
-
 } // referencesModelObject

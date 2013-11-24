@@ -20,13 +20,10 @@ import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
-import org.rulez.magwas.zenta.model.impl.BusinessObject;
-import org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection;
-import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 public class TemplateImpl extends ReferencesModelObject implements Template {
 	protected EObject reference;
@@ -45,11 +42,11 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 		super();
 	}
 
-	public TemplateImpl(ZentaDiagramModel reference, Metamodel metamodel) {
+	public TemplateImpl(IDiagramModel reference2, Metamodel metamodel) {
 		super();
 		this.metamodel = metamodel;
-		setReference(reference);
-		extractObjectClasses(reference);
+		setReference(reference2);
+		extractObjectClasses(reference2);
 	}
 
 	@Override
@@ -189,30 +186,34 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 		private void extractObjectClasses(IDiagramModel diagram) {
 			EList<IDiagramModelObject> kids = diagram.getChildren();
 			for (IDiagramModelObject kid : kids)
-				extractDiagramElement((DiagramModelZentaObject) kid);
+				extractDiagramElement((IDiagramModelZentaObject) kid);
 			
 		}
 	
-			private void extractDiagramElement(DiagramModelZentaObject kid) {
+			private void extractDiagramElement(IDiagramModelZentaObject kid) {
 				ObjectClass oc = MetamodelFactory.eINSTANCE
-						.createObjectClass((BusinessObject) kid.getZentaElement(), this);
+						.createObjectClass((IZentaElement) kid.getZentaElement(), this);
+				if(null == oc)
+					return;
 				getObjectClasses().add(oc);
 				extractConnectionsForDiagramElement(kid);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
 				for (IDiagramModelObject aKid : myKids)
-					extractDiagramElement((DiagramModelZentaObject) aKid);
+					extractDiagramElement((IDiagramModelZentaObject) aKid);
 			}
 
 				private void extractConnectionsForDiagramElement(
-						DiagramModelZentaObject kid) {
+						IDiagramModelZentaObject kid) {
 					EList<IDiagramModelConnection> conns = kid.getSourceConnections();
 					for (IDiagramModelConnection conn : conns)
-						extractDiagramConnection(((DiagramModelZentaConnection)conn).getRelationship());
+						extractDiagramConnection(((IDiagramModelZentaConnection)conn).getRelationship());
 				}
 			
 					private void extractDiagramConnection(IRelationship iRelationship) {
 						RelationClass rc = MetamodelFactory.eINSTANCE
-								.createRelationClass((AssociationRelationship) iRelationship, this);
+								.createRelationClass((IRelationship) iRelationship, this);
+						if(null == rc)
+							return;
 						this.getRelationClasses().add(rc);
 					}
 

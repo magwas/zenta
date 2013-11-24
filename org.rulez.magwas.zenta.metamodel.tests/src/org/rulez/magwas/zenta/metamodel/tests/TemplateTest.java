@@ -10,10 +10,10 @@ import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.impl.AssociationRelationship;
-import org.rulez.magwas.zenta.model.impl.BusinessObject;
-import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
@@ -21,7 +21,7 @@ public class TemplateTest {
 
 	protected Template fixture = null;
 	private IZentaModel model;
-	private ZentaDiagramModel diagramModel;
+	private IZentaDiagramModel diagramModel;
 	private Template template;
 	
 	@Before
@@ -68,23 +68,23 @@ public class TemplateTest {
 	
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_diagram() {
-		BusinessObject classTemplate = (BusinessObject) ZentaModelUtils.getObjectByID(model, "23138a61");
+		IZentaElement classTemplate = (IZentaElement) ZentaModelUtils.getObjectByID(model, "23138a61");
 		assertTrue(null != template.getObjectClassReferencingElement(classTemplate));
 	}
 
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_embedded_elements_of_the_diagram() {
-		BusinessObject classTemplate = (BusinessObject) ZentaModelUtils.getObjectByID(model, "c3d03626");
+		IZentaElement classTemplate = (IZentaElement) ZentaModelUtils.getObjectByID(model, "c3d03626");
 		assertTrue(null != template.getObjectClassReferencingElement( classTemplate));
 	}
 	
 	@Test
 	public void The_template_contains_the_relationclasses_for_the_diagram() {
-		AssociationRelationship classTemplate = (AssociationRelationship) ZentaModelUtils.getObjectByID(model, "b0e2bfd8");
+		IRelationship classTemplate = (IRelationship) ZentaModelUtils.getObjectByID(model, "b0e2bfd8");
 		assertTrue(null != template.getRelationClassReferencingElement(classTemplate));
 	}
 		private Template createTemplateFromDiagramModel(
-				ZentaDiagramModel diagramModel) {
+				IZentaDiagramModel diagramModel) {
 			Metamodel metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
 			Template template = MetamodelFactory.eINSTANCE.createTemplate(diagramModel, metamodel);
 			return template;

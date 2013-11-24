@@ -3,15 +3,14 @@ package org.rulez.magwas.zenta.metamodel.tests;
 import static org.junit.Assert.*;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.impl.BusinessObject;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
@@ -66,10 +65,10 @@ public class ObjectClassTest{
 		ModelTestData testdata = new ModelTestData();
 		IZentaModel zentaModel = testdata.getModel();
 
-		EObject element = ZentaModelUtils.getObjectByID(zentaModel, "ea94cf6c");
+		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(zentaModel, "ea94cf6c");
 		return MetamodelFactory.eINSTANCE
 				.createObjectClass(
-						(BusinessObject) element,
+						element,
 						metamodel.getTemplates().get(0));
 	}
 }

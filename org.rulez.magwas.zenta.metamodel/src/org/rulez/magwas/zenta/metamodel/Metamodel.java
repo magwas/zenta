@@ -7,6 +7,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.metamodel.impl.BuiltinTemplate;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 
 public interface Metamodel extends EObject {
@@ -20,5 +22,9 @@ public interface Metamodel extends EObject {
 	BuiltinTemplate getBuiltinTemplate();
 
 	Template getTemplateFor(IDiagramModel dm);
+
+	ObjectClass getObjectClassReferencing(IZentaElement element);
+
+	RelationClass getRelatioClassReferencing(IRelationship relation);
 
 } 

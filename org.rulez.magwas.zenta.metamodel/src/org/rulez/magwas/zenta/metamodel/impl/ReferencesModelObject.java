@@ -1,7 +1,7 @@
 package org.rulez.magwas.zenta.metamodel.impl;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -9,7 +9,8 @@ public abstract class ReferencesModelObject extends EObjectImpl implements refer
 
 	@Override
 	public String getName() {
-		EObject ref = this.getReference();
-		return ((INameable)ref).getName();
+		INameable ref = (INameable) this.getReference();
+		return MetamodelFactory.eINSTANCE.getDefiningName(ref);
 	}
+	
 }

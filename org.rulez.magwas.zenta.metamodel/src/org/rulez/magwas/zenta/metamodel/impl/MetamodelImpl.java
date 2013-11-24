@@ -14,6 +14,8 @@ import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class MetamodelImpl extends EObjectImpl implements Metamodel {
 
@@ -107,5 +109,30 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	@Override
 	public BuiltinTemplate getBuiltinTemplate() {
 		return builtinTemplate;
+	}
+
+	@Override
+	public ObjectClass getObjectClassReferencing(
+			IZentaElement element) {
+		EList<Template> templates = getTemplates();
+		for(Template template : templates) {
+			if(template.getReference() != null) {
+				ObjectClass foundOC = template.getObjectClassReferencingElement(element);
+				if(null != foundOC)
+					return foundOC;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public RelationClass getRelatioClassReferencing(IRelationship relation) {
+		EList<Template> templates = getTemplates();
+		for(Template template : templates) {
+			if(template.getReference() != null)
+				if(null != template.getRelationClassReferencingElement((IRelationship) relation))
+					return template.getRelationClassReferencingElement((IRelationship) relation);
+		}
+		return null;
 	}
 }

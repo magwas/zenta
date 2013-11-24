@@ -12,9 +12,12 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.INameable;
+import org.rulez.magwas.zenta.model.IProperties;
+import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 
 public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFactory {
 
@@ -69,7 +72,7 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return objectClass;
 	}
 
-	public Template createTemplate(ZentaDiagramModel reference, Metamodel metamodel) {
+	public Template createTemplate(IZentaDiagramModel reference, Metamodel metamodel) {
 		TemplateImpl template = new TemplateImpl(reference, metamodel);
 		return template;
 	}
@@ -78,8 +81,11 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		ObjectClass candidate = template.getObjectClassReferencingElement(reference);
 		if(null != candidate)
 			return candidate;
+		if("".equals(getDefiningName(reference)))
+			return null;
 		ObjectClassImpl objectClass = new ObjectClassImpl(reference, template);
 		template.getObjectClasses().add(objectClass);
+		reference.setObjectClass(reference.getId());
 		return objectClass;
 	}
 
@@ -102,10 +108,28 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		RelationClass candidate = template.getRelationClassReferencingElement(referenced);
 		if(null !=candidate)
 			return candidate;
+		if("".equals(getDefiningName(referenced)))
+			return null;
 		RelationClassImpl relationClass = new RelationClassImpl(referenced, template);
 		template.getRelationClasses().add(relationClass);
+		referenced.setObjectClass(referenced.getId());
 		return relationClass;
 	}
+	
+	@Override
+	public String getDefiningName(INameable ref) {
+		IProperty prop = getObjectClassProperty((IProperties) ref);
+		if(null != prop)
+			return prop.getValue();
+		return ref.getName();
+	}
+		private IProperty getObjectClassProperty(IProperties ref) {
+			for(IProperty prop: ref.getProperties())
+				if("className".equals(prop.getKey()))
+						return prop;
+			return null;
+		}
+
 
 	public MetamodelPackage getMetamodelPackage() {
 		return (MetamodelPackage)getEPackage();
@@ -121,5 +145,4 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	public static MetamodelPackage getPackage() {
 		return MetamodelPackage.eINSTANCE;
 	}
-
 }
