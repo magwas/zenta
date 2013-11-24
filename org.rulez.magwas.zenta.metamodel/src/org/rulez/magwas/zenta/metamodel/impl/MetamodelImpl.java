@@ -135,4 +135,20 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean hasRelationClassReferencing(IRelationship relation) {
+		return null != getRelatioClassReferencing(relation);
+	}
+
+	@Override
+	public boolean hasObjectClassReferencing(IZentaElement elementToAdd) {
+		return null != getObjectClassReferencing(elementToAdd);
+	}
+
+	@Override
+	public Template getTemplateForDiagram(IDiagramModel diagramModel) {
+		Template template = getTemplateFor(diagramModel);
+		return template;
+	}
 }

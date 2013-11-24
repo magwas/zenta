@@ -27,4 +27,10 @@ public interface Metamodel extends EObject {
 
 	RelationClass getRelatioClassReferencing(IRelationship relation);
 
+	boolean hasRelationClassReferencing(IRelationship relation);
+
+	boolean hasObjectClassReferencing(IZentaElement elementToAdd);
+
+	Template getTemplateForDiagram(IDiagramModel diagramModel);
+
 } 

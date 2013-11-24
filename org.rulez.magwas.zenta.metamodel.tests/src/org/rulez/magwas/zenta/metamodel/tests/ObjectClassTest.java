@@ -6,10 +6,16 @@ import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.editor.diagram.commands.AddDiagramObjectCommand;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.util.MetamodelBuilder;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
@@ -18,10 +24,18 @@ public class ObjectClassTest{
 
 	protected ObjectClass fixture = null;
 	private Metamodel metamodel;
+	private ModelTestData testdata;
+	private IZentaModel model;
+	private IZentaDiagramModel diagramModel;
+	private MetamodelBuilder builder;
 
 	@Before
 	public void setUp() throws Exception {
-		metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
+		testdata = new ModelTestData();
+		model = testdata.getModel();
+		diagramModel = testdata.getTestDiagramModel();
+		builder = new MetamodelBuilder(model);
+		metamodel = builder.getMetamodel();
 		fixture = metamodel.getBuiltinObjectClass();
 	}
 
@@ -60,15 +74,115 @@ public class ObjectClassTest{
 	public void ObjectClass_can_be_created_using_a_zenta_object() {
 		createTestObjectClass();
 	}
+	
+	@Test
+	public void The_elements_of_the_template_are_converted_to_ObjectClass() {
+		Template template = metamodel.getTemplateForDiagram(diagramModel);
+		int ocsize = template.getObjectClasses().size();
+		assertTemplateHaveObjectClassFor(template, "ea94cf6c");
+		assertTemplateHaveObjectClassFor(template, "c3d03626");
+		assertEquals(ocsize,template.getObjectClasses().size());
+	}
+		private void assertTemplateHaveObjectClassFor(Template template,
+				String elementID) {
+			IZentaElement element = getElementById(elementID);
+			assertNotNull(template.getObjectClassReferencingElement(element));
+		}
+	
+	@Test
+	public void There_is_only_one_ObjectClass_for_an_element_occuring_more_times_in_a_template() {
+		Metamodel metamodel = builder.getMetamodel();
+		String id = "e13c9626";
+		IZentaDiagramModel getDiagramModelById = testdata.getZDiagramModelById(id);
+		IZentaDiagramModel dm = getDiagramModelById;
+		Template template = metamodel.getTemplateFor(dm);
+		String id2 = "8495ea84";
+		IZentaElement element = getElementById(id2);
+		int numOccurs = 0;
+		for(ObjectClass oc:template.getObjectClasses())
+			if(element.equals(oc.getReference()))
+				numOccurs++;
+		assertEquals(1,numOccurs);
+	}
+
+	@Test
+	public void If_a_new_element_added_to_a_template__an_ObjectClass_will_be_created_for_it() {
+		String id = "a885cd76";
+		IZentaElement elementToAdd = getElementById(id);
+		addElementToDiagramModel(diagramModel,elementToAdd);
+		assertTrue(metamodel.hasObjectClassReferencing(elementToAdd));
+	}
+	
+	@Test
+	public void If_a_new_element_added_to_a_non_template__an_ObjectClass_will_not_be_created_for_it() {
+		String id = "a885cd76";
+		IZentaElement elementToAdd = getElementById(id);
+		String id2 = "63f1b081";
+		IZentaDiagramModel dm = testdata.getZDiagramModelById(id2);
+		addElementToDiagramModel(dm,elementToAdd);
+		assertEquals(dm,builder.getLastObject());
+		assertNotNull(elementToAdd);
+		assertFalse(metamodel.hasObjectClassReferencing(elementToAdd));
+	}
+
+	@Test
+	public void A_defining_object_for_an_ObjectClass_becomes_of_that_ObjectClass() {
+		String id = "ea94cf6c";
+		IZentaElement element = getElementById(id);
+		assertEquals(id,element.getObjectClass());
+	}
+
+	@Test
+	public void An_unnamed_element_does_not_define_an_ObjectClass() {
+		IZentaElement element = getElementById("e79192be");
+		assertNotNull(element);
+		assertFalse(metamodel.hasObjectClassReferencing(element));
+	}
+
+	@Test
+	public void An_ObjectClass_is_unnamed_if_the_defining_element_have_an_empty_className_property() {
+		IZentaElement element = getElementById("252d482c");
+		assertNotNull(element);
+		assertFalse(metamodel.hasObjectClassReferencing(element));		
+	}
+	
+	@Test
+	public void The_name_of_an_ObjectClass_is_the_name_of_the_defining_element_if_it_does_not_have_a_className_property() {
+		IZentaElement element = getElementById("ea94cf6c");
+		assertEquals("User",getObjectClassReferencing(element).getName());
+	}
+
+	@Test
+	public void The_name_of_an_ObjectClass_is_the_name_of_the_className_property_of_the_defining_element_if_it_has_one() {
+		IZentaElement element = getElementById("8495ea84");
+		assertEquals("NotActuallyDocumentation",getObjectClassReferencing(element).getName());
+	}
+	
+	private IZentaElement getElementById(String id) {
+		return (IZentaElement) ZentaModelUtils.getObjectByID(model, id);
+	}
+
+	private ObjectClass getObjectClassReferencing(IZentaElement element) {
+		Metamodel metamodel = builder.getMetamodel();
+		return metamodel.getObjectClassReferencing(element);
+	}
 
 	private ObjectClass createTestObjectClass() {
 		ModelTestData testdata = new ModelTestData();
-		IZentaModel zentaModel = testdata.getModel();
+		IZentaModel model = testdata.getModel();
 
-		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(zentaModel, "ea94cf6c");
+		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
 		return MetamodelFactory.eINSTANCE
 				.createObjectClass(
 						element,
 						metamodel.getTemplates().get(0));
 	}
+
+	private void addElementToDiagramModel(IZentaDiagramModel dm,
+			IZentaElement elementToAdd) {
+		IDiagramModelZentaObject mo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+		mo.setZentaElement(elementToAdd);
+		AddDiagramObjectCommand cmd = new AddDiagramObjectCommand(dm, mo);
+		cmd.execute();
+	}	
 }

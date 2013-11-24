@@ -43,4 +43,8 @@ public class ModelTestData {
 		System.out.printf("resource is %s\n",resource.toString());
 		return ZentaModelUtils.getObjectByID(getModel(), id);
 	}
+
+	public IZentaDiagramModel getZDiagramModelById(String id) {
+		return (IZentaDiagramModel) ZentaModelUtils.getObjectByID(getModel(),id);
+	}
 }
