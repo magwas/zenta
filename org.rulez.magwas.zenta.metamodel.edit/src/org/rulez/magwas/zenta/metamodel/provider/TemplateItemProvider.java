@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.Template;
 
@@ -42,6 +41,7 @@ public class TemplateItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -195,15 +195,6 @@ public class TemplateItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(MetamodelPackage.Literals.TEMPLATE__OBJECT_CLASSES,
-				 MetamodelFactory.eINSTANCE.getBuiltinObjectClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MetamodelPackage.Literals.TEMPLATE__RELATION_CLASSES,
-				 MetamodelFactory.eINSTANCE.getBuiltinObjectClass()));
 	}
 
 	/**

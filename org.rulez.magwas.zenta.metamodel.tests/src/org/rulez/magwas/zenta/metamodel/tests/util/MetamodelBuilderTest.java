@@ -10,7 +10,6 @@ import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.metamodel.util.MetamodelBuilder;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.impl.BusinessObject;
 import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
@@ -21,11 +20,13 @@ public class MetamodelBuilderTest {
 
 	private MetamodelBuilder builder;
 	private IZentaModel zentaModel;
+	private ZentaDiagramModel diagramModel;
 
 	@Before
 	public void setUp() {
 		ModelTestData testdata = new ModelTestData();
 		zentaModel = testdata.getModel();
+		diagramModel = testdata.getTestDiagramModel();
 		builder = new MetamodelBuilder(zentaModel);
 	}
 	
@@ -49,12 +50,9 @@ public class MetamodelBuilderTest {
 	
 	@Test
 	public void If_a_new_element_added_to_a_template__an_objectclass_will_be_created_for_it() {
-		ModelTestData testdata = new ModelTestData();
-		ZentaDiagramModel dm = testdata.getTestDiagramModel();
-		BusinessObject elementToAdd = (BusinessObject) testdata.getById("a885cd76");
-		System.out.printf("adding %s", elementToAdd);
-		addElementToDiagramModel(dm,elementToAdd);
-		assertEquals(elementToAdd,builder.getLastObject());
+		BusinessObject elementToAdd = (BusinessObject) ZentaModelUtils.getObjectByID(zentaModel,"a885cd76");
+		addElementToDiagramModel(diagramModel,elementToAdd);
+		assertEquals(diagramModel,builder.getLastObject());
 		assertTrue(metamodelHasObjectClassReferencingElement(elementToAdd));
 	}
 

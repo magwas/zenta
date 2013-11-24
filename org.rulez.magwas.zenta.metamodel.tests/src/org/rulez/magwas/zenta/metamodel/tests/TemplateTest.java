@@ -26,7 +26,8 @@ public class TemplateTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		fixture = MetamodelFactory.eINSTANCE.getBuiltinTemplate();
+		Metamodel metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
+		fixture = metamodel.getBuiltinTemplate();
 		ModelTestData testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTestDiagramModel();

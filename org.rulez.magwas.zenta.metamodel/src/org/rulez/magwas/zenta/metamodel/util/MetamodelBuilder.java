@@ -12,7 +12,6 @@ import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.impl.BusinessObject;
-import org.rulez.magwas.zenta.model.impl.DiagramModelObject;
 import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
 import org.rulez.magwas.zenta.model.impl.ZentaPackage;
@@ -62,7 +61,6 @@ public class MetamodelBuilder {
 			lastNotification = notification;
 			EObject lastObject;
 			lastObject = (EObject) notification.getNotifier();
-			System.out.printf("processing %s\n", lastObject);
 			if(lastObject instanceof BusinessObject) {
 				processBusinessObjectChange((BusinessObject) lastObject);
 			} else if (lastObject instanceof ZentaDiagramModel) {
@@ -70,26 +68,16 @@ public class MetamodelBuilder {
 			}
 		}
 			private void processDiagramModelChange(ZentaDiagramModel lastObject) {
-				System.out.println("processDM");
-				if(lastNotification.getFeature().equals(ZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN)) {
-					@SuppressWarnings("unchecked")
-					EList<DiagramModelObject> newValue =
-						(EList<DiagramModelObject>) lastNotification.getNewValue();
-					@SuppressWarnings("unchecked")
-					EList<DiagramModelObject> oldValue =
-							(EList<DiagramModelObject>) lastNotification.getOldValue();
-					for(DiagramModelObject dmo : newValue)
-						if (!oldValue.contains(dmo)) 
-							addObject((DiagramModelZentaObject) dmo);
+				int feature = lastNotification.getFeatureID(ZentaDiagramModel.class);
+				if(feature == ZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN)
+					addObject((DiagramModelZentaObject) lastNotification.getNewValue());
+			}
+				private void addObject(DiagramModelZentaObject dmo) {
+					ZentaDiagramModel dm = (ZentaDiagramModel) dmo.getDiagramModel();
+					Template template = metaModel.getTemplateFor(dm);
+					IZentaElement element = dmo.getZentaElement();
+					MetamodelFactory.eINSTANCE.createObjectClass(element, template);
 				}
-			}
-			private void addObject(DiagramModelZentaObject dmo) {
-				System.out.printf("adding %s\n", dmo);
-				ZentaDiagramModel dm = (ZentaDiagramModel) dmo.getDiagramModel();
-				Template template = metaModel.getTemplateFor(dm);
-				IZentaElement element = dmo.getZentaElement();
-				MetamodelFactory.eINSTANCE.createObjectClass(element, template);
-			}
 			private void processBusinessObjectChange(BusinessObject lastObject) {
 				System.out.println("BusinessObjectChange");
 			}

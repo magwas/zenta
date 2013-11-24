@@ -39,10 +39,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case MetamodelPackage.METAMODEL: return createMetamodel();
-			case MetamodelPackage.TEMPLATE: return getBuiltinTemplate();
-			case MetamodelPackage.OBJECT_CLASS: return this.getBuiltinObjectClass();
-			case MetamodelPackage.ATTRIBUTE: return createAttribute();
-			case MetamodelPackage.RELATION_CLASS: return getBuiltinRelationClass();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,6 +76,7 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 
 	public ObjectClass createObjectClass(IZentaElement reference, Template template) {
 		ObjectClassImpl objectClass = new ObjectClassImpl(reference, template);
+		template.getObjectClasses().add(objectClass);
 		return objectClass;
 	}
 
@@ -100,6 +97,7 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 
 	public RelationClass createRelationClass(AssociationRelationship referenced, Template template) {
 		RelationClassImpl relationClass = new RelationClassImpl(referenced, template);
+		template.getRelationClasses().add(relationClass);
 		return relationClass;
 	}
 
@@ -118,18 +116,4 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return MetamodelPackage.eINSTANCE;
 	}
 
-	@Override
-	public ObjectClass getBuiltinObjectClass() {
-		return RootObjectClass.getInstance();
-	}
-
-	@Override
-	public RelationClass getBuiltinRelationClass() {
-		return RootRelationClass.getInstance();
-	}
-
-	@Override
-	public BuiltinTemplate getBuiltinTemplate() {
-		return BuiltinTemplate.getInstance();
-	}
 }

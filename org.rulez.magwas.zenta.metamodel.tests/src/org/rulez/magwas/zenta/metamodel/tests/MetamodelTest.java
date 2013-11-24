@@ -1,5 +1,3 @@
-/**
- */
 package org.rulez.magwas.zenta.metamodel.tests;
 
 import static org.junit.Assert.*;

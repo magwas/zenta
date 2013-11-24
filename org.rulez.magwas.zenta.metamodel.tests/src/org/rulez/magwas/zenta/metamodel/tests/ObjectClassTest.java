@@ -18,10 +18,12 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 public class ObjectClassTest{
 
 	protected ObjectClass fixture = null;
+	private Metamodel metamodel;
 
 	@Before
 	public void setUp() throws Exception {
-		this.fixture = MetamodelFactory.eINSTANCE.getBuiltinObjectClass();
+		metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
+		fixture = metamodel.getBuiltinObjectClass();
 	}
 
 	@After
@@ -63,8 +65,8 @@ public class ObjectClassTest{
 	private ObjectClass createTestObjectClass() {
 		ModelTestData testdata = new ModelTestData();
 		IZentaModel zentaModel = testdata.getModel();
+
 		EObject element = ZentaModelUtils.getObjectByID(zentaModel, "ea94cf6c");
-		Metamodel metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
 		return MetamodelFactory.eINSTANCE
 				.createObjectClass(
 						(BusinessObject) element,

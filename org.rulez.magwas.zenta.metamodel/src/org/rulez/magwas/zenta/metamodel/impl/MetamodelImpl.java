@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
@@ -28,37 +27,20 @@ import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
  * @generated
  */
 public class MetamodelImpl extends EObjectImpl implements Metamodel {
-	/**
-	 * The cached value of the '{@link #getTemplates() <em>Templates</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTemplates()
-	 * @generated
-	 * @ordered
-	 */
+
 	protected EList<Template> templates;
+	private BuiltinTemplate builtinTemplate;
 
 	protected MetamodelImpl() {
 		super();
-		Template builtinTemplate = MetamodelFactory.eINSTANCE.getBuiltinTemplate();
-		ObjectClass builtinObjectClass = MetamodelFactory.eINSTANCE.getBuiltinObjectClass();
-		RelationClass builtinRelationClass = MetamodelFactory.eINSTANCE.getBuiltinRelationClass();
-		builtinTemplate.getObjectClasses().add(builtinObjectClass);
-		builtinTemplate.getRelationClasses().add(builtinRelationClass);
-		getTemplates().add(builtinTemplate);
+		builtinTemplate = new BuiltinTemplate();
+		this.getTemplates().add(builtinTemplate);
 	}
 
-	/**
-	 * @generated
-	 */
-	@Override
 	protected EClass eStaticClass() {
 		return MetamodelPackage.Literals.METAMODEL;
 	}
 
-	/**
-	 * @generated
-	 */
 	public EList<Template> getTemplates() {
 		if (templates == null) {
 			templates = new EObjectContainmentEList<Template>(Template.class, this, MetamodelPackage.METAMODEL__TEMPLATES);
@@ -66,9 +48,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		return templates;
 	}
 
-	/**
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -78,9 +57,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-	/**
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -90,9 +66,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-	/**
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -105,9 +78,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		super.eSet(featureID, newValue);
 	}
 
-	/**
-	 * @generated
-	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
@@ -118,9 +88,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		super.eUnset(featureID);
 	}
 
-	/**
-	 * @generated
-	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
@@ -138,4 +105,19 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		return null;
 	}
 
-} //MetamodelImpl
+	@Override
+	public ObjectClass getBuiltinObjectClass() {
+		return this.getTemplates().get(0).getObjectClasses().get(0);
+	}
+
+	@Override
+	public RelationClass getBuiltinRelationClass() {
+		return this.getTemplates().get(0).getRelationClasses().get(0);
+	}
+
+	@Override
+	public BuiltinTemplate getBuiltinTemplate() {
+		return builtinTemplate;
+	}
+
+}

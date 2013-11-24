@@ -41,14 +41,12 @@ public class MetamodelItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
-	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	
+	private Metamodel metamodel;
+
 	public MetamodelItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+		metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
 	}
 
 	/**
@@ -140,7 +138,7 @@ public class MetamodelItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		Template template = MetamodelFactory.eINSTANCE.getBuiltinTemplate();
+		Template template = metamodel.getBuiltinTemplate();
 		newChildDescriptors.add
 			(createChildParameter
 				(MetamodelPackage.Literals.METAMODEL__TEMPLATES,

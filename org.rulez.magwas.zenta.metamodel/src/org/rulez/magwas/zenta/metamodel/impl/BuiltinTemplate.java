@@ -4,8 +4,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 
 public class BuiltinTemplate extends TemplateImpl {
-
-	private static BuiltinTemplate INSTANCE = null;
+	
+	public BuiltinTemplate() {
+		super();
+		getObjectClasses().add(new RootObjectClass());
+		getRelationClasses().add(new RootRelationClass());
+	}
 
 	public void setReference(EObject newReference) {
 		throw new MetamodelFactory.BuiltinClassShouldNotHaveReference();
@@ -14,12 +18,5 @@ public class BuiltinTemplate extends TemplateImpl {
 	@Override
 	public String getName() {
 		return "Builtins";
-	}
-
-	public static BuiltinTemplate getInstance() {
-		if( null == INSTANCE) {
-			INSTANCE = new BuiltinTemplate();
-		}
-		return INSTANCE;
 	}
 }

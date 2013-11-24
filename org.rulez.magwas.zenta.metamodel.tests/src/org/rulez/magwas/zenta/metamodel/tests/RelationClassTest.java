@@ -6,6 +6,7 @@ import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 
@@ -13,11 +14,13 @@ public class RelationClassTest {
 
 	protected RelationClass fixture = null;
 
+	private Metamodel metamodel;
+
 	@Before
 	public void setUp() throws Exception {
-		this.fixture = MetamodelFactory.eINSTANCE.getBuiltinRelationClass();
+		metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
+		fixture = metamodel.getBuiltinRelationClass();
 	}
-
 
 	@After
 	public void tearDown() throws Exception {
@@ -35,4 +38,4 @@ public class RelationClassTest {
 		assertEquals("Basic Relation",fixture.getName());
 	}
 
-} //RelationClassTest
+} 

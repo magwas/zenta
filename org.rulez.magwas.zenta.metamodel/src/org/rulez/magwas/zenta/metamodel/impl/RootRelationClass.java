@@ -9,8 +9,6 @@ public class RootRelationClass extends RelationClassImpl {
 	protected RootRelationClass() {
 		super();
 	}
-	private static RootRelationClass INSTANCE = null;
-	
 	public void setReference(EObject newReference) {
 		throw new MetamodelFactory.BuiltinClassShouldNotHaveReference();
 	}
@@ -18,13 +16,6 @@ public class RootRelationClass extends RelationClassImpl {
 	@Override
 	public String getName() {
 		return "Basic Relation";
-	}
-	
-	public static RelationClass getInstance() {
-		if(null == INSTANCE) {
-			INSTANCE = new RootRelationClass();
-		}
-		return INSTANCE;
 	}
 	
 	@Override

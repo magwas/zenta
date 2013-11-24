@@ -39,10 +39,10 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 		super();
 	}
 
-	public ObjectClassImpl(IZentaElement reference2, Template template) {
+	public ObjectClassImpl(IZentaElement reference, Template template) {
 		super();
 		this.template = template;
-		this.setReference(reference2);
+		this.setReference(reference);
 	}
 
 	@Override

@@ -6,18 +6,10 @@ import org.rulez.magwas.zenta.metamodel.ObjectClass;
 
 public class RootObjectClass extends ObjectClassImpl {
 
-	private static RootObjectClass INSTANCE = null;
-	
-	private RootObjectClass() {
+	RootObjectClass() {
 		super();
 	}
 	
-	public static RootObjectClass getInstance() {
-		if (null == INSTANCE) {
-			INSTANCE = new RootObjectClass();
-		}
-		return INSTANCE;
-	}
 	public void setReference(EObject newReference) {
 		throw new MetamodelFactory.BuiltinClassShouldNotHaveReference();
 	}

@@ -220,9 +220,11 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 	}
 
 	public ObjectClass getObjectClassReferencingElement(BusinessObject classTemplate) {
-		for(ObjectClass oc : getObjectClasses())
-			if(oc.getReference().equals(classTemplate))
+		for(ObjectClass oc : getObjectClasses()) {
+			if(oc.getReference().equals(classTemplate)) {
 				return oc;
+			}
+		}
 		return null;
 	}
 
@@ -232,4 +234,5 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 				return oc;
 		return null;
 	}
+
 }

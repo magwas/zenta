@@ -86,4 +86,5 @@ public interface Template extends referencesModelObject {
 	ObjectClass getObjectClassReferencingElement(BusinessObject elementToAdd);
 
 	RelationClass getRelationClassReferencingElement(AssociationRelationship classTemplate);
+
 } // Template
