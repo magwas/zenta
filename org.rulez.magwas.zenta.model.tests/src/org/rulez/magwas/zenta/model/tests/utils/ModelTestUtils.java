@@ -11,8 +11,8 @@ import javax.xml.xpath.XPathFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.NSResolver;
-import org.rulez.magwas.zenta.model.impl.ZentaPackage;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,7 +32,7 @@ public class ModelTestUtils {
 
 	public static Resource getZentaModelResource(String filename){
 		String path = convertNameToResourcePath(filename);
-		ZentaPackage.init();
+		IZentaPackage.eINSTANCE.eClass();
         ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
         Resource resource = resourceSet.createResource(URI.createFileURI(path));
 		try {

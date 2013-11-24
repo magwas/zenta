@@ -7,16 +7,14 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationCo
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection;
-import org.rulez.magwas.zenta.model.impl.ZentaDiagramModel;
-import org.rulez.magwas.zenta.model.impl.ZentaFactory;
 
 public class ModelAndEditPartTestData {
 	private AssociationConnectionEditPart editPart;
-	private DiagramModelZentaConnection connection;
-	private ZentaDiagramModel diagramModel;
+	private IDiagramModelZentaConnection connection;
+	private IZentaDiagramModel diagramModel;
 	private IDiagramModelZentaConnection connection2;
 	private AssociationConnectionEditPart editPart2;
 
@@ -29,7 +27,7 @@ public class ModelAndEditPartTestData {
 	}
 
 	private EList<EObject> createFolderContents() {
-		IZentaModel model = ZentaFactory.eINSTANCE.createZentaModel();
+		IZentaModel model = IZentaFactory.eINSTANCE.createZentaModel();
 		model.setDefaults();
 		EList<IFolder> folders = model.getFolders();
 		EList<EObject> folderContents = folders.get(0).getElements();
@@ -45,17 +43,17 @@ public class ModelAndEditPartTestData {
 
 	private void createConnection(CommandStack stack,
 			EList<EObject> folderContents) {
-		connection = (DiagramModelZentaConnection) IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
+		connection = (IDiagramModelZentaConnection) IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
 		connection.setAdapter(CommandStack.class, stack);
 		folderContents.add(connection);
-		connection2 = (DiagramModelZentaConnection) IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
+		connection2 = (IDiagramModelZentaConnection) IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
 		connection2.setAdapter(CommandStack.class, stack);
 		folderContents.add(connection2);
 	}
 
 	private void createDiagramModel(CommandStack stack,
 			EList<EObject> folderContents) {
-		diagramModel = (ZentaDiagramModel) ZentaFactory.eINSTANCE.createZentaDiagramModel();
+		diagramModel = (IZentaDiagramModel) IZentaFactory.eINSTANCE.createZentaDiagramModel();
 		diagramModel.setAdapter(CommandStack.class, stack);
 		folderContents.add(diagramModel);
 	}
@@ -68,7 +66,7 @@ public class ModelAndEditPartTestData {
 	}
 
 	public void setModelConnectionObject(
-			DiagramModelZentaConnection modelConnectionObject) {
+			IDiagramModelZentaConnection modelConnectionObject) {
 		this.connection = modelConnectionObject;
 	}
 

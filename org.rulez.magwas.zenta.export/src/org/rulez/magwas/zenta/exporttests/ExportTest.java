@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.NSResolver;
 import org.rulez.magwas.zenta.export.StyledHtml;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.impl.ZentaPackage;
 import org.rulez.magwas.zenta.model.util.Util;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 import org.w3c.dom.Document;
@@ -46,7 +46,7 @@ public class ExportTest {
 	@Test
 	public void testExport() throws IOException, ParserConfigurationException, SAXException, URISyntaxException, XPathExpressionException {
 		File file = new File(this.getClass().getResource("test.zenta").getFile());
-		ZentaPackage.init();
+		IZentaPackage.eINSTANCE.eClass();
         ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
         Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
 		System.out.println(resource.toString());

@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationCo
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
 import org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
-import org.rulez.magwas.zenta.model.impl.ZentaFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.tests.HaveGUI;
 
 public class LineDecorationSectionTest {
@@ -181,7 +181,7 @@ public class LineDecorationSectionTest {
 		ZentaDiagramEditor createEditor() throws PartInitException {
 			ZentaDiagramEditor editor = new ZentaDiagramEditor();
 			IEditorSite site = new EditorSiteMockup();
-			ZentaFactory.init();
+			IZentaFactory.eINSTANCE.getEPackage();
 			IEditorInput input = createEditorInput();
 			editor.init(site, input);
 			return editor;
