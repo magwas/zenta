@@ -34,6 +34,9 @@ public class ObjectClassTest{
 	public void setUp() throws Exception {
 		testdata = new ModelTestData();
 		model = testdata.getModel();
+		
+		ensureVirginDMOsForLoadTest();
+				
 		diagramModel = testdata.getTestDiagramModel();
 		builder = new MetamodelBuilder(model);
 		metamodel = builder.getMetamodel();
@@ -193,6 +196,22 @@ public class ObjectClassTest{
 			assertEquals("emptyShape",diagObject1.getElementShape());
 			assertEquals("emptyShape",diagObject2.getElementShape());
 			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "emptyShape");
+		}
+		private void ensureVirginDMOsForLoadTest() {
+			IDiagramModelObject diagObject1 = testdata.getDMOById("b2608459");
+			IDiagramModelObject diagObject2 = testdata.getDMOById("9404b9cd");
+			
+			ModelTestData.assertNotEquals("ellipseShape",diagObject2.getElementShape());
+			ModelTestData.assertNotEquals("1|Arial Black|11.0|1|GTK|1|",diagObject2.getFont());
+			ModelTestData.assertNotEquals("#ffffff",diagObject2.getFontColor());
+			ModelTestData.assertNotEquals(4,diagObject2.getTextAlignment());
+			ModelTestData.assertNotEquals("#ffa500",diagObject2.getFillColor());
+
+			ModelTestData.assertNotEquals("ellipseShape",diagObject1.getElementShape());
+			ModelTestData.assertNotEquals("1|Arial Black|11.0|1|GTK|1|",diagObject1.getFont());
+			ModelTestData.assertNotEquals("#ffffff",diagObject1.getFontColor());
+			ModelTestData.assertNotEquals(4,diagObject1.getTextAlignment());
+			ModelTestData.assertNotEquals("#ffa500",diagObject1.getFillColor());
 		}
 
 	private ObjectClass getObjectClassReferencing(IZentaElement element) {

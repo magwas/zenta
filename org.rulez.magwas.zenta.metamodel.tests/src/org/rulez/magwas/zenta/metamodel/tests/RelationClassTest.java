@@ -32,6 +32,10 @@ public class RelationClassTest {
 	public void setUp() throws Exception {
 		testdata = new ModelTestData();
 		model = testdata.getModel();
+		
+		ensureVirginDMRsForLoadTest();
+
+		
 		MetamodelBuilder builder = new MetamodelBuilder(model);
 
 		metamodel = builder.getMetamodel();
@@ -161,6 +165,24 @@ public class RelationClassTest {
 		assertEquals("#0000ff",conn2.getLineColor());
 		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn2.getLineDecoration());
 	}
+		private void ensureVirginDMRsForLoadTest() {
+			IDiagramModelZentaConnection conn1 = testdata.getDMRById("9dc4d23a");
+			IDiagramModelZentaConnection conn2 = testdata.getDMRById("dcb9c1a2");
+			
+			ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
+			ModelTestData.assertNotEquals("#ff0000",conn1.getFontColor());
+			ModelTestData.assertNotEquals(0,conn1.getTextPosition());
+			ModelTestData.assertNotEquals(2,conn1.getLineWidth());
+			ModelTestData.assertNotEquals("#0000ff",conn1.getLineColor());
+			ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getLineDecoration());
+	
+			ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn2.getFont());
+			ModelTestData.assertNotEquals("#ff0000",conn2.getFontColor());
+			ModelTestData.assertNotEquals(0,conn2.getTextPosition());
+			ModelTestData.assertNotEquals(2,conn2.getLineWidth());
+			ModelTestData.assertNotEquals("#0000ff",conn2.getLineColor());
+			ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn2.getLineDecoration());
+		}
 
 	private void assertTemplateHaveRelationClassFor(Template template,
 			String elementID) {

@@ -1,6 +1,7 @@
 package org.rulez.magwas.zenta.model.tests.utils;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -69,6 +70,14 @@ public class ModelTestData {
 
 	public IDiagramModelZentaConnection getDMRById(String id3) {
 		return (IDiagramModelZentaConnection) ZentaModelUtils.getObjectByID(getModel(),id3);
+	}
+
+	public static void assertNotEquals(String string, String string2) {
+		assertFalse(string.equals(string2));
+	}
+
+	public static void assertNotEquals(int i, int j) {
+		assertFalse(i == j);
 	}
 
 	public static void assertOnePropertyWithNameAndValue(IZentaElement userObject,

@@ -108,6 +108,7 @@
       <plugin id="org.rulez.magwas.zenta.editor.launch.win32" fragment="true"/>
       <plugin id="org.rulez.magwas.zenta.export"/>
       <plugin id="org.rulez.magwas.zenta.help"/>
+      <plugin id="org.rulez.magwas.zenta.metamodel"/>
       <plugin id="org.rulez.magwas.zenta.model"/>
       <plugin id="org.rulez.magwas.zenta.templates"/>
       <plugin id="org.rulez.magwas.zenta.widgets"/>
