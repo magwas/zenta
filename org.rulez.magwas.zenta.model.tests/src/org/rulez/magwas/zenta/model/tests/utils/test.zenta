@@ -9,7 +9,7 @@
     </folder>
     <folder name="metamodel" id="d1d69251">
       <element xsi:type="zenta:ZentaDiagramModel" id="2ea99535" name="template">
-        <child xsi:type="zenta:DiagramObject" id="b2608459" textAlignment="2" zentaElement="ea94cf6c">
+        <child xsi:type="zenta:DiagramObject" id="b2608459" textAlignment="2" elementShape="ellipseShape" zentaElement="ea94cf6c">
           <bounds x="108" y="24"/>
           <sourceConnection xsi:type="zenta:Connection" id="24e3c661" source="b2608459" target="88f40127" relationship="b0e2bfd8"/>
         </child>
@@ -32,7 +32,9 @@
         </child>
         <property key="Template"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="ea94cf6c" name="User"/>
+      <element xsi:type="zenta:BusinessObject" id="ea94cf6c" name="User">
+        <property key="zma_elementShape" value="ellipseShape"/>
+      </element>
       <element xsi:type="zenta:BusinessObject" id="23138a61" name="Data"/>
       <element xsi:type="zenta:BusinessObject" id="f33bd0d2" name="Procedure"/>
       <element xsi:type="zenta:BusinessObject" id="c3d03626" name="ProcessStep"/>
@@ -50,7 +52,7 @@
           <bounds x="464" y="167"/>
           <sourceConnection xsi:type="zenta:Connection" id="14300fe7" source="15b10f44" target="9404b9cd" relationship="77d87cf5"/>
         </child>
-        <child xsi:type="zenta:DiagramObject" id="9404b9cd" textAlignment="2" targetConnections="14300fe7" zentaElement="ea94cf6c">
+        <child xsi:type="zenta:DiagramObject" id="9404b9cd" textAlignment="2" targetConnections="14300fe7" elementShape="ellipseShape" zentaElement="ea94cf6c">
           <bounds x="227" y="349"/>
           <sourceConnection xsi:type="zenta:Connection" id="e59ff9ac" source="9404b9cd" target="ef005c04" relationship="b0e2bfd8"/>
         </child>

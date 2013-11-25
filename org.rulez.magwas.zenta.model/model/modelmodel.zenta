@@ -26,15 +26,63 @@
       <element xsi:type="zenta:BusinessObject" id="db6c6a82" name="DiagramElement"/>
     </folder>
     <folder name="Rules" id="7af43a7b">
-      <element xsi:type="zenta:BusinessObject" id="442f5652" name="An unnamed object in a template does not define a metamodel class"/>
-      <element xsi:type="zenta:BusinessObject" id="2e012ae2" name="A named object in a template defines a metamodel class"/>
-      <element xsi:type="zenta:BusinessObject" id="d456283b" name="The elements and relations in a figure get their appearance from their metamodel class"/>
+      <folder name="appearance rules" id="c1669509">
+        <element xsi:type="zenta:BusinessObject" id="c5cc02d6" name="appearance attributes for a metamodel entity are stored in the defining model element as properties"/>
+        <element xsi:type="zenta:BusinessObject" id="d456283b" name="The elements and relations in a figure get their appearance from their metamodel class"/>
+        <element xsi:type="zenta:BusinessObject" id="df04e191" name="The name for the metamodel appearance attributes look like zma_&lt;attname> where &lt;attribute> is the name of the attribute used in the model element"/>
+        <element xsi:type="zenta:BusinessObject" id="7d83254e" name="Appearance attributes"/>
+        <element xsi:type="zenta:BusinessObject" id="c86566db" name="for ObjectClass elements">
+          <documentation>zma_font
+zma_fontColor
+zma_textAlignment
+zma_fillColor
+zma_elementShape
+</documentation>
+        </element>
+        <element xsi:type="zenta:BusinessObject" id="90c33565" name="for RelationClass relations">
+          <documentation>zma_font
+zma_fontColor
+zma_textPosition
+zma_lineWidth
+zma_lineColor
+zma_lineDecoration
+</documentation>
+        </element>
+        <element xsi:type="zenta:BusinessObject" id="4ec7244a" name="Test object"/>
+        <element xsi:type="zenta:BusinessObject" id="9e9b8aab" name="When the model is loaded, diagram elements are converted according to the defining element"/>
+        <element xsi:type="zenta:BusinessObject" id="58181744" name="If there is discrepancy, a warning is issued"/>
+        <element xsi:type="zenta:BusinessObject" id="a1655aae" name="When a relation or element becomes a defining element, the appearance properties are copied from the diagram element"/>
+        <element xsi:type="zenta:BusinessObject" id="f6212702" name="When  any diagram element with a defining model object changes appearance, the defining object gets updated"/>
+        <element xsi:type="zenta:BusinessObject" id="6ed2ef87" name="When the defining object gets updated, all diagram objects referring that are updated also"/>
+        <element xsi:type="zenta:BusinessObject" id="070460f8" name="Appearance is synchronized between the defining object and its corresponding diagram objects"/>
+        <element xsi:type="zenta:BusinessObject" id="df6b5fea" name="Appearance is synchronized between a defining element and diagram elements of the same objectclass"/>
+        <element xsi:type="zenta:BusinessObject" id="272c7b99" name="When the appearance of a defining object is changed, all diagram elements of that object get updated"/>
+        <element xsi:type="zenta:BusinessObject" id="e3d97418" name="When the model is loaded, appearance of diagram elements are updated"/>
+        <element xsi:type="zenta:BusinessObject" id="bc7e8f28" name="Diagram elements can override the appearance given by the objectclass"/>
+        <element xsi:type="zenta:BusinessObject" id="c436a1df" name="When the objectclass of an element changed, the corresponding diagram elements are updated"/>
+      </folder>
+      <element xsi:type="zenta:BusinessObject" id="442f5652" name="An unnamed object in a template does not define a metamodel class">
+        <property key="implemented"/>
+      </element>
+      <element xsi:type="zenta:BusinessObject" id="2e012ae2" name="A named object in a template defines a metamodel class">
+        <property key="implemented"/>
+      </element>
       <element xsi:type="zenta:BusinessObject" id="0c34e3f9" name="Naming rules"/>
-      <element xsi:type="zenta:BusinessObject" id="b6487700" name="If there is a non-empty className property, then it is the name"/>
-      <element xsi:type="zenta:BusinessObject" id="0344493d" name="if there is an empty className property, then the object is unnamed"/>
-      <element xsi:type="zenta:BusinessObject" id="4c58242f" name="if there is no className property and name is not empty, then it is the name"/>
-      <element xsi:type="zenta:BusinessObject" id="2ec1700f" name="if there is no className property and the name is empty, then the object is unnamed"/>
-      <element xsi:type="zenta:BusinessObject" id="069234f1" name="A defining object for an objectclass becames of type of that objectclass"/>
+      <element xsi:type="zenta:BusinessObject" id="b6487700" name="If there is a non-empty className property, then it is the name">
+        <property key="implemented"/>
+      </element>
+      <element xsi:type="zenta:BusinessObject" id="0344493d" name="if there is an empty className property, then the object is unnamed">
+        <property key="implemented"/>
+      </element>
+      <element xsi:type="zenta:BusinessObject" id="4c58242f" name="if there is no className property and name is not empty, then it is the name">
+        <property key="implemented"/>
+      </element>
+      <element xsi:type="zenta:BusinessObject" id="2ec1700f" name="if there is no className property and the name is empty, then the object is unnamed">
+        <property key="implemented"/>
+      </element>
+      <element xsi:type="zenta:BusinessObject" id="069234f1" name="A defining object for an objectclass becames of type of that objectclass">
+        <property key="implemented"/>
+      </element>
       <element xsi:type="zenta:BusinessObject" id="ff5940a2" name="In case of naming clash the behaviour is undefined yet">
         <documentation>possible resolutions:
 - new objectclass with the same name, but different inheritance
@@ -42,9 +90,10 @@
 - prohibited
 - morphs to the actually existing objectclass</documentation>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="3c022201" name="Business Object"/>
       <element xsi:type="zenta:BusinessObject" id="a9e10e2f" name="Metamodel is transient"/>
-      <element xsi:type="zenta:BusinessObject" id="7240dde4" name="builds at load time"/>
+      <element xsi:type="zenta:BusinessObject" id="7240dde4" name="builds at load time">
+        <property key="implemented"/>
+      </element>
       <element xsi:type="zenta:BusinessObject" id="7f68d3ab" name="not saved with the model"/>
     </folder>
     <element xsi:type="zenta:BusinessObject" id="c2dca968" name="Template"/>
@@ -69,6 +118,7 @@
     <element xsi:type="zenta:AssociationRelationship" id="979ad51c" source="e87a6172" target="2612882a"/>
     <element xsi:type="zenta:AssociationRelationship" id="0d1bb3cb" source="15db96e4" target="359cb6e7"/>
     <element xsi:type="zenta:AssociationRelationship" id="6fcf06e4" source="24ce872f" target="2a2266eb"/>
+    <element xsi:type="zenta:AssociationRelationship" id="455acc6d" name="Test relation" source="4ec7244a" target="d456283b"/>
   </folder>
   <folder name="Views" id="8f176825" type="diagrams">
     <element xsi:type="zenta:ZentaDiagramModel" id="9a9a23cb" name="Default View" connectionRouterType="1">
@@ -186,6 +236,66 @@
         </child>
         <child xsi:type="zenta:DiagramObject" id="b7a53696" textAlignment="2" elementShape="ellipseShape" zentaElement="7f68d3ab">
           <bounds x="24" y="102"/>
+        </child>
+      </child>
+    </element>
+    <element xsi:type="zenta:ZentaDiagramModel" id="1b587005" name="Appearance rules">
+      <child xsi:type="zenta:DiagramObject" id="573a34ee" textAlignment="2" targetConnections="80322b70" zentaElement="d456283b">
+        <bounds y="-5"/>
+        <child xsi:type="zenta:DiagramObject" id="3d5b6765" textAlignment="2" zentaElement="c5cc02d6">
+          <bounds x="48" y="48"/>
+          <child xsi:type="zenta:DiagramObject" id="7499ecea" textAlignment="2" zentaElement="df04e191">
+            <bounds x="24" y="96" width="157" height="157"/>
+          </child>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="e1ecf9c1" textAlignment="2" zentaElement="7d83254e">
+          <bounds x="238" y="48"/>
+          <child xsi:type="zenta:DiagramObject" id="d84f06a7" textAlignment="2" zentaElement="c86566db">
+            <bounds x="12" y="60" width="120" height="61"/>
+          </child>
+          <child xsi:type="zenta:DiagramObject" id="1877c8fc" textAlignment="2" zentaElement="90c33565">
+            <bounds x="12" y="132" width="120" height="61"/>
+          </child>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="a68fd13b" textAlignment="2" zentaElement="070460f8">
+          <bounds x="379" y="48"/>
+          <child xsi:type="zenta:DiagramObject" id="15f33839" textAlignment="2" zentaElement="9e9b8aab">
+            <bounds x="24" y="48"/>
+            <child xsi:type="zenta:DiagramObject" id="49a7f156" textAlignment="2" zentaElement="58181744">
+              <bounds x="12" y="84" width="157" height="61"/>
+            </child>
+          </child>
+          <child xsi:type="zenta:DiagramObject" id="d5889963" textAlignment="2" zentaElement="a1655aae">
+            <bounds x="17" y="202" width="307" height="96"/>
+          </child>
+          <child xsi:type="zenta:DiagramObject" id="df74c648" textAlignment="2" zentaElement="f6212702">
+            <bounds x="202" y="48" width="122" height="162"/>
+          </child>
+        </child>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="2f51168d" font="1|Arial Black|10.0|3|GTK|1|" fontColor="#ffffff" textAlignment="4" fillColor="#ff0000" elementShape="ellipseShape" zentaElement="4ec7244a">
+        <bounds x="972" y="360"/>
+        <sourceConnection xsi:type="zenta:Connection" id="80322b70" font="1|Arial Black|10.0|1|GTK|1|" fontColor="#1e90ff" textPosition="0" source="2f51168d" target="573a34ee" lineWidth="2" lineColor="#8b6914" lineDecoration="DottedLineDecoration DiamondTargetDecoration BigArrowTargetDecoration" relationship="455acc6d"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="344c55aa" textAlignment="2" zentaElement="df6b5fea">
+        <bounds x="722" y="-5"/>
+        <child xsi:type="zenta:DiagramObject" id="7fbec620" textAlignment="2" zentaElement="272c7b99">
+          <bounds x="14" y="48"/>
+          <child xsi:type="zenta:DiagramObject" id="5477dbfc" textAlignment="2" zentaElement="bc7e8f28">
+            <bounds x="12" y="72" width="157" height="73"/>
+          </child>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="8225bbb9" textAlignment="2" zentaElement="e3d97418">
+          <bounds x="192" y="48"/>
+          <child xsi:type="zenta:DiagramObject" id="6512de2b" textAlignment="2" zentaElement="bc7e8f28">
+            <bounds x="24" y="60" width="175" height="60"/>
+          </child>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="0643085e" textAlignment="2" zentaElement="c436a1df">
+          <bounds x="14" y="202" width="387" height="51"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="6b9dde76" textAlignment="2" zentaElement="6ed2ef87">
+          <bounds x="14" y="252" width="359" height="49"/>
         </child>
       </child>
     </element>
