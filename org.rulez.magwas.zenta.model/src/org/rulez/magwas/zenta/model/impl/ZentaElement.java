@@ -5,8 +5,10 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,6 +23,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -196,16 +201,12 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		return objectClass;
 	}
 
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public void setObjectClass(String newObjectClass) {
 		String oldObjectClass = objectClass;
 		objectClass = newObjectClass;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS, oldObjectClass, objectClass));
+		setAppearanceForDefinedElements();
 	}
 
 				/**
@@ -526,6 +527,27 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		result.append(documentation);
 		result.append(')');
 		return result.toString();
+	}
+
+    @Override
+	public List<String> getPropertyNamed(String propname) {
+		List<String> ret = new ArrayList<String>();
+		for(IProperty  prop : getProperties())
+			if(prop.getKey().equals(propname))
+				ret.add(prop.getValue());
+		return ret;
+	}
+
+ 	public void setAppearanceForDefinedElements() {
+		IZentaModel model = getZentaModel();
+		for(IDiagramModel dm : model.getDiagramModels())
+			for(IDiagramModelObject dmo : dm.getChildren())
+				if(dmo instanceof IDiagramModelZentaObject) {
+					IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject) dmo;
+					if(equals(dmzo.getZentaElement())) {
+						dmzo.setAppearanceBy(this);
+					}
+				}
 	}
 
 } //ZentaElement

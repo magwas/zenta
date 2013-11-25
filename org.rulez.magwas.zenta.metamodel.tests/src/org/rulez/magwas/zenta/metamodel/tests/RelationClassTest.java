@@ -86,9 +86,9 @@ public class RelationClassTest {
 	@Test
 	public void If_a_new_connection_added_to_a_template__a_RelationClass_will_be_created_for_it() {
 		String id = "b2608459";
-		IDiagramModelObject diagramElement1 = getDMOById(id);//User
+		IDiagramModelObject diagramElement1 = testdata.getDMOById(id);//User
 		String id2 = "f843c2f1";
-		IDiagramModelObject diagramElement2 = getDMOById(id2);//ProcessStep
+		IDiagramModelObject diagramElement2 = testdata.getDMOById(id2);//ProcessStep
 		String id3 = "9a97ee2f";
 		IRelationship modelRelation= 
 				(IRelationship) ZentaModelUtils.getObjectByID(model,id3);
@@ -143,9 +143,5 @@ public class RelationClassTest {
 	
 	private IRelationship getRelationByID(String id) {
 		return (IRelationship) ZentaModelUtils.getObjectByID(model, id);
-	}
-
-	private IDiagramModelObject getDMOById(String id) {
-		return (IDiagramModelObject) ZentaModelUtils.getObjectByID(model,id);
 	}
 } 

@@ -6,6 +6,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
@@ -46,5 +48,13 @@ public class ModelTestData {
 
 	public IZentaDiagramModel getZDiagramModelById(String id) {
 		return (IZentaDiagramModel) ZentaModelUtils.getObjectByID(getModel(),id);
+	}
+
+	public IZentaElement getElementById(String id) {
+		return (IZentaElement) ZentaModelUtils.getObjectByID(getModel(), id);
+	}
+
+	public IDiagramModelObject getDMOById(String id) {
+		return (IDiagramModelObject) ZentaModelUtils.getObjectByID(getModel(),id);
 	}
 }

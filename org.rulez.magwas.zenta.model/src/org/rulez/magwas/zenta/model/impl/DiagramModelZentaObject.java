@@ -6,16 +6,20 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -41,6 +45,15 @@ import org.rulez.magwas.zenta.model.IFolder;
  */
 public class DiagramModelZentaObject extends DiagramModelObject implements IDiagramModelZentaObject {
     
+	static Map<String,EAttribute> ObjectAppearanceProperties = new HashMap<String,EAttribute>();
+	private static void initObjectAppearanceProperties() {
+		ObjectAppearanceProperties.put("font",IZentaPackage.eINSTANCE.getFontAttribute_Font());
+		ObjectAppearanceProperties.put("fontColor",IZentaPackage.eINSTANCE.getFontAttribute_FontColor());
+		ObjectAppearanceProperties.put("textAlignment",IZentaPackage.eINSTANCE.getFontAttribute_TextAlignment());
+		ObjectAppearanceProperties.put("fillColor",IZentaPackage.eINSTANCE.getDiagramModelObject_FillColor());
+		ObjectAppearanceProperties.put("elementShape",IZentaPackage.eINSTANCE.getDiagramModelObject_ElementShape());
+	}
+
     /**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -80,6 +93,8 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 	 */
     protected DiagramModelZentaObject() {
 		super();
+		if(0 == ObjectAppearanceProperties.size())
+			initObjectAppearanceProperties();
 	}
 
     /**
@@ -346,4 +361,21 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 		return result.toString();
 	}
 
-} //DiagramModelZentaObject
+	@Override
+	public void setAppearanceBy(IZentaElement reference) {
+		for(IProperty prop : reference.getProperties())
+			setProperty(prop);
+	}
+		private void setProperty(IProperty prop) {
+			String key = prop.getKey();
+			String valuestring = prop.getValue();
+			Map<String, EAttribute> oaprops = ObjectAppearanceProperties;
+			if(oaprops.containsKey(key)) {
+				EAttribute feature = oaprops.get(key);
+				Object value = DiagramModelZentaObject.getValueFromStringForFeature(feature,
+						valuestring);
+				eSet(feature, value);
+			}
+		}
+
+}

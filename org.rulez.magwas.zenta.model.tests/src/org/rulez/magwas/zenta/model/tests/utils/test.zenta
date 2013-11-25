@@ -14,7 +14,7 @@
           <sourceConnection xsi:type="zenta:Connection" id="24e3c661" source="b2608459" target="88f40127" relationship="b0e2bfd8"/>
         </child>
         <child xsi:type="zenta:DiagramObject" id="99b3ed89" textAlignment="2" targetConnections="99e9c255" zentaElement="23138a61">
-          <bounds x="132" y="264"/>
+          <bounds x="120" y="264"/>
         </child>
         <child xsi:type="zenta:DiagramObject" id="88f40127" textAlignment="2" targetConnections="24e3c661 4966ae97" zentaElement="f33bd0d2">
           <bounds x="288" y="132"/>
@@ -33,9 +33,15 @@
         <property key="Template"/>
       </element>
       <element xsi:type="zenta:BusinessObject" id="ea94cf6c" name="User">
-        <property key="zma_elementShape" value="ellipseShape"/>
+        <property key="elementShape" value="ellipseShape"/>
+        <property key="font" value="1|Arial Black|11.0|1|GTK|1|"/>
+        <property key="fontColor" value="#ffffff"/>
+        <property key="textAlignment" value="4"/>
+        <property key="fillColor" value="#ffa500"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="23138a61" name="Data"/>
+      <element xsi:type="zenta:BusinessObject" id="23138a61" name="Data">
+        <property key="elementShape" value="emptyShape"/>
+      </element>
       <element xsi:type="zenta:BusinessObject" id="f33bd0d2" name="Procedure"/>
       <element xsi:type="zenta:BusinessObject" id="c3d03626" name="ProcessStep"/>
       <element xsi:type="zenta:ZentaDiagramModel" id="e13c9626" name="metamodel2">
@@ -52,7 +58,7 @@
           <bounds x="464" y="167"/>
           <sourceConnection xsi:type="zenta:Connection" id="14300fe7" source="15b10f44" target="9404b9cd" relationship="77d87cf5"/>
         </child>
-        <child xsi:type="zenta:DiagramObject" id="9404b9cd" textAlignment="2" targetConnections="14300fe7" elementShape="ellipseShape" zentaElement="ea94cf6c">
+        <child xsi:type="zenta:DiagramObject" id="9404b9cd" font="1|Arial Black|11.0|1|GTK|1|" fontColor="#ffffff" textAlignment="4" targetConnections="14300fe7" fillColor="#ffa500" elementShape="ellipseShape" zentaElement="ea94cf6c">
           <bounds x="227" y="349"/>
           <sourceConnection xsi:type="zenta:Connection" id="e59ff9ac" source="9404b9cd" target="ef005c04" relationship="b0e2bfd8"/>
         </child>
@@ -70,9 +76,13 @@
       <child xsi:type="zenta:DiagramObject" id="173f7753" textAlignment="2" zentaElement="f33bd0d2">
         <bounds x="215" y="137"/>
         <sourceConnection xsi:type="zenta:Connection" id="0a589074" source="173f7753" target="f170d1e3" relationship="44041ead"/>
+        <sourceConnection xsi:type="zenta:Connection" id="84df92a5" source="173f7753" target="843322b7" relationship="a972e26e"/>
       </child>
       <child xsi:type="zenta:DiagramObject" id="f170d1e3" textAlignment="2" targetConnections="0a589074" zentaElement="c3d03626">
         <bounds x="309" y="233"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="843322b7" textAlignment="2" targetConnections="84df92a5" zentaElement="23138a61">
+        <bounds x="139" y="47"/>
       </child>
     </element>
     <element xsi:type="zenta:BusinessObject" id="8495ea84" name="documentation">

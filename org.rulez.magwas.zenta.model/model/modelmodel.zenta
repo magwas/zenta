@@ -29,14 +29,14 @@
       <folder name="appearance rules" id="c1669509">
         <element xsi:type="zenta:BusinessObject" id="c5cc02d6" name="appearance attributes for a metamodel entity are stored in the defining model element as properties"/>
         <element xsi:type="zenta:BusinessObject" id="d456283b" name="The elements and relations in a figure get their appearance from their metamodel class"/>
-        <element xsi:type="zenta:BusinessObject" id="df04e191" name="The name for the metamodel appearance attributes look like zma_&lt;attname> where &lt;attribute> is the name of the attribute used in the model element"/>
+        <element xsi:type="zenta:BusinessObject" id="df04e191" name="The name for the metamodel appearance attributes look like the attributename used in the diagram element"/>
         <element xsi:type="zenta:BusinessObject" id="7d83254e" name="Appearance attributes"/>
         <element xsi:type="zenta:BusinessObject" id="c86566db" name="for ObjectClass elements">
-          <documentation>zma_font
-zma_fontColor
-zma_textAlignment
-zma_fillColor
-zma_elementShape
+          <documentation>font
+fontColor
+textAlignment
+fillColor
+elementShape
 </documentation>
         </element>
         <element xsi:type="zenta:BusinessObject" id="90c33565" name="for RelationClass relations">
@@ -80,9 +80,7 @@ zma_lineDecoration
       <element xsi:type="zenta:BusinessObject" id="2ec1700f" name="if there is no className property and the name is empty, then the object is unnamed">
         <property key="implemented"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="069234f1" name="A defining object for an objectclass becames of type of that objectclass">
-        <property key="implemented"/>
-      </element>
+      <element xsi:type="zenta:BusinessObject" id="069234f1" name="A defining object for an objectclass becames of type of that objectclass"/>
       <element xsi:type="zenta:BusinessObject" id="ff5940a2" name="In case of naming clash the behaviour is undefined yet">
         <documentation>possible resolutions:
 - new objectclass with the same name, but different inheritance
@@ -121,7 +119,7 @@ zma_lineDecoration
     <element xsi:type="zenta:AssociationRelationship" id="455acc6d" name="Test relation" source="4ec7244a" target="d456283b"/>
   </folder>
   <folder name="Views" id="8f176825" type="diagrams">
-    <element xsi:type="zenta:ZentaDiagramModel" id="9a9a23cb" name="Default View" connectionRouterType="1">
+    <element xsi:type="zenta:ZentaDiagramModel" id="9a9a23cb" name="Basic rules" connectionRouterType="1">
       <child xsi:type="zenta:DiagramObject" id="c7ecd0e7" textAlignment="2" zentaElement="4d14b736">
         <bounds x="360" y="17"/>
         <child xsi:type="zenta:DiagramObject" id="8fde0df1" textAlignment="2" targetConnections="1a5cf8c9 fc898881" zentaElement="ed12ffbf">
@@ -245,7 +243,7 @@ zma_lineDecoration
         <child xsi:type="zenta:DiagramObject" id="3d5b6765" textAlignment="2" zentaElement="c5cc02d6">
           <bounds x="48" y="48"/>
           <child xsi:type="zenta:DiagramObject" id="7499ecea" textAlignment="2" zentaElement="df04e191">
-            <bounds x="24" y="96" width="157" height="157"/>
+            <bounds x="24" y="96" width="157" height="133"/>
           </child>
         </child>
         <child xsi:type="zenta:DiagramObject" id="e1ecf9c1" textAlignment="2" zentaElement="7d83254e">

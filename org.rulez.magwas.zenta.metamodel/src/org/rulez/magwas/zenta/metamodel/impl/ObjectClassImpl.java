@@ -1,22 +1,16 @@
 package org.rulez.magwas.zenta.metamodel.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
@@ -24,7 +18,7 @@ import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class ObjectClassImpl extends ReferencesModelObject implements ObjectClass {
-	
+
 	protected EObject reference;
 
 	protected EList<Attribute> attributes;
@@ -43,8 +37,10 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 		super();
 		this.template = template;
 		this.setReference(reference);
+		template.getObjectClasses().add(this);
+		reference.setObjectClass(reference.getId());
 	}
-
+	
 	@Override
 	protected EClass eStaticClass() {
 		return MetamodelPackage.Literals.OBJECT_CLASS;
@@ -201,6 +197,7 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 		return super.eIsSet(featureID);
 	}
 
+	@Override
 	public Template getTemplate() {
 		return template;
 	}

@@ -84,8 +84,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		if("".equals(getDefiningName(reference)))
 			return null;
 		ObjectClassImpl objectClass = new ObjectClassImpl(reference, template);
-		template.getObjectClasses().add(objectClass);
-		reference.setObjectClass(reference.getId());
 		return objectClass;
 	}
 

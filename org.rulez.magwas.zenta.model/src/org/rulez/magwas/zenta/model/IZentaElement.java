@@ -6,6 +6,8 @@
  */
 package org.rulez.magwas.zenta.model;
 
+import java.util.List;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -18,4 +20,6 @@ package org.rulez.magwas.zenta.model;
  * @generated
  */
 public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneable, INameable, IDocumentable, IProperties {
+
+	List<String> getPropertyNamed(String propname);
 } // IZentaElement

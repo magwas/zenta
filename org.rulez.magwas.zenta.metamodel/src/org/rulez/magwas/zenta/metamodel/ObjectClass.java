@@ -85,4 +85,6 @@ public interface ObjectClass extends referencesModelObject {
 	 */
 	EList<ObjectClass> getChildren();
 
+	Template getTemplate();
+
 } // ObjectClass

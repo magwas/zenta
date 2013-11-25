@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -39,7 +40,8 @@ import org.rulez.magwas.zenta.model.INameable;
  * @generated
  */
 public abstract class DiagramModelComponent extends EObjectImpl implements IDiagramModelComponent {
-    /**
+
+	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -49,7 +51,25 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 	 */
     protected static final String ID_EDEFAULT = null;
 
-    /**
+    protected static Object getValueFromStringForFeature(EAttribute feature,
+			String valuestring) {
+				Class<?> type = feature.getEType().getInstanceClass();
+				Object value;
+				if(type.equals(int.class)) {
+					value = Integer.parseInt(valuestring);
+				} else if (type.equals(String.class)) {
+					value = valuestring;
+				} else {
+					throw new UnknownEAttributeType();
+				}
+				return value;
+			}
+		    public static class UnknownEAttributeType extends RuntimeException {
+				private static final long serialVersionUID = 1L;
+			}
+
+
+	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

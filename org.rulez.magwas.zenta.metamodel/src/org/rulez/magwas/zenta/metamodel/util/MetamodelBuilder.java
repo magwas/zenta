@@ -51,50 +51,51 @@ public class MetamodelBuilder {
 							return true;
 					return false;
 				}
-	private void setAdapter() {
-		EContentAdapter adapter = new EContentAdapter() {
-	        public void notifyChanged(Notification notification) {
-	          super.notifyChanged(notification);
-	          processNotification(notification);
-	        }
-	    };
-	    model.eAdapters().add(adapter);
-	}
-		private void processNotification(Notification notification) {
-			this.notificaton = notification;
-			EObject lastObject;
-			lastObject = (EObject) notification.getNotifier();
-			System.out.printf("notification for \n\t%s\n\t%s", notification.getNotifier(),notification.getFeature() );
-			if(lastObject instanceof IZentaDiagramModel) {
-				processDiagramModelChange((MetamodelImpl)metaModel, notification);
-			} else if (lastObject instanceof IDiagramModelZentaObject) {
-				processDiagramModelObjectChange(notification);
-			}
+				
+		private void setAdapter() {
+			EContentAdapter adapter = new EContentAdapter() {
+		        public void notifyChanged(Notification notification) {
+		          super.notifyChanged(notification);
+		          processNotification(notification);
+		        }
+		    };
+		    model.eAdapters().add(adapter);
 		}
-			private void processDiagramModelObjectChange(Notification notification) {
-				int feature = notification.getFeatureID(IDiagramModelZentaObject.class);
-				if(feature == IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__SOURCE_CONNECTIONS) {
-					IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
-					IDiagramModel dm = dmzc.getDiagramModel();
-					Template template = metaModel.getTemplateFor(dm);
-					if(null == template)
-						return;
-					IRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
-					MetamodelFactory.eINSTANCE.createRelationClass(element, template);
+			private void processNotification(Notification notification) {
+				this.notificaton = notification;
+				EObject lastObject;
+				lastObject = (EObject) notification.getNotifier();
+				System.out.printf("notification for \n\t%s\n\t%s", notification.getNotifier(),notification.getFeature() );
+				if(lastObject instanceof IZentaDiagramModel) {
+					processDiagramModelChange((MetamodelImpl)metaModel, notification);
+				} else if (lastObject instanceof IDiagramModelZentaObject) {
+					processDiagramModelObjectChange(notification);
 				}
 			}
-			private void processDiagramModelChange(MetamodelImpl metamodel, Notification notification) {
-				int feature = notification.getFeatureID(IZentaDiagramModel.class);
-				if(feature == IZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN) {
-					IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
-					IDiagramModel dm = dmzc.getDiagramModel();
-					Template template = metaModel.getTemplateFor(dm);
-					if(null == template)
-						return;
-					IZentaElement element = ((IDiagramModelZentaObject) dmzc).getZentaElement();
-					MetamodelFactory.eINSTANCE.createObjectClass(element, template);
+				private void processDiagramModelObjectChange(Notification notification) {
+					int feature = notification.getFeatureID(IDiagramModelZentaObject.class);
+					if(feature == IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__SOURCE_CONNECTIONS) {
+						IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
+						IDiagramModel dm = dmzc.getDiagramModel();
+						Template template = metaModel.getTemplateFor(dm);
+						if(null == template)
+							return;
+						IRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
+						MetamodelFactory.eINSTANCE.createRelationClass(element, template);
+					}
 				}
-			}
+				private void processDiagramModelChange(MetamodelImpl metamodel, Notification notification) {
+					int feature = notification.getFeatureID(IZentaDiagramModel.class);
+					if(feature == IZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN) {
+						IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
+						IDiagramModel dm = dmzc.getDiagramModel();
+						Template template = metaModel.getTemplateFor(dm);
+						if(null == template)
+							return;
+						IZentaElement element = ((IDiagramModelZentaObject) dmzc).getZentaElement();
+						MetamodelFactory.eINSTANCE.createObjectClass(element, template);
+					}
+				}
 
 	public Metamodel getMetamodel() {
 		return metaModel;

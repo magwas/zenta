@@ -85,7 +85,7 @@ public class ObjectClassTest{
 	}
 		private void assertTemplateHaveObjectClassFor(Template template,
 				String elementID) {
-			IZentaElement element = getElementById(elementID);
+			IZentaElement element = testdata.getElementById(elementID);
 			assertNotNull(template.getObjectClassReferencingElement(element));
 		}
 	
@@ -97,7 +97,7 @@ public class ObjectClassTest{
 		IZentaDiagramModel dm = getDiagramModelById;
 		Template template = metamodel.getTemplateFor(dm);
 		String id2 = "8495ea84";
-		IZentaElement element = getElementById(id2);
+		IZentaElement element = testdata.getElementById(id2);
 		int numOccurs = 0;
 		for(ObjectClass oc:template.getObjectClasses())
 			if(element.equals(oc.getReference()))
@@ -108,7 +108,7 @@ public class ObjectClassTest{
 	@Test
 	public void If_a_new_element_added_to_a_template__an_ObjectClass_will_be_created_for_it() {
 		String id = "a885cd76";
-		IZentaElement elementToAdd = getElementById(id);
+		IZentaElement elementToAdd = testdata.getElementById(id);
 		addElementToDiagramModel(diagramModel,elementToAdd);
 		assertTrue(metamodel.hasObjectClassReferencing(elementToAdd));
 	}
@@ -116,7 +116,7 @@ public class ObjectClassTest{
 	@Test
 	public void If_a_new_element_added_to_a_non_template__an_ObjectClass_will_not_be_created_for_it() {
 		String id = "a885cd76";
-		IZentaElement elementToAdd = getElementById(id);
+		IZentaElement elementToAdd = testdata.getElementById(id);
 		String id2 = "63f1b081";
 		IZentaDiagramModel dm = testdata.getZDiagramModelById(id2);
 		addElementToDiagramModel(dm,elementToAdd);
@@ -127,41 +127,36 @@ public class ObjectClassTest{
 
 	@Test
 	public void A_defining_object_for_an_ObjectClass_becomes_of_that_ObjectClass() {
-		String id = "ea94cf6c";
-		IZentaElement element = getElementById(id);
-		assertEquals(id,element.getObjectClass());
+		IZentaElement element = testdata.getElementById("ea94cf6c");
+		assertEquals("ea94cf6c",element.getObjectClass());
 	}
 
 	@Test
 	public void An_unnamed_element_does_not_define_an_ObjectClass() {
-		IZentaElement element = getElementById("e79192be");
+		IZentaElement element = testdata.getElementById("e79192be");
 		assertNotNull(element);
 		assertFalse(metamodel.hasObjectClassReferencing(element));
 	}
 
 	@Test
 	public void An_ObjectClass_is_unnamed_if_the_defining_element_have_an_empty_className_property() {
-		IZentaElement element = getElementById("252d482c");
+		IZentaElement element = testdata.getElementById("252d482c");
 		assertNotNull(element);
 		assertFalse(metamodel.hasObjectClassReferencing(element));		
 	}
 	
 	@Test
 	public void The_name_of_an_ObjectClass_is_the_name_of_the_defining_element_if_it_does_not_have_a_className_property() {
-		IZentaElement element = getElementById("ea94cf6c");
+		IZentaElement element = testdata.getElementById("ea94cf6c");
 		assertEquals("User",getObjectClassReferencing(element).getName());
 	}
 
 	@Test
 	public void The_name_of_an_ObjectClass_is_the_name_of_the_className_property_of_the_defining_element_if_it_has_one() {
-		IZentaElement element = getElementById("8495ea84");
+		IZentaElement element = testdata.getElementById("8495ea84");
 		assertEquals("NotActuallyDocumentation",getObjectClassReferencing(element).getName());
 	}
 	
-	private IZentaElement getElementById(String id) {
-		return (IZentaElement) ZentaModelUtils.getObjectByID(model, id);
-	}
-
 	private ObjectClass getObjectClassReferencing(IZentaElement element) {
 		Metamodel metamodel = builder.getMetamodel();
 		return metamodel.getObjectClassReferencing(element);
