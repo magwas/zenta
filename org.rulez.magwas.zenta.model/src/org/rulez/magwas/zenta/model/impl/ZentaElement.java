@@ -14,6 +14,7 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -24,7 +25,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -152,11 +155,6 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
      */
     private Map<Object, Object> fAdapterMap = new HashMap<Object, Object>();
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     protected ZentaElement() {
 		super();
 	}
@@ -542,12 +540,38 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		IZentaModel model = getZentaModel();
 		for(IDiagramModel dm : model.getDiagramModels())
 			for(IDiagramModelObject dmo : dm.getChildren())
-				if(dmo instanceof IDiagramModelZentaObject) {
-					IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject) dmo;
-					if(equals(dmzo.getZentaElement())) {
-						dmzo.setAppearanceBy(this);
-					}
+				setAppearanceOn(dmo);
+	}
+		private void setAppearanceOn(IDiagramModelObject dmo) {
+			if(dmo instanceof IDiagramModelZentaObject) {
+				IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject) dmo;
+				if(equals(dmzo.getZentaElement())) {
+					dmzo.setAppearanceBy(this);
 				}
+				for(IDiagramModelObject kid : dmzo.getChildren())
+					setAppearanceOn(kid);
+				for(IDiagramModelConnection sc : dmzo.getSourceConnections())
+					setAppearanceOnSc(sc);
+			}
+		}
+			private void setAppearanceOnSc(IDiagramModelConnection dmo) {
+				if(!(dmo instanceof IDiagramModelZentaConnection))
+						return;
+				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) dmo;
+				if(equals(dmzc.getRelationship())) {
+					dmzc.setAppearanceBy(this);
+				}
+			}
+
+
+	public HashMap<String, EAttribute> getObjectAppearanceProperties() {
+		HashMap<String, EAttribute> props = new HashMap<String, EAttribute>();
+		props.put("font",IZentaPackage.eINSTANCE.getFontAttribute_Font());
+		props.put("fontColor",IZentaPackage.eINSTANCE.getFontAttribute_FontColor());
+		props.put("textAlignment",IZentaPackage.eINSTANCE.getFontAttribute_TextAlignment());
+		props.put("fillColor",IZentaPackage.eINSTANCE.getDiagramModelObject_FillColor());
+		props.put("elementShape",IZentaPackage.eINSTANCE.getDiagramModelObject_ElementShape());
+		return props;
 	}
 
 } //ZentaElement

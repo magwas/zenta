@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 
@@ -160,6 +161,11 @@ public class ZentaDiagramModel extends DiagramModel implements IZentaDiagramMode
 		result.append(viewpoint);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public void setAppearanceBy(IZentaElement reference) {
+		throw new UnsupportedOperationException();
 	}
 
 } //ZentaDiagramModel

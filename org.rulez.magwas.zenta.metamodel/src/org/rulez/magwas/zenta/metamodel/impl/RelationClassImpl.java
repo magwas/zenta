@@ -32,6 +32,7 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 		super();
 		this.template = template;
 		this.setReference(referenced);
+		referenced.setObjectClass(referenced.getId());
 	}
 
 	protected RelationClassImpl() {

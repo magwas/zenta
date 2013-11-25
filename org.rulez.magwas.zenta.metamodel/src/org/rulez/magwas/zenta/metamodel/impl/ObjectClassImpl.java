@@ -33,7 +33,7 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 		super();
 	}
 
-	public ObjectClassImpl(IZentaElement reference, Template template) {
+	protected ObjectClassImpl(IZentaElement reference, Template template) {
 		super();
 		this.template = template;
 		this.setReference(reference);

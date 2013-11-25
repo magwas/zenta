@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ISketchModel;
 
@@ -157,6 +158,11 @@ public class SketchModel extends DiagramModel implements ISketchModel {
 		result.append(background);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public void setAppearanceBy(IZentaElement reference) {
+		throw new UnsupportedOperationException();
 	}
 
 } //SketchModel

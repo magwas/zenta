@@ -5,7 +5,10 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.HashMap;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -48,12 +51,7 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 	 */
     protected IZentaElement target;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected Relationship() {
+     protected Relationship() {
 		super();
 	}
 
@@ -175,6 +173,17 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 				return target != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	public HashMap<String, EAttribute> getObjectAppearanceProperties() {
+		HashMap<String, EAttribute> props = new HashMap<String, EAttribute>();
+		props.put("font",IZentaPackage.eINSTANCE.getFontAttribute_Font());
+		props.put("fontColor",IZentaPackage.eINSTANCE.getFontAttribute_FontColor());
+		props.put("textPosition",IZentaPackage.eINSTANCE.getFontAttribute_TextPosition());
+		props.put("lineWidth",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineWidth());
+		props.put("lineColor",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineColor());
+		props.put("lineDecoration",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineDecoration());
+		return props;
 	}
 
 } //Relationship

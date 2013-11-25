@@ -84,6 +84,7 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		if("".equals(getDefiningName(reference)))
 			return null;
 		ObjectClassImpl objectClass = new ObjectClassImpl(reference, template);
+		template.getObjectClasses().add(objectClass);
 		return objectClass;
 	}
 
@@ -104,13 +105,12 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 
 	public RelationClass createRelationClass(IRelationship referenced, Template template) {
 		RelationClass candidate = template.getRelationClassReferencingElement(referenced);
-		if(null !=candidate)
+		if(null != candidate)
 			return candidate;
 		if("".equals(getDefiningName(referenced)))
 			return null;
 		RelationClassImpl relationClass = new RelationClassImpl(referenced, template);
 		template.getRelationClasses().add(relationClass);
-		referenced.setObjectClass(referenced.getId());
 		return relationClass;
 	}
 	

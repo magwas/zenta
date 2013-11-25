@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -405,6 +407,24 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 		result.append(objectClass);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public void setAppearanceBy(IZentaElement reference) {
+		for(IProperty prop : reference.getProperties())
+			setProperty(prop,reference);
+	}
+
+	void setProperty(IProperty prop, IZentaElement reference) {
+		String key = prop.getKey();
+		String valuestring = prop.getValue();
+		Map<String, EAttribute> oaprops = reference.getObjectAppearanceProperties();
+		if(oaprops.containsKey(key)) {
+			EAttribute feature = oaprops.get(key);
+			Object value = DiagramModelZentaObject.getValueFromStringForFeature(feature,
+					valuestring);
+			eSet(feature, value);
+		}
 	}
 
 } //DiagramModelComponent

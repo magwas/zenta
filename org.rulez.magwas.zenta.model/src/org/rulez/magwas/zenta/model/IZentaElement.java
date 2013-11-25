@@ -7,6 +7,9 @@
 package org.rulez.magwas.zenta.model;
 
 import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.ecore.EAttribute;
 
 
 /**
@@ -20,6 +23,8 @@ import java.util.List;
  * @generated
  */
 public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneable, INameable, IDocumentable, IProperties {
+
+	Map<String, EAttribute> getObjectAppearanceProperties();
 
 	List<String> getPropertyNamed(String propname);
 } // IZentaElement

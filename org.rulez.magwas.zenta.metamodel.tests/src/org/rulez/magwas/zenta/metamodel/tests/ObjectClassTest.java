@@ -12,6 +12,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.metamodel.util.MetamodelBuilder;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -157,6 +158,43 @@ public class ObjectClassTest{
 		assertEquals("NotActuallyDocumentation",getObjectClassReferencing(element).getName());
 	}
 	
+	@Test
+	public void When_the_model_is_loaded_the_diagram_elements_are_converted_according_to_the_defining_element() {
+		checkUserElement();
+		checkDataElement();
+	}
+		private void checkUserElement() {
+			IZentaElement userObject = testdata.getElementById("ea94cf6c");
+			IDiagramModelObject diagObject1 = testdata.getDMOById("b2608459");
+			IDiagramModelObject diagObject2 = testdata.getDMOById("9404b9cd");
+			
+			assertEquals("ellipseShape",diagObject1.getElementShape());
+			assertEquals("1|Arial Black|11.0|1|GTK|1|",diagObject1.getFont());
+			assertEquals("#ffffff",diagObject1.getFontColor());
+			assertEquals(4,diagObject1.getTextAlignment());
+			assertEquals("#ffa500",diagObject1.getFillColor());
+			
+			assertEquals("ellipseShape",diagObject2.getElementShape());
+			assertEquals("1|Arial Black|11.0|1|GTK|1|",diagObject2.getFont());
+			assertEquals("#ffffff",diagObject2.getFontColor());
+			assertEquals(4,diagObject2.getTextAlignment());
+			assertEquals("#ffa500",diagObject2.getFillColor());
+			
+			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "ellipseShape");
+			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "font", "1|Arial Black|11.0|1|GTK|1|");
+			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "fontColor", "#ffffff");
+			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "textAlignment", "4");
+			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "fillColor", "#ffa500");
+		}
+		private void checkDataElement() {
+			IZentaElement userObject = testdata.getElementById("23138a61");
+			IDiagramModelObject diagObject1 = testdata.getDMOById("99b3ed89");
+			IDiagramModelObject diagObject2 = testdata.getDMOById("843322b7");
+			assertEquals("emptyShape",diagObject1.getElementShape());
+			assertEquals("emptyShape",diagObject2.getElementShape());
+			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "emptyShape");
+		}
+
 	private ObjectClass getObjectClassReferencing(IZentaElement element) {
 		Metamodel metamodel = builder.getMetamodel();
 		return metamodel.getObjectClassReferencing(element);

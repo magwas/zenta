@@ -52,11 +52,12 @@
         <child xsi:type="zenta:DiagramObject" id="ef005c04" textAlignment="2" targetConnections="e59ff9ac" zentaElement="f33bd0d2">
           <bounds x="125" y="201"/>
           <sourceConnection xsi:type="zenta:Connection" id="9dc4d23a" source="ef005c04" target="77809b07" relationship="9c441eb7"/>
-          <sourceConnection xsi:type="zenta:Connection" id="dcb9c1a2" source="ef005c04" target="15b10f44" relationship="9c441eb7"/>
+          <sourceConnection xsi:type="zenta:Connection" id="dcb9c1a2" source="ef005c04" target="15b10f44" lineDecoration="" relationship="9c441eb7"/>
         </child>
         <child xsi:type="zenta:DiagramObject" id="15b10f44" textAlignment="2" targetConnections="dcb9c1a2" zentaElement="8495ea84">
           <bounds x="464" y="167"/>
           <sourceConnection xsi:type="zenta:Connection" id="14300fe7" source="15b10f44" target="9404b9cd" relationship="77d87cf5"/>
+          <sourceConnection id="3da073f7" source="15b10f44" target="41de6f00"/>
         </child>
         <child xsi:type="zenta:DiagramObject" id="9404b9cd" font="1|Arial Black|11.0|1|GTK|1|" fontColor="#ffffff" textAlignment="4" targetConnections="14300fe7" fillColor="#ffa500" elementShape="ellipseShape" zentaElement="ea94cf6c">
           <bounds x="227" y="349"/>
@@ -64,6 +65,9 @@
         </child>
         <child xsi:type="zenta:DiagramObject" id="312451b4" textAlignment="2" targetConnections="7e9ecb61" zentaElement="7b9a078c">
           <bounds x="504" y="48"/>
+        </child>
+        <child xsi:type="zenta:Note" id="41de6f00" textAlignment="1" targetConnections="3da073f7">
+          <bounds x="761" y="176"/>
         </child>
         <property key="Template"/>
       </element>
@@ -100,7 +104,14 @@
     <element xsi:type="zenta:AssociationRelationship" id="a972e26e" name="uses" source="f33bd0d2" target="23138a61"/>
     <element xsi:type="zenta:AssociationRelationship" id="44041ead" source="f33bd0d2" target="c3d03626"/>
     <element xsi:type="zenta:AssociationRelationship" id="3da94729" name="contains" source="c3d03626" target="f33bd0d2"/>
-    <element xsi:type="zenta:AssociationRelationship" id="9c441eb7" name="describes" source="f33bd0d2" target="8495ea84"/>
+    <element xsi:type="zenta:AssociationRelationship" id="9c441eb7" name="describes" source="f33bd0d2" target="8495ea84">
+      <property key="font" value="1|Andika|10.0|3|GTK|1|"/>
+      <property key="fontColor" value="#ff0000"/>
+      <property key="textPosition" value="0"/>
+      <property key="lineWidth" value="2"/>
+      <property key="lineColor" value="#0000ff"/>
+      <property key="lineDecoration" value="DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration"/>
+    </element>
     <element xsi:type="zenta:AssociationRelationship" id="77d87cf5" source="8495ea84" target="ea94cf6c"/>
     <element xsi:type="zenta:AssociationRelationship" id="9a97ee2f" name="test to add to the template" source="ea94cf6c" target="c3d03626"/>
     <element xsi:type="zenta:AssociationRelationship" id="2fb235de" name="This is actually unnamed" source="8495ea84" target="7b9a078c">
