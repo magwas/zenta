@@ -38,6 +38,7 @@ public class ModelTestUtils {
 		try {
 			resource.load(null);
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new CannotLoadTheResource();
 		}
 		return resource;

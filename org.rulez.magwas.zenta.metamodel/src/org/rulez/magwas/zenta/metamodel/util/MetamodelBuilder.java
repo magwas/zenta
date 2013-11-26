@@ -65,11 +65,13 @@ public class MetamodelBuilder {
 				this.notificaton = notification;
 				EObject lastObject;
 				lastObject = (EObject) notification.getNotifier();
-				System.out.printf("notification for \n\t%s\n\t%s", notification.getNotifier(),notification.getFeature() );
+				System.out.printf("notification for \n\t%s\n\t%s\n", notification.getNotifier(),notification.getFeature() );
 				if(lastObject instanceof IZentaDiagramModel) {
 					processDiagramModelChange((MetamodelImpl)metaModel, notification);
 				} else if (lastObject instanceof IDiagramModelZentaObject) {
 					processDiagramModelObjectChange(notification);
+				} else if (lastObject instanceof IZentaElement) {
+					processElementChange(notification);
 				}
 			}
 				private void processDiagramModelObjectChange(Notification notification) {
@@ -94,6 +96,14 @@ public class MetamodelBuilder {
 							return;
 						IZentaElement element = ((IDiagramModelZentaObject) dmzc).getZentaElement();
 						MetamodelFactory.eINSTANCE.createObjectClass(element, template);
+					}
+				}
+				private void processElementChange(Notification notification) {
+					int feature = notification.getFeatureID(IZentaElement.class);
+					if(feature == IZentaPackage.NAMEABLE__OBJECT_CLASS) {
+						IZentaElement element = (IZentaElement) notification.getFeature();
+						element.setAppearanceForDefinedElements();
+
 					}
 				}
 

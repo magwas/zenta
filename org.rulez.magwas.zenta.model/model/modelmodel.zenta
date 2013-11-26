@@ -280,7 +280,7 @@ zma_lineDecoration
         <child xsi:type="zenta:DiagramObject" id="7fbec620" textAlignment="2" zentaElement="272c7b99">
           <bounds x="14" y="48"/>
           <child xsi:type="zenta:DiagramObject" id="5477dbfc" textAlignment="2" zentaElement="bc7e8f28">
-            <bounds x="12" y="72" width="157" height="73"/>
+            <bounds x="12" y="84" width="157" height="73"/>
           </child>
         </child>
         <child xsi:type="zenta:DiagramObject" id="8225bbb9" textAlignment="2" zentaElement="e3d97418">

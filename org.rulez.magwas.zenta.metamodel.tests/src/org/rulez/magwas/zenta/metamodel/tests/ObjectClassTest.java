@@ -214,6 +214,26 @@ public class ObjectClassTest{
 			ModelTestData.assertNotEquals("#ffa500",diagObject1.getFillColor());
 		}
 
+	@Test
+	public void When_the_ObjectClass_of_an_element_is_changed_the_corresponding_diagram_elements_are_updated() {
+		IZentaElement element = testdata.getElementById("85b00ede");
+		IDiagramModelObject dmo = testdata.getDMOById("be229c75");
+
+		ModelTestData.assertNotEquals("ellipseShape",dmo.getElementShape());
+		ModelTestData.assertNotEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
+		ModelTestData.assertNotEquals("#ffffff",dmo.getFontColor());
+		ModelTestData.assertNotEquals(4,dmo.getTextAlignment());
+		ModelTestData.assertNotEquals("#ffa500",dmo.getFillColor());
+
+		element.setObjectClass("ea94cf6c");
+
+		assertEquals("ellipseShape",dmo.getElementShape());
+		assertEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
+		assertEquals("#ffffff",dmo.getFontColor());
+		assertEquals(4,dmo.getTextAlignment());
+		assertEquals("#ffa500",dmo.getFillColor());
+	}
+	
 	private ObjectClass getObjectClassReferencing(IZentaElement element) {
 		Metamodel metamodel = builder.getMetamodel();
 		return metamodel.getObjectClassReferencing(element);

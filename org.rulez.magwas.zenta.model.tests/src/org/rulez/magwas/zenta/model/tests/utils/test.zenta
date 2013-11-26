@@ -71,7 +71,20 @@
         </child>
         <property key="Template"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="7b9a078c" name="Title"/>
+      <element xsi:type="zenta:BusinessObject" id="7b9a078c" name="Title" objectClass="7b9a078c"/>
+    </folder>
+    <folder name="shapechange" id="13144af6">
+      <element xsi:type="zenta:ZentaDiagramModel" id="22d134df" name="shapechange">
+        <child xsi:type="zenta:DiagramObject" id="be229c75" textAlignment="2" zentaElement="85b00ede">
+          <bounds x="252" y="143"/>
+          <sourceConnection xsi:type="zenta:Connection" id="2454f71b" source="be229c75" target="dee06f23" relationship="8aeb2efb"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="dee06f23" textAlignment="2" targetConnections="2454f71b" zentaElement="f33bd0d2">
+          <bounds x="448" y="270"/>
+        </child>
+      </element>
+      <element xsi:type="zenta:BusinessObject" id="85b00ede" name="shapechange test object"/>
+      <element xsi:type="zenta:AssociationRelationship" id="8aeb2efb" source="85b00ede" target="f33bd0d2"/>
     </folder>
     <element xsi:type="zenta:BusinessObject" id="a885cd76" name="Test Object"/>
     <element xsi:type="zenta:BusinessObject" id="8c485316" name="Business Object1"/>

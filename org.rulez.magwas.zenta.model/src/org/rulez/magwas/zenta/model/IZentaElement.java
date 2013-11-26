@@ -27,4 +27,6 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	Map<String, EAttribute> getObjectAppearanceProperties();
 
 	List<String> getPropertyNamed(String propname);
+
+	void setAppearanceForDefinedElements();
 } // IZentaElement

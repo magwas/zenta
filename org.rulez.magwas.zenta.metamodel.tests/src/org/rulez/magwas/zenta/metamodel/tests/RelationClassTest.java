@@ -14,6 +14,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
@@ -184,6 +185,29 @@ public class RelationClassTest {
 			ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn2.getLineDecoration());
 		}
 
+	@Test
+	public void When_the_ObjectClass_of_an_element_is_changed_the_corresponding_diagram_elements_are_updated() {
+		IRelationship element = testdata.getRelationByID("8aeb2efb");
+		IDiagramModelZentaConnection conn1 = testdata.getDMRById("2454f71b");
+
+		ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
+		ModelTestData.assertNotEquals("#ff0000",conn1.getFontColor());
+		ModelTestData.assertNotEquals(0,conn1.getTextPosition());
+		ModelTestData.assertNotEquals(2,conn1.getLineWidth());
+		ModelTestData.assertNotEquals("#0000ff",conn1.getLineColor());
+		ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getLineDecoration());
+
+		element.setObjectClass("9c441eb7");
+		
+		assertEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
+		assertEquals("#ff0000",conn1.getFontColor());
+		assertEquals(0,conn1.getTextPosition());
+		assertEquals(2,conn1.getLineWidth());
+		assertEquals("#0000ff",conn1.getLineColor());
+		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getLineDecoration());
+
+	}
+	
 	private void assertTemplateHaveRelationClassFor(Template template,
 			String elementID) {
 		IRelationship element = testdata.getRelationByID(elementID);
