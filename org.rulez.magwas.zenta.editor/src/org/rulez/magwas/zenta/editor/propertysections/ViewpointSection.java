@@ -160,8 +160,7 @@ public class ViewpointSection extends AbstractZentaPropertySection {
     }
     
     protected void refreshControls() {
-        int index = fDiagramModel.getViewpoint();
-        IViewpoint viewPoint = ViewpointsManager.INSTANCE.getViewpoint(index);
+        IViewpoint viewPoint = ViewpointsManager.INSTANCE.getViewpoint(fDiagramModel);
         
         fIsRefreshing = true; // A Viewer will get a selectionChanged event when setting it
         fComboViewer.setSelection(new StructuredSelection(viewPoint));

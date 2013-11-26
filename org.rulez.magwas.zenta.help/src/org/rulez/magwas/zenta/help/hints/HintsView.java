@@ -281,8 +281,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 
         // Convert Zenta Diagram Model object to Viewpoint object
         if(object instanceof IZentaDiagramModel) {
-            int index = ((IZentaDiagramModel)object).getViewpoint();
-            object = ViewpointsManager.INSTANCE.getViewpoint(index);
+            object = ViewpointsManager.INSTANCE.getViewpoint(((IZentaDiagramModel)object));
         }
         
         Hint hint = getHintFromObject(object);

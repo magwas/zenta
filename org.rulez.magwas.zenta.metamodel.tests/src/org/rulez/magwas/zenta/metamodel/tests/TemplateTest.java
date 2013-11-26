@@ -26,12 +26,12 @@ public class TemplateTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		Metamodel metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
-		fixture = metamodel.getBuiltinTemplate();
 		ModelTestData testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTestDiagramModel();
-		template = createTemplateFromDiagramModel(diagramModel);
+		Metamodel metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
+		fixture = metamodel.getBuiltinTemplate();
+		template = metamodel.getTemplateFor(testdata.getTestDiagramModel());
 	}
 
 	@After
@@ -83,10 +83,4 @@ public class TemplateTest {
 		IRelationship classTemplate = (IRelationship) ZentaModelUtils.getObjectByID(model, "b0e2bfd8");
 		assertTrue(null != template.getRelationClassReferencingElement(classTemplate));
 	}
-		private Template createTemplateFromDiagramModel(
-				IZentaDiagramModel diagramModel) {
-			Metamodel metamodel = MetamodelFactory.eINSTANCE.createMetamodel();
-			Template template = MetamodelFactory.eINSTANCE.createTemplate(diagramModel, metamodel);
-			return template;
-		}
 }

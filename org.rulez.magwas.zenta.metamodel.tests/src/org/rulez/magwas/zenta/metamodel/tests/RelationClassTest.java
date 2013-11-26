@@ -7,9 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.metamodel.util.MetamodelBuilder;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IRelationship;
@@ -35,10 +35,7 @@ public class RelationClassTest {
 		
 		ensureVirginDMRsForLoadTest();
 
-		
-		MetamodelBuilder builder = new MetamodelBuilder(model);
-
-		metamodel = builder.getMetamodel();
+		metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinRelationClass();
 	}
 

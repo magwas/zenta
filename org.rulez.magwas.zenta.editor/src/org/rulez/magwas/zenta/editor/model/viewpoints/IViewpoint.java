@@ -5,8 +5,11 @@
  */
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 
 /**
  * IViewpoint
@@ -35,7 +38,7 @@ public interface IViewpoint {
     /**
      * @return Allowed types
      */
-    EClass[] getAllowedTypes();
+    List<referencesModelObject> getAllowedTypes();
     
     /**
      * @return Allowed class type

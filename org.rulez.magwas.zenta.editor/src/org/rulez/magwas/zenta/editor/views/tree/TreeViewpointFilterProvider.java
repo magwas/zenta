@@ -161,8 +161,7 @@ public class TreeViewpointFilterProvider implements IPartListener {
      */
     public Color getTextColor(Object element) {
         if(isActive() && fActiveDiagramModel != null && element instanceof IZentaElement) {
-            int index = fActiveDiagramModel.getViewpoint();
-            IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(index);
+            IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(fActiveDiagramModel);
             if(viewpoint != null) {
                 // From same model as active diagram
                 IZentaModel model = ((IZentaElement)element).getZentaModel();

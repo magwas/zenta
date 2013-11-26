@@ -5,11 +5,11 @@
  */
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
  */
 public abstract class AbstractViewpoint implements IViewpoint {
     
-    private List<EClass> fClassList;
+    private List<referencesModelObject> fClassList;
     
     @Override
     public boolean isElementVisible(EObject object) {
@@ -60,9 +60,9 @@ public abstract class AbstractViewpoint implements IViewpoint {
     /**
      * @return A list of allowed types or null
      */
-    protected List<EClass> getAllowedList() {
+    protected List<referencesModelObject> getAllowedList() {
         if(getAllowedTypes() != null && fClassList == null) {
-            fClassList = Arrays.asList(getAllowedTypes());
+            fClassList = getAllowedTypes();
         }
         return fClassList;
     }

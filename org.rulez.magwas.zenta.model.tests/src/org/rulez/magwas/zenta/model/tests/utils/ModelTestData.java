@@ -1,7 +1,6 @@
 package org.rulez.magwas.zenta.model.tests.utils;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,6 +24,8 @@ public class ModelTestData {
 	
 	public ModelTestData() {
 		resource = ModelTestUtils.getZentaModelResource("test.zenta");
+		assertNotNull(resource);
+		model = getModel();
 	}
 	
 	public IZentaModel getModel() {

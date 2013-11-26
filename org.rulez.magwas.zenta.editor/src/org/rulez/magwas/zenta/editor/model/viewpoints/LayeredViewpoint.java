@@ -5,7 +5,9 @@
  */
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.List;
+
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 
 /**
  * Layered Viewpoint
@@ -25,7 +27,7 @@ public class LayeredViewpoint extends AbstractViewpoint {
     }
     
     @Override
-    public EClass[] getAllowedTypes() {
+    public List<referencesModelObject> getAllowedTypes() {
         return null;
     }
 }

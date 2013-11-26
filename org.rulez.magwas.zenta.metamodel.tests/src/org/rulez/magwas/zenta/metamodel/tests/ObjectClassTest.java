@@ -11,7 +11,6 @@ import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.metamodel.util.MetamodelBuilder;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -28,7 +27,6 @@ public class ObjectClassTest{
 	private ModelTestData testdata;
 	private IZentaModel model;
 	private IZentaDiagramModel diagramModel;
-	private MetamodelBuilder builder;
 
 	@Before
 	public void setUp() throws Exception {
@@ -38,8 +36,7 @@ public class ObjectClassTest{
 		ensureVirginDMOsForLoadTest();
 				
 		diagramModel = testdata.getTestDiagramModel();
-		builder = new MetamodelBuilder(model);
-		metamodel = builder.getMetamodel();
+		metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinObjectClass();
 	}
 
@@ -95,7 +92,6 @@ public class ObjectClassTest{
 	
 	@Test
 	public void There_is_only_one_ObjectClass_for_an_element_occuring_more_times_in_a_template() {
-		Metamodel metamodel = builder.getMetamodel();
 		String id = "e13c9626";
 		IZentaDiagramModel getDiagramModelById = testdata.getZDiagramModelById(id);
 		IZentaDiagramModel dm = getDiagramModelById;
@@ -124,7 +120,6 @@ public class ObjectClassTest{
 		String id2 = "63f1b081";
 		IZentaDiagramModel dm = testdata.getZDiagramModelById(id2);
 		addElementToDiagramModel(dm,elementToAdd);
-		assertEquals(dm,builder.getLastObject());
 		assertNotNull(elementToAdd);
 		assertFalse(metamodel.hasObjectClassReferencing(elementToAdd));
 	}
@@ -235,7 +230,6 @@ public class ObjectClassTest{
 	}
 	
 	private ObjectClass getObjectClassReferencing(IZentaElement element) {
-		Metamodel metamodel = builder.getMetamodel();
 		return metamodel.getObjectClassReferencing(element);
 	}
 

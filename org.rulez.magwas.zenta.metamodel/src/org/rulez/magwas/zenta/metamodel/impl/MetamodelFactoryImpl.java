@@ -1,5 +1,7 @@
 package org.rulez.magwas.zenta.metamodel.impl;
 
+import java.util.HashMap;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -18,9 +20,12 @@ import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFactory {
 
+	private static HashMap<IZentaModel,Metamodel> registry = new HashMap<IZentaModel,Metamodel>();
+	
 	public static MetamodelFactory init() {
 		try {
 			MetamodelFactory theMetamodelFactory = (MetamodelFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
@@ -47,9 +52,17 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		}
 	}
 
-	public Metamodel createMetamodel() {
-		MetamodelImpl metamodel = new MetamodelImpl();
-		return metamodel;
+	@Override
+	public Metamodel createMetamodel(IZentaModel zentaModel) {
+		Metamodel mm = getMetamodelFor(zentaModel);
+		if(null == mm)
+			mm = new MetamodelImpl(zentaModel);
+		registry.put(zentaModel, mm);
+		return mm;
+	}
+	
+	public Metamodel getMetamodelFor(IZentaModel model2) {
+		return registry.get(model2);
 	}
 
 	/**
@@ -142,5 +155,10 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	@Deprecated
 	public static MetamodelPackage getPackage() {
 		return MetamodelPackage.eINSTANCE;
+	}
+
+	@Override
+	public Metamodel createMetamodel() {
+		return null;
 	}
 }

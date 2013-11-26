@@ -431,8 +431,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         }
         
         IZentaDiagramModel dm = (IZentaDiagramModel)diagramObject.getDiagramModel();
-        int index = dm.getViewpoint();
-        IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(index);
+        IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(dm);
         return viewpoint == null ? true : viewpoint.isAllowedType(type);
     }
     

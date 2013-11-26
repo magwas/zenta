@@ -5,10 +5,9 @@
  */
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -27,27 +26,8 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
  */
 public class ViewpointsManager {
     
-    /*
-     * All Viewpoints
-     */
-    private static List<IViewpoint> VIEWPOINTS = new ArrayList<IViewpoint>();
-    
-    static {
-    	//FIXME: viewpoints based on objectClass groups (based on templates)
-        VIEWPOINTS.add(new LayeredViewpoint());
-        VIEWPOINTS.add(new TotalViewpoint());
-        
-
-        // Sort the Viewpoints by name
-        Collections.sort(VIEWPOINTS, new Comparator<IViewpoint>() {
-            @Override
-            public int compare(IViewpoint vp1, IViewpoint vp2) {
-                return vp1.getName().compareTo(vp2.getName());
-            }
-        });
-    }
-    
     public static ViewpointsManager INSTANCE = new ViewpointsManager();
+    private static Map<IZentaDiagramModel,IViewpoint> registry = new HashMap<IZentaDiagramModel,IViewpoint>();
     
     /**
      * @param viewPoint
@@ -64,26 +44,21 @@ public class ViewpointsManager {
     /**
      * @return A list of all Viewpoints
      */
-    public List<IViewpoint> getAllViewpoints() {
-        return VIEWPOINTS;
+    public Collection<IViewpoint> getAllViewpoints() {
+        return registry.values();
     }
     
     /**
      * @param index
      * @return A Viewpoint by its index
      */
-    public IViewpoint getViewpoint(int index) {
-        if(index < 0 || index >= VIEWPOINTS.size()) {
-            return VIEWPOINTS.get(0);
-        }
-        
-        for(IViewpoint vp : VIEWPOINTS) {
-            if(vp.getIndex() == index) {
-                return vp;
-            }
-        }
-        
-        return VIEWPOINTS.get(0);
+    public IViewpoint getViewpoint(IZentaDiagramModel dm) {
+    	if(registry.containsKey(dm)) {
+    		return registry.get(dm);
+    	}
+    	TotalViewpoint vp = new TotalViewpoint(dm);
+    	registry.put(dm, vp);
+    	return vp;
     }
     
     /**
@@ -92,15 +67,17 @@ public class ViewpointsManager {
      */
     public boolean isAllowedType(IDiagramModelComponent dmo) {
         if(dmo instanceof IDiagramModelZentaObject && dmo.getDiagramModel() instanceof IZentaDiagramModel) {
-        	if (null == ((IDiagramModelZentaObject)dmo).getZentaElement()) {
+        	IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject)dmo;
+			if (null == dmzo.getZentaElement()) {
         		return false;
         	}
-            EClass eClass = ((IDiagramModelZentaObject)dmo).getZentaElement().eClass();
-            return isAllowedType((IZentaDiagramModel)dmo.getDiagramModel(), eClass);
+            EClass eClass = dmzo.getZentaElement().eClass();
+            return isAllowedType((IZentaDiagramModel) dmo.getDiagramModel(), eClass);
         }
         if(dmo instanceof IDiagramModelConnection) {
-            return isAllowedType(((IDiagramModelConnection)dmo).getSource()) && 
-                        isAllowedType(((IDiagramModelConnection)dmo).getTarget());
+            IDiagramModelConnection dmc = (IDiagramModelConnection)dmo;
+			return isAllowedType(dmc.getSource()) && 
+                        isAllowedType(dmc.getTarget());
         }
         return true;
     }
@@ -112,7 +89,7 @@ public class ViewpointsManager {
      */
     public boolean isAllowedType(IZentaDiagramModel dm, EClass eClass) {
         if(dm != null) {
-            IViewpoint viewPoint = getViewpoint(dm.getViewpoint());
+            IViewpoint viewPoint = getViewpoint(dm);
             return viewPoint.isAllowedType(eClass);
         }
         return true;

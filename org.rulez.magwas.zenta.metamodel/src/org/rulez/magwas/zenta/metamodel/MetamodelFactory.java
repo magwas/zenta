@@ -5,6 +5,7 @@ import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 /**
  * 
@@ -46,6 +47,8 @@ public interface MetamodelFactory extends EFactory {
 	}
 
 	String getDefiningName(INameable ref);
+
+	Metamodel createMetamodel(IZentaModel zentaModel);
 
 } //MetamodelFactory
 

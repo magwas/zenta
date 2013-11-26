@@ -92,7 +92,7 @@ implements IZentaDiagramEditor {
      */
     protected void setPaletteViewpoint() {
         if(Preferences.STORE.getBoolean(IPreferenceConstants.VIEWPOINTS_HIDE_PALETTE_ELEMENTS)) {
-            getPaletteRoot().setViewpoint(ViewpointsManager.INSTANCE.getViewpoint(getModel().getViewpoint()));
+            getPaletteRoot().setViewpoint(ViewpointsManager.INSTANCE.getViewpoint(getModel()));
         }
     }
     

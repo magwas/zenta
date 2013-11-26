@@ -47,7 +47,7 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.utils.FileUtils;
-import org.rulez.magwas.zenta.metamodel.util.MetamodelBuilder;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -261,7 +261,7 @@ implements IEditorModelManager {
 
 
         IZentaModel model = (IZentaModel)resource.getContents().get(0);
-        new MetamodelBuilder(model);
+        MetamodelFactory.eINSTANCE.createMetamodel(model);
         model.setFile(file);
         model.setDefaults();
         getModels().add(model);
