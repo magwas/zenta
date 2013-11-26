@@ -31,11 +31,17 @@ public class UITestUtils {
 		List<Object> elements = new ArrayList<Object>();
 		elements.add(element);
 		ITreeModelView treeView = (ITreeModelView)ViewManager.showViewPart(ITreeModelView.ID, false);
+		System.out.printf("view = %s\n", treeView);
         if(treeView != null) {
             treeView.getViewer().setSelection(new StructuredSelection(elements), true);
         }
 	}
 
+	public static IWorkbenchWindow getWorkbenchWindow() {
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		return workbench.getActiveWorkbenchWindow();
+	}
+	
 	public static IViewPart openView(String viewId) throws WorkbenchException,
 			PartInitException {
 		String perspectiveId = "org.rulez.magwas.zenta.editor.perspectiveMain";

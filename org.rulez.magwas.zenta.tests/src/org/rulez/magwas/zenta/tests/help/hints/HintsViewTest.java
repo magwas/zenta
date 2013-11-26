@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.tests.UITestWindow;
 public class HintsViewTest {
 
 	@Test
-	@HaveGUI(waitUser = true)
+	@HaveGUI(waitUser = false)
 	public void The_Hints_view_contains_useful_information_about_the_selected_object() throws WorkbenchException {
 		UITestWindow win = new UITestWindow();
 		String viewId = "org.rulez.magwas.zenta.help.hintsView";

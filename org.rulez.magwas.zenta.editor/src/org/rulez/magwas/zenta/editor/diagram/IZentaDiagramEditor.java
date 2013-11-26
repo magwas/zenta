@@ -27,4 +27,5 @@ public interface IZentaDiagramEditor extends IDiagramModelEditor {
      * @param elements
      */
     void selectElements(IZentaElement[] elements);
+    public ZentaDiagramEditorPalette getPaletteRoot();
 }

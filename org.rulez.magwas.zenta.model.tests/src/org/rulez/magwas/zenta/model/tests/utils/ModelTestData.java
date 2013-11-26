@@ -20,13 +20,16 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class ModelTestData {
 
-	private Resource resource;
+	public Resource resource;
+	public IZentaModel model;
 	
 	public ModelTestData() {
 		resource = ModelTestUtils.getZentaModelResource("test.zenta");
 	}
 	
 	public IZentaModel getModel() {
+		if( null != model )
+			return model;
 		return (IZentaModel)resource.getContents().get(0);
 	}
 	

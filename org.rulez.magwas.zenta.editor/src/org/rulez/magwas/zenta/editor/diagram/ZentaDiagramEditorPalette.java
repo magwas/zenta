@@ -42,8 +42,16 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
     
     private PaletteContainer fRelationsGroup;
     
-    private PaletteContainer fBusinessGroup;
+    private PaletteContainer fObjectClassGroup;
 
+    public PaletteContainer _getObjectsGroup() {
+    	return fObjectClassGroup;
+    }
+    
+    public PaletteContainer _getRelationsGroup() {
+    	return fRelationsGroup;
+    }
+    
     public ZentaDiagramEditorPalette() {
         add(createControlsGroup());
         add(new PaletteSeparator("")); //$NON-NLS-1$
@@ -56,6 +64,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         add(new PaletteSeparator("")); //$NON-NLS-1$
         
         createZentaGroup();
+        
     }
 
     /**
@@ -65,12 +74,11 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
     public void setViewpoint(IViewpoint viewpoint) {
         if(fViewpoint != viewpoint) {
             fViewpoint = viewpoint;
-            
             remove(fRelationsGroup);
             fRelationsGroup = createRelationsGroup();
             add(1, fRelationsGroup);
             
-            remove(fBusinessGroup);
+            remove(fObjectClassGroup);
             createZentaGroup();
         }
     }
@@ -79,10 +87,10 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
      * Create the Zenta groups
      */
     private void createZentaGroup() {
-        fBusinessGroup = createBusinessLayerGroup();
+        fObjectClassGroup = createObjectClassGroup();
         
-        if(!fBusinessGroup.getChildren().isEmpty()) {
-            add(fBusinessGroup);
+        if(!fObjectClassGroup.getChildren().isEmpty()) {
+            add(fObjectClassGroup);
         }
     }
         
@@ -148,7 +156,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
     /**
      * Business Palette
      */
-    private PaletteContainer createBusinessLayerGroup() {
+    private PaletteContainer createObjectClassGroup() {
         PaletteContainer group = new PaletteGroup(Messages.ZentaDiagramEditorPalette_8);
         
         for(EClass eClass : ZentaModelUtils.getBusinessClasses()) {

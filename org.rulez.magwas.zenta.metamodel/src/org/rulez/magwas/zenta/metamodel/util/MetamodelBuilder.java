@@ -78,6 +78,8 @@ public class MetamodelBuilder {
 					int feature = notification.getFeatureID(IDiagramModelZentaObject.class);
 					if(feature == IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__SOURCE_CONNECTIONS) {
 						IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
+						if (null == dmzc)
+							return;
 						IDiagramModel dm = dmzc.getDiagramModel();
 						Template template = metaModel.getTemplateFor(dm);
 						if(null == template)
@@ -90,6 +92,8 @@ public class MetamodelBuilder {
 					int feature = notification.getFeatureID(IZentaDiagramModel.class);
 					if(feature == IZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN) {
 						IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
+						if(null == dmzc)
+							return;
 						IDiagramModel dm = dmzc.getDiagramModel();
 						Template template = metaModel.getTemplateFor(dm);
 						if(null == template)

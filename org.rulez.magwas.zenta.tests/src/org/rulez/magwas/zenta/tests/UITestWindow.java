@@ -8,6 +8,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -24,6 +25,7 @@ public class UITestWindow {
 	public UITestWindow() {
 		shell = new Shell();
 		//no, Shell cannot be subclassed
+		shell.setBounds(new Rectangle(0,0,200,200));
 		shell.setLayout(new GridLayout(1,true));
 		setBackgroundWhite(shell);
         compositeForTest = new Composite(shell, 0);

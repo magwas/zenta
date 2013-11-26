@@ -2,6 +2,8 @@ package org.rulez.magwas.zenta.model.tests.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -30,13 +32,19 @@ public class ModelTestUtils {
 		return node;
 	}
 
-	public static Resource getZentaModelResource(String filename){
-		String path = convertNameToResourcePath(filename);
-		IZentaPackage.eINSTANCE.eClass();
-        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
-        Resource resource = resourceSet.createResource(URI.createFileURI(path));
+	public static Resource getZentaModelResource(String filename) {
+		InputStream stream = ModelTestData.class.getResourceAsStream(filename);
+		File temp;
+		Resource resource;
 		try {
+			temp = File.createTempFile("test", ".zenta");
+			temp.delete();
+			Files.copy(stream, temp.toPath());
+			IZentaPackage.eINSTANCE.eClass();
+	        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
+	        resource = resourceSet.createResource(URI.createFileURI(temp.getAbsolutePath()));
 			resource.load(null);
+			//temp.delete();
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new CannotLoadTheResource();
