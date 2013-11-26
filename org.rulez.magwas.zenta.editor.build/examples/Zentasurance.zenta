@@ -43,16 +43,16 @@
     </folder>
     <folder name="Information" id="3eb047a9">
       <element xsi:type="archimate:Representation" id="676" name="Claim Form"/>
-      <element xsi:type="archimate:BusinessObject" id="796" name="Legal aid  Insurance Policy"/>
-      <element xsi:type="archimate:BusinessObject" id="792" name="Insurance Request"/>
-      <element xsi:type="archimate:BusinessObject" id="795" name="Liability  Insurance Policy"/>
-      <element xsi:type="archimate:BusinessObject" id="675" name="Insurance Policy"/>
-      <element xsi:type="archimate:BusinessObject" id="674" name="Customer File"/>
-      <element xsi:type="archimate:BusinessObject" id="673" name="Damage Claim"/>
-      <element xsi:type="archimate:BusinessObject" id="791" name="Customer"/>
-      <element xsi:type="archimate:BusinessObject" id="793" name="Travel  Insurance Policy"/>
-      <element xsi:type="archimate:BusinessObject" id="794" name="Car Insurance Policy"/>
-      <element xsi:type="archimate:BusinessObject" id="803" name="Home Insurance Policy"/>
+      <element xsi:type="archimate:BasicObject" id="796" name="Legal aid  Insurance Policy"/>
+      <element xsi:type="archimate:BasicObject" id="792" name="Insurance Request"/>
+      <element xsi:type="archimate:BasicObject" id="795" name="Liability  Insurance Policy"/>
+      <element xsi:type="archimate:BasicObject" id="675" name="Insurance Policy"/>
+      <element xsi:type="archimate:BasicObject" id="674" name="Customer File"/>
+      <element xsi:type="archimate:BasicObject" id="673" name="Damage Claim"/>
+      <element xsi:type="archimate:BasicObject" id="791" name="Customer"/>
+      <element xsi:type="archimate:BasicObject" id="793" name="Travel  Insurance Policy"/>
+      <element xsi:type="archimate:BasicObject" id="794" name="Car Insurance Policy"/>
+      <element xsi:type="archimate:BasicObject" id="803" name="Home Insurance Policy"/>
     </folder>
     <folder name="Processes" id="2966482c">
       <element xsi:type="archimate:BusinessInteraction" id="722" name="Check and  Sign Contract"/>
@@ -190,19 +190,19 @@
         <element xsi:type="archimate:AssignmentRelationship" id="772" source="733" target="721"/>
         <element xsi:type="archimate:AssignmentRelationship" id="1388" source="514" target="556"/>
         <element xsi:type="archimate:AssignmentRelationship" id="1381" source="1337" target="1368"/>
-        <element xsi:type="archimate:AssociationRelationship" id="464" source="416" target="310"/>
-        <element xsi:type="archimate:AssociationRelationship" id="466" source="416" target="317"/>
-        <element xsi:type="archimate:AssociationRelationship" id="468" source="416" target="352"/>
-        <element xsi:type="archimate:AssociationRelationship" id="458" source="409" target="282"/>
-        <element xsi:type="archimate:AssociationRelationship" id="445" source="402" target="345"/>
-        <element xsi:type="archimate:AssociationRelationship" id="447" source="402" target="409"/>
-        <element xsi:type="archimate:AssociationRelationship" id="460" source="409" target="289"/>
-        <element xsi:type="archimate:AssociationRelationship" id="470" source="423" target="331"/>
-        <element xsi:type="archimate:AssociationRelationship" id="449" source="402" target="423"/>
-        <element xsi:type="archimate:AssociationRelationship" id="443" source="402" target="338"/>
-        <element xsi:type="archimate:AssociationRelationship" id="462" source="416" target="303"/>
-        <element xsi:type="archimate:AssociationRelationship" id="437" source="402" target="416"/>
-        <element xsi:type="archimate:AssociationRelationship" id="1259" source="521" target="1250"/>
+        <element xsi:type="archimate:BasicRelationship" id="464" source="416" target="310"/>
+        <element xsi:type="archimate:BasicRelationship" id="466" source="416" target="317"/>
+        <element xsi:type="archimate:BasicRelationship" id="468" source="416" target="352"/>
+        <element xsi:type="archimate:BasicRelationship" id="458" source="409" target="282"/>
+        <element xsi:type="archimate:BasicRelationship" id="445" source="402" target="345"/>
+        <element xsi:type="archimate:BasicRelationship" id="447" source="402" target="409"/>
+        <element xsi:type="archimate:BasicRelationship" id="460" source="409" target="289"/>
+        <element xsi:type="archimate:BasicRelationship" id="470" source="423" target="331"/>
+        <element xsi:type="archimate:BasicRelationship" id="449" source="402" target="423"/>
+        <element xsi:type="archimate:BasicRelationship" id="443" source="402" target="338"/>
+        <element xsi:type="archimate:BasicRelationship" id="462" source="416" target="303"/>
+        <element xsi:type="archimate:BasicRelationship" id="437" source="402" target="416"/>
+        <element xsi:type="archimate:BasicRelationship" id="1259" source="521" target="1250"/>
         <element xsi:type="archimate:FlowRelationship" id="1618" name="Claim form (electronic)" source="352" target="282"/>
         <element xsi:type="archimate:FlowRelationship" id="1616" name="claim form (paper)" source="282" target="352"/>
         <element xsi:type="archimate:FlowRelationship" id="1772" name="claims" source="521" target="477"/>
@@ -225,13 +225,13 @@
         <element xsi:type="archimate:UsedByRelationship" id="f19393d1" name="call" source="1536" target="521"/>
         <element xsi:type="archimate:UsedByRelationship" id="7f9b43e9" name="write" source="1538" target="521"/>
         <element xsi:type="archimate:UsedByRelationship" id="16871b47" name="write" source="1544" target="521"/>
-        <element xsi:type="archimate:AssociationRelationship" id="a2243077" source="282" target="1536"/>
-        <element xsi:type="archimate:AssociationRelationship" id="659978dc" source="1538" target="282"/>
-        <element xsi:type="archimate:AssociationRelationship" id="be2dbdfd" source="1544" target="352"/>
+        <element xsi:type="archimate:BasicRelationship" id="a2243077" source="282" target="1536"/>
+        <element xsi:type="archimate:BasicRelationship" id="659978dc" source="1538" target="282"/>
+        <element xsi:type="archimate:BasicRelationship" id="be2dbdfd" source="1544" target="352"/>
         <element xsi:type="archimate:UsedByRelationship" id="09da63b3" source="1540" target="507"/>
         <element xsi:type="archimate:UsedByRelationship" id="8d85d21d" source="1542" target="507"/>
-        <element xsi:type="archimate:AssociationRelationship" id="58ee7df2" source="1540" target="289"/>
-        <element xsi:type="archimate:AssociationRelationship" id="4a4cdf33" source="1542" target="289"/>
+        <element xsi:type="archimate:BasicRelationship" id="58ee7df2" source="1540" target="289"/>
+        <element xsi:type="archimate:BasicRelationship" id="4a4cdf33" source="1542" target="289"/>
         <element xsi:type="archimate:AggregationRelationship" id="81b9d07c" source="1546" target="352"/>
         <element xsi:type="archimate:AggregationRelationship" id="2891eb9f" source="1546" target="528"/>
         <element xsi:type="archimate:AssignmentRelationship" id="4a214d41" source="740" target="722"/>
@@ -267,7 +267,7 @@
         <element xsi:type="archimate:FlowRelationship" id="1782" name="product info." source="471" target="507"/>
       </folder>
       <folder name="Products" id="c122a424">
-        <element xsi:type="archimate:AssociationRelationship" id="1274" source="1250" target="1208"/>
+        <element xsi:type="archimate:BasicRelationship" id="1274" source="1250" target="1208"/>
         <element xsi:type="archimate:UsedByRelationship" id="1295" source="1226" target="521"/>
         <element xsi:type="archimate:UsedByRelationship" id="1293" source="1202" target="521"/>
         <element xsi:type="archimate:UsedByRelationship" id="1297" source="1214" target="521"/>
@@ -336,15 +336,15 @@
       <element xsi:type="archimate:UsedByRelationship" id="63eeca37" source="1455" target="861"/>
       <element xsi:type="archimate:UsedByRelationship" id="bc36ad29" source="1462" target="861"/>
       <element xsi:type="archimate:UsedByRelationship" id="776f61b0" source="1462" target="1399"/>
-      <element xsi:type="archimate:AssociationRelationship" id="670aa5ed" source="986" target="1089"/>
-      <element xsi:type="archimate:AssociationRelationship" id="197b66d6" source="1089" target="998"/>
-      <element xsi:type="archimate:AssociationRelationship" id="e479d313" source="998" target="1095"/>
-      <element xsi:type="archimate:AssociationRelationship" id="2dd4031d" source="1095" target="1004"/>
-      <element xsi:type="archimate:AssociationRelationship" id="3fb2a575" source="1004" target="1101"/>
-      <element xsi:type="archimate:AssociationRelationship" id="7e50c753" source="1101" target="1071"/>
-      <element xsi:type="archimate:AssociationRelationship" id="80c919e4" source="1089" target="1065"/>
-      <element xsi:type="archimate:AssociationRelationship" id="ec3fef51" source="992" target="1089"/>
-      <element xsi:type="archimate:AssociationRelationship" id="dd9c00de" source="1101" target="1882"/>
+      <element xsi:type="archimate:BasicRelationship" id="670aa5ed" source="986" target="1089"/>
+      <element xsi:type="archimate:BasicRelationship" id="197b66d6" source="1089" target="998"/>
+      <element xsi:type="archimate:BasicRelationship" id="e479d313" source="998" target="1095"/>
+      <element xsi:type="archimate:BasicRelationship" id="2dd4031d" source="1095" target="1004"/>
+      <element xsi:type="archimate:BasicRelationship" id="3fb2a575" source="1004" target="1101"/>
+      <element xsi:type="archimate:BasicRelationship" id="7e50c753" source="1101" target="1071"/>
+      <element xsi:type="archimate:BasicRelationship" id="80c919e4" source="1089" target="1065"/>
+      <element xsi:type="archimate:BasicRelationship" id="ec3fef51" source="992" target="1089"/>
+      <element xsi:type="archimate:BasicRelationship" id="dd9c00de" source="1101" target="1882"/>
     </folder>
   </folder>
   <folder name="Views" id="e64e9b49" type="diagrams">

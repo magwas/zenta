@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IBusinessObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 
 
 /**
@@ -19,13 +19,13 @@ import org.rulez.magwas.zenta.model.IBusinessObject;
  *
  * @generated
  */
-public class BusinessObject extends ZentaElement implements IBusinessObject {
+public class BasicObject extends ZentaElement implements IBasicObject {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected BusinessObject() {
+    protected BasicObject() {
 		super();
 	}
 
@@ -39,4 +39,4 @@ public class BusinessObject extends ZentaElement implements IBusinessObject {
 		return IZentaPackage.Literals.BUSINESS_OBJECT;
 	}
 
-} //BusinessObject
+} //BasicObject

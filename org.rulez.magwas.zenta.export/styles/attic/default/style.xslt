@@ -55,9 +55,9 @@ e.innerHTML=Date()
              <xsl:with-param name="type">Business Function</xsl:with-param>
         </xsl:apply-templates>
         <h2>Business Information</h2>
-        <xsl:apply-templates select="//zenta:BusinessObject">
+        <xsl:apply-templates select="//zenta:BasicObject">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>
-             <xsl:with-param name="type">Business Object</xsl:with-param>
+             <xsl:with-param name="type">Basic Object</xsl:with-param>
         </xsl:apply-templates>
         <xsl:apply-templates select="//zenta:Representation">
              <xsl:with-param name="color">#ffffb5</xsl:with-param>

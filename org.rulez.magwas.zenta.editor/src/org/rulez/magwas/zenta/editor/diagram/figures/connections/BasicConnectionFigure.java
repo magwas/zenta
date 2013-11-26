@@ -15,15 +15,15 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 
 
 /**
- * Association Connection Figure
+ * Basic Connection Figure
  * 
  * @author Phillip Beauvoir
  */
-public class AssociationConnectionFigure extends AbstractZentaConnectionFigure {
+public class BasicConnectionFigure extends AbstractZentaConnectionFigure {
 	
 	private List<IConnectionDecoration> decorations;
 	
-    public AssociationConnectionFigure(IDiagramModelZentaConnection connection) {
+    public BasicConnectionFigure(IDiagramModelZentaConnection connection) {
         super(connection);
         initDecorations(connection);
     }

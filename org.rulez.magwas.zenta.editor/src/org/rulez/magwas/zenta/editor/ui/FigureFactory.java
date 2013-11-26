@@ -12,7 +12,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.AbstractDiagramModelObjectF
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.IFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
-import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessObjectFigureDelegate;
+import org.rulez.magwas.zenta.editor.diagram.figures.business.BasicObjectFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessValueFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.DiagramModelReferenceFigureDelegate;
 
@@ -27,7 +27,7 @@ public class FigureFactory {
 	private static FigureFactory INSTANCE;
 	
 	FigureFactory() {
-		figureClassMap.put(defaultFigureName, BusinessObjectFigureDelegate.class);
+		figureClassMap.put(defaultFigureName, BasicObjectFigureDelegate.class);
 		figureClassMap.put("diagramReferenceShape", DiagramModelReferenceFigureDelegate.class);
 		figureClassMap.put("emptyShape", RectangleFigureDelegate.class);
 		figureClassMap.put("ellipseShape", BusinessValueFigureDelegate.class);

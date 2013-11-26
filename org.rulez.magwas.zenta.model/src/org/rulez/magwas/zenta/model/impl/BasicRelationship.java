@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IAssociationRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 /**
@@ -19,13 +19,13 @@ import org.rulez.magwas.zenta.model.IAssociationRelationship;
  *
  * @generated
  */
-public class AssociationRelationship extends Relationship implements IAssociationRelationship {
+public class BasicRelationship extends Relationship implements IBasicRelationship {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected AssociationRelationship() {
+    protected BasicRelationship() {
 		super();
 	}
 
@@ -39,4 +39,4 @@ public class AssociationRelationship extends Relationship implements IAssociatio
 		return IZentaPackage.Literals.ASSOCIATION_RELATIONSHIP;
 	}
 
-} //AssociationRelationship
+} //BasicRelationship

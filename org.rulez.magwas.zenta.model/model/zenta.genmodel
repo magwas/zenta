@@ -89,7 +89,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Relationship/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Relationship/target"/>
     </genClasses>
-    <genClasses ecoreClass="zenta.ecore#//AssociationRelationship"/>
+    <genClasses ecoreClass="zenta.ecore#//BasicRelationship"/>
     <genClasses image="false" ecoreClass="zenta.ecore#//BusinessLayerElement"/>
     <genClasses image="false" ecoreClass="zenta.ecore#//DiagramModelComponent">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelComponent/diagramModel"/>
@@ -188,7 +188,7 @@
       </genOperations>
       <genOperations ecoreOperation="zenta.ecore#//DiagramModelZentaConnection/removeRelationshipFromModel"/>
     </genClasses>
-    <genClasses ecoreClass="zenta.ecore#//BusinessObject"/>
+    <genClasses ecoreClass="zenta.ecore#//BasicObject"/>
     <genClasses ecoreClass="zenta.ecore#//SketchModel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//SketchModel/background"/>
     </genClasses>

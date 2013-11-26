@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorInput;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
 import org.rulez.magwas.zenta.editor.propertysections.LineDecorationSection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -139,7 +139,7 @@ public class LineDecorationSectionTest {
 		conn.setLineDecoration("DashedLineDecoration");
 		ZentaDiagramEditor editor = createEditor();
 		section = new LineDecorationSectionExerciser(editor,data);
-		AssociationConnectionEditPart conn2Part = data.getEditPart2();
+		BasicConnectionEditPart conn2Part = data.getEditPart2();
 		conn2Part.getModel().setLineDecoration("DottedLineDecoration");
 		ISelection selection = new StructuredSelection(conn2Part);
 		section.setInput(editor, selection);
@@ -158,7 +158,7 @@ public class LineDecorationSectionTest {
 		conn.setLineDecoration("DashedLineDecoration");
 		ZentaDiagramEditor editor = createEditor();
 		section = new LineDecorationSectionExerciser(editor,data);
-		AssociationConnectionEditPart conn2Part = data.getEditPart2();
+		BasicConnectionEditPart conn2Part = data.getEditPart2();
 		ISelection selection = new StructuredSelection(conn2Part);
 		section.setInput(editor, selection);
 		LineDecorationSectionExerciser exerciser = getExerciser();

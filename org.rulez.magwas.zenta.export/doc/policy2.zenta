@@ -276,19 +276,19 @@ There is also preliminary policy support: the policy also defines what kind of r
     <element xsi:type="archimate:AssignmentRelationship" id="ae814378" source="2da4ddd4" target="221f9269"/>
     <element xsi:type="archimate:CompositionRelationship" id="46298dac" source="88d277df" target="221f9269"/>
     <element xsi:type="archimate:AssignmentRelationship" id="83c5ff92" source="2da4ddd4" target="88d277df"/>
-    <element xsi:type="archimate:AssociationRelationship" id="cf51df42" source="221f9269" target="d12e9581"/>
+    <element xsi:type="archimate:BasicRelationship" id="cf51df42" source="221f9269" target="d12e9581"/>
     <element xsi:type="archimate:CompositionRelationship" id="a9696683" source="221f9269" target="6dc8eb9a"/>
     <element xsi:type="archimate:RealisationRelationship" id="14ee726d" source="221f9269" target="3c2976b7"/>
     <element xsi:type="archimate:AggregationRelationship" id="41d82fdb" source="fde629f6" target="221f9269"/>
-    <element xsi:type="archimate:AssociationRelationship" id="7ced8c96" source="88d277df" target="d12e9581"/>
+    <element xsi:type="archimate:BasicRelationship" id="7ced8c96" source="88d277df" target="d12e9581"/>
     <element xsi:type="archimate:AggregationRelationship" id="b01816b3" source="070226e2" target="88d277df"/>
     <element xsi:type="archimate:CompositionRelationship" id="9981edc1" source="88d277df" target="32820434"/>
     <element xsi:type="archimate:CompositionRelationship" id="6c2f8573" source="561685a8" target="e128b98a"/>
     <element xsi:type="archimate:RealisationRelationship" id="de417761" source="221f9269" target="e128b98a"/>
     <element xsi:type="archimate:RealisationRelationship" id="9dc95b34" source="88d277df" target="1b8ab55e"/>
     <element xsi:type="archimate:RealisationRelationship" id="46c6ea7f" source="88d277df" target="e128b98a"/>
-    <element xsi:type="archimate:AssociationRelationship" id="b2648e75" source="ee68b27d" target="b5b72aa9"/>
-    <element xsi:type="archimate:AssociationRelationship" id="af42e899" source="ee68b27d" target="25df4f32"/>
+    <element xsi:type="archimate:BasicRelationship" id="b2648e75" source="ee68b27d" target="b5b72aa9"/>
+    <element xsi:type="archimate:BasicRelationship" id="af42e899" source="ee68b27d" target="25df4f32"/>
     <element xsi:type="archimate:RealisationRelationship" id="fdf02722" source="ee68b27d" target="200ad530"/>
     <element xsi:type="archimate:AggregationRelationship" id="0230dd26" source="7378d9ce" target="ee68b27d"/>
     <element xsi:type="archimate:UsedByRelationship" id="afc46c36" name="operates" source="ee68b27d" target="f1911570"/>

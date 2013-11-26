@@ -115,7 +115,7 @@ public class EnrichTest {
     }
     
     @Test
-    public void testAssociationOnGroup() throws ParserConfigurationException,
+    public void testBasicOnGroup() throws ParserConfigurationException,
             SAXException, IOException, URISyntaxException,
             XPathExpressionException {
         XmlTestCase tc = new XmlTestCase("EnrichTest6");
@@ -129,7 +129,7 @@ public class EnrichTest {
     }
     
     @Test
-    public void testAssociationOnFolder() throws ParserConfigurationException,
+    public void testBasicOnFolder() throws ParserConfigurationException,
             SAXException, IOException, URISyntaxException,
             XPathExpressionException {
         XmlTestCase tc = new XmlTestCase("EnrichTest7");

@@ -574,7 +574,7 @@
             <td>803d1beb</td>
             <td>The network zone the server runs on</td>
             <td>0</td>
-            <td>//zenta:Network[@id=//zenta:AssociationRelationship[@source=$id]/@target]/@name</td>
+            <td>//zenta:Network[@id=//zenta:BasicRelationship[@source=$id]/@target]/@name</td>
             <td>true</td>
          </tr>
          <tr>

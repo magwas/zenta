@@ -2,36 +2,36 @@
 <zenta:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" name="zenta model model" id="7e06dac7" version="2.2.1">
   <folder name="Business" id="2247b20f" type="business">
     <folder name="metamodel elements" id="c2e8f476">
-      <element xsi:type="zenta:BusinessObject" id="147c81dd" name="ChildOC ObjectClass"/>
-      <element xsi:type="zenta:BusinessObject" id="e87a6172" name="ChildRC RelationClass"/>
-      <element xsi:type="zenta:BusinessObject" id="b342891b" name="ParentOC Objectclass"/>
-      <element xsi:type="zenta:BusinessObject" id="bf9f52ee" name="ParentRC RelationClass"/>
-      <element xsi:type="zenta:BusinessObject" id="15db96e4" name="GrandKidOC ObjectClass"/>
-      <element xsi:type="zenta:BusinessObject" id="24ce872f" name="GrandKidRC RelationClass"/>
+      <element xsi:type="zenta:BasicObject" id="147c81dd" name="ChildOC ObjectClass"/>
+      <element xsi:type="zenta:BasicObject" id="e87a6172" name="ChildRC RelationClass"/>
+      <element xsi:type="zenta:BasicObject" id="b342891b" name="ParentOC Objectclass"/>
+      <element xsi:type="zenta:BasicObject" id="bf9f52ee" name="ParentRC RelationClass"/>
+      <element xsi:type="zenta:BasicObject" id="15db96e4" name="GrandKidOC ObjectClass"/>
+      <element xsi:type="zenta:BasicObject" id="24ce872f" name="GrandKidRC RelationClass"/>
     </folder>
     <folder name="model elements" id="def5cd31">
-      <element xsi:type="zenta:BusinessObject" id="d60960aa" name="element with name ChildOC and type ParentOC"/>
-      <element xsi:type="zenta:BusinessObject" id="ed12ffbf" name="element with name ParentOC and type GranddadOC"/>
-      <element xsi:type="zenta:BusinessObject" id="04fce3cc" name="relation with name ChildRC and type ParentRC"/>
-      <element xsi:type="zenta:BusinessObject" id="e276d0cf" name="relation with name ParentRC and type GranddadRC"/>
-      <element xsi:type="zenta:BusinessObject" id="307231f4" name="unnamed element of ChildOC"/>
-      <element xsi:type="zenta:BusinessObject" id="2612882a" name="Unnamed relaton of ChildRC"/>
-      <element xsi:type="zenta:BusinessObject" id="359cb6e7" name="element named GrandKidOC of ChildOC"/>
-      <element xsi:type="zenta:BusinessObject" id="2a2266eb" name="relation named GrandKidRC of ChildRC"/>
+      <element xsi:type="zenta:BasicObject" id="d60960aa" name="element with name ChildOC and type ParentOC"/>
+      <element xsi:type="zenta:BasicObject" id="ed12ffbf" name="element with name ParentOC and type GranddadOC"/>
+      <element xsi:type="zenta:BasicObject" id="04fce3cc" name="relation with name ChildRC and type ParentRC"/>
+      <element xsi:type="zenta:BasicObject" id="e276d0cf" name="relation with name ParentRC and type GranddadRC"/>
+      <element xsi:type="zenta:BasicObject" id="307231f4" name="unnamed element of ChildOC"/>
+      <element xsi:type="zenta:BasicObject" id="2612882a" name="Unnamed relaton of ChildRC"/>
+      <element xsi:type="zenta:BasicObject" id="359cb6e7" name="element named GrandKidOC of ChildOC"/>
+      <element xsi:type="zenta:BasicObject" id="2a2266eb" name="relation named GrandKidRC of ChildRC"/>
     </folder>
     <folder name="Diagram elements" id="9f1bc05c">
-      <element xsi:type="zenta:BusinessObject" id="d5d051ae" name="DiagramConnection"/>
-      <element xsi:type="zenta:BusinessObject" id="b6ac560d" name="DiagramConnection"/>
-      <element xsi:type="zenta:BusinessObject" id="dff412bd" name="DiagramElement"/>
-      <element xsi:type="zenta:BusinessObject" id="db6c6a82" name="DiagramElement"/>
+      <element xsi:type="zenta:BasicObject" id="d5d051ae" name="DiagramConnection"/>
+      <element xsi:type="zenta:BasicObject" id="b6ac560d" name="DiagramConnection"/>
+      <element xsi:type="zenta:BasicObject" id="dff412bd" name="DiagramElement"/>
+      <element xsi:type="zenta:BasicObject" id="db6c6a82" name="DiagramElement"/>
     </folder>
     <folder name="Rules" id="7af43a7b">
       <folder name="appearance rules" id="c1669509">
-        <element xsi:type="zenta:BusinessObject" id="c5cc02d6" name="appearance attributes for a metamodel entity are stored in the defining model element as properties"/>
-        <element xsi:type="zenta:BusinessObject" id="d456283b" name="The elements and relations in a figure get their appearance from their metamodel class"/>
-        <element xsi:type="zenta:BusinessObject" id="df04e191" name="The name for the metamodel appearance attributes look like the attributename used in the diagram element"/>
-        <element xsi:type="zenta:BusinessObject" id="7d83254e" name="Appearance attributes"/>
-        <element xsi:type="zenta:BusinessObject" id="c86566db" name="for ObjectClass elements">
+        <element xsi:type="zenta:BasicObject" id="c5cc02d6" name="appearance attributes for a metamodel entity are stored in the defining model element as properties"/>
+        <element xsi:type="zenta:BasicObject" id="d456283b" name="The elements and relations in a figure get their appearance from their metamodel class"/>
+        <element xsi:type="zenta:BasicObject" id="df04e191" name="The name for the metamodel appearance attributes look like the attributename used in the diagram element"/>
+        <element xsi:type="zenta:BasicObject" id="7d83254e" name="Appearance attributes"/>
+        <element xsi:type="zenta:BasicObject" id="c86566db" name="for ObjectClass elements">
           <documentation>font
 fontColor
 textAlignment
@@ -39,7 +39,7 @@ fillColor
 elementShape
 </documentation>
         </element>
-        <element xsi:type="zenta:BusinessObject" id="90c33565" name="for RelationClass relations">
+        <element xsi:type="zenta:BasicObject" id="90c33565" name="for RelationClass relations">
           <documentation>zma_font
 zma_fontColor
 zma_textPosition
@@ -48,75 +48,75 @@ zma_lineColor
 zma_lineDecoration
 </documentation>
         </element>
-        <element xsi:type="zenta:BusinessObject" id="4ec7244a" name="Test object"/>
-        <element xsi:type="zenta:BusinessObject" id="9e9b8aab" name="When the model is loaded, diagram elements are converted according to the defining element"/>
-        <element xsi:type="zenta:BusinessObject" id="58181744" name="If there is discrepancy, a warning is issued"/>
-        <element xsi:type="zenta:BusinessObject" id="a1655aae" name="When a relation or element becomes a defining element, the appearance properties are copied from the diagram element"/>
-        <element xsi:type="zenta:BusinessObject" id="f6212702" name="When  any diagram element with a defining model object changes appearance, the defining object gets updated"/>
-        <element xsi:type="zenta:BusinessObject" id="6ed2ef87" name="When the defining object gets updated, all diagram objects referring that are updated also"/>
-        <element xsi:type="zenta:BusinessObject" id="070460f8" name="Appearance is synchronized between the defining object and its corresponding diagram objects"/>
-        <element xsi:type="zenta:BusinessObject" id="df6b5fea" name="Appearance is synchronized between a defining element and diagram elements of the same objectclass"/>
-        <element xsi:type="zenta:BusinessObject" id="272c7b99" name="When the appearance of a defining object is changed, all diagram elements of that object get updated"/>
-        <element xsi:type="zenta:BusinessObject" id="e3d97418" name="When the model is loaded, appearance of diagram elements are updated"/>
-        <element xsi:type="zenta:BusinessObject" id="bc7e8f28" name="Diagram elements can override the appearance given by the objectclass"/>
-        <element xsi:type="zenta:BusinessObject" id="c436a1df" name="When the objectclass of an element changed, the corresponding diagram elements are updated"/>
+        <element xsi:type="zenta:BasicObject" id="4ec7244a" name="Test object"/>
+        <element xsi:type="zenta:BasicObject" id="9e9b8aab" name="When the model is loaded, diagram elements are converted according to the defining element"/>
+        <element xsi:type="zenta:BasicObject" id="58181744" name="If there is discrepancy, a warning is issued"/>
+        <element xsi:type="zenta:BasicObject" id="a1655aae" name="When a relation or element becomes a defining element, the appearance properties are copied from the diagram element"/>
+        <element xsi:type="zenta:BasicObject" id="f6212702" name="When  any diagram element with a defining model object changes appearance, the defining object gets updated"/>
+        <element xsi:type="zenta:BasicObject" id="6ed2ef87" name="When the defining object gets updated, all diagram objects referring that are updated also"/>
+        <element xsi:type="zenta:BasicObject" id="070460f8" name="Appearance is synchronized between the defining object and its corresponding diagram objects"/>
+        <element xsi:type="zenta:BasicObject" id="df6b5fea" name="Appearance is synchronized between a defining element and diagram elements of the same objectclass"/>
+        <element xsi:type="zenta:BasicObject" id="272c7b99" name="When the appearance of a defining object is changed, all diagram elements of that object get updated"/>
+        <element xsi:type="zenta:BasicObject" id="e3d97418" name="When the model is loaded, appearance of diagram elements are updated"/>
+        <element xsi:type="zenta:BasicObject" id="bc7e8f28" name="Diagram elements can override the appearance given by the objectclass"/>
+        <element xsi:type="zenta:BasicObject" id="c436a1df" name="When the objectclass of an element changed, the corresponding diagram elements are updated"/>
       </folder>
-      <element xsi:type="zenta:BusinessObject" id="442f5652" name="An unnamed object in a template does not define a metamodel class">
+      <element xsi:type="zenta:BasicObject" id="442f5652" name="An unnamed object in a template does not define a metamodel class">
         <property key="implemented"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="2e012ae2" name="A named object in a template defines a metamodel class">
+      <element xsi:type="zenta:BasicObject" id="2e012ae2" name="A named object in a template defines a metamodel class">
         <property key="implemented"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="0c34e3f9" name="Naming rules"/>
-      <element xsi:type="zenta:BusinessObject" id="b6487700" name="If there is a non-empty className property, then it is the name">
+      <element xsi:type="zenta:BasicObject" id="0c34e3f9" name="Naming rules"/>
+      <element xsi:type="zenta:BasicObject" id="b6487700" name="If there is a non-empty className property, then it is the name">
         <property key="implemented"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="0344493d" name="if there is an empty className property, then the object is unnamed">
+      <element xsi:type="zenta:BasicObject" id="0344493d" name="if there is an empty className property, then the object is unnamed">
         <property key="implemented"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="4c58242f" name="if there is no className property and name is not empty, then it is the name">
+      <element xsi:type="zenta:BasicObject" id="4c58242f" name="if there is no className property and name is not empty, then it is the name">
         <property key="implemented"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="2ec1700f" name="if there is no className property and the name is empty, then the object is unnamed">
+      <element xsi:type="zenta:BasicObject" id="2ec1700f" name="if there is no className property and the name is empty, then the object is unnamed">
         <property key="implemented"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="069234f1" name="A defining object for an objectclass becames of type of that objectclass"/>
-      <element xsi:type="zenta:BusinessObject" id="ff5940a2" name="In case of naming clash the behaviour is undefined yet">
+      <element xsi:type="zenta:BasicObject" id="069234f1" name="A defining object for an objectclass becames of type of that objectclass"/>
+      <element xsi:type="zenta:BasicObject" id="ff5940a2" name="In case of naming clash the behaviour is undefined yet">
         <documentation>possible resolutions:
 - new objectclass with the same name, but different inheritance
   - for logics using the objectclass name it means multiple inheritance
 - prohibited
 - morphs to the actually existing objectclass</documentation>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="a9e10e2f" name="Metamodel is transient"/>
-      <element xsi:type="zenta:BusinessObject" id="7240dde4" name="builds at load time">
+      <element xsi:type="zenta:BasicObject" id="a9e10e2f" name="Metamodel is transient"/>
+      <element xsi:type="zenta:BasicObject" id="7240dde4" name="builds at load time">
         <property key="implemented"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="7f68d3ab" name="not saved with the model"/>
+      <element xsi:type="zenta:BasicObject" id="7f68d3ab" name="not saved with the model"/>
     </folder>
-    <element xsi:type="zenta:BusinessObject" id="c2dca968" name="Template"/>
-    <element xsi:type="zenta:BusinessObject" id="4d14b736" name="Model"/>
-    <element xsi:type="zenta:BusinessObject" id="7a9dca5b" name="MetaModel"/>
+    <element xsi:type="zenta:BasicObject" id="c2dca968" name="Template"/>
+    <element xsi:type="zenta:BasicObject" id="4d14b736" name="Model"/>
+    <element xsi:type="zenta:BasicObject" id="7a9dca5b" name="MetaModel"/>
   </folder>
   <folder name="Connectors" id="3705b750" type="connectors"/>
   <folder name="Relations" id="20b2fe98" type="relations">
-    <element xsi:type="zenta:AssociationRelationship" id="47c438b7" source="b342891b" target="ed12ffbf"/>
-    <element xsi:type="zenta:AssociationRelationship" id="bb230559" source="bf9f52ee" target="e276d0cf"/>
-    <element xsi:type="zenta:AssociationRelationship" id="4f59e5e8" source="dff412bd" target="ed12ffbf"/>
-    <element xsi:type="zenta:AssociationRelationship" id="fe58d1c4" source="d5d051ae" target="e276d0cf"/>
-    <element xsi:type="zenta:AssociationRelationship" id="0db1665c" source="b342891b" target="ed12ffbf"/>
-    <element xsi:type="zenta:AssociationRelationship" id="2f8ff1e7" source="bf9f52ee" target="e276d0cf"/>
-    <element xsi:type="zenta:AssociationRelationship" id="e7df6df7" source="db6c6a82" target="d60960aa"/>
-    <element xsi:type="zenta:AssociationRelationship" id="dff3a2ba" source="b6ac560d" target="04fce3cc"/>
-    <element xsi:type="zenta:AssociationRelationship" id="9d36e6bf" source="04fce3cc" target="147c81dd"/>
-    <element xsi:type="zenta:AssociationRelationship" id="be3221cb" source="d60960aa" target="e87a6172"/>
-    <element xsi:type="zenta:AssociationRelationship" id="92819444" source="147c81dd" target="b342891b"/>
-    <element xsi:type="zenta:AssociationRelationship" id="e7ec16db" source="e87a6172" target="bf9f52ee"/>
-    <element xsi:type="zenta:AssociationRelationship" id="99a9f0e7" source="147c81dd" target="307231f4"/>
-    <element xsi:type="zenta:AssociationRelationship" id="979ad51c" source="e87a6172" target="2612882a"/>
-    <element xsi:type="zenta:AssociationRelationship" id="0d1bb3cb" source="15db96e4" target="359cb6e7"/>
-    <element xsi:type="zenta:AssociationRelationship" id="6fcf06e4" source="24ce872f" target="2a2266eb"/>
-    <element xsi:type="zenta:AssociationRelationship" id="455acc6d" name="Test relation" source="4ec7244a" target="d456283b"/>
+    <element xsi:type="zenta:BasicRelationship" id="47c438b7" source="b342891b" target="ed12ffbf"/>
+    <element xsi:type="zenta:BasicRelationship" id="bb230559" source="bf9f52ee" target="e276d0cf"/>
+    <element xsi:type="zenta:BasicRelationship" id="4f59e5e8" source="dff412bd" target="ed12ffbf"/>
+    <element xsi:type="zenta:BasicRelationship" id="fe58d1c4" source="d5d051ae" target="e276d0cf"/>
+    <element xsi:type="zenta:BasicRelationship" id="0db1665c" source="b342891b" target="ed12ffbf"/>
+    <element xsi:type="zenta:BasicRelationship" id="2f8ff1e7" source="bf9f52ee" target="e276d0cf"/>
+    <element xsi:type="zenta:BasicRelationship" id="e7df6df7" source="db6c6a82" target="d60960aa"/>
+    <element xsi:type="zenta:BasicRelationship" id="dff3a2ba" source="b6ac560d" target="04fce3cc"/>
+    <element xsi:type="zenta:BasicRelationship" id="9d36e6bf" source="04fce3cc" target="147c81dd"/>
+    <element xsi:type="zenta:BasicRelationship" id="be3221cb" source="d60960aa" target="e87a6172"/>
+    <element xsi:type="zenta:BasicRelationship" id="92819444" source="147c81dd" target="b342891b"/>
+    <element xsi:type="zenta:BasicRelationship" id="e7ec16db" source="e87a6172" target="bf9f52ee"/>
+    <element xsi:type="zenta:BasicRelationship" id="99a9f0e7" source="147c81dd" target="307231f4"/>
+    <element xsi:type="zenta:BasicRelationship" id="979ad51c" source="e87a6172" target="2612882a"/>
+    <element xsi:type="zenta:BasicRelationship" id="0d1bb3cb" source="15db96e4" target="359cb6e7"/>
+    <element xsi:type="zenta:BasicRelationship" id="6fcf06e4" source="24ce872f" target="2a2266eb"/>
+    <element xsi:type="zenta:BasicRelationship" id="455acc6d" name="Test relation" source="4ec7244a" target="d456283b"/>
   </folder>
   <folder name="Views" id="8f176825" type="diagrams">
     <element xsi:type="zenta:ZentaDiagramModel" id="9a9a23cb" name="Basic rules" connectionRouterType="1">

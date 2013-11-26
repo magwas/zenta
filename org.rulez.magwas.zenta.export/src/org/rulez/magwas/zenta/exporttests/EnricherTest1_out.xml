@@ -15,19 +15,19 @@
          <adat originid="target">target</adat>
       </ProcessStep>
    </zenta:BusinessProcess> 
-  <zenta:BusinessObject id="middle" name="Middle">
+  <zenta:BasicObject id="middle" name="Middle">
             <property key="objectClass" value="Data"/>
       <Data parentid="middle">
          <child originid="target">target</child>
          <folyamat originid="source">Megadja az adatait</folyamat>
       </Data>
-   </zenta:BusinessObject>
-  <zenta:BusinessObject id="target" name="target">
+   </zenta:BasicObject>
+  <zenta:BasicObject id="target" name="target">
            <property key="objectClass" value="Data"/>
       <Data parentid="target">
          <parent originid="middle">Middle</parent>
       </Data>
-   </zenta:BusinessObject>
+   </zenta:BasicObject>
   <zenta:AccessRelationship accessType="1" id="3d3b4d33" source="source" target="middle"/>
   <zenta:CompositionRelationship id="f88df5f5" source="middle" target="target"/>
   

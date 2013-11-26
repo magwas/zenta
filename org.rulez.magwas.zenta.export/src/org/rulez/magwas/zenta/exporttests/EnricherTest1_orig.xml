@@ -11,10 +11,10 @@ xmlns:zenta="http://magwas.rulez.org/zenta" name="test" id="90af6f69" version="2
             <property key="objectClass" value="ProcessStep"/>
       
   </element> 
-  <element xsi:type="zenta:BusinessObject" id="middle" name="Middle">
+  <element xsi:type="zenta:BasicObject" id="middle" name="Middle">
             <property key="objectClass" value="Data"/>
   </element>
-  <element xsi:type="zenta:BusinessObject" id="target" name="target">
+  <element xsi:type="zenta:BasicObject" id="target" name="target">
            <property key="objectClass" value="Data"/>
   </element>
   <element xsi:type="zenta:AccessRelationship" id="3d3b4d33" source="source" target="middle" accessType="1"/>

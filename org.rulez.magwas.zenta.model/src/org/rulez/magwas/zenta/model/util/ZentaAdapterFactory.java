@@ -19,11 +19,11 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IAssociationRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IBusinessLayerElement;
-import org.rulez.magwas.zenta.model.IBusinessObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -191,8 +191,8 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 				return createRelationshipAdapter();
 			}
 			@Override
-			public Adapter caseAssociationRelationship(IAssociationRelationship object) {
-				return createAssociationRelationshipAdapter();
+			public Adapter caseBasicRelationship(IBasicRelationship object) {
+				return createBasicRelationshipAdapter();
 			}
 			@Override
 			public Adapter caseBusinessLayerElement(IBusinessLayerElement object) {
@@ -271,8 +271,8 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 				return createDiagramModelZentaConnectionAdapter();
 			}
 			@Override
-			public Adapter caseBusinessObject(IBusinessObject object) {
-				return createBusinessObjectAdapter();
+			public Adapter caseBasicObject(IBasicObject object) {
+				return createBasicObjectAdapter();
 			}
 			@Override
 			public Adapter caseSketchModel(ISketchModel object) {
@@ -573,16 +573,16 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IAssociationRelationship <em>Association Relationship</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IBasicRelationship <em>Basic Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.model.IAssociationRelationship
+	 * @see org.rulez.magwas.zenta.model.IBasicRelationship
 	 * @generated
 	 */
-	public Adapter createAssociationRelationshipAdapter() {
+	public Adapter createBasicRelationshipAdapter() {
 		return null;
 	}
 
@@ -853,16 +853,16 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IBusinessObject <em>Business Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IBasicObject <em>Basic Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.model.IBusinessObject
+	 * @see org.rulez.magwas.zenta.model.IBasicObject
 	 * @generated
 	 */
-	public Adapter createBusinessObjectAdapter() {
+	public Adapter createBasicObjectAdapter() {
 		return null;
 	}
 

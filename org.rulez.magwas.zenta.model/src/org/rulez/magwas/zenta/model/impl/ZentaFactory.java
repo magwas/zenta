@@ -17,9 +17,9 @@ import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IAssociationRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IBounds;
-import org.rulez.magwas.zenta.model.IBusinessObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
@@ -87,7 +87,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 			case IZentaPackage.JUNCTION: return createJunction();
 			case IZentaPackage.AND_JUNCTION: return createAndJunction();
 			case IZentaPackage.OR_JUNCTION: return createOrJunction();
-			case IZentaPackage.ASSOCIATION_RELATIONSHIP: return createAssociationRelationship();
+			case IZentaPackage.ASSOCIATION_RELATIONSHIP: return createBasicRelationship();
 			case IZentaPackage.DIAGRAM_MODEL_REFERENCE: return createDiagramModelReference();
 			case IZentaPackage.DIAGRAM_MODEL_GROUP: return createDiagramModelGroup();
 			case IZentaPackage.DIAGRAM_MODEL_NOTE: return createDiagramModelNote();
@@ -98,7 +98,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 			case IZentaPackage.ZENTA_DIAGRAM_MODEL: return createZentaDiagramModel();
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT: return createDiagramModelZentaObject();
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION: return createDiagramModelZentaConnection();
-			case IZentaPackage.BUSINESS_OBJECT: return createBusinessObject();
+			case IZentaPackage.BUSINESS_OBJECT: return createBasicObject();
 			case IZentaPackage.SKETCH_MODEL: return createSketchModel();
 			case IZentaPackage.SKETCH_MODEL_STICKY: return createSketchModelSticky();
 			case IZentaPackage.SKETCH_MODEL_ACTOR: return createSketchModelActor();
@@ -171,8 +171,8 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IBusinessObject createBusinessObject() {
-		BusinessObject businessObject = new BusinessObject();
+    public IBasicObject createBasicObject() {
+		BasicObject businessObject = new BasicObject();
 		return businessObject;
 	}
 
@@ -372,8 +372,8 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IAssociationRelationship createAssociationRelationship() {
-		AssociationRelationship associationRelationship = new AssociationRelationship();
+    public IBasicRelationship createBasicRelationship() {
+		BasicRelationship associationRelationship = new BasicRelationship();
 		return associationRelationship;
 	}
 

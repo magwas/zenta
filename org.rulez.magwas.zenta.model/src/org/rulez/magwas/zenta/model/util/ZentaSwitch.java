@@ -17,11 +17,11 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IAssociationRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IBusinessLayerElement;
-import org.rulez.magwas.zenta.model.IBusinessObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -301,8 +301,8 @@ public class ZentaSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case IZentaPackage.ASSOCIATION_RELATIONSHIP: {
-				IAssociationRelationship associationRelationship = (IAssociationRelationship)theEObject;
-				T result = caseAssociationRelationship(associationRelationship);
+				IBasicRelationship associationRelationship = (IBasicRelationship)theEObject;
+				T result = caseBasicRelationship(associationRelationship);
 				if (result == null) result = caseRelationship(associationRelationship);
 				if (result == null) result = caseZentaElement(associationRelationship);
 				if (result == null) result = caseZentaModelElement(associationRelationship);
@@ -532,8 +532,8 @@ public class ZentaSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case IZentaPackage.BUSINESS_OBJECT: {
-				IBusinessObject businessObject = (IBusinessObject)theEObject;
-				T result = caseBusinessObject(businessObject);
+				IBasicObject businessObject = (IBasicObject)theEObject;
+				T result = caseBasicObject(businessObject);
 				if (result == null) result = caseBusinessLayerElement(businessObject);
 				if (result == null) result = caseZentaElement(businessObject);
 				if (result == null) result = caseZentaModelElement(businessObject);
@@ -883,17 +883,17 @@ public class ZentaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Association Relationship</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Basic Relationship</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Association Relationship</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Basic Relationship</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAssociationRelationship(IAssociationRelationship object) {
+	public T caseBasicRelationship(IBasicRelationship object) {
 		return null;
 	}
 
@@ -1183,17 +1183,17 @@ public class ZentaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Business Object</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Basic Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Business Object</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Basic Object</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBusinessObject(IBusinessObject object) {
+	public T caseBasicObject(IBasicObject object) {
 		return null;
 	}
 

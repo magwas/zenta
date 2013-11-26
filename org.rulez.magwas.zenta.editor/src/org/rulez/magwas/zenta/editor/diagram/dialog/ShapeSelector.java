@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-import org.rulez.magwas.zenta.editor.diagram.editparts.business.BusinessObjectEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
 import org.rulez.magwas.zenta.editor.ui.FigureFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
@@ -36,7 +36,7 @@ public class ShapeSelector extends EventManager {
     private String fShapeValue;
     private IDiagramModelObject fShapeObject;
 
-	private BusinessObjectEditPart editPart;
+	private BasicObjectEditPart editPart;
 
 	public ShapeSelector(Composite parent) {
 		fButton = new Button(parent, SWT.PUSH);
@@ -129,7 +129,7 @@ public class ShapeSelector extends EventManager {
 
 	public void setElement(IDiagramModelObject shapeObject,EditPart editPart) {
 		fShapeObject = shapeObject;
-		this.editPart=(BusinessObjectEditPart) editPart;
+		this.editPart=(BasicObjectEditPart) editPart;
 	    setShapeValue(shapeObject.getElementShape());
 	}
 

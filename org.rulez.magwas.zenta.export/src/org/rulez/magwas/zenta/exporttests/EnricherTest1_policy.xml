@@ -12,7 +12,7 @@
                 structural="">
          <description/>
          <default 
-                  select="//zenta:BusinessObject[@id=//zenta:AccessRelationship[@source=$id]/@target]"
+                  select="//zenta:BasicObject[@id=//zenta:AccessRelationship[@source=$id]/@target]"
                   multi="true">
             <description/>
          </default>
@@ -23,7 +23,7 @@
       </objectClass>   
    <objectClass name="Data" abstract="">
       <description/>
-      <ancestor class="zenta:BusinessObject"/>
+      <ancestor class="zenta:BasicObject"/>
       <property name="child"
                 type="xs:string"
                 minOccurs="0"
@@ -31,7 +31,7 @@
                 structural="">
          <description/>
          <default
-                  select="//zenta:BusinessObject[@id=//zenta:CompositionRelationship[@source=$id]/@target]"
+                  select="//zenta:BasicObject[@id=//zenta:CompositionRelationship[@source=$id]/@target]"
                   multi="true">
             <description/>
          </default>
@@ -43,7 +43,7 @@
                 structural="">
          <description/>
          <default 
-                  select="//zenta:BusinessObject[@id=//zenta:CompositionRelationship[@target=$id]/@source]"
+                  select="//zenta:BasicObject[@id=//zenta:CompositionRelationship[@target=$id]/@source]"
                   multi="true">
             <description/>
          </default>

@@ -197,7 +197,7 @@ public class ZentaModelUtils {
      */
     public static EClass[] getBusinessClasses() {
         return new EClass[] {
-                IZentaPackage.eINSTANCE.getBusinessObject(),
+                IZentaPackage.eINSTANCE.getBasicObject(),
         };
     }
     
@@ -207,7 +207,7 @@ public class ZentaModelUtils {
      */
     public static EClass[] getRelationsClasses() {
         return new EClass[] {
-                IZentaPackage.eINSTANCE.getAssociationRelationship(),
+                IZentaPackage.eINSTANCE.getBasicRelationship(),
         };
     }
 

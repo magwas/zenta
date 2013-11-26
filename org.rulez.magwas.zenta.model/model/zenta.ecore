@@ -126,7 +126,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ZentaElement"
         resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AssociationRelationship" eSuperTypes="#//Relationship"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessLayerElement" abstract="true"
       interface="true" eSuperTypes="#//ZentaElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiagramModelComponent" abstract="true"
@@ -280,7 +280,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" eType="#//Relationship"
         volatile="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessObject" eSuperTypes="#//BusinessLayerElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//BusinessLayerElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="SketchModel" eSuperTypes="#//DiagramModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="background" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>

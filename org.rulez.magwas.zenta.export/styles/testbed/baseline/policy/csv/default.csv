@@ -7,7 +7,7 @@ d07f34b8;A composition relationship points from here to the attribute;0;//attrib
 47ca6523;name of the parent node;0;../@name;;
 4f571b31;The place where the physical hardware of the server is located;0;//zenta:Location[@id=//zenta:AssignmentRelationship[@target=$id]/@source]/@name;true;
 e07cded6;This is the physical hardware the server is running on;0;//zenta:Node[@id=//zenta:CompositionRelationship[@target=$id]/@source]/@name;true;
-803d1beb;The network zone the server runs on;0;//zenta:Network[@id=//zenta:AssociationRelationship[@source=$id]/@target]/@name;true;
+803d1beb;The network zone the server runs on;0;//zenta:Network[@id=//zenta:BasicRelationship[@source=$id]/@target]/@name;true;
 64e3b89e;This is the operating system of the server;0;//zenta:SystemSoftware[@id=//zenta:CompositionRelationship[@source=$id]/@target]/@name;true;
 03787811;This is the role of the server in the big picture;0;//zenta:ApplicationFunction[@id=//zenta:RealisationRelationship[@source=$id]/@target]/@name;true;
 1d75ebdd;The life cycle phase;0;//zenta:Plateau[@id=//zenta:AggregationRelationship[@target=$id]/@source]/@name;true;

@@ -6,22 +6,22 @@
 package org.rulez.magwas.zenta.editor.diagram.editparts.connections;
 
 import org.eclipse.draw2d.IFigure;
-import org.rulez.magwas.zenta.editor.diagram.figures.connections.AssociationConnectionFigure;
+import org.rulez.magwas.zenta.editor.diagram.figures.connections.BasicConnectionFigure;
 
 /**
- * Association Connection Edit Part
+ * Basic Connection Edit Part
  * 
  * @author Phillip Beauvoir
  */
-public class AssociationConnectionEditPart extends AbstractZentaConnectionEditPart {
+public class BasicConnectionEditPart extends AbstractZentaConnectionEditPart {
 	
     @Override
     protected IFigure createFigure() {
-		return new AssociationConnectionFigure(getModel());
+		return new BasicConnectionFigure(getModel());
 	}
 
 	public void refreshFigure() {
-		AssociationConnectionFigure figure = (AssociationConnectionFigure) getFigure();
+		BasicConnectionFigure figure = (BasicConnectionFigure) getFigure();
 		figure.initDecorations(getModel());
 		figure.refreshVisuals();
 	}

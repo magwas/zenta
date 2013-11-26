@@ -551,7 +551,7 @@
             </documentation>
          </description>
          <default order="0"
-                  select="//zenta:Network[@id=//zenta:AssociationRelationship[@source=$id]/@target]/@name"
+                  select="//zenta:Network[@id=//zenta:BasicRelationship[@source=$id]/@target]/@name"
                   multi="true">
             <description>
                <documentation>A Network this Server is associated to<br/>

@@ -143,12 +143,12 @@
    <extension
          point="org.rulez.magwas.zenta.help.hints">
       <hint
-            class="org.rulez.magwas.zenta.model.IBusinessObject"
+            class="org.rulez.magwas.zenta.model.IBasicObject"
             file="hints/business_object.html"
             title="%hint.title.3">
       </hint>
       <hint
-            class="org.rulez.magwas.zenta.model.IAssociationRelationship"
+            class="org.rulez.magwas.zenta.model.IBasicRelationship"
             file="hints/association.html"
             title="%hint.title.38">
       </hint>

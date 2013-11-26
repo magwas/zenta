@@ -386,7 +386,7 @@ Look at the end of it for any hint.
 
 </documentation>
         </element>
-        <element xsi:type="archimate:BusinessObject" id="d0800141" name="application log file">
+        <element xsi:type="archimate:BasicObject" id="d0800141" name="application log file">
           <documentation>In the installation directory of Zenta there is a file called Zenta.ini
 Look at the definition of osgi.instance.area, looking something like this:
 -Dosgi.instance.area=@user.home/uk.ac.bolton/Zenta
@@ -1232,7 +1232,7 @@ With extended archimate the whole development cycle would be traceable in one mo
           <element xsi:type="archimate:DataObject" id="803d1beb" name="The network zone the server runs on">
             <documentation>A Network this Server is associated to</documentation>
             <property key="default:order" value="0"/>
-            <property key="default:select" value="//archimate:Network[@id=//archimate:AssociationRelationship[@source=$id]/@target]/@name"/>
+            <property key="default:select" value="//archimate:Network[@id=//archimate:BasicRelationship[@source=$id]/@target]/@name"/>
             <property key="default:multi" value="true"/>
           </element>
           <element xsi:type="archimate:DataObject" id="64e3b89e" name="This is the operating system of the server">
@@ -2595,13 +2595,13 @@ It should be sorted out to be able to correctly support batch report generation 
     <element xsi:type="archimate:CompositionRelationship" id="9e2644eb" source="33f4221f" target="359391c5"/>
     <element xsi:type="archimate:CompositionRelationship" id="cadb0f11" source="33f4221f" target="6e87982f"/>
     <element xsi:type="archimate:CompositionRelationship" id="843013a4" source="33f4221f" target="f95d7b28"/>
-    <element xsi:type="archimate:AssociationRelationship" id="03fb04e4" source="91d6a6a9" target="d3da8982"/>
-    <element xsi:type="archimate:AssociationRelationship" id="bc504d82" source="97a51643" target="28574436"/>
-    <element xsi:type="archimate:AssociationRelationship" id="01546bf3" source="05cb6a4f" target="bd2e073d"/>
-    <element xsi:type="archimate:AssociationRelationship" id="8862f574" source="f10d54c7" target="4173c76a"/>
-    <element xsi:type="archimate:AssociationRelationship" id="e1b3879d" source="80816c1d" target="4173c76a"/>
+    <element xsi:type="archimate:BasicRelationship" id="03fb04e4" source="91d6a6a9" target="d3da8982"/>
+    <element xsi:type="archimate:BasicRelationship" id="bc504d82" source="97a51643" target="28574436"/>
+    <element xsi:type="archimate:BasicRelationship" id="01546bf3" source="05cb6a4f" target="bd2e073d"/>
+    <element xsi:type="archimate:BasicRelationship" id="8862f574" source="f10d54c7" target="4173c76a"/>
+    <element xsi:type="archimate:BasicRelationship" id="e1b3879d" source="80816c1d" target="4173c76a"/>
     <element xsi:type="archimate:CompositionRelationship" id="6d8f0420" source="05cb6a4f" target="80816c1d"/>
-    <element xsi:type="archimate:AssociationRelationship" id="068e8d03" source="80816c1d" target="609f7882"/>
+    <element xsi:type="archimate:BasicRelationship" id="068e8d03" source="80816c1d" target="609f7882"/>
     <element xsi:type="archimate:CompositionRelationship" id="30ab1456" source="fe5c65b7" target="bfd0d4dc"/>
     <element xsi:type="archimate:CompositionRelationship" id="deaa5799" source="fe5c65b7" target="871fc2f2"/>
     <element xsi:type="archimate:CompositionRelationship" id="459cac36" source="fe5c65b7" target="6ea847ae"/>
@@ -2618,7 +2618,7 @@ It should be sorted out to be able to correctly support batch report generation 
     <element xsi:type="archimate:CompositionRelationship" id="46298dac" source="88d277df" target="221f9269"/>
     <element xsi:type="archimate:AssignmentRelationship" id="83c5ff92" source="2da4ddd4" target="88d277df"/>
     <element xsi:type="archimate:CompositionRelationship" id="08696327" source="bfd0d4dc" target="e07cded6"/>
-    <element xsi:type="archimate:AssociationRelationship" id="cf51df42" source="221f9269" target="d12e9581"/>
+    <element xsi:type="archimate:BasicRelationship" id="cf51df42" source="221f9269" target="d12e9581"/>
     <element xsi:type="archimate:CompositionRelationship" id="1b389251" source="5f4cdc11" target="803d1beb"/>
     <element xsi:type="archimate:CompositionRelationship" id="a9696683" source="221f9269" target="6dc8eb9a"/>
     <element xsi:type="archimate:CompositionRelationship" id="d97af0bb" source="d63b56c2" target="64e3b89e"/>
@@ -2630,7 +2630,7 @@ It should be sorted out to be able to correctly support batch report generation 
     <element xsi:type="archimate:UsedByRelationship" id="d4cb0f86" name="manages" source="221f9269" target="8484165f"/>
     <element xsi:type="archimate:CompositionRelationship" id="d2759ef1" source="4666bdc0" target="72ecce09"/>
     <element xsi:type="archimate:CompositionRelationship" id="8d09276d" source="df2abf25" target="524c00b1"/>
-    <element xsi:type="archimate:AssociationRelationship" id="7ced8c96" source="88d277df" target="d12e9581"/>
+    <element xsi:type="archimate:BasicRelationship" id="7ced8c96" source="88d277df" target="d12e9581"/>
     <element xsi:type="archimate:AggregationRelationship" id="b01816b3" source="070226e2" target="88d277df"/>
     <element xsi:type="archimate:UsedByRelationship" id="2fcb352f" name="operates" source="88d277df" target="8484165f"/>
     <element xsi:type="archimate:UsedByRelationship" id="55b13812" name="manages" source="88d277df" target="151d0d88"/>
@@ -2653,10 +2653,10 @@ It should be sorted out to be able to correctly support batch report generation 
     <element xsi:type="archimate:RealisationRelationship" id="46c6ea7f" source="88d277df" target="e128b98a"/>
     <element xsi:type="archimate:CompositionRelationship" id="34f6395b" source="b6b62bd4" target="c012a502"/>
     <element xsi:type="archimate:CompositionRelationship" id="89e1904d" source="c012a502" target="94ef9402"/>
-    <element xsi:type="archimate:AssociationRelationship" id="b2648e75" source="ee68b27d" target="b5b72aa9"/>
-    <element xsi:type="archimate:AssociationRelationship" id="4c6a6f40" source="ee68b27d" target="4704c7c8"/>
+    <element xsi:type="archimate:BasicRelationship" id="b2648e75" source="ee68b27d" target="b5b72aa9"/>
+    <element xsi:type="archimate:BasicRelationship" id="4c6a6f40" source="ee68b27d" target="4704c7c8"/>
     <element xsi:type="archimate:AggregationRelationship" id="47bb1f76" name="phisicalHardware" source="ee68b27d" target="ee68b27d"/>
-    <element xsi:type="archimate:AssociationRelationship" id="af42e899" source="ee68b27d" target="25df4f32"/>
+    <element xsi:type="archimate:BasicRelationship" id="af42e899" source="ee68b27d" target="25df4f32"/>
     <element xsi:type="archimate:UsedByRelationship" id="c8f79991" source="588de21e" target="ee68b27d"/>
     <element xsi:type="archimate:RealisationRelationship" id="fdf02722" source="ee68b27d" target="200ad530"/>
     <element xsi:type="archimate:AggregationRelationship" id="0230dd26" source="7378d9ce" target="ee68b27d"/>

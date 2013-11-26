@@ -6,13 +6,13 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 
 public class SelectionMockup implements ISelection, IStructuredSelection {
 
-	AssociationConnectionEditPart editPart;
+	BasicConnectionEditPart editPart;
 	
-	public SelectionMockup(AssociationConnectionEditPart associationConnectionEditPart) {
+	public SelectionMockup(BasicConnectionEditPart associationConnectionEditPart) {
 		this.editPart = associationConnectionEditPart;
 	}
 
@@ -27,7 +27,7 @@ public class SelectionMockup implements ISelection, IStructuredSelection {
 	}
 
 	@Override
-	public Iterator<AssociationConnectionEditPart> iterator() {
+	public Iterator<BasicConnectionEditPart> iterator() {
 		return toList().iterator();
 	}
 
@@ -42,8 +42,8 @@ public class SelectionMockup implements ISelection, IStructuredSelection {
 	}
 
 	@Override
-	public List<AssociationConnectionEditPart> toList() {
-		List<AssociationConnectionEditPart> l = new ArrayList<AssociationConnectionEditPart>();
+	public List<BasicConnectionEditPart> toList() {
+		List<BasicConnectionEditPart> l = new ArrayList<BasicConnectionEditPart>();
 		l.add(editPart);
 		return l;
 	}

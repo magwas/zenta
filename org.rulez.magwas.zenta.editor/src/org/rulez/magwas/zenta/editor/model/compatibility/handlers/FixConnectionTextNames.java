@@ -83,7 +83,7 @@ public class FixConnectionTextNames implements ICompatibilityHandler {
         switch(relationship.eClass().getClassifierID()) {
         //FIXME from object class
             case IZentaPackage.ASSOCIATION_RELATIONSHIP:
-                return "Association relation"; //$NON-NLS-1$
+                return "Basic relation"; //$NON-NLS-1$
         }
         return ""; //$NON-NLS-1$
     }

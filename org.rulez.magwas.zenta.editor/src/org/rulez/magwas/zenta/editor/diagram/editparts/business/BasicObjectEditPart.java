@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.editor.diagram.editparts.business;
 
 import org.eclipse.draw2d.IFigure;
 import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractZentaEditableTextFlowEditPart;
-import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessObjectFigure;
+import org.rulez.magwas.zenta.editor.diagram.figures.business.BasicObjectFigure;
 
 
 /**
@@ -15,16 +15,16 @@ import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessObjectFigu
  * 
  * @author Phillip Beauvoir
  */
-public class BusinessObjectEditPart
+public class BasicObjectEditPart
 extends AbstractZentaEditableTextFlowEditPart {            
     
     @Override
     protected IFigure createFigure() {
-        return new BusinessObjectFigure(getModel());
+        return new BasicObjectFigure(getModel());
     }
     
     public void shapeShift(String shapename) {
-    	((BusinessObjectFigure)this.getFigure()).setFigureShape(shapename);
+    	((BasicObjectFigure)this.getFigure()).setFigureShape(shapename);
     }
  
 }

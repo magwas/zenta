@@ -13,9 +13,9 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IZentaPackage#getBusinessObject()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject()
  * @model
  * @generated
  */
-public interface IBusinessObject extends IBusinessLayerElement {
-} // IBusinessObject
+public interface IBasicObject extends IBusinessLayerElement {
+} // IBasicObject

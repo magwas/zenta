@@ -23,9 +23,9 @@ public class Messages extends NLS {
 
     public static String AssignmentConnectionUIProvider_1;
 
-    public static String AssociationConnectionUIProvider_0;
+    public static String BasicConnectionUIProvider_0;
 
-    public static String AssociationConnectionUIProvider_1;
+    public static String BasicConnectionUIProvider_1;
 
     public static String CompositionConnectionUIProvider_0;
 

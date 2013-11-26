@@ -17,10 +17,10 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
  * 
  * @author Phillip Beauvoir
  */
-public class BusinessObjectFigure extends AbstractTextFlowFigure {
+public class BasicObjectFigure extends AbstractTextFlowFigure {
     
         
-    public BusinessObjectFigure(IDiagramModelZentaObject diagramModelObject) {
+    public BasicObjectFigure(IDiagramModelZentaObject diagramModelObject) {
         super(diagramModelObject);
         setFigureShape(diagramModelObject.getElementShape());
         refreshVisuals();

@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.LineDecorationCommand;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.connections.ConnectionDecorationFactory;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
@@ -36,7 +36,7 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
 	protected Map<String,Button> buttonMap = new HashMap<String,Button>();
 
 
-	private AssociationConnectionEditPart editPart;
+	private BasicConnectionEditPart editPart;
  
 	@Override
 	protected void createControls(Composite parent) {
@@ -134,7 +134,7 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
 	@Override
 	protected void setElement(Object element) {
         makeSureItIsConnectionEditPart(element);
-    	editPart = (AssociationConnectionEditPart)element;
+    	editPart = (BasicConnectionEditPart)element;
 		modelObject = (IDiagramModelConnection)editPart.getModel();
         makeSureModelObjectIsntNull();
         refreshControls();

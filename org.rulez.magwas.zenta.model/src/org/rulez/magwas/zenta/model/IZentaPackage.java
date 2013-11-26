@@ -1089,11 +1089,11 @@ public interface IZentaPackage extends EPackage {
 	int RELATIONSHIP_FEATURE_COUNT = ZENTA_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.AssociationRelationship <em>Association Relationship</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BasicRelationship <em>Basic Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.AssociationRelationship
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getAssociationRelationship()
+	 * @see org.rulez.magwas.zenta.model.impl.BasicRelationship
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBasicRelationship()
 	 * @generated
 	 */
 	int ASSOCIATION_RELATIONSHIP = 19;
@@ -1171,7 +1171,7 @@ public interface IZentaPackage extends EPackage {
 	int ASSOCIATION_RELATIONSHIP__TARGET = RELATIONSHIP__TARGET;
 
 	/**
-	 * The number of structural features of the '<em>Association Relationship</em>' class.
+	 * The number of structural features of the '<em>Basic Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3107,11 +3107,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_ZENTA_CONNECTION_FEATURE_COUNT = DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BusinessObject <em>Business Object</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BasicObject <em>Basic Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.BusinessObject
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBusinessObject()
+	 * @see org.rulez.magwas.zenta.model.impl.BasicObject
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBasicObject()
 	 * @generated
 	 */
 	int BUSINESS_OBJECT = 39;
@@ -3171,7 +3171,7 @@ public interface IZentaPackage extends EPackage {
 	int BUSINESS_OBJECT__PROPERTIES = BUSINESS_LAYER_ELEMENT__PROPERTIES;
 
 	/**
-	 * The number of structural features of the '<em>Business Object</em>' class.
+	 * The number of structural features of the '<em>Basic Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4015,14 +4015,14 @@ public interface IZentaPackage extends EPackage {
 	EReference getRelationship_Target();
 
 	/**
-	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.IAssociationRelationship <em>Association Relationship</em>}'.
+	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.IBasicRelationship <em>Basic Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Association Relationship</em>'.
-	 * @see org.rulez.magwas.zenta.model.IAssociationRelationship
+	 * @return the meta object for class '<em>Basic Relationship</em>'.
+	 * @see org.rulez.magwas.zenta.model.IBasicRelationship
 	 * @generated
 	 */
-	EClass getAssociationRelationship();
+	EClass getBasicRelationship();
 
 	/**
 	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.IBusinessLayerElement <em>Business Layer Element</em>}'.
@@ -4611,14 +4611,14 @@ public interface IZentaPackage extends EPackage {
 	EReference getDiagramModelZentaConnection_Relationship();
 
 	/**
-	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.IBusinessObject <em>Business Object</em>}'.
+	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.IBasicObject <em>Basic Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Business Object</em>'.
-	 * @see org.rulez.magwas.zenta.model.IBusinessObject
+	 * @return the meta object for class '<em>Basic Object</em>'.
+	 * @see org.rulez.magwas.zenta.model.IBasicObject
 	 * @generated
 	 */
-	EClass getBusinessObject();
+	EClass getBasicObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.ISketchModel <em>Sketch Model</em>}'.
@@ -5039,14 +5039,14 @@ public interface IZentaPackage extends EPackage {
 		EReference RELATIONSHIP__TARGET = eINSTANCE.getRelationship_Target();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.AssociationRelationship <em>Association Relationship</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BasicRelationship <em>Basic Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.AssociationRelationship
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getAssociationRelationship()
+		 * @see org.rulez.magwas.zenta.model.impl.BasicRelationship
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBasicRelationship()
 		 * @generated
 		 */
-		EClass ASSOCIATION_RELATIONSHIP = eINSTANCE.getAssociationRelationship();
+		EClass ASSOCIATION_RELATIONSHIP = eINSTANCE.getBasicRelationship();
 
 		/**
 		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.IBusinessLayerElement <em>Business Layer Element</em>}' class.
@@ -5527,14 +5527,14 @@ public interface IZentaPackage extends EPackage {
 		EReference DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP = eINSTANCE.getDiagramModelZentaConnection_Relationship();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BusinessObject <em>Business Object</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BasicObject <em>Basic Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.BusinessObject
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBusinessObject()
+		 * @see org.rulez.magwas.zenta.model.impl.BasicObject
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBasicObject()
 		 * @generated
 		 */
-		EClass BUSINESS_OBJECT = eINSTANCE.getBusinessObject();
+		EClass BUSINESS_OBJECT = eINSTANCE.getBasicObject();
 
 		/**
 		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.SketchModel <em>Sketch Model</em>}' class.

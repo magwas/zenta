@@ -3,51 +3,51 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.ui.factory.connections;
+package org.rulez.magwas.zenta.editor.ui.factory.business;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 
 
 /**
- * Association Connection UI Provider
+ * Business Object UI Provider
  * 
  * @author Phillip Beauvoir
  */
-public class AssociationConnectionUIProvider extends AbstractConnectionUIProvider {
+public class BasicObjectUIProvider extends AbstractBusinessUIProvider {
 
     public EClass providerFor() {
-        return IZentaPackage.eINSTANCE.getAssociationRelationship();
+        return IZentaPackage.eINSTANCE.getBasicObject();
     }
     
     @Override
     public EditPart createEditPart() {
-        return new AssociationConnectionEditPart();
+        return new BasicObjectEditPart();
     }
 
     @Override
     public String getDefaultName() {
-        return Messages.AssociationConnectionUIProvider_0;
+        return Messages.BasicObjectUIProvider_0;
     }
 
     @Override
     public String getDefaultShortName() {
-        return Messages.AssociationConnectionUIProvider_1;
+        return Messages.BasicObjectUIProvider_1;
     }
 
     @Override
     public Image getImage() {
-        return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_ASSOCIATION_CONNECTION_16);
+        return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_BUSINESS_OBJECT_16);
     }
 
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ASSOCIATION_CONNECTION_16);
+        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_BUSINESS_OBJECT_16);
     }
 }

@@ -7,7 +7,7 @@
 	<key char="g" relationship="AggregationRelationship" />
 	<key char="i" relationship="AssignmentRelationship" />
 	<key char="n" relationship="InfluenceRelationship" />
-	<key char="o" relationship="AssociationRelationship" />
+	<key char="o" relationship="BasicRelationship" />
 	<key char="r" relationship="RealisationRelationship" />
 	<key char="s" relationship="SpecialisationRelationship" />
 	<key char="t" relationship="TriggeringRelationship" />

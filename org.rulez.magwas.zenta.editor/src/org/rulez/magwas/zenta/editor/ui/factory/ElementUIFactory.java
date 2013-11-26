@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.editor.ui.factory.business.BusinessObjectUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.connections.AssociationConnectionUIProvider;
+import org.rulez.magwas.zenta.editor.ui.factory.business.BasicObjectUIProvider;
+import org.rulez.magwas.zenta.editor.ui.factory.connections.BasicConnectionUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.connections.LineConnectionUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.diagram.DiagramModelReferenceUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.diagram.GroupUIProvider;
@@ -41,9 +41,9 @@ public class ElementUIFactory {
         registerProvider(new AndJunctionUIProvider());
         registerProvider(new OrJunctionUIProvider());
         
-        registerProvider(new AssociationConnectionUIProvider());
+        registerProvider(new BasicConnectionUIProvider());
         
-        registerProvider(new BusinessObjectUIProvider());
+        registerProvider(new BasicObjectUIProvider());
         registerProvider(new NoteUIProvider());
         registerProvider(new GroupUIProvider());
         registerProvider(new DiagramModelReferenceUIProvider());

@@ -13,9 +13,9 @@ package org.rulez.magwas.zenta.model;
  * <!-- end-user-doc -->
  *
  *
- * @see org.rulez.magwas.zenta.model.IZentaPackage#getAssociationRelationship()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicRelationship()
  * @model
  * @generated
  */
-public interface IAssociationRelationship extends IRelationship {
-} // IAssociationRelationship
+public interface IBasicRelationship extends IRelationship {
+} // IBasicRelationship

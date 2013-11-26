@@ -7,8 +7,8 @@ import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 
-public class BusinessObjectFigureDelegate extends RectangleFigureDelegate {
-    public BusinessObjectFigureDelegate(IDiagramModelObjectFigure owner) {
+public class BasicObjectFigureDelegate extends RectangleFigureDelegate {
+    public BasicObjectFigureDelegate(IDiagramModelObjectFigure owner) {
 		super(owner);
 	}
 

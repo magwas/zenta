@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.util.Util;
-import org.rulez.magwas.zenta.model.IBusinessObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestUtils;
 import org.w3c.dom.Document;
@@ -31,7 +31,7 @@ public class ModelTests {
 	@Test
 	public void testIdOkay() throws IOException, ParserConfigurationException, SAXException, URISyntaxException, XPathExpressionException {
 		ModelTestData testdata = new ModelTestData();
-		IBusinessObject bo = (IBusinessObject) testdata.getById("f33bd0d2");
+		IBasicObject bo = (IBasicObject) testdata.getById("f33bd0d2");
 		assertEquals("Procedure",bo.getName());
 		testdata.saveResource();
 		String respath = ModelTestUtils.convertNameToResourcePath("test.zenta.bak");

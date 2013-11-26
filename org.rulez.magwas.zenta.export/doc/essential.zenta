@@ -29,7 +29,7 @@
       </element>
       <element xsi:type="archimate:Driver" id="586b632e" name="Business Driver"/>
       <element xsi:type="archimate:BusinessCollaboration" id="a288ee77" name="Business domain"/>
-      <element xsi:type="archimate:Goal" id="09d3363c" name="Business Objective"/>
+      <element xsi:type="archimate:Goal" id="09d3363c" name="Basic Objective"/>
       <element xsi:type="archimate:BusinessService" id="15a1a4c5" name="Business Capability"/>
       <element xsi:type="archimate:Product" id="cc839814" name="Product Concept"/>
     </folder>
@@ -57,9 +57,9 @@
   <folder name="Relations" id="c04ce726" type="relations">
     <element xsi:type="archimate:InfluenceRelationship" id="c17f65a8" name="motivates" source="586b632e" target="09d3363c"/>
     <element xsi:type="archimate:InfluenceRelationship" id="1afbad75" name="supports" source="09d3363c" target="09d3363c"/>
-    <element xsi:type="archimate:AssociationRelationship" id="61e08e15" name="strategic objective" source="a288ee77" target="09d3363c"/>
-    <element xsi:type="archimate:AssociationRelationship" id="d90de34a" name="has" source="a288ee77" target="15a1a4c5"/>
-    <element xsi:type="archimate:AssociationRelationship" id="c9bf1878" name="supports" source="15a1a4c5" target="cc839814"/>
+    <element xsi:type="archimate:BasicRelationship" id="61e08e15" name="strategic objective" source="a288ee77" target="09d3363c"/>
+    <element xsi:type="archimate:BasicRelationship" id="d90de34a" name="has" source="a288ee77" target="15a1a4c5"/>
+    <element xsi:type="archimate:BasicRelationship" id="c9bf1878" name="supports" source="15a1a4c5" target="cc839814"/>
     <element xsi:type="archimate:InfluenceRelationship" id="2ce5dde4" source="cdb88137" target="aaea40a3"/>
   </folder>
   <folder name="Views" id="cabd6081" type="diagrams"/>

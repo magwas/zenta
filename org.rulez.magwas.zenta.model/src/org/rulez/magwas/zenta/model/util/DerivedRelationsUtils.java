@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IAssociationRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IRelationship;
 
 
@@ -36,7 +36,7 @@ public class DerivedRelationsUtils {
     static List<EClass> weaklist = new ArrayList<EClass>();
     
     static {
-        weaklist.add(IZentaPackage.eINSTANCE.getAssociationRelationship());
+        weaklist.add(IZentaPackage.eINSTANCE.getBasicRelationship());
     }
     
     /**
@@ -106,7 +106,7 @@ public class DerivedRelationsUtils {
      * @return True if relation is bi-directional
      */
     public static boolean isBidirectionalRelationship(IRelationship relation) {
-        //return relation instanceof IAssociationRelationship || relation instanceof IAssignmentRelationship;
+        //return relation instanceof IBasicRelationship || relation instanceof IAssignmentRelationship;
         return false;
     }
     
@@ -115,7 +115,7 @@ public class DerivedRelationsUtils {
      * @return True if relation is a structural relationship
      */
     public static boolean isStructuralRelationship(IRelationship relation) {
-        return relation instanceof IAssociationRelationship; 
+        return relation instanceof IBasicRelationship; 
    }
     
     /**

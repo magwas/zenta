@@ -3,7 +3,7 @@ package org.rulez.magwas.zenta.tests.propertysections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.CommandStack;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.AssociationConnectionEditPart;
+import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -12,11 +12,11 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 
 public class ModelAndEditPartTestData {
-	private AssociationConnectionEditPart editPart;
+	private BasicConnectionEditPart editPart;
 	private IDiagramModelZentaConnection connection;
 	private IZentaDiagramModel diagramModel;
 	private IDiagramModelZentaConnection connection2;
-	private AssociationConnectionEditPart editPart2;
+	private BasicConnectionEditPart editPart2;
 
 	public ModelAndEditPartTestData() {
 		CommandStack stack = new CommandStack();
@@ -35,9 +35,9 @@ public class ModelAndEditPartTestData {
 	}
 
 	private void createEditPart() {
-		editPart=new AssociationConnectionEditPart();
+		editPart=new BasicConnectionEditPart();
 		editPart.setModel(connection);
-		editPart2=new AssociationConnectionEditPart();
+		editPart2=new BasicConnectionEditPart();
 		editPart2.setModel(connection2);
 	}
 
@@ -70,11 +70,11 @@ public class ModelAndEditPartTestData {
 		this.connection = modelConnectionObject;
 	}
 
-	public AssociationConnectionEditPart getEditPart() {
+	public BasicConnectionEditPart getEditPart() {
 		return editPart;
 	}
 
-	public void setEditPart(AssociationConnectionEditPart editPart) {
+	public void setEditPart(BasicConnectionEditPart editPart) {
 		this.editPart = editPart;
 	}
 
@@ -82,7 +82,7 @@ public class ModelAndEditPartTestData {
 		return diagramModel;
 	}
 
-	public AssociationConnectionEditPart getEditPart2() {
+	public BasicConnectionEditPart getEditPart2() {
 		return editPart2;
 	}
 

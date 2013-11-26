@@ -45,9 +45,9 @@ public class Messages extends NLS {
 
     public static String BusinessMeaningUIProvider_0;
 
-    public static String BusinessObjectUIProvider_0;
+    public static String BasicObjectUIProvider_0;
 
-    public static String BusinessObjectUIProvider_1;
+    public static String BasicObjectUIProvider_1;
 
     public static String BusinessProcessUIProvider_0;
 

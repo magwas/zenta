@@ -80,13 +80,13 @@ public interface IZentaFactory extends EFactory {
 	IOrJunction createOrJunction();
 
 	/**
-	 * Returns a new object of class '<em>Association Relationship</em>'.
+	 * Returns a new object of class '<em>Basic Relationship</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Association Relationship</em>'.
+	 * @return a new object of class '<em>Basic Relationship</em>'.
 	 * @generated
 	 */
-	IAssociationRelationship createAssociationRelationship();
+	IBasicRelationship createBasicRelationship();
 
 	IDiagramModelReference createDiagramModelReference();
 
@@ -182,13 +182,13 @@ public interface IZentaFactory extends EFactory {
 	IDiagramModelZentaConnection createDiagramModelZentaConnection();
 
 	/**
-	 * Returns a new object of class '<em>Business Object</em>'.
+	 * Returns a new object of class '<em>Basic Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Business Object</em>'.
+	 * @return a new object of class '<em>Basic Object</em>'.
 	 * @generated
 	 */
-	IBusinessObject createBusinessObject();
+	IBasicObject createBasicObject();
 
 	/**
 	 * Returns a new object of class '<em>Sketch Model</em>'.

@@ -20,18 +20,18 @@
         </child>
         <property key="Template"/>
       </element>
-      <element xsi:type="zenta:BusinessObject" id="ea94cf6c" name="User"/>
-      <element xsi:type="zenta:BusinessObject" id="23138a61" name="Data"/>
-      <element xsi:type="zenta:BusinessObject" id="f33bd0d2" name="Procedure"/>
-      <element xsi:type="zenta:BusinessObject" id="b3342401" name="ProcessStep"/>
+      <element xsi:type="zenta:BasicObject" id="ea94cf6c" name="User"/>
+      <element xsi:type="zenta:BasicObject" id="23138a61" name="Data"/>
+      <element xsi:type="zenta:BasicObject" id="f33bd0d2" name="Procedure"/>
+      <element xsi:type="zenta:BasicObject" id="b3342401" name="ProcessStep"/>
     </folder>
     <element xsi:type="zenta:ZentaDiagramModel" id="bfe14ecd" name="Default View"/>
   </folder>
   <folder name="Connectors" id="e716ac78" type="connectors"/>
   <folder name="Relations" id="3bd2f7ae" type="relations">
-    <element xsi:type="zenta:AssociationRelationship" id="b0e2bfd8" name="does" source="ea94cf6c" target="f33bd0d2"/>
-    <element xsi:type="zenta:AssociationRelationship" id="a972e26e" name="uses" source="f33bd0d2" target="23138a61"/>
-    <element xsi:type="zenta:AssociationRelationship" id="30753345" source="f33bd0d2" target="b3342401"/>
+    <element xsi:type="zenta:BasicRelationship" id="b0e2bfd8" name="does" source="ea94cf6c" target="f33bd0d2"/>
+    <element xsi:type="zenta:BasicRelationship" id="a972e26e" name="uses" source="f33bd0d2" target="23138a61"/>
+    <element xsi:type="zenta:BasicRelationship" id="30753345" source="f33bd0d2" target="b3342401"/>
   </folder>
   <folder name="Views" id="cee6d0f0" type="diagrams"/>
 </zenta:model>
