@@ -178,7 +178,6 @@ public class LineDecorationSectionTest {
 		
 	@After
 	public void tearDown() throws IOException {
-		data.editor.dispose();
 		IEditorModelManager.INSTANCE.saveModel(data.model);
 		IEditorModelManager.INSTANCE.closeModel(data.model);
 	}

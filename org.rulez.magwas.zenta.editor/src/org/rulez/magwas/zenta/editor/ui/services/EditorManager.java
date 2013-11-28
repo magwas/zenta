@@ -134,7 +134,7 @@ public class EditorManager {
                 }
             }
             catch(PartInitException ex) {
-                ex.printStackTrace();
+                throw new RuntimeException(ex);
             }
         }
         

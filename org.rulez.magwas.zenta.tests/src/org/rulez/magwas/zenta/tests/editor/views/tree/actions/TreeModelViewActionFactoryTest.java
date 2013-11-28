@@ -1,17 +1,12 @@
 package org.rulez.magwas.zenta.tests.editor.views.tree.actions;
 
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.requests.CreateConnectionRequest;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.widgets.Event;
 import org.junit.After;
 import org.junit.Test;
-import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.views.tree.actions.TreeModelViewActionFactory;
-import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.tests.IsInteractive;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
