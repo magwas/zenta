@@ -346,9 +346,10 @@ implements ITreeModelView, IUIRequestListener {
         getSite().registerContextMenu(ID + ".new_menu", newMenu, getViewer()); //$NON-NLS-1$
 
         manager.add(new Separator());
-        
+        IZentaModel model = null;
         // Selected model
         if(selected instanceof IZentaModel) {
+            model = (IZentaModel) selected;
             manager.add(fActionCloseModel);
             manager.add(fActionSaveModel);
             manager.add(new Separator());
@@ -356,21 +357,28 @@ implements ITreeModelView, IUIRequestListener {
         
         // Selected Diagram
         if(selected instanceof IDiagramModel) {
+            IDiagramModel dm = (IDiagramModel) selected;
+            model = dm.getZentaModel();
             manager.add(fActionOpenDiagram);
             manager.add(new Separator("open")); //$NON-NLS-1$
         }
         
         if(selected instanceof IFolder) {
+        	IFolder dm = (IFolder) selected;
+            model = dm.getZentaModel();
             newMenu.add(fActionNewFolder);
             newMenu.add(new Separator());
         }
         
         // Create "New" Actions
-        List<IAction> actions = TreeModelViewActionFactory.INSTANCE.getNewObjectActions(selected);
-        if(!actions.isEmpty()) {
-            for(IAction action : actions) {
-                newMenu.add(action);
-            }
+        if(null != model) {
+            TreeModelViewActionFactory factory = new TreeModelViewActionFactory(model);
+            List<IAction> actions = factory.getNewObjectActions(selected);
+            if(!actions.isEmpty()) {
+                for(IAction action : actions) {
+                    newMenu.add(action);
+                }
+            }        	
         }
         
         newMenu.add(new Separator("new_additions")); //$NON-NLS-1$

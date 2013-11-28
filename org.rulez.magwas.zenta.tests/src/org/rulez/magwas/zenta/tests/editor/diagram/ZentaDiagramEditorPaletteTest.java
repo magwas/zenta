@@ -34,7 +34,7 @@ public class ZentaDiagramEditorPaletteTest {
 		PaletteContainer objectsgroup = palette._getObjectsGroup();
 		assertNotNull(objectsgroup);
 		
-		List children = objectsgroup.getChildren();
+		List<?> children = objectsgroup.getChildren();
 		for ( Object kid : children)
 			System.out.printf("\nkid=%s\n", kid);
 		

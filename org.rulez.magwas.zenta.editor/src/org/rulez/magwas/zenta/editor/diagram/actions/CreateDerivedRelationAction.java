@@ -8,7 +8,6 @@ package org.rulez.magwas.zenta.editor.diagram.actions;
 import java.util.List;
 
 import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.commands.Command;
@@ -46,6 +45,9 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.metamodel.DerivedRelationsUtils;
+import org.rulez.magwas.zenta.metamodel.DerivedRelationsUtils.TooComplicatedException;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -53,8 +55,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
-import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils.TooComplicatedException;
 
 
 
@@ -67,6 +67,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
     
     public static final String ID = "CreateDerivedRelationAction"; //$NON-NLS-1$
     public static final String TEXT = Messages.CreateDerivedRelationAction_0;
+	private DerivedRelationsUtils drutil;
 
     public CreateDerivedRelationAction(IWorkbenchPart part) {
         super(part);
@@ -108,7 +109,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         
         ChainList chainList1 = new ChainList(diagramModelObject1, diagramModelObject2);
         ChainList chainList2 = new ChainList(diagramModelObject2, diagramModelObject1);
-        
+        drutil = new DerivedRelationsUtils(diagramModelObject1.getZentaElement().getZentaModel());
         // Already has a direct relationship in both directions
         if(chainList1.hasExistingDirectRelationship() && chainList2.hasExistingDirectRelationship()) {
             MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
@@ -147,8 +148,8 @@ public class CreateDerivedRelationAction extends SelectionAction {
             List<IRelationship> chain = dialog.getSelectedChain();
             if(chain != null) {
                 ChainList chainList = dialog.getSelectedChainList();
-                EClass relationshipClass = DerivedRelationsUtils.getWeakestType(chain);
-                IRelationship relation = (IRelationship)IZentaFactory.eINSTANCE.create(relationshipClass);
+                RelationClass relationshipClass = drutil.getWeakestType(chain);
+                IRelationship relation = relationshipClass.create();
                 CommandStack stack = (CommandStack)getWorkbenchPart().getAdapter(CommandStack.class);
                 stack.execute(new CreateDerivedConnectionCommand(chainList.srcDiagramObject, chainList.tgtDiagramObject, relation));
             }
@@ -160,7 +161,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
     /**
      * Convenience class to group things together
      */
-    private static class ChainList {
+    private class ChainList {
         IDiagramModelZentaObject srcDiagramObject;
         IDiagramModelZentaObject tgtDiagramObject;
         IZentaElement srcElement;
@@ -180,12 +181,12 @@ public class CreateDerivedRelationAction extends SelectionAction {
         }
         
         boolean hasExistingDirectRelationship() {
-            return DerivedRelationsUtils.hasDirectStructuralRelationship(srcElement, tgtElement);
+            return drutil.hasDirectStructuralRelationship(srcElement, tgtElement);
         }
         
         private void findChains() {
             try {
-                chains = DerivedRelationsUtils.getDerivedRelationshipChains(srcElement, tgtElement);
+                chains = drutil.getDerivedRelationshipChains(srcElement, tgtElement);
             }
             catch(TooComplicatedException ex) {
                 isTooComplicated = true;
@@ -204,7 +205,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
     /**
      * Dialog window
      */
-    private static class CreateDerivedConnectionDialog extends Dialog implements ISelectionChangedListener, IDoubleClickListener {
+    private class CreateDerivedConnectionDialog extends Dialog implements ISelectionChangedListener, IDoubleClickListener {
         // For persisting dialog position and size
         private static final String DIALOG_SETTINGS_SECTION = "CreateDerivedConnectionDialog"; //$NON-NLS-1$
 
@@ -329,7 +330,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
     /**
      * Table Viewer
      */
-    private static class DerivedConnectionsTableViewer extends TableViewer {
+    private class DerivedConnectionsTableViewer extends TableViewer {
         public DerivedConnectionsTableViewer(Composite parent) {
             super(parent, SWT.FULL_SELECTION | SWT.SINGLE | SWT.BORDER);
             
@@ -400,7 +401,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                         for(int i = 1; i < chain.size(); i++) {
                             IRelationship relation = chain.get(i);
                             s += getRelationshipText(chain, relation);
-                            if(DerivedRelationsUtils.isBidirectionalRelationship(relation)) {
+                            if(drutil.isBidirectionalRelationship(relation)) {
                                 s += " <-> "; //$NON-NLS-1$
                             }
                             else {
@@ -413,14 +414,14 @@ public class CreateDerivedRelationAction extends SelectionAction {
 
                         // Weakest
                     case 1:
-                        return DerivedRelationsUtils.getWeakestType(chain).getName(); 
+                        return drutil.getWeakestType(chain).getName(); 
                 }
 
                 return ""; //$NON-NLS-1$
             }
             
             private String getRelationshipText(List<IRelationship> chain, IRelationship relation) {
-                if(DerivedRelationsUtils.isBidirectionalRelationship(relation)) {
+                if(drutil.isBidirectionalRelationship(relation)) {
                     int index = chain.indexOf(relation);
                     if(index > 0) {
                         IRelationship previous = chain.get(index - 1);

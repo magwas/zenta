@@ -4,6 +4,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
@@ -47,5 +49,10 @@ public class ModelAndEditPartTestData extends ModelTestData {
 		editPart2 = (BasicConnectionEditPart) editor.getGraphicalViewer().getEditPartRegistry().get(connection2);
 		assertNotNull(editPart2);
 		assertNotNull(diagramModel);
+	}
+
+	public EditPart getEditPartFor(String string) {
+		EObject mo = getById(string);
+		return (EditPart) editor.getGraphicalViewer().getEditPartRegistry().get(mo);
 	}
 }

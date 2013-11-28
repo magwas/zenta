@@ -13,7 +13,6 @@ import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -23,7 +22,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
-import org.rulez.magwas.zenta.model.UnTestedException;
 
 
 

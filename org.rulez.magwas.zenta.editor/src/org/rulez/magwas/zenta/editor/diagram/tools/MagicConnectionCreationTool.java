@@ -82,7 +82,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
     }
     
     @Override
-    protected boolean handleCreateConnection() {
+    public boolean handleCreateConnection() {
         // Clear the connection factory first
         getFactory().clear();
         
@@ -103,17 +103,19 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         }
         
         IDiagramModelZentaObject sourceDiagramModelObject = (IDiagramModelZentaObject)sourceEditPart.getModel();
-        
+
+    	viewPoint = ViewpointsManager.INSTANCE.getViewpoint(sourceDiagramModelObject);
+
         // If targetEditPart is null then user clicked on the canvas or in a non-Zenta Editpart
         if(targetEditPart == null) {
             return createElementAndConnection(sourceDiagramModelObject, request.getLocation());
         }
         
         // User clicked on Zenta target edit part
-        if(targetEditPart.getModel() instanceof IDiagramModelZentaObject) {
-        	viewPoint = ViewpointsManager.INSTANCE.getViewpoint((IZentaDiagramModel) targetEditPart.getModel());
-            IDiagramModelZentaObject targetDiagramModelObject = (IDiagramModelZentaObject)targetEditPart.getModel();
-            return createConnection(request, sourceDiagramModelObject, targetDiagramModelObject);
+		if(targetEditPart.getModel() instanceof IDiagramModelZentaObject) {
+	        IDiagramModelZentaObject mo = (IDiagramModelZentaObject) targetEditPart.getModel();
+        	viewPoint = ViewpointsManager.INSTANCE.getViewpoint(mo);
+            return createConnection(request, sourceDiagramModelObject, mo);
         }
         
         eraseSourceFeedback();
@@ -574,4 +576,8 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
             fTemplate = null;
         }
     }
+
+	public void setRequest(CreateConnectionRequest req) {
+		this.setTargetRequest(req);		
+	}
 }

@@ -12,13 +12,13 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
+import org.rulez.magwas.zenta.metamodel.DerivedRelationsUtils;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IRelationship;
-import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
 
 
 /**
@@ -124,7 +124,8 @@ implements IZentaConnectionEditPart {
     
     protected void showStructural() {
         IRelationship relation = getModel().getRelationship();
-        boolean doHighlight = DerivedRelationsUtils.isInDerivedChain(relation);
+        DerivedRelationsUtils drutil = new DerivedRelationsUtils(getModel().getRelationship().getZentaModel());
+        boolean doHighlight = drutil.isInDerivedChain(relation);
         getFigure().highlight(doHighlight);
     }
     
