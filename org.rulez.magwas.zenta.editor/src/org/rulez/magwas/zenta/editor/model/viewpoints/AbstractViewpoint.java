@@ -6,11 +6,8 @@
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
@@ -23,9 +20,6 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
 
@@ -173,6 +167,8 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public referencesModelObject getClassFor(IZentaElement element) {
 		String id = element.getObjectClass();
+		if(null == id)
+			return metamodel.getBuiltinObjectClass();
 		referencesModelObject oc = metamodel.getClassById(id);
 		return oc;
 	}

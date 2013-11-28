@@ -5,12 +5,9 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.commands.Command;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 

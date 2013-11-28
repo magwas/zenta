@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.tools;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.ui.IEditorPart;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;

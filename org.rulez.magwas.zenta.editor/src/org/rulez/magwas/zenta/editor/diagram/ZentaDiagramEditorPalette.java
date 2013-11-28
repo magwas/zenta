@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.editor.diagram;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
 import org.eclipse.gef.palette.PaletteContainer;
@@ -24,12 +23,9 @@ import org.rulez.magwas.zenta.editor.diagram.tools.PanningSelectionExtendedTool;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
-import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 

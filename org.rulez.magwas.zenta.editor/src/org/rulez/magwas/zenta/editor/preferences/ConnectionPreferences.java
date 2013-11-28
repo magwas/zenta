@@ -5,12 +5,8 @@
  */
 package org.rulez.magwas.zenta.editor.preferences;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
@@ -45,9 +41,6 @@ public class ConnectionPreferences extends Preferences {
         RELATION_KEYMAP.put(IZentaPackage.eINSTANCE.getBasicRelationship(), 1 << 0);
     }
     
-    private static EClass[] fRelationClassesForNew = null;
-    private static EClass[] fRelationClassesForHiding = null;
-    
     /**
      * @return true if we should use nested connection logic
      */
@@ -75,12 +68,5 @@ public class ConnectionPreferences extends Preferences {
      */
     public static boolean createRelationWhenMovingElement() {
         return useNestedConnections() && STORE.getBoolean(CREATE_RELATION_WHEN_MOVING_ELEMENT_TO_CONTAINER);
-    }
-    /*
-     * Reset the cached values
-     */
-    static void reset() {
-        fRelationClassesForNew = null;
-        fRelationClassesForHiding = null;
     }
 }

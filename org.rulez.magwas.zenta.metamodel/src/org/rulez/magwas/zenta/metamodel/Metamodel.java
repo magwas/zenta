@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.metamodel.impl.BuiltinTemplate;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
@@ -40,9 +40,19 @@ public interface Metamodel extends EObject {
 	List<ObjectClass> getObjectClasses();
 
 	List<RelationClass> getRelationClasses();
+	
+	List<ObjectClass> getConnectorClasses();
 
 	Collection<RelationClass> getRelationships(IZentaElement object);
 
 	referencesModelObject getClassById(String id);
+
+	List<RelationClass> getWeaklist();
+
+	referencesModelObject getClassFor(IIdentifier rel);
+
+	boolean isValidRelationship(IZentaElement element1, IZentaElement element2,
+			RelationClass relationshipClass);
+
 
 } 

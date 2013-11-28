@@ -32,8 +32,7 @@ public class LineDecorationSectionTest {
 	@Test
 	@HaveGUI(waitUser=false)
 	public void testTheGUIShowsButtonsForEachDecorationsAndADefaultButton() {
-		LineDecorationSectionExerciser exerciser = getExerciser();
-		exerciser.run();
+		section.run();
 	}
 
 	@Test

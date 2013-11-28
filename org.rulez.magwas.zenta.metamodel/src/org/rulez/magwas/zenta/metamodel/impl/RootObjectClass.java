@@ -1,6 +1,5 @@
 package org.rulez.magwas.zenta.metamodel.impl;
 
-import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;

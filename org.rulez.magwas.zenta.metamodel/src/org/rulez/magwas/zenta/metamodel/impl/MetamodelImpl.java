@@ -25,6 +25,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -292,5 +293,27 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 				return klass;
 		}
 		return null;
+	}
+
+	@Override
+	public List<RelationClass> getWeaklist() {
+		return new ArrayList<RelationClass>();//TODO
+	}
+
+	@Override
+	public referencesModelObject getClassFor(IIdentifier rel) {
+		IZentaElement ob = (IZentaElement) rel;
+		return getClassById(ob.getObjectClass());
+	}
+
+	@Override
+	public boolean isValidRelationship(IZentaElement element1,
+			IZentaElement element2, RelationClass relationshipClass) {
+		return getRelationClasses().contains(relationshipClass);//TODO
+	}
+
+	@Override
+	public List<ObjectClass> getConnectorClasses() {
+		return new ArrayList<ObjectClass>();
 	}
 }
