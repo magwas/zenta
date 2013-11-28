@@ -14,17 +14,24 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModel;
+import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -41,8 +48,10 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 public class TreeModelViewActionFactory {
 
     public static final TreeModelViewActionFactory INSTANCE = new TreeModelViewActionFactory();
+	private IViewpoint viewPoint;
 
     private TreeModelViewActionFactory() {
+    	throw new UnTestedException();//should not be a singleton
     }
 
     /**
@@ -63,46 +72,38 @@ public class TreeModelViewActionFactory {
         }
         
         IFolder folder = (IFolder)selected;
-        
+        viewPoint = ViewpointsManager.INSTANCE.getViewpoint((IZentaDiagramModel) selected);
         // Find topmost folder type
         IFolder f = folder;
         while(f.eContainer() instanceof IFolder) {
             f = (IFolder)f.eContainer();
         }
 
-        switch(f.getType()) {
-            case BUSINESS:
-                for(EClass eClass : ZentaModelUtils.getBusinessClasses()) {
-                    IAction action = createNewElementAction(folder, eClass);
-                    list.add(action);
-                }
-                break;
-
-            case CONNECTORS:
-                for(EClass eClass : ZentaModelUtils.getConnectorClasses()) {
-                    IAction action = createNewElementAction(folder, eClass);
-                    list.add(action);
-                }
-                break;
-                
-            case DIAGRAMS:
-                list.add(createNewZentaDiagramAction(folder));
-                list.add(createNewSketchAction(folder));
-                break;
-
-            default:
-                break;
+        for(ObjectClass eClass : viewPoint.getObjectClasses()) {
+            IAction action = createNewElementAction(folder, eClass);
+            list.add(action);
         }
+        for(ObjectClass eClass : viewPoint.getConnectorClasses()) {
+            IAction action = createNewElementAction(folder, eClass);
+            list.add(action);
+        }
+        for(RelationClass eClass : viewPoint.getRelationClasses()) {
+            IAction action = createNewElementAction(folder, eClass);
+            list.add(action);
+        }
+        
+        list.add(createNewZentaDiagramAction(folder));
+        list.add(createNewSketchAction(folder));
 
         return list;
     }
 
-    private IAction createNewElementAction(final IFolder folder, final EClass eClass) {
-        IAction action = new Action(ZentaLabelProvider.INSTANCE.getDefaultName(eClass)) {
+    private IAction createNewElementAction(final IFolder folder, final referencesModelObject eClass) {
+        IAction action = new Action(eClass.getName()) {
             @Override
             public void run() {
                 // Create a new Zenta Element, set its name
-                IZentaElement element = (IZentaElement)IZentaFactory.eINSTANCE.create(eClass);
+                IZentaElement element = (IZentaElement) viewPoint.create(eClass);
                 element.setName(getText());
                 // Execute Command
                 Command cmd = new NewElementCommand(folder, element);
@@ -111,7 +112,7 @@ public class TreeModelViewActionFactory {
             }
         };
 
-        action.setImageDescriptor(ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass));
+        action.setImageDescriptor(viewPoint.getImageDescriptor(eClass));
         return action;
     }
     

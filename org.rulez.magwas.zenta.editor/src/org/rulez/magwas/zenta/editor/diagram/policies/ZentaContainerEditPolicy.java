@@ -10,6 +10,8 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.requests.GroupRequest;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
+import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -48,10 +50,11 @@ public class ZentaContainerEditPolicy extends BasicContainerEditPolicy {
 	            if(child instanceof IDiagramModelZentaObject) {
 	                IDiagramModelZentaObject childObject = (IDiagramModelZentaObject)child;
 	                IZentaElement childElement = childObject.getZentaElement();
+	                IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(parentObject);
 
 	                // See if there are any (nested type) relationships between parent element and child element...
 	                for(IRelationship relation : ZentaModelUtils.getSourceRelationships(parentElement)) {
-	                    if(relation.getTarget() == childElement && DiagramModelUtils.isNestedConnectionTypeRelationship(relation)) {
+	                    if(relation.getTarget() == childElement && vp.isNestedConnectionTypeRelationship(relation)) {
 	                        // And there's not one already there...
 	                        if(!DiagramModelUtils.hasDiagramModelZentaConnection(parentObject, childObject, relation)) {
 	                            result.add(new NewConnectionCommand(parentObject, childObject, relation));

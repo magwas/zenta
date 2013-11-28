@@ -169,12 +169,12 @@ public class TreeViewpointFilterProvider implements IPartListener {
                     if(element instanceof IRelationship) {
                         IZentaElement source = ((IRelationship)element).getSource();
                         IZentaElement target = ((IRelationship)element).getTarget();
-                        if(!viewpoint.isAllowedType(source.eClass()) || !viewpoint.isAllowedType(target.eClass())) {
+                        if(!viewpoint.isAllowedType(source) || !viewpoint.isAllowedType(target)) {
                             return ColorFactory.get(128, 128, 128);
                         }
                     }
                     else {
-                        if(!viewpoint.isAllowedType(((IZentaElement)element).eClass())) {
+                        if(!viewpoint.isAllowedType((IZentaElement)element)) {
                             return ColorFactory.get(128, 128, 128);
                         }
                     }

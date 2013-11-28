@@ -7,6 +7,8 @@ package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.commands.Command;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -23,12 +25,12 @@ public class CreateRelationCommand extends Command {
     
     private IZentaElement fParent;
     private IZentaElement fChild;
-    private EClass fType;
+    private RelationClass fType;
     
     private IFolder fFolder;
     private IRelationship fRelation;
     
-    public CreateRelationCommand(IZentaElement parent, IZentaElement child, EClass type) {
+    public CreateRelationCommand(IZentaElement parent, IZentaElement child, RelationClass type) {
         fParent = parent;
         fChild = child;
         fType = type;
@@ -36,7 +38,8 @@ public class CreateRelationCommand extends Command {
     
     @Override
     public void execute() {
-        fRelation = (IRelationship)IZentaFactory.eINSTANCE.create(fType);
+    	
+        fRelation = fType.create();
         fRelation.setSource(fParent);
         fRelation.setTarget(fChild);
         fFolder = fChild.getZentaModel().getDefaultFolderForElement(fRelation);

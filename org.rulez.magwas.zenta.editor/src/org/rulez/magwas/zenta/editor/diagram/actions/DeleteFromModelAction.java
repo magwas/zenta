@@ -17,6 +17,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.DiagramCommandFactory;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.commands.DeleteElementCommand;
 import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;

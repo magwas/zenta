@@ -3,6 +3,7 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.common.util.EList;
+import org.rulez.magwas.zenta.model.IRelationship;
 
 
 /**
@@ -68,5 +69,7 @@ public interface RelationClass extends referencesModelObject {
 	 * @generated
 	 */
 	EList<RelationClass> getChildren();
+
+	IRelationship create();
 
 } // RelationClass

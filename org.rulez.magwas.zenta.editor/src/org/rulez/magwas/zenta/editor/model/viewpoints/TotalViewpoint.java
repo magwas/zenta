@@ -5,16 +5,15 @@
  */
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 /**
  * Total Viewpoint
@@ -27,17 +26,16 @@ public class TotalViewpoint extends AbstractViewpoint {
 		private static final long serialVersionUID = 1L;
 	}
 
-	private Metamodel metamodel;
-    
-	TotalViewpoint() {
-		throw new ThisIsNotAllowed();
+	TotalViewpoint(IDiagramModel dm) {
+		super(dm);
+		for(Template template : metamodel.getTemplates()) {
+			for(ObjectClass oc : template.getObjectClasses())
+				allowedtypes.add(oc);
+			for(RelationClass rc : template.getRelationClasses())
+				allowedtypes.add(rc);
+		}
 	}
-	
-	TotalViewpoint(IZentaDiagramModel dm) {
-		super();
-		metamodel = MetamodelFactory.eINSTANCE.createMetamodel(dm.getZentaModel());
-	}
-	
+
     @Override
     public String getName() {
         return Messages.TotalViewpoint_0;
@@ -46,17 +44,5 @@ public class TotalViewpoint extends AbstractViewpoint {
     @Override
     public int getIndex() {
         return TOTAL_VIEWPOINT;
-    }
-
-    @Override
-    public List<referencesModelObject> getAllowedTypes() {
-    	ArrayList<referencesModelObject> ret = new ArrayList<referencesModelObject>();
-    	for(Template template : metamodel.getTemplates()) {
-    		for(ObjectClass oc : template.getObjectClasses())
-    			ret.add(oc);
-    		for(RelationClass rc : template.getRelationClasses())
-    			ret.add(rc);
-    	}
-        return ret;
     }
 }

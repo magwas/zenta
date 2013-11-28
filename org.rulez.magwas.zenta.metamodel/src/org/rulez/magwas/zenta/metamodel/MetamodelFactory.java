@@ -1,11 +1,16 @@
 package org.rulez.magwas.zenta.metamodel;
 
+import java.util.List;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaModelElement;
 
 /**
  * 
@@ -49,6 +54,16 @@ public interface MetamodelFactory extends EFactory {
 	String getDefiningName(INameable ref);
 
 	Metamodel createMetamodel(IZentaModel zentaModel);
+
+	Object create(referencesModelObject fTemplate);
+
+	Metamodel getMetamodelFor(IZentaModelElement modelElement);
+
+	ObjectClass createNoteClass();
+
+	ObjectClass createGroupClass();
+
+	RelationClass createNoteConnectionClass();
 
 } //MetamodelFactory
 

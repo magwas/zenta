@@ -16,11 +16,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class RelationClassImpl extends ReferencesModelObject implements RelationClass {
-
-	protected EObject reference;
 
 	protected RelationClass ancestor;
 
@@ -44,17 +45,7 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 		return MetamodelPackage.Literals.RELATION_CLASS;
 	}
 
-	public EObject getReference() {
-		return reference;
-	}
-
-	public void setReference(EObject newReference) {
-		EObject oldReference = reference;
-		reference = newReference;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.RELATION_CLASS__REFERENCE, oldReference, reference));
-	}
-
+	@Override
 	public RelationClass getAncestor() {
 		return ancestor;
 	}
@@ -82,6 +73,7 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 		return msgs;
 	}
 
+	@Override
 	public void setAncestor(RelationClass newAncestor) {
 		if (newAncestor != ancestor) {
 			NotificationChain msgs = null;
@@ -107,6 +99,7 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 					newAncestor));
 	}
 
+	@Override
 	public EList<RelationClass> getChildren() {
 		if (children == null) {
 			children = new EObjectWithInverseEList<RelationClass>(
@@ -166,7 +159,7 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MetamodelPackage.RELATION_CLASS__REFERENCE:
-				setReference((EObject)newValue);
+				setReference((IIdentifier)newValue);
 				return;
 			case MetamodelPackage.RELATION_CLASS__ANCESTOR:
 				setAncestor((RelationClass)newValue);
@@ -183,7 +176,7 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case MetamodelPackage.RELATION_CLASS__REFERENCE:
-				setReference((EObject)null);
+				setReference((IIdentifier)null);
 				return;
 			case MetamodelPackage.RELATION_CLASS__ANCESTOR:
 				setAncestor((RelationClass)null);
@@ -208,8 +201,14 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 		return super.eIsSet(featureID);
 	}
 
+	@Override
 	public Template getTemplate() {
 		return template;
+	}
+
+	@Override
+	public IRelationship create() {
+		return IZentaFactory.eINSTANCE.createBasicRelationship();
 	}
 
 }

@@ -12,6 +12,7 @@ import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 
 /**
@@ -35,8 +36,8 @@ public class ViewpointEditPartFilter implements IChildEditPartFilter, IConnectio
             }
         }
         
-        if(viewPoint != null && childObject instanceof EObject) {
-            return viewPoint.isElementVisible((EObject)childObject);
+        if(viewPoint != null) {
+            return viewPoint.isElementVisible((IZentaElement) childObject);
         }
         
         return true;

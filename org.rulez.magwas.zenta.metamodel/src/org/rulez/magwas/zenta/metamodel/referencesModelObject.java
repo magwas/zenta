@@ -2,7 +2,12 @@
  */
 package org.rulez.magwas.zenta.metamodel;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.INameable;
+import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,37 +27,18 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface referencesModelObject extends EObject {
 	
-	/**
-	 * Returns the value of the '<em><b>Reference</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Reference</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reference</em>' reference.
-	 * @see #setReference(EObject)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelPackage#getreferencesModelObject_Reference()
-	 * @model resolveProxies="false" required="true"
-	 * @generated
-	 */
-	EObject getReference();
+	IIdentifier getReference();
 
-	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.referencesModelObject#getReference <em>Reference</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reference</em>' reference.
-	 * @see #getReference()
-	 * @generated
-	 */
-	void setReference(EObject value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
 	String getName();
+
+	boolean isinstance(IIdentifier relation);
+
+	void setReference(IIdentifier newReference);
+
+	Template getTemplate();
+	
+	IIdentifier create();
+
+	String getId();
+
 } // referencesModelObject

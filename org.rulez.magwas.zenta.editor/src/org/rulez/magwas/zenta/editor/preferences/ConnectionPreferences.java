@@ -76,41 +76,6 @@ public class ConnectionPreferences extends Preferences {
     public static boolean createRelationWhenMovingElement() {
         return useNestedConnections() && STORE.getBoolean(CREATE_RELATION_WHEN_MOVING_ELEMENT_TO_CONTAINER);
     }
-    
-    /**
-     * @return The list of relation classes to consider when creating new nested-type relations
-     */
-    public static EClass[] getRelationsClassesForNewRelations() {
-        if(fRelationClassesForNew == null) {
-            fRelationClassesForNew = getRelationsClasses(NEW_RELATIONS_TYPES);
-        }
-        return fRelationClassesForNew;
-    }
-
-    /**
-     * @return The list of relation classes to consider as a nested-type relation without explicit connections
-     */
-    public static EClass[] getRelationsClassesForHiding() {
-        if(fRelationClassesForHiding == null) {
-            fRelationClassesForHiding = getRelationsClasses(HIDDEN_RELATIONS_TYPES);
-        }
-        return fRelationClassesForHiding;
-    }
-    
-    private static EClass[] getRelationsClasses(String type) {
-        int val = STORE.getInt(type);
-        
-        List<EClass> list = new ArrayList<EClass>();
-        
-        for(Entry<EClass, Integer> entry : RELATION_KEYMAP.entrySet()) {
-            if((entry.getValue() & val) != 0) {
-                list.add(entry.getKey());
-            }
-        }
-        
-        return list.toArray(new EClass[list.size()]);   
-    }
-
     /*
      * Reset the cached values
      */

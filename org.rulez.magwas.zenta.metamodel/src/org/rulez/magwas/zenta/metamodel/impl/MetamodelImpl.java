@@ -1,6 +1,8 @@
 package org.rulez.magwas.zenta.metamodel.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -18,6 +20,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -252,5 +255,42 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	public Template getTemplateForDiagram(IDiagramModel diagramModel) {
 		Template template = getTemplateFor(diagramModel);
 		return template;
+	}
+
+	@Override
+	public List<ObjectClass> getObjectClasses() {
+		List<ObjectClass> ret = new ArrayList<ObjectClass>();
+		for(Template template : templates) {
+			ret.addAll(template.getObjectClasses());
+		}
+		return ret;
+	}
+
+	@Override
+	public List<RelationClass> getRelationClasses() {
+		List<RelationClass> ret = new ArrayList<RelationClass>();
+		for(Template template : templates) {
+			ret.addAll(template.getRelationClasses());
+		}
+		return ret;
+	}
+
+	@Override
+	public Collection<RelationClass> getRelationships(IZentaElement object) {
+		return getRelationClasses();
+	}
+
+	@Override
+	public referencesModelObject getClassById(String id) {
+		if(id == null)
+			return null;
+		ArrayList<referencesModelObject> classlist = new ArrayList<referencesModelObject>();
+		classlist.addAll(getObjectClasses());
+		classlist.addAll(getRelationClasses());
+		for(referencesModelObject klass : classlist) {
+			if(id.equals(klass.getId()))
+				return klass;
+		}
+		return null;
 	}
 }

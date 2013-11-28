@@ -52,10 +52,11 @@ public class CreateDiagramZentaObjectCommand extends CreateDiagramObjectCommand 
                 @Override
                 public void run() {
                     if(fParent instanceof IDiagramModelZentaObject) {
-                        IZentaElement parentElement = ((IDiagramModelZentaObject)fParent).getZentaElement();
                         IZentaElement childElement = ((IDiagramModelZentaObject)fChild).getZentaElement();
-                        fCreateRelationSubCommand = (CreateRelationCommand)DiagramCommandFactory.createNewNestedRelationCommandWithDialog(parentElement,
-                                new IZentaElement[] {childElement});
+                        fCreateRelationSubCommand = 
+                        		(CreateRelationCommand)DiagramCommandFactory.createNewNestedRelationCommandWithDialog(
+                        				((IDiagramModelZentaObject)fParent),
+                        				new IZentaElement[] {childElement});
                         if(fCreateRelationSubCommand != null) {
                             fCreateRelationSubCommand.execute();
                         }

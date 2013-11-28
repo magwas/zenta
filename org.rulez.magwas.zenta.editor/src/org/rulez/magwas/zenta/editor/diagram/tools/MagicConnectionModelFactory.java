@@ -10,6 +10,8 @@ import org.eclipse.ui.IEditorPart;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 
 
 
@@ -20,26 +22,26 @@ import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
  */
 public class MagicConnectionModelFactory implements ICreationFactory {
     
-    private EClass fRelationshipTemplate;
-    private EClass fElementTemplate;
+    private RelationClass fRelationshipTemplate;
+    private ObjectClass fElementTemplate;
     
     public boolean isUsedFor(IEditorPart editor) {
         return editor instanceof IZentaDiagramEditor;
     }
     
-    public void setRelationshipType(EClass type) {
-        fRelationshipTemplate = type;
+    public void setRelationshipType(RelationClass relationshipType) {
+        fRelationshipTemplate = relationshipType;
     }
     
-    public void setElementType(EClass type) {
+    public void setElementType(ObjectClass type) {
         fElementTemplate = type;
     }
     
-    public EClass getRelationshipType() {
+    public RelationClass getRelationshipType() {
         return fRelationshipTemplate;
     }
     
-    public EClass getElementType() {
+    public ObjectClass getElementType() {
         return fElementTemplate;
     }
     

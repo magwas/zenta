@@ -14,6 +14,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.UnTestedException;
 
 
 
@@ -140,6 +141,8 @@ public class DerivedRelationsUtils {
      * @throws TooComplicatedException 
      */
     public static List<List<IRelationship>> getDerivedRelationshipChains(IZentaElement element1, IZentaElement element2) throws TooComplicatedException {
+    	throw new UnTestedException();//Should be moved to metamodel
+/*
         if(element1 == null || element2 == null) {
             return null;
         }
@@ -167,6 +170,7 @@ public class DerivedRelationsUtils {
         }
         
         return result.isEmpty() ? null : result;
+*/
     }
     
     /**
@@ -180,6 +184,8 @@ public class DerivedRelationsUtils {
         if(element1 == null || element2 == null) {
             return null;
         }
+    	throw new UnTestedException();//Should be moved to metamodel
+/*
         
         //System.out.println("-----------------------------------");
         //System.out.println("Starting hunt from " + element1.getName() + " --> " + element2.getName());
@@ -208,15 +214,13 @@ public class DerivedRelationsUtils {
         EClass relationshipClass = weaklist.get(weakest);
         //System.out.println("Weakest is: " + relationshipClass);
         
-        /*
-         * Check the validity of the relationship.
-         */
         boolean isValid = ZentaModelUtils.isValidRelationship(element1, element2, relationshipClass);
         if(!isValid) {
             return null;
         }
         
         return (IRelationship)IZentaFactory.eINSTANCE.create(relationshipClass);
+*/
     }
     
     /**

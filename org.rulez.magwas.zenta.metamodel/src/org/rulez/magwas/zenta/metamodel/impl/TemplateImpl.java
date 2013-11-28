@@ -22,12 +22,12 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 
 public class TemplateImpl extends ReferencesModelObject implements Template {
-	protected EObject reference;
-
 	protected EList<ObjectClass> objectClasses;
 
 	protected EList<RelationClass> relationClasses;
@@ -82,17 +82,6 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 	@Override
 	protected EClass eStaticClass() {
 		return MetamodelPackage.Literals.TEMPLATE;
-	}
-
-	public EObject getReference() {
-		return reference;
-	}
-
-	public void setReference(EObject newReference) {
-		EObject oldReference = reference;
-		reference = newReference;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.TEMPLATE__REFERENCE, oldReference, reference));
 	}
 
 	public EList<ObjectClass> getObjectClasses() {
@@ -151,7 +140,7 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MetamodelPackage.TEMPLATE__REFERENCE:
-				setReference((EObject)newValue);
+				setReference((IIdentifier)newValue);
 				return;
 			case MetamodelPackage.TEMPLATE__OBJECT_CLASSES:
 				getObjectClasses().clear();
@@ -172,7 +161,7 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case MetamodelPackage.TEMPLATE__REFERENCE:
-				setReference((EObject)null);
+				setReference((IIdentifier)null);
 				return;
 			case MetamodelPackage.TEMPLATE__OBJECT_CLASSES:
 				getObjectClasses().clear();
@@ -230,5 +219,15 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 			if(oc.getReference().equals(classTemplate))
 				return oc;
 		return null;
+	}
+
+	@Override
+	public Template getTemplate() {
+		return this;
+	}
+
+	@Override
+	public IIdentifier create() {
+		return IZentaFactory.eINSTANCE.createZentaDiagramModel();
 	}
 }

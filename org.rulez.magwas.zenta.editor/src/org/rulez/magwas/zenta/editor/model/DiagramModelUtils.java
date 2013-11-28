@@ -22,6 +22,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IJunctionElement;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -262,6 +263,8 @@ public class DiagramModelUtils {
      * @return true if relation is of a type that can be represented by a nested container 
      */
     public static boolean isNestedConnectionTypeRelationship(IRelationship relation) {
+    	throw new UnTestedException();
+/*    	
         // Some element types are not allowed
         if(!isNestedConnectionTypeElement(relation.getSource()) || !isNestedConnectionTypeElement(relation.getTarget())) {
             return false;
@@ -273,6 +276,7 @@ public class DiagramModelUtils {
             }
         }
         return false;
+*/
     }
     
     /**
@@ -309,6 +313,9 @@ public class DiagramModelUtils {
      * @return true if a connection should be hidden when its source (parent) element contains its target (child) element
      */
     public static boolean shouldBeHiddenConnection(IDiagramModelZentaConnection connection) {
+    	return false;//FIXME
+/*    	
+
         if(!ConnectionPreferences.useNestedConnections()) {
             return false;
         }
@@ -336,6 +343,7 @@ public class DiagramModelUtils {
         }
         
         return false;
+*/
     }
     
     // ========================================================================================================

@@ -12,6 +12,9 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
@@ -27,7 +30,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 public class ViewpointsManager {
     
     public static ViewpointsManager INSTANCE = new ViewpointsManager();
-    private static Map<IZentaDiagramModel,IViewpoint> registry = new HashMap<IZentaDiagramModel,IViewpoint>();
+    private static Map<IDiagramModel,IViewpoint> registry = new HashMap<IDiagramModel,IViewpoint>();
     
     /**
      * @param viewPoint
@@ -48,31 +51,23 @@ public class ViewpointsManager {
         return registry.values();
     }
     
-    /**
-     * @param index
-     * @return A Viewpoint by its index
-     */
-    public IViewpoint getViewpoint(IZentaDiagramModel dm) {
+    public IViewpoint getViewpoint(IDiagramModelComponent relationshipType) {
+    	IDiagramModel dm = relationshipType.getDiagramModel();
     	if(registry.containsKey(dm)) {
     		return registry.get(dm);
     	}
-    	TotalViewpoint vp = new TotalViewpoint(dm);
+    	AbstractViewpoint vp = new TotalViewpoint(dm);
     	registry.put(dm, vp);
     	return vp;
     }
     
-    /**
-     * @param dmo
-     * @return True if dmo is an allowed component for this Viewpoint
-     */
-    public boolean isAllowedType(IDiagramModelComponent dmo) {
+     public boolean isAllowedType(IDiagramModelComponent dmo) {
         if(dmo instanceof IDiagramModelZentaObject && dmo.getDiagramModel() instanceof IZentaDiagramModel) {
         	IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject)dmo;
 			if (null == dmzo.getZentaElement()) {
         		return false;
         	}
-            EClass eClass = dmzo.getZentaElement().eClass();
-            return isAllowedType((IZentaDiagramModel) dmo.getDiagramModel(), eClass);
+            return isAllowedType((IZentaDiagramModel) dmo.getDiagramModel(), dmzo);
         }
         if(dmo instanceof IDiagramModelConnection) {
             IDiagramModelConnection dmc = (IDiagramModelConnection)dmo;
@@ -82,16 +77,22 @@ public class ViewpointsManager {
         return true;
     }
     
-    /**
-     * @param dm
-     * @param eClass
-     * @return True if eClass is an allowed component for this Viewpoint
-     */
-    public boolean isAllowedType(IZentaDiagramModel dm, EClass eClass) {
+    private boolean isAllowedType(IZentaDiagramModel diagramModel,
+			IDiagramModelZentaObject dmzo) {
+        IViewpoint viewPoint = getViewpoint(diagramModel);
+        return viewPoint.isAllowedType(dmzo.getZentaElement());
+	}
+
+	public boolean isAllowedType(IZentaDiagramModel dm, referencesModelObject eClass) {
         if(dm != null) {
             IViewpoint viewPoint = getViewpoint(dm);
             return viewPoint.isAllowedType(eClass);
         }
         return true;
     }
+
+	public IViewpoint getViewpoint(IDiagramModelObject fParentElement) {
+		IDiagramModel dm = fParentElement.getDiagramModel();
+		return getViewpoint(dm);
+	}
 }

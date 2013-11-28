@@ -32,9 +32,9 @@ extends ZentaDiagramLayoutPolicy {
      */
     private static class SubstituteCommand extends CompoundCommand {
         private Command fSubCommand = null;
-        private IZentaElement fParentElement;
+        private IDiagramModelZentaObject fParentElement;
         
-        SubstituteCommand(IZentaElement parentElement) {
+        SubstituteCommand(IDiagramModelZentaObject parentElement) {
             fParentElement = parentElement;
         }
         
@@ -96,7 +96,7 @@ extends ZentaDiagramLayoutPolicy {
             return originalCommand;
         }
         
-        IZentaElement parentElement = ((IDiagramModelZentaObject)parent).getZentaElement();
+        IDiagramModelZentaObject parentElement = ((IDiagramModelZentaObject)parent);
 
         CompoundCommand newCommmand = new SubstituteCommand(parentElement);
         

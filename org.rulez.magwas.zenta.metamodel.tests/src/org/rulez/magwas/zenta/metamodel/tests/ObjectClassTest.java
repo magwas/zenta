@@ -11,6 +11,7 @@ import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -57,7 +58,8 @@ public class ObjectClassTest{
 
 	@Test(expected = MetamodelFactory.BuiltinClassShouldNotHaveReference.class)
 	public void The_reference_cannot_be_set_for_the_Builtin_ObjectClass() {
-		ObjectClass obj2 = createTestObjectClass();
+		IBasicObject obj2 = IZentaFactory.eINSTANCE.createBasicObject();
+		System.out.printf("fixture=%s\n", fixture);
 		fixture.setReference(obj2);
 	}
 	

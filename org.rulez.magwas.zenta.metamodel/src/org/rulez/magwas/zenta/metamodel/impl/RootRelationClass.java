@@ -19,6 +19,11 @@ public class RootRelationClass extends RelationClassImpl {
 	}
 	
 	@Override
+	public String getId() {
+		return "basicrelation";
+	}
+
+	@Override
 	public void setAncestor(RelationClass ancestor) {
 		throw new MetamodelFactory.BuiltinClassShouldNotHaveAncestor();
 	}

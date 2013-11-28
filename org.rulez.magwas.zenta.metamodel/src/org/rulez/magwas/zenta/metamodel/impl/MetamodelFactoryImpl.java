@@ -1,6 +1,7 @@
 package org.rulez.magwas.zenta.metamodel.impl;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -14,6 +15,8 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
@@ -21,6 +24,8 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaModelElement;
+import org.rulez.magwas.zenta.model.UnTestedException;
 
 public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFactory {
 
@@ -87,6 +92,7 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 
 	public Template createTemplate(IZentaDiagramModel reference, Metamodel metamodel) {
 		TemplateImpl template = new TemplateImpl(reference, metamodel);
+		reference.getZentaModel();
 		return template;
 	}
 
@@ -160,5 +166,31 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	@Override
 	public Metamodel createMetamodel() {
 		return null;
+	}
+
+	@Override
+	public Object create(referencesModelObject fTemplate) {
+		return fTemplate.create();
+	}
+
+	@Override
+	public Metamodel getMetamodelFor(IZentaModelElement modelElement) {
+		IZentaModel model = modelElement.getZentaModel();
+		return getMetamodelFor(model);
+	}
+
+	@Override
+	public ObjectClass createNoteClass() {
+		return new NoteClass();
+	}
+
+	@Override
+	public ObjectClass createGroupClass() {
+		return new GroupClass();
+	}
+
+	@Override
+	public RelationClass createNoteConnectionClass() {
+		return new NoteConnectionClass();
 	}
 }

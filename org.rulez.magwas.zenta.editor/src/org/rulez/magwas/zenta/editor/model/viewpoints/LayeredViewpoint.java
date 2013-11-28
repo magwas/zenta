@@ -5,9 +5,9 @@
  */
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
-import java.util.List;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+
 
 /**
  * Layered Viewpoint
@@ -16,7 +16,11 @@ import org.rulez.magwas.zenta.metamodel.referencesModelObject;
  */
 public class LayeredViewpoint extends AbstractViewpoint {
     
-    @Override
+    public LayeredViewpoint(IDiagramModel dm) {
+		super(dm);
+	}
+
+	@Override
     public String getName() {
         return Messages.LayeredViewpoint_0;
     }
@@ -24,10 +28,5 @@ public class LayeredViewpoint extends AbstractViewpoint {
     @Override
     public int getIndex() {
         return LAYERED_VIEWPOINT;
-    }
-    
-    @Override
-    public List<referencesModelObject> getAllowedTypes() {
-        return null;
     }
 }

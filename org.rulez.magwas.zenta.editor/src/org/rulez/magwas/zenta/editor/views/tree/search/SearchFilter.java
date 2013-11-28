@@ -17,6 +17,9 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IDocumentable;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IFolderContainer;
@@ -38,7 +41,7 @@ public class SearchFilter extends ViewerFilter {
     private boolean fFilterName;
     private boolean fFilterDocumentation;
 
-    private List<EClass> fObjectFilter = new ArrayList<EClass>();
+    private List<referencesModelObject> fObjectFilter = new ArrayList<referencesModelObject>();
     private List<String> fPropertiesFilter = new ArrayList<String>();
 
     private boolean fShowAllFolders = false;
@@ -227,7 +230,7 @@ public class SearchFilter extends ViewerFilter {
         }
     }
 
-    public void addObjectFilter(EClass eClass) {
+    public void addObjectFilter(referencesModelObject eClass) {
         // Fresh filter
         if(!isFiltering()) {
             saveState();
@@ -236,7 +239,7 @@ public class SearchFilter extends ViewerFilter {
         refresh();
     }
 
-    public void removeObjectFilter(EClass eClass) {
+    public void removeObjectFilter(referencesModelObject eClass) {
         fObjectFilter.remove(eClass);
         refresh();
     }

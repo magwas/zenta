@@ -24,6 +24,10 @@ import org.rulez.magwas.zenta.editor.diagram.tools.PanningSelectionExtendedTool;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
@@ -129,7 +133,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         PaletteEntry noteEntry = new CombinedTemplateCreationEntry(
                 Messages.ZentaDiagramEditorPalette_2,
                 Messages.ZentaDiagramEditorPalette_3,
-                new ZentaDiagramModelFactory(IZentaPackage.eINSTANCE.getDiagramModelNote()),
+                new ZentaDiagramModelFactory(MetamodelFactory.eINSTANCE.createNoteClass()),
                 IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16),
                 IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16));
         group.add(noteEntry);
@@ -138,14 +142,17 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         PaletteEntry groupEntry = new CombinedTemplateCreationEntry(
                 Messages.ZentaDiagramEditorPalette_4,
                 Messages.ZentaDiagramEditorPalette_5,
-                new ZentaDiagramModelFactory(IZentaPackage.eINSTANCE.getDiagramModelGroup()),
+                new ZentaDiagramModelFactory(MetamodelFactory.eINSTANCE.createGroupClass()),
                 IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16),
                 IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16));
         group.add(groupEntry);
         
+        if(null == fViewpoint) {
+        	return group;
+        }
         // Note Connection
         ConnectionCreationToolEntry entry = createConnectionCreationToolEntry(
-                IZentaPackage.eINSTANCE.getDiagramModelConnection(),
+                MetamodelFactory.eINSTANCE.createNoteConnectionClass(),
                 Messages.ZentaDiagramEditorPalette_6,
                 Messages.ZentaDiagramEditorPalette_7);
         group.add(entry);
@@ -158,10 +165,11 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
      */
     private PaletteContainer createObjectClassGroup() {
         PaletteContainer group = new PaletteGroup(Messages.ZentaDiagramEditorPalette_8);
-        
-        for(EClass eClass : ZentaModelUtils.getBusinessClasses()) {
-            if(isAllowedType(eClass)) {
-                PaletteEntry entry = createCombinedTemplateCreationEntry(eClass, null);
+        if(null == fViewpoint)
+        	return group;
+        for(ObjectClass klass : fViewpoint.getObjectClasses()) {
+            if(isAllowedType(klass)) {
+                PaletteEntry entry = createCombinedTemplateCreationEntry(klass, null);
                 group.add(entry);
             }
         }
@@ -186,9 +194,11 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         magicConnectionEntry.setToolClass(MagicConnectionCreationTool.class);
         magicConnectionEntry.setToolProperty(AbstractTool.PROPERTY_UNLOAD_WHEN_FINISHED, true);
         group.add(magicConnectionEntry);
+    	if(null == fViewpoint)
+    		return group;
         
-        for(EClass eClass : ZentaModelUtils.getRelationsClasses()) {
-            if(isAllowedType(eClass)) {
+        for(RelationClass eClass : fViewpoint.getRelationClasses()) {
+            if(fViewpoint.isAllowedType(eClass)) {
                 ConnectionCreationToolEntry entry = createConnectionCreationToolEntry(eClass, null);
                 group.add(entry);
             }
@@ -197,7 +207,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         // Junctions
         PaletteStack stack = null;
         
-        for(EClass eClass : ZentaModelUtils.getConnectorClasses()) {
+        for(ObjectClass eClass : fViewpoint.getConnectorClasses()) {
             if(isAllowedType(eClass)) {
                 if(stack == null) {
                     stack = new PaletteStack(Messages.ZentaDiagramEditorPalette_16, Messages.ZentaDiagramEditorPalette_16, null);
@@ -211,8 +221,8 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         return group;
     }
     
-    private boolean isAllowedType(EClass eClass) {
-        return fViewpoint == null || fViewpoint != null && fViewpoint.isAllowedType(eClass);
+    private boolean isAllowedType(ObjectClass klass) {
+        return fViewpoint == null || fViewpoint != null && fViewpoint.isAllowedType(klass);
     }
     
     public void dispose() {
@@ -223,26 +233,26 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
     // Convenience methods
     // --------------------------------------------------------------------------------------------
     
-    private CombinedTemplateCreationEntry createCombinedTemplateCreationEntry(EClass eClass, String description) {
+    private CombinedTemplateCreationEntry createCombinedTemplateCreationEntry(ObjectClass klass, String description) {
         return new CombinedTemplateCreationEntry(
-                ZentaLabelProvider.INSTANCE.getDefaultShortName(eClass),
+                klass.getName(),
                 description,
-                new ZentaDiagramModelFactory(eClass),
-                ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass),
-                ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass));
+                new ZentaDiagramModelFactory(klass),
+                ZentaLabelProvider.INSTANCE.getImageDescriptor(klass),
+                ZentaLabelProvider.INSTANCE.getImageDescriptor(klass));
     }
     
-    private ConnectionCreationToolEntry createConnectionCreationToolEntry(EClass eClass, String description) {
-        return createConnectionCreationToolEntry(eClass, ZentaLabelProvider.INSTANCE.getDefaultName(eClass), description);
+    private ConnectionCreationToolEntry createConnectionCreationToolEntry(RelationClass eClass, String description) {
+        return createConnectionCreationToolEntry(eClass, eClass.getName(), description);
     }
     
-    private ConnectionCreationToolEntry createConnectionCreationToolEntry(EClass eClass, String name, String description) {
+    private ConnectionCreationToolEntry createConnectionCreationToolEntry(RelationClass eClass, String name, String description) {
         ConnectionCreationToolEntry entry = new ConnectionCreationToolEntry(
                 name,
                 description,
                 new ZentaDiagramModelFactory(eClass),
-                ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass),
-                ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass));
+                fViewpoint.getImageDescriptor(eClass),
+                fViewpoint.getImageDescriptor(eClass));
         
         // Ensure Tool gets deselected
         entry.setToolProperty(AbstractTool.PROPERTY_UNLOAD_WHEN_FINISHED, true);

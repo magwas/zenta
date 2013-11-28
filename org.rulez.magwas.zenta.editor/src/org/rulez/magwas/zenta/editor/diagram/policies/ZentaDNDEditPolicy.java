@@ -188,8 +188,8 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
 
                     @Override
                     public void execute() {
-                        IZentaElement parentElement = ((IDiagramModelZentaObject)getTargetContainer()).getZentaElement();
-                        fSubCommand = DiagramCommandFactory.createNewNestedRelationCommandWithDialog(parentElement,
+                        fSubCommand = DiagramCommandFactory.createNewNestedRelationCommandWithDialog(
+                        		(IDiagramModelZentaObject)getTargetContainer(),
                                 fElementsToAdd.toArray(new IZentaElement[fElementsToAdd.size()]));
                         if(fSubCommand != null) {
                             fSubCommand.execute();

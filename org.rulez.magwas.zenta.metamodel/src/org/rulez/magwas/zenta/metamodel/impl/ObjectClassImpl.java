@@ -15,11 +15,11 @@ import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 
 public class ObjectClassImpl extends ReferencesModelObject implements ObjectClass {
-
-	protected EObject reference;
 
 	protected EList<Attribute> attributes;
 
@@ -44,17 +44,6 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 	@Override
 	protected EClass eStaticClass() {
 		return MetamodelPackage.Literals.OBJECT_CLASS;
-	}
-
-	public EObject getReference() {
-		return reference;
-	}
-
-	public void setReference(EObject newReference) {
-		EObject oldReference = reference;
-		reference = newReference;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.OBJECT_CLASS__REFERENCE, oldReference, reference));
 	}
 
 	public EList<Attribute> getAttributes() {
@@ -146,7 +135,7 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MetamodelPackage.OBJECT_CLASS__REFERENCE:
-				setReference((EObject)newValue);
+				setReference((IIdentifier)newValue);
 				return;
 			case MetamodelPackage.OBJECT_CLASS__ATTRIBUTES:
 				getAttributes().clear();
@@ -167,7 +156,7 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case MetamodelPackage.OBJECT_CLASS__REFERENCE:
-				setReference((EObject)null);
+				setReference((IIdentifier)null);
 				return;
 			case MetamodelPackage.OBJECT_CLASS__ATTRIBUTES:
 				getAttributes().clear();
@@ -200,6 +189,11 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 	@Override
 	public Template getTemplate() {
 		return template;
+	}
+
+	@Override
+	public IZentaElement create() {
+		return IZentaFactory.eINSTANCE.createBasicObject();
 	}
 
 }

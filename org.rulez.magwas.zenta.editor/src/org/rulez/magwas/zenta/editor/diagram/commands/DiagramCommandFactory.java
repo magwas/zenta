@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -16,7 +17,14 @@ import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.diagram.dialog.NewNestedRelationDialog;
 import org.rulez.magwas.zenta.editor.diagram.dialog.NewNestedRelationsDialog;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
+import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -71,45 +79,47 @@ public final class DiagramCommandFactory {
     /**
      * Create a Command or CompoundCommand to create new Relations between parentElement and childElements.
      * This is used when the user drags elements into a (parent) element and nested relations are required.
-     * @param parentElement
+     * @param fParentElement
      * @param childElements
      * @return The Command or null
      */
-    public static Command createNewNestedRelationCommandWithDialog(IZentaElement parentElement, IZentaElement[] childElements) {
+    public static Command createNewNestedRelationCommandWithDialog(IDiagramModelZentaObject fParentElement, IZentaElement[] childElements) {
         Command command = null;
         
         List<IZentaElement> children = new ArrayList<IZentaElement>();
         
+        IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(fParentElement);
+        IZentaElement zentaElement = fParentElement.getZentaElement();
         // Remove any that already have a relationship
         for(IZentaElement element : childElements) {
-            if(__canAddNewRelationship(parentElement, element)) {
+			if(__canAddNewRelationship(vp, zentaElement, element)) {
                 children.add(element);
             }
         }
         
         // One
         if(children.size() == 1) {
-            NewNestedRelationDialog dialog = new NewNestedRelationDialog(Display.getCurrent().getActiveShell(),
-                                                 parentElement, children.get(0));
+            NewNestedRelationDialog dialog = new NewNestedRelationDialog(vp,Display.getCurrent().getActiveShell(),
+            		zentaElement, children.get(0));
             if(dialog.open() == Window.OK) {
-                EClass eClass = dialog.getSelectedType();
+                RelationClass eClass = dialog.getSelectedType();
                 if(eClass != null) {
-                    command = new CreateRelationCommand(parentElement, children.get(0), eClass);
+                    command = new CreateRelationCommand(zentaElement, children.get(0), eClass);
                 }
             }
         }
         
         // More than one
         else if(children.size() > 1) {
-            NewNestedRelationsDialog dialog = new NewNestedRelationsDialog(Display.getCurrent().getActiveShell(),
-                                                parentElement, children);
+            NewNestedRelationsDialog dialog = new NewNestedRelationsDialog(vp, Display.getCurrent().getActiveShell(),
+            		zentaElement, children);
             if(dialog.open() == Window.OK) {
-                IZentaElement[] elements = dialog.getSelectedElements();
+                List<IZentaElement> elements = dialog.getSelectedElements();
                 if(elements != null) {
                     command = new CompoundCommand();
-                    EClass[] types = dialog.getSelectedTypes();
-                    for(int i = 0; i < elements.length; i++) {
-                        ((CompoundCommand)command).add(new CreateRelationCommand(parentElement, elements[i], types[i]));
+                    List<RelationClass> types = dialog.getSelectedTypes();
+                    for(int i=0;i<types.size();i++) {
+                        ((CompoundCommand)command).add(new CreateRelationCommand(zentaElement, elements.get(i), types.get(i)));
                     }
                 }
             }
@@ -123,37 +133,27 @@ public final class DiagramCommandFactory {
      * @param child
      * @return true if a new relation can/should be added between parent and child when adding an element to a View
      */
-    private static boolean __canAddNewRelationship(IZentaElement parent, IZentaElement child) {
+    private static boolean __canAddNewRelationship(IViewpoint vp, IZentaElement parent, IZentaElement child) {
         // Not certain types
         if(!DiagramModelUtils.isNestedConnectionTypeElement(parent) || !DiagramModelUtils.isNestedConnectionTypeElement(child)) {
             return false;
         }
         
+        
         // Not if there is already a relationship of a certain type between the two
         for(IRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
             if(relation.getTarget() == child) {
-                for(EClass eClass : ConnectionPreferences.getRelationsClassesForNewRelations()) {
-                    if(relation.eClass() == eClass) {
+                for(referencesModelObject eClass : vp.getRelationClasses()) {
+                    if(eClass.isinstance(relation)) {
                         return false;
                     }
                 }
             }
         }
         
-        // Not if there is already *any* relationship between the two
-//        for(IRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
-//            if(relation.getTarget() == child) {
-//                return false;
-//            }
-//        }
-        
         // Check valid relations
-        for(EClass eClass : ConnectionPreferences.getRelationsClassesForNewRelations()) {
-            if(ZentaModelUtils.isValidRelationship(parent, child, eClass)) {
-                return true;
-            }
-        }
-        
-        return false;
+        if(vp.getValidRelationships(parent, child).size() > 0)
+        	return true;
+		return false;
     }
 }

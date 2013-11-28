@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.dialog;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -34,10 +35,12 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.PlatformUI;
+import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
@@ -56,16 +59,19 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
     
     private IZentaElement fParentElement, fChildElement;
     
-    private EClass[] fValidRelations;
-    private EClass fSelected;
+    private List<RelationClass> fValidRelations;
+    private RelationClass fSelected;
 
-    public NewNestedRelationDialog(Shell parentShell, IZentaElement parentElement, IZentaElement childElement) {
+	private IViewpoint vp;
+
+    public NewNestedRelationDialog(IViewpoint vp, Shell parentShell, IZentaElement parentElement, IZentaElement childElement) {
         super(parentShell, "NewNestedRelationDialog"); //$NON-NLS-1$
         setTitleImage(IZentaImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fParentElement = parentElement;
         fChildElement = childElement;
+        this.vp = vp;
     }
 
     @Override
@@ -107,12 +113,12 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
         fTableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
-                fSelected = (EClass)((IStructuredSelection)fTableViewer.getSelection()).getFirstElement();
+                fSelected = (RelationClass)((IStructuredSelection)fTableViewer.getSelection()).getFirstElement();
             }
         });
         
-        if(fValidRelations != null && fValidRelations.length > 0) {
-            fTableViewer.setSelection(new StructuredSelection(fValidRelations[0]));
+        if(fValidRelations != null && fValidRelations.size() > 0) {
+            fTableViewer.setSelection(new StructuredSelection(fValidRelations.get(0)));
         }
         
         return composite;
@@ -132,22 +138,10 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
                 Messages.NewNestedRelationDialog_3, false);
     }
     
-    public EClass getSelectedType() {
+    public RelationClass getSelectedType() {
         return fSelected;
     }
-    
-    private EClass[] getValidRelationships(IZentaElement sourceElement, IZentaElement targetElement) {
-        List<EClass> list = new ArrayList<EClass>();
         
-        for(EClass eClass : ConnectionPreferences.getRelationsClassesForNewRelations()) {
-            if(ZentaModelUtils.isValidRelationship(sourceElement, targetElement, eClass)) {
-                list.add(eClass); 
-            }
-        }
-        
-        return list.toArray(new EClass[list.size()]);
-    }
-    
     class RelationsTableViewer extends TableViewer {
         RelationsTableViewer(Composite parent, int style) {
             super(parent, SWT.FULL_SELECTION | style);
@@ -176,9 +170,10 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
             public void dispose() {
             }
             
+            
             public Object[] getElements(Object parent) {
-                fValidRelations = getValidRelationships(fParentElement, fChildElement);
-                return fValidRelations;
+            	fValidRelations = vp.getValidRelationships(fParentElement, fChildElement);
+                return fValidRelations.toArray();
             }
         }
 

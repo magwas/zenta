@@ -12,12 +12,17 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.UnTestedException;
 
 
 
@@ -50,17 +55,20 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
     }
 
     
-    private EClass fTemplate;
+    private referencesModelObject fTemplate;
     
     /**
      * Constructor for creating a new Ecore type model
      * @param eClass
      */
-    public ZentaDiagramModelFactory(EClass template) {
-        fTemplate = template;
+    public ZentaDiagramModelFactory(referencesModelObject fTemplate2) {
+        fTemplate = fTemplate2;
     }
     
-    public boolean isUsedFor(IEditorPart editor) {
+	public ZentaDiagramModelFactory(ObjectClass templateclass) {
+		fTemplate = templateclass;
+	}
+	public boolean isUsedFor(IEditorPart editor) {
         return editor instanceof IZentaDiagramEditor;
     }
     
@@ -69,7 +77,7 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
             return null;
         }
         
-        Object object = IZentaFactory.eINSTANCE.create(fTemplate);
+        Object object = MetamodelFactory.eINSTANCE.create(fTemplate);
         
         // Connection created from Relationship Template
         if(object instanceof IRelationship) {
@@ -81,7 +89,7 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
         // Zenta Diagram Object created from Zenta Element Template
         else if(object instanceof IZentaElement) {
             IZentaElement element = (IZentaElement)object;
-            element.setName(ZentaLabelProvider.INSTANCE.getDefaultName(fTemplate));
+            element.setName(fTemplate.getName());
             return createDiagramModelZentaObject(element);
         }
         

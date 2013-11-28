@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.dialog;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -36,10 +37,12 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
+import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
@@ -64,13 +67,13 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
     
     private class Mapping {
         private IZentaElement element;
-        private List<EClass> validRelations;
+        private List<RelationClass> validRelations;
         private String[] names;
         private int selectedIndex;
         
-        Mapping(IZentaElement element) {
+        Mapping(IViewpoint vp, IZentaElement element) {
             this.element = element;
-            validRelations = createValidRelations(fParentElement, element);
+            validRelations = createValidRelations(vp,fParentElement, element);
             selectedIndex = 1;
         }
         
@@ -90,12 +93,12 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
             return selectedIndex;
         }
         
-        EClass getSelectedType() {
+        RelationClass getSelectedType() {
             return validRelations.get(selectedIndex);
         }
         
-        void setSelectedType(EClass type) {
-            int index = validRelations.indexOf(type);
+        void setSelectedType(RelationClass selectedClass) {
+            int index = validRelations.indexOf(selectedClass);
             selectedIndex = (index == -1) ? 0 : index;
         }
         
@@ -104,18 +107,18 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
                 names = new String[validRelations.size()];
                 names[0] = Messages.NewNestedRelationsDialog_0;
                 for(int i = 1; i < validRelations.size(); i++) {
-                    names[i] = ZentaLabelProvider.INSTANCE.getDefaultName(validRelations.get(i));
+                    names[i] = validRelations.get(i).getName();
                 }
             }
             return names;
         }
         
-        private List<EClass> createValidRelations(IZentaElement sourceElement, IZentaElement targetElement) {
-            List<EClass> list = new ArrayList<EClass>();
+        private List<RelationClass> createValidRelations(IViewpoint vp, IZentaElement sourceElement, IZentaElement targetElement) {
+            List<RelationClass> list = new ArrayList<RelationClass>();
             // Entry for "none"
             list.add(null);
-            for(EClass eClass : ConnectionPreferences.getRelationsClassesForNewRelations()) {
-                if(ZentaModelUtils.isValidRelationship(sourceElement, targetElement, eClass)) {
+            for(RelationClass eClass : vp.getRelationClasses()) {
+                if(vp.isValidRelationship(sourceElement, targetElement, eClass)) {
                     list.add(eClass); 
                 }
             }
@@ -123,7 +126,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         }
     }
 
-    public NewNestedRelationsDialog(Shell parentShell, IZentaElement parentElement, List<IZentaElement> childElements) {
+    public NewNestedRelationsDialog(IViewpoint vp, Shell parentShell, IZentaElement parentElement, List<IZentaElement> childElements) {
         super(parentShell, "NewNestedRelationsDialog"); //$NON-NLS-1$
         setTitleImage(IZentaImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
@@ -132,7 +135,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         
         fMappings = new Mapping[childElements.size()];
         for(int i = 0; i < fMappings.length; i++) {
-            fMappings[i] = new Mapping(childElements.get(i));
+            fMappings[i] = new Mapping(vp, childElements.get(i));
         }
     }
 
@@ -187,8 +190,8 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         return composite;
     }
     
-    public EClass[] getSelectedTypes() {
-        List<EClass> list = new ArrayList<EClass>();
+    public List<RelationClass> getSelectedTypes() {
+        List<RelationClass> list = new ArrayList<RelationClass>();
         
         for(Mapping mapping : fMappings) {
             if(mapping.getSelectedType() != null) {
@@ -196,10 +199,10 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
             }
         }
         
-        return list.isEmpty() ? null : list.toArray(new EClass[list.size()]);
+        return list;
     }
     
-    public IZentaElement[] getSelectedElements() {
+    public List<IZentaElement> getSelectedElements() {
         List<IZentaElement> list = new ArrayList<IZentaElement>();
         
         for(Mapping mapping : fMappings) {
@@ -208,7 +211,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
             }
         }
         
-        return list.isEmpty() ? null : list.toArray(new IZentaElement[list.size()]);
+        return list;
     }
     
     @Override
@@ -321,7 +324,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
                 
                 // Ctrl key pressed, set others to same if possible or (none) if not
                 if(fModKeyPressed) {
-                    EClass selectedClass = ((Mapping)element).getSelectedType();
+                    RelationClass selectedClass = ((Mapping)element).getSelectedType();
                     for(Mapping mapping : fMappings) {
                         if(mapping != element) {
                             mapping.setSelectedType(selectedClass);

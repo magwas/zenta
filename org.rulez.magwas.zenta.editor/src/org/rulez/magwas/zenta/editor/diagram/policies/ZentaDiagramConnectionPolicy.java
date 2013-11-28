@@ -20,6 +20,10 @@ import org.rulez.magwas.zenta.editor.diagram.commands.CreateDiagramConnectionCom
 import org.rulez.magwas.zenta.editor.diagram.commands.DiagramCommandFactory;
 import org.rulez.magwas.zenta.editor.diagram.commands.ReconnectDiagramConnectionCommand;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
+import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -45,7 +49,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
     protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
         CreateDiagramConnectionCommand cmd = null;
         
-        EClass classType = (EClass)request.getNewObjectType();
+        RelationClass classType = (RelationClass)request.getNewObjectType();
         IDiagramModelObject source = (IDiagramModelObject)getHost().getModel();
         
         // Plain Connection
@@ -201,7 +205,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         @Override
         public boolean canExecute() {
             if(super.canExecute()) {
-                EClass classType = (EClass)fRequest.getNewObjectType();
+            	RelationClass classType = (RelationClass)fRequest.getNewObjectType();
                 return isValidConnection(fSource, fTarget, classType);
             }
             return false;
@@ -283,10 +287,10 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         protected boolean checkSourceConnection() {
             if(super.checkSourceConnection()) {
                 if(fConnection instanceof IDiagramModelZentaConnection) {
-                    return isValidConnection(fNewSource, fOldTarget, ((IDiagramModelZentaConnection)fConnection).getRelationship().eClass());
+                    return isValidConnection(fNewSource, fOldTarget, ((IDiagramModelZentaConnection)fConnection).getRelationship());
                 }
                 else {
-                    return isValidConnection(fNewSource, fOldTarget, fConnection.eClass());
+                    return isValidConnection(fNewSource, fOldTarget, fConnection);
                 }
             }
             
@@ -297,7 +301,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         protected boolean checkTargetConnection() {
             if(super.checkTargetConnection()) {
                 if(fConnection instanceof IDiagramModelZentaConnection) {
-                    return isValidConnection(fOldSource, fNewTarget, ((IDiagramModelZentaConnection)fConnection).getRelationship().eClass());
+                    return isValidConnection(fOldSource, fNewTarget, ((IDiagramModelZentaConnection)fConnection).getRelationship());
                 }
                 else {
                     return isValidConnection(fOldSource, fNewTarget, fConnection.eClass());
@@ -316,13 +320,15 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
     /**
      * @return True if valid connection source for connection type
      */
-    private boolean isValidConnectionSource(IDiagramModelZentaObject source, EClass relationshipType) {
+    private boolean isValidConnectionSource(IDiagramModelZentaObject source, RelationClass relationshipType) {
         // Special case if relationshipType == null. Means that the Magic connector is being used
         if(relationshipType == null) {
             return true;
         }
 
-        return ZentaModelUtils.isValidRelationshipStart(source.getZentaElement(), relationshipType);
+        IDiagramModel dm = source.getDiagramModel();
+        IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(dm);
+        return vp.isValidRelationshipStart(source.getZentaElement(), relationshipType);
     }
     
     /**
@@ -331,39 +337,19 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
      * @param relationshipType
      * @return True if valid connection source/target for connection type
      */
-    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, EClass relationshipType) {
-        // Diagram Connection from/to notes/groups/diagram refs
-        if(relationshipType == IZentaPackage.eINSTANCE.getDiagramModelConnection()) {
-            if(source == target) {
-                return false;
-            }
-            if(source instanceof IDiagramModelZentaObject && target instanceof IDiagramModelZentaObject) {
-                return false;
-            }
-            if(source instanceof IDiagramModelGroup || source instanceof IDiagramModelReference) {
-                return !(target instanceof IDiagramModelZentaObject);
-            }
-            if(source instanceof IDiagramModelZentaObject) {
-                return target instanceof IDiagramModelNote;
-            }
-            
-            return true;
-        }
+    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, Object relationshipType) {
 
         // Connection from Zenta object to Zenta object 
         if(source instanceof IDiagramModelZentaObject && target instanceof IDiagramModelZentaObject) {
-            
-            // Special case if relationshipType == null. Means that the Magic connector is being used
-            if(relationshipType == null) {
-                return true;
-            }
-            
+        	
             IZentaElement sourceElement = ((IDiagramModelZentaObject)source).getZentaElement();
             IZentaElement targetElement = ((IDiagramModelZentaObject)target).getZentaElement();
-            return ZentaModelUtils.isValidRelationship(sourceElement, targetElement, relationshipType);
+            IRelationship rel = (IRelationship) relationshipType;
+            IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
+            return vp.isValidRelationship(sourceElement, targetElement, rel);
         }
         
-        return false;
+        return true;
     }
     
     /**
