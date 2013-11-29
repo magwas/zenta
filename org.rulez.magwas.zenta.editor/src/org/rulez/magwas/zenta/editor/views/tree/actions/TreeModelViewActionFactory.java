@@ -13,9 +13,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
-import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
-import org.rulez.magwas.zenta.editor.model.viewpoints.TotalViewpoint;
-import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
@@ -27,14 +24,12 @@ import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
-import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.UnTestedException;
 
 
 
@@ -52,7 +47,7 @@ public class TreeModelViewActionFactory {
 	private Metamodel metamodel;
 
     public TreeModelViewActionFactory(IZentaModel model) {
-    	metamodel = MetamodelFactory.eINSTANCE.getMetamodelFor(model);
+    	metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
     }
 
     /**
@@ -103,7 +98,7 @@ public class TreeModelViewActionFactory {
             @Override
             public void run() {
                 // Create a new Zenta Element, set its name
-                IZentaElement element = (IZentaElement) eClass.create();
+                IZentaElement element = (IZentaElement) eClass.create(folder);
                 element.setName(getText());
                 // Execute Command
                 Command cmd = new NewElementCommand(folder, element);
@@ -157,4 +152,8 @@ public class TreeModelViewActionFactory {
         action.setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_SKETCH_16));
         return action;
     }
+
+	public Metamodel getMetamodel() {
+		return metamodel;
+	}
 }

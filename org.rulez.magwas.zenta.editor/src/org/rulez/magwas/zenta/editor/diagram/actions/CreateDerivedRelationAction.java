@@ -49,6 +49,7 @@ import org.rulez.magwas.zenta.metamodel.DerivedRelationsUtils;
 import org.rulez.magwas.zenta.metamodel.DerivedRelationsUtils.TooComplicatedException;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.FolderType;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -68,9 +69,11 @@ public class CreateDerivedRelationAction extends SelectionAction {
     public static final String ID = "CreateDerivedRelationAction"; //$NON-NLS-1$
     public static final String TEXT = Messages.CreateDerivedRelationAction_0;
 	private DerivedRelationsUtils drutil;
+	private IFolder folder;
 
-    public CreateDerivedRelationAction(IWorkbenchPart part) {
+    public CreateDerivedRelationAction(IWorkbenchPart part, IDiagramModel model) {
         super(part);
+        this.folder = (IFolder)model.eContainer();
         setText(TEXT);
         setId(ID);
         setSelectionProvider((ISelectionProvider)part.getAdapter(GraphicalViewer.class));
@@ -100,6 +103,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
     
     @Override
     public void run() {
+    	//FIXME: untested
         List<?> selection = getSelectedObjects();
         
         EditPart editPart = (EditPart)selection.get(0);
@@ -110,51 +114,66 @@ public class CreateDerivedRelationAction extends SelectionAction {
         ChainList chainList1 = new ChainList(diagramModelObject1, diagramModelObject2);
         ChainList chainList2 = new ChainList(diagramModelObject2, diagramModelObject1);
         drutil = new DerivedRelationsUtils(diagramModelObject1.getZentaElement().getZentaModel());
-        // Already has a direct relationship in both directions
-        if(chainList1.hasExistingDirectRelationship() && chainList2.hasExistingDirectRelationship()) {
-            MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
-                    Messages.CreateDerivedRelationAction_1,
-                    Messages.CreateDerivedRelationAction_2);
-            return;
-        }
-        
-        // Both chains are too complicated
-        if(chainList1.isTooComplicated && chainList2.isTooComplicated) {
-            MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
-                    Messages.CreateDerivedRelationAction_1,
-                    Messages.CreateDerivedRelationAction_3);
-            return;
-        }
-        
-        // No chains found, although perhaps one was too complicated...
-        if(chainList1.getChains() == null && chainList2.getChains() == null) {
-            if(chainList1.isTooComplicated || chainList2.isTooComplicated) {
-                MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
-                        Messages.CreateDerivedRelationAction_1,
-                        Messages.CreateDerivedRelationAction_4);
-            }
-            else {
-                MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
-                        Messages.CreateDerivedRelationAction_1,
-                        Messages.CreateDerivedRelationAction_5);
-            }
-            return;
-        }
+
+        if(!couldWeFindAnything(chainList1, chainList2))
+        	return;
         
         CreateDerivedConnectionDialog dialog = new CreateDerivedConnectionDialog(getWorkbenchPart().getSite().getShell(),
                 chainList1, chainList2);
         
-        if(dialog.open() == IDialogConstants.OK_ID) {
-            List<IRelationship> chain = dialog.getSelectedChain();
-            if(chain != null) {
-                ChainList chainList = dialog.getSelectedChainList();
-                RelationClass relationshipClass = drutil.getWeakestType(chain);
-                IRelationship relation = relationshipClass.create();
-                CommandStack stack = (CommandStack)getWorkbenchPart().getAdapter(CommandStack.class);
-                stack.execute(new CreateDerivedConnectionCommand(chainList.srcDiagramObject, chainList.tgtDiagramObject, relation));
-            }
-        }
+        createChoosenChain(dialog);
     }
+
+		private boolean couldWeFindAnything(ChainList chainList1, ChainList chainList2) {
+			if(chainList1.hasExistingDirectRelationship() && chainList2.hasExistingDirectRelationship()) {
+	            alreadyADirectConnectionDialog();
+	            return false;
+	        }
+	        if(chainList1.isTooComplicated && chainList2.isTooComplicated) {
+	            tooManyPossibilitiesDialog();
+	            return false;
+	        }
+	        if(chainList1.getChains() == null && chainList2.getChains() == null) {
+	            if(chainList1.isTooComplicated || chainList2.isTooComplicated)
+	                notFoundOrTooComplicatedDialog();
+	            else
+	                notFoundDialog();
+	            return false;
+	        }
+	        return true;
+		}
+			private void notFoundDialog() {
+				MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
+				        Messages.CreateDerivedRelationAction_1,
+				        Messages.CreateDerivedRelationAction_5);
+			}
+			private void notFoundOrTooComplicatedDialog() {
+				MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
+				        Messages.CreateDerivedRelationAction_1,
+				        Messages.CreateDerivedRelationAction_4);
+			}
+			private void tooManyPossibilitiesDialog() {
+				MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
+				        Messages.CreateDerivedRelationAction_1,
+				        Messages.CreateDerivedRelationAction_3);
+			}
+			private void alreadyADirectConnectionDialog() {
+				MessageDialog.openInformation(getWorkbenchPart().getSite().getShell(),
+				        Messages.CreateDerivedRelationAction_1,
+				        Messages.CreateDerivedRelationAction_2);
+			}
+		private void createChoosenChain(CreateDerivedConnectionDialog dialog) {
+			if(dialog.open() == IDialogConstants.OK_ID) {
+	            List<IRelationship> chain = dialog.getSelectedChain();
+	            if(chain != null) {
+	                ChainList chainList = dialog.getSelectedChainList();
+	                RelationClass relationshipClass = drutil.getWeakestType(chain);
+	                IRelationship relation = (IRelationship) relationshipClass.create(folder);
+	                CommandStack stack = (CommandStack)getWorkbenchPart().getAdapter(CommandStack.class);
+	                stack.execute(new CreateDerivedConnectionCommand(chainList.srcDiagramObject, chainList.tgtDiagramObject, relation));
+	            }
+	        }
+		}
     
     // ================================ Helper Classes =====================================
     

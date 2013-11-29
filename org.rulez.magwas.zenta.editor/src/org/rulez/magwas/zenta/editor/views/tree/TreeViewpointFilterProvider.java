@@ -35,8 +35,7 @@ import org.rulez.magwas.zenta.model.IRelationship;
  * @author Phillip Beauvoir
  */
 public class TreeViewpointFilterProvider implements IPartListener {
-
-    /**
+	/**
      * Active Diagram Model
      */
     private IZentaDiagramModel fActiveDiagramModel;
@@ -169,7 +168,7 @@ public class TreeViewpointFilterProvider implements IPartListener {
                     if(element instanceof IRelationship) {
                         IZentaElement source = ((IRelationship)element).getSource();
                         IZentaElement target = ((IRelationship)element).getTarget();
-                        if(!viewpoint.isAllowedType(source) || !viewpoint.isAllowedType(target)) {
+                        if( source == null|| target == null ||!viewpoint.isAllowedType(source) || !viewpoint.isAllowedType(target)) {
                             return ColorFactory.get(128, 128, 128);
                         }
                     }

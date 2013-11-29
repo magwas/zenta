@@ -105,7 +105,7 @@ implements IZentaDiagramEditor {
     @Override
     public ZentaDiagramEditorPalette getPaletteRoot() {
         if(fPalette == null) {
-            fPalette = new ZentaDiagramEditorPalette();
+            fPalette = new ZentaDiagramEditorPalette(getModel());
             setPaletteViewpoint();
         }
         return fPalette;
@@ -218,7 +218,7 @@ implements IZentaDiagramEditor {
         registry.registerAction(action);
         
         // Create Derived Relation
-        action = new CreateDerivedRelationAction(this);
+        action = new CreateDerivedRelationAction(this,fDiagramModel);
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
         

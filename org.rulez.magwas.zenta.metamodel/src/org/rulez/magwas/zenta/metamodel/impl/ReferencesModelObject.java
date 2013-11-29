@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -43,4 +44,8 @@ public abstract class ReferencesModelObject extends EObjectImpl implements refer
 		return getReference().getId().equals(modelobj.getClass());
 	}
 	
+	public void postCreate(IIdentifier createdObj, IFolder folder) {
+		folder.getElements().add(createdObj);
+		System.out.printf("created %s\n", createdObj);
+	}
 }

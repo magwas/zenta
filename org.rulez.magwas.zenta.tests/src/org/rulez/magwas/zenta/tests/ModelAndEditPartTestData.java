@@ -12,6 +12,8 @@ import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -26,6 +28,7 @@ public class ModelAndEditPartTestData extends ModelTestData {
 	
 	private File file;
 	public ZentaDiagramEditor editor;
+	public Metamodel metamodel;
 
 	public ModelAndEditPartTestData() {
 		super();
@@ -36,6 +39,7 @@ public class ModelAndEditPartTestData extends ModelTestData {
             }
         });
 
+        metamodel = MetamodelFactory.eINSTANCE.getMetamodelFor(model);
 		diagramModel = getTestDiagramModel();
 		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)diagramModel);
 		assertNotNull(editor);

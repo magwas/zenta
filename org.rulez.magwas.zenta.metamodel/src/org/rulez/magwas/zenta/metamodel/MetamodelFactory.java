@@ -51,8 +51,6 @@ public interface MetamodelFactory extends EFactory {
 
 	Metamodel createMetamodel(IZentaModel zentaModel);
 
-	Object create(referencesModelObject fTemplate);
-
 	Metamodel getMetamodelFor(IZentaModelElement modelElement);
 
 	ObjectClass createNoteClass();

@@ -42,6 +42,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -75,6 +76,9 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
      * This flag stops some thread conditions (on Mac) that can re-set the current command when the context menu is showing
      */
     private boolean fCanSetCurrentCommand = true;
+
+
+	private Menu menu;
     
     public MagicConnectionCreationTool() {
        setDefaultCursor(cursor);
@@ -151,7 +155,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         // Set this threading safety guard
         fCanSetCurrentCommand = false;
         
-        Menu menu = new Menu(getCurrentViewer().getControl());
+        menu = new Menu(getCurrentViewer().getControl());
         addConnectionActions(menu, sourceDiagramModelObject.getZentaElement(), targetDiagramModelObject.getZentaElement());
         menu.setVisible(true);
         
@@ -500,7 +504,10 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
             fTemplate = elementType;
 
             // Create this now
-            fChild = (IDiagramModelZentaObject)new ZentaDiagramModelFactory(fTemplate).getNewObject();
+            fChild = (IDiagramModelZentaObject)new ZentaDiagramModelFactory(
+            		fTemplate,
+            		(IFolder) parent
+            	.getDiagramModel().eContainer()).getNewObject();
             fChild.setBounds(location.x, location.y, -1, -1);
         }
         
@@ -551,7 +558,8 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 
 		@Override
         public void execute() {
-            fConnection = (IDiagramModelZentaConnection)new ZentaDiagramModelFactory(fTemplate).getNewObject();
+			IFolder folder = (IFolder) fSource.getDiagramModel().eContainer();
+            fConnection = (IDiagramModelZentaConnection)new ZentaDiagramModelFactory(fTemplate, folder).getNewObject();
             fConnection.connect(fSource, fTarget);
             fConnection.addRelationshipToModel(null);
         }
@@ -577,7 +585,10 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         }
     }
 
-	public void setRequest(CreateConnectionRequest req) {
+	public void _setRequest(CreateConnectionRequest req) {
 		this.setTargetRequest(req);		
+	}
+	public Menu _getMenu(){
+		return menu;
 	}
 }

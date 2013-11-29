@@ -13,7 +13,6 @@ import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
@@ -162,11 +161,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	@Override
 	public Metamodel createMetamodel() {
 		return null;
-	}
-
-	@Override
-	public Object create(referencesModelObject fTemplate) {
-		return fTemplate.create();
 	}
 
 	@Override

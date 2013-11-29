@@ -31,6 +31,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -222,33 +223,34 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         
         @Override
         public void execute() {
-            EClass classType = (EClass)fRequest.getNewObjectType();
+        	Object classType =  fRequest.getNewObjectType();
             IDiagramModelZentaObject source = (IDiagramModelZentaObject)fSource;
             IDiagramModelZentaObject target = (IDiagramModelZentaObject)fTarget;
-            
-            // If there is already a relation of this type in the model...
-            IRelationship relation = getExistingRelationshipOfType(classType, source, target);
-            if(relation != null) {
-                // ...then ask the user if they want to re-use it
-                useExistingRelation = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
-                        Messages.ZentaDiagramConnectionPolicy_0,
-                        NLS.bind(Messages.ZentaDiagramConnectionPolicy_1,
-                                source.getName(), target.getName()));
-                // Yes...
-                if(useExistingRelation) {
-                     // ...set connection's relationship to the existing relation
-                    fConnection = createNewConnection();
-                    ((IDiagramModelZentaConnection)fConnection).setRelationship(relation);
-                }
-            }
+            ifExistingRelationShouldBeUsedThenSetToUseIt(classType, source, target);
 
             super.execute();
             
-            // Now add the relationship to the model
             if(!useExistingRelation) {
                 ((IDiagramModelZentaConnection)fConnection).addRelationshipToModel(null);
             }
         }
+			private void ifExistingRelationShouldBeUsedThenSetToUseIt(
+					Object classType, IDiagramModelZentaObject source,
+					IDiagramModelZentaObject target) {
+				if(classType instanceof EClass) {
+		            IRelationship relation = getExistingRelationshipOfType((EClass) classType, source, target);
+		            if(relation != null) {
+		                useExistingRelation = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
+		                        Messages.ZentaDiagramConnectionPolicy_0,
+		                        NLS.bind(Messages.ZentaDiagramConnectionPolicy_1,
+		                                source.getName(), target.getName()));
+		                if(useExistingRelation) {
+		                    fConnection = createNewConnection();
+		                    ((IDiagramModelZentaConnection)fConnection).setRelationship(relation);
+		                }
+		            }
+	            }
+			}
 
         @Override
         public void redo() {
@@ -281,29 +283,24 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         
         @Override
         protected boolean checkSourceConnection() {
-            if(super.checkSourceConnection()) {
-                if(fConnection instanceof IDiagramModelZentaConnection) {
+            if(super.checkSourceConnection())
+                if(fConnection instanceof IDiagramModelZentaConnection)
                     return isValidConnection(fNewSource, fOldTarget, ((IDiagramModelZentaConnection)fConnection).getRelationship());
-                }
-                else {
-                    return isValidConnection(fNewSource, fOldTarget, fConnection);
-                }
-            }
+                else
+                	throw new UnTestedException();
+                    //return isValidConnection(fNewSource, fOldTarget, fConnection);
             
             return false;
         }
         
         @Override
         protected boolean checkTargetConnection() {
-            if(super.checkTargetConnection()) {
-                if(fConnection instanceof IDiagramModelZentaConnection) {
+            if(super.checkTargetConnection())
+                if(fConnection instanceof IDiagramModelZentaConnection)
                     return isValidConnection(fOldSource, fNewTarget, ((IDiagramModelZentaConnection)fConnection).getRelationship());
-                }
-                else {
-                    return isValidConnection(fOldSource, fNewTarget, fConnection.eClass());
-                }
-            }
-            
+                else
+                	throw new UnTestedException();
+                    //return isValidConnection(fOldSource, fNewTarget, fConnection.eClass());
             return false;
         }
     }
@@ -333,18 +330,23 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
      * @param relationshipType
      * @return True if valid connection source/target for connection type
      */
-    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, Object relationshipType) {
-
+    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, IRelationship rel) {
         // Connection from Zenta object to Zenta object 
         if(source instanceof IDiagramModelZentaObject && target instanceof IDiagramModelZentaObject) {
-        	
+            IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
             IZentaElement sourceElement = ((IDiagramModelZentaObject)source).getZentaElement();
             IZentaElement targetElement = ((IDiagramModelZentaObject)target).getZentaElement();
-            IRelationship rel = (IRelationship) relationshipType;
-            IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
             return vp.isValidRelationship(sourceElement, targetElement, rel);
         }
-        
+        return true;
+    }
+    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, RelationClass rel) {
+        if(source instanceof IDiagramModelZentaObject && target instanceof IDiagramModelZentaObject) {
+            IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
+            IZentaElement sourceElement = ((IDiagramModelZentaObject)source).getZentaElement();
+            IZentaElement targetElement = ((IDiagramModelZentaObject)target).getZentaElement();
+            return vp.isValidRelationship(sourceElement, targetElement, rel);
+        }
         return true;
     }
     

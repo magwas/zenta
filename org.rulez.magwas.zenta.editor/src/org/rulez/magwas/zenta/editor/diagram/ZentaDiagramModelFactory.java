@@ -10,9 +10,8 @@ import org.eclipse.ui.IEditorPart;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -52,28 +51,28 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
 
     
     private referencesModelObject fTemplate;
+	private IFolder folder;
     
     /**
      * Constructor for creating a new Ecore type model
      * @param eClass
      */
-    public ZentaDiagramModelFactory(referencesModelObject fTemplate2) {
+    public ZentaDiagramModelFactory(referencesModelObject fTemplate2, IFolder folder) {
         fTemplate = fTemplate2;
+        this.folder = folder;
     }
     
-	public ZentaDiagramModelFactory(ObjectClass templateclass) {
-		fTemplate = templateclass;
-	}
 	public boolean isUsedFor(IEditorPart editor) {
         return editor instanceof IZentaDiagramEditor;
     }
     
+	@Override
     public Object getNewObject() {
         if(fTemplate == null) {
             return null;
         }
         
-        Object object = MetamodelFactory.eINSTANCE.create(fTemplate);
+        Object object = fTemplate.create(folder);
         
         // Connection created from Relationship Template
         if(object instanceof IRelationship) {

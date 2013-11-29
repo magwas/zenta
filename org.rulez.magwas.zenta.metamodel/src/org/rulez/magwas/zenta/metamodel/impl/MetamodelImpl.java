@@ -95,7 +95,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 					processDiagramModelObjectChange(notification);
 				} else if (lastObject instanceof IZentaElement) {
 					processElementChange(notification);
-				}
+				} 
 			}
 				private void processDiagramModelObjectChange(Notification notification) {
 					int feature = notification.getFeatureID(IDiagramModelZentaObject.class);
@@ -117,6 +117,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 						IDiagramModelComponent dmzc = (IDiagramModelComponent) notification.getNewValue();
 						if(null == dmzc)
 							return;
+						setAppearanceIfNeeded(dmzc);
 						IDiagramModel dm = dmzc.getDiagramModel();
 						Template template = getTemplateFor(dm);
 						if(null == template)
@@ -125,6 +126,30 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 						MetamodelFactory.eINSTANCE.createObjectClass(element, template);
 					}
 				}
+					private void setAppearanceIfNeeded(IDiagramModelComponent dmzc) {
+						IZentaElement me = getModelElementFor(dmzc);
+						String ocId = null;
+						if(null != me)
+							ocId = me.getObjectClass();
+						if(null != ocId) {
+							setAppearanceByObjectClassId(ocId, dmzc);
+						}
+					}
+						private IZentaElement getModelElementFor(
+								IDiagramModelComponent dmzc) {
+							IZentaElement me = null;
+							if(dmzc instanceof IDiagramModelZentaObject)
+								me = ((IDiagramModelZentaObject)dmzc).getZentaElement();
+							if(dmzc instanceof IDiagramModelZentaConnection)
+								me = ((IDiagramModelZentaConnection)dmzc).getRelationship();
+							return me;
+						}
+						private void setAppearanceByObjectClassId(String ocId,
+								IDiagramModelComponent dmzc) {
+							referencesModelObject oc = getClassById(ocId);
+							IIdentifier reference = oc.getReference();
+							dmzc.setAppearanceBy((IZentaElement) reference);
+						}
 				private void processElementChange(Notification notification) {
 					int feature = notification.getFeatureID(IZentaElement.class);
 					if(feature == IZentaPackage.NAMEABLE__OBJECT_CLASS) {

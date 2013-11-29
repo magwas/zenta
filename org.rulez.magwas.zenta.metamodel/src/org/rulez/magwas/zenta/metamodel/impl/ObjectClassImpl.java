@@ -14,6 +14,8 @@ import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -191,8 +193,11 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 	}
 
 	@Override
-	public IZentaElement create() {
-		return IZentaFactory.eINSTANCE.createBasicObject();
+	public IZentaElement create(IFolder folder) {
+		IBasicObject obj = IZentaFactory.eINSTANCE.createBasicObject();
+		obj.setObjectClass(this.getId());
+		postCreate(obj,folder);
+		return obj;
 	}
 
 }

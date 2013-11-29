@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -74,6 +75,11 @@ public class ModelTestData {
 
 	public IDiagramModelZentaConnection getDMRById(String id3) {
 		return (IDiagramModelZentaConnection) ZentaModelUtils.getObjectByID(getModel(),id3);
+	}
+
+	public static IFolder getFolderByKid(EObject selected) {
+		IFolder folder = ((IFolder)selected.eContainer());
+		return folder;
 	}
 
 	public static void assertNotEquals(String string, String string2) {

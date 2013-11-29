@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -205,8 +207,11 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 	}
 
 	@Override
-	public IRelationship create() {
-		return IZentaFactory.eINSTANCE.createBasicRelationship();
+	public IRelationship create(IFolder folder) {
+		IBasicRelationship obj = IZentaFactory.eINSTANCE.createBasicRelationship();
+		postCreate(obj, folder);
+		obj.setObjectClass(this.getId());
+		return obj;
 	}
 
 }

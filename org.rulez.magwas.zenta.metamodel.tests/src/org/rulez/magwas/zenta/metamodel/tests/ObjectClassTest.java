@@ -12,8 +12,10 @@ import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -224,6 +226,27 @@ public class ObjectClassTest{
 
 		element.setObjectClass("ea94cf6c");
 
+		assertEquals("ellipseShape",dmo.getElementShape());
+		assertEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
+		assertEquals("#ffffff",dmo.getFontColor());
+		assertEquals(4,dmo.getTextAlignment());
+		assertEquals("#ffa500",dmo.getFillColor());
+	}
+	
+	@Test
+	public void The_objectclass_of_a_created_element_is_set_propertly() {
+		String id = "ea94cf6c";
+		IZentaElement user = testdata.getElementById(id);
+		IFolder folder = ModelTestData.getFolderByKid(user);
+		ObjectClass oc = getObjectClassReferencing(user);
+		IZentaElement newelement = (IZentaElement) oc.create(folder);
+		assertEquals(id,newelement.getObjectClass());
+		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+		dmo.setZentaElement(newelement);
+		dmo.setBounds(0, 0, 100, 100);
+		IDiagramModel dm = testdata.getTestDiagramModel();
+		dm.getChildren().add(dmo);
+		assertNotNull(dmo);
 		assertEquals("ellipseShape",dmo.getElementShape());
 		assertEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
 		assertEquals("#ffffff",dmo.getFontColor());

@@ -4,6 +4,8 @@ import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IDiagramModelNote;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.UnTestedException;
@@ -16,8 +18,10 @@ public class NoteClass extends ReferencesModelObject implements ObjectClass {
 	}
 
 	@Override
-	public IIdentifier create() {
-		return IZentaFactory.eINSTANCE.createDiagramModelNote();
+	public IIdentifier create(IFolder folder) {
+		IDiagramModelNote obj = IZentaFactory.eINSTANCE.createDiagramModelNote();
+		postCreate(obj, folder);
+		return obj;
 	}
 
 	@Override

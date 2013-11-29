@@ -21,6 +21,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -226,7 +227,7 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 	}
 
 	@Override
-	public IIdentifier create() {
+	public IIdentifier create(IFolder folder) {
 		return IZentaFactory.eINSTANCE.createZentaDiagramModel();
 	}
 }

@@ -16,6 +16,7 @@ import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -34,9 +35,11 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	protected List<referencesModelObject> allowedtypes = new ArrayList<referencesModelObject>();
     
 	protected Metamodel metamodel;
+	private IFolder folder;
 
     public AbstractViewpoint(IDiagramModel dm) {
 		metamodel = MetamodelFactory.eINSTANCE.createMetamodel(dm.getZentaModel());
+		folder = (IFolder) dm.eContainer();
 	}
 
 	@Override
@@ -145,7 +148,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public IIdentifier create(referencesModelObject eClass) {
-		return eClass.create();
+		return eClass.create(folder);
 	}
 
 	@Override

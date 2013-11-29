@@ -35,11 +35,11 @@ public class CreateRelationCommand extends Command {
     
     @Override
     public void execute() {
-    	
-        fRelation = fType.create();
+    	IFolder folder = (IFolder) fParent.eContainer();
+        fRelation = (IRelationship) fType.create(folder);
         fRelation.setSource(fParent);
         fRelation.setTarget(fChild);
-        fFolder = fChild.getZentaModel().getDefaultFolderForElement(fRelation);
+        fFolder = (IFolder) fParent.eContainer();
 
         redo();
     }

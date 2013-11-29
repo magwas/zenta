@@ -3,6 +3,7 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 
 /**
@@ -33,7 +34,7 @@ public interface referencesModelObject extends EObject {
 
 	Template getTemplate();
 	
-	IIdentifier create();
+	IIdentifier create(IFolder parent);
 
 	String getId();
 

@@ -11,6 +11,7 @@ import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.model.IFolder;
 
 
 
@@ -23,7 +24,11 @@ public class MagicConnectionModelFactory implements ICreationFactory {
     
     private RelationClass fRelationshipTemplate;
     private ObjectClass fElementTemplate;
+	private IFolder folder;
     
+    public MagicConnectionModelFactory(IFolder parentfolder) {
+    	folder = parentfolder;
+    }
     public boolean isUsedFor(IEditorPart editor) {
         return editor instanceof IZentaDiagramEditor;
     }
@@ -45,7 +50,7 @@ public class MagicConnectionModelFactory implements ICreationFactory {
     }
     
     public Object getNewObject() {
-        return new ZentaDiagramModelFactory(fRelationshipTemplate).getNewObject();
+        return new ZentaDiagramModelFactory(fRelationshipTemplate,folder).getNewObject();
     }
 
     public Object getObjectType() {
