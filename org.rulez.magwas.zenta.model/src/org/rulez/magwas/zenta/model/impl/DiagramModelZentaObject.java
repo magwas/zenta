@@ -22,6 +22,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.UnTestedException;
 
 
 /**
@@ -169,7 +170,7 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
         if(element != null && element.eContainer() == null) {
             // If parent is null use default folder
             if(parent == null) {
-                parent = getDiagramModel().getZentaModel().getDefaultFolderForElement(element);
+            	throw new UnTestedException();
             }
             parent.getElements().add(element);
         }

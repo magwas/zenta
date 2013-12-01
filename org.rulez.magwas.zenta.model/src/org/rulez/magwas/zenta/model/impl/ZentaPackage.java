@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IAndJunction;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -1818,14 +1817,6 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 
 		initEClass(sketchModelActorEClass, ISketchModelActor.class, "SketchModelActor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		// Initialize enums and add enum literals
-		initEEnum(folderTypeEEnum, FolderType.class, "FolderType"); //$NON-NLS-1$
-		addEEnumLiteral(folderTypeEEnum, FolderType.USER);
-		addEEnumLiteral(folderTypeEEnum, FolderType.BUSINESS);
-		addEEnumLiteral(folderTypeEEnum, FolderType.CONNECTORS);
-		addEEnumLiteral(folderTypeEEnum, FolderType.RELATIONS);
-		addEEnumLiteral(folderTypeEEnum, FolderType.DIAGRAMS);
-		addEEnumLiteral(folderTypeEEnum, FolderType.DERIVED);
 
 		// Initialize data types
 		initEDataType(fileEDataType, File.class, "File", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

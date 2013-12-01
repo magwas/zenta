@@ -11,7 +11,6 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewFolderCommand;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IFolder;
 
@@ -40,8 +39,6 @@ public class NewFolderAction extends ViewerAction {
             // Create a new Folder, set its name
             IFolder folder = IZentaFactory.eINSTANCE.createFolder();
             folder.setName(Messages.NewFolderAction_1);
-            folder.setType(FolderType.USER);
-            
             // Execute Command
             Command cmd = new NewFolderCommand(parent, folder);
             CommandStack commandStack = (CommandStack)parent.getAdapter(CommandStack.class);

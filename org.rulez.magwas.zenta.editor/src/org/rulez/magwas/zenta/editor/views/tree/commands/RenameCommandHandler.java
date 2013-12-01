@@ -7,10 +7,8 @@ package org.rulez.magwas.zenta.editor.views.tree.commands;
 
 import org.eclipse.gef.commands.CommandStack;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 
 
@@ -27,10 +25,6 @@ public class RenameCommandHandler {
      * @return True if element can be renamed
      */
     public static boolean canRename(Object element) {
-        if(element instanceof IFolder) {
-            return ((IFolder)element).getType() == FolderType.USER;
-        }
-        
         return (element instanceof INameable) && (element instanceof IAdapter);
     }
     

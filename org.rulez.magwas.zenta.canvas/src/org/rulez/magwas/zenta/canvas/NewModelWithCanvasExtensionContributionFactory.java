@@ -25,7 +25,6 @@ import org.rulez.magwas.zenta.canvas.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.canvas.templates.wizard.NewCanvasFromTemplateWizard;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedWizardDialog;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -72,7 +71,7 @@ public class NewModelWithCanvasExtensionContributionFactory extends ExtensionCon
             model.setDefaults();
             IEditorModelManager.INSTANCE.registerModel(model);
             
-            IFolder folder = model.getFolder(FolderType.DIAGRAMS);
+            IFolder folder = model.getFolders().get(0);
             
             WizardDialog dialog = new ExtendedWizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     new NewCanvasFromTemplateWizard(folder),

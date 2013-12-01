@@ -222,7 +222,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         TemplateUtils.generateNewUUIDs(copyCanvas);
         
         // Add the canvas copy to a new Views folder
-        IFolder folder = tempModel.getDefaultFolderForElement(copyCanvas);
+        IFolder folder = tempModel.getFolders().get(0);
         folder.getElements().add(copyCanvas);
         
         // Use an Archive Manager to save it

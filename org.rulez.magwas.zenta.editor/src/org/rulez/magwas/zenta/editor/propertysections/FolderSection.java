@@ -11,7 +11,6 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IFolder;
 
@@ -81,7 +80,7 @@ public class FolderSection extends AbstractZentaPropertySection {
         if(fIsExecutingCommand) {
             return; 
         }
-        fTextName.setEditable(fFolder != null && fFolder.getType() == FolderType.USER);
+        fTextName.setEditable(fFolder != null);
         fTextName.refresh(fFolder);
     }
     

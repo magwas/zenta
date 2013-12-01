@@ -22,7 +22,6 @@ import org.rulez.magwas.zenta.editor.model.commands.DeleteDiagramModelCommand;
 import org.rulez.magwas.zenta.editor.model.commands.DeleteElementCommand;
 import org.rulez.magwas.zenta.editor.model.commands.DeleteFolderCommand;
 import org.rulez.magwas.zenta.editor.views.tree.TreeModelViewer;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -64,27 +63,6 @@ public class DeleteCommandHandler {
     // The object to select in the tree after the deletion
     private Object fObjectToSelectAfterDeletion;
     
-    /**
-     * @param element
-     * @return True if we can delete this object
-     */
-    public static boolean canDelete(Object element) {
-        // Elements and Diagrams
-        if(element instanceof IZentaElement || element instanceof IDiagramModel) {
-            return true;
-        }
-        
-        // Certain Folders
-        if(element instanceof IFolder) {
-            IFolder folder = (IFolder)element;
-            if(folder.getType().equals(FolderType.DERIVED) || folder.getType().equals(FolderType.USER)) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
-
     public DeleteCommandHandler(TreeModelViewer viewer, Object[] objects) {
         fViewer = viewer;
         fSelectedObjects = objects;
@@ -219,7 +197,7 @@ public class DeleteCommandHandler {
         
         // First, gather up the list of Zenta objects to be deleted...
         for(Object object : fSelectedObjects) {
-            if(canDelete(object)) {
+            if(true) {
                 addToList(object, fElementsToDelete);
                 addFolderChildElements(object);
                 addElementRelationships(object);

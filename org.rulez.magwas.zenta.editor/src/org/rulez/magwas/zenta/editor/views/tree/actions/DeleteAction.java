@@ -63,12 +63,8 @@ public class DeleteAction extends ViewerAction {
     @Override
     public void update(IStructuredSelection selection) {
         setEnabled(false);
-        for(Object element : selection.toList()) {
-            if(DeleteCommandHandler.canDelete(element)) { // At least one element can be deleted
-                setEnabled(true);
-                break;
-            }
-        }
+        if(selection.toList().size() > 0)
+        	setEnabled(true);
     }
 
 }

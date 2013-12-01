@@ -72,7 +72,7 @@ implements ICheatSheetAction {
                 y += 120;
             }
             
-            IFolder folder = model.getDefaultFolderForElement(diagramModel);
+            IFolder folder = model.getFolders().get(0);
             
             stack.execute(new NewViewCommand(folder, diagramModel));
         }

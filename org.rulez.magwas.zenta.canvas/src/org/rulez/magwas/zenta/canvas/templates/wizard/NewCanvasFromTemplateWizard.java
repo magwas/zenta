@@ -26,7 +26,6 @@ import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelExcept
 import org.rulez.magwas.zenta.editor.model.compatibility.ModelCompatibility;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
@@ -144,7 +143,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         
         // Pull out the Canvas model
         IZentaModel templateModel = (IZentaModel)resource.getContents().get(0);
-        IFolder folderViews = templateModel.getFolder(FolderType.DIAGRAMS);
+        IFolder folderViews = templateModel.getFolders().get(0);
         ICanvasModel canvasModel = (ICanvasModel)folderViews.getElements().get(0);
 
         // Create New UUIDs for elements...

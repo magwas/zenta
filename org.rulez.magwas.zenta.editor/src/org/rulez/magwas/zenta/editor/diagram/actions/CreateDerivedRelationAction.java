@@ -48,7 +48,6 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.metamodel.DerivedRelationsUtils;
 import org.rulez.magwas.zenta.metamodel.DerivedRelationsUtils.TooComplicatedException;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -461,12 +460,11 @@ public class CreateDerivedRelationAction extends SelectionAction {
     /**
      * Command Stack Command
      */
-    private static class CreateDerivedConnectionCommand extends Command {
+    private class CreateDerivedConnectionCommand extends Command {
         private IRelationship fRelation;
         private IDiagramModelZentaConnection fConnection;
         private IDiagramModelZentaObject fSource;
         private IDiagramModelZentaObject fTarget;
-        private boolean fDerivedFolderWasCreated;
         
         public CreateDerivedConnectionCommand(IDiagramModelZentaObject source, IDiagramModelZentaObject target,
                 IRelationship relation) {
@@ -491,12 +489,6 @@ public class CreateDerivedRelationAction extends SelectionAction {
         }
         
         private void addToModel() {
-            IFolder folder = fConnection.getDiagramModel().getZentaModel().getFolder(FolderType.DERIVED);
-            // We need to create the Derived Relations folder
-            if(folder == null) {
-                folder = fConnection.getDiagramModel().getZentaModel().addDerivedRelationsFolder();
-                fDerivedFolderWasCreated = true;
-            }
             fConnection.addRelationshipToModel(folder);
         }
         
@@ -504,11 +496,6 @@ public class CreateDerivedRelationAction extends SelectionAction {
         public void undo() {
             // Remove the model relationship from its model folder
             fConnection.removeRelationshipFromModel();
-            
-            // If the Derived Relations folder was created, remove it
-            if(fDerivedFolderWasCreated) {
-                fConnection.getDiagramModel().getZentaModel().removeDerivedRelationsFolder();
-            }
             
             // Disconnect last because we needed access to fConnection.getDiagramModel()
             fConnection.disconnect();

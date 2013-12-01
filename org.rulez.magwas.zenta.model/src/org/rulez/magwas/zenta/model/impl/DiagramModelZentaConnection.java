@@ -14,6 +14,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.UnTestedException;
 
 
 /**
@@ -123,9 +124,8 @@ public class DiagramModelZentaConnection extends DiagramModelConnection implemen
     public void addRelationshipToModel(IFolder parent) {
         IRelationship relationship = getRelationship();
         if(relationship != null && relationship.eContainer() == null) {
-            // If parent is null use default folder
             if(parent == null) {
-                parent = getDiagramModel().getZentaModel().getDefaultFolderForElement(relationship);
+            	throw new UnTestedException();
             }
             parent.getElements().add(relationship);
         }

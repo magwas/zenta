@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <zenta:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" name="test modell" id="69b3786c" version="2.2.1">
-  <folder name="Business" id="196115c6" type="business">
+  <folder name="Business" id="196115c6">
     <folder name="New Folder" id="915ee5e9">
       <element xsi:type="zenta:BasicObject" id="8e4e0614" name="Basic Object3"/>
       <element xsi:type="zenta:BasicObject" id="252d482c" name="Not defines ObjectClass">
@@ -106,11 +106,7 @@
       <property key="className" value="NotActuallyDocumentation"/>
     </element>
     <element xsi:type="zenta:BasicObject" id="e79192be"/>
-  </folder>
-  <folder name="Connectors" id="e716ac78" type="connectors">
     <element xsi:type="zenta:Junction" id="ed95a7e7" name="Junction"/>
-  </folder>
-  <folder name="Relations" id="3bd2f7ae" type="relations">
     <element xsi:type="zenta:BasicRelationship" id="b0e2bfd8" name="does" source="ea94cf6c" target="f33bd0d2">
       <property key="className" value="TriesToDo"/>
     </element>
@@ -131,5 +127,4 @@
       <property key="className"/>
     </element>
   </folder>
-  <folder name="Views" id="cee6d0f0" type="diagrams"/>
 </zenta:model>

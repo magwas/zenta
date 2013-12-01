@@ -48,7 +48,6 @@ import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.utils.FileUtils;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -143,7 +142,7 @@ implements IEditorModelManager {
         // Add one default diagram
         IDiagramModel diagramModel = IZentaFactory.eINSTANCE.createZentaDiagramModel();
         diagramModel.setName(Messages.EditorModelManager_1);
-        model.getFolder(FolderType.DIAGRAMS).getElements().add(diagramModel);
+        model.getFolders().get(0).getElements().add(diagramModel);
         
         // Register
         registerModel(model);

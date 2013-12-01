@@ -28,7 +28,6 @@ import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveFolderCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveObjectCommand;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -150,11 +149,6 @@ public class TreeModelViewerDragDropHandler {
         for(Object object : selection.toArray()) {
             // Can't drag Models
             if(object instanceof IZentaModel) {
-                fIsValidTreeSelection = false;
-                break;
-            }
-            // Can only drag user folders
-            if(object instanceof IFolder && ((IFolder)object).getType() != FolderType.USER) {
                 fIsValidTreeSelection = false;
                 break;
             }

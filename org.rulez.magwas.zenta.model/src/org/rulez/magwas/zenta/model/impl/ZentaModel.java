@@ -21,22 +21,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IBusinessLayerElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDocumentable;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
-import org.rulez.magwas.zenta.model.IJunctionElement;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.util.IDAdapter;
 
 
@@ -214,105 +210,11 @@ public class ZentaModel extends EObjectImpl implements IZentaModel {
      * Add any default folders
      */
     protected void addDefaultFolders() {
-        if(getFolder(FolderType.BUSINESS) == null) {
+    	if(this.getFolders().size() == 0) {
             IFolder folder = IZentaFactory.eINSTANCE.createFolder();
             folder.setName(Messages.ZentaModel_0);
-            folder.setType(FolderType.BUSINESS);
-            getFolders().add(getFolders().size(), folder);
-        }
-
-
-        
-        if(getFolder(FolderType.CONNECTORS) == null) {
-            IFolder folder = IZentaFactory.eINSTANCE.createFolder();
-            folder.setName(Messages.ZentaModel_5);
-            folder.setType(FolderType.CONNECTORS);
-            getFolders().add(getFolders().size(), folder);
-        }
-
-        if(getFolder(FolderType.RELATIONS) == null) {
-            IFolder folder = IZentaFactory.eINSTANCE.createFolder();
-            folder.setName(Messages.ZentaModel_6);
-            folder.setType(FolderType.RELATIONS);
-            getFolders().add(getFolders().size(), folder);
-        }
-
-        if(getFolder(FolderType.DIAGRAMS) == null) {
-            IFolder folder = IZentaFactory.eINSTANCE.createFolder();
-            folder.setName(Messages.ZentaModel_7);
-            folder.setType(FolderType.DIAGRAMS);
-            getFolders().add(getFolders().size(), folder); // Make sure this is last
-        }
-    }
-    
-    /**
-     * <!-- begin-user-doc -->
-     * This folder is optional so we add it as needed
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public IFolder addDerivedRelationsFolder() {
-        addDefaultFolders(); // Check they haven't been deleted
-        
-        IFolder folder = IZentaFactory.eINSTANCE.createFolder();
-        folder.setName(Messages.ZentaModel_8);
-        folder.setType(FolderType.DERIVED);
-        int index = getFolders().indexOf(getFolder(FolderType.RELATIONS)) + 1;
-        getFolders().add(index, folder);
-        
-        return folder;
-    }
-    
-    /**
-     * <!-- begin-user-doc -->
-     * This folder is optional so we add it as needed
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public void removeDerivedRelationsFolder() {
-        IFolder folder = getFolder(FolderType.DERIVED);
-        if(folder != null) {
-            getFolders().remove(folder);
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public IFolder getDefaultFolderForElement(EObject element) {
-        addDefaultFolders(); // Check they haven't been deleted
-        
-        if(element instanceof IBusinessLayerElement) {
-            return getFolder(FolderType.BUSINESS);
-        }
-        if(element instanceof IJunctionElement) {
-            return getFolder(FolderType.CONNECTORS);
-        }
-        if(element instanceof IRelationship) {
-            return getFolder(FolderType.RELATIONS);
-        }
-        if(element instanceof IDiagramModel) {
-            return getFolder(FolderType.DIAGRAMS);
-        }
-        
-        return null;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public IFolder getFolder(FolderType type) {
-        for(IFolder folder : getFolders()) {
-            if(folder.getType().equals(type)) {
-                return folder;
-            }
-        }
-        
-        return null;
+            getFolders().add(folder);
+    	}
     }
 
     /**

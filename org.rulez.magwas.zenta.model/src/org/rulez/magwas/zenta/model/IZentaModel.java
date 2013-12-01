@@ -10,8 +10,6 @@ import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model</b></em>'.
@@ -94,30 +92,6 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	IFolder addDerivedRelationsFolder();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void removeDerivedRelationsFolder();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model elementRequired="true"
-	 * @generated
-	 */
-	IFolder getDefaultFolderForElement(EObject element);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -130,13 +104,5 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	 * @generated
 	 */
 	EList<IDiagramModel> getDiagramModels();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	IFolder getFolder(FolderType type);
 
 } // IZentaModel

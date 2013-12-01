@@ -33,7 +33,6 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.editor.utils.StringUtils;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
@@ -183,7 +182,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         thumbContainer.setLayout(layout);
         
         fModelViewsTreeViewer = new ModelViewsTreeViewer(thumbContainer, SWT.NONE);
-        fModelViewsTreeViewer.setInput(fModel.getFolder(FolderType.DIAGRAMS));
+        fModelViewsTreeViewer.setInput(fModel.getFolders().get(0));
         gd = new GridData(GridData.FILL_BOTH);
         gd.heightHint = 120;
         //gd.widthHint = 140;

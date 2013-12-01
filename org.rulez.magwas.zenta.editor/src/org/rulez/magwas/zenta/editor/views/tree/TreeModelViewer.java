@@ -29,7 +29,6 @@ import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.views.tree.search.SearchFilter;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -71,13 +70,7 @@ public class TreeModelViewer extends TreeViewer {
                 if(cat1 != cat2) {
                     return cat1 - cat2;
                 }
-                
-                // Only user folders are sorted
-                if((e1 instanceof IFolder && e2 instanceof IFolder) && (((IFolder)e1).getType() != FolderType.USER 
-                        || ((IFolder)e2).getType() != FolderType.USER)) {
-                    return 0;
-                }
-                
+                                
                 String name1 = ZentaLabelProvider.INSTANCE.getLabel(e1);
                 String name2 = ZentaLabelProvider.INSTANCE.getLabel(e2);
                 

@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -155,24 +154,6 @@ public class Folder extends EObjectImpl implements IFolder {
 	 */
     protected EList<EObject> elements;
 
-    /**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-    protected static final FolderType TYPE_EDEFAULT = FolderType.USER;
-    /**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-    protected FolderType type = TYPE_EDEFAULT;
     
     /**
      * Adapter Map for arbitrary objects
@@ -307,27 +288,6 @@ public class Folder extends EObjectImpl implements IFolder {
 	}
 
     /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public FolderType getType() {
-		return type;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public void setType(FolderType newType) {
-		FolderType oldType = type;
-		type = newType == null ? TYPE_EDEFAULT : newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__TYPE, oldType, type));
-	}
-
-    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT
@@ -415,8 +375,6 @@ public class Folder extends EObjectImpl implements IFolder {
 				return getProperties();
 			case IZentaPackage.FOLDER__ELEMENTS:
 				return getElements();
-			case IZentaPackage.FOLDER__TYPE:
-				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -454,9 +412,6 @@ public class Folder extends EObjectImpl implements IFolder {
 				getElements().clear();
 				getElements().addAll((Collection<? extends EObject>)newValue);
 				return;
-			case IZentaPackage.FOLDER__TYPE:
-				setType((FolderType)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -490,9 +445,6 @@ public class Folder extends EObjectImpl implements IFolder {
 			case IZentaPackage.FOLDER__ELEMENTS:
 				getElements().clear();
 				return;
-			case IZentaPackage.FOLDER__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -522,7 +474,7 @@ public class Folder extends EObjectImpl implements IFolder {
 			case IZentaPackage.FOLDER__ELEMENTS:
 				return elements != null && !elements.isEmpty();
 			case IZentaPackage.FOLDER__TYPE:
-				return type != TYPE_EDEFAULT;
+				return false;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -627,8 +579,6 @@ public class Folder extends EObjectImpl implements IFolder {
 		result.append(id);
 		result.append(", documentation: "); //$NON-NLS-1$
 		result.append(documentation);
-		result.append(", type: "); //$NON-NLS-1$
-		result.append(type);
 		result.append(')');
 		return result.toString();
 	}
