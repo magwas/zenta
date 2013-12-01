@@ -207,18 +207,35 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 		return metamodel;
 	}
 
+	@Override
 	public ObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {
 		for(ObjectClass oc : getObjectClasses())
 			if(oc.getReference().equals(classTemplate))
 				return oc;
 		return null;
 	}
+	@Override
+	public ObjectClass getObjectClassFrom(IZentaElement referenced) {
+		ObjectClass oc = getObjectClassReferencingElement(referenced);
+		if (null == oc)
+			oc = new ObjectClassImpl(referenced, this);
+		return oc;
+	}
 
+	@Override
 	public RelationClass getRelationClassReferencingElement(IRelationship classTemplate) {
 		for(RelationClass oc : getRelationClasses())
 			if(oc.getReference().equals(classTemplate))
 				return oc;
 		return null;
+	}
+
+	@Override
+	public RelationClass getRelationClassFrom(IRelationship referenced) {
+		RelationClass oc = getRelationClassReferencingElement(referenced);
+		if (null == oc)
+			oc = new RelationClassImpl(referenced, this);
+		return oc;
 	}
 
 	@Override
@@ -230,4 +247,5 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 	public IIdentifier create(IFolder folder) {
 		return IZentaFactory.eINSTANCE.createZentaDiagramModel();
 	}
+
 }

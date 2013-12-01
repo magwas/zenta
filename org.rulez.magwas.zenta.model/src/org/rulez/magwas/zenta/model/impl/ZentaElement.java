@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -29,7 +30,9 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -583,4 +586,29 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		return props;
 	}
 
+	@Override
+	public IDiagramModelZentaObject getElementFromDiagramModel(IDiagramModel dm) {//FIXME scan for embedded elements and relations as well
+		if(dm instanceof IZentaDiagramModel)
+			for(IDiagramModelObject de : dm.getChildren())
+				if(de instanceof IDiagramModelZentaObject)
+					if(((IDiagramModelZentaObject) de).getZentaElement().equals(this))
+						return (IDiagramModelZentaObject) de;
+		return null;
+	}
+
+	@Override
+	public void setPropsFromDiagramObject(IDiagramModelObject dmo) {
+		Map<String, EAttribute> props = getObjectAppearanceProperties();
+		IProperty prop;
+		for(Entry<String, EAttribute> e : props.entrySet()) {
+			prop = IZentaFactory.eINSTANCE.createProperty();
+			prop.setKey(e.getKey());
+			EAttribute feat = e.getValue();
+			Object value = dmo.eGet(feat);
+			if(null == value) 
+				value = "";
+			prop.setValue(value.toString());
+			getProperties().add(prop);
+		}
+	}
 } //ZentaElement

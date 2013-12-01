@@ -16,5 +16,9 @@ public interface Template extends referencesModelObject {
 	ObjectClass getObjectClassReferencingElement(IZentaElement reference);
 
 	RelationClass getRelationClassReferencingElement(IRelationship referenced);
+	
+	ObjectClass getObjectClassFrom(IZentaElement reference);
+
+	RelationClass getRelationClassFrom(IRelationship referenced);
 
 } 

@@ -22,7 +22,6 @@ import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -82,11 +81,6 @@ public class TreeModelViewActionFactory {
             IAction action = createNewElementAction(folder, eClass);
             list.add(action);
         }
-        for(RelationClass eClass : metamodel.getRelationClasses()) {
-            IAction action = createNewElementAction(folder, eClass);
-            list.add(action);
-        }
-        
         list.add(createNewZentaDiagramAction(folder));
         list.add(createNewSketchAction(folder));
 

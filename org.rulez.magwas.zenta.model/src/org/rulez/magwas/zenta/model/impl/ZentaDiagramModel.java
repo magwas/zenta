@@ -5,11 +5,15 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -166,6 +170,15 @@ public class ZentaDiagramModel extends DiagramModel implements IZentaDiagramMode
 	@Override
 	public void setAppearanceBy(IZentaElement reference) {
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public List<String> getPropertyNamed(String string) {
+		List<String> ret = new ArrayList<String>();
+		for(IProperty prop : this.getProperties())
+			if(prop.getKey().equals(string))
+				ret.add(prop.getValue());
+		return ret;
 	}
 
 } //ZentaDiagramModel

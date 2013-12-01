@@ -46,6 +46,5 @@ public abstract class ReferencesModelObject extends EObjectImpl implements refer
 	
 	public void postCreate(IIdentifier createdObj, IFolder folder) {
 		folder.getElements().add(createdObj);
-		System.out.printf("created %s\n", createdObj);
 	}
 }

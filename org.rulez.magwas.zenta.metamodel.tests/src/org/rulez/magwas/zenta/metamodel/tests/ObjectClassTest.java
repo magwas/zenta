@@ -253,7 +253,30 @@ public class ObjectClassTest{
 		assertEquals(4,dmo.getTextAlignment());
 		assertEquals("#ffa500",dmo.getFillColor());
 	}
-	
+
+//	public void An_ObjectClass_created_if_a_element_named_and_dropped_on_a_template() {
+
+	@Test
+	public void An_ObjectClass_created_if_an_element_dropped_on_a_template_and_named() {
+		String id = "ea94cf6c";//User
+		IZentaElement user = testdata.getElementById(id);
+		IFolder folder = ModelTestData.getFolderByKid(user);
+		ObjectClass oc = metamodel.getBuiltinObjectClass();
+		IZentaElement newElement = (IZentaElement) oc.create(folder);
+		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+		dmo.setZentaElement(newElement);
+		dmo.setBounds(0, 0, 100, 100);
+		IDiagramModel dm = testdata.getTestDiagramModel();
+		dm.getChildren().add(dmo);
+		assertNotNull(dmo);
+		assertFalse("emptyShape".equals(dmo.getElementShape()));
+		dmo.setElementShape("emptyShape");
+		newElement.setName("New test OC");
+		ObjectClass newOc = getObjectClassReferencing(newElement);
+		assertNotNull(newOc);
+		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
+	}
+
 	private ObjectClass getObjectClassReferencing(IZentaElement element) {
 		return metamodel.getObjectClassReferencing(element);
 	}

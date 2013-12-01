@@ -411,6 +411,9 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 
 	@Override
 	public void setAppearanceBy(IZentaElement reference) {
+		if(null == reference) {
+			return;
+		}
 		for(IProperty prop : reference.getProperties())
 			setProperty(prop,reference);
 	}
