@@ -377,4 +377,9 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		for(IDiagramModelObject dmo : dm.getChildren())
 			handleNewTemplateElement(dmo);
 	}
+
+	public void processPropertyChange(IProperty prop, String value) {
+		if(prop.eContainer() instanceof IZentaDiagramModel && "Template".equals(value))
+			processDiagramHasNewProperty((IZentaDiagramModel) prop.eContainer(), prop);
+	}
 }

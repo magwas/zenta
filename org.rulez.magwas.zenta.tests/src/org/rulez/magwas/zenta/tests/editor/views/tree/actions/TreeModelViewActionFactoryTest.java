@@ -1,6 +1,7 @@
 package org.rulez.magwas.zenta.tests.editor.views.tree.actions;
 
 import static org.junit.Assert.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +14,21 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.commands.CreateRelationCommand;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.actions.TreeModelViewActionFactory;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.tests.ModelAndMetaModelTestData;
+import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 
 public class TreeModelViewActionFactoryTest {
 
 	
-	public ModelAndEditPartTestData data;
+	public ModelAndMetaModelTestData data;
 	private TreeModelViewActionFactory fixture;
 	
 	//FIXME: canvas and diagram view missing on folders.
@@ -63,6 +69,43 @@ public class TreeModelViewActionFactoryTest {
 		assertEquals(1,kidsAfter.size());		
 	}
 
+	@Test
+	public void New_ObjectClasses_are_shown_in_the_New_menu() {
+		IFolder selected = (IFolder) data.getById("196115c6");//Model root folder
+		
+		IDiagramModel dm = data.getTestDiagramModel();
+
+		String id = "ea94cf6c";//User
+		IZentaElement user = data.getElementById(id);
+		IFolder folder = ModelTestData.getFolderByKid(user);
+		ObjectClass oc = data.metamodel.getBuiltinObjectClass();
+		IZentaElement newElement = (IZentaElement) oc.create(folder);
+
+		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+
+		assertNotNull(dmo);
+		assertFalse("emptyShape".equals(dmo.getElementShape()));
+		dmo.setElementShape("emptyShape");
+		dmo.setZentaElement(newElement);
+		dmo.setBounds(0, 0, 100, 100);
+
+
+		dm.getChildren().add(dmo);
+		newElement.setName("New test OCke");
+
+		ObjectClass newOc = data.metamodel.getObjectClassReferencing(newElement);
+		assertNotNull(newOc);
+
+		List<IAction> newactions = fixture.getNewObjectActions(selected);
+
+		boolean found = false;
+		for(IAction action : newactions) {
+			if(action.getText().equals("New test OCke"))
+				found = true;
+		}
+		assertTrue(found);
+	}
+	
 	private IAction getAction(IZentaElement selected, String description) {
 		List<IAction> actions = fixture.getNewObjectActions(selected);
 		for(IAction action : actions)

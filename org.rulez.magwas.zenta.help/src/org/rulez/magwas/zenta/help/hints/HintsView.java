@@ -51,7 +51,6 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.editor.ui.services.IComponentSelectionListener;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.help.ZentaEditorHelpPlugin;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -61,6 +60,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
 

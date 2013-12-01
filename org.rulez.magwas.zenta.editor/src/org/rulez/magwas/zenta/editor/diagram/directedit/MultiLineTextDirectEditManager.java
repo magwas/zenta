@@ -9,9 +9,9 @@ import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.ITextContent;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
 

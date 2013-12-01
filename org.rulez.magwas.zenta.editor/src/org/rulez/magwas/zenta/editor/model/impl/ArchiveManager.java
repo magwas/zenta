@@ -30,11 +30,11 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.utils.FileUtils;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
+import org.rulez.magwas.zenta.model.util.FileUtils;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 
 

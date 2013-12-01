@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.help;bundle-version="3.6.0",
  org.rulez.magwas.zenta.editor.browser;bundle-version="1.0.0",
  org.rulez.magwas.zenta.model.tests;bundle-version="1.0.0",
- org.rulez.magwas.zenta.metamodel;bundle-version="1.0.0"
+ org.rulez.magwas.zenta.metamodel;bundle-version="1.0.0",
+ org.rulez.magwas.zenta.metamodel.tests;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.junit;version="4.10.0",

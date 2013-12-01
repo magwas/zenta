@@ -89,7 +89,6 @@ import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.editor.ui.components.StringComboBoxCellEditor;
 import org.rulez.magwas.zenta.editor.utils.HTMLUtils;
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -97,6 +96,7 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
 

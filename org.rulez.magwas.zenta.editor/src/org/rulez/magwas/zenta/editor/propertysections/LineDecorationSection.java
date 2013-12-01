@@ -22,9 +22,9 @@ import org.rulez.magwas.zenta.editor.diagram.commands.LineDecorationCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.connections.ConnectionDecorationFactory;
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 public class LineDecorationSection extends AbstractZentaPropertySection {
 

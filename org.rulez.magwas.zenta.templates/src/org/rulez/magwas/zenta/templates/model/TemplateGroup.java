@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
 

@@ -20,9 +20,9 @@ import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
-import org.rulez.magwas.zenta.editor.utils.FileUtils;
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
+import org.rulez.magwas.zenta.model.util.FileUtils;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 

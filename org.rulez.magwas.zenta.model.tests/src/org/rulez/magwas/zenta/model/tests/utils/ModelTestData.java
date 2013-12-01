@@ -2,6 +2,7 @@ package org.rulez.magwas.zenta.model.tests.utils;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -11,9 +12,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
@@ -21,11 +24,15 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 public class ModelTestData {
 
 	public Resource resource;
+	public File file;
 	public IZentaModel model;
 	
 	public ModelTestData() {
 		resource = ModelTestUtils.getZentaModelResource("test.zenta");
 		assertNotNull(resource);
+		file = new File(resource.getURI().toFileString());
+		assertNotNull(file);
+		System.out.printf("file = %s\n", file);
 		model = getModel();
 	}
 	
@@ -75,6 +82,17 @@ public class ModelTestData {
 
 	public IDiagramModelZentaConnection getDMRById(String id3) {
 		return (IDiagramModelZentaConnection) ZentaModelUtils.getObjectByID(getModel(),id3);
+	}
+
+	public static IDiagramModelZentaObject createDMOFor(IZentaElement newElement) {
+		IDiagramModelZentaObject dmo1 = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+		assertNotNull(dmo1);
+		assertFalse("emptyShape".equals(dmo1.getElementShape()));
+		dmo1.setElementShape("emptyShape");
+		dmo1.setZentaElement(newElement);
+		dmo1.setBounds(0, 0, 100, 100);
+		IDiagramModelZentaObject dmo = dmo1;
+		return dmo;
 	}
 
 	public static IFolder getFolderByKid(EObject selected) {

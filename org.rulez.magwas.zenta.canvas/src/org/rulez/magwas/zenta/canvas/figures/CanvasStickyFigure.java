@@ -21,7 +21,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModelSticky;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
 /**

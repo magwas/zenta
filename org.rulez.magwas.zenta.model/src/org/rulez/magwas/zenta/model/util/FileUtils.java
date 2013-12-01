@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.utils;
+package org.rulez.magwas.zenta.model.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

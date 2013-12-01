@@ -38,6 +38,16 @@ public class NotificationProcessor {
 				mm.processDiagramHasNewProperty(dm, prop);
 			}});
 		addCase(new DecisionCase(){{
+			notifierClass = IProperty.class;
+			featureId = IZentaPackage.PROPERTY__KEY;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IProperty prop = (IProperty) notifier;
+				String value = (String) newVal;
+				mm.processPropertyChange(prop, value);
+			}});
+		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaObject.class;
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__SOURCE_CONNECTIONS;
 			hasNew = true;

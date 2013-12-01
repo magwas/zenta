@@ -16,9 +16,9 @@ import org.eclipse.draw2d.text.ParagraphTextLayout;
 import org.eclipse.draw2d.text.TextFlow;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFontAttribute;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
 

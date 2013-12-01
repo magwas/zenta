@@ -21,8 +21,8 @@ import org.rulez.magwas.zenta.editor.diagram.figures.AbstractContainerFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.editor.utils.StringUtils;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
 /**
