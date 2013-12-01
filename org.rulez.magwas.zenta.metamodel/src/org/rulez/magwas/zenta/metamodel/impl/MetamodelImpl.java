@@ -304,12 +304,11 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		if(null == template)
 			return;
 		IZentaElement element = ((IDiagramModelZentaObject) dmzc).getZentaElement();
-		MetamodelFactory.eINSTANCE.createObjectClass(element, template);
+		createOCforElement(element);
+		//MetamodelFactory.eINSTANCE.createObjectClass(element, template);
 	}
 
 	void processChildrenAddedToDiagram(IDiagramModelComponent dmzc) {
-		if(null == dmzc)
-			return;
 		setAppearanceIfNeeded(dmzc);
 		handleNewTemplateElement(dmzc);
 	}
@@ -335,17 +334,21 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 			String newName) {
 		boolean defining = elementBecameDefiningByNameChange(element, oldName, newName);
 		if(defining) {
-			Template template;
-			IDiagramModelObject dmo;
-			dmo = getDefiningModelObjectFor(element);
-			if(dmo == null)
-				return;
-			template = getTemplateFor(dmo);
-			if(null == template)
-				return;
-			builtinTemplate.createClassBy(element, template);
-			element.setPropsFromDiagramObject(dmo);
+			createOCforElement(element);
 		}
+	}
+
+	public void createOCforElement(IZentaElement element) {
+		Template template;
+		IDiagramModelObject dmo;
+		dmo = getDefiningModelObjectFor(element);
+		if(dmo == null)
+			return;
+		template = getTemplateFor(dmo);
+		if(null == template)
+			return;
+		builtinTemplate.createClassBy(element, template);
+		element.setPropsFromDiagramObject(dmo);
 	}
 
 	private IDiagramModelObject getDefiningModelObjectFor(IZentaElement element) {

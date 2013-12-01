@@ -17,7 +17,7 @@ public class TotalViewpointTest {
 	private IZentaDiagramModel dm;
 	private IViewpoint vp;
 
-	@HaveGUI(waitUser = true)
+	@HaveGUI(waitUser = false)
 	@Test
 	public void TotalViewpoint_is_initialized_with_a_diagram() {
 		UITestWindow win = new UITestWindow();

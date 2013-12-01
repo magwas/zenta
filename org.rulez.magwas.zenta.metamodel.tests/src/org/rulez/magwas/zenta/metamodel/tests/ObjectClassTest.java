@@ -61,7 +61,6 @@ public class ObjectClassTest{
 	@Test(expected = MetamodelFactory.BuiltinClassShouldNotHaveReference.class)
 	public void The_reference_cannot_be_set_for_the_Builtin_ObjectClass() {
 		IBasicObject obj2 = IZentaFactory.eINSTANCE.createBasicObject();
-		System.out.printf("fixture=%s\n", fixture);
 		fixture.setReference(obj2);
 	}
 	
@@ -254,27 +253,52 @@ public class ObjectClassTest{
 		assertEquals("#ffa500",dmo.getFillColor());
 	}
 
-//	public void An_ObjectClass_created_if_a_element_named_and_dropped_on_a_template() {
+	@Test
+    public void An_ObjectClass_created_if_a_element_named_and_dropped_on_a_template() {
+		IZentaElement newElement = createClassedTestElement();
+		IDiagramModel dm = testdata.getTestDiagramModel();
+		IDiagramModelZentaObject dmo = createDMOFor(newElement);
+		
+		newElement.setName("New test OC");
+		dm.getChildren().add(dmo);
+
+		ObjectClass newOc = getObjectClassReferencing(newElement);
+		assertNotNull(newOc);
+		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");    	
+    }
 
 	@Test
 	public void An_ObjectClass_created_if_an_element_dropped_on_a_template_and_named() {
+		IZentaElement newElement = createClassedTestElement();
+		IDiagramModel dm = testdata.getTestDiagramModel();
+		IDiagramModelZentaObject dmo = createDMOFor(newElement);
+
+		dm.getChildren().add(dmo);
+		newElement.setName("New test OC");
+		
+		ObjectClass newOc = getObjectClassReferencing(newElement);
+		assertNotNull(newOc);
+		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
+	}
+	
+	public IZentaElement createClassedTestElement() {
 		String id = "ea94cf6c";//User
 		IZentaElement user = testdata.getElementById(id);
 		IFolder folder = ModelTestData.getFolderByKid(user);
 		ObjectClass oc = metamodel.getBuiltinObjectClass();
 		IZentaElement newElement = (IZentaElement) oc.create(folder);
-		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
-		dmo.setZentaElement(newElement);
-		dmo.setBounds(0, 0, 100, 100);
-		IDiagramModel dm = testdata.getTestDiagramModel();
-		dm.getChildren().add(dmo);
-		assertNotNull(dmo);
-		assertFalse("emptyShape".equals(dmo.getElementShape()));
-		dmo.setElementShape("emptyShape");
-		newElement.setName("New test OC");
-		ObjectClass newOc = getObjectClassReferencing(newElement);
-		assertNotNull(newOc);
-		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
+		return newElement;
+	}
+
+	public IDiagramModelZentaObject createDMOFor(IZentaElement newElement) {
+		IDiagramModelZentaObject dmo1 = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+		assertNotNull(dmo1);
+		assertFalse("emptyShape".equals(dmo1.getElementShape()));
+		dmo1.setElementShape("emptyShape");
+		dmo1.setZentaElement(newElement);
+		dmo1.setBounds(0, 0, 100, 100);
+		IDiagramModelZentaObject dmo = dmo1;
+		return dmo;
 	}
 
 	private ObjectClass getObjectClassReferencing(IZentaElement element) {

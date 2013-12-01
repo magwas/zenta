@@ -120,7 +120,11 @@ public class NotificationProcessor {
 				}
 	
 	public static void processNotification(MetamodelImpl mm,Notification notification) {
-		System.out.printf("notification for \n\t%s\n\t%s\n", notification.getNotifier(),notification.getFeature() );
+		System.out.printf("notification for \n\t%s\n\t%s\n\t%s\n\t%s\n",
+				notification.getNotifier(),
+				notification.getFeature(),
+				notification.getOldValue(),
+				notification.getNewValue());
 		EObject lastObject;
 		lastObject = (EObject) notification.getNotifier();
 		for(Class<?> klass : decisionTree.keySet()) {
@@ -145,8 +149,12 @@ public class NotificationProcessor {
 				private static void processNewMatch(MetamodelImpl mm,
 						Notification notification, Map<Boolean, DecisionCase> map) {
 					DecisionCase match = map.get(notification.getOldValue() == null);
-					if(null != match)
+					if(null != match) {
+						System.out.printf("running %s %s\n",
+								match.hasNew,
+								match.hasOld);
 						match.run(mm, notification.getNotifier(),notification.getOldValue(),notification.getNewValue());
+					}
 				}
 	
 }

@@ -599,16 +599,41 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	@Override
 	public void setPropsFromDiagramObject(IDiagramModelObject dmo) {
 		Map<String, EAttribute> props = getObjectAppearanceProperties();
-		IProperty prop;
+		EList<IProperty> propertiess = getProperties();
 		for(Entry<String, EAttribute> e : props.entrySet()) {
-			prop = IZentaFactory.eINSTANCE.createProperty();
-			prop.setKey(e.getKey());
-			EAttribute feat = e.getValue();
-			Object value = dmo.eGet(feat);
-			if(null == value) 
-				value = "";
-			prop.setValue(value.toString());
-			getProperties().add(prop);
+			addOrUpateProp(dmo, propertiess, e);
 		}
 	}
-} //ZentaElement
+
+		public void addOrUpateProp(IDiagramModelObject dmo,
+				EList<IProperty> propertiess, Entry<String, EAttribute> e) {
+			String key = e.getKey();
+			String value = getValueForEntry(dmo, e);
+			boolean found = false;
+			for(IProperty theprop : propertiess)
+				if(theprop.getKey() == key) {
+					theprop.setValue(value);
+					found = true;
+				}
+			if(!found)
+				addProp(propertiess, key, value);
+		}
+			public String getValueForEntry(IDiagramModelObject dmo,
+					Entry<String, EAttribute> e) {
+				EAttribute feat = e.getValue();
+				Object value = dmo.eGet(feat);
+				String v;
+				if(null == value) 
+					v = "";
+				else
+					v = value.toString();
+				return v;
+			}
+			public void addProp(EList<IProperty> propertiess, String key, String value) {
+				IProperty prop;
+				prop = IZentaFactory.eINSTANCE.createProperty();
+				prop.setKey(key);
+				prop.setValue(value);
+				propertiess.add(prop);
+			}
+}
