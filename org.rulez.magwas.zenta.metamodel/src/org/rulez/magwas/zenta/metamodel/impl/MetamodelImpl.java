@@ -305,7 +305,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 			return;
 		IZentaElement element = ((IDiagramModelZentaObject) dmzc).getZentaElement();
 		createOCforElement(element);
-		//MetamodelFactory.eINSTANCE.createObjectClass(element, template);
 	}
 
 	void processChildrenAddedToDiagram(IDiagramModelComponent dmzc) {
@@ -347,7 +346,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		template = getTemplateFor(dmo);
 		if(null == template)
 			return;
-		builtinTemplate.createClassBy(element, template);
+		template.createClassBy(element);
 		element.setPropsFromDiagramObject(dmo);
 	}
 
@@ -366,5 +365,16 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	private boolean elementBecameDefiningByNameChange(IZentaElement element,
 			String oldName, String newName) {
 		return oldName.equals("") && (!newName.equals("")) && element.getPropertyNamed("name").size() == 0;
+	}
+
+	public void processDiagramHasNewProperty(IZentaDiagramModel dm, IProperty prop) {
+		Template template;
+		if(prop.getKey().equals("Template")) {
+			template = getTemplateFor(dm);
+			if(null == template)
+				extractTemplate(dm);
+		}
+		for(IDiagramModelObject dmo : dm.getChildren())
+			handleNewTemplateElement(dmo);
 	}
 }

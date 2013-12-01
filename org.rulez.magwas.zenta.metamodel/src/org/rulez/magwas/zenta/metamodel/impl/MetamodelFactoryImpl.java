@@ -87,7 +87,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 
 	public Template createTemplate(IZentaDiagramModel reference, Metamodel metamodel) {
 		TemplateImpl template = new TemplateImpl(reference, metamodel);
-		reference.getZentaModel();
 		return template;
 	}
 

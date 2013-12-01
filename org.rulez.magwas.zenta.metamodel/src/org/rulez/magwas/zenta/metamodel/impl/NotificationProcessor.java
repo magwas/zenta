@@ -7,6 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -25,6 +26,16 @@ public class NotificationProcessor {
 			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) newVal;
 				mm.processChildrenAddedToDiagram(dmzc);
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IZentaDiagramModel.class;
+			featureId = IZentaPackage.ZENTA_DIAGRAM_MODEL__PROPERTIES;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IProperty prop = (IProperty) newVal;
+				IZentaDiagramModel dm = (IZentaDiagramModel) notifier;
+				mm.processDiagramHasNewProperty(dm, prop);
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaObject.class;

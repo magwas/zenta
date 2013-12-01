@@ -248,4 +248,12 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 		return IZentaFactory.eINSTANCE.createZentaDiagramModel();
 	}
 
+	@Override
+	public void createClassBy(IZentaElement element) {
+		if(element instanceof IRelationship)
+			getRelationClassFrom((IRelationship) element);
+		else
+			getObjectClassFrom(element);
+	}
+
 }

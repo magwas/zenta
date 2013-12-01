@@ -28,10 +28,4 @@ public class BuiltinTemplate extends TemplateImpl {
 		return "Builtins";
 	}
 
-	public void createClassBy(IZentaElement element, Template template) {
-		if(element instanceof IRelationship)
-			template.getRelationClassFrom((IRelationship) element);
-		else
-			template.getObjectClassFrom(element);
-	}
 }

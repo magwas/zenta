@@ -16,6 +16,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -280,7 +281,24 @@ public class ObjectClassTest{
 		assertNotNull(newOc);
 		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
 	}
-	
+
+	@Test
+	public void An_ObjectClass_is_created_if_a_diagram_containing_it_becomes_template() {
+		IZentaElement newElement = createClassedTestElement();
+		newElement.setName("New test OC 3");
+		IDiagramModel dm = IZentaFactory.eINSTANCE.createZentaDiagramModel();
+		IFolder folder = model.getFolders().get(0);
+		folder.getElements().add(dm);
+		IDiagramModelZentaObject dmo = createDMOFor(newElement);
+		dm.getChildren().add(dmo);
+		IProperty prop = IZentaFactory.eINSTANCE.createProperty();
+		prop.setKey("Template");
+		dm.getProperties().add(prop);
+		ObjectClass newOc = getObjectClassReferencing(newElement);
+		assertNotNull(newOc);
+		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
+	}
+
 	public IZentaElement createClassedTestElement() {
 		String id = "ea94cf6c";//User
 		IZentaElement user = testdata.getElementById(id);

@@ -21,4 +21,6 @@ public interface Template extends referencesModelObject {
 
 	RelationClass getRelationClassFrom(IRelationship referenced);
 
+	void createClassBy(IZentaElement element);
+
 } 
