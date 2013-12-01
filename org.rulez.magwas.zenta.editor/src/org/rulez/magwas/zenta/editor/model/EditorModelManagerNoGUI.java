@@ -37,6 +37,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
+import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.util.FileUtils;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 
@@ -244,11 +245,11 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    return model;
 	}
 
-	private boolean laterModelDialog(File file, LaterModelVersionException ex) {
-		return false;
+	public boolean laterModelDialog(File file, LaterModelVersionException ex) {
+		throw new RuntimeException(ex);
 	}
 
-	private void incompatibleDialog(File file, IncompatibleModelException ex1) {
+	public void incompatibleDialog(File file, IncompatibleModelException ex1) {
 		throw new RuntimeException(ex1);
 	}
 
@@ -299,8 +300,8 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    return false;
 	}
 
-	private int saveModelDialog(IZentaModel model) {
-		return 2;
+	public int saveModelDialog(IZentaModel model) {
+		throw new UnTestedException();
 	}
 
 	@Override
@@ -410,16 +411,16 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 
 
 
-	private String askSavePath() {
-		// TODO Auto-generated method stub
-		return null;
+	public String askSavePath() {
+		throw new UnTestedException();
 	}
 
-	private void alreadyOpenDialog(File file) {
+	public void alreadyOpenDialog(File file) {
+		throw new UnTestedException();
 	}
 
-	private boolean sureToOverwriteDialog(File file) {
-		return true;
+	public boolean sureToOverwriteDialog(File file) {
+		throw new UnTestedException();
 	}
 
 	/**

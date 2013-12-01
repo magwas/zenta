@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
+import org.rulez.magwas.zenta.editor.model.compatibility.LaterModelVersionException;
 import org.rulez.magwas.zenta.editor.model.impl.EditorModelManager;
 import org.rulez.magwas.zenta.model.IZentaModel;
 
@@ -152,4 +154,16 @@ public interface IEditorModelManager {
      * @param newValue New Value
      */
     void firePropertyChange(Object source, String prop, Object oldValue, Object newValue);
+
+	boolean laterModelDialog(File file, LaterModelVersionException ex);
+
+	void incompatibleDialog(File file, IncompatibleModelException ex1);
+
+	int saveModelDialog(IZentaModel model);
+
+	boolean sureToOverwriteDialog(File file);
+
+	void alreadyOpenDialog(File file);
+
+	String askSavePath();
 }

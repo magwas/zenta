@@ -38,7 +38,8 @@ public class EditorModelManager extends EditorModelManagerNoGUI {
     public EditorModelManager() {
         PlatformUI.getWorkbench().addWorkbenchListener(workBenchListener);
     }
-    
+
+    @Override
     public boolean laterModelDialog(File file, LaterModelVersionException ex) {
 		boolean answer = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
 		        Messages.EditorModelManager_4,
@@ -47,6 +48,7 @@ public class EditorModelManager extends EditorModelManagerNoGUI {
 		return answer;
 	}
 
+    @Override
 	public void incompatibleDialog(File file, IncompatibleModelException ex1) {
 		MessageDialog.openError(Display.getCurrent().getActiveShell(),
 		        Messages.EditorModelManager_2,
@@ -54,6 +56,7 @@ public class EditorModelManager extends EditorModelManagerNoGUI {
 		        + "\n" + ex1.getMessage()); //$NON-NLS-1$
 	}
     
+    @Override
     public int saveModelDialog(IZentaModel model) {
 		MessageDialog dialog = new MessageDialog(Display.getCurrent().getActiveShell(),
                 Messages.EditorModelManager_6,
@@ -68,6 +71,7 @@ public class EditorModelManager extends EditorModelManagerNoGUI {
 		return dialog.open();
 	}
 
+    @Override
     public boolean sureToOverwriteDialog(File file) {
 	    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 		boolean result = MessageDialog.openQuestion(shell,
@@ -76,6 +80,7 @@ public class EditorModelManager extends EditorModelManagerNoGUI {
 		return result;
 	}
      
+    @Override
 	public void alreadyOpenDialog(File file) {
 	    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 		MessageDialog.openWarning(shell,
@@ -83,6 +88,7 @@ public class EditorModelManager extends EditorModelManagerNoGUI {
 		        NLS.bind(Messages.EditorModelManager_9, file));
 	}
 
+    @Override
 	public String askSavePath() {
 		// On Mac if the app is minimised in the dock Display.getCurrent().getActiveShell() will return null
 	    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
