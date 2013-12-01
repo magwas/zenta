@@ -27,7 +27,7 @@ package org.rulez.magwas.zenta.model;
  *         View objects, Viewpoints, and refactoring of DiagramModel and ZentaDiagramModel
  * 2.1.0 - The "text" attribute of IDiagramModelConnection is deprecated.
  *		   Lockable support. Borders. DiagramModelImage and IDiagramModelImageProvider
- * 2.2.0 - ZentaMate 2.0 elements.
+ * 2.2.0 - Zenta 2.0 elements.
  * 2.2.1 - Sketch Model Background attribute
  * 
  * @author Phillip Beauvoir

@@ -16,7 +16,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 /**
- * New ZentaMate Model Action
+ * New Zenta Model Action
  * 
  * @author Phillip Beauvoir
  */

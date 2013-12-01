@@ -83,7 +83,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         IDiagramModelConnection connection = (IDiagramModelConnection)request.getConnectionEditPart().getModel();
         IDiagramModelObject newSource = (IDiagramModelObject)getHost().getModel();
         
-        // Re-connect ZentaMate Connection Source to Zenta Element
+        // Re-connect Zenta Connection Source to Zenta Element
         if(connection instanceof IDiagramModelZentaConnection && newSource instanceof IDiagramModelZentaObject) {
             // Compound Command
             CompoundCommand result = new CompoundCommand();
@@ -137,7 +137,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         IDiagramModelConnection connection = (IDiagramModelConnection)request.getConnectionEditPart().getModel();
         IDiagramModelObject newTarget = (IDiagramModelObject)getHost().getModel();
 
-        // Re-connect ZentaMate Connection Target to Zenta Element
+        // Re-connect Zenta Connection Target to Zenta Element
         if(connection instanceof IDiagramModelZentaConnection && newTarget instanceof IDiagramModelZentaObject) {
             // Compound Command
             CompoundCommand result = new CompoundCommand();

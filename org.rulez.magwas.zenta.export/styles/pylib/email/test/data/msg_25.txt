@@ -109,7 +109,7 @@ List-Subscribe: <http://www.linux.org.uk/mailman/listinfo/linuxuser>,
 List-Id: bulletins from LinuxUser magazine <linuxuser.www.linux.org.uk>
 List-Unsubscribe: <http://www.linux.org.uk/mailman/listinfo/linuxuser>,
 	<m
-List-Zentave: <http://www.linux.org.uk/pipermail/linuxuser/>
+List-Archive: <http://www.linux.org.uk/pipermail/linuxuser/>
 Date: Fri, 6 Apr 2001 16:03:39 +0100
 
 --JAB03225.986577786/zinfandel.lacita.com--

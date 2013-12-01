@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-import org.rulez.magwas.zenta.editor.model.IZentaveManager;
+import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.utils.FileUtils;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
@@ -40,11 +40,11 @@ import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 
 
 /**
- * Zentave Manager
+ * Archive Manager
  * 
  * @author Phillip Beauvoir
  */
-public class ZentaveManager implements IZentaveManager {
+public class ArchiveManager implements IArchiveManager {
     
     /**
      * Raw image bytes loaded for all images in use in this model
@@ -52,7 +52,7 @@ public class ZentaveManager implements IZentaveManager {
     static ByteArrayStorage BYTE_ARRAY_STORAGE = new ByteArrayStorage();
     
     /**
-     * The ZentaMate model
+     * The Zenta model
      */
     private IZentaModel fModel;
     
@@ -100,7 +100,7 @@ public class ZentaveManager implements IZentaveManager {
     /**
      * @param model The owning model
      */
-    public ZentaveManager(IZentaModel model) {
+    public ArchiveManager(IZentaModel model) {
         fModel = model;
         fModel.eAdapters().add(fModelAdapter);
     }
@@ -123,7 +123,7 @@ public class ZentaveManager implements IZentaveManager {
             }
             
             // OK, add the bytes
-            entryName = createZentaveImagePathname(file);
+            entryName = createArchiveImagePathname(file);
             BYTE_ARRAY_STORAGE.addByteContentEntry(entryName, bytes);
         }
         
@@ -170,7 +170,7 @@ public class ZentaveManager implements IZentaveManager {
     
     @Override
     public boolean loadImagesFromModelFile(File file) throws IOException {
-        if(file == null || !file.exists() || !FACTORY.isZentaveFile(file)) {
+        if(file == null || !file.exists() || !FACTORY.isArchiveFile(file)) {
             return false;
         }
         
@@ -221,7 +221,7 @@ public class ZentaveManager implements IZentaveManager {
         }
         
         if(hasImages()) {
-            saveModelToZentaveFile(file);
+            saveModelToArchiveFile(file);
         }
         else {
             saveModelToXMLFile(file);
@@ -229,9 +229,9 @@ public class ZentaveManager implements IZentaveManager {
     }
     
     /**
-     * Save the model to Zentave File format
+     * Save the model to Archive File format
      */
-    private void saveModelToZentaveFile(File file) throws IOException {
+    private void saveModelToArchiveFile(File file) throws IOException {
         // Temp file for xml model file
         File tmpFile = File.createTempFile("zenta", null); //$NON-NLS-1$
         tmpFile.deleteOnExit();
@@ -286,7 +286,7 @@ public class ZentaveManager implements IZentaveManager {
         }
     }
     
-    private String createZentaveImagePathname(File file) {
+    private String createArchiveImagePathname(File file) {
         String ext = FileUtils.getFileExtension(file);
         
         String unique = EcoreUtil.generateUUID();
@@ -319,7 +319,7 @@ public class ZentaveManager implements IZentaveManager {
         
         for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
             if(model != fModel) { // don't bother with this model as we no longer use any images
-                ZentaveManager archiveManager = (ZentaveManager)model.getAdapter(IZentaveManager.class);
+                ArchiveManager archiveManager = (ArchiveManager)model.getAdapter(IArchiveManager.class);
                 for(String imagePath : archiveManager.fLoadedImagePaths) {
                     if(!allPathsInUse.contains(imagePath)) {
                         allPathsInUse.add(imagePath);

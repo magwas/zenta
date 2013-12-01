@@ -52,7 +52,7 @@ import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.model.IZentaveManager;
+import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
@@ -255,7 +255,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             public void run() {
                 // Make selection of model in table if it has images
                 if(fSelectedModel != null) {
-                    IZentaveManager archiveManager = (IZentaveManager)fSelectedModel.getAdapter(IZentaveManager.class);
+                    IArchiveManager archiveManager = (IArchiveManager)fSelectedModel.getAdapter(IArchiveManager.class);
                     if(archiveManager.hasImages()) {
                         // Select model
                         fModelsViewer.setSelection(new StructuredSelection(fSelectedModel));
@@ -275,7 +275,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                     // Else select the first valid model that's open
                     else {
                         for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
-                            archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
+                            archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
                             if(archiveManager.hasImages()) {
                                 fModelsViewer.setSelection(new StructuredSelection(model));
                                 break;
@@ -305,7 +305,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
         BusyIndicator.showWhile(null, new Runnable() {
             @Override
             public void run() {
-                IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
+                IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
                 
                 for(String path : archiveManager.getImagePaths()) {
                     Image thumbnail = fImageCache.get(path);
@@ -409,7 +409,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                 List<Object> list = new ArrayList<Object>();
                 
                 for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
-                    IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
+                    IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
                     if(archiveManager.hasImages()) {
                         list.add(model);
                     }

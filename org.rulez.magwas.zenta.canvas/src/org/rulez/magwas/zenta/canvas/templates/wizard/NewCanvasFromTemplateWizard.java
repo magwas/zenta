@@ -20,7 +20,7 @@ import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
-import org.rulez.magwas.zenta.editor.model.IZentaveManager;
+import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
 import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
 import org.rulez.magwas.zenta.editor.model.compatibility.ModelCompatibility;
@@ -110,11 +110,11 @@ public class NewCanvasFromTemplateWizard extends Wizard {
 
     private void createNewCanvasFromTemplate(File file) throws IncompatibleModelException, IOException {
         // Ascertain if this is a zip file
-        boolean isZentaveFormat = IZentaveManager.FACTORY.isZentaveFile(file);
+        boolean isArchiveFormat = IArchiveManager.FACTORY.isArchiveFile(file);
         
         ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
-        Resource resource = resourceSet.createResource(isZentaveFormat ?
-                                                       IZentaveManager.FACTORY.createZentaveModelURI(file) :
+        Resource resource = resourceSet.createResource(isArchiveFormat ?
+                                                       IArchiveManager.FACTORY.createArchiveModelURI(file) :
                                                        URI.createFileURI(file.getAbsolutePath()));
 
         // Load the template file
@@ -151,8 +151,8 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         TemplateUtils.generateNewUUIDs(canvasModel);
         
         // Load the images from the template model's file now
-        if(isZentaveFormat) {
-            IZentaveManager archiveManager = (IZentaveManager)fFolder.getAdapter(IZentaveManager.class);
+        if(isArchiveFormat) {
+            IArchiveManager archiveManager = (IArchiveManager)fFolder.getAdapter(IArchiveManager.class);
             archiveManager.loadImagesFromModelFile(file); 
         }
         

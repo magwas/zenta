@@ -21,8 +21,8 @@ ZIP_DEFLATED = 8
 # Other ZIP compression methods not supported
 
 # Here are some struct module formats for reading headers
-structEndZentave = "<4s4H2lH"     # 9 items, end of archive, 22 bytes
-stringEndZentave = "PK\005\006"   # magic number for end of archive record
+structEndArchive = "<4s4H2lH"     # 9 items, end of archive, 22 bytes
+stringEndArchive = "PK\005\006"   # magic number for end of archive record
 structCentralDir = "<4s4B4H3l5H2l"# 19 items, central directory, 46 bytes
 stringCentralDir = "PK\001\002"   # magic number for central directory
 structFileHeader = "<4s2B4H3l2H"  # 12 items, file header record, 30 bytes
@@ -190,7 +190,7 @@ class ZipFile:
             fp = self.fp
             fp.seek(-22, 2)             # Seek to end-of-file record
             endrec = fp.read()
-            if endrec[0:4] == stringEndZentave and \
+            if endrec[0:4] == stringEndArchive and \
                        endrec[-2:] == "\000\000":
                 self._GetContents()     # file is a zip file
                 # seek to start of directory and overwrite
@@ -219,10 +219,10 @@ class ZipFile:
         fp = self.fp
         fp.seek(-22, 2)         # Start of end-of-archive record
         filesize = fp.tell() + 22       # Get file size
-        endrec = fp.read(22)    # Zentave must not end with a comment!
-        if endrec[0:4] != stringEndZentave or endrec[-2:] != "\000\000":
+        endrec = fp.read(22)    # Archive must not end with a comment!
+        if endrec[0:4] != stringEndArchive or endrec[-2:] != "\000\000":
             raise BadZipfile, "File is not a zip file, or ends with a comment"
-        endrec = struct.unpack(structEndZentave, endrec)
+        endrec = struct.unpack(structEndArchive, endrec)
         if self.debug > 1:
             print endrec
         size_cd = endrec[5]             # bytes in central directory
@@ -481,7 +481,7 @@ class ZipFile:
                 self.fp.write(zinfo.comment)
             pos2 = self.fp.tell()
             # Write end-of-zip-archive record
-            endrec = struct.pack(structEndZentave, stringEndZentave,
+            endrec = struct.pack(structEndArchive, stringEndArchive,
                      0, 0, count, count, pos2 - pos1, pos1, 0)
             self.fp.write(endrec)
             self.fp.flush()

@@ -19,7 +19,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractDiagramModelObjectFigure;
-import org.rulez.magwas.zenta.editor.model.IZentaveManager;
+import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
@@ -142,7 +142,7 @@ public class DiagramImageFigure extends AbstractDiagramModelObjectFigure {
             Image originalImage = imageCache.get(fImagePath);
             
             if(originalImage == null) {
-                IZentaveManager archiveManager = (IZentaveManager)getDiagramModelObject().getAdapter(IZentaveManager.class);
+                IArchiveManager archiveManager = (IArchiveManager)getDiagramModelObject().getAdapter(IArchiveManager.class);
                 try {
                     originalImage = archiveManager.createImage(fImagePath);
                     imageCache.put(fImagePath, originalImage);

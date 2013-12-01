@@ -320,7 +320,7 @@ public class DiagramModelUtils {
             return false;
         }
         
-        // Only if source and target elements are ZentaMate elements
+        // Only if source and target elements are Zenta elements
         if(connection.getSource() instanceof IDiagramModelZentaObject && connection.getTarget() instanceof IDiagramModelZentaObject) {
             IDiagramModelZentaObject source = (IDiagramModelZentaObject)connection.getSource();
             IDiagramModelZentaObject target = (IDiagramModelZentaObject)connection.getTarget();

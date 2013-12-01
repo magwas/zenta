@@ -28,7 +28,6 @@ import org.rulez.magwas.zenta.canvas.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.canvas.templates.wizard.NewCanvasFromTemplateWizard;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedWizardDialog;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
-import org.rulez.magwas.zenta.model.FolderType;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 
@@ -67,18 +66,7 @@ public class NewCanvasExtensionContributionFactory extends ExtensionContribution
      * @return true if folder should hold diagrams
      */
     private boolean isDiagramFolder(IFolder folder) {
-        if(folder.getType() == FolderType.DIAGRAMS) {
-            return true;
-        }
-        
-        while(folder.eContainer() instanceof IFolder) {
-            folder = (IFolder)folder.eContainer();
-            if(folder.getType() == FolderType.DIAGRAMS) {
-                return true;
-            }
-        }
-        
-        return false;
+        return true;
     }
 
     /**

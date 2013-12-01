@@ -12,33 +12,33 @@ import java.util.zip.ZipFile;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.editor.model.impl.ZentaveManager;
+import org.rulez.magwas.zenta.editor.model.impl.ArchiveManager;
 import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 /**
- * IZentaveManager
+ * IArchiveManager
  * 
  * @author Phillip Beauvoir
  */
-public interface IZentaveManager {
+public interface IArchiveManager {
     
     static class FACTORY {
         
         /**
-         * Return a new IZentaveManager instance
+         * Return a new IArchiveManager instance
          * @param model The owning model
-         * @return The IZentaveManager instance
+         * @return The IArchiveManager instance
          */
-        public static IZentaveManager createZentaveManager(IZentaModel model) {
-            return new ZentaveManager(model);
+        public static IArchiveManager createArchiveManager(IZentaModel model) {
+            return new ArchiveManager(model);
         }
         
         /**
          * @param file The file to test
          * @return True if file is a zip archive file
          */
-        public static boolean isZentaveFile(File file) {
+        public static boolean isArchiveFile(File file) {
             ZipFile zipFile = null;
             
             try {
@@ -65,22 +65,22 @@ public interface IZentaveManager {
          * @param file The zenta archive file
          * @return The URI
          */
-        public static URI createZentaveModelURI(File file) {
-            return URI.createURI(getZentaveFilePath(file) + "!/model.xml"); //$NON-NLS-1$
+        public static URI createArchiveModelURI(File file) {
+            return URI.createURI(getArchiveFilePath(file) + "!/model.xml"); //$NON-NLS-1$
         }
         
         /**
-         * Get the Zentave File Path for the archive file
+         * Get the Archive File Path for the archive file
          * @param file The zenta archive file
          * @return The path
          */
-        public static String getZentaveFilePath(File file) {
+        public static String getArchiveFilePath(File file) {
             return "archive:file:///" + file.getPath(); //$NON-NLS-1$
         }
     }
 
     /**
-     * Add an image from an image file to this Zentave Manager's storage cache.
+     * Add an image from an image file to this Archive Manager's storage cache.
      * If the image already exists the existing image path is returned.
      * @param file The image file
      * @return The newly created path name, or an existing path name if the image already exists

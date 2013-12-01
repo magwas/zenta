@@ -405,7 +405,7 @@ public final class CopySnapshot {
                 String name = dmo.getZentaElement().getName();
                 dmo.getZentaElement().setName(name + " " + Messages.CopySnapshot_1); //$NON-NLS-1$
             }
-            // Else re-use original ZentaMate element
+            // Else re-use original Zenta element
             else {
                 IDiagramModelZentaObject originalDiagramObject = (IDiagramModelZentaObject)fSnapshotToOriginalObjectsMapping.get(snapshotObject);
                 IZentaElement element = originalDiagramObject.getZentaElement();

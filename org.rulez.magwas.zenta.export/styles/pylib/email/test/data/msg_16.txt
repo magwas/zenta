@@ -28,7 +28,7 @@ List-Subscribe: <http://socal-raves.org/mailman/listinfo/scr>,
 List-Id: SoCal-Raves <scr.socal-raves.org>
 List-Unsubscribe: <http://socal-raves.org/mailman/listinfo/scr>,
 	<mailto:scr-request@socal-raves.org?subject=unsubscribe>
-List-Zentave: <http://socal-raves.org/mailman/private/scr/>
+List-Archive: <http://socal-raves.org/mailman/private/scr/>
 Content-Type: multipart/report; boundary="Boundary_(ID_PGS2F2a+z+/jL7hupKgRhA)"
 
 
@@ -109,7 +109,7 @@ List-Subscribe: <http://socal-raves.org/mailman/listinfo/scr>,
 List-Id: SoCal-Raves <scr.socal-raves.org>
 List-Unsubscribe: <http://socal-raves.org/mailman/listinfo/scr>,
  <mailto:scr-request@socal-raves.org?subject=unsubscribe>
-List-Zentave: <http://socal-raves.org/mailman/private/scr/>
+List-Archive: <http://socal-raves.org/mailman/private/scr/>
 
 I always love to find more Ian's that are over 3 years old!!
 

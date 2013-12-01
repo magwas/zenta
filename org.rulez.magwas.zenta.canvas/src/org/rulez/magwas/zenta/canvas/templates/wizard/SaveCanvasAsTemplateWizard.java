@@ -26,7 +26,7 @@ import org.jdom.Element;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasModelTemplate;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
-import org.rulez.magwas.zenta.editor.model.IZentaveManager;
+import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -225,8 +225,8 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         IFolder folder = tempModel.getDefaultFolderForElement(copyCanvas);
         folder.getElements().add(copyCanvas);
         
-        // Use an Zentave Manager to save it
-        IZentaveManager archiveManager = IZentaveManager.FACTORY.createZentaveManager(tempModel);
+        // Use an Archive Manager to save it
+        IArchiveManager archiveManager = IArchiveManager.FACTORY.createArchiveManager(tempModel);
         archiveManager.saveModel();
         archiveManager.dispose();
         

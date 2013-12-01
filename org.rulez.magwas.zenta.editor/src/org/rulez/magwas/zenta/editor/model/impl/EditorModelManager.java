@@ -37,7 +37,7 @@ import org.jdom.JDOMException;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
-import org.rulez.magwas.zenta.editor.model.IZentaveManager;
+import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
 import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
@@ -159,8 +159,8 @@ implements IEditorModelManager {
         // New Command Stack
         createNewCommandStack(model);
         
-        // New Zentave Manager
-        createNewZentaveManager(model);
+        // New Archive Manager
+        createNewArchiveManager(model);
         
         firePropertyChange(this, PROPERTY_MODEL_CREATED, null, model);
         model.eAdapters().add(new ECoreAdapter());
@@ -195,8 +195,8 @@ implements IEditorModelManager {
         // New Command Stack
         createNewCommandStack(model);
         
-        // New Zentave Manager
-        createNewZentaveManager(model);
+        // New Archive Manager
+        createNewArchiveManager(model);
         
         model.eAdapters().add(new ECoreAdapter());
 
@@ -211,12 +211,12 @@ implements IEditorModelManager {
         }
         
         // Ascertain if this is an archive file
-        boolean useZentaveFormat = IZentaveManager.FACTORY.isZentaveFile(file);
+        boolean useArchiveFormat = IArchiveManager.FACTORY.isArchiveFile(file);
         
         // Create the Resource
         ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
-        Resource resource = resourceSet.createResource(useZentaveFormat ?
-                                                       IZentaveManager.FACTORY.createZentaveModelURI(file) :
+        Resource resource = resourceSet.createResource(useArchiveFormat ?
+                                                       IArchiveManager.FACTORY.createArchiveModelURI(file) :
                                                        URI.createFileURI(file.getAbsolutePath()));
 
         // Load the model file
@@ -270,8 +270,8 @@ implements IEditorModelManager {
         // New Command Stack
         createNewCommandStack(model);
         
-        // New Zentave Manager
-        createNewZentaveManager(model);
+        // New Archive Manager
+        createNewArchiveManager(model);
         
         // Initiate all diagram models to be marked as "saved" - this is for the editor view persistence
         markDiagramModelsAsSaved(model);
@@ -302,8 +302,8 @@ implements IEditorModelManager {
         // Delete the CommandStack *LAST* because GEF Editor(s) will still reference it!
         deleteCommandStack(model);
         
-        // Delete Zentave Manager
-        deleteZentaveManager(model);
+        // Delete Archive Manager
+        deleteArchiveManager(model);
 
         return true;
     }
@@ -362,8 +362,8 @@ implements IEditorModelManager {
         // Set model version
         model.setVersion(ModelVersion.VERSION);
         
-        // Use Zentave Manager to save contents
-        IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
+        // Use Archive Manager to save contents
+        IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
         archiveManager.saveModel();
         
         // Set CommandStack Save point
@@ -505,11 +505,11 @@ implements IEditorModelManager {
     }
     
     /**
-     * Create a new ZentaveManager for the model
+     * Create a new ArchiveManager for the model
      */
-    private IZentaveManager createNewZentaveManager(IZentaModel model) {
-        IZentaveManager archiveManager = IZentaveManager.FACTORY.createZentaveManager(model);
-        model.setAdapter(IZentaveManager.class, archiveManager);
+    private IArchiveManager createNewArchiveManager(IZentaModel model) {
+        IArchiveManager archiveManager = IArchiveManager.FACTORY.createArchiveManager(model);
+        model.setAdapter(IArchiveManager.class, archiveManager);
         
         // Load images now
         try {
@@ -524,10 +524,10 @@ implements IEditorModelManager {
     }
     
     /**
-     * Remove the model's ZentaveManager
+     * Remove the model's ArchiveManager
      */
-    private void deleteZentaveManager(IZentaModel model) {
-        IZentaveManager archiveManager = (IZentaveManager)model.getAdapter(IZentaveManager.class);
+    private void deleteArchiveManager(IZentaModel model) {
+        IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
         if(archiveManager != null) {
             archiveManager.dispose();
         }

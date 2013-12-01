@@ -21,7 +21,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.jdom.Document;
 import org.jdom.Element;
-import org.rulez.magwas.zenta.editor.model.IZentaveManager;
+import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -145,7 +145,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
 
             /*
              * Save model to xml temp file and add to Zip.
-             * Do this last because we need to dispose the Zentave Manager last because its images are re-used
+             * Do this last because we need to dispose the Archive Manager last because its images are re-used
              * several times to create thumbnails.
              */
             File tempFile = saveModelToTempFile();
@@ -214,8 +214,8 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
         tempModel.eAdapters().clear();
         tempModel.setFile(tmpFile);
         
-        // Create a temp Zentave Manager to save the temp model
-        IZentaveManager archiveManager = IZentaveManager.FACTORY.createZentaveManager(tempModel);
+        // Create a temp Archive Manager to save the temp model
+        IArchiveManager archiveManager = IArchiveManager.FACTORY.createArchiveManager(tempModel);
         archiveManager.saveModel();
         archiveManager.dispose();
         
