@@ -307,7 +307,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		createOCforElement(element);
 	}
 
-	void processChildrenAddedToDiagram(IDiagramModelComponent dmzc) {
+	void processChildAddedToDiagram(IDiagramModelComponent dmzc) {
 		setAppearanceIfNeeded(dmzc);
 		handleNewTemplateElement(dmzc);
 	}
@@ -326,6 +326,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 
 	public void processElementNameChange(IZentaElement element, String oldName, String newName) {
 		createOcIfBecameDefining(element, oldName, newName);
+		handleNameChange(element);
 		element.setAppearanceForDefinedElements();
 	}
 
@@ -382,4 +383,19 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		if(prop.eContainer() instanceof IZentaDiagramModel && "Template".equals(value))
 			processDiagramHasNewProperty((IZentaDiagramModel) prop.eContainer(), prop);
 	}
+
+	public void processElementObjectClassChange(IZentaElement element) {
+		handleNameChange(element);
+		element.setAppearanceForDefinedElements();
+	}
+	
+	private void handleNameChange(IZentaElement element) {
+		ObjectClass oc = this.getObjectClassReferencing(element);
+		if(null == oc)
+			return;
+		String definingName = MetamodelFactory.eINSTANCE.getDefiningName(element);
+		oc.setName(definingName);
+	}
+
+
 }

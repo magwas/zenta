@@ -5,6 +5,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -22,6 +23,15 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 
 public class ObjectClassImpl extends ReferencesModelObject implements ObjectClass {
 
+	/**
+	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected EObject reference;
 	protected EList<Attribute> attributes;
 
 	protected ObjectClass ancestor;
@@ -46,6 +56,9 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 	protected EClass eStaticClass() {
 		return MetamodelPackage.Literals.OBJECT_CLASS;
 	}
+
+
+
 
 	public EList<Attribute> getAttributes() {
 		if (attributes == null) {
@@ -185,6 +198,22 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 				return children != null && !children.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 	@Override

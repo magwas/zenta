@@ -5,7 +5,9 @@ import static org.junit.Assert.assertNotNull;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -47,6 +49,16 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 				.createObjectClass(
 						element,
 						metamodel.getTemplates().get(0));
+	}
+
+	public IZentaElement createNewObjectClass(String elementName) {
+		IZentaElement newElement = createClassedTestElement();
+		IDiagramModel dm = getTestDiagramModel();
+		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
+	
+		dm.getChildren().add(dmo);
+		newElement.setName(elementName);
+		return newElement;
 	}
 
 }

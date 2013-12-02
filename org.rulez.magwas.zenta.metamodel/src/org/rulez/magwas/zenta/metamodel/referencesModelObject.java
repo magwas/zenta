@@ -15,6 +15,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.metamodel.referencesModelObject#getReference <em>Reference</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.referencesModelObject#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,6 +28,16 @@ public interface referencesModelObject extends EObject {
 	IIdentifier getReference();
 
 	String getName();
+
+	/**
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.referencesModelObject#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 	boolean isinstance(IIdentifier relation);
 

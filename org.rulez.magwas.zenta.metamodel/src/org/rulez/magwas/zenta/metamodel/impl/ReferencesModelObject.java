@@ -14,12 +14,22 @@ import org.rulez.magwas.zenta.model.INameable;
 public abstract class ReferencesModelObject extends EObjectImpl implements referencesModelObject {
 
 	protected IIdentifier reference;
+	protected static final String NAME_EDEFAULT = null;
+	protected String name = NAME_EDEFAULT;
 
 	@Override
 	public String getName() {
 		INameable ref = (INameable)this.getReference();
 		return MetamodelFactory.eINSTANCE.getDefiningName(ref);
 	}
+	
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.OBJECT_CLASS__NAME, oldName, name));
+	}
+
 
 	@Override
 	public String getId() {
@@ -34,7 +44,7 @@ public abstract class ReferencesModelObject extends EObjectImpl implements refer
 	@Override
 	public void setReference(IIdentifier newReference) {
 		EObject oldReference = reference;
-		reference = newReference;
+		reference = (IIdentifier) newReference;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.TEMPLATE__REFERENCE, oldReference, reference));
 	}

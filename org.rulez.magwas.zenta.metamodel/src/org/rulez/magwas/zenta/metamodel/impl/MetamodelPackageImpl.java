@@ -151,6 +151,15 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getreferencesModelObject_Name() {
+		return (EAttribute)referencesModelObjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMetamodel() {
 		return metamodelEClass;
 	}
@@ -338,6 +347,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		// Create classes and their features
 		referencesModelObjectEClass = createEClass(REFERENCES_MODEL_OBJECT);
 		createEReference(referencesModelObjectEClass, REFERENCES_MODEL_OBJECT__REFERENCE);
+		createEAttribute(referencesModelObjectEClass, REFERENCES_MODEL_OBJECT__NAME);
 
 		metamodelEClass = createEClass(METAMODEL);
 		createEReference(metamodelEClass, METAMODEL__TEMPLATES);
@@ -398,8 +408,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		// Initialize classes and features; add operations and parameters
 		initEClass(referencesModelObjectEClass, referencesModelObject.class, "referencesModelObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getreferencesModelObject_Reference(), ecorePackage.getEObject(), null, "reference", null, 1, 1, referencesModelObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(referencesModelObjectEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEAttribute(getreferencesModelObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, referencesModelObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(metamodelEClass, Metamodel.class, "Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodel_Templates(), this.getTemplate(), null, "templates", null, 0, -1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

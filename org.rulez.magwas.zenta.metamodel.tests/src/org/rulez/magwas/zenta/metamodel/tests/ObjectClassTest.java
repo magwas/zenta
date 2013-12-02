@@ -266,12 +266,8 @@ public class ObjectClassTest{
 
 	@Test
 	public void An_ObjectClass_created_if_an_element_dropped_on_a_template_and_named() {
-		IZentaElement newElement = testdata.createClassedTestElement();
-		IDiagramModel dm = testdata.getTestDiagramModel();
-		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
-
-		dm.getChildren().add(dmo);
-		newElement.setName("New test OC");
+		String elementName = "New test OC";
+		IZentaElement newElement = testdata.createNewObjectClass(elementName);
 		
 		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		assertNotNull(newOc);
@@ -280,8 +276,9 @@ public class ObjectClassTest{
 
 	@Test
 	public void An_ObjectClass_is_created_if_a_diagram_containing_it_becomes_template() {
+		String elementName = "New test OC 3";
 		IZentaElement newElement = testdata.createClassedTestElement();
-		newElement.setName("New test OC 3");
+		newElement.setName(elementName);
 		IDiagramModel dm = IZentaFactory.eINSTANCE.createZentaDiagramModel();
 		IFolder folder = model.getFolders().get(0);
 		folder.getElements().add(dm);

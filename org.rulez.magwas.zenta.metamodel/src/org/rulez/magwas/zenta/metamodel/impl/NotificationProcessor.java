@@ -25,7 +25,7 @@ public class NotificationProcessor {
 			}
 			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) newVal;
-				mm.processChildrenAddedToDiagram(dmzc);
+				mm.processChildAddedToDiagram(dmzc);
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IZentaDiagramModel.class;
@@ -63,7 +63,7 @@ public class NotificationProcessor {
 			}
 			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
 				IZentaElement element = (IZentaElement) notifier;
-				element.setAppearanceForDefinedElements();
+				mm.processElementObjectClassChange(element);
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IZentaElement.class;

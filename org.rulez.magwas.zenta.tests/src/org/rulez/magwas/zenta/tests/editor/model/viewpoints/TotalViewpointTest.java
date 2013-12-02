@@ -18,6 +18,13 @@ public class TotalViewpointTest {
 	private IZentaDiagramModel dm;
 	private IViewpoint vp;
 
+	@Before
+	public void setUp() {
+		data = new ModelAndEditPartTestData();
+		dm = data.getTestDiagramModel();
+		vp = ViewpointsManager.INSTANCE.getViewpoint(dm);
+	}
+
 	@HaveGUI(waitUser = false)
 	@Test
 	public void TotalViewpoint_is_initialized_with_a_diagram() {
@@ -26,17 +33,9 @@ public class TotalViewpointTest {
 		win.showWindow();
 	}
 
-	@Before
-	public void setUp() {
-		data = new ModelAndEditPartTestData();
-		dm = data.getTestDiagramModel();
-		vp = ViewpointsManager.INSTANCE.getViewpoint(dm);
-	}
-	
 	@Test
 	public void There_is_one_instance_of_ViewPoint_for_each_diagram() {
 		IViewpoint vp2 = ViewpointsManager.INSTANCE.getViewpoint(dm);
 		assertEquals(vp,vp2);
 	}
-
 }

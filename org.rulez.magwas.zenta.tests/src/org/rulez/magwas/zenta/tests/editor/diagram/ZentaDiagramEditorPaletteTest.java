@@ -21,6 +21,7 @@ import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.ZentaElement;
 import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.IsInteractive;
@@ -31,6 +32,11 @@ public class ZentaDiagramEditorPaletteTest {
 
 	private ModelAndEditPartTestData testdata;
 	private MagicConnectionCreationTool tool;
+
+	@Before
+	public void setUp() {
+		testdata = new ModelAndEditPartTestData();
+	}
 
 	@Test
 	public void havePalette() throws PartInitException, WorkbenchException {
@@ -97,9 +103,19 @@ public class ZentaDiagramEditorPaletteTest {
 		IEditorModelManager.INSTANCE.saveModel(testdata.model);
 	}
 	
-	@Before
-	public void setUp() {
-		testdata = new ModelAndEditPartTestData();
-	}
+	@Test
+	public void If_a_new_ObjectClass_is_created_it_is_shown_on_the_ViewPoint() {
+		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
+		String elementName = "New test OC";
+		IZentaElement newElement = testdata.createNewObjectClass(elementName);
+		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		
+		PaletteContainer objectsgroup = palette._getObjectsGroup();
+		assertNotNull(objectsgroup);
+		@SuppressWarnings("unchecked")
+		List<CombinedTemplateCreationEntry> children = objectsgroup.getChildren();
+		
+		assertTrue(haveCreatorFor(newOc, children));
+	}
 }

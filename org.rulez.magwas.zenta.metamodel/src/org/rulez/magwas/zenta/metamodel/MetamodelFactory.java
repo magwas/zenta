@@ -31,11 +31,47 @@ public interface MetamodelFactory extends EFactory {
 
 	Metamodel createMetamodel();
 
+	/**
+	 * Returns a new object of class '<em>Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Template</em>'.
+	 * @generated
+	 */
+	Template createTemplate();
+
+	/**
+	 * Returns a new object of class '<em>Object Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Object Class</em>'.
+	 * @generated
+	 */
+	ObjectClass createObjectClass();
+
 	Template createTemplate(IZentaDiagramModel reference, Metamodel metamodel);
 
 	ObjectClass createObjectClass(IZentaElement element, Template template);
 
 	Attribute createAttribute();
+
+	/**
+	 * Returns a new object of class '<em>Relation Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Relation Class</em>'.
+	 * @generated
+	 */
+	RelationClass createRelationClass();
+
+	/**
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the package supported by this factory.
+	 * @generated
+	 */
+	MetamodelPackage getMetamodelPackage();
 
 	RelationClass createRelationClass(IRelationship reference, Template template);
 

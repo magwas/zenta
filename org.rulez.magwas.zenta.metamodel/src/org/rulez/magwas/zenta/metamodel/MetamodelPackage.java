@@ -75,13 +75,22 @@ public interface MetamodelPackage extends EPackage {
 	int REFERENCES_MODEL_OBJECT__REFERENCE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCES_MODEL_OBJECT__NAME = 1;
+
+	/**
 	 * The number of structural features of the '<em>references Model Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCES_MODEL_OBJECT_FEATURE_COUNT = 1;
+	int REFERENCES_MODEL_OBJECT_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.MetamodelImpl <em>Metamodel</em>}' class.
@@ -129,6 +138,15 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEMPLATE__REFERENCE = REFERENCES_MODEL_OBJECT__REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE__NAME = REFERENCES_MODEL_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Object Classes</b></em>' containment reference list.
@@ -184,6 +202,15 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_CLASS__REFERENCE = REFERENCES_MODEL_OBJECT__REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_CLASS__NAME = REFERENCES_MODEL_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -296,6 +323,15 @@ public interface MetamodelPackage extends EPackage {
 	int RELATION_CLASS__REFERENCE = REFERENCES_MODEL_OBJECT__REFERENCE;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATION_CLASS__NAME = REFERENCES_MODEL_OBJECT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Ancestor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -343,6 +379,17 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getreferencesModelObject_Reference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.metamodel.referencesModelObject#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.rulez.magwas.zenta.metamodel.referencesModelObject#getName()
+	 * @see #getreferencesModelObject()
+	 * @generated
+	 */
+	EAttribute getreferencesModelObject_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.Metamodel <em>Metamodel</em>}'.
@@ -576,6 +623,14 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REFERENCES_MODEL_OBJECT__REFERENCE = eINSTANCE.getreferencesModelObject_Reference();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCES_MODEL_OBJECT__NAME = eINSTANCE.getreferencesModelObject_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.MetamodelImpl <em>Metamodel</em>}' class.

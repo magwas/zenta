@@ -28,6 +28,7 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 
 public class TemplateImpl extends ReferencesModelObject implements Template {
+
 	protected EList<ObjectClass> objectClasses;
 
 	protected EList<RelationClass> relationClasses;
