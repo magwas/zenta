@@ -6,9 +6,6 @@
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
 
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 /**
@@ -24,12 +21,6 @@ public class TotalViewpoint extends AbstractViewpoint {
 
 	TotalViewpoint(IDiagramModel dm) {
 		super(dm);
-		for(Template template : metamodel.getTemplates()) {
-			for(ObjectClass oc : template.getObjectClasses())
-				allowedtypes.add(oc);
-			for(RelationClass rc : template.getRelationClasses())
-				allowedtypes.add(rc);
-		}
 	}
 
     @Override

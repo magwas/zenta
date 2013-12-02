@@ -14,6 +14,7 @@ import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -30,10 +31,7 @@ import org.rulez.magwas.zenta.model.UnTestedException;
  * @author Phillip Beauvoir
  */
 public abstract class AbstractViewpoint implements IViewpoint {
-    
-    private List<referencesModelObject> fClassList;
-	protected List<referencesModelObject> allowedtypes = new ArrayList<referencesModelObject>();
-    
+        
 	protected Metamodel metamodel;
 	private IFolder folder;
 
@@ -44,9 +42,10 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
     public boolean isAllowedType(referencesModelObject type) {
-        if(getAllowedList() == null)
+        List<referencesModelObject> allowedList = getAllowedList();
+		if(allowedList == null)
             return true;
-       	if(!fClassList.contains(type))
+       	if(!allowedList.contains(type))
        		return false;
        	return true;
     };
@@ -55,9 +54,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
      * @return A list of allowed types or null
      */
     protected List<referencesModelObject> getAllowedList() {
-        if(getAllowedTypes() != null && fClassList == null)
-            fClassList = getAllowedTypes();
-        return fClassList;
+        return getAllowedTypes();
     }
 
 	@Override
@@ -164,7 +161,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public boolean isAllowedType(IZentaElement element) {
 		referencesModelObject oc = getClassFor(element);
-		return allowedtypes.contains(oc);
+		return getAllowedTypes().contains(oc);
 	}
 
 	@Override
@@ -188,6 +185,13 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public List<referencesModelObject> getAllowedTypes() {
+		List<referencesModelObject> allowedtypes = new ArrayList<referencesModelObject>();
+		for(Template template : metamodel.getTemplates()) {
+			for(ObjectClass oc : template.getObjectClasses())
+				allowedtypes.add(oc);
+			for(RelationClass rc : template.getRelationClasses())
+				allowedtypes.add(rc);
+		}
 	    return allowedtypes;
 	}
 
