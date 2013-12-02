@@ -12,6 +12,8 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -207,13 +209,10 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
             if(relation.getSource() != null && relation.getTarget() != null) {
                 String nameSource = ZentaLabelProvider.INSTANCE.getLabel(relation.getSource());
                 String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
-//FIXME: figure out the derived relationship name                
-                switch(relation.eClass().getClassifierID()) {
-                    case IZentaPackage.ASSOCIATION_RELATIONSHIP:
-                        return NLS.bind(Messages.ZentaLabelProvider_9, nameSource, nameTarget);
-                    default:
-                        return ""; //$NON-NLS-1$
-                }
+                Metamodel metamodel = MetamodelFactory.eINSTANCE.getMetamodelFor(relation.getZentaModel());
+                referencesModelObject klass = metamodel.getClassFor(relation);
+                String relname = klass.getName();
+                return String.format("%s %s %s", nameSource, relname, nameTarget);
             }
         }
         

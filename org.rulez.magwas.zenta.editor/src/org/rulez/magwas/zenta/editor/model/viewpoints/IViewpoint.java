@@ -77,7 +77,7 @@ public interface IViewpoint {
 	boolean isAllowedType(IZentaElement element);
 	boolean isElementVisible(IZentaElement childObject);
 
-	boolean isNestedConnectionTypeRelationship(IRelationship relation);//FIXME Move from DiagramModelUtils
+	boolean isNestedConnectionTypeRelationship(IRelationship relation);
 
 	referencesModelObject getClassFor(IZentaElement element);
 

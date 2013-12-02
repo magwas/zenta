@@ -31,7 +31,6 @@ public class TreeModelViewActionFactoryTest {
 	public ModelAndMetaModelTestData data;
 	private TreeModelViewActionFactory fixture;
 	
-	//FIXME: canvas and diagram view missing on folders.
 	//FIXME: no connectors
 
 	@Before

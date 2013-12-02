@@ -125,9 +125,7 @@ public class Enricher {
                         .evaluate("//" + objectclass.getAttribute("name")
                                 + "[@parentid]", xml, XPathConstants.NODESET);
             } catch (XPathExpressionException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                return;
+            	throw new RuntimeException(e);
             }
             
             int k = nl.getLength();

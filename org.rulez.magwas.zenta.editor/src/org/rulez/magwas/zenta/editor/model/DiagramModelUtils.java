@@ -313,7 +313,7 @@ public class DiagramModelUtils {
      * @return true if a connection should be hidden when its source (parent) element contains its target (child) element
      */
     public static boolean shouldBeHiddenConnection(IDiagramModelZentaConnection connection) {
-    	return false;//FIXME
+    	return false;//FIXME shouldBeHiddenConnection
 /*    	
 
         if(!ConnectionPreferences.useNestedConnections()) {

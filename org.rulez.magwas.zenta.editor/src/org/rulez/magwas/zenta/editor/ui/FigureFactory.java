@@ -83,9 +83,7 @@ public class FigureFactory {
 					} catch (NoSuchMethodException | SecurityException|InstantiationException | IllegalAccessException
 							| IllegalArgumentException
 							| InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-	                       throw new IllegalArgumentException("Problem with creating the figure");
+						throw new RuntimeException(e);
 					}
         return obj;
     }

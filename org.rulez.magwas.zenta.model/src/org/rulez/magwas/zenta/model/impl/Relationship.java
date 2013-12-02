@@ -195,7 +195,7 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 	}
 
 	@Override
-	public IDiagramModelComponent getElementFromDiagramModel(IDiagramModel dm) {//FIXME scan for embedded elements and relations as well
+	public IDiagramModelComponent getElementFromDiagramModel(IDiagramModel dm) {
 		if(dm instanceof IZentaDiagramModel)
 			return scanDiagramLevel(dm);
 		return null;

@@ -80,12 +80,7 @@ public class EventLog implements IEventLog {
                             });
                             browser.addLocationListener(new LocationListener() {
                                 public void changing(LocationEvent event) {
-                                    String loc = event.location;// FIXME
-                                                                // highlight
-                                                                // this entity
-                                                                // in tree and
-                                                                // properties
-                                                                // view
+                                    String loc = event.location;
                                     if (loc.startsWith("zenta://")) {
                                         String[] ids = loc.split("//")[1]
                                                 .split("/");

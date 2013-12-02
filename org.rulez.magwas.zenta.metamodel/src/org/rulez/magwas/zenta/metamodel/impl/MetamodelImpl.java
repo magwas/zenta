@@ -254,7 +254,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 
 	@Override
 	public List<RelationClass> getWeaklist() {
-		return new ArrayList<RelationClass>();//TODO
+		return new ArrayList<RelationClass>();//TODO getWeaklist
 	}
 
 	@Override
@@ -266,7 +266,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	@Override
 	public boolean isValidRelationship(IZentaElement element1,
 			IZentaElement element2, RelationClass relationshipClass) {
-		return getRelationClasses().contains(relationshipClass);//TODO
+		return getRelationClasses().contains(relationshipClass);//TODO isValidRelationship
 	}
 
 	@Override
