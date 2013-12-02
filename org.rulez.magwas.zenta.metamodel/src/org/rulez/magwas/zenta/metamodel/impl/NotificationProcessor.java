@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -55,6 +56,123 @@ public class NotificationProcessor {
 			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) newVal;
 				mm.processConnectionAddedToDiagramElement(dmzc);
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaObject.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ELEMENT_SHAPE;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
+				mm.processDiagramElementAppearanceChanged(dmzc,"elementShape",dmzc.getElementShape());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaObject.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__FILL_COLOR;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
+				mm.processDiagramElementAppearanceChanged(dmzc,"fillColor",dmzc.getFillColor());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaObject.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__FONT;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
+				mm.processDiagramElementAppearanceChanged(dmzc,"font",dmzc.getFont());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaObject.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__FONT_COLOR;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
+				mm.processDiagramElementAppearanceChanged(dmzc,"fontColor",dmzc.getFontColor());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaObject.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__TEXT_ALIGNMENT;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
+				mm.processDiagramElementAppearanceChanged(dmzc,"textAlignment",new Integer(dmzc.getTextAlignment()).toString());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaObject.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__TEXT_POSITION;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
+				mm.processDiagramElementAppearanceChanged(dmzc,"textPosition",new Integer(dmzc.getTextPosition()).toString());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaConnection.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__FONT;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"font",dmzc.getFont());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaConnection.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__FONT_COLOR;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"fontColor",dmzc.getFontColor());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaConnection.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_COLOR;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineColor",dmzc.getLineColor());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaConnection.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_DECORATION;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineDecoration",dmzc.getLineDecoration());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaConnection.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_WIDTH;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineWidth",new Integer(dmzc.getLineWidth()).toString());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaConnection.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__TEXT_ALIGNMENT;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"textAlignment",new Integer(dmzc.getTextAlignment()).toString());
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaConnection.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__TEXT_POSITION;
+			hasNew = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"textPosition",new Integer(dmzc.getTextPosition()).toString());
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IZentaElement.class;

@@ -613,36 +613,39 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	@Override
 	public void setPropsFromDiagramObject(IDiagramModelComponent dmo) {
 		Map<String, EAttribute> props = getObjectAppearanceProperties();
-		EList<IProperty> propertiess = getProperties();
 		for(Entry<String, EAttribute> e : props.entrySet()) {
-			addOrUpateProp(dmo, propertiess, e);
+			addOrUpateProp(dmo, e);
 		}
 	}
-
-		private void addOrUpateProp(IDiagramModelComponent dmo,
-				EList<IProperty> propertiess, Entry<String, EAttribute> e) {
+		private void addOrUpateProp(IDiagramModelComponent dmo, Entry<String, EAttribute> e) {
 			String key = e.getKey();
 			String value = getValueForEntry(dmo, e);
-			boolean found = false;
-			for(IProperty theprop : propertiess)
-				if(theprop.getKey() == key) {
-					theprop.setValue(value);
-					found = true;
-				}
-			if(!found)
-				addProp(propertiess, key, value);
+			addOrUpdateProperty(key, value);
 		}
-			private String getValueForEntry(IDiagramModelComponent dmo,
-					Entry<String, EAttribute> e) {
-				EAttribute feat = e.getValue();
-				Object value = dmo.eGet(feat);
-				String v;
-				if(null == value) 
-					v = "";
-				else
-					v = value.toString();
-				return v;
+		private String getValueForEntry(IDiagramModelComponent dmo,
+				Entry<String, EAttribute> e) {
+			EAttribute feat = e.getValue();
+			Object value = dmo.eGet(feat);
+			String v;
+			if(null == value) 
+				v = null;
+			else
+				v = value.toString();
+			return v;
+		}
+
+	@Override
+	public void addOrUpdateProperty(String key, String value) {
+		boolean found = false;
+		EList<IProperty> propertiess = getProperties();
+		for(IProperty theprop : propertiess)
+			if(theprop.getKey().equals(key)) {
+				theprop.setValue(value);
+				found = true;
 			}
+		if(!found)
+			addProp(propertiess, key, value);
+	}
 			private void addProp(EList<IProperty> propertiess, String key, String value) {
 				IProperty prop;
 				prop = IZentaFactory.eINSTANCE.createProperty();
@@ -650,4 +653,9 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 				prop.setValue(value);
 				propertiess.add(prop);
 			}
+
+	@Override
+	public boolean isDefining() {
+		return getId() == getObjectClass();
+	}
 }

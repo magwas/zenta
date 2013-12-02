@@ -397,5 +397,18 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		oc.setName(definingName);
 	}
 
+	public void processDiagramElementAppearanceChanged(
+			IDiagramModelZentaObject dmzc, String key, String value) {
+		IZentaElement element = dmzc.getZentaElement();
+		if(element.isDefining())
+			element.addOrUpdateProperty(key, value);
+	}
 
+	public void processDiagramConnectionAppearanceChanged(
+			IDiagramModelZentaConnection dmzc, String key, String value) {
+		IZentaElement element = dmzc.getRelationship();
+		if(element.isDefining())
+			element.addOrUpdateProperty(key, value);
+		
+	}
 }

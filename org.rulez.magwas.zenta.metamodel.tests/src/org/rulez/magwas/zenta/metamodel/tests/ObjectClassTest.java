@@ -228,7 +228,27 @@ public class ObjectClassTest{
 		assertEquals(4,dmo.getTextAlignment());
 		assertEquals("#ffa500",dmo.getFillColor());
 	}
-	
+
+	@Test
+	public void When_the_appearance_of_a_diagram_element_linked_to_a_defining_element_is_changed_the_aooearance_properties_of_the_defining_element_are_updated() {
+		IZentaElement userObject = testdata.getElementById("ea94cf6c");
+		IDiagramModelObject dmo = testdata.getDMOById("b2608459");
+		assertFalse(dmo.getElementShape().equals("rectangleShape"));
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "ellipseShape");
+		dmo.setElementShape("rectangleShape");
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "rectangleShape");
+		dmo.setFillColor("#fafafa");
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "fillColor", "#fafafa");
+		dmo.setFont("1|Arial Black|10.0|1|GTK|1|");
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "font", "1|Arial Black|10.0|1|GTK|1|");
+		dmo.setFontColor("#0f0f0f");
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "fontColor", "#0f0f0f");
+		dmo.setTextAlignment(1);
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "textAlignment", "1");
+		dmo.setTextPosition(2);
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "textPosition", "2");
+	}
+
 	@Test
 	public void The_objectclass_of_a_created_element_is_set_propertly() {
 		String id = "ea94cf6c";

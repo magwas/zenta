@@ -204,6 +204,26 @@ public class RelationClassTest {
 
 	}
 	
+	@Test
+	public void When_the_appearance_of_a_diagram_connection_linked_to_a_defining_relationship_is_changed_the_aooearance_properties_of_the_defining_relationship_are_updated() {
+		IRelationship userObject = testdata.getRelationByID("9c441eb7");
+		IDiagramModelZentaConnection dmr = testdata.getDMRById("9dc4d23a");
+		dmr.setFont("1|Arial Black|10.0|1|GTK|1|");
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "font", "1|Arial Black|10.0|1|GTK|1|");
+		dmr.setFontColor("#0f0f0f");
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "fontColor", "#0f0f0f");
+		dmr.setLineColor("#0f0f0f");
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "lineColor", "#0f0f0f");
+		dmr.setLineDecoration("DiamondSourceDecoration BigArrowTargetDecoration");
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "lineDecoration", "DiamondSourceDecoration BigArrowTargetDecoration");
+		dmr.setLineWidth(3);
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "lineWidth", "3");
+		dmr.setTextAlignment(2);
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "textAlignment", "2");
+		dmr.setTextPosition(4);
+		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "textPosition", "4");
+	}
+
 	private void assertTemplateHaveRelationClassFor(Template template,
 			String elementID) {
 		IRelationship element = testdata.getRelationByID(elementID);
