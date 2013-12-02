@@ -154,44 +154,12 @@ public class ObjectClassTest{
 	}
 	
 	@Test
-	public void When_the_model_is_loaded_the_diagram_elements_are_converted_according_to_the_defining_element() {
+	public void When_the_model_is_loaded_the_diagram_elements_are_not_converted_according_to_the_defining_element() {
 		ModelTestData data = new ModelTestData();
 		ensureVirginDMOsForLoadTest(data);
 		MetamodelFactory.eINSTANCE.createMetamodel(data.model);
-		checkUserElement(data);
-		checkDataElement(data);
+		ensureVirginDMOsForLoadTest(data);
 	}
-		private void checkUserElement(ModelTestData data) {
-			IZentaElement userObject = data.getElementById("ea94cf6c");
-			IDiagramModelObject diagObject1 = data.getDMOById("b2608459");
-			IDiagramModelObject diagObject2 = data.getDMOById("9404b9cd");
-			
-			assertEquals("ellipseShape",diagObject1.getElementShape());
-			assertEquals("1|Arial Black|11.0|1|GTK|1|",diagObject1.getFont());
-			assertEquals("#ffffff",diagObject1.getFontColor());
-			assertEquals(4,diagObject1.getTextAlignment());
-			assertEquals("#ffa500",diagObject1.getFillColor());
-			
-			assertEquals("ellipseShape",diagObject2.getElementShape());
-			assertEquals("1|Arial Black|11.0|1|GTK|1|",diagObject2.getFont());
-			assertEquals("#ffffff",diagObject2.getFontColor());
-			assertEquals(4,diagObject2.getTextAlignment());
-			assertEquals("#ffa500",diagObject2.getFillColor());
-			
-			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "ellipseShape");
-			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "font", "1|Arial Black|11.0|1|GTK|1|");
-			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "fontColor", "#ffffff");
-			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "textAlignment", "4");
-			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "fillColor", "#ffa500");
-		}
-		private void checkDataElement(ModelTestData data) {
-			IZentaElement userObject = data.getElementById("23138a61");
-			IDiagramModelObject diagObject1 = data.getDMOById("99b3ed89");
-			IDiagramModelObject diagObject2 = data.getDMOById("843322b7");
-			assertEquals("emptyShape",diagObject1.getElementShape());
-			assertEquals("emptyShape",diagObject2.getElementShape());
-			ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "emptyShape");
-		}
 		private void ensureVirginDMOsForLoadTest(ModelTestData data) {
 			IDiagramModelObject diagObject1 = data.getDMOById("b2608459");
 			IDiagramModelObject diagObject2 = data.getDMOById("9404b9cd");
@@ -210,7 +178,7 @@ public class ObjectClassTest{
 		}
 
 	@Test
-	public void When_the_ObjectClass_of_an_element_is_changed_the_corresponding_diagram_elements_are_updated() {
+	public void When_the_ObjectClass_of_an_element_is_changed_the_corresponding_diagram_elements_are_not_updated() {
 		IZentaElement element = testdata.getElementById("85b00ede");
 		IDiagramModelObject dmo = testdata.getDMOById("be229c75");
 
@@ -222,11 +190,11 @@ public class ObjectClassTest{
 
 		element.setObjectClass("ea94cf6c");
 
-		assertEquals("ellipseShape",dmo.getElementShape());
-		assertEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
-		assertEquals("#ffffff",dmo.getFontColor());
-		assertEquals(4,dmo.getTextAlignment());
-		assertEquals("#ffa500",dmo.getFillColor());
+		ModelTestData.assertNotEquals("ellipseShape",dmo.getElementShape());
+		ModelTestData.assertNotEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
+		ModelTestData.assertNotEquals("#ffffff",dmo.getFontColor());
+		ModelTestData.assertNotEquals(4,dmo.getTextAlignment());
+		ModelTestData.assertNotEquals("#ffa500",dmo.getFillColor());
 	}
 
 	@Test
@@ -263,11 +231,11 @@ public class ObjectClassTest{
 		IDiagramModel dm = testdata.getTestDiagramModel();
 		dm.getChildren().add(dmo);
 		assertNotNull(dmo);
-		assertEquals("ellipseShape",dmo.getElementShape());
-		assertEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
-		assertEquals("#ffffff",dmo.getFontColor());
-		assertEquals(4,dmo.getTextAlignment());
-		assertEquals("#ffa500",dmo.getFillColor());
+		ModelTestData.assertNotEquals("ellipseShape",dmo.getElementShape());
+		ModelTestData.assertNotEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
+		ModelTestData.assertNotEquals("#ffffff",dmo.getFontColor());
+		ModelTestData.assertNotEquals(4,dmo.getTextAlignment());
+		ModelTestData.assertNotEquals("#ffa500",dmo.getFillColor());
 	}
 
 	@Test

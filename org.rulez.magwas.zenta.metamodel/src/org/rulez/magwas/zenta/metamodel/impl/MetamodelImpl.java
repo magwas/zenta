@@ -84,30 +84,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		    };
 		    model.eAdapters().add(adapter);
 		}
-		public void setAppearanceIfNeeded(IDiagramModelComponent dmzc) {
-			IZentaElement me = getModelElementFor(dmzc);
-			String ocId = null;
-			if(null != me)
-				ocId = me.getObjectClass();
-			if(null != ocId) {
-				setAppearanceByObjectClassId(ocId, dmzc);
-			}
-		}
-			private IZentaElement getModelElementFor(
-					IDiagramModelComponent dmzc) {
-				IZentaElement me = null;
-				if(dmzc instanceof IDiagramModelZentaObject)
-					me = ((IDiagramModelZentaObject)dmzc).getZentaElement();
-				if(dmzc instanceof IDiagramModelZentaConnection)
-					me = ((IDiagramModelZentaConnection)dmzc).getRelationship();
-				return me;
-			}
-			private void setAppearanceByObjectClassId(String ocId,
-					IDiagramModelComponent dmzc) {
-				referencesModelObject oc = getClassById(ocId);
-				IIdentifier reference = oc.getReference();
-				dmzc.setAppearanceBy((IZentaElement) reference);
-			}
 
 	protected EClass eStaticClass() {
 		return MetamodelPackage.Literals.METAMODEL;
@@ -308,7 +284,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	}
 
 	void processChildAddedToDiagram(IDiagramModelComponent dmzc) {
-		setAppearanceIfNeeded(dmzc);
 		handleNewTemplateElement(dmzc);
 	}
 
@@ -327,7 +302,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	public void processElementNameChange(IZentaElement element, String oldName, String newName) {
 		createOcIfBecameDefining(element, oldName, newName);
 		handleNameChange(element);
-		element.setAppearanceForDefinedElements();
 	}
 
 	public void createOcIfBecameDefining(IZentaElement element, String oldName,
@@ -386,7 +360,6 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 
 	public void processElementObjectClassChange(IZentaElement element) {
 		handleNameChange(element);
-		element.setAppearanceForDefinedElements();
 	}
 	
 	private void handleNameChange(IZentaElement element) {

@@ -27,10 +27,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
-import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -44,7 +42,6 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -210,7 +207,6 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		objectClass = newObjectClass;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS, oldObjectClass, objectClass));
-		setAppearanceForDefinedElements();
 	}
 
 				/**
@@ -542,41 +538,6 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		return ret;
 	}
 
-    @Override
- 	public void setAppearanceForDefinedElements() {
-		IZentaModel model = getZentaModel();
-		if(null == model)
-			return;
-		for(IDiagramModel dm : model.getDiagramModels())
-			for(IDiagramModelObject dmo : dm.getChildren())
-				setAppearanceOn(dmo);
-	}
-		private void setAppearanceOn(IDiagramModelObject dmo) {
-			if(dmo instanceof IDiagramModelZentaObject) {
-				IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject) dmo;
-				if(equals(dmzo.getZentaElement())) {
-					IZentaElement definingElement = getDefiningElement();
-					dmzo.setAppearanceBy(definingElement);
-				}
-				for(IDiagramModelObject kid : dmzo.getChildren())
-					setAppearanceOn(kid);
-				for(IDiagramModelConnection sc : dmzo.getSourceConnections())
-					setAppearanceOnSc(sc);
-			}
-		}
-			private void setAppearanceOnSc(IDiagramModelConnection dmo) {
-				if(!(dmo instanceof IDiagramModelZentaConnection))
-						return;
-				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) dmo;
-				if(equals(dmzc.getRelationship())) {
-					dmzc.setAppearanceBy(getDefiningElement());
-				}
-			}
-			private IZentaElement getDefiningElement() {
-				IZentaModel model = getZentaModel();
-				IZentaElement defining = (IZentaElement) ZentaModelUtils.getObjectByID(model, objectClass);
-				return defining;
-			}
 
 	public HashMap<String, EAttribute> getObjectAppearanceProperties() {
 		HashMap<String, EAttribute> props = new HashMap<String, EAttribute>();

@@ -39,6 +39,4 @@ public interface IDiagramModelComponent extends IIdentifier, ICloneable, IAdapte
 	 */
 	IDiagramModel getDiagramModel();
 
-	void setAppearanceBy(IZentaElement reference);
-
 } // IDiagramModelComponent

@@ -12,7 +12,6 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IHintProvider;
 import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.DiagramModel;
 
 
@@ -268,8 +267,4 @@ public class CanvasModel extends DiagramModel implements ICanvasModel {
         return result.toString();
     }
 
-	@Override
-	public void setAppearanceBy(IZentaElement reference) {
-		throw new UnsupportedOperationException();
-	}
 } //CanvasModel

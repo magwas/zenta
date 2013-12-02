@@ -136,7 +136,7 @@ public class RelationClassTest {
 	}
 
 	@Test
-	public void When_the_model_is_loaded_the_diagram_relations_are_converted_according_to_the_defining_relation() {
+	public void When_the_model_is_loaded_the_diagram_relations_are_not_converted_according_to_the_defining_relation() {
 		IRelationship relation = testdata.getRelationByID("9c441eb7");
 		IDiagramModelZentaConnection conn1 = testdata.getDMRById("9dc4d23a");
 		IDiagramModelZentaConnection conn2 = testdata.getDMRById("dcb9c1a2");
@@ -148,19 +148,19 @@ public class RelationClassTest {
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineColor", "#0000ff");
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineDecoration", "DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration");
 		
-		assertEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
-		assertEquals("#ff0000",conn1.getFontColor());
-		assertEquals(0,conn1.getTextPosition());
-		assertEquals(2,conn1.getLineWidth());
-		assertEquals("#0000ff",conn1.getLineColor());
-		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getLineDecoration());
+		ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
+		ModelTestData.assertNotEquals("#ff0000",conn1.getFontColor());
+		ModelTestData.assertNotEquals(0,conn1.getTextPosition());
+		ModelTestData.assertNotEquals(2,conn1.getLineWidth());
+		ModelTestData.assertNotEquals("#0000ff",conn1.getLineColor());
+		ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getLineDecoration());
 
-		assertEquals("1|Andika|10.0|3|GTK|1|",conn2.getFont());
-		assertEquals("#ff0000",conn2.getFontColor());
-		assertEquals(0,conn2.getTextPosition());
-		assertEquals(2,conn2.getLineWidth());
-		assertEquals("#0000ff",conn2.getLineColor());
-		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn2.getLineDecoration());
+		ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn2.getFont());
+		ModelTestData.assertNotEquals("#ff0000",conn2.getFontColor());
+		ModelTestData.assertNotEquals(0,conn2.getTextPosition());
+		ModelTestData.assertNotEquals(2,conn2.getLineWidth());
+		ModelTestData.assertNotEquals("#0000ff",conn2.getLineColor());
+		ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn2.getLineDecoration());
 	}
 		private void ensureVirginDMRsForLoadTest() {
 			IDiagramModelZentaConnection conn1 = testdata.getDMRById("9dc4d23a");
@@ -182,7 +182,7 @@ public class RelationClassTest {
 		}
 
 	@Test
-	public void When_the_ObjectClass_of_an_element_is_changed_the_corresponding_diagram_elements_are_updated() {
+	public void When_the_ObjectClass_of_an_element_is_changed_the_corresponding_diagram_elements_are_not_updated() {
 		IRelationship element = testdata.getRelationByID("8aeb2efb");
 		IDiagramModelZentaConnection conn1 = testdata.getDMRById("2454f71b");
 
@@ -195,12 +195,12 @@ public class RelationClassTest {
 
 		element.setObjectClass("9c441eb7");
 		
-		assertEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
-		assertEquals("#ff0000",conn1.getFontColor());
-		assertEquals(0,conn1.getTextPosition());
-		assertEquals(2,conn1.getLineWidth());
-		assertEquals("#0000ff",conn1.getLineColor());
-		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getLineDecoration());
+		ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
+		ModelTestData.assertNotEquals("#ff0000",conn1.getFontColor());
+		ModelTestData.assertNotEquals(0,conn1.getTextPosition());
+		ModelTestData.assertNotEquals(2,conn1.getLineWidth());
+		ModelTestData.assertNotEquals("#0000ff",conn1.getLineColor());
+		ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getLineDecoration());
 
 	}
 	
