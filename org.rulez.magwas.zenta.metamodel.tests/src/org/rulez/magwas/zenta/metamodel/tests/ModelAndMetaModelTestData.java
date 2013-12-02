@@ -5,12 +5,15 @@ import static org.junit.Assert.assertNotNull;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
@@ -59,6 +62,30 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		dm.getChildren().add(dmo);
 		newElement.setName(elementName);
 		return newElement;
+	}
+	public IRelationship createNewRelationClass(String elementName) {
+		IZentaElement newElement = createClassedTestElement();
+		newElement.setName("test OC 1");
+		IZentaElement newElement2 = createClassedTestElement();
+		newElement2.setName("test OC 2");
+		RelationClass oc = metamodel.getBuiltinRelationClass();
+		IRelationship rel = (IRelationship) oc.create((IFolder) newElement.eContainer());
+		rel.setSource(newElement);
+		rel.setTarget(newElement2);
+		IDiagramModel dm = getTestDiagramModel();
+		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
+		IDiagramModelZentaObject dmo2 = ModelTestData.createDMOFor(newElement2);
+		IDiagramModelZentaConnection diagramRelation =
+				IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
+		diagramRelation.setSource(dmo);
+		diagramRelation.setTarget(dmo2);
+		diagramRelation.setRelationship(rel);
+	
+		dm.getChildren().add(dmo);
+		dm.getChildren().add(dmo2);
+		dmo.addConnection(diagramRelation);
+		rel.setName(elementName);
+		return rel;
 	}
 
 }

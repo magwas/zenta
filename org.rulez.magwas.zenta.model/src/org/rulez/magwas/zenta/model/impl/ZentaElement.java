@@ -26,7 +26,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -587,17 +589,29 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	}
 
 	@Override
-	public IDiagramModelZentaObject getElementFromDiagramModel(IDiagramModel dm) {//FIXME scan for embedded elements and relations as well
+	public IDiagramModelComponent getElementFromDiagramModel(IDiagramModel dm) {
 		if(dm instanceof IZentaDiagramModel)
-			for(IDiagramModelObject de : dm.getChildren())
-				if(de instanceof IDiagramModelZentaObject)
-					if(((IDiagramModelZentaObject) de).getZentaElement().equals(this))
-						return (IDiagramModelZentaObject) de;
+			return scanDiagramLevel(dm);
 		return null;
 	}
 
+	private IDiagramModelZentaObject scanDiagramLevel(IDiagramModelContainer dm) {
+		for(IDiagramModelObject de : dm.getChildren())
+			if(de instanceof IDiagramModelZentaObject) {
+				IDiagramModelZentaObject res = checkOneDiagramElement(de);
+				if(null != res)
+					return res;
+			}
+		return null;
+	}
+		private IDiagramModelZentaObject checkOneDiagramElement(IDiagramModelObject de) {
+			if(((IDiagramModelZentaObject) de).getZentaElement().equals(this))
+				return (IDiagramModelZentaObject) de;
+			return scanDiagramLevel((IDiagramModelContainer) de);
+		}
+
 	@Override
-	public void setPropsFromDiagramObject(IDiagramModelObject dmo) {
+	public void setPropsFromDiagramObject(IDiagramModelComponent dmo) {
 		Map<String, EAttribute> props = getObjectAppearanceProperties();
 		EList<IProperty> propertiess = getProperties();
 		for(Entry<String, EAttribute> e : props.entrySet()) {
@@ -605,7 +619,7 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		}
 	}
 
-		public void addOrUpateProp(IDiagramModelObject dmo,
+		private void addOrUpateProp(IDiagramModelComponent dmo,
 				EList<IProperty> propertiess, Entry<String, EAttribute> e) {
 			String key = e.getKey();
 			String value = getValueForEntry(dmo, e);
@@ -618,7 +632,7 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 			if(!found)
 				addProp(propertiess, key, value);
 		}
-			public String getValueForEntry(IDiagramModelObject dmo,
+			private String getValueForEntry(IDiagramModelComponent dmo,
 					Entry<String, EAttribute> e) {
 				EAttribute feat = e.getValue();
 				Object value = dmo.eGet(feat);
@@ -629,7 +643,7 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 					v = value.toString();
 				return v;
 			}
-			public void addProp(EList<IProperty> propertiess, String key, String value) {
+			private void addProp(EList<IProperty> propertiess, String key, String value) {
 				IProperty prop;
 				prop = IZentaFactory.eINSTANCE.createProperty();
 				prop.setKey(key);

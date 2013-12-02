@@ -48,4 +48,5 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 		EObject mo = getById(string);
 		return (EditPart) editor.getGraphicalViewer().getEditPartRegistry().get(mo);
 	}
+
 }

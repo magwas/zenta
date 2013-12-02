@@ -178,7 +178,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	}
 
 	@Override
-	public Template getTemplateFor(IDiagramModelObject element) {
+	public Template getTemplateFor(IDiagramModelComponent element) {
 		IDiagramModel dm = element.getDiagramModel();
 		return getTemplateFor(dm);
 	}
@@ -213,7 +213,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	}
 
 	@Override
-	public RelationClass getRelatioClassReferencing(IRelationship relation) {
+	public RelationClass getRelationClassReferencing(IRelationship relation) {
 		EList<Template> templates = getTemplates();
 		for(Template template : templates) {
 			if(template.getReference() != null)
@@ -225,7 +225,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 
 	@Override
 	public boolean hasRelationClassReferencing(IRelationship relation) {
-		return null != getRelatioClassReferencing(relation);
+		return null != getRelationClassReferencing(relation);
 	}
 
 	@Override
@@ -340,7 +340,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 
 	public void createOCforElement(IZentaElement element) {
 		Template template;
-		IDiagramModelObject dmo;
+		IDiagramModelComponent dmo;
 		dmo = getDefiningModelObjectFor(element);
 		if(dmo == null)
 			return;
@@ -351,12 +351,12 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		element.setPropsFromDiagramObject(dmo);
 	}
 
-	private IDiagramModelObject getDefiningModelObjectFor(IZentaElement element) {
+	private IDiagramModelComponent getDefiningModelObjectFor(IZentaElement element) {
 		List<IDiagramModel> containingDMs = element.getZentaModel().getDiagramModels();
 		for(IDiagramModel dm : containingDMs)
 			if(dm instanceof IZentaDiagramModel)
 				if(((IZentaDiagramModel) dm).getPropertyNamed("Template").size() > 0 ) {
-					IDiagramModelZentaObject diagelement = element.getElementFromDiagramModel(dm);
+					IDiagramModelComponent diagelement = element.getElementFromDiagramModel(dm);
 					if(null != diagelement)
 						return diagelement;
 				}

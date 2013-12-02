@@ -30,8 +30,8 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 
 	void setAppearanceForDefinedElements();
 
-	IDiagramModelZentaObject getElementFromDiagramModel(IDiagramModel dm);
+	IDiagramModelComponent getElementFromDiagramModel(IDiagramModel dm);
 
-	void setPropsFromDiagramObject(IDiagramModelObject dmo);
+	void setPropsFromDiagramObject(IDiagramModelComponent dmo);
 
 } // IZentaElement

@@ -211,6 +211,6 @@ public class RelationClassTest {
 	}
 
 	private RelationClass getRelationClassReferencing(IRelationship element) {
-		return metamodel.getRelatioClassReferencing(element);
+		return metamodel.getRelationClassReferencing(element);
 	}
 } 

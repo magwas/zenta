@@ -95,12 +95,19 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	}
 
 	private void addClassToPalette(Object newValue) {
-        ObjectClass newOc = (ObjectClass) newValue;
-		if(newValue instanceof ObjectClass) {
-			PaletteEntry entry = createCombinedTemplateCreationEntry(newOc, null);
-            fObjectClassGroup.add(entry);
-		}
+		if(newValue instanceof ObjectClass)
+			addObjectClassToPalette((ObjectClass) newValue);
+		else if(newValue instanceof RelationClass)
+			addRelationClassToPalette((RelationClass) newValue);
 	}
+		private void addObjectClassToPalette(ObjectClass newOc) {
+			PaletteEntry entry = createCombinedTemplateCreationEntry(newOc, null);
+			fObjectClassGroup.add(entry);
+		}
+		private void addRelationClassToPalette(RelationClass newRc) {
+			ConnectionCreationToolEntry entry = createConnectionCreationToolEntry(newRc, null);
+			fRelationsGroup.add(entry);
+		}
 
 	public void setViewpoint(IViewpoint viewpoint) {
         if(fViewpoint != viewpoint) {

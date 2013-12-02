@@ -26,6 +26,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
@@ -79,6 +80,9 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 
 
 	private Menu menu;
+
+
+	private boolean skipModalMenu = false;
     
     public MagicConnectionCreationTool() {
        setDefaultCursor(cursor);
@@ -159,14 +163,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         addConnectionActions(menu, sourceDiagramModelObject.getZentaElement(), targetDiagramModelObject.getZentaElement());
         menu.setVisible(true);
         
-        // Modal menu
-        Display display = menu.getDisplay();
-        while(!menu.isDisposed() && menu.isVisible()) {
-            if(!display.readAndDispatch()) {
-                display.sleep();
-            }
-        }
-        
+        runMenu(menu);        
         if(!menu.isDisposed()) {
             menu.dispose();
         }
@@ -229,13 +226,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         }
         menu.setVisible(true);
         
-        // Modal menu
-        Display display = menu.getDisplay();
-        while(!menu.isDisposed() && menu.isVisible()) {
-            if(!display.readAndDispatch()) {
-                display.sleep();
-            }
-        }
+        runMenu(menu);
         
         if(!menu.isDisposed()) {
             menu.dispose();
@@ -276,7 +267,29 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
         
         return true;
     }
-    
+		private void runMenu(Menu menu) {
+			if (skipModalMenu == true) {
+				activateFirstMenuItem(menu);
+				return;
+			}
+			Display display = menu.getDisplay();
+	        while(!menu.isDisposed() && menu.isVisible()) {
+	            if(!display.readAndDispatch()) {
+	                display.sleep();
+	            }
+	        }
+		}
+			private void activateFirstMenuItem(Menu menu) {
+				MenuItem menuitem = menu.getItem(0);
+				menuitem.setSelection(true);
+				Event event = new Event();
+				event.button=1;
+				menu.notifyListeners(SWT.SELECTED, event);
+			}
+
+	public void _setSkipModalMenu() {
+		skipModalMenu = true;
+	}
 
     private void addConnectionActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject) {
     	IZentaDiagramModel zdm = (IZentaDiagramModel) sourceDiagramModelObject.getDiagramModel();

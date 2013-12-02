@@ -11,6 +11,14 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelContainer;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IRelationship;
@@ -186,4 +194,37 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 		return props;
 	}
 
-} //Relationship
+	@Override
+	public IDiagramModelComponent getElementFromDiagramModel(IDiagramModel dm) {//FIXME scan for embedded elements and relations as well
+		if(dm instanceof IZentaDiagramModel)
+			return scanDiagramLevel(dm);
+		return null;
+	}
+
+	private IDiagramModelComponent scanDiagramLevel(IDiagramModelContainer dm) {
+		for(IDiagramModelObject de : dm.getChildren())
+			if(de instanceof IDiagramModelZentaObject) {
+				IDiagramModelComponent res = scanOneElement(de);
+				if(null != res)
+					return res;
+			}
+		return null;
+	}
+		private IDiagramModelComponent scanOneElement(IDiagramModelObject de) {
+			IDiagramModelComponent res;
+			res = scanConnectionsFor(de);
+			if(null != res)
+				return res;
+			return scanDiagramLevel((IDiagramModelContainer) de);
+		}
+			private IDiagramModelComponent scanConnectionsFor(IDiagramModelObject de) {
+				for(IDiagramModelConnection conn : de.getSourceConnections()) {
+					if(conn instanceof IDiagramModelZentaConnection) {
+						IRelationship foundrel = ((IDiagramModelZentaConnection) conn).getRelationship();
+						if(foundrel.equals(this))
+							return (IDiagramModelComponent) conn;
+					}
+				}
+				return null;
+			}
+}

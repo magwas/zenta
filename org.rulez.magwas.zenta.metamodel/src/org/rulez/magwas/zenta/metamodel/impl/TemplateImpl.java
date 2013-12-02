@@ -252,9 +252,8 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 	@Override
 	public void createClassBy(IZentaElement element) {
 		if(element instanceof IRelationship)
-			getRelationClassFrom((IRelationship) element);
+			relationClasses.add(getRelationClassFrom((IRelationship) element));
 		else
-			getObjectClassFrom(element);
+			objectClasses.add(getObjectClassFrom(element));
 	}
-
 }

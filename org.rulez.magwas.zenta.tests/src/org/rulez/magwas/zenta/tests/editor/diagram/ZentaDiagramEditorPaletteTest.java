@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
@@ -20,7 +20,10 @@ import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.ZentaElement;
 import org.rulez.magwas.zenta.tests.HaveGUI;
@@ -49,18 +52,12 @@ public class ZentaDiagramEditorPaletteTest {
 		assertNotNull(objectsgroup);
 		
 		@SuppressWarnings("unchecked")
-		List<CombinedTemplateCreationEntry> children = objectsgroup.getChildren();
+		List<PaletteEntry> children = objectsgroup.getChildren();
 		for(ObjectClass klass : testdata.metamodel.getObjectClasses()) {
 			assertTrue(haveCreatorFor(klass, children));
 		}
 	}
-		private boolean haveCreatorFor(ObjectClass klass, List<CombinedTemplateCreationEntry> children) {
-			for ( CombinedTemplateCreationEntry kid : children)
-				if(klass.getName().equals(kid.getLabel()))
-					return true;
-			return false;
-		}
-
+	
 	@IsInteractive
 	@Test
 	@HaveGUI(waitUser = false)
@@ -70,6 +67,7 @@ public class ZentaDiagramEditorPaletteTest {
 		IFolder folder = ModelAndEditPartTestData.getFolderByKid(data.getTestDiagramModel());
 		MagicConnectionModelFactory factory = new MagicConnectionModelFactory(folder);
 		tool = new MagicConnectionCreationTool();
+		tool._setSkipModalMenu();
 		tool.setFactory(factory);
 		tool.setViewer(data.editor.getGraphicalViewer());
 		CreateConnectionRequest req = new CreateConnectionRequest();
@@ -78,17 +76,7 @@ public class ZentaDiagramEditorPaletteTest {
 		req.setSourceEditPart(spart);
 		req.setTargetEditPart(tpart);
 		tool._setRequest(req);
-
-		/*
-		 * Know no way to test it noninteractively: handleCreateConnection blocks the UI thread,
-		 * no way to push the menu fromother threads
-		Menu menu = tool._getMenu();
-		MenuItem menuitem = menu.getDefaultItem();
-		menuitem.setSelection(true);
-		Event event = new Event();
-		event.button=1;
-		menu.notifyListeners(SWT.SELECTED, event);
-		*/
+		tool._setSkipModalMenu();
 		tool.handleCreateConnection();
 		win.showWindow();
 	}
@@ -114,8 +102,29 @@ public class ZentaDiagramEditorPaletteTest {
 		PaletteContainer objectsgroup = palette._getObjectsGroup();
 		assertNotNull(objectsgroup);
 		@SuppressWarnings("unchecked")
-		List<CombinedTemplateCreationEntry> children = objectsgroup.getChildren();
+		List<PaletteEntry> children = objectsgroup.getChildren();
 		
 		assertTrue(haveCreatorFor(newOc, children));
 	}
+	
+	@Test
+	public void If_a_new_RelationClass_is_created_it_is_shown_on_the_ViewPoint() {
+		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+
+		IRelationship newElement = testdata.createNewRelationClass("New test RC");
+		RelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
+		assertNotNull(newRc);
+		PaletteContainer relationsgroup = palette._getRelationsGroup();
+		assertNotNull(relationsgroup);
+		@SuppressWarnings("unchecked")
+		List<PaletteEntry> children = relationsgroup.getChildren();
+		
+		assertTrue(haveCreatorFor(newRc, children));
+	}
+		private boolean haveCreatorFor(referencesModelObject klass, List<PaletteEntry> children) {
+			for ( PaletteEntry kid : children)
+				if(klass.getName().equals(kid.getLabel()))
+					return true;
+			return false;
+		}
 }
