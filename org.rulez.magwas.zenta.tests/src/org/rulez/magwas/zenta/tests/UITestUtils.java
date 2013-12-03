@@ -1,5 +1,7 @@
 package org.rulez.magwas.zenta.tests;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +34,8 @@ public class UITestUtils {
 		elements.add(element);
 		ITreeModelView treeView = (ITreeModelView)ViewManager.showViewPart(ITreeModelView.ID, false);
 		System.out.printf("view = %s\n", treeView);
-        if(treeView != null) {
-            treeView.getViewer().setSelection(new StructuredSelection(elements), true);
-        }
+		assertNotNull(treeView);
+        treeView.getViewer().setSelection(new StructuredSelection(elements), true);
 	}
 
 	public static IWorkbenchWindow getWorkbenchWindow() {

@@ -5,11 +5,9 @@ import static org.junit.Assert.assertNotNull;
 import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IViewSite;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.PageSite;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
@@ -32,10 +30,6 @@ public class LineDecorationSectionExerciser extends LineDecorationSection {
 		//setEditorForSection(editor,data);
 		createControlsForSection( data.editor);
 	}
-		void setEditorForSection(ModelAndEditPartTestData data) {
-			ISelection selection = new SelectionMockup(data.editPart);
-			setInput((IWorkbenchPart) data.editor, selection);
-		}
 	
 		void createControlsForSection( ZentaDiagramEditor editor) {
 			win = new UITestWindow();
