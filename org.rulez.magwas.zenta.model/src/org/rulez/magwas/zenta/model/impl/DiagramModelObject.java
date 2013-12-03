@@ -185,7 +185,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 	 * @generated NOT
 	 * @ordered
 	 */
-	protected static final String ELEMENT_SHAPE_EDEFAULT = "rectangleElementShape";
+	protected static final String ELEMENT_SHAPE_EDEFAULT = null;
 
 				/**
 	 * The cached value of the '{@link #getElementShape() <em>Element Shape</em>}' attribute.
@@ -291,6 +291,10 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
     public String getFillColor() {
 		return fillColor;
 	}
+    
+    public String getFinalFillColor() {
+    	return fillColor;
+    }
 
     /**
 	 * <!-- begin-user-doc -->
@@ -310,6 +314,8 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 	 * @generated
 	 */
 	public String getElementShape() {
+		if(null == elementShape)
+			return "rectangleElementShape";
 		return elementShape;
 	}
 
@@ -334,6 +340,9 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		return font;
 	}
 
+    public String getFinalFont() {
+		return font;
+	}
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -355,6 +364,10 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		return fontColor;
 	}
 
+    public String getFinalFontColor() {
+    	return fontColor;
+    }
+
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -367,19 +380,15 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_OBJECT__FONT_COLOR, oldFontColor, fontColor));
 	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
     public int getTextAlignment() {
-        // Check for backward compatibility where default is 0 and not persisted
-        if(textAlignment == TEXT_ALIGNMENT_NONE) {
-            textAlignment = getDefaultTextAlignment();
-        }
         return textAlignment;
     }
 
+    public int getFinalTextAlignment() {
+    	if(textAlignment == TEXT_ALIGNMENT_NONE)
+    		return TEXT_ALIGNMENT_CENTER;
+    	return textAlignment;
+    }
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -471,7 +480,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
      * @generated NOT
      */
     public int getDefaultTextAlignment() {
-        return TEXT_ALIGNMENT_CENTER;
+        return TEXT_ALIGNMENT_EDEFAULT;
     }
 
     @Override

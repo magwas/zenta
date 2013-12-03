@@ -290,4 +290,14 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 */
 	void reconnect();
 
+	String getFinalFont();
+
+	String getFinalFontColor();
+
+	int getFinalTextPosition();
+
+	int getFinalLineWidth();
+
+	String getFinalLineColor();
+
 } // IDiagramModelConnection

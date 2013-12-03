@@ -22,15 +22,19 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 public class BasicConnectionFigure extends AbstractZentaConnectionFigure {
 	
 	private List<IConnectionDecoration> decorations;
+	private String lineDecorationString;
 	
     public BasicConnectionFigure(IDiagramModelZentaConnection connection) {
         super(connection);
         initDecorations(connection);
     }
 
+    public String getlineDecorationString() {
+    	return lineDecorationString;
+    }
     public void initDecorations(IDiagramModelZentaConnection connection) {
         decorations = new ArrayList<IConnectionDecoration>();
-        String lineDecorationString = connection.getLineDecoration();
+        lineDecorationString = connection.getFinalLineDecoration();
         if (null == lineDecorationString)
         	return;
 		List<String> decorNames = Arrays.asList(lineDecorationString.split(" "));

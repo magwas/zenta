@@ -44,6 +44,10 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 		assertNotNull(editPart2);
 	}
 
+	public void focusOnDiagram(String id) {
+		diagramModel = this.getZDiagramModelById(id);
+		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)diagramModel);
+	}
 	public EditPart getEditPartFor(String string) {
 		EObject mo = getById(string);
 		return (EditPart) editor.getGraphicalViewer().getEditPartRegistry().get(mo);

@@ -121,7 +121,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
      * @generated NOT
      * @ordered
      */
-    protected static final int TEXT_POSITION_EDEFAULT = CONNECTION_TEXT_POSITION_MIDDLE;
+    protected static final int TEXT_POSITION_EDEFAULT = -1;
 
     /**
 	 * The cached value of the '{@link #getTextPosition() <em>Text Position</em>}' attribute.
@@ -221,7 +221,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 	 * @generated
 	 * @ordered
 	 */
-    protected static final int LINE_WIDTH_EDEFAULT = 1;
+    protected static final int LINE_WIDTH_EDEFAULT = -1;
 
     /**
 	 * The cached value of the '{@link #getLineWidth() <em>Line Width</em>}' attribute.
@@ -321,6 +321,9 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		return font;
 	}
 
+    public String getFinalFont() {
+    	return font;
+    }
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -342,6 +345,9 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		return fontColor;
 	}
 
+    public String getFinalFontColor() {
+		return fontColor;
+	}
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -434,12 +440,18 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     public int getTextPosition() {
+    	if(-1 == textPosition)
+    		return CONNECTION_TEXT_POSITION_MIDDLE;
 		return textPosition;
 	}
 
+    public int getFinalTextPosition() {
+		return getTextPosition();
+	}
+    
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -509,12 +521,17 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     public int getLineWidth() {
+    	if(LINE_WIDTH_EDEFAULT == lineWidth)
+    		return 1;
 		return lineWidth;
 	}
 
+    public int getFinalLineWidth() {
+		return getLineWidth();
+	}
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -533,6 +550,9 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 	 * @generated
 	 */
     public String getLineColor() {
+		return lineColor;
+	}
+    public String getFinalLineColor() {
 		return lineColor;
 	}
 

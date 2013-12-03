@@ -89,7 +89,7 @@ public abstract class AbstractTextFlowFigure extends AbstractContainerFigure  {
         setFontColor();
         
         // Alignment default is CENTER
-        int alignment = getDiagramModelObject().getTextAlignment();
+        int alignment = getDiagramModelObject().getFinalTextAlignment();
         if(alignment == IFontAttribute.TEXT_ALIGNMENT_NONE) {
             alignment = IFontAttribute.TEXT_ALIGNMENT_CENTER;
         }

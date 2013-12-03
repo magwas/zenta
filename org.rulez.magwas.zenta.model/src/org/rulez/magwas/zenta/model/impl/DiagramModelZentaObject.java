@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,6 +24,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -345,5 +347,78 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 		result.append(')');
 		return result.toString();
 	}
-
+    
+	@Override
+	public String getFinalFillColor() {
+		String myColor = getFillColor();
+		if(null != myColor)
+			return myColor;
+		IZentaElement definingElement = getDefiningElement();
+		if(null == definingElement)
+			return null;
+		List<String> props = definingElement.getPropertyNamed("fillColor");
+		if(props.size()>0)
+			return props.get(0);
+		return null;
+	}
+	
+	@Override
+	public IZentaElement getDefiningElement() {
+		IZentaElement element = this.getZentaElement();
+		String oc = element.getObjectClass();
+		IZentaElement definingElement = (IZentaElement) ZentaModelUtils.getObjectByID(element.getZentaModel(), oc);
+		return definingElement;
+	}
+	@Override
+	public String getFinalFontColor() {
+		String myColor = getFontColor();
+		if(null != myColor)
+			return myColor;
+		IZentaElement definingElement = getDefiningElement();
+		if(null == definingElement)
+			return null;
+		List<String> props = definingElement.getPropertyNamed("fontColor");
+		if(props.size()>0)
+			return props.get(0);
+		return null;
+	}
+	@Override
+	public int getFinalTextAlignment() {
+		int myAlignment = getTextAlignment();
+		if(TEXT_ALIGNMENT_NONE != myAlignment)
+			return myAlignment;
+		IZentaElement definingElement = getDefiningElement();
+		if(null == definingElement)
+			return TEXT_ALIGNMENT_CENTER;
+		List<String> props = definingElement.getPropertyNamed("textAlignment");
+		if(props.size()>0)
+			return new Integer(props.get(0));
+		return TEXT_ALIGNMENT_CENTER;
+	}
+	@Override
+	public String getFinalElementShape() {
+		String myShape = elementShape;
+		if(null != myShape)
+			return myShape;
+		IZentaElement definingElement = getDefiningElement();
+		if(null == definingElement)
+			return "rectangleElementShape";
+		List<String> props = definingElement.getPropertyNamed("elementShape");
+		if(props.size()>0)
+			return props.get(0);
+		return "rectangleElementShape";
+	}
+	@Override
+	public String getFinalFont() {
+		String myFont = font;
+		if(null != myFont)
+			return myFont;
+		IZentaElement definingElement = getDefiningElement();
+		if(null == definingElement)
+			return null;
+		List<String> props = definingElement.getPropertyNamed("font");
+		if(props.size()>0)
+			return props.get(0);
+		return null;
+	}
 }

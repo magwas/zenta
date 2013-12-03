@@ -22,7 +22,7 @@ public class BasicObjectFigure extends AbstractTextFlowFigure {
         
     public BasicObjectFigure(IDiagramModelZentaObject diagramModelObject) {
         super(diagramModelObject);
-        setFigureShape(diagramModelObject.getElementShape());
+        setFigureShape(diagramModelObject.getFinalElementShape());
         refreshVisuals();
     }
 

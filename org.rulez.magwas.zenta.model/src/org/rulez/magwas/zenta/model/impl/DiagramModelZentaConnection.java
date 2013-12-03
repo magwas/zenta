@@ -5,6 +5,8 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -15,6 +17,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -212,4 +215,89 @@ public class DiagramModelZentaConnection extends DiagramModelConnection implemen
 		return super.eIsSet(featureID);
 	}
 
+    @Override
+    public String getFinalFont() {
+    	if(null != font)
+    		return font;
+    	IRelationship definingElement = getDefiningElement();
+		if(null == definingElement)
+			return null;
+    	List<String> props = definingElement.getPropertyNamed("font");
+		if(props.size() >0 )
+			return props.get(0);
+		return null;
+    }
+
+    @Override
+    public String getFinalFontColor() {
+    	if(null != fontColor)
+    		return fontColor;
+    	IRelationship definingElement = getDefiningElement();
+		if(null == definingElement)
+			return null;
+    	List<String> props = definingElement.getPropertyNamed("fontColor");
+		if(props.size() >0 )
+			return props.get(0);
+		return null;
+    }
+    
+    @Override
+    public String getFinalLineColor() {
+    	if(null != lineColor)
+    		return lineColor;
+    	IRelationship definingElement = getDefiningElement();
+		if(null == definingElement)
+			return null;
+    	List<String> props = definingElement.getPropertyNamed("lineColor");
+		if(props.size() >0 )
+			return props.get(0);
+		return null;
+    }
+    
+    @Override
+    public String getFinalLineDecoration() {
+    	if(null != lineDecoration)
+    		return lineDecoration;
+    	IRelationship definingElement = getDefiningElement();
+		if(null == definingElement)
+			return null;
+    	List<String> props = definingElement.getPropertyNamed("lineDecoration");
+		if(props.size() >0 )
+			return props.get(0);
+		return null;
+    }
+    
+    @Override
+    public int getFinalTextPosition() {
+    	if(-1 != textPosition)
+    		return textPosition;
+    	IRelationship definingElement = getDefiningElement();
+		if(null == definingElement)
+			return CONNECTION_TEXT_POSITION_MIDDLE;
+    	List<String> props = definingElement.getPropertyNamed("textPosition");
+		if(props.size() >0 )
+			return new Integer(props.get(0));
+		return CONNECTION_TEXT_POSITION_MIDDLE;
+    }
+
+    @Override
+    public int getFinalLineWidth() {
+    	if(LINE_WIDTH_EDEFAULT != lineWidth)
+    		return lineWidth;
+    	IRelationship definingElement = getDefiningElement();
+		if(null == definingElement)
+			return 1;
+    	List<String> props = definingElement.getPropertyNamed("lineWidth");
+		if(props.size() >0 )
+			return new Integer(props.get(0));
+		return 1;
+    }
+    
+    @Override
+	public IRelationship getDefiningElement() {
+		IRelationship relation = this.getRelationship();
+    	String classId = relation.getObjectClass();
+    	IRelationship definingElement = (IRelationship) ZentaModelUtils.getObjectByID(relation.getZentaModel(), classId);
+		return definingElement;
+	}
 } //DiagramModelConnection

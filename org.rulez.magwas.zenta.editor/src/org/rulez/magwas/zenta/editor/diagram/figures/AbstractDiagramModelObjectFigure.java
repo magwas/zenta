@@ -90,7 +90,7 @@ implements IDiagramModelObjectFigure {
      * Set the font to that in the model, or failing that, as per user's default
      */
     protected void setFont() {
-        String fontName = fDiagramModelObject.getFont();
+        String fontName = fDiagramModelObject.getFinalFont();
         setFont(FontFactory.get(fontName));
         
         // Need to do this after font change
@@ -112,7 +112,7 @@ implements IDiagramModelObjectFigure {
      * Set the fill color to that in the model, or failing that, as per default
      */
     protected void setFillColor() {
-        String val = fDiagramModelObject.getFillColor();
+        String val = fDiagramModelObject.getFinalFillColor();
         Color c = ColorFactory.get(val);
         if(c != fFillColor) {
             fFillColor = c;
@@ -134,7 +134,7 @@ implements IDiagramModelObjectFigure {
      * Set the font color to that in the model, or failing that, as per default
      */
     protected void setFontColor() {
-        String val = fDiagramModelObject.getFontColor();
+        String val = fDiagramModelObject.getFinalFontColor();
         Color c = ColorFactory.get(val);
         if(c != fFontColor) {
             fFontColor = c;

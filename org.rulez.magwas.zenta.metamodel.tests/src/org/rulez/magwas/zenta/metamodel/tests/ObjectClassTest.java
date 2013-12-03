@@ -159,10 +159,27 @@ public class ObjectClassTest{
 		ensureVirginDMOsForLoadTest(data);
 		MetamodelFactory.eINSTANCE.createMetamodel(data.model);
 		ensureVirginDMOsForLoadTest(data);
+		ensureCorrectFinalAttributes(data);
 	}
+		private void ensureCorrectFinalAttributes(ModelTestData data) {
+			IDiagramModelZentaObject diagObject1 = (IDiagramModelZentaObject) data.getDMOById("b2608459");
+			IDiagramModelZentaObject diagObject2 = (IDiagramModelZentaObject) data.getDMOById("9404b9cd");
+	
+			assertEquals("ellipseShape",diagObject2.getFinalElementShape());
+			assertEquals("1|Arial Black|11.0|1|GTK|1|",diagObject2.getFinalFont());
+			assertEquals("#ffffff",diagObject2.getFinalFontColor());
+			assertEquals(4,diagObject2.getFinalTextAlignment());
+			assertEquals("#ffa500",diagObject2.getFinalFillColor());
+	
+			assertEquals("ellipseShape",diagObject1.getFinalElementShape());
+			assertEquals("1|Arial Black|11.0|1|GTK|1|",diagObject1.getFinalFont());
+			assertEquals("#ffffff",diagObject1.getFinalFontColor());
+			assertEquals(4,diagObject1.getFinalTextAlignment());
+			assertEquals("#ffa500",diagObject1.getFinalFillColor());
+		}
 		private void ensureVirginDMOsForLoadTest(ModelTestData data) {
-			IDiagramModelObject diagObject1 = data.getDMOById("b2608459");
-			IDiagramModelObject diagObject2 = data.getDMOById("9404b9cd");
+			IDiagramModelZentaObject diagObject1 = (IDiagramModelZentaObject) data.getDMOById("b2608459");
+			IDiagramModelZentaObject diagObject2 = (IDiagramModelZentaObject) data.getDMOById("9404b9cd");
 			
 			ModelTestData.assertNotEquals("ellipseShape",diagObject2.getElementShape());
 			ModelTestData.assertNotEquals("1|Arial Black|11.0|1|GTK|1|",diagObject2.getFont());

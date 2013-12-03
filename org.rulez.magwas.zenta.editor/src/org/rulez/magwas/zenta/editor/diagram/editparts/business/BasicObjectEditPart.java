@@ -16,7 +16,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.business.BasicObjectFigure;
  * @author Phillip Beauvoir
  */
 public class BasicObjectEditPart
-extends AbstractZentaEditableTextFlowEditPart {            
+extends AbstractZentaEditableTextFlowEditPart {
     
     @Override
     protected IFigure createFigure() {

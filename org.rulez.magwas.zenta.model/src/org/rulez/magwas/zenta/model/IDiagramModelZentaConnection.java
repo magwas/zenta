@@ -66,4 +66,8 @@ public interface IDiagramModelZentaConnection extends IDiagramModelConnection {
 	 */
 	void removeRelationshipFromModel();
 
+	IRelationship getDefiningElement();
+
+	String getFinalLineDecoration();
+
 } // IDiagramModelZentaConnection

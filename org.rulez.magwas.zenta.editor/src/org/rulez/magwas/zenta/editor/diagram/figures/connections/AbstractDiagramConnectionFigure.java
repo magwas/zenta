@@ -43,7 +43,8 @@ extends PolylineConnection implements IDiagramConnectionFigure {
 
     protected Color fFontColor;
     protected Color fLineColor;
-    
+
+	private int position;
 	public AbstractDiagramConnectionFigure(IDiagramModelConnection connection) {
 	    fDiagramModelConnection = connection;
 
@@ -63,8 +64,9 @@ extends PolylineConnection implements IDiagramConnectionFigure {
 	
     public void refreshVisuals() {
         // If the text position has been changed by user update it
-        if(fDiagramModelConnection.getTextPosition() != fTextPosition) {
-            fTextPosition = fDiagramModelConnection.getTextPosition();
+        int textPosition = fDiagramModelConnection.getFinalTextPosition();
+		if(textPosition != fTextPosition) {
+            fTextPosition = textPosition;
             setLabelLocator(fTextPosition);
         }
         
@@ -108,8 +110,13 @@ extends PolylineConnection implements IDiagramConnectionFigure {
         return fConnectionLabel;
     }
 
+    public int getLabelPosition() {
+    	return position;
+    }
+    
     private void setLabelLocator(int position) {
         Locator locator = null;
+        this.position = position;
 
         switch(position) {
             case IDiagramModelConnection.CONNECTION_TEXT_POSITION_SOURCE:
@@ -134,7 +141,7 @@ extends PolylineConnection implements IDiagramConnectionFigure {
      * Set the font in the label to that in the model, or failing that, as per user's default
      */
     protected void setLabelFont() {
-        String fontName = fDiagramModelConnection.getFont();
+        String fontName = fDiagramModelConnection.getFinalFont();
         Font font = FontFactory.get(fontName);
         
         // Adjust for Windows DPI
@@ -149,7 +156,7 @@ extends PolylineConnection implements IDiagramConnectionFigure {
      * Set the font color to that in the model, or failing that, as per default
      */
     protected void setLabelFontColor() {
-        String val = fDiagramModelConnection.getFontColor();
+        String val = fDiagramModelConnection.getFinalFontColor();
         Color c = ColorFactory.get(val);
         if(c == null) {
             c = ColorConstants.black; // have to set default color otherwise it inherits line color
@@ -164,7 +171,7 @@ extends PolylineConnection implements IDiagramConnectionFigure {
      * Set the line color to that in the model, or failing that, as per default
      */
     protected void setLineColor() {
-        String val = fDiagramModelConnection.getLineColor();
+        String val = fDiagramModelConnection.getFinalLineColor();
         Color c = ColorFactory.get(val);
         if(c != fLineColor) {
             fLineColor = c;
@@ -173,7 +180,8 @@ extends PolylineConnection implements IDiagramConnectionFigure {
     }
     
     protected void setLineWidth() {
-        setLineWidth(fDiagramModelConnection.getLineWidth());
+        int finalLineWidth = fDiagramModelConnection.getFinalLineWidth();
+		setLineWidth(finalLineWidth);
     }
     
     /**

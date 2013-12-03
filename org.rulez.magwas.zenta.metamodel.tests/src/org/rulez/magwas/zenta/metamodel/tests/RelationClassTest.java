@@ -161,6 +161,21 @@ public class RelationClassTest {
 		ModelTestData.assertNotEquals(2,conn2.getLineWidth());
 		ModelTestData.assertNotEquals("#0000ff",conn2.getLineColor());
 		ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn2.getLineDecoration());
+
+		assertEquals("1|Andika|10.0|3|GTK|1|",conn1.getFinalFont());
+		assertEquals("#ff0000",conn1.getFinalFontColor());
+		assertEquals(0,conn1.getFinalTextPosition());
+		assertEquals(2,conn1.getFinalLineWidth());
+		assertEquals("#0000ff",conn1.getFinalLineColor());
+		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getFinalLineDecoration());
+
+		assertEquals("1|Andika|10.0|3|GTK|1|",conn2.getFinalFont());
+		assertEquals("#ff0000",conn2.getFinalFontColor());
+		assertEquals(0,conn2.getFinalTextPosition());
+		assertEquals(2,conn2.getFinalLineWidth());
+		assertEquals("#0000ff",conn2.getFinalLineColor());
+		assertEquals("",conn2.getFinalLineDecoration());//dmo local
+
 	}
 		private void ensureVirginDMRsForLoadTest() {
 			IDiagramModelZentaConnection conn1 = testdata.getDMRById("9dc4d23a");

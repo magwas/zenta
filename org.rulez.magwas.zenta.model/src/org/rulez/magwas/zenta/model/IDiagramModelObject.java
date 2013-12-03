@@ -164,4 +164,12 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 */
 	void setBounds(int x, int y, int width, int height);
 
+	String getFinalFillColor();
+
+	String getFinalFontColor();
+
+	int getFinalTextAlignment();
+
+	String getFinalFont();
+
 } // IDiagramModelObject
