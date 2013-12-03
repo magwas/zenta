@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.rulez.magwas.zenta.exporttests;
+package org.rulez.magwas.zenta.tests.export;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

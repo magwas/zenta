@@ -4,3 +4,4 @@ styles/pylib/*/*.class
 styles/pylib/*/*/*.class
 styles/pylib/*/*/*/*.class
 doc/*.zenta.bak
+/target

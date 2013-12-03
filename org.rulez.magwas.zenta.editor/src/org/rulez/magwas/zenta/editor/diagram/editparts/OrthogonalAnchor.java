@@ -181,13 +181,17 @@ public class OrthogonalAnchor extends ChopboxAnchor {
 		// figureBBox contains the current figure bounding box
 		figureBBox.setBounds(getBox());
 		getOwner().translateToAbsolute(figureBBox);
-		figureBBox = isEllipse(getOwner()) ? figureBBox.shrink(figureBBox.width * (1-COSPI4)/2, figureBBox.height * (1-COSPI4)/2): figureBBox;
+		int height = (int) (figureBBox.width * (1-COSPI4)/2);
+		int width = (int) (figureBBox.height * (1-COSPI4)/2);
+		figureBBox = isEllipse(getOwner()) ? figureBBox.shrink(height, width): figureBBox;
 		
 		if(inFigure) {
 			// Figure to Figure case: compute a new reference point if it is contained in a figure.
 			// remoteFigBBox contains the remote figure bounding box.
 			// (in case of Ellipse, shrink it to get inner box)
-			remoteFigBBox = isEllipse(remoteFig) ? remoteFigBBox.shrink(remoteFigBBox.width * (1-COSPI4)/2, remoteFigBBox.height * (1-COSPI4)/2): remoteFigBBox;
+			int shrinkWidth = (int) (remoteFigBBox.width * (1-COSPI4)/2);
+			int shrinkHeight = (int) (remoteFigBBox.height * (1-COSPI4)/2);
+			remoteFigBBox = isEllipse(remoteFig) ? remoteFigBBox.shrink(shrinkWidth, shrinkHeight): remoteFigBBox;
 
 			anchorX = (Math.max(remoteFigBBox.x, figureBBox.x) + 
 					Math.min(remoteFigBBox.x + remoteFigBBox.width, figureBBox.x + figureBBox.width)) / 2;

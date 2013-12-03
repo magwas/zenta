@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.rulez.magwas.zenta.exporttests;
+package org.rulez.magwas.zenta.tests.export;
 
 
 import org.eclipse.swt.SWT;

@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +19,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-public class ModelTests {
+public class ModelTest {
 
 	@Before
 	public void setUp() throws Exception {
@@ -34,8 +35,8 @@ public class ModelTests {
 		IBasicObject bo = (IBasicObject) testdata.getById("f33bd0d2");
 		assertEquals("Procedure",bo.getName());
 		testdata.saveResource();
-		String respath = ModelTestUtils.convertNameToResourcePath("test.zenta.bak");
-		Document testDoc = Util.createXmlDocumentFromFileName(respath);
+		String path = testdata.resource.getURI().devicePath();
+		Document testDoc = Util.createXmlDocumentFromFileName(path);
         String xpathExpression = "//sourceConnection[@id='24e3c661']";
 	    Element node = ModelTestUtils.getElementByXpath(testDoc, xpathExpression);
         assertEquals("b0e2bfd8",node.getAttribute("relationship"));

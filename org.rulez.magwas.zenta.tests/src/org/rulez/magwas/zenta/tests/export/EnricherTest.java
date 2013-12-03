@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.exporttests;
+package org.rulez.magwas.zenta.tests.export;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -9,9 +9,9 @@ import javax.xml.xpath.XPathExpressionException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.exporttests.EventLogMockup;
-import org.rulez.magwas.zenta.exporttests.XmlTestCase;
 import org.rulez.magwas.zenta.export.Enricher;
+import org.rulez.magwas.zenta.tests.export.EventLogMockup;
+import org.rulez.magwas.zenta.tests.export.XmlTestCase;
 import org.xml.sax.SAXException;
 
 public class EnricherTest {

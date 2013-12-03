@@ -1,0 +1,84 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.rulez.magwas.zenta</groupId>
+  <artifactId>parent</artifactId>
+  <version>2.4.0.qualifier</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>org.rulez.magwas.zenta.model</module>
+    <module>org.rulez.magwas.zenta.metamodel</module>
+    <module>org.rulez.magwas.zenta.widgets</module>
+    <module>uk.ac.bolton.jdom</module>
+    <module>org.rulez.magwas.zenta.browser</module>
+    <module>org.rulez.magwas.zenta.help</module>
+    <module>org.rulez.magwas.zenta.templates</module>
+    <module>org.rulez.magwas.zenta.canvas</module>
+    <module>org.rulez.magwas.zenta.editor</module>
+    <module>org.rulez.magwas.zenta.editor.browser</module>
+    <module>org.rulez.magwas.zenta.export</module>
+    <module>org.rulez.magwas.zenta.model.tests</module>
+    <module>org.rulez.magwas.zenta.metamodel.tests</module>
+    <module>org.rulez.magwas.zenta.editor.build</module>
+    <!--
+    <module>org.rulez.magwas.zenta.editor.fullscreen.macos</module>
+    <module>org.rulez.magwas.zenta.editor.launch.macos</module>
+    <module>org.rulez.magwas.zenta.editor.launch.win32</module>
+    <module>org.rulez.magwas.zenta.tests</module>
+    -->
+  </modules>
+ 
+  <properties>
+    <tycho-version>0.19.0</tycho-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+ 
+  <repositories>
+   <repository>
+     <id>indigo</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/releases/indigo</url>
+   </repository>
+  </repositories>
+ 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <environments>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <!--environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment-->
+          </environments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+   
+ 
+</project>

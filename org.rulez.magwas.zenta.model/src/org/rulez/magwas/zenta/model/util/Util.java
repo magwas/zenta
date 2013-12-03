@@ -82,14 +82,9 @@ public class Util {
 			        "UTF8");
 	        return createXmlDocumentFromString(xml);
 		} catch (Exception e) {
-			throw new CannotLoadXmlDocumentException();
+			throw new RuntimeException(e);
 		}
 	}
-    public static class CannotLoadXmlDocumentException extends RuntimeException {
-		private static final long serialVersionUID = 1L;
-	}
-
-
     
     public static Document createXmlDocumentFromString(String xmlString)
             throws ParserConfigurationException, SAXException, IOException {

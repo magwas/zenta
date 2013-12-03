@@ -23,10 +23,10 @@
 	<extension point="org.eclipse.core.runtime.products" id="product">
 		<product
         application="org.rulez.magwas.zenta.editor.app"
-        name="%appName">
+        name="Zenta">
      <property
            name="appName"
-           value="%appName"/>
+           value="Zenta"/>
      <property
            name="aboutText"
            value="%aboutText"/>

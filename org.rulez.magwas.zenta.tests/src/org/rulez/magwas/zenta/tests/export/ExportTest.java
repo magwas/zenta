@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.exporttests;
+package org.rulez.magwas.zenta.tests.export;
 
 import static org.junit.Assert.*;
 

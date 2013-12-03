@@ -1,0 +1,14 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <parent>
+    <groupId>org.rulez.magwas.zenta</groupId>
+    <artifactId>parent</artifactId>
+    <version>2.4.0.qualifier</version>
+  </parent>
+ 
+  <artifactId>org.rulez.magwas.zenta.model.tests</artifactId>
+  <packaging>eclipse-test-plugin</packaging>
+  <version>1.0.0.qualifier</version>
+   
+</project>

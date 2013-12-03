@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.rulez.magwas.zenta.exporttests;
+package org.rulez.magwas.zenta.tests.export;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,10 +20,10 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.export.Enricher;
 import org.rulez.magwas.zenta.export.IEventLog;
 import org.rulez.magwas.zenta.model.NSResolver;
+import org.rulez.magwas.zenta.tests.export.EventLogMockup;
+import org.rulez.magwas.zenta.tests.export.XmlTestCase;
 import org.rulez.magwas.zenta.export.RichElement;
 import org.rulez.magwas.zenta.export.VarResolver;
-import org.rulez.magwas.zenta.exporttests.EventLogMockup;
-import org.rulez.magwas.zenta.exporttests.XmlTestCase;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 

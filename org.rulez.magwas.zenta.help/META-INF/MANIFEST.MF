@@ -14,10 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.help.webapp,
  org.eclipse.ui.cheatsheets,
  org.rulez.magwas.zenta.editor,
- org.rulez.magwas.zenta.model;bundle-version="2.4.0",
- org.junit
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0"
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: org.rulez.magwas.zenta.help.jar
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.rulez.magwas.zenta.help.hints
-Import-Package: org.eclipse.core.resources
