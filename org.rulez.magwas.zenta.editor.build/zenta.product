@@ -4,7 +4,7 @@
 <product name="Zenta" uid="Zenta" id="org.rulez.magwas.zenta.editor.product" application="org.rulez.magwas.zenta.editor.app" version="2.4.2" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/org.rulez.magwas.zenta.editor/img/app-128.png"/>
+      <image path="../org.rulez.magwas.zenta.editor/img/app-128.png"/>
       <text>
          %aboutText
       </text>
@@ -17,14 +17,14 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/org.rulez.magwas.zenta.editor/img/app-16.png" i32="/org.rulez.magwas.zenta.editor/img/app-32.png" i48="/org.rulez.magwas.zenta.editor/img/app-48.png" i64="/org.rulez.magwas.zenta.editor/img/app-64.png" i128="/org.rulez.magwas.zenta.editor/img/app-128.png"/>
+   <windowImages i16="../org.rulez.magwas.zenta.editor/img/app-16.png" i32="../org.rulez.magwas.zenta.editor/img/app-32.png" i48="../org.rulez.magwas.zenta.editor/img/app-48.png" i64="../org.rulez.magwas.zenta.editor/img/app-64.png" i128="../org.rulez.magwas.zenta.editor/img/app-128.png"/>
 
    <launcher name="Zenta">
       <linux icon="/branding/linux/icon.xpm"/>
-      <macosx icon="/branding/mac/app/Contents/Resources/icon.icns"/>
+      <macosx icon="branding/mac/icon.icns"/>
       <solaris/>
       <win useIco="true">
-         <ico path="/org.rulez.magwas.zenta.editor.build/branding/windows/icon.ico"/>
+         <ico path="/branding/windows/icon.ico"/>
          <bmp/>
       </win>
    </launcher>
@@ -85,9 +85,17 @@
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.rcp"/>
       <plugin id="org.eclipse.swt"/>
+      <plugin id="org.eclipse.swt.cocoa.macosx.x86_64" fragment="true"/>
+      <!--
+      <plugin id="org.eclipse.swt.cocoa.macosx.x86" fragment="true"/>
+      -->
       <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true"/>
       <plugin id="org.eclipse.ui"/>
       <plugin id="org.eclipse.ui.cheatsheets"/>
+      <plugin id="org.eclipse.ui.cocoa" fragment="true"/>
       <plugin id="org.eclipse.ui.forms"/>
       <plugin id="org.eclipse.ui.views"/>
       <plugin id="org.eclipse.ui.views.properties.tabbed"/>
@@ -96,6 +104,9 @@
       <plugin id="org.rulez.magwas.zenta.browser"/>
       <plugin id="org.rulez.magwas.zenta.canvas"/>
       <plugin id="org.rulez.magwas.zenta.editor"/>
+      <plugin id="org.rulez.magwas.zenta.editor.fullscreen.macos" fragment="true"/>
+      <plugin id="org.rulez.magwas.zenta.editor.launch.macos" fragment="true"/>
+      <plugin id="org.rulez.magwas.zenta.editor.launch.win32" fragment="true"/>
       <plugin id="org.rulez.magwas.zenta.export"/>
       <plugin id="org.rulez.magwas.zenta.help"/>
       <plugin id="org.rulez.magwas.zenta.metamodel"/>

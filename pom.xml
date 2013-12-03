@@ -19,10 +19,10 @@
     <module>org.rulez.magwas.zenta.model.tests</module>
     <module>org.rulez.magwas.zenta.metamodel.tests</module>
     <module>org.rulez.magwas.zenta.editor.build</module>
-    <!--
     <module>org.rulez.magwas.zenta.editor.fullscreen.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.win32</module>
+    <!--
     <module>org.rulez.magwas.zenta.tests</module>
     -->
   </modules>
@@ -59,7 +59,12 @@
               <ws>gtk</ws>
               <arch>x86_64</arch>
             </environment>
-            <!--environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
               <os>win32</os>
               <ws>win32</ws>
               <arch>x86</arch>
@@ -73,7 +78,7 @@
               <os>macosx</os>
               <ws>cocoa</ws>
               <arch>x86_64</arch>
-            </environment-->
+            </environment>
           </environments>
         </configuration>
       </plugin>

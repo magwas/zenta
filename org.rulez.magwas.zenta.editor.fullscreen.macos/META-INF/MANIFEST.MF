@@ -4,6 +4,6 @@ Bundle-Name: LionFullScreen
 Bundle-SymbolicName: org.rulez.magwas.zenta.editor.fullscreen.macos;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: Árpád Magosányi
-Fragment-Host: org.eclipse.ui;bundle-version="3.7.1"
+Fragment-Host: org.eclipse.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-PlatformFilter: (osgi.ws=cocoa)
