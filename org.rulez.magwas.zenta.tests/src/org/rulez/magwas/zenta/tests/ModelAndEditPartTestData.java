@@ -11,7 +11,7 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnecti
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.tests.ModelAndMetaModelTestData;
+import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 
 public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {

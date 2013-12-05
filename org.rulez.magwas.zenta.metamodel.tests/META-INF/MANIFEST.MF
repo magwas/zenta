@@ -7,11 +7,12 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.rulez.magwas.zenta.metamodel.tests
+Export-Package: org.rulez.magwas.zenta.metamodel,
+ org.rulez.magwas.zenta.metamodel.testutil
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport,
- org.rulez.magwas.zenta.model.tests;bundle-version="1.0.0",
+ org.rulez.magwas.zenta.metamodel;bundle-version="1.0.0",
  org.rulez.magwas.zenta.model;bundle-version="2.4.0",
- org.rulez.magwas.zenta.metamodel;bundle-version="1.0.0"
+ org.rulez.magwas.zenta.model.tests;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

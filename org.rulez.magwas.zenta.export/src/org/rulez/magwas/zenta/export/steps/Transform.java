@@ -16,27 +16,14 @@ import org.rulez.magwas.zenta.export.steps.StepFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
-
-/**
- * The "transform" step. Executes an xslt or python script, with the given attributes
- */
 public class Transform extends Step {
 	
-	/** The attributes given to the step */
 	NamedNodeMap atts;
 	
-	/**
-	 * Instantiates a new transform.
-	 *
-	 * @param sf the step factory
-	 */
 	public Transform(StepFactory sf) {
 		super(sf);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.rulez.magwas.zenta.export.steps.Step#doit(org.w3c.dom.Element, java.io.File)
-	 */
 	@Override
 	public boolean doit(Element arg0, File current) {
 		factory.log.issueInfo("transforming", current.getAbsolutePath());
@@ -65,13 +52,6 @@ public class Transform extends Step {
 		return doSubSteps(arg0, tfile);
 	}
 
-    
-    /**
-     * Make an xslt transformer.
-     *
-     * @param style the style file
-     * @return the transformer
-     */
     public Transformer mkTransformer(File style) {
     	TransformerFactory tFactory = 
     	                  javax.xml.transform.TransformerFactory.newInstance();
@@ -86,14 +66,6 @@ public class Transform extends Step {
 			}		
     }
     
-    /**
-     * Do the transformation.
-     *
-     * @param source the source file
-     * @param tf the transformer class
-     * @param output the output file
-     * @return true if successful
-     */
     private boolean doTransformation(File source, Transformer tf, File output){
     	try {
     		StreamSource ss = new StreamSource(source);
@@ -117,5 +89,4 @@ public class Transform extends Step {
 		}
     	return true;
     }
-    
 }

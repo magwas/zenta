@@ -8,7 +8,6 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.rulez.magwas.zenta.metamodel,
- org.rulez.magwas.zenta.metamodel.impl,
  org.rulez.magwas.zenta.metamodel.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
