@@ -25,6 +25,10 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Attribute extends EObject {
+	public enum End {
+		SOURCE,TARGET
+	}
+
 	/**
 	 * Returns the value of the '<em><b>Min Occurs</b></em>' attribute.
 	 * The default value is <code>"0"</code>.

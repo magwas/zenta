@@ -74,8 +74,7 @@ public class Enricher {
             nl = (NodeList) xpath.evaluate(ocpath, grouporfolder,
                     XPathConstants.NODESET);
         } catch (XPathExpressionException e) {
-            log.printStackTrace(e);
-            throw new RuntimeException("problem in association");
+            throw new RuntimeException(e);
         }
         int l = nl.getLength();
         for (int i = 0; i < l; i++) {
@@ -120,10 +119,14 @@ public class Enricher {
         for (int i = 0; i < l; i++) {
             Element objectclass = (Element) ol.item(i);
             NodeList nl;
+            String ocName = objectclass.getAttribute("name");
+            if("".equals(ocName))//FIXME: when we will have error handling, unnamed ObjectClasses should be an error
+            	continue;
+			String expr = "//" + ocName
+			        + "[@parentid]";
             try {
-                nl = (NodeList) xpath
-                        .evaluate("//" + objectclass.getAttribute("name")
-                                + "[@parentid]", xml, XPathConstants.NODESET);
+				nl = (NodeList) xpath
+                        .evaluate(expr, xml, XPathConstants.NODESET);
             } catch (XPathExpressionException e) {
             	throw new RuntimeException(e);
             }

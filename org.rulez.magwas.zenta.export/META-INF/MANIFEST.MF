@@ -12,29 +12,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.5.1",
  org.junit;bundle-version="4.8.2";resolution:=optional,
  org.rulez.magwas.zenta.model;bundle-version="2.4.0",
  com.ibm.icu;bundle-version="4.4.2"
-Export-Package: net.sf.saxon;
-  uses:="net.sf.saxon.trace,
-   net.sf.saxon.tree.linked,
-   net.sf.saxon.value,
-   net.sf.saxon.functions,
-   net.sf.saxon.style,
-   net.sf.saxon.trans,
-   net.sf.saxon.expr.parser,
-   net.sf.saxon.expr,
-   net.sf.saxon.expr.instruct,
-   org.xml.sax,
-   net.sf.saxon.serialize.charcode,
-   net.sf.saxon.query,
-   net.sf.saxon.tree.util,
-   net.sf.saxon.event,
-   javax.xml.transform,
-   javax.xml.transform.stream,
-   net.sf.saxon.om,
-   net.sf.saxon.expr.sort,
-   javax.xml.transform.sax,
-   net.sf.saxon.type,
-   net.sf.saxon.lib",
- org.rulez.magwas.zenta.export;
+Export-Package: org.rulez.magwas.zenta.export;
   uses:="org.rulez.magwas.zenta.editor.model,
    org.eclipse.ui,
    org.eclipse.ui.plugin,
@@ -44,11 +22,7 @@ Export-Package: net.sf.saxon;
    org.rulez.magwas.zenta.model,
    org.eclipse.jface.preference,
    org.eclipse.swt.widgets"
-Bundle-ClassPath: bin,
- org.rulez.magwas.styledhtml.jar,
- lib/jython.jar,
- lib/saxon9-unpack.jar,
- lib/saxon9he.jar
+Bundle-ClassPath: org.rulez.magwas.zenta.export.jar
 Bundle-Activator: org.rulez.magwas.zenta.export.StyledHtmlPlugin
 Bundle-ActivationPolicy: lazy
 Import-Package: org.rulez.magwas.zenta.export

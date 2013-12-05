@@ -12,18 +12,16 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.NSResolver;
+import org.rulez.magwas.zenta.export.PackageManager;
 import org.rulez.magwas.zenta.export.StyledHtml;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.tests.utils.ModelTestData;
 import org.rulez.magwas.zenta.model.util.Util;
-import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -45,29 +43,27 @@ public class ExportTest {
 
 	@Test
 	public void testExport() throws IOException, ParserConfigurationException, SAXException, URISyntaxException, XPathExpressionException {
-		File file = new File(this.getClass().getResource("test.zenta").getFile());
 		IZentaPackage.eINSTANCE.eClass();
-        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
-        Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
-		System.out.println(resource.toString());
-		 
-		resource.load(null);
-		 
-		IZentaModel model = (IZentaModel)resource.getContents().get(0);
-
-		File stylefile = file;
-		for(int i=0;i<7;i++) {
-			stylefile=stylefile.getParentFile();
-		}
-		stylefile=new File(stylefile,"styles");
-		stylefile=new File(stylefile,"newpolicy.style");
-		System.out.println(stylefile.getAbsolutePath());
-		File targetdir = file.getParentFile();
-		StyledHtml.export(model, stylefile.getAbsolutePath(), new EventLogMockup(),targetdir);
-		Document testDoc = Util.createXmlDocumentFromResource(this, "policy.xml");
+		ModelTestData data = new ModelTestData();
+//		Resource resource = ModelTestUtils.getZentaModelResource("test.zenta");
+//		resource.load(null);
+//		IZentaModel model = (IZentaModel)resource.getContents().get(0);
+		File temp = File.createTempFile("test", ".styles");
+		String policy = "newpolicy.style";
+		runDefaultStyleInDir(policy, data.model, temp);
+		File policyfile = new File(temp,"policy.xml");
+		Document testDoc = Util.createXmlDocumentFromFileName(policyfile.getAbsolutePath());
         Element node = (Element) xpath.evaluate("//objectClass[@name='Procedure']",
                 testDoc, XPathConstants.NODE);
         assertNotNull(node);
 	}
+		private void runDefaultStyleInDir(String policy, IZentaModel model,
+				File dirname) {
+			dirname.delete();
+			dirname.mkdir();
+			PackageManager.bringPackagedStyles(dirname);
+			File stylefile = new File(dirname,policy);
+			StyledHtml.export(model, stylefile.getAbsolutePath(), new EventLogMockup(),dirname);
+		}
 
 }

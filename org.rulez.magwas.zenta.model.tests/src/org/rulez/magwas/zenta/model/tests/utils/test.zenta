@@ -3,7 +3,7 @@
   <folder name="Business" id="196115c6">
     <folder name="New Folder" id="915ee5e9">
       <element xsi:type="zenta:BasicObject" id="8e4e0614" name="Basic Object3"/>
-      <element xsi:type="zenta:BasicObject" id="252d482c" name="Not defines ObjectClass">
+      <element xsi:type="zenta:BasicObject" id="252d482c" name="NotDefinesObjectClass">
         <property key="className"/>
       </element>
     </folder>

@@ -48,21 +48,33 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 		this.metamodel = metamodel;
 		setReference(reference2);
 		extractObjectClasses(reference2);
+		extractRelationClasses(reference2);
 	}
+
 		private void extractObjectClasses(IDiagramModel diagram) {
 			EList<IDiagramModelObject> kids = diagram.getChildren();
 			for (IDiagramModelObject kid : kids)
 				if(kid instanceof IDiagramModelZentaObject)
-					extractDiagramElement((IDiagramModelZentaObject) kid);
-			
+					extractDiagramElement((IDiagramModelZentaObject) kid);			
 		}
 			private void extractDiagramElement(IDiagramModelZentaObject kid) {
 				MetamodelFactory.eINSTANCE
 						.createObjectClass((IZentaElement) kid.getZentaElement(), this);
-				extractConnectionsForDiagramElement(kid);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
 				for (IDiagramModelObject aKid : myKids)
 					extractDiagramElement((IDiagramModelZentaObject) aKid);
+			}
+		private void extractRelationClasses(IDiagramModel diagram) {
+			EList<IDiagramModelObject> kids = diagram.getChildren();
+			for (IDiagramModelObject kid : kids)
+				if(kid instanceof IDiagramModelZentaObject)
+					extractConnsFromDiagramElement((IDiagramModelZentaObject) kid);
+		}
+			private void extractConnsFromDiagramElement(IDiagramModelZentaObject kid) {
+				EList<IDiagramModelObject> myKids = kid.getChildren();
+				for (IDiagramModelObject aKid : myKids)
+					extractConnsFromDiagramElement((IDiagramModelZentaObject) aKid);
+				extractConnectionsForDiagramElement(kid);
 			}
 				private void extractConnectionsForDiagramElement(
 						IDiagramModelZentaObject kid) {
@@ -204,6 +216,7 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 	}
 
 
+	@Override
 	public Metamodel getMetamodel() {
 		return metamodel;
 	}

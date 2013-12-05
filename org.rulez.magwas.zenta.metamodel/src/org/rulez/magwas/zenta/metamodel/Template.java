@@ -23,4 +23,6 @@ public interface Template extends referencesModelObject {
 
 	void createClassBy(IZentaElement element);
 
+	Metamodel getMetamodel();
+
 } 

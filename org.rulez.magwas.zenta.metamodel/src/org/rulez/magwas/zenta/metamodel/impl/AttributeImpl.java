@@ -91,6 +91,8 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 */
 	protected ObjectClass connectedObject;
 
+	private End whichend;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -98,6 +100,13 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 */
 	protected AttributeImpl() {
 		super();
+	}
+
+	public AttributeImpl(RelationClassImpl relation, ObjectClass connectedObject,
+			End whichend) {
+		this.connectedObject = connectedObject;
+		this.relation = relation;
+		this.whichend = whichend;
 	}
 
 	/**

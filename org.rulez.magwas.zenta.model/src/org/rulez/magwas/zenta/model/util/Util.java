@@ -1,15 +1,16 @@
 package org.rulez.magwas.zenta.model.util;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -48,8 +49,7 @@ public class Util {
             String xmlString = result.getWriter().toString();
             return xmlString;
         } catch (Exception e) {
-            e.printStackTrace();
-            return "<exception>";
+        	throw new RuntimeException(e);
         }
     }
     
@@ -63,17 +63,21 @@ public class Util {
     public static String readFile(Object instance, String filename)
             throws UnsupportedEncodingException, IOException,
             URISyntaxException {
-        java.net.URL url = instance.getClass().getResource(filename);
-        System.out.println("uri="+url);
-        if (url == null) {
-            throw new IOException();
-        }
-        Path resPath = Paths.get(url.toURI());
-        
-        String xml = new String(java.nio.file.Files.readAllBytes(resPath),
-                "UTF8");
+        InputStream stream = instance.getClass().getResourceAsStream(filename);
+        if(null == stream)
+        	return null;
+        String xml = convertStreamToString(stream);
+        stream.close();
         return xml;
     }
+	    static String convertStreamToString(InputStream is) {
+	    	//http://stackoverflow.com/a/5445161/1664273
+	        java.util.Scanner scanner = new Scanner(is);
+			java.util.Scanner s = scanner.useDelimiter("\\A");
+	        String ret = s.hasNext() ? s.next() : "";
+			scanner.close();
+			return ret;
+	    }
 
 	public static Document createXmlDocumentFromFileName(String respath) {
         String xml;
@@ -88,7 +92,8 @@ public class Util {
     
     public static Document createXmlDocumentFromString(String xmlString)
             throws ParserConfigurationException, SAXException, IOException {
-        
+        if (xmlString == null)
+        	return null;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;
         factory.setNamespaceAware(true);

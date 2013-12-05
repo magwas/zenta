@@ -11,7 +11,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import org.python.util.PythonInterpreter;
 import org.rulez.magwas.zenta.export.steps.Step;
 import org.rulez.magwas.zenta.export.steps.StepFactory;
 import org.w3c.dom.Element;
@@ -59,10 +58,6 @@ public class Transform extends Step {
     		if(!doTransformation(current,tf,tfile)) {
     			return false;
     		}
-		} else if ("python".equals(language)) {
-			if(!callPython(sfile,current,tfile)) {
-				return false;
-			}
 		} else {
 			factory.log.issueError("Invalid language for <transform>", language);
 			return false;
@@ -70,32 +65,6 @@ public class Transform extends Step {
 		return doSubSteps(arg0, tfile);
 	}
 
-    /**
-     * Call python with the two first parameters (in sys.argv) the input and output file names,
-     *  and the remaining are the attributes as key=value pairs
-     *
-     * @param script the script
-     * @param in the input file
-     * @param out the output file
-     * @return true if successful
-     */
-    private boolean callPython(File script, File in, File out) {
-    	PythonInterpreter interp =  new PythonInterpreter();
-
-    	File pylib = new File(script.getParentFile().getParentFile(),"pylib");
-    	interp.exec("import sys");
-    	interp.exec("sys.argv=['"+script.getAbsolutePath()+"','"+in.getAbsolutePath()+"','"+out.getAbsolutePath()+"']");
-		for(int i = 0;i<atts.getLength();i++) {
-			String name = atts.item(i).getNodeName();
-			String value = atts.item(i).getNodeValue();
-			factory.log.issueInfo("param", name + "=" + value);
-			interp.exec("sys.argv.append('"+name + "=" + value+"')");
-		}
-		interp.exec("sys.argv.append('targetdir" + "=" + factory.targetdir.getAbsolutePath() +"')");
-    	interp.exec("sys.path=['"+pylib.getAbsolutePath()+"']");
-    	interp.execfile(script.getAbsolutePath());
-    	return true;
-    }
     
     /**
      * Make an xslt transformer.
