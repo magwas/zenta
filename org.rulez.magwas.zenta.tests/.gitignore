@@ -2,3 +2,4 @@
 /generated-images/*
 !generated-images/.placeholder
 /target
+/workspace

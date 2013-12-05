@@ -26,6 +26,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
                 model = IEditorModelManager.INSTANCE.openModel(file);
             }
         });
+        assertNotNull(model);
         metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
         assertNotNull(metamodel);
 		diagramModel = getTestDiagramModel();

@@ -22,9 +22,7 @@
     <module>org.rulez.magwas.zenta.editor.fullscreen.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.win32</module>
-    <!--
     <module>org.rulez.magwas.zenta.tests</module>
-    -->
   </modules>
  
   <properties>
