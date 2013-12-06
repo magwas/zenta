@@ -52,7 +52,8 @@ public class FigureFactory {
 		if("".equals(shapeValue)) {
 			shapeValue = defaultFigureName;
 		}
-		return figureClassMap.get(shapeValue);
+		Class<?> klass = figureClassMap.get(shapeValue);
+		return klass;
 	}
 
 	public static Image getImageForName(String name) {

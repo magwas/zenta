@@ -303,7 +303,7 @@ public class Thumbnail extends Figure implements UpdateListener {
 			            ex.printStackTrace();
 			        }
 			    }
-// End workaround
+// Direction workaround
 // *******************************************************************************************************************************
 			    
 				thumbnailGC.dispose();

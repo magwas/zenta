@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Attribute extends EObject {
-	public enum End {
+	public enum Direction {
 		SOURCE,TARGET
 	}
 
@@ -134,5 +134,7 @@ public interface Attribute extends EObject {
 	 * @generated
 	 */
 	void setConnectedObject(ObjectClass value);
+
+	Direction getDirection();
 
 } // Attribute

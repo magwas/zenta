@@ -2,7 +2,11 @@
  */
 package org.rulez.magwas.zenta.metamodel;
 
+import java.util.List;
+import java.util.Map;
+
 import org.eclipse.emf.common.util.EList;
+import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,5 +90,9 @@ public interface ObjectClass extends referencesModelObject {
 	EList<ObjectClass> getChildren();
 
 	Template getTemplate();
+
+	boolean isAllowedRelation(RelationClass klass, Direction source);
+
+	Map<Direction, List<RelationClass>> getAllowedRelations();
 
 } // ObjectClass

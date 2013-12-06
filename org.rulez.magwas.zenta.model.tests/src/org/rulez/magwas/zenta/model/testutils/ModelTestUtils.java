@@ -1,9 +1,13 @@
 package org.rulez.magwas.zenta.model.testutils;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -61,5 +65,17 @@ public class ModelTestUtils {
 		File file = new File(resourcePath);
         String path = file.getAbsolutePath();
 		return path;
+	}
+
+	public static <T> void assertEqualsAsSet(List<T> expectedList ,
+			List<T> actualList) {
+		List<T> remains = new ArrayList<T>(actualList);
+		for(T item : expectedList)
+			if(remains.contains(item))
+				remains.remove(item);
+			else
+				fail(String.format("no %s in %s", item, actualList));
+		if(remains.size() != 0)
+			fail(String.format("%s is remaining in %s", remains, actualList));
 	}
 }

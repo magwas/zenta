@@ -37,7 +37,7 @@ public class TemplateImpl extends ReferencesModelObject implements Template {
 
 	protected String path = PATH_EDEFAULT;
 
-	private Metamodel metamodel;
+	protected Metamodel metamodel;
 
 	protected TemplateImpl() {
 		super();

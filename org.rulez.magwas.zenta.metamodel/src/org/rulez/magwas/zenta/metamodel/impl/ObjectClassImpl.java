@@ -1,6 +1,12 @@
 package org.rulez.magwas.zenta.metamodel.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -12,14 +18,18 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.Attribute;
+import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class ObjectClassImpl extends ReferencesModelObject implements ObjectClass {
 
@@ -49,7 +59,18 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 		this.template = template;
 		this.setReference(reference);
 		template.getObjectClasses().add(this);
-		reference.setObjectClass(reference.getId());
+		String refClassId = reference.getObjectClass();
+		String referenceId = reference.getId();
+		Metamodel metamodel = getMetamodel();
+		if(!referenceId.equals(refClassId))
+			ancestor=metamodel.getObjectClassReferencing((IZentaElement) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId));
+		if(ancestor == null)
+			ancestor=metamodel.getBuiltinObjectClass();
+		reference.setObjectClass(referenceId);
+	}
+
+	private Metamodel getMetamodel() {
+		return this.template.getMetamodel();
 	}
 	
 	@Override
@@ -228,5 +249,37 @@ public class ObjectClassImpl extends ReferencesModelObject implements ObjectClas
 		postCreate(obj,folder);
 		return obj;
 	}
+
+	@Override
+	public boolean isAllowedRelation(RelationClass relclass, Direction direction) {
+		List<RelationClass> alloweds = getAllowedRelations().get(direction);
+		System.out.printf("dir = %s %s\n", direction,alloweds );
+		if(alloweds.contains(relclass))
+			return true;
+		return false;
+	}
+	
+	@Override
+	public Map<Direction,List<RelationClass>> getAllowedRelations() {
+		Map<Direction,List<RelationClass>> ret = new HashMap<Direction,List<RelationClass>>();
+		ret.put(Direction.SOURCE, new ArrayList<RelationClass>());
+		ret.put(Direction.TARGET, new ArrayList<RelationClass>());
+		//ret.get(Direction.SOURCE).add(this.getMetamodel().getBuiltinRelationClass());
+		//ret.get(Direction.TARGET).add(this.getMetamodel().getBuiltinRelationClass());
+		for(Attribute att : getAttributes()) {
+			addParents(ret.get(att.getDirection()),att.getRelation());
+		}
+		return ret;
+	}
+
+	private void addParents(List<RelationClass> list, RelationClass relation) {
+		if(!list.contains(relation))
+			list.add(relation);
+		RelationClass ancestor = relation.getAncestor();
+		System.out.printf("ancestor for %s is %s\n", relation.getName(), ancestor);
+		if(ancestor != null)
+			addParents(list,ancestor);
+	}
+
 
 }

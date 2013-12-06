@@ -13,7 +13,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.Attribute;
-import org.rulez.magwas.zenta.metamodel.Attribute.End;
+import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
@@ -24,6 +25,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class RelationClassImpl extends ReferencesModelObject implements RelationClass {
 
@@ -37,13 +39,24 @@ public class RelationClassImpl extends ReferencesModelObject implements Relation
 		super();
 		this.template = template;
 		this.setReference(referenced);
-		referenced.setObjectClass(referenced.getId());
-		addAttributesToRelatedObjectClasses(template, Attribute.End.SOURCE, referenced.getSource());
-		addAttributesToRelatedObjectClasses(template, Attribute.End.TARGET, referenced.getTarget());
+		String refClassId = referenced.getObjectClass();
+		String referenceId = referenced.getId();
+		Metamodel metamodel = getMetamodel();
+		if(!referenceId.equals(refClassId))
+			ancestor=metamodel.getRelationClassReferencing((IRelationship) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId));
+		if(ancestor == null)
+			ancestor=metamodel.getBuiltinRelationClass();
+		referenced.setObjectClass(referenceId);
+		addAttributesToRelatedObjectClasses(template, Attribute.Direction.SOURCE, referenced.getSource());
+		addAttributesToRelatedObjectClasses(template, Attribute.Direction.TARGET, referenced.getTarget());
+	}
+
+	private Metamodel getMetamodel() {
+		return template.getMetamodel();
 	}
 
 	private void addAttributesToRelatedObjectClasses(Template template,
-			End dir, IZentaElement se) {
+			Direction dir, IZentaElement se) {
 		ObjectClass sc = template.getObjectClassFrom(se);
 		AttributeImpl sa = new AttributeImpl(this,sc,dir);
 		sc.getAttributes().add(sa);

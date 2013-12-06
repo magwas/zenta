@@ -210,7 +210,11 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
                 String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
                 Metamodel metamodel = MetamodelFactory.eINSTANCE.getMetamodelFor(relation.getZentaModel());
                 referencesModelObject klass = metamodel.getClassFor(relation);
-                String relname = klass.getName();
+                String relname;
+				if(null != klass)
+                	relname = klass.getName();
+                else
+                	relname = "relates to";
                 return String.format("%s %s %s", nameSource, relname, nameTarget);
             }
         }

@@ -14,6 +14,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 public interface Metamodel extends EObject {
@@ -57,5 +58,6 @@ public interface Metamodel extends EObject {
 
 	Template getTemplateFor(IDiagramModelComponent element);
 
+	IZentaModel getModel();
 
 } 

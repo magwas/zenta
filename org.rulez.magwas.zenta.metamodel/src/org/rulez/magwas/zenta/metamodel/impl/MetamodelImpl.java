@@ -50,7 +50,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	    setAdapter();			
 	}
 		private void addBuiltinTemplate() {
-			builtinTemplate = new BuiltinTemplate();
+			builtinTemplate = new BuiltinTemplate(this);
 			this.getTemplates().add(builtinTemplate);
 		}	
 		private void initializeMetaModel() {
@@ -383,5 +383,10 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		if(element.isDefining())
 			element.addOrUpdateProperty(key, value);
 		
+	}
+
+	@Override
+	public IZentaModel getModel() {
+		return model;
 	}
 }

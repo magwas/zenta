@@ -48,10 +48,13 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 
 	public ObjectClass createTestObjectClass() {
 		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
+		Template template = metamodel.getTemplates().get(0);
+		assertNotNull(template);
+		assertNotNull(template.getMetamodel());
 		return MetamodelFactory.eINSTANCE
 				.createObjectClass(
 						element,
-						metamodel.getTemplates().get(0));
+						template);
 	}
 
 	public IZentaElement createNewObjectClass(String elementName) {

@@ -91,7 +91,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 */
 	protected ObjectClass connectedObject;
 
-	private End whichend;
+	private Direction direction;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,10 +103,10 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	}
 
 	public AttributeImpl(RelationClassImpl relation, ObjectClass connectedObject,
-			End whichend) {
+			Direction whichend) {
 		this.connectedObject = connectedObject;
 		this.relation = relation;
-		this.whichend = whichend;
+		this.direction = whichend;
 	}
 
 	/**
@@ -307,6 +307,11 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		result.append(maxOccurs);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public Direction getDirection() {
+		return direction;
 	}
 
 } //AttributeImpl

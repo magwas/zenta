@@ -27,7 +27,6 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.ZentaElement;
 import org.rulez.magwas.zenta.tests.HaveGUI;
-import org.rulez.magwas.zenta.tests.IsInteractive;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 import org.rulez.magwas.zenta.tests.UITestWindow;
 
@@ -58,7 +57,6 @@ public class ZentaDiagramEditorPaletteTest {
 		}
 	}
 	
-	@IsInteractive
 	@Test
 	@HaveGUI(waitUser = false)
 	public void Magic_Connector_magically_connects_two_diagram_objects() {
@@ -67,7 +65,6 @@ public class ZentaDiagramEditorPaletteTest {
 		IFolder folder = ModelAndEditPartTestData.getFolderByKid(data.getTestDiagramModel());
 		MagicConnectionModelFactory factory = new MagicConnectionModelFactory(folder);
 		tool = new MagicConnectionCreationTool();
-		tool._setSkipModalMenu();
 		tool.setFactory(factory);
 		tool.setViewer(data.editor.getGraphicalViewer());
 		CreateConnectionRequest req = new CreateConnectionRequest();

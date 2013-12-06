@@ -63,6 +63,7 @@ public class ObjectClassTest{
 		EList<ObjectClass> kids = fixture.getChildren();
 		assertEquals(0,kids.size());
 		ObjectClass obj2 = testdata.createTestObjectClass();
+		System.out.printf("fixture = %s\nobj2=%s\n", fixture,obj2);
 		obj2.setAncestor(fixture);
 		kids = fixture.getChildren();
 		assertEquals(1,kids.size());

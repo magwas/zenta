@@ -6,7 +6,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
@@ -29,8 +31,7 @@ public abstract class ReferencesModelObject extends EObjectImpl implements refer
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.OBJECT_CLASS__NAME, oldName, name));
 	}
-
-
+	
 	@Override
 	public String getId() {
 		return reference.getId();

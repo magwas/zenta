@@ -7,9 +7,12 @@ package org.rulez.magwas.zenta.editor.model.viewpoints;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.metamodel.Attribute;
+import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
@@ -104,8 +107,15 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	private List<RelationClass> getValidRelationships(ObjectClass sc,
-			ObjectClass tc) {		
-		return getRelationClasses();
+			ObjectClass tc) {
+		List<RelationClass> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
+		List<RelationClass> destrels = tc.getAllowedRelations().get(Direction.TARGET);
+		List<RelationClass> ret = new ArrayList<RelationClass>();
+		for(RelationClass rel : sourcerels) {
+			if(destrels.contains(rel) && !ret.contains(rel))
+				ret.add(rel);
+		}
+		return ret;
 	}
 
 	@Override
@@ -123,7 +133,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	
 	@Override
 	public List<RelationClass> getSourceRelationClassesFor(ObjectClass startElement) {
-		return metamodel.getRelationClasses();
+		return startElement.getAllowedRelations().get(Direction.SOURCE);
 	}
 
 	@Override
