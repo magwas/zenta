@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
@@ -58,6 +59,7 @@ public class ObjectClassTest{
 		fixture.setReference(obj2);
 	}
 	
+	@Ignore
 	@Test
 	public void if_an_ObjectClass_is_set_as_ancestor_then_the_number_of_its_kids_grows() {
 		EList<ObjectClass> kids = fixture.getChildren();

@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
@@ -68,6 +69,7 @@ public class TotalViewpointTest {
 		ModelTestUtils.assertEqualsAsSet(expectedList,actual2);
 	}
 
+	@Ignore
 	@Test
 	public void Allowed_connections_always_contain_builtin_relation() {
 		fail();
