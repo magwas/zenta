@@ -47,7 +47,6 @@ import org.rulez.magwas.zenta.model.IProperty;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getElements <em>Elements</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -473,8 +472,6 @@ public class Folder extends EObjectImpl implements IFolder {
 				return properties != null && !properties.isEmpty();
 			case IZentaPackage.FOLDER__ELEMENTS:
 				return elements != null && !elements.isEmpty();
-			case IZentaPackage.FOLDER__TYPE:
-				return false;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -571,13 +568,13 @@ public class Folder extends EObjectImpl implements IFolder {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: "); //$NON-NLS-1$
+		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: "); //$NON-NLS-1$
+		result.append(", objectClass: ");
 		result.append(objectClass);
-		result.append(", id: "); //$NON-NLS-1$
+		result.append(", id: ");
 		result.append(id);
-		result.append(", documentation: "); //$NON-NLS-1$
+		result.append(", documentation: ");
 		result.append(documentation);
 		result.append(')');
 		return result.toString();

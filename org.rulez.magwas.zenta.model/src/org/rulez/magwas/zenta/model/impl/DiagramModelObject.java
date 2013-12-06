@@ -314,8 +314,6 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 	 * @generated
 	 */
 	public String getElementShape() {
-		if(null == elementShape)
-			return "rectangleElementShape";
 		return elementShape;
 	}
 
@@ -698,17 +696,17 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (font: "); //$NON-NLS-1$
+		result.append(" (font: ");
 		result.append(font);
-		result.append(", fontColor: "); //$NON-NLS-1$
+		result.append(", fontColor: ");
 		result.append(fontColor);
-		result.append(", textAlignment: "); //$NON-NLS-1$
+		result.append(", textAlignment: ");
 		result.append(textAlignment);
-		result.append(", textPosition: "); //$NON-NLS-1$
+		result.append(", textPosition: ");
 		result.append(textPosition);
-		result.append(", fillColor: "); //$NON-NLS-1$
+		result.append(", fillColor: ");
 		result.append(fillColor);
-		result.append(", elementShape: "); //$NON-NLS-1$
+		result.append(", elementShape: ");
 		result.append(elementShape);
 		result.append(')');
 		return result.toString();

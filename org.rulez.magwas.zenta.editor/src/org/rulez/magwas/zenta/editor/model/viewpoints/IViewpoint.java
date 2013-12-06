@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
@@ -37,9 +37,9 @@ public interface IViewpoint {
     /**
      * @return Allowed types
      */
-    List<referencesModelObject> getAllowedTypes();
+    List<ReferencesModelObject> getAllowedTypes();
     
-	boolean isAllowedType(referencesModelObject type);
+	boolean isAllowedType(ReferencesModelObject type);
     
     /**
      * @return The name of the Viewpoint
@@ -68,9 +68,9 @@ public interface IViewpoint {
 	List<ObjectClass> getObjectClasses();
 	List<ObjectClass> getConnectorClasses();
 
-	IIdentifier create(referencesModelObject eClass);
+	IIdentifier create(ReferencesModelObject eClass);
 
-	ImageDescriptor getImageDescriptor(referencesModelObject eClass);
+	ImageDescriptor getImageDescriptor(ReferencesModelObject eClass);
 
 	RelationClass getNoteConnection();
 
@@ -79,7 +79,7 @@ public interface IViewpoint {
 
 	boolean isNestedConnectionTypeRelationship(IRelationship relation);
 
-	referencesModelObject getClassFor(IZentaElement element);
+	ReferencesModelObject getClassFor(IZentaElement element);
 
 	boolean isValidRelationship(ObjectClass sourceclass,
 			ObjectClass targetclass, RelationClass relationclass);

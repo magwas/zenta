@@ -36,7 +36,7 @@ public class BasicRelationship extends Relationship implements IBasicRelationshi
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentaPackage.Literals.ASSOCIATION_RELATIONSHIP;
+		return IZentaPackage.Literals.BASIC_RELATIONSHIP;
 	}
 
 } //BasicRelationship

@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.metamodel.impl;
+package org.rulez.magwas.zenta.metamodel.handmade;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -259,17 +259,10 @@ public class NotificationProcessor {
 				}
 	
 	public static void processNotification(MetamodelImpl mm,Notification notification) {
-		System.out.printf("notification for \n\t%s\n\t%s\n\t%s\n\t%s\n",
-				notification.getNotifier(),
-				notification.getFeature(),
-				notification.getOldValue(),
-				notification.getNewValue());
-		EObject lastObject;
-		lastObject = (EObject) notification.getNotifier();
-		for(Class<?> klass : decisionTree.keySet()) {
+		EObject lastObject = (EObject) notification.getNotifier();
+		for(Class<?> klass : decisionTree.keySet())
 			if(klass.isInstance(lastObject))
 				processClassMatch(mm,notification,klass,decisionTree.get(klass));
-		}
 	}
 		private static void processClassMatch(MetamodelImpl mm,
 				Notification notification, Class<?> klass, Map<Integer, Map<Boolean, Map<Boolean, DecisionCase>>> map) {
@@ -288,12 +281,8 @@ public class NotificationProcessor {
 				private static void processNewMatch(MetamodelImpl mm,
 						Notification notification, Map<Boolean, DecisionCase> map) {
 					DecisionCase match = map.get(notification.getOldValue() == null);
-					if(null != match) {
-						System.out.printf("running %s %s\n",
-								match.hasNew,
-								match.hasOld);
+					if(null != match)
 						match.run(mm, notification.getNotifier(),notification.getOldValue(),notification.getNewValue());
-					}
 				}
 	
 }

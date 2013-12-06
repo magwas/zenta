@@ -1,19 +1,18 @@
-package org.rulez.magwas.zenta.metamodel.impl;
+package org.rulez.magwas.zenta.metamodel.handmade;
 
 import java.util.HashMap;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
+import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.model.INameable;
+import org.rulez.magwas.zenta.metamodel.handmade.AttributeImpl;
+import org.rulez.magwas.zenta.metamodel.impl.MetamodelBaseFactoryImpl;
+import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IRelationship;
@@ -22,13 +21,14 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 
-public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFactory {
+public class MetamodelFactoryImpl extends MetamodelBaseFactoryImpl implements MetamodelFactory {
 
 	private static HashMap<IZentaModel,Metamodel> registry = new HashMap<IZentaModel,Metamodel>();
 	
 	public static MetamodelFactory init() {
 		try {
-			MetamodelFactory theMetamodelFactory = (MetamodelFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
+			Registry packageRegistry = EPackage.Registry.INSTANCE;
+			MetamodelFactory theMetamodelFactory = (MetamodelFactory)packageRegistry.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
 			if (theMetamodelFactory != null) {
 				return theMetamodelFactory;
 			}
@@ -44,15 +44,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	}
 
 	@Override
-	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case MetamodelPackage.METAMODEL: return createMetamodel();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
-
-	@Override
 	public Metamodel createMetamodel(IZentaModel zentaModel) {
 		Metamodel mm = getMetamodelFor(zentaModel);
 		if(null == mm)
@@ -65,25 +56,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		return registry.get(model2);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Template createTemplate() {
-		TemplateImpl template = new TemplateImpl();
-		return template;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ObjectClass createObjectClass() {
-		ObjectClassImpl objectClass = new ObjectClassImpl();
-		return objectClass;
-	}
 
 	public Template createTemplate(IZentaDiagramModel reference, Metamodel metamodel) {
 		TemplateImpl template = new TemplateImpl(reference, metamodel);
@@ -128,7 +100,7 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	}
 	
 	@Override
-	public String getDefiningName(INameable ref) {
+	public String getDefiningName(IIdentifier ref) {
 		IProperty prop = getObjectClassProperty((IProperties) ref);
 		if(null != prop)
 			return prop.getValue();
@@ -140,22 +112,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 						return prop;
 			return null;
 		}
-
-
-	public MetamodelPackage getMetamodelPackage() {
-		return (MetamodelPackage)getEPackage();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
-	@Deprecated
-	public static MetamodelPackage getPackage() {
-		return MetamodelPackage.eINSTANCE;
-	}
 
 	@Override
 	public Metamodel createMetamodel() {

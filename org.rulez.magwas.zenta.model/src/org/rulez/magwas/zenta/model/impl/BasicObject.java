@@ -36,7 +36,7 @@ public class BasicObject extends ZentaElement implements IBasicObject {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentaPackage.Literals.BUSINESS_OBJECT;
+		return IZentaPackage.Literals.BASIC_OBJECT;
 	}
 
 } //BasicObject

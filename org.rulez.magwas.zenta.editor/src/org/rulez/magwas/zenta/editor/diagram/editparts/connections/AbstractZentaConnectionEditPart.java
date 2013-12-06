@@ -12,7 +12,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
-import org.rulez.magwas.zenta.metamodel.DerivedRelationsUtils;
+import org.rulez.magwas.zenta.metamodel.util.DerivedRelationsUtils;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;

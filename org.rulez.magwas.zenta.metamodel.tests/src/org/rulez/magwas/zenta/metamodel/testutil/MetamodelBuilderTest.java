@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.TemplateBase;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -43,7 +44,7 @@ public class MetamodelBuilderTest {
 	
 	@Test
 	public void The_builder_processes_Templates_when_initializes() {
-		EList<Template> templates = metamodel.getTemplates();
+		EList<TemplateBase> templates = metamodel.getTemplates();
 		assertTrue(2 <= templates.size());
 		int tsize = metamodel.getTemplates().size();
 		Template template = metamodel.getTemplateFor(diagramModel);

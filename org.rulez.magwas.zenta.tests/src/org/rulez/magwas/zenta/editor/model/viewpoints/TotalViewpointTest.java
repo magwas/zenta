@@ -12,6 +12,8 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -55,24 +57,23 @@ public class TotalViewpointTest {
 		IZentaElement targetElement = data.getElementById("f33bd0d2");//Process
 		List<RelationClass> rels = vp.getValidRelationships(sourceElement, targetElement);
 		List<String> expectedList = Arrays.asList("Basic Relation","TriesToDo");
+		
 		ArrayList<String> actualList = getClassNames(rels);
-		
-		System.out.printf("allowed: %s\n", actualList);
-		System.out.printf("expected: %s\n", expectedList);
-		
 		ModelTestUtils.assertEqualsAsSet(expectedList,actualList);
-
+		
 		ArrayList<String> actual2 = getClassNames(vp.getSourceRelationClassesFor(sourceDiagElement));
-		System.out.printf("allowed2: %s\n", actual2);
-		System.out.printf("expected: %s\n", expectedList);
-
 		ModelTestUtils.assertEqualsAsSet(expectedList,actual2);
 	}
 
-	@Ignore
 	@Test
 	public void Allowed_connections_always_contain_builtin_relation() {
-		fail();
+		String procedureId = "f33bd0d2";
+		IZentaElement e1 = data.getElementById(procedureId);
+		String processStepId = "c3d03626";
+		IZentaElement e2 = data.getElementById(processStepId);
+		List<RelationClass> valids = vp.getValidRelationships(e1, e2);
+		assertEquals(1,valids.size());
+		assertEquals("Basic Relation",valids.get(0).getName());
 	}
 
 	private ArrayList<String> getClassNames(List<RelationClass> rels) {

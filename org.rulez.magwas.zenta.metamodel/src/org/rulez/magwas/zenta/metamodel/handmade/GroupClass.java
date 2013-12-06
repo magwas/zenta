@@ -1,11 +1,12 @@
-package org.rulez.magwas.zenta.metamodel.impl;
+package org.rulez.magwas.zenta.metamodel.handmade;
 
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
-import org.rulez.magwas.zenta.metamodel.Attribute;
+import org.rulez.magwas.zenta.metamodel.AttributeBase;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
@@ -15,7 +16,8 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
-public class NoteClass extends ReferencesModelObject implements ObjectClass {
+public class GroupClass extends AbstractObjectClassImpl implements
+		ObjectClass {
 
 	@Override
 	public Template getTemplate() {
@@ -25,12 +27,17 @@ public class NoteClass extends ReferencesModelObject implements ObjectClass {
 	@Override
 	public IIdentifier create(IFolder folder) {
 		IDiagramModelNote obj = IZentaFactory.eINSTANCE.createDiagramModelNote();
-		postCreate(obj, folder);
+		postCreate(obj,folder);
 		return obj;
 	}
 
 	@Override
-	public EList<Attribute> getAttributes() {
+	public boolean isAllowedRelation(RelationClass klass, Direction source) {
+		return false;
+	}
+
+	@Override
+	public EList<AttributeBase> getAttributes() {
 		throw new UnTestedException();
 	}
 
@@ -40,23 +47,17 @@ public class NoteClass extends ReferencesModelObject implements ObjectClass {
 	}
 
 	@Override
-	public void setAncestor(ObjectClass value) {
+	public void setAncestor(ObjectClassBase value) {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public EList<ObjectClass> getChildren() {
+	public EList<ObjectClassBase> getChildren() {
 		throw new UnTestedException();
-	}
-	
-	@Override
-	public boolean isAllowedRelation(RelationClass klass, Direction source) {
-		return false;
 	}
 
 	@Override
 	public Map<Direction, List<RelationClass>> getAllowedRelations() {
 		return null;
 	}
-
 }

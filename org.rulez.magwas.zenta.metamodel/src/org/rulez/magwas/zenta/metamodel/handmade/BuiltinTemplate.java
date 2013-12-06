@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.metamodel.impl;
+package org.rulez.magwas.zenta.metamodel.handmade;
 
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
@@ -8,12 +8,9 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class BuiltinTemplate extends TemplateImpl {
 	
-	private BuiltinTemplate() {
-		
-	}
 	public BuiltinTemplate(Metamodel metamodel) {
 		super();
-		this.metamodel = metamodel;
+		metamodel.getTemplates().add(this);
 		getObjectClasses().add(new RootObjectClass());
 		getRelationClasses().add(new RootRelationClass());
 	}

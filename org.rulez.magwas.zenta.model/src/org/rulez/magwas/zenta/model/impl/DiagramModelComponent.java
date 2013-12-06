@@ -17,10 +17,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
-import org.rulez.magwas.zenta.model.INameable;
 
 
 /**
@@ -30,9 +28,9 @@ import org.rulez.magwas.zenta.model.INameable;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getName <em>Name</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getObjectClass <em>Object Class</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getDiagramModel <em>Diagram Model</em>}</li>
  * </ul>
  * </p>
@@ -41,17 +39,7 @@ import org.rulez.magwas.zenta.model.INameable;
  */
 public abstract class DiagramModelComponent extends EObjectImpl implements IDiagramModelComponent {
 
-	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-    protected static final String ID_EDEFAULT = null;
-
-    protected static Object getValueFromStringForFeature(EAttribute feature,
+	protected static Object getValueFromStringForFeature(EAttribute feature,
 			String valuestring) {
 				Class<?> type = feature.getEType().getInstanceClass();
 				Object value;
@@ -70,16 +58,6 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-    protected String id = ID_EDEFAULT;
-
-    /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -118,6 +96,26 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 	 * @ordered
 	 */
 	protected String objectClass = OBJECT_CLASS_EDEFAULT;
+
+				/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+				    * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+				   protected static final String ID_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+				    * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+				   protected String id = ID_EDEFAULT;
 
 				/**
      * Adapter Map for arbitrary objects
@@ -259,12 +257,12 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
-				return getId();
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				return getName();
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS:
 				return getObjectClass();
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
+				return getId();
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
 				return getDiagramModel();
 		}
@@ -279,14 +277,14 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
-				setId((String)newValue);
-				return;
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				setName((String)newValue);
 				return;
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS:
 				setObjectClass((String)newValue);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
+				setId((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -300,14 +298,14 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
-				setId(ID_EDEFAULT);
-				return;
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS:
 				setObjectClass(OBJECT_CLASS_EDEFAULT);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
+				setId(ID_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -321,12 +319,12 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS:
 				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
 				return getDiagramModel() != null;
 		}
@@ -339,70 +337,16 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
 	 * @generated
 	 */
     @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == ICloneable.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == IAdapter.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == INameable.class) {
-			switch (derivedFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME: return IZentaPackage.NAMEABLE__NAME;
-				case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == ICloneable.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == IAdapter.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == INameable.class) {
-			switch (baseFeatureID) {
-				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME;
-				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
     public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (id: "); //$NON-NLS-1$
-		result.append(id);
-		result.append(", name: "); //$NON-NLS-1$
+		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: "); //$NON-NLS-1$
+		result.append(", objectClass: ");
 		result.append(objectClass);
+		result.append(", id: ");
+		result.append(id);
 		result.append(')');
 		return result.toString();
 	}

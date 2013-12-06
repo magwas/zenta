@@ -314,7 +314,7 @@ public class DiagramModelGroup extends DiagramModelObject implements IDiagramMod
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (documentation: "); //$NON-NLS-1$
+		result.append(" (documentation: ");
 		result.append(documentation);
 		result.append(')');
 		return result.toString();

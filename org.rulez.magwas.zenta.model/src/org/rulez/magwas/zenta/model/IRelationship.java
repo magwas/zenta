@@ -6,6 +6,8 @@
  */
 package org.rulez.magwas.zenta.model;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -17,6 +19,7 @@ package org.rulez.magwas.zenta.model;
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IRelationship#getSource <em>Source</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IRelationship#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.IRelationship#getDiagConnections <em>Diag Connections</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +79,23 @@ public interface IRelationship extends IZentaElement {
 	 * @generated
 	 */
 	void setTarget(IZentaElement value);
+
+	/**
+	 * Returns the value of the '<em><b>Diag Connections</b></em>' reference list.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IDiagramModelZentaConnection}.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IDiagramModelZentaConnection#getRelationship <em>Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Diag Connections</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Diag Connections</em>' reference list.
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getRelationship_DiagConnections()
+	 * @see org.rulez.magwas.zenta.model.IDiagramModelZentaConnection#getRelationship
+	 * @model opposite="relationship" transient="true" derived="true"
+	 * @generated
+	 */
+	EList<IDiagramModelZentaConnection> getDiagConnections();
 
 } // IRelationship

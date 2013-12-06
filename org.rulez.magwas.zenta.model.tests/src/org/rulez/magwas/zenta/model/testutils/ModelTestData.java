@@ -32,7 +32,6 @@ public class ModelTestData {
 		assertNotNull(resource);
 		file = new File(resource.getURI().toFileString());
 		assertNotNull(file);
-		System.out.printf("file = %s\n", file);
 		model = getModel();
 	}
 	
@@ -60,7 +59,6 @@ public class ModelTestData {
 	}
 
 	public EObject getById(String id) {
-		System.out.printf("resource is %s\n",resource.toString());
 		return ZentaModelUtils.getObjectByID(getModel(), id);
 	}
 

@@ -33,7 +33,6 @@ public class UITestUtils {
 		List<Object> elements = new ArrayList<Object>();
 		elements.add(element);
 		ITreeModelView treeView = (ITreeModelView)ViewManager.showViewPart(ITreeModelView.ID, false);
-		System.out.printf("view = %s\n", treeView);
 		assertNotNull(treeView);
         treeView.getViewer().setSelection(new StructuredSelection(elements), true);
 	}

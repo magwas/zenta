@@ -13,7 +13,7 @@ import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -209,7 +209,7 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
                 String nameSource = ZentaLabelProvider.INSTANCE.getLabel(relation.getSource());
                 String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
                 Metamodel metamodel = MetamodelFactory.eINSTANCE.getMetamodelFor(relation.getZentaModel());
-                referencesModelObject klass = metamodel.getClassFor(relation);
+                ReferencesModelObject klass = (ReferencesModelObject) metamodel.getClassFor(relation);
                 String relname;
 				if(null != klass)
                 	relname = klass.getName();
@@ -222,7 +222,7 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
         return ""; //$NON-NLS-1$
     }
 
-	public ImageDescriptor getImageDescriptor(referencesModelObject eClass) {
+	public ImageDescriptor getImageDescriptor(ReferencesModelObject eClass) {
 		IIdentifier reference = eClass.getReference();
 		if(null == reference)
 			reference = IZentaFactory.eINSTANCE.createBasicObject();

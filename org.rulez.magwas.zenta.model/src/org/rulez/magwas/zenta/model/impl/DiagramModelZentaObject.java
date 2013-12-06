@@ -54,6 +54,15 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 	 */
     protected EList<IDiagramModelObject> children;
     /**
+	 * The cached value of the '{@link #getZentaElement() <em>Zenta Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZentaElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected IZentaElement zentaElement;
+				/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -83,7 +92,7 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 	 */
     protected DiagramModelZentaObject() {
 		super();
-    }
+	}
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -106,7 +115,47 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 		return children;
 	}
 
-    @Override
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IZentaElement getZentaElement() {
+		return zentaElement;
+	}
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetZentaElement(IZentaElement newZentaElement, NotificationChain msgs) {
+		IZentaElement oldZentaElement = zentaElement;
+		zentaElement = newZentaElement;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT, oldZentaElement, newZentaElement);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setZentaElement(IZentaElement newZentaElement) {
+		if (newZentaElement != zentaElement) {
+			NotificationChain msgs = null;
+			if (zentaElement != null)
+				msgs = ((InternalEObject)zentaElement).eInverseRemove(this, IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS, IZentaElement.class, msgs);
+			if (newZentaElement != null)
+				msgs = ((InternalEObject)newZentaElement).eInverseAdd(this, IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS, IZentaElement.class, msgs);
+			msgs = basicSetZentaElement(newZentaElement, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT, newZentaElement, newZentaElement));
+	}
+				@Override
     public String getName() {
         if(getZentaElement() != null) {
             return getZentaElement().getName();
@@ -123,23 +172,6 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
         }
     }
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public IZentaElement getZentaElement() {
-        return fZentaElement;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public void setZentaElement(IZentaElement zentaElement) {
-        fZentaElement = zentaElement;
-    }
 
     /**
 	 * <!-- begin-user-doc -->
@@ -193,7 +225,22 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
         }
     }
 
-    @Override
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT:
+				if (zentaElement != null)
+					msgs = ((InternalEObject)zentaElement).eInverseRemove(this, IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS, IZentaElement.class, msgs);
+				return basicSetZentaElement((IZentaElement)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+				@Override
     public EObject getCopy() {
         IDiagramModelZentaObject newObject = (IDiagramModelZentaObject)super.getCopy();
         
@@ -216,6 +263,8 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
+			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT:
+				return basicSetZentaElement(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -293,7 +342,7 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__CHILDREN:
 				return children != null && !children.isEmpty();
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT:
-				return getZentaElement() != null;
+				return zentaElement != null;
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
@@ -335,15 +384,17 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     @Override
     public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (type: "); //$NON-NLS-1$
+		result.append(" (type: ");
 		result.append(type);
+		result.append(" element: ");
+		result.append(getZentaElement());
 		result.append(')');
 		return result.toString();
 	}

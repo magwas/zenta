@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="metamodel" nsURI="http://magwas.rulez.org/zenta/metamodel" nsPrefix="zentameta">
-  <eClassifiers xsi:type="ecore:EClass" name="referencesModelObject" abstract="true"
+  <eClassifiers xsi:type="ecore:EClass" name="MetamodelBase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
+        eType="#//TemplateBase" containment="true" resolveProxies="false" eOpposite="#//TemplateBase/metamodel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateBase" eSuperTypes="#//ReferencesModelObjectBase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectClasses" upperBound="-1"
+        eType="#//ObjectClassBase" containment="true" resolveProxies="false" eOpposite="#//ObjectClassBase/template"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationClasses" upperBound="-1"
+        eType="#//RelationClassBase" containment="true" resolveProxies="false" eOpposite="#//RelationClassBase/template"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" lowerBound="1"
+        eType="#//MetamodelBase" eOpposite="#//MetamodelBase/templates"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferencesModelObjectBase" abstract="true"
       interface="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" resolveProxies="false"/>
+        eType="ecore:EClass ../../org.rulez.magwas.zenta.model/model/zenta.ecore#//Identifier"
+        resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Metamodel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
-        eType="#//Template" containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Template" eSuperTypes="#//referencesModelObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="objectClasses" upperBound="-1"
-        eType="#//ObjectClass" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="relationClasses" upperBound="-1"
-        eType="#//RelationClass" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectClass" eSuperTypes="#//referencesModelObject">
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectClassBase" eSuperTypes="#//ReferencesModelObjectBase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
-        eType="#//Attribute" containment="true" resolveProxies="false"/>
+        eType="#//AttributeBase" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ancestor" lowerBound="1"
-        eType="#//ObjectClass" resolveProxies="false" eOpposite="#//ObjectClass/children"/>
+        eType="#//ObjectClassBase" resolveProxies="false" eOpposite="#//ObjectClassBase/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//ObjectClass" derived="true" resolveProxies="false" eOpposite="#//ObjectClass/ancestor"/>
+        eType="#//ObjectClassBase" derived="true" resolveProxies="false" eOpposite="#//ObjectClassBase/ancestor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//TemplateBase"
+        eOpposite="#//TemplateBase/objectClasses"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeBase">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minOccurs" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxOccurs" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relation" lowerBound="1"
-        eType="#//RelationClass" resolveProxies="false"/>
+        eType="#//RelationClassBase" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectedObject" lowerBound="1"
-        eType="#//ObjectClass" resolveProxies="false"/>
+        eType="#//ObjectClassBase" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RelationClass" eSuperTypes="#//referencesModelObject">
+  <eClassifiers xsi:type="ecore:EClass" name="RelationClassBase" eSuperTypes="#//ReferencesModelObjectBase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ancestor" lowerBound="1"
-        eType="#//RelationClass" resolveProxies="false" eOpposite="#//RelationClass/children"/>
+        eType="#//RelationClassBase" resolveProxies="false" eOpposite="#//RelationClassBase/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//RelationClass" derived="true" resolveProxies="false" eOpposite="#//RelationClass/ancestor"/>
+        eType="#//RelationClassBase" derived="true" resolveProxies="false" eOpposite="#//RelationClassBase/ancestor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//TemplateBase"
+        eOpposite="#//TemplateBase/relationClasses"/>
   </eClassifiers>
 </ecore:EPackage>

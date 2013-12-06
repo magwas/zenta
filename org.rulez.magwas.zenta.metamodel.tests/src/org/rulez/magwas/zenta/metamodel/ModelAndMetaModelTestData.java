@@ -2,8 +2,6 @@ package org.rulez.magwas.zenta.metamodel;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -28,6 +26,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		super();
         metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
         assertNotNull(metamodel);
+        assertNotNull(metamodel.getTemplates());
 		diagramModel = getTestDiagramModel();
 		assertNotNull(diagramModel);
 		connection = getDMRById("24e3c661");
@@ -48,7 +47,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 
 	public ObjectClass createTestObjectClass() {
 		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
-		Template template = metamodel.getTemplates().get(0);
+		Template template = (Template) metamodel.getTemplates().get(0);
 		assertNotNull(template);
 		assertNotNull(template.getMetamodel());
 		return MetamodelFactory.eINSTANCE
@@ -68,9 +67,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 	}
 	public IRelationship createNewRelationClass(String elementName) {
 		IZentaElement newElement = createClassedTestElement();
-		newElement.setName("test OC 1");
 		IZentaElement newElement2 = createClassedTestElement();
-		newElement2.setName("test OC 2");
 		RelationClass oc = metamodel.getBuiltinRelationClass();
 		IRelationship rel = (IRelationship) oc.create((IFolder) newElement.eContainer());
 		rel.setSource(newElement);
@@ -78,6 +75,8 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		IDiagramModel dm = getTestDiagramModel();
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
 		IDiagramModelZentaObject dmo2 = ModelTestData.createDMOFor(newElement2);
+		newElement.setName("test OC 1");
+		newElement2.setName("test OC 2");
 		IDiagramModelZentaConnection diagramRelation =
 				IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
 		diagramRelation.setSource(dmo);

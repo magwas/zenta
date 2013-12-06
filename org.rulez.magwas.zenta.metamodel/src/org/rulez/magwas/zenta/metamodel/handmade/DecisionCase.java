@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.metamodel.impl;
+package org.rulez.magwas.zenta.metamodel.handmade;
 
 import org.eclipse.emf.ecore.EObject;
 

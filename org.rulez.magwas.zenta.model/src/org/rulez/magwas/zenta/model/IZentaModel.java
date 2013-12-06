@@ -9,6 +9,7 @@ package org.rulez.magwas.zenta.model;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -88,6 +89,30 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	 * @generated
 	 */
 	void setDefaults();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	IFolder addDerivedRelationsFolder();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void removeDerivedRelationsFolder();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model elementRequired="true"
+	 * @generated
+	 */
+	IFolder getDefaultFolderForElement(EObject element);
 
 	/**
 	 * <!-- begin-user-doc -->

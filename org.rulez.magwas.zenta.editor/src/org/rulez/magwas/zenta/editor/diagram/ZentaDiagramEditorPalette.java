@@ -3,9 +3,11 @@ package org.rulez.magwas.zenta.editor.diagram;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
+import org.eclipse.gef.palette.CreationToolEntry;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.palette.PaletteGroup;
@@ -82,16 +84,25 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
     			addClassToPalette(notification.getNewValue());
     	}
 		if(notification.getNotifier() instanceof ObjectClass)
-			changeClassNameInPalette((ObjectClass) notification.getNotifier());
+			changeObjectClassNameInPalette((ObjectClass) notification.getNotifier());
+		if(notification.getNotifier() instanceof RelationClass)
+			changeRelationClassNameInPalette((RelationClass) notification.getNotifier());
 	}
 
-	private void changeClassNameInPalette(ObjectClass changedClass) {
+	private void changeRelationClassNameInPalette(RelationClass changedClass) {
+		@SuppressWarnings("unchecked")
+		List<CreationToolEntry> children = this.fRelationsGroup.getChildren();
+		for(CreationToolEntry entry : children)
+			if(entry.getId().equals(changedClass.getId()))
+				entry.setLabel(changedClass.getName());
+	}
+
+	private void changeObjectClassNameInPalette(ObjectClass changedClass) {
 		@SuppressWarnings("unchecked")
 		List<CombinedTemplateCreationEntry> children = fObjectClassGroup.getChildren();
 		for(CombinedTemplateCreationEntry entry : children)
-			if(entry.getId().equals(changedClass.getId())) {
+			if(entry.getId().equals(changedClass.getId()))
 				entry.setLabel(changedClass.getName());
-			}
 	}
 
 	private void addClassToPalette(Object newValue) {
@@ -275,6 +286,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
                 fViewpoint.getImageDescriptor(eClass));
         
         entry.setToolProperty(AbstractTool.PROPERTY_UNLOAD_WHEN_FINISHED, true);
+        entry.setId(eClass.getId());
         return entry;
     }
 }

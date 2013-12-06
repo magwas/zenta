@@ -3,11 +3,14 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.metamodel;
+package org.rulez.magwas.zenta.metamodel.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IBasicRelationship;

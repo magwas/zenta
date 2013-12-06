@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IFolder#getElements <em>Elements</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.IFolder#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *

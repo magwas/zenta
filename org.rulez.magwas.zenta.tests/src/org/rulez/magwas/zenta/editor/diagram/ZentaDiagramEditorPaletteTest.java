@@ -21,7 +21,7 @@ import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -115,10 +115,9 @@ public class ZentaDiagramEditorPaletteTest {
 		assertNotNull(relationsgroup);
 		@SuppressWarnings("unchecked")
 		List<PaletteEntry> children = relationsgroup.getChildren();
-		
 		assertTrue(haveCreatorFor(newRc, children));
 	}
-		private boolean haveCreatorFor(referencesModelObject klass, List<PaletteEntry> children) {
+		private boolean haveCreatorFor(ReferencesModelObject klass, List<PaletteEntry> children) {
 			for ( PaletteEntry kid : children)
 				if(klass.getName().equals(kid.getLabel()))
 					return true;

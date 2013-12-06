@@ -326,13 +326,13 @@ public class Bounds extends EObjectImpl implements IBounds {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (x: "); //$NON-NLS-1$
+		result.append(" (x: ");
 		result.append(x);
-		result.append(", y: "); //$NON-NLS-1$
+		result.append(", y: ");
 		result.append(y);
-		result.append(", width: "); //$NON-NLS-1$
+		result.append(", width: ");
 		result.append(width);
-		result.append(", height: "); //$NON-NLS-1$
+		result.append(", height: ");
 		result.append(height);
 		result.append(')');
 		return result.toString();

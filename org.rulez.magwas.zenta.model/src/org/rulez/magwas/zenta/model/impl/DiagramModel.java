@@ -45,9 +45,9 @@ import org.rulez.magwas.zenta.model.IProperty;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getZentaModel <em>Zenta Model</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getName <em>Name</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getObjectClass <em>Object Class</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getDiagramModel <em>Diagram Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getChildren <em>Children</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getDocumentation <em>Documentation</em>}</li>
@@ -59,26 +59,6 @@ import org.rulez.magwas.zenta.model.IProperty;
  * @generated
  */
 public abstract class DiagramModel extends EObjectImpl implements IDiagramModel {
-    /**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-    protected static final String ID_EDEFAULT = null;
-
-    /**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-    protected String id = ID_EDEFAULT;
-
     /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -118,6 +98,26 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
 	protected String objectClass = OBJECT_CLASS_EDEFAULT;
+
+				/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+    protected static final String ID_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+    protected String id = ID_EDEFAULT;
 
 				/**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
@@ -414,12 +414,12 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL__ZENTA_MODEL:
 				return getZentaModel();
-			case IZentaPackage.DIAGRAM_MODEL__ID:
-				return getId();
 			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				return getName();
 			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
 				return getObjectClass();
+			case IZentaPackage.DIAGRAM_MODEL__ID:
+				return getId();
 			case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
 				return getDiagramModel();
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
@@ -443,14 +443,14 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL__ID:
-				setId((String)newValue);
-				return;
 			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				setName((String)newValue);
 				return;
 			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
 				setObjectClass((String)newValue);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL__ID:
+				setId((String)newValue);
 				return;
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				getChildren().clear();
@@ -478,14 +478,14 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL__ID:
-				setId(ID_EDEFAULT);
-				return;
 			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
 				setObjectClass(OBJECT_CLASS_EDEFAULT);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL__ID:
+				setId(ID_EDEFAULT);
 				return;
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				getChildren().clear();
@@ -513,12 +513,12 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL__ZENTA_MODEL:
 				return getZentaModel() != null;
-			case IZentaPackage.DIAGRAM_MODEL__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.DIAGRAM_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
 				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
+			case IZentaPackage.DIAGRAM_MODEL__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
 				return getDiagramModel() != null;
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
@@ -540,6 +540,13 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INameable.class) {
+			switch (derivedFeatureID) {
+				case IZentaPackage.DIAGRAM_MODEL__NAME: return IZentaPackage.NAMEABLE__NAME;
+				case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IIdentifier.class) {
 			switch (derivedFeatureID) {
 				case IZentaPackage.DIAGRAM_MODEL__ID: return IZentaPackage.IDENTIFIER__ID;
@@ -548,13 +555,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		}
 		if (baseClass == ICloneable.class) {
 			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == INameable.class) {
-			switch (derivedFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL__NAME: return IZentaPackage.NAMEABLE__NAME;
-				case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -592,6 +592,13 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INameable.class) {
+			switch (baseFeatureID) {
+				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.DIAGRAM_MODEL__NAME;
+				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IIdentifier.class) {
 			switch (baseFeatureID) {
 				case IZentaPackage.IDENTIFIER__ID: return IZentaPackage.DIAGRAM_MODEL__ID;
@@ -600,13 +607,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		}
 		if (baseClass == ICloneable.class) {
 			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == INameable.class) {
-			switch (baseFeatureID) {
-				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.DIAGRAM_MODEL__NAME;
-				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -647,15 +647,15 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (id: "); //$NON-NLS-1$
-		result.append(id);
-		result.append(", name: "); //$NON-NLS-1$
+		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: "); //$NON-NLS-1$
+		result.append(", objectClass: ");
 		result.append(objectClass);
-		result.append(", documentation: "); //$NON-NLS-1$
+		result.append(", id: ");
+		result.append(id);
+		result.append(", documentation: ");
 		result.append(documentation);
-		result.append(", connectionRouterType: "); //$NON-NLS-1$
+		result.append(", connectionRouterType: ");
 		result.append(connectionRouterType);
 		result.append(')');
 		return result.toString();

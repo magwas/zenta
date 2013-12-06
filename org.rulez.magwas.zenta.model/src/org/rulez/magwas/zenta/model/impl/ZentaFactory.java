@@ -51,7 +51,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 */
     public static IZentaFactory init() {
 		try {
-			IZentaFactory theZentaFactory = (IZentaFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta"); //$NON-NLS-1$ 
+			IZentaFactory theZentaFactory = (IZentaFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta"); 
 			if (theZentaFactory != null) {
 				return theZentaFactory;
 			}
@@ -86,7 +86,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 			case IZentaPackage.JUNCTION: return createJunction();
 			case IZentaPackage.AND_JUNCTION: return createAndJunction();
 			case IZentaPackage.OR_JUNCTION: return createOrJunction();
-			case IZentaPackage.ASSOCIATION_RELATIONSHIP: return createBasicRelationship();
+			case IZentaPackage.BASIC_RELATIONSHIP: return createBasicRelationship();
 			case IZentaPackage.DIAGRAM_MODEL_REFERENCE: return createDiagramModelReference();
 			case IZentaPackage.DIAGRAM_MODEL_GROUP: return createDiagramModelGroup();
 			case IZentaPackage.DIAGRAM_MODEL_NOTE: return createDiagramModelNote();
@@ -97,12 +97,12 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 			case IZentaPackage.ZENTA_DIAGRAM_MODEL: return createZentaDiagramModel();
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT: return createDiagramModelZentaObject();
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION: return createDiagramModelZentaConnection();
-			case IZentaPackage.BUSINESS_OBJECT: return createBasicObject();
+			case IZentaPackage.BASIC_OBJECT: return createBasicObject();
 			case IZentaPackage.SKETCH_MODEL: return createSketchModel();
 			case IZentaPackage.SKETCH_MODEL_STICKY: return createSketchModelSticky();
 			case IZentaPackage.SKETCH_MODEL_ACTOR: return createSketchModelActor();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -115,7 +115,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
     public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -127,10 +127,8 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case IZentaPackage.FOLDER_TYPE:
-				return convertFolderTypeToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -169,8 +167,8 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IBasicObject createBasicObject() {
-		BasicObject businessObject = new BasicObject();
-		return businessObject;
+		BasicObject basicObject = new BasicObject();
+		return basicObject;
 	}
 
 
@@ -319,15 +317,6 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String convertFolderTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public IJunction createJunction() {
 		Junction junction = new Junction();
 		return junction;
@@ -360,8 +349,8 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IBasicRelationship createBasicRelationship() {
-		BasicRelationship associationRelationship = new BasicRelationship();
-		return associationRelationship;
+		BasicRelationship basicRelationship = new BasicRelationship();
+		return basicRelationship;
 	}
 
     /**

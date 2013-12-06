@@ -1,8 +1,8 @@
-package org.rulez.magwas.zenta.metamodel.impl;
+package org.rulez.magwas.zenta.metamodel.handmade;
 
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.RelationClassBase;
 
 public class RootRelationClass extends RelationClassImpl {
 	
@@ -24,7 +24,7 @@ public class RootRelationClass extends RelationClassImpl {
 	}
 
 	@Override
-	public void setAncestor(RelationClass ancestor) {
+	public void setAncestor(RelationClassBase ancestor) {
 		throw new MetamodelFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 }

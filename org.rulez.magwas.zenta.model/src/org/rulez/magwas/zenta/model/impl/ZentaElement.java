@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
@@ -52,37 +53,18 @@ import org.rulez.magwas.zenta.model.IProperty;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getZentaModel <em>Zenta Model</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getName <em>Name</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getObjectClass <em>Object Class</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElement#getDiagObjects <em>Diag Objects</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public abstract class ZentaElement extends EObjectImpl implements IZentaElement {
-    /**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-    protected static final String ID_EDEFAULT = null;
-
-    /**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-    protected String id = ID_EDEFAULT;
-
     /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -124,6 +106,26 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	protected String objectClass = OBJECT_CLASS_EDEFAULT;
 
 				/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+    protected static final String ID_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+    protected String id = ID_EDEFAULT;
+
+				/**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -154,6 +156,16 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
     protected EList<IProperty> properties;
 
     /**
+	 * The cached value of the '{@link #getDiagObjects() <em>Diag Objects</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDiagObjects()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<IDiagramModelZentaObject> diagObjects;
+
+				/**
      * Adapter Map for arbitrary objects
      */
     private Map<Object, Object> fAdapterMap = new HashMap<Object, Object>();
@@ -243,6 +255,18 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<IDiagramModelZentaObject> getDiagObjects() {
+		if (diagObjects == null) {
+			diagObjects = new EObjectWithInverseResolvingEList<IDiagramModelZentaObject>(IDiagramModelZentaObject.class, this, IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS, IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT);
+		}
+		return diagObjects;
+	}
+
+				/**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT
@@ -277,6 +301,21 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDiagObjects()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -285,6 +324,8 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		switch (featureID) {
 			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				return ((InternalEList<?>)getDiagObjects()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -333,16 +374,18 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		switch (featureID) {
 			case IZentaPackage.ZENTA_ELEMENT__ZENTA_MODEL:
 				return getZentaModel();
-			case IZentaPackage.ZENTA_ELEMENT__ID:
-				return getId();
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				return getName();
 			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
 				return getObjectClass();
+			case IZentaPackage.ZENTA_ELEMENT__ID:
+				return getId();
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				return getDocumentation();
 			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				return getProperties();
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				return getDiagObjects();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -356,14 +399,14 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentaPackage.ZENTA_ELEMENT__ID:
-				setId((String)newValue);
-				return;
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				setName((String)newValue);
 				return;
 			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
 				setObjectClass((String)newValue);
+				return;
+			case IZentaPackage.ZENTA_ELEMENT__ID:
+				setId((String)newValue);
 				return;
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				setDocumentation((String)newValue);
@@ -371,6 +414,10 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends IProperty>)newValue);
+				return;
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				getDiagObjects().clear();
+				getDiagObjects().addAll((Collection<? extends IDiagramModelZentaObject>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -384,20 +431,23 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.ZENTA_ELEMENT__ID:
-				setId(ID_EDEFAULT);
-				return;
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
 				setObjectClass(OBJECT_CLASS_EDEFAULT);
 				return;
+			case IZentaPackage.ZENTA_ELEMENT__ID:
+				setId(ID_EDEFAULT);
+				return;
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
 			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				getProperties().clear();
+				return;
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				getDiagObjects().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -413,16 +463,18 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		switch (featureID) {
 			case IZentaPackage.ZENTA_ELEMENT__ZENTA_MODEL:
 				return getZentaModel() != null;
-			case IZentaPackage.ZENTA_ELEMENT__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
 				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
+			case IZentaPackage.ZENTA_ELEMENT__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
 			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				return diagObjects != null && !diagObjects.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -434,6 +486,13 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INameable.class) {
+			switch (derivedFeatureID) {
+				case IZentaPackage.ZENTA_ELEMENT__NAME: return IZentaPackage.NAMEABLE__NAME;
+				case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IIdentifier.class) {
 			switch (derivedFeatureID) {
 				case IZentaPackage.ZENTA_ELEMENT__ID: return IZentaPackage.IDENTIFIER__ID;
@@ -442,13 +501,6 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		}
 		if (baseClass == ICloneable.class) {
 			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == INameable.class) {
-			switch (derivedFeatureID) {
-				case IZentaPackage.ZENTA_ELEMENT__NAME: return IZentaPackage.NAMEABLE__NAME;
-				case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -474,6 +526,13 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INameable.class) {
+			switch (baseFeatureID) {
+				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.ZENTA_ELEMENT__NAME;
+				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IIdentifier.class) {
 			switch (baseFeatureID) {
 				case IZentaPackage.IDENTIFIER__ID: return IZentaPackage.ZENTA_ELEMENT__ID;
@@ -482,13 +541,6 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		}
 		if (baseClass == ICloneable.class) {
 			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == INameable.class) {
-			switch (baseFeatureID) {
-				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.ZENTA_ELEMENT__NAME;
-				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -517,13 +569,13 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (id: "); //$NON-NLS-1$
-		result.append(id);
-		result.append(", name: "); //$NON-NLS-1$
+		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: "); //$NON-NLS-1$
+		result.append(", objectClass: ");
 		result.append(objectClass);
-		result.append(", documentation: "); //$NON-NLS-1$
+		result.append(", id: ");
+		result.append(id);
+		result.append(", documentation: ");
 		result.append(documentation);
 		result.append(')');
 		return result.toString();

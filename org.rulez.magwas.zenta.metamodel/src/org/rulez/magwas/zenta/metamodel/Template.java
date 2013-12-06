@@ -1,18 +1,11 @@
 package org.rulez.magwas.zenta.metamodel;
 
-import org.eclipse.emf.common.util.EList;
+import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
-public interface Template extends referencesModelObject {
-	EList<ObjectClass> getObjectClasses();
-
-	EList<RelationClass> getRelationClasses();
-
-	String getPath();
-
-	void setPath(String value);
-
+public interface Template extends TemplateBase {
 	ObjectClass getObjectClassReferencingElement(IZentaElement reference);
 
 	RelationClass getRelationClassReferencingElement(IRelationship referenced);
@@ -23,6 +16,6 @@ public interface Template extends referencesModelObject {
 
 	void createClassBy(IZentaElement element);
 
-	Metamodel getMetamodel();
+	IIdentifier create(IFolder folder);
 
 } 

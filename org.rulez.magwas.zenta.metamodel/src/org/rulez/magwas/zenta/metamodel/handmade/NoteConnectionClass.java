@@ -1,14 +1,15 @@
-package org.rulez.magwas.zenta.metamodel.impl;
+package org.rulez.magwas.zenta.metamodel.handmade;
 
 import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.RelationClassBase;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
-public class NoteConnectionClass extends ReferencesModelObject implements
+public class NoteConnectionClass extends AbstractRelationClassImpl implements
 		RelationClass {
 
 	@Override
@@ -22,18 +23,18 @@ public class NoteConnectionClass extends ReferencesModelObject implements
 	}
 
 	@Override
-	public void setAncestor(RelationClass value) {
+	public void setAncestor(RelationClassBase value) {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public EList<RelationClass> getChildren() {
+	public EList<RelationClassBase> getChildren() {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public IRelationship create(IFolder folder) {
-		IRelationship obj = (IRelationship) IZentaFactory.eINSTANCE.createDiagramModelConnection();
+	public IDiagramModelConnection create(IFolder folder) {
+		IDiagramModelConnection obj = IZentaFactory.eINSTANCE.createDiagramModelConnection();
 		postCreate(obj, folder);
 		return obj;
 	}

@@ -196,11 +196,11 @@ public class Property extends EObjectImpl implements IProperty {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (key: "); //$NON-NLS-1$
+		result.append(" (key: ");
 		result.append(key);
-		result.append(", value: "); //$NON-NLS-1$
+		result.append(", value: ");
 		result.append(value);
-		result.append(", generated: "); //$NON-NLS-1$
+		result.append(", generated: ");
 		result.append(generated);
 		result.append(')');
 		return result.toString();

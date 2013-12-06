@@ -160,7 +160,7 @@ public class ZentaDiagramModel extends DiagramModel implements IZentaDiagramMode
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (viewpoint: "); //$NON-NLS-1$
+		result.append(" (viewpoint: ");
 		result.append(viewpoint);
 		result.append(')');
 		return result.toString();

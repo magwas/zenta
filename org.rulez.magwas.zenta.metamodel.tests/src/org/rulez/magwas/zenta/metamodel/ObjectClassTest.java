@@ -7,7 +7,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -59,16 +58,14 @@ public class ObjectClassTest{
 		fixture.setReference(obj2);
 	}
 	
-	@Ignore
 	@Test
 	public void if_an_ObjectClass_is_set_as_ancestor_then_the_number_of_its_kids_grows() {
-		EList<ObjectClass> kids = fixture.getChildren();
-		assertEquals(0,kids.size());
+		EList<ObjectClassBase> kids = fixture.getChildren();
+		int n = kids.size();
 		ObjectClass obj2 = testdata.createTestObjectClass();
-		System.out.printf("fixture = %s\nobj2=%s\n", fixture,obj2);
 		obj2.setAncestor(fixture);
 		kids = fixture.getChildren();
-		assertEquals(1,kids.size());
+		assertEquals(n+1,kids.size());
 	}
 
 	@Test
@@ -99,7 +96,7 @@ public class ObjectClassTest{
 		String id2 = "8495ea84";
 		IZentaElement element = testdata.getElementById(id2);
 		int numOccurs = 0;
-		for(ObjectClass oc:template.getObjectClasses())
+		for(ObjectClassBase oc:template.getObjectClasses())
 			if(element.equals(oc.getReference()))
 				numOccurs++;
 		assertEquals(1,numOccurs);
@@ -147,7 +144,8 @@ public class ObjectClassTest{
 	@Test
 	public void The_name_of_an_ObjectClass_is_the_name_of_the_defining_element_if_it_does_not_have_a_className_property() {
 		IZentaElement element = testdata.getElementById("ea94cf6c");
-		assertEquals("User",testdata.metamodel.getObjectClassReferencing(element).getName());
+		ObjectClass objectClass = testdata.metamodel.getObjectClassReferencing(element);
+		assertEquals("User",objectClass.getName());
 	}
 
 	@Test
@@ -221,7 +219,7 @@ public class ObjectClassTest{
 	public void When_the_appearance_of_a_diagram_element_linked_to_a_defining_element_is_changed_the_aooearance_properties_of_the_defining_element_are_updated() {
 		IZentaElement userObject = testdata.getElementById("ea94cf6c");
 		IDiagramModelObject dmo = testdata.getDMOById("b2608459");
-		assertFalse(dmo.getElementShape().equals("rectangleShape"));
+		assertFalse("rectangleShape".equals(dmo.getElementShape()));
 		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "ellipseShape");
 		dmo.setElementShape("rectangleShape");
 		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "elementShape", "rectangleShape");
@@ -317,6 +315,10 @@ public class ObjectClassTest{
 		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
 	}
 
+	@Test
+	public void An_ObjectClass_can_be_found_by_the_id_of_the_defining_element() {
+		assertEquals("User",testdata.metamodel.getClassById("ea94cf6c").getName());
+	}
 	private static void addElementToDiagramModel(IZentaDiagramModel dm,
 			IZentaElement elementToAdd) {
 		IDiagramModelZentaObject mo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();

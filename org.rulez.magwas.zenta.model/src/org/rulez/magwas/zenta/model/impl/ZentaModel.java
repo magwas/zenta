@@ -468,6 +468,39 @@ public class ZentaModel extends EObjectImpl implements IZentaModel {
     
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IFolder addDerivedRelationsFolder() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void removeDerivedRelationsFolder() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IFolder getDefaultFolderForElement(EObject element) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -719,17 +752,17 @@ public class ZentaModel extends EObjectImpl implements IZentaModel {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: "); //$NON-NLS-1$
+		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: "); //$NON-NLS-1$
+		result.append(", objectClass: ");
 		result.append(objectClass);
-		result.append(", id: "); //$NON-NLS-1$
+		result.append(", id: ");
 		result.append(id);
-		result.append(", documentation: "); //$NON-NLS-1$
+		result.append(", documentation: ");
 		result.append(documentation);
-		result.append(", file: "); //$NON-NLS-1$
+		result.append(", file: ");
 		result.append(file);
-		result.append(", version: "); //$NON-NLS-1$
+		result.append(", version: ");
 		result.append(version);
 		result.append(')');
 		return result.toString();

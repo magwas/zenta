@@ -157,7 +157,7 @@ public abstract class BorderObject extends EObjectImpl implements IBorderObject 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (borderColor: "); //$NON-NLS-1$
+		result.append(" (borderColor: ");
 		result.append(borderColor);
 		result.append(')');
 		return result.toString();

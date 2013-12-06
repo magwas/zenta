@@ -1,14 +1,14 @@
-package org.rulez.magwas.zenta.metamodel.impl;
+package org.rulez.magwas.zenta.metamodel.handmade;
 
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
 import org.rulez.magwas.zenta.model.IIdentifier;
 
-public class RootObjectClass extends ObjectClassImpl implements ObjectClass, referencesModelObject {
+public class RootObjectClass extends ObjectClassImpl implements ObjectClass {
 
 	RootObjectClass() {
-		super();
+		
 	}
 	
 	@Override
@@ -27,7 +27,7 @@ public class RootObjectClass extends ObjectClassImpl implements ObjectClass, ref
 	}
 	
 	@Override
-	public void setAncestor(ObjectClass ancestor) {
+	public void setAncestor(ObjectClassBase ancestor) {
 		throw new MetamodelFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 }

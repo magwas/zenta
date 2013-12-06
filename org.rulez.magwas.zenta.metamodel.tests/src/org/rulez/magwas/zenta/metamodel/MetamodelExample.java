@@ -19,10 +19,6 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
-
 /**
  * <!-- begin-user-doc -->
  * A sample utility for the '<em><b>metamodel</b></em>' package.
@@ -51,8 +47,8 @@ public class MetamodelExample {
 		// Register the package to ensure it is available during loading.
 		//
 		resourceSet.getPackageRegistry().put
-			(MetamodelPackage.eNS_URI, 
-			 MetamodelPackage.eINSTANCE);
+			(MetamodelBasePackage.eNS_URI, 
+			 MetamodelBasePackage.eINSTANCE);
         
 		// If there are no arguments, emit an appropriate usage message.
 		//

@@ -221,7 +221,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 	 * @generated
 	 * @ordered
 	 */
-    protected static final int LINE_WIDTH_EDEFAULT = -1;
+    protected static final int LINE_WIDTH_EDEFAULT = 1;
 
     /**
 	 * The cached value of the '{@link #getLineWidth() <em>Line Width</em>}' attribute.
@@ -954,25 +954,25 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (font: "); //$NON-NLS-1$
+		result.append(" (font: ");
 		result.append(font);
-		result.append(", fontColor: "); //$NON-NLS-1$
+		result.append(", fontColor: ");
 		result.append(fontColor);
-		result.append(", textAlignment: "); //$NON-NLS-1$
+		result.append(", textAlignment: ");
 		result.append(textAlignment);
-		result.append(", textPosition: "); //$NON-NLS-1$
+		result.append(", textPosition: ");
 		result.append(textPosition);
-		result.append(", documentation: "); //$NON-NLS-1$
+		result.append(", documentation: ");
 		result.append(documentation);
-		result.append(", text: "); //$NON-NLS-1$
+		result.append(", text: ");
 		result.append(text);
-		result.append(", lineWidth: "); //$NON-NLS-1$
+		result.append(", lineWidth: ");
 		result.append(lineWidth);
-		result.append(", lineColor: "); //$NON-NLS-1$
+		result.append(", lineColor: ");
 		result.append(lineColor);
-		result.append(", lineDecoration: "); //$NON-NLS-1$
+		result.append(", lineDecoration: ");
 		result.append(lineDecoration);
-		result.append(", type: "); //$NON-NLS-1$
+		result.append(", type: ");
 		result.append(type);
 		result.append(')');
 		return result.toString();

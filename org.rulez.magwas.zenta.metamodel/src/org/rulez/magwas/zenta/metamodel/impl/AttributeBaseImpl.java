@@ -9,28 +9,28 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.rulez.magwas.zenta.metamodel.Attribute;
-import org.rulez.magwas.zenta.metamodel.MetamodelPackage;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.AttributeBase;
+import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
+import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
+import org.rulez.magwas.zenta.metamodel.RelationClassBase;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Attribute</b></em>'.
+ * An implementation of the model object '<em><b>Attribute Base</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.AttributeImpl#getMinOccurs <em>Min Occurs</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.AttributeImpl#getMaxOccurs <em>Max Occurs</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.AttributeImpl#getRelation <em>Relation</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.AttributeImpl#getConnectedObject <em>Connected Object</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.AttributeBaseImpl#getMinOccurs <em>Min Occurs</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.AttributeBaseImpl#getMaxOccurs <em>Max Occurs</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.AttributeBaseImpl#getRelation <em>Relation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.AttributeBaseImpl#getConnectedObject <em>Connected Object</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AttributeImpl extends EObjectImpl implements Attribute {
+public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 	/**
 	 * The default value of the '{@link #getMinOccurs() <em>Min Occurs</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -79,7 +79,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * @generated
 	 * @ordered
 	 */
-	protected RelationClass relation;
+	protected RelationClassBase relation;
 
 	/**
 	 * The cached value of the '{@link #getConnectedObject() <em>Connected Object</em>}' reference.
@@ -89,24 +89,15 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * @generated
 	 * @ordered
 	 */
-	protected ObjectClass connectedObject;
-
-	private Direction direction;
+	protected ObjectClassBase connectedObject;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AttributeImpl() {
+	protected AttributeBaseImpl() {
 		super();
-	}
-
-	public AttributeImpl(RelationClassImpl relation, ObjectClass connectedObject,
-			Direction whichend) {
-		this.connectedObject = connectedObject;
-		this.relation = relation;
-		this.direction = whichend;
 	}
 
 	/**
@@ -116,7 +107,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MetamodelPackage.Literals.ATTRIBUTE;
+		return MetamodelBasePackage.Literals.ATTRIBUTE_BASE;
 	}
 
 	/**
@@ -137,7 +128,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		int oldMinOccurs = minOccurs;
 		minOccurs = newMinOccurs;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.ATTRIBUTE__MIN_OCCURS, oldMinOccurs, minOccurs));
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.ATTRIBUTE_BASE__MIN_OCCURS, oldMinOccurs, minOccurs));
 	}
 
 	/**
@@ -158,7 +149,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		int oldMaxOccurs = maxOccurs;
 		maxOccurs = newMaxOccurs;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.ATTRIBUTE__MAX_OCCURS, oldMaxOccurs, maxOccurs));
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.ATTRIBUTE_BASE__MAX_OCCURS, oldMaxOccurs, maxOccurs));
 	}
 
 	/**
@@ -166,7 +157,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RelationClass getRelation() {
+	public RelationClassBase getRelation() {
 		return relation;
 	}
 
@@ -175,11 +166,11 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRelation(RelationClass newRelation) {
-		RelationClass oldRelation = relation;
+	public void setRelation(RelationClassBase newRelation) {
+		RelationClassBase oldRelation = relation;
 		relation = newRelation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.ATTRIBUTE__RELATION, oldRelation, relation));
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.ATTRIBUTE_BASE__RELATION, oldRelation, relation));
 	}
 
 	/**
@@ -187,7 +178,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ObjectClass getConnectedObject() {
+	public ObjectClassBase getConnectedObject() {
 		return connectedObject;
 	}
 
@@ -196,11 +187,11 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConnectedObject(ObjectClass newConnectedObject) {
-		ObjectClass oldConnectedObject = connectedObject;
+	public void setConnectedObject(ObjectClassBase newConnectedObject) {
+		ObjectClassBase oldConnectedObject = connectedObject;
 		connectedObject = newConnectedObject;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT, oldConnectedObject, connectedObject));
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.ATTRIBUTE_BASE__CONNECTED_OBJECT, oldConnectedObject, connectedObject));
 	}
 
 	/**
@@ -211,13 +202,13 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MetamodelPackage.ATTRIBUTE__MIN_OCCURS:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__MIN_OCCURS:
 				return getMinOccurs();
-			case MetamodelPackage.ATTRIBUTE__MAX_OCCURS:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__MAX_OCCURS:
 				return getMaxOccurs();
-			case MetamodelPackage.ATTRIBUTE__RELATION:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__RELATION:
 				return getRelation();
-			case MetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__CONNECTED_OBJECT:
 				return getConnectedObject();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -231,17 +222,17 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MetamodelPackage.ATTRIBUTE__MIN_OCCURS:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__MIN_OCCURS:
 				setMinOccurs((Integer)newValue);
 				return;
-			case MetamodelPackage.ATTRIBUTE__MAX_OCCURS:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__MAX_OCCURS:
 				setMaxOccurs((Integer)newValue);
 				return;
-			case MetamodelPackage.ATTRIBUTE__RELATION:
-				setRelation((RelationClass)newValue);
+			case MetamodelBasePackage.ATTRIBUTE_BASE__RELATION:
+				setRelation((RelationClassBase)newValue);
 				return;
-			case MetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT:
-				setConnectedObject((ObjectClass)newValue);
+			case MetamodelBasePackage.ATTRIBUTE_BASE__CONNECTED_OBJECT:
+				setConnectedObject((ObjectClassBase)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -255,17 +246,17 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MetamodelPackage.ATTRIBUTE__MIN_OCCURS:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__MIN_OCCURS:
 				setMinOccurs(MIN_OCCURS_EDEFAULT);
 				return;
-			case MetamodelPackage.ATTRIBUTE__MAX_OCCURS:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__MAX_OCCURS:
 				setMaxOccurs(MAX_OCCURS_EDEFAULT);
 				return;
-			case MetamodelPackage.ATTRIBUTE__RELATION:
-				setRelation((RelationClass)null);
+			case MetamodelBasePackage.ATTRIBUTE_BASE__RELATION:
+				setRelation((RelationClassBase)null);
 				return;
-			case MetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT:
-				setConnectedObject((ObjectClass)null);
+			case MetamodelBasePackage.ATTRIBUTE_BASE__CONNECTED_OBJECT:
+				setConnectedObject((ObjectClassBase)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -279,13 +270,13 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MetamodelPackage.ATTRIBUTE__MIN_OCCURS:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__MIN_OCCURS:
 				return minOccurs != MIN_OCCURS_EDEFAULT;
-			case MetamodelPackage.ATTRIBUTE__MAX_OCCURS:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__MAX_OCCURS:
 				return maxOccurs != MAX_OCCURS_EDEFAULT;
-			case MetamodelPackage.ATTRIBUTE__RELATION:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__RELATION:
 				return relation != null;
-			case MetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT:
+			case MetamodelBasePackage.ATTRIBUTE_BASE__CONNECTED_OBJECT:
 				return connectedObject != null;
 		}
 		return super.eIsSet(featureID);
@@ -309,9 +300,4 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		return result.toString();
 	}
 
-	@Override
-	public Direction getDirection() {
-		return direction;
-	}
-
-} //AttributeImpl
+} //AttributeBaseImpl

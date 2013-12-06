@@ -5,10 +5,6 @@ import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -46,13 +42,13 @@ public class TemplateTest {
 	
 	@Test
 	public void The_Builtin_template_have_one_ObjectClass() {
-		EList<ObjectClass> objects = fixture.getObjectClasses();
+		EList<ObjectClassBase> objects = fixture.getObjectClasses();
 		assertEquals(1,objects.size());
 	}
 
 	@Test
 	public void The_Builtin_template_have_one_RelationClass() {
-		EList<RelationClass> relations = fixture.getRelationClasses();
+		EList<RelationClassBase> relations = fixture.getRelationClasses();
 		assertEquals(1,relations.size());
 	}
 

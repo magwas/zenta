@@ -34,7 +34,6 @@ public class BasicObjectEditPartTest {
 		assertNotNull(editPart);
 		IDiagramModelObjectFigure figure = editPart.getFigure();
 		Color color = figure.getFillColor();
-		System.out.printf("color = %s\n", ColorFactory.convertRGBToString(color.getRGB()));
 		assertEquals("#ffa500",ColorFactory.convertRGBToString(color.getRGB()));
 		Color fontColor = figure.getTextControl().getForegroundColor();
 		assertEquals("#ffffff",ColorFactory.convertRGBToString(fontColor.getRGB()));

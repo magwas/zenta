@@ -7,20 +7,18 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.Attribute;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class AttributeTest {
 
-	protected Attribute fixture = null;
+	protected AttributeBase fixture = null;
 	private ModelAndMetaModelTestData testdata;
 
 	@Before
 	public void setUp() throws Exception {
-		this.fixture = MetamodelFactory.eINSTANCE.createAttribute();
+		this.fixture = MetamodelFactory.eINSTANCE.createAttributeBase();
 	}
 	
 	@After
@@ -45,5 +43,4 @@ public class AttributeTest {
 		assertTrue(0 < sc.getAttributes().size());
 		assertTrue(0 < tc.getAttributes().size());
 	}
-
 }

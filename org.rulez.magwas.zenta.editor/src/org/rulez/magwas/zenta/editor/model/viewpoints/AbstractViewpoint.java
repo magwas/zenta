@@ -7,18 +7,17 @@ package org.rulez.magwas.zenta.editor.model.viewpoints;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.metamodel.Attribute;
 import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.metamodel.RelationClassBase;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.TemplateBase;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -44,8 +43,8 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-    public boolean isAllowedType(referencesModelObject type) {
-        List<referencesModelObject> allowedList = getAllowedList();
+    public boolean isAllowedType(ReferencesModelObject type) {
+        List<ReferencesModelObject> allowedList = getAllowedList();
 		if(allowedList == null)
             return true;
        	if(!allowedList.contains(type))
@@ -56,7 +55,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
     /**
      * @return A list of allowed types or null
      */
-    protected List<referencesModelObject> getAllowedList() {
+    protected List<ReferencesModelObject> getAllowedList() {
         return getAllowedTypes();
     }
 
@@ -154,12 +153,12 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public IIdentifier create(referencesModelObject eClass) {
+	public IIdentifier create(ReferencesModelObject eClass) {
 		return eClass.create(folder);
 	}
 
 	@Override
-	public ImageDescriptor getImageDescriptor(referencesModelObject eClass) {
+	public ImageDescriptor getImageDescriptor(ReferencesModelObject eClass) {
 		return ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass);
 	}
 
@@ -170,16 +169,16 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public boolean isAllowedType(IZentaElement element) {
-		referencesModelObject oc = getClassFor(element);
+		ReferencesModelObject oc = getClassFor(element);
 		return getAllowedTypes().contains(oc);
 	}
 
 	@Override
-	public referencesModelObject getClassFor(IZentaElement element) {
+	public ReferencesModelObject getClassFor(IZentaElement element) {
 		String id = element.getObjectClass();
 		if(null == id)
 			return metamodel.getBuiltinObjectClass();
-		referencesModelObject oc = metamodel.getClassById(id);
+		ReferencesModelObject oc = metamodel.getClassById(id);
 		return oc;
 	}
 
@@ -194,13 +193,13 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public List<referencesModelObject> getAllowedTypes() {
-		List<referencesModelObject> allowedtypes = new ArrayList<referencesModelObject>();
-		for(Template template : metamodel.getTemplates()) {
-			for(ObjectClass oc : template.getObjectClasses())
-				allowedtypes.add(oc);
-			for(RelationClass rc : template.getRelationClasses())
-				allowedtypes.add(rc);
+	public List<ReferencesModelObject> getAllowedTypes() {
+		List<ReferencesModelObject> allowedtypes = new ArrayList<ReferencesModelObject>();
+		for(TemplateBase template : metamodel.getTemplates()) {
+			for(ObjectClassBase oc : template.getObjectClasses())
+				allowedtypes.add((ReferencesModelObject) oc);
+			for(RelationClassBase rc : template.getRelationClasses())
+				allowedtypes.add((ReferencesModelObject) rc);
 		}
 	    return allowedtypes;
 	}

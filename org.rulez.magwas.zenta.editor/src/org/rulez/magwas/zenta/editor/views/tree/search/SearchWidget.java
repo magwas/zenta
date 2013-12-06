@@ -34,7 +34,7 @@ import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UnTestedException;
@@ -236,7 +236,7 @@ public class SearchWidget extends Composite {
         fSearchFilter.setFilterOnName(true);
     }
 
-	private IAction createObjectAction(final referencesModelObject eClass) {
+	private IAction createObjectAction(final ReferencesModelObject eClass) {
         IAction action = new Action(eClass.getName(), IAction.AS_CHECK_BOX) {
             @Override
             public void run() {

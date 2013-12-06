@@ -6,8 +6,6 @@ import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -46,8 +44,8 @@ public class RelationClassTest {
 
 	@Test
 	public void testGetChildren() {
-		EList<RelationClass> kids = fixture.getChildren();
-		assertEquals(0,kids.size());
+		EList<RelationClassBase> kids = fixture.getChildren();
+		assertEquals(5,kids.size());
 	}
 
 	@Test
@@ -79,7 +77,7 @@ public class RelationClassTest {
 		String id2 = "9c441eb7";
 		IRelationship element = testdata.getRelationByID(id2);
 		int numOccurs = 0;
-		for(RelationClass oc:template.getRelationClasses())
+		for(RelationClassBase oc:template.getRelationClasses())
 			if(element.equals(oc.getReference()))
 				numOccurs++;
 		assertEquals(1,numOccurs);
@@ -97,7 +95,6 @@ public class RelationClassTest {
 		diagramRelation.setSource(diagramElement1);
 		diagramRelation.setTarget(diagramElement2);
 		diagramRelation.setRelationship(modelRelation);
-		System.out.printf("relation id=%s,\n\tmodelrelation=%s\n",diagramRelation.getId(),diagramRelation.getRelationship());
 		diagramElement1.addConnection(diagramRelation);
 		assertTrue(metamodel.hasRelationClassReferencing(modelRelation));
 	}

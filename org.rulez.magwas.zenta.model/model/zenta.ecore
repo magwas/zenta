@@ -12,7 +12,8 @@
       <eParameters name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Identifier" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Identifier" abstract="true" interface="true"
+      eSuperTypes="#//Nameable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
   </eClassifiers>
@@ -97,7 +98,10 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ZentaElement" abstract="true" eSuperTypes="#//ZentaModelElement #//Identifier #//Cloneable #//Nameable #//Documentable #//Properties"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ZentaElement" abstract="true" eSuperTypes="#//ZentaModelElement #//Identifier #//Cloneable #//Nameable #//Documentable #//Properties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagObjects" upperBound="-1"
+        eType="#//DiagramModelZentaObject" transient="true" derived="true" eOpposite="#//DiagramModelZentaObject/zentaElement"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JunctionElement" abstract="true" interface="true"
       eSuperTypes="#//ZentaElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="InterfaceElement" abstract="true" interface="true"
@@ -113,6 +117,8 @@
         resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ZentaElement"
         resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagConnections" upperBound="-1"
+        eType="#//DiagramModelZentaConnection" transient="true" derived="true" eOpposite="#//DiagramModelZentaConnection/relationship"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessLayerElement" abstract="true"
@@ -253,7 +259,7 @@
     </eOperations>
     <eOperations name="removeZentaElementFromModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="zentaElement" eType="#//ZentaElement"
-        volatile="true" resolveProxies="false"/>
+        resolveProxies="false" eOpposite="#//ZentaElement/diagObjects"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
   </eClassifiers>
@@ -266,7 +272,7 @@
     </eOperations>
     <eOperations name="removeRelationshipFromModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" eType="#//Relationship"
-        volatile="true" resolveProxies="false"/>
+        volatile="true" resolveProxies="false" eOpposite="#//Relationship/diagConnections"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//BusinessLayerElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="SketchModel" eSuperTypes="#//DiagramModel">

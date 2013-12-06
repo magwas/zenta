@@ -254,9 +254,9 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (borderColor: "); //$NON-NLS-1$
+		result.append(" (borderColor: ");
 		result.append(borderColor);
-		result.append(", imagePath: "); //$NON-NLS-1$
+		result.append(", imagePath: ");
 		result.append(imagePath);
 		result.append(')');
 		return result.toString();

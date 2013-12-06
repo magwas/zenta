@@ -5,10 +5,7 @@ package org.rulez.magwas.zenta.metamodel;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
-import org.rulez.magwas.zenta.metamodel.impl.BuiltinTemplate;
+import org.rulez.magwas.zenta.metamodel.handmade.BuiltinTemplate;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -17,18 +14,16 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 
 
-public interface Metamodel extends EObject {
-	
-	EList<Template> getTemplates();
-
-	ObjectClass getBuiltinObjectClass();
-
-	RelationClass getBuiltinRelationClass();
+public interface Metamodel extends MetamodelBase {
 	
 	BuiltinTemplate getBuiltinTemplate();
 
 	Template getTemplateFor(IDiagramModel dm);
 
+	ObjectClass getBuiltinObjectClass();
+
+	RelationClass getBuiltinRelationClass();
+	
 	ObjectClass getObjectClassReferencing(IZentaElement element);
 
 	RelationClass getRelationClassReferencing(IRelationship relation);
@@ -47,11 +42,11 @@ public interface Metamodel extends EObject {
 
 	Collection<RelationClass> getRelationships(IZentaElement object);
 
-	referencesModelObject getClassById(String id);
+	ReferencesModelObject getClassById(String id);
 
 	List<RelationClass> getWeaklist();
 
-	referencesModelObject getClassFor(IIdentifier rel);
+	ReferencesModelObjectBase getClassFor(IIdentifier rel);
 
 	boolean isValidRelationship(IZentaElement element1, IZentaElement element2,
 			RelationClass relationshipClass);

@@ -27,6 +27,7 @@ package org.rulez.magwas.zenta.model;
 public interface IDiagramModelZentaObject extends IDiagramModelObject, IDiagramModelContainer {
 	/**
 	 * Returns the value of the '<em><b>Zenta Element</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IZentaElement#getDiagObjects <em>Diag Objects</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Zenta Element</em>' reference isn't clear,
@@ -36,7 +37,8 @@ public interface IDiagramModelZentaObject extends IDiagramModelObject, IDiagramM
 	 * @return the value of the '<em>Zenta Element</em>' reference.
 	 * @see #setZentaElement(IZentaElement)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelZentaObject_ZentaElement()
-	 * @model resolveProxies="false" volatile="true"
+	 * @see org.rulez.magwas.zenta.model.IZentaElement#getDiagObjects
+	 * @model opposite="diagObjects" resolveProxies="false"
 	 * @generated
 	 */
 	IZentaElement getZentaElement();

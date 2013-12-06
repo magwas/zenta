@@ -26,6 +26,7 @@ package org.rulez.magwas.zenta.model;
 public interface IDiagramModelZentaConnection extends IDiagramModelConnection {
 	/**
 	 * Returns the value of the '<em><b>Relationship</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IRelationship#getDiagConnections <em>Diag Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relationship</em>' reference isn't clear,
@@ -35,7 +36,8 @@ public interface IDiagramModelZentaConnection extends IDiagramModelConnection {
 	 * @return the value of the '<em>Relationship</em>' reference.
 	 * @see #setRelationship(IRelationship)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelZentaConnection_Relationship()
-	 * @model resolveProxies="false" volatile="true"
+	 * @see org.rulez.magwas.zenta.model.IRelationship#getDiagConnections
+	 * @model opposite="diagConnections" resolveProxies="false" volatile="true"
 	 * @generated
 	 */
 	IRelationship getRelationship();

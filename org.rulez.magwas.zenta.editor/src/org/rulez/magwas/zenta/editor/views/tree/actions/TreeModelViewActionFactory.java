@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.referencesModelObject;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -87,7 +87,7 @@ public class TreeModelViewActionFactory {
         return list;
     }
 
-    private IAction createNewElementAction(final IFolder folder, final referencesModelObject eClass) {
+    private IAction createNewElementAction(final IFolder folder, final ReferencesModelObject eClass) {
         IAction action = new Action(eClass.getName()) {
             @Override
             public void run() {

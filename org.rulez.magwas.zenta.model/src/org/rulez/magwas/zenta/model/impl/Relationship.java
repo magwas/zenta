@@ -5,11 +5,14 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
@@ -33,6 +36,7 @@ import org.rulez.magwas.zenta.model.IRelationship;
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.Relationship#getSource <em>Source</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.Relationship#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.Relationship#getDiagConnections <em>Diag Connections</em>}</li>
  * </ul>
  * </p>
  *
@@ -117,6 +121,19 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<IDiagramModelZentaConnection> getDiagConnections() {
+		// TODO: implement this method to return the 'Diag Connections' reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -127,6 +144,8 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 				return getSource();
 			case IZentaPackage.RELATIONSHIP__TARGET:
 				return getTarget();
+			case IZentaPackage.RELATIONSHIP__DIAG_CONNECTIONS:
+				return getDiagConnections();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,7 +155,8 @@ public abstract class Relationship extends ZentaElement implements IRelationship
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
+    @SuppressWarnings("unchecked")
+				@Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IZentaPackage.RELATIONSHIP__SOURCE:
@@ -144,6 +164,10 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 				return;
 			case IZentaPackage.RELATIONSHIP__TARGET:
 				setTarget((IZentaElement)newValue);
+				return;
+			case IZentaPackage.RELATIONSHIP__DIAG_CONNECTIONS:
+				getDiagConnections().clear();
+				getDiagConnections().addAll((Collection<? extends IDiagramModelZentaConnection>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -163,6 +187,9 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 			case IZentaPackage.RELATIONSHIP__TARGET:
 				setTarget((IZentaElement)null);
 				return;
+			case IZentaPackage.RELATIONSHIP__DIAG_CONNECTIONS:
+				getDiagConnections().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -179,6 +206,8 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 				return source != null;
 			case IZentaPackage.RELATIONSHIP__TARGET:
 				return target != null;
+			case IZentaPackage.RELATIONSHIP__DIAG_CONNECTIONS:
+				return !getDiagConnections().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
