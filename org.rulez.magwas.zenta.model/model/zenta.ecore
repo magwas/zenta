@@ -272,7 +272,7 @@
     </eOperations>
     <eOperations name="removeRelationshipFromModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" eType="#//Relationship"
-        volatile="true" resolveProxies="false" eOpposite="#//Relationship/diagConnections"/>
+        resolveProxies="false" eOpposite="#//Relationship/diagConnections"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//BusinessLayerElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="SketchModel" eSuperTypes="#//DiagramModel">

@@ -108,7 +108,7 @@ public class StyledHtml implements IModelExporter {
         try {
             File stylefile = new File(stylepath);
             Document style;
-            if ((null != stylefile) && stylefile.exists()) {
+            if (stylefile.exists()) {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory
                         .newInstance();
                 DocumentBuilder db;

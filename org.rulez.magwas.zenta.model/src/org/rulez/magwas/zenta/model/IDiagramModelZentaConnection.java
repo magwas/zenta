@@ -37,7 +37,7 @@ public interface IDiagramModelZentaConnection extends IDiagramModelConnection {
 	 * @see #setRelationship(IRelationship)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelZentaConnection_Relationship()
 	 * @see org.rulez.magwas.zenta.model.IRelationship#getDiagConnections
-	 * @model opposite="diagConnections" resolveProxies="false" volatile="true"
+	 * @model opposite="diagConnections" resolveProxies="false"
 	 * @generated
 	 */
 	IRelationship getRelationship();

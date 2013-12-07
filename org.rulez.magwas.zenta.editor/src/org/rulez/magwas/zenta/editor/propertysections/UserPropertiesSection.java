@@ -722,7 +722,7 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
             if(columnIndex == 2) {
                 String value = ((IProperty)element).getValue();
             	if(null == value) {
-            		throw new UnTestedException();
+            		return null;
             	}
 				Matcher matcher = HTMLUtils.HTML_LINK_PATTERN.matcher(value);
                 return matcher.find() ? ColorConstants.blue : null;

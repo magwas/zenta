@@ -146,6 +146,23 @@ public class ZentaDiagramEditorPaletteTest {
 		List<PaletteEntry> children = relationsgroup.getChildren();
 		assertTrue(haveCreatorFor(newRc, children));
 	}
+	@Test
+	public void If_a_RelationClass_is_deleted_it_is_removed_from_the_Palette() {
+		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+
+		IRelationship newElement = testdata.createNewRelationClass("New test RC");
+		RelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
+		assertNotNull(newRc);
+		PaletteContainer relationsgroup = palette._getRelationsGroup();
+		assertNotNull(relationsgroup);
+		@SuppressWarnings("unchecked")
+		List<PaletteEntry> children = relationsgroup.getChildren();
+		assertTrue(haveCreatorFor(newRc, children));
+		
+		IFolder folder = (IFolder) newElement.eContainer();
+		folder.getElements().remove(newElement);
+		assertFalse(haveCreatorFor(newRc, children));
+	}
 		private boolean haveCreatorFor(ReferencesModelObject klass, List<PaletteEntry> children) {
 			return haveCreatorNamed(klass.getName(),children);
 		}

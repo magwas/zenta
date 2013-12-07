@@ -79,6 +79,16 @@ public class NotificationProcessor {
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaObject.class;
+			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__SOURCE_CONNECTIONS;
+			hasNew = false;
+			hasOld = true;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelComponent dmzc = (IDiagramModelComponent) oldVal;
+				mm.processConnectionRemovedFromDiagramElement(dmzc);
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IDiagramModelZentaObject.class;
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ELEMENT_SHAPE;
 			hasNew = true;
 			}

@@ -1790,7 +1790,7 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		addEOperation(diagramModelZentaObjectEClass, null, "removeZentaElementFromModel", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(diagramModelZentaConnectionEClass, IDiagramModelZentaConnection.class, "DiagramModelZentaConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDiagramModelZentaConnection_Relationship(), this.getRelationship(), this.getRelationship_DiagConnections(), "relationship", null, 0, 1, IDiagramModelZentaConnection.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDiagramModelZentaConnection_Relationship(), this.getRelationship(), this.getRelationship_DiagConnections(), "relationship", null, 0, 1, IDiagramModelZentaConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(diagramModelZentaConnectionEClass, null, "addRelationshipToModel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFolder(), "parent", 0, 1, IS_UNIQUE, IS_ORDERED);

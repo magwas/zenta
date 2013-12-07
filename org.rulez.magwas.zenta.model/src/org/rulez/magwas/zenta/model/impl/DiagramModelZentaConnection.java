@@ -5,9 +5,13 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -35,9 +39,14 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  */
 public class DiagramModelZentaConnection extends DiagramModelConnection implements IDiagramModelZentaConnection {
     /**
-     * Wrapped Zenta relationship
-     */
-    private IRelationship fRelationship;
+	 * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelationship()
+	 * @generated
+	 * @ordered
+	 */
+	protected IRelationship relationship;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -58,7 +67,16 @@ public class DiagramModelZentaConnection extends DiagramModelConnection implemen
 		return IZentaPackage.Literals.DIAGRAM_MODEL_ZENTA_CONNECTION;
 	}
 
-    @Override
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IRelationship getRelationship() {
+		return relationship;
+	}
+
+				@Override
     public String getName() {
         if(getRelationship() != null) {
             return getRelationship().getName();
@@ -101,25 +119,43 @@ public class DiagramModelZentaConnection extends DiagramModelConnection implemen
         }
     }
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public IRelationship getRelationship() {
-        return fRelationship;
-    }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public void setRelationship(IRelationship relationship) {
-        fRelationship = relationship;
-    }
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRelationship(IRelationship newRelationship, NotificationChain msgs) {
+		IRelationship oldRelationship = relationship;
+		relationship = newRelationship;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP, oldRelationship, newRelationship);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRelationship(IRelationship newRelationship) {
+		if (newRelationship != relationship) {
+			NotificationChain msgs = null;
+			if (relationship != null)
+				msgs = ((InternalEObject)relationship).eInverseRemove(this, IZentaPackage.RELATIONSHIP__DIAG_CONNECTIONS, IRelationship.class, msgs);
+			if (newRelationship != null)
+				msgs = ((InternalEObject)newRelationship).eInverseAdd(this, IZentaPackage.RELATIONSHIP__DIAG_CONNECTIONS, IRelationship.class, msgs);
+			msgs = basicSetRelationship(newRelationship, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP, newRelationship, newRelationship));
+	}
+
+				/**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT
@@ -149,7 +185,37 @@ public class DiagramModelZentaConnection extends DiagramModelConnection implemen
         }
     }
 
-    @Override
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP:
+				if (relationship != null)
+					msgs = ((InternalEObject)relationship).eInverseRemove(this, IZentaPackage.RELATIONSHIP__DIAG_CONNECTIONS, IRelationship.class, msgs);
+				return basicSetRelationship((IRelationship)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP:
+				return basicSetRelationship(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+				@Override
     public EObject getCopy() {
         IDiagramModelZentaConnection newConnection = (IDiagramModelZentaConnection)super.getCopy();
         IRelationship relationship = (IRelationship)getRelationship().getCopy();
@@ -210,7 +276,7 @@ public class DiagramModelZentaConnection extends DiagramModelConnection implemen
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP:
-				return getRelationship() != null;
+				return relationship != null;
 		}
 		return super.eIsSet(featureID);
 	}

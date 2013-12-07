@@ -8,10 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
@@ -85,19 +90,10 @@ public class RelationClassTest {
 
 	@Test
 	public void If_a_new_connection_added_to_a_template__a_RelationClass_will_be_created_for_it() {
-		IDiagramModelObject diagramElement1 = testdata.getDMOById("b2608459");//User
-		IDiagramModelObject diagramElement2 = testdata.getDMOById("f843c2f1");//ProcessStep
-		IRelationship modelRelation= testdata.getRelationByID("9a97ee2f");
-		assertNotNull(modelRelation);
-		assertFalse(metamodel.hasRelationClassReferencing(modelRelation));
-		IDiagramModelZentaConnection diagramRelation =
-				IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
-		diagramRelation.setSource(diagramElement1);
-		diagramRelation.setTarget(diagramElement2);
-		diagramRelation.setRelationship(modelRelation);
-		diagramElement1.addConnection(diagramRelation);
+		IRelationship modelRelation = createRelationClass();
 		assertTrue(metamodel.hasRelationClassReferencing(modelRelation));
 	}
+
 
 	@Test
 	public void A_defining_relation_for_a_RelationClass_becomes_of_that_ObjectClass() {
@@ -236,6 +232,30 @@ public class RelationClassTest {
 		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "textPosition", "4");
 	}
 
+	@Test
+	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
+		IRelationship element = createRelationClass();
+		ReferencesModelObjectBase oc = metamodel.getClassFor(element);
+		assertNotNull(oc);
+		IDiagramModelZentaConnection diagElement = element.getDiagConnections().get(0);
+		IDiagramModelZentaObject dia = (IDiagramModelZentaObject) diagElement.eContainer();
+		EList<IDiagramModelConnection> sourceConnections = dia.getSourceConnections();
+		sourceConnections.remove(diagElement);
+		assertNull(metamodel.getClassFor(element));
+	}
+	
+	@Test
+	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted() {
+		IRelationship element = createRelationClass();
+		String elemId = element.getId();
+		IDiagramModelZentaConnection dmo = element.getDiagConnections().get(0);
+		assertNotNull(dmo);
+		ReferencesModelObjectBase oc = metamodel.getClassById(elemId);
+		assertNotNull(oc);
+		((IFolder)element.eContainer()).getElements().remove(element);
+		assertNull(metamodel.getClassById(elemId));
+	}
+
 	private void assertTemplateHaveRelationClassFor(Template template,
 			String elementID) {
 		IRelationship element = testdata.getRelationByID(elementID);
@@ -244,5 +264,19 @@ public class RelationClassTest {
 
 	private RelationClass getRelationClassReferencing(IRelationship element) {
 		return metamodel.getRelationClassReferencing(element);
+	}
+	private IRelationship createRelationClass() {
+		IDiagramModelObject diagramElement1 = testdata.getDMOById("b2608459");//User
+		IDiagramModelObject diagramElement2 = testdata.getDMOById("f843c2f1");//ProcessStep
+		IRelationship modelRelation= testdata.getRelationByID("9a97ee2f");
+		assertNotNull(modelRelation);
+		assertFalse(metamodel.hasRelationClassReferencing(modelRelation));
+		IDiagramModelZentaConnection diagramRelation =
+				IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
+		diagramRelation.setSource(diagramElement1);
+		diagramRelation.setTarget(diagramElement2);
+		diagramRelation.setRelationship(modelRelation);
+		diagramElement1.addConnection(diagramRelation);
+		return modelRelation;
 	}
 } 

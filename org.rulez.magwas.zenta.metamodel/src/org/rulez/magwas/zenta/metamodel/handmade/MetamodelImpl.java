@@ -321,11 +321,7 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 		if(dmzc instanceof IDiagramModelZentaObject) {
 			IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) dmzc;
 			IZentaElement element = dmo.getZentaElement();
-			IDiagramModelComponent otherDMO = getDefiningModelObjectFor(element);
-			if (null == otherDMO) {
-				ReferencesModelObjectBase oc = this.getClassFor(element);
-				oc.getTemplate().removeClass(oc);
-			}
+			removeClassFor(element);
 		}
 	}
 
@@ -335,6 +331,23 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 			ReferencesModelObjectBase oc = this.getClassFor(element);
 			if(null != oc)
 				oc.getTemplate().removeClass(oc);
+		}
+	}
+
+	public void processConnectionRemovedFromDiagramElement(
+			IDiagramModelComponent dmzc) {
+		if(dmzc instanceof IDiagramModelZentaConnection) {
+			IDiagramModelZentaConnection dmo = (IDiagramModelZentaConnection) dmzc;
+			IZentaElement element = dmo.getRelationship();
+			removeClassFor(element);
+		}
+	}
+
+	private void removeClassFor(IZentaElement element) {
+		IDiagramModelComponent otherDMO = getDefiningModelObjectFor(element);
+		if (null == otherDMO) {
+			ReferencesModelObjectBase oc = this.getClassFor(element);
+			oc.getTemplate().removeClass(oc);
 		}
 	}
 }
