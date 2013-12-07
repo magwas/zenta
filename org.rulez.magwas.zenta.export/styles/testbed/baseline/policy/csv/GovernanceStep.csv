@@ -1,4 +1,0 @@
-id;state;actor;description;name;
-b2ad7581;not started;;The act of accepting the business specification.The actor(s) related to this process step is deliberately missing, so you can have an error in the policy check output as an example.;3. Business Specification Acceptance;
-f1864e14;ongoing;cc2694e8 151d0d88 8484165f fbe5dc11;Overview of the business specification.;2. Business Specification Overview;
-f9623e86;done;91d6a6a9;The process in which the business specification is created.;1. Creating business specification;

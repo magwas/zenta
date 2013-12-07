@@ -27,7 +27,6 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.UnTestedException;
 
 public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 		

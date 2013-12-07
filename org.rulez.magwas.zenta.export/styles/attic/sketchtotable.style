@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<style>
-<export  target="archirich.xml">
-    <transform language="xslt" script="sketchtotable.xslt" target="index.html" keep="true"/>
-</export>
-</style>

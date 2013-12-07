@@ -1,3 +1,0 @@
-id;ipAddress;lifeCycleStatus;location;networkZone;operatingSystem;physicalHardware;serverRole;technicalContact;shortName;description;name;
-221f9269;10.1.1.3;liquidated;Infirmary;infirmary network;uClinux;c64.infirmary;File server;Odo;salary1.infirmary;The salary1 server;salary1.infirmary;
-88d277df;10.1.1.2;in preparation;Infirmary;infirmary network;hurd;c64.infirmary;Mainframe;Quark;c64.infirmary;64 kb RAM C&lt;There is a trick here: a composition relation points from this to this. (dragged another instance of the node to the view, created a composition between the two instances, then removed the instance);c64.infirmary;
