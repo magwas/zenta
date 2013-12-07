@@ -8,7 +8,6 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class RelationClassImpl extends AbstractRelationClassImpl implements RelationClass {

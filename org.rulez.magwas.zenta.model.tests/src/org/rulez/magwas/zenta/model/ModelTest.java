@@ -42,5 +42,4 @@ public class ModelTest {
         assertEquals("b0e2bfd8",node.getAttribute("relationship"));
 	}
 
-
 }

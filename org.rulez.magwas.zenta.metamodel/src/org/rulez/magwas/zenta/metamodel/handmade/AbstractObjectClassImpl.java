@@ -17,7 +17,6 @@ import org.rulez.magwas.zenta.metamodel.impl.ObjectClassBaseImpl;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.UnTestedException;
 
 public abstract class AbstractObjectClassImpl extends ObjectClassBaseImpl implements ObjectClass {
 

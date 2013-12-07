@@ -3,7 +3,6 @@ package org.rulez.magwas.zenta.editor.diagram;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
@@ -26,6 +25,7 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -79,31 +79,64 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	}
 
     protected void processNotification(Notification notification) {
-    	if(notification.getEventType() == Notification.ADD) {
-    		if(notification.getNotifier() instanceof Template)
+    	Object notifier = notification.getNotifier();
+		if(notification.getEventType() == Notification.ADD) {
+    		if(notifier instanceof Template)
     			addClassToPalette(notification.getNewValue());
     	}
-		if(notification.getNotifier() instanceof ObjectClass)
-			changeObjectClassNameInPalette((ObjectClass) notification.getNotifier());
-		if(notification.getNotifier() instanceof RelationClass)
-			changeRelationClassNameInPalette((RelationClass) notification.getNotifier());
+    	if(notification.getEventType() == Notification.SET) {
+    		if(notifier instanceof ObjectClass)
+    			changeObjectClassNameInPalette((ObjectClass) notifier);
+    		if(notifier instanceof RelationClass)
+    			changeRelationClassNameInPalette((RelationClass) notifier);
+    	}
+    	if(notification.getEventType() == Notification.REMOVE) {
+    		if(notifier instanceof Template)
+    			processClassRemove(notification.getOldValue());
+    	}
+	}
+
+	private void processClassRemove(Object oldValue) {
+		PaletteContainer group = null;
+		if(oldValue instanceof ObjectClass)
+			group = this.fObjectClassGroup;
+		else if(oldValue instanceof RelationClass)
+			group = this.fRelationsGroup;
+		if(group != null) {
+			@SuppressWarnings("unchecked")
+			List<CreationToolEntry> children = group.getChildren();
+			CreationToolEntry entry = findClassEntry((ReferencesModelObject) oldValue, children);
+			group.remove(entry);
+		}
+		
 	}
 
 	private void changeRelationClassNameInPalette(RelationClass changedClass) {
 		@SuppressWarnings("unchecked")
 		List<CreationToolEntry> children = this.fRelationsGroup.getChildren();
-		for(CreationToolEntry entry : children)
-			if(entry.getId().equals(changedClass.getId()))
-				entry.setLabel(changedClass.getName());
+		renameEntry(changedClass, children);
 	}
 
 	private void changeObjectClassNameInPalette(ObjectClass changedClass) {
 		@SuppressWarnings("unchecked")
-		List<CombinedTemplateCreationEntry> children = fObjectClassGroup.getChildren();
-		for(CombinedTemplateCreationEntry entry : children)
-			if(entry.getId().equals(changedClass.getId()))
-				entry.setLabel(changedClass.getName());
+		List<CreationToolEntry> children = fObjectClassGroup.getChildren();
+		renameEntry(changedClass, children);
 	}
+
+	private void renameEntry(ReferencesModelObject changedClass,
+			List<CreationToolEntry> children) {
+		CreationToolEntry entry = findClassEntry(changedClass, children);
+		entry.setLabel(changedClass.getName());
+	}
+	
+	private CreationToolEntry findClassEntry(ReferencesModelObject changedClass,
+			List<CreationToolEntry> children) {
+		for(CreationToolEntry entry : children)
+			if(entry.getId().equals(changedClass.getId()))
+				return entry;
+		return null;
+	}
+
 
 	private void addClassToPalette(Object newValue) {
 		if(newValue instanceof ObjectClass)

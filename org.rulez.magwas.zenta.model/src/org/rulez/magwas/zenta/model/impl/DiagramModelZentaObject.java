@@ -44,6 +44,7 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  */
 public class DiagramModelZentaObject extends DiagramModelObject implements IDiagramModelZentaObject {
     
+	private static final String DEFAULT_SHAPE = "rectangleElementShape";
 	/**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -80,11 +81,7 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 	 * @ordered
 	 */
     protected int type = TYPE_EDEFAULT;
-    /**
-     * Wrapped Zenta Element
-     */
-    private IZentaElement fZentaElement;
-
+ 
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -453,11 +450,15 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 			return myShape;
 		IZentaElement definingElement = getDefiningElement();
 		if(null == definingElement)
-			return "rectangleElementShape";
+			return DEFAULT_SHAPE;
 		List<String> props = definingElement.getPropertyNamed("elementShape");
-		if(props.size()>0)
-			return props.get(0);
-		return "rectangleElementShape";
+		if(props.size()>0) {
+			String props0 = props.get(0);
+			if(null == props0)
+				return DEFAULT_SHAPE;
+			return props0;
+		}
+		return DEFAULT_SHAPE;
 	}
 	@Override
 	public String getFinalFont() {

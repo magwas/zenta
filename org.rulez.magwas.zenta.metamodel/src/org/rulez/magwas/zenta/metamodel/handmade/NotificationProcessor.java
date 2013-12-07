@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -27,6 +28,25 @@ public class NotificationProcessor {
 			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) newVal;
 				mm.processChildAddedToDiagram(dmzc);
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IZentaDiagramModel.class;
+			featureId = IZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN;
+			hasOld = true;
+			hasNew = false;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				IDiagramModelComponent dmzc = (IDiagramModelComponent) oldVal;
+				mm.processChildRemovedFromDiagram(dmzc);
+			}});
+		addCase(new DecisionCase(){{
+			notifierClass = IFolder.class;
+			featureId = IZentaPackage.FOLDER__ELEMENTS;
+			hasOld = true;
+			hasNew = false;
+			}
+			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+				mm.processChildRemovedFromFolder(oldVal);
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IZentaDiagramModel.class;
@@ -260,6 +280,7 @@ public class NotificationProcessor {
 	
 	public static void processNotification(MetamodelImpl mm,Notification notification) {
 		EObject lastObject = (EObject) notification.getNotifier();
+		//System.out.printf("notifier = %s\nold=%s\nnew=%s\n\n", lastObject,notification.getOldValue(),notification.getNewValue());
 		for(Class<?> klass : decisionTree.keySet())
 			if(klass.isInstance(lastObject))
 				processClassMatch(mm,notification,klass,decisionTree.get(klass));
@@ -280,7 +301,7 @@ public class NotificationProcessor {
 			}
 				private static void processNewMatch(MetamodelImpl mm,
 						Notification notification, Map<Boolean, DecisionCase> map) {
-					DecisionCase match = map.get(notification.getOldValue() == null);
+					DecisionCase match = map.get(notification.getOldValue() != null);
 					if(null != match)
 						match.run(mm, notification.getNotifier(),notification.getOldValue(),notification.getNewValue());
 				}

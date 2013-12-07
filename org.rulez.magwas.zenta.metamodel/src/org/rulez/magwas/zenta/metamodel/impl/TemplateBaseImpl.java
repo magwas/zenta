@@ -22,9 +22,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.metamodel.MetamodelBase;
 import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
 import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
 import org.rulez.magwas.zenta.metamodel.RelationClassBase;
 import org.rulez.magwas.zenta.metamodel.TemplateBase;
 import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.UnTestedException;
 
 /**
  * <!-- begin-user-doc -->
@@ -442,6 +444,20 @@ public class TemplateBaseImpl extends EObjectImpl implements TemplateBase {
 		result.append(path);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public TemplateBase getTemplate() {
+		throw new UnTestedException();
+	}
+
+	@Override
+	public void removeClass(ReferencesModelObjectBase oc) {
+		if(oc instanceof ObjectClassBase) {
+			getObjectClasses().remove(oc);
+		}
+		else if(oc instanceof RelationClassBase)
+			getRelationClasses().remove(oc);
 	}
 
 } //TemplateBaseImpl

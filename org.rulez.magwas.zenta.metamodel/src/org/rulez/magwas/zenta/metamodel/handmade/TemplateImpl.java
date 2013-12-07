@@ -19,7 +19,6 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.UnTestedException;
 
 public class TemplateImpl extends TemplateBaseImpl implements Template {
 

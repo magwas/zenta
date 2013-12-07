@@ -114,4 +114,6 @@ public interface TemplateBase extends ReferencesModelObjectBase {
 	 */
 	void setMetamodel(MetamodelBase value);
 
+	void removeClass(ReferencesModelObjectBase oc);
+
 } // TemplateBase

@@ -75,4 +75,6 @@ public interface ReferencesModelObjectBase extends EObject {
 	 */
 	void setName(String value);
 
+	TemplateBase getTemplate();
+
 } // ReferencesModelObjectBase

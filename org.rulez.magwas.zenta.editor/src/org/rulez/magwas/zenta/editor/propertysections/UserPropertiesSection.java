@@ -96,6 +96,7 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
@@ -719,7 +720,11 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
         @Override
         public Color getForeground(Object element, int columnIndex) {
             if(columnIndex == 2) {
-                Matcher matcher = HTMLUtils.HTML_LINK_PATTERN.matcher(((IProperty)element).getValue());
+                String value = ((IProperty)element).getValue();
+            	if(null == value) {
+            		throw new UnTestedException();
+            	}
+				Matcher matcher = HTMLUtils.HTML_LINK_PATTERN.matcher(value);
                 return matcher.find() ? ColorConstants.blue : null;
             }
             return null;

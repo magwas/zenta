@@ -20,8 +20,11 @@ import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelContainer;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -45,13 +48,7 @@ public class ZentaDiagramEditorPaletteTest {
 		EObject element = testdata.getById("2ea99535");
 		assertNotNull(element);
 		
-		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
-		
-		PaletteContainer objectsgroup = palette._getObjectsGroup();
-		assertNotNull(objectsgroup);
-		
-		@SuppressWarnings("unchecked")
-		List<PaletteEntry> children = objectsgroup.getChildren();
+		List<PaletteEntry> children = getObjectClassPaletteEntries();
 		for(ObjectClass klass : testdata.metamodel.getObjectClasses()) {
 			assertTrue(haveCreatorFor(klass, children));
 		}
@@ -105,6 +102,38 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 	
 	@Test
+	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted_from_the_palette() {
+		String ocName = "deletetest OC";
+		IZentaElement element = testdata.createNewObjectClass(ocName);
+		String elemId = element.getId();
+		ReferencesModelObjectBase oc = testdata.metamodel.getClassById(elemId);
+		assertNotNull(oc);
+		
+		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
+		IDiagramModelContainer dia = (IDiagramModelContainer) diagElement.eContainer();
+		
+		List<PaletteEntry> children = getObjectClassPaletteEntries();
+		assertTrue(haveCreatorNamed(ocName, children));
+		dia.getChildren().remove(diagElement);
+		assertNull(testdata.metamodel.getClassFor(element));
+		assertFalse(haveCreatorNamed(ocName, children));
+	}
+	@Test
+	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted_from_the_palette() {
+		String ocName = "deletetest OC";
+		IZentaElement element = testdata.createNewObjectClass(ocName);
+		String elemId = element.getId();
+		ReferencesModelObjectBase oc = testdata.metamodel.getClassById(elemId);
+		assertNotNull(oc);
+
+		List<PaletteEntry> children = getObjectClassPaletteEntries();
+		assertTrue(haveCreatorNamed(ocName, children));
+		
+		((IFolder)element.eContainer()).getElements().remove(element);
+		assertNull(testdata.metamodel.getClassById(elemId));
+		assertFalse(haveCreatorNamed(ocName, children));
+	}
+	@Test
 	public void If_a_new_RelationClass_is_created_it_is_shown_on_the_ViewPoint() {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
@@ -118,9 +147,20 @@ public class ZentaDiagramEditorPaletteTest {
 		assertTrue(haveCreatorFor(newRc, children));
 	}
 		private boolean haveCreatorFor(ReferencesModelObject klass, List<PaletteEntry> children) {
+			return haveCreatorNamed(klass.getName(),children);
+		}
+		private boolean haveCreatorNamed(String klass, List<PaletteEntry> children) {
 			for ( PaletteEntry kid : children)
-				if(klass.getName().equals(kid.getLabel()))
+				if(klass.equals(kid.getLabel()))
 					return true;
 			return false;
+		}
+		private List<PaletteEntry> getObjectClassPaletteEntries() {
+			ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+			PaletteContainer objectsgroup = palette._getObjectsGroup();
+			assertNotNull(objectsgroup);
+			@SuppressWarnings("unchecked")
+			List<PaletteEntry> children = objectsgroup.getChildren();
+			return children;
 		}
 }

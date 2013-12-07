@@ -248,7 +248,7 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 		element.setPropsFromDiagramObject(dmo);
 	}
 
-	private IDiagramModelComponent getDefiningModelObjectFor(IZentaElement element) {
+	private IDiagramModelComponent getDefiningModelObjectFor(IZentaElement element) {// FIXME refactor using element.getDiagObjects()
 		List<IDiagramModel> containingDMs = element.getZentaModel().getDiagramModels();
 		for(IDiagramModel dm : containingDMs)
 			if(dm instanceof IZentaDiagramModel)
@@ -315,5 +315,26 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 	@Override
 	public IZentaModel getModel() {
 		return model;
+	}
+
+	public void processChildRemovedFromDiagram(IDiagramModelComponent dmzc) {
+		if(dmzc instanceof IDiagramModelZentaObject) {
+			IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) dmzc;
+			IZentaElement element = dmo.getZentaElement();
+			IDiagramModelComponent otherDMO = getDefiningModelObjectFor(element);
+			if (null == otherDMO) {
+				ReferencesModelObjectBase oc = this.getClassFor(element);
+				oc.getTemplate().removeClass(oc);
+			}
+		}
+	}
+
+	public void processChildRemovedFromFolder(Object oldVal) {
+		if(oldVal instanceof IZentaElement) {
+			IZentaElement element = (IZentaElement) oldVal;
+			ReferencesModelObjectBase oc = this.getClassFor(element);
+			if(null != oc)
+				oc.getTemplate().removeClass(oc);
+		}
 	}
 }

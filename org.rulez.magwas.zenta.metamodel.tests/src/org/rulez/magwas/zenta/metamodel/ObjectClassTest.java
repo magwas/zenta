@@ -5,12 +5,12 @@ import static org.junit.Assert.*;
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -324,5 +324,28 @@ public class ObjectClassTest{
 		IDiagramModelZentaObject mo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
 		mo.setZentaElement(elementToAdd);
         dm.getChildren().add(mo);
-	}	
+	}
+	@Test
+	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
+		IZentaElement element = testdata.createNewObjectClass("deletetest OC");
+		ReferencesModelObjectBase oc = testdata.metamodel.getClassFor(element);
+		assertNotNull(oc);
+		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
+		IDiagramModelContainer dia = (IDiagramModelContainer) diagElement.eContainer();
+		dia.getChildren().remove(diagElement);
+		assertNull(testdata.metamodel.getClassFor(element));
+	}
+	
+	@Test
+	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted() {
+		IZentaElement element = testdata.createNewObjectClass("deletetest OC");
+		String elemId = element.getId();
+		IDiagramModelZentaObject dmo = element.getDiagObjects().get(0);
+		assertNotNull(dmo);
+		ReferencesModelObjectBase oc = testdata.metamodel.getClassById(elemId);
+		assertNotNull(oc);
+		((IFolder)element.eContainer()).getElements().remove(element);
+		assertNull(testdata.metamodel.getClassById(elemId));
+	}
+
 }
