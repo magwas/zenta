@@ -66,27 +66,39 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		return newElement;
 	}
 	public IRelationship createNewRelationClass(String elementName) {
-		IZentaElement newElement = createClassedTestElement();
-		IZentaElement newElement2 = createClassedTestElement();
 		RelationClass oc = metamodel.getBuiltinRelationClass();
-		IRelationship rel = (IRelationship) oc.create((IFolder) newElement.eContainer());
-		rel.setSource(newElement);
-		rel.setTarget(newElement2);
 		IDiagramModel dm = getTestDiagramModel();
-		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
-		IDiagramModelZentaObject dmo2 = ModelTestData.createDMOFor(newElement2);
-		newElement.setName("test OC 1");
-		newElement2.setName("test OC 2");
+		IRelationship rel = createNewConnection(elementName, oc, dm);
+		return rel;
+	}
+
+	public IRelationship createNewNondefiningRelationBasedOn(RelationClass baseClass) {
+		String name = "NonDefiningRelation";
+		IDiagramModel dm = (IDiagramModel) this.getById("63f1b081");
+		return createNewConnection(name, baseClass, dm);
+		
+	}
+	public IRelationship createNewConnection(String name,
+			RelationClass baseRelationClass, IDiagramModel diagram) {
+		IZentaElement sourceElement = createClassedTestElement();
+		IZentaElement targetElement = createClassedTestElement();
+		IRelationship rel = (IRelationship) baseRelationClass.create((IFolder) sourceElement.eContainer());
+		rel.setSource(sourceElement);
+		rel.setTarget(targetElement);
+		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(sourceElement);
+		IDiagramModelZentaObject dmo2 = ModelTestData.createDMOFor(targetElement);
+		sourceElement.setName("test OC 1");
+		targetElement.setName("test OC 2");
 		IDiagramModelZentaConnection diagramRelation =
 				IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
 		diagramRelation.setSource(dmo);
 		diagramRelation.setTarget(dmo2);
 		diagramRelation.setRelationship(rel);
 	
-		dm.getChildren().add(dmo);
-		dm.getChildren().add(dmo2);
+		diagram.getChildren().add(dmo);
+		diagram.getChildren().add(dmo2);
 		dmo.addConnection(diagramRelation);
-		rel.setName(elementName);
+		rel.setName(name);
 		return rel;
 	}
 

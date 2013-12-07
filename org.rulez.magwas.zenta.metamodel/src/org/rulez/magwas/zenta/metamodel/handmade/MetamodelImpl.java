@@ -353,6 +353,8 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 		IDiagramModelComponent otherDMO = getDefiningModelObjectFor(element);
 		if (null == otherDMO) {
 			ReferencesModelObjectBase oc = this.getClassFor(element);
+			if(null == oc)
+				return;
 			oc.getTemplate().removeClass(oc);
 		}
 	}

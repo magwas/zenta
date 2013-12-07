@@ -2,7 +2,6 @@ package org.rulez.magwas.zenta.tests;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
@@ -13,6 +12,7 @@ import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 
 public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 	public BasicConnectionEditPart editPart;
@@ -50,7 +50,11 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)diagramModel);
 	}
 	public EditPart getEditPartFor(String string) {
-		EObject mo = getById(string);
+		IDiagramModelComponent mo = (IDiagramModelComponent) getById(string);
+		return getEditPartFor(mo);
+	}
+
+	public EditPart getEditPartFor(IDiagramModelComponent mo) {
 		return (EditPart) editor.getGraphicalViewer().getEditPartRegistry().get(mo);
 	}
 

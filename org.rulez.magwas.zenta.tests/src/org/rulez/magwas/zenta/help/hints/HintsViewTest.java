@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.help.hints.HintsView;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.UITestUtils;
 import org.rulez.magwas.zenta.tests.UITestWindow;
