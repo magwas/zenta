@@ -27,6 +27,7 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.UnTestedException;
 
 public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 		
@@ -234,6 +235,10 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 			createOCforElement(element);
 		}
 	}
+		private boolean elementBecameDefiningByNameChange(IZentaElement element,
+				String oldName, String newName) {
+			return oldName.equals("") && (!newName.equals("")) && element.getPropertyNamed("name").size() == 0;
+		}
 
 	public void createOCforElement(IZentaElement element) {
 		Template template;
@@ -248,22 +253,24 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 		element.setPropsFromDiagramObject(dmo);
 	}
 
-	private IDiagramModelComponent getDefiningModelObjectFor(IZentaElement element) {// FIXME refactor using element.getDiagObjects()
-		List<IDiagramModel> containingDMs = element.getZentaModel().getDiagramModels();
-		for(IDiagramModel dm : containingDMs)
-			if(dm instanceof IZentaDiagramModel)
-				if(((IZentaDiagramModel) dm).getPropertyNamed("Template").size() > 0 ) {
-					IDiagramModelComponent diagelement = element.getElementFromDiagramModel(dm);
-					if(null != diagelement)
-						return diagelement;
-				}
+	private IDiagramModelComponent getDefiningModelObjectFor(IZentaElement element) {
+		EList<? extends IDiagramModelComponent> dmos;
+		if(element instanceof IRelationship)
+			dmos = ((IRelationship)element).getDiagConnections();
+		else
+			dmos = element.getDiagObjects();
+		for(IDiagramModelComponent dmo : dmos) {
+			IDiagramModel dia = dmo.getDiagramModel();
+			if(null == dia)
+				return null;
+			if(isTemplateDiagram(dia))
+				return dmo;
+		}
 		return null;
 	}
-
-	private boolean elementBecameDefiningByNameChange(IZentaElement element,
-			String oldName, String newName) {
-		return oldName.equals("") && (!newName.equals("")) && element.getPropertyNamed("name").size() == 0;
-	}
+		private boolean isTemplateDiagram(IDiagramModel dm) {
+			return ((IZentaDiagramModel) dm).getPropertyNamed("Template").size() > 0;
+		}
 
 	public void processDiagramHasNewProperty(IZentaDiagramModel dm, IProperty prop) {
 		Template template;

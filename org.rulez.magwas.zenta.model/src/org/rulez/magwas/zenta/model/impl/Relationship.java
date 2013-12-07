@@ -263,38 +263,4 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 		props.put("lineDecoration",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineDecoration());
 		return props;
 	}
-
-	@Override
-	public IDiagramModelComponent getElementFromDiagramModel(IDiagramModel dm) {
-		if(dm instanceof IZentaDiagramModel)
-			return scanDiagramLevel(dm);
-		return null;
-	}
-
-	private IDiagramModelComponent scanDiagramLevel(IDiagramModelContainer dm) {
-		for(IDiagramModelObject de : dm.getChildren())
-			if(de instanceof IDiagramModelZentaObject) {
-				IDiagramModelComponent res = scanOneElement(de);
-				if(null != res)
-					return res;
-			}
-		return null;
-	}
-		private IDiagramModelComponent scanOneElement(IDiagramModelObject de) {
-			IDiagramModelComponent res;
-			res = scanConnectionsFor(de);
-			if(null != res)
-				return res;
-			return scanDiagramLevel((IDiagramModelContainer) de);
-		}
-			private IDiagramModelComponent scanConnectionsFor(IDiagramModelObject de) {
-				for(IDiagramModelConnection conn : de.getSourceConnections()) {
-					if(conn instanceof IDiagramModelZentaConnection) {
-						IRelationship foundrel = ((IDiagramModelZentaConnection) conn).getRelationship();
-						if(foundrel.equals(this))
-							return (IDiagramModelComponent) conn;
-					}
-				}
-				return null;
-			}
 }

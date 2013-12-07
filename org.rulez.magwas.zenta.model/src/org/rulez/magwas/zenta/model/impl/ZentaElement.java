@@ -601,27 +601,6 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 		return props;
 	}
 
-	@Override
-	public IDiagramModelComponent getElementFromDiagramModel(IDiagramModel dm) {
-		if(dm instanceof IZentaDiagramModel)
-			return scanDiagramLevel(dm);
-		return null;
-	}
-
-	private IDiagramModelZentaObject scanDiagramLevel(IDiagramModelContainer dm) {
-		for(IDiagramModelObject de : dm.getChildren())
-			if(de instanceof IDiagramModelZentaObject) {
-				IDiagramModelZentaObject res = checkOneDiagramElement(de);
-				if(null != res)
-					return res;
-			}
-		return null;
-	}
-		private IDiagramModelZentaObject checkOneDiagramElement(IDiagramModelObject de) {
-			if(((IDiagramModelZentaObject) de).getZentaElement().equals(this))
-				return (IDiagramModelZentaObject) de;
-			return scanDiagramLevel((IDiagramModelContainer) de);
-		}
 
 	@Override
 	public void setPropsFromDiagramObject(IDiagramModelComponent dmo) {

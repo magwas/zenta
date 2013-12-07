@@ -261,7 +261,8 @@ public class ObjectClassTest{
 		IZentaElement newElement = testdata.createClassedTestElement();
 		IDiagramModel dm = testdata.getTestDiagramModel();
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
-		
+		assertNotNull(dmo);
+		assertEquals(dmo.getZentaElement(),newElement);
 		newElement.setName("New test OC");
 		dm.getChildren().add(dmo);
 

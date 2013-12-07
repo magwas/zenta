@@ -83,13 +83,12 @@ public class ModelTestData {
 	}
 
 	public static IDiagramModelZentaObject createDMOFor(IZentaElement newElement) {
-		IDiagramModelZentaObject dmo1 = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
-		assertNotNull(dmo1);
-		assertFalse("emptyShape".equals(dmo1.getElementShape()));
-		dmo1.setElementShape("emptyShape");
-		dmo1.setZentaElement(newElement);
-		dmo1.setBounds(0, 0, 100, 100);
-		IDiagramModelZentaObject dmo = dmo1;
+		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+		assertNotNull(dmo);
+		assertFalse("emptyShape".equals(dmo.getElementShape()));
+		dmo.setElementShape("emptyShape");
+		dmo.setZentaElement(newElement);
+		dmo.setBounds(0, 0, 100, 100);
 		return dmo;
 	}
 
