@@ -348,5 +348,4 @@ public class ObjectClassTest{
 		((IFolder)element.eContainer()).getElements().remove(element);
 		assertNull(testdata.metamodel.getClassById(elemId));
 	}
-
 }

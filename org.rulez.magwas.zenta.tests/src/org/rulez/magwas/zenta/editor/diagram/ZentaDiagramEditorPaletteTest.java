@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.palette.PaletteContainer;
@@ -23,7 +24,11 @@ import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
@@ -163,6 +168,43 @@ public class ZentaDiagramEditorPaletteTest {
 		folder.getElements().remove(newElement);
 		assertFalse(haveCreatorFor(newRc, children));
 	}
+	@Test
+	public void A_defining_element_with_a_nondefining_connection_can_be_removed() {
+		RelationClass baserc = testdata.metamodel.getBuiltinRelationClass();
+		IDiagramModel dm = testdata.getTestDiagramModel();
+		IRelationship newRelation = testdata.createUnnamedRelation(baserc, dm);
+
+		IZentaElement destElem = newRelation.getTarget();
+		
+		IDiagramModelZentaConnection reldmc = newRelation.getDiagConnections().get(0);
+		assertNotNull(reldmc.eContainer());
+		IDiagramModelZentaObject dmo = destElem.getDiagObjects().get(0);
+		IDiagramModelContainer container = (IDiagramModelContainer) dmo.eContainer();
+		
+		IDiagramModelObject ccontainer = (IDiagramModelObject) reldmc.eContainer();
+		
+		ReferencesModelObjectBase oc = testdata.metamodel.getClassFor(destElem);
+		assertEquals(destElem.getId(),destElem.getObjectClass());
+		assertNotNull(oc);
+		ReferencesModelObjectBase rc = testdata.metamodel.getClassFor(newRelation);
+		System.out.printf("newRelation = %s\nrc=%s\n", newRelation, rc);
+		assertNotSame(newRelation.getId(),newRelation.getObjectClass());
+		EList<IDiagramModelObject> kids = container.getChildren();
+		
+		EList<IDiagramModelConnection> kkids = ccontainer.getSourceConnections();
+		int nn = kkids.size();
+		int n = kids.size();
+		
+		kids.remove(dmo);
+		kkids.remove(reldmc);
+
+		assertNull(reldmc.eContainer());
+
+		assertEquals(nn-1,kkids.size());
+		assertEquals(n-1,kids.size());
+	}
+
+
 		private boolean haveCreatorFor(ReferencesModelObject klass, List<PaletteEntry> children) {
 			return haveCreatorNamed(klass.getName(),children);
 		}

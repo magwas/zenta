@@ -46,7 +46,7 @@ public interface Metamodel extends MetamodelBase {
 
 	List<RelationClass> getWeaklist();
 
-	ReferencesModelObjectBase getClassFor(IIdentifier rel);
+	ReferencesModelObjectBase getClassFor(IIdentifier modelElement);
 
 	boolean isValidRelationship(IZentaElement element1, IZentaElement element2,
 			RelationClass relationshipClass);

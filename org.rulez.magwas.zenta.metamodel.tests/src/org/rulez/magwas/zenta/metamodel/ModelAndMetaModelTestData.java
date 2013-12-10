@@ -1,6 +1,7 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
@@ -76,9 +77,15 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		String name = "NonDefiningRelation";
 		IDiagramModel dm = (IDiagramModel) this.getById("63f1b081");
 		return createNewConnection(name, baseClass, dm);
-		
 	}
 	public IRelationship createNewConnection(String name,
+			RelationClass baseRelationClass, IDiagramModel diagram) {
+		IRelationship rel = createUnnamedRelation(baseRelationClass, diagram);
+		rel.setName(name);
+		return rel;
+	}
+
+	public IRelationship createUnnamedRelation(
 			RelationClass baseRelationClass, IDiagramModel diagram) {
 		IZentaElement sourceElement = createClassedTestElement();
 		IZentaElement targetElement = createClassedTestElement();
@@ -98,7 +105,6 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		diagram.getChildren().add(dmo);
 		diagram.getChildren().add(dmo2);
 		dmo.addConnection(diagramRelation);
-		rel.setName(name);
 		return rel;
 	}
 
