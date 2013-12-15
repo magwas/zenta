@@ -8,6 +8,8 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Drawable;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -67,8 +69,12 @@ public class ConnectionDecorationFactory {
 	public Image getImageForName(String name) {
 		checkShapeValue(name);
 		IFigure panel = new Figure();
+        Image image = new Image(Display.getDefault(), WIDTH, HEIGHT);
+        Color white = new Color(image.getDevice(), 255, 255, 255);
+        image.setBackground(white);
+        panel.setBackgroundColor(white);
 		drawConnectionOnPanel(name, panel);
-		Image image = paintPanel(panel);
+		paintPanel(panel, image);
 		return image;
 	}
 
@@ -82,12 +88,10 @@ public class ConnectionDecorationFactory {
 			conn.layout();
 		}
 
-		private Image paintPanel(IFigure panel) {
-			Image image = new Image(Display.getDefault(), WIDTH, HEIGHT);
+		private void paintPanel(IFigure panel, Drawable image) {
 			GC gc = new GC(image);
 			SWTGraphics graphics = new SWTGraphics(gc);
 			panel.paint(graphics);
-			return image;
 		}
 
 		private void checkShapeValue(String shapeName) throws IllegalArgumentException{
