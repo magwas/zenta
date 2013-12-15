@@ -401,76 +401,74 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
 		String myColor = getFillColor();
 		if(null != myColor)
 			return myColor;
-		IZentaElement definingElement = getDefiningElement();
-		if(null == definingElement)
-			return null;
-		List<String> props = definingElement.getPropertyNamed("fillColor");
-		if(props.size()>0)
-			return props.get(0);
-		return null;
+        return getDefaultString("fillColor", null);
 	}
 	
-	@Override
-	public IZentaElement getDefiningElement() {
-		IZentaElement element = this.getZentaElement();
-		String oc = element.getObjectClass();
-		IZentaElement definingElement = (IZentaElement) ZentaModelUtils.getObjectByID(element.getZentaModel(), oc);
-		return definingElement;
-	}
 	@Override
 	public String getFinalFontColor() {
 		String myColor = getFontColor();
 		if(null != myColor)
 			return myColor;
-		IZentaElement definingElement = getDefiningElement();
-		if(null == definingElement)
-			return null;
-		List<String> props = definingElement.getPropertyNamed("fontColor");
-		if(props.size()>0)
-			return props.get(0);
-		return null;
+        return getDefaultString("fontColor", null);
 	}
+	
 	@Override
 	public int getFinalTextAlignment() {
 		int myAlignment = getTextAlignment();
 		if(TEXT_ALIGNMENT_NONE != myAlignment)
 			return myAlignment;
-		IZentaElement definingElement = getDefiningElement();
-		if(null == definingElement)
-			return TEXT_ALIGNMENT_CENTER;
-		List<String> props = definingElement.getPropertyNamed("textAlignment");
-		if(props.size()>0)
-			return new Integer(props.get(0));
-		return TEXT_ALIGNMENT_CENTER;
+        return getDefaultInt("textAlignment", TEXT_ALIGNMENT_CENTER);
 	}
+	
 	@Override
 	public String getFinalElementShape() {
 		String myShape = elementShape;
 		if(null != myShape)
 			return myShape;
-		IZentaElement definingElement = getDefiningElement();
-		if(null == definingElement)
-			return DEFAULT_SHAPE;
-		List<String> props = definingElement.getPropertyNamed("elementShape");
-		if(props.size()>0) {
-			String props0 = props.get(0);
-			if(null == props0)
-				return DEFAULT_SHAPE;
-			return props0;
-		}
-		return DEFAULT_SHAPE;
+        return getDefaultString("elementShape", DEFAULT_SHAPE);
 	}
+	
 	@Override
 	public String getFinalFont() {
 		String myFont = font;
 		if(null != myFont)
 			return myFont;
-		IZentaElement definingElement = getDefiningElement();
-		if(null == definingElement)
-			return null;
-		List<String> props = definingElement.getPropertyNamed("font");
-		if(props.size()>0)
-			return props.get(0);
-		return null;
+        return getDefaultString("font", null);
 	}
+	
+    private int getDefaultInt(String propname, int defaultShape) {
+        IZentaElement definingElement = getDefiningElement();
+        if(null == definingElement)
+            return defaultShape;
+        List<String> props = definingElement.getPropertyNamed(propname);
+        if(props.size()>0) {
+            String props0 = props.get(0);
+            if(null == props0)
+                return defaultShape;
+            return new Integer(props0);
+        }
+        return defaultShape;
+    }
+    
+    private String getDefaultString(String propname, String defaultresult) {
+        IZentaElement definingElement = getDefiningElement();
+        if(null == definingElement)
+            return null;
+        List<String> props = definingElement.getPropertyNamed(propname);
+        if(props.size()>0) {
+            String props0 = props.get(0);
+            if(null == props0)
+                return defaultresult;
+            return props0;
+        }
+        return defaultresult;
+    }
+    
+    private IZentaElement getDefiningElement() {
+        IZentaElement element = getZentaElement();
+        if(!getDiagramModel().isTemplate())
+            return(IZentaElement) ZentaModelUtils.getObjectByID(element.getZentaModel(), element.getObjectClass());
+        else
+            return element;
+    }
 }

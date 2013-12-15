@@ -79,8 +79,6 @@ public interface IViewpoint {
 
 	boolean isNestedConnectionTypeRelationship(IRelationship relation);
 
-	ReferencesModelObject getClassFor(IZentaElement element);
-
 	boolean isValidRelationship(ObjectClass sourceclass,
 			ObjectClass targetclass, RelationClass relationclass);
 

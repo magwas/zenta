@@ -58,7 +58,7 @@ public class RelationClassTest {
 	
 	@Test
 	public void The_relations_of_the_template_are_converted_to_RelationClass() {
-		Template template = metamodel.getTemplateForDiagram(testdata.getTestDiagramModel());
+		Template template = metamodel.getTemplateFor(testdata.getTestDiagramModel());
 		int ocsize = template.getRelationClasses().size();
 		assertTemplateHaveRelationClassFor(template, "a972e26e");
 		assertTemplateHaveRelationClassFor(template, "3da94729");
@@ -66,7 +66,7 @@ public class RelationClassTest {
 	}
 	@Test
 	public void Even_where_source_is_nondefining() {
-		Template template = metamodel.getTemplateForDiagram(testdata.getZDiagramModelById("e13c9626"));
+		Template template = metamodel.getTemplateFor(testdata.getZDiagramModelById("e13c9626"));
 		int ocsize = template.getRelationClasses().size();
 		assertTemplateHaveRelationClassFor(template, "9c441eb7");
 		assertEquals(ocsize,template.getRelationClasses().size());
@@ -233,13 +233,13 @@ public class RelationClassTest {
 	@Test
 	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IRelationship element = createRelationClass();
-		ReferencesModelObjectBase oc = metamodel.getClassFor(element);
+		ReferencesModelObjectBase oc = metamodel.getClassReferencing(element);
 		assertNotNull(oc);
 		IDiagramModelZentaConnection diagElement = element.getDiagConnections().get(0);
 		IDiagramModelZentaObject dia = (IDiagramModelZentaObject) diagElement.eContainer();
 		EList<IDiagramModelConnection> sourceConnections = dia.getSourceConnections();
 		sourceConnections.remove(diagElement);
-		assertNull(metamodel.getClassFor(element));
+		assertNull(metamodel.getClassReferencing(element));
 	}
 	
 	@Test

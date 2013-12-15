@@ -641,9 +641,4 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 				prop.setValue(value);
 				propertiess.add(prop);
 			}
-
-	@Override
-	public boolean isDefining() {
-		return getId() == getObjectClass();
-	}
 }

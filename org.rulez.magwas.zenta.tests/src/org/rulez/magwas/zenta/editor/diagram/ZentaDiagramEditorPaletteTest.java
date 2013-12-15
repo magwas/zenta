@@ -120,7 +120,7 @@ public class ZentaDiagramEditorPaletteTest {
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
 		assertTrue(haveCreatorNamed(ocName, children));
 		dia.getChildren().remove(diagElement);
-		assertNull(testdata.metamodel.getClassFor(element));
+		assertNull(testdata.metamodel.getClassReferencing(element));
 		assertFalse(haveCreatorNamed(ocName, children));
 	}
 	@Test
@@ -183,11 +183,7 @@ public class ZentaDiagramEditorPaletteTest {
 		
 		IDiagramModelObject ccontainer = (IDiagramModelObject) reldmc.eContainer();
 		
-		ReferencesModelObjectBase oc = testdata.metamodel.getClassFor(destElem);
-		assertEquals(destElem.getId(),destElem.getObjectClass());
-		assertNotNull(oc);
-		ReferencesModelObjectBase rc = testdata.metamodel.getClassFor(newRelation);
-		System.out.printf("newRelation = %s\nrc=%s\n", newRelation, rc);
+		ReferencesModelObjectBase rc = testdata.metamodel.getClassReferencing(newRelation);
 		assertNotSame(newRelation.getId(),newRelation.getObjectClass());
 		EList<IDiagramModelObject> kids = container.getChildren();
 		

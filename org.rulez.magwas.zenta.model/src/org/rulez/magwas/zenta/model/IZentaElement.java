@@ -54,9 +54,7 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	List<String> getPropertyNamed(String propname);
 	
 	void setPropsFromDiagramObject(IDiagramModelComponent dmo);
-
-	boolean isDefining();
-
+	
 	void addOrUpdateProperty(String key, String value);
 
 } // IZentaElement

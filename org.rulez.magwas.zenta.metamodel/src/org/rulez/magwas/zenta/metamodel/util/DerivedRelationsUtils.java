@@ -223,7 +223,7 @@ public class DerivedRelationsUtils {
 		int weakest = weaklist.size() - 1;
         
         for(IRelationship rel : chain) {
-            int index = weaklist.indexOf(metamodel.getClassFor(rel));
+            int index = weaklist.indexOf(metamodel.getClassReferencing(rel));
             if(index < weakest) {
                 weakest = index;
             }

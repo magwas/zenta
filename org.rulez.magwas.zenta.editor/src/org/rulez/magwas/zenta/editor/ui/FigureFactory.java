@@ -48,7 +48,7 @@ public class FigureFactory {
 		return defaultFigureName;
 	}
 	private static Class<?> convertStringToFigure(String shapeValue) {
-		if("".equals(shapeValue)) {
+		if(null == shapeValue || "".equals(shapeValue)) {
 			shapeValue = defaultFigureName;
 		}
 		Class<?> klass = figureClassMap.get(shapeValue);

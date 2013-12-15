@@ -17,26 +17,30 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
 
 	public ObjectClassImpl(IZentaElement reference, Template template) {
 		super(reference,template);
-		String refClassId = reference.getObjectClass();
-		String referenceId = reference.getId();
-		Metamodel metamodel = getMetamodel();
-		ObjectClass ancie = null;
-		if(haveAncestor(refClassId, referenceId))
-			ancie = getAncestorClass(refClassId, metamodel);
-		if(ancie == null)
-			ancie=metamodel.getBuiltinObjectClass();
+		ObjectClass ancie = getAncestorClass(reference);
 		setAncestor(ancie);
-		reference.setObjectClass(referenceId);
+		reference.setObjectClass(ancie.getId());
 	}
-		private boolean haveAncestor(String refClassId, String referenceId) {
-			return	refClassId != null &&
-					!"basicobject".equals(refClassId) &&
-					!referenceId.equals(refClassId);
-		}
-		private ObjectClass getAncestorClass(String refClassId, Metamodel metamodel) {
-			IZentaElement ancestorElement = (IZentaElement) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
-			return metamodel.getObjectClassReferencing(ancestorElement);
-		}
+        private ObjectClass getAncestorClass(IZentaElement reference) {
+            String refClassId = reference.getObjectClass();
+    		String referenceId = reference.getId();
+    		Metamodel metamodel = getMetamodel();
+    		ObjectClass ancie = null;
+    		if(haveAncestor(refClassId, referenceId))
+    			ancie = getAncestorClass(refClassId, metamodel);
+    		if(ancie == null)
+    			ancie=metamodel.getBuiltinObjectClass();
+            return ancie;
+        }
+    		private boolean haveAncestor(String refClassId, String referenceId) {
+    			return	refClassId != null &&
+    					!"basicobject".equals(refClassId) &&
+    					!referenceId.equals(refClassId);
+    		}
+    		private ObjectClass getAncestorClass(String refClassId, Metamodel metamodel) {
+    			IZentaElement ancestorElement = (IZentaElement) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
+    			return metamodel.getObjectClassReferencing(ancestorElement);
+    		}
 
 	@Override
 	public IIdentifier create(IFolder folder) {

@@ -60,4 +60,6 @@ public interface IDiagramModel extends IZentaModelElement, IDiagramModelContaine
 	 */
 	void setConnectionRouterType(int value);
 
+    boolean isTemplate();
+
 } // IDiagramModel

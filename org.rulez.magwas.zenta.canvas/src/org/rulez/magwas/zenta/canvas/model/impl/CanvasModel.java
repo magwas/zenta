@@ -267,4 +267,9 @@ public class CanvasModel extends DiagramModel implements ICanvasModel {
         return result.toString();
     }
 
+    @Override
+    public boolean isTemplate() {
+        return false;
+    }
+
 } //CanvasModel

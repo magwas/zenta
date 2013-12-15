@@ -11,7 +11,9 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -54,7 +56,6 @@ public class TotalViewpointTest {
 		IZentaElement targetElement = data.getElementById("f33bd0d2");//Process
 		List<RelationClass> rels = vp.getValidRelationships(sourceElement, targetElement);
 		List<String> expectedList = Arrays.asList("Basic Relation","TriesToDo");
-		
 		ArrayList<String> actualList = getClassNames(rels);
 		ModelTestUtils.assertEqualsAsSet(expectedList,actualList);
 		
@@ -62,7 +63,7 @@ public class TotalViewpointTest {
 		ModelTestUtils.assertEqualsAsSet(expectedList,actual2);
 	}
 
-	@Test
+    @Test
 	public void Allowed_connections_always_contain_builtin_relation() {
 		String procedureId = "f33bd0d2";
 		IZentaElement e1 = data.getElementById(procedureId);

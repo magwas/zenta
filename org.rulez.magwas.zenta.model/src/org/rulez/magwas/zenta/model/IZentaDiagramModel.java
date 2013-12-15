@@ -6,9 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import java.util.List;
-
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Diagram Model</b></em>'.
@@ -51,7 +48,5 @@ public interface IZentaDiagramModel extends IDiagramModel {
 	 * @generated
 	 */
 	void setViewpoint(int value);
-
-	List<String> getPropertyNamed(String string);
 
 } // IZentaDiagramModel

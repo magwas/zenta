@@ -96,8 +96,6 @@ public interface IDiagramModelZentaObject extends IDiagramModelObject, IDiagramM
 	 */
 	void removeZentaElementFromModel();
 
-	IZentaElement getDefiningElement();
-
 	String getFinalElementShape();
 
 } // IDiagramModelZentaObject

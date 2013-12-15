@@ -16,43 +16,30 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 
 public interface Metamodel extends MetamodelBase {
 	
-	BuiltinTemplate getBuiltinTemplate();
-
-	Template getTemplateFor(IDiagramModel dm);
-
+    IZentaModel getModel();
+    
+    ReferencesModelObject getClassById(String classId);
 	ObjectClass getBuiltinObjectClass();
-
 	RelationClass getBuiltinRelationClass();
 	
-	ObjectClass getObjectClassReferencing(IZentaElement element);
-
-	RelationClass getRelationClassReferencing(IRelationship relation);
-
+    BuiltinTemplate getBuiltinTemplate();
+    Template getTemplateFor(IDiagramModel dm);
+    Template getTemplateFor(IDiagramModelComponent element);
+    
+    ReferencesModelObject getClassOf(IIdentifier rel);
+    ReferencesModelObject getClassReferencing(IIdentifier modelElement);
+    ObjectClass getObjectClassReferencing(IZentaElement element);
+    RelationClass getRelationClassReferencing(IRelationship relation);
 	boolean hasRelationClassReferencing(IRelationship relation);
-
 	boolean hasObjectClassReferencing(IZentaElement elementToAdd);
 
-	Template getTemplateForDiagram(IDiagramModel diagramModel);
-
 	List<ObjectClass> getObjectClasses();
-
 	List<RelationClass> getRelationClasses();
-	
 	List<ObjectClass> getConnectorClasses();
-
+	
 	Collection<RelationClass> getRelationships(IZentaElement object);
-
-	ReferencesModelObject getClassById(String id);
-
 	List<RelationClass> getWeaklist();
-
-	ReferencesModelObjectBase getClassFor(IIdentifier modelElement);
-
 	boolean isValidRelationship(IZentaElement element1, IZentaElement element2,
 			RelationClass relationshipClass);
-
-	Template getTemplateFor(IDiagramModelComponent element);
-
-	IZentaModel getModel();
 
 } 

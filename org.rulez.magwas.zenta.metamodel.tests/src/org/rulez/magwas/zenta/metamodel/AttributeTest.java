@@ -38,8 +38,8 @@ public class AttributeTest {
 		IRelationship rel = testdata.createNewRelationClass("test relation");
 		IZentaElement source = rel.getSource();
 		IZentaElement target = rel.getTarget();
-		ObjectClass sc = (ObjectClass) testdata.metamodel.getClassFor(source);
-		ObjectClass tc = (ObjectClass) testdata.metamodel.getClassFor(target);
+		ObjectClass sc = (ObjectClass) testdata.metamodel.getClassReferencing(source);
+		ObjectClass tc = (ObjectClass) testdata.metamodel.getClassReferencing(target);
 		assertTrue(0 < sc.getAttributes().size());
 		assertTrue(0 < tc.getAttributes().size());
 	}

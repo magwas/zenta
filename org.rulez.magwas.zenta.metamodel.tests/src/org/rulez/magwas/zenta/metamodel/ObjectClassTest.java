@@ -75,7 +75,7 @@ public class ObjectClassTest{
 	
 	@Test
 	public void The_elements_of_the_template_are_converted_to_ObjectClass() {
-		Template template = testdata.metamodel.getTemplateForDiagram(diagramModel);
+		Template template = testdata.metamodel.getTemplateFor(diagramModel);
 		int ocsize = template.getObjectClasses().size();
 		assertTemplateHaveObjectClassFor(template, "ea94cf6c");
 		assertTemplateHaveObjectClassFor(template, "c3d03626");
@@ -122,10 +122,27 @@ public class ObjectClassTest{
 	}
 
 	@Test
-	public void A_defining_object_for_an_ObjectClass_becomes_of_that_ObjectClass() {
+	public void A_defining_object_for_an_ObjectClass_belongs_to_its_parents_ObjectClass_which_is_BasicObject_by_default() {
 		IZentaElement element = testdata.getElementById("ea94cf6c");
-		assertEquals("ea94cf6c",element.getObjectClass());
+		assertEquals("basicobject",element.getObjectClass());
 	}
+	
+    @Test
+    public void A_defining_object_for_an_ObjectClass_belongs_to_its_parents_ObjectClass() {
+        String id = "ea94cf6c";//User
+        IZentaElement user = testdata.getElementById(id);
+        IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
+        ObjectClass oc = testdata.metamodel.getObjectClassReferencing(user);
+        IZentaElement newElement1 = (IZentaElement) oc.create(folder);
+        IZentaElement newElement = newElement1;
+        IDiagramModel dm = testdata.getTestDiagramModel();
+        IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
+        
+        dm.getChildren().add(dmo);
+        newElement.setName("ChildOfUser");
+        IZentaElement element = newElement;
+        assertEquals("ea94cf6c",element.getObjectClass());
+    }
 
 	@Test
 	public void An_unnamed_element_does_not_define_an_ObjectClass() {
@@ -329,12 +346,12 @@ public class ObjectClassTest{
 	@Test
 	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IZentaElement element = testdata.createNewObjectClass("deletetest OC");
-		ReferencesModelObjectBase oc = testdata.metamodel.getClassFor(element);
+		ReferencesModelObjectBase oc = testdata.metamodel.getClassReferencing(element);
 		assertNotNull(oc);
 		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
 		IDiagramModelContainer dia = (IDiagramModelContainer) diagElement.eContainer();
 		dia.getChildren().remove(diagElement);
-		assertNull(testdata.metamodel.getClassFor(element));
+		assertNull(testdata.metamodel.getClassReferencing(element));
 	}
 	
 	@Test
@@ -346,6 +363,7 @@ public class ObjectClassTest{
 		ReferencesModelObjectBase oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
 		((IFolder)element.eContainer()).getElements().remove(element);
+		assertNull(dmo.eContainer());
 		assertNull(testdata.metamodel.getClassById(elemId));
 	}
 }

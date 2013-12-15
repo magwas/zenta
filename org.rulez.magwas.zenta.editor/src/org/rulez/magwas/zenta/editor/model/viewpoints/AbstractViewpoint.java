@@ -62,14 +62,14 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public boolean isValidRelationshipStart(IZentaElement sourceElement,
 			RelationClass relationshipType) {
-		ObjectClass sc = (ObjectClass) getClassFor(sourceElement);
+		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
 		return getSourceRelationClassesFor(sc).contains(relationshipType);
 	}
 
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
 			ObjectClass targetObjectType, RelationClass typeRel) {
-		ObjectClass sc = (ObjectClass) getClassFor(sourceElement);
+		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
 		return isValidRelationship(sc,targetObjectType,typeRel);
 	}
 
@@ -83,25 +83,25 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
 			IZentaElement targetElement, RelationClass eClass) {
-		ObjectClass sc = (ObjectClass) getClassFor(sourceElement);
-		ObjectClass tc = (ObjectClass) getClassFor(targetElement);
+		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
+		ObjectClass tc = (ObjectClass) metamodel.getObjectClassReferencing(targetElement);
 		return isValidRelationship(sc,tc,eClass);
 	}
 
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
 			IZentaElement targetElement, IRelationship rel) {
-		ObjectClass sc = (ObjectClass) getClassFor(sourceElement);
-		ObjectClass tc = (ObjectClass) getClassFor(targetElement);
-		RelationClass rc = (RelationClass) getClassFor(rel);
+		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
+		ObjectClass tc = (ObjectClass) metamodel.getObjectClassReferencing(targetElement);
+		RelationClass rc = (RelationClass) metamodel.getObjectClassReferencing(rel);
 		return getValidRelationships(sc,tc).contains(rc);
 	}
 
 	@Override
 	public List<RelationClass> getValidRelationships(
 			IZentaElement sourceElement, IZentaElement targetElement) {
-		ObjectClass sc = (ObjectClass) getClassFor(sourceElement);
-		ObjectClass tc = (ObjectClass) getClassFor(targetElement);
+		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
+		ObjectClass tc = (ObjectClass) metamodel.getObjectClassReferencing(targetElement);
 		return getValidRelationships(sc,tc);
 	}
 
@@ -126,7 +126,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	public List<RelationClass> getSourceRelationClassesFor(
 			IDiagramModelZentaObject sourceDiagramModelObject) {
 		IZentaElement element = sourceDiagramModelObject.getZentaElement();
-		ObjectClass oc = (ObjectClass) getClassFor(element);
+		ObjectClass oc = (ObjectClass) metamodel.getObjectClassReferencing(element);
 		return getSourceRelationClassesFor(oc);
 	}
 	
@@ -169,17 +169,8 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public boolean isAllowedType(IZentaElement element) {
-		ReferencesModelObject oc = getClassFor(element);
+		ReferencesModelObject oc = metamodel.getObjectClassReferencing(element);
 		return getAllowedTypes().contains(oc);
-	}
-
-	@Override
-	public ReferencesModelObject getClassFor(IZentaElement element) {
-		String id = element.getObjectClass();
-		if(null == id)
-			return metamodel.getBuiltinObjectClass();
-		ReferencesModelObject oc = metamodel.getClassById(id);
-		return oc;
 	}
 
 	@Override

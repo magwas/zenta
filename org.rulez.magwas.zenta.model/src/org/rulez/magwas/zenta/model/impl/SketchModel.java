@@ -158,4 +158,9 @@ public class SketchModel extends DiagramModel implements ISketchModel {
 		result.append(')');
 		return result.toString();
 	}
+
+    @Override
+    public boolean isTemplate() {
+        return false;
+    }
 } //SketchModel

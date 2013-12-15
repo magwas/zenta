@@ -166,13 +166,15 @@ public class ZentaDiagramModel extends DiagramModel implements IZentaDiagramMode
 		return result.toString();
 	}
 
-	@Override
-	public List<String> getPropertyNamed(String string) {
-		List<String> ret = new ArrayList<String>();
-		for(IProperty prop : this.getProperties())
-			if(prop.getKey().equals(string))
-				ret.add(prop.getValue());
-		return ret;
-	}
-
+    @Override
+    public boolean isTemplate() {
+        return getPropertyNamed("Template").size() > 0;
+    }
+        private List<String> getPropertyNamed(String string) {
+            List<String> ret = new ArrayList<String>();
+            for(IProperty prop : this.getProperties())
+                if(prop.getKey().equals(string))
+                    ret.add(prop.getValue());
+            return ret;
+        }
 } //ZentaDiagramModel
