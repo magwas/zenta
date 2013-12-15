@@ -187,13 +187,6 @@
               <artifactId>org.eclipse.ui.views.properties.tabbed</artifactId>
               <version>0.0.0</version>
             </dependency>
-<!--
-            <dependency>
-              <type>eclipse-plugin</type>
-              <artifactId>org.eclipse.ui.workbench</artifactId>
-              <version>0.0.0</version>
-            </dependency>
--->
             <dependency>
               <type>eclipse-plugin</type>
               <artifactId>org.eclipse.update.configurator</artifactId>
@@ -254,6 +247,16 @@
               <artifactId>org.eclipse.core.runtime</artifactId>
               <version>0.0.0</version>
             </dependency>
+            <!--dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.swtbot.eclipse.core</artifactId>
+              <version>0.0.0</version>
+            </dependency>
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.swtbot.junit4_x</artifactId>
+              <version>0.0.0</version>
+            </dependency-->
           </dependencies>
         </configuration>
       </plugin>

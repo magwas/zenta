@@ -37,8 +37,8 @@ public class XmlTestCase {
     public void assertOK() {
         resultDoc.normalizeDocument();
         testDoc.normalizeDocument();
-        String resultString = Util.xml2String(resultDoc.getDocumentElement());
-        String docString = Util.xml2String(testDoc.getDocumentElement());
+        String resultString = Util.xml2String(resultDoc.getDocumentElement()).replaceAll(" *", "");
+        String docString = Util.xml2String(testDoc.getDocumentElement()).replaceAll(" *", "");
         System.out.println("policy=" + policyDoc);
         if (!resultString.equals(docString)) {
             System.out.println(resultString);

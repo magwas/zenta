@@ -53,8 +53,7 @@ public class Transform extends Step {
 	}
 
     public Transformer mkTransformer(File style) {
-    	TransformerFactory tFactory = 
-    	                  javax.xml.transform.TransformerFactory.newInstance();
+        TransformerFactory tFactory = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl",null);
 
     		try {
 				return tFactory.newTransformer

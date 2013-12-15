@@ -6,7 +6,6 @@
 package org.rulez.magwas.zenta.help.hints;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.Hashtable;
 
@@ -396,7 +395,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
             try {
                 url = FileLocator.resolve(url);
             }
-            catch(IOException |NullPointerException ex) {
+            catch(Exception ex) {
             	throw new HelpFileNotExists(id,fileName);
             }
             

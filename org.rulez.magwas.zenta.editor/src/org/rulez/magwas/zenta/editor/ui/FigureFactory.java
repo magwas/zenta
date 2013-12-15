@@ -2,7 +2,6 @@ package org.rulez.magwas.zenta.editor.ui;
 
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -81,9 +80,7 @@ public class FigureFactory {
                        try {
 						constructor = figureClass.getConstructor(IDiagramModelObjectFigure.class);
 						obj = constructor.newInstance(parent);
-					} catch (NoSuchMethodException | SecurityException|InstantiationException | IllegalAccessException
-							| IllegalArgumentException
-							| InvocationTargetException e) {
+					} catch (Exception e) {
 						throw new RuntimeException(e);
 					}
         return obj;

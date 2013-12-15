@@ -1,8 +1,6 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;
