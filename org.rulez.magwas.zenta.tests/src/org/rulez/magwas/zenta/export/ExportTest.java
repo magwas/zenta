@@ -45,9 +45,6 @@ public class ExportTest {
 	public void testExport() throws IOException, ParserConfigurationException, SAXException, URISyntaxException, XPathExpressionException {
 		IZentaPackage.eINSTANCE.eClass();
 		ModelTestData data = new ModelTestData();
-//		Resource resource = ModelTestUtils.getZentaModelResource("test.zenta");
-//		resource.load(null);
-//		IZentaModel model = (IZentaModel)resource.getContents().get(0);
 		File temp = File.createTempFile("test", ".styles");
 		String policy = "newpolicy.style";
 		runDefaultStyleInDir(policy, data.model, temp);
