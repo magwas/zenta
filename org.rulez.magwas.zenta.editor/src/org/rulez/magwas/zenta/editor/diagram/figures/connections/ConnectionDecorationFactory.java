@@ -90,7 +90,10 @@ public class ConnectionDecorationFactory {
 
 		private void paintPanel(IFigure panel, Drawable image) {
 			GC gc = new GC(image);
+			Color white = new Color(gc.getDevice(),255,255,255);
+			gc.setBackground(white);
 			SWTGraphics graphics = new SWTGraphics(gc);
+			graphics.setBackgroundColor(white);
 			panel.paint(graphics);
 		}
 

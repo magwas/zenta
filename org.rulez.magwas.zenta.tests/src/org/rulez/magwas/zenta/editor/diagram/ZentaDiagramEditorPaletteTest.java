@@ -183,7 +183,6 @@ public class ZentaDiagramEditorPaletteTest {
 		
 		IDiagramModelObject ccontainer = (IDiagramModelObject) reldmc.eContainer();
 		
-		ReferencesModelObjectBase rc = testdata.metamodel.getClassReferencing(newRelation);
 		assertNotSame(newRelation.getId(),newRelation.getObjectClass());
 		EList<IDiagramModelObject> kids = container.getChildren();
 		
