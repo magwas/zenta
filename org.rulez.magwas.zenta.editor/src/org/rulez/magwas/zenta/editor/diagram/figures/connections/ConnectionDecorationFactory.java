@@ -8,6 +8,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Drawable;
 import org.eclipse.swt.graphics.GC;
@@ -70,13 +71,21 @@ public class ConnectionDecorationFactory {
 		checkShapeValue(name);
 		IFigure panel = new Figure();
         Image image = new Image(Display.getDefault(), WIDTH, HEIGHT);
-        Color white = new Color(image.getDevice(), 255, 255, 255);
-        image.setBackground(white);
-        panel.setBackgroundColor(white);
+        SWTGraphics graphics = createEmptyImage(panel, image);
 		drawConnectionOnPanel(name, panel);
-		paintPanel(panel, image);
+        panel.paint(graphics);
 		return image;
 	}
+        private SWTGraphics createEmptyImage(IFigure panel, Image image) {
+            GC gc = new GC(image);
+            Color white = gc.getDevice().getSystemColor(SWT.COLOR_WHITE);
+            SWTGraphics graphics = new SWTGraphics(gc);
+            graphics.setBackgroundColor(white);
+            gc.setBackground(white);
+            image.setBackground(white);
+            panel.setBackgroundColor(white);
+            return graphics;
+        }
 
 		private void drawConnectionOnPanel(String name, IFigure panel) {
 			IConnectionDecoration decorator = getByName(name);
@@ -86,15 +95,6 @@ public class ConnectionDecorationFactory {
 			decorator.setFigureProperties(conn);
 			panel.add(conn);
 			conn.layout();
-		}
-
-		private void paintPanel(IFigure panel, Drawable image) {
-			GC gc = new GC(image);
-			Color white = new Color(gc.getDevice(),255,255,255);
-			gc.setBackground(white);
-			SWTGraphics graphics = new SWTGraphics(gc);
-			graphics.setBackgroundColor(white);
-			panel.paint(graphics);
 		}
 
 		private void checkShapeValue(String shapeName) throws IllegalArgumentException{
