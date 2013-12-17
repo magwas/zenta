@@ -48,11 +48,16 @@ public class ModelTestData {
 		resource.save(options);
 	}
 
-	public IZentaDiagramModel getTestDiagramModel() {
+	public IZentaDiagramModel getTemplateDiagramModel() {
 		IZentaModel model = getModel();
 		IZentaDiagramModel diagramModel = (IZentaDiagramModel) ZentaModelUtils.getObjectByID(model, "2ea99535");
 		return diagramModel;
 	}
+    public IZentaDiagramModel getNonTemplateDiagramModel() {
+        IZentaModel model = getModel();
+        IZentaDiagramModel diagramModel = (IZentaDiagramModel) ZentaModelUtils.getObjectByID(model, "63f1b081");
+        return diagramModel;
+    }
 
 	public Resource getResource() {
 		return resource;

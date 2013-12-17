@@ -29,7 +29,7 @@ public class TotalViewpointTest {
 	@Before
 	public void setUp() {
 		data = new ModelAndEditPartTestData();
-		dm = data.getTestDiagramModel();
+		dm = data.getTemplateDiagramModel();
 		vp = ViewpointsManager.INSTANCE.getViewpoint(dm);
 	}
 

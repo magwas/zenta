@@ -32,7 +32,7 @@ public class ObjectClassTest{
 	public void setUp() throws Exception {
 		testdata = new ModelAndMetaModelTestData();
 		model = testdata.getModel();
-		diagramModel = testdata.getTestDiagramModel();
+		diagramModel = testdata.getTemplateDiagramModel();
 		fixture = testdata.metamodel.getBuiltinObjectClass();
 	}
 
@@ -135,7 +135,7 @@ public class ObjectClassTest{
         ObjectClass oc = testdata.metamodel.getObjectClassReferencing(user);
         IZentaElement newElement1 = (IZentaElement) oc.create(folder);
         IZentaElement newElement = newElement1;
-        IDiagramModel dm = testdata.getTestDiagramModel();
+        IDiagramModel dm = testdata.getTemplateDiagramModel();
         IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
         
         dm.getChildren().add(dmo);
@@ -263,7 +263,7 @@ public class ObjectClassTest{
 		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
 		dmo.setZentaElement(newelement);
 		dmo.setBounds(0, 0, 100, 100);
-		IDiagramModel dm = testdata.getTestDiagramModel();
+		IDiagramModel dm = testdata.getTemplateDiagramModel();
 		dm.getChildren().add(dmo);
 		assertNotNull(dmo);
 		ModelTestData.assertNotEquals("ellipseShape",dmo.getElementShape());
@@ -276,7 +276,7 @@ public class ObjectClassTest{
 	@Test
     public void An_ObjectClass_created_if_a_element_named_and_dropped_on_a_template() {
 		IZentaElement newElement = testdata.createClassedTestElement();
-		IDiagramModel dm = testdata.getTestDiagramModel();
+		IDiagramModel dm = testdata.getTemplateDiagramModel();
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
 		assertNotNull(dmo);
 		assertEquals(dmo.getZentaElement(),newElement);

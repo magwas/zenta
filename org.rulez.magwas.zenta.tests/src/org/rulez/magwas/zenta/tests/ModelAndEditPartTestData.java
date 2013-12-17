@@ -29,7 +29,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
         assertNotNull(model);
         metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
         assertNotNull(metamodel);
-		diagramModel = getTestDiagramModel();
+		diagramModel = getTemplateDiagramModel();
 		assertNotNull(diagramModel);
 		connection = getDMRById("24e3c661");
 		assertNotNull(connection);

@@ -26,7 +26,7 @@ public class MetamodelBuilderTest {
 	public void setUp() {
 		testdata = new ModelTestData();
 		model = testdata.getModel();
-		diagramModel = testdata.getTestDiagramModel();
+		diagramModel = testdata.getTemplateDiagramModel();
 		metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
 	}
 	

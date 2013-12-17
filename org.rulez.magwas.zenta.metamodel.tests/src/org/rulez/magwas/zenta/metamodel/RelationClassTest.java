@@ -58,7 +58,7 @@ public class RelationClassTest {
 	
 	@Test
 	public void The_relations_of_the_template_are_converted_to_RelationClass() {
-		Template template = metamodel.getTemplateFor(testdata.getTestDiagramModel());
+		Template template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
 		int ocsize = template.getRelationClasses().size();
 		assertTemplateHaveRelationClassFor(template, "a972e26e");
 		assertTemplateHaveRelationClassFor(template, "3da94729");

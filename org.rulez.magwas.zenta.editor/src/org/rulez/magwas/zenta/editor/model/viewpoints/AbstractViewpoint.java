@@ -169,7 +169,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public boolean isAllowedType(IZentaElement element) {
-		ReferencesModelObject oc = metamodel.getObjectClassReferencing(element);
+		ReferencesModelObject oc = metamodel.getClassOf(element);
 		return getAllowedTypes().contains(oc);
 	}
 

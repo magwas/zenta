@@ -11,9 +11,13 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditP
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject;
+import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
+import org.rulez.magwas.zenta.tests.UITestWindow;
 
 public class BasicObjectEditPartTest {
 
@@ -32,6 +36,7 @@ public class BasicObjectEditPartTest {
 		testdata.focusOnDiagram("2ea99535");
 		BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor("b2608459");
 		assertNotNull(editPart);
+		assertTrue(editPart.getFigure().isEnabled());
 		IDiagramModelObjectFigure figure = editPart.getFigure();
 		Color color = figure.getFillColor();
 		assertEquals("#ffa500",ColorFactory.convertRGBToString(color.getRGB()));
@@ -42,7 +47,18 @@ public class BasicObjectEditPartTest {
 		assertEquals("ellipseShape",((DiagramModelZentaObject)testdata.getDMOById("b2608459")).getFinalElementShape());
 		Font font = figure.getTextControl().getFont();
 		assertArrayEquals(FontFactory.get("1|Arial Black|11.0|1|GTK|1|").getFontData(),font.getFontData());
-
 	}
+	
+    @Test
+    public void NonDefining_elements_are_not_disabled() {
+        IZentaElement element = testdata.createClassedTestElement();
+        IZentaDiagramModel dia = testdata.getNonTemplateDiagramModel();
+        IDiagramModelZentaObject dmo = ModelAndEditPartTestData.createDMOFor(element);
+        dia.getChildren().add(dmo);
+        testdata.focusOnDiagram(dia.getId());
+        BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor(dmo.getId());
+        assertNotNull(editPart);
+        assertTrue(editPart.getFigure().isEnabled());
+    }
 
 }

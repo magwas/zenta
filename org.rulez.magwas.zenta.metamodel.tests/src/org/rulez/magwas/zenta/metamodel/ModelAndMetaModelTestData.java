@@ -26,7 +26,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
         metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
         assertNotNull(metamodel);
         assertNotNull(metamodel.getTemplates());
-		diagramModel = getTestDiagramModel();
+		diagramModel = getTemplateDiagramModel();
 		assertNotNull(diagramModel);
 		connection = getDMRById("24e3c661");
 		assertNotNull(connection);
@@ -57,7 +57,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 
 	public IZentaElement createNewObjectClass(String elementName) {
 		IZentaElement newElement = createClassedTestElement();
-		IDiagramModel dm = getTestDiagramModel();
+		IDiagramModel dm = getTemplateDiagramModel();
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
 	
 		dm.getChildren().add(dmo);
@@ -66,7 +66,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 	}
 	public IRelationship createNewRelationClass(String elementName) {
 		RelationClass oc = metamodel.getBuiltinRelationClass();
-		IDiagramModel dm = getTestDiagramModel();
+		IDiagramModel dm = getTemplateDiagramModel();
 		IRelationship rel = createNewConnection(elementName, oc, dm);
 		return rel;
 	}

@@ -24,10 +24,10 @@ public class TemplateTest {
 	public void setUp() throws Exception {
 		ModelTestData testdata = new ModelTestData();
 		model = testdata.getModel();
-		diagramModel = testdata.getTestDiagramModel();
+		diagramModel = testdata.getTemplateDiagramModel();
 		Metamodel metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinTemplate();
-		template = metamodel.getTemplateFor(testdata.getTestDiagramModel());
+		template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
 	}
 
 	@After

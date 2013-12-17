@@ -55,6 +55,7 @@ public class BasicConnectionEditPartTest {
 		testdata.focusOnDiagram("63f1b081");
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
 		assertNotNull(editPart);
+		assertTrue(editPart.getFigure().isEnabled());
 		BasicConnectionFigure figure = (BasicConnectionFigure) editPart.getConnectionFigure();
 		Font font = figure.getConnectionLabel().getFont();
 		assertArrayEquals(FontFactory.get("1|Andika|10.0|3|GTK|1|").getFontData(),font.getFontData());
@@ -68,4 +69,5 @@ public class BasicConnectionEditPartTest {
 		assertEquals("#0000ff",ColorFactory.convertRGBToString(color.getRGB()));
 		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration", figure.getlineDecorationString());		
 	}
+	
 }

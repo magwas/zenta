@@ -64,7 +64,7 @@ public class ZentaDiagramEditorPaletteTest {
 	public void Magic_Connector_magically_connects_two_diagram_objects() {
 		UITestWindow win = new UITestWindow();
 		ModelAndEditPartTestData data = new ModelAndEditPartTestData();
-		IFolder folder = ModelAndEditPartTestData.getFolderByKid(data.getTestDiagramModel());
+		IFolder folder = ModelAndEditPartTestData.getFolderByKid(data.getTemplateDiagramModel());
 		MagicConnectionModelFactory factory = new MagicConnectionModelFactory(folder);
 		tool = new MagicConnectionCreationTool();
 		tool.setFactory(factory);
@@ -171,7 +171,7 @@ public class ZentaDiagramEditorPaletteTest {
 	@Test
 	public void A_defining_element_with_a_nondefining_connection_can_be_removed() {
 		RelationClass baserc = testdata.metamodel.getBuiltinRelationClass();
-		IDiagramModel dm = testdata.getTestDiagramModel();
+		IDiagramModel dm = testdata.getTemplateDiagramModel();
 		IRelationship newRelation = testdata.createUnnamedRelation(baserc, dm);
 
 		IZentaElement destElem = newRelation.getTarget();

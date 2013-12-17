@@ -72,7 +72,7 @@ public class TreeModelViewActionFactoryTest {
 	public void New_ObjectClasses_are_shown_in_the_New_menu() {
 		IFolder selected = (IFolder) data.getById("196115c6");//Model root folder
 		
-		IDiagramModel dm = data.getTestDiagramModel();
+		IDiagramModel dm = data.getTemplateDiagramModel();
 
 		String id = "ea94cf6c";//User
 		IZentaElement user = data.getElementById(id);
