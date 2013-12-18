@@ -5,6 +5,7 @@
  */
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -58,6 +59,8 @@ public interface IViewpoint {
 	boolean isValidRelationship(IZentaElement sourceElement,
 			IZentaElement targetElement, IRelationship rel);
 
+	List<RelationClass> getValidRelationships(ObjectClass sourceObjectType, ObjectClass targetObjectType);
+    
 	List<RelationClass> getValidRelationships(IZentaElement sourceElement,
 			IZentaElement targetElement);
 
@@ -86,4 +89,11 @@ public interface IViewpoint {
 
 	List<RelationClass> getTargetRelationClassesFor(
 			ObjectClass targetclass);
+
+    Collection<ObjectClass> getAllowedTargets(
+            ObjectClass oc);
+
+    ObjectClass getObjectClassOf(
+            IDiagramModelZentaObject sourceDiagramModelObject);
+
 }

@@ -56,6 +56,7 @@ public abstract class AbstractObjectClassImpl extends ObjectClassBaseImpl implem
 
 	@Override
 	public Map<Direction,List<RelationClass>> getAllowedRelations() {
+
 		Map<Direction,List<RelationClass>> ret = new HashMap<Direction,List<RelationClass>>();
 		ret.put(Direction.SOURCE, new ArrayList<RelationClass>());
 		ret.put(Direction.TARGET, new ArrayList<RelationClass>());

@@ -4,8 +4,8 @@ package org.rulez.magwas.zenta.editor.diagram;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -17,9 +17,11 @@ import org.eclipse.ui.WorkbenchException;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditorPalette;
+import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
@@ -32,11 +34,10 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.ZentaElement;
-import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
-import org.rulez.magwas.zenta.tests.UITestWindow;
 
 public class ZentaDiagramEditorPaletteTest {
 
@@ -60,9 +61,7 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 	
 	@Test
-	@HaveGUI(waitUser = false)
 	public void Magic_Connector_magically_connects_two_diagram_objects() {
-		UITestWindow win = new UITestWindow();
 		ModelAndEditPartTestData data = new ModelAndEditPartTestData();
 		IFolder folder = ModelAndEditPartTestData.getFolderByKid(data.getTemplateDiagramModel());
 		MagicConnectionModelFactory factory = new MagicConnectionModelFactory(folder);
@@ -77,7 +76,87 @@ public class ZentaDiagramEditorPaletteTest {
 		tool._setRequest(req);
 		tool._setSkipModalMenu();
 		tool.handleCreateConnection();
-		win.showWindow();
+		assertEquals(Arrays.asList("Basic Relation", "TriesToDo"),tool._getMenuItems());
+	}
+	
+	@Test
+	public void Magic_Connector_magically_knows_what_to_connect() {
+		ModelAndEditPartTestData data = new ModelAndEditPartTestData();
+		IFolder folder = ModelAndEditPartTestData.getFolderByKid(data.getTemplateDiagramModel());
+		MagicConnectionModelFactory factory = new MagicConnectionModelFactory(folder);
+		tool = new MagicConnectionCreationTool();
+		tool.setFactory(factory);
+		tool.setViewer(data.editor.getGraphicalViewer());
+		CreateConnectionRequest req = new CreateConnectionRequest();
+		EditPart spart = data.getEditPartFor("b2608459");
+		List<String> expectedMenu = Arrays.asList(
+				"Basic Object",
+				"Basic Object/Basic Relation",
+				"User",
+				"User/Basic Relation",
+				"Data",
+				"Data/Basic Relation",
+				"Procedure",
+				"Procedure/Basic Relation",
+				"Procedure/TriesToDo",
+				"ProcessStep",
+				"ProcessStep/Basic Relation",
+				"NotActuallyDocumentation",
+				"NotActuallyDocumentation/Basic Relation",
+				"Title",
+				"Title/Basic Relation"
+				);
+
+		req.setSourceEditPart(spart);
+		tool._setRequest(req);
+		tool._setSkipModalMenu();
+		tool.handleCreateConnection();
+		assertEquals(expectedMenu,tool._getMenuItems());
+	}
+
+	@Test
+	public void Magic_Connector_magically_knows_what_to_connect_on_non_template_as_well() {
+		IZentaElement procedure = (IZentaElement) testdata.getById("f33bd0d2");
+		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(procedure);
+		ObjectClass oc = testdata.metamodel.getObjectClassReferencing(procedure);
+		IZentaElement element = (IZentaElement) oc.create(folder);
+		element.setName("testmcmkwtcontaw");
+		IZentaDiagramModel dia = testdata.getNonTemplateDiagramModel();
+		IDiagramModelZentaObject dmo = ModelAndEditPartTestData.createDMOFor(element);
+		dia.getChildren().add(dmo);
+		testdata.focusOnDiagram(dia.getId());
+		BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor(dmo.getId());
+		assertNotNull(editPart);
+
+		MagicConnectionModelFactory factory = new MagicConnectionModelFactory(folder);
+		tool = new MagicConnectionCreationTool();
+		tool.setFactory(factory);
+		tool.setViewer(testdata.editor.getGraphicalViewer());
+		CreateConnectionRequest req = new CreateConnectionRequest();
+		List<String> expectedMenu = Arrays.asList(
+				"Basic Object",
+				"Basic Object/Basic Relation",
+				"User",
+				"User/Basic Relation",
+				"Data",
+				"Data/Basic Relation",
+				"Data/uses",
+				"Procedure",
+				"Procedure/Basic Relation",
+				"ProcessStep",
+				"ProcessStep/Basic Relation",
+				"NotActuallyDocumentation",
+				"NotActuallyDocumentation/Basic Relation",
+				"NotActuallyDocumentation/describes",
+				"Title",
+				"Title/Basic Relation"
+				);
+
+		req.setSourceEditPart(editPart);
+		tool._setRequest(req);
+		tool._setSkipModalMenu();
+		tool.handleCreateConnection();
+		assertEquals(expectedMenu,tool._getMenuItems());
 	}
 
 	@Test

@@ -2,6 +2,8 @@ package org.rulez.magwas.zenta.metamodel;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
@@ -365,5 +367,15 @@ public class ObjectClassTest{
 		((IFolder)element.eContainer()).getElements().remove(element);
 		assertNull(dmo.eContainer());
 		assertNull(testdata.metamodel.getClassById(elemId));
+	}
+	
+	@Test
+	public void A_defining_element_appearing_in_two_templates_results_only_one_objectClass() {
+	    List<ObjectClass> oclist = testdata.metamodel.getObjectClasses();
+	    int count = 0;
+	    for(ObjectClass oc : oclist)
+	        if(oc.getName().equals("Procedure"))
+	            count++;
+	    assertEquals(1,count);
 	}
 }

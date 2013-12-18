@@ -2,6 +2,8 @@ package org.rulez.magwas.zenta.metamodel;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
@@ -48,7 +50,7 @@ public class RelationClassTest {
 	@Test
 	public void testGetChildren() {
 		EList<RelationClassBase> kids = fixture.getChildren();
-		assertEquals(5,kids.size());
+		assertEquals(4,kids.size());
 	}
 
 	@Test
@@ -252,6 +254,16 @@ public class RelationClassTest {
 		assertNotNull(oc);
 		((IFolder)element.eContainer()).getElements().remove(element);
 		assertNull(metamodel.getClassById(elemId));
+	}
+	
+	@Test
+	public void A_defining_connection_in_more_templates_defines_one_RelationClass() {
+		List<RelationClass> classes = metamodel.getRelationClasses();
+		int count = 0;
+		for(RelationClass rc : classes)
+			if(rc.getName().equals("TriesToDo"))
+				count++;
+		assertEquals(1,count);
 	}
 
 	private void assertTemplateHaveRelationClassFor(Template template,

@@ -79,8 +79,11 @@ public class TemplateImpl extends TemplateBaseImpl implements Template {
 
 	@Override
 	public ObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {
-		for(ObjectClassBase oc : getObjectClasses()) {
-			if(oc.getReference().equals(classTemplate))
+		for(ObjectClassBase oc : ((MetamodelImpl)getMetamodel()).getObjectClasses()) {
+			IIdentifier reference = oc.getReference();
+			if(null == reference)
+				continue;
+			if(reference.equals(classTemplate))
 				return (ObjectClass)oc;
 		}
 		return null;
@@ -95,9 +98,13 @@ public class TemplateImpl extends TemplateBaseImpl implements Template {
 
 	@Override
 	public RelationClass getRelationClassReferencingElement(IRelationship classTemplate) {
-		for(RelationClassBase oc : getRelationClasses())
-			if(oc.getReference().equals(classTemplate))
+		for(RelationClassBase oc : ((MetamodelImpl)getMetamodel()).getRelationClasses()) {
+			IIdentifier reference = oc.getReference();
+			if(null == reference)
+				continue;
+			if(reference.equals(classTemplate))
 				return (RelationClass)oc;
+		}
 		return null;
 	}
 

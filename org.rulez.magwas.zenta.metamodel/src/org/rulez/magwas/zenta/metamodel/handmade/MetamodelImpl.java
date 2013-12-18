@@ -182,6 +182,8 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 	}
     @Override
     public ReferencesModelObject getClassOf(IIdentifier rel) {
+    	if(this.isDefining(rel))
+    		return getClassById(rel.getId());
         return getClassById(rel.getObjectClass());
     }
 
@@ -306,7 +308,7 @@ public class MetamodelImpl extends MetamodelBaseImpl implements Metamodel {
 			element.addOrUpdateProperty(key, value);
 	}
 
-	private boolean isDefining(IZentaElement element) {
+	private boolean isDefining(IIdentifier element) {
 	    return null != getClassReferencing(element);
     }
 

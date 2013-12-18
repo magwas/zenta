@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor.model.viewpoints;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
@@ -62,14 +63,14 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public boolean isValidRelationshipStart(IZentaElement sourceElement,
 			RelationClass relationshipType) {
-		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
+		ObjectClass sc = getClassOf(sourceElement);
 		return getSourceRelationClassesFor(sc).contains(relationshipType);
 	}
 
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
 			ObjectClass targetObjectType, RelationClass typeRel) {
-		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
+		ObjectClass sc = getClassOf(sourceElement);
 		return isValidRelationship(sc,targetObjectType,typeRel);
 	}
 
@@ -83,16 +84,16 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
 			IZentaElement targetElement, RelationClass eClass) {
-		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
-		ObjectClass tc = (ObjectClass) metamodel.getObjectClassReferencing(targetElement);
+		ObjectClass sc = getClassOf(sourceElement);
+		ObjectClass tc = getClassOf(targetElement);
 		return isValidRelationship(sc,tc,eClass);
 	}
 
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
 			IZentaElement targetElement, IRelationship rel) {
-		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
-		ObjectClass tc = (ObjectClass) metamodel.getObjectClassReferencing(targetElement);
+		ObjectClass sc = getClassOf(sourceElement);
+		ObjectClass tc = getClassOf(targetElement);
 		RelationClass rc = (RelationClass) metamodel.getObjectClassReferencing(rel);
 		return getValidRelationships(sc,tc).contains(rc);
 	}
@@ -100,12 +101,13 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public List<RelationClass> getValidRelationships(
 			IZentaElement sourceElement, IZentaElement targetElement) {
-		ObjectClass sc = (ObjectClass) metamodel.getObjectClassReferencing(sourceElement);
-		ObjectClass tc = (ObjectClass) metamodel.getObjectClassReferencing(targetElement);
+		ObjectClass sc = getClassOf(sourceElement);
+		ObjectClass tc = getClassOf(targetElement);
 		return getValidRelationships(sc,tc);
 	}
 
-	private List<RelationClass> getValidRelationships(ObjectClass sc,
+	@Override
+	public List<RelationClass> getValidRelationships(ObjectClass sc,
 			ObjectClass tc) {
 		List<RelationClass> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
 		List<RelationClass> destrels = tc.getAllowedRelations().get(Direction.TARGET);
@@ -118,6 +120,20 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
+	public Collection<ObjectClass> getAllowedTargets(ObjectClass oc) {
+        List<RelationClass> allowedRelations = oc.getAllowedRelations().get(Direction.SOURCE);
+        List<ObjectClass> canConnectTo = new ArrayList<ObjectClass>();
+        for(RelationClass rel : allowedRelations)
+            for(ObjectClass targetclass : metamodel.getObjectClasses()) {
+                boolean alreadyContains = canConnectTo.contains(targetclass);
+                if(!alreadyContains &&
+                   targetclass.getAllowedRelations().get(Direction.TARGET).contains(rel))
+                    canConnectTo.add(targetclass);
+            }
+        return canConnectTo;
+    }
+
+    @Override
 	public List<RelationClass> getRelationClasses() {
 		return metamodel.getRelationClasses();
 	}
@@ -125,10 +141,22 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public List<RelationClass> getSourceRelationClassesFor(
 			IDiagramModelZentaObject sourceDiagramModelObject) {
-		IZentaElement element = sourceDiagramModelObject.getZentaElement();
-		ObjectClass oc = (ObjectClass) metamodel.getObjectClassReferencing(element);
+		ObjectClass oc = getObjectClassOf(sourceDiagramModelObject);
 		return getSourceRelationClassesFor(oc);
 	}
+
+	private ObjectClass getClassOf(IZentaElement element) {
+		return (ObjectClass) metamodel.getClassOf(element);
+	}
+
+
+	@Override
+    public ObjectClass getObjectClassOf(
+            IDiagramModelZentaObject sourceDiagramModelObject) {
+        IZentaElement element = sourceDiagramModelObject.getZentaElement();
+		ObjectClass oc = getClassOf(element);
+        return oc;
+    }
 	
 	@Override
 	public List<RelationClass> getSourceRelationClassesFor(ObjectClass startElement) {
