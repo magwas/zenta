@@ -1,0 +1,28 @@
+Source: zenta
+Section: graphics
+Priority: extra
+Maintainer: Árpád Magosányi <mag@balabit.hu>
+Build-Depends: debhelper (>= 8.0.0), maven (>=3)
+Standards-Version: 3.9.4
+Homepage: http://magwas.github.io/zenta/
+
+Package: zenta
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: metamodel-aware architecture modeling tool
+ Zenta is a free, open source, cross-platform tool and editor
+ to create models along with their metamodels.
+ .
+ Zenta is targeted toward all levels of Architects and Modellers.
+ It is intended to provide a low cost to entry (i.e. free) solution
+ to users who may be making their first steps in the architecture
+ modelling or who are looking for a cross-platform modelling tool
+ for their company or institution.
+ .
+ Zenta boasts an export module which can export your model
+ theoretically in any format, and does have styles to do it in
+ docbook, html, opendoc and csv.
+ .
+ The export module also does conformance checks to your metamodels.
+ .
+ Metamodels are easily expressed with graphical models.

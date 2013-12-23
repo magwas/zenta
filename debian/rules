@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@ 
+
+build:
+	mvn -Pno-unit-tests install 
+
+override_dh_clean:
+	dh_clean
+	rm -rf `find -type d -name target` `find -type f -name '*.class'` org.rulez.magwas.zenta.tests/generated-images/* org.rulez.magwas.zenta.help/org.rulez.magwas.zenta.help.jar org.rulez.magwas.zenta.templates/org.rulez.magwas.zenta.templates.jar uk.ac.bolton.jdom/uk.ac.bolton.jdom.jar org.rulez.magwas.zenta.export/org.rulez.magwas.zenta.export.jar org.rulez.magwas.zenta.model/org.rulez.magwas.zenta.model.jar org.rulez.magwas.zenta.editor/org.rulez.magwas.zenta.editor.jar org.rulez.magwas.zenta.canvas/org.rulez.magwas.zenta.canvas.jar org.rulez.magwas.zenta.widgets/org.rulez.magwas.zenta.widgets.jar
+
+override_dh_auto_install:
+	dh_auto_install
+	mkdir -p debian/zenta/usr/share
+	unzip -d debian/zenta/usr/share/ org.rulez.magwas.zenta.editor.build/target/products/Zenta-linux.gtk.${DEB_BUILD_GNU_CPU}.zip
+	mv debian/zenta/usr/share/Zenta debian/zenta/usr/share/zenta
