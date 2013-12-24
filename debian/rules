@@ -12,7 +12,7 @@
 %:
 	dh $@ 
 
-build:
+override_dh_auto_build:
 	mvn -Pno-unit-tests install 
 
 override_dh_clean:
