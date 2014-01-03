@@ -207,6 +207,11 @@ public abstract class ZentaElement extends EObjectImpl implements IZentaElement 
 	 * @generated
 	 */
 	public String getObjectClass() {
+		if(null == objectClass)
+			if(this instanceof Relationship)
+				objectClass = basicRelationClassId;
+			else
+				objectClass = basicObjectClassId;
 		return objectClass;
 	}
 

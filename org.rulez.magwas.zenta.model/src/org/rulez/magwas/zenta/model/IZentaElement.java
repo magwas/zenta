@@ -31,6 +31,9 @@ import org.eclipse.emf.ecore.EAttribute;
  */
 public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneable, INameable, IDocumentable, IProperties {
 
+	String basicObjectClassId = "basicobject";
+	String basicRelationClassId = "basicrelation";
+
 	/**
 	 * Returns the value of the '<em><b>Diag Objects</b></em>' reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IDiagramModelZentaObject}.

@@ -11,6 +11,7 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditP
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -55,6 +56,17 @@ public class BasicObjectEditPartTest {
 		dia.getChildren().add(dmo);
 		testdata.focusOnDiagram(dia.getId());
 		BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor(dmo.getId());
+		assertNotNull(editPart);
+		assertTrue(editPart.getFigure().isEnabled());
+	}
+	@Test
+	public void NonDefining_elements_are_not_disabled_in_template() {
+		IZentaDiagramModel dia = testdata.getTemplateDiagramModel();
+		IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) testdata.getDMOById("c4618eab");//NotDefinesObjectClass
+		testdata.focusOnDiagram(dia.getId());
+		BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor(dmo.getId());
+		IZentaElement element = dmo.getZentaElement();
+		ReferencesModelObject objectClass = testdata.metamodel.getClassOf(element);
 		assertNotNull(editPart);
 		assertTrue(editPart.getFigure().isEnabled());
 	}

@@ -53,6 +53,7 @@ public class ExportTest {
         Element node = (Element) xpath.evaluate("//objectClass[@name='Procedure']",
                 testDoc, XPathConstants.NODE);
         assertNotNull(node);
+        //FIXME: check objectlist.html as well
 	}
 		private void runDefaultStyleInDir(String policy, IZentaModel model,
 				File dirname) {

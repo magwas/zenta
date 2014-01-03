@@ -3,6 +3,7 @@ package org.rulez.magwas.zenta.metamodel.handmade;
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.RelationClassBase;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class RootRelationClass extends RelationClassImpl {
 	
@@ -20,7 +21,7 @@ public class RootRelationClass extends RelationClassImpl {
 	
 	@Override
 	public String getId() {
-		return "basicrelation";
+		return IZentaElement.basicRelationClassId;
 	}
 
 	@Override

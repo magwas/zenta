@@ -4,6 +4,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
 import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class RootObjectClass extends ObjectClassImpl implements ObjectClass {
 
@@ -23,7 +24,7 @@ public class RootObjectClass extends ObjectClassImpl implements ObjectClass {
 	
 	@Override
 	public String getId() {
-		return "basicobject";
+		return IZentaElement.basicObjectClassId;
 	}
 	
 	@Override
