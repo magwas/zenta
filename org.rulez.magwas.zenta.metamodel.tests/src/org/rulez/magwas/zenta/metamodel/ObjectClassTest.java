@@ -301,6 +301,20 @@ public class ObjectClassTest{
 	}
 
 	@Test
+	public void The_parent_objectclass_is_the_objectclass_of_the_defining_element() {
+		String elementName = "ParentedOc";
+		ObjectClass userClass = (ObjectClass) testdata.metamodel.getClassById("ea94cf6c");
+		IZentaElement newElement = testdata.createNewObjectClass(elementName, userClass);
+		
+		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		assertNotNull(newOc);
+		ObjectClass parentOc = (ObjectClass) newOc.getAncestor();
+		ObjectClass parentOc2 = (ObjectClass) testdata.metamodel.getClassById(newElement.getObjectClass());
+		assertEquals(userClass,parentOc);
+		assertEquals(userClass,parentOc2);
+	}
+
+	@Test
 	public void An_ObjectClass_is_created_if_a_diagram_containing_it_becomes_template() {
 		String elementName = "New test OC 3";
 		IZentaElement newElement = testdata.createClassedTestElement();

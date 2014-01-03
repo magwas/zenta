@@ -14,21 +14,34 @@ public class RelationClassImpl extends AbstractRelationClassImpl implements Rela
 
 	protected RelationClassImpl(IRelationship referenced, Template template) {
 		super(referenced,template);
-		String refClassId = referenced.getObjectClass();
-		String referenceId = referenced.getId();
-		Metamodel metamodel = getMetamodel();
-		RelationClass ancie = null;
-		if(null != refClassId && !"basicrelation".equals(refClassId)&&!referenceId.equals(refClassId)) {
-			IRelationship ancestorDefining = (IRelationship) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
-			ancie=metamodel.getRelationClassReferencing(ancestorDefining);
-		}
-		if(ancie == null)
-			ancie=metamodel.getBuiltinRelationClass();
+		RelationClass ancie = getAncestorClass(referenced);
 		setAncestor(ancie);
-		referenced.setObjectClass(referenceId);
+		referenced.setObjectClass(ancie.getId());
 		addAttributesToRelatedObjectClasses(template, Attribute.Direction.SOURCE, referenced.getSource());
 		addAttributesToRelatedObjectClasses(template, Attribute.Direction.TARGET, referenced.getTarget());
 	}
+		private RelationClass getAncestorClass(IRelationship referenced) {
+			String refClassId = referenced.getObjectClass();
+			String referenceId = referenced.getId();
+			Metamodel metamodel = getMetamodel();
+			RelationClass ancie = null;
+			if(haveAncestor(refClassId, referenceId)) {
+				ancie = getAncestorClass(refClassId, metamodel);
+			}
+			if(ancie == null)
+				ancie=metamodel.getBuiltinRelationClass();
+			return ancie;
+		}
+			private boolean haveAncestor(String refClassId, String referenceId) {
+				return null != refClassId && !"basicrelation".equals(refClassId)&&!referenceId.equals(refClassId);
+			}
+			private RelationClass getAncestorClass(String refClassId,
+					Metamodel metamodel) {
+				RelationClass ancie;
+				IRelationship ancestorDefining = (IRelationship) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
+				ancie=metamodel.getRelationClassReferencing(ancestorDefining);
+				return ancie;
+			}
 
 	protected RelationClassImpl() {
 		super();

@@ -43,6 +43,13 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		IZentaElement newElement = (IZentaElement) oc.create(folder);
 		return newElement;
 	}
+	public IZentaElement createClassedTestElement(ObjectClass baseClass) {
+		String id = "ea94cf6c";//User
+		IZentaElement user = getElementById(id);
+		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
+		IZentaElement newElement = (IZentaElement) baseClass.create(folder);
+		return newElement;
+	}
 
 	public ObjectClass createTestObjectClass() {
 		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
@@ -53,6 +60,16 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 				.createObjectClass(
 						element,
 						template);
+	}
+
+	public IZentaElement createNewObjectClass(String elementName, ObjectClass baseClass) {
+		IZentaElement newElement = createClassedTestElement(baseClass);
+		IDiagramModel dm = getTemplateDiagramModel();
+		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
+	
+		dm.getChildren().add(dmo);
+		newElement.setName(elementName);
+		return newElement;
 	}
 
 	public IZentaElement createNewObjectClass(String elementName) {

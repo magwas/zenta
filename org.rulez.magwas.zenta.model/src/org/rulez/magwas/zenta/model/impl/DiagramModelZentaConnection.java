@@ -361,9 +361,10 @@ public class DiagramModelZentaConnection extends DiagramModelConnection implemen
     
     @Override
 	public IRelationship getDefiningElement() {
-		IRelationship relation = this.getRelationship();
-    	String classId = relation.getObjectClass();
-    	IRelationship definingElement = (IRelationship) ZentaModelUtils.getObjectByID(relation.getZentaModel(), classId);
-		return definingElement;
+		IRelationship relation = getRelationship();
+        if(!getDiagramModel().isTemplate())
+            return (IRelationship) ZentaModelUtils.getObjectByID(relation.getZentaModel(), relation.getObjectClass());
+        else
+            return relation;
 	}
 } //DiagramModelConnection

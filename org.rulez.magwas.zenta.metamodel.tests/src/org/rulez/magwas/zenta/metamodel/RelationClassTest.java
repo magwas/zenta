@@ -15,8 +15,10 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
@@ -36,7 +38,7 @@ public class RelationClassTest {
 		testdata = new ModelTestData();
 		model = testdata.getModel();
 		
-		ensureVirginDMRsForLoadTest();
+		ensureVirginDMRsForLoadTest(testdata);
 
 		metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinRelationClass();
@@ -94,12 +96,24 @@ public class RelationClassTest {
 		assertTrue(metamodel.hasRelationClassReferencing(modelRelation));
 	}
 
+	@Test
+	public void The_parent_relationclass_is_the_relationclass_of_the_defining_element() {
+		RelationClass parentRc = (RelationClass) metamodel.getClassById("9c441eb7");
+		IRelationship modelRelation = createRelationClass(parentRc,"test relation");
+		
+		RelationClass newRc = metamodel.getRelationClassReferencing(modelRelation);
+		assertNotNull(newRc);
+		RelationClass parentOc = (RelationClass) newRc.getAncestor();
+		RelationClass parentOc2 = (RelationClass) metamodel.getClassById(modelRelation.getObjectClass());
+		assertEquals(parentRc,parentOc);
+		assertEquals(parentRc,parentOc2);
+	}
 
 	@Test
-	public void A_defining_relation_for_a_RelationClass_becomes_of_that_ObjectClass() {
+	public void A_defining_relation_for_a_RelationClass_belongs_to_its_parents_RelationClass_which_is_BasicRelation_by_default() {
 		String id = "9c441eb7";
 		IRelationship element = testdata.getRelationByID(id);
-		assertEquals(id,element.getObjectClass());
+		assertEquals("basicrelation",element.getObjectClass());
 	}
 
 	@Test
@@ -130,9 +144,8 @@ public class RelationClassTest {
 
 	@Test
 	public void When_the_model_is_loaded_the_diagram_relations_are_not_converted_according_to_the_defining_relation() {
+		ModelTestData testdata = new ModelTestData();
 		IRelationship relation = testdata.getRelationByID("9c441eb7");
-		IDiagramModelZentaConnection conn1 = testdata.getDMRById("9dc4d23a");
-		IDiagramModelZentaConnection conn2 = testdata.getDMRById("dcb9c1a2");
 		
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "font", "1|Andika|10.0|3|GTK|1|");
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "fontColor", "#ff0000");
@@ -141,36 +154,30 @@ public class RelationClassTest {
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineColor", "#0000ff");
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineDecoration", "DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration");
 		
-		ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
-		ModelTestData.assertNotEquals("#ff0000",conn1.getFontColor());
-		ModelTestData.assertNotEquals(0,conn1.getTextPosition());
-		ModelTestData.assertNotEquals(2,conn1.getLineWidth());
-		ModelTestData.assertNotEquals("#0000ff",conn1.getLineColor());
-		ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getLineDecoration());
-
-		ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn2.getFont());
-		ModelTestData.assertNotEquals("#ff0000",conn2.getFontColor());
-		ModelTestData.assertNotEquals(0,conn2.getTextPosition());
-		ModelTestData.assertNotEquals(2,conn2.getLineWidth());
-		ModelTestData.assertNotEquals("#0000ff",conn2.getLineColor());
-		ModelTestData.assertNotEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn2.getLineDecoration());
-
-		assertEquals("1|Andika|10.0|3|GTK|1|",conn1.getFinalFont());
-		assertEquals("#ff0000",conn1.getFinalFontColor());
-		assertEquals(0,conn1.getFinalTextPosition());
-		assertEquals(2,conn1.getFinalLineWidth());
-		assertEquals("#0000ff",conn1.getFinalLineColor());
-		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getFinalLineDecoration());
-
-		assertEquals("1|Andika|10.0|3|GTK|1|",conn2.getFinalFont());
-		assertEquals("#ff0000",conn2.getFinalFontColor());
-		assertEquals(0,conn2.getFinalTextPosition());
-		assertEquals(2,conn2.getFinalLineWidth());
-		assertEquals("#0000ff",conn2.getFinalLineColor());
-		assertEquals("",conn2.getFinalLineDecoration());//dmo local
+		ensureVirginDMRsForLoadTest(testdata);
+		MetamodelFactory.eINSTANCE.createMetamodel(testdata.model);
+		ensureVirginDMRsForLoadTest(testdata);
+		ensureCorrectFinalAttributes(testdata);
 
 	}
-		private void ensureVirginDMRsForLoadTest() {
+		private void ensureCorrectFinalAttributes(ModelTestData testdata) {
+			IDiagramModelZentaConnection conn1 = testdata.getDMRById("9dc4d23a");
+			IDiagramModelZentaConnection conn2 = testdata.getDMRById("dcb9c1a2");
+			assertEquals("1|Andika|10.0|3|GTK|1|",conn1.getFinalFont());
+			assertEquals("#ff0000",conn1.getFinalFontColor());
+			assertEquals(0,conn1.getFinalTextPosition());
+			assertEquals(2,conn1.getFinalLineWidth());
+			assertEquals("#0000ff",conn1.getFinalLineColor());
+			assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration",conn1.getFinalLineDecoration());
+	
+			assertEquals("1|Andika|10.0|3|GTK|1|",conn2.getFinalFont());
+			assertEquals("#ff0000",conn2.getFinalFontColor());
+			assertEquals(0,conn2.getFinalTextPosition());
+			assertEquals(2,conn2.getFinalLineWidth());
+			assertEquals("#0000ff",conn2.getFinalLineColor());
+			assertEquals("",conn2.getFinalLineDecoration());//dmo local
+		}
+		private void ensureVirginDMRsForLoadTest(ModelTestData testdata) {
 			IDiagramModelZentaConnection conn1 = testdata.getDMRById("9dc4d23a");
 			IDiagramModelZentaConnection conn2 = testdata.getDMRById("dcb9c1a2");
 			
@@ -275,18 +282,35 @@ public class RelationClassTest {
 	private RelationClass getRelationClassReferencing(IRelationship element) {
 		return metamodel.getRelationClassReferencing(element);
 	}
+	private IRelationship createRelationClass(RelationClass parentClass, String name) {
+		IRelationship baseDefining = (IRelationship) parentClass.getReference();
+		IFolder folder = (IFolder) baseDefining.eContainer();
+		IRelationship modelRelation= (IRelationship) parentClass.create(folder);
+		IDiagramModelZentaObject diagramElement1 = (IDiagramModelZentaObject) testdata.getDMOById("b2608459");//User
+		IDiagramModelZentaObject diagramElement2 = (IDiagramModelZentaObject) testdata.getDMOById("88f40127");//Procedure
+		modelRelation.setName(name);
+		modelRelation.setSource(diagramElement1.getZentaElement());
+		modelRelation.setTarget(diagramElement2.getZentaElement());
+		return createRelationClass(modelRelation, diagramElement1,
+				diagramElement2);
+	}
 	private IRelationship createRelationClass() {
+		IRelationship modelRelation= testdata.getRelationByID("9a97ee2f");
 		IDiagramModelObject diagramElement1 = testdata.getDMOById("b2608459");//User
 		IDiagramModelObject diagramElement2 = testdata.getDMOById("f843c2f1");//ProcessStep
-		IRelationship modelRelation= testdata.getRelationByID("9a97ee2f");
-		assertNotNull(modelRelation);
-		assertFalse(metamodel.hasRelationClassReferencing(modelRelation));
-		IDiagramModelZentaConnection diagramRelation =
-				IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
-		diagramRelation.setSource(diagramElement1);
-		diagramRelation.setTarget(diagramElement2);
-		diagramRelation.setRelationship(modelRelation);
-		diagramElement1.addConnection(diagramRelation);
-		return modelRelation;
+		return createRelationClass(modelRelation, diagramElement1,
+				diagramElement2);
 	}
+		private IRelationship createRelationClass(IRelationship modelRelation,
+				IDiagramModelObject diagramSource, IDiagramModelObject diagramTarget) {
+			assertNotNull(modelRelation);
+			assertFalse(metamodel.hasRelationClassReferencing(modelRelation));
+			IDiagramModelZentaConnection diagramRelation =
+					IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
+			diagramRelation.setSource(diagramSource);
+			diagramRelation.setTarget(diagramTarget);
+			diagramRelation.setRelationship(modelRelation);
+			diagramSource.addConnection(diagramRelation);
+			return modelRelation;
+		}
 } 
