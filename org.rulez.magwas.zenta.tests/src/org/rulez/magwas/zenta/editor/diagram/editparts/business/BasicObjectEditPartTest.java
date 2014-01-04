@@ -11,7 +11,6 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditP
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -65,8 +64,6 @@ public class BasicObjectEditPartTest {
 		IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) testdata.getDMOById("c4618eab");//NotDefinesObjectClass
 		testdata.focusOnDiagram(dia.getId());
 		BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor(dmo.getId());
-		IZentaElement element = dmo.getZentaElement();
-		ReferencesModelObject objectClass = testdata.metamodel.getClassOf(element);
 		assertNotNull(editPart);
 		assertTrue(editPart.getFigure().isEnabled());
 	}

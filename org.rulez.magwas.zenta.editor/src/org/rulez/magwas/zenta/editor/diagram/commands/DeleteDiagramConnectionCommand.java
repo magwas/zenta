@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
  * 
  * @author Phillip Beauvoir
  */
-class DeleteDiagramConnectionCommand extends Command {
+public class DeleteDiagramConnectionCommand extends Command {
 	
 	private IDiagramModelConnection fConnection;
 	

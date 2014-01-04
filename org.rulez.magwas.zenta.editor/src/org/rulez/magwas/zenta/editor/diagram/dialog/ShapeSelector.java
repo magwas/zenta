@@ -52,7 +52,7 @@ public class ShapeSelector extends EventManager {
             public void widgetSelected(SelectionEvent e) {
                 int iconcount= 0;
                 if(dropMenu == null) {
-                    dropMenu = new Shell(dropMenu, SWT.NONE);
+                    dropMenu = new Shell(dropMenu, SWT.APPLICATION_MODAL);
                     dropMenu.setLayout(new FillLayout(SWT.VERTICAL));
                     Set<String> names = FigureFactory.getFigureNames();
                     for(String name : names) {

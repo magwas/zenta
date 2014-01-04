@@ -2,15 +2,18 @@ package org.rulez.magwas.zenta.editor.diagram.editparts.connections;
 
 import static org.junit.Assert.*;
 
+import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.editor.diagram.commands.DeleteDiagramConnectionCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.connections.BasicConnectionFigure;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 
@@ -21,6 +24,8 @@ public class BasicConnectionEditPartTest {
 	@Before
 	public void setUp() {
 		testdata = new ModelAndEditPartTestData();
+		SafeRunnable.setIgnoreErrors(false);
+
 	}
 
 	@Test
@@ -70,4 +75,15 @@ public class BasicConnectionEditPartTest {
 		assertEquals("DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration", figure.getlineDecorationString());		
 	}
 	
+	@Test
+	public void Connection_in_non_template_can_be_deleted() {
+		testdata.focusOnDiagram("63f1b081");
+		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor("0a589074");
+		assertNotNull(editPart);
+		IDiagramModelZentaConnection connection = editPart.getModel();
+		assertNotNull(connection);
+		DeleteDiagramConnectionCommand cmd = new DeleteDiagramConnectionCommand(connection);
+		cmd.execute();
+		assertNull(testdata.getStatus());
+	}
 }

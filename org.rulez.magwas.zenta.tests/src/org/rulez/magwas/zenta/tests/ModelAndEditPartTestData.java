@@ -1,8 +1,11 @@
 package org.rulez.magwas.zenta.tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.gef.EditPart;
+import org.eclipse.jface.util.Policy;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
@@ -17,6 +20,8 @@ import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 	public BasicConnectionEditPart editPart;
 	public BasicConnectionEditPart editPart2;
+	private TestStatusHandler statusHandler;
+
 	
 	public ZentaDiagramEditor editor;
 	public ModelAndEditPartTestData() {
@@ -43,14 +48,21 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 		assertNotNull(editPart);
 		editPart2 = (BasicConnectionEditPart) editor.getGraphicalViewer().getEditPartRegistry().get(connection2);
 		assertNotNull(editPart2);
+		statusHandler = new TestStatusHandler();
+		Policy.setStatusHandler(statusHandler);
+		assertEquals(Policy.getStatusHandler(), statusHandler);
+
 	}
 
+	public IStatus getStatus() {
+		return statusHandler.status;
+	}
 	public void focusOnDiagram(String id) {
 		diagramModel = this.getZDiagramModelById(id);
 		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)diagramModel);
 	}
-	public EditPart getEditPartFor(String string) {
-		IDiagramModelComponent mo = (IDiagramModelComponent) getById(string);
+	public EditPart getEditPartFor(String editPartId) {
+		IDiagramModelComponent mo = (IDiagramModelComponent) getById(editPartId);
 		return getEditPartFor(mo);
 	}
 
