@@ -59,5 +59,6 @@ extends WorkbenchAdvisor
 	    //return null; 
 		return MainPerspective.ID;
 	}
-	
+	public void eventLoopException(Throwable exception) {
+	}
 }

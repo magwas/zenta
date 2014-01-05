@@ -29,6 +29,30 @@ public class LineDecorationSectionTest {
 	ModelAndEditPartTestData data;
 	private ZentaDiagramEditor editor;
 	
+	@Before	
+	public void setUp() throws PartInitException {
+		data = new ModelAndEditPartTestData();
+		section = new LineDecorationSectionExerciser(data);
+		BasicConnectionEditPart ep = data.editPart;
+		assertNotNull(ep);
+		section._setElement(data.editPart);
+		checkSection();
+	}
+
+		private void checkSection() {
+			assertNotNull(section.getEObject());
+			assertTrue(section instanceof LineDecorationSection);
+			assertTrue(data.editPart instanceof IDiagramConnectionEditPart);
+			assertNotNull(section.getWidgetFactory());
+		}
+		
+	@After
+	public void tearDown() throws IOException {
+		IEditorModelManager.INSTANCE.saveModel(data.model);
+		IEditorModelManager.INSTANCE.closeModel(data.model);
+		assertNull(data.getStatus());
+	}
+
 	@Test
 	@HaveGUI(waitUser=false)
 	public void testTheGUIShowsButtonsForEachDecorationsAndADefaultButton() {
@@ -157,28 +181,5 @@ public class LineDecorationSectionTest {
 
 	private LineDecorationSectionExerciser getExerciser() {
 		return (LineDecorationSectionExerciser)section;
-	}
-
-	@Before	
-	public void setUp() throws PartInitException {
-		data = new ModelAndEditPartTestData();
-		section = new LineDecorationSectionExerciser(data);
-		BasicConnectionEditPart ep = data.editPart;
-		assertNotNull(ep);
-		section._setElement(data.editPart);
-		checkSection();
-	}
-
-		private void checkSection() {
-			assertNotNull(section.getEObject());
-			assertTrue(section instanceof LineDecorationSection);
-			assertTrue(data.editPart instanceof IDiagramConnectionEditPart);
-			assertNotNull(section.getWidgetFactory());
-		}
-		
-	@After
-	public void tearDown() throws IOException {
-		IEditorModelManager.INSTANCE.saveModel(data.model);
-		IEditorModelManager.INSTANCE.closeModel(data.model);
 	}
 }

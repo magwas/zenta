@@ -14,6 +14,7 @@ import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditorPalette;
@@ -47,6 +48,11 @@ public class ZentaDiagramEditorPaletteTest {
 	@Before
 	public void setUp() {
 		testdata = new ModelAndEditPartTestData();
+	}
+	
+	@After
+	public void tearDown() {
+		assertNull(testdata.getStatus());
 	}
 
 	@Test

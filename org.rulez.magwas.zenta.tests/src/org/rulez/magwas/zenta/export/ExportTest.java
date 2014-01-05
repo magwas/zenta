@@ -22,27 +22,30 @@ import org.rulez.magwas.zenta.export.StyledHtml;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 import org.rulez.magwas.zenta.model.util.Util;
+import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 public class ExportTest {
     XPath          xpath = XPathFactory.newInstance().newXPath();
+	private ModelAndEditPartTestData testdata;
 
 	@Before
 	public void setUp() throws Exception {
         NSResolver nss = new NSResolver();
         nss.put("zenta", "http://magwas.rulez.org/zenta");
         xpath.setNamespaceContext(nss);
-
+        testdata = new ModelAndEditPartTestData();
 	}
-
+	
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
+		assertNull(testdata.getStatus());
 	}
 
 	@Test
-	public void testExport() throws IOException, ParserConfigurationException, SAXException, URISyntaxException, XPathExpressionException {
+	public void The_policy_can_be_generated_with_the_exporter() throws IOException, ParserConfigurationException, SAXException, URISyntaxException, XPathExpressionException {
 		IZentaPackage.eINSTANCE.eClass();
 		ModelTestData data = new ModelTestData();
 		File temp = File.createTempFile("test", ".styles");

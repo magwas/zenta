@@ -55,14 +55,11 @@ public class Transform extends Step {
     public Transformer mkTransformer(File style) {
         TransformerFactory tFactory = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl",null);
 
-    		try {
-				return tFactory.newTransformer
-				            (new javax.xml.transform.stream.StreamSource(style));
-			} catch (TransformerConfigurationException e) {
-    			factory.log.issueError("cannot compile "+ style.getAbsolutePath(),e.getMessageAndLocation());
-    			e.printStackTrace();
-    			return null;
-			}		
+		try {
+			return tFactory.newTransformer(new javax.xml.transform.stream.StreamSource(style));
+		} catch (TransformerConfigurationException e) {
+			throw new RuntimeException(e);
+		}
     }
     
     private boolean doTransformation(File source, Transformer tf, File output){

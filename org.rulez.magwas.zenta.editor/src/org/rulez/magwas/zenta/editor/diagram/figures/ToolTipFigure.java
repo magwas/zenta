@@ -37,6 +37,9 @@ public class ToolTipFigure extends Figure {
     public void setText(String text) {
         l1.setText(text);
     }
+    public String getText() {
+    	return l1.getText();
+    }
 
     public void setType(String type) {
         if(l2 == null) {
@@ -55,4 +58,8 @@ public class ToolTipFigure extends Figure {
         }
         l3.setText(text);
     }
+
+	public String getType() {
+		return l2.getText();
+	}
 }

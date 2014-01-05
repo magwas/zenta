@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
@@ -22,15 +23,20 @@ import org.rulez.magwas.zenta.tests.UITestWindow;
 
 public class TotalViewpointTest {
 
-	private ModelAndMetaModelTestData data;
+	private ModelAndEditPartTestData testdata;
 	private IZentaDiagramModel dm;
 	private IViewpoint vp;
 
 	@Before
 	public void setUp() {
-		data = new ModelAndEditPartTestData();
-		dm = data.getTemplateDiagramModel();
+		testdata = new ModelAndEditPartTestData();
+		dm = testdata.getTemplateDiagramModel();
 		vp = ViewpointsManager.INSTANCE.getViewpoint(dm);
+	}
+
+	@After
+	public void tearDown() {
+		assertNull(testdata.getStatus());
 	}
 
 	@HaveGUI(waitUser = false)
@@ -49,9 +55,9 @@ public class TotalViewpointTest {
 	
 	@Test
 	public void Allowed_connections_are_based_on_the_metamodel() {
-		IZentaElement sourceElement = data.getElementById("ea94cf6c");//User
-		IDiagramModelZentaObject sourceDiagElement = (IDiagramModelZentaObject) data.getDMOById("b2608459");
-		IZentaElement targetElement = data.getElementById("f33bd0d2");//Process
+		IZentaElement sourceElement = testdata.getElementById("ea94cf6c");//User
+		IDiagramModelZentaObject sourceDiagElement = (IDiagramModelZentaObject) testdata.getDMOById("b2608459");
+		IZentaElement targetElement = testdata.getElementById("f33bd0d2");//Process
 		List<RelationClass> rels = vp.getValidRelationships(sourceElement, targetElement);
 		List<String> expectedList = Arrays.asList("Basic Relation","TriesToDo");
 		ArrayList<String> actualList = getClassNames(rels);
@@ -64,9 +70,9 @@ public class TotalViewpointTest {
     @Test
 	public void Allowed_connections_always_contain_builtin_relation() {
 		String procedureId = "f33bd0d2";
-		IZentaElement e1 = data.getElementById(procedureId);
+		IZentaElement e1 = testdata.getElementById(procedureId);
 		String processStepId = "c3d03626";
-		IZentaElement e2 = data.getElementById(processStepId);
+		IZentaElement e2 = testdata.getElementById(processStepId);
 		List<RelationClass> valids = vp.getValidRelationships(e1, e2);
 		assertEquals(1,valids.size());
 		assertEquals("Basic Relation",valids.get(0).getName());

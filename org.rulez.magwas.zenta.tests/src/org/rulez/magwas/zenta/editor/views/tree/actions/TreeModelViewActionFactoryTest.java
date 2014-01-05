@@ -28,21 +28,28 @@ import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 public class TreeModelViewActionFactoryTest {
 
 	
-	public ModelAndMetaModelTestData data;
+	public ModelAndEditPartTestData testdata;
 	private TreeModelViewActionFactory fixture;
 	
 	//FIXME: no connectors
 
 	@Before
 	public void Initializes_with_a_model() {
-		data = new ModelAndEditPartTestData();
-		fixture = new TreeModelViewActionFactory(data.model);
+		testdata = new ModelAndEditPartTestData();
+		fixture = new TreeModelViewActionFactory(testdata.model);
 		assertNotNull(fixture.getMetamodel());
 	}
 	
+	@After
+	public void tearDown() throws IOException {
+		IEditorModelManager.INSTANCE.saveModel(testdata.model);
+		fixture = null;
+		assertNull(testdata.getStatus());
+	}
+
 	@Test
 	public void Objects_are_created_in_the_respective_folder() {
-		IZentaElement selected = data.getElementById("8495ea84");
+		IZentaElement selected = testdata.getElementById("8495ea84");
 		IFolder folder = ModelTestData.getFolderByKid(selected);
 		ArrayList<EObject> kidsBefore = new ArrayList<EObject>(folder.getElements());
 		IAction action = getAction(selected, "Data");
@@ -55,9 +62,9 @@ public class TreeModelViewActionFactoryTest {
 	
 	@Test
 	public void Relations_are_created_in_the_folder_of_the_source_element() {
-		IZentaElement target = data.getElementById("23138a61");
-		IZentaElement source = data.getElementById("a885cd76");
-		RelationClass relclass = (RelationClass) data.metamodel.getClassById("a972e26e");
+		IZentaElement target = testdata.getElementById("23138a61");
+		IZentaElement source = testdata.getElementById("a885cd76");
+		RelationClass relclass = (RelationClass) testdata.metamodel.getClassById("a972e26e");
 		assertNotNull(relclass);
 		CreateRelationCommand command = new CreateRelationCommand(source,target,relclass);
 		IFolder folder = ModelTestData.getFolderByKid(source);
@@ -70,14 +77,14 @@ public class TreeModelViewActionFactoryTest {
 
 	@Test
 	public void New_ObjectClasses_are_shown_in_the_New_menu() {
-		IFolder selected = (IFolder) data.getById("196115c6");//Model root folder
+		IFolder selected = (IFolder) testdata.getById("196115c6");//Model root folder
 		
-		IDiagramModel dm = data.getTemplateDiagramModel();
+		IDiagramModel dm = testdata.getTemplateDiagramModel();
 
 		String id = "ea94cf6c";//User
-		IZentaElement user = data.getElementById(id);
+		IZentaElement user = testdata.getElementById(id);
 		IFolder folder = ModelTestData.getFolderByKid(user);
-		ObjectClass oc = data.metamodel.getBuiltinObjectClass();
+		ObjectClass oc = testdata.metamodel.getBuiltinObjectClass();
 		IZentaElement newElement = (IZentaElement) oc.create(folder);
 
 		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
@@ -92,7 +99,7 @@ public class TreeModelViewActionFactoryTest {
 		dm.getChildren().add(dmo);
 		newElement.setName("New test OCke");
 
-		ObjectClass newOc = data.metamodel.getObjectClassReferencing(newElement);
+		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		assertNotNull(newOc);
 
 		List<IAction> newactions = fixture.getNewObjectActions(selected);
@@ -111,12 +118,6 @@ public class TreeModelViewActionFactoryTest {
 			if(description.equals(action.getText()))
 				return action;
 		return null;
-	}
-
-	@After
-	public void tearDown() throws IOException {
-		IEditorModelManager.INSTANCE.saveModel(data.model);
-		fixture = null;
 	}
 
 }

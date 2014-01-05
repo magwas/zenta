@@ -5,12 +5,17 @@ import static org.junit.Assert.*;
 import org.eclipse.draw2d.text.BlockFlow;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
+import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
+import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -24,6 +29,11 @@ public class BasicObjectEditPartTest {
 	@Before
 	public void setUp() {
 		testdata = new ModelAndEditPartTestData();
+	}
+	
+	@After
+	public void tearDown() {
+		assertNull(testdata.getStatus());
 	}
 
 	@Test
@@ -67,5 +77,36 @@ public class BasicObjectEditPartTest {
 		assertNotNull(editPart);
 		assertTrue(editPart.getFigure().isEnabled());
 	}
-
+	
+	@Test
+	public void The_ToolTip_displays_the_ObjectClass() {
+		ObjectClass oc = (ObjectClass) testdata.metamodel.getClassById("ea94cf6c");//User
+		IZentaElement element = testdata.createClassedTestElement(oc);
+		element.setName("Displayable Name");
+		IZentaDiagramModel dia = testdata.getNonTemplateDiagramModel();
+		IDiagramModelZentaObject dmo = ModelAndEditPartTestData.createDMOFor(element);
+		dia.getChildren().add(dmo);
+		testdata.focusOnDiagram(dia.getId());
+		BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor(dmo.getId());
+		ToolTipFigure toolTip = (ToolTipFigure) editPart.getFigure().getToolTip();
+		assertEquals("Displayable Name",toolTip.getText());
+		assertEquals("ObjectClass: User",toolTip.getType());
+	}
+	
+	@Test
+	public void The_Tooltip_displays_the_ObjectClass_of_defining_element() {
+		ObjectClass oc = (ObjectClass) testdata.metamodel.getClassById("ea94cf6c");//User
+		IZentaElement element = testdata.createClassedTestElement(oc);
+		element.setName("Árvíztűrő Tükörfúrógép");
+		IZentaDiagramModel dia = testdata.getTemplateDiagramModel();
+		IDiagramModelZentaObject dmo = ModelAndEditPartTestData.createDMOFor(element);
+		dia.getChildren().add(dmo);
+		testdata.focusOnDiagram(dia.getId());
+		BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor(dmo.getId());
+		ToolTipFigure toolTip = (ToolTipFigure) editPart.getFigure().getToolTip();
+		assertEquals("Árvíztűrő Tükörfúrógép",toolTip.getText());
+		assertEquals("ObjectClass: User",toolTip.getType());
+		ReferencesModelObject elementOc = testdata.metamodel.getClassOf(element);
+		assertEquals("Árvíztűrő Tükörfúrógép",elementOc.getName());
+	}
 }

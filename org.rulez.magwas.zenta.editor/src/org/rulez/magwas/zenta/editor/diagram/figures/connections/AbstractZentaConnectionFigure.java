@@ -9,6 +9,8 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IRelationship;
 
@@ -57,8 +59,9 @@ extends AbstractDiagramConnectionFigure implements IZentaConnectionFigure {
         String text = ZentaLabelProvider.INSTANCE.getLabel(relation);
         toolTipFigure.setText(text);
 
-        String type = ZentaLabelProvider.INSTANCE.getDefaultName(relation.eClass());
-        toolTipFigure.setType(Messages.AbstractZentaConnectionFigure_0 + " " + type); //$NON-NLS-1$
+        Metamodel metamodel = MetamodelFactory.eINSTANCE.getMetamodelFor(relation);
+        String className = metamodel.getClassById(relation.getObjectClass()).getName();
+        toolTipFigure.setType(Messages.AbstractZentaConnectionFigure_0 + " " + className); //$NON-NLS-1$
 
         String rubric = ZentaLabelProvider.INSTANCE.getRelationshipSentence(relation);
         toolTipFigure.setRubric(rubric);

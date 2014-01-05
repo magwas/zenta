@@ -17,6 +17,8 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
+import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -149,6 +151,7 @@ implements IDiagramModelObjectFigure {
         ToolTipFigure toolTipFigure = (ToolTipFigure)super.getToolTip();
         if(toolTipFigure == null && Preferences.doShowViewTooltips()) {
             setToolTip(new ToolTipFigure());
+            toolTipFigure = (ToolTipFigure) super.getToolTip();
         }
         
         if(toolTipFigure == null || !Preferences.doShowViewTooltips()) {
@@ -159,12 +162,14 @@ implements IDiagramModelObjectFigure {
         toolTipFigure.setText(text);
         
         if(fDiagramModelObject instanceof IDiagramModelZentaObject) {
-            IZentaElement element = ((IDiagramModelZentaObject)fDiagramModelObject).getZentaElement();
-            String type = ZentaLabelProvider.INSTANCE.getDefaultName(element.eClass());
+            IZentaElement element = ((IDiagramModelZentaObject) fDiagramModelObject).getZentaElement();
+            String name = ZentaLabelProvider.INSTANCE.getDefaultName(element.eClass());
             if(!StringUtils.isSet(text)) { // Name was blank
-                toolTipFigure.setText(type);
+                toolTipFigure.setText(name);
             }
-            toolTipFigure.setType(Messages.AbstractDiagramModelObjectFigure_0 + " " + type); //$NON-NLS-1$
+            Metamodel metamodel = MetamodelFactory.eINSTANCE.getMetamodelFor(element);
+            String typeName = metamodel.getClassById(element.getObjectClass()).getName();
+            toolTipFigure.setType(Messages.AbstractDiagramModelObjectFigure_0 + " " + typeName); //$NON-NLS-1$
         }
 
         return toolTipFigure;

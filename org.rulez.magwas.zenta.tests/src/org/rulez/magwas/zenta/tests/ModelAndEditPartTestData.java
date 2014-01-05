@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.util.Policy;
+import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
@@ -51,7 +52,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 		statusHandler = new TestStatusHandler();
 		Policy.setStatusHandler(statusHandler);
 		assertEquals(Policy.getStatusHandler(), statusHandler);
-
+		SafeRunnable.setIgnoreErrors(false);
 	}
 
 	public IStatus getStatus() {

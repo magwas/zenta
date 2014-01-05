@@ -145,10 +145,8 @@ public class StyledHtml implements IModelExporter {
             sf.cleanUp();
             log.issueInfo("done export", Util.now());
             
-        } catch (Exception e) {
-            log.issueError("Export problem", e.getMessage());
-            e.printStackTrace();
-        }
+        } finally {
         log.show();
+        }
     }
 }

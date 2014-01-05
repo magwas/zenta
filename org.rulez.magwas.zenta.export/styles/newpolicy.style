@@ -10,7 +10,6 @@
 	</export>
 	<export target="archirich2.xml" policy="$target/policy.xml" keep="true">
 		<transform language="xslt" script="xslt/objlist2.xslt" policy="policy.xml" target="objectlist.docbook" keep="true">
-			<transform language="xslt" script="xslt/docbook2html.xslt" target="objectlist.html"/>
 		</transform>
 	</export>
 </style>
