@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IHintProvider;
 import org.rulez.magwas.zenta.canvas.model.IIconic;
 import org.rulez.magwas.zenta.canvas.model.INotesContent;
-import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
+import org.rulez.magwas.zenta.model.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 

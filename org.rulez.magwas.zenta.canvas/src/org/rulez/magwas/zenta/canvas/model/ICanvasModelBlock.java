@@ -5,9 +5,9 @@
  */
 package org.rulez.magwas.zenta.canvas.model;
 
-import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
+import org.rulez.magwas.zenta.model.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.ITextContent;

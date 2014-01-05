@@ -51,6 +51,8 @@ import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.editor.ui.services.IComponentSelectionListener;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.help.ZentaEditorHelpPlugin;
+import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.model.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IBusinessLayerElement;
@@ -59,6 +61,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.impl.ZentaElement;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
@@ -85,6 +88,8 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
     private CLabel fTitleLabel;
     
     private boolean fPageLoaded;
+
+	private String titleText;
     
     private class PinAction extends Action {
         PinAction() {
@@ -192,7 +197,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
         catch(SWTError error) {
         	error.printStackTrace();
             // Create a message and show that instead
-            fTitleLabel.setText(Messages.HintsView_2);
+            setTitleText(Messages.HintsView_2);
             fTitleLabel.setBackground(new Color[]{ColorConstants.lightGray, ColorConstants.white}, new int[]{80}, false);
             Text text = new Text(parent, SWT.MULTI | SWT.WRAP);
             text.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -201,6 +206,11 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
         
         return browser;
     }
+
+	private void setTitleText(String text) {
+		this.titleText = text;
+		fTitleLabel.setText(text);
+	}
 
     @Override
     public void setFocus() {
@@ -237,78 +247,84 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
         if(fActionPinContent.isChecked()) {
             return;
         }
-        
-        Object object = null;
-
-        // EClass (selected from Diagram Palette) so get Java class
-        if(selected instanceof EClass) {
-            EClass eClass = (EClass)selected;
-            object = eClass.getInstanceClass();
-        }
-        // Adaptable, dig in to get to get Element...
-        else if(selected instanceof IAdaptable) {
-            object = ((IAdaptable)selected).getAdapter(IZentaElement.class);
-            if(object == null) {
-                object = ((IAdaptable)selected).getAdapter(IDiagramModelObject.class);
-            }
-            if(object == null) {
-                object = ((IAdaptable)selected).getAdapter(IDiagramModelConnection.class);
-            }
-            if(object == null) {
-                object = ((IAdaptable)selected).getAdapter(IDiagramModel.class);
-            }
-        }
-        // Default
-        else {
-            object = selected;
-        }
-        
-        // Hint Provider, if set
+        Object object = figureOutHintObject(selected);
         if(object instanceof IHelpHintProvider) {
-            String title = ((IHelpHintProvider)object).getHelpHintTitle();
-            String text = ((IHelpHintProvider)object).getHelpHintContent();
-            if(StringUtils.isSet(title) || StringUtils.isSet(text)) {
-                fTitleLabel.setText(title);
-                Color color = getTitleColor(object);
-                fTitleLabel.setBackground(new Color[] { color, ColorConstants.white }, new int[] { 80 }, false);
-                text = makeHTMLEntry(text);
-                fBrowser.setText(text);
-                fLastPath = ""; //$NON-NLS-1$
-                return;
-            }
+            setUpHintBasedOnHintProvider((IHelpHintProvider) object);
+            return;
         }
-
-        // Convert Zenta Diagram Model object to Viewpoint object
-        if(object instanceof IZentaDiagramModel) {
-            object = ViewpointsManager.INSTANCE.getViewpoint(((IZentaDiagramModel)object));
-        }
-        
         Hint hint = getHintFromObject(object);
         if(hint != null) {
-            if(fLastPath != hint.path) {
-                // Title and Color
-                Color color = getTitleColor(object);
-                fTitleLabel.setBackground(new Color[] { color, ColorConstants.white }, new int[] { 80 }, false);
-                fTitleLabel.setText(hint.title);
-
-                // Load page
-                fPageLoaded = false;
-                fBrowser.setUrl(hint.path);
-                fLastPath = hint.path;
-
-                // Kludge for Mac/Safari when displaying hint on mouse rollover menu item in MagicConnectionCreationTool
-                if(PlatformUtils.isMac() && source instanceof MenuItem) {
-                    _doMacWaitKludge();
-                }
-            }
-        }
-        else {
-            fBrowser.setText(""); //$NON-NLS-1$
-            fLastPath = ""; //$NON-NLS-1$
-            fTitleLabel.setText(""); //$NON-NLS-1$
-            fTitleLabel.setBackground(ColorConstants.white);
+            displayHint(source, object, hint);
+        } else {
+            displayNoHint();
         }
     }
+		private void displayNoHint() {
+			fBrowser.setText(""); //$NON-NLS-1$
+			fLastPath = ""; //$NON-NLS-1$
+			setTitleText(""); //$NON-NLS-1$
+			fTitleLabel.setBackground(ColorConstants.white);
+		}
+		private void displayHint(Object source, Object object, Hint hint) {
+			if(fLastPath != hint.path) {
+			    // Title and Color
+			    Color color = getTitleColor(object);
+			    fTitleLabel.setBackground(new Color[] { color, ColorConstants.white }, new int[] { 80 }, false);
+			    setTitleText(hint.title);
+	
+			    // Load page
+			    fPageLoaded = false;
+			    fBrowser.setUrl(hint.path);
+			    fLastPath = hint.path;
+	
+			    // Kludge for Mac/Safari when displaying hint on mouse rollover menu item in MagicConnectionCreationTool
+			    if(PlatformUtils.isMac() && source instanceof MenuItem) {
+			        _doMacWaitKludge();
+			    }
+			}
+		}
+		private void setUpHintBasedOnHintProvider(IHelpHintProvider hintProvider) {
+			String title = hintProvider.getHelpHintTitle();
+			String text = hintProvider.getHelpHintContent();
+			if(StringUtils.isSet(title) || StringUtils.isSet(text)) {
+			    setTitleText(title);
+			    Color color = getTitleColor(hintProvider);
+			    fTitleLabel.setBackground(new Color[] { color, ColorConstants.white }, new int[] { 80 }, false);
+			    text = makeHTMLEntry(text);
+			    fBrowser.setText(text);
+			    fLastPath = ""; //$NON-NLS-1$
+			    return;
+			}
+		}
+		private Object figureOutHintObject(Object selected) {
+			Object object;
+			if(selected instanceof ZentaElement) {
+	        	ZentaElement zentaElement = (ZentaElement) selected;
+	        	object = MetamodelFactory.eINSTANCE.getMetamodelFor(zentaElement).getClassOf(zentaElement);
+	        } else if(selected instanceof EClass) {
+	            EClass eClass = (EClass)selected;
+	            object = eClass.getInstanceClass();
+	        }  else if(selected instanceof IAdaptable) {
+	            object = ((IAdaptable)selected).getAdapter(IZentaElement.class);
+	            if(object == null) {
+	                object = ((IAdaptable)selected).getAdapter(IDiagramModelObject.class);
+	            }
+	            if(object == null) {
+	                object = ((IAdaptable)selected).getAdapter(IDiagramModelConnection.class);
+	            }
+	            if(object == null) {
+	                object = ((IAdaptable)selected).getAdapter(IDiagramModel.class);
+	            }
+	        } else {
+	            object = selected;
+	        }
+			
+	        if(object instanceof IZentaDiagramModel) {
+	            object = ViewpointsManager.INSTANCE.getViewpoint(((IZentaDiagramModel)object));
+	        }
+	        
+			return object;
+		}
     
     /**
      * HTML-ify some text
@@ -459,4 +475,17 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
     public String getSearchExpression(Object target) {
         return Messages.HintsView_4;
     }
+    
+    public boolean isReady() {
+    	return fPageLoaded;
+    }
+    
+    public String getTitleText() {
+    	return titleText;
+    }
+    
+    public String getText() {
+    	return fBrowser.getText();
+    }
+
 }

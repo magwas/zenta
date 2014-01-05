@@ -23,9 +23,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 
 	public ModelAndMetaModelTestData() {
 		super();
-        metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
-        assertNotNull(metamodel);
-        assertNotNull(metamodel.getTemplates());
+        setUpMetaModel();
 		diagramModel = getTemplateDiagramModel();
 		assertNotNull(diagramModel);
 		connection = getDMRById("24e3c661");
@@ -34,6 +32,15 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		assertNotNull(connection2);
 
 	}
+	public ModelAndMetaModelTestData(String resourcename) {
+		super(resourcename);
+		setUpMetaModel();
+	}
+		private void setUpMetaModel() {
+			metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
+	        assertNotNull(metamodel);
+	        assertNotNull(metamodel.getTemplates());
+		}
 
 	public IZentaElement createClassedTestElement() {
 		String id = "ea94cf6c";//User

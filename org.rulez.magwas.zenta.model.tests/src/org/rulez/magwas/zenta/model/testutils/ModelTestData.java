@@ -27,13 +27,19 @@ public class ModelTestData {
 	public File file;
 	public IZentaModel model;
 	
-	public ModelTestData() {
-		resource = ModelTestUtils.getZentaModelResource("test.zenta");
-		assertNotNull(resource);
-		file = new File(resource.getURI().toFileString());
-		assertNotNull(file);
-		model = getModel();
+	public ModelTestData(String resourcename) {
+		initialize(resourcename);
 	}
+	public ModelTestData() {
+		initialize("test.zenta");
+	}
+		private void initialize(String resourcename) {
+			resource = ModelTestUtils.getZentaModelResource(resourcename);
+			assertNotNull(resource);
+			file = new File(resource.getURI().toFileString());
+			assertNotNull(file);
+			model = getModel();
+		}
 	
 	public IZentaModel getModel() {
 		if( null != model )

@@ -58,5 +58,14 @@ public class NoteClass extends AbstractObjectClassImpl implements ObjectClass {
 	public Map<Direction, List<RelationClass>> getAllowedRelations() {
 		return null;
 	}
+	@Override
+	public String getHelpHintTitle() {
+		return getName();
+	}
+
+	@Override
+	public String getHelpHintContent() {
+		return "You can add notes to diagrams with this.";//FIXME externalize
+	}
 
 }

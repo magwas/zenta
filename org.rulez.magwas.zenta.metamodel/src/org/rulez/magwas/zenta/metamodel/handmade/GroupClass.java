@@ -60,4 +60,15 @@ public class GroupClass extends AbstractObjectClassImpl implements
 	public Map<Direction, List<RelationClass>> getAllowedRelations() {
 		return null;
 	}
+	
+	@Override
+	public String getHelpHintTitle() {
+		return getName();
+	}
+
+	@Override
+	public String getHelpHintContent() {
+		return "You can group objects with this.";//FIXME externalize
+	}
+
 }

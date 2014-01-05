@@ -8,6 +8,7 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.impl.Relationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class RelationClassImpl extends AbstractRelationClassImpl implements RelationClass {
@@ -53,5 +54,10 @@ public class RelationClassImpl extends AbstractRelationClassImpl implements Rela
 		postCreate(obj, folder);
 		obj.setObjectClass(getId());
 		return obj;
+	}
+	@Override
+	public String getHelpHintContent() {
+		Relationship ref = (Relationship) this.getReference();
+		return ref.getDocumentation();
 	}
 }

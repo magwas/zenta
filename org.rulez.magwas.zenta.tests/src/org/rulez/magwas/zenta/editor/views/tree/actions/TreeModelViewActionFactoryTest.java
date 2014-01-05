@@ -14,7 +14,6 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.commands.CreateRelationCommand;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.actions.TreeModelViewActionFactory;
-import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;

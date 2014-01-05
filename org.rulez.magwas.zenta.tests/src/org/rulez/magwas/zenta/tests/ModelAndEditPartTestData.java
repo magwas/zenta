@@ -17,6 +17,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 
 public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 	public BasicConnectionEditPart editPart;
@@ -25,9 +26,53 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 
 	
 	public ZentaDiagramEditor editor;
+	public ModelAndEditPartTestData(String resourcename) {
+		super(resourcename);
+        openModelAndMetaModel();
+		setUpStatusHandler();
+	}
+
 	public ModelAndEditPartTestData() {
 		super();
-        BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
+        openModelAndMetaModel();
+		initializeModelFields();
+
+		initializeEditorWithDMO(diagramModel);
+
+		initializeGuiFields();
+		setUpStatusHandler();
+	}
+
+	private void setUpStatusHandler() {
+		statusHandler = new TestStatusHandler();
+		Policy.setStatusHandler(statusHandler);
+		assertEquals(Policy.getStatusHandler(), statusHandler);
+		SafeRunnable.setIgnoreErrors(false);
+	}
+
+	private void initializeGuiFields() {
+		editPart = (BasicConnectionEditPart) editor.getGraphicalViewer().getEditPartRegistry().get(connection);
+		assertNotNull(editPart);
+		editPart2 = (BasicConnectionEditPart) editor.getGraphicalViewer().getEditPartRegistry().get(connection2);
+		assertNotNull(editPart2);
+	}
+
+	private void initializeModelFields() {
+		diagramModel = getTemplateDiagramModel();
+		assertNotNull(diagramModel);
+		connection = getDMRById("24e3c661");
+		assertNotNull(connection);
+		connection2 = getDMRById("99e9c255");
+		assertNotNull(connection2);
+	}
+
+	private void initializeEditorWithDMO(IZentaDiagramModel dMO) {
+		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)dMO);
+		assertNotNull(editor);
+	}
+
+	private void openModelAndMetaModel() {
+		BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
 			public void run() {
                 model = IEditorModelManager.INSTANCE.openModel(file);
             }
@@ -35,32 +80,16 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
         assertNotNull(model);
         metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
         assertNotNull(metamodel);
-		diagramModel = getTemplateDiagramModel();
-		assertNotNull(diagramModel);
-		connection = getDMRById("24e3c661");
-		assertNotNull(connection);
-		connection2 = getDMRById("99e9c255");
-		assertNotNull(connection2);
-
-		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)diagramModel);
-		assertNotNull(editor);
-
-		editPart = (BasicConnectionEditPart) editor.getGraphicalViewer().getEditPartRegistry().get(connection);
-		assertNotNull(editPart);
-		editPart2 = (BasicConnectionEditPart) editor.getGraphicalViewer().getEditPartRegistry().get(connection2);
-		assertNotNull(editPart2);
-		statusHandler = new TestStatusHandler();
-		Policy.setStatusHandler(statusHandler);
-		assertEquals(Policy.getStatusHandler(), statusHandler);
-		SafeRunnable.setIgnoreErrors(false);
 	}
 
 	public IStatus getStatus() {
 		return statusHandler.status;
 	}
-	public void focusOnDiagram(String id) {
+	public ZentaDiagramEditor focusOnDiagram(String id) {
 		diagramModel = this.getZDiagramModelById(id);
+		assertNotNull(diagramModel);
 		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)diagramModel);
+		return editor;
 	}
 	public EditPart getEditPartFor(String editPartId) {
 		IDiagramModelComponent mo = (IDiagramModelComponent) getById(editPartId);

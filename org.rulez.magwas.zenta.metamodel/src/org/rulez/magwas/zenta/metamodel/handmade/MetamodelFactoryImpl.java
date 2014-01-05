@@ -84,7 +84,7 @@ public class MetamodelFactoryImpl extends MetamodelBaseFactoryImpl implements Me
 	 * @generated
 	 */
 	public RelationClass createRelationClass() {
-		RelationClassImpl relationClass = new RelationClassImpl();
+		AbstractRelationClassImpl relationClass = new RelationClassImpl();
 		return relationClass;
 	}
 
@@ -94,7 +94,7 @@ public class MetamodelFactoryImpl extends MetamodelBaseFactoryImpl implements Me
 			return candidate;
 		if("".equals(getDefiningName(referenced)))
 			return null;
-		RelationClassImpl relationClass = new RelationClassImpl(referenced, template);
+		AbstractRelationClassImpl relationClass = new RelationClassImpl(referenced, template);
 		template.getRelationClasses().add(relationClass);
 		return relationClass;
 	}

@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.help.hints;
+package org.rulez.magwas.zenta.model;
 
 
 /**

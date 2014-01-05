@@ -5,8 +5,8 @@
  */
 package org.rulez.magwas.zenta.canvas.model;
 
-import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IHelpHintProvider;
 
 
 /**

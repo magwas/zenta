@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
-import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;

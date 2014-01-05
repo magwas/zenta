@@ -1,5 +1,6 @@
 package org.rulez.magwas.zenta.model.testutils;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -38,6 +39,7 @@ public class ModelTestUtils {
 
 	public static Resource getZentaModelResource(String filename) {
 		InputStream stream = ModelTestData.class.getResourceAsStream(filename);
+		assertNotNull(stream);
 		File temp;
 		Resource resource;
 		try {
@@ -47,13 +49,16 @@ public class ModelTestUtils {
 			IZentaPackage.eINSTANCE.eClass();
 	        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
 	        resource = resourceSet.createResource(URI.createFileURI(temp.getAbsolutePath()));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		try {
 			resource.load(null);
 			//temp.delete();
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new CannotLoadTheResource();
 		}
-		return resource;
+		return resource;			
 	}
 		public static class CannotLoadTheResource extends RuntimeException {
 			private static final long serialVersionUID = 1L;

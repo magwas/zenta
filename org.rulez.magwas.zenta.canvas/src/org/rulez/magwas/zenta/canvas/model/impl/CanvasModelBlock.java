@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModelBlock;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IHintProvider;
-import org.rulez.magwas.zenta.help.hints.IHelpHintProvider;
+import org.rulez.magwas.zenta.model.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;

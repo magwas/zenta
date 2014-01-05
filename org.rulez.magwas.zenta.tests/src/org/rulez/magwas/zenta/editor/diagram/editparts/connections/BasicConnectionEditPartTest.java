@@ -2,7 +2,6 @@ package org.rulez.magwas.zenta.editor.diagram.editparts.connections;
 
 import static org.junit.Assert.*;
 
-import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.junit.After;

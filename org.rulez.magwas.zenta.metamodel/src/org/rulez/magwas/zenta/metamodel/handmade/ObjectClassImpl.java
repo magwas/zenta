@@ -49,4 +49,15 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
 		postCreate(obj,folder);
 		return obj;
 	}
+
+	@Override
+	public String getHelpHintTitle() {
+		return getName();
+	}
+
+	@Override
+	public String getHelpHintContent() {
+		IZentaElement ref = (IZentaElement) this.reference;
+		return ref.getDocumentation();
+	}
 }

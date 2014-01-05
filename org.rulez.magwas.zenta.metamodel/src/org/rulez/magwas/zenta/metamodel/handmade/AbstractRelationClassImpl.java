@@ -63,4 +63,9 @@ public abstract class AbstractRelationClassImpl extends RelationClassBaseImpl im
 		return getId().equals(relation.getObjectClass());
 	}
 
+	@Override
+	public String getHelpHintTitle() {
+		return this.getName();
+	}
+
 }

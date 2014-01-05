@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="ASCII"?>
+<zenta:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" name="modelke" id="1383354d" version="2.2.1">
+  <folder name="Model Root" id="6699194d">
+    <folder name="meta" id="ee2f98de">
+      <element xsi:type="zenta:ZentaDiagramModel" name="metamodel" id="cc0397a1">
+        <child xsi:type="zenta:DiagramObject" id="3a883a1d" zentaElement="2603d1f1">
+          <bounds x="51" y="89"/>
+          <sourceConnection xsi:type="zenta:Connection" id="692a0349" source="3a883a1d" target="5be72c56" relationship="0a20a17a"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="5be72c56" targetConnections="692a0349" zentaElement="2603d1f1">
+          <bounds x="312" y="89"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="88c8b5a0" fillColor="#9cd2f0" zentaElement="80877cc7">
+          <bounds x="170" y="189" width="134" height="61"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="50473799" fillColor="#92ef88" zentaElement="486cb1fa">
+          <bounds x="324" y="188" width="147" height="64"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="b80c916c" zentaElement="39932a33">
+          <bounds x="19" y="187" width="126" height="66"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="792ed3a4" zentaElement="20d7890d">
+          <bounds x="22" y="300"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="b7150ec6" fillColor="#92ef88" zentaElement="fe1a13af">
+          <bounds x="338" y="300"/>
+        </child>
+        <property key="Template"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="THING" objectClass="basicobject" id="2603d1f1">
+        <property key="fontColor"/>
+        <property key="fillColor"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Active Structure Element" objectClass="2603d1f1" id="80877cc7">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#9cd2f0"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Passive Structure element" objectClass="2603d1f1" id="486cb1fa">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#92ef88"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Behaviour Element" objectClass="2603d1f1" id="39932a33">
+        <property key="fontColor"/>
+        <property key="fillColor"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Interaction" objectClass="39932a33" id="20d7890d">
+        <property key="fontColor"/>
+        <property key="fillColor"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Collaboration" objectClass="486cb1fa" id="fe1a13af">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#92ef88"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicRelationship" name="associated with" objectClass="basicrelation" id="0a20a17a" source="2603d1f1" target="2603d1f1">
+        <property key="fontColor"/>
+        <property key="lineColor"/>
+        <property key="textPosition" value="1"/>
+        <property key="font"/>
+        <property key="lineWidth" value="1"/>
+        <property key="lineDecoration"/>
+      </element>
+    </folder>
+    <folder name="Business" id="1a3be793">
+      <element xsi:type="zenta:ZentaDiagramModel" name="Business Layer" id="246ac4ea">
+        <child xsi:type="zenta:DiagramObject" id="d9d02469" fillColor="#9cd2f0" zentaElement="e92dcc86">
+          <bounds x="180" y="36"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="c40cad82" fillColor="#9cd2f0" zentaElement="a2cfbd62">
+          <bounds x="312" y="36"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="7344bc80" fillColor="#9cd2f0" zentaElement="c67e49ca">
+          <bounds x="444" y="36"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="db6a127a" fillColor="#9cd2f0" zentaElement="59fffaaf">
+          <bounds x="576" y="36"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="a425b1d3" fillColor="#92ef88" zentaElement="5ee21535">
+          <bounds x="180" y="120"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="108091bf" fillColor="#92ef88" zentaElement="c190f0b8">
+          <bounds x="312" y="120"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="c89808b0" zentaElement="eb25084b">
+          <bounds x="312" y="204"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="87be5599" zentaElement="0700f5aa">
+          <bounds x="444" y="204"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="050f5a07" zentaElement="d9c79e97">
+          <bounds x="576" y="204"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="7643eea6" zentaElement="d5590158">
+          <bounds x="708" y="204"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="68b723d5" fillColor="#92ef88" zentaElement="564324a4">
+          <bounds x="181" y="299"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="5b3164a1" fillColor="#92ef88" zentaElement="dbdcd884">
+          <bounds x="181" y="396"/>
+        </child>
+        <child xsi:type="zenta:DiagramObject" id="d23ea79c" zentaElement="cb4378f1">
+          <bounds x="24" y="48"/>
+        </child>
+        <property key="Template"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Actor" objectClass="80877cc7" id="e92dcc86">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#9cd2f0"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Role" objectClass="80877cc7" id="a2cfbd62">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#9cd2f0"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Collaboration" objectClass="fe1a13af" id="c67e49ca">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#9cd2f0"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Interface" objectClass="80877cc7" id="59fffaaf">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#9cd2f0"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Location" objectClass="486cb1fa" id="5ee21535">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#92ef88"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Object" objectClass="486cb1fa" id="c190f0b8">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#92ef88"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Function" objectClass="39932a33" id="eb25084b">
+        <property key="fontColor"/>
+        <property key="fillColor"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Interaction" objectClass="39932a33" id="0700f5aa">
+        <property key="fontColor"/>
+        <property key="fillColor"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Event" objectClass="39932a33" id="d9c79e97">
+        <property key="fontColor"/>
+        <property key="fillColor"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Business Service" objectClass="39932a33" id="d5590158">
+        <property key="fontColor"/>
+        <property key="fillColor"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="meaning" objectClass="71a4e1cf" id="b3f83277">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#f7ceb7"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape" value="ellipseShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Representation" objectClass="71a4e1cf" id="5e50d568">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#f7ceb7"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Value" objectClass="71a4e1cf" id="e4bb177d">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#f7ceb7"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Product" objectClass="71a4e1cf" id="1c3c83ed">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#ffc0cb"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Value" objectClass="basicobject" id="564324a4">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#92ef88"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Product" objectClass="basicobject" id="dbdcd884">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#92ef88"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Meaning" objectClass="18f24fcd" id="e0ee80e0">
+        <property key="fontColor"/>
+        <property key="fillColor" value="#92ef88"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+      <element xsi:type="zenta:BasicObject" name="Value" objectClass="564324a4" id="cb4378f1">
+        <property key="fontColor"/>
+        <property key="fillColor"/>
+        <property key="font"/>
+        <property key="textAlignment" value="0"/>
+        <property key="elementShape"/>
+      </element>
+    </folder>
+    <element xsi:type="zenta:ZentaDiagramModel" name="Default View" id="ced9cad1">
+      <child xsi:type="zenta:DiagramObject" id="0bcc1dda" zentaElement="601f9c69">
+        <bounds x="146" y="97"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="ae628fd4" zentaElement="c0310130">
+        <bounds x="300" y="227"/>
+      </child>
+      <child xsi:type="zenta:DiagramObject" id="28bd50ae" zentaElement="53b1428d">
+        <bounds x="42" y="166"/>
+      </child>
+    </element>
+    <element xsi:type="zenta:BasicObject" name="Contract" objectClass="9e75e0b3" id="ace13968"/>
+    <element xsi:type="zenta:BasicObject" name="Meaning" objectClass="e0ee80e0" id="53b1428d"/>
+    <element xsi:type="zenta:BasicRelationship" objectClass="basicrelation" id="9e3cce76" source="601f9c69" target="ace13968"/>
+    <element xsi:type="zenta:BasicObject" name="Informational aspect element" objectClass="b279215d" id="c0310130"/>
+  </folder>
+</zenta:model>

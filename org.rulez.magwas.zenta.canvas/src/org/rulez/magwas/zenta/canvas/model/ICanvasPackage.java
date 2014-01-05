@@ -294,10 +294,10 @@ public interface ICanvasPackage extends EPackage {
     int HINT_PROVIDER_FEATURE_COUNT = 2;
 
     /**
-     * The meta object id for the '{@link org.rulez.magwas.zenta.help.hints.IHelpHintProvider <em>Help Hint Provider</em>}' class.
+     * The meta object id for the '{@link org.rulez.magwas.zenta.model.IHelpHintProvider <em>Help Hint Provider</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.rulez.magwas.zenta.help.hints.IHelpHintProvider
+     * @see org.rulez.magwas.zenta.model.IHelpHintProvider
      * @see org.rulez.magwas.zenta.canvas.model.impl.CanvasPackage#getHelpHintProvider()
      * @generated
      */
@@ -1189,11 +1189,11 @@ public interface ICanvasPackage extends EPackage {
     EAttribute getHintProvider_HintContent();
 
     /**
-     * Returns the meta object for class '{@link org.rulez.magwas.zenta.help.hints.IHelpHintProvider <em>Help Hint Provider</em>}'.
+     * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.IHelpHintProvider <em>Help Hint Provider</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @return the meta object for class '<em>Help Hint Provider</em>'.
-     * @see org.rulez.magwas.zenta.help.hints.IHelpHintProvider
+     * @see org.rulez.magwas.zenta.model.IHelpHintProvider
      * @model instanceClass="org.rulez.magwas.zenta.help.hints.IHelpHintProvider"
      * @generated
      */
@@ -1337,10 +1337,10 @@ public interface ICanvasPackage extends EPackage {
         EAttribute HINT_PROVIDER__HINT_CONTENT = eINSTANCE.getHintProvider_HintContent();
 
         /**
-         * The meta object literal for the '{@link org.rulez.magwas.zenta.help.hints.IHelpHintProvider <em>Help Hint Provider</em>}' class.
+         * The meta object literal for the '{@link org.rulez.magwas.zenta.model.IHelpHintProvider <em>Help Hint Provider</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see org.rulez.magwas.zenta.help.hints.IHelpHintProvider
+         * @see org.rulez.magwas.zenta.model.IHelpHintProvider
          * @see org.rulez.magwas.zenta.canvas.model.impl.CanvasPackage#getHelpHintProvider()
          * @generated
          */

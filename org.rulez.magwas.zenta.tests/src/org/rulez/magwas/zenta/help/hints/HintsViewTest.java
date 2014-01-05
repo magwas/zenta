@@ -9,8 +9,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.help.hints.HintsView;
-import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.impl.Relationship;
 import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 import org.rulez.magwas.zenta.tests.UITestUtils;
@@ -42,5 +47,59 @@ public class HintsViewTest {
 		win.resize(100, 100);
 		view.createPartControl(win.getComposite());
 		win.showWindow();
+	}
+	
+	@Test
+	public void The_Hints_view_contains_the_ancestry_and_description_of_the_ObjectClass_of_element() throws PartInitException, WorkbenchException {
+		IZentaElement element = testdata.getElementById("f33bd0d2");//Procedure
+		element.setDocumentation("this is a procedure");//FIXME: do it for a derived element and a connection as well
+		UITestUtils.focusOnElement(element);
+		HintsView view = prepareHintsView();
+		assertEquals("Procedure", view.getTitleText());
+		ObjectClass oc = (ObjectClass) testdata.metamodel.getClassOf(element);
+		assertEquals("Procedure", oc.getHelpHintTitle());
+		assertEquals("this is a procedure",oc.getHelpHintContent());
+	}
+
+		private HintsView prepareHintsView() throws WorkbenchException,
+				PartInitException {
+			String viewId = "org.rulez.magwas.zenta.help.hintsView";
+			IViewPart _view = UITestUtils.openView(viewId);
+			assertTrue(_view instanceof HintsView);
+			HintsView view = (HintsView) _view;
+			while(!view.isReady())
+				view.getSite().getShell().getDisplay().readAndDispatch();
+			return view;
+		}
+	
+	@Test
+	public void The_Hints_view_contains_the_ancestry_and_description_of_the_ObjectClass_of_element_for_nondefining_elements() throws PartInitException, WorkbenchException {
+		ObjectClass oc = (ObjectClass) testdata.metamodel.getClassById("ea94cf6c");//User		
+		IZentaElement classElement = (IZentaElement) oc.getReference();
+		classElement.setDocumentation("this is a User");
+		IZentaElement element = testdata.createClassedTestElement(oc);
+		element.setName("Árvíztűrő Tükörfúrógépke");
+		UITestUtils.focusOnElement(element);
+		HintsView view = prepareHintsView();
+		assertEquals("User", view.getTitleText());
+		assertEquals("User", oc.getHelpHintTitle());
+		assertEquals("this is a User",oc.getHelpHintContent());
+	}
+
+	@Test
+	public void The_Hints_view_contains_the_name_and_description_of_the_ObjectClass_of_element() throws PartInitException, WorkbenchException {
+		String id = "9c441eb7";
+		RelationClass baseRelationClass = (RelationClass) testdata.metamodel.getClassById(id);
+		Relationship parentRel = (Relationship) baseRelationClass.getReference();
+		parentRel.setDocumentation("I guess this might describe something");
+		IRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
+		rel.setName("Displayable Relation Name");
+		assertNotNull(rel);
+		assertNotSame(rel.getId(),rel.getObjectClass());
+		UITestUtils.focusOnElement(rel);
+		HintsView view = prepareHintsView();
+		assertEquals("describes", view.getTitleText());
+		assertEquals("describes", baseRelationClass.getHelpHintTitle());
+		assertEquals("I guess this might describe something",baseRelationClass.getHelpHintContent());
 	}
 }

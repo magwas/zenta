@@ -39,4 +39,9 @@ public class NoteConnectionClass extends AbstractRelationClassImpl implements
 		return obj;
 	}
 
+	@Override
+	public String getHelpHintContent() {
+		return "This connects a note to something";//FIXME externalize
+	}
+
 }

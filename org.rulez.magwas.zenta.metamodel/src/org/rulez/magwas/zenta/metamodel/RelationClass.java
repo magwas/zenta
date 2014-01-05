@@ -1,4 +1,6 @@
 package org.rulez.magwas.zenta.metamodel;
 
-public interface RelationClass extends RelationClassBase, ReferencesModelObject {
+import org.rulez.magwas.zenta.model.IHelpHintProvider;
+
+public interface RelationClass extends RelationClassBase, ReferencesModelObject, IHelpHintProvider {
 }

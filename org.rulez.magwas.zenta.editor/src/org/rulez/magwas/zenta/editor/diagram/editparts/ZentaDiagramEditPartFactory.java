@@ -16,6 +16,7 @@ import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 
 /**
@@ -36,7 +37,9 @@ implements EditPartFactory {
         
         // Zenta Model Element Parts
         if(model instanceof IDiagramModelZentaObject) {
-            provider = ElementUIFactory.INSTANCE.getProvider(((IDiagramModelZentaObject)model).getZentaElement().eClass());
+            IZentaElement zentaElement = ((IDiagramModelZentaObject)model).getZentaElement();
+            if(null != zentaElement)
+            	provider = ElementUIFactory.INSTANCE.getProvider(zentaElement.eClass());
         }
         
         // Zenta Connection Model Element Parts
