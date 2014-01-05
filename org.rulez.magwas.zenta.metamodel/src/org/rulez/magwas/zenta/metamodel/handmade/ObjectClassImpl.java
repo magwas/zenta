@@ -1,13 +1,18 @@
 package org.rulez.magwas.zenta.metamodel.handmade;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.rulez.magwas.zenta.metamodel.Metamodel;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.util.StringUtils;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectClass {
@@ -58,6 +63,25 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
 	@Override
 	public String getHelpHintContent() {
 		IZentaElement ref = (IZentaElement) this.reference;
-		return ref.getDocumentation();
+		String doc = ref.getDocumentation();
+		List<ReferencesModelObject> ancestry = this.getAncestry();
+		List<String> ancestorNames = new ArrayList<String>();
+		for( ReferencesModelObject a : ancestry) {
+			ancestorNames.add(a.getName());
+		}
+		String ancestryNames = StringUtils.join(ancestorNames, " => ");
+		return String.format("%s\nAncestry: %s\n", doc, ancestryNames);
+	}
+
+	@Override
+	public List<ReferencesModelObject> getAncestry() {
+		ArrayList<ReferencesModelObject> ancestry = new ArrayList<ReferencesModelObject>();
+		return getAncestry(ancestry);
+	}
+
+	@Override
+	public List<ReferencesModelObject> getAncestry(List<ReferencesModelObject> ancestry) {
+		ancestry.add(this);
+		return ((ReferencesModelObject)ancestor).getAncestry(ancestry);
 	}
 }

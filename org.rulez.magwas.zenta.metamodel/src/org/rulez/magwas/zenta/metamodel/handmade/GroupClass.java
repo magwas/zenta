@@ -1,5 +1,6 @@
 package org.rulez.magwas.zenta.metamodel.handmade;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.metamodel.AttributeBase;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.Template;
 import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
@@ -69,6 +71,18 @@ public class GroupClass extends AbstractObjectClassImpl implements
 	@Override
 	public String getHelpHintContent() {
 		return "You can group objects with this.";//FIXME externalize
+	}
+
+	@Override
+	public List<ReferencesModelObject> getAncestry(List<ReferencesModelObject> ancestry) {
+		ancestry.add(this);
+		return ancestry;
+	}
+
+	@Override
+	public List<ReferencesModelObject> getAncestry() {
+		ArrayList<ReferencesModelObject> anclist = new ArrayList<ReferencesModelObject>();
+		return anclist;
 	}
 
 }

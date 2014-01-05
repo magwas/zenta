@@ -1,8 +1,11 @@
 package org.rulez.magwas.zenta.metamodel.handmade;
 
+import java.util.List;
+
 import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
@@ -31,4 +34,11 @@ public class RootObjectClass extends ObjectClassImpl implements ObjectClass {
 	public void setAncestor(ObjectClassBase ancestor) {
 		throw new MetamodelFactory.BuiltinClassShouldNotHaveAncestor();
 	}
+	
+	@Override
+	public List<ReferencesModelObject> getAncestry(List<ReferencesModelObject> ancestry) {
+		ancestry.add(this);
+		return ancestry;
+	}
+
 }

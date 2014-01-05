@@ -12,7 +12,6 @@ import org.rulez.magwas.zenta.help.hints.HintsView;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.Relationship;
@@ -58,7 +57,7 @@ public class HintsViewTest {
 		assertEquals("Procedure", view.getTitleText());
 		ObjectClass oc = (ObjectClass) testdata.metamodel.getClassOf(element);
 		assertEquals("Procedure", oc.getHelpHintTitle());
-		assertEquals("this is a procedure",oc.getHelpHintContent());
+		assertEquals("this is a procedure\nAncestry: Procedure => Basic Object\n",oc.getHelpHintContent());
 	}
 
 		private HintsView prepareHintsView() throws WorkbenchException,
@@ -83,7 +82,7 @@ public class HintsViewTest {
 		HintsView view = prepareHintsView();
 		assertEquals("User", view.getTitleText());
 		assertEquals("User", oc.getHelpHintTitle());
-		assertEquals("this is a User",oc.getHelpHintContent());
+		assertEquals("this is a User\nAncestry: User => Basic Object\n",oc.getHelpHintContent());
 	}
 
 	@Test
@@ -100,6 +99,6 @@ public class HintsViewTest {
 		HintsView view = prepareHintsView();
 		assertEquals("describes", view.getTitleText());
 		assertEquals("describes", baseRelationClass.getHelpHintTitle());
-		assertEquals("I guess this might describe something",baseRelationClass.getHelpHintContent());
+		assertEquals("I guess this might describe something\nAncestry: describes\n",baseRelationClass.getHelpHintContent());
 	}
 }

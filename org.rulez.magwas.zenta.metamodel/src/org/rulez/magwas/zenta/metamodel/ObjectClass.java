@@ -11,5 +11,4 @@ public interface ObjectClass extends ObjectClassBase, ReferencesModelObject, IHe
 	boolean isAllowedRelation(RelationClass klass, Direction source);
 
 	Map<Direction, List<RelationClass>> getAllowedRelations();
-
 } 

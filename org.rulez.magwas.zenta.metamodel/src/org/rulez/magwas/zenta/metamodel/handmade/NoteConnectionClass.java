@@ -1,6 +1,10 @@
 package org.rulez.magwas.zenta.metamodel.handmade;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
+import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
 import org.rulez.magwas.zenta.metamodel.RelationClassBase;
 import org.rulez.magwas.zenta.metamodel.Template;
@@ -42,6 +46,18 @@ public class NoteConnectionClass extends AbstractRelationClassImpl implements
 	@Override
 	public String getHelpHintContent() {
 		return "This connects a note to something";//FIXME externalize
+	}
+
+	@Override
+	public List<ReferencesModelObject> getAncestry(List<ReferencesModelObject> ancestry) {
+		ancestry.add(this);
+		return ancestry;
+	}
+
+	@Override
+	public List<ReferencesModelObject> getAncestry() {
+		ArrayList<ReferencesModelObject> anclist = new ArrayList<ReferencesModelObject>();
+		return anclist;
 	}
 
 }
