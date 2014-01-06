@@ -1,6 +1,5 @@
 package org.rulez.magwas.zenta.metamodel.handmade;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;

@@ -66,8 +66,6 @@ public class HintsViewTest {
 			IViewPart _view = UITestUtils.openView(viewId);
 			assertTrue(_view instanceof HintsView);
 			HintsView view = (HintsView) _view;
-			while(!view.isReady())
-				view.getSite().getShell().getDisplay().readAndDispatch();
 			return view;
 		}
 	
