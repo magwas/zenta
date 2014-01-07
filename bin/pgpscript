@@ -1,0 +1,6 @@
+#!/bin/bash
+echoerr() { echo "$@" 1>&2; }
+#echoerr pgpscript starting
+#echoerr gpg --batch --passphrase $(cat ~/.pgpassword) "$@"
+gpg --batch --passphrase $(cat ~/.pgpassword) "$@"
+

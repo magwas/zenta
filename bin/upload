@@ -1,0 +1,47 @@
+#!/bin/bash
+set -xe
+
+add_changelog_entry() {
+	# $1 = distroname
+	upstreamver=`cat VERSION`
+	buildver="$1$TRAVIS_BUILD_NUMBER"
+	version="$upstreamver$buildver"
+	DEBEMAIL="Travis Zorp <mag+travis@magwas.rulez.org>" DEBFULLNAME="Travis Zorp" dch -v $version -b -D $1 --force-distribution "travis build for $1"
+}
+
+build() {
+    debuild -p`pwd`/bin/pgpscript
+}
+
+getPackageName() {
+	#pkgname=`head -1 debian/changelog |sed 's/\(\w*\) (\([^)]*\)).*/\1_\2/'`
+	head -1 debian/changelog |sed 's/\(\w*\) (\([^)]*\)).*/\1_\2/'
+}
+
+upload() {
+    uploaddir=zenta-$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
+    mkdir $uploaddir
+    mv ../*.deb org.rulez.magwas.zenta.editor.build/target/products/*.zip $uploaddir
+    scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o BatchMode=yes -i key.plain -r $uploaddir travis@magwas.rulez.org:uploads
+}
+
+doOneDistro() {
+	# $1 = distro name
+	git checkout -- debian/changelog
+	add_changelog_entry $1
+	build
+}
+
+setUpKey() {
+    git clone https://github.com/magwas/zorp.git -b identity ../identity
+	gpg --import ../identity/key
+    echo $pgpassword >~/.pgpassword
+    openssl rsa -in .travis.key -passin env:sshpass -out key.plain
+    chmod 600 key.plain 
+}
+
+setUpKey
+set -e
+doOneDistro precise
+upload
+exit 0
