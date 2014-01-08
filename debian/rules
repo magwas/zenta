@@ -24,3 +24,5 @@ override_dh_auto_install:
 	mkdir -p debian/zenta/usr/share
 	unzip -d debian/zenta/usr/share/ org.rulez.magwas.zenta.editor.build/target/products/Zenta-linux.gtk.${DEB_BUILD_GNU_CPU}.zip
 	mv debian/zenta/usr/share/Zenta debian/zenta/usr/share/zenta
+	mkdir -p debian/zenta/usr/bin
+	cp org.rulez.magwas.zenta.editor.build/branding/linux/Zenta-Ubuntu.sh debian/zenta/usr/bin/zenta
