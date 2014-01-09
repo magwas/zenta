@@ -10,8 +10,8 @@ Export-Package: org.rulez.magwas.zenta.model,
  org.rulez.magwas.zenta.model.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- uk.ac.bolton.jdom
+ uk.ac.bolton.jdom,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.9.1";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: org.rulez.magwas.zenta.model.jar

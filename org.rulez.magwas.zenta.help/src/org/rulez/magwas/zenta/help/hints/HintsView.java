@@ -61,7 +61,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.impl.ZentaElement;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
@@ -298,9 +297,11 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 		}
 		private Object figureOutHintObject(Object selected) {
 			Object object;
-			if(selected instanceof ZentaElement) {
-	        	ZentaElement zentaElement = (ZentaElement) selected;
-	        	object = MetamodelFactory.eINSTANCE.getMetamodelFor(zentaElement).getClassOf(zentaElement);
+			if(selected instanceof IZentaElement) {
+	        	object = getObjectClassFor((IZentaElement)selected);
+	        } else if(selected instanceof IDiagramModelZentaObject) {
+	        	IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject)selected;
+				object = getObjectClassFor(dmzo.getZentaElement());
 	        } else if(selected instanceof EClass) {
 	            EClass eClass = (EClass)selected;
 	            object = eClass.getInstanceClass();
@@ -318,13 +319,20 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 	        } else {
 	            object = selected;
 	        }
+			if(object instanceof IZentaElement) {
+	        	object = getObjectClassFor((IZentaElement)object);
+	        }
 			
 	        if(object instanceof IZentaDiagramModel) {
 	            object = ViewpointsManager.INSTANCE.getViewpoint(((IZentaDiagramModel)object));
 	        }
-	        
 			return object;
 		}
+			private Object getObjectClassFor(IZentaElement selected) {
+				Object object;
+				object = MetamodelFactory.eINSTANCE.getMetamodelFor(selected).getClassOf(selected);
+				return object;
+			}
     
     /**
      * HTML-ify some text

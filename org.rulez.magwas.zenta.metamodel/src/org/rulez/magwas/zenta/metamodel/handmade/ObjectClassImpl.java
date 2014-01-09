@@ -63,6 +63,8 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
 	@Override
 	public String getHelpHintContent() {
 		IZentaElement ref = (IZentaElement) this.reference;
+		if(null == ref)
+			return "";
 		String doc = ref.getDocumentation();
 		List<ReferencesModelObject> ancestry = this.getAncestry();
 		List<String> ancestorNames = new ArrayList<String>();

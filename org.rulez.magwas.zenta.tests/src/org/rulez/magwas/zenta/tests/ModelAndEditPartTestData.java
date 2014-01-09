@@ -17,6 +17,7 @@ import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 
 public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
@@ -88,9 +89,14 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 	public ZentaDiagramEditor focusOnDiagram(String id) {
 		diagramModel = this.getZDiagramModelById(id);
 		assertNotNull(diagramModel);
-		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)diagramModel);
+		return focusOnDiagram(diagramModel);
+	}
+
+	public ZentaDiagramEditor focusOnDiagram(IDiagramModel diagramModel) {
+		editor = (ZentaDiagramEditor) EditorManager.openDiagramEditor(diagramModel);
 		return editor;
 	}
+
 	public EditPart getEditPartFor(String editPartId) {
 		IDiagramModelComponent mo = (IDiagramModelComponent) getById(editPartId);
 		return getEditPartFor(mo);
@@ -100,4 +106,12 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 		return (EditPart) editor.getGraphicalViewer().getEditPartRegistry().get(mo);
 	}
 
+	public void selectDiagElement(IDiagramModelZentaObject diagElement) {
+		IDiagramModel dm = diagElement.getDiagramModel();
+		assertNotNull(dm);
+		focusOnDiagram(dm);
+		EditPart editpart = getEditPartFor(diagElement);
+		editpart.getViewer().appendSelection(editpart);
+		//ComponentSelectionManager.INSTANCE.fireSelectionEvent(dm, diagElement);
+	}
 }

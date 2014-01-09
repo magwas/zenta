@@ -13,7 +13,8 @@
 	dh $@ 
 
 override_dh_auto_build:
-	mvn -Pno-unit-tests install 
+	echo display is $(DISPLAY) home is $(HOME)
+	mvn install 
 
 override_dh_clean:
 	dh_clean

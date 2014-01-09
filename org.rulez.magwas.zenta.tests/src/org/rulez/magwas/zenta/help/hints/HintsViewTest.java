@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.help.hints.HintsView;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -68,7 +69,7 @@ public class HintsViewTest {
 			HintsView view = (HintsView) _view;
 			return view;
 		}
-	
+			
 	@Test
 	public void The_Hints_view_contains_the_ancestry_and_description_of_the_ObjectClass_of_element_for_nondefining_elements() throws PartInitException, WorkbenchException {
 		ObjectClass oc = (ObjectClass) testdata.metamodel.getClassById("ea94cf6c");//User		
@@ -99,4 +100,17 @@ public class HintsViewTest {
 		assertEquals("describes", baseRelationClass.getHelpHintTitle());
 		assertEquals("I guess this might describe something\nAncestry: describes\n",baseRelationClass.getHelpHintContent());
 	}
+	
+	@Test
+	public void The_Hints_view_shows_hint_based_on_ObjectClass_for_Diagram_Elements_as_well() throws PartInitException, WorkbenchException {
+		String id = "ea94cf6c";//User
+		IZentaElement element = testdata.getElementById(id);
+		assertNotNull(element);
+		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
+		assertNotNull(diagElement);
+		testdata.selectDiagElement(diagElement);
+		HintsView view = prepareHintsView();
+		assertEquals("User", view.getTitleText());
+	}
+
 }

@@ -392,4 +392,11 @@ public class ObjectClassTest{
 	            count++;
 	    assertEquals(1,count);
 	}
+	
+	@Test
+	public void Basic_object_have_hint() {
+		ObjectClass oc = testdata.metamodel.getBuiltinObjectClass();
+		assertNotNull(oc.getHelpHintTitle());
+		assertNotNull(oc.getHelpHintContent());
+	}
 }

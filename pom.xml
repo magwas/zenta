@@ -31,21 +31,31 @@
   </properties>
  
   <repositories>
-   <!--repository>
+   <repository>
      <id>3.8</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/eclipse/updates/3.8/R-3.8.1-201209141540</url>
+   </repository>
+   <repository>
+     <id>3.8updates</id>
      <layout>p2</layout>
      <url>http://download.eclipse.org/eclipse/updates/3.8</url>
    </repository>
    <repository>
-     <id>juno</id>
+     <id>EMF</id>
      <layout>p2</layout>
-     <url>http://download.eclipse.org/releases/juno</url>
-   </repository-->
+     <url>http://download.eclipse.org/modeling/emf/emf/updates/releases/</url>
+   </repository>
    <repository>
+     <id>GEF</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/tools/gef/updates/milestones/</url>
+   </repository>
+   <!--repository>
      <id>indigo</id>
      <layout>p2</layout>
      <url>http://download.eclipse.org/releases/indigo</url>
-   </repository>
+   </repository-->
   </repositories>
  
   <build>

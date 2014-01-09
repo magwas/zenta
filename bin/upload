@@ -10,7 +10,7 @@ add_changelog_entry() {
 }
 
 build() {
-    debuild -p`pwd`/bin/pgpscript
+    debuild -e DISPLAY -p`pwd`/bin/pgpscript
 }
 
 getPackageName() {
