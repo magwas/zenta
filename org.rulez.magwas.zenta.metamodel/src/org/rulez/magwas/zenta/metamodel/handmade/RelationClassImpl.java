@@ -61,6 +61,8 @@ public class RelationClassImpl extends AbstractRelationClassImpl implements Rela
 	}
 	public String getHelpHintContent() {
 		IRelationship ref = (IRelationship) this.reference;
+		if(null == ref)
+			return "";
 		String doc = ref.getDocumentation();
 		List<ReferencesModelObject> ancestry = this.getAncestry();
 		List<String> ancestorNames = new ArrayList<String>();

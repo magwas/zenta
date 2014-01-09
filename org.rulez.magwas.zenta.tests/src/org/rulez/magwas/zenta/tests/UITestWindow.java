@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Shell;
 
 public class UITestWindow {
 
-	private Shell shell;
+	public Shell shell;
 	private Composite compositeForTest;
 	
 	public UITestWindow() {

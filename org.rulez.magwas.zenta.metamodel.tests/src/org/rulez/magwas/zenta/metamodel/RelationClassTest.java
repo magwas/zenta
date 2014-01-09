@@ -311,4 +311,11 @@ public class RelationClassTest {
 			diagramSource.addConnection(diagramRelation);
 			return modelRelation;
 		}
+	@Test
+	public void Basic_Relation_have_hint() {
+		RelationClass oc = metamodel.getBuiltinRelationClass();
+		assertNotNull(oc.getHelpHintTitle());
+		assertNotNull(oc.getHelpHintContent());
+	}
+
 } 

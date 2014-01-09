@@ -10,7 +10,9 @@ add_changelog_entry() {
 }
 
 build() {
-    debuild -e DISPLAY -p`pwd`/bin/pgpscript
+    mvn integration-test
+    mvn clean
+    debuild -p`pwd`/bin/pgpscript
 }
 
 getPackageName() {
