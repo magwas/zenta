@@ -45,16 +45,16 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.util.DerivedRelationsUtils;
-import org.rulez.magwas.zenta.metamodel.util.DerivedRelationsUtils.TooComplicatedException;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
+import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils.TooComplicatedException;
 
 
 

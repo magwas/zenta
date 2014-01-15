@@ -18,6 +18,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IMetamodelPackage;
 
 /**
  * <!-- begin-user-doc -->

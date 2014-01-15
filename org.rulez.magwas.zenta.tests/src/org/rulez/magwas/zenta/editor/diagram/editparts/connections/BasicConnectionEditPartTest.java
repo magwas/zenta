@@ -14,8 +14,8 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.BasicConnection
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;

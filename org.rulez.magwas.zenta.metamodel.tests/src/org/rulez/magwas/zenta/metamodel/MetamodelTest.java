@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class MetamodelTest {

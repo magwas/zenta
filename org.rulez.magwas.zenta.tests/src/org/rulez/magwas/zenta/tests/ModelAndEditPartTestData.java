@@ -13,11 +13,11 @@ import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
-import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 
 public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {

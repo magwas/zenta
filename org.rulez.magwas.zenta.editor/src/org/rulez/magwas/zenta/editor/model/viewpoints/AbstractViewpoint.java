@@ -10,20 +10,20 @@ import java.util.Collection;
 import java.util.List;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.metamodel.IAttribute.Direction;
-import org.rulez.magwas.zenta.metamodel.IMetamodel;
-import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.IObjectClass;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
-import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IObjectClass;
+import org.rulez.magwas.zenta.model.IReferencesModelObject;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.IAttribute.Direction;
 
 
 /**

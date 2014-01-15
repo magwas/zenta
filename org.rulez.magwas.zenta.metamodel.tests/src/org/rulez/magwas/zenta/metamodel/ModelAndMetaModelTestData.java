@@ -1,13 +1,16 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import static org.junit.Assert.assertNotNull;
-import org.rulez.magwas.zenta.metamodel.IObjectClass;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IObjectClass;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;

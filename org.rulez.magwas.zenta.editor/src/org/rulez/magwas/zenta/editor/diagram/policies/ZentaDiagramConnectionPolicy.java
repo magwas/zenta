@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.ReconnectDiagramConnection
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;

@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.eclipse.gef.commands.Command;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;

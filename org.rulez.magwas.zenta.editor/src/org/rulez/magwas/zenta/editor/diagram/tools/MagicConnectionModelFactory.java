@@ -9,9 +9,9 @@ import org.eclipse.ui.IEditorPart;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
-import org.rulez.magwas.zenta.metamodel.IObjectClass;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IObjectClass;
+import org.rulez.magwas.zenta.model.IRelationClass;
 
 
 

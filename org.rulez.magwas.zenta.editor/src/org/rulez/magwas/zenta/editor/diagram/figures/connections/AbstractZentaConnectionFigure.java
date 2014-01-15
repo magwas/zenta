@@ -9,9 +9,9 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.metamodel.IMetamodel;
-import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IRelationship;
 
 

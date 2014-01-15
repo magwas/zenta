@@ -23,12 +23,12 @@ import org.rulez.magwas.zenta.editor.diagram.tools.PanningSelectionExtendedTool;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
-import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.IObjectClass;
-import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IObjectClass;
+import org.rulez.magwas.zenta.model.IReferencesModelObject;
+import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 
 public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {

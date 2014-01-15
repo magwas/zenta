@@ -9,11 +9,11 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.rulez.magwas.zenta.metamodel.IObjectClass;
-import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IObjectClass;
+import org.rulez.magwas.zenta.model.IReferencesModelObject;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 

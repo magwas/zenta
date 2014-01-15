@@ -7,7 +7,9 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.IObjectClass;
+import org.rulez.magwas.zenta.model.IAttribute;
+import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
