@@ -7,18 +7,18 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class AttributeTest {
 
-	protected AttributeBase fixture = null;
+	protected IAttribute fixture = null;
 	private ModelAndMetaModelTestData testdata;
 
 	@Before
 	public void setUp() throws Exception {
-		this.fixture = MetamodelBaseFactory.eINSTANCE.createAttributeBase();
+		this.fixture = IMetamodelFactory.eINSTANCE.createAttributeBase();
 	}
 	
 	@After
@@ -38,8 +38,8 @@ public class AttributeTest {
 		IRelationship rel = testdata.createNewRelationClass("test relation");
 		IZentaElement source = rel.getSource();
 		IZentaElement target = rel.getTarget();
-		ObjectClass sc = (ObjectClass) testdata.metamodel.getClassReferencing(source);
-		ObjectClass tc = (ObjectClass) testdata.metamodel.getClassReferencing(target);
+		IObjectClass sc = (IObjectClass) testdata.metamodel.getClassReferencing(source);
+		IObjectClass tc = (IObjectClass) testdata.metamodel.getClassReferencing(target);
 		assertTrue(0 < sc.getAttributes().size());
 		assertTrue(0 < tc.getAttributes().size());
 	}

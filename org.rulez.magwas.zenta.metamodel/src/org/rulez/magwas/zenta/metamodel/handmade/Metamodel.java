@@ -7,14 +7,14 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
-import org.rulez.magwas.zenta.metamodel.impl.MetamodelBaseImpl;
+import org.rulez.magwas.zenta.metamodel.impl.MetamodelBase;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -28,17 +28,17 @@ import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 
-public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
+public class Metamodel extends MetamodelBase implements IMetamodel {
 		
 	private BuiltinTemplate builtinTemplate;
 	private IZentaModel model;
 
-	protected MetamodelImpl() {
+	protected Metamodel() {
 		super();
 		addBuiltinTemplate();
 	}
 
-	public MetamodelImpl(IZentaModel zentaModel) {
+	public Metamodel(IZentaModel zentaModel) {
 		model = zentaModel;
 		addBuiltinTemplate();
 		initializeMetaModel();
@@ -57,7 +57,7 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 			private void extractTemplate(IZentaDiagramModel diagram) {
 				if (!isTemplate(diagram))
 					return;
-				ITemplate template = MetamodelFactoryImpl.eINSTANCE.
+				ITemplate template = MetamodelFactory.eINSTANCE.
 						createTemplate(diagram, this);
 				getTemplates().add(template);
 			}
@@ -70,7 +70,7 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 				}
 				
 		private void setAdapter() {
-			final MetamodelImpl self = this;
+			final Metamodel self = this;
 			EContentAdapter adapter = new EContentAdapter() {
 		        public void notifyChanged(Notification notification) {
 		          super.notifyChanged(notification);
@@ -95,8 +95,8 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 	}
 
 	@Override
-	public ObjectClass getBuiltinObjectClass() {
-		return (ObjectClass) builtinTemplate.getObjectClasses().get(0);
+	public IObjectClass getBuiltinObjectClass() {
+		return (IObjectClass) builtinTemplate.getObjectClasses().get(0);
 	}
 
 	@Override
@@ -110,9 +110,9 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 	}
 
 	@Override
-	public ObjectClass getObjectClassReferencing(
+	public IObjectClass getObjectClassReferencing(
 			IZentaElement element) {
-		return (ObjectClass) getClassById(element.getId());
+		return (IObjectClass) getClassById(element.getId());
 	}
 
 	@Override
@@ -132,10 +132,10 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ObjectClass> getObjectClasses() {
-		List<ObjectClass> ret = new ArrayList<ObjectClass>();
+	public List<IObjectClass> getObjectClasses() {
+		List<IObjectClass> ret = new ArrayList<IObjectClass>();
 		for(ITemplate template : getTemplates()) {
-			ret.addAll((EList<? extends ObjectClass>) template.getObjectClasses());
+			ret.addAll((EList<? extends IObjectClass>) template.getObjectClasses());
 		}
 		return ret;
 	}
@@ -156,15 +156,15 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 	}
 
 	@Override
-	public ReferencesModelObject getClassById(String id) {
+	public IReferencesModelObject getClassById(String id) {
 		if(id == null)
 			return null;
-		ArrayList<ReferencesModelObjectBase> classlist = new ArrayList<ReferencesModelObjectBase>();
+		ArrayList<IReferencesModelObject> classlist = new ArrayList<IReferencesModelObject>();
 		classlist.addAll(getObjectClasses());
 		classlist.addAll(getRelationClasses());
-		for(ReferencesModelObjectBase klass : classlist) {
-			if(id.equals(((ReferencesModelObject)klass).getId()))
-				return (ReferencesModelObject) klass;
+		for(IReferencesModelObject klass : classlist) {
+			if(id.equals(((IReferencesModelObject)klass).getId()))
+				return (IReferencesModelObject) klass;
 		}
 		return null;
 	}
@@ -175,11 +175,11 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 	}
 
 	@Override
-	public ReferencesModelObject getClassReferencing(IIdentifier rel) {
+	public IReferencesModelObject getClassReferencing(IIdentifier rel) {
 		return getClassById(rel.getId());
 	}
     @Override
-    public ReferencesModelObject getClassOf(IIdentifier rel) {
+    public IReferencesModelObject getClassOf(IIdentifier rel) {
     	if(this.isDefining(rel))
     		return getClassById(rel.getId());
         return getClassById(rel.getObjectClass());
@@ -192,8 +192,8 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 	}
 
 	@Override
-	public List<ObjectClass> getConnectorClasses() {
-		return new ArrayList<ObjectClass>();
+	public List<IObjectClass> getConnectorClasses() {
+		return new ArrayList<IObjectClass>();
 	}
 
 	void handleNewTemplateElement(IDiagramModelComponent dmzc) {
@@ -218,7 +218,7 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 		if(null == template)
 			return;
 		IRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
-		MetamodelBaseFactory.eINSTANCE.createRelationClass(element, template);
+		IMetamodelFactory.eINSTANCE.createRelationClass(element, template);
 	}
 
 	public void processElementNameChange(IZentaElement element, String oldName, String newName) {
@@ -288,14 +288,14 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 	}
 	
 	private void handleNameChange(IZentaElement element) {
-		ReferencesModelObject oc;
+		IReferencesModelObject oc;
 		if(element instanceof IRelationship)
 			oc = getRelationClassReferencing((IRelationship) element);
 		else
 			oc = getObjectClassReferencing(element);
 		if(null == oc)
 			return;
-		String definingName = MetamodelBaseFactory.eINSTANCE.getDefiningName(element);
+		String definingName = IMetamodelFactory.eINSTANCE.getDefiningName(element);
 		oc.setName(definingName);
 	}
 
@@ -339,7 +339,7 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 		}
 	}
         private void removeObjectClassDefinedBy(IZentaElement element) {
-            ReferencesModelObject oc = this.getClassReferencing(element);
+            IReferencesModelObject oc = this.getClassReferencing(element);
             if(null != oc)
             	oc.getTemplate().removeClass(oc);
         }
@@ -370,7 +370,7 @@ public class MetamodelImpl extends MetamodelBaseImpl implements MetamodelBase {
 	private void removeClassFor(IZentaElement element) {
 		IDiagramModelComponent otherDMO = getDefiningModelObjectFor(element);
 		if (null == otherDMO) {
-			ReferencesModelObject oc = this.getClassReferencing(element);
+			IReferencesModelObject oc = this.getClassReferencing(element);
 			if(null == oc || null == oc.getTemplate())
 				return;
 			oc.getTemplate().removeClass(oc);

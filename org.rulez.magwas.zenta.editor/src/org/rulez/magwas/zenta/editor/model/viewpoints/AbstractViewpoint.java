@@ -10,12 +10,12 @@ import java.util.Collection;
 import java.util.List;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.metamodel.AttributeBase.Direction;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IAttribute.Direction;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -33,17 +33,17 @@ import org.rulez.magwas.zenta.model.UnTestedException;
  */
 public abstract class AbstractViewpoint implements IViewpoint {
         
-	protected MetamodelBase metamodel;
+	protected IMetamodel metamodel;
 	private IFolder folder;
 
     public AbstractViewpoint(IDiagramModel dm) {
-		metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(dm.getZentaModel());
+		metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(dm.getZentaModel());
 		folder = (IFolder) dm.eContainer();
 	}
 
 	@Override
-    public boolean isAllowedType(ReferencesModelObject type) {
-        List<ReferencesModelObject> allowedList = getAllowedList();
+    public boolean isAllowedType(IReferencesModelObject type) {
+        List<IReferencesModelObject> allowedList = getAllowedList();
 		if(allowedList == null)
             return true;
        	if(!allowedList.contains(type))
@@ -54,27 +54,27 @@ public abstract class AbstractViewpoint implements IViewpoint {
     /**
      * @return A list of allowed types or null
      */
-    protected List<ReferencesModelObject> getAllowedList() {
+    protected List<IReferencesModelObject> getAllowedList() {
         return getAllowedTypes();
     }
 
 	@Override
 	public boolean isValidRelationshipStart(IZentaElement sourceElement,
 			IRelationClass relationshipType) {
-		ObjectClass sc = getClassOf(sourceElement);
+		IObjectClass sc = getClassOf(sourceElement);
 		return getSourceRelationClassesFor(sc).contains(relationshipType);
 	}
 
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
-			ObjectClass targetObjectType, IRelationClass typeRel) {
-		ObjectClass sc = getClassOf(sourceElement);
+			IObjectClass targetObjectType, IRelationClass typeRel) {
+		IObjectClass sc = getClassOf(sourceElement);
 		return isValidRelationship(sc,targetObjectType,typeRel);
 	}
 
 	@Override
-	public boolean isValidRelationship(ObjectClass sourceclass,
-			ObjectClass targetclass, IRelationClass relationclass) {
+	public boolean isValidRelationship(IObjectClass sourceclass,
+			IObjectClass targetclass, IRelationClass relationclass) {
 		return	getSourceRelationClassesFor(sourceclass).contains(relationclass) &&
 				getTargetRelationClassesFor(targetclass).contains(relationclass);
 	}
@@ -82,16 +82,16 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
 			IZentaElement targetElement, IRelationClass eClass) {
-		ObjectClass sc = getClassOf(sourceElement);
-		ObjectClass tc = getClassOf(targetElement);
+		IObjectClass sc = getClassOf(sourceElement);
+		IObjectClass tc = getClassOf(targetElement);
 		return isValidRelationship(sc,tc,eClass);
 	}
 
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
 			IZentaElement targetElement, IRelationship rel) {
-		ObjectClass sc = getClassOf(sourceElement);
-		ObjectClass tc = getClassOf(targetElement);
+		IObjectClass sc = getClassOf(sourceElement);
+		IObjectClass tc = getClassOf(targetElement);
 		IRelationClass rc = (IRelationClass) metamodel.getObjectClassReferencing(rel);
 		return getValidRelationships(sc,tc).contains(rc);
 	}
@@ -99,14 +99,14 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public List<IRelationClass> getValidRelationships(
 			IZentaElement sourceElement, IZentaElement targetElement) {
-		ObjectClass sc = getClassOf(sourceElement);
-		ObjectClass tc = getClassOf(targetElement);
+		IObjectClass sc = getClassOf(sourceElement);
+		IObjectClass tc = getClassOf(targetElement);
 		return getValidRelationships(sc,tc);
 	}
 
 	@Override
-	public List<IRelationClass> getValidRelationships(ObjectClass sc,
-			ObjectClass tc) {
+	public List<IRelationClass> getValidRelationships(IObjectClass sc,
+			IObjectClass tc) {
 		List<IRelationClass> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
 		List<IRelationClass> destrels = tc.getAllowedRelations().get(Direction.TARGET);
 		List<IRelationClass> ret = new ArrayList<IRelationClass>();
@@ -118,11 +118,11 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public Collection<ObjectClass> getAllowedTargets(ObjectClass oc) {
+	public Collection<IObjectClass> getAllowedTargets(IObjectClass oc) {
         List<IRelationClass> allowedRelations = oc.getAllowedRelations().get(Direction.SOURCE);
-        List<ObjectClass> canConnectTo = new ArrayList<ObjectClass>();
+        List<IObjectClass> canConnectTo = new ArrayList<IObjectClass>();
         for(IRelationClass rel : allowedRelations)
-            for(ObjectClass targetclass : metamodel.getObjectClasses()) {
+            for(IObjectClass targetclass : metamodel.getObjectClasses()) {
                 boolean alreadyContains = canConnectTo.contains(targetclass);
                 if(!alreadyContains &&
                    targetclass.getAllowedRelations().get(Direction.TARGET).contains(rel))
@@ -139,52 +139,52 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public List<IRelationClass> getSourceRelationClassesFor(
 			IDiagramModelZentaObject sourceDiagramModelObject) {
-		ObjectClass oc = getObjectClassOf(sourceDiagramModelObject);
+		IObjectClass oc = getObjectClassOf(sourceDiagramModelObject);
 		return getSourceRelationClassesFor(oc);
 	}
 
-	private ObjectClass getClassOf(IZentaElement element) {
-		return (ObjectClass) metamodel.getClassOf(element);
+	private IObjectClass getClassOf(IZentaElement element) {
+		return (IObjectClass) metamodel.getClassOf(element);
 	}
 
 
 	@Override
-    public ObjectClass getObjectClassOf(
+    public IObjectClass getObjectClassOf(
             IDiagramModelZentaObject sourceDiagramModelObject) {
         IZentaElement element = sourceDiagramModelObject.getZentaElement();
-		ObjectClass oc = getClassOf(element);
+		IObjectClass oc = getClassOf(element);
         return oc;
     }
 	
 	@Override
-	public List<IRelationClass> getSourceRelationClassesFor(ObjectClass startElement) {
+	public List<IRelationClass> getSourceRelationClassesFor(IObjectClass startElement) {
 		return startElement.getAllowedRelations().get(Direction.SOURCE);
 	}
 
 	@Override
 	public List<IRelationClass> getTargetRelationClassesFor(
-			ObjectClass targetclass) {
+			IObjectClass targetclass) {
 		return metamodel.getRelationClasses();
 	}
 
 
 	@Override
-	public List<ObjectClass> getObjectClasses() {
+	public List<IObjectClass> getObjectClasses() {
 		return metamodel.getObjectClasses();
 	}
 
 	@Override
-	public List<ObjectClass> getConnectorClasses() {
-		return new ArrayList<ObjectClass>();//FIXME what to do with connectors
+	public List<IObjectClass> getConnectorClasses() {
+		return new ArrayList<IObjectClass>();//FIXME what to do with connectors
 	}
 
 	@Override
-	public IIdentifier create(ReferencesModelObject eClass) {
+	public IIdentifier create(IReferencesModelObject eClass) {
 		return eClass.create(folder);
 	}
 
 	@Override
-	public ImageDescriptor getImageDescriptor(ReferencesModelObject eClass) {
+	public ImageDescriptor getImageDescriptor(IReferencesModelObject eClass) {
 		return ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass);
 	}
 
@@ -195,7 +195,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public boolean isAllowedType(IZentaElement element) {
-		ReferencesModelObject oc = metamodel.getClassOf(element);
+		IReferencesModelObject oc = metamodel.getClassOf(element);
 		return getAllowedTypes().contains(oc);
 	}
 
@@ -210,13 +210,13 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public List<ReferencesModelObject> getAllowedTypes() {
-		List<ReferencesModelObject> allowedtypes = new ArrayList<ReferencesModelObject>();
+	public List<IReferencesModelObject> getAllowedTypes() {
+		List<IReferencesModelObject> allowedtypes = new ArrayList<IReferencesModelObject>();
 		for(ITemplate template : metamodel.getTemplates()) {
-			for(ObjectClass oc : template.getObjectClasses())
-				allowedtypes.add((ReferencesModelObject) oc);
+			for(IObjectClass oc : template.getObjectClasses())
+				allowedtypes.add((IReferencesModelObject) oc);
 			for(IRelationClass rc : template.getRelationClasses())
-				allowedtypes.add((ReferencesModelObject) rc);
+				allowedtypes.add((IReferencesModelObject) rc);
 		}
 	    return allowedtypes;
 	}

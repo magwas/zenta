@@ -3,7 +3,7 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.ecore.EFactory;
-import org.rulez.magwas.zenta.metamodel.handmade.MetamodelFactoryImpl;
+import org.rulez.magwas.zenta.metamodel.handmade.MetamodelFactory;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -16,10 +16,10 @@ import org.rulez.magwas.zenta.model.IZentaModelElement;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage
  * @generated
  */
-public interface MetamodelBaseFactory extends EFactory {
+public interface IMetamodelFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>MetamodelBase Base</em>'.
@@ -28,7 +28,7 @@ public interface MetamodelBaseFactory extends EFactory {
 	 * @return a new object of class '<em>MetamodelBase Base</em>'.
 	 * @generated
 	 */
-	MetamodelBase createMetamodelBase();
+	IMetamodel createMetamodelBase();
 
 	/**
 	 * Returns a new object of class '<em>ITemplate Base</em>'.
@@ -46,7 +46,7 @@ public interface MetamodelBaseFactory extends EFactory {
 	 * @return a new object of class '<em>Object Class Base</em>'.
 	 * @generated
 	 */
-	ObjectClass createObjectClassBase();
+	IObjectClass createObjectClassBase();
 
 	/**
 	 * Returns a new object of class '<em>AttributeBase Base</em>'.
@@ -55,7 +55,7 @@ public interface MetamodelBaseFactory extends EFactory {
 	 * @return a new object of class '<em>AttributeBase Base</em>'.
 	 * @generated
 	 */
-	AttributeBase createAttributeBase();
+	IAttribute createAttributeBase();
 
 	/**
 	 * Returns a new object of class '<em>Relation Class Base</em>'.
@@ -73,16 +73,16 @@ public interface MetamodelBaseFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	MetamodelBasePackage getMetamodelBasePackage();
+	IMetamodelPackage getMetamodelBasePackage();
 
-	MetamodelBaseFactory eINSTANCE = (MetamodelBaseFactory) MetamodelFactoryImpl.init();
+	IMetamodelFactory eINSTANCE = (IMetamodelFactory) MetamodelFactory.init();
 
-	MetamodelBase createMetamodel();
+	IMetamodel createMetamodel();
 
 
-	ITemplate createTemplate(IZentaDiagramModel reference, MetamodelBase metamodel);
+	ITemplate createTemplate(IZentaDiagramModel reference, IMetamodel metamodel);
 
-	ObjectClass createObjectClass(IZentaElement element, ITemplate template);
+	IObjectClass createObjectClass(IZentaElement element, ITemplate template);
 
 	IRelationClass createRelationClass(IRelationship reference, ITemplate template);
 
@@ -96,13 +96,13 @@ public interface MetamodelBaseFactory extends EFactory {
 
 	String getDefiningName(IIdentifier reference);
 
-	MetamodelBase createMetamodel(IZentaModel zentaModel);
+	IMetamodel createMetamodel(IZentaModel zentaModel);
 
-	MetamodelBase getMetamodelFor(IZentaModelElement modelElement);
+	IMetamodel getMetamodelFor(IZentaModelElement modelElement);
 
-	ObjectClass createNoteClass();
+	IObjectClass createNoteClass();
 
-	ObjectClass createGroupClass();
+	IObjectClass createGroupClass();
 
 	IRelationClass createNoteConnectionClass();
 

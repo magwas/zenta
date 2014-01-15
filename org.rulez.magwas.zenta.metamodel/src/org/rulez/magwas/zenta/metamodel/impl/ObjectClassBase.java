@@ -14,32 +14,35 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
-import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.metamodel.IAttribute;
+import org.rulez.magwas.zenta.metamodel.IMetamodelPackage;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IIdentifier;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Relation Class Base</b></em>'.
+ * An implementation of the model object '<em><b>Object Class Base</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getReference <em>Reference</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getAncestor <em>Ancestor</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getChildren <em>Children</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getTemplate <em>ITemplate</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase#getReference <em>Reference</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase#getAncestor <em>Ancestor</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase#getTemplate <em>ITemplate</em>}</li>
  * </ul>
  * </p>
  *
  */
-abstract public class RelationClassBaseImpl extends EObjectImpl implements IRelationClass {
+abstract public class ObjectClassBase extends EObjectImpl implements IObjectClass {
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -71,6 +74,16 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<IAttribute> attributes;
+
+	/**
 	 * The cached value of the '{@link #getAncestor() <em>Ancestor</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,7 +91,7 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * @generated
 	 * @ordered
 	 */
-	protected IRelationClass ancestor;
+	protected IObjectClass ancestor;
 
 	/**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' reference list.
@@ -88,14 +101,14 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<IRelationClass> children;
+	protected EList<IObjectClass> children;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RelationClassBaseImpl() {
+	protected ObjectClassBase() {
 		super();
 	}
 
@@ -106,7 +119,7 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MetamodelBasePackage.Literals.RELATION_CLASS_BASE;
+		return IMetamodelPackage.Literals.OBJECT_CLASS_BASE;
 	}
 
 	/**
@@ -127,7 +140,7 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 		IIdentifier oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.RELATION_CLASS_BASE__REFERENCE, oldReference, reference));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS_BASE__REFERENCE, oldReference, reference));
 	}
 
 	/**
@@ -148,7 +161,7 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.RELATION_CLASS_BASE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS_BASE__NAME, oldName, name));
 	}
 
 	/**
@@ -156,7 +169,19 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IRelationClass getAncestor() {
+	public EList<IAttribute> getAttributes() {
+		if (attributes == null) {
+			attributes = new EObjectContainmentEList<IAttribute>(IAttribute.class, this, IMetamodelPackage.OBJECT_CLASS_BASE__ATTRIBUTES);
+		}
+		return attributes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IObjectClass getAncestor() {
 		return ancestor;
 	}
 
@@ -165,11 +190,11 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAncestor(IRelationClass newAncestor, NotificationChain msgs) {
-		IRelationClass oldAncestor = ancestor;
+	public NotificationChain basicSetAncestor(IObjectClass newAncestor, NotificationChain msgs) {
+		IObjectClass oldAncestor = ancestor;
 		ancestor = newAncestor;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR, oldAncestor, newAncestor);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR, oldAncestor, newAncestor);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -180,18 +205,18 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAncestor(IRelationClass newAncestor) {
+	public void setAncestor(IObjectClass newAncestor) {
 		if (newAncestor != ancestor) {
 			NotificationChain msgs = null;
 			if (ancestor != null)
-				msgs = ((InternalEObject)ancestor).eInverseRemove(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
+				msgs = ((InternalEObject)ancestor).eInverseRemove(this, IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN, IObjectClass.class, msgs);
 			if (newAncestor != null)
-				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
+				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN, IObjectClass.class, msgs);
 			msgs = basicSetAncestor(newAncestor, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR, newAncestor, newAncestor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR, newAncestor, newAncestor));
 	}
 
 	/**
@@ -199,9 +224,9 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<IRelationClass> getChildren() {
+	public EList<IObjectClass> getChildren() {
 		if (children == null) {
-			children = new EObjectWithInverseEList<IRelationClass>(IRelationClass.class, this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR);
+			children = new EObjectWithInverseEList<IObjectClass>(IObjectClass.class, this, IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN, IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR);
 		}
 		return children;
 	}
@@ -212,7 +237,7 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * @generated
 	 */
 	public ITemplate getTemplate() {
-		if (eContainerFeatureID() != MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE) return null;
+		if (eContainerFeatureID() != IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE) return null;
 		return (ITemplate)eContainer();
 	}
 
@@ -222,7 +247,7 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplate(ITemplate newTemplate, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newTemplate, MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newTemplate, IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE, msgs);
 		return msgs;
 	}
 
@@ -232,19 +257,19 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	 * @generated
 	 */
 	public void setTemplate(ITemplate newTemplate) {
-		if (newTemplate != eInternalContainer() || (eContainerFeatureID() != MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE && newTemplate != null)) {
+		if (newTemplate != eInternalContainer() || (eContainerFeatureID() != IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
-				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, ITemplate.class, msgs);
+				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES, ITemplate.class, msgs);
 			msgs = basicSetTemplate(newTemplate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE, newTemplate, newTemplate));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE, newTemplate, newTemplate));
 	}
 
 	/**
@@ -256,13 +281,13 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR:
 				if (ancestor != null)
-					msgs = ((InternalEObject)ancestor).eInverseRemove(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
-				return basicSetAncestor((IRelationClass)otherEnd, msgs);
-			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
+					msgs = ((InternalEObject)ancestor).eInverseRemove(this, IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN, IObjectClass.class, msgs);
+				return basicSetAncestor((IObjectClass)otherEnd, msgs);
+			case IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(otherEnd, msgs);
-			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetTemplate((ITemplate)otherEnd, msgs);
@@ -278,11 +303,13 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ATTRIBUTES:
+				return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR:
 				return basicSetAncestor(null, msgs);
-			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE:
 				return basicSetTemplate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -296,8 +323,8 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
-				return eInternalContainer().eInverseRemove(this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, ITemplate.class, msgs);
+			case IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE:
+				return eInternalContainer().eInverseRemove(this, IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES, ITemplate.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -310,15 +337,17 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MetamodelBasePackage.RELATION_CLASS_BASE__REFERENCE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__REFERENCE:
 				return getReference();
-			case MetamodelBasePackage.RELATION_CLASS_BASE__NAME:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__NAME:
 				return getName();
-			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ATTRIBUTES:
+				return getAttributes();
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR:
 				return getAncestor();
-			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN:
 				return getChildren();
-			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE:
 				return getTemplate();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -333,20 +362,24 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MetamodelBasePackage.RELATION_CLASS_BASE__REFERENCE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__REFERENCE:
 				setReference((IIdentifier)newValue);
 				return;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__NAME:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__NAME:
 				setName((String)newValue);
 				return;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
-				setAncestor((IRelationClass)newValue);
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ATTRIBUTES:
+				getAttributes().clear();
+				getAttributes().addAll((Collection<? extends IAttribute>)newValue);
 				return;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR:
+				setAncestor((IObjectClass)newValue);
+				return;
+			case IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN:
 				getChildren().clear();
-				getChildren().addAll((Collection<? extends IRelationClass>)newValue);
+				getChildren().addAll((Collection<? extends IObjectClass>)newValue);
 				return;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE:
 				setTemplate((ITemplate)newValue);
 				return;
 		}
@@ -361,19 +394,22 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MetamodelBasePackage.RELATION_CLASS_BASE__REFERENCE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__REFERENCE:
 				setReference((IIdentifier)null);
 				return;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__NAME:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
-				setAncestor((IRelationClass)null);
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ATTRIBUTES:
+				getAttributes().clear();
 				return;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR:
+				setAncestor((IObjectClass)null);
+				return;
+			case IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN:
 				getChildren().clear();
 				return;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE:
 				setTemplate((ITemplate)null);
 				return;
 		}
@@ -388,15 +424,17 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MetamodelBasePackage.RELATION_CLASS_BASE__REFERENCE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__REFERENCE:
 				return reference != null;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__NAME:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ATTRIBUTES:
+				return attributes != null && !attributes.isEmpty();
+			case IMetamodelPackage.OBJECT_CLASS_BASE__ANCESTOR:
 				return ancestor != null;
-			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__CHILDREN:
 				return children != null && !children.isEmpty();
-			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE:
 				return getTemplate() != null;
 		}
 		return super.eIsSet(featureID);
@@ -418,4 +456,4 @@ abstract public class RelationClassBaseImpl extends EObjectImpl implements IRela
 		return result.toString();
 	}
 
-} //RelationClassBaseImpl
+} //ObjectClassBaseImpl

@@ -16,7 +16,7 @@ import org.rulez.magwas.zenta.metamodel.*;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage
  * @generated
  */
 public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
@@ -26,7 +26,7 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static MetamodelBasePackage modelPackage;
+	protected static IMetamodelPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -36,7 +36,7 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	 */
 	public MetamodelBaseAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = MetamodelBasePackage.eINSTANCE;
+			modelPackage = IMetamodelPackage.eINSTANCE;
 		}
 	}
 
@@ -68,7 +68,7 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	protected MetamodelBaseSwitch<Adapter> modelSwitch =
 		new MetamodelBaseSwitch<Adapter>() {
 			@Override
-			public Adapter caseMetamodelBase(MetamodelBase object) {
+			public Adapter caseMetamodelBase(IMetamodel object) {
 				return createMetamodelBaseAdapter();
 			}
 			@Override
@@ -76,15 +76,15 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 				return createTemplateBaseAdapter();
 			}
 			@Override
-			public Adapter caseReferencesModelObjectBase(ReferencesModelObjectBase object) {
+			public Adapter caseReferencesModelObjectBase(IReferencesModelObject object) {
 				return createReferencesModelObjectBaseAdapter();
 			}
 			@Override
-			public Adapter caseObjectClassBase(ObjectClass object) {
+			public Adapter caseObjectClassBase(IObjectClass object) {
 				return createObjectClassBaseAdapter();
 			}
 			@Override
-			public Adapter caseAttributeBase(AttributeBase object) {
+			public Adapter caseAttributeBase(IAttribute object) {
 				return createAttributeBaseAdapter();
 			}
 			@Override
@@ -112,13 +112,13 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.MetamodelBase <em>MetamodelBase Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.IMetamodel <em>MetamodelBase Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBase
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodel
 	 * @generated
 	 */
 	public Adapter createMetamodelBaseAdapter() {
@@ -140,13 +140,13 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase <em>References Model Object Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject <em>References Model Object Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase
+	 * @see org.rulez.magwas.zenta.metamodel.IReferencesModelObject
 	 * @generated
 	 */
 	public Adapter createReferencesModelObjectBaseAdapter() {
@@ -154,13 +154,13 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.ObjectClass <em>Object Class Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.IObjectClass <em>Object Class Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.metamodel.ObjectClass
+	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass
 	 * @generated
 	 */
 	public Adapter createObjectClassBaseAdapter() {
@@ -168,13 +168,13 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.AttributeBase <em>AttributeBase Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.IAttribute <em>AttributeBase Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.metamodel.AttributeBase
+	 * @see org.rulez.magwas.zenta.metamodel.IAttribute
 	 * @generated
 	 */
 	public Adapter createAttributeBaseAdapter() {

@@ -25,7 +25,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.ZENTA_DIAGRAM_MODEL__CHILDREN;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) newVal;
 				mm.processChildAddedToDiagram(dmzc);
 			}});
@@ -35,7 +35,7 @@ public class NotificationProcessor {
 			hasOld = true;
 			hasNew = false;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) oldVal;
 				mm.processChildRemovedFromDiagram(dmzc);
 			}});
@@ -45,7 +45,7 @@ public class NotificationProcessor {
 			hasOld = true;
 			hasNew = false;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				mm.processChildRemovedFromFolder(oldVal);
 			}});
 		addCase(new DecisionCase(){{
@@ -53,7 +53,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.ZENTA_DIAGRAM_MODEL__PROPERTIES;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IProperty prop = (IProperty) newVal;
 				IZentaDiagramModel dm = (IZentaDiagramModel) notifier;
 				mm.processDiagramHasNewProperty(dm, prop);
@@ -63,7 +63,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.PROPERTY__KEY;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IProperty prop = (IProperty) notifier;
 				String value = (String) newVal;
 				mm.processPropertyChange(prop, value);
@@ -73,7 +73,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__SOURCE_CONNECTIONS;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) newVal;
 				mm.processConnectionAddedToDiagramElement(dmzc);
 			}});
@@ -83,7 +83,7 @@ public class NotificationProcessor {
 			hasNew = false;
 			hasOld = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) oldVal;
 				mm.processConnectionRemovedFromDiagramElement(dmzc);
 			}});
@@ -92,7 +92,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ELEMENT_SHAPE;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				mm.processDiagramElementAppearanceChanged(dmzc,"elementShape",dmzc.getElementShape());
 			}});
@@ -101,7 +101,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__FILL_COLOR;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				mm.processDiagramElementAppearanceChanged(dmzc,"fillColor",dmzc.getFillColor());
 			}});
@@ -110,7 +110,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__FONT;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				mm.processDiagramElementAppearanceChanged(dmzc,"font",dmzc.getFont());
 			}});
@@ -119,7 +119,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__FONT_COLOR;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				mm.processDiagramElementAppearanceChanged(dmzc,"fontColor",dmzc.getFontColor());
 			}});
@@ -128,7 +128,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__TEXT_ALIGNMENT;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				mm.processDiagramElementAppearanceChanged(dmzc,"textAlignment",new Integer(dmzc.getTextAlignment()).toString());
 			}});
@@ -137,7 +137,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__TEXT_POSITION;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				mm.processDiagramElementAppearanceChanged(dmzc,"textPosition",new Integer(dmzc.getTextPosition()).toString());
 			}});
@@ -146,7 +146,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__FONT;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"font",dmzc.getFont());
 			}});
@@ -155,7 +155,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__FONT_COLOR;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"fontColor",dmzc.getFontColor());
 			}});
@@ -164,7 +164,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_COLOR;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineColor",dmzc.getLineColor());
 			}});
@@ -173,7 +173,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_DECORATION;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineDecoration",dmzc.getLineDecoration());
 			}});
@@ -182,7 +182,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_WIDTH;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineWidth",new Integer(dmzc.getLineWidth()).toString());
 			}});
@@ -191,7 +191,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__TEXT_ALIGNMENT;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"textAlignment",new Integer(dmzc.getTextAlignment()).toString());
 			}});
@@ -200,7 +200,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__TEXT_POSITION;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"textPosition",new Integer(dmzc.getTextPosition()).toString());
 			}});
@@ -209,7 +209,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.NAMEABLE__OBJECT_CLASS;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IZentaElement element = (IZentaElement) notifier;
 				mm.processElementObjectClassChange(element);
 			}});
@@ -218,7 +218,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.ZENTA_ELEMENT__NAME;
 			hasNew = true;
 			}
-			public void run(MetamodelImpl mm, Object notifier, Object oldVal, Object newVal) {
+			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IZentaElement element = (IZentaElement) notifier;
 				mm.processElementNameChange(element, (String) oldVal, (String)newVal);
 			}});
@@ -288,28 +288,28 @@ public class NotificationProcessor {
 					return subsubbranch;
 				}
 	
-	public static void processNotification(MetamodelImpl mm,Notification notification) {
+	public static void processNotification(Metamodel mm,Notification notification) {
 		EObject lastObject = (EObject) notification.getNotifier();
 		//System.out.printf("notifier = %s\nfeature=%s\nold=%s\nnew=%s\n\n", lastObject,notification.getFeature(),notification.getOldValue(),notification.getNewValue());
 		for(Class<?> klass : decisionTree.keySet())
 			if(klass.isInstance(lastObject))
 				processClassMatch(mm,notification,klass,decisionTree.get(klass));
 	}
-		private static void processClassMatch(MetamodelImpl mm,
+		private static void processClassMatch(Metamodel mm,
 				Notification notification, Class<?> klass, Map<Integer, Map<Boolean, Map<Boolean, DecisionCase>>> map) {
 			int featureId = notification.getFeatureID(klass);
 			Map<Boolean, Map<Boolean, DecisionCase>> match = map.get(featureId);
 			if(null != match)
 				processFeatureMatch(mm,notification,match);
 		}
-			private static void processFeatureMatch(MetamodelImpl mm,
+			private static void processFeatureMatch(Metamodel mm,
 					Notification notification,
 					Map<Boolean, Map<Boolean, DecisionCase>> map) {
 				Map<Boolean, DecisionCase> match = map.get(notification.getNewValue() != null);
 				if(null != match)
 					processNewMatch(mm,notification,match);
 			}
-				private static void processNewMatch(MetamodelImpl mm,
+				private static void processNewMatch(Metamodel mm,
 						Notification notification, Map<Boolean, DecisionCase> map) {
 					DecisionCase match = map.get(notification.getOldValue() != null);
 					if(null != match)

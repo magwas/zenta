@@ -8,12 +8,12 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class MetamodelTest {
-	protected MetamodelBase fixture = null;
+	protected IMetamodel fixture = null;
 
-	protected void setFixture(MetamodelBase fixture) {
+	protected void setFixture(IMetamodel fixture) {
 		this.fixture = fixture;
 	}
-	protected MetamodelBase getFixture() {
+	protected IMetamodel getFixture() {
 		return fixture;
 	}
 
@@ -21,7 +21,7 @@ public class MetamodelTest {
 	public void setUp() throws Exception {
 		ModelTestData data = new ModelTestData();
 		assertNotNull(data.model);
-		this.fixture = MetamodelBaseFactory.eINSTANCE.createMetamodel(data.model);
+		this.fixture = IMetamodelFactory.eINSTANCE.createMetamodel(data.model);
 	}
 
 	@After

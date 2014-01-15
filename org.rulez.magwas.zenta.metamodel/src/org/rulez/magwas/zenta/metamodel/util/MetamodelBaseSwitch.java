@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.metamodel.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage
  * @generated
  */
 public class MetamodelBaseSwitch<T> extends Switch<T> {
@@ -29,7 +29,7 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static MetamodelBasePackage modelPackage;
+	protected static IMetamodelPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -39,7 +39,7 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	 */
 	public MetamodelBaseSwitch() {
 		if (modelPackage == null) {
-			modelPackage = MetamodelBasePackage.eINSTANCE;
+			modelPackage = IMetamodelPackage.eINSTANCE;
 		}
 	}
 
@@ -66,39 +66,39 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case MetamodelBasePackage.METAMODEL_BASE: {
-				MetamodelBase metamodelBase = (MetamodelBase)theEObject;
+			case IMetamodelPackage.METAMODEL_BASE: {
+				IMetamodel metamodelBase = (IMetamodel)theEObject;
 				T result = caseMetamodelBase(metamodelBase);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MetamodelBasePackage.TEMPLATE_BASE: {
+			case IMetamodelPackage.TEMPLATE_BASE: {
 				ITemplate templateBase = (ITemplate)theEObject;
 				T result = caseTemplateBase(templateBase);
 				if (result == null) result = caseReferencesModelObjectBase(templateBase);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MetamodelBasePackage.REFERENCES_MODEL_OBJECT_BASE: {
-				ReferencesModelObjectBase referencesModelObjectBase = (ReferencesModelObjectBase)theEObject;
+			case IMetamodelPackage.REFERENCES_MODEL_OBJECT_BASE: {
+				IReferencesModelObject referencesModelObjectBase = (IReferencesModelObject)theEObject;
 				T result = caseReferencesModelObjectBase(referencesModelObjectBase);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MetamodelBasePackage.OBJECT_CLASS_BASE: {
-				ObjectClass objectClassBase = (ObjectClass)theEObject;
+			case IMetamodelPackage.OBJECT_CLASS_BASE: {
+				IObjectClass objectClassBase = (IObjectClass)theEObject;
 				T result = caseObjectClassBase(objectClassBase);
 				if (result == null) result = caseReferencesModelObjectBase(objectClassBase);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MetamodelBasePackage.ATTRIBUTE_BASE: {
-				AttributeBase attributeBase = (AttributeBase)theEObject;
+			case IMetamodelPackage.ATTRIBUTE_BASE: {
+				IAttribute attributeBase = (IAttribute)theEObject;
 				T result = caseAttributeBase(attributeBase);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MetamodelBasePackage.RELATION_CLASS_BASE: {
+			case IMetamodelPackage.RELATION_CLASS_BASE: {
 				IRelationClass relationClassBase = (IRelationClass)theEObject;
 				T result = caseRelationClassBase(relationClassBase);
 				if (result == null) result = caseReferencesModelObjectBase(relationClassBase);
@@ -120,7 +120,7 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMetamodelBase(MetamodelBase object) {
+	public T caseMetamodelBase(IMetamodel object) {
 		return null;
 	}
 
@@ -150,7 +150,7 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseReferencesModelObjectBase(ReferencesModelObjectBase object) {
+	public T caseReferencesModelObjectBase(IReferencesModelObject object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseObjectClassBase(ObjectClass object) {
+	public T caseObjectClassBase(IObjectClass object) {
 		return null;
 	}
 
@@ -180,7 +180,7 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAttributeBase(AttributeBase object) {
+	public T caseAttributeBase(IAttribute object) {
 		return null;
 	}
 

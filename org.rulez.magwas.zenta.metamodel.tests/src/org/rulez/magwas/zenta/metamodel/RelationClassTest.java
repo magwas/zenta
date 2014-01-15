@@ -25,7 +25,7 @@ public class RelationClassTest {
 
 	protected IRelationClass fixture = null;
 
-	private MetamodelBase metamodel;
+	private IMetamodel metamodel;
 
 	private IZentaModel model;
 
@@ -38,7 +38,7 @@ public class RelationClassTest {
 		
 		ensureVirginDMRsForLoadTest(testdata);
 
-		metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
+		metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinRelationClass();
 	}
 
@@ -153,7 +153,7 @@ public class RelationClassTest {
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineDecoration", "DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration");
 		
 		ensureVirginDMRsForLoadTest(testdata);
-		MetamodelBaseFactory.eINSTANCE.createMetamodel(testdata.model);
+		IMetamodelFactory.eINSTANCE.createMetamodel(testdata.model);
 		ensureVirginDMRsForLoadTest(testdata);
 		ensureCorrectFinalAttributes(testdata);
 
@@ -240,7 +240,7 @@ public class RelationClassTest {
 	@Test
 	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IRelationship element = createRelationClass();
-		ReferencesModelObjectBase oc = metamodel.getClassReferencing(element);
+		IReferencesModelObject oc = metamodel.getClassReferencing(element);
 		assertNotNull(oc);
 		IDiagramModelZentaConnection diagElement = element.getDiagConnections().get(0);
 		IDiagramModelZentaObject dia = (IDiagramModelZentaObject) diagElement.eContainer();
@@ -255,7 +255,7 @@ public class RelationClassTest {
 		String elemId = element.getId();
 		IDiagramModelZentaConnection dmo = element.getDiagConnections().get(0);
 		assertNotNull(dmo);
-		ReferencesModelObjectBase oc = metamodel.getClassById(elemId);
+		IReferencesModelObject oc = metamodel.getClassById(elemId);
 		assertNotNull(oc);
 		((IFolder)element.eContainer()).getElements().remove(element);
 		assertNull(metamodel.getClassById(elemId));

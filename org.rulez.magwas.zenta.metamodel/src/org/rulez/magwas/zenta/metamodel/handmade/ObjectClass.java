@@ -3,9 +3,9 @@ package org.rulez.magwas.zenta.metamodel.handmade;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -15,22 +15,22 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
-public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectClass {
+public class ObjectClass extends AbstractObjectClass implements IObjectClass {
 
-	protected ObjectClassImpl() {
+	protected ObjectClass() {
 	}
 
-	public ObjectClassImpl(IZentaElement reference, ITemplate template) {
+	public ObjectClass(IZentaElement reference, ITemplate template) {
 		super(reference,template);
-		ObjectClass ancie = getAncestorClass(reference);
+		IObjectClass ancie = getAncestorClass(reference);
 		setAncestor(ancie);
 		reference.setObjectClass(ancie.getId());
 	}
-        private ObjectClass getAncestorClass(IZentaElement reference) {
+        private IObjectClass getAncestorClass(IZentaElement reference) {
             String refClassId = reference.getObjectClass();
     		String referenceId = reference.getId();
-    		MetamodelBase metamodel = getMetamodel();
-    		ObjectClass ancie = null;
+    		IMetamodel metamodel = getMetamodel();
+    		IObjectClass ancie = null;
     		if(haveAncestor(refClassId, referenceId))
     			ancie = getAncestorClass(refClassId, metamodel);
     		if(ancie == null)
@@ -42,7 +42,7 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
     					!"basicobject".equals(refClassId) &&
     					!referenceId.equals(refClassId);
     		}
-    		private ObjectClass getAncestorClass(String refClassId, MetamodelBase metamodel) {
+    		private IObjectClass getAncestorClass(String refClassId, IMetamodel metamodel) {
     			IZentaElement ancestorElement = (IZentaElement) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
     			return metamodel.getObjectClassReferencing(ancestorElement);
     		}
@@ -66,9 +66,9 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
 		if(null == ref)
 			return "";
 		String doc = ref.getDocumentation();
-		List<ReferencesModelObject> ancestry = this.getAncestry();
+		List<IReferencesModelObject> ancestry = this.getAncestry();
 		List<String> ancestorNames = new ArrayList<String>();
-		for( ReferencesModelObject a : ancestry) {
+		for( IReferencesModelObject a : ancestry) {
 			ancestorNames.add(a.getName());
 		}
 		String ancestryNames = StringUtils.join(ancestorNames, " => ");
@@ -76,14 +76,14 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
 	}
 
 	@Override
-	public List<ReferencesModelObject> getAncestry() {
-		ArrayList<ReferencesModelObject> ancestry = new ArrayList<ReferencesModelObject>();
+	public List<IReferencesModelObject> getAncestry() {
+		ArrayList<IReferencesModelObject> ancestry = new ArrayList<IReferencesModelObject>();
 		return getAncestry(ancestry);
 	}
 
 	@Override
-	public List<ReferencesModelObject> getAncestry(List<ReferencesModelObject> ancestry) {
+	public List<IReferencesModelObject> getAncestry(List<IReferencesModelObject> ancestry) {
 		ancestry.add(this);
-		return ((ReferencesModelObject)ancestor).getAncestry(ancestry);
+		return ((IReferencesModelObject)ancestor).getAncestry(ancestry);
 	}
 }

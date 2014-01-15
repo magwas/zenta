@@ -4,14 +4,14 @@ import java.util.HashMap;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.rulez.magwas.zenta.metamodel.AttributeBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IAttribute;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
-import org.rulez.magwas.zenta.metamodel.handmade.AttributeImpl;
-import org.rulez.magwas.zenta.metamodel.impl.MetamodelBaseFactoryImpl;
+import org.rulez.magwas.zenta.metamodel.handmade.Attribute;
+import org.rulez.magwas.zenta.metamodel.impl.MetamodelFactoryBase;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
@@ -21,14 +21,14 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 
-public class MetamodelFactoryImpl extends MetamodelBaseFactoryImpl implements MetamodelBaseFactory {
+public class MetamodelFactory extends MetamodelFactoryBase implements IMetamodelFactory {
 
-	private static HashMap<IZentaModel,MetamodelBase> registry = new HashMap<IZentaModel,MetamodelBase>();
+	private static HashMap<IZentaModel,IMetamodel> registry = new HashMap<IZentaModel,IMetamodel>();
 	
-	public static MetamodelBaseFactory init() {
+	public static IMetamodelFactory init() {
 		try {
 			Registry packageRegistry = EPackage.Registry.INSTANCE;
-			MetamodelBaseFactory theMetamodelFactory = (MetamodelBaseFactory)packageRegistry.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
+			IMetamodelFactory theMetamodelFactory = (IMetamodelFactory)packageRegistry.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
 			if (theMetamodelFactory != null) {
 				return theMetamodelFactory;
 			}
@@ -36,45 +36,45 @@ public class MetamodelFactoryImpl extends MetamodelBaseFactoryImpl implements Me
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new MetamodelFactoryImpl();
+		return new MetamodelFactory();
 	}
 
-	public MetamodelFactoryImpl() {
+	public MetamodelFactory() {
 		super();
 	}
 
 	@Override
-	public MetamodelBase createMetamodel(IZentaModel zentaModel) {
-		MetamodelBase mm = getMetamodelFor(zentaModel);
+	public IMetamodel createMetamodel(IZentaModel zentaModel) {
+		IMetamodel mm = getMetamodelFor(zentaModel);
 		if(null == mm)
-			mm = new MetamodelImpl(zentaModel);
+			mm = new Metamodel(zentaModel);
 		registry.put(zentaModel, mm);
 		return mm;
 	}
 	
-	public MetamodelBase getMetamodelFor(IZentaModel model2) {
+	public IMetamodel getMetamodelFor(IZentaModel model2) {
 		return registry.get(model2);
 	}
 
 
-	public ITemplate createTemplate(IZentaDiagramModel reference, MetamodelBase metamodel) {
-		TemplateImpl template = new TemplateImpl(reference, metamodel);
+	public ITemplate createTemplate(IZentaDiagramModel reference, IMetamodel metamodel) {
+		Template template = new Template(reference, metamodel);
 		return template;
 	}
 
-	public ObjectClass createObjectClass(IZentaElement reference, ITemplate template) {
-		ObjectClass candidate = template.getObjectClassReferencingElement(reference);
+	public IObjectClass createObjectClass(IZentaElement reference, ITemplate template) {
+		IObjectClass candidate = template.getObjectClassReferencingElement(reference);
 		if(null != candidate)
 			return candidate;
 		if("".equals(getDefiningName(reference)))
 			return null;
-		ObjectClassImpl objectClass = new ObjectClassImpl(reference, template);
+		ObjectClass objectClass = new ObjectClass(reference, template);
 		template.getObjectClasses().add(objectClass);
 		return objectClass;
 	}
 
-	public AttributeBase createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();
+	public IAttribute createAttribute() {
+		Attribute attribute = new Attribute();
 		return attribute;
 	}
 
@@ -84,7 +84,7 @@ public class MetamodelFactoryImpl extends MetamodelBaseFactoryImpl implements Me
 	 * @generated
 	 */
 	public IRelationClass createRelationClass() {
-		AbstractRelationClassImpl relationClass = new RelationClassImpl();
+		AbstractRelationClass relationClass = new RelationClass();
 		return relationClass;
 	}
 
@@ -94,7 +94,7 @@ public class MetamodelFactoryImpl extends MetamodelBaseFactoryImpl implements Me
 			return candidate;
 		if("".equals(getDefiningName(referenced)))
 			return null;
-		AbstractRelationClassImpl relationClass = new RelationClassImpl(referenced, template);
+		AbstractRelationClass relationClass = new RelationClass(referenced, template);
 		template.getRelationClasses().add(relationClass);
 		return relationClass;
 	}
@@ -114,23 +114,23 @@ public class MetamodelFactoryImpl extends MetamodelBaseFactoryImpl implements Me
 		}
 
 	@Override
-	public MetamodelBase createMetamodel() {
+	public IMetamodel createMetamodel() {
 		return null;
 	}
 
 	@Override
-	public MetamodelBase getMetamodelFor(IZentaModelElement modelElement) {
+	public IMetamodel getMetamodelFor(IZentaModelElement modelElement) {
 		IZentaModel model = modelElement.getZentaModel();
 		return getMetamodelFor(model);
 	}
 
 	@Override
-	public ObjectClass createNoteClass() {
+	public IObjectClass createNoteClass() {
 		return new NoteClass();
 	}
 
 	@Override
-	public ObjectClass createGroupClass() {
+	public IObjectClass createGroupClass() {
 		return new GroupClass();
 	}
 

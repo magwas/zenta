@@ -17,8 +17,8 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -167,7 +167,7 @@ implements IDiagramModelObjectFigure {
             if(!StringUtils.isSet(text)) { // Name was blank
                 toolTipFigure.setText(name);
             }
-            MetamodelBase metamodel = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(element);
+            IMetamodel metamodel = IMetamodelFactory.eINSTANCE.getMetamodelFor(element);
             String typeName = metamodel.getClassById(element.getObjectClass()).getName();
             toolTipFigure.setType(Messages.AbstractDiagramModelObjectFigure_0 + " " + typeName); //$NON-NLS-1$
         }

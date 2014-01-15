@@ -1,16 +1,16 @@
 package org.rulez.magwas.zenta.metamodel.handmade;
 
-import org.rulez.magwas.zenta.metamodel.AttributeBase;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IAttribute;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.impl.AttributeBaseImpl;
+import org.rulez.magwas.zenta.metamodel.impl.AttributeBase;
 
 
-public class AttributeImpl extends AttributeBaseImpl implements AttributeBase {
+public class Attribute extends AttributeBase implements IAttribute {
 
 	private Direction direction;
 
-	public AttributeImpl(IRelationClass relation, ObjectClass connectedObject,
+	public Attribute(IRelationClass relation, IObjectClass connectedObject,
 			Direction whichend) {
 		super();
 		this.connectedObject = connectedObject;
@@ -18,7 +18,7 @@ public class AttributeImpl extends AttributeBaseImpl implements AttributeBase {
 		this.direction = whichend;
 	}
 
-	public AttributeImpl() {
+	public Attribute() {
 		super();
 	}
 

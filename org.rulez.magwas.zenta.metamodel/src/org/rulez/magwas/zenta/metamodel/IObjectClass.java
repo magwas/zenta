@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
-import org.rulez.magwas.zenta.metamodel.AttributeBase.Direction;
+import org.rulez.magwas.zenta.metamodel.IAttribute.Direction;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -19,21 +19,21 @@ import org.rulez.magwas.zenta.model.IIdentifier;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getAttributes <em>Attributes</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getAncestor <em>Ancestor</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getChildren <em>Children</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getTemplate <em>ITemplate</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getAncestor <em>Ancestor</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>ITemplate</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getObjectClassBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase()
  * @model
  * @generated
  */
-public interface ObjectClass extends ReferencesModelObject, IHelpHintProvider {
+public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider {
 	/**
 	 * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.AttributeBase}.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.IAttribute}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Attributes</em>' containment reference list isn't clear,
@@ -41,15 +41,15 @@ public interface ObjectClass extends ReferencesModelObject, IHelpHintProvider {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attributes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getObjectClassBase_Attributes()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase_Attributes()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<AttributeBase> getAttributes();
+	EList<IAttribute> getAttributes();
 
 	/**
 	 * Returns the value of the '<em><b>Ancestor</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getChildren <em>Children</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ancestor</em>' reference isn't clear,
@@ -57,28 +57,28 @@ public interface ObjectClass extends ReferencesModelObject, IHelpHintProvider {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ancestor</em>' reference.
-	 * @see #setAncestor(ObjectClass)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getObjectClassBase_Ancestor()
-	 * @see org.rulez.magwas.zenta.metamodel.ObjectClass#getChildren
+	 * @see #setAncestor(IObjectClass)
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase_Ancestor()
+	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getChildren
 	 * @model opposite="children" resolveProxies="false" required="true"
 	 * @generated
 	 */
-	ObjectClass getAncestor();
+	IObjectClass getAncestor();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getAncestor <em>Ancestor</em>}' reference.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getAncestor <em>Ancestor</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Ancestor</em>' reference.
 	 * @see #getAncestor()
 	 * @generated
 	 */
-	void setAncestor(ObjectClass value);
+	void setAncestor(IObjectClass value);
 
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' reference list.
-	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.ObjectClass}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getAncestor <em>Ancestor</em>}'.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.IObjectClass}.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getAncestor <em>Ancestor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Children</em>' reference list isn't clear,
@@ -86,12 +86,12 @@ public interface ObjectClass extends ReferencesModelObject, IHelpHintProvider {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getObjectClassBase_Children()
-	 * @see org.rulez.magwas.zenta.metamodel.ObjectClass#getAncestor
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase_Children()
+	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getAncestor
 	 * @model opposite="ancestor" resolveProxies="false" derived="true"
 	 * @generated
 	 */
-	EList<ObjectClass> getChildren();
+	EList<IObjectClass> getChildren();
 
 	/**
 	 * Returns the value of the '<em><b>ITemplate</b></em>' container reference.
@@ -104,7 +104,7 @@ public interface ObjectClass extends ReferencesModelObject, IHelpHintProvider {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>ITemplate</em>' container reference.
 	 * @see #setTemplate(ITemplate)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getObjectClassBase_Template()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase_Template()
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate#getObjectClasses
 	 * @model opposite="objectClasses" transient="false"
 	 * @generated
@@ -112,7 +112,7 @@ public interface ObjectClass extends ReferencesModelObject, IHelpHintProvider {
 	ITemplate getTemplate();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getTemplate <em>ITemplate</em>}' container reference.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>ITemplate</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>ITemplate</em>' container reference.

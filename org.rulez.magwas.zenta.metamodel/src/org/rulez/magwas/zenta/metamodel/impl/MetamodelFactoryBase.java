@@ -11,23 +11,23 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.rulez.magwas.zenta.metamodel.*;
-import org.rulez.magwas.zenta.metamodel.handmade.AttributeImpl;
-import org.rulez.magwas.zenta.metamodel.handmade.ObjectClassImpl;
-import org.rulez.magwas.zenta.metamodel.handmade.RelationClassImpl;
+import org.rulez.magwas.zenta.metamodel.handmade.Attribute;
+import org.rulez.magwas.zenta.metamodel.handmade.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.handmade.RelationClass;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
  */
-abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelBaseFactory {
+abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMetamodelFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static MetamodelBaseFactory init() {
+	public static IMetamodelFactory init() {
 		throw new RuntimeException();
 //
 //		try {
@@ -48,7 +48,7 @@ abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MetamodelBaseFactoryImpl() {
+	public MetamodelFactoryBase() {
 		super();
 	}
 
@@ -60,11 +60,11 @@ abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements M
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case MetamodelBasePackage.METAMODEL_BASE: return createMetamodelBase();
-			case MetamodelBasePackage.TEMPLATE_BASE: return createTemplateBase();
-			case MetamodelBasePackage.OBJECT_CLASS_BASE: return createObjectClassBase();
-			case MetamodelBasePackage.ATTRIBUTE_BASE: return createAttributeBase();
-			case MetamodelBasePackage.RELATION_CLASS_BASE: return createRelationClassBase();
+			case IMetamodelPackage.METAMODEL_BASE: return createMetamodelBase();
+			case IMetamodelPackage.TEMPLATE_BASE: return createTemplateBase();
+			case IMetamodelPackage.OBJECT_CLASS_BASE: return createObjectClassBase();
+			case IMetamodelPackage.ATTRIBUTE_BASE: return createAttributeBase();
+			case IMetamodelPackage.RELATION_CLASS_BASE: return createRelationClassBase();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,7 +75,7 @@ abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MetamodelBase createMetamodelBase() {
+	public IMetamodel createMetamodelBase() {
 		throw new RuntimeException();
 //		MetamodelBaseImpl metamodelBase = new MetamodelBaseImpl();
 //		return metamodelBase;
@@ -97,7 +97,7 @@ abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ObjectClass createObjectClassBase() {
+	public IObjectClass createObjectClassBase() {
 		throw new RuntimeException();
 //		ObjectClassBaseImpl objectClassBase = new ObjectClassImpl();
 //		return objectClassBase;
@@ -108,8 +108,8 @@ abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AttributeBase createAttributeBase() {
-		AttributeBaseImpl attributeBase = new AttributeImpl();
+	public IAttribute createAttributeBase() {
+		AttributeBase attributeBase = new Attribute();
 		return attributeBase;
 	}
 
@@ -129,8 +129,8 @@ abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MetamodelBasePackage getMetamodelBasePackage() {
-		return (MetamodelBasePackage)getEPackage();
+	public IMetamodelPackage getMetamodelBasePackage() {
+		return (IMetamodelPackage)getEPackage();
 	}
 
 	/**
@@ -140,8 +140,8 @@ abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements M
 	 * @generated
 	 */
 	@Deprecated
-	public static MetamodelBasePackage getPackage() {
-		return MetamodelBasePackage.eINSTANCE;
+	public static IMetamodelPackage getPackage() {
+		return IMetamodelPackage.eINSTANCE;
 	}
 
 } //MetamodelBaseFactoryImpl

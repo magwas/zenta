@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelPackage;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -35,17 +35,17 @@ import org.rulez.magwas.zenta.model.UnTestedException;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getReference <em>Reference</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getObjectClasses <em>Object Classes</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getRelationClasses <em>Relation Classes</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getMetamodel <em>MetamodelBase</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase#getReference <em>Reference</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase#getObjectClasses <em>Object Classes</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase#getRelationClasses <em>Relation Classes</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase#getPath <em>Path</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase#getMetamodel <em>MetamodelBase</em>}</li>
  * </ul>
  * </p>
  *
  */
-abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate {
+abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -84,7 +84,7 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ObjectClass> objectClasses;
+	protected EList<IObjectClass> objectClasses;
 
 	/**
 	 * The cached value of the '{@link #getRelationClasses() <em>Relation Classes</em>}' containment reference list.
@@ -121,7 +121,7 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TemplateBaseImpl() {
+	protected TemplateBase() {
 		super();
 	}
 
@@ -132,7 +132,7 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MetamodelBasePackage.Literals.TEMPLATE_BASE;
+		return IMetamodelPackage.Literals.TEMPLATE_BASE;
 	}
 
 	/**
@@ -153,7 +153,7 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 		IIdentifier oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.TEMPLATE_BASE__REFERENCE, oldReference, reference));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.TEMPLATE_BASE__REFERENCE, oldReference, reference));
 	}
 
 	/**
@@ -174,7 +174,7 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.TEMPLATE_BASE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.TEMPLATE_BASE__NAME, oldName, name));
 	}
 
 	/**
@@ -182,9 +182,9 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ObjectClass> getObjectClasses() {
+	public EList<IObjectClass> getObjectClasses() {
 		if (objectClasses == null) {
-			objectClasses = new EObjectContainmentWithInverseEList<ObjectClass>(ObjectClass.class, this, MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES, MetamodelBasePackage.OBJECT_CLASS_BASE__TEMPLATE);
+			objectClasses = new EObjectContainmentWithInverseEList<IObjectClass>(IObjectClass.class, this, IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES, IMetamodelPackage.OBJECT_CLASS_BASE__TEMPLATE);
 		}
 		return objectClasses;
 	}
@@ -196,7 +196,7 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	 */
 	public EList<IRelationClass> getRelationClasses() {
 		if (relationClasses == null) {
-			relationClasses = new EObjectContainmentWithInverseEList<IRelationClass>(IRelationClass.class, this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE);
+			relationClasses = new EObjectContainmentWithInverseEList<IRelationClass>(IRelationClass.class, this, IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES, IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE);
 		}
 		return relationClasses;
 	}
@@ -219,7 +219,7 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 		String oldPath = path;
 		path = newPath;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.TEMPLATE_BASE__PATH, oldPath, path));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.TEMPLATE_BASE__PATH, oldPath, path));
 	}
 
 	/**
@@ -227,9 +227,9 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MetamodelBase getMetamodel() {
-		if (eContainerFeatureID() != MetamodelBasePackage.TEMPLATE_BASE__METAMODEL) return null;
-		return (MetamodelBase)eContainer();
+	public IMetamodel getMetamodel() {
+		if (eContainerFeatureID() != IMetamodelPackage.TEMPLATE_BASE__METAMODEL) return null;
+		return (IMetamodel)eContainer();
 	}
 
 	/**
@@ -237,8 +237,8 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMetamodel(MetamodelBase newMetamodel, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newMetamodel, MetamodelBasePackage.TEMPLATE_BASE__METAMODEL, msgs);
+	public NotificationChain basicSetMetamodel(IMetamodel newMetamodel, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newMetamodel, IMetamodelPackage.TEMPLATE_BASE__METAMODEL, msgs);
 		return msgs;
 	}
 
@@ -247,20 +247,20 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMetamodel(MetamodelBase newMetamodel) {
-		if (newMetamodel != eInternalContainer() || (eContainerFeatureID() != MetamodelBasePackage.TEMPLATE_BASE__METAMODEL && newMetamodel != null)) {
+	public void setMetamodel(IMetamodel newMetamodel) {
+		if (newMetamodel != eInternalContainer() || (eContainerFeatureID() != IMetamodelPackage.TEMPLATE_BASE__METAMODEL && newMetamodel != null)) {
 			if (EcoreUtil.isAncestor(this, newMetamodel))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newMetamodel != null)
-				msgs = ((InternalEObject)newMetamodel).eInverseAdd(this, MetamodelBasePackage.METAMODEL_BASE__TEMPLATES, MetamodelBase.class, msgs);
+				msgs = ((InternalEObject)newMetamodel).eInverseAdd(this, IMetamodelPackage.METAMODEL_BASE__TEMPLATES, IMetamodel.class, msgs);
 			msgs = basicSetMetamodel(newMetamodel, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.TEMPLATE_BASE__METAMODEL, newMetamodel, newMetamodel));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.TEMPLATE_BASE__METAMODEL, newMetamodel, newMetamodel));
 	}
 
 	/**
@@ -272,14 +272,14 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getObjectClasses()).basicAdd(otherEnd, msgs);
-			case MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRelationClasses()).basicAdd(otherEnd, msgs);
-			case MetamodelBasePackage.TEMPLATE_BASE__METAMODEL:
+			case IMetamodelPackage.TEMPLATE_BASE__METAMODEL:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetMetamodel((MetamodelBase)otherEnd, msgs);
+				return basicSetMetamodel((IMetamodel)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -292,11 +292,11 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES:
 				return ((InternalEList<?>)getObjectClasses()).basicRemove(otherEnd, msgs);
-			case MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES:
 				return ((InternalEList<?>)getRelationClasses()).basicRemove(otherEnd, msgs);
-			case MetamodelBasePackage.TEMPLATE_BASE__METAMODEL:
+			case IMetamodelPackage.TEMPLATE_BASE__METAMODEL:
 				return basicSetMetamodel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -310,8 +310,8 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case MetamodelBasePackage.TEMPLATE_BASE__METAMODEL:
-				return eInternalContainer().eInverseRemove(this, MetamodelBasePackage.METAMODEL_BASE__TEMPLATES, MetamodelBase.class, msgs);
+			case IMetamodelPackage.TEMPLATE_BASE__METAMODEL:
+				return eInternalContainer().eInverseRemove(this, IMetamodelPackage.METAMODEL_BASE__TEMPLATES, IMetamodel.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -324,17 +324,17 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MetamodelBasePackage.TEMPLATE_BASE__REFERENCE:
+			case IMetamodelPackage.TEMPLATE_BASE__REFERENCE:
 				return getReference();
-			case MetamodelBasePackage.TEMPLATE_BASE__NAME:
+			case IMetamodelPackage.TEMPLATE_BASE__NAME:
 				return getName();
-			case MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES:
 				return getObjectClasses();
-			case MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES:
 				return getRelationClasses();
-			case MetamodelBasePackage.TEMPLATE_BASE__PATH:
+			case IMetamodelPackage.TEMPLATE_BASE__PATH:
 				return getPath();
-			case MetamodelBasePackage.TEMPLATE_BASE__METAMODEL:
+			case IMetamodelPackage.TEMPLATE_BASE__METAMODEL:
 				return getMetamodel();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -349,25 +349,25 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MetamodelBasePackage.TEMPLATE_BASE__REFERENCE:
+			case IMetamodelPackage.TEMPLATE_BASE__REFERENCE:
 				setReference((IIdentifier)newValue);
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__NAME:
+			case IMetamodelPackage.TEMPLATE_BASE__NAME:
 				setName((String)newValue);
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES:
 				getObjectClasses().clear();
-				getObjectClasses().addAll((Collection<? extends ObjectClass>)newValue);
+				getObjectClasses().addAll((Collection<? extends IObjectClass>)newValue);
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES:
 				getRelationClasses().clear();
 				getRelationClasses().addAll((Collection<? extends IRelationClass>)newValue);
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__PATH:
+			case IMetamodelPackage.TEMPLATE_BASE__PATH:
 				setPath((String)newValue);
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__METAMODEL:
-				setMetamodel((MetamodelBase)newValue);
+			case IMetamodelPackage.TEMPLATE_BASE__METAMODEL:
+				setMetamodel((IMetamodel)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -381,23 +381,23 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MetamodelBasePackage.TEMPLATE_BASE__REFERENCE:
+			case IMetamodelPackage.TEMPLATE_BASE__REFERENCE:
 				setReference((IIdentifier)null);
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__NAME:
+			case IMetamodelPackage.TEMPLATE_BASE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES:
 				getObjectClasses().clear();
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES:
 				getRelationClasses().clear();
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__PATH:
+			case IMetamodelPackage.TEMPLATE_BASE__PATH:
 				setPath(PATH_EDEFAULT);
 				return;
-			case MetamodelBasePackage.TEMPLATE_BASE__METAMODEL:
-				setMetamodel((MetamodelBase)null);
+			case IMetamodelPackage.TEMPLATE_BASE__METAMODEL:
+				setMetamodel((IMetamodel)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -411,17 +411,17 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MetamodelBasePackage.TEMPLATE_BASE__REFERENCE:
+			case IMetamodelPackage.TEMPLATE_BASE__REFERENCE:
 				return reference != null;
-			case MetamodelBasePackage.TEMPLATE_BASE__NAME:
+			case IMetamodelPackage.TEMPLATE_BASE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__OBJECT_CLASSES:
 				return objectClasses != null && !objectClasses.isEmpty();
-			case MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES:
+			case IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES:
 				return relationClasses != null && !relationClasses.isEmpty();
-			case MetamodelBasePackage.TEMPLATE_BASE__PATH:
+			case IMetamodelPackage.TEMPLATE_BASE__PATH:
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
-			case MetamodelBasePackage.TEMPLATE_BASE__METAMODEL:
+			case IMetamodelPackage.TEMPLATE_BASE__METAMODEL:
 				return getMetamodel() != null;
 		}
 		return super.eIsSet(featureID);
@@ -451,8 +451,8 @@ abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate 
 	}
 
 	@Override
-	public void removeClass(ReferencesModelObjectBase oc) {
-		if(oc instanceof ObjectClass) {
+	public void removeClass(IReferencesModelObject oc) {
+		if(oc instanceof IObjectClass) {
 			getObjectClasses().remove(oc);
 		}
 		else if(oc instanceof IRelationClass)

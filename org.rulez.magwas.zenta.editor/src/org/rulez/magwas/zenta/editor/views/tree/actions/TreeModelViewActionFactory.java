@@ -19,10 +19,10 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -43,10 +43,10 @@ import org.rulez.magwas.zenta.model.IZentaModel;
  */
 public class TreeModelViewActionFactory {
 
-	private MetamodelBase metamodel;
+	private IMetamodel metamodel;
 
     public TreeModelViewActionFactory(IZentaModel model) {
-    	metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
+    	metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(model);
     }
 
     /**
@@ -73,11 +73,11 @@ public class TreeModelViewActionFactory {
             f = (IFolder)f.eContainer();
         }
 
-        for(ObjectClass eClass : metamodel.getObjectClasses()) {
+        for(IObjectClass eClass : metamodel.getObjectClasses()) {
             IAction action = createNewElementAction(folder, eClass);
             list.add(action);
         }
-        for(ObjectClass eClass : metamodel.getConnectorClasses()) {
+        for(IObjectClass eClass : metamodel.getConnectorClasses()) {
             IAction action = createNewElementAction(folder, eClass);
             list.add(action);
         }
@@ -87,7 +87,7 @@ public class TreeModelViewActionFactory {
         return list;
     }
 
-    private IAction createNewElementAction(final IFolder folder, final ReferencesModelObject eClass) {
+    private IAction createNewElementAction(final IFolder folder, final IReferencesModelObject eClass) {
         IAction action = new Action(eClass.getName()) {
             @Override
             public void run() {
@@ -147,7 +147,7 @@ public class TreeModelViewActionFactory {
         return action;
     }
 
-	public MetamodelBase getMetamodel() {
+	public IMetamodel getMetamodel() {
 		return metamodel;
 	}
 }

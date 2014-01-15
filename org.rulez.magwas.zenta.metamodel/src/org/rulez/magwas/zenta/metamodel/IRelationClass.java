@@ -19,11 +19,11 @@ import org.rulez.magwas.zenta.model.IHelpHintProvider;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getRelationClassBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getRelationClassBase()
  * @model
  * @generated
  */
-public interface IRelationClass extends ReferencesModelObject, IHelpHintProvider {
+public interface IRelationClass extends IReferencesModelObject, IHelpHintProvider {
 	/**
 	 * Returns the value of the '<em><b>Ancestor</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.RelationClassBase#getChildren <em>Children</em>}'.
@@ -35,7 +35,7 @@ public interface IRelationClass extends ReferencesModelObject, IHelpHintProvider
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ancestor</em>' reference.
 	 * @see #setAncestor(RelationClassBase)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getRelationClassBase_Ancestor()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getRelationClassBase_Ancestor()
 	 * @see org.rulez.magwas.zenta.metamodel.RelationClassBase#getChildren
 	 * @model opposite="children" resolveProxies="false" required="true"
 	 * @generated
@@ -63,7 +63,7 @@ public interface IRelationClass extends ReferencesModelObject, IHelpHintProvider
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getRelationClassBase_Children()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getRelationClassBase_Children()
 	 * @see org.rulez.magwas.zenta.metamodel.RelationClassBase#getAncestor
 	 * @model opposite="ancestor" resolveProxies="false" derived="true"
 	 * @generated
@@ -81,7 +81,7 @@ public interface IRelationClass extends ReferencesModelObject, IHelpHintProvider
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Template</em>' container reference.
 	 * @see #setTemplate(TemplateBase)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getRelationClassBase_Template()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getRelationClassBase_Template()
 	 * @see org.rulez.magwas.zenta.metamodel.TemplateBase#getRelationClasses
 	 * @model opposite="relationClasses" transient="false"
 	 * @generated

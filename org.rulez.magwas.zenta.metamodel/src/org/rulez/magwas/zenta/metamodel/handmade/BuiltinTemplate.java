@@ -1,14 +1,14 @@
 package org.rulez.magwas.zenta.metamodel.handmade;
 
 import org.eclipse.emf.ecore.EObject;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
-public class BuiltinTemplate extends TemplateImpl {
+public class BuiltinTemplate extends Template {
 	
-	public BuiltinTemplate(MetamodelBase metamodel) {
+	public BuiltinTemplate(IMetamodel metamodel) {
 		super();
 		metamodel.getTemplates().add(this);
 		getObjectClasses().add(new RootObjectClass());
@@ -16,10 +16,10 @@ public class BuiltinTemplate extends TemplateImpl {
 	}
 
 	public void setReference(EObject newReference) {
-		throw new MetamodelBaseFactory.BuiltinClassShouldNotHaveReference();
+		throw new IMetamodelFactory.BuiltinClassShouldNotHaveReference();
 	}
 
-	public ObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {
+	public IObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {
 		return null;
 	}
 

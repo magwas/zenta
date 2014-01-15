@@ -30,11 +30,11 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UnTestedException;
@@ -176,10 +176,10 @@ public class SearchWidget extends Composite {
         MenuManager businessMenu = new MenuManager(Messages.SearchWidget_6);
         dropDownAction.add(businessMenu);
         List<IZentaModel> models = IEditorModelManager.INSTANCE.getModels();
-        MetamodelBase mm;
+        IMetamodel mm;
 		for(IZentaModel model : models) {
-        	mm = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(model);
-            for(ObjectClass eClass : mm.getObjectClasses()) {
+        	mm = IMetamodelFactory.eINSTANCE.getMetamodelFor(model);
+            for(IObjectClass eClass : mm.getObjectClasses()) {
                 businessMenu.add(createObjectAction(eClass));
             }
         }
@@ -187,7 +187,7 @@ public class SearchWidget extends Composite {
         MenuManager relationsMenu = new MenuManager(Messages.SearchWidget_11);
         dropDownAction.add(relationsMenu);
 		for(IZentaModel model : models) {
-        	mm = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(model);
+        	mm = IMetamodelFactory.eINSTANCE.getMetamodelFor(model);
 	        for(IRelationClass eClass : mm.getRelationClasses()) {
 	            relationsMenu.add(createObjectAction(eClass));
 	        }
@@ -236,7 +236,7 @@ public class SearchWidget extends Composite {
         fSearchFilter.setFilterOnName(true);
     }
 
-	private IAction createObjectAction(final ReferencesModelObject eClass) {
+	private IAction createObjectAction(final IReferencesModelObject eClass) {
         IAction action = new Action(eClass.getName(), IAction.AS_CHECK_BOX) {
             @Override
             public void run() {

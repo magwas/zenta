@@ -10,7 +10,7 @@ import org.eclipse.ui.IEditorPart;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -50,10 +50,10 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
     }
 
     
-    private ReferencesModelObject fTemplate;
+    private IReferencesModelObject fTemplate;
 	private IFolder folder;
     
-    public ZentaDiagramModelFactory(ReferencesModelObject fTemplate2, IFolder folder) {
+    public ZentaDiagramModelFactory(IReferencesModelObject fTemplate2, IFolder folder) {
         fTemplate = fTemplate2;
         this.folder = folder;
     }

@@ -1,7 +1,7 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import static org.junit.Assert.assertNotNull;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -19,7 +19,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 	public IDiagramModelZentaConnection connection;
 	public IZentaDiagramModel diagramModel;
 	public IDiagramModelZentaConnection connection2;
-	public MetamodelBase metamodel;
+	public IMetamodel metamodel;
 
 	public ModelAndMetaModelTestData() {
 		super();
@@ -37,7 +37,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		setUpMetaModel();
 	}
 		private void setUpMetaModel() {
-			metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
+			metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(model);
 	        assertNotNull(metamodel);
 	        assertNotNull(metamodel.getTemplates());
 		}
@@ -46,11 +46,11 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		String id = "ea94cf6c";//User
 		IZentaElement user = getElementById(id);
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
-		ObjectClass oc = metamodel.getBuiltinObjectClass();
+		IObjectClass oc = metamodel.getBuiltinObjectClass();
 		IZentaElement newElement = (IZentaElement) oc.create(folder);
 		return newElement;
 	}
-	public IZentaElement createClassedTestElement(ObjectClass baseClass) {
+	public IZentaElement createClassedTestElement(IObjectClass baseClass) {
 		String id = "ea94cf6c";//User
 		IZentaElement user = getElementById(id);
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
@@ -58,18 +58,18 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		return newElement;
 	}
 
-	public ObjectClass createTestObjectClass() {
+	public IObjectClass createTestObjectClass() {
 		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
 		ITemplate template = (ITemplate) metamodel.getTemplates().get(0);
 		assertNotNull(template);
 		assertNotNull(template.getMetamodel());
-		return MetamodelBaseFactory.eINSTANCE
+		return IMetamodelFactory.eINSTANCE
 				.createObjectClass(
 						element,
 						template);
 	}
 
-	public IZentaElement createNewObjectClass(String elementName, ObjectClass baseClass) {
+	public IZentaElement createNewObjectClass(String elementName, IObjectClass baseClass) {
 		IZentaElement newElement = createClassedTestElement(baseClass);
 		IDiagramModel dm = getTemplateDiagramModel();
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);

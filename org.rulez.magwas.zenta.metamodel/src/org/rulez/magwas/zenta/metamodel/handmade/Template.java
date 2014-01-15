@@ -1,12 +1,15 @@
 package org.rulez.magwas.zenta.metamodel.handmade;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
-import org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.impl.TemplateBase;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -18,13 +21,13 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 
-public class TemplateImpl extends TemplateBaseImpl implements ITemplate {
+public class Template extends TemplateBase implements ITemplate {
 
-	protected TemplateImpl() {
+	protected Template() {
 		super();
 	}
 
-	public TemplateImpl(IDiagramModel reference2, MetamodelBase metamodel) {
+	public Template(IDiagramModel reference2, IMetamodel metamodel) {
 		super();
 		metamodel.getTemplates().add(this);
 		setReference(reference2);
@@ -40,7 +43,7 @@ public class TemplateImpl extends TemplateBaseImpl implements ITemplate {
 		}
 			private void extractDiagramElement(IDiagramModelZentaObject kid) {
 				IZentaElement zentaElement = (IZentaElement) kid.getZentaElement();
-				MetamodelBaseFactory.eINSTANCE
+				IMetamodelFactory.eINSTANCE
 						.createObjectClass(zentaElement, this);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
 				for (IDiagramModelObject aKid : myKids)
@@ -69,34 +72,34 @@ public class TemplateImpl extends TemplateBaseImpl implements ITemplate {
 							return;
 						IDiagramModelZentaConnection dmc = (IDiagramModelZentaConnection)conn;
 						IRelationship relationship = (IRelationship) dmc.getRelationship();
-						MetamodelBaseFactory.eINSTANCE.createRelationClass(
+						IMetamodelFactory.eINSTANCE.createRelationClass(
 								relationship,
 								this);
 					}
 
 
 	@Override
-	public ObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {
-		for(ObjectClass oc : ((MetamodelImpl)getMetamodel()).getObjectClasses()) {
+	public IObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {
+		for(IObjectClass oc : ((Metamodel)getMetamodel()).getObjectClasses()) {
 			IIdentifier reference = oc.getReference();
 			if(null == reference)
 				continue;
 			if(reference.equals(classTemplate))
-				return (ObjectClass)oc;
+				return (IObjectClass)oc;
 		}
 		return null;
 	}
 	@Override
-	public ObjectClass getObjectClassFrom(IZentaElement referenced) {
-		ObjectClass oc = getObjectClassReferencingElement(referenced);
+	public IObjectClass getObjectClassFrom(IZentaElement referenced) {
+		IObjectClass oc = getObjectClassReferencingElement(referenced);
 		if (null == oc)
-			oc = new ObjectClassImpl(referenced, this);
+			oc = new ObjectClass(referenced, this);
 		return oc;
 	}
 
 	@Override
 	public IRelationClass getRelationClassReferencingElement(IRelationship classTemplate) {
-		for(IRelationClass oc : ((MetamodelImpl)getMetamodel()).getRelationClasses()) {
+		for(IRelationClass oc : ((Metamodel)getMetamodel()).getRelationClasses()) {
 			IIdentifier reference = oc.getReference();
 			if(null == reference)
 				continue;
@@ -110,7 +113,7 @@ public class TemplateImpl extends TemplateBaseImpl implements ITemplate {
 	public IRelationClass getRelationClassFrom(IRelationship referenced) {
 		IRelationClass oc = getRelationClassReferencingElement(referenced);
 		if (null == oc)
-			oc = new RelationClassImpl(referenced, this);
+			oc = new RelationClass(referenced, this);
 		return oc;
 	}
 	
@@ -125,5 +128,36 @@ public class TemplateImpl extends TemplateBaseImpl implements ITemplate {
 			relationClasses.add(getRelationClassFrom((IRelationship) element));
 		else
 			objectClasses.add(getObjectClassFrom(element));
+	}
+
+	@Override
+	public void postCreate(IIdentifier createdObj, IFolder folder) {
+		// TODO design problem
+		throw new RuntimeException();
+	}
+
+	@Override
+	public boolean isInstance(IIdentifier relation) {
+		// TODO design problem
+		throw new RuntimeException();
+	}
+
+	@Override
+	public String getId() {
+		// TODO design problem
+		throw new RuntimeException();
+	}
+
+	@Override
+	public List<IReferencesModelObject> getAncestry(
+			List<IReferencesModelObject> ancestry) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<IReferencesModelObject> getAncestry() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

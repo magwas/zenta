@@ -23,10 +23,10 @@ import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -61,7 +61,7 @@ public class ZentaDiagramEditorPaletteTest {
 		assertNotNull(element);
 		
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
-		for(ObjectClass klass : testdata.metamodel.getObjectClasses()) {
+		for(IObjectClass klass : testdata.metamodel.getObjectClasses()) {
 			assertTrue(haveCreatorFor(klass, children));
 		}
 	}
@@ -124,7 +124,7 @@ public class ZentaDiagramEditorPaletteTest {
 	public void Magic_Connector_magically_knows_what_to_connect_on_non_template_as_well() {
 		IZentaElement procedure = (IZentaElement) testdata.getById("f33bd0d2");
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(procedure);
-		ObjectClass oc = testdata.metamodel.getObjectClassReferencing(procedure);
+		IObjectClass oc = testdata.metamodel.getObjectClassReferencing(procedure);
 		IZentaElement element = (IZentaElement) oc.create(folder);
 		element.setName("testmcmkwtcontaw");
 		IZentaDiagramModel dia = testdata.getNonTemplateDiagramModel();
@@ -167,7 +167,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 	@Test
 	public void The_created_objects_are_part_of_a_model() throws IOException {
-		ObjectClass userClass = (ObjectClass) testdata.metamodel.getClassById("ea94cf6c");
+		IObjectClass userClass = (IObjectClass) testdata.metamodel.getClassById("ea94cf6c");
 		IFolder folder = (IFolder) testdata.getById("13144af6");
 		ZentaElement newElement = (ZentaElement) userClass.create(folder);
 		folder.getElements().add(newElement);
@@ -181,7 +181,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 		String elementName = "New test OC";
 		IZentaElement newElement = testdata.createNewObjectClass(elementName);
-		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		
 		PaletteContainer objectsgroup = palette._getObjectsGroup();
 		assertNotNull(objectsgroup);
@@ -196,7 +196,7 @@ public class ZentaDiagramEditorPaletteTest {
 		String ocName = "deletetest OC";
 		IZentaElement element = testdata.createNewObjectClass(ocName);
 		String elemId = element.getId();
-		ReferencesModelObjectBase oc = testdata.metamodel.getClassById(elemId);
+		IReferencesModelObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
 		
 		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
@@ -213,7 +213,7 @@ public class ZentaDiagramEditorPaletteTest {
 		String ocName = "deletetest OC";
 		IZentaElement element = testdata.createNewObjectClass(ocName);
 		String elemId = element.getId();
-		ReferencesModelObjectBase oc = testdata.metamodel.getClassById(elemId);
+		IReferencesModelObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
 
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
@@ -285,7 +285,7 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 
 
-		private boolean haveCreatorFor(ReferencesModelObject klass, List<PaletteEntry> children) {
+		private boolean haveCreatorFor(IReferencesModelObject klass, List<PaletteEntry> children) {
 			return haveCreatorNamed(klass.getName(),children);
 		}
 		private boolean haveCreatorNamed(String klass, List<PaletteEntry> children) {

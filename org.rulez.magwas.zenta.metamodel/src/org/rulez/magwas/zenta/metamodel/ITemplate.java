@@ -23,15 +23,17 @@ import org.rulez.magwas.zenta.model.IZentaElement;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getTemplateBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase()
  * @model
  * @generated
  */
-public interface ITemplate extends ReferencesModelObjectBase {
+public interface ITemplate
+extends IReferencesModelObject 
+{
 	/**
 	 * Returns the value of the '<em><b>Object Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.ObjectClass}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getTemplate <em>ITemplate</em>}'.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.IObjectClass}.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>ITemplate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Object Classes</em>' containment reference list isn't clear,
@@ -39,12 +41,12 @@ public interface ITemplate extends ReferencesModelObjectBase {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Object Classes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getTemplateBase_ObjectClasses()
-	 * @see org.rulez.magwas.zenta.metamodel.ObjectClass#getTemplate
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase_ObjectClasses()
+	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
 	 */
-	EList<ObjectClass> getObjectClasses();
+	EList<IObjectClass> getObjectClasses();
 
 	/**
 	 * Returns the value of the '<em><b>Relation Classes</b></em>' containment reference list.
@@ -57,7 +59,7 @@ public interface ITemplate extends ReferencesModelObjectBase {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation Classes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getTemplateBase_RelationClasses()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase_RelationClasses()
 	 * @see org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
@@ -74,7 +76,7 @@ public interface ITemplate extends ReferencesModelObjectBase {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getTemplateBase_Path()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase_Path()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -92,7 +94,7 @@ public interface ITemplate extends ReferencesModelObjectBase {
 
 	/**
 	 * Returns the value of the '<em><b>Metamodel</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.MetamodelBase#getTemplates <em>Templates</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IMetamodel#getTemplates <em>Templates</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Metamodel</em>' container reference isn't clear,
@@ -100,13 +102,13 @@ public interface ITemplate extends ReferencesModelObjectBase {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metamodel</em>' container reference.
-	 * @see #setMetamodel(MetamodelBase)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getTemplateBase_Metamodel()
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBase#getTemplates
+	 * @see #setMetamodel(IMetamodel)
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase_Metamodel()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodel#getTemplates
 	 * @model opposite="templates" required="true" transient="false"
 	 * @generated
 	 */
-	MetamodelBase getMetamodel();
+	IMetamodel getMetamodel();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel <em>Metamodel</em>}' container reference.
@@ -116,14 +118,14 @@ public interface ITemplate extends ReferencesModelObjectBase {
 	 * @see #getMetamodel()
 	 * @generated
 	 */
-	void setMetamodel(MetamodelBase value);
+	void setMetamodel(IMetamodel value);
 
-	void removeClass(ReferencesModelObjectBase oc);
-	ObjectClass getObjectClassReferencingElement(IZentaElement reference);
+	void removeClass(IReferencesModelObject oc);
+	IObjectClass getObjectClassReferencingElement(IZentaElement reference);
 
 	IRelationClass getRelationClassReferencingElement(IRelationship referenced);
 	
-	ObjectClass getObjectClassFrom(IZentaElement reference);
+	IObjectClass getObjectClassFrom(IZentaElement reference);
 
 	IRelationClass getRelationClassFrom(IRelationship referenced);
 

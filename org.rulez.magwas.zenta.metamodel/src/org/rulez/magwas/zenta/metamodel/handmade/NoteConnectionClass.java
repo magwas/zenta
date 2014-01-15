@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
@@ -12,7 +12,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
-public class NoteConnectionClass extends AbstractRelationClassImpl implements
+public class NoteConnectionClass extends AbstractRelationClass implements
 		IRelationClass {
 
 	@Override
@@ -48,14 +48,14 @@ public class NoteConnectionClass extends AbstractRelationClassImpl implements
 	}
 
 	@Override
-	public List<ReferencesModelObject> getAncestry(List<ReferencesModelObject> ancestry) {
+	public List<IReferencesModelObject> getAncestry(List<IReferencesModelObject> ancestry) {
 		ancestry.add(this);
 		return ancestry;
 	}
 
 	@Override
-	public List<ReferencesModelObject> getAncestry() {
-		ArrayList<ReferencesModelObject> anclist = new ArrayList<ReferencesModelObject>();
+	public List<IReferencesModelObject> getAncestry() {
+		ArrayList<IReferencesModelObject> anclist = new ArrayList<IReferencesModelObject>();
 		return anclist;
 	}
 

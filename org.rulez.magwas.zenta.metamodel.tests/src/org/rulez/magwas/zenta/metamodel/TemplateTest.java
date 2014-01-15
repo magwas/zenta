@@ -25,7 +25,7 @@ public class TemplateTest {
 		ModelTestData testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTemplateDiagramModel();
-		MetamodelBase metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
+		IMetamodel metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinTemplate();
 		template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
 	}
@@ -42,7 +42,7 @@ public class TemplateTest {
 	
 	@Test
 	public void The_Builtin_template_have_one_ObjectClass() {
-		EList<ObjectClass> objects = fixture.getObjectClasses();
+		EList<IObjectClass> objects = fixture.getObjectClasses();
 		assertEquals(1,objects.size());
 	}
 

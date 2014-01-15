@@ -47,8 +47,8 @@ public class MetamodelExample {
 		// Register the package to ensure it is available during loading.
 		//
 		resourceSet.getPackageRegistry().put
-			(MetamodelBasePackage.eNS_URI, 
-			 MetamodelBasePackage.eINSTANCE);
+			(IMetamodelPackage.eNS_URI, 
+			 IMetamodelPackage.eINSTANCE);
         
 		// If there are no arguments, emit an appropriate usage message.
 		//
@@ -56,7 +56,7 @@ public class MetamodelExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.metamodel"));
-				MetamodelBase root = MetamodelBaseFactory.eINSTANCE.createMetamodel();
+				IMetamodel root = IMetamodelFactory.eINSTANCE.createMetamodel();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}

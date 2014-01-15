@@ -12,18 +12,18 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getMinOccurs <em>Min Occurs</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getMaxOccurs <em>Max Occurs</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getRelation <em>Relation</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getConnectedObject <em>Connected Object</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IAttribute#getMinOccurs <em>Min Occurs</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IAttribute#getMaxOccurs <em>Max Occurs</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IAttribute#getRelation <em>Relation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IAttribute#getConnectedObject <em>Connected Object</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getAttributeBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getAttributeBase()
  * @model
  * @generated
  */
-public interface AttributeBase extends EObject {
+public interface IAttribute extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Min Occurs</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
@@ -35,14 +35,14 @@ public interface AttributeBase extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min Occurs</em>' attribute.
 	 * @see #setMinOccurs(int)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getAttributeBase_MinOccurs()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getAttributeBase_MinOccurs()
 	 * @model default="0" required="true"
 	 * @generated
 	 */
 	int getMinOccurs();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getMinOccurs <em>Min Occurs</em>}' attribute.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IAttribute#getMinOccurs <em>Min Occurs</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Min Occurs</em>' attribute.
@@ -62,14 +62,14 @@ public interface AttributeBase extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Occurs</em>' attribute.
 	 * @see #setMaxOccurs(int)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getAttributeBase_MaxOccurs()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getAttributeBase_MaxOccurs()
 	 * @model default="1" required="true"
 	 * @generated
 	 */
 	int getMaxOccurs();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getMaxOccurs <em>Max Occurs</em>}' attribute.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IAttribute#getMaxOccurs <em>Max Occurs</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Max Occurs</em>' attribute.
@@ -88,14 +88,14 @@ public interface AttributeBase extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation</em>' reference.
 	 * @see #setRelation(IRelationClass)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getAttributeBase_Relation()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getAttributeBase_Relation()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
 	IRelationClass getRelation();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getRelation <em>Relation</em>}' reference.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IAttribute#getRelation <em>Relation</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Relation</em>' reference.
@@ -113,22 +113,22 @@ public interface AttributeBase extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connected Object</em>' reference.
-	 * @see #setConnectedObject(ObjectClass)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getAttributeBase_ConnectedObject()
+	 * @see #setConnectedObject(IObjectClass)
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getAttributeBase_ConnectedObject()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
-	ObjectClass getConnectedObject();
+	IObjectClass getConnectedObject();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getConnectedObject <em>Connected Object</em>}' reference.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IAttribute#getConnectedObject <em>Connected Object</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Connected Object</em>' reference.
 	 * @see #getConnectedObject()
 	 * @generated
 	 */
-	void setConnectedObject(ObjectClass value);
+	void setConnectedObject(IObjectClass value);
 
 	public enum Direction {
 		SOURCE,TARGET

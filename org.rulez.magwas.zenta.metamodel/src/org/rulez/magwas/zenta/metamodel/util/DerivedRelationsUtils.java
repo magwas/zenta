@@ -8,8 +8,8 @@ package org.rulez.magwas.zenta.metamodel.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -28,10 +28,10 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 public class DerivedRelationsUtils {
     
     
-	private MetamodelBase metamodel;
+	private IMetamodel metamodel;
 
 	public DerivedRelationsUtils(IZentaModel model) {
-		this.metamodel = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(model);
+		this.metamodel = IMetamodelFactory.eINSTANCE.getMetamodelFor(model);
         weaklist = metamodel.getWeaklist();
 	}
 	

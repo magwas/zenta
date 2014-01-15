@@ -24,15 +24,15 @@ import org.rulez.magwas.zenta.model.IZentaModel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.MetamodelBase#getTemplates <em>Templates</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IMetamodel#getTemplates <em>Templates</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getMetamodelBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getMetamodelBase()
  * @model
  * @generated
  */
-public interface MetamodelBase extends EObject {
+public interface IMetamodel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Templates</b></em>' containment reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.ITemplate}.
@@ -44,7 +44,7 @@ public interface MetamodelBase extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Templates</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getMetamodelBase_Templates()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getMetamodelBase_Templates()
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel
 	 * @model opposite="metamodel" containment="true"
 	 * @generated
@@ -53,24 +53,24 @@ public interface MetamodelBase extends EObject {
 
     IZentaModel getModel();
     
-    ReferencesModelObject getClassById(String classId);
-	ObjectClass getBuiltinObjectClass();
+    IReferencesModelObject getClassById(String classId);
+	IObjectClass getBuiltinObjectClass();
 	IRelationClass getBuiltinRelationClass();
 	
     BuiltinTemplate getBuiltinTemplate();
     ITemplate getTemplateFor(IDiagramModel dm);
     ITemplate getTemplateFor(IDiagramModelComponent element);
     
-    ReferencesModelObject getClassOf(IIdentifier rel);
-    ReferencesModelObject getClassReferencing(IIdentifier modelElement);
-    ObjectClass getObjectClassReferencing(IZentaElement element);
+    IReferencesModelObject getClassOf(IIdentifier rel);
+    IReferencesModelObject getClassReferencing(IIdentifier modelElement);
+    IObjectClass getObjectClassReferencing(IZentaElement element);
     IRelationClass getRelationClassReferencing(IRelationship relation);
 	boolean hasRelationClassReferencing(IRelationship relation);
 	boolean hasObjectClassReferencing(IZentaElement elementToAdd);
 
-	List<ObjectClass> getObjectClasses();
+	List<IObjectClass> getObjectClasses();
 	List<IRelationClass> getRelationClasses();
-	List<ObjectClass> getConnectorClasses();
+	List<IObjectClass> getConnectorClasses();
 	
 	Collection<IRelationClass> getRelationships(IZentaElement object);
 	List<IRelationClass> getWeaklist();

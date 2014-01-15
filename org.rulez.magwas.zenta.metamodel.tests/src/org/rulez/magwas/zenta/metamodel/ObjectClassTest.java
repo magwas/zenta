@@ -8,7 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -25,7 +25,7 @@ import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class ObjectClassTest{
 
-	protected ObjectClass fixture = null;
+	protected IObjectClass fixture = null;
 	private ModelAndMetaModelTestData testdata;
 	private IZentaModel model;
 	private IZentaDiagramModel diagramModel;
@@ -49,12 +49,12 @@ public class ObjectClassTest{
 		assertEquals("Basic Object",fixture.getName());
 	}
 
-	@Test(expected = MetamodelBaseFactory.BuiltinClassShouldNotHaveAncestor.class)
+	@Test(expected = IMetamodelFactory.BuiltinClassShouldNotHaveAncestor.class)
 	public void The_ancestor_cannot_be_set_for_the_Builtin_ObjectClass() {
 		fixture.setAncestor(fixture);
 	}
 
-	@Test(expected = MetamodelBaseFactory.BuiltinClassShouldNotHaveReference.class)
+	@Test(expected = IMetamodelFactory.BuiltinClassShouldNotHaveReference.class)
 	public void The_reference_cannot_be_set_for_the_Builtin_ObjectClass() {
 		IBasicObject obj2 = IZentaFactory.eINSTANCE.createBasicObject();
 		fixture.setReference(obj2);
@@ -62,9 +62,9 @@ public class ObjectClassTest{
 	
 	@Test
 	public void if_an_ObjectClass_is_set_as_ancestor_then_the_number_of_its_kids_grows() {
-		EList<ObjectClass> kids = fixture.getChildren();
+		EList<IObjectClass> kids = fixture.getChildren();
 		int n = kids.size();
-		ObjectClass obj2 = testdata.createTestObjectClass();
+		IObjectClass obj2 = testdata.createTestObjectClass();
 		obj2.setAncestor(fixture);
 		kids = fixture.getChildren();
 		assertEquals(n+1,kids.size());
@@ -98,7 +98,7 @@ public class ObjectClassTest{
 		String id2 = "8495ea84";
 		IZentaElement element = testdata.getElementById(id2);
 		int numOccurs = 0;
-		for(ObjectClass oc:template.getObjectClasses())
+		for(IObjectClass oc:template.getObjectClasses())
 			if(element.equals(oc.getReference()))
 				numOccurs++;
 		assertEquals(1,numOccurs);
@@ -134,7 +134,7 @@ public class ObjectClassTest{
         String id = "ea94cf6c";//User
         IZentaElement user = testdata.getElementById(id);
         IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
-        ObjectClass oc = testdata.metamodel.getObjectClassReferencing(user);
+        IObjectClass oc = testdata.metamodel.getObjectClassReferencing(user);
         IZentaElement newElement1 = (IZentaElement) oc.create(folder);
         IZentaElement newElement = newElement1;
         IDiagramModel dm = testdata.getTemplateDiagramModel();
@@ -163,7 +163,7 @@ public class ObjectClassTest{
 	@Test
 	public void The_name_of_an_ObjectClass_is_the_name_of_the_defining_element_if_it_does_not_have_a_className_property() {
 		IZentaElement element = testdata.getElementById("ea94cf6c");
-		ObjectClass objectClass = testdata.metamodel.getObjectClassReferencing(element);
+		IObjectClass objectClass = testdata.metamodel.getObjectClassReferencing(element);
 		assertEquals("User",objectClass.getName());
 	}
 
@@ -177,7 +177,7 @@ public class ObjectClassTest{
 	public void When_the_model_is_loaded_the_diagram_elements_are_not_converted_according_to_the_defining_element() {
 		ModelTestData data = new ModelTestData();
 		ensureVirginDMOsForLoadTest(data);
-		MetamodelBaseFactory.eINSTANCE.createMetamodel(data.model);
+		IMetamodelFactory.eINSTANCE.createMetamodel(data.model);
 		ensureVirginDMOsForLoadTest(data);
 		ensureCorrectFinalAttributes(data);
 	}
@@ -259,7 +259,7 @@ public class ObjectClassTest{
 		String id = "ea94cf6c";
 		IZentaElement user = testdata.getElementById(id);
 		IFolder folder = ModelTestData.getFolderByKid(user);
-		ObjectClass oc = testdata.metamodel.getObjectClassReferencing(user);
+		IObjectClass oc = testdata.metamodel.getObjectClassReferencing(user);
 		IZentaElement newelement = (IZentaElement) oc.create(folder);
 		assertEquals(id,newelement.getObjectClass());
 		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
@@ -285,7 +285,7 @@ public class ObjectClassTest{
 		newElement.setName("New test OC");
 		dm.getChildren().add(dmo);
 
-		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		assertNotNull(newOc);
 		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");    	
     }
@@ -295,7 +295,7 @@ public class ObjectClassTest{
 		String elementName = "New test OC";
 		IZentaElement newElement = testdata.createNewObjectClass(elementName);
 		
-		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		assertNotNull(newOc);
 		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
 	}
@@ -303,13 +303,13 @@ public class ObjectClassTest{
 	@Test
 	public void The_parent_objectclass_is_the_objectclass_of_the_defining_element() {
 		String elementName = "ParentedOc";
-		ObjectClass userClass = (ObjectClass) testdata.metamodel.getClassById("ea94cf6c");
+		IObjectClass userClass = (IObjectClass) testdata.metamodel.getClassById("ea94cf6c");
 		IZentaElement newElement = testdata.createNewObjectClass(elementName, userClass);
 		
-		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		assertNotNull(newOc);
-		ObjectClass parentOc = (ObjectClass) newOc.getAncestor();
-		ObjectClass parentOc2 = (ObjectClass) testdata.metamodel.getClassById(newElement.getObjectClass());
+		IObjectClass parentOc = (IObjectClass) newOc.getAncestor();
+		IObjectClass parentOc2 = (IObjectClass) testdata.metamodel.getClassById(newElement.getObjectClass());
 		assertEquals(userClass,parentOc);
 		assertEquals(userClass,parentOc2);
 	}
@@ -327,7 +327,7 @@ public class ObjectClassTest{
 		IProperty prop = IZentaFactory.eINSTANCE.createProperty();
 		prop.setKey("Template");
 		dm.getProperties().add(prop);
-		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		assertNotNull(newOc);
 		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
 	}
@@ -344,7 +344,7 @@ public class ObjectClassTest{
 		IProperty prop = IZentaFactory.eINSTANCE.createProperty();
 		dm.getProperties().add(prop);
 		prop.setKey("Template");
-		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		assertNotNull(newOc);
 		ModelTestData.assertOnePropertyWithNameAndValue(newElement, "elementShape", "emptyShape");
 	}
@@ -362,7 +362,7 @@ public class ObjectClassTest{
 	@Test
 	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IZentaElement element = testdata.createNewObjectClass("deletetest OC");
-		ReferencesModelObjectBase oc = testdata.metamodel.getClassReferencing(element);
+		IReferencesModelObject oc = testdata.metamodel.getClassReferencing(element);
 		assertNotNull(oc);
 		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
 		IDiagramModelContainer dia = (IDiagramModelContainer) diagElement.eContainer();
@@ -376,7 +376,7 @@ public class ObjectClassTest{
 		String elemId = element.getId();
 		IDiagramModelZentaObject dmo = element.getDiagObjects().get(0);
 		assertNotNull(dmo);
-		ReferencesModelObjectBase oc = testdata.metamodel.getClassById(elemId);
+		IReferencesModelObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
 		((IFolder)element.eContainer()).getElements().remove(element);
 		assertNull(dmo.eContainer());
@@ -385,9 +385,9 @@ public class ObjectClassTest{
 	
 	@Test
 	public void A_defining_element_appearing_in_two_templates_results_only_one_objectClass() {
-	    List<ObjectClass> oclist = testdata.metamodel.getObjectClasses();
+	    List<IObjectClass> oclist = testdata.metamodel.getObjectClasses();
 	    int count = 0;
-	    for(ObjectClass oc : oclist)
+	    for(IObjectClass oc : oclist)
 	        if(oc.getName().equals("Procedure"))
 	            count++;
 	    assertEquals(1,count);
@@ -395,7 +395,7 @@ public class ObjectClassTest{
 	
 	@Test
 	public void Basic_object_have_hint() {
-		ObjectClass oc = testdata.metamodel.getBuiltinObjectClass();
+		IObjectClass oc = testdata.metamodel.getBuiltinObjectClass();
 		assertNotNull(oc.getHelpHintTitle());
 		assertNotNull(oc.getHelpHintContent());
 	}

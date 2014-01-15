@@ -7,5 +7,5 @@ abstract class DecisionCase {
 	public int featureId;
 	public Boolean hasNew = null;
 	public Boolean hasOld= null;
-	public abstract void run(MetamodelImpl metamodel, Object notifier, Object oldVal, Object newVal);
+	public abstract void run(Metamodel metamodel, Object notifier, Object oldVal, Object newVal);
 }

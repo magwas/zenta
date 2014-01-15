@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.commands.CreateRelationCommand;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.actions.TreeModelViewActionFactory;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -83,7 +83,7 @@ public class TreeModelViewActionFactoryTest {
 		String id = "ea94cf6c";//User
 		IZentaElement user = testdata.getElementById(id);
 		IFolder folder = ModelTestData.getFolderByKid(user);
-		ObjectClass oc = testdata.metamodel.getBuiltinObjectClass();
+		IObjectClass oc = testdata.metamodel.getBuiltinObjectClass();
 		IZentaElement newElement = (IZentaElement) oc.create(folder);
 
 		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
@@ -98,7 +98,7 @@ public class TreeModelViewActionFactoryTest {
 		dm.getChildren().add(dmo);
 		newElement.setName("New test OCke");
 
-		ObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
+		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		assertNotNull(newOc);
 
 		List<IAction> newactions = fixture.getNewObjectActions(selected);

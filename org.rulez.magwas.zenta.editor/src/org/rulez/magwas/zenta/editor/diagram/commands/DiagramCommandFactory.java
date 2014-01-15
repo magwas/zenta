@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
@@ -138,7 +138,7 @@ public final class DiagramCommandFactory {
         // Not if there is already a relationship of a certain type between the two
         for(IRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
             if(relation.getTarget() == child) {
-                for(ReferencesModelObject eClass : vp.getRelationClasses()) {
+                for(IReferencesModelObject eClass : vp.getRelationClasses()) {
                     if(eClass.isInstance(relation)) {
                         return false;
                     }

@@ -11,9 +11,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -208,8 +208,8 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
             if(relation.getSource() != null && relation.getTarget() != null) {
                 String nameSource = ZentaLabelProvider.INSTANCE.getLabel(relation.getSource());
                 String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
-                MetamodelBase metamodel = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(relation.getZentaModel());
-                ReferencesModelObject klass = metamodel.getClassOf(relation);
+                IMetamodel metamodel = IMetamodelFactory.eINSTANCE.getMetamodelFor(relation.getZentaModel());
+                IReferencesModelObject klass = metamodel.getClassOf(relation);
                 String relname;
 				if(null != klass)
                 	relname = klass.getName();
@@ -222,7 +222,7 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
         return ""; //$NON-NLS-1$
     }
 
-	public ImageDescriptor getImageDescriptor(ReferencesModelObject eClass) {
+	public ImageDescriptor getImageDescriptor(IReferencesModelObject eClass) {
 		IIdentifier reference = eClass.getReference();
 		if(null == reference)
 			reference = IZentaFactory.eINSTANCE.createBasicObject();

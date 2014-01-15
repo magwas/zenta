@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.help.hints.HintsView;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -56,7 +56,7 @@ public class HintsViewTest {
 		UITestUtils.focusOnElement(element);
 		HintsView view = prepareHintsView();
 		assertEquals("Procedure", view.getTitleText());
-		ObjectClass oc = (ObjectClass) testdata.metamodel.getClassOf(element);
+		IObjectClass oc = (IObjectClass) testdata.metamodel.getClassOf(element);
 		assertEquals("Procedure", oc.getHelpHintTitle());
 		assertEquals("this is a procedure\nAncestry: Procedure => Basic Object\n",oc.getHelpHintContent());
 	}
@@ -72,7 +72,7 @@ public class HintsViewTest {
 			
 	@Test
 	public void The_Hints_view_contains_the_ancestry_and_description_of_the_ObjectClass_of_element_for_nondefining_elements() throws PartInitException, WorkbenchException {
-		ObjectClass oc = (ObjectClass) testdata.metamodel.getClassById("ea94cf6c");//User		
+		IObjectClass oc = (IObjectClass) testdata.metamodel.getClassById("ea94cf6c");//User		
 		IZentaElement classElement = (IZentaElement) oc.getReference();
 		classElement.setDocumentation("this is a User");
 		IZentaElement element = testdata.createClassedTestElement(oc);

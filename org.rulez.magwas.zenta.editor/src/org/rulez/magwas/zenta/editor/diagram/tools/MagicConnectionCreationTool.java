@@ -43,7 +43,7 @@ import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -333,10 +333,10 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		}
 	}
 	
-	private void addConnectionActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject, Collection<ObjectClass> objectclassses, IRelationClass relationshipType) {
+	private void addConnectionActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject, Collection<IObjectClass> objectclassses, IRelationClass relationshipType) {
 		boolean added = false;
 		IZentaElement sourceElement = sourceDiagramModelObject.getZentaElement();
-		for(ObjectClass type : objectclassses) {
+		for(IObjectClass type : objectclassses) {
 			// Check if allowed by Viewpoint
 			if(!isAllowedTargetTypeInViewpoint(sourceDiagramModelObject, type)) {
 				continue;
@@ -357,13 +357,13 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	 * Add Element to Connection Actions
 	 */
 	private void addElementActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject) {
-		ObjectClass oc = (ObjectClass) viewPoint.getObjectClassOf(sourceDiagramModelObject);
-		Collection<ObjectClass> allowedTargets = viewPoint.getAllowedTargets(oc);
+		IObjectClass oc = (IObjectClass) viewPoint.getObjectClassOf(sourceDiagramModelObject);
+		Collection<IObjectClass> allowedTargets = viewPoint.getAllowedTargets(oc);
 		addElementActions(menu, oc, allowedTargets);
 	}
 	
-	private void addElementActions(Menu menu, ObjectClass oc, Collection<ObjectClass> targetList) {
-		for(ObjectClass targetObjectType : targetList) {
+	private void addElementActions(Menu menu, IObjectClass oc, Collection<IObjectClass> targetList) {
+		for(IObjectClass targetObjectType : targetList) {
 			MenuItem item = addElementAction(menu, targetObjectType);
 			Menu subMenu = new Menu(item);
 			item.setMenu(subMenu);
@@ -376,7 +376,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		}
 	}
 
-	private MenuItem addElementAction(Menu menu, final ObjectClass type) {
+	private MenuItem addElementAction(Menu menu, final IObjectClass type) {
 		final MenuItem item = new MenuItem(menu, SWT.CASCADE);
 		item.setText(type.getName());
 		item.setImage(ZentaLabelProvider.INSTANCE.getImage(type));
@@ -436,7 +436,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	/**
 	 * @return True if type is an allowed target type for a given Viewpoint
 	 */
-	private boolean isAllowedTargetTypeInViewpoint(IDiagramModelZentaObject diagramObject, ObjectClass type) {
+	private boolean isAllowedTargetTypeInViewpoint(IDiagramModelZentaObject diagramObject, IObjectClass type) {
 		if(!Preferences.STORE.getBoolean(IPreferenceConstants.VIEWPOINTS_HIDE_MAGIC_CONNECTOR_ELEMENTS)) {
 			return true;
 		}
@@ -499,9 +499,9 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	private static class CreateNewDiagramObjectCommand extends Command {
 		private IDiagramModelContainer fParent;
 		private IDiagramModelZentaObject fChild;
-		private ObjectClass fTemplate;
+		private IObjectClass fTemplate;
 
-		CreateNewDiagramObjectCommand(IDiagramModelContainer parent, ObjectClass elementType, Point location) {
+		CreateNewDiagramObjectCommand(IDiagramModelContainer parent, IObjectClass elementType, Point location) {
 			fParent = parent;
 			fTemplate = elementType;
 

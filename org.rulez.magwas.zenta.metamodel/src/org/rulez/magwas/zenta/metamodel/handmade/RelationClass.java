@@ -3,9 +3,9 @@ package org.rulez.magwas.zenta.metamodel.handmade;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rulez.magwas.zenta.metamodel.AttributeBase;
-import org.rulez.magwas.zenta.metamodel.MetamodelBase;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IAttribute;
+import org.rulez.magwas.zenta.metamodel.IMetamodel;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -15,20 +15,20 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
-public class RelationClassImpl extends AbstractRelationClassImpl implements IRelationClass {
+public class RelationClass extends AbstractRelationClass implements IRelationClass {
 
-	protected RelationClassImpl(IRelationship referenced, ITemplate template) {
+	protected RelationClass(IRelationship referenced, ITemplate template) {
 		super(referenced,template);
 		IRelationClass ancie = getAncestorClass(referenced);
 		setAncestor(ancie);
 		referenced.setObjectClass(ancie.getId());
-		addAttributesToRelatedObjectClasses(template, AttributeBase.Direction.SOURCE, referenced.getSource());
-		addAttributesToRelatedObjectClasses(template, AttributeBase.Direction.TARGET, referenced.getTarget());
+		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.SOURCE, referenced.getSource());
+		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.TARGET, referenced.getTarget());
 	}
 		private IRelationClass getAncestorClass(IRelationship referenced) {
 			String refClassId = referenced.getObjectClass();
 			String referenceId = referenced.getId();
-			MetamodelBase metamodel = getMetamodel();
+			IMetamodel metamodel = getMetamodel();
 			IRelationClass ancie = null;
 			if(haveAncestor(refClassId, referenceId)) {
 				ancie = getAncestorClass(refClassId, metamodel);
@@ -41,14 +41,14 @@ public class RelationClassImpl extends AbstractRelationClassImpl implements IRel
 				return null != refClassId && !"basicrelation".equals(refClassId)&&!referenceId.equals(refClassId);
 			}
 			private IRelationClass getAncestorClass(String refClassId,
-					MetamodelBase metamodel) {
+					IMetamodel metamodel) {
 				IRelationClass ancie;
 				IRelationship ancestorDefining = (IRelationship) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
 				ancie=metamodel.getRelationClassReferencing(ancestorDefining);
 				return ancie;
 			}
 
-	protected RelationClassImpl() {
+	protected RelationClass() {
 		super();
 	}
 
@@ -64,9 +64,9 @@ public class RelationClassImpl extends AbstractRelationClassImpl implements IRel
 		if(null == ref)
 			return "";
 		String doc = ref.getDocumentation();
-		List<ReferencesModelObject> ancestry = this.getAncestry();
+		List<IReferencesModelObject> ancestry = this.getAncestry();
 		List<String> ancestorNames = new ArrayList<String>();
-		for( ReferencesModelObject a : ancestry) {
+		for( IReferencesModelObject a : ancestry) {
 			ancestorNames.add(a.getName());
 		}
 		String ancestryNames = StringUtils.join(ancestorNames, " => ");
@@ -74,17 +74,17 @@ public class RelationClassImpl extends AbstractRelationClassImpl implements IRel
 	}
 
 	@Override
-	public List<ReferencesModelObject> getAncestry() {
-		ArrayList<ReferencesModelObject> ancestry = new ArrayList<ReferencesModelObject>();
+	public List<IReferencesModelObject> getAncestry() {
+		ArrayList<IReferencesModelObject> ancestry = new ArrayList<IReferencesModelObject>();
 		return getAncestry(ancestry);
 	}
 
 	@Override
-	public List<ReferencesModelObject> getAncestry(List<ReferencesModelObject> ancestry) {
+	public List<IReferencesModelObject> getAncestry(List<IReferencesModelObject> ancestry) {
 		ancestry.add(this);
 		if(null == ancestor)
 			return ancestry;
-		return ((ReferencesModelObject)ancestor).getAncestry(ancestry);
+		return ((IReferencesModelObject)ancestor).getAncestry(ancestry);
 	}
 
 }

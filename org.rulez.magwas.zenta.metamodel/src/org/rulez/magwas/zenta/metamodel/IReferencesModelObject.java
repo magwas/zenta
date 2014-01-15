@@ -2,7 +2,10 @@
  */
 package org.rulez.magwas.zenta.metamodel;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 
 /**
@@ -13,16 +16,16 @@ import org.rulez.magwas.zenta.model.IIdentifier;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase#getReference <em>Reference</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject#getReference <em>Reference</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getReferencesModelObjectBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObjectBase()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface ReferencesModelObjectBase extends EObject {
+public interface IReferencesModelObject extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -33,14 +36,14 @@ public interface ReferencesModelObjectBase extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reference</em>' reference.
 	 * @see #setReference(IIdentifier)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getReferencesModelObjectBase_Reference()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObjectBase_Reference()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
 	IIdentifier getReference();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase#getReference <em>Reference</em>}' reference.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject#getReference <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Reference</em>' reference.
@@ -59,14 +62,14 @@ public interface ReferencesModelObjectBase extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getReferencesModelObjectBase_Name()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObjectBase_Name()
 	 * @model required="true" derived="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -76,5 +79,19 @@ public interface ReferencesModelObjectBase extends EObject {
 	void setName(String value);
 
 	ITemplate getTemplate();
+
+	IIdentifier create(IFolder folder);
+
+	void postCreate(IIdentifier createdObj, IFolder folder);
+	
+	IMetamodel getMetamodel();
+
+	boolean isInstance(IIdentifier relation);
+	
+	String getId();
+	
+	public abstract List<IReferencesModelObject> getAncestry(List<IReferencesModelObject> ancestry);
+
+	public abstract List<IReferencesModelObject> getAncestry();
 
 } // ReferencesModelObjectBase

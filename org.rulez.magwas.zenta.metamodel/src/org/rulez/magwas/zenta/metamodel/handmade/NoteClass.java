@@ -5,18 +5,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
-import org.rulez.magwas.zenta.metamodel.AttributeBase;
-import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
+import org.rulez.magwas.zenta.metamodel.IAttribute;
+import org.rulez.magwas.zenta.metamodel.IObjectClass;
+import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
-import org.rulez.magwas.zenta.metamodel.AttributeBase.Direction;
+import org.rulez.magwas.zenta.metamodel.IAttribute.Direction;
 import org.rulez.magwas.zenta.model.IDiagramModelNote;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
-public class NoteClass extends AbstractObjectClassImpl implements ObjectClass {
+public class NoteClass extends AbstractObjectClass implements IObjectClass {
 
 	@Override
 	public ITemplate getTemplate() {
@@ -31,22 +31,22 @@ public class NoteClass extends AbstractObjectClassImpl implements ObjectClass {
 	}
 
 	@Override
-	public EList<AttributeBase> getAttributes() {
+	public EList<IAttribute> getAttributes() {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public ObjectClass getAncestor() {
+	public IObjectClass getAncestor() {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public void setAncestor(ObjectClass value) {
+	public void setAncestor(IObjectClass value) {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public EList<ObjectClass> getChildren() {
+	public EList<IObjectClass> getChildren() {
 		throw new UnTestedException();
 	}
 	
@@ -70,14 +70,14 @@ public class NoteClass extends AbstractObjectClassImpl implements ObjectClass {
 	}
 	
 	@Override
-	public List<ReferencesModelObject> getAncestry(List<ReferencesModelObject> ancestry) {
+	public List<IReferencesModelObject> getAncestry(List<IReferencesModelObject> ancestry) {
 		ancestry.add(this);
 		return ancestry;
 	}
 
 	@Override
-	public List<ReferencesModelObject> getAncestry() {
-		ArrayList<ReferencesModelObject> anclist = new ArrayList<ReferencesModelObject>();
+	public List<IReferencesModelObject> getAncestry() {
+		ArrayList<IReferencesModelObject> anclist = new ArrayList<IReferencesModelObject>();
 		return anclist;
 	}
 
