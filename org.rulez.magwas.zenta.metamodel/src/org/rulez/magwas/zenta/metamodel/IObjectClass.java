@@ -14,6 +14,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Object Class Base</b></em>'.
+ * @extends IHelpHintProvider
  * <!-- end-user-doc -->
  *
  * <p>

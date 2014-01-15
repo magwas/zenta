@@ -65,7 +65,7 @@ abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMeta
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ITemplate createTemplate() {
 		throw new RuntimeException("should not be called");
@@ -74,7 +74,7 @@ abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMeta
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public IObjectClass createObjectClass() {
 		throw new RuntimeException("should not be called");

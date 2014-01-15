@@ -8,6 +8,7 @@ import org.rulez.magwas.zenta.model.IHelpHintProvider;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Relation Class Base</b></em>'.
+ * @extends IHelpHintProvider
  * <!-- end-user-doc -->
  *
  * <p>
