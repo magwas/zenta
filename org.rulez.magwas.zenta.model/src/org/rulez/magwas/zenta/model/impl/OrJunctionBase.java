@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IOrJunction;
 
@@ -37,6 +38,19 @@ public class OrJunctionBase extends ZentaElementBase implements IOrJunction {
     @Override
     protected EClass eStaticClass() {
 		return IZentaPackage.Literals.OR_JUNCTION;
+	}
+
+	@Override
+	public IRelationship getDefiningElement(
+			DiagramModelZentaConnectionBase diagramModelZentaConnectionBase) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isTemplate() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 } //OrJunction

@@ -243,7 +243,6 @@ public class RelationClassTest {
 	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IRelationship element = createRelationClass();
 		IReferencesModelObject oc = metamodel.getClassReferencing(element);
-		System.out.printf("class = %s\ntemplate=%s\n", oc,oc.getTemplate());
 		assertNotNull(oc);
 		IDiagramModelZentaConnection diagElement = element.getDiagConnections().get(0);
 		IDiagramModelZentaObject dia = (IDiagramModelZentaObject) diagElement.eContainer();

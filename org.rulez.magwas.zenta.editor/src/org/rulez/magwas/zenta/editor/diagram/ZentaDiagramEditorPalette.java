@@ -80,28 +80,28 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 
     protected void processNotification(Notification notification) {
     	Object notifier = notification.getNotifier();
-    	System.out.printf("notifier = %s\ntype=%s\nvalue=%s\n", notifier,notification.getEventType(),notification.getNewValue());
 		if(notification.getEventType() == Notification.ADD) {
     		if(notifier instanceof ITemplate)
-    			addClassToPalette(notification.getNewValue());
+    			addClassToPalette((IObjectClass) notification.getNewValue());
     	}
     	if(notification.getEventType() == Notification.SET) {
-    		if(notifier instanceof IRelationClass)
-    			changeRelationClassNameInPalette((IRelationClass) notifier);
-    		else if(notifier instanceof IObjectClass)
-    			changeObjectClassNameInPalette((IObjectClass) notifier);
+    		if(notifier instanceof IObjectClass)
+    			if(((IObjectClass) notifier).isRelation())
+    				changeRelationClassNameInPalette((IRelationClass) notifier);
+    			else 
+    				changeObjectClassNameInPalette((IObjectClass) notifier);
     	}
     	if(notification.getEventType() == Notification.REMOVE) {
     		if(notifier instanceof ITemplate)
-    			processClassRemove(notification.getOldValue());
+    			processClassRemove((IObjectClass) notification.getOldValue());
     	}
 	}
 
-	private void processClassRemove(Object oldValue) {
+	private void processClassRemove(IObjectClass oldValue) {
 		PaletteContainer group = null;
-		if(oldValue instanceof IRelationClass)
+		if(oldValue.isRelation())
 			group = this.fRelationsGroup;
-		else if(oldValue instanceof IObjectClass)
+		else if(oldValue.isObject())
 			group = this.fObjectClassGroup;
 		if(group != null) {
 			@SuppressWarnings("unchecked")
@@ -109,7 +109,6 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 			CreationToolEntry entry = findClassEntry((IReferencesModelObject) oldValue, children);
 			group.remove(entry);
 		}
-		
 	}
 
 	private void changeRelationClassNameInPalette(IRelationClass changedClass) {
@@ -139,10 +138,10 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	}
 
 
-	private void addClassToPalette(Object newValue) {
-		if(newValue instanceof IRelationClass)
+	private void addClassToPalette(IObjectClass newValue) {
+		if(newValue.isRelation())
 			addRelationClassToPalette((IRelationClass) newValue);
-		else if(newValue instanceof IObjectClass)
+		else if(newValue.isObject())
 			addObjectClassToPalette((IObjectClass) newValue);
 	}
 		private void addObjectClassToPalette(IObjectClass newOc) {

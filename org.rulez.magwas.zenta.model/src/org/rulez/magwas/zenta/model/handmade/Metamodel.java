@@ -366,13 +366,10 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 
 	private void removeClassFor(IZentaElement element) {
 		IDiagramModelComponent otherDMO = getDefiningModelObjectFor(element);
-		System.out.printf("removeclass for %s\notherDMO=%s\nisrelation = %s\n", element,otherDMO, element instanceof IRelationship);
 		if (null == otherDMO) {
-			System.out.printf("removing\n");
-			IReferencesModelObject oc = this.getClassReferencing(element);
+			IReferencesModelObject oc = getClassReferencing(element);
 			if(null == oc || null == oc.getTemplate())
 				return;
-			System.out.printf("doremove\n");
 			oc.getTemplate().removeClass(oc);
 		}
 	}

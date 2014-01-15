@@ -2,8 +2,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Relation Class Base</b></em>'.

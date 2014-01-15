@@ -88,4 +88,19 @@ public class ObjectClass extends AbstractObjectClass implements IObjectClass {
 		ancestry.add(this);
 		return ((IReferencesModelObject)ancestor).getAncestry(ancestry);
 	}
+
+	@Override
+	public boolean isObject() {
+		return !(this instanceof RelationClass);
+	}
+
+	@Override
+	public boolean isRelation() {
+		return (this instanceof RelationClass);
+	}
+
+	@Override
+	public boolean isTemplate() {
+		return true;
+	}
 }

@@ -24,7 +24,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.UnTestedException;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -466,9 +465,6 @@ public class DiagramModelZentaObjectBase extends DiagramModelObjectBase implemen
     
     private IZentaElement getDefiningElement() {
         IZentaElement element = getZentaElement();
-        if(!getDiagramModel().isTemplate())
-            return(IZentaElement) ZentaModelUtils.getObjectByID(element.getZentaModel(), element.getObjectClass());
-        else
-            return element;
+        return element.getDefiningElement(this);
     }
 }

@@ -39,6 +39,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -646,4 +647,12 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 				prop.setValue(value);
 				propertiess.add(prop);
 			}
+
+	@Override
+	public IZentaElement getDefiningElement(DiagramModelZentaObjectBase diagramModelZentaObjectBase) {
+		if(!diagramModelZentaObjectBase.getDiagramModel().isTemplate())
+	        return(IZentaElement) ZentaModelUtils.getObjectByID(getZentaModel(), getObjectClass());
+	    else
+	        return this;
+	}
 }

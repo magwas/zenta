@@ -124,5 +124,9 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	Map<Direction, List<IRelationClass>> getAllowedRelations();
 
 	IIdentifier create(IFolder folder);
+	
+	boolean isObject();
+	boolean isRelation();
+	boolean isTemplate();
 
 } // ObjectClass

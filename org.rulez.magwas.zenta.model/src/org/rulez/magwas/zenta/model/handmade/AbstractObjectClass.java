@@ -25,10 +25,7 @@ public abstract class AbstractObjectClass extends ObjectClassBase implements IOb
 	public AbstractObjectClass(IZentaElement reference, ITemplate template) {
 		super();
 		setReference((IIdentifier) reference);
-		if(this instanceof IRelationClass)
-			template.getClasses().add((IRelationClass) this);
-		else
-			template.getClasses().add(this);
+		template.getClasses().add(this);
 		setName(IZentaFactory.eINSTANCE.getDefiningName(reference));
 		setTemplate(template);
 	}

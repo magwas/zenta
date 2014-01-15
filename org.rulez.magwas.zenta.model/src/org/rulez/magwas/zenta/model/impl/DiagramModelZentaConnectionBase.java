@@ -21,7 +21,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.UnTestedException;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -362,9 +361,6 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
     @Override
 	public IRelationship getDefiningElement() {
 		IRelationship relation = getRelationship();
-        if(!getDiagramModel().isTemplate())
-            return (IRelationship) ZentaModelUtils.getObjectByID(relation.getZentaModel(), relation.getObjectClass());
-        else
-            return relation;
+        return relation.getDefiningElement(this);
 	}
 } //DiagramModelConnection

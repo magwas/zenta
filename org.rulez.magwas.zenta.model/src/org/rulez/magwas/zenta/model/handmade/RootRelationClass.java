@@ -4,10 +4,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class RootRelationClass extends RelationClass {

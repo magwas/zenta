@@ -39,4 +39,10 @@ public class BasicRelationshipBase extends RelationshipBase implements IBasicRel
 		return IZentaPackage.Literals.BASIC_RELATIONSHIP;
 	}
 
+	@Override
+	public boolean isTemplate() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 } //BasicRelationship

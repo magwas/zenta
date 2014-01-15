@@ -65,4 +65,19 @@ public class NoteConnectionClass extends AbstractObjectClass implements
 		return getName();
 	}
 
+	@Override
+	public boolean isObject() {
+		return false;
+	}
+
+	@Override
+	public boolean isRelation() {
+		return false;
+	}
+
+	@Override
+	public boolean isTemplate() {
+		return false;
+	}
+
 }

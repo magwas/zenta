@@ -21,6 +21,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -255,5 +256,13 @@ public abstract class RelationshipBase extends ZentaElementBase implements IRela
 		props.put("lineColor",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineColor());
 		props.put("lineDecoration",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineDecoration());
 		return props;
+	}
+
+	@Override
+	public IRelationship getDefiningElement(DiagramModelZentaConnectionBase diagramModelZentaConnectionBase) {
+		if(!diagramModelZentaConnectionBase.getDiagramModel().isTemplate())
+	        return (IRelationship) ZentaModelUtils.getObjectByID(getZentaModel(), getObjectClass());
+	    else
+	        return this;
 	}
 }

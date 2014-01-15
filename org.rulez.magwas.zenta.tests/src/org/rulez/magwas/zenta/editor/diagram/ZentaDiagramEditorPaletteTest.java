@@ -285,13 +285,11 @@ public class ZentaDiagramEditorPaletteTest {
 
 
 		private boolean haveCreatorFor(IReferencesModelObject klass, List<PaletteEntry> children) {
-			System.out.printf("---------");
 			return haveCreatorNamed(klass.getName(),children);
 		}
 		private boolean haveCreatorNamed(String klass, List<PaletteEntry> children) {
 			for ( PaletteEntry kid : children) {
 				String label = kid.getLabel();
-				System.out.printf("looking at %s for %s\n", label, klass);
 				if(klass.equals(label))
 					return true;
 			}

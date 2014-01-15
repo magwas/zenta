@@ -1,11 +1,8 @@
 package org.rulez.magwas.zenta.model.handmade;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 

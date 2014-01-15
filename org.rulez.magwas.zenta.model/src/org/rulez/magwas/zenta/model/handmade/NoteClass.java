@@ -81,4 +81,19 @@ public class NoteClass extends AbstractObjectClass implements IObjectClass {
 		return anclist;
 	}
 
+	@Override
+	public boolean isObject() {
+		return false;
+	}
+
+	@Override
+	public boolean isRelation() {
+		return false;
+	}
+
+	@Override
+	public boolean isTemplate() {
+		return false;
+	}
+
 }
