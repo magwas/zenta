@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -58,7 +58,7 @@ public class ZentaModelUtils {
      * @param element The Zenta element to check
      * @return A list of all relationships that an element has, both as target and as source
      */
-    public static List<IRelationship> getRelationships(IZentaElement element) {
+    public static List<IBasicRelationship> getRelationships(IZentaElement element) {
         return __getRelationships(element, SOURCE_RELATIONSHIPS | TARGET_RELATIONSHIPS);
     }
     
@@ -66,7 +66,7 @@ public class ZentaModelUtils {
      * @param element The Zenta element to check
      * @return A list of all source relationships that an element has
      */
-    public static List<IRelationship> getSourceRelationships(IZentaElement element) {
+    public static List<IBasicRelationship> getSourceRelationships(IZentaElement element) {
         return __getRelationships(element, SOURCE_RELATIONSHIPS);
     }
     
@@ -74,12 +74,12 @@ public class ZentaModelUtils {
      * @param element The Zenta element to check
      * @return A list of all target relationships that an element has
      */
-    public static List<IRelationship> getTargetRelationships(IZentaElement element) {
+    public static List<IBasicRelationship> getTargetRelationships(IZentaElement element) {
         return __getRelationships(element, TARGET_RELATIONSHIPS);
     }
 
-    private static List<IRelationship> __getRelationships(IZentaElement element, int type) {
-        List<IRelationship> relationships = new ArrayList<IRelationship>();
+    private static List<IBasicRelationship> __getRelationships(IZentaElement element, int type) {
+        List<IBasicRelationship> relationships = new ArrayList<IBasicRelationship>();
         
         if(element.getZentaModel() != null) { // An important guard because the element might have been deleted
         	for (IFolder  folder : element.getZentaModel().getFolders()) {
@@ -91,14 +91,14 @@ public class ZentaModelUtils {
         return relationships;
     }
     
-    private static void __getRelationshipsForElement(IFolder folder, IZentaElement element, int type, List<IRelationship> relationships) {
+    private static void __getRelationshipsForElement(IFolder folder, IZentaElement element, int type, List<IBasicRelationship> relationships) {
         if(folder == null || element == null) {
             return;
         }
         
         for(EObject object : folder.getElements()) {
-            if(object instanceof IRelationship) {
-                IRelationship relationship = (IRelationship)object;
+            if(object instanceof IBasicRelationship) {
+                IBasicRelationship relationship = (IBasicRelationship)object;
                 if((type & SOURCE_RELATIONSHIPS) != 0) {
                     if(relationship.getSource() == element && !relationships.contains(relationship)) {
                         relationships.add(relationship);

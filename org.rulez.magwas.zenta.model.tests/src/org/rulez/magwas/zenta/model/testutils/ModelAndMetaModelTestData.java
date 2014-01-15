@@ -9,7 +9,7 @@ import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -89,30 +89,30 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		newElement.setName(elementName);
 		return newElement;
 	}
-	public IRelationship createNewRelationClass(String elementName) {
+	public IBasicRelationship createNewRelationClass(String elementName) {
 		IRelationClass oc = metamodel.getBuiltinRelationClass();
 		IDiagramModel dm = getTemplateDiagramModel();
-		IRelationship rel = createNewConnection(elementName, oc, dm);
+		IBasicRelationship rel = createNewConnection(elementName, oc, dm);
 		return rel;
 	}
 
-	public IRelationship createNewNondefiningRelationBasedOn(IRelationClass baseClass) {
+	public IBasicRelationship createNewNondefiningRelationBasedOn(IRelationClass baseClass) {
 		String name = "NonDefiningRelation";
 		IDiagramModel dm = (IDiagramModel) this.getById("63f1b081");
 		return createNewConnection(name, baseClass, dm);
 	}
-	public IRelationship createNewConnection(String name,
+	public IBasicRelationship createNewConnection(String name,
 			IRelationClass baseRelationClass, IDiagramModel diagram) {
-		IRelationship rel = createUnnamedRelation(baseRelationClass, diagram);
+		IBasicRelationship rel = createUnnamedRelation(baseRelationClass, diagram);
 		rel.setName(name);
 		return rel;
 	}
 
-	public IRelationship createUnnamedRelation(
+	public IBasicRelationship createUnnamedRelation(
 			IRelationClass baseRelationClass, IDiagramModel diagram) {
 		IZentaElement sourceElement = createClassedTestElement();
 		IZentaElement targetElement = createClassedTestElement();
-		IRelationship rel = (IRelationship) baseRelationClass.create((IFolder) sourceElement.eContainer());
+		IBasicRelationship rel = (IBasicRelationship) baseRelationClass.create((IFolder) sourceElement.eContainer());
 		rel.setSource(sourceElement);
 		rel.setTarget(targetElement);
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(sourceElement);

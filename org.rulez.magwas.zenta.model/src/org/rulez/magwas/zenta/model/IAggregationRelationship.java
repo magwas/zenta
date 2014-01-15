@@ -17,5 +17,5 @@ package org.rulez.magwas.zenta.model;
  * @model
  * @generated
  */
-public interface IAggregationRelationship extends IRelationship {
+public interface IAggregationRelationship extends IBasicRelationship {
 } // IAggregationRelationship

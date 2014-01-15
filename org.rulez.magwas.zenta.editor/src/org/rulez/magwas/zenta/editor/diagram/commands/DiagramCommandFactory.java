@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -136,7 +136,7 @@ public final class DiagramCommandFactory {
         
         
         // Not if there is already a relationship of a certain type between the two
-        for(IRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
+        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
             if(relation.getTarget() == child) {
                 for(IReferencesModelObject eClass : vp.getRelationClasses()) {
                     if(eClass.isInstance(relation)) {

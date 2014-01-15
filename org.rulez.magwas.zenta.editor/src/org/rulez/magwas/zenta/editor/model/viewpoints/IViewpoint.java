@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 /**
@@ -57,7 +57,7 @@ public interface IViewpoint {
 			IZentaElement targetElement, IRelationClass eClass);
 
 	boolean isValidRelationship(IZentaElement sourceElement,
-			IZentaElement targetElement, IRelationship rel);
+			IZentaElement targetElement, IBasicRelationship rel);
 
 	List<IRelationClass> getValidRelationships(IObjectClass sourceObjectType, IObjectClass targetObjectType);
     
@@ -80,7 +80,7 @@ public interface IViewpoint {
 	boolean isAllowedType(IZentaElement element);
 	boolean isElementVisible(IZentaElement childObject);
 
-	boolean isNestedConnectionTypeRelationship(IRelationship relation);
+	boolean isNestedConnectionTypeRelationship(IBasicRelationship relation);
 
 	boolean isValidRelationship(IObjectClass sourceclass,
 			IObjectClass targetclass, IRelationClass relationclass);

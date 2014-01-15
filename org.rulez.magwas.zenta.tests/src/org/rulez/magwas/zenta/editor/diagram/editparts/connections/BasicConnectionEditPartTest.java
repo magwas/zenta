@@ -16,7 +16,7 @@ import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 
@@ -38,7 +38,7 @@ public class BasicConnectionEditPartTest {
 	@Test
 	public void The_connection_appearance_is_according_to_the_defining_relations_properties_in_the_template() {
 		String id = "9c441eb7";
-		IRelationship element = testdata.getRelationByID(id);
+		IBasicRelationship element = testdata.getRelationByID(id);
 		assertNotNull(element);
 		testdata.focusOnDiagram("e13c9626");
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor("9dc4d23a");
@@ -61,7 +61,7 @@ public class BasicConnectionEditPartTest {
 	public void A_newly_created_nondefining_connection_have_the_appearance_of_the_defining_relation() {
 		String id = "9c441eb7";
 		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
-		IRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
+		IBasicRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		assertNotNull(rel);
 		assertNotSame(rel.getId(),rel.getObjectClass());
 		testdata.focusOnDiagram("63f1b081");
@@ -98,7 +98,7 @@ public class BasicConnectionEditPartTest {
 	public void ToolTip_displays_the_RelationClass() {
 		String id = "9c441eb7";
 		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
-		IRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
+		IBasicRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		rel.setName("Displayable Relation Name");
 		assertNotNull(rel);
 		assertNotSame(rel.getId(),rel.getObjectClass());
@@ -115,7 +115,7 @@ public class BasicConnectionEditPartTest {
 		String id = "9c441eb7";
 		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
 		IZentaDiagramModel dm = testdata.getTemplateDiagramModel();
-		IRelationship rel = testdata.createNewConnection("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",baseRelationClass,dm);
+		IBasicRelationship rel = testdata.createNewConnection("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",baseRelationClass,dm);
 		assertNotNull(rel);
 		assertNotSame(rel.getId(),rel.getObjectClass());
 		testdata.focusOnDiagram(dm.getId());

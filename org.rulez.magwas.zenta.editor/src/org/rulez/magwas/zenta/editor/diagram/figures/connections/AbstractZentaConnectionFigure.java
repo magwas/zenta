@@ -12,7 +12,7 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -54,7 +54,7 @@ extends AbstractDiagramConnectionFigure implements IZentaConnectionFigure {
             return null;
         }
         
-        IRelationship relation = getModelConnection().getRelationship();
+        IBasicRelationship relation = getModelConnection().getRelationship();
         
         String text = ZentaLabelProvider.INSTANCE.getLabel(relation);
         toolTipFigure.setText(text);

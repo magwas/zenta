@@ -31,7 +31,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IFolderContainer;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -271,8 +271,8 @@ public class DeleteCommandHandler {
             }
         }
         // Element
-        else if(object instanceof IZentaElement && !(object instanceof IRelationship)) {
-            for(IRelationship relationship : ZentaModelUtils.getRelationships((IZentaElement)object)) {
+        else if(object instanceof IZentaElement && !(object instanceof IBasicRelationship)) {
+            for(IBasicRelationship relationship : ZentaModelUtils.getRelationships((IZentaElement)object)) {
                 addToList(relationship, fElementsToDelete);
                 addToList(relationship, fElementsToCheck);
             }

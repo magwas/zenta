@@ -293,7 +293,7 @@ public interface IZentaFactory extends EFactory {
 
 	ITemplate createTemplate(IZentaDiagramModel diagram, IMetamodel metamodel);
 
-	IRelationClass createRelationClass(IRelationship referenced,
+	IRelationClass createRelationClass(IBasicRelationship referenced,
 			ITemplate template);
 
 	IMetamodel getMetamodelFor(IZentaModel model2);

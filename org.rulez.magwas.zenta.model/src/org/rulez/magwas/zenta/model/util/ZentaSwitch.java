@@ -54,7 +54,6 @@ import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
@@ -293,24 +292,9 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IZentaPackage.RELATIONSHIP: {
-				IRelationship relationship = (IRelationship)theEObject;
-				T result = caseRelationship(relationship);
-				if (result == null) result = caseZentaElement(relationship);
-				if (result == null) result = caseZentaModelElement(relationship);
-				if (result == null) result = caseIdentifier(relationship);
-				if (result == null) result = caseCloneable(relationship);
-				if (result == null) result = caseDocumentable(relationship);
-				if (result == null) result = caseProperties(relationship);
-				if (result == null) result = caseAdapter(relationship);
-				if (result == null) result = caseNameable(relationship);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IZentaPackage.BASIC_RELATIONSHIP: {
 				IBasicRelationship basicRelationship = (IBasicRelationship)theEObject;
 				T result = caseBasicRelationship(basicRelationship);
-				if (result == null) result = caseRelationship(basicRelationship);
 				if (result == null) result = caseZentaElement(basicRelationship);
 				if (result == null) result = caseZentaModelElement(basicRelationship);
 				if (result == null) result = caseIdentifier(basicRelationship);
@@ -911,21 +895,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOrJunction(IOrJunction object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Relationship</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Relationship</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRelationship(IRelationship object) {
 		return null;
 	}
 

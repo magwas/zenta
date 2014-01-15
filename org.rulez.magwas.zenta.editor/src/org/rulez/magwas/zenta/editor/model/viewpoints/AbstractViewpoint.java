@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -89,7 +89,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public boolean isValidRelationship(IZentaElement sourceElement,
-			IZentaElement targetElement, IRelationship rel) {
+			IZentaElement targetElement, IBasicRelationship rel) {
 		IObjectClass sc = getClassOf(sourceElement);
 		IObjectClass tc = getClassOf(targetElement);
 		IRelationClass rc = (IRelationClass) metamodel.getObjectClassReferencing(rel);
@@ -205,7 +205,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public boolean isNestedConnectionTypeRelationship(IRelationship relation) {
+	public boolean isNestedConnectionTypeRelationship(IBasicRelationship relation) {
 		return true;
 	}
 

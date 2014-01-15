@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -115,12 +115,12 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	}
 
 	@Override
-	public IRelationClass getRelationClassReferencing(IRelationship relation) {
+	public IRelationClass getRelationClassReferencing(IBasicRelationship relation) {
 		return (IRelationClass) getClassById(relation.getId());
 	}
 
 	@Override
-	public boolean hasRelationClassReferencing(IRelationship relation) {
+	public boolean hasRelationClassReferencing(IBasicRelationship relation) {
 		return null != getRelationClassReferencing(relation);
 	}
 
@@ -214,7 +214,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		ITemplate template = getTemplateFor(dm);
 		if(null == template)
 			return;
-		IRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
+		IBasicRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
 		IZentaFactory.eINSTANCE.createRelationClass(element, template);
 	}
 
@@ -250,8 +250,8 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 
 	private IDiagramModelComponent getDefiningModelObjectFor(IZentaElement element) {
 		EList<? extends IDiagramModelComponent> dmos;
-		if(element instanceof IRelationship)
-			dmos = ((IRelationship)element).getDiagConnections();
+		if(element instanceof IBasicRelationship)
+			dmos = ((IBasicRelationship)element).getDiagConnections();
 		else
 			dmos = element.getDiagObjects();
 		for(IDiagramModelComponent dmo : dmos) {
@@ -286,8 +286,8 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	
 	private void handleNameChange(IZentaElement element) {
 		IReferencesModelObject oc;
-		if(element instanceof IRelationship)
-			oc = getRelationClassReferencing((IRelationship) element);
+		if(element instanceof IBasicRelationship)
+			oc = getRelationClassReferencing((IBasicRelationship) element);
 		else
 			oc = getObjectClassReferencing(element);
 		if(null == oc)
@@ -341,7 +341,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
             	oc.getTemplate().removeClass(oc);
         }
         private void removeFromDiagrams(IZentaElement element) {
-            if(element instanceof IRelationship)
+            if(element instanceof IBasicRelationship)
                 removeConnectionFromDiagrams(element);
             else
                 removeObjectFromDiagrams(element);
@@ -351,7 +351,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
                     ((IDiagramModelContainer)dmo.eContainer()).getChildren().remove(dmo);
             }
             private void removeConnectionFromDiagrams(IZentaElement element) {
-                for(IDiagramModelZentaConnection dmzc: ((IRelationship)element).getDiagConnections())
+                for(IDiagramModelZentaConnection dmzc: ((IBasicRelationship)element).getDiagConnections())
                     ((IDiagramModelZentaObject)dmzc.eContainer()).getSourceConnections().remove(dmzc);
             }
 

@@ -10,7 +10,7 @@ import org.eclipse.osgi.util.NLS;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -26,7 +26,7 @@ public class AddDiagramZentaConnectionCommand extends Command {
     private IDiagramModelZentaConnection fConnection;
     private IDiagramModelObject fSource, fTarget;
     
-    public AddDiagramZentaConnectionCommand(IDiagramModelObject src, IDiagramModelObject tgt, IRelationship relationship) {
+    public AddDiagramZentaConnectionCommand(IDiagramModelObject src, IDiagramModelObject tgt, IBasicRelationship relationship) {
         setLabel(NLS.bind(Messages.AddDiagramZentaConnectionCommand_0, relationship.getName()));
 
         fSource = src;

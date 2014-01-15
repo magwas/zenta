@@ -56,7 +56,6 @@ import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
@@ -191,10 +190,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseOrJunction(IOrJunction object) {
 				return createOrJunctionAdapter();
-			}
-			@Override
-			public Adapter caseRelationship(IRelationship object) {
-				return createRelationshipAdapter();
 			}
 			@Override
 			public Adapter caseBasicRelationship(IBasicRelationship object) {
@@ -585,20 +580,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOrJunctionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IRelationship <em>Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.model.IRelationship
-	 * @generated
-	 */
-	public Adapter createRelationshipAdapter() {
 		return null;
 	}
 

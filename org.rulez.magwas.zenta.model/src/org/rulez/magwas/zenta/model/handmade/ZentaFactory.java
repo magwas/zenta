@@ -11,7 +11,7 @@ import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -83,7 +83,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	}
 
 	@Override
-	public IRelationClass createRelationClass(IRelationship referenced, ITemplate template) {
+	public IRelationClass createRelationClass(IBasicRelationship referenced, ITemplate template) {
 		IRelationClass candidate = template.getRelationClassReferencingElement(referenced);
 		if(null != candidate)
 			return candidate;

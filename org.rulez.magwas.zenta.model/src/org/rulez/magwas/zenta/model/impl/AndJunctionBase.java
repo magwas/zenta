@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IAndJunction;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 
@@ -41,7 +41,7 @@ public class AndJunctionBase extends ZentaElementBase implements IAndJunction {
 	}
 
 	@Override
-	public IRelationship getDefiningElement(
+	public IBasicRelationship getDefiningElement(
 			DiagramModelZentaConnectionBase diagramModelZentaConnectionBase) {
 		// TODO Auto-generated method stub
 		return null;

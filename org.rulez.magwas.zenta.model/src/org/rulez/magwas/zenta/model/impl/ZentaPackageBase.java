@@ -59,7 +59,6 @@ import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
@@ -374,13 +373,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	 * @generated
 	 */
     private EDataType fileEDataType = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass relationshipEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -1471,26 +1463,8 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getRelationship() {
-		return relationshipEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getRelationship_Source() {
-		return (EReference)relationshipEClass.getEStructuralFeatures().get(0);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getRelationship_Target() {
-		return (EReference)relationshipEClass.getEStructuralFeatures().get(1);
+    public EClass getBasicRelationship() {
+		return basicRelationshipEClass;
 	}
 
     /**
@@ -1498,20 +1472,29 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRelationship_DiagConnections() {
-		return (EReference)relationshipEClass.getEStructuralFeatures().get(2);
+	public EReference getBasicRelationship_Source() {
+		return (EReference)basicRelationshipEClass.getEStructuralFeatures().get(0);
 	}
 
 				/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getBasicRelationship() {
-		return basicRelationshipEClass;
+	public EReference getBasicRelationship_Target() {
+		return (EReference)basicRelationshipEClass.getEStructuralFeatures().get(1);
 	}
 
-    /**
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBasicRelationship_DiagConnections() {
+		return (EReference)basicRelationshipEClass.getEStructuralFeatures().get(2);
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -1645,12 +1628,10 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 
 		orJunctionEClass = createEClass(OR_JUNCTION);
 
-		relationshipEClass = createEClass(RELATIONSHIP);
-		createEReference(relationshipEClass, RELATIONSHIP__SOURCE);
-		createEReference(relationshipEClass, RELATIONSHIP__TARGET);
-		createEReference(relationshipEClass, RELATIONSHIP__DIAG_CONNECTIONS);
-
 		basicRelationshipEClass = createEClass(BASIC_RELATIONSHIP);
+		createEReference(basicRelationshipEClass, BASIC_RELATIONSHIP__SOURCE);
+		createEReference(basicRelationshipEClass, BASIC_RELATIONSHIP__TARGET);
+		createEReference(basicRelationshipEClass, BASIC_RELATIONSHIP__DIAG_CONNECTIONS);
 
 		businessLayerElementEClass = createEClass(BUSINESS_LAYER_ELEMENT);
 
@@ -1818,8 +1799,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		junctionEClass.getESuperTypes().add(this.getJunctionElement());
 		andJunctionEClass.getESuperTypes().add(this.getJunctionElement());
 		orJunctionEClass.getESuperTypes().add(this.getJunctionElement());
-		relationshipEClass.getESuperTypes().add(this.getZentaElement());
-		basicRelationshipEClass.getESuperTypes().add(this.getRelationship());
+		basicRelationshipEClass.getESuperTypes().add(this.getZentaElement());
 		businessLayerElementEClass.getESuperTypes().add(this.getZentaElement());
 		diagramModelComponentEClass.getESuperTypes().add(this.getIdentifier());
 		diagramModelComponentEClass.getESuperTypes().add(this.getCloneable());
@@ -1939,12 +1919,10 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 
 		initEClass(orJunctionEClass, IOrJunction.class, "OrJunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(relationshipEClass, IRelationship.class, "Relationship", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelationship_Source(), this.getZentaElement(), null, "source", null, 0, 1, IRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationship_Target(), this.getZentaElement(), null, "target", null, 0, 1, IRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationship_DiagConnections(), this.getDiagramModelZentaConnection(), this.getDiagramModelZentaConnection_Relationship(), "diagConnections", null, 0, -1, IRelationship.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-
 		initEClass(basicRelationshipEClass, IBasicRelationship.class, "BasicRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBasicRelationship_Source(), this.getZentaElement(), null, "source", null, 0, 1, IBasicRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBasicRelationship_Target(), this.getZentaElement(), null, "target", null, 0, 1, IBasicRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBasicRelationship_DiagConnections(), this.getDiagramModelZentaConnection(), this.getDiagramModelZentaConnection_Relationship(), "diagConnections", null, 0, -1, IBasicRelationship.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(businessLayerElementEClass, IBusinessLayerElement.class, "BusinessLayerElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2047,7 +2025,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		addEOperation(diagramModelZentaObjectEClass, null, "removeZentaElementFromModel", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(diagramModelZentaConnectionEClass, IDiagramModelZentaConnection.class, "DiagramModelZentaConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDiagramModelZentaConnection_Relationship(), this.getRelationship(), this.getRelationship_DiagConnections(), "relationship", null, 0, 1, IDiagramModelZentaConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDiagramModelZentaConnection_Relationship(), this.getBasicRelationship(), this.getBasicRelationship_DiagConnections(), "relationship", null, 0, 1, IDiagramModelZentaConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(diagramModelZentaConnectionEClass, null, "addRelationshipToModel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFolder(), "parent", 0, 1, IS_UNIQUE, IS_ORDERED);

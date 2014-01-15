@@ -34,7 +34,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -329,7 +329,7 @@ public final class CopySnapshot {
         
         for(IDiagramModelConnection connection : fOriginalToSnapshotConnectionsMapping.keySet()) {
             if(connection instanceof IDiagramModelZentaConnection) {
-                IRelationship originalRelationship = ((IDiagramModelZentaConnection)connection).getRelationship();
+                IBasicRelationship originalRelationship = ((IDiagramModelZentaConnection)connection).getRelationship();
                 if(originalRelationship == null || originalRelationship.eContainer() == null) { // zenta relationship was deleted
                     return true;
                 }
@@ -442,7 +442,7 @@ public final class CopySnapshot {
             // Re-use original Zenta relationship
             if(!fDoCreateZentaElementCopies && snapshotConnection instanceof IDiagramModelZentaConnection) {
                 IDiagramModelZentaConnection originalDiagramConnection = (IDiagramModelZentaConnection)fSnapshotToOriginalConnectionsMapping.get(snapshotConnection);
-                IRelationship relationship = originalDiagramConnection.getRelationship();
+                IBasicRelationship relationship = originalDiagramConnection.getRelationship();
                 ((IDiagramModelZentaConnection)newConnection).setRelationship(relationship);
             }
             

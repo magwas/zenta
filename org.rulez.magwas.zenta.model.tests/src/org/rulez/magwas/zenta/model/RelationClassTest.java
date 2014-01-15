@@ -17,7 +17,7 @@ import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -82,7 +82,7 @@ public class RelationClassTest {
 		IZentaDiagramModel dm = testdata.getZDiagramModelById(id);
 		ITemplate template = metamodel.getTemplateFor(dm);
 		String id2 = "9c441eb7";
-		IRelationship element = testdata.getRelationByID(id2);
+		IBasicRelationship element = testdata.getRelationByID(id2);
 		int numOccurs = 0;
 		for(IRelationClass oc:template.getRelationClasses())
 			if(element.equals(oc.getReference()))
@@ -92,14 +92,14 @@ public class RelationClassTest {
 
 	@Test
 	public void If_a_new_connection_added_to_a_template__a_RelationClass_will_be_created_for_it() {
-		IRelationship modelRelation = createRelationClass();
+		IBasicRelationship modelRelation = createRelationClass();
 		assertTrue(metamodel.hasRelationClassReferencing(modelRelation));
 	}
 
 	@Test
 	public void The_parent_relationclass_is_the_relationclass_of_the_defining_element() {
 		IRelationClass parentRc = (IRelationClass) metamodel.getClassById("9c441eb7");
-		IRelationship modelRelation = createRelationClass(parentRc,"test relation");
+		IBasicRelationship modelRelation = createRelationClass(parentRc,"test relation");
 		
 		IRelationClass newRc = metamodel.getRelationClassReferencing(modelRelation);
 		assertNotNull(newRc);
@@ -112,40 +112,40 @@ public class RelationClassTest {
 	@Test
 	public void A_defining_relation_for_a_RelationClass_belongs_to_its_parents_RelationClass_which_is_BasicRelation_by_default() {
 		String id = "9c441eb7";
-		IRelationship element = testdata.getRelationByID(id);
+		IBasicRelationship element = testdata.getRelationByID(id);
 		assertEquals("basicrelation",element.getObjectClass());
 	}
 
 	@Test
 	public void An_unnamed_relation_does_not_define_a_RelationClass() {
-		IRelationship element = testdata.getRelationByID("44041ead");
+		IBasicRelationship element = testdata.getRelationByID("44041ead");
 		assertNotNull(element);
 		assertFalse(metamodel.hasRelationClassReferencing(element));
 	}
 
 	@Test
 	public void A_RelationClass_is_unnamed_if_the_defining_element_have_an_empty_className_property() {
-		IRelationship element =	testdata.getRelationByID("2fb235de");
+		IBasicRelationship element =	testdata.getRelationByID("2fb235de");
 		assertNotNull(element);
 		assertFalse(metamodel.hasRelationClassReferencing(element));		
 	}
 	
 	@Test
 	public void The_name_of_a_RelationClass_is_the_name_of_the_defining_element_if_it_does_not_have_a_className_property() {
-		IRelationship element = testdata.getRelationByID("9c441eb7");
+		IBasicRelationship element = testdata.getRelationByID("9c441eb7");
 		assertEquals("describes",getRelationClassReferencing(element).getName());
 	}
 
 	@Test
 	public void The_name_of_a_RelationClass_is_the_name_of_the_className_property_of_the_defining_element_if_it_has_one() {
-		IRelationship element = testdata.getRelationByID("b0e2bfd8");
+		IBasicRelationship element = testdata.getRelationByID("b0e2bfd8");
 		assertEquals("TriesToDo",getRelationClassReferencing(element).getName());
 	}
 
 	@Test
 	public void When_the_model_is_loaded_the_diagram_relations_are_not_converted_according_to_the_defining_relation() {
 		ModelTestData testdata = new ModelTestData();
-		IRelationship relation = testdata.getRelationByID("9c441eb7");
+		IBasicRelationship relation = testdata.getRelationByID("9c441eb7");
 		
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "font", "1|Andika|10.0|3|GTK|1|");
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "fontColor", "#ff0000");
@@ -198,7 +198,7 @@ public class RelationClassTest {
 
 	@Test
 	public void When_the_ObjectClass_of_an_element_is_changed_the_corresponding_diagram_elements_are_not_updated() {
-		IRelationship element = testdata.getRelationByID("8aeb2efb");
+		IBasicRelationship element = testdata.getRelationByID("8aeb2efb");
 		IDiagramModelZentaConnection conn1 = testdata.getDMRById("2454f71b");
 
 		ModelTestData.assertNotEquals("1|Andika|10.0|3|GTK|1|",conn1.getFont());
@@ -221,7 +221,7 @@ public class RelationClassTest {
 	
 	@Test
 	public void When_the_appearance_of_a_diagram_connection_linked_to_a_defining_relationship_is_changed_the_aooearance_properties_of_the_defining_relationship_are_updated() {
-		IRelationship userObject = testdata.getRelationByID("9c441eb7");
+		IBasicRelationship userObject = testdata.getRelationByID("9c441eb7");
 		IDiagramModelZentaConnection dmr = testdata.getDMRById("9dc4d23a");
 		dmr.setFont("1|Arial Black|10.0|1|GTK|1|");
 		ModelTestData.assertOnePropertyWithNameAndValue(userObject, "font", "1|Arial Black|10.0|1|GTK|1|");
@@ -241,7 +241,7 @@ public class RelationClassTest {
 
 	@Test
 	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
-		IRelationship element = createRelationClass();
+		IBasicRelationship element = createRelationClass();
 		IReferencesModelObject oc = metamodel.getClassReferencing(element);
 		assertNotNull(oc);
 		IDiagramModelZentaConnection diagElement = element.getDiagConnections().get(0);
@@ -253,7 +253,7 @@ public class RelationClassTest {
 	
 	@Test
 	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted() {
-		IRelationship element = createRelationClass();
+		IBasicRelationship element = createRelationClass();
 		String elemId = element.getId();
 		IDiagramModelZentaConnection dmo = element.getDiagConnections().get(0);
 		assertNotNull(dmo);
@@ -275,17 +275,17 @@ public class RelationClassTest {
 
 	private void assertTemplateHaveRelationClassFor(ITemplate template,
 			String elementID) {
-		IRelationship element = testdata.getRelationByID(elementID);
+		IBasicRelationship element = testdata.getRelationByID(elementID);
 		assertNotNull(template.getRelationClassReferencingElement(element));
 	}
 
-	private IRelationClass getRelationClassReferencing(IRelationship element) {
+	private IRelationClass getRelationClassReferencing(IBasicRelationship element) {
 		return metamodel.getRelationClassReferencing(element);
 	}
-	private IRelationship createRelationClass(IRelationClass parentClass, String name) {
-		IRelationship baseDefining = (IRelationship) parentClass.getReference();
+	private IBasicRelationship createRelationClass(IRelationClass parentClass, String name) {
+		IBasicRelationship baseDefining = (IBasicRelationship) parentClass.getReference();
 		IFolder folder = (IFolder) baseDefining.eContainer();
-		IRelationship modelRelation= (IRelationship) parentClass.create(folder);
+		IBasicRelationship modelRelation= (IBasicRelationship) parentClass.create(folder);
 		IDiagramModelZentaObject diagramElement1 = (IDiagramModelZentaObject) testdata.getDMOById("b2608459");//User
 		IDiagramModelZentaObject diagramElement2 = (IDiagramModelZentaObject) testdata.getDMOById("88f40127");//Procedure
 		modelRelation.setName(name);
@@ -294,14 +294,14 @@ public class RelationClassTest {
 		return createRelationClass(modelRelation, diagramElement1,
 				diagramElement2);
 	}
-	private IRelationship createRelationClass() {
-		IRelationship modelRelation= testdata.getRelationByID("9a97ee2f");
+	private IBasicRelationship createRelationClass() {
+		IBasicRelationship modelRelation= testdata.getRelationByID("9a97ee2f");
 		IDiagramModelObject diagramElement1 = testdata.getDMOById("b2608459");//User
 		IDiagramModelObject diagramElement2 = testdata.getDMOById("f843c2f1");//ProcessStep
 		return createRelationClass(modelRelation, diagramElement1,
 				diagramElement2);
 	}
-		private IRelationship createRelationClass(IRelationship modelRelation,
+		private IBasicRelationship createRelationClass(IBasicRelationship modelRelation,
 				IDiagramModelObject diagramSource, IDiagramModelObject diagramTarget) {
 			assertNotNull(modelRelation);
 			assertFalse(metamodel.hasRelationClassReferencing(modelRelation));

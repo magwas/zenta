@@ -373,8 +373,8 @@ implements INavigatorView, ISelectionListener {
             Object feature = msg.getFeature();
 
             // Relationship/Connection changed - requires full refresh
-            if(feature == IZentaPackage.Literals.RELATIONSHIP__SOURCE ||
-                                        feature == IZentaPackage.Literals.RELATIONSHIP__TARGET) {
+            if(feature == IZentaPackage.Literals.BASIC_RELATIONSHIP__SOURCE ||
+                                        feature == IZentaPackage.Literals.BASIC_RELATIONSHIP__TARGET) {
                 getViewer().refresh();
             }
             else {

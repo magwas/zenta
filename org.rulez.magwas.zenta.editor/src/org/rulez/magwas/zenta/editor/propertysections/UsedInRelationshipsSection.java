@@ -29,7 +29,7 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -49,7 +49,7 @@ public class UsedInRelationshipsSection extends AbstractZentaPropertySection {
     public static class Filter implements IFilter {
         @Override
         public boolean select(Object object) {
-            return !(object instanceof IRelationship) &&
+            return !(object instanceof IBasicRelationship) &&
                         (object instanceof IZentaElement || object instanceof IZentaEditPart);
         }
     }
@@ -97,7 +97,7 @@ public class UsedInRelationshipsSection extends AbstractZentaPropertySection {
         fTableViewer.setLabelProvider(new LabelProvider() {
             @Override
             public String getText(Object element) {
-                IRelationship relationship = (IRelationship)element;
+                IBasicRelationship relationship = (IBasicRelationship)element;
                 String name = ZentaLabelProvider.INSTANCE.getLabel(relationship) + " ("; //$NON-NLS-1$
                 name += ZentaLabelProvider.INSTANCE.getLabel(relationship.getSource());
                 name += " - "; //$NON-NLS-1$
@@ -117,7 +117,7 @@ public class UsedInRelationshipsSection extends AbstractZentaPropertySection {
                 if(isAlive()) {
                     Object o = ((IStructuredSelection)event.getSelection()).getFirstElement();
                     if(o instanceof IZentaElement) {
-                        IRelationship relation = (IRelationship)o;
+                        IBasicRelationship relation = (IBasicRelationship)o;
                         ITreeModelView view = (ITreeModelView)ViewManager.findViewPart(ITreeModelView.ID);
                         if(view != null) {
                             view.getViewer().setSelection(new StructuredSelection(relation), true);

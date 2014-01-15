@@ -32,7 +32,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.ZentaElementBase;
@@ -226,7 +226,7 @@ public class ZentaDiagramEditorPaletteTest {
 	public void If_a_new_RelationClass_is_created_it_is_shown_on_the_ViewPoint() {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
-		IRelationship newElement = testdata.createNewRelationClass("New test RC");
+		IBasicRelationship newElement = testdata.createNewRelationClass("New test RC");
 		IRelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
 		assertNotNull(newRc);
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
@@ -239,7 +239,7 @@ public class ZentaDiagramEditorPaletteTest {
 	public void If_a_RelationClass_is_deleted_it_is_removed_from_the_Palette() {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
-		IRelationship newElement = testdata.createNewRelationClass("New test RC");
+		IBasicRelationship newElement = testdata.createNewRelationClass("New test RC");
 		IRelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
 		assertNotNull(newRc);
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
@@ -256,7 +256,7 @@ public class ZentaDiagramEditorPaletteTest {
 	public void A_defining_element_with_a_nondefining_connection_can_be_removed() {
 		IRelationClass baserc = testdata.metamodel.getBuiltinRelationClass();
 		IDiagramModel dm = testdata.getTemplateDiagramModel();
-		IRelationship newRelation = testdata.createUnnamedRelation(baserc, dm);
+		IBasicRelationship newRelation = testdata.createUnnamedRelation(baserc, dm);
 
 		IZentaElement destElem = newRelation.getTarget();
 		

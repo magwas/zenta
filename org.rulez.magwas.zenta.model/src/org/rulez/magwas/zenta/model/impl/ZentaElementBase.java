@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -209,7 +210,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	 */
 	public String getObjectClass() {
 		if(null == objectClass)
-			if(this instanceof RelationshipBase)
+			if(this instanceof IBasicRelationship)
 				objectClass = basicRelationClassId;
 			else
 				objectClass = basicObjectClassId;

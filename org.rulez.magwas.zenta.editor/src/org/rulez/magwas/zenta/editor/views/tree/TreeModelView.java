@@ -538,8 +538,8 @@ implements ITreeModelView, IUIRequestListener {
             Object feature = msg.getFeature();
 
             // Relationship/Connection changed - update element's name
-            if(feature == IZentaPackage.Literals.RELATIONSHIP__SOURCE ||
-                                        feature == IZentaPackage.Literals.RELATIONSHIP__TARGET) {
+            if(feature == IZentaPackage.Literals.BASIC_RELATIONSHIP__SOURCE ||
+                                        feature == IZentaPackage.Literals.BASIC_RELATIONSHIP__TARGET) {
                 getViewer().update(notifier, null);
             }
             

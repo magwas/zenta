@@ -42,7 +42,7 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -179,8 +179,8 @@ implements IZentaDiagramEditor {
             }
             
             // Find Components from nested connections
-            if(ConnectionPreferences.useNestedConnections() && element instanceof IRelationship) {
-                for(IDiagramModelZentaObject[] list : DiagramModelUtils.findNestedComponentsForRelationship(getModel(), (IRelationship)element)) {
+            if(ConnectionPreferences.useNestedConnections() && element instanceof IBasicRelationship) {
+                for(IDiagramModelZentaObject[] list : DiagramModelUtils.findNestedComponentsForRelationship(getModel(), (IBasicRelationship)element)) {
                     EditPart editPart1 = (EditPart)getGraphicalViewer().getEditPartRegistry().get(list[0]);
                     EditPart editPart2 = (EditPart)getGraphicalViewer().getEditPartRegistry().get(list[1]);
                     if(editPart1 != null && editPart1.isSelectable() && !editParts.contains(editPart1)) {

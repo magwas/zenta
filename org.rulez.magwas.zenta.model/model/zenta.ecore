@@ -112,7 +112,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Junction" eSuperTypes="#//JunctionElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="AndJunction" eSuperTypes="#//JunctionElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="OrJunction" eSuperTypes="#//JunctionElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Relationship" abstract="true" eSuperTypes="#//ZentaElement">
+  <eClassifiers xsi:type="ecore:EClass" name="BasicRelationship" eSuperTypes="#//ZentaElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ZentaElement"
         resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ZentaElement"
@@ -120,7 +120,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagConnections" upperBound="-1"
         eType="#//DiagramModelZentaConnection" transient="true" derived="true" eOpposite="#//DiagramModelZentaConnection/relationship"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BasicRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessLayerElement" abstract="true"
       interface="true" eSuperTypes="#//ZentaElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiagramModelComponent" abstract="true"
@@ -271,8 +270,8 @@
       <eParameters name="parent" eType="#//Folder"/>
     </eOperations>
     <eOperations name="removeRelationshipFromModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" eType="#//Relationship"
-        resolveProxies="false" eOpposite="#//Relationship/diagConnections"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" eType="#//BasicRelationship"
+        resolveProxies="false" eOpposite="#//BasicRelationship/diagConnections"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//BusinessLayerElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="SketchModel" eSuperTypes="#//DiagramModel">

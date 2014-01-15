@@ -17,7 +17,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IProperties;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
 
 
@@ -40,8 +40,8 @@ implements IZentaConnectionEditPart {
             super.notifyChanged(msg);
 
             Object feature = msg.getFeature();
-            if(feature == IZentaPackage.Literals.RELATIONSHIP__SOURCE
-                                                    || feature == IZentaPackage.Literals.RELATIONSHIP__TARGET
+            if(feature == IZentaPackage.Literals.BASIC_RELATIONSHIP__SOURCE
+                                                    || feature == IZentaPackage.Literals.BASIC_RELATIONSHIP__TARGET
                                                     || feature == IZentaPackage.Literals.FOLDER__ELEMENTS) {
                 showStructural();
             }
@@ -123,7 +123,7 @@ implements IZentaConnectionEditPart {
     }
     
     protected void showStructural() {
-        IRelationship relation = getModel().getRelationship();
+        IBasicRelationship relation = getModel().getRelationship();
         DerivedRelationsUtils drutil = new DerivedRelationsUtils(getModel().getRelationship().getZentaModel());
         boolean doHighlight = drutil.isInDerivedChain(relation);
         getFigure().highlight(doHighlight);

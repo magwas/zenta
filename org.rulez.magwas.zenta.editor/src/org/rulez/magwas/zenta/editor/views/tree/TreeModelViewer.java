@@ -32,7 +32,7 @@ import org.rulez.magwas.zenta.editor.views.tree.search.SearchFilter;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -222,8 +222,8 @@ public class TreeModelViewer extends TreeViewer {
                 }
             }
             
-            if(element instanceof IRelationship) {
-                IRelationship relationship = (IRelationship)element;
+            if(element instanceof IBasicRelationship) {
+                IBasicRelationship relationship = (IBasicRelationship)element;
                 name += " ("; //$NON-NLS-1$
                 name += ZentaLabelProvider.INSTANCE.getLabel(relationship.getSource());
                 name += " - "; //$NON-NLS-1$

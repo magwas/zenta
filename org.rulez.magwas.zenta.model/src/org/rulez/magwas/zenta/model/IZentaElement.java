@@ -65,7 +65,7 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	IZentaElement getDefiningElement(
 			DiagramModelZentaObjectBase diagramModelZentaObjectBase);
 
-	IRelationship getDefiningElement(
+	IBasicRelationship getDefiningElement(
 			DiagramModelZentaConnectionBase diagramModelZentaConnectionBase);
 
 	boolean isTemplate();

@@ -11,7 +11,7 @@ import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -82,7 +82,7 @@ public class TemplateTest {
 	
 	@Test
 	public void The_template_contains_the_relationclasses_for_the_diagram() {
-		IRelationship classTemplate = (IRelationship) ZentaModelUtils.getObjectByID(model, "b0e2bfd8");
+		IBasicRelationship classTemplate = (IBasicRelationship) ZentaModelUtils.getObjectByID(model, "b0e2bfd8");
 		assertTrue(null != template.getRelationClassReferencingElement(classTemplate));
 	}
 }

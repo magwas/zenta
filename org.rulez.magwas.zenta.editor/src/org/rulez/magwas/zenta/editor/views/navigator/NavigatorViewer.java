@@ -16,7 +16,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -84,8 +84,8 @@ public class NavigatorViewer extends TreeViewer {
         }
 
         public Object[] getChildren(Object parent) {
-            if(parent instanceof IRelationship) {
-                IRelationship relation = (IRelationship)parent;
+            if(parent instanceof IBasicRelationship) {
+                IBasicRelationship relation = (IBasicRelationship)parent;
                 if(fShowTargetElements) {
                     return new Object[] { relation.getTarget() };
                 }

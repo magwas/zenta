@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -53,7 +53,7 @@ public class ZentaContainerEditPolicy extends BasicContainerEditPolicy {
 	                IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(parentObject);
 
 	                // See if there are any (nested type) relationships between parent element and child element...
-	                for(IRelationship relation : ZentaModelUtils.getSourceRelationships(parentElement)) {
+	                for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(parentElement)) {
 	                    if(relation.getTarget() == childElement && vp.isNestedConnectionTypeRelationship(relation)) {
 	                        // And there's not one already there...
 	                        if(!DiagramModelUtils.hasDiagramModelZentaConnection(parentObject, childObject, relation)) {
@@ -75,9 +75,9 @@ public class ZentaContainerEditPolicy extends BasicContainerEditPolicy {
         IDiagramModelZentaConnection fConnection;
         IDiagramModelZentaObject fSource;
         IDiagramModelZentaObject fTarget;
-        IRelationship fRelation;
+        IBasicRelationship fRelation;
         
-        NewConnectionCommand(IDiagramModelZentaObject source, IDiagramModelZentaObject target, IRelationship relation) {
+        NewConnectionCommand(IDiagramModelZentaObject source, IDiagramModelZentaObject target, IBasicRelationship relation) {
             fSource = source;
             fTarget = target;
             fRelation = relation;

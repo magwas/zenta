@@ -19,7 +19,7 @@ import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.INameable;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 
@@ -202,7 +202,7 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
      * @param relation
      * @return A sentence that describes the relationship between the relationship's source and target elements
      */
-    public String getRelationshipSentence(IRelationship relation) {
+    public String getRelationshipSentence(IBasicRelationship relation) {
         if(relation != null) {
             if(relation.getSource() != null && relation.getTarget() != null) {
                 String nameSource = ZentaLabelProvider.INSTANCE.getLabel(relation.getSource());

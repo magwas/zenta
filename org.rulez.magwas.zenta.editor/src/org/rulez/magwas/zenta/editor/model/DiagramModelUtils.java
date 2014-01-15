@@ -21,7 +21,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IJunctionElement;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -47,8 +47,8 @@ public class DiagramModelUtils {
                 boolean result = !findDiagramModelComponentsForElement(diagramModel, element).isEmpty();
                 
                 // Not found, maybe it's expressed as a nested parent/child
-                if(!result && element instanceof IRelationship && ConnectionPreferences.useNestedConnections()) {
-                    result = !findNestedComponentsForRelationship(diagramModel, (IRelationship)element).isEmpty();
+                if(!result && element instanceof IBasicRelationship && ConnectionPreferences.useNestedConnections()) {
+                    result = !findNestedComponentsForRelationship(diagramModel, (IBasicRelationship)element).isEmpty();
                 }
                 
                 if(result && !models.contains(diagramModel)) {
@@ -88,8 +88,8 @@ public class DiagramModelUtils {
         }
         
         // Expressed as a nested parent/child
-        if(element instanceof IRelationship && ConnectionPreferences.useNestedConnections()) {
-            if(!findNestedComponentsForRelationship(diagramModel, (IRelationship)element).isEmpty()) {
+        if(element instanceof IBasicRelationship && ConnectionPreferences.useNestedConnections()) {
+            if(!findNestedComponentsForRelationship(diagramModel, (IBasicRelationship)element).isEmpty()) {
                 return true;
             }
         }
@@ -108,8 +108,8 @@ public class DiagramModelUtils {
     public static List<IDiagramModelComponent> findDiagramModelComponentsForElement(IDiagramModel diagramModel, IZentaElement element) {
         List<IDiagramModelComponent> list = new ArrayList<IDiagramModelComponent>();
         
-        if(element instanceof IRelationship) {
-            list.addAll(findDiagramModelConnectionsForRelation(diagramModel, (IRelationship)element));
+        if(element instanceof IBasicRelationship) {
+            list.addAll(findDiagramModelConnectionsForRelation(diagramModel, (IBasicRelationship)element));
         }
         else {
             list.addAll(findDiagramModelObjectsForElement(diagramModel, element));
@@ -149,13 +149,13 @@ public class DiagramModelUtils {
      * @param relationship
      * @return
      */
-    public static List<IDiagramModelZentaConnection> findDiagramModelConnectionsForRelation(IDiagramModelContainer parent, IRelationship relationship) {
+    public static List<IDiagramModelZentaConnection> findDiagramModelConnectionsForRelation(IDiagramModelContainer parent, IBasicRelationship relationship) {
         List<IDiagramModelZentaConnection> list = new ArrayList<IDiagramModelZentaConnection>();
         __findDiagramModelConnectionsForRelation(list, parent, relationship);
         return list;
     }
 
-    private static void __findDiagramModelConnectionsForRelation(List<IDiagramModelZentaConnection> list, IDiagramModelContainer parent, IRelationship relationship) {
+    private static void __findDiagramModelConnectionsForRelation(List<IDiagramModelZentaConnection> list, IDiagramModelContainer parent, IBasicRelationship relationship) {
         for(IDiagramModelObject object : parent.getChildren()) {
             for(IDiagramModelConnection connection : object.getSourceConnections()) {
                 if(connection instanceof IDiagramModelZentaConnection &&
@@ -208,7 +208,7 @@ public class DiagramModelUtils {
      * @param relation
      * @return
      */
-    public static List<IDiagramModelZentaObject[]> findNestedComponentsForRelationship(IDiagramModel diagramModel, IRelationship relation) {
+    public static List<IDiagramModelZentaObject[]> findNestedComponentsForRelationship(IDiagramModel diagramModel, IBasicRelationship relation) {
         IZentaElement src = relation.getSource();
         IZentaElement tgt = relation.getTarget();
         
@@ -249,7 +249,7 @@ public class DiagramModelUtils {
      * Check if there is already a nested type relationship between parent (source) and child (target)
      */
     public static boolean hasNestedConnectionTypeRelationship(IZentaElement parent, IZentaElement child) {
-        for(IRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
+        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
             if(relation.getTarget() == child && isNestedConnectionTypeRelationship(relation)) {
                 return true;
             }
@@ -261,7 +261,7 @@ public class DiagramModelUtils {
      * @param relation
      * @return true if relation is of a type that can be represented by a nested container 
      */
-    public static boolean isNestedConnectionTypeRelationship(IRelationship relation) {
+    public static boolean isNestedConnectionTypeRelationship(IBasicRelationship relation) {
     	return false;
     }
     
@@ -280,11 +280,11 @@ public class DiagramModelUtils {
      * @return True if there is an IDiagramModelConnection containing relation between srcObject and tgtObject
      */
     public static boolean hasDiagramModelZentaConnection(IDiagramModelZentaObject srcObject, IDiagramModelZentaObject tgtObject,
-            IRelationship relation) {
+            IBasicRelationship relation) {
 
         for(IDiagramModelConnection conn : srcObject.getSourceConnections()) {
             if(conn instanceof IDiagramModelZentaConnection) {
-                IRelationship r = ((IDiagramModelZentaConnection)conn).getRelationship();
+                IBasicRelationship r = ((IDiagramModelZentaConnection)conn).getRelationship();
                 if(r == relation && conn.getSource() == srcObject && conn.getTarget() == tgtObject) {
                     return true;
                 }

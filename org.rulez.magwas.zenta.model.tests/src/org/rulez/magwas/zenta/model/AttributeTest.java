@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 
@@ -38,7 +38,7 @@ public class AttributeTest {
 	@Test
 	public void When_a_RelationClass_is_created__the_corresponding_attributes_also_created_in_the_ObjectClasses() {
 		testdata = new ModelAndMetaModelTestData();
-		IRelationship rel = testdata.createNewRelationClass("test relation");
+		IBasicRelationship rel = testdata.createNewRelationClass("test relation");
 		IZentaElement source = rel.getSource();
 		IZentaElement target = rel.getTarget();
 		IObjectClass sc = (IObjectClass) testdata.metamodel.getClassReferencing(source);

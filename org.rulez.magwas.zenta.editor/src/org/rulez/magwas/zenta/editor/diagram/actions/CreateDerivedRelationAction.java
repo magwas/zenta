@@ -52,7 +52,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
 import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils.TooComplicatedException;
 
@@ -163,11 +163,11 @@ public class CreateDerivedRelationAction extends SelectionAction {
 			}
 		private void createChoosenChain(CreateDerivedConnectionDialog dialog) {
 			if(dialog.open() == IDialogConstants.OK_ID) {
-	            List<IRelationship> chain = dialog.getSelectedChain();
+	            List<IBasicRelationship> chain = dialog.getSelectedChain();
 	            if(chain != null) {
 	                ChainList chainList = dialog.getSelectedChainList();
 	                IRelationClass relationshipClass = drutil.getWeakestType(chain);
-	                IRelationship relation = (IRelationship) relationshipClass.create(folder);
+	                IBasicRelationship relation = (IBasicRelationship) relationshipClass.create(folder);
 	                CommandStack stack = (CommandStack)getWorkbenchPart().getAdapter(CommandStack.class);
 	                stack.execute(new CreateDerivedConnectionCommand(chainList.srcDiagramObject, chainList.tgtDiagramObject, relation));
 	            }
@@ -184,7 +184,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         IDiagramModelZentaObject tgtDiagramObject;
         IZentaElement srcElement;
         IZentaElement tgtElement;
-        List<List<IRelationship>> chains;
+        List<List<IBasicRelationship>> chains;
         boolean isTooComplicated;
         
         ChainList(IDiagramModelZentaObject srcDiagramObject, IDiagramModelZentaObject tgtDiagramObject) {
@@ -211,7 +211,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
             }
         }
         
-        List<List<IRelationship>> getChains() {
+        List<List<IBasicRelationship>> getChains() {
             if(hasExistingDirectRelationship()) {
                 return null;
             }
@@ -228,7 +228,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         private static final String DIALOG_SETTINGS_SECTION = "CreateDerivedConnectionDialog"; //$NON-NLS-1$
 
         private ChainList chainList1, chainList2;
-        private List<IRelationship> selectedChain;
+        private List<IBasicRelationship> selectedChain;
         private ChainList selectedChainList;
         
         public CreateDerivedConnectionDialog(Shell parentShell, ChainList chainList1, ChainList chainList2) {
@@ -311,7 +311,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
             getButton(IDialogConstants.OK_ID).setEnabled(false);
         }
         
-        public List<IRelationship> getSelectedChain() {
+        public List<IBasicRelationship> getSelectedChain() {
             return selectedChain;
         }
         
@@ -323,7 +323,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         @Override
         public void selectionChanged(SelectionChangedEvent event) {
             IStructuredSelection selection = (IStructuredSelection)event.getSelection();
-            selectedChain = (List<IRelationship>)selection.getFirstElement();
+            selectedChain = (List<IBasicRelationship>)selection.getFirstElement();
             selectedChainList = (ChainList)((TableViewer)event.getSource()).getInput();
             getButton(IDialogConstants.OK_ID).setEnabled(!selection.isEmpty());
         }
@@ -408,7 +408,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                 }
 
                 @SuppressWarnings("unchecked")
-                List<IRelationship> chain = (List<IRelationship>)element;
+                List<IBasicRelationship> chain = (List<IBasicRelationship>)element;
                 ChainList chainList = (ChainList)getInput();
 
                 switch(columnIndex) {
@@ -417,7 +417,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                         String s = chainList.srcElement.getName();
                         s += " --> "; //$NON-NLS-1$
                         for(int i = 1; i < chain.size(); i++) {
-                            IRelationship relation = chain.get(i);
+                            IBasicRelationship relation = chain.get(i);
                             s += getRelationshipText(chain, relation);
                             if(drutil.isBidirectionalRelationship(relation)) {
                                 s += " <-> "; //$NON-NLS-1$
@@ -438,11 +438,11 @@ public class CreateDerivedRelationAction extends SelectionAction {
                 return ""; //$NON-NLS-1$
             }
             
-            private String getRelationshipText(List<IRelationship> chain, IRelationship relation) {
+            private String getRelationshipText(List<IBasicRelationship> chain, IBasicRelationship relation) {
                 if(drutil.isBidirectionalRelationship(relation)) {
                     int index = chain.indexOf(relation);
                     if(index > 0) {
-                        IRelationship previous = chain.get(index - 1);
+                        IBasicRelationship previous = chain.get(index - 1);
                         if(relation.getTarget() == previous.getTarget()) {
                             return relation.getTarget().getName();
                         }
@@ -461,13 +461,13 @@ public class CreateDerivedRelationAction extends SelectionAction {
      * Command Stack Command
      */
     private class CreateDerivedConnectionCommand extends Command {
-        private IRelationship fRelation;
+        private IBasicRelationship fRelation;
         private IDiagramModelZentaConnection fConnection;
         private IDiagramModelZentaObject fSource;
         private IDiagramModelZentaObject fTarget;
         
         public CreateDerivedConnectionCommand(IDiagramModelZentaObject source, IDiagramModelZentaObject target,
-                IRelationship relation) {
+                IBasicRelationship relation) {
             fSource = source;
             fTarget = target;
             fRelation = relation;

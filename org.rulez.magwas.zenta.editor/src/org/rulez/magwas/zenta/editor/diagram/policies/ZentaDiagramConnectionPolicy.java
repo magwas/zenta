@@ -30,7 +30,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
@@ -89,7 +89,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
             CompoundCommand result = new CompoundCommand();
             
             // Check for matching connections in this and other diagrams
-            IRelationship relationship = ((IDiagramModelZentaConnection)connection).getRelationship();
+            IBasicRelationship relationship = ((IDiagramModelZentaConnection)connection).getRelationship();
             IZentaElement newSourceElement = ((IDiagramModelZentaObject)newSource).getZentaElement();
 
             for(IDiagramModel diagramModel : newSourceElement.getZentaModel().getDiagramModels()) {
@@ -143,7 +143,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
             CompoundCommand result = new CompoundCommand();
 
             // Check for matching connections in this and other diagrams
-            IRelationship relationship = ((IDiagramModelZentaConnection)connection).getRelationship();
+            IBasicRelationship relationship = ((IDiagramModelZentaConnection)connection).getRelationship();
             IZentaElement newTargetElement = ((IDiagramModelZentaObject)newTarget).getZentaElement();
 
             for(IDiagramModel diagramModel : newTargetElement.getZentaModel().getDiagramModels()) {
@@ -238,7 +238,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
 					Object classType, IDiagramModelZentaObject source,
 					IDiagramModelZentaObject target) {
 				if(classType instanceof EClass) {
-		            IRelationship relation = getExistingRelationshipOfType((EClass) classType, source, target);
+		            IBasicRelationship relation = getExistingRelationshipOfType((EClass) classType, source, target);
 		            if(relation != null) {
 		                useExistingRelation = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
 		                        Messages.ZentaDiagramConnectionPolicy_0,
@@ -330,7 +330,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
      * @param relationshipType
      * @return True if valid connection source/target for connection type
      */
-    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, IRelationship rel) {
+    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, IBasicRelationship rel) {
         // Connection from Zenta object to Zenta object 
         if(source instanceof IDiagramModelZentaObject && target instanceof IDiagramModelZentaObject) {
             IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
@@ -355,8 +355,8 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
      * If there is, we can offer to re-use it instead of creating a new one.
      * @return an existing relationship or null
      */
-    private IRelationship getExistingRelationshipOfType(EClass classType, IDiagramModelZentaObject source, IDiagramModelZentaObject target) {
-        for(IRelationship relation : ZentaModelUtils.getSourceRelationships(source.getZentaElement())) {
+    private IBasicRelationship getExistingRelationshipOfType(EClass classType, IDiagramModelZentaObject source, IDiagramModelZentaObject target) {
+        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(source.getZentaElement())) {
             if(relation.eClass().equals(classType) && relation.getTarget() == target.getZentaElement()) {
                 return relation;
             }

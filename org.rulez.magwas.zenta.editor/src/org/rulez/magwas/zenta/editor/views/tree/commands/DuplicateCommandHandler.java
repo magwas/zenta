@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -74,7 +74,7 @@ public class DuplicateCommandHandler {
      */
     public static boolean canDuplicate(Object element) {
         // Elements
-        if(element instanceof IZentaElement && !(element instanceof IRelationship)) {
+        if(element instanceof IZentaElement && !(element instanceof IBasicRelationship)) {
             return true;
         }
         // Diagrams
@@ -130,7 +130,7 @@ public class DuplicateCommandHandler {
                 Command cmd = new DuplicateDiagramModelCommand((IDiagramModel)object);
                 compoundCommand.add(cmd);
             }
-            else if(object instanceof IZentaElement && !(object instanceof IRelationship)) {
+            else if(object instanceof IZentaElement && !(object instanceof IBasicRelationship)) {
                 Command cmd = new DuplicateElementCommand((IZentaElement)object);
                 compoundCommand.add(cmd);
             }

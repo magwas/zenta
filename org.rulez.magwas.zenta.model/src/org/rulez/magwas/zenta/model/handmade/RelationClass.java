@@ -9,7 +9,6 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.util.StringUtils;
@@ -17,7 +16,7 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class RelationClass extends ObjectClass implements IRelationClass {
 
-	protected RelationClass(IRelationship referenced, ITemplate template) {
+	protected RelationClass(IBasicRelationship referenced, ITemplate template) {
 		super(referenced,template);
 		IRelationClass ancie = getAncestorClass(referenced);
 		setAncestor(ancie);
@@ -27,7 +26,7 @@ public class RelationClass extends ObjectClass implements IRelationClass {
 	}
 	public RelationClass() {
 	}
-		private IRelationClass getAncestorClass(IRelationship referenced) {
+		private IRelationClass getAncestorClass(IBasicRelationship referenced) {
 			String refClassId = referenced.getObjectClass();
 			String referenceId = referenced.getId();
 			IMetamodel metamodel = getMetamodel();
@@ -45,20 +44,20 @@ public class RelationClass extends ObjectClass implements IRelationClass {
 			private IRelationClass getAncestorClass(String refClassId,
 					IMetamodel metamodel) {
 				IRelationClass ancie;
-				IRelationship ancestorDefining = (IRelationship) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
+				IBasicRelationship ancestorDefining = (IBasicRelationship) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
 				ancie=metamodel.getRelationClassReferencing(ancestorDefining);
 				return ancie;
 			}
 
 	@Override
-	public IRelationship create(IFolder folder) {
+	public IBasicRelationship create(IFolder folder) {
 		IBasicRelationship obj = IZentaFactory.eINSTANCE.createBasicRelationship();
 		postCreate(obj, folder);
 		obj.setObjectClass(getId());
 		return obj;
 	}
 	public String getHelpHintContent() {
-		IRelationship ref = (IRelationship) this.reference;
+		IBasicRelationship ref = (IBasicRelationship) this.reference;
 		if(null == ref)
 			return "";
 		String doc = ref.getDocumentation();

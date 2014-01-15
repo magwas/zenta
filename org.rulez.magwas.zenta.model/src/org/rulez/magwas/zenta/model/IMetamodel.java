@@ -58,8 +58,8 @@ public interface IMetamodel extends EObject {
     IReferencesModelObject getClassOf(IIdentifier rel);
     IReferencesModelObject getClassReferencing(IIdentifier modelElement);
     IObjectClass getObjectClassReferencing(IZentaElement element);
-    IRelationClass getRelationClassReferencing(IRelationship relation);
-	boolean hasRelationClassReferencing(IRelationship relation);
+    IRelationClass getRelationClassReferencing(IBasicRelationship relation);
+	boolean hasRelationClassReferencing(IBasicRelationship relation);
 	boolean hasObjectClassReferencing(IZentaElement elementToAdd);
 
 	List<IObjectClass> getObjectClasses();

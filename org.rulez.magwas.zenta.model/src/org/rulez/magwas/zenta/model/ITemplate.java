@@ -102,11 +102,11 @@ extends IReferencesModelObject
 	void removeClass(IReferencesModelObject oc);
 	IObjectClass getObjectClassReferencingElement(IZentaElement reference);
 
-	IRelationClass getRelationClassReferencingElement(IRelationship referenced);
+	IRelationClass getRelationClassReferencingElement(IBasicRelationship referenced);
 	
 	IObjectClass getObjectClassFrom(IZentaElement reference);
 
-	IRelationClass getRelationClassFrom(IRelationship referenced);
+	IRelationClass getRelationClassFrom(IBasicRelationship referenced);
 
 	void createClassBy(IZentaElement element);
 

@@ -9,7 +9,7 @@ import org.eclipse.gef.commands.Command;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -25,7 +25,7 @@ public class CreateRelationCommand extends Command {
     private IRelationClass fType;
     
     private IFolder fFolder;
-    private IRelationship fRelation;
+    private IBasicRelationship fRelation;
     
     public CreateRelationCommand(IZentaElement parent, IZentaElement child, IRelationClass type) {
         fParent = parent;
@@ -36,7 +36,7 @@ public class CreateRelationCommand extends Command {
     @Override
     public void execute() {
     	IFolder folder = (IFolder) fParent.eContainer();
-        fRelation = (IRelationship) fType.create(folder);
+        fRelation = (IBasicRelationship) fType.create(folder);
         fRelation.setSource(fParent);
         fRelation.setTarget(fChild);
         fFolder = (IFolder) fParent.eContainer();
@@ -61,7 +61,7 @@ public class CreateRelationCommand extends Command {
     /**
      * @return The Relationship that was created
      */
-    IRelationship getRelationshipCreated() {
+    IBasicRelationship getRelationshipCreated() {
         return fRelation;
     }
     

@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -85,8 +85,8 @@ public class ModelTestData {
 		return (IDiagramModelObject) ZentaModelUtils.getObjectByID(getModel(),id);
 	}
 
-	public IRelationship getRelationByID(String id) {
-		return (IRelationship) ZentaModelUtils.getObjectByID(getModel(), id);
+	public IBasicRelationship getRelationByID(String id) {
+		return (IBasicRelationship) ZentaModelUtils.getObjectByID(getModel(), id);
 	}
 
 	public IDiagramModelZentaConnection getDMRById(String id3) {

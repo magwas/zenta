@@ -14,7 +14,6 @@ import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
 
@@ -38,7 +37,7 @@ public class DerivedRelationsUtils {
 		private static final long serialVersionUID = 1L;
     }
     
-    public boolean isInDerivedChain(IRelationship relation) {
+    public boolean isInDerivedChain(IBasicRelationship relation) {
         if(!isStructuralRelationship(relation)) {
             return false;
         }
@@ -47,7 +46,7 @@ public class DerivedRelationsUtils {
         IZentaElement source = relation.getSource();
         if(source != null && source.getZentaModel() != null) { // An important guard because the element might have been deleted
             // Source has structural target relations
-            for(IRelationship rel : ZentaModelUtils.getTargetRelationships(source)) {
+            for(IBasicRelationship rel : ZentaModelUtils.getTargetRelationships(source)) {
                 if(rel != relation) {
                     if(isStructuralRelationship(rel) && rel.getSource() != relation.getTarget()) {
                         return true;
@@ -56,7 +55,7 @@ public class DerivedRelationsUtils {
             }
             
             // Bi-directional relations
-            for(IRelationship rel : ZentaModelUtils.getSourceRelationships(source)) {
+            for(IBasicRelationship rel : ZentaModelUtils.getSourceRelationships(source)) {
                 if(rel != relation) {
                     if(isBidirectionalRelationship(rel)) {
                         return true;
@@ -72,7 +71,7 @@ public class DerivedRelationsUtils {
         IZentaElement target = relation.getTarget();
         if(target != null && target.getZentaModel() != null) { // An important guard because the element might have been deleted
             // Target has structural source relations
-            for(IRelationship rel : ZentaModelUtils.getSourceRelationships(target)) {
+            for(IBasicRelationship rel : ZentaModelUtils.getSourceRelationships(target)) {
                 if(rel != relation) {
                     if(isStructuralRelationship(rel) && rel.getTarget() != relation.getSource()) {
                         return true;
@@ -81,7 +80,7 @@ public class DerivedRelationsUtils {
             }
             
             // Bi-directional relations
-            for(IRelationship rel : ZentaModelUtils.getTargetRelationships(target)) {
+            for(IBasicRelationship rel : ZentaModelUtils.getTargetRelationships(target)) {
                 if(rel != relation) {
                     if(isBidirectionalRelationship(rel)) {
                         return true;
@@ -100,7 +99,7 @@ public class DerivedRelationsUtils {
      * @param relation
      * @return True if relation is bi-directional
      */
-    public boolean isBidirectionalRelationship(IRelationship relation) {
+    public boolean isBidirectionalRelationship(IBasicRelationship relation) {
         return false;
     }
     
@@ -108,7 +107,7 @@ public class DerivedRelationsUtils {
      * @param relation
      * @return True if relation is a structural relationship
      */
-    public boolean isStructuralRelationship(IRelationship relation) {
+    public boolean isStructuralRelationship(IBasicRelationship relation) {
         return relation instanceof IBasicRelationship; 
    }
     
@@ -118,7 +117,7 @@ public class DerivedRelationsUtils {
      * @return True if element1 has a direct Structural relationship to element2
      */
     public boolean hasDirectStructuralRelationship(IZentaElement element1, IZentaElement element2) {
-        for(IRelationship relation : ZentaModelUtils.getSourceRelationships(element1)) {
+        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(element1)) {
             if(relation.getTarget() == element2 && isStructuralRelationship(relation)) {
                 return true;
             }
@@ -133,22 +132,22 @@ public class DerivedRelationsUtils {
      * @return The list of chains
      * @throws TooComplicatedException 
      */
-    public List<List<IRelationship>> getDerivedRelationshipChains(IZentaElement element1, IZentaElement element2) throws TooComplicatedException {
+    public List<List<IBasicRelationship>> getDerivedRelationshipChains(IZentaElement element1, IZentaElement element2) throws TooComplicatedException {
         if(element1 == null || element2 == null) {
             return null;
         }
         
         // Traverse from element1 to element2
-        List<List<IRelationship>> chains = findChains(element1, element2);
+        List<List<IBasicRelationship>> chains = findChains(element1, element2);
         
         if(chains.isEmpty()) {
             return null;
         }
         
-        List<List<IRelationship>> result = new ArrayList<List<IRelationship>>(); 
+        List<List<IBasicRelationship>> result = new ArrayList<List<IBasicRelationship>>(); 
         
         // Check validity of weakest relationship in each chain and remove chain if the weakest relationship is not valid
-        for(List<IRelationship> chain : chains) {
+        for(List<IBasicRelationship> chain : chains) {
         	IRelationClass relationshipClass = getWeakestType(chain);
             boolean isValid = metamodel.isValidRelationship(element1, element2, relationshipClass);
             if(isValid) {
@@ -171,7 +170,7 @@ public class DerivedRelationsUtils {
      * @return the derived relationship or null
      * @throws TooComplicatedException 
      */
-    public IRelationship createDerivedRelationship(IZentaElement element1, IZentaElement element2) throws TooComplicatedException {
+    public IBasicRelationship createDerivedRelationship(IZentaElement element1, IZentaElement element2) throws TooComplicatedException {
         if(element1 == null || element2 == null) {
             return null;
         }
@@ -183,7 +182,7 @@ public class DerivedRelationsUtils {
         //System.out.println("-----------------------------------");
         
         // Traverse from element1 to element2
-        List<List<IRelationship>> chains = findChains(element1, element2);
+        List<List<IBasicRelationship>> chains = findChains(element1, element2);
         
         if(chains.isEmpty()) {
             return null;
@@ -192,8 +191,8 @@ public class DerivedRelationsUtils {
         int weakest = weaklist.size() - 1;
         
         // You are the weakest link...goodbye.
-        for(List<IRelationship> chain : chains) {
-            for(IRelationship rel : chain) {
+        for(List<IBasicRelationship> chain : chains) {
+            for(IBasicRelationship rel : chain) {
                 //printChain(chain);
                 int index = weaklist.indexOf(rel.eClass());
                 if(index < weakest) {
@@ -210,7 +209,7 @@ public class DerivedRelationsUtils {
             return null;
         }
         
-        return (IRelationship)IZentaFactory.eINSTANCE.create(relationshipClass);
+        return (IBasicRelationship)IZentaFactory.eINSTANCE.create(relationshipClass);
 */
     }
     
@@ -218,10 +217,10 @@ public class DerivedRelationsUtils {
      * @param chain
      * @return The weakest type of relationship in a chain of relationships
      */
-    public IRelationClass getWeakestType(List<IRelationship> chain) {
+    public IRelationClass getWeakestType(List<IBasicRelationship> chain) {
 		int weakest = weaklist.size() - 1;
         
-        for(IRelationship rel : chain) {
+        for(IBasicRelationship rel : chain) {
             int index = weaklist.indexOf(metamodel.getClassReferencing(rel));
             if(index < weakest) {
                 weakest = index;
@@ -240,8 +239,8 @@ public class DerivedRelationsUtils {
     private static final int ITERATION_LIMIT = 20000;
     
     private IZentaElement finalTarget;
-    private List<IRelationship> temp_chain;
-    private List<List<IRelationship>> chains;
+    private List<IBasicRelationship> temp_chain;
+    private List<List<IBasicRelationship>> chains;
     private int weakestFound;
     private int iterations;
 
@@ -253,10 +252,10 @@ public class DerivedRelationsUtils {
      * @return Find all the chains between element and finalTarget
      * @throws TooComplicatedException 
      */
-    private List<List<IRelationship>> findChains(IZentaElement sourceElement, IZentaElement targetElement) throws TooComplicatedException {
+    private List<List<IBasicRelationship>> findChains(IZentaElement sourceElement, IZentaElement targetElement) throws TooComplicatedException {
         finalTarget = targetElement;
-        temp_chain = new ArrayList<IRelationship>();
-        chains = new ArrayList<List<IRelationship>>();
+        temp_chain = new ArrayList<IBasicRelationship>();
+        chains = new ArrayList<List<IBasicRelationship>>();
         weakestFound = weaklist.size();
         iterations = 0;
         
@@ -286,7 +285,7 @@ public class DerivedRelationsUtils {
         /*
          * Traverse thru source relationships first
          */
-        for(IRelationship rel : ZentaModelUtils.getSourceRelationships(element)) {
+        for(IBasicRelationship rel : ZentaModelUtils.getSourceRelationships(element)) {
             if(isStructuralRelationship(rel)) {
                 _addRelationshipToTempChain(rel, true);
             }
@@ -295,14 +294,14 @@ public class DerivedRelationsUtils {
         /*
          * Then thru the Bi-directional target relationships
          */
-        for(IRelationship rel : ZentaModelUtils.getTargetRelationships(element)) {
+        for(IBasicRelationship rel : ZentaModelUtils.getTargetRelationships(element)) {
             if(isBidirectionalRelationship(rel)) {
                 _addRelationshipToTempChain(rel, false);
             }
         }
     }
 
-    private void _addRelationshipToTempChain(IRelationship relation, boolean forwards) throws TooComplicatedException {
+    private void _addRelationshipToTempChain(IBasicRelationship relation, boolean forwards) throws TooComplicatedException {
         // Reached the same relationship so go back one (this guards against a loop)
         if(temp_chain.contains(relation)) {
             //System.out.println("Reached same relationship in chain: " + relation.getName());
@@ -316,7 +315,7 @@ public class DerivedRelationsUtils {
         if(finalTarget == element) {
             if(temp_chain.size() > 0) { // Only chains of length 2 or greater
                 //System.out.println("Reached target from: " + element.getName());
-                List<IRelationship> chain = new ArrayList<IRelationship>(temp_chain); // make a copy because temp_chain will have relation removed, below
+                List<IBasicRelationship> chain = new ArrayList<IBasicRelationship>(temp_chain); // make a copy because temp_chain will have relation removed, below
                 chain.add(relation);
                 
                 // Duplicate check - there must be a loop?
@@ -349,13 +348,13 @@ public class DerivedRelationsUtils {
      * bi-directional relationships then don't bother traversing.
      */
     private boolean _hasTargetElementValidRelations(IZentaElement targetElement) {
-        for(IRelationship relation : ZentaModelUtils.getSourceRelationships(targetElement)) {
+        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(targetElement)) {
             if(isBidirectionalRelationship(relation)) {
                 return true;
             }
         }
         
-        for(IRelationship relation : ZentaModelUtils.getTargetRelationships(targetElement)) {
+        for(IBasicRelationship relation : ZentaModelUtils.getTargetRelationships(targetElement)) {
             if(isStructuralRelationship(relation)) {
                 return true;
             }
@@ -367,8 +366,8 @@ public class DerivedRelationsUtils {
     /**
      * Check if chain already exists in list of collected chains
      */
-    private boolean _containsChain(List<IRelationship> chain, List<List<IRelationship>> chains) {
-        for(List<IRelationship> stored_chain : chains) {
+    private boolean _containsChain(List<IBasicRelationship> chain, List<List<IBasicRelationship>> chains) {
+        for(List<IBasicRelationship> stored_chain : chains) {
             if(stored_chain.size() == chain.size()) { // check only on same length
                 boolean result = true; // assume the same
                 for(int i = 0; i < chain.size(); i++) {
@@ -390,11 +389,11 @@ public class DerivedRelationsUtils {
     // DEBUGGING PRINT
     // =================================================================================== 
     
-    private void _printChain(List<IRelationship> chain, IZentaElement finalTarget) {
+    private void _printChain(List<IBasicRelationship> chain, IZentaElement finalTarget) {
         String s = chain.get(0).getSource().getName();
         s += " --> "; //$NON-NLS-1$
         for(int i = 1; i < chain.size(); i++) {
-            IRelationship relation = chain.get(i);
+            IBasicRelationship relation = chain.get(i);
             s += _getRelationshipText(chain, relation);
             if(isBidirectionalRelationship(relation)) {
                 s += " <-> "; //$NON-NLS-1$
@@ -408,11 +407,11 @@ public class DerivedRelationsUtils {
         System.out.println(s);
     }
     
-    private String _getRelationshipText(List<IRelationship> chain, IRelationship relation) {
+    private String _getRelationshipText(List<IBasicRelationship> chain, IBasicRelationship relation) {
         if(isBidirectionalRelationship(relation)) {
             int index = chain.indexOf(relation);
             if(index > 0) {
-                IRelationship previous = chain.get(index - 1);
+                IBasicRelationship previous = chain.get(index - 1);
                 if(relation.getTarget() == previous.getTarget()) {
                     return relation.getTarget().getName();
                 }

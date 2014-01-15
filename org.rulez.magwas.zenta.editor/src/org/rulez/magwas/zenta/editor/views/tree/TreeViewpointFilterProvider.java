@@ -25,7 +25,7 @@ import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -165,9 +165,9 @@ public class TreeViewpointFilterProvider implements IPartListener {
                 // From same model as active diagram
                 IZentaModel model = ((IZentaElement)element).getZentaModel();
                 if(model == fActiveDiagramModel.getZentaModel()) {
-                    if(element instanceof IRelationship) {
-                        IZentaElement source = ((IRelationship)element).getSource();
-                        IZentaElement target = ((IRelationship)element).getTarget();
+                    if(element instanceof IBasicRelationship) {
+                        IZentaElement source = ((IBasicRelationship)element).getSource();
+                        IZentaElement target = ((IBasicRelationship)element).getTarget();
                         if( source == null|| target == null ||!viewpoint.isAllowedType(source) || !viewpoint.isAllowedType(target)) {
                             return ColorFactory.get(128, 128, 128);
                         }

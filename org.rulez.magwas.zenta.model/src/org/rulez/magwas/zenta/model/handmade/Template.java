@@ -17,7 +17,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.impl.TemplateBase;
@@ -72,7 +72,7 @@ public class Template extends TemplateBase implements ITemplate {
 						if(!(conn instanceof IDiagramModelZentaConnection))
 							return;
 						IDiagramModelZentaConnection dmc = (IDiagramModelZentaConnection)conn;
-						IRelationship relationship = (IRelationship) dmc.getRelationship();
+						IBasicRelationship relationship = (IBasicRelationship) dmc.getRelationship();
 						IZentaFactory.eINSTANCE.createRelationClass(
 								relationship,
 								this);
@@ -99,7 +99,7 @@ public class Template extends TemplateBase implements ITemplate {
 	}
 
 	@Override
-	public IRelationClass getRelationClassReferencingElement(IRelationship classTemplate) {
+	public IRelationClass getRelationClassReferencingElement(IBasicRelationship classTemplate) {
 		for(IRelationClass oc : ((Metamodel)getMetamodel()).getRelationClasses()) {
 			IIdentifier reference = oc.getReference();
 			if(null == reference)
@@ -111,7 +111,7 @@ public class Template extends TemplateBase implements ITemplate {
 	}
 
 	@Override
-	public IRelationClass getRelationClassFrom(IRelationship referenced) {
+	public IRelationClass getRelationClassFrom(IBasicRelationship referenced) {
 		IRelationClass oc = getRelationClassReferencingElement(referenced);
 		if (null == oc)
 			oc = new RelationClass(referenced, this);
@@ -125,8 +125,8 @@ public class Template extends TemplateBase implements ITemplate {
 
 	@Override
 	public void createClassBy(IZentaElement element) {
-		if(element instanceof IRelationship)
-			classes.add(getRelationClassFrom((IRelationship) element));
+		if(element instanceof IBasicRelationship)
+			classes.add(getRelationClassFrom((IBasicRelationship) element));
 		else
 			classes.add(getObjectClassFrom(element));
 	}

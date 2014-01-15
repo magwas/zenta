@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -42,7 +42,7 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
 
     protected List<IZentaElement> fElementsToAdd;
-    protected List<IRelationship> fRelationsToAdd;
+    protected List<IBasicRelationship> fRelationsToAdd;
     protected List<IDiagramModel> fDiagramRefsToAdd;
     
     @Override
@@ -59,7 +59,7 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
         int y = pt.y;
 
         fElementsToAdd = new ArrayList<IZentaElement>();
-        fRelationsToAdd = new ArrayList<IRelationship>();
+        fRelationsToAdd = new ArrayList<IBasicRelationship>();
         fDiagramRefsToAdd = new ArrayList<IDiagramModel>();
         
         // Gather an actual list of elements dragged onto the container, omitting duplicates and anything already on the diagram
@@ -104,7 +104,7 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
         }
 
         // Add selected Relations to create connections for those elements on the diagram that don't already have them
-        for(IRelationship relation : fRelationsToAdd) {
+        for(IBasicRelationship relation : fRelationsToAdd) {
             // Existing
             List<IDiagramModelZentaObject> sources = DiagramModelUtils.findDiagramModelObjectsForElement(getTargetDiagramModel(), relation.getSource());
             List<IDiagramModelZentaObject> targets = DiagramModelUtils.findDiagramModelObjectsForElement(getTargetDiagramModel(), relation.getTarget());
@@ -126,7 +126,7 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
         for(IDiagramModelZentaObject dmo : diagramObjects) {
             IZentaElement element = dmo.getZentaElement();
 
-            for(IRelationship relation : ZentaModelUtils.getRelationships(element)) {
+            for(IBasicRelationship relation : ZentaModelUtils.getRelationships(element)) {
                 /*
                  * If the user holds down the Copy key (Ctrl on win/lnx, Alt on Mac) then linked connections
                  * are not added on drag and drop. However, any selected relations' linked objects are added.
@@ -237,15 +237,15 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
             }
             
             // Selected Zenta Elements *first*
-            if(object instanceof IZentaElement && !(object instanceof IRelationship)) {
+            if(object instanceof IZentaElement && !(object instanceof IBasicRelationship)) {
                 if(!fElementsToAdd.contains(object)) {
                     fElementsToAdd.add((IZentaElement)object);
                 }
             }
         
             // Then Selected Relationships (and any connected Elements)
-            else if(object instanceof IRelationship) {
-                IRelationship relationship = (IRelationship)object;
+            else if(object instanceof IBasicRelationship) {
+                IBasicRelationship relationship = (IBasicRelationship)object;
                 if(!fRelationsToAdd.contains(relationship)) {
                     fRelationsToAdd.add(relationship);
                 }
@@ -267,7 +267,7 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
      * Add connected elements
      * @param relationship
      */
-    protected void addRelationshipElements(IRelationship relationship) {
+    protected void addRelationshipElements(IBasicRelationship relationship) {
         // Connected Source Element if not on Diagram
         if(DiagramModelUtils.findDiagramModelObjectsForElement(getTargetDiagramModel(), relationship.getSource()).isEmpty()) {
             addElement(relationship.getSource());
@@ -301,7 +301,7 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
             fElementsToAdd.add(element);
             
             // And its relationships
-            for(IRelationship relationship : ZentaModelUtils.getRelationships(element)) {
+            for(IBasicRelationship relationship : ZentaModelUtils.getRelationships(element)) {
                 if(!fRelationsToAdd.contains(relationship)) {
                     fRelationsToAdd.add(relationship);
                 }
