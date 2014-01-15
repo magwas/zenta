@@ -91,7 +91,6 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 			return null;
 		IRelationClass relationClass = new RelationClass(referenced, template);
 		template.getClasses().add(relationClass);
-		System.out.printf("rc=%s\nt=%s\n", relationClass, relationClass.getTemplate());
 		return relationClass;
 	}
 	

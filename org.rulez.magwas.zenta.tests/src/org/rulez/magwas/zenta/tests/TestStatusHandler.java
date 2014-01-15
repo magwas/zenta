@@ -10,7 +10,6 @@ public class TestStatusHandler extends StatusHandler {
 	@Override
 	public void show(IStatus status, String title) {
 		this.status = status;
-		System.out.printf("status=%s\ntitle=%s\n", status, title);
 	}
 
 }
