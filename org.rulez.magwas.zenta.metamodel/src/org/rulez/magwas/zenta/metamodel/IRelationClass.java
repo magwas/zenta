@@ -3,6 +3,7 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.common.util.EList;
+import org.rulez.magwas.zenta.model.IHelpHintProvider;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface RelationClassBase extends ReferencesModelObjectBase {
+public interface IRelationClass extends ReferencesModelObject, IHelpHintProvider {
 	/**
 	 * Returns the value of the '<em><b>Ancestor</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.RelationClassBase#getChildren <em>Children</em>}'.
@@ -39,7 +40,7 @@ public interface RelationClassBase extends ReferencesModelObjectBase {
 	 * @model opposite="children" resolveProxies="false" required="true"
 	 * @generated
 	 */
-	RelationClassBase getAncestor();
+	IRelationClass getAncestor();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.RelationClassBase#getAncestor <em>Ancestor</em>}' reference.
@@ -49,7 +50,7 @@ public interface RelationClassBase extends ReferencesModelObjectBase {
 	 * @see #getAncestor()
 	 * @generated
 	 */
-	void setAncestor(RelationClassBase value);
+	void setAncestor(IRelationClass value);
 
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' reference list.
@@ -67,7 +68,7 @@ public interface RelationClassBase extends ReferencesModelObjectBase {
 	 * @model opposite="ancestor" resolveProxies="false" derived="true"
 	 * @generated
 	 */
-	EList<RelationClassBase> getChildren();
+	EList<IRelationClass> getChildren();
 
 	/**
 	 * Returns the value of the '<em><b>Template</b></em>' container reference.

@@ -72,7 +72,7 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 				return createMetamodelBaseAdapter();
 			}
 			@Override
-			public Adapter caseTemplateBase(TemplateBase object) {
+			public Adapter caseTemplateBase(ITemplate object) {
 				return createTemplateBaseAdapter();
 			}
 			@Override
@@ -80,7 +80,7 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 				return createReferencesModelObjectBaseAdapter();
 			}
 			@Override
-			public Adapter caseObjectClassBase(ObjectClassBase object) {
+			public Adapter caseObjectClassBase(ObjectClass object) {
 				return createObjectClassBaseAdapter();
 			}
 			@Override
@@ -88,7 +88,7 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 				return createAttributeBaseAdapter();
 			}
 			@Override
-			public Adapter caseRelationClassBase(RelationClassBase object) {
+			public Adapter caseRelationClassBase(IRelationClass object) {
 				return createRelationClassBaseAdapter();
 			}
 			@Override
@@ -112,7 +112,7 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.MetamodelBase <em>Metamodel Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.MetamodelBase <em>MetamodelBase Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -126,13 +126,13 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.TemplateBase <em>Template Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.ITemplate <em>ITemplate Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.metamodel.TemplateBase
+	 * @see org.rulez.magwas.zenta.metamodel.ITemplate
 	 * @generated
 	 */
 	public Adapter createTemplateBaseAdapter() {
@@ -154,13 +154,13 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.ObjectClassBase <em>Object Class Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.ObjectClass <em>Object Class Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.metamodel.ObjectClassBase
+	 * @see org.rulez.magwas.zenta.metamodel.ObjectClass
 	 * @generated
 	 */
 	public Adapter createObjectClassBaseAdapter() {
@@ -168,7 +168,7 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.AttributeBase <em>Attribute Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.AttributeBase <em>AttributeBase Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -182,13 +182,13 @@ public class MetamodelBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.RelationClassBase <em>Relation Class Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.metamodel.IRelationClass <em>Relation Class Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.metamodel.RelationClassBase
+	 * @see org.rulez.magwas.zenta.metamodel.IRelationClass
 	 * @generated
 	 */
 	public Adapter createRelationClassBaseAdapter() {

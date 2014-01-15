@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -57,7 +57,7 @@ public class TotalViewpointTest {
 		IZentaElement sourceElement = testdata.getElementById("ea94cf6c");//User
 		IDiagramModelZentaObject sourceDiagElement = (IDiagramModelZentaObject) testdata.getDMOById("b2608459");
 		IZentaElement targetElement = testdata.getElementById("f33bd0d2");//Process
-		List<RelationClass> rels = vp.getValidRelationships(sourceElement, targetElement);
+		List<IRelationClass> rels = vp.getValidRelationships(sourceElement, targetElement);
 		List<String> expectedList = Arrays.asList("Basic Relation","TriesToDo");
 		ArrayList<String> actualList = getClassNames(rels);
 		ModelTestUtils.assertEqualsAsSet(expectedList,actualList);
@@ -72,14 +72,14 @@ public class TotalViewpointTest {
 		IZentaElement e1 = testdata.getElementById(procedureId);
 		String processStepId = "c3d03626";
 		IZentaElement e2 = testdata.getElementById(processStepId);
-		List<RelationClass> valids = vp.getValidRelationships(e1, e2);
+		List<IRelationClass> valids = vp.getValidRelationships(e1, e2);
 		assertEquals(1,valids.size());
 		assertEquals("Basic Relation",valids.get(0).getName());
 	}
 
-	private ArrayList<String> getClassNames(List<RelationClass> rels) {
+	private ArrayList<String> getClassNames(List<IRelationClass> rels) {
 		ArrayList<String> actualList = new ArrayList<String>();
-		for(RelationClass rel : rels) {
+		for(IRelationClass rel : rels) {
 			actualList.add(rel.getName());
 		}
 		return actualList;

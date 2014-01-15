@@ -368,7 +368,7 @@ implements INavigatorView, ISelectionListener {
                 type == Notification.REMOVE || type == Notification.REMOVE_MANY || type == Notification.MOVE) {
             getViewer().refresh();
         }
-        // Attribute set
+        // AttributeBase set
         else if(type == Notification.SET) {
             Object feature = msg.getFeature();
 

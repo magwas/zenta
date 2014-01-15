@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
-import org.rulez.magwas.zenta.metamodel.RelationClassBase;
-import org.rulez.magwas.zenta.metamodel.TemplateBase;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IIdentifier;
 
 /**
@@ -34,13 +34,12 @@ import org.rulez.magwas.zenta.model.IIdentifier;
  *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getAncestor <em>Ancestor</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getChildren <em>Children</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getTemplate <em>Template</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBaseImpl#getTemplate <em>ITemplate</em>}</li>
  * </ul>
  * </p>
  *
- * @generated
  */
-public class RelationClassBaseImpl extends EObjectImpl implements RelationClassBase {
+abstract public class RelationClassBaseImpl extends EObjectImpl implements IRelationClass {
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -79,7 +78,7 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * @generated
 	 * @ordered
 	 */
-	protected RelationClassBase ancestor;
+	protected IRelationClass ancestor;
 
 	/**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' reference list.
@@ -89,7 +88,7 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RelationClassBase> children;
+	protected EList<IRelationClass> children;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,7 +156,7 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RelationClassBase getAncestor() {
+	public IRelationClass getAncestor() {
 		return ancestor;
 	}
 
@@ -166,8 +165,8 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAncestor(RelationClassBase newAncestor, NotificationChain msgs) {
-		RelationClassBase oldAncestor = ancestor;
+	public NotificationChain basicSetAncestor(IRelationClass newAncestor, NotificationChain msgs) {
+		IRelationClass oldAncestor = ancestor;
 		ancestor = newAncestor;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR, oldAncestor, newAncestor);
@@ -181,13 +180,13 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAncestor(RelationClassBase newAncestor) {
+	public void setAncestor(IRelationClass newAncestor) {
 		if (newAncestor != ancestor) {
 			NotificationChain msgs = null;
 			if (ancestor != null)
-				msgs = ((InternalEObject)ancestor).eInverseRemove(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, RelationClassBase.class, msgs);
+				msgs = ((InternalEObject)ancestor).eInverseRemove(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
 			if (newAncestor != null)
-				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, RelationClassBase.class, msgs);
+				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
 			msgs = basicSetAncestor(newAncestor, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -200,9 +199,9 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<RelationClassBase> getChildren() {
+	public EList<IRelationClass> getChildren() {
 		if (children == null) {
-			children = new EObjectWithInverseEList<RelationClassBase>(RelationClassBase.class, this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR);
+			children = new EObjectWithInverseEList<IRelationClass>(IRelationClass.class, this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR);
 		}
 		return children;
 	}
@@ -212,9 +211,9 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemplateBase getTemplate() {
+	public ITemplate getTemplate() {
 		if (eContainerFeatureID() != MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE) return null;
-		return (TemplateBase)eContainer();
+		return (ITemplate)eContainer();
 	}
 
 	/**
@@ -222,7 +221,7 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTemplate(TemplateBase newTemplate, NotificationChain msgs) {
+	public NotificationChain basicSetTemplate(ITemplate newTemplate, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject)newTemplate, MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE, msgs);
 		return msgs;
 	}
@@ -232,7 +231,7 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTemplate(TemplateBase newTemplate) {
+	public void setTemplate(ITemplate newTemplate) {
 		if (newTemplate != eInternalContainer() || (eContainerFeatureID() != MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -240,7 +239,7 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
-				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, TemplateBase.class, msgs);
+				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, ITemplate.class, msgs);
 			msgs = basicSetTemplate(newTemplate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -259,14 +258,14 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 		switch (featureID) {
 			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
 				if (ancestor != null)
-					msgs = ((InternalEObject)ancestor).eInverseRemove(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, RelationClassBase.class, msgs);
-				return basicSetAncestor((RelationClassBase)otherEnd, msgs);
+					msgs = ((InternalEObject)ancestor).eInverseRemove(this, MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
+				return basicSetAncestor((IRelationClass)otherEnd, msgs);
 			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(otherEnd, msgs);
 			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetTemplate((TemplateBase)otherEnd, msgs);
+				return basicSetTemplate((ITemplate)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -298,7 +297,7 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
-				return eInternalContainer().eInverseRemove(this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, TemplateBase.class, msgs);
+				return eInternalContainer().eInverseRemove(this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, ITemplate.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -341,14 +340,14 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 				setName((String)newValue);
 				return;
 			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
-				setAncestor((RelationClassBase)newValue);
+				setAncestor((IRelationClass)newValue);
 				return;
 			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
 				getChildren().clear();
-				getChildren().addAll((Collection<? extends RelationClassBase>)newValue);
+				getChildren().addAll((Collection<? extends IRelationClass>)newValue);
 				return;
 			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
-				setTemplate((TemplateBase)newValue);
+				setTemplate((ITemplate)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -369,13 +368,13 @@ public class RelationClassBaseImpl extends EObjectImpl implements RelationClassB
 				setName(NAME_EDEFAULT);
 				return;
 			case MetamodelBasePackage.RELATION_CLASS_BASE__ANCESTOR:
-				setAncestor((RelationClassBase)null);
+				setAncestor((IRelationClass)null);
 				return;
 			case MetamodelBasePackage.RELATION_CLASS_BASE__CHILDREN:
 				getChildren().clear();
 				return;
 			case MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE:
-				setTemplate((TemplateBase)null);
+				setTemplate((ITemplate)null);
 				return;
 		}
 		super.eUnset(featureID);

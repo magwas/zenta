@@ -3,10 +3,10 @@ package org.rulez.magwas.zenta.metamodel.handmade;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rulez.magwas.zenta.metamodel.Metamodel;
+import org.rulez.magwas.zenta.metamodel.MetamodelBase;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
-import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -20,7 +20,7 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
 	protected ObjectClassImpl() {
 	}
 
-	public ObjectClassImpl(IZentaElement reference, Template template) {
+	public ObjectClassImpl(IZentaElement reference, ITemplate template) {
 		super(reference,template);
 		ObjectClass ancie = getAncestorClass(reference);
 		setAncestor(ancie);
@@ -29,7 +29,7 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
         private ObjectClass getAncestorClass(IZentaElement reference) {
             String refClassId = reference.getObjectClass();
     		String referenceId = reference.getId();
-    		Metamodel metamodel = getMetamodel();
+    		MetamodelBase metamodel = getMetamodel();
     		ObjectClass ancie = null;
     		if(haveAncestor(refClassId, referenceId))
     			ancie = getAncestorClass(refClassId, metamodel);
@@ -42,7 +42,7 @@ public class ObjectClassImpl extends AbstractObjectClassImpl implements ObjectCl
     					!"basicobject".equals(refClassId) &&
     					!referenceId.equals(refClassId);
     		}
-    		private ObjectClass getAncestorClass(String refClassId, Metamodel metamodel) {
+    		private ObjectClass getAncestorClass(String refClassId, MetamodelBase metamodel) {
     			IZentaElement ancestorElement = (IZentaElement) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
     			return metamodel.getObjectClassReferencing(ancestorElement);
     		}

@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.help.hints.HintsView;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
@@ -87,7 +87,7 @@ public class HintsViewTest {
 	@Test
 	public void The_Hints_view_contains_the_name_and_description_of_the_ObjectClass_of_element() throws PartInitException, WorkbenchException {
 		String id = "9c441eb7";
-		RelationClass baseRelationClass = (RelationClass) testdata.metamodel.getClassById(id);
+		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
 		Relationship parentRel = (Relationship) baseRelationClass.getReference();
 		parentRel.setDocumentation("I guess this might describe something");
 		IRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);

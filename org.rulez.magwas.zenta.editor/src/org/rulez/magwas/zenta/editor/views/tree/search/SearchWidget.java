@@ -30,10 +30,10 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.MetamodelBase;
+import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperty;
@@ -176,9 +176,9 @@ public class SearchWidget extends Composite {
         MenuManager businessMenu = new MenuManager(Messages.SearchWidget_6);
         dropDownAction.add(businessMenu);
         List<IZentaModel> models = IEditorModelManager.INSTANCE.getModels();
-        Metamodel mm;
+        MetamodelBase mm;
 		for(IZentaModel model : models) {
-        	mm = MetamodelFactory.eINSTANCE.getMetamodelFor(model);
+        	mm = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(model);
             for(ObjectClass eClass : mm.getObjectClasses()) {
                 businessMenu.add(createObjectAction(eClass));
             }
@@ -187,8 +187,8 @@ public class SearchWidget extends Composite {
         MenuManager relationsMenu = new MenuManager(Messages.SearchWidget_11);
         dropDownAction.add(relationsMenu);
 		for(IZentaModel model : models) {
-        	mm = MetamodelFactory.eINSTANCE.getMetamodelFor(model);
-	        for(RelationClass eClass : mm.getRelationClasses()) {
+        	mm = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(model);
+	        for(IRelationClass eClass : mm.getRelationClasses()) {
 	            relationsMenu.add(createObjectAction(eClass));
 	        }
 		}

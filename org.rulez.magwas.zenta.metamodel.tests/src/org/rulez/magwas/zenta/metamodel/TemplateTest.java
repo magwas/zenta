@@ -5,7 +5,7 @@ import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -15,17 +15,17 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class TemplateTest {
 
-	protected Template fixture = null;
+	protected ITemplate fixture = null;
 	private IZentaModel model;
 	private IZentaDiagramModel diagramModel;
-	private Template template;
+	private ITemplate template;
 	
 	@Before
 	public void setUp() throws Exception {
 		ModelTestData testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTemplateDiagramModel();
-		Metamodel metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
+		MetamodelBase metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinTemplate();
 		template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
 	}
@@ -42,13 +42,13 @@ public class TemplateTest {
 	
 	@Test
 	public void The_Builtin_template_have_one_ObjectClass() {
-		EList<ObjectClassBase> objects = fixture.getObjectClasses();
+		EList<ObjectClass> objects = fixture.getObjectClasses();
 		assertEquals(1,objects.size());
 	}
 
 	@Test
 	public void The_Builtin_template_have_one_RelationClass() {
-		EList<RelationClassBase> relations = fixture.getRelationClasses();
+		EList<IRelationClass> relations = fixture.getRelationClasses();
 		assertEquals(1,relations.size());
 	}
 

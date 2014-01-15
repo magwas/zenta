@@ -8,8 +8,8 @@ import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -23,9 +23,9 @@ import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class RelationClassTest {
 
-	protected RelationClass fixture = null;
+	protected IRelationClass fixture = null;
 
-	private Metamodel metamodel;
+	private MetamodelBase metamodel;
 
 	private IZentaModel model;
 
@@ -38,7 +38,7 @@ public class RelationClassTest {
 		
 		ensureVirginDMRsForLoadTest(testdata);
 
-		metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
+		metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinRelationClass();
 	}
 
@@ -49,7 +49,7 @@ public class RelationClassTest {
 
 	@Test
 	public void testGetChildren() {
-		EList<RelationClassBase> kids = fixture.getChildren();
+		EList<IRelationClass> kids = fixture.getChildren();
 		assertEquals(4,kids.size());
 	}
 
@@ -60,7 +60,7 @@ public class RelationClassTest {
 	
 	@Test
 	public void The_relations_of_the_template_are_converted_to_RelationClass() {
-		Template template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
+		ITemplate template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
 		int ocsize = template.getRelationClasses().size();
 		assertTemplateHaveRelationClassFor(template, "a972e26e");
 		assertTemplateHaveRelationClassFor(template, "3da94729");
@@ -68,7 +68,7 @@ public class RelationClassTest {
 	}
 	@Test
 	public void Even_where_source_is_nondefining() {
-		Template template = metamodel.getTemplateFor(testdata.getZDiagramModelById("e13c9626"));
+		ITemplate template = metamodel.getTemplateFor(testdata.getZDiagramModelById("e13c9626"));
 		int ocsize = template.getRelationClasses().size();
 		assertTemplateHaveRelationClassFor(template, "9c441eb7");
 		assertEquals(ocsize,template.getRelationClasses().size());
@@ -78,11 +78,11 @@ public class RelationClassTest {
 	public void There_is_only_one_relationClass_for_a_connection_occuring_more_times_in_a_template() {
 		String id = "e13c9626";
 		IZentaDiagramModel dm = testdata.getZDiagramModelById(id);
-		Template template = metamodel.getTemplateFor(dm);
+		ITemplate template = metamodel.getTemplateFor(dm);
 		String id2 = "9c441eb7";
 		IRelationship element = testdata.getRelationByID(id2);
 		int numOccurs = 0;
-		for(RelationClassBase oc:template.getRelationClasses())
+		for(IRelationClass oc:template.getRelationClasses())
 			if(element.equals(oc.getReference()))
 				numOccurs++;
 		assertEquals(1,numOccurs);
@@ -96,13 +96,13 @@ public class RelationClassTest {
 
 	@Test
 	public void The_parent_relationclass_is_the_relationclass_of_the_defining_element() {
-		RelationClass parentRc = (RelationClass) metamodel.getClassById("9c441eb7");
+		IRelationClass parentRc = (IRelationClass) metamodel.getClassById("9c441eb7");
 		IRelationship modelRelation = createRelationClass(parentRc,"test relation");
 		
-		RelationClass newRc = metamodel.getRelationClassReferencing(modelRelation);
+		IRelationClass newRc = metamodel.getRelationClassReferencing(modelRelation);
 		assertNotNull(newRc);
-		RelationClass parentOc = (RelationClass) newRc.getAncestor();
-		RelationClass parentOc2 = (RelationClass) metamodel.getClassById(modelRelation.getObjectClass());
+		IRelationClass parentOc = (IRelationClass) newRc.getAncestor();
+		IRelationClass parentOc2 = (IRelationClass) metamodel.getClassById(modelRelation.getObjectClass());
 		assertEquals(parentRc,parentOc);
 		assertEquals(parentRc,parentOc2);
 	}
@@ -153,7 +153,7 @@ public class RelationClassTest {
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineDecoration", "DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration");
 		
 		ensureVirginDMRsForLoadTest(testdata);
-		MetamodelFactory.eINSTANCE.createMetamodel(testdata.model);
+		MetamodelBaseFactory.eINSTANCE.createMetamodel(testdata.model);
 		ensureVirginDMRsForLoadTest(testdata);
 		ensureCorrectFinalAttributes(testdata);
 
@@ -263,24 +263,24 @@ public class RelationClassTest {
 	
 	@Test
 	public void A_defining_connection_in_more_templates_defines_one_RelationClass() {
-		List<RelationClass> classes = metamodel.getRelationClasses();
+		List<IRelationClass> classes = metamodel.getRelationClasses();
 		int count = 0;
-		for(RelationClass rc : classes)
+		for(IRelationClass rc : classes)
 			if(rc.getName().equals("TriesToDo"))
 				count++;
 		assertEquals(1,count);
 	}
 
-	private void assertTemplateHaveRelationClassFor(Template template,
+	private void assertTemplateHaveRelationClassFor(ITemplate template,
 			String elementID) {
 		IRelationship element = testdata.getRelationByID(elementID);
 		assertNotNull(template.getRelationClassReferencingElement(element));
 	}
 
-	private RelationClass getRelationClassReferencing(IRelationship element) {
+	private IRelationClass getRelationClassReferencing(IRelationship element) {
 		return metamodel.getRelationClassReferencing(element);
 	}
-	private IRelationship createRelationClass(RelationClass parentClass, String name) {
+	private IRelationship createRelationClass(IRelationClass parentClass, String name) {
 		IRelationship baseDefining = (IRelationship) parentClass.getReference();
 		IFolder folder = (IFolder) baseDefining.eContainer();
 		IRelationship modelRelation= (IRelationship) parentClass.create(folder);
@@ -313,7 +313,7 @@ public class RelationClassTest {
 		}
 	@Test
 	public void Basic_Relation_have_hint() {
-		RelationClass oc = metamodel.getBuiltinRelationClass();
+		IRelationClass oc = metamodel.getBuiltinRelationClass();
 		assertNotNull(oc.getHelpHintTitle());
 		assertNotNull(oc.getHelpHintContent());
 	}

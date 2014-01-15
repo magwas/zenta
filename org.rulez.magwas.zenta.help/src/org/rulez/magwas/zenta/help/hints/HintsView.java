@@ -51,7 +51,7 @@ import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.editor.ui.services.IComponentSelectionListener;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.help.ZentaEditorHelpPlugin;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
 import org.rulez.magwas.zenta.model.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -330,7 +330,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 		}
 			private Object getObjectClassFor(IZentaElement selected) {
 				Object object;
-				object = MetamodelFactory.eINSTANCE.getMetamodelFor(selected).getClassOf(selected);
+				object = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(selected).getClassOf(selected);
 				return object;
 			}
     

@@ -3,19 +3,23 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.common.util.EList;
+import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Template Base</b></em>'.
+ * A representation of the model object '<em><b>ITemplate Base</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.TemplateBase#getObjectClasses <em>Object Classes</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.TemplateBase#getRelationClasses <em>Relation Classes</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.TemplateBase#getPath <em>Path</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.TemplateBase#getMetamodel <em>Metamodel</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.ITemplate#getObjectClasses <em>Object Classes</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.ITemplate#getRelationClasses <em>Relation Classes</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.ITemplate#getPath <em>Path</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel <em>Metamodel</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,11 +27,11 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface TemplateBase extends ReferencesModelObjectBase {
+public interface ITemplate extends ReferencesModelObjectBase {
 	/**
 	 * Returns the value of the '<em><b>Object Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.ObjectClassBase}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.ObjectClassBase#getTemplate <em>Template</em>}'.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.ObjectClass}.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.ObjectClass#getTemplate <em>ITemplate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Object Classes</em>' containment reference list isn't clear,
@@ -36,16 +40,16 @@ public interface TemplateBase extends ReferencesModelObjectBase {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Object Classes</em>' containment reference list.
 	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getTemplateBase_ObjectClasses()
-	 * @see org.rulez.magwas.zenta.metamodel.ObjectClassBase#getTemplate
+	 * @see org.rulez.magwas.zenta.metamodel.ObjectClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
 	 */
-	EList<ObjectClassBase> getObjectClasses();
+	EList<ObjectClass> getObjectClasses();
 
 	/**
 	 * Returns the value of the '<em><b>Relation Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.RelationClassBase}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.RelationClassBase#getTemplate <em>Template</em>}'.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.IRelationClass}.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate <em>ITemplate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relation Classes</em>' containment reference list isn't clear,
@@ -54,11 +58,11 @@ public interface TemplateBase extends ReferencesModelObjectBase {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation Classes</em>' containment reference list.
 	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getTemplateBase_RelationClasses()
-	 * @see org.rulez.magwas.zenta.metamodel.RelationClassBase#getTemplate
+	 * @see org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
 	 */
-	EList<RelationClassBase> getRelationClasses();
+	EList<IRelationClass> getRelationClasses();
 
 	/**
 	 * Returns the value of the '<em><b>Path</b></em>' attribute.
@@ -77,7 +81,7 @@ public interface TemplateBase extends ReferencesModelObjectBase {
 	String getPath();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.TemplateBase#getPath <em>Path</em>}' attribute.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getPath <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Path</em>' attribute.
@@ -105,7 +109,7 @@ public interface TemplateBase extends ReferencesModelObjectBase {
 	MetamodelBase getMetamodel();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.TemplateBase#getMetamodel <em>Metamodel</em>}' container reference.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel <em>Metamodel</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Metamodel</em>' container reference.
@@ -115,5 +119,16 @@ public interface TemplateBase extends ReferencesModelObjectBase {
 	void setMetamodel(MetamodelBase value);
 
 	void removeClass(ReferencesModelObjectBase oc);
+	ObjectClass getObjectClassReferencingElement(IZentaElement reference);
 
-} // TemplateBase
+	IRelationClass getRelationClassReferencingElement(IRelationship referenced);
+	
+	ObjectClass getObjectClassFrom(IZentaElement reference);
+
+	IRelationClass getRelationClassFrom(IRelationship referenced);
+
+	void createClassBy(IZentaElement element);
+
+	IIdentifier create(IFolder folder);
+
+} // ITemplate

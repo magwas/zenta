@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -49,12 +49,12 @@ public class ObjectClassTest{
 		assertEquals("Basic Object",fixture.getName());
 	}
 
-	@Test(expected = MetamodelFactory.BuiltinClassShouldNotHaveAncestor.class)
+	@Test(expected = MetamodelBaseFactory.BuiltinClassShouldNotHaveAncestor.class)
 	public void The_ancestor_cannot_be_set_for_the_Builtin_ObjectClass() {
 		fixture.setAncestor(fixture);
 	}
 
-	@Test(expected = MetamodelFactory.BuiltinClassShouldNotHaveReference.class)
+	@Test(expected = MetamodelBaseFactory.BuiltinClassShouldNotHaveReference.class)
 	public void The_reference_cannot_be_set_for_the_Builtin_ObjectClass() {
 		IBasicObject obj2 = IZentaFactory.eINSTANCE.createBasicObject();
 		fixture.setReference(obj2);
@@ -62,7 +62,7 @@ public class ObjectClassTest{
 	
 	@Test
 	public void if_an_ObjectClass_is_set_as_ancestor_then_the_number_of_its_kids_grows() {
-		EList<ObjectClassBase> kids = fixture.getChildren();
+		EList<ObjectClass> kids = fixture.getChildren();
 		int n = kids.size();
 		ObjectClass obj2 = testdata.createTestObjectClass();
 		obj2.setAncestor(fixture);
@@ -77,13 +77,13 @@ public class ObjectClassTest{
 	
 	@Test
 	public void The_elements_of_the_template_are_converted_to_ObjectClass() {
-		Template template = testdata.metamodel.getTemplateFor(diagramModel);
+		ITemplate template = testdata.metamodel.getTemplateFor(diagramModel);
 		int ocsize = template.getObjectClasses().size();
 		assertTemplateHaveObjectClassFor(template, "ea94cf6c");
 		assertTemplateHaveObjectClassFor(template, "c3d03626");
 		assertEquals(ocsize,template.getObjectClasses().size());
 	}
-		private void assertTemplateHaveObjectClassFor(Template template,
+		private void assertTemplateHaveObjectClassFor(ITemplate template,
 				String elementID) {
 			IZentaElement element = testdata.getElementById(elementID);
 			assertNotNull(template.getObjectClassReferencingElement(element));
@@ -94,11 +94,11 @@ public class ObjectClassTest{
 		String id = "e13c9626";
 		IZentaDiagramModel getDiagramModelById = testdata.getZDiagramModelById(id);
 		IZentaDiagramModel dm = getDiagramModelById;
-		Template template = testdata.metamodel.getTemplateFor(dm);
+		ITemplate template = testdata.metamodel.getTemplateFor(dm);
 		String id2 = "8495ea84";
 		IZentaElement element = testdata.getElementById(id2);
 		int numOccurs = 0;
-		for(ObjectClassBase oc:template.getObjectClasses())
+		for(ObjectClass oc:template.getObjectClasses())
 			if(element.equals(oc.getReference()))
 				numOccurs++;
 		assertEquals(1,numOccurs);
@@ -177,7 +177,7 @@ public class ObjectClassTest{
 	public void When_the_model_is_loaded_the_diagram_elements_are_not_converted_according_to_the_defining_element() {
 		ModelTestData data = new ModelTestData();
 		ensureVirginDMOsForLoadTest(data);
-		MetamodelFactory.eINSTANCE.createMetamodel(data.model);
+		MetamodelBaseFactory.eINSTANCE.createMetamodel(data.model);
 		ensureVirginDMOsForLoadTest(data);
 		ensureCorrectFinalAttributes(data);
 	}

@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.CreateRelationCommand;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.actions.TreeModelViewActionFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -63,7 +63,7 @@ public class TreeModelViewActionFactoryTest {
 	public void Relations_are_created_in_the_folder_of_the_source_element() {
 		IZentaElement target = testdata.getElementById("23138a61");
 		IZentaElement source = testdata.getElementById("a885cd76");
-		RelationClass relclass = (RelationClass) testdata.metamodel.getClassById("a972e26e");
+		IRelationClass relclass = (IRelationClass) testdata.metamodel.getClassById("a972e26e");
 		assertNotNull(relclass);
 		CreateRelationCommand command = new CreateRelationCommand(source,target,relclass);
 		IFolder folder = ModelTestData.getFolderByKid(source);

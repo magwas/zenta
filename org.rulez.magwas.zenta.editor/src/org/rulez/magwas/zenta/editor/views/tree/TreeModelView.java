@@ -532,7 +532,7 @@ implements ITreeModelView, IUIRequestListener {
     protected void eCoreChanged(Notification msg) {
         int type = msg.getEventType();
         
-        // Attribute set
+        // AttributeBase set
         if(type == Notification.SET) {
             Object notifier = msg.getNotifier();
             Object feature = msg.getFeature();

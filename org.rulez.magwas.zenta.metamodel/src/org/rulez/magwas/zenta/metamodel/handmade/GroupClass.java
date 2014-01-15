@@ -7,11 +7,10 @@ import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.metamodel.AttributeBase;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
+import org.rulez.magwas.zenta.metamodel.AttributeBase.Direction;
 import org.rulez.magwas.zenta.model.IDiagramModelNote;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -22,7 +21,7 @@ public class GroupClass extends AbstractObjectClassImpl implements
 		ObjectClass {
 
 	@Override
-	public Template getTemplate() {
+	public ITemplate getTemplate() {
 		throw new UnTestedException();
 	}
 
@@ -34,7 +33,7 @@ public class GroupClass extends AbstractObjectClassImpl implements
 	}
 
 	@Override
-	public boolean isAllowedRelation(RelationClass klass, Direction source) {
+	public boolean isAllowedRelation(IRelationClass klass, Direction source) {
 		return false;
 	}
 
@@ -49,17 +48,17 @@ public class GroupClass extends AbstractObjectClassImpl implements
 	}
 
 	@Override
-	public void setAncestor(ObjectClassBase value) {
+	public void setAncestor(ObjectClass value) {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public EList<ObjectClassBase> getChildren() {
+	public EList<ObjectClass> getChildren() {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public Map<Direction, List<RelationClass>> getAllowedRelations() {
+	public Map<Direction, List<IRelationClass>> getAllowedRelations() {
 		return null;
 	}
 	

@@ -11,14 +11,16 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.rulez.magwas.zenta.metamodel.*;
+import org.rulez.magwas.zenta.metamodel.handmade.AttributeImpl;
+import org.rulez.magwas.zenta.metamodel.handmade.ObjectClassImpl;
+import org.rulez.magwas.zenta.metamodel.handmade.RelationClassImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
- * @generated
  */
-public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelBaseFactory {
+abstract public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelBaseFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -26,16 +28,18 @@ public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelB
 	 * @generated
 	 */
 	public static MetamodelBaseFactory init() {
-		try {
-			MetamodelBaseFactory theMetamodelBaseFactory = (MetamodelBaseFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
-			if (theMetamodelBaseFactory != null) {
-				return theMetamodelBaseFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new MetamodelBaseFactoryImpl();
+		throw new RuntimeException();
+//
+//		try {
+//			MetamodelBaseFactory theMetamodelBaseFactory = (MetamodelBaseFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
+//			if (theMetamodelBaseFactory != null) {
+//				return theMetamodelBaseFactory;
+//			}
+//		}
+//		catch (Exception exception) {
+//			EcorePlugin.INSTANCE.log(exception);
+//		}
+//		return new MetamodelBaseFactoryImpl();
 	}
 
 	/**
@@ -72,8 +76,9 @@ public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelB
 	 * @generated
 	 */
 	public MetamodelBase createMetamodelBase() {
-		MetamodelBaseImpl metamodelBase = new MetamodelBaseImpl();
-		return metamodelBase;
+		throw new RuntimeException();
+//		MetamodelBaseImpl metamodelBase = new MetamodelBaseImpl();
+//		return metamodelBase;
 	}
 
 	/**
@@ -81,9 +86,10 @@ public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemplateBase createTemplateBase() {
-		TemplateBaseImpl templateBase = new TemplateBaseImpl();
-		return templateBase;
+	public ITemplate createTemplateBase() {
+		throw new RuntimeException();
+//		TemplateBaseImpl templateBase = new TemplateImpl();
+//		return templateBase;
 	}
 
 	/**
@@ -91,9 +97,10 @@ public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ObjectClassBase createObjectClassBase() {
-		ObjectClassBaseImpl objectClassBase = new ObjectClassBaseImpl();
-		return objectClassBase;
+	public ObjectClass createObjectClassBase() {
+		throw new RuntimeException();
+//		ObjectClassBaseImpl objectClassBase = new ObjectClassImpl();
+//		return objectClassBase;
 	}
 
 	/**
@@ -102,7 +109,7 @@ public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelB
 	 * @generated
 	 */
 	public AttributeBase createAttributeBase() {
-		AttributeBaseImpl attributeBase = new AttributeBaseImpl();
+		AttributeBaseImpl attributeBase = new AttributeImpl();
 		return attributeBase;
 	}
 
@@ -111,9 +118,10 @@ public class MetamodelBaseFactoryImpl extends EFactoryImpl implements MetamodelB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RelationClassBase createRelationClassBase() {
-		RelationClassBaseImpl relationClassBase = new RelationClassBaseImpl();
-		return relationClassBase;
+	public IRelationClass createRelationClassBase() {
+		throw new RuntimeException();
+//		RelationClassBaseImpl relationClassBase = new RelationClassImpl();
+//		return relationClassBase;
 	}
 
 	/**

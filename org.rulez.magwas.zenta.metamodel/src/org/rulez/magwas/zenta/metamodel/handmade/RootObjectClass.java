@@ -2,9 +2,8 @@ package org.rulez.magwas.zenta.metamodel.handmade;
 
 import java.util.List;
 
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -17,7 +16,7 @@ public class RootObjectClass extends ObjectClassImpl implements ObjectClass {
 	
 	@Override
 	public void setReference(IIdentifier newReference) {
-		throw new MetamodelFactory.BuiltinClassShouldNotHaveReference();
+		throw new MetamodelBaseFactory.BuiltinClassShouldNotHaveReference();
 	}
 
 	@Override
@@ -31,8 +30,8 @@ public class RootObjectClass extends ObjectClassImpl implements ObjectClass {
 	}
 	
 	@Override
-	public void setAncestor(ObjectClassBase ancestor) {
-		throw new MetamodelFactory.BuiltinClassShouldNotHaveAncestor();
+	public void setAncestor(ObjectClass ancestor) {
+		throw new MetamodelBaseFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 	
 	@Override

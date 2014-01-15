@@ -5,34 +5,33 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.RelationClassBase;
-import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
 public class NoteConnectionClass extends AbstractRelationClassImpl implements
-		RelationClass {
+		IRelationClass {
 
 	@Override
-	public Template getTemplate() {
+	public ITemplate getTemplate() {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public RelationClass getAncestor() {
+	public IRelationClass getAncestor() {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public void setAncestor(RelationClassBase value) {
+	public void setAncestor(IRelationClass value) {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public EList<RelationClassBase> getChildren() {
+	public EList<IRelationClass> getChildren() {
 		throw new UnTestedException();
 	}
 

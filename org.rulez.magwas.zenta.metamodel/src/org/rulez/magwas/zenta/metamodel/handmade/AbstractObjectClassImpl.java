@@ -5,14 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.rulez.magwas.zenta.metamodel.Attribute;
-import org.rulez.magwas.zenta.metamodel.Attribute.Direction;
 import org.rulez.magwas.zenta.metamodel.AttributeBase;
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.AttributeBase.Direction;
+import org.rulez.magwas.zenta.metamodel.MetamodelBase;
+import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
-import org.rulez.magwas.zenta.metamodel.Template;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.metamodel.impl.ObjectClassBaseImpl;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -23,11 +22,11 @@ public abstract class AbstractObjectClassImpl extends ObjectClassBaseImpl implem
 	public AbstractObjectClassImpl() {
 	}
 
-	public AbstractObjectClassImpl(IZentaElement reference, Template template) {
+	public AbstractObjectClassImpl(IZentaElement reference, ITemplate template) {
 		super();
 		setReference((IIdentifier) reference);
 		template.getObjectClasses().add(this);
-		setName(MetamodelFactory.eINSTANCE.getDefiningName(reference));
+		setName(MetamodelBaseFactory.eINSTANCE.getDefiningName(reference));
 		setTemplate(template);
 	}
 
@@ -37,8 +36,8 @@ public abstract class AbstractObjectClassImpl extends ObjectClassBaseImpl implem
 	}
 
 	@Override
-	public Metamodel getMetamodel() {
-		return (Metamodel) getTemplate().getMetamodel();
+	public MetamodelBase getMetamodel() {
+		return (MetamodelBase) getTemplate().getMetamodel();
 	}
 
 	@Override
@@ -47,31 +46,31 @@ public abstract class AbstractObjectClassImpl extends ObjectClassBaseImpl implem
 	}
 
 	@Override
-	public boolean isAllowedRelation(RelationClass relclass, Direction direction) {
-		List<RelationClass> alloweds = getAllowedRelations().get(direction);
+	public boolean isAllowedRelation(IRelationClass relclass, Direction direction) {
+		List<IRelationClass> alloweds = getAllowedRelations().get(direction);
 		if(alloweds.contains(relclass))
 			return true;
 		return false;
 	}
 
 	@Override
-	public Map<Direction,List<RelationClass>> getAllowedRelations() {
+	public Map<Direction,List<IRelationClass>> getAllowedRelations() {
 
-		Map<Direction,List<RelationClass>> ret = new HashMap<Direction,List<RelationClass>>();
-		ret.put(Direction.SOURCE, new ArrayList<RelationClass>());
-		ret.put(Direction.TARGET, new ArrayList<RelationClass>());
+		Map<Direction,List<IRelationClass>> ret = new HashMap<Direction,List<IRelationClass>>();
+		ret.put(Direction.SOURCE, new ArrayList<IRelationClass>());
+		ret.put(Direction.TARGET, new ArrayList<IRelationClass>());
 		ret.get(Direction.SOURCE).add(this.getMetamodel().getBuiltinRelationClass());
 		ret.get(Direction.TARGET).add(this.getMetamodel().getBuiltinRelationClass());
 		for(AttributeBase att : getAttributes()) {
-			addParents(ret.get(((Attribute) att).getDirection()),(RelationClass) att.getRelation());
+			addParents(ret.get(((AttributeBase) att).getDirection()),(IRelationClass) att.getRelation());
 		}
 		return ret;
 	}
 
-	private void addParents(List<RelationClass> list, RelationClass relation) {
+	private void addParents(List<IRelationClass> list, IRelationClass relation) {
 		if(!list.contains(relation))
 			list.add(relation);
-		RelationClass ancestor = (RelationClass) relation.getAncestor();
+		IRelationClass ancestor = (IRelationClass) relation.getAncestor();
 		if(ancestor != null)
 			addParents(list,ancestor);
 	}

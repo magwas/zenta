@@ -19,8 +19,8 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
+import org.rulez.magwas.zenta.metamodel.MetamodelBase;
+import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -43,10 +43,10 @@ import org.rulez.magwas.zenta.model.IZentaModel;
  */
 public class TreeModelViewActionFactory {
 
-	private Metamodel metamodel;
+	private MetamodelBase metamodel;
 
     public TreeModelViewActionFactory(IZentaModel model) {
-    	metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
+    	metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
     }
 
     /**
@@ -147,7 +147,7 @@ public class TreeModelViewActionFactory {
         return action;
     }
 
-	public Metamodel getMetamodel() {
+	public MetamodelBase getMetamodel() {
 		return metamodel;
 	}
 }

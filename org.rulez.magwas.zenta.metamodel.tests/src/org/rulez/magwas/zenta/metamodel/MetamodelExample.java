@@ -56,7 +56,7 @@ public class MetamodelExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.metamodel"));
-				Metamodel root = MetamodelFactory.eINSTANCE.createMetamodel();
+				MetamodelBase root = MetamodelBaseFactory.eINSTANCE.createMetamodel();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}

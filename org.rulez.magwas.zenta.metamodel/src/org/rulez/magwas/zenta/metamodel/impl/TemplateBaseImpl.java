@@ -21,16 +21,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.rulez.magwas.zenta.metamodel.MetamodelBase;
 import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
-import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
-import org.rulez.magwas.zenta.metamodel.RelationClassBase;
-import org.rulez.magwas.zenta.metamodel.TemplateBase;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Template Base</b></em>'.
+ * An implementation of the model object '<em><b>ITemplate Base</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
@@ -40,13 +40,12 @@ import org.rulez.magwas.zenta.model.UnTestedException;
  *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getObjectClasses <em>Object Classes</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getRelationClasses <em>Relation Classes</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getMetamodel <em>Metamodel</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBaseImpl#getMetamodel <em>MetamodelBase</em>}</li>
  * </ul>
  * </p>
  *
- * @generated
  */
-public class TemplateBaseImpl extends EObjectImpl implements TemplateBase {
+abstract public class TemplateBaseImpl extends EObjectImpl implements ITemplate {
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -85,7 +84,7 @@ public class TemplateBaseImpl extends EObjectImpl implements TemplateBase {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ObjectClassBase> objectClasses;
+	protected EList<ObjectClass> objectClasses;
 
 	/**
 	 * The cached value of the '{@link #getRelationClasses() <em>Relation Classes</em>}' containment reference list.
@@ -95,7 +94,7 @@ public class TemplateBaseImpl extends EObjectImpl implements TemplateBase {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RelationClassBase> relationClasses;
+	protected EList<IRelationClass> relationClasses;
 
 	/**
 	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
@@ -183,9 +182,9 @@ public class TemplateBaseImpl extends EObjectImpl implements TemplateBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ObjectClassBase> getObjectClasses() {
+	public EList<ObjectClass> getObjectClasses() {
 		if (objectClasses == null) {
-			objectClasses = new EObjectContainmentWithInverseEList<ObjectClassBase>(ObjectClassBase.class, this, MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES, MetamodelBasePackage.OBJECT_CLASS_BASE__TEMPLATE);
+			objectClasses = new EObjectContainmentWithInverseEList<ObjectClass>(ObjectClass.class, this, MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES, MetamodelBasePackage.OBJECT_CLASS_BASE__TEMPLATE);
 		}
 		return objectClasses;
 	}
@@ -195,9 +194,9 @@ public class TemplateBaseImpl extends EObjectImpl implements TemplateBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<RelationClassBase> getRelationClasses() {
+	public EList<IRelationClass> getRelationClasses() {
 		if (relationClasses == null) {
-			relationClasses = new EObjectContainmentWithInverseEList<RelationClassBase>(RelationClassBase.class, this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE);
+			relationClasses = new EObjectContainmentWithInverseEList<IRelationClass>(IRelationClass.class, this, MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES, MetamodelBasePackage.RELATION_CLASS_BASE__TEMPLATE);
 		}
 		return relationClasses;
 	}
@@ -358,11 +357,11 @@ public class TemplateBaseImpl extends EObjectImpl implements TemplateBase {
 				return;
 			case MetamodelBasePackage.TEMPLATE_BASE__OBJECT_CLASSES:
 				getObjectClasses().clear();
-				getObjectClasses().addAll((Collection<? extends ObjectClassBase>)newValue);
+				getObjectClasses().addAll((Collection<? extends ObjectClass>)newValue);
 				return;
 			case MetamodelBasePackage.TEMPLATE_BASE__RELATION_CLASSES:
 				getRelationClasses().clear();
-				getRelationClasses().addAll((Collection<? extends RelationClassBase>)newValue);
+				getRelationClasses().addAll((Collection<? extends IRelationClass>)newValue);
 				return;
 			case MetamodelBasePackage.TEMPLATE_BASE__PATH:
 				setPath((String)newValue);
@@ -447,16 +446,16 @@ public class TemplateBaseImpl extends EObjectImpl implements TemplateBase {
 	}
 
 	@Override
-	public TemplateBase getTemplate() {
+	public ITemplate getTemplate() {
 		throw new UnTestedException();
 	}
 
 	@Override
 	public void removeClass(ReferencesModelObjectBase oc) {
-		if(oc instanceof ObjectClassBase) {
+		if(oc instanceof ObjectClass) {
 			getObjectClasses().remove(oc);
 		}
-		else if(oc instanceof RelationClassBase)
+		else if(oc instanceof IRelationClass)
 			getRelationClasses().remove(oc);
 	}
 

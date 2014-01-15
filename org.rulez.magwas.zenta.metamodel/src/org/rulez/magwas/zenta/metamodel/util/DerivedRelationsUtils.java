@@ -8,9 +8,9 @@ package org.rulez.magwas.zenta.metamodel.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.MetamodelBase;
+import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -28,10 +28,10 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 public class DerivedRelationsUtils {
     
     
-	private Metamodel metamodel;
+	private MetamodelBase metamodel;
 
 	public DerivedRelationsUtils(IZentaModel model) {
-		this.metamodel = MetamodelFactory.eINSTANCE.getMetamodelFor(model);
+		this.metamodel = MetamodelBaseFactory.eINSTANCE.getMetamodelFor(model);
         weaklist = metamodel.getWeaklist();
 	}
 	
@@ -150,7 +150,7 @@ public class DerivedRelationsUtils {
         
         // Check validity of weakest relationship in each chain and remove chain if the weakest relationship is not valid
         for(List<IRelationship> chain : chains) {
-        	RelationClass relationshipClass = getWeakestType(chain);
+        	IRelationClass relationshipClass = getWeakestType(chain);
             boolean isValid = metamodel.isValidRelationship(element1, element2, relationshipClass);
             if(isValid) {
                 result.add(chain);
@@ -219,7 +219,7 @@ public class DerivedRelationsUtils {
      * @param chain
      * @return The weakest type of relationship in a chain of relationships
      */
-    public RelationClass getWeakestType(List<IRelationship> chain) {
+    public IRelationClass getWeakestType(List<IRelationship> chain) {
 		int weakest = weaklist.size() - 1;
         
         for(IRelationship rel : chain) {
@@ -246,7 +246,7 @@ public class DerivedRelationsUtils {
     private int weakestFound;
     private int iterations;
 
-	private List<RelationClass> weaklist;
+	private List<IRelationClass> weaklist;
     
     /**
      * @param sourceElement
@@ -326,7 +326,7 @@ public class DerivedRelationsUtils {
                     _printChain(chain, finalTarget);
                 }
 
-                RelationClass weakest = getWeakestType(chain);
+                IRelationClass weakest = getWeakestType(chain);
                 int index = weaklist.indexOf(weakest);
                 if(index < weakestFound) {
                     weakestFound = index;

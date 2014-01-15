@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.ReconnectDiagramConnection
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -46,7 +46,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
     protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
         CreateDiagramConnectionCommand cmd = null;
         
-        RelationClass classType = (RelationClass)request.getNewObjectType();
+        IRelationClass classType = (IRelationClass)request.getNewObjectType();
         IDiagramModelObject source = (IDiagramModelObject)getHost().getModel();
         
         // Plain Connection
@@ -202,7 +202,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         @Override
         public boolean canExecute() {
             if(super.canExecute()) {
-            	RelationClass classType = (RelationClass)fRequest.getNewObjectType();
+            	IRelationClass classType = (IRelationClass)fRequest.getNewObjectType();
                 return isValidConnection(fSource, fTarget, classType);
             }
             return false;
@@ -313,7 +313,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
     /**
      * @return True if valid connection source for connection type
      */
-    private boolean isValidConnectionSource(IDiagramModelZentaObject source, RelationClass relationshipType) {
+    private boolean isValidConnectionSource(IDiagramModelZentaObject source, IRelationClass relationshipType) {
         // Special case if relationshipType == null. Means that the Magic connector is being used
         if(relationshipType == null) {
             return true;
@@ -340,7 +340,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         }
         return true;
     }
-    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, RelationClass rel) {
+    private boolean isValidConnection(IDiagramModelObject source, IDiagramModelObject target, IRelationClass rel) {
         if(source instanceof IDiagramModelZentaObject && target instanceof IDiagramModelZentaObject) {
             IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
             IZentaElement sourceElement = ((IDiagramModelZentaObject)source).getZentaElement();

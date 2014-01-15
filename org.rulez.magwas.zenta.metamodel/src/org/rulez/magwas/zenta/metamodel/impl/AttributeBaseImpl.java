@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.rulez.magwas.zenta.metamodel.AttributeBase;
 import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
-import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
-import org.rulez.magwas.zenta.metamodel.RelationClassBase;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Attribute Base</b></em>'.
+ * An implementation of the model object '<em><b>AttributeBase Base</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
@@ -28,9 +28,8 @@ import org.rulez.magwas.zenta.metamodel.RelationClassBase;
  * </ul>
  * </p>
  *
- * @generated
  */
-public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
+abstract public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 	/**
 	 * The default value of the '{@link #getMinOccurs() <em>Min Occurs</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -79,7 +78,7 @@ public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 	 * @generated
 	 * @ordered
 	 */
-	protected RelationClassBase relation;
+	protected IRelationClass relation;
 
 	/**
 	 * The cached value of the '{@link #getConnectedObject() <em>Connected Object</em>}' reference.
@@ -89,7 +88,7 @@ public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 	 * @generated
 	 * @ordered
 	 */
-	protected ObjectClassBase connectedObject;
+	protected ObjectClass connectedObject;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,7 +156,7 @@ public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RelationClassBase getRelation() {
+	public IRelationClass getRelation() {
 		return relation;
 	}
 
@@ -166,8 +165,8 @@ public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRelation(RelationClassBase newRelation) {
-		RelationClassBase oldRelation = relation;
+	public void setRelation(IRelationClass newRelation) {
+		IRelationClass oldRelation = relation;
 		relation = newRelation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.ATTRIBUTE_BASE__RELATION, oldRelation, relation));
@@ -178,7 +177,7 @@ public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ObjectClassBase getConnectedObject() {
+	public ObjectClass getConnectedObject() {
 		return connectedObject;
 	}
 
@@ -187,8 +186,8 @@ public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConnectedObject(ObjectClassBase newConnectedObject) {
-		ObjectClassBase oldConnectedObject = connectedObject;
+	public void setConnectedObject(ObjectClass newConnectedObject) {
+		ObjectClass oldConnectedObject = connectedObject;
 		connectedObject = newConnectedObject;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelBasePackage.ATTRIBUTE_BASE__CONNECTED_OBJECT, oldConnectedObject, connectedObject));
@@ -229,10 +228,10 @@ public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 				setMaxOccurs((Integer)newValue);
 				return;
 			case MetamodelBasePackage.ATTRIBUTE_BASE__RELATION:
-				setRelation((RelationClassBase)newValue);
+				setRelation((IRelationClass)newValue);
 				return;
 			case MetamodelBasePackage.ATTRIBUTE_BASE__CONNECTED_OBJECT:
-				setConnectedObject((ObjectClassBase)newValue);
+				setConnectedObject((ObjectClass)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -253,10 +252,10 @@ public class AttributeBaseImpl extends EObjectImpl implements AttributeBase {
 				setMaxOccurs(MAX_OCCURS_EDEFAULT);
 				return;
 			case MetamodelBasePackage.ATTRIBUTE_BASE__RELATION:
-				setRelation((RelationClassBase)null);
+				setRelation((IRelationClass)null);
 				return;
 			case MetamodelBasePackage.ATTRIBUTE_BASE__CONNECTED_OBJECT:
-				setConnectedObject((ObjectClassBase)null);
+				setConnectedObject((ObjectClass)null);
 				return;
 		}
 		super.eUnset(featureID);

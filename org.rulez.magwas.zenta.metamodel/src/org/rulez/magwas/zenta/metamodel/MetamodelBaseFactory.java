@@ -3,6 +3,13 @@
 package org.rulez.magwas.zenta.metamodel;
 
 import org.eclipse.emf.ecore.EFactory;
+import org.rulez.magwas.zenta.metamodel.handmade.MetamodelFactoryImpl;
+import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IRelationship;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaModelElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,25 +21,23 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface MetamodelBaseFactory extends EFactory {
 
-	MetamodelBaseFactory eINSTANCE = org.rulez.magwas.zenta.metamodel.handmade.MetamodelFactoryImpl.init();
-
 	/**
-	 * Returns a new object of class '<em>Metamodel Base</em>'.
+	 * Returns a new object of class '<em>MetamodelBase Base</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Metamodel Base</em>'.
+	 * @return a new object of class '<em>MetamodelBase Base</em>'.
 	 * @generated
 	 */
 	MetamodelBase createMetamodelBase();
 
 	/**
-	 * Returns a new object of class '<em>Template Base</em>'.
+	 * Returns a new object of class '<em>ITemplate Base</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Template Base</em>'.
+	 * @return a new object of class '<em>ITemplate Base</em>'.
 	 * @generated
 	 */
-	TemplateBase createTemplateBase();
+	ITemplate createTemplateBase();
 
 	/**
 	 * Returns a new object of class '<em>Object Class Base</em>'.
@@ -41,13 +46,13 @@ public interface MetamodelBaseFactory extends EFactory {
 	 * @return a new object of class '<em>Object Class Base</em>'.
 	 * @generated
 	 */
-	ObjectClassBase createObjectClassBase();
+	ObjectClass createObjectClassBase();
 
 	/**
-	 * Returns a new object of class '<em>Attribute Base</em>'.
+	 * Returns a new object of class '<em>AttributeBase Base</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Attribute Base</em>'.
+	 * @return a new object of class '<em>AttributeBase Base</em>'.
 	 * @generated
 	 */
 	AttributeBase createAttributeBase();
@@ -59,7 +64,7 @@ public interface MetamodelBaseFactory extends EFactory {
 	 * @return a new object of class '<em>Relation Class Base</em>'.
 	 * @generated
 	 */
-	RelationClassBase createRelationClassBase();
+	IRelationClass createRelationClassBase();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -69,5 +74,36 @@ public interface MetamodelBaseFactory extends EFactory {
 	 * @generated
 	 */
 	MetamodelBasePackage getMetamodelBasePackage();
+
+	MetamodelBaseFactory eINSTANCE = (MetamodelBaseFactory) MetamodelFactoryImpl.init();
+
+	MetamodelBase createMetamodel();
+
+
+	ITemplate createTemplate(IZentaDiagramModel reference, MetamodelBase metamodel);
+
+	ObjectClass createObjectClass(IZentaElement element, ITemplate template);
+
+	IRelationClass createRelationClass(IRelationship reference, ITemplate template);
+
+	public class BuiltinClassShouldNotHaveReference extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
+
+	public class BuiltinClassShouldNotHaveAncestor extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
+
+	String getDefiningName(IIdentifier reference);
+
+	MetamodelBase createMetamodel(IZentaModel zentaModel);
+
+	MetamodelBase getMetamodelFor(IZentaModelElement modelElement);
+
+	ObjectClass createNoteClass();
+
+	ObjectClass createGroupClass();
+
+	IRelationClass createNoteConnectionClass();
 
 } //MetamodelBaseFactory

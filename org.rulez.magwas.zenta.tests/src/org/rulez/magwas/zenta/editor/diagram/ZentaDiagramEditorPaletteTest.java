@@ -25,7 +25,7 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
@@ -228,7 +228,7 @@ public class ZentaDiagramEditorPaletteTest {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
 		IRelationship newElement = testdata.createNewRelationClass("New test RC");
-		RelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
+		IRelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
 		assertNotNull(newRc);
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
 		assertNotNull(relationsgroup);
@@ -241,7 +241,7 @@ public class ZentaDiagramEditorPaletteTest {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
 		IRelationship newElement = testdata.createNewRelationClass("New test RC");
-		RelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
+		IRelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
 		assertNotNull(newRc);
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
 		assertNotNull(relationsgroup);
@@ -255,7 +255,7 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 	@Test
 	public void A_defining_element_with_a_nondefining_connection_can_be_removed() {
-		RelationClass baserc = testdata.metamodel.getBuiltinRelationClass();
+		IRelationClass baserc = testdata.metamodel.getBuiltinRelationClass();
 		IDiagramModel dm = testdata.getTemplateDiagramModel();
 		IRelationship newRelation = testdata.createUnnamedRelation(baserc, dm);
 

@@ -6,10 +6,9 @@ import static org.junit.Assert.*;
 import org.eclipse.emf.common.util.EList;
 import org.junit.Before;
 import org.junit.Test;
-import org.rulez.magwas.zenta.metamodel.Metamodel;
-import org.rulez.magwas.zenta.metamodel.MetamodelFactory;
-import org.rulez.magwas.zenta.metamodel.Template;
-import org.rulez.magwas.zenta.metamodel.TemplateBase;
+import org.rulez.magwas.zenta.metamodel.MetamodelBase;
+import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -20,14 +19,14 @@ public class MetamodelBuilderTest {
 	private IZentaModel model;
 	private IZentaDiagramModel diagramModel;
 	private ModelTestData testdata;
-	private Metamodel metamodel;
+	private MetamodelBase metamodel;
 
 	@Before
 	public void setUp() {
 		testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTemplateDiagramModel();
-		metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
+		metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
 	}
 	
 	@Test
@@ -44,10 +43,10 @@ public class MetamodelBuilderTest {
 	
 	@Test
 	public void The_builder_processes_Templates_when_initializes() {
-		EList<TemplateBase> templates = metamodel.getTemplates();
+		EList<ITemplate> templates = metamodel.getTemplates();
 		assertTrue(2 <= templates.size());
 		int tsize = metamodel.getTemplates().size();
-		Template template = metamodel.getTemplateFor(diagramModel);
+		ITemplate template = metamodel.getTemplateFor(diagramModel);
 		assertEquals(tsize,metamodel.getTemplates().size());
 		assertNotNull(template);
 	}

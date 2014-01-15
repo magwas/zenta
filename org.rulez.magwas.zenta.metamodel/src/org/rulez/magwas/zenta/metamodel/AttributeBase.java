@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Attribute Base</b></em>'.
+ * A representation of the model object '<em><b>AttributeBase Base</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
@@ -87,12 +87,12 @@ public interface AttributeBase extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation</em>' reference.
-	 * @see #setRelation(RelationClassBase)
+	 * @see #setRelation(IRelationClass)
 	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getAttributeBase_Relation()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
-	RelationClassBase getRelation();
+	IRelationClass getRelation();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getRelation <em>Relation</em>}' reference.
@@ -102,7 +102,7 @@ public interface AttributeBase extends EObject {
 	 * @see #getRelation()
 	 * @generated
 	 */
-	void setRelation(RelationClassBase value);
+	void setRelation(IRelationClass value);
 
 	/**
 	 * Returns the value of the '<em><b>Connected Object</b></em>' reference.
@@ -113,12 +113,12 @@ public interface AttributeBase extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connected Object</em>' reference.
-	 * @see #setConnectedObject(ObjectClassBase)
+	 * @see #setConnectedObject(ObjectClass)
 	 * @see org.rulez.magwas.zenta.metamodel.MetamodelBasePackage#getAttributeBase_ConnectedObject()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
-	ObjectClassBase getConnectedObject();
+	ObjectClass getConnectedObject();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.AttributeBase#getConnectedObject <em>Connected Object</em>}' reference.
@@ -128,6 +128,13 @@ public interface AttributeBase extends EObject {
 	 * @see #getConnectedObject()
 	 * @generated
 	 */
-	void setConnectedObject(ObjectClassBase value);
+	void setConnectedObject(ObjectClass value);
+
+	public enum Direction {
+		SOURCE,TARGET
+	}
+
+	Direction getDirection();
+
 
 } // AttributeBase

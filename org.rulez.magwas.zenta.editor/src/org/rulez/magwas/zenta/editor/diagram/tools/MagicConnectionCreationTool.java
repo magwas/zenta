@@ -44,7 +44,7 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -311,7 +311,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	private void addConnectionActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject) {
 		IZentaDiagramModel zdm = (IZentaDiagramModel) sourceDiagramModelObject.getDiagramModel();
 		IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(zdm);
-		for(RelationClass relationshipType : viewpoint.getSourceRelationClassesFor(sourceDiagramModelObject)) {
+		for(IRelationClass relationshipType : viewpoint.getSourceRelationClassesFor(sourceDiagramModelObject)) {
 			if(viewpoint.isValidRelationshipStart(sourceDiagramModelObject.getZentaElement(), relationshipType)) {
 				MenuItem item = addConnectionAction(menu, relationshipType);
 				Menu subMenu = new Menu(item);
@@ -333,7 +333,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		}
 	}
 	
-	private void addConnectionActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject, Collection<ObjectClass> objectclassses, RelationClass relationshipType) {
+	private void addConnectionActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject, Collection<ObjectClass> objectclassses, IRelationClass relationshipType) {
 		boolean added = false;
 		IZentaElement sourceElement = sourceDiagramModelObject.getZentaElement();
 		for(ObjectClass type : objectclassses) {
@@ -367,8 +367,8 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 			MenuItem item = addElementAction(menu, targetObjectType);
 			Menu subMenu = new Menu(item);
 			item.setMenu(subMenu);
-			List<RelationClass> validRelationships = viewPoint.getValidRelationships(oc, targetObjectType);
-			for(RelationClass typeRel : validRelationships)
+			List<IRelationClass> validRelationships = viewPoint.getValidRelationships(oc, targetObjectType);
+			for(IRelationClass typeRel : validRelationships)
 				addConnectionAction(subMenu, typeRel);
 			if(subMenu.getItemCount() == 0) {
 				item.dispose(); // Nothing there
@@ -403,12 +403,12 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	}
 
 	private void addConnectionActions(Menu menu, IZentaElement sourceElement, IZentaElement targetElement) {
-		for(RelationClass type : viewPoint.getValidRelationships(sourceElement, targetElement)) {
+		for(IRelationClass type : viewPoint.getValidRelationships(sourceElement, targetElement)) {
 			addConnectionAction(menu, type);
 		}
 	}
 	
-	private MenuItem addConnectionAction(Menu menu, final RelationClass relationshipType) {
+	private MenuItem addConnectionAction(Menu menu, final IRelationClass relationshipType) {
 		final MenuItem item = new MenuItem(menu, SWT.CASCADE);
 		item.setText(relationshipType.getName());
 		item.setImage(ZentaLabelProvider.INSTANCE.getImage(relationshipType));
@@ -549,9 +549,9 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		private IDiagramModelZentaConnection fConnection;
 		private IDiagramModelZentaObject fSource;
 		private IDiagramModelZentaObject fTarget;
-		private RelationClass fTemplate;
+		private IRelationClass fTemplate;
 		
-		CreateNewConnectionCommand(IDiagramModelZentaObject source, IDiagramModelZentaObject target, RelationClass relationClass) {
+		CreateNewConnectionCommand(IDiagramModelZentaObject source, IDiagramModelZentaObject target, IRelationClass relationClass) {
 			fSource = source;
 			fTarget = target;
 			fTemplate = relationClass;

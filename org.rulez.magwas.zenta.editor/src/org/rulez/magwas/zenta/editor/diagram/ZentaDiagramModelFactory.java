@@ -70,14 +70,14 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
         
         Object object = fTemplate.create(folder);
         
-        // Connection created from Relationship Template
+        // Connection created from Relationship ITemplate
         if(object instanceof IRelationship) {
             IDiagramModelZentaConnection connection = IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
             connection.setRelationship((IRelationship)object);
             return connection;
         }
         
-        // Zenta Diagram Object created from Zenta Element Template
+        // Zenta Diagram Object created from Zenta Element ITemplate
         else if(object instanceof IZentaElement) {
             IZentaElement element = (IZentaElement)object;
             element.setName(fTemplate.getName());

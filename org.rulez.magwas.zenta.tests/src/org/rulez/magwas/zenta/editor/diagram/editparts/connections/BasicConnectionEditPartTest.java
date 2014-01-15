@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.connections.BasicConnection
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -60,7 +60,7 @@ public class BasicConnectionEditPartTest {
 	@Test
 	public void A_newly_created_nondefining_connection_have_the_appearance_of_the_defining_relation() {
 		String id = "9c441eb7";
-		RelationClass baseRelationClass = (RelationClass) testdata.metamodel.getClassById(id);
+		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
 		IRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		assertNotNull(rel);
 		assertNotSame(rel.getId(),rel.getObjectClass());
@@ -97,7 +97,7 @@ public class BasicConnectionEditPartTest {
 	@Test
 	public void ToolTip_displays_the_RelationClass() {
 		String id = "9c441eb7";
-		RelationClass baseRelationClass = (RelationClass) testdata.metamodel.getClassById(id);
+		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
 		IRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		rel.setName("Displayable Relation Name");
 		assertNotNull(rel);
@@ -113,7 +113,7 @@ public class BasicConnectionEditPartTest {
 	@Test
 	public void ToolTip_displays_the_RelationClass_of_the_defining_element() {
 		String id = "9c441eb7";
-		RelationClass baseRelationClass = (RelationClass) testdata.metamodel.getClassById(id);
+		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
 		IZentaDiagramModel dm = testdata.getTemplateDiagramModel();
 		IRelationship rel = testdata.createNewConnection("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",baseRelationClass,dm);
 		assertNotNull(rel);

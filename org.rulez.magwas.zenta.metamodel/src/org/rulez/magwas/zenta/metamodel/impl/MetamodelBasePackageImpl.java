@@ -13,10 +13,10 @@ import org.rulez.magwas.zenta.metamodel.AttributeBase;
 import org.rulez.magwas.zenta.metamodel.MetamodelBase;
 import org.rulez.magwas.zenta.metamodel.MetamodelBaseFactory;
 import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
-import org.rulez.magwas.zenta.metamodel.ObjectClassBase;
+import org.rulez.magwas.zenta.metamodel.ObjectClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObjectBase;
-import org.rulez.magwas.zenta.metamodel.RelationClassBase;
-import org.rulez.magwas.zenta.metamodel.TemplateBase;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 /**
@@ -446,21 +446,21 @@ public class MetamodelBasePackageImpl extends EPackageImpl implements MetamodelB
 		initEClass(metamodelBaseEClass, MetamodelBase.class, "MetamodelBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodelBase_Templates(), this.getTemplateBase(), this.getTemplateBase_Metamodel(), "templates", null, 0, -1, MetamodelBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(templateBaseEClass, TemplateBase.class, "TemplateBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTemplateBase_ObjectClasses(), this.getObjectClassBase(), this.getObjectClassBase_Template(), "objectClasses", null, 0, -1, TemplateBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTemplateBase_RelationClasses(), this.getRelationClassBase(), this.getRelationClassBase_Template(), "relationClasses", null, 0, -1, TemplateBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTemplateBase_Path(), ecorePackage.getEString(), "path", null, 1, 1, TemplateBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTemplateBase_Metamodel(), this.getMetamodelBase(), this.getMetamodelBase_Templates(), "metamodel", null, 1, 1, TemplateBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(templateBaseEClass, ITemplate.class, "ITemplate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTemplateBase_ObjectClasses(), this.getObjectClassBase(), this.getObjectClassBase_Template(), "objectClasses", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemplateBase_RelationClasses(), this.getRelationClassBase(), this.getRelationClassBase_Template(), "relationClasses", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTemplateBase_Path(), ecorePackage.getEString(), "path", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemplateBase_Metamodel(), this.getMetamodelBase(), this.getMetamodelBase_Templates(), "metamodel", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(referencesModelObjectBaseEClass, ReferencesModelObjectBase.class, "ReferencesModelObjectBase", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReferencesModelObjectBase_Reference(), theZentaPackage.getIdentifier(), null, "reference", null, 1, 1, ReferencesModelObjectBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReferencesModelObjectBase_Name(), ecorePackage.getEString(), "name", null, 1, 1, ReferencesModelObjectBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(objectClassBaseEClass, ObjectClassBase.class, "ObjectClassBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getObjectClassBase_Attributes(), this.getAttributeBase(), null, "attributes", null, 0, -1, ObjectClassBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObjectClassBase_Ancestor(), this.getObjectClassBase(), this.getObjectClassBase_Children(), "ancestor", null, 1, 1, ObjectClassBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObjectClassBase_Children(), this.getObjectClassBase(), this.getObjectClassBase_Ancestor(), "children", null, 0, -1, ObjectClassBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getObjectClassBase_Template(), this.getTemplateBase(), this.getTemplateBase_ObjectClasses(), "template", null, 0, 1, ObjectClassBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(objectClassBaseEClass, ObjectClass.class, "ObjectClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getObjectClassBase_Attributes(), this.getAttributeBase(), null, "attributes", null, 0, -1, ObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectClassBase_Ancestor(), this.getObjectClassBase(), this.getObjectClassBase_Children(), "ancestor", null, 1, 1, ObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectClassBase_Children(), this.getObjectClassBase(), this.getObjectClassBase_Ancestor(), "children", null, 0, -1, ObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectClassBase_Template(), this.getTemplateBase(), this.getTemplateBase_ObjectClasses(), "template", null, 0, 1, ObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeBaseEClass, AttributeBase.class, "AttributeBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttributeBase_MinOccurs(), ecorePackage.getEInt(), "minOccurs", "0", 1, 1, AttributeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -468,10 +468,10 @@ public class MetamodelBasePackageImpl extends EPackageImpl implements MetamodelB
 		initEReference(getAttributeBase_Relation(), this.getRelationClassBase(), null, "relation", null, 1, 1, AttributeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAttributeBase_ConnectedObject(), this.getObjectClassBase(), null, "connectedObject", null, 1, 1, AttributeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(relationClassBaseEClass, RelationClassBase.class, "RelationClassBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelationClassBase_Ancestor(), this.getRelationClassBase(), this.getRelationClassBase_Children(), "ancestor", null, 1, 1, RelationClassBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationClassBase_Children(), this.getRelationClassBase(), this.getRelationClassBase_Ancestor(), "children", null, 0, -1, RelationClassBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationClassBase_Template(), this.getTemplateBase(), this.getTemplateBase_RelationClasses(), "template", null, 0, 1, RelationClassBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(relationClassBaseEClass, IRelationClass.class, "IRelationClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRelationClassBase_Ancestor(), this.getRelationClassBase(), this.getRelationClassBase_Children(), "ancestor", null, 1, 1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationClassBase_Children(), this.getRelationClassBase(), this.getRelationClassBase_Ancestor(), "children", null, 0, -1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationClassBase_Template(), this.getTemplateBase(), this.getTemplateBase_RelationClasses(), "template", null, 0, 1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

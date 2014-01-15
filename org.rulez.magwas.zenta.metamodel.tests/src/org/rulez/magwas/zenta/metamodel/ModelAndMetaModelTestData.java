@@ -2,7 +2,7 @@ package org.rulez.magwas.zenta.metamodel;
 
 import static org.junit.Assert.assertNotNull;
 import org.rulez.magwas.zenta.metamodel.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -19,7 +19,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 	public IDiagramModelZentaConnection connection;
 	public IZentaDiagramModel diagramModel;
 	public IDiagramModelZentaConnection connection2;
-	public Metamodel metamodel;
+	public MetamodelBase metamodel;
 
 	public ModelAndMetaModelTestData() {
 		super();
@@ -37,7 +37,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		setUpMetaModel();
 	}
 		private void setUpMetaModel() {
-			metamodel = MetamodelFactory.eINSTANCE.createMetamodel(model);
+			metamodel = MetamodelBaseFactory.eINSTANCE.createMetamodel(model);
 	        assertNotNull(metamodel);
 	        assertNotNull(metamodel.getTemplates());
 		}
@@ -60,10 +60,10 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 
 	public ObjectClass createTestObjectClass() {
 		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
-		Template template = (Template) metamodel.getTemplates().get(0);
+		ITemplate template = (ITemplate) metamodel.getTemplates().get(0);
 		assertNotNull(template);
 		assertNotNull(template.getMetamodel());
-		return MetamodelFactory.eINSTANCE
+		return MetamodelBaseFactory.eINSTANCE
 				.createObjectClass(
 						element,
 						template);
@@ -89,26 +89,26 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		return newElement;
 	}
 	public IRelationship createNewRelationClass(String elementName) {
-		RelationClass oc = metamodel.getBuiltinRelationClass();
+		IRelationClass oc = metamodel.getBuiltinRelationClass();
 		IDiagramModel dm = getTemplateDiagramModel();
 		IRelationship rel = createNewConnection(elementName, oc, dm);
 		return rel;
 	}
 
-	public IRelationship createNewNondefiningRelationBasedOn(RelationClass baseClass) {
+	public IRelationship createNewNondefiningRelationBasedOn(IRelationClass baseClass) {
 		String name = "NonDefiningRelation";
 		IDiagramModel dm = (IDiagramModel) this.getById("63f1b081");
 		return createNewConnection(name, baseClass, dm);
 	}
 	public IRelationship createNewConnection(String name,
-			RelationClass baseRelationClass, IDiagramModel diagram) {
+			IRelationClass baseRelationClass, IDiagramModel diagram) {
 		IRelationship rel = createUnnamedRelation(baseRelationClass, diagram);
 		rel.setName(name);
 		return rel;
 	}
 
 	public IRelationship createUnnamedRelation(
-			RelationClass baseRelationClass, IDiagramModel diagram) {
+			IRelationClass baseRelationClass, IDiagramModel diagram) {
 		IZentaElement sourceElement = createClassedTestElement();
 		IZentaElement targetElement = createClassedTestElement();
 		IRelationship rel = (IRelationship) baseRelationClass.create((IFolder) sourceElement.eContainer());

@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.rulez.magwas.zenta.metamodel.MetamodelBase;
 import org.rulez.magwas.zenta.metamodel.MetamodelBasePackage;
-import org.rulez.magwas.zenta.metamodel.TemplateBase;
+import org.rulez.magwas.zenta.metamodel.ITemplate;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Metamodel Base</b></em>'.
+ * An implementation of the model object '<em><b>MetamodelBase Base</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
@@ -31,9 +31,8 @@ import org.rulez.magwas.zenta.metamodel.TemplateBase;
  * </ul>
  * </p>
  *
- * @generated
  */
-public class MetamodelBaseImpl extends EObjectImpl implements MetamodelBase {
+abstract public class MetamodelBaseImpl extends EObjectImpl implements MetamodelBase {
 	/**
 	 * The cached value of the '{@link #getTemplates() <em>Templates</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -42,7 +41,7 @@ public class MetamodelBaseImpl extends EObjectImpl implements MetamodelBase {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateBase> templates;
+	protected EList<ITemplate> templates;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,9 +67,9 @@ public class MetamodelBaseImpl extends EObjectImpl implements MetamodelBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TemplateBase> getTemplates() {
+	public EList<ITemplate> getTemplates() {
 		if (templates == null) {
-			templates = new EObjectContainmentWithInverseEList<TemplateBase>(TemplateBase.class, this, MetamodelBasePackage.METAMODEL_BASE__TEMPLATES, MetamodelBasePackage.TEMPLATE_BASE__METAMODEL);
+			templates = new EObjectContainmentWithInverseEList<ITemplate>(ITemplate.class, this, MetamodelBasePackage.METAMODEL_BASE__TEMPLATES, MetamodelBasePackage.TEMPLATE_BASE__METAMODEL);
 		}
 		return templates;
 	}
@@ -129,7 +128,7 @@ public class MetamodelBaseImpl extends EObjectImpl implements MetamodelBase {
 		switch (featureID) {
 			case MetamodelBasePackage.METAMODEL_BASE__TEMPLATES:
 				getTemplates().clear();
-				getTemplates().addAll((Collection<? extends TemplateBase>)newValue);
+				getTemplates().addAll((Collection<? extends ITemplate>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

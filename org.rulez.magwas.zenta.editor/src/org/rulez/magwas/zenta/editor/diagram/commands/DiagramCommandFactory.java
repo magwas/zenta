@@ -17,7 +17,7 @@ import org.rulez.magwas.zenta.editor.diagram.dialog.NewNestedRelationsDialog;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
-import org.rulez.magwas.zenta.metamodel.RelationClass;
+import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -97,7 +97,7 @@ public final class DiagramCommandFactory {
             NewNestedRelationDialog dialog = new NewNestedRelationDialog(vp,Display.getCurrent().getActiveShell(),
             		zentaElement, children.get(0));
             if(dialog.open() == Window.OK) {
-                RelationClass eClass = dialog.getSelectedType();
+                IRelationClass eClass = dialog.getSelectedType();
                 if(eClass != null) {
                     command = new CreateRelationCommand(zentaElement, children.get(0), eClass);
                 }
@@ -112,7 +112,7 @@ public final class DiagramCommandFactory {
                 List<IZentaElement> elements = dialog.getSelectedElements();
                 if(elements != null) {
                     command = new CompoundCommand();
-                    List<RelationClass> types = dialog.getSelectedTypes();
+                    List<IRelationClass> types = dialog.getSelectedTypes();
                     for(int i=0;i<types.size();i++) {
                         ((CompoundCommand)command).add(new CreateRelationCommand(zentaElement, elements.get(i), types.get(i)));
                     }

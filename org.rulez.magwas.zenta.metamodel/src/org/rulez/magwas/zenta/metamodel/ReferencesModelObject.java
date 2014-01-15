@@ -11,7 +11,7 @@ public interface ReferencesModelObject extends ReferencesModelObjectBase {
 
 	void postCreate(IIdentifier createdObj, IFolder folder);
 	
-	Metamodel getMetamodel();
+	MetamodelBase getMetamodel();
 
 	boolean isInstance(IIdentifier relation);
 	
