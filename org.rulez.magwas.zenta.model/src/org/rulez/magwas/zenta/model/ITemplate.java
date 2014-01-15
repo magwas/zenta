@@ -2,6 +2,8 @@
  */
 package org.rulez.magwas.zenta.model;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -12,8 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getObjectClasses <em>Object Classes</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getRelationClasses <em>Relation Classes</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getClasses <em>Classes</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getPath <em>Path</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getMetamodel <em>Metamodel</em>}</li>
  * </ul>
@@ -27,40 +28,22 @@ public interface ITemplate
 extends IReferencesModelObject 
 {
 	/**
-	 * Returns the value of the '<em><b>Object Classes</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IObjectClass}.
 	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IObjectClass#getTemplate <em>Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Object Classes</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Classes</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Object Classes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_ObjectClasses()
+	 * @return the value of the '<em>Classes</em>' containment reference list.
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_Classes()
 	 * @see org.rulez.magwas.zenta.model.IObjectClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
 	 */
-	EList<IObjectClass> getObjectClasses();
-
-	/**
-	 * Returns the value of the '<em><b>Relation Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IRelationClass}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IRelationClass#getTemplate <em>Template</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Relation Classes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Relation Classes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_RelationClasses()
-	 * @see org.rulez.magwas.zenta.model.IRelationClass#getTemplate
-	 * @model opposite="template" containment="true"
-	 * @generated
-	 */
-	EList<IRelationClass> getRelationClasses();
+	EList<IObjectClass> getClasses();
 
 	/**
 	 * Returns the value of the '<em><b>Path</b></em>' attribute.
@@ -128,5 +111,9 @@ extends IReferencesModelObject
 	void createClassBy(IZentaElement element);
 
 	IIdentifier create(IFolder folder);
+
+	List<IObjectClass> getObjectClasses();
+
+	List<IRelationClass> getRelationClasses();
 
 } // ITemplate

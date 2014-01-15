@@ -6,13 +6,14 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
-public class NoteConnectionClass extends AbstractRelationClass implements
+public class NoteConnectionClass extends AbstractObjectClass implements
 		IRelationClass {
 
 	@Override
@@ -26,12 +27,12 @@ public class NoteConnectionClass extends AbstractRelationClass implements
 	}
 
 	@Override
-	public void setAncestor(IRelationClass value) {
+	public void setAncestor(IObjectClass value) {
 		throw new UnTestedException();
 	}
 
 	@Override
-	public EList<IRelationClass> getChildren() {
+	public EList<IObjectClass> getChildren() {
 		throw new UnTestedException();
 	}
 
@@ -57,6 +58,11 @@ public class NoteConnectionClass extends AbstractRelationClass implements
 	public List<IReferencesModelObject> getAncestry() {
 		ArrayList<IReferencesModelObject> anclist = new ArrayList<IReferencesModelObject>();
 		return anclist;
+	}
+
+	@Override
+	public String getHelpHintTitle() {
+		return getName();
 	}
 
 }

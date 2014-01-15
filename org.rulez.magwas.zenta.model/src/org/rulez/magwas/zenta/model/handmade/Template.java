@@ -1,5 +1,7 @@
 package org.rulez.magwas.zenta.model.handmade;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -124,9 +126,9 @@ public class Template extends TemplateBase implements ITemplate {
 	@Override
 	public void createClassBy(IZentaElement element) {
 		if(element instanceof IRelationship)
-			relationClasses.add(getRelationClassFrom((IRelationship) element));
+			classes.add(getRelationClassFrom((IRelationship) element));
 		else
-			objectClasses.add(getObjectClassFrom(element));
+			classes.add(getObjectClassFrom(element));
 	}
 
 	@Override
@@ -158,5 +160,23 @@ public class Template extends TemplateBase implements ITemplate {
 	public List<IReferencesModelObject> getAncestry() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<IObjectClass> getObjectClasses() {
+		ArrayList<IObjectClass> ret = new ArrayList<IObjectClass>();
+		for(IObjectClass c : this.getClasses())
+			if(!(c instanceof RelationClass))
+				ret.add(c);
+		return Collections.unmodifiableList(ret);
+	}
+
+	@Override
+	public List<IRelationClass> getRelationClasses() {
+		ArrayList<IRelationClass> ret = new ArrayList<IRelationClass>();
+		for(IObjectClass c : this.getClasses())
+			if((c instanceof RelationClass))
+				ret.add((IRelationClass) c);
+		return Collections.unmodifiableList(ret);
 	}
 }

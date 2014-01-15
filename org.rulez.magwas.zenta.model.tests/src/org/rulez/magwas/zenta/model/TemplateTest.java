@@ -1,6 +1,9 @@
 package org.rulez.magwas.zenta.model;
 
 import static org.junit.Assert.*;
+
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
@@ -46,13 +49,13 @@ public class TemplateTest {
 	
 	@Test
 	public void The_Builtin_template_have_one_ObjectClass() {
-		EList<IObjectClass> objects = fixture.getObjectClasses();
+		List<IObjectClass> objects = fixture.getObjectClasses();
 		assertEquals(1,objects.size());
 	}
 
 	@Test
 	public void The_Builtin_template_have_one_RelationClass() {
-		EList<IRelationClass> relations = fixture.getRelationClasses();
+		List<IRelationClass> relations = fixture.getRelationClasses();
 		assertEquals(1,relations.size());
 	}
 

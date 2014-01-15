@@ -38,6 +38,6 @@ public class MetamodelTest {
 
 	@Test
 	public void testHave_builtin_ObjectClass() {
-		assertEquals("Basic Object",fixture.getTemplates().get(0).getObjectClasses().get(0).getName());
+		assertEquals("Basic Object",fixture.getTemplates().get(0).getClasses().get(0).getName());
 	}
 }

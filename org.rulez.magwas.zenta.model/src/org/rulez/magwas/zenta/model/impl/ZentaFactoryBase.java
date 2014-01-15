@@ -52,7 +52,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     public static IZentaFactory init() {
 		try {

@@ -635,6 +635,7 @@ public class ZentaSwitch<T> extends Switch<T> {
 			case IZentaPackage.RELATION_CLASS: {
 				IRelationClass relationClass = (IRelationClass)theEObject;
 				T result = caseRelationClass(relationClass);
+				if (result == null) result = caseObjectClass(relationClass);
 				if (result == null) result = caseReferencesModelObject(relationClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

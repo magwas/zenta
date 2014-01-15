@@ -98,7 +98,7 @@ public class HintsViewTest {
 		HintsView view = prepareHintsView();
 		assertEquals("describes", view.getTitleText());
 		assertEquals("describes", baseRelationClass.getHelpHintTitle());
-		assertEquals("I guess this might describe something\nAncestry: describes\n",baseRelationClass.getHelpHintContent());
+		assertEquals("I guess this might describe something\nAncestry: describes => Basic Relation\n",baseRelationClass.getHelpHintContent());
 	}
 	
 	@Test

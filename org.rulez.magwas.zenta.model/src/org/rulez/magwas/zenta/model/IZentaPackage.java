@@ -3815,22 +3815,13 @@ public interface IZentaPackage extends EPackage {
 	int TEMPLATE__NAME = REFERENCES_MODEL_OBJECT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Object Classes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE__OBJECT_CLASSES = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Relation Classes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE__RELATION_CLASSES = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 1;
+	int TEMPLATE__CLASSES = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -3839,7 +3830,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE__PATH = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 2;
+	int TEMPLATE__PATH = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Metamodel</b></em>' container reference.
@@ -3848,7 +3839,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE__METAMODEL = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 3;
+	int TEMPLATE__METAMODEL = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Template</em>' class.
@@ -3857,7 +3848,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 4;
+	int TEMPLATE_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ObjectClassBase <em>Object Class</em>}' class.
@@ -4004,7 +3995,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS__REFERENCE = REFERENCES_MODEL_OBJECT__REFERENCE;
+	int RELATION_CLASS__REFERENCE = OBJECT_CLASS__REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4013,7 +4004,16 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS__NAME = REFERENCES_MODEL_OBJECT__NAME;
+	int RELATION_CLASS__NAME = OBJECT_CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATION_CLASS__ATTRIBUTES = OBJECT_CLASS__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Ancestor</b></em>' reference.
@@ -4022,7 +4022,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS__ANCESTOR = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 0;
+	int RELATION_CLASS__ANCESTOR = OBJECT_CLASS__ANCESTOR;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' reference list.
@@ -4031,7 +4031,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS__CHILDREN = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 1;
+	int RELATION_CLASS__CHILDREN = OBJECT_CLASS__CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Template</b></em>' container reference.
@@ -4040,7 +4040,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS__TEMPLATE = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 2;
+	int RELATION_CLASS__TEMPLATE = OBJECT_CLASS__TEMPLATE;
 
 	/**
 	 * The number of structural features of the '<em>Relation Class</em>' class.
@@ -4049,7 +4049,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 3;
+	int RELATION_CLASS_FEATURE_COUNT = OBJECT_CLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -5140,26 +5140,15 @@ public interface IZentaPackage extends EPackage {
 	EClass getTemplate();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.rulez.magwas.zenta.model.ITemplate#getObjectClasses <em>Object Classes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.rulez.magwas.zenta.model.ITemplate#getClasses <em>Classes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Object Classes</em>'.
-	 * @see org.rulez.magwas.zenta.model.ITemplate#getObjectClasses()
+	 * @return the meta object for the containment reference list '<em>Classes</em>'.
+	 * @see org.rulez.magwas.zenta.model.ITemplate#getClasses()
 	 * @see #getTemplate()
 	 * @generated
 	 */
-	EReference getTemplate_ObjectClasses();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.rulez.magwas.zenta.model.ITemplate#getRelationClasses <em>Relation Classes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Relation Classes</em>'.
-	 * @see org.rulez.magwas.zenta.model.ITemplate#getRelationClasses()
-	 * @see #getTemplate()
-	 * @generated
-	 */
-	EReference getTemplate_RelationClasses();
+	EReference getTemplate_Classes();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.ITemplate#getPath <em>Path</em>}'.
@@ -5332,39 +5321,6 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRelationClass();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.rulez.magwas.zenta.model.IRelationClass#getAncestor <em>Ancestor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Ancestor</em>'.
-	 * @see org.rulez.magwas.zenta.model.IRelationClass#getAncestor()
-	 * @see #getRelationClass()
-	 * @generated
-	 */
-	EReference getRelationClass_Ancestor();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.rulez.magwas.zenta.model.IRelationClass#getChildren <em>Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Children</em>'.
-	 * @see org.rulez.magwas.zenta.model.IRelationClass#getChildren()
-	 * @see #getRelationClass()
-	 * @generated
-	 */
-	EReference getRelationClass_Children();
-
-	/**
-	 * Returns the meta object for the container reference '{@link org.rulez.magwas.zenta.model.IRelationClass#getTemplate <em>Template</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Template</em>'.
-	 * @see org.rulez.magwas.zenta.model.IRelationClass#getTemplate()
-	 * @see #getRelationClass()
-	 * @generated
-	 */
-	EReference getRelationClass_Template();
 
 	/**
 	 * Returns the meta object for data type '{@link java.io.File <em>File</em>}'.
@@ -6306,20 +6262,12 @@ public interface IZentaPackage extends EPackage {
 		EClass TEMPLATE = eINSTANCE.getTemplate();
 
 		/**
-		 * The meta object literal for the '<em><b>Object Classes</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TEMPLATE__OBJECT_CLASSES = eINSTANCE.getTemplate_ObjectClasses();
-
-		/**
-		 * The meta object literal for the '<em><b>Relation Classes</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEMPLATE__RELATION_CLASSES = eINSTANCE.getTemplate_RelationClasses();
+		EReference TEMPLATE__CLASSES = eINSTANCE.getTemplate_Classes();
 
 		/**
 		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
@@ -6456,30 +6404,6 @@ public interface IZentaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RELATION_CLASS = eINSTANCE.getRelationClass();
-
-		/**
-		 * The meta object literal for the '<em><b>Ancestor</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RELATION_CLASS__ANCESTOR = eINSTANCE.getRelationClass_Ancestor();
-
-		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RELATION_CLASS__CHILDREN = eINSTANCE.getRelationClass_Children();
-
-		/**
-		 * The meta object literal for the '<em><b>Template</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RELATION_CLASS__TEMPLATE = eINSTANCE.getRelationClass_Template();
 
 		/**
 		 * The meta object literal for the '<em>File</em>' data type.

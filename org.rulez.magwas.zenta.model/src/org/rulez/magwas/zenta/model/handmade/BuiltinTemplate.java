@@ -1,8 +1,11 @@
 package org.rulez.magwas.zenta.model.handmade;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
+import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 
@@ -11,8 +14,8 @@ public class BuiltinTemplate extends Template {
 	public BuiltinTemplate(IMetamodel metamodel) {
 		super();
 		metamodel.getTemplates().add(this);
-		getObjectClasses().add(new RootObjectClass());
-		getRelationClasses().add(new RootRelationClass());
+		getClasses().add(new RootObjectClass());
+		getClasses().add(new RootRelationClass());
 	}
 
 	public void setReference(EObject newReference) {

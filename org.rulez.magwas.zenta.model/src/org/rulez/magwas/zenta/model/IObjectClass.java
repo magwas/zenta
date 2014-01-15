@@ -92,7 +92,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 
 	/**
 	 * Returns the value of the '<em><b>Template</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.ITemplate#getObjectClasses <em>Object Classes</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.ITemplate#getClasses <em>Classes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>ITemplate</em>' container reference isn't clear,
@@ -102,8 +102,8 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * @return the value of the '<em>Template</em>' container reference.
 	 * @see #setTemplate(ITemplate)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getObjectClass_Template()
-	 * @see org.rulez.magwas.zenta.model.ITemplate#getObjectClasses
-	 * @model opposite="objectClasses" transient="false"
+	 * @see org.rulez.magwas.zenta.model.ITemplate#getClasses
+	 * @model opposite="classes" transient="false"
 	 * @generated
 	 */
 	ITemplate getTemplate();

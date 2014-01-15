@@ -264,7 +264,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
-				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, IZentaPackage.TEMPLATE__OBJECT_CLASSES, ITemplate.class, msgs);
+				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, IZentaPackage.TEMPLATE__CLASSES, ITemplate.class, msgs);
 			msgs = basicSetTemplate(newTemplate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -324,7 +324,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case IZentaPackage.OBJECT_CLASS__TEMPLATE:
-				return eInternalContainer().eInverseRemove(this, IZentaPackage.TEMPLATE__OBJECT_CLASSES, ITemplate.class, msgs);
+				return eInternalContainer().eInverseRemove(this, IZentaPackage.TEMPLATE__CLASSES, ITemplate.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}

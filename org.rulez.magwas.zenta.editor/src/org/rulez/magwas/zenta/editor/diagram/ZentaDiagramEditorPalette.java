@@ -80,15 +80,16 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 
     protected void processNotification(Notification notification) {
     	Object notifier = notification.getNotifier();
+    	System.out.printf("notifier = %s\ntype=%s\nvalue=%s\n", notifier,notification.getEventType(),notification.getNewValue());
 		if(notification.getEventType() == Notification.ADD) {
     		if(notifier instanceof ITemplate)
     			addClassToPalette(notification.getNewValue());
     	}
     	if(notification.getEventType() == Notification.SET) {
-    		if(notifier instanceof IObjectClass)
-    			changeObjectClassNameInPalette((IObjectClass) notifier);
     		if(notifier instanceof IRelationClass)
     			changeRelationClassNameInPalette((IRelationClass) notifier);
+    		else if(notifier instanceof IObjectClass)
+    			changeObjectClassNameInPalette((IObjectClass) notifier);
     	}
     	if(notification.getEventType() == Notification.REMOVE) {
     		if(notifier instanceof ITemplate)
@@ -98,10 +99,10 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 
 	private void processClassRemove(Object oldValue) {
 		PaletteContainer group = null;
-		if(oldValue instanceof IObjectClass)
-			group = this.fObjectClassGroup;
-		else if(oldValue instanceof IRelationClass)
+		if(oldValue instanceof IRelationClass)
 			group = this.fRelationsGroup;
+		else if(oldValue instanceof IObjectClass)
+			group = this.fObjectClassGroup;
 		if(group != null) {
 			@SuppressWarnings("unchecked")
 			List<CreationToolEntry> children = group.getChildren();
@@ -139,10 +140,10 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 
 
 	private void addClassToPalette(Object newValue) {
-		if(newValue instanceof IObjectClass)
-			addObjectClassToPalette((IObjectClass) newValue);
-		else if(newValue instanceof IRelationClass)
+		if(newValue instanceof IRelationClass)
 			addRelationClassToPalette((IRelationClass) newValue);
+		else if(newValue instanceof IObjectClass)
+			addObjectClassToPalette((IObjectClass) newValue);
 	}
 		private void addObjectClassToPalette(IObjectClass newOc) {
 			PaletteEntry entry = createCombinedTemplateCreationEntry(newOc, null);

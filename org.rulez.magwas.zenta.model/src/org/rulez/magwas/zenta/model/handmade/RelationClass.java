@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
-public class RelationClass extends AbstractRelationClass implements IRelationClass {
+public class RelationClass extends ObjectClass implements IRelationClass {
 
 	protected RelationClass(IRelationship referenced, ITemplate template) {
 		super(referenced,template);
@@ -24,6 +24,8 @@ public class RelationClass extends AbstractRelationClass implements IRelationCla
 		referenced.setObjectClass(ancie.getId());
 		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.SOURCE, referenced.getSource());
 		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.TARGET, referenced.getTarget());
+	}
+	public RelationClass() {
 	}
 		private IRelationClass getAncestorClass(IRelationship referenced) {
 			String refClassId = referenced.getObjectClass();
@@ -47,10 +49,6 @@ public class RelationClass extends AbstractRelationClass implements IRelationCla
 				ancie=metamodel.getRelationClassReferencing(ancestorDefining);
 				return ancie;
 			}
-
-	protected RelationClass() {
-		super();
-	}
 
 	@Override
 	public IRelationship create(IFolder folder) {

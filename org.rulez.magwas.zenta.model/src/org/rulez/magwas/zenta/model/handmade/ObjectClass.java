@@ -22,9 +22,11 @@ public class ObjectClass extends AbstractObjectClass implements IObjectClass {
 
 	public ObjectClass(IZentaElement reference, ITemplate template) {
 		super(reference,template);
-		IObjectClass ancie = getAncestorClass(reference);
-		setAncestor(ancie);
-		reference.setObjectClass(ancie.getId());
+		if(!(this instanceof RelationClass)) {
+			IObjectClass ancie = getAncestorClass(reference);
+			setAncestor(ancie);
+			reference.setObjectClass(ancie.getId());
+		}
 	}
         private IObjectClass getAncestorClass(IZentaElement reference) {
             String refClassId = reference.getObjectClass();

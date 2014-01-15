@@ -72,7 +72,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 		if("".equals(getDefiningName(reference)))
 			return null;
 		ObjectClass objectClass = new ObjectClass(reference, template);
-		template.getObjectClasses().add(objectClass);
+		template.getClasses().add(objectClass);
 		return objectClass;
 	}
 
@@ -83,20 +83,15 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	}
 
 	@Override
-	public IRelationClass createRelationClass() {
-		AbstractRelationClass relationClass = new RelationClass();
-		return relationClass;
-	}
-
-	@Override
 	public IRelationClass createRelationClass(IRelationship referenced, ITemplate template) {
 		IRelationClass candidate = template.getRelationClassReferencingElement(referenced);
 		if(null != candidate)
 			return candidate;
 		if("".equals(getDefiningName(referenced)))
 			return null;
-		AbstractRelationClass relationClass = new RelationClass(referenced, template);
-		template.getRelationClasses().add(relationClass);
+		IRelationClass relationClass = new RelationClass(referenced, template);
+		template.getClasses().add(relationClass);
+		System.out.printf("rc=%s\nt=%s\n", relationClass, relationClass.getTemplate());
 		return relationClass;
 	}
 	

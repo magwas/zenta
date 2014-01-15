@@ -25,7 +25,10 @@ public abstract class AbstractObjectClass extends ObjectClassBase implements IOb
 	public AbstractObjectClass(IZentaElement reference, ITemplate template) {
 		super();
 		setReference((IIdentifier) reference);
-		template.getObjectClasses().add(this);
+		if(this instanceof IRelationClass)
+			template.getClasses().add((IRelationClass) this);
+		else
+			template.getClasses().add(this);
 		setName(IZentaFactory.eINSTANCE.getDefiningName(reference));
 		setTemplate(template);
 	}
@@ -79,5 +82,12 @@ public abstract class AbstractObjectClass extends ObjectClassBase implements IOb
 	public boolean isInstance(IIdentifier relation) {
 		return getId().equals(relation.getObjectClass());
 	}
+
+	protected void addAttributesToRelatedObjectClasses(ITemplate template,
+			Direction dir, IZentaElement se) {
+				IObjectClass sc = template.getObjectClassFrom(se);
+				Attribute sa = new Attribute((IRelationClass) this,sc,dir);
+				sc.getAttributes().add(sa);
+			}
 
 }

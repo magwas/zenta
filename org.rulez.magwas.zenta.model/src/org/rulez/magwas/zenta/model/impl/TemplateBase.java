@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -77,24 +78,14 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getObjectClasses() <em>Object Classes</em>}' containment reference list.
+	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getObjectClasses()
+	 * @see #getClasses()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<IObjectClass> objectClasses;
-
-	/**
-	 * The cached value of the '{@link #getRelationClasses() <em>Relation Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRelationClasses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<IRelationClass> relationClasses;
+	protected EList<IObjectClass> classes;
 
 	/**
 	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
@@ -182,23 +173,11 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<IObjectClass> getObjectClasses() {
-		if (objectClasses == null) {
-			objectClasses = new EObjectContainmentWithInverseEList<IObjectClass>(IObjectClass.class, this, IZentaPackage.TEMPLATE__OBJECT_CLASSES, IZentaPackage.OBJECT_CLASS__TEMPLATE);
+	public EList<IObjectClass> getClasses() {
+		if (classes == null) {
+			classes = new EObjectContainmentWithInverseEList<IObjectClass>(IObjectClass.class, this, IZentaPackage.TEMPLATE__CLASSES, IZentaPackage.OBJECT_CLASS__TEMPLATE);
 		}
-		return objectClasses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<IRelationClass> getRelationClasses() {
-		if (relationClasses == null) {
-			relationClasses = new EObjectContainmentWithInverseEList<IRelationClass>(IRelationClass.class, this, IZentaPackage.TEMPLATE__RELATION_CLASSES, IZentaPackage.RELATION_CLASS__TEMPLATE);
-		}
-		return relationClasses;
+		return classes;
 	}
 
 	/**
@@ -272,10 +251,8 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IZentaPackage.TEMPLATE__OBJECT_CLASSES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getObjectClasses()).basicAdd(otherEnd, msgs);
-			case IZentaPackage.TEMPLATE__RELATION_CLASSES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRelationClasses()).basicAdd(otherEnd, msgs);
+			case IZentaPackage.TEMPLATE__CLASSES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getClasses()).basicAdd(otherEnd, msgs);
 			case IZentaPackage.TEMPLATE__METAMODEL:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -292,10 +269,8 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IZentaPackage.TEMPLATE__OBJECT_CLASSES:
-				return ((InternalEList<?>)getObjectClasses()).basicRemove(otherEnd, msgs);
-			case IZentaPackage.TEMPLATE__RELATION_CLASSES:
-				return ((InternalEList<?>)getRelationClasses()).basicRemove(otherEnd, msgs);
+			case IZentaPackage.TEMPLATE__CLASSES:
+				return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
 			case IZentaPackage.TEMPLATE__METAMODEL:
 				return basicSetMetamodel(null, msgs);
 		}
@@ -328,10 +303,8 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 				return getReference();
 			case IZentaPackage.TEMPLATE__NAME:
 				return getName();
-			case IZentaPackage.TEMPLATE__OBJECT_CLASSES:
-				return getObjectClasses();
-			case IZentaPackage.TEMPLATE__RELATION_CLASSES:
-				return getRelationClasses();
+			case IZentaPackage.TEMPLATE__CLASSES:
+				return getClasses();
 			case IZentaPackage.TEMPLATE__PATH:
 				return getPath();
 			case IZentaPackage.TEMPLATE__METAMODEL:
@@ -355,13 +328,9 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 			case IZentaPackage.TEMPLATE__NAME:
 				setName((String)newValue);
 				return;
-			case IZentaPackage.TEMPLATE__OBJECT_CLASSES:
-				getObjectClasses().clear();
-				getObjectClasses().addAll((Collection<? extends IObjectClass>)newValue);
-				return;
-			case IZentaPackage.TEMPLATE__RELATION_CLASSES:
-				getRelationClasses().clear();
-				getRelationClasses().addAll((Collection<? extends IRelationClass>)newValue);
+			case IZentaPackage.TEMPLATE__CLASSES:
+				getClasses().clear();
+				getClasses().addAll((Collection<? extends IObjectClass>)newValue);
 				return;
 			case IZentaPackage.TEMPLATE__PATH:
 				setPath((String)newValue);
@@ -387,11 +356,8 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 			case IZentaPackage.TEMPLATE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IZentaPackage.TEMPLATE__OBJECT_CLASSES:
-				getObjectClasses().clear();
-				return;
-			case IZentaPackage.TEMPLATE__RELATION_CLASSES:
-				getRelationClasses().clear();
+			case IZentaPackage.TEMPLATE__CLASSES:
+				getClasses().clear();
 				return;
 			case IZentaPackage.TEMPLATE__PATH:
 				setPath(PATH_EDEFAULT);
@@ -415,10 +381,8 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 				return reference != null;
 			case IZentaPackage.TEMPLATE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentaPackage.TEMPLATE__OBJECT_CLASSES:
-				return objectClasses != null && !objectClasses.isEmpty();
-			case IZentaPackage.TEMPLATE__RELATION_CLASSES:
-				return relationClasses != null && !relationClasses.isEmpty();
+			case IZentaPackage.TEMPLATE__CLASSES:
+				return classes != null && !classes.isEmpty();
 			case IZentaPackage.TEMPLATE__PATH:
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 			case IZentaPackage.TEMPLATE__METAMODEL:
@@ -452,11 +416,7 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 
 	@Override
 	public void removeClass(IReferencesModelObject oc) {
-		if(oc instanceof IObjectClass) {
-			getObjectClasses().remove(oc);
-		}
-		else if(oc instanceof IRelationClass)
-			getRelationClasses().remove(oc);
+		getClasses().remove(oc);
 	}
 
 } //TemplateBaseImpl

@@ -1300,7 +1300,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTemplate_ObjectClasses() {
+	public EReference getTemplate_Classes() {
 		return (EReference)templateEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1309,17 +1309,8 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTemplate_RelationClasses() {
-		return (EReference)templateEClass.getEStructuralFeatures().get(1);
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getTemplate_Path() {
-		return (EAttribute)templateEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)templateEClass.getEStructuralFeatures().get(1);
 	}
 
 				/**
@@ -1328,7 +1319,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	 * @generated
 	 */
 	public EReference getTemplate_Metamodel() {
-		return (EReference)templateEClass.getEStructuralFeatures().get(3);
+		return (EReference)templateEClass.getEStructuralFeatures().get(2);
 	}
 
 				/**
@@ -1455,33 +1446,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	 */
 	public EClass getRelationClass() {
 		return relationClassEClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRelationClass_Ancestor() {
-		return (EReference)relationClassEClass.getEStructuralFeatures().get(0);
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRelationClass_Children() {
-		return (EReference)relationClassEClass.getEStructuralFeatures().get(1);
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRelationClass_Template() {
-		return (EReference)relationClassEClass.getEStructuralFeatures().get(2);
 	}
 
 				/**
@@ -1775,8 +1739,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		createEReference(metamodelEClass, METAMODEL__TEMPLATES);
 
 		templateEClass = createEClass(TEMPLATE);
-		createEReference(templateEClass, TEMPLATE__OBJECT_CLASSES);
-		createEReference(templateEClass, TEMPLATE__RELATION_CLASSES);
+		createEReference(templateEClass, TEMPLATE__CLASSES);
 		createEAttribute(templateEClass, TEMPLATE__PATH);
 		createEReference(templateEClass, TEMPLATE__METAMODEL);
 
@@ -1797,9 +1760,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		createEReference(attributeEClass, ATTRIBUTE__CONNECTED_OBJECT);
 
 		relationClassEClass = createEClass(RELATION_CLASS);
-		createEReference(relationClassEClass, RELATION_CLASS__ANCESTOR);
-		createEReference(relationClassEClass, RELATION_CLASS__CHILDREN);
-		createEReference(relationClassEClass, RELATION_CLASS__TEMPLATE);
 
 		// Create data types
 		fileEDataType = createEDataType(FILE);
@@ -1902,7 +1862,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		sketchModelActorEClass.getESuperTypes().add(this.getProperties());
 		templateEClass.getESuperTypes().add(this.getReferencesModelObject());
 		objectClassEClass.getESuperTypes().add(this.getReferencesModelObject());
-		relationClassEClass.getESuperTypes().add(this.getReferencesModelObject());
+		relationClassEClass.getESuperTypes().add(this.getObjectClass());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(adapterEClass, IAdapter.class, "Adapter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2107,8 +2067,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		initEReference(getMetamodel_Templates(), this.getTemplate(), this.getTemplate_Metamodel(), "templates", null, 0, -1, IMetamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(templateEClass, ITemplate.class, "Template", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTemplate_ObjectClasses(), this.getObjectClass(), this.getObjectClass_Template(), "objectClasses", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTemplate_RelationClasses(), this.getRelationClass(), this.getRelationClass_Template(), "relationClasses", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemplate_Classes(), this.getObjectClass(), this.getObjectClass_Template(), "classes", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTemplate_Path(), ecorePackage.getEString(), "path", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTemplate_Metamodel(), this.getMetamodel(), this.getMetamodel_Templates(), "metamodel", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2120,7 +2079,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		initEReference(getObjectClass_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getObjectClass_Ancestor(), this.getObjectClass(), this.getObjectClass_Children(), "ancestor", null, 1, 1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getObjectClass_Children(), this.getObjectClass(), this.getObjectClass_Ancestor(), "children", null, 0, -1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getObjectClass_Template(), this.getTemplate(), this.getTemplate_ObjectClasses(), "template", null, 0, 1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectClass_Template(), this.getTemplate(), this.getTemplate_Classes(), "template", null, 0, 1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeEClass, IAttribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttribute_MinOccurs(), ecorePackage.getEInt(), "minOccurs", "0", 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2129,9 +2088,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		initEReference(getAttribute_ConnectedObject(), this.getObjectClass(), null, "connectedObject", null, 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(relationClassEClass, IRelationClass.class, "RelationClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelationClass_Ancestor(), this.getRelationClass(), this.getRelationClass_Children(), "ancestor", null, 1, 1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationClass_Children(), this.getRelationClass(), this.getRelationClass_Ancestor(), "children", null, 0, -1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationClass_Template(), this.getTemplate(), this.getTemplate_RelationClasses(), "template", null, 0, 1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(fileEDataType, File.class, "File", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
