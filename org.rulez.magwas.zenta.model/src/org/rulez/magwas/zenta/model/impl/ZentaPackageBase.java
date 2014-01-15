@@ -26,7 +26,6 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IBounds;
-import org.rulez.magwas.zenta.model.IBusinessLayerElement;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -165,13 +164,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	private EClass zentaElementEClass = null;
 
 				/**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass businessLayerElementEClass = null;
-
-    /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -730,15 +722,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	}
 
 				/**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getBusinessLayerElement() {
-		return businessLayerElementEClass;
-	}
-
-    /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -1633,8 +1616,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		createEReference(basicRelationshipEClass, BASIC_RELATIONSHIP__TARGET);
 		createEReference(basicRelationshipEClass, BASIC_RELATIONSHIP__DIAG_CONNECTIONS);
 
-		businessLayerElementEClass = createEClass(BUSINESS_LAYER_ELEMENT);
-
 		diagramModelComponentEClass = createEClass(DIAGRAM_MODEL_COMPONENT);
 		createEReference(diagramModelComponentEClass, DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL);
 
@@ -1800,7 +1781,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		andJunctionEClass.getESuperTypes().add(this.getJunctionElement());
 		orJunctionEClass.getESuperTypes().add(this.getJunctionElement());
 		basicRelationshipEClass.getESuperTypes().add(this.getZentaElement());
-		businessLayerElementEClass.getESuperTypes().add(this.getZentaElement());
 		diagramModelComponentEClass.getESuperTypes().add(this.getIdentifier());
 		diagramModelComponentEClass.getESuperTypes().add(this.getCloneable());
 		diagramModelComponentEClass.getESuperTypes().add(this.getAdapter());
@@ -1831,7 +1811,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		diagramModelZentaObjectEClass.getESuperTypes().add(this.getDiagramModelObject());
 		diagramModelZentaObjectEClass.getESuperTypes().add(this.getDiagramModelContainer());
 		diagramModelZentaConnectionEClass.getESuperTypes().add(this.getDiagramModelConnection());
-		basicObjectEClass.getESuperTypes().add(this.getBusinessLayerElement());
+		basicObjectEClass.getESuperTypes().add(this.getZentaElement());
 		sketchModelEClass.getESuperTypes().add(this.getDiagramModel());
 		sketchModelStickyEClass.getESuperTypes().add(this.getDiagramModelObject());
 		sketchModelStickyEClass.getESuperTypes().add(this.getDiagramModelContainer());
@@ -1923,8 +1903,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		initEReference(getBasicRelationship_Source(), this.getZentaElement(), null, "source", null, 0, 1, IBasicRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBasicRelationship_Target(), this.getZentaElement(), null, "target", null, 0, 1, IBasicRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBasicRelationship_DiagConnections(), this.getDiagramModelZentaConnection(), this.getDiagramModelZentaConnection_Relationship(), "diagConnections", null, 0, -1, IBasicRelationship.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-
-		initEClass(businessLayerElementEClass, IBusinessLayerElement.class, "BusinessLayerElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(diagramModelComponentEClass, IDiagramModelComponent.class, "DiagramModelComponent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDiagramModelComponent_DiagramModel(), this.getDiagramModel(), null, "diagramModel", null, 0, 1, IDiagramModelComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

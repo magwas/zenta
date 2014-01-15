@@ -21,7 +21,6 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IBounds;
-import org.rulez.magwas.zenta.model.IBusinessLayerElement;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -306,20 +305,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IZentaPackage.BUSINESS_LAYER_ELEMENT: {
-				IBusinessLayerElement businessLayerElement = (IBusinessLayerElement)theEObject;
-				T result = caseBusinessLayerElement(businessLayerElement);
-				if (result == null) result = caseZentaElement(businessLayerElement);
-				if (result == null) result = caseZentaModelElement(businessLayerElement);
-				if (result == null) result = caseIdentifier(businessLayerElement);
-				if (result == null) result = caseCloneable(businessLayerElement);
-				if (result == null) result = caseDocumentable(businessLayerElement);
-				if (result == null) result = caseProperties(businessLayerElement);
-				if (result == null) result = caseAdapter(businessLayerElement);
-				if (result == null) result = caseNameable(businessLayerElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT: {
 				IDiagramModelComponent diagramModelComponent = (IDiagramModelComponent)theEObject;
 				T result = caseDiagramModelComponent(diagramModelComponent);
@@ -525,7 +510,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 			case IZentaPackage.BASIC_OBJECT: {
 				IBasicObject basicObject = (IBasicObject)theEObject;
 				T result = caseBasicObject(basicObject);
-				if (result == null) result = caseBusinessLayerElement(basicObject);
 				if (result == null) result = caseZentaElement(basicObject);
 				if (result == null) result = caseZentaModelElement(basicObject);
 				if (result == null) result = caseIdentifier(basicObject);
@@ -910,21 +894,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBasicRelationship(IBasicRelationship object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Business Layer Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Business Layer Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBusinessLayerElement(IBusinessLayerElement object) {
 		return null;
 	}
 

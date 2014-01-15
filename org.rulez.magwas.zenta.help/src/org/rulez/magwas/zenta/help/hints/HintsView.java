@@ -51,11 +51,11 @@ import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.editor.ui.services.IComponentSelectionListener;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.help.ZentaEditorHelpPlugin;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IHelpHintProvider;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IBusinessLayerElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -453,7 +453,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
             clazz = object.getClass();
         }
         
-        if(IBusinessLayerElement.class.isAssignableFrom(clazz)) {
+        if(IBasicObject.class.isAssignableFrom(clazz)) {
             return ColorFactory.COLOR_BUSINESS;
         }
         

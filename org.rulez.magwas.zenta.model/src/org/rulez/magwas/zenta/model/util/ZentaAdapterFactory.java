@@ -23,7 +23,6 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IBounds;
-import org.rulez.magwas.zenta.model.IBusinessLayerElement;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -194,10 +193,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseBasicRelationship(IBasicRelationship object) {
 				return createBasicRelationshipAdapter();
-			}
-			@Override
-			public Adapter caseBusinessLayerElement(IBusinessLayerElement object) {
-				return createBusinessLayerElementAdapter();
 			}
 			@Override
 			public Adapter caseDiagramModelComponent(IDiagramModelComponent object) {
@@ -594,20 +589,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBasicRelationshipAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IBusinessLayerElement <em>Business Layer Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.model.IBusinessLayerElement
-	 * @generated
-	 */
-	public Adapter createBusinessLayerElementAdapter() {
 		return null;
 	}
 

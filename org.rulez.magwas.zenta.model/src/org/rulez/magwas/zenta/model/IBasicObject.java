@@ -17,5 +17,5 @@ package org.rulez.magwas.zenta.model;
  * @model
  * @generated
  */
-public interface IBasicObject extends IBusinessLayerElement {
+public interface IBasicObject extends IZentaElement {
 } // IBasicObject
