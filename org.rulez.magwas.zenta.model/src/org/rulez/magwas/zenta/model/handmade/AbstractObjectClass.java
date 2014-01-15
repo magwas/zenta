@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.rulez.magwas.zenta.model.IAttribute;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.ITemplate;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.impl.ObjectClassBase;
@@ -22,9 +22,9 @@ public abstract class AbstractObjectClass extends ObjectClassBase implements IOb
 	public AbstractObjectClass() {
 	}
 
-	public AbstractObjectClass(IZentaElement reference, ITemplate template) {
+	public AbstractObjectClass(IBasicObject reference, ITemplate template) {
 		super();
-		setReference((IIdentifier) reference);
+		setReference(reference);
 		template.getClasses().add(this);
 		setName(IZentaFactory.eINSTANCE.getDefiningName(reference));
 		setTemplate(template);
@@ -41,7 +41,7 @@ public abstract class AbstractObjectClass extends ObjectClassBase implements IOb
 	}
 
 	@Override
-	public void postCreate(IIdentifier createdObj, IFolder folder) {
+	public void postCreate(IBasicObject createdObj, IFolder folder) {
 		folder.getElements().add(createdObj);
 	}
 
@@ -76,12 +76,12 @@ public abstract class AbstractObjectClass extends ObjectClassBase implements IOb
 	}
 
 	@Override
-	public boolean isInstance(IIdentifier relation) {
+	public boolean isInstance(IBasicObject relation) {
 		return getId().equals(relation.getObjectClass());
 	}
 
 	protected void addAttributesToRelatedObjectClasses(ITemplate template,
-			Direction dir, IZentaElement se) {
+			Direction dir, IBasicObject se) {
 				IObjectClass sc = template.getObjectClassFrom(se);
 				Attribute sa = new Attribute((IRelationClass) this,sc,dir);
 				sc.getAttributes().add(sa);

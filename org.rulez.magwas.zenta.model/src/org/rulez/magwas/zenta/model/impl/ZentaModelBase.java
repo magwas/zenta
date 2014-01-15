@@ -45,7 +45,6 @@ import org.rulez.magwas.zenta.model.util.IDAdapter;
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getFolders <em>Folders</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getObjectClass <em>Object Class</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getZentaModel <em>Zenta Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getProperties <em>Properties</em>}</li>
@@ -86,24 +85,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 */
     protected String name = NAME_EDEFAULT;
     /**
-	 * The default value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String OBJECT_CLASS_EDEFAULT = null;
-				/**
-	 * The cached value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected String objectClass = OBJECT_CLASS_EDEFAULT;
-				/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -313,27 +294,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 
     /**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getObjectClass() {
-		return objectClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setObjectClass(String newObjectClass) {
-		String oldObjectClass = objectClass;
-		objectClass = newObjectClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_MODEL__OBJECT_CLASS, oldObjectClass, objectClass));
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -527,8 +487,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				return getFolders();
 			case IZentaPackage.ZENTA_MODEL__NAME:
 				return getName();
-			case IZentaPackage.ZENTA_MODEL__OBJECT_CLASS:
-				return getObjectClass();
 			case IZentaPackage.ZENTA_MODEL__ID:
 				return getId();
 			case IZentaPackage.ZENTA_MODEL__ZENTA_MODEL:
@@ -560,9 +518,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				return;
 			case IZentaPackage.ZENTA_MODEL__NAME:
 				setName((String)newValue);
-				return;
-			case IZentaPackage.ZENTA_MODEL__OBJECT_CLASS:
-				setObjectClass((String)newValue);
 				return;
 			case IZentaPackage.ZENTA_MODEL__ID:
 				setId((String)newValue);
@@ -598,9 +553,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 			case IZentaPackage.ZENTA_MODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IZentaPackage.ZENTA_MODEL__OBJECT_CLASS:
-				setObjectClass(OBJECT_CLASS_EDEFAULT);
-				return;
 			case IZentaPackage.ZENTA_MODEL__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -632,8 +584,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				return folders != null && !folders.isEmpty();
 			case IZentaPackage.ZENTA_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentaPackage.ZENTA_MODEL__OBJECT_CLASS:
-				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
 			case IZentaPackage.ZENTA_MODEL__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.ZENTA_MODEL__ZENTA_MODEL:
@@ -660,7 +610,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
 				case IZentaPackage.ZENTA_MODEL__NAME: return IZentaPackage.NAMEABLE__NAME;
-				case IZentaPackage.ZENTA_MODEL__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -706,7 +655,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
 				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.ZENTA_MODEL__NAME;
-				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.ZENTA_MODEL__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -754,8 +702,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: ");
-		result.append(objectClass);
 		result.append(", id: ");
 		result.append(id);
 		result.append(", documentation: ");

@@ -13,6 +13,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
@@ -95,7 +96,7 @@ public class BasicObjectEditPartTest {
 	@Test
 	public void The_Tooltip_displays_the_ObjectClass_of_defining_element() {
 		IObjectClass oc = (IObjectClass) testdata.metamodel.getClassById("ea94cf6c");//User
-		IZentaElement element = testdata.createClassedTestElement(oc);
+		IBasicObject element = testdata.createClassedTestElement(oc);
 		element.setName("Árvíztűrő Tükörfúrógép");
 		IZentaDiagramModel dia = testdata.getTemplateDiagramModel();
 		IDiagramModelZentaObject dmo = ModelAndEditPartTestData.createDMOFor(element);

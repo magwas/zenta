@@ -119,22 +119,13 @@ public interface IZentaPackage extends EPackage {
 	int NAMEABLE__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMEABLE__OBJECT_CLASS = 1;
-
-	/**
 	 * The number of structural features of the '<em>Nameable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMEABLE_FEATURE_COUNT = 2;
+	int NAMEABLE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.IIdentifier <em>Identifier</em>}' class.
@@ -154,15 +145,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int IDENTIFIER__NAME = NAMEABLE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTIFIER__OBJECT_CLASS = NAMEABLE__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -347,97 +329,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaModel()
 	 * @generated
 	 */
-	int ZENTA_MODEL = 9;
-
-	/**
-	 * The feature id for the '<em><b>Folders</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__FOLDERS = FOLDER_CONTAINER__FOLDERS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__NAME = FOLDER_CONTAINER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__OBJECT_CLASS = FOLDER_CONTAINER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__ID = FOLDER_CONTAINER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__ZENTA_MODEL = FOLDER_CONTAINER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__PROPERTIES = FOLDER_CONTAINER_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__DOCUMENTATION = FOLDER_CONTAINER_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>File</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__FILE = FOLDER_CONTAINER_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL__VERSION = FOLDER_CONTAINER_FEATURE_COUNT + 7;
-
-	/**
-	 * The number of structural features of the '<em>Model</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_MODEL_FEATURE_COUNT = FOLDER_CONTAINER_FEATURE_COUNT + 8;
+	int ZENTA_MODEL = 38;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.IZentaModelElement <em>Model Element</em>}' class.
@@ -447,7 +339,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaModelElement()
 	 * @generated
 	 */
-	int ZENTA_MODEL_ELEMENT = 10;
+	int ZENTA_MODEL_ELEMENT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -475,7 +367,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFolder()
 	 * @generated
 	 */
-	int FOLDER = 11;
+	int FOLDER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -505,22 +397,13 @@ public interface IZentaPackage extends EPackage {
 	int FOLDER__NAME = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__OBJECT_CLASS = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER__ID = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int FOLDER__ID = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -529,7 +412,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER__DOCUMENTATION = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int FOLDER__DOCUMENTATION = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -538,7 +421,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER__PROPERTIES = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int FOLDER__PROPERTIES = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -547,7 +430,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER__ELEMENTS = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int FOLDER__ELEMENTS = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Folder</em>' class.
@@ -556,7 +439,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 7;
+	int FOLDER_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase <em>Element</em>}' class.
@@ -566,7 +449,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaElement()
 	 * @generated
 	 */
-	int ZENTA_ELEMENT = 12;
+	int ZENTA_ELEMENT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -587,22 +470,13 @@ public interface IZentaPackage extends EPackage {
 	int ZENTA_ELEMENT__NAME = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_ELEMENT__OBJECT_CLASS = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ZENTA_ELEMENT__ID = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int ZENTA_ELEMENT__ID = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -611,7 +485,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ZENTA_ELEMENT__DOCUMENTATION = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int ZENTA_ELEMENT__DOCUMENTATION = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -620,7 +494,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ZENTA_ELEMENT__PROPERTIES = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int ZENTA_ELEMENT__PROPERTIES = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Diag Objects</b></em>' reference list.
@@ -629,7 +503,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ZENTA_ELEMENT__DIAG_OBJECTS = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int ZENTA_ELEMENT__DIAG_OBJECTS = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Element</em>' class.
@@ -638,7 +512,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ZENTA_ELEMENT_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int ZENTA_ELEMENT_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.IJunctionElement <em>Junction Element</em>}' class.
@@ -648,7 +522,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getJunctionElement()
 	 * @generated
 	 */
-	int JUNCTION_ELEMENT = 13;
+	int JUNCTION_ELEMENT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -667,15 +541,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int JUNCTION_ELEMENT__NAME = ZENTA_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JUNCTION_ELEMENT__OBJECT_CLASS = ZENTA_ELEMENT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -730,7 +595,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getInterfaceElement()
 	 * @generated
 	 */
-	int INTERFACE_ELEMENT = 14;
+	int INTERFACE_ELEMENT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -749,15 +614,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE_ELEMENT__NAME = ZENTA_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERFACE_ELEMENT__OBJECT_CLASS = ZENTA_ELEMENT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -821,7 +677,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getJunction()
 	 * @generated
 	 */
-	int JUNCTION = 15;
+	int JUNCTION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -840,15 +696,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int JUNCTION__NAME = JUNCTION_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JUNCTION__OBJECT_CLASS = JUNCTION_ELEMENT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -903,7 +750,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getAndJunction()
 	 * @generated
 	 */
-	int AND_JUNCTION = 16;
+	int AND_JUNCTION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -922,15 +769,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int AND_JUNCTION__NAME = JUNCTION_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND_JUNCTION__OBJECT_CLASS = JUNCTION_ELEMENT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -985,7 +823,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getOrJunction()
 	 * @generated
 	 */
-	int OR_JUNCTION = 17;
+	int OR_JUNCTION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -1004,15 +842,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int OR_JUNCTION__NAME = JUNCTION_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OR_JUNCTION__OBJECT_CLASS = JUNCTION_ELEMENT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1067,106 +896,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBasicRelationship()
 	 * @generated
 	 */
-	int BASIC_RELATIONSHIP = 18;
-
-	/**
-	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__ZENTA_MODEL = ZENTA_ELEMENT__ZENTA_MODEL;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__NAME = ZENTA_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__OBJECT_CLASS = ZENTA_ELEMENT__OBJECT_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__ID = ZENTA_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__DOCUMENTATION = ZENTA_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__PROPERTIES = ZENTA_ELEMENT__PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Diag Objects</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__DIAG_OBJECTS = ZENTA_ELEMENT__DIAG_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__SOURCE = ZENTA_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__TARGET = ZENTA_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Diag Connections</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP__DIAG_CONNECTIONS = ZENTA_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Basic Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_RELATIONSHIP_FEATURE_COUNT = ZENTA_ELEMENT_FEATURE_COUNT + 3;
+	int BASIC_RELATIONSHIP = 42;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase <em>Diagram Model Component</em>}' class.
@@ -1176,7 +906,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelComponent()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_COMPONENT = 19;
+	int DIAGRAM_MODEL_COMPONENT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1186,15 +916,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_COMPONENT__NAME = IDENTIFIER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS = IDENTIFIER__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1231,7 +952,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelContainer()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_CONTAINER = 20;
+	int DIAGRAM_MODEL_CONTAINER = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1241,15 +962,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_CONTAINER__NAME = DIAGRAM_MODEL_COMPONENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_CONTAINER__OBJECT_CLASS = DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1295,97 +1007,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModel()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL = 21;
-
-	/**
-	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__ZENTA_MODEL = ZENTA_MODEL_ELEMENT__ZENTA_MODEL;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__NAME = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__OBJECT_CLASS = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__ID = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Diagram Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__DIAGRAM_MODEL = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__CHILDREN = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__DOCUMENTATION = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__PROPERTIES = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Connection Router Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The number of structural features of the '<em>Diagram Model</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 8;
+	int DIAGRAM_MODEL = 37;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase <em>Diagram Model Object</em>}' class.
@@ -1395,7 +1017,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelObject()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_OBJECT = 23;
+	int DIAGRAM_MODEL_OBJECT = 20;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1405,15 +1027,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_OBJECT__NAME = DIAGRAM_MODEL_COMPONENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_OBJECT__OBJECT_CLASS = DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1531,7 +1144,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelReference()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_REFERENCE = 22;
+	int DIAGRAM_MODEL_REFERENCE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1541,15 +1154,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_REFERENCE__NAME = DIAGRAM_MODEL_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_REFERENCE__OBJECT_CLASS = DIAGRAM_MODEL_OBJECT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1676,7 +1280,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelGroup()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_GROUP = 24;
+	int DIAGRAM_MODEL_GROUP = 21;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1686,15 +1290,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_GROUP__NAME = DIAGRAM_MODEL_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_GROUP__OBJECT_CLASS = DIAGRAM_MODEL_OBJECT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1839,7 +1434,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelNote()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_NOTE = 25;
+	int DIAGRAM_MODEL_NOTE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1849,15 +1444,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_NOTE__NAME = DIAGRAM_MODEL_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_NOTE__OBJECT_CLASS = DIAGRAM_MODEL_OBJECT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1984,7 +1570,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelImage()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_IMAGE = 26;
+	int DIAGRAM_MODEL_IMAGE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1994,15 +1580,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_IMAGE__NAME = DIAGRAM_MODEL_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_IMAGE__OBJECT_CLASS = DIAGRAM_MODEL_OBJECT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2138,7 +1715,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelConnection()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_CONNECTION = 27;
+	int DIAGRAM_MODEL_CONNECTION = 24;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2148,15 +1725,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_CONNECTION__NAME = DIAGRAM_MODEL_COMPONENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_CONNECTION__OBJECT_CLASS = DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2319,7 +1887,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelBendpoint()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_BENDPOINT = 28;
+	int DIAGRAM_MODEL_BENDPOINT = 25;
 
 	/**
 	 * The feature id for the '<em><b>Start X</b></em>' attribute.
@@ -2374,7 +1942,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFontAttribute()
 	 * @generated
 	 */
-	int FONT_ATTRIBUTE = 29;
+	int FONT_ATTRIBUTE = 26;
 
 	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -2429,7 +1997,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBorderObject()
 	 * @generated
 	 */
-	int BORDER_OBJECT = 30;
+	int BORDER_OBJECT = 27;
 
 	/**
 	 * The feature id for the '<em><b>Border Color</b></em>' attribute.
@@ -2457,7 +2025,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelImageProvider()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_IMAGE_PROVIDER = 31;
+	int DIAGRAM_MODEL_IMAGE_PROVIDER = 28;
 
 	/**
 	 * The feature id for the '<em><b>Image Path</b></em>' attribute.
@@ -2485,7 +2053,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBounds()
 	 * @generated
 	 */
-	int BOUNDS = 32;
+	int BOUNDS = 29;
 
 	/**
 	 * The feature id for the '<em><b>X</b></em>' attribute.
@@ -2540,7 +2108,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getLockable()
 	 * @generated
 	 */
-	int LOCKABLE = 33;
+	int LOCKABLE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Locked</b></em>' attribute.
@@ -2561,6 +2129,87 @@ public interface IZentaPackage extends EPackage {
 	int LOCKABLE_FEATURE_COUNT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__ZENTA_MODEL = ZENTA_MODEL_ELEMENT__ZENTA_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__NAME = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__ID = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Diagram Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__DIAGRAM_MODEL = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__CHILDREN = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__DOCUMENTATION = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__PROPERTIES = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Connection Router Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of structural features of the '<em>Diagram Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModelBase <em>Diagram Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2568,7 +2217,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaDiagramModel()
 	 * @generated
 	 */
-	int ZENTA_DIAGRAM_MODEL = 34;
+	int ZENTA_DIAGRAM_MODEL = 31;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -2587,15 +2236,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ZENTA_DIAGRAM_MODEL__NAME = DIAGRAM_MODEL__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZENTA_DIAGRAM_MODEL__OBJECT_CLASS = DIAGRAM_MODEL__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2677,7 +2317,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelZentaObject()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_ZENTA_OBJECT = 35;
+	int DIAGRAM_MODEL_ZENTA_OBJECT = 32;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2687,15 +2327,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_ZENTA_OBJECT__NAME = DIAGRAM_MODEL_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_ZENTA_OBJECT__OBJECT_CLASS = DIAGRAM_MODEL_OBJECT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2840,7 +2471,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelZentaConnection()
 	 * @generated
 	 */
-	int DIAGRAM_MODEL_ZENTA_CONNECTION = 36;
+	int DIAGRAM_MODEL_ZENTA_CONNECTION = 33;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2850,15 +2481,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_ZENTA_CONNECTION__NAME = DIAGRAM_MODEL_CONNECTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_ZENTA_CONNECTION__OBJECT_CLASS = DIAGRAM_MODEL_CONNECTION__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3030,79 +2652,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBasicObject()
 	 * @generated
 	 */
-	int BASIC_OBJECT = 37;
-
-	/**
-	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_OBJECT__ZENTA_MODEL = ZENTA_ELEMENT__ZENTA_MODEL;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_OBJECT__NAME = ZENTA_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_OBJECT__OBJECT_CLASS = ZENTA_ELEMENT__OBJECT_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_OBJECT__ID = ZENTA_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_OBJECT__DOCUMENTATION = ZENTA_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_OBJECT__PROPERTIES = ZENTA_ELEMENT__PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Diag Objects</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_OBJECT__DIAG_OBJECTS = ZENTA_ELEMENT__DIAG_OBJECTS;
-
-	/**
-	 * The number of structural features of the '<em>Basic Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_OBJECT_FEATURE_COUNT = ZENTA_ELEMENT_FEATURE_COUNT + 0;
+	int BASIC_OBJECT = 41;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelBase <em>Sketch Model</em>}' class.
@@ -3112,7 +2662,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModel()
 	 * @generated
 	 */
-	int SKETCH_MODEL = 38;
+	int SKETCH_MODEL = 34;
 
 	/**
 	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
@@ -3131,15 +2681,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SKETCH_MODEL__NAME = DIAGRAM_MODEL__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SKETCH_MODEL__OBJECT_CLASS = DIAGRAM_MODEL__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3221,7 +2762,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModelSticky()
 	 * @generated
 	 */
-	int SKETCH_MODEL_STICKY = 39;
+	int SKETCH_MODEL_STICKY = 35;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3231,15 +2772,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SKETCH_MODEL_STICKY__NAME = DIAGRAM_MODEL_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SKETCH_MODEL_STICKY__OBJECT_CLASS = DIAGRAM_MODEL_OBJECT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3384,7 +2916,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModelActor()
 	 * @generated
 	 */
-	int SKETCH_MODEL_ACTOR = 40;
+	int SKETCH_MODEL_ACTOR = 36;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3394,15 +2926,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SKETCH_MODEL_ACTOR__NAME = DIAGRAM_MODEL_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SKETCH_MODEL_ACTOR__OBJECT_CLASS = DIAGRAM_MODEL_OBJECT__OBJECT_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3531,6 +3054,87 @@ public interface IZentaPackage extends EPackage {
 	int SKETCH_MODEL_ACTOR_FEATURE_COUNT = DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Folders</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__FOLDERS = FOLDER_CONTAINER__FOLDERS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__NAME = FOLDER_CONTAINER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__ID = FOLDER_CONTAINER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__ZENTA_MODEL = FOLDER_CONTAINER_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__PROPERTIES = FOLDER_CONTAINER_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__DOCUMENTATION = FOLDER_CONTAINER_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>File</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__FILE = FOLDER_CONTAINER_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__VERSION = FOLDER_CONTAINER_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of structural features of the '<em>Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL_FEATURE_COUNT = FOLDER_CONTAINER_FEATURE_COUNT + 7;
+
+	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.MetamodelBase <em>Metamodel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3538,7 +3142,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getMetamodel()
 	 * @generated
 	 */
-	int METAMODEL = 41;
+	int METAMODEL = 39;
 
 	/**
 	 * The feature id for the '<em><b>Templates</b></em>' containment reference list.
@@ -3569,6 +3173,232 @@ public interface IZentaPackage extends EPackage {
 	int REFERENCES_MODEL_OBJECT = 43;
 
 	/**
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.TemplateBase <em>Template</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.rulez.magwas.zenta.model.impl.TemplateBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getTemplate()
+	 * @generated
+	 */
+	int TEMPLATE = 40;
+
+	/**
+	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE__CLASSES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE__PATH = 1;
+
+	/**
+	 * The feature id for the '<em><b>Metamodel</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE__METAMODEL = 2;
+
+	/**
+	 * The feature id for the '<em><b>Diagram</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE__DIAGRAM = 3;
+
+	/**
+	 * The number of structural features of the '<em>Template</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_FEATURE_COUNT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_OBJECT__ZENTA_MODEL = ZENTA_ELEMENT__ZENTA_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_OBJECT__NAME = ZENTA_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_OBJECT__ID = ZENTA_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_OBJECT__DOCUMENTATION = ZENTA_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_OBJECT__PROPERTIES = ZENTA_ELEMENT__PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Diag Objects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_OBJECT__DIAG_OBJECTS = ZENTA_ELEMENT__DIAG_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_OBJECT__OBJECT_CLASS = ZENTA_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Basic Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_OBJECT_FEATURE_COUNT = ZENTA_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Zenta Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__ZENTA_MODEL = BASIC_OBJECT__ZENTA_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__NAME = BASIC_OBJECT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__ID = BASIC_OBJECT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__DOCUMENTATION = BASIC_OBJECT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__PROPERTIES = BASIC_OBJECT__PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Diag Objects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__DIAG_OBJECTS = BASIC_OBJECT__DIAG_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Object Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__OBJECT_CLASS = BASIC_OBJECT__OBJECT_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__SOURCE = BASIC_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__TARGET = BASIC_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Diag Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP__DIAG_CONNECTIONS = BASIC_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Basic Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_RELATIONSHIP_FEATURE_COUNT = BASIC_OBJECT_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3594,70 +3424,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int REFERENCES_MODEL_OBJECT_FEATURE_COUNT = 2;
-
-	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.TemplateBase <em>Template</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.TemplateBase
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getTemplate()
-	 * @generated
-	 */
-	int TEMPLATE = 42;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE__REFERENCE = REFERENCES_MODEL_OBJECT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE__NAME = REFERENCES_MODEL_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE__CLASSES = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE__PATH = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Metamodel</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE__METAMODEL = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Template</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ObjectClassBase <em>Object Class</em>}' class.
@@ -3740,52 +3506,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getAttribute()
 	 * @generated
 	 */
-	int ATTRIBUTE = 45;
-
-	/**
-	 * The feature id for the '<em><b>Min Occurs</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__MIN_OCCURS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Max Occurs</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__MAX_OCCURS = 1;
-
-	/**
-	 * The feature id for the '<em><b>Relation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__RELATION = 2;
-
-	/**
-	 * The feature id for the '<em><b>Connected Object</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__CONNECTED_OBJECT = 3;
-
-	/**
-	 * The number of structural features of the '<em>Attribute</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE_FEATURE_COUNT = 4;
+	int ATTRIBUTE = 46;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.RelationClassBase <em>Relation Class</em>}' class.
@@ -3795,7 +3516,7 @@ public interface IZentaPackage extends EPackage {
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getRelationClass()
 	 * @generated
 	 */
-	int RELATION_CLASS = 46;
+	int RELATION_CLASS = 45;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -3859,6 +3580,51 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELATION_CLASS_FEATURE_COUNT = OBJECT_CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Min Occurs</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__MIN_OCCURS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Max Occurs</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__MAX_OCCURS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Relation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__RELATION = 2;
+
+	/**
+	 * The feature id for the '<em><b>Connected Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__CONNECTED_OBJECT = 3;
+
+	/**
+	 * The number of structural features of the '<em>Attribute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -3986,17 +3752,6 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNameable_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.INameable#getObjectClass <em>Object Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Object Class</em>'.
-	 * @see org.rulez.magwas.zenta.model.INameable#getObjectClass()
-	 * @see #getNameable()
-	 * @generated
-	 */
-	EAttribute getNameable_ObjectClass();
 
 	/**
 	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.ITextContent <em>Text Content</em>}'.
@@ -4857,6 +4612,17 @@ public interface IZentaPackage extends EPackage {
 	EClass getBasicObject();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.IBasicObject#getObjectClass <em>Object Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Object Class</em>'.
+	 * @see org.rulez.magwas.zenta.model.IBasicObject#getObjectClass()
+	 * @see #getBasicObject()
+	 * @generated
+	 */
+	EAttribute getBasicObject_ObjectClass();
+
+	/**
 	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.ISketchModel <em>Sketch Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4960,6 +4726,17 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTemplate_Metamodel();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.rulez.magwas.zenta.model.ITemplate#getDiagram <em>Diagram</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Diagram</em>'.
+	 * @see org.rulez.magwas.zenta.model.ITemplate#getDiagram()
+	 * @see #getTemplate()
+	 * @generated
+	 */
+	EReference getTemplate_Diagram();
 
 	/**
 	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.IReferencesModelObject <em>References Model Object</em>}'.
@@ -5241,14 +5018,6 @@ public interface IZentaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NAMEABLE__NAME = eINSTANCE.getNameable_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Object Class</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NAMEABLE__OBJECT_CLASS = eINSTANCE.getNameable_ObjectClass();
 
 		/**
 		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.ITextContent <em>Text Content</em>}' class.
@@ -5965,6 +5734,14 @@ public interface IZentaPackage extends EPackage {
 		EClass BASIC_OBJECT = eINSTANCE.getBasicObject();
 
 		/**
+		 * The meta object literal for the '<em><b>Object Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BASIC_OBJECT__OBJECT_CLASS = eINSTANCE.getBasicObject_ObjectClass();
+
+		/**
 		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelBase <em>Sketch Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6053,6 +5830,14 @@ public interface IZentaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TEMPLATE__METAMODEL = eINSTANCE.getTemplate_Metamodel();
+
+		/**
+		 * The meta object literal for the '<em><b>Diagram</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPLATE__DIAGRAM = eINSTANCE.getTemplate_Diagram();
 
 		/**
 		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.IReferencesModelObject <em>References Model Object</em>}' class.

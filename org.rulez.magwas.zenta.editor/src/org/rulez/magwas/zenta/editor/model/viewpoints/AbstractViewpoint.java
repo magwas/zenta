@@ -10,17 +10,18 @@ import java.util.Collection;
 import java.util.List;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
@@ -59,14 +60,14 @@ public abstract class AbstractViewpoint implements IViewpoint {
     }
 
 	@Override
-	public boolean isValidRelationshipStart(IZentaElement sourceElement,
+	public boolean isValidRelationshipStart(IBasicObject sourceElement,
 			IRelationClass relationshipType) {
 		IObjectClass sc = getClassOf(sourceElement);
 		return getSourceRelationClassesFor(sc).contains(relationshipType);
 	}
 
 	@Override
-	public boolean isValidRelationship(IZentaElement sourceElement,
+	public boolean isValidRelationship(IBasicObject sourceElement,
 			IObjectClass targetObjectType, IRelationClass typeRel) {
 		IObjectClass sc = getClassOf(sourceElement);
 		return isValidRelationship(sc,targetObjectType,typeRel);
@@ -80,16 +81,16 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public boolean isValidRelationship(IZentaElement sourceElement,
-			IZentaElement targetElement, IRelationClass eClass) {
+	public boolean isValidRelationship(IBasicObject sourceElement,
+			IBasicObject targetElement, IRelationClass eClass) {
 		IObjectClass sc = getClassOf(sourceElement);
 		IObjectClass tc = getClassOf(targetElement);
 		return isValidRelationship(sc,tc,eClass);
 	}
 
 	@Override
-	public boolean isValidRelationship(IZentaElement sourceElement,
-			IZentaElement targetElement, IBasicRelationship rel) {
+	public boolean isValidRelationship(IBasicObject sourceElement,
+			IBasicObject targetElement, IBasicRelationship rel) {
 		IObjectClass sc = getClassOf(sourceElement);
 		IObjectClass tc = getClassOf(targetElement);
 		IRelationClass rc = (IRelationClass) metamodel.getObjectClassReferencing(rel);
@@ -99,8 +100,8 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public List<IRelationClass> getValidRelationships(
 			IZentaElement sourceElement, IZentaElement targetElement) {
-		IObjectClass sc = getClassOf(sourceElement);
-		IObjectClass tc = getClassOf(targetElement);
+		IObjectClass sc = getClassOf((IBasicObject) sourceElement);
+		IObjectClass tc = getClassOf((IBasicObject) targetElement);
 		return getValidRelationships(sc,tc);
 	}
 
@@ -143,7 +144,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 		return getSourceRelationClassesFor(oc);
 	}
 
-	private IObjectClass getClassOf(IZentaElement element) {
+	private IObjectClass getClassOf(IBasicObject element) {
 		return (IObjectClass) metamodel.getClassOf(element);
 	}
 
@@ -151,7 +152,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
     public IObjectClass getObjectClassOf(
             IDiagramModelZentaObject sourceDiagramModelObject) {
-        IZentaElement element = sourceDiagramModelObject.getZentaElement();
+        IBasicObject element = (IBasicObject) sourceDiagramModelObject.getZentaElement();
 		IObjectClass oc = getClassOf(element);
         return oc;
     }
@@ -194,13 +195,13 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public boolean isAllowedType(IZentaElement element) {
+	public boolean isAllowedType(IBasicObject element) {
 		IReferencesModelObject oc = metamodel.getClassOf(element);
 		return getAllowedTypes().contains(oc);
 	}
 
 	@Override
-	public boolean isElementVisible(IZentaElement childObject) {
+	public boolean isElementVisible(IBasicObject childObject) {
 		return true;
 	}
 

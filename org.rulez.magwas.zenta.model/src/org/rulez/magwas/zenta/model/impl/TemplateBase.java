@@ -19,13 +19,12 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.UnTestedException;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,36 +44,6 @@ import org.rulez.magwas.zenta.model.UnTestedException;
  *
  */
 abstract public class TemplateBase extends EObjectImpl implements ITemplate {
-	/**
-	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReference()
-	 * @generated
-	 * @ordered
-	 */
-	protected IIdentifier reference;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -106,6 +75,16 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	protected String path = PATH_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getDiagram() <em>Diagram</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDiagram()
+	 * @generated
+	 * @ordered
+	 */
+	protected IDiagramModel diagram;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -122,48 +101,6 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	@Override
 	protected EClass eStaticClass() {
 		return IZentaPackage.Literals.TEMPLATE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IIdentifier getReference() {
-		return reference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setReference(IIdentifier newReference) {
-		IIdentifier oldReference = reference;
-		reference = newReference;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.TEMPLATE__REFERENCE, oldReference, reference));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.TEMPLATE__NAME, oldName, name));
 	}
 
 	/**
@@ -245,6 +182,44 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public IDiagramModel getDiagram() {
+		if (diagram != null && diagram.eIsProxy()) {
+			InternalEObject oldDiagram = (InternalEObject)diagram;
+			diagram = (IDiagramModel)eResolveProxy(oldDiagram);
+			if (diagram != oldDiagram) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IZentaPackage.TEMPLATE__DIAGRAM, oldDiagram, diagram));
+			}
+		}
+		return diagram;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IDiagramModel basicGetDiagram() {
+		return diagram;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDiagram(IDiagramModel newDiagram) {
+		IDiagramModel oldDiagram = diagram;
+		diagram = newDiagram;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.TEMPLATE__DIAGRAM, oldDiagram, diagram));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -297,16 +272,15 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentaPackage.TEMPLATE__REFERENCE:
-				return getReference();
-			case IZentaPackage.TEMPLATE__NAME:
-				return getName();
 			case IZentaPackage.TEMPLATE__CLASSES:
 				return getClasses();
 			case IZentaPackage.TEMPLATE__PATH:
 				return getPath();
 			case IZentaPackage.TEMPLATE__METAMODEL:
 				return getMetamodel();
+			case IZentaPackage.TEMPLATE__DIAGRAM:
+				if (resolve) return getDiagram();
+				return basicGetDiagram();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -320,12 +294,6 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentaPackage.TEMPLATE__REFERENCE:
-				setReference((IIdentifier)newValue);
-				return;
-			case IZentaPackage.TEMPLATE__NAME:
-				setName((String)newValue);
-				return;
 			case IZentaPackage.TEMPLATE__CLASSES:
 				getClasses().clear();
 				getClasses().addAll((Collection<? extends IObjectClass>)newValue);
@@ -335,6 +303,9 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 				return;
 			case IZentaPackage.TEMPLATE__METAMODEL:
 				setMetamodel((IMetamodel)newValue);
+				return;
+			case IZentaPackage.TEMPLATE__DIAGRAM:
+				setDiagram((IDiagramModel)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -348,12 +319,6 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.TEMPLATE__REFERENCE:
-				setReference((IIdentifier)null);
-				return;
-			case IZentaPackage.TEMPLATE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case IZentaPackage.TEMPLATE__CLASSES:
 				getClasses().clear();
 				return;
@@ -362,6 +327,9 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 				return;
 			case IZentaPackage.TEMPLATE__METAMODEL:
 				setMetamodel((IMetamodel)null);
+				return;
+			case IZentaPackage.TEMPLATE__DIAGRAM:
+				setDiagram((IDiagramModel)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -375,16 +343,14 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.TEMPLATE__REFERENCE:
-				return reference != null;
-			case IZentaPackage.TEMPLATE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case IZentaPackage.TEMPLATE__CLASSES:
 				return classes != null && !classes.isEmpty();
 			case IZentaPackage.TEMPLATE__PATH:
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 			case IZentaPackage.TEMPLATE__METAMODEL:
 				return getMetamodel() != null;
+			case IZentaPackage.TEMPLATE__DIAGRAM:
+				return diagram != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -399,17 +365,10 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", path: ");
+		result.append(" (path: ");
 		result.append(path);
 		result.append(')');
 		return result.toString();
-	}
-
-	@Override
-	public ITemplate getTemplate() {
-		throw new UnTestedException();
 	}
 
 	@Override

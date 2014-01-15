@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.rulez.magwas.zenta.model.IAttribute;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
@@ -21,8 +22,8 @@ public class RelationClass extends ObjectClass implements IRelationClass {
 		IRelationClass ancie = getAncestorClass(referenced);
 		setAncestor(ancie);
 		referenced.setObjectClass(ancie.getId());
-		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.SOURCE, referenced.getSource());
-		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.TARGET, referenced.getTarget());
+		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.SOURCE, (IBasicObject) referenced.getSource());
+		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.TARGET, (IBasicObject) referenced.getTarget());
 	}
 	public RelationClass() {
 	}

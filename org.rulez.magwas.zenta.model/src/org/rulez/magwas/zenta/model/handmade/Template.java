@@ -15,11 +15,10 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
-import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.impl.TemplateBase;
 
 public class Template extends TemplateBase implements ITemplate {
@@ -31,7 +30,7 @@ public class Template extends TemplateBase implements ITemplate {
 	public Template(IDiagramModel reference2, IMetamodel metamodel) {
 		super();
 		metamodel.getTemplates().add(this);
-		setReference(reference2);
+		setDiagram(reference2);
 		extractObjectClasses(reference2);
 		extractRelationClasses(reference2);
 	}
@@ -43,7 +42,7 @@ public class Template extends TemplateBase implements ITemplate {
 					extractDiagramElement((IDiagramModelZentaObject) kid);			
 		}
 			private void extractDiagramElement(IDiagramModelZentaObject kid) {
-				IZentaElement zentaElement = (IZentaElement) kid.getZentaElement();
+				IBasicObject zentaElement = (IBasicObject) kid.getZentaElement();
 				IZentaFactory.eINSTANCE
 						.createObjectClass(zentaElement, this);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
@@ -80,7 +79,7 @@ public class Template extends TemplateBase implements ITemplate {
 
 
 	@Override
-	public IObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {
+	public IObjectClass getObjectClassReferencingElement(IBasicObject classTemplate) {
 		for(IObjectClass oc : ((Metamodel)getMetamodel()).getObjectClasses()) {
 			IIdentifier reference = oc.getReference();
 			if(null == reference)
@@ -91,7 +90,7 @@ public class Template extends TemplateBase implements ITemplate {
 		return null;
 	}
 	@Override
-	public IObjectClass getObjectClassFrom(IZentaElement referenced) {
+	public IObjectClass getObjectClassFrom(IBasicObject referenced) {
 		IObjectClass oc = getObjectClassReferencingElement(referenced);
 		if (null == oc)
 			oc = new ObjectClass(referenced, this);
@@ -124,42 +123,11 @@ public class Template extends TemplateBase implements ITemplate {
 	}
 
 	@Override
-	public void createClassBy(IZentaElement element) {
+	public void createClassBy(IBasicObject element) {
 		if(element instanceof IBasicRelationship)
 			classes.add(getRelationClassFrom((IBasicRelationship) element));
 		else
 			classes.add(getObjectClassFrom(element));
-	}
-
-	@Override
-	public void postCreate(IIdentifier createdObj, IFolder folder) {
-		// TODO design problem
-		throw new RuntimeException();
-	}
-
-	@Override
-	public boolean isInstance(IIdentifier relation) {
-		// TODO design problem
-		throw new RuntimeException();
-	}
-
-	@Override
-	public String getId() {
-		// TODO design problem
-		throw new RuntimeException();
-	}
-
-	@Override
-	public List<IReferencesModelObject> getAncestry(
-			List<IReferencesModelObject> ancestry) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<IReferencesModelObject> getAncestry() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -179,4 +147,10 @@ public class Template extends TemplateBase implements ITemplate {
 				ret.add((IRelationClass) c);
 		return Collections.unmodifiableList(ret);
 	}
+
+	@Override
+	public String getName() {
+		return getDiagram().getName();
+	}
+
 }

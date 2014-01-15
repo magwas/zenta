@@ -1,6 +1,8 @@
 package org.rulez.magwas.zenta.model.testutils;
 
 import static org.junit.Assert.assertNotNull;
+
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -43,25 +45,25 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 	        assertNotNull(metamodel.getTemplates());
 		}
 
-	public IZentaElement createClassedTestElement() {
+	public IBasicObject createClassedTestElement() {
 		String id = "ea94cf6c";//User
 		IZentaElement user = getElementById(id);
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
 		IObjectClass oc = metamodel.getBuiltinObjectClass();
-		IZentaElement newElement = (IZentaElement) oc.create(folder);
+		IBasicObject newElement = (IBasicObject) oc.create(folder);
 		return newElement;
 	}
-	public IZentaElement createClassedTestElement(IObjectClass baseClass) {
+	public IBasicObject createClassedTestElement(IObjectClass baseClass) {
 		String id = "ea94cf6c";//User
 		IZentaElement user = getElementById(id);
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
-		IZentaElement newElement = (IZentaElement) baseClass.create(folder);
+		IBasicObject newElement = (IBasicObject) baseClass.create(folder);
 		return newElement;
 	}
 
-	public IObjectClass createTestObjectClass() {
-		IZentaElement element = (IZentaElement) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
-		ITemplate template = (ITemplate) metamodel.getTemplates().get(0);
+	public IObjectClass getTestObjectClass() {
+		IBasicObject element = (IBasicObject) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
+		ITemplate template = (ITemplate) metamodel.getBuiltinTemplate();
 		assertNotNull(template);
 		assertNotNull(template.getMetamodel());
 		return IZentaFactory.eINSTANCE
@@ -70,8 +72,8 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 						template);
 	}
 
-	public IZentaElement createNewObjectClass(String elementName, IObjectClass baseClass) {
-		IZentaElement newElement = createClassedTestElement(baseClass);
+	public IBasicObject createNewObjectClass(String elementName, IObjectClass baseClass) {
+		IBasicObject newElement = createClassedTestElement(baseClass);
 		IDiagramModel dm = getTemplateDiagramModel();
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
 	
@@ -80,8 +82,8 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		return newElement;
 	}
 
-	public IZentaElement createNewObjectClass(String elementName) {
-		IZentaElement newElement = createClassedTestElement();
+	public IBasicObject createNewObjectClass(String elementName) {
+		IBasicObject newElement = createClassedTestElement();
 		IDiagramModel dm = getTemplateDiagramModel();
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
 	

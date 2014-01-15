@@ -37,7 +37,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Nameable" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextContent" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -66,22 +65,6 @@
         <details key="kind" value="element"/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ZentaModel" eSuperTypes="#//FolderContainer #//Nameable #//Identifier #//ZentaModelElement #//Properties #//Documentable">
-    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="model"/>
-    </eAnnotations>
-    <eOperations name="setDefaults"/>
-    <eOperations name="addDerivedRelationsFolder" eType="#//Folder"/>
-    <eOperations name="removeDerivedRelationsFolder"/>
-    <eOperations name="getDefaultFolderForElement" eType="#//Folder">
-      <eParameters name="element" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-    </eOperations>
-    <eOperations name="getDefaultDiagramModel" eType="#//DiagramModel"/>
-    <eOperations name="getDiagramModels" upperBound="-1" eType="#//DiagramModel"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="#//File" transient="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ZentaModelElement" abstract="true" interface="true"
       eSuperTypes="#//Adapter">
@@ -112,14 +95,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Junction" eSuperTypes="#//JunctionElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="AndJunction" eSuperTypes="#//JunctionElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="OrJunction" eSuperTypes="#//JunctionElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BasicRelationship" eSuperTypes="#//ZentaElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ZentaElement"
-        resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ZentaElement"
-        resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="diagConnections" upperBound="-1"
-        eType="#//DiagramModelZentaConnection" transient="true" derived="true" eOpposite="#//DiagramModelZentaConnection/relationship"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiagramModelComponent" abstract="true"
       eSuperTypes="#//Identifier #//Cloneable #//Adapter #//Nameable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagramModel" eType="#//DiagramModel"
@@ -134,9 +109,6 @@
         <details key="kind" value="element"/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DiagramModel" abstract="true" eSuperTypes="#//ZentaModelElement #//DiagramModelContainer #//Documentable #//Properties">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionRouterType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiagramModelReference" eSuperTypes="#//DiagramModelObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="referencedModel" eType="#//DiagramModel"
@@ -271,28 +243,58 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" eType="#//BasicRelationship"
         resolveProxies="false" eOpposite="#//BasicRelationship/diagConnections"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//ZentaElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="SketchModel" eSuperTypes="#//DiagramModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="background" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SketchModelSticky" eSuperTypes="#//DiagramModelObject #//DiagramModelContainer #//TextContent #//Properties"/>
   <eClassifiers xsi:type="ecore:EClass" name="SketchModelActor" eSuperTypes="#//DiagramModelObject #//Documentable #//Properties"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DiagramModel" abstract="true" eSuperTypes="#//ZentaModelElement #//DiagramModelContainer #//Documentable #//Properties">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionRouterType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ZentaModel" eSuperTypes="#//FolderContainer #//Nameable #//Identifier #//ZentaModelElement #//Properties #//Documentable">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="model"/>
+    </eAnnotations>
+    <eOperations name="setDefaults"/>
+    <eOperations name="addDerivedRelationsFolder" eType="#//Folder"/>
+    <eOperations name="removeDerivedRelationsFolder"/>
+    <eOperations name="getDefaultFolderForElement" eType="#//Folder">
+      <eParameters name="element" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eOperations>
+    <eOperations name="getDefaultDiagramModel" eType="#//DiagramModel"/>
+    <eOperations name="getDiagramModels" upperBound="-1" eType="#//DiagramModel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="#//File" transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Metamodel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
         eType="#//Template" containment="true" resolveProxies="false" eOpposite="#//Template/metamodel"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Template" eSuperTypes="#//ReferencesModelObject">
+  <eClassifiers xsi:type="ecore:EClass" name="Template">
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
         eType="#//ObjectClass" containment="true" resolveProxies="false" eOpposite="#//ObjectClass/template"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" lowerBound="1"
         eType="#//Metamodel" eOpposite="#//Metamodel/templates"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagram" eType="#//DiagramModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//ZentaElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicRelationship" eSuperTypes="#//BasicObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ZentaElement"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ZentaElement"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagConnections" upperBound="-1"
+        eType="#//DiagramModelZentaConnection" transient="true" derived="true" eOpposite="#//DiagramModelZentaConnection/relationship"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReferencesModelObject" abstract="true"
       interface="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
-        eType="#//Identifier" resolveProxies="false"/>
+        eType="#//BasicObject" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         derived="true"/>
   </eClassifiers>
@@ -306,6 +308,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//Template"
         eOpposite="#//Template/classes"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationClass" eSuperTypes="#//ObjectClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minOccurs" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
@@ -316,5 +319,4 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectedObject" lowerBound="1"
         eType="#//ObjectClass" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RelationClass" eSuperTypes="#//ObjectClass"/>
 </ecore:EPackage>

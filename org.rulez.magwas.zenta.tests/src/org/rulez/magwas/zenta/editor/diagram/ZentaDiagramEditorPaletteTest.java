@@ -22,6 +22,7 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditP
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -121,7 +122,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 	@Test
 	public void Magic_Connector_magically_knows_what_to_connect_on_non_template_as_well() {
-		IZentaElement procedure = (IZentaElement) testdata.getById("f33bd0d2");
+		IBasicObject procedure = (IBasicObject) testdata.getById("f33bd0d2");
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(procedure);
 		IObjectClass oc = testdata.metamodel.getObjectClassReferencing(procedure);
 		IZentaElement element = (IZentaElement) oc.create(folder);
@@ -179,7 +180,7 @@ public class ZentaDiagramEditorPaletteTest {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
 		String elementName = "New test OC";
-		IZentaElement newElement = testdata.createNewObjectClass(elementName);
+		IBasicObject newElement = testdata.createNewObjectClass(elementName);
 		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		
 		PaletteContainer objectsgroup = palette._getObjectsGroup();
@@ -193,7 +194,7 @@ public class ZentaDiagramEditorPaletteTest {
 	@Test
 	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted_from_the_palette() {
 		String ocName = "deletetest OC";
-		IZentaElement element = testdata.createNewObjectClass(ocName);
+		IBasicObject element = testdata.createNewObjectClass(ocName);
 		String elemId = element.getId();
 		IReferencesModelObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);

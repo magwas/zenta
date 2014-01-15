@@ -29,7 +29,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelComponent;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getObjectClass <em>Object Class</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getDiagramModel <em>Diagram Model</em>}</li>
  * </ul>
@@ -78,26 +77,6 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
     protected String name = NAME_EDEFAULT;
 
     /**
-	 * The default value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String OBJECT_CLASS_EDEFAULT = null;
-
-				/**
-	 * The cached value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected String objectClass = OBJECT_CLASS_EDEFAULT;
-
-				/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 				    * <!-- end-user-doc -->
@@ -184,27 +163,6 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 	}
 
     /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getObjectClass() {
-		return objectClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setObjectClass(String newObjectClass) {
-		String oldObjectClass = objectClass;
-		objectClass = newObjectClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS, oldObjectClass, objectClass));
-	}
-
-				/**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT
@@ -259,8 +217,6 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				return getName();
-			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS:
-				return getObjectClass();
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				return getId();
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
@@ -280,9 +236,6 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				setName((String)newValue);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS:
-				setObjectClass((String)newValue);
-				return;
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				setId((String)newValue);
 				return;
@@ -301,9 +254,6 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS:
-				setObjectClass(OBJECT_CLASS_EDEFAULT);
-				return;
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -321,8 +271,6 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__OBJECT_CLASS:
-				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
@@ -343,8 +291,6 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: ");
-		result.append(objectClass);
 		result.append(", id: ");
 		result.append(id);
 		result.append(')');

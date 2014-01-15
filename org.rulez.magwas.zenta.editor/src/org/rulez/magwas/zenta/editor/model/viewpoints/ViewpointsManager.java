@@ -11,6 +11,7 @@ import java.util.Map;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -78,7 +79,7 @@ public class ViewpointsManager {
     private boolean isAllowedType(IZentaDiagramModel diagramModel,
 			IDiagramModelZentaObject dmzo) {
         IViewpoint viewPoint = getViewpoint(diagramModel);
-        return viewPoint.isAllowedType(dmzo.getZentaElement());
+        return viewPoint.isAllowedType((IBasicObject) dmzo.getZentaElement());
 	}
 
 	public IViewpoint getViewpoint(IDiagramModelObject fParentElement) {

@@ -5,13 +5,13 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 public class NotificationProcessor {
@@ -205,21 +205,21 @@ public class NotificationProcessor {
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"textPosition",new Integer(dmzc.getTextPosition()).toString());
 			}});
 		addCase(new DecisionCase(){{
-			notifierClass = IZentaElement.class;
-			featureId = IZentaPackage.NAMEABLE__OBJECT_CLASS;
+			notifierClass = IBasicObject.class;
+			featureId = IZentaPackage.BASIC_OBJECT__OBJECT_CLASS;
 			hasNew = true;
 			}
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
-				IZentaElement element = (IZentaElement) notifier;
+				IBasicObject element = (IBasicObject) notifier;
 				mm.processElementObjectClassChange(element);
 			}});
 		addCase(new DecisionCase(){{
-			notifierClass = IZentaElement.class;
+			notifierClass = IBasicObject.class;
 			featureId = IZentaPackage.ZENTA_ELEMENT__NAME;
 			hasNew = true;
 			}
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
-				IZentaElement element = (IZentaElement) notifier;
+				IBasicObject element = (IBasicObject) notifier;
 				mm.processElementNameChange(element, (String) oldVal, (String)newVal);
 			}});
 	}
@@ -290,7 +290,7 @@ public class NotificationProcessor {
 	
 	public static void processNotification(Metamodel mm,Notification notification) {
 		EObject lastObject = (EObject) notification.getNotifier();
-		//System.out.printf("notifier = %s\nfeature=%s\nold=%s\nnew=%s\n\n", lastObject,notification.getFeature(),notification.getOldValue(),notification.getNewValue());
+		System.out.printf("notifier = %s\nfeature=%s\nold=%s\nnew=%s\n\n", lastObject,notification.getFeature(),notification.getOldValue(),notification.getNewValue());
 		for(Class<?> klass : decisionTree.keySet())
 			if(klass.isInstance(lastObject))
 				processClassMatch(mm,notification,klass,decisionTree.get(klass));

@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.help.hints.HintsView;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -50,7 +51,7 @@ public class HintsViewTest {
 	
 	@Test
 	public void The_Hints_view_contains_the_ancestry_and_description_of_the_ObjectClass_of_element() throws PartInitException, WorkbenchException {
-		IZentaElement element = testdata.getElementById("f33bd0d2");//Procedure
+		IBasicObject element = (IBasicObject) testdata.getElementById("f33bd0d2");//Procedure
 		element.setDocumentation("this is a procedure");//FIXME: do it for a derived element and a connection as well
 		UITestUtils.focusOnElement(element);
 		HintsView view = prepareHintsView();

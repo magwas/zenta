@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.commands.CreateRelationCommand;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.actions.TreeModelViewActionFactory;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -84,7 +85,7 @@ public class TreeModelViewActionFactoryTest {
 		IZentaElement user = testdata.getElementById(id);
 		IFolder folder = ModelTestData.getFolderByKid(user);
 		IObjectClass oc = testdata.metamodel.getBuiltinObjectClass();
-		IZentaElement newElement = (IZentaElement) oc.create(folder);
+		IBasicObject newElement = (IBasicObject) oc.create(folder);
 
 		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
 

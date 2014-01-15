@@ -42,7 +42,6 @@ import org.rulez.magwas.zenta.model.IProperty;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getZentaModel <em>Zenta Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getFolders <em>Folders</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getObjectClass <em>Object Class</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getProperties <em>Properties</em>}</li>
@@ -81,24 +80,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 	 */
     protected String name = NAME_EDEFAULT;
     /**
-	 * The default value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String OBJECT_CLASS_EDEFAULT = null;
-				/**
-	 * The cached value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected String objectClass = OBJECT_CLASS_EDEFAULT;
-				/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -200,27 +181,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 	}
 
     /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getObjectClass() {
-		return objectClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setObjectClass(String newObjectClass) {
-		String oldObjectClass = objectClass;
-		objectClass = newObjectClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__OBJECT_CLASS, oldObjectClass, objectClass));
-	}
-
-				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -364,8 +324,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 				return getFolders();
 			case IZentaPackage.FOLDER__NAME:
 				return getName();
-			case IZentaPackage.FOLDER__OBJECT_CLASS:
-				return getObjectClass();
 			case IZentaPackage.FOLDER__ID:
 				return getId();
 			case IZentaPackage.FOLDER__DOCUMENTATION:
@@ -393,9 +351,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 				return;
 			case IZentaPackage.FOLDER__NAME:
 				setName((String)newValue);
-				return;
-			case IZentaPackage.FOLDER__OBJECT_CLASS:
-				setObjectClass((String)newValue);
 				return;
 			case IZentaPackage.FOLDER__ID:
 				setId((String)newValue);
@@ -429,9 +384,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 			case IZentaPackage.FOLDER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IZentaPackage.FOLDER__OBJECT_CLASS:
-				setObjectClass(OBJECT_CLASS_EDEFAULT);
-				return;
 			case IZentaPackage.FOLDER__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -462,8 +414,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 				return folders != null && !folders.isEmpty();
 			case IZentaPackage.FOLDER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentaPackage.FOLDER__OBJECT_CLASS:
-				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
 			case IZentaPackage.FOLDER__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.FOLDER__DOCUMENTATION:
@@ -492,7 +442,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
 				case IZentaPackage.FOLDER__NAME: return IZentaPackage.NAMEABLE__NAME;
-				case IZentaPackage.FOLDER__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -533,7 +482,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
 				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.FOLDER__NAME;
-				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.FOLDER__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -570,8 +518,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: ");
-		result.append(objectClass);
 		result.append(", id: ");
 		result.append(id);
 		result.append(", documentation: ");

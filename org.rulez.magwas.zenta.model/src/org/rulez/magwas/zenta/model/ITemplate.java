@@ -5,6 +5,7 @@ package org.rulez.magwas.zenta.model;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getClasses <em>Classes</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getPath <em>Path</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getMetamodel <em>Metamodel</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.ITemplate#getDiagram <em>Diagram</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ITemplate
-extends IReferencesModelObject 
+extends EObject 
 {
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
@@ -99,21 +101,49 @@ extends IReferencesModelObject
 	 */
 	void setMetamodel(IMetamodel value);
 
+	/**
+	 * Returns the value of the '<em><b>Diagram</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Diagram</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Diagram</em>' reference.
+	 * @see #setDiagram(IDiagramModel)
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_Diagram()
+	 * @model
+	 * @generated
+	 */
+	IDiagramModel getDiagram();
+
+	/**
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.ITemplate#getDiagram <em>Diagram</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Diagram</em>' reference.
+	 * @see #getDiagram()
+	 * @generated
+	 */
+	void setDiagram(IDiagramModel value);
+
 	void removeClass(IReferencesModelObject oc);
-	IObjectClass getObjectClassReferencingElement(IZentaElement reference);
+	IObjectClass getObjectClassReferencingElement(IBasicObject reference);
 
 	IRelationClass getRelationClassReferencingElement(IBasicRelationship referenced);
 	
-	IObjectClass getObjectClassFrom(IZentaElement reference);
+	IObjectClass getObjectClassFrom(IBasicObject reference);
 
 	IRelationClass getRelationClassFrom(IBasicRelationship referenced);
 
-	void createClassBy(IZentaElement element);
+	void createClassBy(IBasicObject element);
 
 	IIdentifier create(IFolder folder);
 
 	List<IObjectClass> getObjectClasses();
 
 	List<IRelationClass> getRelationClasses();
+
+	String getName();
 
 } // ITemplate

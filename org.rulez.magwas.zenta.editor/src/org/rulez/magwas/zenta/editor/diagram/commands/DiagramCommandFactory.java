@@ -17,6 +17,7 @@ import org.rulez.magwas.zenta.editor.diagram.dialog.NewNestedRelationsDialog;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
@@ -147,7 +148,7 @@ public final class DiagramCommandFactory {
         }
         
         // Check valid relations
-        if(vp.getValidRelationships(parent, child).size() > 0)
+        if(vp.getValidRelationships((IBasicObject)parent, (IBasicObject)child).size() > 0)
         	return true;
 		return false;
     }

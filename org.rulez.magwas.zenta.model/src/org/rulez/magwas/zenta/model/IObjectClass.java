@@ -123,7 +123,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 
 	Map<Direction, List<IRelationClass>> getAllowedRelations();
 
-	IIdentifier create(IFolder folder);
+	IBasicObject create(IFolder folder);
 	
 	boolean isObject();
 	boolean isRelation();

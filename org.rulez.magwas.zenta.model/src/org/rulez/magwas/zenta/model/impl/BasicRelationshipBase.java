@@ -39,7 +39,7 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  *
  * @generated
  */
-public class BasicRelationshipBase extends ZentaElementBase implements IBasicRelationship {
+public class BasicRelationshipBase extends BasicObjectBase implements IBasicRelationship {
     /**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->

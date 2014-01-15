@@ -285,12 +285,6 @@ public interface IZentaFactory extends EFactory {
 
 	IMetamodel getMetamodelFor(IZentaModelElement modelElement);
 
-	IObjectClass createNoteClass();
-
-	IObjectClass createGroupClass();
-
-	IRelationClass createNoteConnectionClass();
-
 	ITemplate createTemplate(IZentaDiagramModel diagram, IMetamodel metamodel);
 
 	IRelationClass createRelationClass(IBasicRelationship referenced,
@@ -298,6 +292,6 @@ public interface IZentaFactory extends EFactory {
 
 	IMetamodel getMetamodelFor(IZentaModel model2);
 
-	IObjectClass createObjectClass(IZentaElement reference, ITemplate template);
+	IObjectClass createObjectClass(IBasicObject reference, ITemplate template);
 
 } //IZentaFactory

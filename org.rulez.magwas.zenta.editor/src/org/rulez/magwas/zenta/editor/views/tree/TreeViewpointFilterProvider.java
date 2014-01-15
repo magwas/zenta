@@ -22,6 +22,8 @@ import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -166,17 +168,18 @@ public class TreeViewpointFilterProvider implements IPartListener {
                 IZentaModel model = ((IZentaElement)element).getZentaModel();
                 if(model == fActiveDiagramModel.getZentaModel()) {
                     if(element instanceof IBasicRelationship) {
-                        IZentaElement source = ((IBasicRelationship)element).getSource();
-                        IZentaElement target = ((IBasicRelationship)element).getTarget();
+                        IBasicObject source = (IBasicObject) ((IBasicRelationship)element).getSource();
+                        IBasicObject target = (IBasicObject) ((IBasicRelationship)element).getTarget();
                         if( source == null|| target == null ||!viewpoint.isAllowedType(source) || !viewpoint.isAllowedType(target)) {
                             return ColorFactory.get(128, 128, 128);
                         }
                     }
-                    else {
-                        if(!viewpoint.isAllowedType((IZentaElement)element)) {
+                    else if(element instanceof IBasicObject) {
+                        if(!viewpoint.isAllowedType((IBasicObject) element)) {
                             return ColorFactory.get(128, 128, 128);
                         }
-                    }
+                    } else
+                        return ColorFactory.get(128, 128, 128);
                 }
             }
         }

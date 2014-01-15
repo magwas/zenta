@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface IBasicRelationship extends IZentaElement {
+public interface IBasicRelationship extends IBasicObject {
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.

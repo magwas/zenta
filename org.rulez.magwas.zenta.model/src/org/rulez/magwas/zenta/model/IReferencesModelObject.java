@@ -33,12 +33,12 @@ public interface IReferencesModelObject extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reference</em>' reference.
-	 * @see #setReference(IIdentifier)
+	 * @see #setReference(IBasicObject)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getReferencesModelObject_Reference()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
-	IIdentifier getReference();
+	IBasicObject getReference();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IReferencesModelObject#getReference <em>Reference</em>}' reference.
@@ -48,7 +48,7 @@ public interface IReferencesModelObject extends EObject {
 	 * @see #getReference()
 	 * @generated
 	 */
-	void setReference(IIdentifier value);
+	void setReference(IBasicObject value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -80,11 +80,11 @@ public interface IReferencesModelObject extends EObject {
 
 	IIdentifier create(IFolder folder);
 
-	void postCreate(IIdentifier createdObj, IFolder folder);
+	void postCreate(IBasicObject createdObj, IFolder folder);
 	
 	IMetamodel getMetamodel();
 
-	boolean isInstance(IIdentifier relation);
+	boolean isInstance(IBasicObject relation);
 	
 	String getId();
 	

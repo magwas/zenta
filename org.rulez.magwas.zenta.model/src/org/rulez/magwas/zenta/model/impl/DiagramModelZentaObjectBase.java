@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -450,7 +451,7 @@ public class DiagramModelZentaObjectBase extends DiagramModelObjectBase implemen
     }
     
     private String getDefaultString(String propname, String defaultresult) {
-        IZentaElement definingElement = getDefiningElement();
+    	IBasicObject definingElement = getDefiningElement();
         if(null == definingElement)
             return null;
         List<String> props = definingElement.getPropertyNamed(propname);
@@ -463,8 +464,8 @@ public class DiagramModelZentaObjectBase extends DiagramModelObjectBase implemen
         return defaultresult;
     }
     
-    private IZentaElement getDefiningElement() {
-        IZentaElement element = getZentaElement();
+    private IBasicObject getDefiningElement() {
+    	IBasicObject element = (IBasicObject) getZentaElement();
         return element.getDefiningElement(this);
     }
 }

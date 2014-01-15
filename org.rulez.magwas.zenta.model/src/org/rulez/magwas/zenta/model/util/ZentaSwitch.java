@@ -172,19 +172,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IZentaPackage.ZENTA_MODEL: {
-				IZentaModel zentaModel = (IZentaModel)theEObject;
-				T result = caseZentaModel(zentaModel);
-				if (result == null) result = caseFolderContainer(zentaModel);
-				if (result == null) result = caseIdentifier(zentaModel);
-				if (result == null) result = caseZentaModelElement(zentaModel);
-				if (result == null) result = caseProperties(zentaModel);
-				if (result == null) result = caseDocumentable(zentaModel);
-				if (result == null) result = caseNameable(zentaModel);
-				if (result == null) result = caseAdapter(zentaModel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IZentaPackage.ZENTA_MODEL_ELEMENT: {
 				IZentaModelElement zentaModelElement = (IZentaModelElement)theEObject;
 				T result = caseZentaModelElement(zentaModelElement);
@@ -291,20 +278,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IZentaPackage.BASIC_RELATIONSHIP: {
-				IBasicRelationship basicRelationship = (IBasicRelationship)theEObject;
-				T result = caseBasicRelationship(basicRelationship);
-				if (result == null) result = caseZentaElement(basicRelationship);
-				if (result == null) result = caseZentaModelElement(basicRelationship);
-				if (result == null) result = caseIdentifier(basicRelationship);
-				if (result == null) result = caseCloneable(basicRelationship);
-				if (result == null) result = caseDocumentable(basicRelationship);
-				if (result == null) result = caseProperties(basicRelationship);
-				if (result == null) result = caseAdapter(basicRelationship);
-				if (result == null) result = caseNameable(basicRelationship);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT: {
 				IDiagramModelComponent diagramModelComponent = (IDiagramModelComponent)theEObject;
 				T result = caseDiagramModelComponent(diagramModelComponent);
@@ -323,21 +296,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCloneable(diagramModelContainer);
 				if (result == null) result = caseAdapter(diagramModelContainer);
 				if (result == null) result = caseNameable(diagramModelContainer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case IZentaPackage.DIAGRAM_MODEL: {
-				IDiagramModel diagramModel = (IDiagramModel)theEObject;
-				T result = caseDiagramModel(diagramModel);
-				if (result == null) result = caseZentaModelElement(diagramModel);
-				if (result == null) result = caseDiagramModelContainer(diagramModel);
-				if (result == null) result = caseDocumentable(diagramModel);
-				if (result == null) result = caseProperties(diagramModel);
-				if (result == null) result = caseDiagramModelComponent(diagramModel);
-				if (result == null) result = caseAdapter(diagramModel);
-				if (result == null) result = caseIdentifier(diagramModel);
-				if (result == null) result = caseCloneable(diagramModel);
-				if (result == null) result = caseNameable(diagramModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -507,20 +465,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IZentaPackage.BASIC_OBJECT: {
-				IBasicObject basicObject = (IBasicObject)theEObject;
-				T result = caseBasicObject(basicObject);
-				if (result == null) result = caseZentaElement(basicObject);
-				if (result == null) result = caseZentaModelElement(basicObject);
-				if (result == null) result = caseIdentifier(basicObject);
-				if (result == null) result = caseCloneable(basicObject);
-				if (result == null) result = caseDocumentable(basicObject);
-				if (result == null) result = caseProperties(basicObject);
-				if (result == null) result = caseAdapter(basicObject);
-				if (result == null) result = caseNameable(basicObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IZentaPackage.SKETCH_MODEL: {
 				ISketchModel sketchModel = (ISketchModel)theEObject;
 				T result = caseSketchModel(sketchModel);
@@ -568,6 +512,34 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case IZentaPackage.DIAGRAM_MODEL: {
+				IDiagramModel diagramModel = (IDiagramModel)theEObject;
+				T result = caseDiagramModel(diagramModel);
+				if (result == null) result = caseZentaModelElement(diagramModel);
+				if (result == null) result = caseDiagramModelContainer(diagramModel);
+				if (result == null) result = caseDocumentable(diagramModel);
+				if (result == null) result = caseProperties(diagramModel);
+				if (result == null) result = caseDiagramModelComponent(diagramModel);
+				if (result == null) result = caseAdapter(diagramModel);
+				if (result == null) result = caseIdentifier(diagramModel);
+				if (result == null) result = caseCloneable(diagramModel);
+				if (result == null) result = caseNameable(diagramModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.ZENTA_MODEL: {
+				IZentaModel zentaModel = (IZentaModel)theEObject;
+				T result = caseZentaModel(zentaModel);
+				if (result == null) result = caseFolderContainer(zentaModel);
+				if (result == null) result = caseIdentifier(zentaModel);
+				if (result == null) result = caseZentaModelElement(zentaModel);
+				if (result == null) result = caseProperties(zentaModel);
+				if (result == null) result = caseDocumentable(zentaModel);
+				if (result == null) result = caseNameable(zentaModel);
+				if (result == null) result = caseAdapter(zentaModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case IZentaPackage.METAMODEL: {
 				IMetamodel metamodel = (IMetamodel)theEObject;
 				T result = caseMetamodel(metamodel);
@@ -577,7 +549,35 @@ public class ZentaSwitch<T> extends Switch<T> {
 			case IZentaPackage.TEMPLATE: {
 				ITemplate template = (ITemplate)theEObject;
 				T result = caseTemplate(template);
-				if (result == null) result = caseReferencesModelObject(template);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.BASIC_OBJECT: {
+				IBasicObject basicObject = (IBasicObject)theEObject;
+				T result = caseBasicObject(basicObject);
+				if (result == null) result = caseZentaElement(basicObject);
+				if (result == null) result = caseZentaModelElement(basicObject);
+				if (result == null) result = caseIdentifier(basicObject);
+				if (result == null) result = caseCloneable(basicObject);
+				if (result == null) result = caseDocumentable(basicObject);
+				if (result == null) result = caseProperties(basicObject);
+				if (result == null) result = caseAdapter(basicObject);
+				if (result == null) result = caseNameable(basicObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.BASIC_RELATIONSHIP: {
+				IBasicRelationship basicRelationship = (IBasicRelationship)theEObject;
+				T result = caseBasicRelationship(basicRelationship);
+				if (result == null) result = caseBasicObject(basicRelationship);
+				if (result == null) result = caseZentaElement(basicRelationship);
+				if (result == null) result = caseZentaModelElement(basicRelationship);
+				if (result == null) result = caseIdentifier(basicRelationship);
+				if (result == null) result = caseCloneable(basicRelationship);
+				if (result == null) result = caseDocumentable(basicRelationship);
+				if (result == null) result = caseProperties(basicRelationship);
+				if (result == null) result = caseAdapter(basicRelationship);
+				if (result == null) result = caseNameable(basicRelationship);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -594,17 +594,17 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IZentaPackage.ATTRIBUTE: {
-				IAttribute attribute = (IAttribute)theEObject;
-				T result = caseAttribute(attribute);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IZentaPackage.RELATION_CLASS: {
 				IRelationClass relationClass = (IRelationClass)theEObject;
 				T result = caseRelationClass(relationClass);
 				if (result == null) result = caseObjectClass(relationClass);
 				if (result == null) result = caseReferencesModelObject(relationClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.ATTRIBUTE: {
+				IAttribute attribute = (IAttribute)theEObject;
+				T result = caseAttribute(attribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

@@ -39,6 +39,7 @@ import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
@@ -114,7 +115,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
             // Entry for "none"
             list.add(null);
             for(IRelationClass eClass : vp.getRelationClasses()) {
-                if(vp.isValidRelationship(sourceElement, targetElement, eClass)) {
+                if(vp.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)targetElement, eClass)) {
                     list.add(eClass); 
                 }
             }

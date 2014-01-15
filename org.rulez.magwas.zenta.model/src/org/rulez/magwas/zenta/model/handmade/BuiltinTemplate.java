@@ -10,9 +10,8 @@ public class BuiltinTemplate extends Template {
 	
 	public BuiltinTemplate(IMetamodel metamodel) {
 		super();
-		metamodel.getTemplates().add(this);
-		getClasses().add(new RootObjectClass());
-		getClasses().add(new RootRelationClass());
+		getClasses().add(new RootObjectClass(this));
+		getClasses().add(new RootRelationClass(this));
 	}
 
 	public void setReference(EObject newReference) {

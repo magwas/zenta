@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.rulez.magwas.zenta.model.IAttribute;
-import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -51,7 +51,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 * @generated
 	 * @ordered
 	 */
-	protected IIdentifier reference;
+	protected IBasicObject reference;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -127,7 +127,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IIdentifier getReference() {
+	public IBasicObject getReference() {
 		return reference;
 	}
 
@@ -136,8 +136,8 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReference(IIdentifier newReference) {
-		IIdentifier oldReference = reference;
+	public void setReference(IBasicObject newReference) {
+		IBasicObject oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.OBJECT_CLASS__REFERENCE, oldReference, reference));
@@ -363,7 +363,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IZentaPackage.OBJECT_CLASS__REFERENCE:
-				setReference((IIdentifier)newValue);
+				setReference((IBasicObject)newValue);
 				return;
 			case IZentaPackage.OBJECT_CLASS__NAME:
 				setName((String)newValue);
@@ -395,7 +395,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case IZentaPackage.OBJECT_CLASS__REFERENCE:
-				setReference((IIdentifier)null);
+				setReference((IBasicObject)null);
 				return;
 			case IZentaPackage.OBJECT_CLASS__NAME:
 				setName(NAME_EDEFAULT);

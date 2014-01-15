@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -40,7 +39,6 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
@@ -52,7 +50,6 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getZentaModel <em>Zenta Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getObjectClass <em>Object Class</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getProperties <em>Properties</em>}</li>
@@ -84,26 +81,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
     protected String name = NAME_EDEFAULT;
 
     /**
-	 * The default value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String OBJECT_CLASS_EDEFAULT = null;
-
-				/**
-	 * The cached value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObjectClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected String objectClass = OBJECT_CLASS_EDEFAULT;
-
-				/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -208,21 +185,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public String getObjectClass() {
-		if(null == objectClass)
-			if(this instanceof IBasicRelationship)
-				objectClass = basicRelationClassId;
-			else
-				objectClass = basicObjectClassId;
-		return objectClass;
-	}
-
-	public void setObjectClass(String newObjectClass) {
-		String oldObjectClass = objectClass;
-		objectClass = newObjectClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS, oldObjectClass, objectClass));
-	}
 
 				/**
 	 * <!-- begin-user-doc -->
@@ -379,8 +341,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 				return getZentaModel();
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				return getName();
-			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
-				return getObjectClass();
 			case IZentaPackage.ZENTA_ELEMENT__ID:
 				return getId();
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
@@ -404,9 +364,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 		switch (featureID) {
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				setName((String)newValue);
-				return;
-			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
-				setObjectClass((String)newValue);
 				return;
 			case IZentaPackage.ZENTA_ELEMENT__ID:
 				setId((String)newValue);
@@ -437,9 +394,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
-				setObjectClass(OBJECT_CLASS_EDEFAULT);
-				return;
 			case IZentaPackage.ZENTA_ELEMENT__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -468,8 +422,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 				return getZentaModel() != null;
 			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
-				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
 			case IZentaPackage.ZENTA_ELEMENT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
@@ -492,7 +444,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
 				case IZentaPackage.ZENTA_ELEMENT__NAME: return IZentaPackage.NAMEABLE__NAME;
-				case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -532,7 +483,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
 				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.ZENTA_ELEMENT__NAME;
-				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
@@ -574,8 +524,6 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", objectClass: ");
-		result.append(objectClass);
 		result.append(", id: ");
 		result.append(id);
 		result.append(", documentation: ");
@@ -649,11 +597,4 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 				propertiess.add(prop);
 			}
 
-	@Override
-	public IZentaElement getDefiningElement(DiagramModelZentaObjectBase diagramModelZentaObjectBase) {
-		if(!diagramModelZentaObjectBase.getDiagramModel().isTemplate())
-	        return(IZentaElement) ZentaModelUtils.getObjectByID(getZentaModel(), getObjectClass());
-	    else
-	        return this;
-	}
 }

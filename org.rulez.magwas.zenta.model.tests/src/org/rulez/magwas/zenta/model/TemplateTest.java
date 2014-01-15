@@ -14,7 +14,6 @@ import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
@@ -25,13 +24,15 @@ public class TemplateTest {
 	private IZentaModel model;
 	private IZentaDiagramModel diagramModel;
 	private ITemplate template;
+	private IMetamodel metamodel;
+	private ModelTestData testdata;
 	
 	@Before
 	public void setUp() throws Exception {
-		ModelTestData testdata = new ModelTestData();
+		testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTemplateDiagramModel();
-		IMetamodel metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+		metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinTemplate();
 		template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
 	}
@@ -60,23 +61,29 @@ public class TemplateTest {
 
 	@Test
 	public void The_Builtin_template_have_null_as_reference() {
-		assertEquals(null,fixture.getReference());
+		assertEquals(null,fixture.getDiagram());
 	}
 	
 	@Test
 	public void The_reference_object_for_a_template_is_the_DiagramModel_from_which_it_is_created() {
-		assertEquals(diagramModel,template.getReference());		
+		assertEquals(diagramModel,template.getDiagram());		
 	}
 	
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_diagram() {
-		IZentaElement classTemplate = (IZentaElement) ZentaModelUtils.getObjectByID(model, "23138a61");
+		IBasicObject classTemplate = (IBasicObject) ZentaModelUtils.getObjectByID(model, "23138a61");
 		assertTrue(null != template.getObjectClassReferencingElement(classTemplate));
 	}
 
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_embedded_elements_of_the_diagram() {
-		IZentaElement classTemplate = (IZentaElement) ZentaModelUtils.getObjectByID(model, "c3d03626");
+		IBasicObject classTemplate = (IBasicObject) ZentaModelUtils.getObjectByID(model, "c3d03626");
+		IZentaDiagramModel tdm = testdata.getTemplateDiagramModel();
+		metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+		assertNotNull(tdm);
+		template = metamodel.getTemplateFor(tdm);
+		assertNotNull(template);
+		System.out.printf("template=%s\nobj=%s\n", template,classTemplate);
 		assertTrue(null != template.getObjectClassReferencingElement( classTemplate));
 	}
 	

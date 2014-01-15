@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase;
-import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase;
 
 
 /**
@@ -62,12 +60,4 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	
 	void addOrUpdateProperty(String key, String value);
 
-	IZentaElement getDefiningElement(
-			DiagramModelZentaObjectBase diagramModelZentaObjectBase);
-
-	IBasicRelationship getDefiningElement(
-			DiagramModelZentaConnectionBase diagramModelZentaConnectionBase);
-
-	boolean isTemplate();
-	
 } // IZentaElement

@@ -86,12 +86,10 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
     public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case IZentaPackage.PROPERTY: return createProperty();
-			case IZentaPackage.ZENTA_MODEL: return createZentaModel();
 			case IZentaPackage.FOLDER: return createFolder();
 			case IZentaPackage.JUNCTION: return createJunction();
 			case IZentaPackage.AND_JUNCTION: return createAndJunction();
 			case IZentaPackage.OR_JUNCTION: return createOrJunction();
-			case IZentaPackage.BASIC_RELATIONSHIP: return createBasicRelationship();
 			case IZentaPackage.DIAGRAM_MODEL_REFERENCE: return createDiagramModelReference();
 			case IZentaPackage.DIAGRAM_MODEL_GROUP: return createDiagramModelGroup();
 			case IZentaPackage.DIAGRAM_MODEL_NOTE: return createDiagramModelNote();
@@ -102,15 +100,17 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 			case IZentaPackage.ZENTA_DIAGRAM_MODEL: return createZentaDiagramModel();
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT: return createDiagramModelZentaObject();
 			case IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION: return createDiagramModelZentaConnection();
-			case IZentaPackage.BASIC_OBJECT: return createBasicObject();
 			case IZentaPackage.SKETCH_MODEL: return createSketchModel();
 			case IZentaPackage.SKETCH_MODEL_STICKY: return createSketchModelSticky();
 			case IZentaPackage.SKETCH_MODEL_ACTOR: return createSketchModelActor();
+			case IZentaPackage.ZENTA_MODEL: return createZentaModel();
 			case IZentaPackage.METAMODEL: return createMetamodel();
 			case IZentaPackage.TEMPLATE: return createTemplate();
+			case IZentaPackage.BASIC_OBJECT: return createBasicObject();
+			case IZentaPackage.BASIC_RELATIONSHIP: return createBasicRelationship();
 			case IZentaPackage.OBJECT_CLASS: return createObjectClass();
-			case IZentaPackage.ATTRIBUTE: return createAttribute();
 			case IZentaPackage.RELATION_CLASS: return createRelationClass();
+			case IZentaPackage.ATTRIBUTE: return createAttribute();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -15,6 +15,7 @@ import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 /**
@@ -47,17 +48,17 @@ public interface IViewpoint {
      */
     String getName();
 
-	boolean isValidRelationshipStart(IZentaElement iZentaElement,
+	boolean isValidRelationshipStart(IBasicObject iZentaElement,
 			IRelationClass relationshipType);
 	
-	boolean isValidRelationship(IZentaElement sourceElement,
+	boolean isValidRelationship(IBasicObject sourceElement,
 			IObjectClass targetObjectType, IRelationClass typeRel);
 	
-	boolean isValidRelationship(IZentaElement sourceElement,
-			IZentaElement targetElement, IRelationClass eClass);
+	boolean isValidRelationship(IBasicObject sourceElement,
+			IBasicObject targetElement, IRelationClass eClass);
 
-	boolean isValidRelationship(IZentaElement sourceElement,
-			IZentaElement targetElement, IBasicRelationship rel);
+	boolean isValidRelationship(IBasicObject sourceElement,
+			IBasicObject targetElement, IBasicRelationship rel);
 
 	List<IRelationClass> getValidRelationships(IObjectClass sourceObjectType, IObjectClass targetObjectType);
     
@@ -77,8 +78,8 @@ public interface IViewpoint {
 
 	IRelationClass getNoteConnection();
 
-	boolean isAllowedType(IZentaElement element);
-	boolean isElementVisible(IZentaElement childObject);
+	boolean isAllowedType(IBasicObject element);
+	boolean isElementVisible(IBasicObject childObject);
 
 	boolean isNestedConnectionTypeRelationship(IBasicRelationship relation);
 

@@ -10,8 +10,10 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class RootRelationClass extends RelationClass {
 	
-	protected RootRelationClass() {
+	protected RootRelationClass(BuiltinTemplate builtinTemplate) {
+		this.setTemplate(builtinTemplate);
 	}
+	
 	public void setReference(EObject newReference) {
 		throw new IZentaFactory.BuiltinClassShouldNotHaveReference();
 	}

@@ -5,12 +5,10 @@ import java.util.List;
 
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.ITemplate;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
@@ -20,7 +18,7 @@ public class ObjectClass extends AbstractObjectClass implements IObjectClass {
 	protected ObjectClass() {
 	}
 
-	public ObjectClass(IZentaElement reference, ITemplate template) {
+	public ObjectClass(IBasicObject reference, ITemplate template) {
 		super(reference,template);
 		if(!(this instanceof RelationClass)) {
 			IObjectClass ancie = getAncestorClass(reference);
@@ -28,7 +26,7 @@ public class ObjectClass extends AbstractObjectClass implements IObjectClass {
 			reference.setObjectClass(ancie.getId());
 		}
 	}
-        private IObjectClass getAncestorClass(IZentaElement reference) {
+        private IObjectClass getAncestorClass(IBasicObject reference) {
             String refClassId = reference.getObjectClass();
     		String referenceId = reference.getId();
     		IMetamodel metamodel = getMetamodel();
@@ -45,12 +43,12 @@ public class ObjectClass extends AbstractObjectClass implements IObjectClass {
     					!referenceId.equals(refClassId);
     		}
     		private IObjectClass getAncestorClass(String refClassId, IMetamodel metamodel) {
-    			IZentaElement ancestorElement = (IZentaElement) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
+    			IBasicObject ancestorElement = (IBasicObject) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
     			return metamodel.getObjectClassReferencing(ancestorElement);
     		}
 
 	@Override
-	public IIdentifier create(IFolder folder) {
+	public IBasicObject create(IFolder folder) {
 		IBasicObject obj = IZentaFactory.eINSTANCE.createBasicObject();
 		obj.setObjectClass(this.getId());
 		postCreate(obj,folder);
@@ -64,7 +62,7 @@ public class ObjectClass extends AbstractObjectClass implements IObjectClass {
 
 	@Override
 	public String getHelpHintContent() {
-		IZentaElement ref = (IZentaElement) this.reference;
+		IBasicObject ref = this.reference;
 		if(null == ref)
 			return "";
 		String doc = ref.getDocumentation();

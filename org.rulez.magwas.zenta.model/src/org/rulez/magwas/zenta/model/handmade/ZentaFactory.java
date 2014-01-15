@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.rulez.magwas.zenta.model.IAttribute;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
@@ -14,7 +15,6 @@ import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -65,7 +65,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	}
 
 	@Override
-	public IObjectClass createObjectClass(IZentaElement reference, ITemplate template) {
+	public IObjectClass createObjectClass(IBasicObject reference, ITemplate template) {
 		IObjectClass candidate = template.getObjectClassReferencingElement(reference);
 		if(null != candidate)
 			return candidate;
@@ -117,20 +117,5 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	public IMetamodel getMetamodelFor(IZentaModelElement modelElement) {
 		IZentaModel model = modelElement.getZentaModel();
 		return getMetamodelFor(model);
-	}
-
-	@Override
-	public IObjectClass createNoteClass() {
-		return new NoteClass();
-	}
-
-	@Override
-	public IObjectClass createGroupClass() {
-		return new GroupClass();
-	}
-
-	@Override
-	public IRelationClass createNoteConnectionClass() {
-		return new NoteConnectionClass();
 	}
 }

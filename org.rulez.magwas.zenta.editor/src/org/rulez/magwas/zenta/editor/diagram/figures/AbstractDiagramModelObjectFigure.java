@@ -17,9 +17,9 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.util.StringUtils;
@@ -162,7 +162,7 @@ implements IDiagramModelObjectFigure {
         toolTipFigure.setText(text);
         
         if(fDiagramModelObject instanceof IDiagramModelZentaObject) {
-            IZentaElement element = ((IDiagramModelZentaObject) fDiagramModelObject).getZentaElement();
+        	IBasicObject element = (IBasicObject) ((IDiagramModelZentaObject) fDiagramModelObject).getZentaElement();
             String name = ZentaLabelProvider.INSTANCE.getDefaultName(element.eClass());
             if(!StringUtils.isSet(text)) { // Name was blank
                 toolTipFigure.setText(name);

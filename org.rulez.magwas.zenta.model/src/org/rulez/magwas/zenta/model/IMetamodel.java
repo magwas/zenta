@@ -55,20 +55,20 @@ public interface IMetamodel extends EObject {
     ITemplate getTemplateFor(IDiagramModel dm);
     ITemplate getTemplateFor(IDiagramModelComponent element);
     
-    IReferencesModelObject getClassOf(IIdentifier rel);
-    IReferencesModelObject getClassReferencing(IIdentifier modelElement);
-    IObjectClass getObjectClassReferencing(IZentaElement element);
+    IReferencesModelObject getClassOf(IBasicObject rel);
+    IReferencesModelObject getClassReferencing(IBasicObject modelElement);
+    IObjectClass getObjectClassReferencing(IBasicObject element);
     IRelationClass getRelationClassReferencing(IBasicRelationship relation);
 	boolean hasRelationClassReferencing(IBasicRelationship relation);
-	boolean hasObjectClassReferencing(IZentaElement elementToAdd);
+	boolean hasObjectClassReferencing(IBasicObject elementToAdd);
 
 	List<IObjectClass> getObjectClasses();
 	List<IRelationClass> getRelationClasses();
 	List<IObjectClass> getConnectorClasses();
 	
-	Collection<IRelationClass> getRelationships(IZentaElement object);
+	Collection<IRelationClass> getRelationships(IBasicObject object);
 	List<IRelationClass> getWeaklist();
-	boolean isValidRelationship(IZentaElement element1, IZentaElement element2,
+	boolean isValidRelationship(IBasicObject element1, IBasicObject element2,
 			IRelationClass relationshipClass);
 
 } // MetamodelBase

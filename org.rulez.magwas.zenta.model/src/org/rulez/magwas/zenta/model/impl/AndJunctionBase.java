@@ -7,7 +7,6 @@ package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IAndJunction;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 
@@ -38,19 +37,6 @@ public class AndJunctionBase extends ZentaElementBase implements IAndJunction {
     @Override
     protected EClass eStaticClass() {
 		return IZentaPackage.Literals.AND_JUNCTION;
-	}
-
-	@Override
-	public IBasicRelationship getDefiningElement(
-			DiagramModelZentaConnectionBase diagramModelZentaConnectionBase) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isTemplate() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 } //AndJunction

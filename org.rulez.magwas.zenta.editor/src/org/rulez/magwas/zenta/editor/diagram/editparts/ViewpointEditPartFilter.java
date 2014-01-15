@@ -8,10 +8,10 @@ package org.rulez.magwas.zenta.editor.diagram.editparts;
 import org.eclipse.gef.EditPart;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IZentaElement;
 
 
 /**
@@ -36,7 +36,7 @@ public class ViewpointEditPartFilter implements IChildEditPartFilter, IConnectio
         }
         
         if(viewPoint != null) {
-            return viewPoint.isElementVisible((IZentaElement) childObject);
+            return viewPoint.isElementVisible((IBasicObject) childObject);
         }
         
         return true;

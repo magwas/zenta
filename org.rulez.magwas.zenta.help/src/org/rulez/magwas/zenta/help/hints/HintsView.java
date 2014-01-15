@@ -297,11 +297,11 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 		}
 		private Object figureOutHintObject(Object selected) {
 			Object object;
-			if(selected instanceof IZentaElement) {
-	        	object = getObjectClassFor((IZentaElement)selected);
+			if(selected instanceof IBasicObject) {
+	        	object = getObjectClassFor((IBasicObject)selected);
 	        } else if(selected instanceof IDiagramModelZentaObject) {
 	        	IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject)selected;
-				object = getObjectClassFor(dmzo.getZentaElement());
+				object = getObjectClassFor((IBasicObject) dmzo.getZentaElement());
 	        } else if(selected instanceof EClass) {
 	            EClass eClass = (EClass)selected;
 	            object = eClass.getInstanceClass();
@@ -319,8 +319,8 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 	        } else {
 	            object = selected;
 	        }
-			if(object instanceof IZentaElement) {
-	        	object = getObjectClassFor((IZentaElement)object);
+			if(object instanceof IBasicObject) {
+	        	object = getObjectClassFor((IBasicObject)object);
 	        }
 			
 	        if(object instanceof IZentaDiagramModel) {
@@ -328,7 +328,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 	        }
 			return object;
 		}
-			private Object getObjectClassFor(IZentaElement selected) {
+			private Object getObjectClassFor(IBasicObject selected) {
 				Object object;
 				object = IZentaFactory.eINSTANCE.getMetamodelFor(selected).getClassOf(selected);
 				return object;

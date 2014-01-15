@@ -155,10 +155,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 				return createFolderContainerAdapter();
 			}
 			@Override
-			public Adapter caseZentaModel(IZentaModel object) {
-				return createZentaModelAdapter();
-			}
-			@Override
 			public Adapter caseZentaModelElement(IZentaModelElement object) {
 				return createZentaModelElementAdapter();
 			}
@@ -191,20 +187,12 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 				return createOrJunctionAdapter();
 			}
 			@Override
-			public Adapter caseBasicRelationship(IBasicRelationship object) {
-				return createBasicRelationshipAdapter();
-			}
-			@Override
 			public Adapter caseDiagramModelComponent(IDiagramModelComponent object) {
 				return createDiagramModelComponentAdapter();
 			}
 			@Override
 			public Adapter caseDiagramModelContainer(IDiagramModelContainer object) {
 				return createDiagramModelContainerAdapter();
-			}
-			@Override
-			public Adapter caseDiagramModel(IDiagramModel object) {
-				return createDiagramModelAdapter();
 			}
 			@Override
 			public Adapter caseDiagramModelReference(IDiagramModelReference object) {
@@ -267,10 +255,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 				return createDiagramModelZentaConnectionAdapter();
 			}
 			@Override
-			public Adapter caseBasicObject(IBasicObject object) {
-				return createBasicObjectAdapter();
-			}
-			@Override
 			public Adapter caseSketchModel(ISketchModel object) {
 				return createSketchModelAdapter();
 			}
@@ -283,12 +267,28 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 				return createSketchModelActorAdapter();
 			}
 			@Override
+			public Adapter caseDiagramModel(IDiagramModel object) {
+				return createDiagramModelAdapter();
+			}
+			@Override
+			public Adapter caseZentaModel(IZentaModel object) {
+				return createZentaModelAdapter();
+			}
+			@Override
 			public Adapter caseMetamodel(IMetamodel object) {
 				return createMetamodelAdapter();
 			}
 			@Override
 			public Adapter caseTemplate(ITemplate object) {
 				return createTemplateAdapter();
+			}
+			@Override
+			public Adapter caseBasicObject(IBasicObject object) {
+				return createBasicObjectAdapter();
+			}
+			@Override
+			public Adapter caseBasicRelationship(IBasicRelationship object) {
+				return createBasicRelationshipAdapter();
 			}
 			@Override
 			public Adapter caseReferencesModelObject(IReferencesModelObject object) {
@@ -299,12 +299,12 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 				return createObjectClassAdapter();
 			}
 			@Override
-			public Adapter caseAttribute(IAttribute object) {
-				return createAttributeAdapter();
-			}
-			@Override
 			public Adapter caseRelationClass(IRelationClass object) {
 				return createRelationClassAdapter();
+			}
+			@Override
+			public Adapter caseAttribute(IAttribute object) {
+				return createAttributeAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {

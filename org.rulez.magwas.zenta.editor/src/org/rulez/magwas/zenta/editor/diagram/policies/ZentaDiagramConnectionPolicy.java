@@ -22,6 +22,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.ReconnectDiagramConnection
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -321,7 +322,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
 
         IDiagramModel dm = source.getDiagramModel();
         IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(dm);
-        return vp.isValidRelationshipStart(source.getZentaElement(), relationshipType);
+        return vp.isValidRelationshipStart((IBasicObject)source.getZentaElement(), relationshipType);
     }
     
     /**
@@ -336,7 +337,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
             IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
             IZentaElement sourceElement = ((IDiagramModelZentaObject)source).getZentaElement();
             IZentaElement targetElement = ((IDiagramModelZentaObject)target).getZentaElement();
-            return vp.isValidRelationship(sourceElement, targetElement, rel);
+            return vp.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)targetElement, rel);
         }
         return true;
     }
@@ -345,7 +346,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
             IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
             IZentaElement sourceElement = ((IDiagramModelZentaObject)source).getZentaElement();
             IZentaElement targetElement = ((IDiagramModelZentaObject)target).getZentaElement();
-            return vp.isValidRelationship(sourceElement, targetElement, rel);
+            return vp.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)targetElement, rel);
         }
         return true;
     }

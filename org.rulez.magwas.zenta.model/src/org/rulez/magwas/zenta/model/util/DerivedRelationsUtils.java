@@ -8,6 +8,7 @@ package org.rulez.magwas.zenta.model.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IRelationClass;
@@ -149,7 +150,7 @@ public class DerivedRelationsUtils {
         // Check validity of weakest relationship in each chain and remove chain if the weakest relationship is not valid
         for(List<IBasicRelationship> chain : chains) {
         	IRelationClass relationshipClass = getWeakestType(chain);
-            boolean isValid = metamodel.isValidRelationship(element1, element2, relationshipClass);
+            boolean isValid = metamodel.isValidRelationship((IBasicObject)element1, (IBasicObject)element2, relationshipClass);
             if(isValid) {
                 result.add(chain);
             }

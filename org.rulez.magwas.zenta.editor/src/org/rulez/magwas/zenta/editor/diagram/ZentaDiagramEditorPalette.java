@@ -192,14 +192,15 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 
     private PaletteContainer createExtrasGroup() {
         PaletteContainer group = new PaletteGroup(Messages.ZentaDiagramEditorPalette_1);
-        createNote(group);
-        createGroupObjectEntry(group);
+//        createNote(group); FIXME
+//        createGroupObjectEntry(group);
         if(null == fViewpoint) {
         	return group;
         }
-        createNoteConnection(group);
+//        createNoteConnection(group);
         return group;
     }
+    /*    
 		private void createNote(PaletteContainer group) {
 			PaletteEntry noteEntry = new CombinedTemplateCreationEntry(
 	                Messages.ZentaDiagramEditorPalette_2,
@@ -225,7 +226,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	                Messages.ZentaDiagramEditorPalette_7);
 	        group.add(entry);
 		}
-
+*/
     private PaletteContainer createObjectClassGroup() {
         PaletteContainer group = new PaletteGroup(Messages.ZentaDiagramEditorPalette_8);
         if(null == fViewpoint)

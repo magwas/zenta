@@ -43,6 +43,7 @@ import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
@@ -312,7 +313,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		IZentaDiagramModel zdm = (IZentaDiagramModel) sourceDiagramModelObject.getDiagramModel();
 		IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(zdm);
 		for(IRelationClass relationshipType : viewpoint.getSourceRelationClassesFor(sourceDiagramModelObject)) {
-			if(viewpoint.isValidRelationshipStart(sourceDiagramModelObject.getZentaElement(), relationshipType)) {
+			if(viewpoint.isValidRelationshipStart((IBasicObject)sourceDiagramModelObject.getZentaElement(), relationshipType)) {
 				MenuItem item = addConnectionAction(menu, relationshipType);
 				Menu subMenu = new Menu(item);
 				item.setMenu(subMenu);
@@ -342,7 +343,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 				continue;
 			}
 
-			if(viewPoint.isValidRelationship(sourceElement, type, relationshipType)) {
+			if(viewPoint.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)type, relationshipType)) {
 				added = true;
 				addElementAction(menu, type);
 			}
