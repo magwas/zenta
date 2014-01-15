@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getRelationClass()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getRelationClass()
  * @model
  * @generated
  */
@@ -35,7 +35,7 @@ public interface IRelationClass extends IReferencesModelObject, IHelpHintProvide
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ancestor</em>' reference.
 	 * @see #setAncestor(IRelationClass)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getRelationClass_Ancestor()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getRelationClass_Ancestor()
 	 * @see org.rulez.magwas.zenta.model.IRelationClass#getChildren
 	 * @model opposite="children" resolveProxies="false" required="true"
 	 * @generated
@@ -63,7 +63,7 @@ public interface IRelationClass extends IReferencesModelObject, IHelpHintProvide
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getRelationClass_Children()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getRelationClass_Children()
 	 * @see org.rulez.magwas.zenta.model.IRelationClass#getAncestor
 	 * @model opposite="ancestor" resolveProxies="false" derived="true"
 	 * @generated
@@ -81,7 +81,7 @@ public interface IRelationClass extends IReferencesModelObject, IHelpHintProvide
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Template</em>' container reference.
 	 * @see #setTemplate(ITemplate)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getRelationClass_Template()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getRelationClass_Template()
 	 * @see org.rulez.magwas.zenta.model.ITemplate#getRelationClasses
 	 * @model opposite="relationClasses" transient="false"
 	 * @generated

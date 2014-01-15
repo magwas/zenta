@@ -218,6 +218,51 @@ public interface IZentaFactory extends EFactory {
 	ISketchModelActor createSketchModelActor();
 
 	/**
+	 * Returns a new object of class '<em>Metamodel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Metamodel</em>'.
+	 * @generated
+	 */
+	IMetamodel createMetamodel();
+
+	/**
+	 * Returns a new object of class '<em>Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Template</em>'.
+	 * @generated
+	 */
+	ITemplate createTemplate();
+
+	/**
+	 * Returns a new object of class '<em>Object Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Object Class</em>'.
+	 * @generated
+	 */
+	IObjectClass createObjectClass();
+
+	/**
+	 * Returns a new object of class '<em>Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Attribute</em>'.
+	 * @generated
+	 */
+	IAttribute createAttribute();
+
+	/**
+	 * Returns a new object of class '<em>Relation Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Relation Class</em>'.
+	 * @generated
+	 */
+	IRelationClass createRelationClass();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

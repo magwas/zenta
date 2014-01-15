@@ -38,7 +38,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attributes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getObjectClass_Attributes()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getObjectClass_Attributes()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -55,7 +55,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ancestor</em>' reference.
 	 * @see #setAncestor(IObjectClass)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getObjectClass_Ancestor()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getObjectClass_Ancestor()
 	 * @see org.rulez.magwas.zenta.model.IObjectClass#getChildren
 	 * @model opposite="children" resolveProxies="false" required="true"
 	 * @generated
@@ -83,7 +83,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getObjectClass_Children()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getObjectClass_Children()
 	 * @see org.rulez.magwas.zenta.model.IObjectClass#getAncestor
 	 * @model opposite="ancestor" resolveProxies="false" derived="true"
 	 * @generated
@@ -101,7 +101,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Template</em>' container reference.
 	 * @see #setTemplate(ITemplate)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getObjectClass_Template()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getObjectClass_Template()
 	 * @see org.rulez.magwas.zenta.model.ITemplate#getObjectClasses
 	 * @model opposite="objectClasses" transient="false"
 	 * @generated

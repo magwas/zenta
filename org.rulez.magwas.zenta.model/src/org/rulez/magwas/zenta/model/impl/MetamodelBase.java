@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelPackage;
 import org.rulez.magwas.zenta.model.ITemplate;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,7 +59,7 @@ abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IMetamodelPackage.Literals.METAMODEL;
+		return IZentaPackage.Literals.METAMODEL;
 	}
 
 	/**
@@ -69,7 +69,7 @@ abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
 	 */
 	public EList<ITemplate> getTemplates() {
 		if (templates == null) {
-			templates = new EObjectContainmentWithInverseEList<ITemplate>(ITemplate.class, this, IMetamodelPackage.METAMODEL__TEMPLATES, IMetamodelPackage.TEMPLATE__METAMODEL);
+			templates = new EObjectContainmentWithInverseEList<ITemplate>(ITemplate.class, this, IZentaPackage.METAMODEL__TEMPLATES, IZentaPackage.TEMPLATE__METAMODEL);
 		}
 		return templates;
 	}
@@ -83,7 +83,7 @@ abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IMetamodelPackage.METAMODEL__TEMPLATES:
+			case IZentaPackage.METAMODEL__TEMPLATES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTemplates()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -97,7 +97,7 @@ abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IMetamodelPackage.METAMODEL__TEMPLATES:
+			case IZentaPackage.METAMODEL__TEMPLATES:
 				return ((InternalEList<?>)getTemplates()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -111,7 +111,7 @@ abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IMetamodelPackage.METAMODEL__TEMPLATES:
+			case IZentaPackage.METAMODEL__TEMPLATES:
 				return getTemplates();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -126,7 +126,7 @@ abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IMetamodelPackage.METAMODEL__TEMPLATES:
+			case IZentaPackage.METAMODEL__TEMPLATES:
 				getTemplates().clear();
 				getTemplates().addAll((Collection<? extends ITemplate>)newValue);
 				return;
@@ -142,7 +142,7 @@ abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IMetamodelPackage.METAMODEL__TEMPLATES:
+			case IZentaPackage.METAMODEL__TEMPLATES:
 				getTemplates().clear();
 				return;
 		}
@@ -157,7 +157,7 @@ abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IMetamodelPackage.METAMODEL__TEMPLATES:
+			case IZentaPackage.METAMODEL__TEMPLATES:
 				return templates != null && !templates.isEmpty();
 		}
 		return super.eIsSet(featureID);

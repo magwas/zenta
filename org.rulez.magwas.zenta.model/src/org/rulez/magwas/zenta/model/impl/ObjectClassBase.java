@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IIdentifier;
-import org.rulez.magwas.zenta.model.IMetamodelPackage;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.ITemplate;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -119,7 +119,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IMetamodelPackage.Literals.OBJECT_CLASS;
+		return IZentaPackage.Literals.OBJECT_CLASS;
 	}
 
 	/**
@@ -140,7 +140,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 		IIdentifier oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS__REFERENCE, oldReference, reference));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.OBJECT_CLASS__REFERENCE, oldReference, reference));
 	}
 
 	/**
@@ -161,7 +161,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.OBJECT_CLASS__NAME, oldName, name));
 	}
 
 	/**
@@ -171,7 +171,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 */
 	public EList<IAttribute> getAttributes() {
 		if (attributes == null) {
-			attributes = new EObjectContainmentEList<IAttribute>(IAttribute.class, this, IMetamodelPackage.OBJECT_CLASS__ATTRIBUTES);
+			attributes = new EObjectContainmentEList<IAttribute>(IAttribute.class, this, IZentaPackage.OBJECT_CLASS__ATTRIBUTES);
 		}
 		return attributes;
 	}
@@ -194,7 +194,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 		IObjectClass oldAncestor = ancestor;
 		ancestor = newAncestor;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS__ANCESTOR, oldAncestor, newAncestor);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IZentaPackage.OBJECT_CLASS__ANCESTOR, oldAncestor, newAncestor);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -209,14 +209,14 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 		if (newAncestor != ancestor) {
 			NotificationChain msgs = null;
 			if (ancestor != null)
-				msgs = ((InternalEObject)ancestor).eInverseRemove(this, IMetamodelPackage.OBJECT_CLASS__CHILDREN, IObjectClass.class, msgs);
+				msgs = ((InternalEObject)ancestor).eInverseRemove(this, IZentaPackage.OBJECT_CLASS__CHILDREN, IObjectClass.class, msgs);
 			if (newAncestor != null)
-				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, IMetamodelPackage.OBJECT_CLASS__CHILDREN, IObjectClass.class, msgs);
+				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, IZentaPackage.OBJECT_CLASS__CHILDREN, IObjectClass.class, msgs);
 			msgs = basicSetAncestor(newAncestor, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS__ANCESTOR, newAncestor, newAncestor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.OBJECT_CLASS__ANCESTOR, newAncestor, newAncestor));
 	}
 
 	/**
@@ -226,7 +226,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 */
 	public EList<IObjectClass> getChildren() {
 		if (children == null) {
-			children = new EObjectWithInverseEList<IObjectClass>(IObjectClass.class, this, IMetamodelPackage.OBJECT_CLASS__CHILDREN, IMetamodelPackage.OBJECT_CLASS__ANCESTOR);
+			children = new EObjectWithInverseEList<IObjectClass>(IObjectClass.class, this, IZentaPackage.OBJECT_CLASS__CHILDREN, IZentaPackage.OBJECT_CLASS__ANCESTOR);
 		}
 		return children;
 	}
@@ -237,7 +237,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 * @generated
 	 */
 	public ITemplate getTemplate() {
-		if (eContainerFeatureID() != IMetamodelPackage.OBJECT_CLASS__TEMPLATE) return null;
+		if (eContainerFeatureID() != IZentaPackage.OBJECT_CLASS__TEMPLATE) return null;
 		return (ITemplate)eInternalContainer();
 	}
 
@@ -247,7 +247,7 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplate(ITemplate newTemplate, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newTemplate, IMetamodelPackage.OBJECT_CLASS__TEMPLATE, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newTemplate, IZentaPackage.OBJECT_CLASS__TEMPLATE, msgs);
 		return msgs;
 	}
 
@@ -257,19 +257,19 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	 * @generated
 	 */
 	public void setTemplate(ITemplate newTemplate) {
-		if (newTemplate != eInternalContainer() || (eContainerFeatureID() != IMetamodelPackage.OBJECT_CLASS__TEMPLATE && newTemplate != null)) {
+		if (newTemplate != eInternalContainer() || (eContainerFeatureID() != IZentaPackage.OBJECT_CLASS__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
-				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, IMetamodelPackage.TEMPLATE__OBJECT_CLASSES, ITemplate.class, msgs);
+				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, IZentaPackage.TEMPLATE__OBJECT_CLASSES, ITemplate.class, msgs);
 			msgs = basicSetTemplate(newTemplate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.OBJECT_CLASS__TEMPLATE, newTemplate, newTemplate));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.OBJECT_CLASS__TEMPLATE, newTemplate, newTemplate));
 	}
 
 	/**
@@ -281,13 +281,13 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IMetamodelPackage.OBJECT_CLASS__ANCESTOR:
+			case IZentaPackage.OBJECT_CLASS__ANCESTOR:
 				if (ancestor != null)
-					msgs = ((InternalEObject)ancestor).eInverseRemove(this, IMetamodelPackage.OBJECT_CLASS__CHILDREN, IObjectClass.class, msgs);
+					msgs = ((InternalEObject)ancestor).eInverseRemove(this, IZentaPackage.OBJECT_CLASS__CHILDREN, IObjectClass.class, msgs);
 				return basicSetAncestor((IObjectClass)otherEnd, msgs);
-			case IMetamodelPackage.OBJECT_CLASS__CHILDREN:
+			case IZentaPackage.OBJECT_CLASS__CHILDREN:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(otherEnd, msgs);
-			case IMetamodelPackage.OBJECT_CLASS__TEMPLATE:
+			case IZentaPackage.OBJECT_CLASS__TEMPLATE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetTemplate((ITemplate)otherEnd, msgs);
@@ -303,13 +303,13 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IMetamodelPackage.OBJECT_CLASS__ATTRIBUTES:
+			case IZentaPackage.OBJECT_CLASS__ATTRIBUTES:
 				return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
-			case IMetamodelPackage.OBJECT_CLASS__ANCESTOR:
+			case IZentaPackage.OBJECT_CLASS__ANCESTOR:
 				return basicSetAncestor(null, msgs);
-			case IMetamodelPackage.OBJECT_CLASS__CHILDREN:
+			case IZentaPackage.OBJECT_CLASS__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case IMetamodelPackage.OBJECT_CLASS__TEMPLATE:
+			case IZentaPackage.OBJECT_CLASS__TEMPLATE:
 				return basicSetTemplate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -323,8 +323,8 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case IMetamodelPackage.OBJECT_CLASS__TEMPLATE:
-				return eInternalContainer().eInverseRemove(this, IMetamodelPackage.TEMPLATE__OBJECT_CLASSES, ITemplate.class, msgs);
+			case IZentaPackage.OBJECT_CLASS__TEMPLATE:
+				return eInternalContainer().eInverseRemove(this, IZentaPackage.TEMPLATE__OBJECT_CLASSES, ITemplate.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -337,17 +337,17 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IMetamodelPackage.OBJECT_CLASS__REFERENCE:
+			case IZentaPackage.OBJECT_CLASS__REFERENCE:
 				return getReference();
-			case IMetamodelPackage.OBJECT_CLASS__NAME:
+			case IZentaPackage.OBJECT_CLASS__NAME:
 				return getName();
-			case IMetamodelPackage.OBJECT_CLASS__ATTRIBUTES:
+			case IZentaPackage.OBJECT_CLASS__ATTRIBUTES:
 				return getAttributes();
-			case IMetamodelPackage.OBJECT_CLASS__ANCESTOR:
+			case IZentaPackage.OBJECT_CLASS__ANCESTOR:
 				return getAncestor();
-			case IMetamodelPackage.OBJECT_CLASS__CHILDREN:
+			case IZentaPackage.OBJECT_CLASS__CHILDREN:
 				return getChildren();
-			case IMetamodelPackage.OBJECT_CLASS__TEMPLATE:
+			case IZentaPackage.OBJECT_CLASS__TEMPLATE:
 				return getTemplate();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -362,24 +362,24 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IMetamodelPackage.OBJECT_CLASS__REFERENCE:
+			case IZentaPackage.OBJECT_CLASS__REFERENCE:
 				setReference((IIdentifier)newValue);
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__NAME:
+			case IZentaPackage.OBJECT_CLASS__NAME:
 				setName((String)newValue);
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__ATTRIBUTES:
+			case IZentaPackage.OBJECT_CLASS__ATTRIBUTES:
 				getAttributes().clear();
 				getAttributes().addAll((Collection<? extends IAttribute>)newValue);
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__ANCESTOR:
+			case IZentaPackage.OBJECT_CLASS__ANCESTOR:
 				setAncestor((IObjectClass)newValue);
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__CHILDREN:
+			case IZentaPackage.OBJECT_CLASS__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends IObjectClass>)newValue);
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__TEMPLATE:
+			case IZentaPackage.OBJECT_CLASS__TEMPLATE:
 				setTemplate((ITemplate)newValue);
 				return;
 		}
@@ -394,22 +394,22 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IMetamodelPackage.OBJECT_CLASS__REFERENCE:
+			case IZentaPackage.OBJECT_CLASS__REFERENCE:
 				setReference((IIdentifier)null);
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__NAME:
+			case IZentaPackage.OBJECT_CLASS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__ATTRIBUTES:
+			case IZentaPackage.OBJECT_CLASS__ATTRIBUTES:
 				getAttributes().clear();
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__ANCESTOR:
+			case IZentaPackage.OBJECT_CLASS__ANCESTOR:
 				setAncestor((IObjectClass)null);
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__CHILDREN:
+			case IZentaPackage.OBJECT_CLASS__CHILDREN:
 				getChildren().clear();
 				return;
-			case IMetamodelPackage.OBJECT_CLASS__TEMPLATE:
+			case IZentaPackage.OBJECT_CLASS__TEMPLATE:
 				setTemplate((ITemplate)null);
 				return;
 		}
@@ -424,17 +424,17 @@ abstract public class ObjectClassBase extends EObjectImpl implements IObjectClas
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IMetamodelPackage.OBJECT_CLASS__REFERENCE:
+			case IZentaPackage.OBJECT_CLASS__REFERENCE:
 				return reference != null;
-			case IMetamodelPackage.OBJECT_CLASS__NAME:
+			case IZentaPackage.OBJECT_CLASS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IMetamodelPackage.OBJECT_CLASS__ATTRIBUTES:
+			case IZentaPackage.OBJECT_CLASS__ATTRIBUTES:
 				return attributes != null && !attributes.isEmpty();
-			case IMetamodelPackage.OBJECT_CLASS__ANCESTOR:
+			case IZentaPackage.OBJECT_CLASS__ANCESTOR:
 				return ancestor != null;
-			case IMetamodelPackage.OBJECT_CLASS__CHILDREN:
+			case IZentaPackage.OBJECT_CLASS__CHILDREN:
 				return children != null && !children.isEmpty();
-			case IMetamodelPackage.OBJECT_CLASS__TEMPLATE:
+			case IZentaPackage.OBJECT_CLASS__TEMPLATE:
 				return getTemplate() != null;
 		}
 		return super.eIsSet(featureID);

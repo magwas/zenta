@@ -10,9 +10,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.rulez.magwas.zenta.model.IAttribute;
-import org.rulez.magwas.zenta.model.IMetamodelPackage;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,7 +106,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IMetamodelPackage.Literals.ATTRIBUTE;
+		return IZentaPackage.Literals.ATTRIBUTE;
 	}
 
 	/**
@@ -127,7 +127,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 		int oldMinOccurs = minOccurs;
 		minOccurs = newMinOccurs;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.ATTRIBUTE__MIN_OCCURS, oldMinOccurs, minOccurs));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ATTRIBUTE__MIN_OCCURS, oldMinOccurs, minOccurs));
 	}
 
 	/**
@@ -148,7 +148,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 		int oldMaxOccurs = maxOccurs;
 		maxOccurs = newMaxOccurs;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.ATTRIBUTE__MAX_OCCURS, oldMaxOccurs, maxOccurs));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ATTRIBUTE__MAX_OCCURS, oldMaxOccurs, maxOccurs));
 	}
 
 	/**
@@ -169,7 +169,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 		IRelationClass oldRelation = relation;
 		relation = newRelation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.ATTRIBUTE__RELATION, oldRelation, relation));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ATTRIBUTE__RELATION, oldRelation, relation));
 	}
 
 	/**
@@ -190,7 +190,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 		IObjectClass oldConnectedObject = connectedObject;
 		connectedObject = newConnectedObject;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT, oldConnectedObject, connectedObject));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ATTRIBUTE__CONNECTED_OBJECT, oldConnectedObject, connectedObject));
 	}
 
 	/**
@@ -201,13 +201,13 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IMetamodelPackage.ATTRIBUTE__MIN_OCCURS:
+			case IZentaPackage.ATTRIBUTE__MIN_OCCURS:
 				return getMinOccurs();
-			case IMetamodelPackage.ATTRIBUTE__MAX_OCCURS:
+			case IZentaPackage.ATTRIBUTE__MAX_OCCURS:
 				return getMaxOccurs();
-			case IMetamodelPackage.ATTRIBUTE__RELATION:
+			case IZentaPackage.ATTRIBUTE__RELATION:
 				return getRelation();
-			case IMetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT:
+			case IZentaPackage.ATTRIBUTE__CONNECTED_OBJECT:
 				return getConnectedObject();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -221,16 +221,16 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IMetamodelPackage.ATTRIBUTE__MIN_OCCURS:
+			case IZentaPackage.ATTRIBUTE__MIN_OCCURS:
 				setMinOccurs((Integer)newValue);
 				return;
-			case IMetamodelPackage.ATTRIBUTE__MAX_OCCURS:
+			case IZentaPackage.ATTRIBUTE__MAX_OCCURS:
 				setMaxOccurs((Integer)newValue);
 				return;
-			case IMetamodelPackage.ATTRIBUTE__RELATION:
+			case IZentaPackage.ATTRIBUTE__RELATION:
 				setRelation((IRelationClass)newValue);
 				return;
-			case IMetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT:
+			case IZentaPackage.ATTRIBUTE__CONNECTED_OBJECT:
 				setConnectedObject((IObjectClass)newValue);
 				return;
 		}
@@ -245,16 +245,16 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IMetamodelPackage.ATTRIBUTE__MIN_OCCURS:
+			case IZentaPackage.ATTRIBUTE__MIN_OCCURS:
 				setMinOccurs(MIN_OCCURS_EDEFAULT);
 				return;
-			case IMetamodelPackage.ATTRIBUTE__MAX_OCCURS:
+			case IZentaPackage.ATTRIBUTE__MAX_OCCURS:
 				setMaxOccurs(MAX_OCCURS_EDEFAULT);
 				return;
-			case IMetamodelPackage.ATTRIBUTE__RELATION:
+			case IZentaPackage.ATTRIBUTE__RELATION:
 				setRelation((IRelationClass)null);
 				return;
-			case IMetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT:
+			case IZentaPackage.ATTRIBUTE__CONNECTED_OBJECT:
 				setConnectedObject((IObjectClass)null);
 				return;
 		}
@@ -269,13 +269,13 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IMetamodelPackage.ATTRIBUTE__MIN_OCCURS:
+			case IZentaPackage.ATTRIBUTE__MIN_OCCURS:
 				return minOccurs != MIN_OCCURS_EDEFAULT;
-			case IMetamodelPackage.ATTRIBUTE__MAX_OCCURS:
+			case IZentaPackage.ATTRIBUTE__MAX_OCCURS:
 				return maxOccurs != MAX_OCCURS_EDEFAULT;
-			case IMetamodelPackage.ATTRIBUTE__RELATION:
+			case IZentaPackage.ATTRIBUTE__RELATION:
 				return relation != null;
-			case IMetamodelPackage.ATTRIBUTE__CONNECTED_OBJECT:
+			case IZentaPackage.ATTRIBUTE__CONNECTED_OBJECT:
 				return connectedObject != null;
 		}
 		return super.eIsSet(featureID);

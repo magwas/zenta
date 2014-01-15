@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.rulez.magwas.zenta.model.IAndJunction;
+import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -29,11 +30,15 @@ import org.rulez.magwas.zenta.model.IDiagramModelNote;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IJunction;
+import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IOrJunction;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
+import org.rulez.magwas.zenta.model.ITemplate;
 
 
 /**
@@ -101,6 +106,11 @@ public class ZentaFactoryBase extends EFactoryImpl implements IZentaFactory {
 			case IZentaPackage.SKETCH_MODEL: return createSketchModel();
 			case IZentaPackage.SKETCH_MODEL_STICKY: return createSketchModelSticky();
 			case IZentaPackage.SKETCH_MODEL_ACTOR: return createSketchModelActor();
+			case IZentaPackage.METAMODEL: return createMetamodel();
+			case IZentaPackage.TEMPLATE: return createTemplate();
+			case IZentaPackage.OBJECT_CLASS: return createObjectClass();
+			case IZentaPackage.ATTRIBUTE: return createAttribute();
+			case IZentaPackage.RELATION_CLASS: return createRelationClass();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -302,7 +312,52 @@ public class ZentaFactoryBase extends EFactoryImpl implements IZentaFactory {
 		return sketchModelActor;
 	}
 
-    public IBounds createBounds(int x, int y, int width, int height) {
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public IMetamodel createMetamodel() {
+		throw new RuntimeException("should not be called");
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public ITemplate createTemplate() {
+		throw new RuntimeException("should not be called");
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public IObjectClass createObjectClass() {
+		throw new RuntimeException("should not be called");
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public IAttribute createAttribute() {
+		throw new RuntimeException("should not be called");
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public IRelationClass createRelationClass() {
+		throw new RuntimeException("should not be called");
+	}
+
+				public IBounds createBounds(int x, int y, int width, int height) {
         BoundsBase bounds = new BoundsBase();
         bounds.setX(x);
         bounds.setY(y);

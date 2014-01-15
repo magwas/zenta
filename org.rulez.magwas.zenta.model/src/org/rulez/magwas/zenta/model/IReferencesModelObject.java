@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getReferencesModelObject()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getReferencesModelObject()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -34,7 +34,7 @@ public interface IReferencesModelObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reference</em>' reference.
 	 * @see #setReference(IIdentifier)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getReferencesModelObject_Reference()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getReferencesModelObject_Reference()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
@@ -60,7 +60,7 @@ public interface IReferencesModelObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getReferencesModelObject_Name()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getReferencesModelObject_Name()
 	 * @model required="true" derived="true"
 	 * @generated
 	 */

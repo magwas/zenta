@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getTemplate()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ extends IReferencesModelObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Object Classes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getTemplate_ObjectClasses()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_ObjectClasses()
 	 * @see org.rulez.magwas.zenta.model.IObjectClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
@@ -55,7 +55,7 @@ extends IReferencesModelObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation Classes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getTemplate_RelationClasses()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_RelationClasses()
 	 * @see org.rulez.magwas.zenta.model.IRelationClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
@@ -72,7 +72,7 @@ extends IReferencesModelObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getTemplate_Path()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_Path()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -99,7 +99,7 @@ extends IReferencesModelObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metamodel</em>' container reference.
 	 * @see #setMetamodel(IMetamodel)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getTemplate_Metamodel()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_Metamodel()
 	 * @see org.rulez.magwas.zenta.model.IMetamodel#getTemplates
 	 * @model opposite="templates" required="true" transient="false"
 	 * @generated

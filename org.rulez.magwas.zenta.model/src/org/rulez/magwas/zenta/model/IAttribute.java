@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getAttribute()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getAttribute()
  * @model
  * @generated
  */
@@ -35,7 +35,7 @@ public interface IAttribute extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min Occurs</em>' attribute.
 	 * @see #setMinOccurs(int)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getAttribute_MinOccurs()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getAttribute_MinOccurs()
 	 * @model default="0" required="true"
 	 * @generated
 	 */
@@ -62,7 +62,7 @@ public interface IAttribute extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Occurs</em>' attribute.
 	 * @see #setMaxOccurs(int)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getAttribute_MaxOccurs()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getAttribute_MaxOccurs()
 	 * @model default="1" required="true"
 	 * @generated
 	 */
@@ -88,7 +88,7 @@ public interface IAttribute extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation</em>' reference.
 	 * @see #setRelation(IRelationClass)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getAttribute_Relation()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getAttribute_Relation()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
@@ -114,7 +114,7 @@ public interface IAttribute extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connected Object</em>' reference.
 	 * @see #setConnectedObject(IObjectClass)
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getAttribute_ConnectedObject()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getAttribute_ConnectedObject()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */

@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.model.handmade.BuiltinTemplate;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getMetamodel()
+ * @see org.rulez.magwas.zenta.model.IZentaPackage#getMetamodel()
  * @model
  * @generated
  */
@@ -38,7 +38,7 @@ public interface IMetamodel extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Templates</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.model.IMetamodelPackage#getMetamodel_Templates()
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getMetamodel_Templates()
 	 * @see org.rulez.magwas.zenta.model.ITemplate#getMetamodel
 	 * @model opposite="metamodel" containment="true"
 	 * @generated

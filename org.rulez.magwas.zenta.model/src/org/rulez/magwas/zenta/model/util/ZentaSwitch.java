@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IAndJunction;
+import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -45,14 +46,19 @@ import org.rulez.magwas.zenta.model.IInterfaceElement;
 import org.rulez.magwas.zenta.model.IJunction;
 import org.rulez.magwas.zenta.model.IJunctionElement;
 import org.rulez.magwas.zenta.model.ILockable;
+import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.INameable;
+import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IOrJunction;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.IReferencesModelObject;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
+import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.ITextContent;
 
 
@@ -591,6 +597,45 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCloneable(sketchModelActor);
 				if (result == null) result = caseAdapter(sketchModelActor);
 				if (result == null) result = caseNameable(sketchModelActor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.METAMODEL: {
+				IMetamodel metamodel = (IMetamodel)theEObject;
+				T result = caseMetamodel(metamodel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.TEMPLATE: {
+				ITemplate template = (ITemplate)theEObject;
+				T result = caseTemplate(template);
+				if (result == null) result = caseReferencesModelObject(template);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.REFERENCES_MODEL_OBJECT: {
+				IReferencesModelObject referencesModelObject = (IReferencesModelObject)theEObject;
+				T result = caseReferencesModelObject(referencesModelObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.OBJECT_CLASS: {
+				IObjectClass objectClass = (IObjectClass)theEObject;
+				T result = caseObjectClass(objectClass);
+				if (result == null) result = caseReferencesModelObject(objectClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.ATTRIBUTE: {
+				IAttribute attribute = (IAttribute)theEObject;
+				T result = caseAttribute(attribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.RELATION_CLASS: {
+				IRelationClass relationClass = (IRelationClass)theEObject;
+				T result = caseRelationClass(relationClass);
+				if (result == null) result = caseReferencesModelObject(relationClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1240,6 +1285,96 @@ public class ZentaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSketchModelActor(ISketchModelActor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Metamodel</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Metamodel</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMetamodel(IMetamodel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Template</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTemplate(ITemplate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>References Model Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>References Model Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferencesModelObject(IReferencesModelObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Object Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Object Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseObjectClass(IObjectClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAttribute(IAttribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Relation Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Relation Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRelationClass(IRelationClass object) {
 		return null;
 	}
 
