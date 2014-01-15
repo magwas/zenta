@@ -39,15 +39,15 @@ import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
 import org.rulez.magwas.zenta.model.ITemplate;
+import org.rulez.magwas.zenta.model.handmade.ZentaFactory;
 
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
- * @generated
  */
-public class ZentaFactoryBase extends EFactoryImpl implements IZentaFactory {
+abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFactory {
     /**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -64,7 +64,7 @@ public class ZentaFactoryBase extends EFactoryImpl implements IZentaFactory {
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new ZentaFactoryBase();
+		return new ZentaFactory();
 	}
 
     /**

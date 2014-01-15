@@ -31,7 +31,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
@@ -178,7 +178,7 @@ public class SearchWidget extends Composite {
         List<IZentaModel> models = IEditorModelManager.INSTANCE.getModels();
         IMetamodel mm;
 		for(IZentaModel model : models) {
-        	mm = IMetamodelFactory.eINSTANCE.getMetamodelFor(model);
+        	mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
             for(IObjectClass eClass : mm.getObjectClasses()) {
                 businessMenu.add(createObjectAction(eClass));
             }
@@ -187,7 +187,7 @@ public class SearchWidget extends Composite {
         MenuManager relationsMenu = new MenuManager(Messages.SearchWidget_11);
         dropDownAction.add(relationsMenu);
 		for(IZentaModel model : models) {
-        	mm = IMetamodelFactory.eINSTANCE.getMetamodelFor(model);
+        	mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
 	        for(IRelationClass eClass : mm.getRelationClasses()) {
 	            relationsMenu.add(createObjectAction(eClass));
 	        }

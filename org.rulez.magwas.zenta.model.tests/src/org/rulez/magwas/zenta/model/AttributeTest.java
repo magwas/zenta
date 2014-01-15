@@ -1,6 +1,6 @@
 /**
  */
-package org.rulez.magwas.zenta.metamodel;
+package org.rulez.magwas.zenta.model;
 
 import static org.junit.Assert.*;
 
@@ -8,10 +8,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IAttribute;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 
 public class AttributeTest {
 
@@ -20,7 +21,7 @@ public class AttributeTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.fixture = IMetamodelFactory.eINSTANCE.createAttribute();
+		this.fixture = IZentaFactory.eINSTANCE.createAttribute();
 	}
 	
 	@After

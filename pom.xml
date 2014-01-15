@@ -6,7 +6,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>org.rulez.magwas.zenta.model</module>
-    <module>org.rulez.magwas.zenta.metamodel</module>
     <module>org.rulez.magwas.zenta.widgets</module>
     <module>uk.ac.bolton.jdom</module>
     <module>org.rulez.magwas.zenta.browser</module>
@@ -17,7 +16,6 @@
     <module>org.rulez.magwas.zenta.editor.browser</module>
     <module>org.rulez.magwas.zenta.export</module>
     <module>org.rulez.magwas.zenta.model.tests</module>
-    <module>org.rulez.magwas.zenta.metamodel.tests</module>
     <module>org.rulez.magwas.zenta.editor.build</module>
     <module>org.rulez.magwas.zenta.editor.fullscreen.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.macos</module>

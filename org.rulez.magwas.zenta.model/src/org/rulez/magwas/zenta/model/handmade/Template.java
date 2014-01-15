@@ -11,14 +11,13 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.impl.TemplateBase;
 
 public class Template extends TemplateBase implements ITemplate {
@@ -43,7 +42,7 @@ public class Template extends TemplateBase implements ITemplate {
 		}
 			private void extractDiagramElement(IDiagramModelZentaObject kid) {
 				IZentaElement zentaElement = (IZentaElement) kid.getZentaElement();
-				IMetamodelFactory.eINSTANCE
+				IZentaFactory.eINSTANCE
 						.createObjectClass(zentaElement, this);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
 				for (IDiagramModelObject aKid : myKids)
@@ -72,7 +71,7 @@ public class Template extends TemplateBase implements ITemplate {
 							return;
 						IDiagramModelZentaConnection dmc = (IDiagramModelZentaConnection)conn;
 						IRelationship relationship = (IRelationship) dmc.getRelationship();
-						IMetamodelFactory.eINSTANCE.createRelationClass(
+						IZentaFactory.eINSTANCE.createRelationClass(
 								relationship,
 								this);
 					}

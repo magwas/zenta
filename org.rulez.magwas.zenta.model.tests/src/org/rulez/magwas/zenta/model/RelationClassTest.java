@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.metamodel;
+package org.rulez.magwas.zenta.model;
 
 import static org.junit.Assert.*;
 
@@ -14,13 +14,12 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
-import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
@@ -41,7 +40,7 @@ public class RelationClassTest {
 		
 		ensureVirginDMRsForLoadTest(testdata);
 
-		metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(model);
+		metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinRelationClass();
 	}
 
@@ -156,7 +155,7 @@ public class RelationClassTest {
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineDecoration", "DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration");
 		
 		ensureVirginDMRsForLoadTest(testdata);
-		IMetamodelFactory.eINSTANCE.createMetamodel(testdata.model);
+		IZentaFactory.eINSTANCE.createMetamodel(testdata.model);
 		ensureVirginDMRsForLoadTest(testdata);
 		ensureCorrectFinalAttributes(testdata);
 

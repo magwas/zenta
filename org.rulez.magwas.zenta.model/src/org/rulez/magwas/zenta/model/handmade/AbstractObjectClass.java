@@ -9,12 +9,12 @@ import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.impl.ObjectClassBase;
 
 public abstract class AbstractObjectClass extends ObjectClassBase implements IObjectClass {
@@ -26,7 +26,7 @@ public abstract class AbstractObjectClass extends ObjectClassBase implements IOb
 		super();
 		setReference((IIdentifier) reference);
 		template.getObjectClasses().add(this);
-		setName(IMetamodelFactory.eINSTANCE.getDefiningName(reference));
+		setName(IZentaFactory.eINSTANCE.getDefiningName(reference));
 		setTemplate(template);
 	}
 

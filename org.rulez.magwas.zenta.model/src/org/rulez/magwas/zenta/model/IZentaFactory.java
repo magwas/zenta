@@ -17,6 +17,14 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface IZentaFactory extends EFactory {
+	public class BuiltinClassShouldNotHaveAncestor extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
+
+	public class BuiltinClassShouldNotHaveReference extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
+
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -270,5 +278,26 @@ public interface IZentaFactory extends EFactory {
 	 * @generated
 	 */
 	IZentaPackage getZentaPackage();
+
+	IMetamodel createMetamodel(IZentaModel zentaModel);
+
+	String getDefiningName(IIdentifier ref);
+
+	IMetamodel getMetamodelFor(IZentaModelElement modelElement);
+
+	IObjectClass createNoteClass();
+
+	IObjectClass createGroupClass();
+
+	IRelationClass createNoteConnectionClass();
+
+	ITemplate createTemplate(IZentaDiagramModel diagram, IMetamodel metamodel);
+
+	IRelationClass createRelationClass(IRelationship referenced,
+			ITemplate template);
+
+	IMetamodel getMetamodelFor(IZentaModel model2);
+
+	IObjectClass createObjectClass(IZentaElement reference, ITemplate template);
 
 } //IZentaFactory

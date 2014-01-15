@@ -13,10 +13,9 @@ import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
-import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.INameable;
@@ -208,7 +207,7 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
             if(relation.getSource() != null && relation.getTarget() != null) {
                 String nameSource = ZentaLabelProvider.INSTANCE.getLabel(relation.getSource());
                 String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
-                IMetamodel metamodel = IMetamodelFactory.eINSTANCE.getMetamodelFor(relation.getZentaModel());
+                IMetamodel metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(relation.getZentaModel());
                 IReferencesModelObject klass = metamodel.getClassOf(relation);
                 String relname;
 				if(null != klass)

@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.metamodel;
+package org.rulez.magwas.zenta.model;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class MetamodelTest {
@@ -23,7 +23,7 @@ public class MetamodelTest {
 	public void setUp() throws Exception {
 		ModelTestData data = new ModelTestData();
 		assertNotNull(data.model);
-		this.fixture = IMetamodelFactory.eINSTANCE.createMetamodel(data.model);
+		this.fixture = IZentaFactory.eINSTANCE.createMetamodel(data.model);
 	}
 
 	@After

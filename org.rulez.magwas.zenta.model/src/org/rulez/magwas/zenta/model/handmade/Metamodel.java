@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
@@ -56,7 +56,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			private void extractTemplate(IZentaDiagramModel diagram) {
 				if (!isTemplate(diagram))
 					return;
-				ITemplate template = MetamodelFactory.eINSTANCE.
+				ITemplate template = ZentaFactory.eINSTANCE.
 						createTemplate(diagram, this);
 				getTemplates().add(template);
 			}
@@ -215,7 +215,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		if(null == template)
 			return;
 		IRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
-		IMetamodelFactory.eINSTANCE.createRelationClass(element, template);
+		IZentaFactory.eINSTANCE.createRelationClass(element, template);
 	}
 
 	public void processElementNameChange(IZentaElement element, String oldName, String newName) {
@@ -292,7 +292,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			oc = getObjectClassReferencing(element);
 		if(null == oc)
 			return;
-		String definingName = IMetamodelFactory.eINSTANCE.getDefiningName(element);
+		String definingName = IZentaFactory.eINSTANCE.getDefiningName(element);
 		oc.setName(definingName);
 	}
 

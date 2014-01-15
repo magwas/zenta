@@ -11,7 +11,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IRelationship;
 
 
@@ -59,7 +59,7 @@ extends AbstractDiagramConnectionFigure implements IZentaConnectionFigure {
         String text = ZentaLabelProvider.INSTANCE.getLabel(relation);
         toolTipFigure.setText(text);
 
-        IMetamodel metamodel = IMetamodelFactory.eINSTANCE.getMetamodelFor(relation);
+        IMetamodel metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(relation);
         String className = metamodel.getClassById(relation.getObjectClass()).getName();
         toolTipFigure.setType(Messages.AbstractZentaConnectionFigure_0 + " " + className); //$NON-NLS-1$
 

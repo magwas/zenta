@@ -2,9 +2,9 @@ package org.rulez.magwas.zenta.model.handmade;
 
 import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 
 public class BuiltinTemplate extends Template {
 	
@@ -16,7 +16,7 @@ public class BuiltinTemplate extends Template {
 	}
 
 	public void setReference(EObject newReference) {
-		throw new IMetamodelFactory.BuiltinClassShouldNotHaveReference();
+		throw new IZentaFactory.BuiltinClassShouldNotHaveReference();
 	}
 
 	public IObjectClass getObjectClassReferencingElement(IZentaElement classTemplate) {

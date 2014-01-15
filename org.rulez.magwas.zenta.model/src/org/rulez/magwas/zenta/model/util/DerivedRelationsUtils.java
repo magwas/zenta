@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -30,7 +30,7 @@ public class DerivedRelationsUtils {
 	private IMetamodel metamodel;
 
 	public DerivedRelationsUtils(IZentaModel model) {
-		this.metamodel = IMetamodelFactory.eINSTANCE.getMetamodelFor(model);
+		this.metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(model);
         weaklist = metamodel.getWeaklist();
 	}
 	

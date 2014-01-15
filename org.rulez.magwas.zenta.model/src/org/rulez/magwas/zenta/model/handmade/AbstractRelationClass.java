@@ -4,13 +4,13 @@ import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.impl.RelationClassBase;
 
 public abstract class AbstractRelationClass extends RelationClassBase implements IRelationClass{
@@ -27,7 +27,7 @@ public abstract class AbstractRelationClass extends RelationClassBase implements
 			ITemplate template) {
 		setReference(referenced);
 		template.getRelationClasses().add(this);
-		setName(IMetamodelFactory.eINSTANCE.getDefiningName(reference));
+		setName(IZentaFactory.eINSTANCE.getDefiningName(reference));
 		this.template = template;
 	}
 

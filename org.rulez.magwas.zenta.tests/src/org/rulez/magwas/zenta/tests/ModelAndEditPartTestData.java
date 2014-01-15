@@ -13,12 +13,12 @@ import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
-import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 
 public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 	public BasicConnectionEditPart editPart;
@@ -79,7 +79,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
             }
         });
         assertNotNull(model);
-        metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(model);
+        metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
         assertNotNull(metamodel);
 	}
 

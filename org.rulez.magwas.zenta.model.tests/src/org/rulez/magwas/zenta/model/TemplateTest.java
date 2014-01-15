@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.metamodel;
+package org.rulez.magwas.zenta.model;
 
 import static org.junit.Assert.*;
 import org.eclipse.emf.common.util.EList;
@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
@@ -29,7 +29,7 @@ public class TemplateTest {
 		ModelTestData testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTemplateDiagramModel();
-		IMetamodel metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(model);
+		IMetamodel metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
 		fixture = metamodel.getBuiltinTemplate();
 		template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
 	}

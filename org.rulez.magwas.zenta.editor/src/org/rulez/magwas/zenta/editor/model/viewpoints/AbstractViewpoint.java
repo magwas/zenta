@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
@@ -37,7 +37,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	private IFolder folder;
 
     public AbstractViewpoint(IDiagramModel dm) {
-		metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(dm.getZentaModel());
+		metamodel = IZentaFactory.eINSTANCE.createMetamodel(dm.getZentaModel());
 		folder = (IFolder) dm.eContainer();
 	}
 

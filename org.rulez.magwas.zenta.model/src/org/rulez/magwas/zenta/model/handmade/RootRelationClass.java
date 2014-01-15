@@ -3,7 +3,7 @@ package org.rulez.magwas.zenta.model.handmade;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -14,7 +14,7 @@ public class RootRelationClass extends RelationClass {
 		super();
 	}
 	public void setReference(EObject newReference) {
-		throw new IMetamodelFactory.BuiltinClassShouldNotHaveReference();
+		throw new IZentaFactory.BuiltinClassShouldNotHaveReference();
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class RootRelationClass extends RelationClass {
 
 	@Override
 	public void setAncestor(IRelationClass ancestor) {
-		throw new IMetamodelFactory.BuiltinClassShouldNotHaveAncestor();
+		throw new IZentaFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 	
 	@Override

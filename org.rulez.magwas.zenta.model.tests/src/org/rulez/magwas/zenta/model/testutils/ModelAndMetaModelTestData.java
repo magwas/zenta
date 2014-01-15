@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.metamodel;
+package org.rulez.magwas.zenta.model.testutils;
 
 import static org.junit.Assert.assertNotNull;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -6,15 +6,13 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 public class ModelAndMetaModelTestData extends ModelTestData {
@@ -40,7 +38,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		setUpMetaModel();
 	}
 		private void setUpMetaModel() {
-			metamodel = IMetamodelFactory.eINSTANCE.createMetamodel(model);
+			metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
 	        assertNotNull(metamodel);
 	        assertNotNull(metamodel.getTemplates());
 		}
@@ -66,7 +64,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		ITemplate template = (ITemplate) metamodel.getTemplates().get(0);
 		assertNotNull(template);
 		assertNotNull(template.getMetamodel());
-		return IMetamodelFactory.eINSTANCE
+		return IZentaFactory.eINSTANCE
 				.createObjectClass(
 						element,
 						template);

@@ -3,7 +3,7 @@ package org.rulez.magwas.zenta.model.handmade;
 import java.util.List;
 
 import org.rulez.magwas.zenta.model.IIdentifier;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -16,7 +16,7 @@ public class RootObjectClass extends ObjectClass implements IObjectClass {
 	
 	@Override
 	public void setReference(IIdentifier newReference) {
-		throw new IMetamodelFactory.BuiltinClassShouldNotHaveReference();
+		throw new IZentaFactory.BuiltinClassShouldNotHaveReference();
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class RootObjectClass extends ObjectClass implements IObjectClass {
 	
 	@Override
 	public void setAncestor(IObjectClass ancestor) {
-		throw new IMetamodelFactory.BuiltinClassShouldNotHaveAncestor();
+		throw new IZentaFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 	
 	@Override

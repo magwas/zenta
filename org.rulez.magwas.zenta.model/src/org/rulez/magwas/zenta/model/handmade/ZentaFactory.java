@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
@@ -16,19 +15,20 @@ import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.handmade.Attribute;
-import org.rulez.magwas.zenta.model.impl.MetamodelFactoryBase;
+import org.rulez.magwas.zenta.model.impl.ZentaFactoryBase;
 
-public class MetamodelFactory extends MetamodelFactoryBase implements IMetamodelFactory {
+public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 
 	private static HashMap<IZentaModel,IMetamodel> registry = new HashMap<IZentaModel,IMetamodel>();
 	
-	public static IMetamodelFactory init() {
+	public static IZentaFactory init() {
 		try {
 			Registry packageRegistry = EPackage.Registry.INSTANCE;
-			IMetamodelFactory theMetamodelFactory = (IMetamodelFactory)packageRegistry.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
+			IZentaFactory theMetamodelFactory = (IZentaFactory)packageRegistry.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
 			if (theMetamodelFactory != null) {
 				return theMetamodelFactory;
 			}
@@ -36,10 +36,10 @@ public class MetamodelFactory extends MetamodelFactoryBase implements IMetamodel
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new MetamodelFactory();
+		return new ZentaFactory();
 	}
 
-	public MetamodelFactory() {
+	public ZentaFactory() {
 		super();
 	}
 
@@ -52,16 +52,19 @@ public class MetamodelFactory extends MetamodelFactoryBase implements IMetamodel
 		return mm;
 	}
 	
+	@Override
 	public IMetamodel getMetamodelFor(IZentaModel model2) {
 		return registry.get(model2);
 	}
 
 
+	@Override
 	public ITemplate createTemplate(IZentaDiagramModel reference, IMetamodel metamodel) {
 		Template template = new Template(reference, metamodel);
 		return template;
 	}
 
+	@Override
 	public IObjectClass createObjectClass(IZentaElement reference, ITemplate template) {
 		IObjectClass candidate = template.getObjectClassReferencingElement(reference);
 		if(null != candidate)
@@ -73,21 +76,19 @@ public class MetamodelFactory extends MetamodelFactoryBase implements IMetamodel
 		return objectClass;
 	}
 
+	@Override
 	public IAttribute createAttribute() {
 		Attribute attribute = new Attribute();
 		return attribute;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public IRelationClass createRelationClass() {
 		AbstractRelationClass relationClass = new RelationClass();
 		return relationClass;
 	}
 
+	@Override
 	public IRelationClass createRelationClass(IRelationship referenced, ITemplate template) {
 		IRelationClass candidate = template.getRelationClassReferencingElement(referenced);
 		if(null != candidate)

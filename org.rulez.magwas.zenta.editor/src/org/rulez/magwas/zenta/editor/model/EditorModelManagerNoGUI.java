@@ -33,7 +33,6 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
@@ -224,7 +223,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	
 	
 	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
-	    IMetamodelFactory.eINSTANCE.createMetamodel(model);
+	    IZentaFactory.eINSTANCE.createMetamodel(model);
 	    model.setFile(file);
 	    model.setDefaults();
 	    getModels().add(model);

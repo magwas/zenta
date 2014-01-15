@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IRelationClass;
@@ -75,7 +75,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	          self.processNotification(notification);
 	        }
 	    };
-	    IMetamodelFactory.eINSTANCE.createMetamodel(folder.getZentaModel()).eAdapters().add(adapter);
+	    IZentaFactory.eINSTANCE.createMetamodel(folder.getZentaModel()).eAdapters().add(adapter);
 	}
 
     protected void processNotification(Notification notification) {
@@ -204,7 +204,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 			PaletteEntry noteEntry = new CombinedTemplateCreationEntry(
 	                Messages.ZentaDiagramEditorPalette_2,
 	                Messages.ZentaDiagramEditorPalette_3,
-	                new ZentaDiagramModelFactory(IMetamodelFactory.eINSTANCE.createNoteClass(),folder),
+	                new ZentaDiagramModelFactory(IZentaFactory.eINSTANCE.createNoteClass(),folder),
 	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16),
 	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16));
 	        group.add(noteEntry);
@@ -213,14 +213,14 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 			PaletteEntry groupEntry = new CombinedTemplateCreationEntry(
 	                Messages.ZentaDiagramEditorPalette_4,
 	                Messages.ZentaDiagramEditorPalette_5,
-	                new ZentaDiagramModelFactory(IMetamodelFactory.eINSTANCE.createGroupClass(),folder),
+	                new ZentaDiagramModelFactory(IZentaFactory.eINSTANCE.createGroupClass(),folder),
 	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16),
 	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16));
 	        group.add(groupEntry);
 		}
 		private void createNoteConnection(PaletteContainer group) {
 			ConnectionCreationToolEntry entry = createConnectionCreationToolEntry(
-	                IMetamodelFactory.eINSTANCE.createNoteConnectionClass(),
+	                IZentaFactory.eINSTANCE.createNoteConnectionClass(),
 	                Messages.ZentaDiagramEditorPalette_6,
 	                Messages.ZentaDiagramEditorPalette_7);
 	        group.add(entry);

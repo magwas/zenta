@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.metamodel;
+package org.rulez.magwas.zenta.model;
 
 import static org.junit.Assert.*;
 
@@ -14,15 +14,15 @@ import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IMetamodelFactory;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class ObjectClassTest{
@@ -51,12 +51,12 @@ public class ObjectClassTest{
 		assertEquals("Basic Object",fixture.getName());
 	}
 
-	@Test(expected = IMetamodelFactory.BuiltinClassShouldNotHaveAncestor.class)
+	@Test(expected = IZentaFactory.BuiltinClassShouldNotHaveAncestor.class)
 	public void The_ancestor_cannot_be_set_for_the_Builtin_ObjectClass() {
 		fixture.setAncestor(fixture);
 	}
 
-	@Test(expected = IMetamodelFactory.BuiltinClassShouldNotHaveReference.class)
+	@Test(expected = IZentaFactory.BuiltinClassShouldNotHaveReference.class)
 	public void The_reference_cannot_be_set_for_the_Builtin_ObjectClass() {
 		IBasicObject obj2 = IZentaFactory.eINSTANCE.createBasicObject();
 		fixture.setReference(obj2);
@@ -179,7 +179,7 @@ public class ObjectClassTest{
 	public void When_the_model_is_loaded_the_diagram_elements_are_not_converted_according_to_the_defining_element() {
 		ModelTestData data = new ModelTestData();
 		ensureVirginDMOsForLoadTest(data);
-		IMetamodelFactory.eINSTANCE.createMetamodel(data.model);
+		IZentaFactory.eINSTANCE.createMetamodel(data.model);
 		ensureVirginDMOsForLoadTest(data);
 		ensureCorrectFinalAttributes(data);
 	}
