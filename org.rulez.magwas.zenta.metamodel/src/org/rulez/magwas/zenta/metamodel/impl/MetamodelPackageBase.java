@@ -31,42 +31,42 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass metamodelBaseEClass = null;
+	private EClass metamodelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass templateBaseEClass = null;
+	private EClass templateEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass referencesModelObjectBaseEClass = null;
+	private EClass referencesModelObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass objectClassBaseEClass = null;
+	private EClass objectClassEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass attributeBaseEClass = null;
+	private EClass attributeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass relationClassBaseEClass = null;
+	private EClass relationClassEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -110,7 +110,7 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 		if (isInited) return (IMetamodelPackage)EPackage.Registry.INSTANCE.getEPackage(IMetamodelPackage.eNS_URI);
 
 		// Obtain or create and register package
-		MetamodelPackageBase theMetamodelBasePackage = (MetamodelPackageBase)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MetamodelPackageBase ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MetamodelPackageBase());
+		MetamodelPackageBase theMetamodelPackage = (MetamodelPackageBase)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MetamodelPackageBase ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MetamodelPackageBase());
 
 		isInited = true;
 
@@ -118,18 +118,18 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 		IZentaPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
-		theMetamodelBasePackage.createPackageContents();
+		theMetamodelPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theMetamodelBasePackage.initializePackageContents();
+		theMetamodelPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theMetamodelBasePackage.freeze();
+		theMetamodelPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(IMetamodelPackage.eNS_URI, theMetamodelBasePackage);
-		return theMetamodelBasePackage;
+		EPackage.Registry.INSTANCE.put(IMetamodelPackage.eNS_URI, theMetamodelPackage);
+		return theMetamodelPackage;
 	}
 
 	/**
@@ -137,8 +137,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMetamodelBase() {
-		return metamodelBaseEClass;
+	public EClass getMetamodel() {
+		return metamodelEClass;
 	}
 
 	/**
@@ -146,8 +146,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMetamodelBase_Templates() {
-		return (EReference)metamodelBaseEClass.getEStructuralFeatures().get(0);
+	public EReference getMetamodel_Templates() {
+		return (EReference)metamodelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -155,8 +155,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTemplateBase() {
-		return templateBaseEClass;
+	public EClass getTemplate() {
+		return templateEClass;
 	}
 
 	/**
@@ -164,8 +164,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTemplateBase_ObjectClasses() {
-		return (EReference)templateBaseEClass.getEStructuralFeatures().get(0);
+	public EReference getTemplate_ObjectClasses() {
+		return (EReference)templateEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -173,8 +173,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTemplateBase_RelationClasses() {
-		return (EReference)templateBaseEClass.getEStructuralFeatures().get(1);
+	public EReference getTemplate_RelationClasses() {
+		return (EReference)templateEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -182,8 +182,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTemplateBase_Path() {
-		return (EAttribute)templateBaseEClass.getEStructuralFeatures().get(2);
+	public EAttribute getTemplate_Path() {
+		return (EAttribute)templateEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -191,8 +191,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTemplateBase_Metamodel() {
-		return (EReference)templateBaseEClass.getEStructuralFeatures().get(3);
+	public EReference getTemplate_Metamodel() {
+		return (EReference)templateEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -200,8 +200,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getReferencesModelObjectBase() {
-		return referencesModelObjectBaseEClass;
+	public EClass getReferencesModelObject() {
+		return referencesModelObjectEClass;
 	}
 
 	/**
@@ -209,8 +209,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getReferencesModelObjectBase_Reference() {
-		return (EReference)referencesModelObjectBaseEClass.getEStructuralFeatures().get(0);
+	public EReference getReferencesModelObject_Reference() {
+		return (EReference)referencesModelObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -218,8 +218,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getReferencesModelObjectBase_Name() {
-		return (EAttribute)referencesModelObjectBaseEClass.getEStructuralFeatures().get(1);
+	public EAttribute getReferencesModelObject_Name() {
+		return (EAttribute)referencesModelObjectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -227,8 +227,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getObjectClassBase() {
-		return objectClassBaseEClass;
+	public EClass getObjectClass() {
+		return objectClassEClass;
 	}
 
 	/**
@@ -236,8 +236,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getObjectClassBase_Attributes() {
-		return (EReference)objectClassBaseEClass.getEStructuralFeatures().get(0);
+	public EReference getObjectClass_Attributes() {
+		return (EReference)objectClassEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -245,8 +245,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getObjectClassBase_Ancestor() {
-		return (EReference)objectClassBaseEClass.getEStructuralFeatures().get(1);
+	public EReference getObjectClass_Ancestor() {
+		return (EReference)objectClassEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -254,8 +254,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getObjectClassBase_Children() {
-		return (EReference)objectClassBaseEClass.getEStructuralFeatures().get(2);
+	public EReference getObjectClass_Children() {
+		return (EReference)objectClassEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -263,8 +263,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getObjectClassBase_Template() {
-		return (EReference)objectClassBaseEClass.getEStructuralFeatures().get(3);
+	public EReference getObjectClass_Template() {
+		return (EReference)objectClassEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -272,8 +272,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAttributeBase() {
-		return attributeBaseEClass;
+	public EClass getAttribute() {
+		return attributeEClass;
 	}
 
 	/**
@@ -281,8 +281,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAttributeBase_MinOccurs() {
-		return (EAttribute)attributeBaseEClass.getEStructuralFeatures().get(0);
+	public EAttribute getAttribute_MinOccurs() {
+		return (EAttribute)attributeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -290,8 +290,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAttributeBase_MaxOccurs() {
-		return (EAttribute)attributeBaseEClass.getEStructuralFeatures().get(1);
+	public EAttribute getAttribute_MaxOccurs() {
+		return (EAttribute)attributeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -299,8 +299,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAttributeBase_Relation() {
-		return (EReference)attributeBaseEClass.getEStructuralFeatures().get(2);
+	public EReference getAttribute_Relation() {
+		return (EReference)attributeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -308,8 +308,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAttributeBase_ConnectedObject() {
-		return (EReference)attributeBaseEClass.getEStructuralFeatures().get(3);
+	public EReference getAttribute_ConnectedObject() {
+		return (EReference)attributeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -317,8 +317,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRelationClassBase() {
-		return relationClassBaseEClass;
+	public EClass getRelationClass() {
+		return relationClassEClass;
 	}
 
 	/**
@@ -326,8 +326,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRelationClassBase_Ancestor() {
-		return (EReference)relationClassBaseEClass.getEStructuralFeatures().get(0);
+	public EReference getRelationClass_Ancestor() {
+		return (EReference)relationClassEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -335,8 +335,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRelationClassBase_Children() {
-		return (EReference)relationClassBaseEClass.getEStructuralFeatures().get(1);
+	public EReference getRelationClass_Children() {
+		return (EReference)relationClassEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -344,8 +344,8 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRelationClassBase_Template() {
-		return (EReference)relationClassBaseEClass.getEStructuralFeatures().get(2);
+	public EReference getRelationClass_Template() {
+		return (EReference)relationClassEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -353,7 +353,7 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IMetamodelFactory getMetamodelBaseFactory() {
+	public IMetamodelFactory getMetamodelFactory() {
 		return (IMetamodelFactory)getEFactoryInstance();
 	}
 
@@ -376,35 +376,35 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 		isCreated = true;
 
 		// Create classes and their features
-		metamodelBaseEClass = createEClass(METAMODEL_BASE);
-		createEReference(metamodelBaseEClass, METAMODEL_BASE__TEMPLATES);
+		metamodelEClass = createEClass(METAMODEL);
+		createEReference(metamodelEClass, METAMODEL__TEMPLATES);
 
-		templateBaseEClass = createEClass(TEMPLATE_BASE);
-		createEReference(templateBaseEClass, TEMPLATE_BASE__OBJECT_CLASSES);
-		createEReference(templateBaseEClass, TEMPLATE_BASE__RELATION_CLASSES);
-		createEAttribute(templateBaseEClass, TEMPLATE_BASE__PATH);
-		createEReference(templateBaseEClass, TEMPLATE_BASE__METAMODEL);
+		templateEClass = createEClass(TEMPLATE);
+		createEReference(templateEClass, TEMPLATE__OBJECT_CLASSES);
+		createEReference(templateEClass, TEMPLATE__RELATION_CLASSES);
+		createEAttribute(templateEClass, TEMPLATE__PATH);
+		createEReference(templateEClass, TEMPLATE__METAMODEL);
 
-		referencesModelObjectBaseEClass = createEClass(REFERENCES_MODEL_OBJECT_BASE);
-		createEReference(referencesModelObjectBaseEClass, REFERENCES_MODEL_OBJECT_BASE__REFERENCE);
-		createEAttribute(referencesModelObjectBaseEClass, REFERENCES_MODEL_OBJECT_BASE__NAME);
+		referencesModelObjectEClass = createEClass(REFERENCES_MODEL_OBJECT);
+		createEReference(referencesModelObjectEClass, REFERENCES_MODEL_OBJECT__REFERENCE);
+		createEAttribute(referencesModelObjectEClass, REFERENCES_MODEL_OBJECT__NAME);
 
-		objectClassBaseEClass = createEClass(OBJECT_CLASS_BASE);
-		createEReference(objectClassBaseEClass, OBJECT_CLASS_BASE__ATTRIBUTES);
-		createEReference(objectClassBaseEClass, OBJECT_CLASS_BASE__ANCESTOR);
-		createEReference(objectClassBaseEClass, OBJECT_CLASS_BASE__CHILDREN);
-		createEReference(objectClassBaseEClass, OBJECT_CLASS_BASE__TEMPLATE);
+		objectClassEClass = createEClass(OBJECT_CLASS);
+		createEReference(objectClassEClass, OBJECT_CLASS__ATTRIBUTES);
+		createEReference(objectClassEClass, OBJECT_CLASS__ANCESTOR);
+		createEReference(objectClassEClass, OBJECT_CLASS__CHILDREN);
+		createEReference(objectClassEClass, OBJECT_CLASS__TEMPLATE);
 
-		attributeBaseEClass = createEClass(ATTRIBUTE_BASE);
-		createEAttribute(attributeBaseEClass, ATTRIBUTE_BASE__MIN_OCCURS);
-		createEAttribute(attributeBaseEClass, ATTRIBUTE_BASE__MAX_OCCURS);
-		createEReference(attributeBaseEClass, ATTRIBUTE_BASE__RELATION);
-		createEReference(attributeBaseEClass, ATTRIBUTE_BASE__CONNECTED_OBJECT);
+		attributeEClass = createEClass(ATTRIBUTE);
+		createEAttribute(attributeEClass, ATTRIBUTE__MIN_OCCURS);
+		createEAttribute(attributeEClass, ATTRIBUTE__MAX_OCCURS);
+		createEReference(attributeEClass, ATTRIBUTE__RELATION);
+		createEReference(attributeEClass, ATTRIBUTE__CONNECTED_OBJECT);
 
-		relationClassBaseEClass = createEClass(RELATION_CLASS_BASE);
-		createEReference(relationClassBaseEClass, RELATION_CLASS_BASE__ANCESTOR);
-		createEReference(relationClassBaseEClass, RELATION_CLASS_BASE__CHILDREN);
-		createEReference(relationClassBaseEClass, RELATION_CLASS_BASE__TEMPLATE);
+		relationClassEClass = createEClass(RELATION_CLASS);
+		createEReference(relationClassEClass, RELATION_CLASS__ANCESTOR);
+		createEReference(relationClassEClass, RELATION_CLASS__CHILDREN);
+		createEReference(relationClassEClass, RELATION_CLASS__TEMPLATE);
 	}
 
 	/**
@@ -438,40 +438,40 @@ public class MetamodelPackageBase extends EPackageImpl implements IMetamodelPack
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		templateBaseEClass.getESuperTypes().add(this.getReferencesModelObjectBase());
-		objectClassBaseEClass.getESuperTypes().add(this.getReferencesModelObjectBase());
-		relationClassBaseEClass.getESuperTypes().add(this.getReferencesModelObjectBase());
+		templateEClass.getESuperTypes().add(this.getReferencesModelObject());
+		objectClassEClass.getESuperTypes().add(this.getReferencesModelObject());
+		relationClassEClass.getESuperTypes().add(this.getReferencesModelObject());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(metamodelBaseEClass, IMetamodel.class, "MetamodelBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMetamodelBase_Templates(), this.getTemplateBase(), this.getTemplateBase_Metamodel(), "templates", null, 0, -1, IMetamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(metamodelEClass, IMetamodel.class, "Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMetamodel_Templates(), this.getTemplate(), this.getTemplate_Metamodel(), "templates", null, 0, -1, IMetamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(templateBaseEClass, ITemplate.class, "ITemplate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTemplateBase_ObjectClasses(), this.getObjectClassBase(), this.getObjectClassBase_Template(), "objectClasses", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTemplateBase_RelationClasses(), this.getRelationClassBase(), this.getRelationClassBase_Template(), "relationClasses", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTemplateBase_Path(), ecorePackage.getEString(), "path", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTemplateBase_Metamodel(), this.getMetamodelBase(), this.getMetamodelBase_Templates(), "metamodel", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(templateEClass, ITemplate.class, "Template", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTemplate_ObjectClasses(), this.getObjectClass(), this.getObjectClass_Template(), "objectClasses", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemplate_RelationClasses(), this.getRelationClass(), this.getRelationClass_Template(), "relationClasses", null, 0, -1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTemplate_Path(), ecorePackage.getEString(), "path", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemplate_Metamodel(), this.getMetamodel(), this.getMetamodel_Templates(), "metamodel", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(referencesModelObjectBaseEClass, IReferencesModelObject.class, "ReferencesModelObjectBase", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReferencesModelObjectBase_Reference(), theZentaPackage.getIdentifier(), null, "reference", null, 1, 1, IReferencesModelObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReferencesModelObjectBase_Name(), ecorePackage.getEString(), "name", null, 1, 1, IReferencesModelObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEClass(referencesModelObjectEClass, IReferencesModelObject.class, "ReferencesModelObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReferencesModelObject_Reference(), theZentaPackage.getIdentifier(), null, "reference", null, 1, 1, IReferencesModelObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReferencesModelObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, IReferencesModelObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(objectClassBaseEClass, IObjectClass.class, "ObjectClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getObjectClassBase_Attributes(), this.getAttributeBase(), null, "attributes", null, 0, -1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObjectClassBase_Ancestor(), this.getObjectClassBase(), this.getObjectClassBase_Children(), "ancestor", null, 1, 1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObjectClassBase_Children(), this.getObjectClassBase(), this.getObjectClassBase_Ancestor(), "children", null, 0, -1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getObjectClassBase_Template(), this.getTemplateBase(), this.getTemplateBase_ObjectClasses(), "template", null, 0, 1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(objectClassEClass, IObjectClass.class, "ObjectClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getObjectClass_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectClass_Ancestor(), this.getObjectClass(), this.getObjectClass_Children(), "ancestor", null, 1, 1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectClass_Children(), this.getObjectClass(), this.getObjectClass_Ancestor(), "children", null, 0, -1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectClass_Template(), this.getTemplate(), this.getTemplate_ObjectClasses(), "template", null, 0, 1, IObjectClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(attributeBaseEClass, IAttribute.class, "AttributeBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAttributeBase_MinOccurs(), ecorePackage.getEInt(), "minOccurs", "0", 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAttributeBase_MaxOccurs(), ecorePackage.getEInt(), "maxOccurs", "1", 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAttributeBase_Relation(), this.getRelationClassBase(), null, "relation", null, 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAttributeBase_ConnectedObject(), this.getObjectClassBase(), null, "connectedObject", null, 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(attributeEClass, IAttribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAttribute_MinOccurs(), ecorePackage.getEInt(), "minOccurs", "0", 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribute_MaxOccurs(), ecorePackage.getEInt(), "maxOccurs", "1", 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAttribute_Relation(), this.getRelationClass(), null, "relation", null, 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAttribute_ConnectedObject(), this.getObjectClass(), null, "connectedObject", null, 1, 1, IAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(relationClassBaseEClass, IRelationClass.class, "IRelationClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelationClassBase_Ancestor(), this.getRelationClassBase(), this.getRelationClassBase_Children(), "ancestor", null, 1, 1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationClassBase_Children(), this.getRelationClassBase(), this.getRelationClassBase_Ancestor(), "children", null, 0, -1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationClassBase_Template(), this.getTemplateBase(), this.getTemplateBase_RelationClasses(), "template", null, 0, 1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(relationClassEClass, IRelationClass.class, "RelationClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRelationClass_Ancestor(), this.getRelationClass(), this.getRelationClass_Children(), "ancestor", null, 1, 1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationClass_Children(), this.getRelationClass(), this.getRelationClass_Ancestor(), "children", null, 0, -1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationClass_Template(), this.getTemplate(), this.getTemplate_RelationClasses(), "template", null, 0, 1, IRelationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

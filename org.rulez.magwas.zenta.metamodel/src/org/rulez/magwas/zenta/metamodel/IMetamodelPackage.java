@@ -56,14 +56,14 @@ public interface IMetamodelPackage extends EPackage {
 	IMetamodelPackage eINSTANCE = org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase.init();
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.MetamodelBase <em>MetamodelBase Base</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.MetamodelBase <em>Metamodel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelBase
-	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getMetamodelBase()
+	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getMetamodel()
 	 * @generated
 	 */
-	int METAMODEL_BASE = 0;
+	int METAMODEL = 0;
 
 	/**
 	 * The feature id for the '<em><b>Templates</b></em>' containment reference list.
@@ -72,26 +72,26 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METAMODEL_BASE__TEMPLATES = 0;
+	int METAMODEL__TEMPLATES = 0;
 
 	/**
-	 * The number of structural features of the '<em>MetamodelBase Base</em>' class.
+	 * The number of structural features of the '<em>Metamodel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METAMODEL_BASE_FEATURE_COUNT = 1;
+	int METAMODEL_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject <em>References Model Object Base</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject <em>References Model Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.metamodel.IReferencesModelObject
-	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getReferencesModelObjectBase()
+	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getReferencesModelObject()
 	 * @generated
 	 */
-	int REFERENCES_MODEL_OBJECT_BASE = 2;
+	int REFERENCES_MODEL_OBJECT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -100,7 +100,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCES_MODEL_OBJECT_BASE__REFERENCE = 0;
+	int REFERENCES_MODEL_OBJECT__REFERENCE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -109,26 +109,26 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCES_MODEL_OBJECT_BASE__NAME = 1;
+	int REFERENCES_MODEL_OBJECT__NAME = 1;
 
 	/**
-	 * The number of structural features of the '<em>References Model Object Base</em>' class.
+	 * The number of structural features of the '<em>References Model Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT = 2;
+	int REFERENCES_MODEL_OBJECT_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase <em>ITemplate Base</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase <em>Template</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.metamodel.impl.TemplateBase
-	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getTemplateBase()
+	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getTemplate()
 	 * @generated
 	 */
-	int TEMPLATE_BASE = 1;
+	int TEMPLATE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -137,7 +137,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_BASE__REFERENCE = REFERENCES_MODEL_OBJECT_BASE__REFERENCE;
+	int TEMPLATE__REFERENCE = REFERENCES_MODEL_OBJECT__REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -146,7 +146,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_BASE__NAME = REFERENCES_MODEL_OBJECT_BASE__NAME;
+	int TEMPLATE__NAME = REFERENCES_MODEL_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Object Classes</b></em>' containment reference list.
@@ -155,7 +155,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_BASE__OBJECT_CLASSES = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 0;
+	int TEMPLATE__OBJECT_CLASSES = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Relation Classes</b></em>' containment reference list.
@@ -164,7 +164,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_BASE__RELATION_CLASSES = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 1;
+	int TEMPLATE__RELATION_CLASSES = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -173,35 +173,35 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_BASE__PATH = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 2;
+	int TEMPLATE__PATH = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>MetamodelBase</b></em>' container reference.
+	 * The feature id for the '<em><b>Metamodel</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_BASE__METAMODEL = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 3;
+	int TEMPLATE__METAMODEL = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>ITemplate Base</em>' class.
+	 * The number of structural features of the '<em>Template</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_BASE_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 4;
+	int TEMPLATE_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase <em>Object Class Base</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase <em>Object Class</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase
-	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getObjectClassBase()
+	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getObjectClass()
 	 * @generated
 	 */
-	int OBJECT_CLASS_BASE = 3;
+	int OBJECT_CLASS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -210,7 +210,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CLASS_BASE__REFERENCE = REFERENCES_MODEL_OBJECT_BASE__REFERENCE;
+	int OBJECT_CLASS__REFERENCE = REFERENCES_MODEL_OBJECT__REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -219,7 +219,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CLASS_BASE__NAME = REFERENCES_MODEL_OBJECT_BASE__NAME;
+	int OBJECT_CLASS__NAME = REFERENCES_MODEL_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -228,7 +228,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CLASS_BASE__ATTRIBUTES = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 0;
+	int OBJECT_CLASS__ATTRIBUTES = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Ancestor</b></em>' reference.
@@ -237,7 +237,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CLASS_BASE__ANCESTOR = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 1;
+	int OBJECT_CLASS__ANCESTOR = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' reference list.
@@ -246,35 +246,35 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CLASS_BASE__CHILDREN = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 2;
+	int OBJECT_CLASS__CHILDREN = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>ITemplate</b></em>' container reference.
+	 * The feature id for the '<em><b>Template</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CLASS_BASE__TEMPLATE = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 3;
+	int OBJECT_CLASS__TEMPLATE = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Object Class Base</em>' class.
+	 * The number of structural features of the '<em>Object Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CLASS_BASE_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 4;
+	int OBJECT_CLASS_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.AttributeBase <em>AttributeBase Base</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.AttributeBase <em>Attribute</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.metamodel.impl.AttributeBase
-	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getAttributeBase()
+	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getAttribute()
 	 * @generated
 	 */
-	int ATTRIBUTE_BASE = 4;
+	int ATTRIBUTE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Min Occurs</b></em>' attribute.
@@ -283,7 +283,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_BASE__MIN_OCCURS = 0;
+	int ATTRIBUTE__MIN_OCCURS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Max Occurs</b></em>' attribute.
@@ -292,7 +292,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_BASE__MAX_OCCURS = 1;
+	int ATTRIBUTE__MAX_OCCURS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Relation</b></em>' reference.
@@ -301,7 +301,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_BASE__RELATION = 2;
+	int ATTRIBUTE__RELATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Connected Object</b></em>' reference.
@@ -310,26 +310,26 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_BASE__CONNECTED_OBJECT = 3;
+	int ATTRIBUTE__CONNECTED_OBJECT = 3;
 
 	/**
-	 * The number of structural features of the '<em>AttributeBase Base</em>' class.
+	 * The number of structural features of the '<em>Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_BASE_FEATURE_COUNT = 4;
+	int ATTRIBUTE_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBase <em>Relation Class Base</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBase <em>Relation Class</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.metamodel.impl.RelationClassBase
-	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getRelationClassBase()
+	 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getRelationClass()
 	 * @generated
 	 */
-	int RELATION_CLASS_BASE = 5;
+	int RELATION_CLASS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -338,7 +338,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS_BASE__REFERENCE = REFERENCES_MODEL_OBJECT_BASE__REFERENCE;
+	int RELATION_CLASS__REFERENCE = REFERENCES_MODEL_OBJECT__REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -347,7 +347,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS_BASE__NAME = REFERENCES_MODEL_OBJECT_BASE__NAME;
+	int RELATION_CLASS__NAME = REFERENCES_MODEL_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Ancestor</b></em>' reference.
@@ -356,7 +356,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS_BASE__ANCESTOR = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 0;
+	int RELATION_CLASS__ANCESTOR = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' reference list.
@@ -365,36 +365,36 @@ public interface IMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS_BASE__CHILDREN = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 1;
+	int RELATION_CLASS__CHILDREN = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>ITemplate</b></em>' container reference.
+	 * The feature id for the '<em><b>Template</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS_BASE__TEMPLATE = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 2;
+	int RELATION_CLASS__TEMPLATE = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Relation Class Base</em>' class.
+	 * The number of structural features of the '<em>Relation Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_CLASS_BASE_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_BASE_FEATURE_COUNT + 3;
+	int RELATION_CLASS_FEATURE_COUNT = REFERENCES_MODEL_OBJECT_FEATURE_COUNT + 3;
 
 
 	/**
-	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IMetamodel <em>MetamodelBase Base</em>}'.
+	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IMetamodel <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>MetamodelBase Base</em>'.
+	 * @return the meta object for class '<em>Metamodel</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IMetamodel
 	 * @generated
 	 */
-	EClass getMetamodelBase();
+	EClass getMetamodel();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.rulez.magwas.zenta.metamodel.IMetamodel#getTemplates <em>Templates</em>}'.
@@ -402,20 +402,20 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Templates</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IMetamodel#getTemplates()
-	 * @see #getMetamodelBase()
+	 * @see #getMetamodel()
 	 * @generated
 	 */
-	EReference getMetamodelBase_Templates();
+	EReference getMetamodel_Templates();
 
 	/**
-	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.ITemplate <em>ITemplate Base</em>}'.
+	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.ITemplate <em>Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ITemplate Base</em>'.
+	 * @return the meta object for class '<em>Template</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate
 	 * @generated
 	 */
-	EClass getTemplateBase();
+	EClass getTemplate();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getObjectClasses <em>Object Classes</em>}'.
@@ -423,10 +423,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Object Classes</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate#getObjectClasses()
-	 * @see #getTemplateBase()
+	 * @see #getTemplate()
 	 * @generated
 	 */
-	EReference getTemplateBase_ObjectClasses();
+	EReference getTemplate_ObjectClasses();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getRelationClasses <em>Relation Classes</em>}'.
@@ -434,10 +434,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Relation Classes</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate#getRelationClasses()
-	 * @see #getTemplateBase()
+	 * @see #getTemplate()
 	 * @generated
 	 */
-	EReference getTemplateBase_RelationClasses();
+	EReference getTemplate_RelationClasses();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getPath <em>Path</em>}'.
@@ -445,31 +445,31 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Path</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate#getPath()
-	 * @see #getTemplateBase()
+	 * @see #getTemplate()
 	 * @generated
 	 */
-	EAttribute getTemplateBase_Path();
+	EAttribute getTemplate_Path();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel <em>MetamodelBase</em>}'.
+	 * Returns the meta object for the container reference '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>MetamodelBase</em>'.
+	 * @return the meta object for the container reference '<em>Metamodel</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel()
-	 * @see #getTemplateBase()
+	 * @see #getTemplate()
 	 * @generated
 	 */
-	EReference getTemplateBase_Metamodel();
+	EReference getTemplate_Metamodel();
 
 	/**
-	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject <em>References Model Object Base</em>}'.
+	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject <em>References Model Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>References Model Object Base</em>'.
+	 * @return the meta object for class '<em>References Model Object</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IReferencesModelObject
 	 * @generated
 	 */
-	EClass getReferencesModelObjectBase();
+	EClass getReferencesModelObject();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject#getReference <em>Reference</em>}'.
@@ -477,10 +477,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Reference</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IReferencesModelObject#getReference()
-	 * @see #getReferencesModelObjectBase()
+	 * @see #getReferencesModelObject()
 	 * @generated
 	 */
-	EReference getReferencesModelObjectBase_Reference();
+	EReference getReferencesModelObject_Reference();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject#getName <em>Name</em>}'.
@@ -488,20 +488,20 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IReferencesModelObject#getName()
-	 * @see #getReferencesModelObjectBase()
+	 * @see #getReferencesModelObject()
 	 * @generated
 	 */
-	EAttribute getReferencesModelObjectBase_Name();
+	EAttribute getReferencesModelObject_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IObjectClass <em>Object Class Base</em>}'.
+	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IObjectClass <em>Object Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Object Class Base</em>'.
+	 * @return the meta object for class '<em>Object Class</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass
 	 * @generated
 	 */
-	EClass getObjectClassBase();
+	EClass getObjectClass();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getAttributes <em>Attributes</em>}'.
@@ -509,10 +509,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Attributes</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getAttributes()
-	 * @see #getObjectClassBase()
+	 * @see #getObjectClass()
 	 * @generated
 	 */
-	EReference getObjectClassBase_Attributes();
+	EReference getObjectClass_Attributes();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getAncestor <em>Ancestor</em>}'.
@@ -520,10 +520,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Ancestor</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getAncestor()
-	 * @see #getObjectClassBase()
+	 * @see #getObjectClass()
 	 * @generated
 	 */
-	EReference getObjectClassBase_Ancestor();
+	EReference getObjectClass_Ancestor();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getChildren <em>Children</em>}'.
@@ -531,31 +531,31 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Children</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getChildren()
-	 * @see #getObjectClassBase()
+	 * @see #getObjectClass()
 	 * @generated
 	 */
-	EReference getObjectClassBase_Children();
+	EReference getObjectClass_Children();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>ITemplate</em>}'.
+	 * Returns the meta object for the container reference '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>ITemplate</em>'.
+	 * @return the meta object for the container reference '<em>Template</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate()
-	 * @see #getObjectClassBase()
+	 * @see #getObjectClass()
 	 * @generated
 	 */
-	EReference getObjectClassBase_Template();
+	EReference getObjectClass_Template();
 
 	/**
-	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IAttribute <em>AttributeBase Base</em>}'.
+	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IAttribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>AttributeBase Base</em>'.
+	 * @return the meta object for class '<em>Attribute</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IAttribute
 	 * @generated
 	 */
-	EClass getAttributeBase();
+	EClass getAttribute();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.metamodel.IAttribute#getMinOccurs <em>Min Occurs</em>}'.
@@ -563,10 +563,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Min Occurs</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IAttribute#getMinOccurs()
-	 * @see #getAttributeBase()
+	 * @see #getAttribute()
 	 * @generated
 	 */
-	EAttribute getAttributeBase_MinOccurs();
+	EAttribute getAttribute_MinOccurs();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.metamodel.IAttribute#getMaxOccurs <em>Max Occurs</em>}'.
@@ -574,10 +574,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Max Occurs</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IAttribute#getMaxOccurs()
-	 * @see #getAttributeBase()
+	 * @see #getAttribute()
 	 * @generated
 	 */
-	EAttribute getAttributeBase_MaxOccurs();
+	EAttribute getAttribute_MaxOccurs();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.rulez.magwas.zenta.metamodel.IAttribute#getRelation <em>Relation</em>}'.
@@ -585,10 +585,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Relation</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IAttribute#getRelation()
-	 * @see #getAttributeBase()
+	 * @see #getAttribute()
 	 * @generated
 	 */
-	EReference getAttributeBase_Relation();
+	EReference getAttribute_Relation();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.rulez.magwas.zenta.metamodel.IAttribute#getConnectedObject <em>Connected Object</em>}'.
@@ -596,20 +596,20 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Connected Object</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IAttribute#getConnectedObject()
-	 * @see #getAttributeBase()
+	 * @see #getAttribute()
 	 * @generated
 	 */
-	EReference getAttributeBase_ConnectedObject();
+	EReference getAttribute_ConnectedObject();
 
 	/**
-	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IRelationClass <em>Relation Class Base</em>}'.
+	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.metamodel.IRelationClass <em>Relation Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Relation Class Base</em>'.
+	 * @return the meta object for class '<em>Relation Class</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IRelationClass
 	 * @generated
 	 */
-	EClass getRelationClassBase();
+	EClass getRelationClass();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.rulez.magwas.zenta.metamodel.IRelationClass#getAncestor <em>Ancestor</em>}'.
@@ -617,10 +617,10 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Ancestor</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IRelationClass#getAncestor()
-	 * @see #getRelationClassBase()
+	 * @see #getRelationClass()
 	 * @generated
 	 */
-	EReference getRelationClassBase_Ancestor();
+	EReference getRelationClass_Ancestor();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.rulez.magwas.zenta.metamodel.IRelationClass#getChildren <em>Children</em>}'.
@@ -628,21 +628,21 @@ public interface IMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Children</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IRelationClass#getChildren()
-	 * @see #getRelationClassBase()
+	 * @see #getRelationClass()
 	 * @generated
 	 */
-	EReference getRelationClassBase_Children();
+	EReference getRelationClass_Children();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate <em>ITemplate</em>}'.
+	 * Returns the meta object for the container reference '{@link org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate <em>Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>ITemplate</em>'.
+	 * @return the meta object for the container reference '<em>Template</em>'.
 	 * @see org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate()
-	 * @see #getRelationClassBase()
+	 * @see #getRelationClass()
 	 * @generated
 	 */
-	EReference getRelationClassBase_Template();
+	EReference getRelationClass_Template();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -651,7 +651,7 @@ public interface IMetamodelPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	IMetamodelFactory getMetamodelBaseFactory();
+	IMetamodelFactory getMetamodelFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -667,14 +667,14 @@ public interface IMetamodelPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.MetamodelBase <em>MetamodelBase Base</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.MetamodelBase <em>Metamodel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelBase
-		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getMetamodelBase()
+		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getMetamodel()
 		 * @generated
 		 */
-		EClass METAMODEL_BASE = eINSTANCE.getMetamodelBase();
+		EClass METAMODEL = eINSTANCE.getMetamodel();
 
 		/**
 		 * The meta object literal for the '<em><b>Templates</b></em>' containment reference list feature.
@@ -682,17 +682,17 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference METAMODEL_BASE__TEMPLATES = eINSTANCE.getMetamodelBase_Templates();
+		EReference METAMODEL__TEMPLATES = eINSTANCE.getMetamodel_Templates();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase <em>ITemplate Base</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.TemplateBase <em>Template</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.metamodel.impl.TemplateBase
-		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getTemplateBase()
+		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getTemplate()
 		 * @generated
 		 */
-		EClass TEMPLATE_BASE = eINSTANCE.getTemplateBase();
+		EClass TEMPLATE = eINSTANCE.getTemplate();
 
 		/**
 		 * The meta object literal for the '<em><b>Object Classes</b></em>' containment reference list feature.
@@ -700,7 +700,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TEMPLATE_BASE__OBJECT_CLASSES = eINSTANCE.getTemplateBase_ObjectClasses();
+		EReference TEMPLATE__OBJECT_CLASSES = eINSTANCE.getTemplate_ObjectClasses();
 
 		/**
 		 * The meta object literal for the '<em><b>Relation Classes</b></em>' containment reference list feature.
@@ -708,7 +708,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TEMPLATE_BASE__RELATION_CLASSES = eINSTANCE.getTemplateBase_RelationClasses();
+		EReference TEMPLATE__RELATION_CLASSES = eINSTANCE.getTemplate_RelationClasses();
 
 		/**
 		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
@@ -716,25 +716,25 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TEMPLATE_BASE__PATH = eINSTANCE.getTemplateBase_Path();
+		EAttribute TEMPLATE__PATH = eINSTANCE.getTemplate_Path();
 
 		/**
-		 * The meta object literal for the '<em><b>MetamodelBase</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Metamodel</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TEMPLATE_BASE__METAMODEL = eINSTANCE.getTemplateBase_Metamodel();
+		EReference TEMPLATE__METAMODEL = eINSTANCE.getTemplate_Metamodel();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject <em>References Model Object Base</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.IReferencesModelObject <em>References Model Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.metamodel.IReferencesModelObject
-		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getReferencesModelObjectBase()
+		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getReferencesModelObject()
 		 * @generated
 		 */
-		EClass REFERENCES_MODEL_OBJECT_BASE = eINSTANCE.getReferencesModelObjectBase();
+		EClass REFERENCES_MODEL_OBJECT = eINSTANCE.getReferencesModelObject();
 
 		/**
 		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -742,7 +742,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference REFERENCES_MODEL_OBJECT_BASE__REFERENCE = eINSTANCE.getReferencesModelObjectBase_Reference();
+		EReference REFERENCES_MODEL_OBJECT__REFERENCE = eINSTANCE.getReferencesModelObject_Reference();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -750,17 +750,17 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute REFERENCES_MODEL_OBJECT_BASE__NAME = eINSTANCE.getReferencesModelObjectBase_Name();
+		EAttribute REFERENCES_MODEL_OBJECT__NAME = eINSTANCE.getReferencesModelObject_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase <em>Object Class Base</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase <em>Object Class</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.metamodel.impl.ObjectClassBase
-		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getObjectClassBase()
+		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getObjectClass()
 		 * @generated
 		 */
-		EClass OBJECT_CLASS_BASE = eINSTANCE.getObjectClassBase();
+		EClass OBJECT_CLASS = eINSTANCE.getObjectClass();
 
 		/**
 		 * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
@@ -768,7 +768,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OBJECT_CLASS_BASE__ATTRIBUTES = eINSTANCE.getObjectClassBase_Attributes();
+		EReference OBJECT_CLASS__ATTRIBUTES = eINSTANCE.getObjectClass_Attributes();
 
 		/**
 		 * The meta object literal for the '<em><b>Ancestor</b></em>' reference feature.
@@ -776,7 +776,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OBJECT_CLASS_BASE__ANCESTOR = eINSTANCE.getObjectClassBase_Ancestor();
+		EReference OBJECT_CLASS__ANCESTOR = eINSTANCE.getObjectClass_Ancestor();
 
 		/**
 		 * The meta object literal for the '<em><b>Children</b></em>' reference list feature.
@@ -784,25 +784,25 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OBJECT_CLASS_BASE__CHILDREN = eINSTANCE.getObjectClassBase_Children();
+		EReference OBJECT_CLASS__CHILDREN = eINSTANCE.getObjectClass_Children();
 
 		/**
-		 * The meta object literal for the '<em><b>ITemplate</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Template</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OBJECT_CLASS_BASE__TEMPLATE = eINSTANCE.getObjectClassBase_Template();
+		EReference OBJECT_CLASS__TEMPLATE = eINSTANCE.getObjectClass_Template();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.AttributeBase <em>AttributeBase Base</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.AttributeBase <em>Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.metamodel.impl.AttributeBase
-		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getAttributeBase()
+		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getAttribute()
 		 * @generated
 		 */
-		EClass ATTRIBUTE_BASE = eINSTANCE.getAttributeBase();
+		EClass ATTRIBUTE = eINSTANCE.getAttribute();
 
 		/**
 		 * The meta object literal for the '<em><b>Min Occurs</b></em>' attribute feature.
@@ -810,7 +810,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ATTRIBUTE_BASE__MIN_OCCURS = eINSTANCE.getAttributeBase_MinOccurs();
+		EAttribute ATTRIBUTE__MIN_OCCURS = eINSTANCE.getAttribute_MinOccurs();
 
 		/**
 		 * The meta object literal for the '<em><b>Max Occurs</b></em>' attribute feature.
@@ -818,7 +818,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ATTRIBUTE_BASE__MAX_OCCURS = eINSTANCE.getAttributeBase_MaxOccurs();
+		EAttribute ATTRIBUTE__MAX_OCCURS = eINSTANCE.getAttribute_MaxOccurs();
 
 		/**
 		 * The meta object literal for the '<em><b>Relation</b></em>' reference feature.
@@ -826,7 +826,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ATTRIBUTE_BASE__RELATION = eINSTANCE.getAttributeBase_Relation();
+		EReference ATTRIBUTE__RELATION = eINSTANCE.getAttribute_Relation();
 
 		/**
 		 * The meta object literal for the '<em><b>Connected Object</b></em>' reference feature.
@@ -834,17 +834,17 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ATTRIBUTE_BASE__CONNECTED_OBJECT = eINSTANCE.getAttributeBase_ConnectedObject();
+		EReference ATTRIBUTE__CONNECTED_OBJECT = eINSTANCE.getAttribute_ConnectedObject();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBase <em>Relation Class Base</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.metamodel.impl.RelationClassBase <em>Relation Class</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.metamodel.impl.RelationClassBase
-		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getRelationClassBase()
+		 * @see org.rulez.magwas.zenta.metamodel.impl.MetamodelPackageBase#getRelationClass()
 		 * @generated
 		 */
-		EClass RELATION_CLASS_BASE = eINSTANCE.getRelationClassBase();
+		EClass RELATION_CLASS = eINSTANCE.getRelationClass();
 
 		/**
 		 * The meta object literal for the '<em><b>Ancestor</b></em>' reference feature.
@@ -852,7 +852,7 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RELATION_CLASS_BASE__ANCESTOR = eINSTANCE.getRelationClassBase_Ancestor();
+		EReference RELATION_CLASS__ANCESTOR = eINSTANCE.getRelationClass_Ancestor();
 
 		/**
 		 * The meta object literal for the '<em><b>Children</b></em>' reference list feature.
@@ -860,15 +860,15 @@ public interface IMetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RELATION_CLASS_BASE__CHILDREN = eINSTANCE.getRelationClassBase_Children();
+		EReference RELATION_CLASS__CHILDREN = eINSTANCE.getRelationClass_Children();
 
 		/**
-		 * The meta object literal for the '<em><b>ITemplate</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Template</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RELATION_CLASS_BASE__TEMPLATE = eINSTANCE.getRelationClassBase_Template();
+		EReference RELATION_CLASS__TEMPLATE = eINSTANCE.getRelationClass_Template();
 
 	}
 

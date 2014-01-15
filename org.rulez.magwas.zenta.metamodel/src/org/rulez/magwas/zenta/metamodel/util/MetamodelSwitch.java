@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.metamodel.*;
  * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage
  * @generated
  */
-public class MetamodelBaseSwitch<T> extends Switch<T> {
+public class MetamodelSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -37,7 +37,7 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MetamodelBaseSwitch() {
+	public MetamodelSwitch() {
 		if (modelPackage == null) {
 			modelPackage = IMetamodelPackage.eINSTANCE;
 		}
@@ -66,42 +66,42 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case IMetamodelPackage.METAMODEL_BASE: {
-				IMetamodel metamodelBase = (IMetamodel)theEObject;
-				T result = caseMetamodelBase(metamodelBase);
+			case IMetamodelPackage.METAMODEL: {
+				IMetamodel metamodel = (IMetamodel)theEObject;
+				T result = caseMetamodel(metamodel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IMetamodelPackage.TEMPLATE_BASE: {
-				ITemplate templateBase = (ITemplate)theEObject;
-				T result = caseTemplateBase(templateBase);
-				if (result == null) result = caseReferencesModelObjectBase(templateBase);
+			case IMetamodelPackage.TEMPLATE: {
+				ITemplate template = (ITemplate)theEObject;
+				T result = caseTemplate(template);
+				if (result == null) result = caseReferencesModelObject(template);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IMetamodelPackage.REFERENCES_MODEL_OBJECT_BASE: {
-				IReferencesModelObject referencesModelObjectBase = (IReferencesModelObject)theEObject;
-				T result = caseReferencesModelObjectBase(referencesModelObjectBase);
+			case IMetamodelPackage.REFERENCES_MODEL_OBJECT: {
+				IReferencesModelObject referencesModelObject = (IReferencesModelObject)theEObject;
+				T result = caseReferencesModelObject(referencesModelObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IMetamodelPackage.OBJECT_CLASS_BASE: {
-				IObjectClass objectClassBase = (IObjectClass)theEObject;
-				T result = caseObjectClassBase(objectClassBase);
-				if (result == null) result = caseReferencesModelObjectBase(objectClassBase);
+			case IMetamodelPackage.OBJECT_CLASS: {
+				IObjectClass objectClass = (IObjectClass)theEObject;
+				T result = caseObjectClass(objectClass);
+				if (result == null) result = caseReferencesModelObject(objectClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IMetamodelPackage.ATTRIBUTE_BASE: {
-				IAttribute attributeBase = (IAttribute)theEObject;
-				T result = caseAttributeBase(attributeBase);
+			case IMetamodelPackage.ATTRIBUTE: {
+				IAttribute attribute = (IAttribute)theEObject;
+				T result = caseAttribute(attribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IMetamodelPackage.RELATION_CLASS_BASE: {
-				IRelationClass relationClassBase = (IRelationClass)theEObject;
-				T result = caseRelationClassBase(relationClassBase);
-				if (result == null) result = caseReferencesModelObjectBase(relationClassBase);
+			case IMetamodelPackage.RELATION_CLASS: {
+				IRelationClass relationClass = (IRelationClass)theEObject;
+				T result = caseRelationClass(relationClass);
+				if (result == null) result = caseReferencesModelObject(relationClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -110,92 +110,92 @@ public class MetamodelBaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>MetamodelBase Base</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Metamodel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>MetamodelBase Base</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Metamodel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMetamodelBase(IMetamodel object) {
+	public T caseMetamodel(IMetamodel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ITemplate Base</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Template</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ITemplate Base</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Template</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTemplateBase(ITemplate object) {
+	public T caseTemplate(ITemplate object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>References Model Object Base</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>References Model Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>References Model Object Base</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>References Model Object</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseReferencesModelObjectBase(IReferencesModelObject object) {
+	public T caseReferencesModelObject(IReferencesModelObject object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Object Class Base</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Object Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Object Class Base</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Object Class</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseObjectClassBase(IObjectClass object) {
+	public T caseObjectClass(IObjectClass object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>AttributeBase Base</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>AttributeBase Base</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAttributeBase(IAttribute object) {
+	public T caseAttribute(IAttribute object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Relation Class Base</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Relation Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Relation Class Base</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Relation Class</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRelationClassBase(IRelationClass object) {
+	public T caseRelationClass(IRelationClass object) {
 		return null;
 	}
 

@@ -21,7 +21,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObjectBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObject()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface IReferencesModelObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reference</em>' reference.
 	 * @see #setReference(IIdentifier)
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObjectBase_Reference()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObject_Reference()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
@@ -62,7 +62,7 @@ public interface IReferencesModelObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObjectBase_Name()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getReferencesModelObject_Name()
 	 * @model required="true" derived="true"
 	 * @generated
 	 */

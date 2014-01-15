@@ -23,7 +23,7 @@ import org.rulez.magwas.zenta.model.IZentaElement;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplate()
  * @model
  * @generated
  */
@@ -33,7 +33,7 @@ extends IReferencesModelObject
 	/**
 	 * Returns the value of the '<em><b>Object Classes</b></em>' containment reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.IObjectClass}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>ITemplate</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Object Classes</em>' containment reference list isn't clear,
@@ -41,7 +41,7 @@ extends IReferencesModelObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Object Classes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase_ObjectClasses()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplate_ObjectClasses()
 	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
@@ -51,7 +51,7 @@ extends IReferencesModelObject
 	/**
 	 * Returns the value of the '<em><b>Relation Classes</b></em>' containment reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.IRelationClass}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate <em>ITemplate</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate <em>Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relation Classes</em>' containment reference list isn't clear,
@@ -59,7 +59,7 @@ extends IReferencesModelObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation Classes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase_RelationClasses()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplate_RelationClasses()
 	 * @see org.rulez.magwas.zenta.metamodel.IRelationClass#getTemplate
 	 * @model opposite="template" containment="true"
 	 * @generated
@@ -76,7 +76,7 @@ extends IReferencesModelObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase_Path()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplate_Path()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -103,7 +103,7 @@ extends IReferencesModelObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metamodel</em>' container reference.
 	 * @see #setMetamodel(IMetamodel)
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplateBase_Metamodel()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getTemplate_Metamodel()
 	 * @see org.rulez.magwas.zenta.metamodel.IMetamodel#getTemplates
 	 * @model opposite="templates" required="true" transient="false"
 	 * @generated

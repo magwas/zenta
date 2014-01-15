@@ -18,7 +18,7 @@ public class AttributeTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.fixture = IMetamodelFactory.eINSTANCE.createAttributeBase();
+		this.fixture = IMetamodelFactory.eINSTANCE.createAttribute();
 	}
 	
 	@After

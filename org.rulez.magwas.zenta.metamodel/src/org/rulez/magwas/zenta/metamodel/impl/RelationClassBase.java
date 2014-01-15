@@ -106,7 +106,7 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IMetamodelPackage.Literals.RELATION_CLASS_BASE;
+		return IMetamodelPackage.Literals.RELATION_CLASS;
 	}
 
 	/**
@@ -127,7 +127,7 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 		IIdentifier oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS_BASE__REFERENCE, oldReference, reference));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS__REFERENCE, oldReference, reference));
 	}
 
 	/**
@@ -148,7 +148,7 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS_BASE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS__NAME, oldName, name));
 	}
 
 	/**
@@ -169,7 +169,7 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 		IRelationClass oldAncestor = ancestor;
 		ancestor = newAncestor;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR, oldAncestor, newAncestor);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS__ANCESTOR, oldAncestor, newAncestor);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -184,14 +184,14 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 		if (newAncestor != ancestor) {
 			NotificationChain msgs = null;
 			if (ancestor != null)
-				msgs = ((InternalEObject)ancestor).eInverseRemove(this, IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
+				msgs = ((InternalEObject)ancestor).eInverseRemove(this, IMetamodelPackage.RELATION_CLASS__CHILDREN, IRelationClass.class, msgs);
 			if (newAncestor != null)
-				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
+				msgs = ((InternalEObject)newAncestor).eInverseAdd(this, IMetamodelPackage.RELATION_CLASS__CHILDREN, IRelationClass.class, msgs);
 			msgs = basicSetAncestor(newAncestor, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR, newAncestor, newAncestor));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS__ANCESTOR, newAncestor, newAncestor));
 	}
 
 	/**
@@ -201,7 +201,7 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	 */
 	public EList<IRelationClass> getChildren() {
 		if (children == null) {
-			children = new EObjectWithInverseEList<IRelationClass>(IRelationClass.class, this, IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN, IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR);
+			children = new EObjectWithInverseEList<IRelationClass>(IRelationClass.class, this, IMetamodelPackage.RELATION_CLASS__CHILDREN, IMetamodelPackage.RELATION_CLASS__ANCESTOR);
 		}
 		return children;
 	}
@@ -212,8 +212,8 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	 * @generated
 	 */
 	public ITemplate getTemplate() {
-		if (eContainerFeatureID() != IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE) return null;
-		return (ITemplate)eContainer();
+		if (eContainerFeatureID() != IMetamodelPackage.RELATION_CLASS__TEMPLATE) return null;
+		return (ITemplate)eInternalContainer();
 	}
 
 	/**
@@ -222,7 +222,7 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplate(ITemplate newTemplate, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newTemplate, IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newTemplate, IMetamodelPackage.RELATION_CLASS__TEMPLATE, msgs);
 		return msgs;
 	}
 
@@ -232,19 +232,19 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	 * @generated
 	 */
 	public void setTemplate(ITemplate newTemplate) {
-		if (newTemplate != eInternalContainer() || (eContainerFeatureID() != IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE && newTemplate != null)) {
+		if (newTemplate != eInternalContainer() || (eContainerFeatureID() != IMetamodelPackage.RELATION_CLASS__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
-				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES, ITemplate.class, msgs);
+				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, IMetamodelPackage.TEMPLATE__RELATION_CLASSES, ITemplate.class, msgs);
 			msgs = basicSetTemplate(newTemplate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE, newTemplate, newTemplate));
+			eNotify(new ENotificationImpl(this, Notification.SET, IMetamodelPackage.RELATION_CLASS__TEMPLATE, newTemplate, newTemplate));
 	}
 
 	/**
@@ -256,13 +256,13 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.RELATION_CLASS__ANCESTOR:
 				if (ancestor != null)
-					msgs = ((InternalEObject)ancestor).eInverseRemove(this, IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN, IRelationClass.class, msgs);
+					msgs = ((InternalEObject)ancestor).eInverseRemove(this, IMetamodelPackage.RELATION_CLASS__CHILDREN, IRelationClass.class, msgs);
 				return basicSetAncestor((IRelationClass)otherEnd, msgs);
-			case IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.RELATION_CLASS__CHILDREN:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(otherEnd, msgs);
-			case IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.RELATION_CLASS__TEMPLATE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetTemplate((ITemplate)otherEnd, msgs);
@@ -278,11 +278,11 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.RELATION_CLASS__ANCESTOR:
 				return basicSetAncestor(null, msgs);
-			case IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.RELATION_CLASS__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.RELATION_CLASS__TEMPLATE:
 				return basicSetTemplate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -296,8 +296,8 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE:
-				return eInternalContainer().eInverseRemove(this, IMetamodelPackage.TEMPLATE_BASE__RELATION_CLASSES, ITemplate.class, msgs);
+			case IMetamodelPackage.RELATION_CLASS__TEMPLATE:
+				return eInternalContainer().eInverseRemove(this, IMetamodelPackage.TEMPLATE__RELATION_CLASSES, ITemplate.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -310,15 +310,15 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IMetamodelPackage.RELATION_CLASS_BASE__REFERENCE:
+			case IMetamodelPackage.RELATION_CLASS__REFERENCE:
 				return getReference();
-			case IMetamodelPackage.RELATION_CLASS_BASE__NAME:
+			case IMetamodelPackage.RELATION_CLASS__NAME:
 				return getName();
-			case IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.RELATION_CLASS__ANCESTOR:
 				return getAncestor();
-			case IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.RELATION_CLASS__CHILDREN:
 				return getChildren();
-			case IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.RELATION_CLASS__TEMPLATE:
 				return getTemplate();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -333,20 +333,20 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IMetamodelPackage.RELATION_CLASS_BASE__REFERENCE:
+			case IMetamodelPackage.RELATION_CLASS__REFERENCE:
 				setReference((IIdentifier)newValue);
 				return;
-			case IMetamodelPackage.RELATION_CLASS_BASE__NAME:
+			case IMetamodelPackage.RELATION_CLASS__NAME:
 				setName((String)newValue);
 				return;
-			case IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.RELATION_CLASS__ANCESTOR:
 				setAncestor((IRelationClass)newValue);
 				return;
-			case IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.RELATION_CLASS__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends IRelationClass>)newValue);
 				return;
-			case IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.RELATION_CLASS__TEMPLATE:
 				setTemplate((ITemplate)newValue);
 				return;
 		}
@@ -361,19 +361,19 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IMetamodelPackage.RELATION_CLASS_BASE__REFERENCE:
+			case IMetamodelPackage.RELATION_CLASS__REFERENCE:
 				setReference((IIdentifier)null);
 				return;
-			case IMetamodelPackage.RELATION_CLASS_BASE__NAME:
+			case IMetamodelPackage.RELATION_CLASS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.RELATION_CLASS__ANCESTOR:
 				setAncestor((IRelationClass)null);
 				return;
-			case IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.RELATION_CLASS__CHILDREN:
 				getChildren().clear();
 				return;
-			case IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.RELATION_CLASS__TEMPLATE:
 				setTemplate((ITemplate)null);
 				return;
 		}
@@ -388,15 +388,15 @@ abstract public class RelationClassBase extends EObjectImpl implements IRelation
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IMetamodelPackage.RELATION_CLASS_BASE__REFERENCE:
+			case IMetamodelPackage.RELATION_CLASS__REFERENCE:
 				return reference != null;
-			case IMetamodelPackage.RELATION_CLASS_BASE__NAME:
+			case IMetamodelPackage.RELATION_CLASS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IMetamodelPackage.RELATION_CLASS_BASE__ANCESTOR:
+			case IMetamodelPackage.RELATION_CLASS__ANCESTOR:
 				return ancestor != null;
-			case IMetamodelPackage.RELATION_CLASS_BASE__CHILDREN:
+			case IMetamodelPackage.RELATION_CLASS__CHILDREN:
 				return children != null && !children.isEmpty();
-			case IMetamodelPackage.RELATION_CLASS_BASE__TEMPLATE:
+			case IMetamodelPackage.RELATION_CLASS__TEMPLATE:
 				return getTemplate() != null;
 		}
 		return super.eIsSet(featureID);

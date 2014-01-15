@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getMetamodelBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getMetamodel()
  * @model
  * @generated
  */
@@ -36,7 +36,7 @@ public interface IMetamodel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Templates</b></em>' containment reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.metamodel.ITemplate}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel <em>MetamodelBase</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Templates</em>' containment reference list isn't clear,
@@ -44,7 +44,7 @@ public interface IMetamodel extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Templates</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getMetamodelBase_Templates()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getMetamodel_Templates()
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate#getMetamodel
 	 * @model opposite="metamodel" containment="true"
 	 * @generated

@@ -5,7 +5,7 @@
     copyrightFields="false" usedGenPackages="../../org.rulez.magwas.zenta.model/model/zenta.genmodel#//model"
     interfaceNamePattern="I{0}" classNamePattern="{0}Base">
   <foreignModel>metamodel.ecore</foreignModel>
-  <genPackages prefix="MetamodelBase" basePackage="org.rulez.magwas.zenta" disposableProviderFactory="true"
+  <genPackages prefix="Metamodel" basePackage="org.rulez.magwas.zenta" disposableProviderFactory="true"
       ecorePackage="metamodel.ecore#/">
     <genClasses ecoreClass="metamodel.ecore#//Metamodel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Metamodel/templates"/>

@@ -19,21 +19,10 @@ abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMeta
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static IMetamodelFactory init() {
-		throw new RuntimeException();
-//
-//		try {
-//			MetamodelBaseFactory theMetamodelBaseFactory = (MetamodelBaseFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta/metamodel"); 
-//			if (theMetamodelBaseFactory != null) {
-//				return theMetamodelBaseFactory;
-//			}
-//		}
-//		catch (Exception exception) {
-//			EcorePlugin.INSTANCE.log(exception);
-//		}
-//		return new MetamodelBaseFactoryImpl();
+		throw new RuntimeException("should not be called");
 	}
 
 	/**
@@ -54,11 +43,11 @@ abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMeta
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case IMetamodelPackage.METAMODEL_BASE: return createMetamodelBase();
-			case IMetamodelPackage.TEMPLATE_BASE: return createTemplateBase();
-			case IMetamodelPackage.OBJECT_CLASS_BASE: return createObjectClassBase();
-			case IMetamodelPackage.ATTRIBUTE_BASE: return createAttributeBase();
-			case IMetamodelPackage.RELATION_CLASS_BASE: return createRelationClassBase();
+			case IMetamodelPackage.METAMODEL: return createMetamodel();
+			case IMetamodelPackage.TEMPLATE: return createTemplate();
+			case IMetamodelPackage.OBJECT_CLASS: return createObjectClass();
+			case IMetamodelPackage.ATTRIBUTE: return createAttribute();
+			case IMetamodelPackage.RELATION_CLASS: return createRelationClass();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -67,12 +56,10 @@ abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMeta
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public IMetamodel createMetamodelBase() {
-		throw new RuntimeException();
-//		MetamodelBaseImpl metamodelBase = new MetamodelBaseImpl();
-//		return metamodelBase;
+	public IMetamodel createMetamodel() {
+		throw new RuntimeException("should not be called");
 	}
 
 	/**
@@ -80,10 +67,8 @@ abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMeta
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ITemplate createTemplateBase() {
-		throw new RuntimeException();
-//		TemplateBaseImpl templateBase = new TemplateImpl();
-//		return templateBase;
+	public ITemplate createTemplate() {
+		throw new RuntimeException("should not be called");
 	}
 
 	/**
@@ -91,10 +76,27 @@ abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMeta
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IObjectClass createObjectClassBase() {
-		throw new RuntimeException();
-//		ObjectClassBaseImpl objectClassBase = new ObjectClassImpl();
-//		return objectClassBase;
+	public IObjectClass createObjectClass() {
+		throw new RuntimeException("should not be called");
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public IAttribute createAttribute() {
+		AttributeBase attribute = new Attribute();
+		return attribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public IRelationClass createRelationClass() {
+		throw new RuntimeException("should not be called");
 	}
 
 	/**
@@ -102,28 +104,7 @@ abstract public class MetamodelFactoryBase extends EFactoryImpl implements IMeta
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IAttribute createAttributeBase() {
-		AttributeBase attributeBase = new Attribute();
-		return attributeBase;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IRelationClass createRelationClassBase() {
-		throw new RuntimeException();
-//		RelationClassBaseImpl relationClassBase = new RelationClassImpl();
-//		return relationClassBase;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IMetamodelPackage getMetamodelBasePackage() {
+	public IMetamodelPackage getMetamodelPackage() {
 		return (IMetamodelPackage)getEPackage();
 	}
 

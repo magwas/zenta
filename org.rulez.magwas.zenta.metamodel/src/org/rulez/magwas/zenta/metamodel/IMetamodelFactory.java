@@ -21,50 +21,46 @@ import org.rulez.magwas.zenta.model.IZentaModelElement;
  */
 public interface IMetamodelFactory extends EFactory {
 
-	/**
-	 * Returns a new object of class '<em>MetamodelBase Base</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>MetamodelBase Base</em>'.
-	 * @generated
-	 */
-	IMetamodel createMetamodelBase();
+	IMetamodelFactory eINSTANCE = (IMetamodelFactory) MetamodelFactory.init();
+
+	IMetamodel createMetamodel();
+
 
 	/**
-	 * Returns a new object of class '<em>ITemplate Base</em>'.
+	 * Returns a new object of class '<em>Template</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ITemplate Base</em>'.
+	 * @return a new object of class '<em>Template</em>'.
 	 * @generated
 	 */
-	ITemplate createTemplateBase();
+	ITemplate createTemplate();
 
 	/**
-	 * Returns a new object of class '<em>Object Class Base</em>'.
+	 * Returns a new object of class '<em>Object Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object Class Base</em>'.
+	 * @return a new object of class '<em>Object Class</em>'.
 	 * @generated
 	 */
-	IObjectClass createObjectClassBase();
+	IObjectClass createObjectClass();
 
 	/**
-	 * Returns a new object of class '<em>AttributeBase Base</em>'.
+	 * Returns a new object of class '<em>Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>AttributeBase Base</em>'.
+	 * @return a new object of class '<em>Attribute</em>'.
 	 * @generated
 	 */
-	IAttribute createAttributeBase();
+	IAttribute createAttribute();
 
 	/**
-	 * Returns a new object of class '<em>Relation Class Base</em>'.
+	 * Returns a new object of class '<em>Relation Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Relation Class Base</em>'.
+	 * @return a new object of class '<em>Relation Class</em>'.
 	 * @generated
 	 */
-	IRelationClass createRelationClassBase();
+	IRelationClass createRelationClass();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -73,12 +69,7 @@ public interface IMetamodelFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	IMetamodelPackage getMetamodelBasePackage();
-
-	IMetamodelFactory eINSTANCE = (IMetamodelFactory) MetamodelFactory.init();
-
-	IMetamodel createMetamodel();
-
+	IMetamodelPackage getMetamodelPackage();
 
 	ITemplate createTemplate(IZentaDiagramModel reference, IMetamodel metamodel);
 

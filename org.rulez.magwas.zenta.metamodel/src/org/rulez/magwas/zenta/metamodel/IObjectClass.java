@@ -22,13 +22,12 @@ import org.rulez.magwas.zenta.model.IIdentifier;
  *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getAncestor <em>Ancestor</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getChildren <em>Children</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>ITemplate</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>Template</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase()
+ * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClass()
  * @model
- * @generated
  */
 public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider {
 	/**
@@ -41,7 +40,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attributes</em>' containment reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase_Attributes()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClass_Attributes()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -58,7 +57,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ancestor</em>' reference.
 	 * @see #setAncestor(IObjectClass)
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase_Ancestor()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClass_Ancestor()
 	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getChildren
 	 * @model opposite="children" resolveProxies="false" required="true"
 	 * @generated
@@ -86,7 +85,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase_Children()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClass_Children()
 	 * @see org.rulez.magwas.zenta.metamodel.IObjectClass#getAncestor
 	 * @model opposite="ancestor" resolveProxies="false" derived="true"
 	 * @generated
@@ -94,7 +93,7 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	EList<IObjectClass> getChildren();
 
 	/**
-	 * Returns the value of the '<em><b>ITemplate</b></em>' container reference.
+	 * Returns the value of the '<em><b>Template</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.metamodel.ITemplate#getObjectClasses <em>Object Classes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -102,9 +101,9 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>ITemplate</em>' container reference.
+	 * @return the value of the '<em>Template</em>' container reference.
 	 * @see #setTemplate(ITemplate)
-	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClassBase_Template()
+	 * @see org.rulez.magwas.zenta.metamodel.IMetamodelPackage#getObjectClass_Template()
 	 * @see org.rulez.magwas.zenta.metamodel.ITemplate#getObjectClasses
 	 * @model opposite="objectClasses" transient="false"
 	 * @generated
@@ -112,10 +111,10 @@ public interface IObjectClass extends IReferencesModelObject, IHelpHintProvider 
 	ITemplate getTemplate();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>ITemplate</em>}' container reference.
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.metamodel.IObjectClass#getTemplate <em>Template</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>ITemplate</em>' container reference.
+	 * @param value the new value of the '<em>Template</em>' container reference.
 	 * @see #getTemplate()
 	 * @generated
 	 */
