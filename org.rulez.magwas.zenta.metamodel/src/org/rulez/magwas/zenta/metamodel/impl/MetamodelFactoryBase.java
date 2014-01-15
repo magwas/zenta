@@ -4,16 +4,10 @@ package org.rulez.magwas.zenta.metamodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.rulez.magwas.zenta.metamodel.*;
 import org.rulez.magwas.zenta.metamodel.handmade.Attribute;
-import org.rulez.magwas.zenta.metamodel.handmade.ObjectClass;
-import org.rulez.magwas.zenta.metamodel.handmade.RelationClass;
 
 /**
  * <!-- begin-user-doc -->

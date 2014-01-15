@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="metamodel" nsURI="http://magwas.rulez.org/zenta/metamodel" nsPrefix="zentameta">
-  <eClassifiers xsi:type="ecore:EClass" name="MetamodelBase">
+  <eClassifiers xsi:type="ecore:EClass" name="Metamodel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
-        eType="#//TemplateBase" containment="true" resolveProxies="false" eOpposite="#//TemplateBase/metamodel"/>
+        eType="#//Template" containment="true" resolveProxies="false" eOpposite="#//Template/metamodel"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TemplateBase" eSuperTypes="#//ReferencesModelObjectBase">
+  <eClassifiers xsi:type="ecore:EClass" name="Template" eSuperTypes="#//ReferencesModelObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectClasses" upperBound="-1"
-        eType="#//ObjectClassBase" containment="true" resolveProxies="false" eOpposite="#//ObjectClassBase/template"/>
+        eType="#//ObjectClass" containment="true" resolveProxies="false" eOpposite="#//ObjectClass/template"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relationClasses" upperBound="-1"
-        eType="#//RelationClassBase" containment="true" resolveProxies="false" eOpposite="#//RelationClassBase/template"/>
+        eType="#//RelationClass" containment="true" resolveProxies="false" eOpposite="#//RelationClass/template"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" lowerBound="1"
-        eType="#//MetamodelBase" eOpposite="#//MetamodelBase/templates"/>
+        eType="#//Metamodel" eOpposite="#//Metamodel/templates"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReferencesModelObjectBase" abstract="true"
+  <eClassifiers xsi:type="ecore:EClass" name="ReferencesModelObject" abstract="true"
       interface="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
         eType="ecore:EClass ../../org.rulez.magwas.zenta.model/model/zenta.ecore#//Identifier"
@@ -22,32 +22,32 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectClassBase" eSuperTypes="#//ReferencesModelObjectBase">
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectClass" eSuperTypes="#//ReferencesModelObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
-        eType="#//AttributeBase" containment="true" resolveProxies="false"/>
+        eType="#//Attribute" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ancestor" lowerBound="1"
-        eType="#//ObjectClassBase" resolveProxies="false" eOpposite="#//ObjectClassBase/children"/>
+        eType="#//ObjectClass" resolveProxies="false" eOpposite="#//ObjectClass/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//ObjectClassBase" derived="true" resolveProxies="false" eOpposite="#//ObjectClassBase/ancestor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//TemplateBase"
-        eOpposite="#//TemplateBase/objectClasses"/>
+        eType="#//ObjectClass" derived="true" resolveProxies="false" eOpposite="#//ObjectClass/ancestor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//Template"
+        eOpposite="#//Template/objectClasses"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AttributeBase">
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minOccurs" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxOccurs" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relation" lowerBound="1"
-        eType="#//RelationClassBase" resolveProxies="false"/>
+        eType="#//RelationClass" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectedObject" lowerBound="1"
-        eType="#//ObjectClassBase" resolveProxies="false"/>
+        eType="#//ObjectClass" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RelationClassBase" eSuperTypes="#//ReferencesModelObjectBase">
+  <eClassifiers xsi:type="ecore:EClass" name="RelationClass" eSuperTypes="#//ReferencesModelObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ancestor" lowerBound="1"
-        eType="#//RelationClassBase" resolveProxies="false" eOpposite="#//RelationClassBase/children"/>
+        eType="#//RelationClass" resolveProxies="false" eOpposite="#//RelationClass/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//RelationClassBase" derived="true" resolveProxies="false" eOpposite="#//RelationClassBase/ancestor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//TemplateBase"
-        eOpposite="#//TemplateBase/relationClasses"/>
+        eType="#//RelationClass" derived="true" resolveProxies="false" eOpposite="#//RelationClass/ancestor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//Template"
+        eOpposite="#//Template/relationClasses"/>
   </eClassifiers>
 </ecore:EPackage>

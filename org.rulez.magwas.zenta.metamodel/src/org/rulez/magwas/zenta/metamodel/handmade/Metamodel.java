@@ -11,7 +11,6 @@ import org.rulez.magwas.zenta.metamodel.IMetamodel;
 import org.rulez.magwas.zenta.metamodel.IMetamodelFactory;
 import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
-import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
 import org.rulez.magwas.zenta.metamodel.ITemplate;
 import org.rulez.magwas.zenta.metamodel.impl.MetamodelBase;
@@ -130,7 +129,6 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		return null != getObjectClassReferencing(elementToAdd);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<IObjectClass> getObjectClasses() {
 		List<IObjectClass> ret = new ArrayList<IObjectClass>();
@@ -140,7 +138,6 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		return ret;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<IRelationClass> getRelationClasses() {
 		List<IRelationClass> ret = new ArrayList<IRelationClass>();

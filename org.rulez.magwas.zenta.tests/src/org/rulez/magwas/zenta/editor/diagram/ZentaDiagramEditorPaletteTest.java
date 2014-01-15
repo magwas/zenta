@@ -26,7 +26,6 @@ import org.rulez.magwas.zenta.metamodel.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.metamodel.IObjectClass;
 import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.metamodel.IRelationClass;
-import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
