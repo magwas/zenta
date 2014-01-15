@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.TemplateUtils;
@@ -111,7 +111,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         // Ascertain if this is a zip file
         boolean isArchiveFormat = IArchiveManager.FACTORY.isArchiveFile(file);
         
-        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
+        ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
         Resource resource = resourceSet.createResource(isArchiveFormat ?
                                                        IArchiveManager.FACTORY.createArchiveModelURI(file) :
                                                        URI.createFileURI(file.getAbsolutePath()));

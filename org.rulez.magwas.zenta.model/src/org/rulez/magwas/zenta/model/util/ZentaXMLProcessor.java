@@ -36,7 +36,7 @@ public class ZentaXMLProcessor extends XMLProcessor {
 	}
 	
 	/**
-	 * Register for "*" and "xml" file extensions the ZentaResourceFactory factory.
+	 * Register for "*" and "xml" file extensions the ZentaResourceFactoryBase factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -45,8 +45,8 @@ public class ZentaXMLProcessor extends XMLProcessor {
 	protected Map<String, Resource.Factory> getRegistrations() {
 		if (registrations == null) {
 			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new ZentaResourceFactory());
-			registrations.put(STAR_EXTENSION, new ZentaResourceFactory());
+			registrations.put(XML_EXTENSION, new ZentaResourceFactoryBase());
+			registrations.put(STAR_EXTENSION, new ZentaResourceFactoryBase());
 		}
 		return registrations;
 	}

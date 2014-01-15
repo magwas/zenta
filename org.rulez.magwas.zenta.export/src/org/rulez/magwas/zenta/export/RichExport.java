@@ -23,8 +23,8 @@ import org.rulez.magwas.zenta.export.EventLog;
 import org.rulez.magwas.zenta.export.IPreferenceConstants;
 import org.rulez.magwas.zenta.export.Widgets;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.util.ZentaResource;
-import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentaResourceBase;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.Document;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
@@ -83,7 +83,7 @@ public class RichExport implements IModelExporter {
     public static void export(IZentaModel model, File target,
             File policyfile, IEventLog log) {
         try {
-            ZentaResource resource = (ZentaResource) ZentaResourceFactory
+            ZentaResourceBase resource = (ZentaResourceBase) ZentaResourceFactoryBase
                     .createResource(target);
             resource.getContents().add(model);
             // we get it in xml

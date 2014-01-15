@@ -8,7 +8,7 @@ import org.rulez.magwas.zenta.export.RichExport;
 import org.rulez.magwas.zenta.export.steps.Step;
 import org.rulez.magwas.zenta.export.steps.StepFactory;
 import org.rulez.magwas.zenta.model.util.Util;
-import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.w3c.dom.Element;
 
 
@@ -46,7 +46,7 @@ public class Export extends Step {
         if ("".equals(style) || "rich".equals(style)) {
             RichExport.export(factory.model, tfile, policyfile, factory.log);
         } else if ("archi".equals(style)) {
-            Resource resource = ZentaResourceFactory.createResource(tfile);
+            Resource resource = ZentaResourceFactoryBase.createResource(tfile);
             resource.getContents().add(factory.model);
             try {
                 resource.save(null);

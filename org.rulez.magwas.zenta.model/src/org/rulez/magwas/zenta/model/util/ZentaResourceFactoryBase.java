@@ -22,17 +22,17 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.rulez.magwas.zenta.model.util.ZentaResource
+ * @see org.rulez.magwas.zenta.model.util.ZentaResourceBase
  * @generated
  */
-public class ZentaResourceFactory extends ResourceFactoryImpl {
+public class ZentaResourceFactoryBase extends ResourceFactoryImpl {
 	/**
 	 * Creates an instance of the resource factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ZentaResourceFactory() {
+	public ZentaResourceFactoryBase() {
 		super();
 	}
 
@@ -42,7 +42,7 @@ public class ZentaResourceFactory extends ResourceFactoryImpl {
  public static ResourceSet createResourceSet() {
          ResourceSet resourceSet = new ResourceSetImpl();
          // Register the * extension on the ResourceSet to over-ride the ECore global one
-         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new ZentaResourceFactory());  //$NON-NLS-1$
+         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new ZentaResourceFactoryBase());  //$NON-NLS-1$
          return resourceSet;
    }
 
@@ -54,7 +54,7 @@ public class ZentaResourceFactory extends ResourceFactoryImpl {
 	 */
 	@Override
 	public Resource createResource(URI uri) {
-		XMLResource result = new ZentaResource(uri);
+		XMLResource result = new ZentaResourceBase(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 

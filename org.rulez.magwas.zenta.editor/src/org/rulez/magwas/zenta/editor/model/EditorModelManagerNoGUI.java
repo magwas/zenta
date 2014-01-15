@@ -39,7 +39,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.util.FileUtils;
-import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
@@ -183,7 +183,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    boolean useArchiveFormat = IArchiveManager.FACTORY.isArchiveFile(file);
 	    
 	    // Create the Resource
-	    ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
+	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
 	    Resource resource = resourceSet.createResource(useArchiveFormat ?
 	                                                   IArchiveManager.FACTORY.createArchiveModelURI(file) :
 	                                                   URI.createFileURI(file.getAbsolutePath()));

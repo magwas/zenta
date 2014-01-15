@@ -3568,10 +3568,10 @@ public interface IZentaPackage extends EPackage {
 	int SKETCH_MODEL_STICKY_FEATURE_COUNT = DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelActor <em>Sketch Model Actor</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelActorBase <em>Sketch Model Actor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.SketchModelActor
+	 * @see org.rulez.magwas.zenta.model.impl.SketchModelActorBase
 	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModelActor()
 	 * @generated
 	 */
@@ -5680,10 +5680,10 @@ public interface IZentaPackage extends EPackage {
 		EClass SKETCH_MODEL_STICKY = eINSTANCE.getSketchModelSticky();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelActor <em>Sketch Model Actor</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelActorBase <em>Sketch Model Actor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.SketchModelActor
+		 * @see org.rulez.magwas.zenta.model.impl.SketchModelActorBase
 		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModelActor()
 		 * @generated
 		 */

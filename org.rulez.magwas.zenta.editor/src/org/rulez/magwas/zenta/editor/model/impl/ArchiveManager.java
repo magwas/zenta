@@ -35,7 +35,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
 import org.rulez.magwas.zenta.model.util.FileUtils;
-import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
 
 
@@ -258,7 +258,7 @@ public class ArchiveManager implements IArchiveManager {
      * Save the model to XML File format
      */
     private void saveModelToXMLFile(File file) throws IOException {
-        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
+        ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
         Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
         resource.getContents().add(fModel);
         resource.save(null);

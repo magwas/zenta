@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.NSResolver;
-import org.rulez.magwas.zenta.model.util.ZentaResourceFactory;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -47,7 +47,7 @@ public class ModelTestUtils {
 			temp.delete();
 			Files.copy(stream, temp.toPath());
 			IZentaPackage.eINSTANCE.eClass();
-	        ResourceSet resourceSet = ZentaResourceFactory.createResourceSet();
+	        ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
 	        resource = resourceSet.createResource(URI.createFileURI(temp.getAbsolutePath()));
 		} catch (IOException e) {
 			throw new RuntimeException(e);

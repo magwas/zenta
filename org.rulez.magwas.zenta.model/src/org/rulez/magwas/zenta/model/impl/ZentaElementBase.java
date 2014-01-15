@@ -204,7 +204,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getObjectClass() {
 		if(null == objectClass)

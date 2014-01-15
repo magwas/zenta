@@ -51,7 +51,7 @@ public class ZentaFactoryBase extends EFactoryImpl implements IZentaFactory {
 	 */
     public static IZentaFactory init() {
 		try {
-			IZentaFactory theZentaFactory = (IZentaFactory)EPackage.Registry.INSTANCE.getEFactory("http://magwas.rulez.org/zenta"); 
+			IZentaFactory theZentaFactory = (IZentaFactory)EPackage.Registry.INSTANCE.getEFactory(IZentaPackage.eNS_URI);
 			if (theZentaFactory != null) {
 				return theZentaFactory;
 			}
@@ -298,7 +298,7 @@ public class ZentaFactoryBase extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public ISketchModelActor createSketchModelActor() {
-		SketchModelActor sketchModelActor = new SketchModelActor();
+		SketchModelActorBase sketchModelActor = new SketchModelActorBase();
 		return sketchModelActor;
 	}
 

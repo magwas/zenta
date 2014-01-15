@@ -28,14 +28,14 @@ import org.rulez.magwas.zenta.model.ISketchModelActor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelActor#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelActor#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelActorBase#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelActorBase#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SketchModelActor extends DiagramModelObjectBase implements ISketchModelActor {
+public class SketchModelActorBase extends DiagramModelObjectBase implements ISketchModelActor {
     /**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -70,7 +70,7 @@ public class SketchModelActor extends DiagramModelObjectBase implements ISketchM
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected SketchModelActor() {
+    protected SketchModelActorBase() {
 		super();
 	}
 

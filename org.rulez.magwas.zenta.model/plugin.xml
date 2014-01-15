@@ -23,9 +23,9 @@
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="zenta"
-            class="org.rulez.magwas.zenta.model.util.ZentaResourceFactory"/>
+            class="org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase"/>
       <parser
-            class="org.rulez.magwas.zenta.model.util.ZentaResourceFactory"
+            class="org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase"
             type="xml">
       </parser>
    </extension>

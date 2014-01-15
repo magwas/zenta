@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.rulez.magwas.zenta.model.util.ZentaResourceFactory
+ * @see org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase
  * @generated
  */
-public class ZentaResource extends XMLResourceImpl {
+public class ZentaResourceBase extends XMLResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ public class ZentaResource extends XMLResourceImpl {
 	 * @param uri the URI of the new resource.
 	 * @generated
 	 */
-	public ZentaResource(URI uri) {
+	public ZentaResourceBase(URI uri) {
 		super(uri);
 	}
 
