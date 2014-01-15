@@ -23,7 +23,7 @@ public interface IZentaFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	IZentaFactory eINSTANCE = org.rulez.magwas.zenta.model.impl.ZentaFactory.init();
+	IZentaFactory eINSTANCE = org.rulez.magwas.zenta.model.impl.ZentaFactoryBase.init();
 
 	/**
 	 * Returns a new object of class '<em>Property</em>'.

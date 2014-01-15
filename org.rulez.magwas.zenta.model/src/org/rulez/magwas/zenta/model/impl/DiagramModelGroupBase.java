@@ -32,15 +32,15 @@ import org.rulez.magwas.zenta.model.IProperty;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroup#getChildren <em>Children</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroup#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroup#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DiagramModelGroup extends DiagramModelObject implements IDiagramModelGroup {
+public class DiagramModelGroupBase extends DiagramModelObjectBase implements IDiagramModelGroup {
     /**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -85,7 +85,7 @@ public class DiagramModelGroup extends DiagramModelObject implements IDiagramMod
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelGroup() {
+    protected DiagramModelGroupBase() {
 		super();
 	}
 

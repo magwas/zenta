@@ -36,7 +36,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.impl.ZentaElement;
+import org.rulez.magwas.zenta.model.impl.ZentaElementBase;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 
 public class ZentaDiagramEditorPaletteTest {
@@ -168,7 +168,7 @@ public class ZentaDiagramEditorPaletteTest {
 	public void The_created_objects_are_part_of_a_model() throws IOException {
 		IObjectClass userClass = (IObjectClass) testdata.metamodel.getClassById("ea94cf6c");
 		IFolder folder = (IFolder) testdata.getById("13144af6");
-		ZentaElement newElement = (ZentaElement) userClass.create(folder);
+		ZentaElementBase newElement = (ZentaElementBase) userClass.create(folder);
 		folder.getElements().add(newElement);
 		assertEquals(testdata.model,newElement.getZentaModel());
 		IEditorModelManager.INSTANCE.saveModel(testdata.model);

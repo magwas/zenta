@@ -32,15 +32,15 @@ import org.rulez.magwas.zenta.model.ITextContent;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelSticky#getChildren <em>Children</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelSticky#getContent <em>Content</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelSticky#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelStickyBase#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelStickyBase#getContent <em>Content</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelStickyBase#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SketchModelSticky extends DiagramModelObject implements ISketchModelSticky {
+public class SketchModelStickyBase extends DiagramModelObjectBase implements ISketchModelSticky {
     /**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -86,7 +86,7 @@ public class SketchModelSticky extends DiagramModelObject implements ISketchMode
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected SketchModelSticky() {
+    protected SketchModelStickyBase() {
 		super();
 	}
 

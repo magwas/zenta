@@ -21,16 +21,16 @@ import org.rulez.magwas.zenta.model.IBounds;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Bounds#getX <em>X</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Bounds#getY <em>Y</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Bounds#getWidth <em>Width</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Bounds#getHeight <em>Height</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.BoundsBase#getX <em>X</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.BoundsBase#getY <em>Y</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.BoundsBase#getWidth <em>Width</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.BoundsBase#getHeight <em>Height</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class Bounds extends EObjectImpl implements IBounds {
+public class BoundsBase extends EObjectImpl implements IBounds {
     /**
 	 * The default value of the '{@link #getX() <em>X</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -116,7 +116,7 @@ public class Bounds extends EObjectImpl implements IBounds {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Bounds() {
+    protected BoundsBase() {
 		super();
 	}
     

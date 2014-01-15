@@ -35,7 +35,7 @@ import org.rulez.magwas.zenta.model.ISketchModelActor;
  *
  * @generated
  */
-public class SketchModelActor extends DiagramModelObject implements ISketchModelActor {
+public class SketchModelActor extends DiagramModelObjectBase implements ISketchModelActor {
     /**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -6,42 +6,55 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelReference;
+import org.rulez.magwas.zenta.model.IBorderObject;
 
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Diagram Model Reference</b></em>'.
+ * An implementation of the model object '<em><b>Border Object</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelReference#getReferencedModel <em>Referenced Model</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.BorderObjectBase#getBorderColor <em>Border Color</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DiagramModelReference extends DiagramModelObject implements IDiagramModelReference {
+public abstract class BorderObjectBase extends EObjectImpl implements IBorderObject {
     /**
-	 * The cached value of the '{@link #getReferencedModel() <em>Referenced Model</em>}' reference.
+	 * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see #getReferencedModel()
+	 * @see #getBorderColor()
 	 * @generated
 	 * @ordered
 	 */
-    protected IDiagramModel referencedModel;
+    protected static final String BORDER_COLOR_EDEFAULT = null;
+
+    /**
+	 * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getBorderColor()
+	 * @generated
+	 * @ordered
+	 */
+    protected String borderColor = BORDER_COLOR_EDEFAULT;
+
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelReference() {
+    protected BorderObjectBase() {
 		super();
 	}
 
@@ -52,7 +65,7 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentaPackage.Literals.DIAGRAM_MODEL_REFERENCE;
+		return IZentaPackage.Literals.BORDER_OBJECT;
 	}
 
     /**
@@ -60,8 +73,8 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IDiagramModel getReferencedModel() {
-		return referencedModel;
+    public String getBorderColor() {
+		return borderColor;
 	}
 
     /**
@@ -69,22 +82,12 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setReferencedModel(IDiagramModel newReferencedModel) {
-		IDiagramModel oldReferencedModel = referencedModel;
-		referencedModel = newReferencedModel;
+    public void setBorderColor(String newBorderColor) {
+		String oldBorderColor = borderColor;
+		borderColor = newBorderColor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL, oldReferencedModel, referencedModel));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.BORDER_OBJECT__BORDER_COLOR, oldBorderColor, borderColor));
 	}
-
-    @Override
-    public String getName() {
-        if(getReferencedModel() != null) {
-            return getReferencedModel().getName();
-        }
-        else {
-            return ""; //$NON-NLS-1$
-        }
-    }
 
     /**
 	 * <!-- begin-user-doc -->
@@ -94,8 +97,8 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
-				return getReferencedModel();
+			case IZentaPackage.BORDER_OBJECT__BORDER_COLOR:
+				return getBorderColor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +111,8 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
-				setReferencedModel((IDiagramModel)newValue);
+			case IZentaPackage.BORDER_OBJECT__BORDER_COLOR:
+				setBorderColor((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +126,8 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
-				setReferencedModel((IDiagramModel)null);
+			case IZentaPackage.BORDER_OBJECT__BORDER_COLOR:
+				setBorderColor(BORDER_COLOR_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,10 +141,26 @@ public class DiagramModelReference extends DiagramModelObject implements IDiagra
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL:
-				return referencedModel != null;
+			case IZentaPackage.BORDER_OBJECT__BORDER_COLOR:
+				return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //DiagramModelReference
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (borderColor: ");
+		result.append(borderColor);
+		result.append(')');
+		return result.toString();
+	}
+
+} //BorderObject

@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.metamodel.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 
 public class BasicObjectEditPartTest {
@@ -51,7 +51,7 @@ public class BasicObjectEditPartTest {
 		assertEquals("#ffffff",ColorFactory.convertRGBToString(fontColor.getRGB()));
 		int textAlignment = ((BlockFlow)figure.getTextControl().getParent()).getHorizontalAligment();
 		assertEquals(4,textAlignment);
-		assertEquals("ellipseShape",((DiagramModelZentaObject)testdata.getDMOById("b2608459")).getFinalElementShape());
+		assertEquals("ellipseShape",((DiagramModelZentaObjectBase)testdata.getDMOById("b2608459")).getFinalElementShape());
 		Font font = figure.getTextControl().getFont();
 		assertArrayEquals(FontFactory.get("1|Arial Black|11.0|1|GTK|1|").getFontData(),font.getFontData());
 	}

@@ -28,16 +28,16 @@ import org.rulez.magwas.zenta.model.IDiagramModelComponent;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getObjectClass <em>Object Class</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getId <em>Id</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent#getDiagramModel <em>Diagram Model</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getObjectClass <em>Object Class</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getId <em>Id</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getDiagramModel <em>Diagram Model</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class DiagramModelComponent extends EObjectImpl implements IDiagramModelComponent {
+public abstract class DiagramModelComponentBase extends EObjectImpl implements IDiagramModelComponent {
 
 	protected static Object getValueFromStringForFeature(EAttribute feature,
 			String valuestring) {
@@ -127,7 +127,7 @@ public abstract class DiagramModelComponent extends EObjectImpl implements IDiag
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelComponent() {
+    protected DiagramModelComponentBase() {
 		super();
 	}
 

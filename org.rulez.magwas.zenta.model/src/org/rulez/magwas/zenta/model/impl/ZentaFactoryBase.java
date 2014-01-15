@@ -42,7 +42,7 @@ import org.rulez.magwas.zenta.model.ISketchModelSticky;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
+public class ZentaFactoryBase extends EFactoryImpl implements IZentaFactory {
     /**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -59,7 +59,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new ZentaFactory();
+		return new ZentaFactoryBase();
 	}
 
     /**
@@ -68,7 +68,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ZentaFactory() {
+    public ZentaFactoryBase() {
 		super();
 	}
 
@@ -138,7 +138,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IProperty createProperty() {
-		Property property = new Property();
+		PropertyBase property = new PropertyBase();
 		return property;
 	}
 
@@ -148,7 +148,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IZentaModel createZentaModel() {
-		ZentaModel zentaModel = new ZentaModel();
+		ZentaModelBase zentaModel = new ZentaModelBase();
 		return zentaModel;
 	}
 
@@ -158,7 +158,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IFolder createFolder() {
-		Folder folder = new Folder();
+		FolderBase folder = new FolderBase();
 		return folder;
 	}
     /**
@@ -167,7 +167,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IBasicObject createBasicObject() {
-		BasicObject basicObject = new BasicObject();
+		BasicObjectBase basicObject = new BasicObjectBase();
 		return basicObject;
 	}
 
@@ -178,7 +178,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IZentaDiagramModel createZentaDiagramModel() {
-		ZentaDiagramModel zentaDiagramModel = new ZentaDiagramModel();
+		ZentaDiagramModelBase zentaDiagramModel = new ZentaDiagramModelBase();
 		return zentaDiagramModel;
 	}
 
@@ -188,7 +188,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IDiagramModelReference createDiagramModelReference() {
-		DiagramModelReference diagramModelReference = new DiagramModelReference();
+		DiagramModelReferenceBase diagramModelReference = new DiagramModelReferenceBase();
 		return diagramModelReference;
 	}
 
@@ -198,7 +198,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IDiagramModelZentaObject createDiagramModelZentaObject() {
-		DiagramModelZentaObject diagramModelZentaObject = new DiagramModelZentaObject();
+		DiagramModelZentaObjectBase diagramModelZentaObject = new DiagramModelZentaObjectBase();
 		return diagramModelZentaObject;
 	}
 
@@ -208,7 +208,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IDiagramModelGroup createDiagramModelGroup() {
-		DiagramModelGroup diagramModelGroup = new DiagramModelGroup();
+		DiagramModelGroupBase diagramModelGroup = new DiagramModelGroupBase();
 		return diagramModelGroup;
 	}
 
@@ -218,7 +218,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IDiagramModelNote createDiagramModelNote() {
-		DiagramModelNote diagramModelNote = new DiagramModelNote();
+		DiagramModelNoteBase diagramModelNote = new DiagramModelNoteBase();
 		return diagramModelNote;
 	}
 
@@ -228,7 +228,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IDiagramModelImage createDiagramModelImage() {
-		DiagramModelImage diagramModelImage = new DiagramModelImage();
+		DiagramModelImageBase diagramModelImage = new DiagramModelImageBase();
 		return diagramModelImage;
 	}
 
@@ -238,7 +238,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IDiagramModelConnection createDiagramModelConnection() {
-		DiagramModelConnection diagramModelConnection = new DiagramModelConnection();
+		DiagramModelConnectionBase diagramModelConnection = new DiagramModelConnectionBase();
 		return diagramModelConnection;
 	}
 
@@ -248,7 +248,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IDiagramModelZentaConnection createDiagramModelZentaConnection() {
-		DiagramModelZentaConnection diagramModelZentaConnection = new DiagramModelZentaConnection();
+		DiagramModelZentaConnectionBase diagramModelZentaConnection = new DiagramModelZentaConnectionBase();
 		return diagramModelZentaConnection;
 	}
 
@@ -258,7 +258,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IDiagramModelBendpoint createDiagramModelBendpoint() {
-		DiagramModelBendpoint diagramModelBendpoint = new DiagramModelBendpoint();
+		DiagramModelBendpointBase diagramModelBendpoint = new DiagramModelBendpointBase();
 		return diagramModelBendpoint;
 	}
 
@@ -268,7 +268,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IBounds createBounds() {
-		Bounds bounds = new Bounds();
+		BoundsBase bounds = new BoundsBase();
 		return bounds;
 	}
     
@@ -278,7 +278,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public ISketchModel createSketchModel() {
-		SketchModel sketchModel = new SketchModel();
+		SketchModelBase sketchModel = new SketchModelBase();
 		return sketchModel;
 	}
 
@@ -288,7 +288,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public ISketchModelSticky createSketchModelSticky() {
-		SketchModelSticky sketchModelSticky = new SketchModelSticky();
+		SketchModelStickyBase sketchModelSticky = new SketchModelStickyBase();
 		return sketchModelSticky;
 	}
 
@@ -303,7 +303,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	}
 
     public IBounds createBounds(int x, int y, int width, int height) {
-        Bounds bounds = new Bounds();
+        BoundsBase bounds = new BoundsBase();
         bounds.setX(x);
         bounds.setY(y);
         bounds.setWidth(width);
@@ -318,7 +318,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IJunction createJunction() {
-		Junction junction = new Junction();
+		JunctionBase junction = new JunctionBase();
 		return junction;
 	}
 
@@ -328,7 +328,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IAndJunction createAndJunction() {
-		AndJunction andJunction = new AndJunction();
+		AndJunctionBase andJunction = new AndJunctionBase();
 		return andJunction;
 	}
 
@@ -338,7 +338,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IOrJunction createOrJunction() {
-		OrJunction orJunction = new OrJunction();
+		OrJunctionBase orJunction = new OrJunctionBase();
 		return orJunction;
 	}
 
@@ -349,7 +349,7 @@ public class ZentaFactory extends EFactoryImpl implements IZentaFactory {
 	 * @generated
 	 */
     public IBasicRelationship createBasicRelationship() {
-		BasicRelationship basicRelationship = new BasicRelationship();
+		BasicRelationshipBase basicRelationship = new BasicRelationshipBase();
 		return basicRelationship;
 	}
 

@@ -25,13 +25,13 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModel#getViewpoint <em>Viewpoint</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModelBase#getViewpoint <em>Viewpoint</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ZentaDiagramModel extends DiagramModel implements IZentaDiagramModel {
+public class ZentaDiagramModelBase extends DiagramModelBase implements IZentaDiagramModel {
     /**
 	 * The default value of the '{@link #getViewpoint() <em>Viewpoint</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public class ZentaDiagramModel extends DiagramModel implements IZentaDiagramMode
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ZentaDiagramModel() {
+    protected ZentaDiagramModelBase() {
 		super();
 	}
 

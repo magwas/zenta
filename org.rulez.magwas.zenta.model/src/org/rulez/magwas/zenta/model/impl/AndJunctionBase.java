@@ -6,26 +6,26 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.rulez.magwas.zenta.model.IAndJunction;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IOrJunction;
 
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Or Junction</b></em>'.
+ * An implementation of the model object '<em><b>And Junction</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class OrJunction extends ZentaElement implements IOrJunction {
+public class AndJunctionBase extends ZentaElementBase implements IAndJunction {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected OrJunction() {
+    protected AndJunctionBase() {
 		super();
 	}
 
@@ -36,7 +36,7 @@ public class OrJunction extends ZentaElement implements IOrJunction {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentaPackage.Literals.OR_JUNCTION;
+		return IZentaPackage.Literals.AND_JUNCTION;
 	}
 
-} //OrJunction
+} //AndJunction

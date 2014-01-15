@@ -58,14 +58,14 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	IZentaPackage eINSTANCE = org.rulez.magwas.zenta.model.impl.ZentaPackage.init();
+	IZentaPackage eINSTANCE = org.rulez.magwas.zenta.model.impl.ZentaPackageBase.init();
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.IAdapter <em>Adapter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IAdapter
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getAdapter()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getAdapter()
 	 * @generated
 	 */
 	int ADAPTER = 0;
@@ -80,11 +80,11 @@ public interface IZentaPackage extends EPackage {
 	int ADAPTER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.Property <em>Property</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.PropertyBase <em>Property</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.Property
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getProperty()
+	 * @see org.rulez.magwas.zenta.model.impl.PropertyBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getProperty()
 	 * @generated
 	 */
 	int PROPERTY = 2;
@@ -94,7 +94,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IProperties
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getProperties()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getProperties()
 	 * @generated
 	 */
 	int PROPERTIES = 3;
@@ -104,7 +104,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.INameable
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getNameable()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getNameable()
 	 * @generated
 	 */
 	int NAMEABLE = 4;
@@ -141,7 +141,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IIdentifier
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getIdentifier()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getIdentifier()
 	 * @generated
 	 */
 	int IDENTIFIER = 1;
@@ -241,7 +241,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.ITextContent
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getTextContent()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getTextContent()
 	 * @generated
 	 */
 	int TEXT_CONTENT = 5;
@@ -269,7 +269,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IDocumentable
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDocumentable()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDocumentable()
 	 * @generated
 	 */
 	int DOCUMENTABLE = 6;
@@ -297,7 +297,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.ICloneable
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getCloneable()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getCloneable()
 	 * @generated
 	 */
 	int CLONEABLE = 7;
@@ -316,7 +316,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IFolderContainer
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getFolderContainer()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFolderContainer()
 	 * @generated
 	 */
 	int FOLDER_CONTAINER = 8;
@@ -340,11 +340,11 @@ public interface IZentaPackage extends EPackage {
 	int FOLDER_CONTAINER_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaModel <em>Model</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase <em>Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaModel
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getZentaModel()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaModelBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaModel()
 	 * @generated
 	 */
 	int ZENTA_MODEL = 9;
@@ -444,7 +444,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IZentaModelElement
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getZentaModelElement()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaModelElement()
 	 * @generated
 	 */
 	int ZENTA_MODEL_ELEMENT = 10;
@@ -468,11 +468,11 @@ public interface IZentaPackage extends EPackage {
 	int ZENTA_MODEL_ELEMENT_FEATURE_COUNT = ADAPTER_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.Folder <em>Folder</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.FolderBase <em>Folder</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.Folder
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getFolder()
+	 * @see org.rulez.magwas.zenta.model.impl.FolderBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFolder()
 	 * @generated
 	 */
 	int FOLDER = 11;
@@ -559,11 +559,11 @@ public interface IZentaPackage extends EPackage {
 	int FOLDER_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaElement <em>Element</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase <em>Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaElement
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getZentaElement()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaElementBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaElement()
 	 * @generated
 	 */
 	int ZENTA_ELEMENT = 12;
@@ -645,7 +645,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IJunctionElement
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getJunctionElement()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getJunctionElement()
 	 * @generated
 	 */
 	int JUNCTION_ELEMENT = 13;
@@ -727,7 +727,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IInterfaceElement
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getInterfaceElement()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getInterfaceElement()
 	 * @generated
 	 */
 	int INTERFACE_ELEMENT = 14;
@@ -814,11 +814,11 @@ public interface IZentaPackage extends EPackage {
 	int INTERFACE_ELEMENT_FEATURE_COUNT = ZENTA_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.Junction <em>Junction</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.JunctionBase <em>Junction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.Junction
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getJunction()
+	 * @see org.rulez.magwas.zenta.model.impl.JunctionBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getJunction()
 	 * @generated
 	 */
 	int JUNCTION = 15;
@@ -896,11 +896,11 @@ public interface IZentaPackage extends EPackage {
 	int JUNCTION_FEATURE_COUNT = JUNCTION_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.AndJunction <em>And Junction</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.AndJunctionBase <em>And Junction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.AndJunction
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getAndJunction()
+	 * @see org.rulez.magwas.zenta.model.impl.AndJunctionBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getAndJunction()
 	 * @generated
 	 */
 	int AND_JUNCTION = 16;
@@ -978,11 +978,11 @@ public interface IZentaPackage extends EPackage {
 	int AND_JUNCTION_FEATURE_COUNT = JUNCTION_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.OrJunction <em>Or Junction</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.OrJunctionBase <em>Or Junction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.OrJunction
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getOrJunction()
+	 * @see org.rulez.magwas.zenta.model.impl.OrJunctionBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getOrJunction()
 	 * @generated
 	 */
 	int OR_JUNCTION = 17;
@@ -1060,11 +1060,11 @@ public interface IZentaPackage extends EPackage {
 	int OR_JUNCTION_FEATURE_COUNT = JUNCTION_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.Relationship <em>Relationship</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.RelationshipBase <em>Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.Relationship
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getRelationship()
+	 * @see org.rulez.magwas.zenta.model.impl.RelationshipBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getRelationship()
 	 * @generated
 	 */
 	int RELATIONSHIP = 18;
@@ -1169,11 +1169,11 @@ public interface IZentaPackage extends EPackage {
 	int RELATIONSHIP_FEATURE_COUNT = ZENTA_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BasicRelationship <em>Basic Relationship</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BasicRelationshipBase <em>Basic Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.BasicRelationship
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBasicRelationship()
+	 * @see org.rulez.magwas.zenta.model.impl.BasicRelationshipBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBasicRelationship()
 	 * @generated
 	 */
 	int BASIC_RELATIONSHIP = 19;
@@ -1282,7 +1282,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IBusinessLayerElement
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBusinessLayerElement()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBusinessLayerElement()
 	 * @generated
 	 */
 	int BUSINESS_LAYER_ELEMENT = 20;
@@ -1360,11 +1360,11 @@ public interface IZentaPackage extends EPackage {
 	int BUSINESS_LAYER_ELEMENT_FEATURE_COUNT = ZENTA_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent <em>Diagram Model Component</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase <em>Diagram Model Component</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelComponent
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelComponent()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelComponent()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_COMPONENT = 21;
@@ -1419,7 +1419,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IDiagramModelContainer
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelContainer()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelContainer()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_CONTAINER = 22;
@@ -1479,11 +1479,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_CONTAINER_FEATURE_COUNT = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModel <em>Diagram Model</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelBase <em>Diagram Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModel
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModel()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModel()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL = 23;
@@ -1579,11 +1579,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject <em>Diagram Model Object</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase <em>Diagram Model Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelObject
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelObject()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelObject()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_OBJECT = 25;
@@ -1715,11 +1715,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_OBJECT_FEATURE_COUNT = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 9;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelReference <em>Diagram Model Reference</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelReferenceBase <em>Diagram Model Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelReference
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelReference()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelReferenceBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelReference()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_REFERENCE = 24;
@@ -1860,11 +1860,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_REFERENCE_FEATURE_COUNT = DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroup <em>Diagram Model Group</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase <em>Diagram Model Group</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelGroup
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelGroup()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelGroup()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_GROUP = 26;
@@ -2023,11 +2023,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_GROUP_FEATURE_COUNT = DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelNote <em>Diagram Model Note</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelNoteBase <em>Diagram Model Note</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelNote
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelNote()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelNoteBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelNote()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_NOTE = 27;
@@ -2168,11 +2168,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_NOTE_FEATURE_COUNT = DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelImage <em>Diagram Model Image</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelImageBase <em>Diagram Model Image</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelImage
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelImage()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelImageBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelImage()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_IMAGE = 28;
@@ -2322,11 +2322,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_IMAGE_FEATURE_COUNT = DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection <em>Diagram Model Connection</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase <em>Diagram Model Connection</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelConnection
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelConnection()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelConnection()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_CONNECTION = 29;
@@ -2503,11 +2503,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 14;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint <em>Diagram Model Bendpoint</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase <em>Diagram Model Bendpoint</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelBendpoint()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelBendpoint()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_BENDPOINT = 30;
@@ -2562,7 +2562,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IFontAttribute
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getFontAttribute()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFontAttribute()
 	 * @generated
 	 */
 	int FONT_ATTRIBUTE = 31;
@@ -2613,11 +2613,11 @@ public interface IZentaPackage extends EPackage {
 	int FONT_ATTRIBUTE_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BorderObject <em>Border Object</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BorderObjectBase <em>Border Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.BorderObject
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBorderObject()
+	 * @see org.rulez.magwas.zenta.model.impl.BorderObjectBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBorderObject()
 	 * @generated
 	 */
 	int BORDER_OBJECT = 32;
@@ -2645,7 +2645,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.IDiagramModelImageProvider
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelImageProvider()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelImageProvider()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_IMAGE_PROVIDER = 33;
@@ -2669,11 +2669,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_IMAGE_PROVIDER_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.Bounds <em>Bounds</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BoundsBase <em>Bounds</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.Bounds
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBounds()
+	 * @see org.rulez.magwas.zenta.model.impl.BoundsBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBounds()
 	 * @generated
 	 */
 	int BOUNDS = 34;
@@ -2728,7 +2728,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.ILockable
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getLockable()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getLockable()
 	 * @generated
 	 */
 	int LOCKABLE = 35;
@@ -2752,11 +2752,11 @@ public interface IZentaPackage extends EPackage {
 	int LOCKABLE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModel <em>Diagram Model</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModelBase <em>Diagram Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaDiagramModel
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getZentaDiagramModel()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaDiagramModelBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaDiagramModel()
 	 * @generated
 	 */
 	int ZENTA_DIAGRAM_MODEL = 36;
@@ -2861,11 +2861,11 @@ public interface IZentaPackage extends EPackage {
 	int ZENTA_DIAGRAM_MODEL_FEATURE_COUNT = DIAGRAM_MODEL_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject <em>Diagram Model Zenta Object</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase <em>Diagram Model Zenta Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelZentaObject()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelZentaObject()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_ZENTA_OBJECT = 37;
@@ -3024,11 +3024,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_ZENTA_OBJECT_FEATURE_COUNT = DIAGRAM_MODEL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection <em>Diagram Model Zenta Connection</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase <em>Diagram Model Zenta Connection</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelZentaConnection()
+	 * @see org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelZentaConnection()
 	 * @generated
 	 */
 	int DIAGRAM_MODEL_ZENTA_CONNECTION = 38;
@@ -3214,11 +3214,11 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_ZENTA_CONNECTION_FEATURE_COUNT = DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BasicObject <em>Basic Object</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.BasicObjectBase <em>Basic Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.BasicObject
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBasicObject()
+	 * @see org.rulez.magwas.zenta.model.impl.BasicObjectBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBasicObject()
 	 * @generated
 	 */
 	int BASIC_OBJECT = 39;
@@ -3296,11 +3296,11 @@ public interface IZentaPackage extends EPackage {
 	int BASIC_OBJECT_FEATURE_COUNT = BUSINESS_LAYER_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.SketchModel <em>Sketch Model</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelBase <em>Sketch Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.SketchModel
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getSketchModel()
+	 * @see org.rulez.magwas.zenta.model.impl.SketchModelBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModel()
 	 * @generated
 	 */
 	int SKETCH_MODEL = 40;
@@ -3405,11 +3405,11 @@ public interface IZentaPackage extends EPackage {
 	int SKETCH_MODEL_FEATURE_COUNT = DIAGRAM_MODEL_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelSticky <em>Sketch Model Sticky</em>}' class.
+	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelStickyBase <em>Sketch Model Sticky</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.rulez.magwas.zenta.model.impl.SketchModelSticky
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getSketchModelSticky()
+	 * @see org.rulez.magwas.zenta.model.impl.SketchModelStickyBase
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModelSticky()
 	 * @generated
 	 */
 	int SKETCH_MODEL_STICKY = 41;
@@ -3572,7 +3572,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.rulez.magwas.zenta.model.impl.SketchModelActor
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getSketchModelActor()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModelActor()
 	 * @generated
 	 */
 	int SKETCH_MODEL_ACTOR = 42;
@@ -3726,7 +3726,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.io.File
-	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getFile()
+	 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFile()
 	 * @generated
 	 */
 	int FILE = 43;
@@ -4816,7 +4816,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IAdapter
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getAdapter()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getAdapter()
 		 * @generated
 		 */
 		EClass ADAPTER = eINSTANCE.getAdapter();
@@ -4826,7 +4826,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IIdentifier
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getIdentifier()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getIdentifier()
 		 * @generated
 		 */
 		EClass IDENTIFIER = eINSTANCE.getIdentifier();
@@ -4840,11 +4840,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute IDENTIFIER__ID = eINSTANCE.getIdentifier_Id();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.Property <em>Property</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.PropertyBase <em>Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.Property
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getProperty()
+		 * @see org.rulez.magwas.zenta.model.impl.PropertyBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getProperty()
 		 * @generated
 		 */
 		EClass PROPERTY = eINSTANCE.getProperty();
@@ -4878,7 +4878,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IProperties
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getProperties()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getProperties()
 		 * @generated
 		 */
 		EClass PROPERTIES = eINSTANCE.getProperties();
@@ -4896,7 +4896,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.INameable
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getNameable()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getNameable()
 		 * @generated
 		 */
 		EClass NAMEABLE = eINSTANCE.getNameable();
@@ -4922,7 +4922,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.ITextContent
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getTextContent()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getTextContent()
 		 * @generated
 		 */
 		EClass TEXT_CONTENT = eINSTANCE.getTextContent();
@@ -4940,7 +4940,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IDocumentable
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDocumentable()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDocumentable()
 		 * @generated
 		 */
 		EClass DOCUMENTABLE = eINSTANCE.getDocumentable();
@@ -4958,7 +4958,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.ICloneable
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getCloneable()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getCloneable()
 		 * @generated
 		 */
 		EClass CLONEABLE = eINSTANCE.getCloneable();
@@ -4968,7 +4968,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IFolderContainer
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getFolderContainer()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFolderContainer()
 		 * @generated
 		 */
 		EClass FOLDER_CONTAINER = eINSTANCE.getFolderContainer();
@@ -4982,11 +4982,11 @@ public interface IZentaPackage extends EPackage {
 		EReference FOLDER_CONTAINER__FOLDERS = eINSTANCE.getFolderContainer_Folders();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.ZentaModel <em>Model</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase <em>Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaModel
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getZentaModel()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaModelBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaModel()
 		 * @generated
 		 */
 		EClass ZENTA_MODEL = eINSTANCE.getZentaModel();
@@ -5012,7 +5012,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IZentaModelElement
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getZentaModelElement()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaModelElement()
 		 * @generated
 		 */
 		EClass ZENTA_MODEL_ELEMENT = eINSTANCE.getZentaModelElement();
@@ -5026,11 +5026,11 @@ public interface IZentaPackage extends EPackage {
 		EReference ZENTA_MODEL_ELEMENT__ZENTA_MODEL = eINSTANCE.getZentaModelElement_ZentaModel();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.Folder <em>Folder</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.FolderBase <em>Folder</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.Folder
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getFolder()
+		 * @see org.rulez.magwas.zenta.model.impl.FolderBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFolder()
 		 * @generated
 		 */
 		EClass FOLDER = eINSTANCE.getFolder();
@@ -5044,11 +5044,11 @@ public interface IZentaPackage extends EPackage {
 		EReference FOLDER__ELEMENTS = eINSTANCE.getFolder_Elements();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.ZentaElement <em>Element</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase <em>Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaElement
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getZentaElement()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaElementBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaElement()
 		 * @generated
 		 */
 		EClass ZENTA_ELEMENT = eINSTANCE.getZentaElement();
@@ -5066,7 +5066,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IJunctionElement
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getJunctionElement()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getJunctionElement()
 		 * @generated
 		 */
 		EClass JUNCTION_ELEMENT = eINSTANCE.getJunctionElement();
@@ -5076,7 +5076,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IInterfaceElement
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getInterfaceElement()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getInterfaceElement()
 		 * @generated
 		 */
 		EClass INTERFACE_ELEMENT = eINSTANCE.getInterfaceElement();
@@ -5090,41 +5090,41 @@ public interface IZentaPackage extends EPackage {
 		EAttribute INTERFACE_ELEMENT__INTERFACE_TYPE = eINSTANCE.getInterfaceElement_InterfaceType();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.Junction <em>Junction</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.JunctionBase <em>Junction</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.Junction
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getJunction()
+		 * @see org.rulez.magwas.zenta.model.impl.JunctionBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getJunction()
 		 * @generated
 		 */
 		EClass JUNCTION = eINSTANCE.getJunction();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.AndJunction <em>And Junction</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.AndJunctionBase <em>And Junction</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.AndJunction
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getAndJunction()
+		 * @see org.rulez.magwas.zenta.model.impl.AndJunctionBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getAndJunction()
 		 * @generated
 		 */
 		EClass AND_JUNCTION = eINSTANCE.getAndJunction();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.OrJunction <em>Or Junction</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.OrJunctionBase <em>Or Junction</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.OrJunction
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getOrJunction()
+		 * @see org.rulez.magwas.zenta.model.impl.OrJunctionBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getOrJunction()
 		 * @generated
 		 */
 		EClass OR_JUNCTION = eINSTANCE.getOrJunction();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.Relationship <em>Relationship</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.RelationshipBase <em>Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.Relationship
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getRelationship()
+		 * @see org.rulez.magwas.zenta.model.impl.RelationshipBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getRelationship()
 		 * @generated
 		 */
 		EClass RELATIONSHIP = eINSTANCE.getRelationship();
@@ -5154,11 +5154,11 @@ public interface IZentaPackage extends EPackage {
 		EReference RELATIONSHIP__DIAG_CONNECTIONS = eINSTANCE.getRelationship_DiagConnections();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BasicRelationship <em>Basic Relationship</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BasicRelationshipBase <em>Basic Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.BasicRelationship
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBasicRelationship()
+		 * @see org.rulez.magwas.zenta.model.impl.BasicRelationshipBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBasicRelationship()
 		 * @generated
 		 */
 		EClass BASIC_RELATIONSHIP = eINSTANCE.getBasicRelationship();
@@ -5168,17 +5168,17 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IBusinessLayerElement
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBusinessLayerElement()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBusinessLayerElement()
 		 * @generated
 		 */
 		EClass BUSINESS_LAYER_ELEMENT = eINSTANCE.getBusinessLayerElement();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponent <em>Diagram Model Component</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase <em>Diagram Model Component</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelComponent
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelComponent()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelComponent()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_COMPONENT = eINSTANCE.getDiagramModelComponent();
@@ -5196,7 +5196,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IDiagramModelContainer
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelContainer()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelContainer()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_CONTAINER = eINSTANCE.getDiagramModelContainer();
@@ -5210,11 +5210,11 @@ public interface IZentaPackage extends EPackage {
 		EReference DIAGRAM_MODEL_CONTAINER__CHILDREN = eINSTANCE.getDiagramModelContainer_Children();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModel <em>Diagram Model</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelBase <em>Diagram Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModel
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModel()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModel()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL = eINSTANCE.getDiagramModel();
@@ -5228,11 +5228,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE = eINSTANCE.getDiagramModel_ConnectionRouterType();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelReference <em>Diagram Model Reference</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelReferenceBase <em>Diagram Model Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelReference
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelReference()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelReferenceBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelReference()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_REFERENCE = eINSTANCE.getDiagramModelReference();
@@ -5246,11 +5246,11 @@ public interface IZentaPackage extends EPackage {
 		EReference DIAGRAM_MODEL_REFERENCE__REFERENCED_MODEL = eINSTANCE.getDiagramModelReference_ReferencedModel();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject <em>Diagram Model Object</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase <em>Diagram Model Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelObject
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelObject()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelObject()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_OBJECT = eINSTANCE.getDiagramModelObject();
@@ -5296,41 +5296,41 @@ public interface IZentaPackage extends EPackage {
 		EAttribute DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE = eINSTANCE.getDiagramModelObject_ElementShape();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroup <em>Diagram Model Group</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase <em>Diagram Model Group</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelGroup
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelGroup()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelGroup()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_GROUP = eINSTANCE.getDiagramModelGroup();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelNote <em>Diagram Model Note</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelNoteBase <em>Diagram Model Note</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelNote
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelNote()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelNoteBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelNote()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_NOTE = eINSTANCE.getDiagramModelNote();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelImage <em>Diagram Model Image</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelImageBase <em>Diagram Model Image</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelImage
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelImage()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelImageBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelImage()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_IMAGE = eINSTANCE.getDiagramModelImage();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection <em>Diagram Model Connection</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase <em>Diagram Model Connection</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelConnection
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelConnection()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelConnection()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_CONNECTION = eINSTANCE.getDiagramModelConnection();
@@ -5400,11 +5400,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute DIAGRAM_MODEL_CONNECTION__TYPE = eINSTANCE.getDiagramModelConnection_Type();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint <em>Diagram Model Bendpoint</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase <em>Diagram Model Bendpoint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelBendpoint()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelBendpoint()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_BENDPOINT = eINSTANCE.getDiagramModelBendpoint();
@@ -5446,7 +5446,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IFontAttribute
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getFontAttribute()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFontAttribute()
 		 * @generated
 		 */
 		EClass FONT_ATTRIBUTE = eINSTANCE.getFontAttribute();
@@ -5484,11 +5484,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute FONT_ATTRIBUTE__TEXT_POSITION = eINSTANCE.getFontAttribute_TextPosition();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BorderObject <em>Border Object</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BorderObjectBase <em>Border Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.BorderObject
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBorderObject()
+		 * @see org.rulez.magwas.zenta.model.impl.BorderObjectBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBorderObject()
 		 * @generated
 		 */
 		EClass BORDER_OBJECT = eINSTANCE.getBorderObject();
@@ -5506,7 +5506,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.IDiagramModelImageProvider
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelImageProvider()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelImageProvider()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_IMAGE_PROVIDER = eINSTANCE.getDiagramModelImageProvider();
@@ -5520,11 +5520,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute DIAGRAM_MODEL_IMAGE_PROVIDER__IMAGE_PATH = eINSTANCE.getDiagramModelImageProvider_ImagePath();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.Bounds <em>Bounds</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BoundsBase <em>Bounds</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.Bounds
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBounds()
+		 * @see org.rulez.magwas.zenta.model.impl.BoundsBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBounds()
 		 * @generated
 		 */
 		EClass BOUNDS = eINSTANCE.getBounds();
@@ -5566,7 +5566,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.ILockable
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getLockable()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getLockable()
 		 * @generated
 		 */
 		EClass LOCKABLE = eINSTANCE.getLockable();
@@ -5580,11 +5580,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute LOCKABLE__LOCKED = eINSTANCE.getLockable_Locked();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModel <em>Diagram Model</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModelBase <em>Diagram Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaDiagramModel
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getZentaDiagramModel()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaDiagramModelBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getZentaDiagramModel()
 		 * @generated
 		 */
 		EClass ZENTA_DIAGRAM_MODEL = eINSTANCE.getZentaDiagramModel();
@@ -5598,11 +5598,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute ZENTA_DIAGRAM_MODEL__VIEWPOINT = eINSTANCE.getZentaDiagramModel_Viewpoint();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject <em>Diagram Model Zenta Object</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase <em>Diagram Model Zenta Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelZentaObject()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelZentaObject()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_ZENTA_OBJECT = eINSTANCE.getDiagramModelZentaObject();
@@ -5624,11 +5624,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute DIAGRAM_MODEL_ZENTA_OBJECT__TYPE = eINSTANCE.getDiagramModelZentaObject_Type();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection <em>Diagram Model Zenta Connection</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase <em>Diagram Model Zenta Connection</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getDiagramModelZentaConnection()
+		 * @see org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getDiagramModelZentaConnection()
 		 * @generated
 		 */
 		EClass DIAGRAM_MODEL_ZENTA_CONNECTION = eINSTANCE.getDiagramModelZentaConnection();
@@ -5642,21 +5642,21 @@ public interface IZentaPackage extends EPackage {
 		EReference DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP = eINSTANCE.getDiagramModelZentaConnection_Relationship();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BasicObject <em>Basic Object</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.BasicObjectBase <em>Basic Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.BasicObject
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getBasicObject()
+		 * @see org.rulez.magwas.zenta.model.impl.BasicObjectBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getBasicObject()
 		 * @generated
 		 */
 		EClass BASIC_OBJECT = eINSTANCE.getBasicObject();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.SketchModel <em>Sketch Model</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelBase <em>Sketch Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.SketchModel
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getSketchModel()
+		 * @see org.rulez.magwas.zenta.model.impl.SketchModelBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModel()
 		 * @generated
 		 */
 		EClass SKETCH_MODEL = eINSTANCE.getSketchModel();
@@ -5670,11 +5670,11 @@ public interface IZentaPackage extends EPackage {
 		EAttribute SKETCH_MODEL__BACKGROUND = eINSTANCE.getSketchModel_Background();
 
 		/**
-		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelSticky <em>Sketch Model Sticky</em>}' class.
+		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.impl.SketchModelStickyBase <em>Sketch Model Sticky</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.rulez.magwas.zenta.model.impl.SketchModelSticky
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getSketchModelSticky()
+		 * @see org.rulez.magwas.zenta.model.impl.SketchModelStickyBase
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModelSticky()
 		 * @generated
 		 */
 		EClass SKETCH_MODEL_STICKY = eINSTANCE.getSketchModelSticky();
@@ -5684,7 +5684,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.rulez.magwas.zenta.model.impl.SketchModelActor
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getSketchModelActor()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getSketchModelActor()
 		 * @generated
 		 */
 		EClass SKETCH_MODEL_ACTOR = eINSTANCE.getSketchModelActor();
@@ -5694,7 +5694,7 @@ public interface IZentaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.io.File
-		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackage#getFile()
+		 * @see org.rulez.magwas.zenta.model.impl.ZentaPackageBase#getFile()
 		 * @generated
 		 */
 		EDataType FILE = eINSTANCE.getFile();

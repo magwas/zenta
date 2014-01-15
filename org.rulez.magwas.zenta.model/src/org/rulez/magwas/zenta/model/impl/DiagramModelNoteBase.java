@@ -20,13 +20,13 @@ import org.rulez.magwas.zenta.model.ITextContent;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelNote#getContent <em>Content</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelNoteBase#getContent <em>Content</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DiagramModelNote extends DiagramModelObject implements IDiagramModelNote {
+public class DiagramModelNoteBase extends DiagramModelObjectBase implements IDiagramModelNote {
     /**
 	 * The default value of the '{@link #getContent() <em>Content</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,7 +52,7 @@ public class DiagramModelNote extends DiagramModelObject implements IDiagramMode
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelNote() {
+    protected DiagramModelNoteBase() {
 		super();
 	}
 

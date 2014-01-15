@@ -19,13 +19,13 @@ import org.rulez.magwas.zenta.model.ISketchModel;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModel#getBackground <em>Background</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelBase#getBackground <em>Background</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SketchModel extends DiagramModel implements ISketchModel {
+public class SketchModelBase extends DiagramModelBase implements ISketchModel {
     /**
 	 * The default value of the '{@link #getBackground() <em>Background</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,7 +50,7 @@ public class SketchModel extends DiagramModel implements ISketchModel {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected SketchModel() {
+    protected SketchModelBase() {
 		super();
 	}
 

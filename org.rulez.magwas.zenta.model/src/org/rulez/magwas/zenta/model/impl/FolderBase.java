@@ -2,7 +2,6 @@
  * This program and the accompanying materials
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
- *
  */
 package org.rulez.magwas.zenta.model.impl;
 
@@ -19,18 +18,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.ICloneable;
-import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IDiagramModelComponent;
-import org.rulez.magwas.zenta.model.IDiagramModelContainer;
-import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDocumentable;
+import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IFolderContainer;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
@@ -39,26 +34,34 @@ import org.rulez.magwas.zenta.model.IProperty;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Diagram Model</b></em>'.
+ * An implementation of the model object '<em><b>Folder</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getZentaModel <em>Zenta Model</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getObjectClass <em>Object Class</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getId <em>Id</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getDiagramModel <em>Diagram Model</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getChildren <em>Children</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModel#getConnectionRouterType <em>Connection Router Type</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getZentaModel <em>Zenta Model</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getFolders <em>Folders</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getObjectClass <em>Object Class</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getId <em>Id</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.FolderBase#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class DiagramModel extends EObjectImpl implements IDiagramModel {
+public class FolderBase extends EObjectImpl implements IFolder {
+    /**
+	 * The cached value of the '{@link #getFolders() <em>Folders</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getFolders()
+	 * @generated
+	 * @ordered
+	 */
+    protected EList<IFolder> folders;
     /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -68,7 +71,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
-
     /**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -78,7 +80,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
     protected String name = NAME_EDEFAULT;
-
     /**
 	 * The default value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -88,7 +89,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
 	protected static final String OBJECT_CLASS_EDEFAULT = null;
-
 				/**
 	 * The cached value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -98,7 +98,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
 	protected String objectClass = OBJECT_CLASS_EDEFAULT;
-
 				/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -108,8 +107,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
     protected static final String ID_EDEFAULT = null;
-
-				/**
+    /**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -118,17 +116,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
     protected String id = ID_EDEFAULT;
-
-				/**
-	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getChildren()
-	 * @generated
-	 * @ordered
-	 */
-    protected EList<IDiagramModelObject> children;
-
     /**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -138,7 +125,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
     protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
-
     /**
 	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -148,7 +134,6 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
     protected String documentation = DOCUMENTATION_EDEFAULT;
-
     /**
 	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -158,27 +143,17 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 * @ordered
 	 */
     protected EList<IProperty> properties;
-
     /**
-	 * The default value of the '{@link #getConnectionRouterType() <em>Connection Router Type</em>}' attribute.
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see #getConnectionRouterType()
+	 * @see #getElements()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final int CONNECTION_ROUTER_TYPE_EDEFAULT = 0;
+    protected EList<EObject> elements;
 
-    /**
-	 * The cached value of the '{@link #getConnectionRouterType() <em>Connection Router Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getConnectionRouterType()
-	 * @generated
-	 * @ordered
-	 */
-    protected int connectionRouterType = CONNECTION_ROUTER_TYPE_EDEFAULT;
-
+    
     /**
      * Adapter Map for arbitrary objects
      */
@@ -189,7 +164,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModel() {
+    protected FolderBase() {
 		super();
 	}
 
@@ -200,7 +175,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentaPackage.Literals.DIAGRAM_MODEL;
+		return IZentaPackage.Literals.FOLDER;
 	}
 
     /**
@@ -221,7 +196,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__NAME, oldName, name));
 	}
 
     /**
@@ -242,31 +217,10 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldObjectClass = objectClass;
 		objectClass = newObjectClass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS, oldObjectClass, objectClass));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__OBJECT_CLASS, oldObjectClass, objectClass));
 	}
 
 				/**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public IDiagramModel getDiagramModel() {
-        return this;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public IZentaModel getZentaModel() {
-        if(eContainer() == null) {
-            return null;
-        }
-        return ((IZentaModelElement)eContainer()).getZentaModel();
-    }
-
-    /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -284,40 +238,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__ID, oldId, id));
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EList<IDiagramModelObject> getChildren() {
-		if (children == null) {
-			children = new EObjectContainmentEList<IDiagramModelObject>(IDiagramModelObject.class, this, IZentaPackage.DIAGRAM_MODEL__CHILDREN);
-		}
-		return children;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public int getConnectionRouterType() {
-		return connectionRouterType;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public void setConnectionRouterType(int newConnectionRouterType) {
-		int oldConnectionRouterType = connectionRouterType;
-		connectionRouterType = newConnectionRouterType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE, oldConnectionRouterType, connectionRouterType));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__ID, oldId, id));
 	}
 
     /**
@@ -338,7 +259,7 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		String oldDocumentation = documentation;
 		documentation = newDocumentation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION, oldDocumentation, documentation));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__DOCUMENTATION, oldDocumentation, documentation));
 	}
 
     /**
@@ -348,9 +269,21 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     public EList<IProperty> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.DIAGRAM_MODEL__PROPERTIES);
+			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.FOLDER__PROPERTIES);
 		}
 		return properties;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public EList<EObject> getElements() {
+		if (elements == null) {
+			elements = new EObjectContainmentEList<EObject>(EObject.class, this, IZentaPackage.FOLDER__ELEMENTS);
+		}
+		return elements;
 	}
 
     /**
@@ -375,18 +308,29 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
         fAdapterMap.put(adapter, object);
     }
 
-
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public EObject getCopy() {
-        IDiagramModel newDiagramModel = EcoreUtil.copy(this);
-        newDiagramModel.setId(null); // need a new ID
-        newDiagramModel.getChildren().clear(); // need to do this!
-        return newDiagramModel;
+    public IZentaModel getZentaModel() {
+        if(eContainer() == null) {
+            return null;
+        }
+        return ((IZentaModelElement)eContainer()).getZentaModel();
     }
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public EList<IFolder> getFolders() {
+		if (folders == null) {
+			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.FOLDER__FOLDERS);
+		}
+		return folders;
+	}
 
     /**
 	 * <!-- begin-user-doc -->
@@ -396,10 +340,12 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
-				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.FOLDER__FOLDERS:
+				return ((InternalEList<?>)getFolders()).basicRemove(otherEnd, msgs);
+			case IZentaPackage.FOLDER__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case IZentaPackage.FOLDER__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -412,24 +358,22 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL__ZENTA_MODEL:
+			case IZentaPackage.FOLDER__ZENTA_MODEL:
 				return getZentaModel();
-			case IZentaPackage.DIAGRAM_MODEL__NAME:
+			case IZentaPackage.FOLDER__FOLDERS:
+				return getFolders();
+			case IZentaPackage.FOLDER__NAME:
 				return getName();
-			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
+			case IZentaPackage.FOLDER__OBJECT_CLASS:
 				return getObjectClass();
-			case IZentaPackage.DIAGRAM_MODEL__ID:
+			case IZentaPackage.FOLDER__ID:
 				return getId();
-			case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
-				return getDiagramModel();
-			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
-				return getChildren();
-			case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentaPackage.FOLDER__DOCUMENTATION:
 				return getDocumentation();
-			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.FOLDER__PROPERTIES:
 				return getProperties();
-			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
-				return getConnectionRouterType();
+			case IZentaPackage.FOLDER__ELEMENTS:
+				return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -443,28 +387,29 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL__NAME:
+			case IZentaPackage.FOLDER__FOLDERS:
+				getFolders().clear();
+				getFolders().addAll((Collection<? extends IFolder>)newValue);
+				return;
+			case IZentaPackage.FOLDER__NAME:
 				setName((String)newValue);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
+			case IZentaPackage.FOLDER__OBJECT_CLASS:
 				setObjectClass((String)newValue);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__ID:
+			case IZentaPackage.FOLDER__ID:
 				setId((String)newValue);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
-				getChildren().clear();
-				getChildren().addAll((Collection<? extends IDiagramModelObject>)newValue);
-				return;
-			case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentaPackage.FOLDER__DOCUMENTATION:
 				setDocumentation((String)newValue);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.FOLDER__PROPERTIES:
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends IProperty>)newValue);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
-				setConnectionRouterType((Integer)newValue);
+			case IZentaPackage.FOLDER__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends EObject>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -478,26 +423,26 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL__NAME:
+			case IZentaPackage.FOLDER__FOLDERS:
+				getFolders().clear();
+				return;
+			case IZentaPackage.FOLDER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
+			case IZentaPackage.FOLDER__OBJECT_CLASS:
 				setObjectClass(OBJECT_CLASS_EDEFAULT);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__ID:
+			case IZentaPackage.FOLDER__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
-				getChildren().clear();
-				return;
-			case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentaPackage.FOLDER__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.FOLDER__PROPERTIES:
 				getProperties().clear();
 				return;
-			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
-				setConnectionRouterType(CONNECTION_ROUTER_TYPE_EDEFAULT);
+			case IZentaPackage.FOLDER__ELEMENTS:
+				getElements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -511,24 +456,22 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.DIAGRAM_MODEL__ZENTA_MODEL:
+			case IZentaPackage.FOLDER__ZENTA_MODEL:
 				return getZentaModel() != null;
-			case IZentaPackage.DIAGRAM_MODEL__NAME:
+			case IZentaPackage.FOLDER__FOLDERS:
+				return folders != null && !folders.isEmpty();
+			case IZentaPackage.FOLDER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS:
+			case IZentaPackage.FOLDER__OBJECT_CLASS:
 				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
-			case IZentaPackage.DIAGRAM_MODEL__ID:
+			case IZentaPackage.FOLDER__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL:
-				return getDiagramModel() != null;
-			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
-				return children != null && !children.isEmpty();
-			case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION:
+			case IZentaPackage.FOLDER__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
-			case IZentaPackage.DIAGRAM_MODEL__PROPERTIES:
+			case IZentaPackage.FOLDER__PROPERTIES:
 				return properties != null && !properties.isEmpty();
-			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
-				return connectionRouterType != CONNECTION_ROUTER_TYPE_EDEFAULT;
+			case IZentaPackage.FOLDER__ELEMENTS:
+				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -540,45 +483,34 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IFolderContainer.class) {
+			switch (derivedFeatureID) {
+				case IZentaPackage.FOLDER__FOLDERS: return IZentaPackage.FOLDER_CONTAINER__FOLDERS;
+				default: return -1;
+			}
+		}
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL__NAME: return IZentaPackage.NAMEABLE__NAME;
-				case IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
+				case IZentaPackage.FOLDER__NAME: return IZentaPackage.NAMEABLE__NAME;
+				case IZentaPackage.FOLDER__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IIdentifier.class) {
 			switch (derivedFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL__ID: return IZentaPackage.IDENTIFIER__ID;
-				default: return -1;
-			}
-		}
-		if (baseClass == ICloneable.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == IDiagramModelComponent.class) {
-			switch (derivedFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL: return IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL;
-				default: return -1;
-			}
-		}
-		if (baseClass == IDiagramModelContainer.class) {
-			switch (derivedFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL__CHILDREN: return IZentaPackage.DIAGRAM_MODEL_CONTAINER__CHILDREN;
+				case IZentaPackage.FOLDER__ID: return IZentaPackage.IDENTIFIER__ID;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (derivedFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION: return IZentaPackage.DOCUMENTABLE__DOCUMENTATION;
+				case IZentaPackage.FOLDER__DOCUMENTATION: return IZentaPackage.DOCUMENTABLE__DOCUMENTATION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (derivedFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL__PROPERTIES: return IZentaPackage.PROPERTIES__PROPERTIES;
+				case IZentaPackage.FOLDER__PROPERTIES: return IZentaPackage.PROPERTIES__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -592,45 +524,34 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IFolderContainer.class) {
+			switch (baseFeatureID) {
+				case IZentaPackage.FOLDER_CONTAINER__FOLDERS: return IZentaPackage.FOLDER__FOLDERS;
+				default: return -1;
+			}
+		}
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
-				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.DIAGRAM_MODEL__NAME;
-				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.DIAGRAM_MODEL__OBJECT_CLASS;
+				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.FOLDER__NAME;
+				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.FOLDER__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IIdentifier.class) {
 			switch (baseFeatureID) {
-				case IZentaPackage.IDENTIFIER__ID: return IZentaPackage.DIAGRAM_MODEL__ID;
-				default: return -1;
-			}
-		}
-		if (baseClass == ICloneable.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == IDiagramModelComponent.class) {
-			switch (baseFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL: return IZentaPackage.DIAGRAM_MODEL__DIAGRAM_MODEL;
-				default: return -1;
-			}
-		}
-		if (baseClass == IDiagramModelContainer.class) {
-			switch (baseFeatureID) {
-				case IZentaPackage.DIAGRAM_MODEL_CONTAINER__CHILDREN: return IZentaPackage.DIAGRAM_MODEL__CHILDREN;
+				case IZentaPackage.IDENTIFIER__ID: return IZentaPackage.FOLDER__ID;
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (baseFeatureID) {
-				case IZentaPackage.DOCUMENTABLE__DOCUMENTATION: return IZentaPackage.DIAGRAM_MODEL__DOCUMENTATION;
+				case IZentaPackage.DOCUMENTABLE__DOCUMENTATION: return IZentaPackage.FOLDER__DOCUMENTATION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (baseFeatureID) {
-				case IZentaPackage.PROPERTIES__PROPERTIES: return IZentaPackage.DIAGRAM_MODEL__PROPERTIES;
+				case IZentaPackage.PROPERTIES__PROPERTIES: return IZentaPackage.FOLDER__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -655,10 +576,8 @@ public abstract class DiagramModel extends EObjectImpl implements IDiagramModel 
 		result.append(id);
 		result.append(", documentation: ");
 		result.append(documentation);
-		result.append(", connectionRouterType: ");
-		result.append(connectionRouterType);
 		result.append(')');
 		return result.toString();
 	}
 
-} //DiagramModel
+} //Folder

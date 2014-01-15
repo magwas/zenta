@@ -43,21 +43,21 @@ import org.rulez.magwas.zenta.model.util.IDAdapter;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getFolders <em>Folders</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getObjectClass <em>Object Class</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getId <em>Id</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getZentaModel <em>Zenta Model</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getFile <em>File</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModel#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getFolders <em>Folders</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getObjectClass <em>Object Class</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getId <em>Id</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getZentaModel <em>Zenta Model</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getFile <em>File</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ZentaModel extends EObjectImpl implements IZentaModel {
+public class ZentaModelBase extends EObjectImpl implements IZentaModel {
     /**
 	 * The cached value of the '{@link #getFolders() <em>Folders</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -201,7 +201,7 @@ public class ZentaModel extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    protected ZentaModel() {
+    protected ZentaModelBase() {
         super();
         eAdapters().add(fIDAdapter);
     }
@@ -212,7 +212,7 @@ public class ZentaModel extends EObjectImpl implements IZentaModel {
     protected void addDefaultFolders() {
     	if(this.getFolders().size() == 0) {
             IFolder folder = IZentaFactory.eINSTANCE.createFolder();
-            folder.setName(Messages.ZentaModel_0);
+            folder.setName(MessagesBase.ZentaModel_0);
             getFolders().add(folder);
     	}
     }

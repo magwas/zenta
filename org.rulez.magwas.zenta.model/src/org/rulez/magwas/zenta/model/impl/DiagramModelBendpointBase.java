@@ -22,16 +22,16 @@ import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint#getStartX <em>Start X</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint#getStartY <em>Start Y</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint#getEndX <em>End X</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpoint#getEndY <em>End Y</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase#getStartX <em>Start X</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase#getStartY <em>Start Y</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase#getEndX <em>End X</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase#getEndY <em>End Y</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelBendpoint {
+public class DiagramModelBendpointBase extends EObjectImpl implements IDiagramModelBendpoint {
     /**
 	 * The default value of the '{@link #getStartX() <em>Start X</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -117,7 +117,7 @@ public class DiagramModelBendpoint extends EObjectImpl implements IDiagramModelB
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelBendpoint() {
+    protected DiagramModelBendpointBase() {
 		super();
 	}
 

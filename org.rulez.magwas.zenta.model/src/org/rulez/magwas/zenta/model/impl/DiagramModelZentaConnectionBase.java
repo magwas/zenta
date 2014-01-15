@@ -31,13 +31,13 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnection#getRelationship <em>Relationship</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase#getRelationship <em>Relationship</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DiagramModelZentaConnection extends DiagramModelConnection implements IDiagramModelZentaConnection {
+public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase implements IDiagramModelZentaConnection {
     /**
 	 * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public class DiagramModelZentaConnection extends DiagramModelConnection implemen
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelZentaConnection() {
+    protected DiagramModelZentaConnectionBase() {
 		super();
 	}
 

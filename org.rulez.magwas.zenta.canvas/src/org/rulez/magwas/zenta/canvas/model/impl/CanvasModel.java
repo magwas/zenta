@@ -12,7 +12,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IHintProvider;
 import org.rulez.magwas.zenta.model.IHelpHintProvider;
-import org.rulez.magwas.zenta.model.impl.DiagramModel;
+import org.rulez.magwas.zenta.model.impl.DiagramModelBase;
 
 
 /**
@@ -29,7 +29,7 @@ import org.rulez.magwas.zenta.model.impl.DiagramModel;
  *
  * @generated
  */
-public class CanvasModel extends DiagramModel implements ICanvasModel {
+public class CanvasModel extends DiagramModelBase implements ICanvasModel {
     /**
      * The default value of the '{@link #getHintTitle() <em>Hint Title</em>}' attribute.
      * <!-- begin-user-doc -->

@@ -34,15 +34,15 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject#getChildren <em>Children</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject#getZentaElement <em>Zenta Element</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObject#getType <em>Type</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase#getZentaElement <em>Zenta Element</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DiagramModelZentaObject extends DiagramModelObject implements IDiagramModelZentaObject {
+public class DiagramModelZentaObjectBase extends DiagramModelObjectBase implements IDiagramModelZentaObject {
     
 	private static final String DEFAULT_SHAPE = "rectangleElementShape";
 	/**
@@ -87,7 +87,7 @@ public class DiagramModelZentaObject extends DiagramModelObject implements IDiag
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelZentaObject() {
+    protected DiagramModelZentaObjectBase() {
 		super();
 	}
     /**

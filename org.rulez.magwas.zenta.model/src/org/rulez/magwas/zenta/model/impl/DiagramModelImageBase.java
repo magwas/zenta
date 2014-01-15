@@ -23,14 +23,14 @@ import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelImage#getBorderColor <em>Border Color</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelImage#getImagePath <em>Image Path</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelImageBase#getBorderColor <em>Border Color</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelImageBase#getImagePath <em>Image Path</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DiagramModelImage extends DiagramModelObject implements IDiagramModelImage {
+public class DiagramModelImageBase extends DiagramModelObjectBase implements IDiagramModelImage {
     /**
 	 * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -76,7 +76,7 @@ public class DiagramModelImage extends DiagramModelObject implements IDiagramMod
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelImage() {
+    protected DiagramModelImageBase() {
 		super();
 	}
 

@@ -5,27 +5,36 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.ICloneable;
 import org.rulez.magwas.zenta.model.IDocumentable;
-import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IFolderContainer;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
@@ -34,34 +43,24 @@ import org.rulez.magwas.zenta.model.IProperty;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Folder</b></em>'.
+ * An implementation of the model object '<em><b>Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getZentaModel <em>Zenta Model</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getFolders <em>Folders</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getName <em>Name</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getObjectClass <em>Object Class</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getId <em>Id</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Folder#getElements <em>Elements</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getZentaModel <em>Zenta Model</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getName <em>Name</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getObjectClass <em>Object Class</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getId <em>Id</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaElementBase#getDiagObjects <em>Diag Objects</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class Folder extends EObjectImpl implements IFolder {
-    /**
-	 * The cached value of the '{@link #getFolders() <em>Folders</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getFolders()
-	 * @generated
-	 * @ordered
-	 */
-    protected EList<IFolder> folders;
+public abstract class ZentaElementBase extends EObjectImpl implements IZentaElement {
     /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -71,6 +70,7 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
+
     /**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -80,6 +80,7 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
     protected String name = NAME_EDEFAULT;
+
     /**
 	 * The default value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -89,6 +90,7 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
 	protected static final String OBJECT_CLASS_EDEFAULT = null;
+
 				/**
 	 * The cached value of the '{@link #getObjectClass() <em>Object Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -98,6 +100,7 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
 	protected String objectClass = OBJECT_CLASS_EDEFAULT;
+
 				/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -107,7 +110,8 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
     protected static final String ID_EDEFAULT = null;
-    /**
+
+				/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -116,7 +120,8 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
     protected String id = ID_EDEFAULT;
-    /**
+
+				/**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -125,6 +130,7 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
     protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
+
     /**
 	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -134,6 +140,7 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
     protected String documentation = DOCUMENTATION_EDEFAULT;
+
     /**
 	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -143,28 +150,23 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @ordered
 	 */
     protected EList<IProperty> properties;
+
     /**
-	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+	 * The cached value of the '{@link #getDiagObjects() <em>Diag Objects</em>}' reference list.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getElements()
+	 * <!-- end-user-doc -->
+	 * @see #getDiagObjects()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<EObject> elements;
+	protected EList<IDiagramModelZentaObject> diagObjects;
 
-    
-    /**
+				/**
      * Adapter Map for arbitrary objects
      */
     private Map<Object, Object> fAdapterMap = new HashMap<Object, Object>();
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected Folder() {
+    protected ZentaElementBase() {
 		super();
 	}
 
@@ -175,7 +177,7 @@ public class Folder extends EObjectImpl implements IFolder {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentaPackage.Literals.FOLDER;
+		return IZentaPackage.Literals.ZENTA_ELEMENT;
 	}
 
     /**
@@ -196,7 +198,7 @@ public class Folder extends EObjectImpl implements IFolder {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_ELEMENT__NAME, oldName, name));
 	}
 
     /**
@@ -205,43 +207,22 @@ public class Folder extends EObjectImpl implements IFolder {
 	 * @generated
 	 */
 	public String getObjectClass() {
+		if(null == objectClass)
+			if(this instanceof RelationshipBase)
+				objectClass = basicRelationClassId;
+			else
+				objectClass = basicObjectClassId;
 		return objectClass;
 	}
 
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public void setObjectClass(String newObjectClass) {
 		String oldObjectClass = objectClass;
 		objectClass = newObjectClass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__OBJECT_CLASS, oldObjectClass, objectClass));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS, oldObjectClass, objectClass));
 	}
 
 				/**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public String getId() {
-		return id;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public void setId(String newId) {
-		String oldId = id;
-		id = newId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__ID, oldId, id));
-	}
-
-    /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -259,7 +240,7 @@ public class Folder extends EObjectImpl implements IFolder {
 		String oldDocumentation = documentation;
 		documentation = newDocumentation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.FOLDER__DOCUMENTATION, oldDocumentation, documentation));
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION, oldDocumentation, documentation));
 	}
 
     /**
@@ -269,22 +250,33 @@ public class Folder extends EObjectImpl implements IFolder {
 	 */
     public EList<IProperty> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.FOLDER__PROPERTIES);
+			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.ZENTA_ELEMENT__PROPERTIES);
 		}
 		return properties;
 	}
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<EObject> getElements() {
-		if (elements == null) {
-			elements = new EObjectContainmentEList<EObject>(EObject.class, this, IZentaPackage.FOLDER__ELEMENTS);
+	public EList<IDiagramModelZentaObject> getDiagObjects() {
+		if (diagObjects == null) {
+			diagObjects = new EObjectWithInverseResolvingEList<IDiagramModelZentaObject>(IDiagramModelZentaObject.class, this, IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS, IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT);
 		}
-		return elements;
+		return diagObjects;
 	}
+
+				/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    public EObject getCopy() {
+        IZentaElement newObject = EcoreUtil.copy(this);
+        newObject.setId(null); // need a new ID
+        return newObject;
+    }
 
     /**
      * <!-- begin-user-doc -->
@@ -309,7 +301,39 @@ public class Folder extends EObjectImpl implements IFolder {
     }
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDiagObjects()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				return ((InternalEList<?>)getDiagObjects()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+    /**
      * <!-- begin-user-doc -->
+     * Return the Parent Zenta model
      * <!-- end-user-doc -->
      * @generated NOT
      */
@@ -325,11 +349,8 @@ public class Folder extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<IFolder> getFolders() {
-		if (folders == null) {
-			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.FOLDER__FOLDERS);
-		}
-		return folders;
+    public String getId() {
+		return id;
 	}
 
     /**
@@ -337,17 +358,11 @@ public class Folder extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case IZentaPackage.FOLDER__FOLDERS:
-				return ((InternalEList<?>)getFolders()).basicRemove(otherEnd, msgs);
-			case IZentaPackage.FOLDER__PROPERTIES:
-				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-			case IZentaPackage.FOLDER__ELEMENTS:
-				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+    public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_ELEMENT__ID, oldId, id));
 	}
 
     /**
@@ -358,22 +373,20 @@ public class Folder extends EObjectImpl implements IFolder {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IZentaPackage.FOLDER__ZENTA_MODEL:
+			case IZentaPackage.ZENTA_ELEMENT__ZENTA_MODEL:
 				return getZentaModel();
-			case IZentaPackage.FOLDER__FOLDERS:
-				return getFolders();
-			case IZentaPackage.FOLDER__NAME:
+			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				return getName();
-			case IZentaPackage.FOLDER__OBJECT_CLASS:
+			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
 				return getObjectClass();
-			case IZentaPackage.FOLDER__ID:
+			case IZentaPackage.ZENTA_ELEMENT__ID:
 				return getId();
-			case IZentaPackage.FOLDER__DOCUMENTATION:
+			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				return getDocumentation();
-			case IZentaPackage.FOLDER__PROPERTIES:
+			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				return getProperties();
-			case IZentaPackage.FOLDER__ELEMENTS:
-				return getElements();
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				return getDiagObjects();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -387,29 +400,25 @@ public class Folder extends EObjectImpl implements IFolder {
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IZentaPackage.FOLDER__FOLDERS:
-				getFolders().clear();
-				getFolders().addAll((Collection<? extends IFolder>)newValue);
-				return;
-			case IZentaPackage.FOLDER__NAME:
+			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				setName((String)newValue);
 				return;
-			case IZentaPackage.FOLDER__OBJECT_CLASS:
+			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
 				setObjectClass((String)newValue);
 				return;
-			case IZentaPackage.FOLDER__ID:
+			case IZentaPackage.ZENTA_ELEMENT__ID:
 				setId((String)newValue);
 				return;
-			case IZentaPackage.FOLDER__DOCUMENTATION:
+			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				setDocumentation((String)newValue);
 				return;
-			case IZentaPackage.FOLDER__PROPERTIES:
+			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends IProperty>)newValue);
 				return;
-			case IZentaPackage.FOLDER__ELEMENTS:
-				getElements().clear();
-				getElements().addAll((Collection<? extends EObject>)newValue);
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				getDiagObjects().clear();
+				getDiagObjects().addAll((Collection<? extends IDiagramModelZentaObject>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -423,26 +432,23 @@ public class Folder extends EObjectImpl implements IFolder {
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.FOLDER__FOLDERS:
-				getFolders().clear();
-				return;
-			case IZentaPackage.FOLDER__NAME:
+			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IZentaPackage.FOLDER__OBJECT_CLASS:
+			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
 				setObjectClass(OBJECT_CLASS_EDEFAULT);
 				return;
-			case IZentaPackage.FOLDER__ID:
+			case IZentaPackage.ZENTA_ELEMENT__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case IZentaPackage.FOLDER__DOCUMENTATION:
+			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
-			case IZentaPackage.FOLDER__PROPERTIES:
+			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				getProperties().clear();
 				return;
-			case IZentaPackage.FOLDER__ELEMENTS:
-				getElements().clear();
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				getDiagObjects().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -456,22 +462,20 @@ public class Folder extends EObjectImpl implements IFolder {
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IZentaPackage.FOLDER__ZENTA_MODEL:
+			case IZentaPackage.ZENTA_ELEMENT__ZENTA_MODEL:
 				return getZentaModel() != null;
-			case IZentaPackage.FOLDER__FOLDERS:
-				return folders != null && !folders.isEmpty();
-			case IZentaPackage.FOLDER__NAME:
+			case IZentaPackage.ZENTA_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IZentaPackage.FOLDER__OBJECT_CLASS:
+			case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS:
 				return OBJECT_CLASS_EDEFAULT == null ? objectClass != null : !OBJECT_CLASS_EDEFAULT.equals(objectClass);
-			case IZentaPackage.FOLDER__ID:
+			case IZentaPackage.ZENTA_ELEMENT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case IZentaPackage.FOLDER__DOCUMENTATION:
+			case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
-			case IZentaPackage.FOLDER__PROPERTIES:
+			case IZentaPackage.ZENTA_ELEMENT__PROPERTIES:
 				return properties != null && !properties.isEmpty();
-			case IZentaPackage.FOLDER__ELEMENTS:
-				return elements != null && !elements.isEmpty();
+			case IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS:
+				return diagObjects != null && !diagObjects.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -483,34 +487,33 @@ public class Folder extends EObjectImpl implements IFolder {
 	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == IFolderContainer.class) {
-			switch (derivedFeatureID) {
-				case IZentaPackage.FOLDER__FOLDERS: return IZentaPackage.FOLDER_CONTAINER__FOLDERS;
-				default: return -1;
-			}
-		}
 		if (baseClass == INameable.class) {
 			switch (derivedFeatureID) {
-				case IZentaPackage.FOLDER__NAME: return IZentaPackage.NAMEABLE__NAME;
-				case IZentaPackage.FOLDER__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
+				case IZentaPackage.ZENTA_ELEMENT__NAME: return IZentaPackage.NAMEABLE__NAME;
+				case IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS: return IZentaPackage.NAMEABLE__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IIdentifier.class) {
 			switch (derivedFeatureID) {
-				case IZentaPackage.FOLDER__ID: return IZentaPackage.IDENTIFIER__ID;
+				case IZentaPackage.ZENTA_ELEMENT__ID: return IZentaPackage.IDENTIFIER__ID;
+				default: return -1;
+			}
+		}
+		if (baseClass == ICloneable.class) {
+			switch (derivedFeatureID) {
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (derivedFeatureID) {
-				case IZentaPackage.FOLDER__DOCUMENTATION: return IZentaPackage.DOCUMENTABLE__DOCUMENTATION;
+				case IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION: return IZentaPackage.DOCUMENTABLE__DOCUMENTATION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (derivedFeatureID) {
-				case IZentaPackage.FOLDER__PROPERTIES: return IZentaPackage.PROPERTIES__PROPERTIES;
+				case IZentaPackage.ZENTA_ELEMENT__PROPERTIES: return IZentaPackage.PROPERTIES__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -524,34 +527,33 @@ public class Folder extends EObjectImpl implements IFolder {
 	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == IFolderContainer.class) {
-			switch (baseFeatureID) {
-				case IZentaPackage.FOLDER_CONTAINER__FOLDERS: return IZentaPackage.FOLDER__FOLDERS;
-				default: return -1;
-			}
-		}
 		if (baseClass == INameable.class) {
 			switch (baseFeatureID) {
-				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.FOLDER__NAME;
-				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.FOLDER__OBJECT_CLASS;
+				case IZentaPackage.NAMEABLE__NAME: return IZentaPackage.ZENTA_ELEMENT__NAME;
+				case IZentaPackage.NAMEABLE__OBJECT_CLASS: return IZentaPackage.ZENTA_ELEMENT__OBJECT_CLASS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IIdentifier.class) {
 			switch (baseFeatureID) {
-				case IZentaPackage.IDENTIFIER__ID: return IZentaPackage.FOLDER__ID;
+				case IZentaPackage.IDENTIFIER__ID: return IZentaPackage.ZENTA_ELEMENT__ID;
+				default: return -1;
+			}
+		}
+		if (baseClass == ICloneable.class) {
+			switch (baseFeatureID) {
 				default: return -1;
 			}
 		}
 		if (baseClass == IDocumentable.class) {
 			switch (baseFeatureID) {
-				case IZentaPackage.DOCUMENTABLE__DOCUMENTATION: return IZentaPackage.FOLDER__DOCUMENTATION;
+				case IZentaPackage.DOCUMENTABLE__DOCUMENTATION: return IZentaPackage.ZENTA_ELEMENT__DOCUMENTATION;
 				default: return -1;
 			}
 		}
 		if (baseClass == IProperties.class) {
 			switch (baseFeatureID) {
-				case IZentaPackage.PROPERTIES__PROPERTIES: return IZentaPackage.FOLDER__PROPERTIES;
+				case IZentaPackage.PROPERTIES__PROPERTIES: return IZentaPackage.ZENTA_ELEMENT__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -580,4 +582,68 @@ public class Folder extends EObjectImpl implements IFolder {
 		return result.toString();
 	}
 
-} //Folder
+    @Override
+	public List<String> getPropertyNamed(String propname) {
+		List<String> ret = new ArrayList<String>();
+		for(IProperty  prop : getProperties())
+			if(prop.getKey().equals(propname))
+				ret.add(prop.getValue());
+		return ret;
+	}
+
+
+	public HashMap<String, EAttribute> getObjectAppearanceProperties() {
+		HashMap<String, EAttribute> props = new HashMap<String, EAttribute>();
+		props.put("font",IZentaPackage.eINSTANCE.getFontAttribute_Font());
+		props.put("fontColor",IZentaPackage.eINSTANCE.getFontAttribute_FontColor());
+		props.put("textAlignment",IZentaPackage.eINSTANCE.getFontAttribute_TextAlignment());
+		props.put("fillColor",IZentaPackage.eINSTANCE.getDiagramModelObject_FillColor());
+		props.put("elementShape",IZentaPackage.eINSTANCE.getDiagramModelObject_ElementShape());
+		return props;
+	}
+
+
+	@Override
+	public void setPropsFromDiagramObject(IDiagramModelComponent dmo) {
+		Map<String, EAttribute> props = getObjectAppearanceProperties();
+		for(Entry<String, EAttribute> e : props.entrySet()) {
+			addOrUpateProp(dmo, e);
+		}
+	}
+		private void addOrUpateProp(IDiagramModelComponent dmo, Entry<String, EAttribute> e) {
+			String key = e.getKey();
+			String value = getValueForEntry(dmo, e);
+			addOrUpdateProperty(key, value);
+		}
+		private String getValueForEntry(IDiagramModelComponent dmo,
+				Entry<String, EAttribute> e) {
+			EAttribute feat = e.getValue();
+			Object value = dmo.eGet(feat);
+			String v;
+			if(null == value) 
+				v = null;
+			else
+				v = value.toString();
+			return v;
+		}
+
+	@Override
+	public void addOrUpdateProperty(String key, String value) {
+		boolean found = false;
+		EList<IProperty> propertiess = getProperties();
+		for(IProperty theprop : propertiess)
+			if(theprop.getKey().equals(key)) {
+				theprop.setValue(value);
+				found = true;
+			}
+		if(!found)
+			addProp(propertiess, key, value);
+	}
+			private void addProp(EList<IProperty> propertiess, String key, String value) {
+				IProperty prop;
+				prop = IZentaFactory.eINSTANCE.createProperty();
+				prop.setKey(key);
+				prop.setValue(value);
+				propertiess.add(prop);
+			}
+}

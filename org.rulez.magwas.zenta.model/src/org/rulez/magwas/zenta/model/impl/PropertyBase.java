@@ -20,15 +20,15 @@ import org.rulez.magwas.zenta.model.IProperty;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Property#getKey <em>Key</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Property#getValue <em>Value</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Property#isGenerated <em>Generated</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.PropertyBase#getKey <em>Key</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.PropertyBase#getValue <em>Value</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.PropertyBase#isGenerated <em>Generated</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class Property extends EObjectImpl implements IProperty {
+public class PropertyBase extends EObjectImpl implements IProperty {
     /**
 	 * The default value of the '{@link #getKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -94,7 +94,7 @@ public class Property extends EObjectImpl implements IProperty {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Property() {
+    protected PropertyBase() {
 		super();
 	}
 

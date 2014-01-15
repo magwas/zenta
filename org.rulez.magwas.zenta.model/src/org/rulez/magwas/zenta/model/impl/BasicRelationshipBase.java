@@ -7,25 +7,25 @@ package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.IJunction;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Junction</b></em>'.
+ * An implementation of the model object '<em><b>Association Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class Junction extends ZentaElement implements IJunction {
+public class BasicRelationshipBase extends RelationshipBase implements IBasicRelationship {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Junction() {
+    protected BasicRelationshipBase() {
 		super();
 	}
 
@@ -36,7 +36,7 @@ public class Junction extends ZentaElement implements IJunction {
 	 */
     @Override
     protected EClass eStaticClass() {
-		return IZentaPackage.Literals.JUNCTION;
+		return IZentaPackage.Literals.BASIC_RELATIONSHIP;
 	}
 
-} //Junction
+} //BasicRelationship

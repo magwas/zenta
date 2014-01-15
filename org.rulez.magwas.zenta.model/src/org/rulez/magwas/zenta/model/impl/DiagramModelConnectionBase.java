@@ -33,26 +33,26 @@ import org.rulez.magwas.zenta.model.IProperty;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getFont <em>Font</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getFontColor <em>Font Color</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getTextAlignment <em>Text Alignment</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getTextPosition <em>Text Position</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getText <em>Text</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getSource <em>Source</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getTarget <em>Target</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getBendpoints <em>Bendpoints</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getLineWidth <em>Line Width</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getLineColor <em>Line Color</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getLineDecoration <em>Line Decoration</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnection#getType <em>Type</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getFont <em>Font</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getFontColor <em>Font Color</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getTextAlignment <em>Text Alignment</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getTextPosition <em>Text Position</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getText <em>Text</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getSource <em>Source</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getBendpoints <em>Bendpoints</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getLineWidth <em>Line Width</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getLineColor <em>Line Color</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getLineDecoration <em>Line Decoration</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DiagramModelConnection extends DiagramModelComponent implements IDiagramModelConnection {
+public class DiagramModelConnectionBase extends DiagramModelComponentBase implements IDiagramModelConnection {
     /**
 	 * The default value of the '{@link #getFont() <em>Font</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -298,7 +298,7 @@ public class DiagramModelConnection extends DiagramModelComponent implements IDi
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelConnection() {
+    protected DiagramModelConnectionBase() {
 		super();
 	}
 

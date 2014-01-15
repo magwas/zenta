@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.impl.Relationship;
+import org.rulez.magwas.zenta.model.impl.RelationshipBase;
 import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
 import org.rulez.magwas.zenta.tests.UITestUtils;
@@ -88,7 +88,7 @@ public class HintsViewTest {
 	public void The_Hints_view_contains_the_name_and_description_of_the_ObjectClass_of_element() throws PartInitException, WorkbenchException {
 		String id = "9c441eb7";
 		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
-		Relationship parentRel = (Relationship) baseRelationClass.getReference();
+		RelationshipBase parentRel = (RelationshipBase) baseRelationClass.getReference();
 		parentRel.setDocumentation("I guess this might describe something");
 		IRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		rel.setName("Displayable Relation Name");

@@ -32,21 +32,21 @@ import org.rulez.magwas.zenta.model.IFontAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getFont <em>Font</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getFontColor <em>Font Color</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getTextAlignment <em>Text Alignment</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getTextPosition <em>Text Position</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getBounds <em>Bounds</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getSourceConnections <em>Source Connections</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getTargetConnections <em>Target Connections</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getFillColor <em>Fill Color</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObject#getElementShape <em>Element Shape</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getFont <em>Font</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getFontColor <em>Font Color</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getTextAlignment <em>Text Alignment</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getTextPosition <em>Text Position</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getBounds <em>Bounds</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getSourceConnections <em>Source Connections</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getTargetConnections <em>Target Connections</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getFillColor <em>Fill Color</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getElementShape <em>Element Shape</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class DiagramModelObject extends DiagramModelComponent implements IDiagramModelObject {
+public abstract class DiagramModelObjectBase extends DiagramModelComponentBase implements IDiagramModelObject {
     /**
 	 * The default value of the '{@link #getFont() <em>Font</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -202,7 +202,7 @@ public abstract class DiagramModelObject extends DiagramModelComponent implement
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DiagramModelObject() {
+    protected DiagramModelObjectBase() {
 		super();
 	}
 

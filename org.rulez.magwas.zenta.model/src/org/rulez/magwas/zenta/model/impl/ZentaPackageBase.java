@@ -67,7 +67,7 @@ import org.rulez.magwas.zenta.model.ITextContent;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ZentaPackage extends EPackageImpl implements IZentaPackage {
+public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -391,7 +391,7 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 	 * @see #init()
 	 * @generated
 	 */
-    private ZentaPackage() {
+    private ZentaPackageBase() {
 		super(eNS_URI, IZentaFactory.eINSTANCE);
 	}
 
@@ -418,7 +418,7 @@ public class ZentaPackage extends EPackageImpl implements IZentaPackage {
 		if (isInited) return (IZentaPackage)EPackage.Registry.INSTANCE.getEPackage(IZentaPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ZentaPackage theZentaPackage = (ZentaPackage)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ZentaPackage ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ZentaPackage());
+		ZentaPackageBase theZentaPackage = (ZentaPackageBase)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ZentaPackageBase ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ZentaPackageBase());
 
 		isInited = true;
 

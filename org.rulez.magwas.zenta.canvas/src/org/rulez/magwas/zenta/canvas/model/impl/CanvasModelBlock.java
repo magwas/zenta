@@ -29,7 +29,7 @@ import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.ITextContent;
-import org.rulez.magwas.zenta.model.impl.DiagramModelObject;
+import org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase;
 
 
 /**
@@ -53,7 +53,7 @@ import org.rulez.magwas.zenta.model.impl.DiagramModelObject;
  *
  * @generated
  */
-public class CanvasModelBlock extends DiagramModelObject implements ICanvasModelBlock {
+public class CanvasModelBlock extends DiagramModelObjectBase implements ICanvasModelBlock {
     /**
      * The default value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
      * <!-- begin-user-doc -->

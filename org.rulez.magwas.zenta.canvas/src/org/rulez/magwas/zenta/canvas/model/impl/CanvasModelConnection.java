@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModelConnection;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ILockable;
-import org.rulez.magwas.zenta.model.impl.DiagramModelConnection;
+import org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase;
 
 
 
@@ -32,7 +32,7 @@ import org.rulez.magwas.zenta.model.impl.DiagramModelConnection;
  *
  * @generated
  */
-public class CanvasModelConnection extends DiagramModelConnection implements ICanvasModelConnection {
+public class CanvasModelConnection extends DiagramModelConnectionBase implements ICanvasModelConnection {
     /**
      * The default value of the '{@link #isLocked() <em>Locked</em>}' attribute.
      * <!-- begin-user-doc -->

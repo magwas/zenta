@@ -7,16 +7,16 @@ package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.osgi.util.NLS;
 
-public class Messages extends NLS {
+public class MessagesBase extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.model.impl.messages"; //$NON-NLS-1$
 
     public static String ZentaModel_0;
     static {
         // initialize resource bundle
-        NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+        NLS.initializeMessages(BUNDLE_NAME, MessagesBase.class);
     }
 
-    private Messages() {
+    private MessagesBase() {
     }
 }

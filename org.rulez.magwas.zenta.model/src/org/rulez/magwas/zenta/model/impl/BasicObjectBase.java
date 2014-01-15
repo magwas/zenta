@@ -19,13 +19,13 @@ import org.rulez.magwas.zenta.model.IBasicObject;
  *
  * @generated
  */
-public class BasicObject extends ZentaElement implements IBasicObject {
+public class BasicObjectBase extends ZentaElementBase implements IBasicObject {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected BasicObject() {
+    protected BasicObjectBase() {
 		super();
 	}
 

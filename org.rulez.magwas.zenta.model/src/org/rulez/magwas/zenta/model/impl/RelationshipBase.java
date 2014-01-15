@@ -30,15 +30,15 @@ import org.rulez.magwas.zenta.model.IRelationship;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Relationship#getSource <em>Source</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Relationship#getTarget <em>Target</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.Relationship#getDiagConnections <em>Diag Connections</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.RelationshipBase#getSource <em>Source</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.RelationshipBase#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.RelationshipBase#getDiagConnections <em>Diag Connections</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class Relationship extends ZentaElement implements IRelationship {
+public abstract class RelationshipBase extends ZentaElementBase implements IRelationship {
     /**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -69,7 +69,7 @@ public abstract class Relationship extends ZentaElement implements IRelationship
 	 */
 	protected EList<IDiagramModelZentaConnection> diagConnections;
 
-					protected Relationship() {
+					protected RelationshipBase() {
 		super();
 	}
 
