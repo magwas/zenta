@@ -19,13 +19,11 @@ import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
@@ -98,7 +96,7 @@ public final class DiagramCommandFactory {
             NewNestedRelationDialog dialog = new NewNestedRelationDialog(vp,Display.getCurrent().getActiveShell(),
             		zentaElement, children.get(0));
             if(dialog.open() == Window.OK) {
-                IRelationClass eClass = dialog.getSelectedType();
+                IBasicRelationship eClass = dialog.getSelectedType();
                 if(eClass != null) {
                     command = new CreateRelationCommand(zentaElement, children.get(0), eClass);
                 }
@@ -113,7 +111,7 @@ public final class DiagramCommandFactory {
                 List<IZentaElement> elements = dialog.getSelectedElements();
                 if(elements != null) {
                     command = new CompoundCommand();
-                    List<IRelationClass> types = dialog.getSelectedTypes();
+                    List<IBasicRelationship> types = dialog.getSelectedTypes();
                     for(int i=0;i<types.size();i++) {
                         ((CompoundCommand)command).add(new CreateRelationCommand(zentaElement, elements.get(i), types.get(i)));
                     }
@@ -138,13 +136,9 @@ public final class DiagramCommandFactory {
         
         // Not if there is already a relationship of a certain type between the two
         for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
-            if(relation.getTarget() == child) {
-                for(IReferencesModelObject eClass : vp.getRelationClasses()) {
-                    if(eClass.isInstance(relation)) {
+            if(relation.getTarget() == child &&
+            	vp.getRelationClasses().contains(relation))
                         return false;
-                    }
-                }
-            }
         }
         
         // Check valid relations

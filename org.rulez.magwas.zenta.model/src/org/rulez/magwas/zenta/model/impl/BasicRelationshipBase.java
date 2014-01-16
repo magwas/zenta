@@ -6,27 +6,25 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import java.util.Collection;
-import java.util.HashMap;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Association Relationship</b></em>'.
+ * @extends IrelationClass
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
@@ -37,9 +35,8 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  * </ul>
  * </p>
  *
- * @generated
  */
-public class BasicRelationshipBase extends BasicObjectBase implements IBasicRelationship {
+abstract public class BasicRelationshipBase extends BasicObjectBase implements IBasicRelationship, IRelationClass {
     /**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -248,32 +245,6 @@ public class BasicRelationshipBase extends BasicObjectBase implements IBasicRela
 				return diagConnections != null && !diagConnections.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	@Override
-	public boolean isTemplate() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public HashMap<String, EAttribute> getObjectAppearanceProperties() {
-		HashMap<String, EAttribute> props = new HashMap<String, EAttribute>();
-		props.put("font",IZentaPackage.eINSTANCE.getFontAttribute_Font());
-		props.put("fontColor",IZentaPackage.eINSTANCE.getFontAttribute_FontColor());
-		props.put("textPosition",IZentaPackage.eINSTANCE.getFontAttribute_TextPosition());
-		props.put("lineWidth",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineWidth());
-		props.put("lineColor",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineColor());
-		props.put("lineDecoration",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineDecoration());
-		return props;
-	}
-
-	@Override
-	public IBasicRelationship getDefiningElement(DiagramModelZentaConnectionBase diagramModelZentaConnectionBase) {
-		if(!diagramModelZentaConnectionBase.getDiagramModel().isTemplate())
-	        return (IBasicRelationship) ZentaModelUtils.getObjectByID(getZentaModel(), getObjectClass());
-	    else
-	        return this;
 	}
 
 } //BasicRelationship

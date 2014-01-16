@@ -14,11 +14,10 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
-import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.impl.TemplateBase;
 
 public class Template extends TemplateBase implements ITemplate {
@@ -27,12 +26,13 @@ public class Template extends TemplateBase implements ITemplate {
 		super();
 	}
 
-	public Template(IDiagramModel reference2, IMetamodel metamodel) {
+	public Template(IDiagramModel diagram, IMetamodel metamodel) {
 		super();
 		metamodel.getTemplates().add(this);
-		setDiagram(reference2);
-		extractObjectClasses(reference2);
-		extractRelationClasses(reference2);
+		setDiagram(diagram);
+		extractObjectClasses(diagram);
+		extractRelationClasses(diagram);
+		setPath(diagram.getId());
 	}
 
 		private void extractObjectClasses(IDiagramModel diagram) {
@@ -43,8 +43,8 @@ public class Template extends TemplateBase implements ITemplate {
 		}
 			private void extractDiagramElement(IDiagramModelZentaObject kid) {
 				IBasicObject zentaElement = (IBasicObject) kid.getZentaElement();
-				IZentaFactory.eINSTANCE
-						.createObjectClass(zentaElement, this);
+				if(! "".equals(zentaElement.getDefiningName()))
+					zentaElement.setAsTemplate(this);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
 				for (IDiagramModelObject aKid : myKids)
 					extractDiagramElement((IDiagramModelZentaObject) aKid);
@@ -72,50 +72,10 @@ public class Template extends TemplateBase implements ITemplate {
 							return;
 						IDiagramModelZentaConnection dmc = (IDiagramModelZentaConnection)conn;
 						IBasicRelationship relationship = (IBasicRelationship) dmc.getRelationship();
-						IZentaFactory.eINSTANCE.createRelationClass(
-								relationship,
-								this);
+						if("".equals(relationship.getDefiningName()))
+							return;
+						relationship.setAsTemplate(this);
 					}
-
-
-	@Override
-	public IObjectClass getObjectClassReferencingElement(IBasicObject classTemplate) {
-		for(IObjectClass oc : ((Metamodel)getMetamodel()).getObjectClasses()) {
-			IIdentifier reference = oc.getReference();
-			if(null == reference)
-				continue;
-			if(reference.equals(classTemplate))
-				return (IObjectClass)oc;
-		}
-		return null;
-	}
-	@Override
-	public IObjectClass getObjectClassFrom(IBasicObject referenced) {
-		IObjectClass oc = getObjectClassReferencingElement(referenced);
-		if (null == oc)
-			oc = new ObjectClass(referenced, this);
-		return oc;
-	}
-
-	@Override
-	public IRelationClass getRelationClassReferencingElement(IBasicRelationship classTemplate) {
-		for(IRelationClass oc : ((Metamodel)getMetamodel()).getRelationClasses()) {
-			IIdentifier reference = oc.getReference();
-			if(null == reference)
-				continue;
-			if(reference.equals(classTemplate))
-				return (IRelationClass)oc;
-		}
-		return null;
-	}
-
-	@Override
-	public IRelationClass getRelationClassFrom(IBasicRelationship referenced) {
-		IRelationClass oc = getRelationClassReferencingElement(referenced);
-		if (null == oc)
-			oc = new RelationClass(referenced, this);
-		return oc;
-	}
 	
 	@Override
 	public IIdentifier create(IFolder folder) {
@@ -124,27 +84,24 @@ public class Template extends TemplateBase implements ITemplate {
 
 	@Override
 	public void createClassBy(IBasicObject element) {
-		if(element instanceof IBasicRelationship)
-			classes.add(getRelationClassFrom((IBasicRelationship) element));
-		else
-			classes.add(getObjectClassFrom(element));
+		classes.add(element);
 	}
 
 	@Override
-	public List<IObjectClass> getObjectClasses() {
-		ArrayList<IObjectClass> ret = new ArrayList<IObjectClass>();
-		for(IObjectClass c : this.getClasses())
+	public List<IBasicObject> getObjectClasses() {
+		ArrayList<IBasicObject> ret = new ArrayList<IBasicObject>();
+		for(IBasicObject c : this.getClasses())
 			if(!(c instanceof RelationClass))
 				ret.add(c);
 		return Collections.unmodifiableList(ret);
 	}
 
 	@Override
-	public List<IRelationClass> getRelationClasses() {
-		ArrayList<IRelationClass> ret = new ArrayList<IRelationClass>();
-		for(IObjectClass c : this.getClasses())
+	public List<IBasicRelationship> getRelationClasses() {
+		ArrayList<IBasicRelationship> ret = new ArrayList<IBasicRelationship>();
+		for(IBasicObject c : this.getClasses())
 			if((c instanceof RelationClass))
-				ret.add((IRelationClass) c);
+				ret.add((IBasicRelationship) c);
 		return Collections.unmodifiableList(ret);
 	}
 

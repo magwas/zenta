@@ -53,7 +53,6 @@ import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.help.ZentaEditorHelpPlugin;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IHelpHintProvider;
-import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -298,10 +297,10 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 		private Object figureOutHintObject(Object selected) {
 			Object object;
 			if(selected instanceof IBasicObject) {
-	        	object = getObjectClassFor((IBasicObject)selected);
+	        	object = ((IBasicObject)selected).getDefiningElement();
 	        } else if(selected instanceof IDiagramModelZentaObject) {
 	        	IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject)selected;
-				object = getObjectClassFor((IBasicObject) dmzo.getZentaElement());
+				object = ((IBasicObject) dmzo.getZentaElement()).getDefiningElement();
 	        } else if(selected instanceof EClass) {
 	            EClass eClass = (EClass)selected;
 	            object = eClass.getInstanceClass();
@@ -320,7 +319,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 	            object = selected;
 	        }
 			if(object instanceof IBasicObject) {
-	        	object = getObjectClassFor((IBasicObject)object);
+	        	object = ((IBasicObject)object).getDefiningElement();
 	        }
 			
 	        if(object instanceof IZentaDiagramModel) {
@@ -328,13 +327,7 @@ implements IContextProvider, IHintsView, ISelectionListener, IComponentSelection
 	        }
 			return object;
 		}
-			private Object getObjectClassFor(IBasicObject selected) {
-				Object object;
-				object = IZentaFactory.eINSTANCE.getMetamodelFor(selected).getClassOf(selected);
-				return object;
-			}
-    
-    /**
+			/**
      * HTML-ify some text
      */
     private String makeHTMLEntry(String text) {

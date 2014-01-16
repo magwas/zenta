@@ -6,19 +6,22 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase;
-import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase;
+import org.eclipse.emf.common.util.EList;
 
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Business Object</b></em>'.
+ * @extends IObjectClass
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getObjectClass <em>Object Class</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getAncestor <em>Ancestor</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getTemplate <em>Template</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,41 +29,98 @@ import org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase;
  * @model
  * @generated
  */
-public interface IBasicObject extends IZentaElement {
+public interface IBasicObject extends IZentaElement, IObjectClass {
 
 	/**
-	 * Returns the value of the '<em><b>Object Class</b></em>' attribute.
+	 * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IAttribute}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Object Class</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Attributes</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Object Class</em>' attribute.
-	 * @see #setObjectClass(String)
-	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject_ObjectClass()
-	 * @model
+	 * @return the value of the '<em>Attributes</em>' containment reference list.
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject_Attributes()
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getObjectClass();
+	EList<IAttribute> getAttributes();
 
 	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IBasicObject#getObjectClass <em>Object Class</em>}' attribute.
+	 * Returns the value of the '<em><b>Ancestor</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IBasicObject#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ancestor</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Object Class</em>' attribute.
-	 * @see #getObjectClass()
+	 * @return the value of the '<em>Ancestor</em>' reference.
+	 * @see #setAncestor(IBasicObject)
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject_Ancestor()
+	 * @see org.rulez.magwas.zenta.model.IBasicObject#getChildren
+	 * @model opposite="children" resolveProxies="false" required="true"
 	 * @generated
 	 */
-	void setObjectClass(String value);
-	
-	IBasicObject getDefiningElement(
-			DiagramModelZentaObjectBase diagramModelZentaObjectBase);
+	IBasicObject getAncestor();
 
-	IBasicRelationship getDefiningElement(
-			DiagramModelZentaConnectionBase diagramModelZentaConnectionBase);
+	/**
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IBasicObject#getAncestor <em>Ancestor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ancestor</em>' reference.
+	 * @see #getAncestor()
+	 * @generated
+	 */
+	void setAncestor(IBasicObject value);
 
-	boolean isTemplate();
-	
+	/**
+	 * Returns the value of the '<em><b>Children</b></em>' reference list.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IBasicObject}.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IBasicObject#getAncestor <em>Ancestor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Children</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Children</em>' reference list.
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject_Children()
+	 * @see org.rulez.magwas.zenta.model.IBasicObject#getAncestor
+	 * @model opposite="ancestor" resolveProxies="false" derived="true"
+	 * @generated
+	 */
+	EList<IBasicObject> getChildren();
+
+	/**
+	 * Returns the value of the '<em><b>Template</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.ITemplate#getClasses <em>Classes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Template</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Template</em>' reference.
+	 * @see #setTemplate(ITemplate)
+	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject_Template()
+	 * @see org.rulez.magwas.zenta.model.ITemplate#getClasses
+	 * @model opposite="classes" transient="true"
+	 * @generated
+	 */
+	ITemplate getTemplate();
+
+	/**
+	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IBasicObject#getTemplate <em>Template</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Template</em>' reference.
+	 * @see #getTemplate()
+	 * @generated
+	 */
+	void setTemplate(ITemplate value);
+
+	String getDefiningName();
 
 } // IBasicObject

@@ -46,13 +46,12 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
 import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils.TooComplicatedException;
 
@@ -166,7 +165,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
 	            List<IBasicRelationship> chain = dialog.getSelectedChain();
 	            if(chain != null) {
 	                ChainList chainList = dialog.getSelectedChainList();
-	                IRelationClass relationshipClass = drutil.getWeakestType(chain);
+	                IBasicRelationship relationshipClass = drutil.getWeakestType(chain);
 	                IBasicRelationship relation = (IBasicRelationship) relationshipClass.create(folder);
 	                CommandStack stack = (CommandStack)getWorkbenchPart().getAdapter(CommandStack.class);
 	                stack.execute(new CreateDerivedConnectionCommand(chainList.srcDiagramObject, chainList.tgtDiagramObject, relation));

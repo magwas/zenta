@@ -5,11 +5,16 @@
  */
 package org.rulez.magwas.zenta.model.util;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -117,4 +122,18 @@ public class ZentaModelUtils {
             __getRelationshipsForElement(f, element, type, relationships);
         }
     }
+
+	/**
+	 * Save the model to XML File format
+	 */
+	public static void saveModelToXMLFile(IZentaModel fModel, File file) {
+	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
+	    Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
+	    resource.getContents().add(fModel);
+	    try {
+			resource.save(null);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

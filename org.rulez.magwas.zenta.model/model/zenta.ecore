@@ -274,14 +274,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Template">
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
-        eType="#//ObjectClass" containment="true" resolveProxies="false" eOpposite="#//ObjectClass/template"/>
+        eType="#//BasicObject" resolveProxies="false" eOpposite="#//BasicObject/template"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" lowerBound="1"
         eType="#//Metamodel" eOpposite="#//Metamodel/templates"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagram" eType="#//DiagramModel"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//ZentaElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//Attribute" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ancestor" lowerBound="1"
+        eType="#//BasicObject" resolveProxies="false" eOpposite="#//BasicObject/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//BasicObject" derived="true" resolveProxies="false" eOpposite="#//BasicObject/ancestor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//Template"
+        transient="true" eOpposite="#//Template/classes"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicRelationship" eSuperTypes="#//BasicObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ZentaElement"
@@ -291,32 +298,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagConnections" upperBound="-1"
         eType="#//DiagramModelZentaConnection" transient="true" derived="true" eOpposite="#//DiagramModelZentaConnection/relationship"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReferencesModelObject" abstract="true"
-      interface="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
-        eType="#//BasicObject" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        derived="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectClass" eSuperTypes="#//ReferencesModelObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
-        eType="#//Attribute" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ancestor" lowerBound="1"
-        eType="#//ObjectClass" resolveProxies="false" eOpposite="#//ObjectClass/children"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//ObjectClass" derived="true" resolveProxies="false" eOpposite="#//ObjectClass/ancestor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//Template"
-        eOpposite="#//Template/classes"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RelationClass" eSuperTypes="#//ObjectClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minOccurs" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxOccurs" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relation" lowerBound="1"
-        eType="#//RelationClass" resolveProxies="false"/>
+        eType="#//BasicRelationship" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectedObject" lowerBound="1"
-        eType="#//ObjectClass" resolveProxies="false"/>
+        eType="#//BasicObject" resolveProxies="false"/>
   </eClassifiers>
 </ecore:EPackage>

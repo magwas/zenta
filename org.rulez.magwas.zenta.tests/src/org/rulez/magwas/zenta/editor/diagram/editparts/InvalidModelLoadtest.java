@@ -24,6 +24,7 @@ public class InvalidModelLoadtest {
 	@Test
 	public void Model_with_invalid_diagram_object_can_be_loaded() {
 		testdata = new ModelAndEditPartTestData("invalid.zenta");
+		assertNotNull(testdata.model);
 		ZentaDiagramEditor editor = testdata.focusOnDiagram("ced9cad1");
 		assertNotNull(editor);
 	}

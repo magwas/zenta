@@ -13,8 +13,6 @@ import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
@@ -56,7 +54,7 @@ public class HintsViewTest {
 		UITestUtils.focusOnElement(element);
 		HintsView view = prepareHintsView();
 		assertEquals("Procedure", view.getTitleText());
-		IObjectClass oc = (IObjectClass) testdata.metamodel.getClassOf(element);
+		IBasicObject oc = element.getDefiningElement();
 		assertEquals("Procedure", oc.getHelpHintTitle());
 		assertEquals("this is a procedure\nAncestry: Procedure => Basic Object\n",oc.getHelpHintContent());
 	}
@@ -72,9 +70,8 @@ public class HintsViewTest {
 			
 	@Test
 	public void The_Hints_view_contains_the_ancestry_and_description_of_the_ObjectClass_of_element_for_nondefining_elements() throws PartInitException, WorkbenchException {
-		IObjectClass oc = (IObjectClass) testdata.metamodel.getClassById("ea94cf6c");//User		
-		IZentaElement classElement = (IZentaElement) oc.getReference();
-		classElement.setDocumentation("this is a User");
+		IBasicObject oc = (IBasicObject) testdata.metamodel.getClassById("ea94cf6c");//User		
+		oc.setDocumentation("this is a User");
 		IZentaElement element = testdata.createClassedTestElement(oc);
 		element.setName("Árvíztűrő Tükörfúrógépke");
 		UITestUtils.focusOnElement(element);
@@ -87,13 +84,12 @@ public class HintsViewTest {
 	@Test
 	public void The_Hints_view_contains_the_name_and_description_of_the_ObjectClass_of_element() throws PartInitException, WorkbenchException {
 		String id = "9c441eb7";
-		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
-		IBasicRelationship parentRel = (IBasicRelationship) baseRelationClass.getReference();
-		parentRel.setDocumentation("I guess this might describe something");
+		IBasicRelationship baseRelationClass = (IBasicRelationship) testdata.metamodel.getClassById(id);
+		baseRelationClass.setDocumentation("I guess this might describe something");
 		IBasicRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		rel.setName("Displayable Relation Name");
 		assertNotNull(rel);
-		assertNotSame(rel.getId(),rel.getObjectClass());
+		assertNotSame(rel,rel.getDefiningElement());
 		UITestUtils.focusOnElement(rel);
 		HintsView view = prepareHintsView();
 		assertEquals("describes", view.getTitleText());

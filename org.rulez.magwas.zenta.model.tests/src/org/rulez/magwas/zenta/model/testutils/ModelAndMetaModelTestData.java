@@ -9,8 +9,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -49,11 +47,11 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		String id = "ea94cf6c";//User
 		IZentaElement user = getElementById(id);
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
-		IObjectClass oc = metamodel.getBuiltinObjectClass();
+		IBasicObject oc = metamodel.getBuiltinObjectClass();
 		IBasicObject newElement = (IBasicObject) oc.create(folder);
 		return newElement;
 	}
-	public IBasicObject createClassedTestElement(IObjectClass baseClass) {
+	public IBasicObject createClassedTestElement(IBasicObject baseClass) {
 		String id = "ea94cf6c";//User
 		IZentaElement user = getElementById(id);
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(user);
@@ -61,18 +59,16 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		return newElement;
 	}
 
-	public IObjectClass getTestObjectClass() {
+	public IBasicObject getTestObjectClass() {
 		IBasicObject element = (IBasicObject) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
 		ITemplate template = (ITemplate) metamodel.getBuiltinTemplate();
 		assertNotNull(template);
 		assertNotNull(template.getMetamodel());
-		return IZentaFactory.eINSTANCE
-				.createObjectClass(
-						element,
-						template);
+		element.setTemplate(template);
+		return element;
 	}
 
-	public IBasicObject createNewObjectClass(String elementName, IObjectClass baseClass) {
+	public IBasicObject createNewObjectClass(String elementName, IBasicObject baseClass) {
 		IBasicObject newElement = createClassedTestElement(baseClass);
 		IDiagramModel dm = getTemplateDiagramModel();
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(newElement);
@@ -92,26 +88,26 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		return newElement;
 	}
 	public IBasicRelationship createNewRelationClass(String elementName) {
-		IRelationClass oc = metamodel.getBuiltinRelationClass();
+		IBasicRelationship oc = metamodel.getBuiltinRelationClass();
 		IDiagramModel dm = getTemplateDiagramModel();
 		IBasicRelationship rel = createNewConnection(elementName, oc, dm);
 		return rel;
 	}
 
-	public IBasicRelationship createNewNondefiningRelationBasedOn(IRelationClass baseClass) {
+	public IBasicRelationship createNewNondefiningRelationBasedOn(IBasicRelationship baseClass) {
 		String name = "NonDefiningRelation";
 		IDiagramModel dm = (IDiagramModel) this.getById("63f1b081");
 		return createNewConnection(name, baseClass, dm);
 	}
 	public IBasicRelationship createNewConnection(String name,
-			IRelationClass baseRelationClass, IDiagramModel diagram) {
+			IBasicRelationship baseRelationClass, IDiagramModel diagram) {
 		IBasicRelationship rel = createUnnamedRelation(baseRelationClass, diagram);
 		rel.setName(name);
 		return rel;
 	}
 
 	public IBasicRelationship createUnnamedRelation(
-			IRelationClass baseRelationClass, IDiagramModel diagram) {
+			IBasicRelationship baseRelationClass, IDiagramModel diagram) {
 		IZentaElement sourceElement = createClassedTestElement();
 		IZentaElement targetElement = createClassedTestElement();
 		IBasicRelationship rel = (IBasicRelationship) baseRelationClass.create((IFolder) sourceElement.eContainer());

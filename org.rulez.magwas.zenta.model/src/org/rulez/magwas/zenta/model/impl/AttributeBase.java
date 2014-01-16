@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.rulez.magwas.zenta.model.IAttribute;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 /**
@@ -78,7 +78,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	 * @generated
 	 * @ordered
 	 */
-	protected IRelationClass relation;
+	protected IBasicRelationship relation;
 
 	/**
 	 * The cached value of the '{@link #getConnectedObject() <em>Connected Object</em>}' reference.
@@ -88,7 +88,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	 * @generated
 	 * @ordered
 	 */
-	protected IObjectClass connectedObject;
+	protected IBasicObject connectedObject;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,7 +156,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IRelationClass getRelation() {
+	public IBasicRelationship getRelation() {
 		return relation;
 	}
 
@@ -165,8 +165,8 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRelation(IRelationClass newRelation) {
-		IRelationClass oldRelation = relation;
+	public void setRelation(IBasicRelationship newRelation) {
+		IBasicRelationship oldRelation = relation;
 		relation = newRelation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ATTRIBUTE__RELATION, oldRelation, relation));
@@ -177,7 +177,7 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IObjectClass getConnectedObject() {
+	public IBasicObject getConnectedObject() {
 		return connectedObject;
 	}
 
@@ -186,8 +186,8 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConnectedObject(IObjectClass newConnectedObject) {
-		IObjectClass oldConnectedObject = connectedObject;
+	public void setConnectedObject(IBasicObject newConnectedObject) {
+		IBasicObject oldConnectedObject = connectedObject;
 		connectedObject = newConnectedObject;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ATTRIBUTE__CONNECTED_OBJECT, oldConnectedObject, connectedObject));
@@ -228,10 +228,10 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 				setMaxOccurs((Integer)newValue);
 				return;
 			case IZentaPackage.ATTRIBUTE__RELATION:
-				setRelation((IRelationClass)newValue);
+				setRelation((IBasicRelationship)newValue);
 				return;
 			case IZentaPackage.ATTRIBUTE__CONNECTED_OBJECT:
-				setConnectedObject((IObjectClass)newValue);
+				setConnectedObject((IBasicObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,10 +252,10 @@ abstract public class AttributeBase extends EObjectImpl implements IAttribute {
 				setMaxOccurs(MAX_OCCURS_EDEFAULT);
 				return;
 			case IZentaPackage.ATTRIBUTE__RELATION:
-				setRelation((IRelationClass)null);
+				setRelation((IBasicRelationship)null);
 				return;
 			case IZentaPackage.ATTRIBUTE__CONNECTED_OBJECT:
-				setConnectedObject((IObjectClass)null);
+				setConnectedObject((IBasicObject)null);
 				return;
 		}
 		super.eUnset(featureID);

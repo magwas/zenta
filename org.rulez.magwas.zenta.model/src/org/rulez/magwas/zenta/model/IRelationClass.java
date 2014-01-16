@@ -13,6 +13,6 @@ package org.rulez.magwas.zenta.model;
  * @model
  * @generated
  */
-public interface IRelationClass extends IObjectClass, IHelpHintProvider {
+public interface IRelationClass extends IBasicObject, IHelpHintProvider {
 
 } // RelationClassBase

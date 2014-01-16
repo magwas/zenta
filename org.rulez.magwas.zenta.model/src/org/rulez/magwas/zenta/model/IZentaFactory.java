@@ -21,10 +21,6 @@ public interface IZentaFactory extends EFactory {
 		private static final long serialVersionUID = 1L;
 	}
 
-	public class BuiltinClassShouldNotHaveReference extends RuntimeException {
-		private static final long serialVersionUID = 1L;
-	}
-
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -244,15 +240,6 @@ public interface IZentaFactory extends EFactory {
 	ITemplate createTemplate();
 
 	/**
-	 * Returns a new object of class '<em>Object Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object Class</em>'.
-	 * @generated
-	 */
-	IObjectClass createObjectClass();
-
-	/**
 	 * Returns a new object of class '<em>Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -260,15 +247,6 @@ public interface IZentaFactory extends EFactory {
 	 * @generated
 	 */
 	IAttribute createAttribute();
-
-	/**
-	 * Returns a new object of class '<em>Relation Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Relation Class</em>'.
-	 * @generated
-	 */
-	IRelationClass createRelationClass();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -287,11 +265,6 @@ public interface IZentaFactory extends EFactory {
 
 	ITemplate createTemplate(IZentaDiagramModel diagram, IMetamodel metamodel);
 
-	IRelationClass createRelationClass(IBasicRelationship referenced,
-			ITemplate template);
-
 	IMetamodel getMetamodelFor(IZentaModel model2);
-
-	IObjectClass createObjectClass(IBasicObject reference, ITemplate template);
 
 } //IZentaFactory

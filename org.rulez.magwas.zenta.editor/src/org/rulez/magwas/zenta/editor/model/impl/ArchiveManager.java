@@ -20,10 +20,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.swt.graphics.Image;
@@ -35,7 +32,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
 import org.rulez.magwas.zenta.model.util.FileUtils;
-import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
+import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 
 
 
@@ -224,7 +221,7 @@ public class ArchiveManager implements IArchiveManager {
             saveModelToArchiveFile(file);
         }
         else {
-            saveModelToXMLFile(file);
+            ZentaModelUtils.saveModelToXMLFile(fModel, file);
         }
     }
     
@@ -235,7 +232,7 @@ public class ArchiveManager implements IArchiveManager {
         // Temp file for xml model file
         File tmpFile = File.createTempFile("zenta", null); //$NON-NLS-1$
         tmpFile.deleteOnExit();
-        saveModelToXMLFile(tmpFile);
+        ZentaModelUtils.saveModelToXMLFile(fModel, tmpFile);
         
         // Create Zip File output stream to model's file
         BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file));
@@ -252,16 +249,6 @@ public class ArchiveManager implements IArchiveManager {
             tmpFile.delete();
             zOut.close();
         }
-    }
-    
-    /**
-     * Save the model to XML File format
-     */
-    private void saveModelToXMLFile(File file) throws IOException {
-        ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
-        Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
-        resource.getContents().add(fModel);
-        resource.save(null);
     }
     
     private void saveImages(ZipOutputStream zOut) throws IOException {

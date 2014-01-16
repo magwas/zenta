@@ -15,14 +15,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
@@ -45,14 +44,14 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
  */
 abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	/**
-	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
+	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getClasses()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<IObjectClass> classes;
+	protected EList<IBasicObject> classes;
 
 	/**
 	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
@@ -108,9 +107,9 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<IObjectClass> getClasses() {
+	public EList<IBasicObject> getClasses() {
 		if (classes == null) {
-			classes = new EObjectContainmentWithInverseEList<IObjectClass>(IObjectClass.class, this, IZentaPackage.TEMPLATE__CLASSES, IZentaPackage.OBJECT_CLASS__TEMPLATE);
+			classes = new EObjectWithInverseEList<IBasicObject>(IBasicObject.class, this, IZentaPackage.TEMPLATE__CLASSES, IZentaPackage.BASIC_OBJECT__TEMPLATE);
 		}
 		return classes;
 	}
@@ -296,7 +295,7 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 		switch (featureID) {
 			case IZentaPackage.TEMPLATE__CLASSES:
 				getClasses().clear();
-				getClasses().addAll((Collection<? extends IObjectClass>)newValue);
+				getClasses().addAll((Collection<? extends IBasicObject>)newValue);
 				return;
 			case IZentaPackage.TEMPLATE__PATH:
 				setPath((String)newValue);
@@ -372,7 +371,7 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	}
 
 	@Override
-	public void removeClass(IReferencesModelObject oc) {
+	public void removeClass(IBasicObject oc) {
 		getClasses().remove(oc);
 	}
 

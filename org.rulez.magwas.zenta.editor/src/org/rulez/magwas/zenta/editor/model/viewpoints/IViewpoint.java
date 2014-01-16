@@ -9,12 +9,9 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
@@ -39,9 +36,7 @@ public interface IViewpoint {
     /**
      * @return Allowed types
      */
-    List<IReferencesModelObject> getAllowedTypes();
-    
-	boolean isAllowedType(IReferencesModelObject type);
+    List<IBasicObject> getAllowedTypes();
     
     /**
      * @return The name of the Viewpoint
@@ -49,52 +44,46 @@ public interface IViewpoint {
     String getName();
 
 	boolean isValidRelationshipStart(IBasicObject iZentaElement,
-			IRelationClass relationshipType);
-	
-	boolean isValidRelationship(IBasicObject sourceElement,
-			IObjectClass targetObjectType, IRelationClass typeRel);
-	
-	boolean isValidRelationship(IBasicObject sourceElement,
-			IBasicObject targetElement, IRelationClass eClass);
+			IBasicRelationship relationshipType);
 
-	boolean isValidRelationship(IBasicObject sourceElement,
-			IBasicObject targetElement, IBasicRelationship rel);
-
-	List<IRelationClass> getValidRelationships(IObjectClass sourceObjectType, IObjectClass targetObjectType);
+	List<IBasicRelationship> getValidRelationships(IBasicRelationship sourceObjectType, IBasicRelationship targetObjectType);
     
-	List<IRelationClass> getValidRelationships(IZentaElement sourceElement,
+	List<IBasicRelationship> getValidRelationships(IZentaElement sourceElement,
 			IZentaElement targetElement);
 
-	List<IRelationClass> getSourceRelationClassesFor(
+	List<IBasicRelationship> getSourceRelationClassesFor(
 			IDiagramModelZentaObject sourceDiagramModelObject);
 
-	List<IRelationClass> getRelationClasses();
-	List<IObjectClass> getObjectClasses();
-	List<IObjectClass> getConnectorClasses();
+	List<IBasicRelationship> getRelationClasses();
+	List<IBasicObject> getObjectClasses();
+	List<IBasicObject> getConnectorClasses();
 
-	IIdentifier create(IReferencesModelObject eClass);
+	IIdentifier create(IBasicObject eClass);
 
-	ImageDescriptor getImageDescriptor(IReferencesModelObject eClass);
+	ImageDescriptor getImageDescriptor(IBasicObject eClass);
 
-	IRelationClass getNoteConnection();
+	IBasicRelationship getNoteConnection();
 
 	boolean isAllowedType(IBasicObject element);
 	boolean isElementVisible(IBasicObject childObject);
 
 	boolean isNestedConnectionTypeRelationship(IBasicRelationship relation);
 
-	boolean isValidRelationship(IObjectClass sourceclass,
-			IObjectClass targetclass, IRelationClass relationclass);
+	boolean isValidRelationship(IBasicObject sourceclass,
+			IBasicObject targetclass, IBasicRelationship relationclass);
 
-	List<IRelationClass> getSourceRelationClassesFor(IObjectClass startElement);
+	List<IBasicRelationship> getSourceRelationClassesFor(IBasicObject startElement);
 
-	List<IRelationClass> getTargetRelationClassesFor(
-			IObjectClass targetclass);
+	List<IBasicRelationship> getTargetRelationClassesFor(
+			IBasicObject targetclass);
 
-    Collection<IObjectClass> getAllowedTargets(
-            IObjectClass oc);
+    Collection<IBasicObject> getAllowedTargets(
+            IBasicRelationship oc);
 
-    IObjectClass getObjectClassOf(
+    Collection<IBasicObject> getAllowedTargets(
+    		IBasicObject oc);
+
+    IBasicObject getObjectClassOf(
             IDiagramModelZentaObject sourceDiagramModelObject);
 
 }

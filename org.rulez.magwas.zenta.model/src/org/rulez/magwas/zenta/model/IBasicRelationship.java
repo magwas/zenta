@@ -12,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Association Relationship</b></em>'.
+ * @extends IRelationClass
  * <!-- end-user-doc -->
  *
  * <p>
@@ -25,9 +26,8 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicRelationship()
  * @model
- * @generated
  */
-public interface IBasicRelationship extends IBasicObject {
+abstract public interface IBasicRelationship extends IBasicObject, IRelationClass {
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.

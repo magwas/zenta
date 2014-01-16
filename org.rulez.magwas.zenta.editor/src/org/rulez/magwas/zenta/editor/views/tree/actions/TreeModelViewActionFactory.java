@@ -21,8 +21,7 @@ import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -72,11 +71,11 @@ public class TreeModelViewActionFactory {
             f = (IFolder)f.eContainer();
         }
 
-        for(IObjectClass eClass : metamodel.getObjectClasses()) {
+        for(IBasicObject eClass : metamodel.getObjectClasses()) {
             IAction action = createNewElementAction(folder, eClass);
             list.add(action);
         }
-        for(IObjectClass eClass : metamodel.getConnectorClasses()) {
+        for(IBasicObject eClass : metamodel.getConnectorClasses()) {
             IAction action = createNewElementAction(folder, eClass);
             list.add(action);
         }
@@ -86,7 +85,7 @@ public class TreeModelViewActionFactory {
         return list;
     }
 
-    private IAction createNewElementAction(final IFolder folder, final IReferencesModelObject eClass) {
+    private IAction createNewElementAction(final IFolder folder, final IBasicObject eClass) {
         IAction action = new Action(eClass.getName()) {
             @Override
             public void run() {

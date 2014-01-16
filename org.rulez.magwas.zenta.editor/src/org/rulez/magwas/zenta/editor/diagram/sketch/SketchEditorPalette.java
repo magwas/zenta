@@ -181,8 +181,8 @@ public class SketchEditorPalette extends AbstractPaletteRoot {
                 name,
                 description,
                 new SketchModelFactory(eClass),
-                ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass),
-                ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass));
+                ZentaLabelProvider.INSTANCE.getImageDescriptorNonTemplate(eClass),
+                ZentaLabelProvider.INSTANCE.getImageDescriptorNonTemplate(eClass));
     }
 
     private PaletteEntry createStickyEntry(Color color) {

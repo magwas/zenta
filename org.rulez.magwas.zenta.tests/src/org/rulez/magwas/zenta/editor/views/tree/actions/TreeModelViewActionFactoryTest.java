@@ -18,8 +18,7 @@ import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
@@ -64,7 +63,7 @@ public class TreeModelViewActionFactoryTest {
 	public void Relations_are_created_in_the_folder_of_the_source_element() {
 		IZentaElement target = testdata.getElementById("23138a61");
 		IZentaElement source = testdata.getElementById("a885cd76");
-		IRelationClass relclass = (IRelationClass) testdata.metamodel.getClassById("a972e26e");
+		IBasicRelationship relclass = (IBasicRelationship) testdata.metamodel.getClassById("a972e26e");
 		assertNotNull(relclass);
 		CreateRelationCommand command = new CreateRelationCommand(source,target,relclass);
 		IFolder folder = ModelTestData.getFolderByKid(source);
@@ -84,7 +83,7 @@ public class TreeModelViewActionFactoryTest {
 		String id = "ea94cf6c";//User
 		IZentaElement user = testdata.getElementById(id);
 		IFolder folder = ModelTestData.getFolderByKid(user);
-		IObjectClass oc = testdata.metamodel.getBuiltinObjectClass();
+		IBasicObject oc = testdata.metamodel.getBuiltinObjectClass();
 		IBasicObject newElement = (IBasicObject) oc.create(folder);
 
 		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
@@ -99,8 +98,7 @@ public class TreeModelViewActionFactoryTest {
 		dm.getChildren().add(dmo);
 		newElement.setName("New test OCke");
 
-		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
-		assertNotNull(newOc);
+		assertTrue(newElement.isTemplate());
 
 		List<IAction> newactions = fixture.getNewObjectActions(selected);
 

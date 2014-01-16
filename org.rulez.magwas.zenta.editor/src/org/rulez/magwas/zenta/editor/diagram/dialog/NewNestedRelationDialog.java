@@ -37,7 +37,7 @@ import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 
@@ -55,8 +55,8 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
     
     private IZentaElement fParentElement, fChildElement;
     
-    private List<IRelationClass> fValidRelations;
-    private IRelationClass fSelected;
+    private List<IBasicRelationship> fValidRelations;
+    private IBasicRelationship fSelected;
 
 	private IViewpoint vp;
 
@@ -109,7 +109,7 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
         fTableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
-                fSelected = (IRelationClass)((IStructuredSelection)fTableViewer.getSelection()).getFirstElement();
+                fSelected = (IBasicRelationship)((IStructuredSelection)fTableViewer.getSelection()).getFirstElement();
             }
         });
         
@@ -134,7 +134,7 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
                 Messages.NewNestedRelationDialog_3, false);
     }
     
-    public IRelationClass getSelectedType() {
+    public IBasicRelationship getSelectedType() {
         return fSelected;
     }
         

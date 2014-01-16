@@ -47,28 +47,21 @@ public interface IMetamodel extends EObject {
 
     IZentaModel getModel();
     
-    IReferencesModelObject getClassById(String classId);
-	IObjectClass getBuiltinObjectClass();
-	IRelationClass getBuiltinRelationClass();
+    IBasicObject getClassById(String classId);
+	IBasicObject getBuiltinObjectClass();
+	IBasicRelationship getBuiltinRelationClass();
 	
     BuiltinTemplate getBuiltinTemplate();
     ITemplate getTemplateFor(IDiagramModel dm);
     ITemplate getTemplateFor(IDiagramModelComponent element);
     
-    IReferencesModelObject getClassOf(IBasicObject rel);
-    IReferencesModelObject getClassReferencing(IBasicObject modelElement);
-    IObjectClass getObjectClassReferencing(IBasicObject element);
-    IRelationClass getRelationClassReferencing(IBasicRelationship relation);
-	boolean hasRelationClassReferencing(IBasicRelationship relation);
-	boolean hasObjectClassReferencing(IBasicObject elementToAdd);
-
-	List<IObjectClass> getObjectClasses();
-	List<IRelationClass> getRelationClasses();
-	List<IObjectClass> getConnectorClasses();
+	List<IBasicObject> getObjectClasses();
+	List<IBasicRelationship> getRelationClasses();
+	List<IBasicObject> getConnectorClasses();
 	
-	Collection<IRelationClass> getRelationships(IBasicObject object);
-	List<IRelationClass> getWeaklist();
+	Collection<IBasicRelationship> getRelationships(IBasicObject object);
+	List<IBasicRelationship> getWeaklist();
 	boolean isValidRelationship(IBasicObject element1, IBasicObject element2,
-			IRelationClass relationshipClass);
+			IBasicRelationship relationshipClass);
 
 } // MetamodelBase

@@ -10,8 +10,8 @@ import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -22,8 +22,8 @@ import org.rulez.magwas.zenta.model.IRelationClass;
  */
 public class MagicConnectionModelFactory implements ICreationFactory {
     
-    private IRelationClass fRelationshipTemplate;
-    private IObjectClass fElementTemplate;
+    private IBasicRelationship fRelationshipTemplate;
+    private IBasicObject fElementTemplate;
 	private IFolder folder;
     
     public MagicConnectionModelFactory(IFolder parentfolder) {
@@ -33,19 +33,19 @@ public class MagicConnectionModelFactory implements ICreationFactory {
         return editor instanceof IZentaDiagramEditor;
     }
     
-    public void setRelationshipType(IRelationClass relationshipType) {
+    public void setRelationshipType(IBasicRelationship relationshipType) {
         fRelationshipTemplate = relationshipType;
     }
     
-    public void setElementType(IObjectClass type) {
+    public void setElementType(IBasicObject type) {
         fElementTemplate = type;
     }
     
-    public IRelationClass getRelationshipType() {
+    public IBasicRelationship getRelationshipType() {
         return fRelationshipTemplate;
     }
     
-    public IObjectClass getElementType() {
+    public IBasicObject getElementType() {
         return fElementTemplate;
     }
     

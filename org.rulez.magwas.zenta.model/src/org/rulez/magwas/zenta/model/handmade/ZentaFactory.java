@@ -5,14 +5,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.rulez.magwas.zenta.model.IAttribute;
-import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.IRelationClass;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -64,17 +60,6 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 		return template;
 	}
 
-	@Override
-	public IObjectClass createObjectClass(IBasicObject reference, ITemplate template) {
-		IObjectClass candidate = template.getObjectClassReferencingElement(reference);
-		if(null != candidate)
-			return candidate;
-		if("".equals(getDefiningName(reference)))
-			return null;
-		ObjectClass objectClass = new ObjectClass(reference, template);
-		template.getClasses().add(objectClass);
-		return objectClass;
-	}
 
 	@Override
 	public IAttribute createAttribute() {
@@ -82,18 +67,6 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 		return attribute;
 	}
 
-	@Override
-	public IRelationClass createRelationClass(IBasicRelationship referenced, ITemplate template) {
-		IRelationClass candidate = template.getRelationClassReferencingElement(referenced);
-		if(null != candidate)
-			return candidate;
-		if("".equals(getDefiningName(referenced)))
-			return null;
-		IRelationClass relationClass = new RelationClass(referenced, template);
-		template.getClasses().add(relationClass);
-		return relationClass;
-	}
-	
 	@Override
 	public String getDefiningName(IIdentifier ref) {
 		IProperty prop = getObjectClassProperty((IProperties) ref);

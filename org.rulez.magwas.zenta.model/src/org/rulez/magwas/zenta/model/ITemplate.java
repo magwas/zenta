@@ -30,22 +30,22 @@ public interface ITemplate
 extends EObject 
 {
 	/**
-	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IObjectClass}.
-	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IObjectClass#getTemplate <em>Template</em>}'.
+	 * Returns the value of the '<em><b>Classes</b></em>' reference list.
+	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IBasicObject}.
+	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IBasicObject#getTemplate <em>Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Classes</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Classes</em>' containment reference list.
+	 * @return the value of the '<em>Classes</em>' reference list.
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate_Classes()
-	 * @see org.rulez.magwas.zenta.model.IObjectClass#getTemplate
-	 * @model opposite="template" containment="true"
+	 * @see org.rulez.magwas.zenta.model.IBasicObject#getTemplate
+	 * @model opposite="template" resolveProxies="false"
 	 * @generated
 	 */
-	EList<IObjectClass> getClasses();
+	EList<IBasicObject> getClasses();
 
 	/**
 	 * Returns the value of the '<em><b>Path</b></em>' attribute.
@@ -127,22 +127,14 @@ extends EObject
 	 */
 	void setDiagram(IDiagramModel value);
 
-	void removeClass(IReferencesModelObject oc);
-	IObjectClass getObjectClassReferencingElement(IBasicObject reference);
-
-	IRelationClass getRelationClassReferencingElement(IBasicRelationship referenced);
-	
-	IObjectClass getObjectClassFrom(IBasicObject reference);
-
-	IRelationClass getRelationClassFrom(IBasicRelationship referenced);
-
+	void removeClass(IBasicObject oc);
 	void createClassBy(IBasicObject element);
 
 	IIdentifier create(IFolder folder);
 
-	List<IObjectClass> getObjectClasses();
+	List<IBasicObject> getObjectClasses();
 
-	List<IRelationClass> getRelationClasses();
+	List<IBasicRelationship> getRelationClasses();
 
 	String getName();
 

@@ -451,12 +451,10 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public IFolder getDefaultFolderForElement(EObject element) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getFolders().get(0);
 	}
 
 				/**

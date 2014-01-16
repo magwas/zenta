@@ -1,8 +1,8 @@
 package org.rulez.magwas.zenta.model.handmade;
 
 import org.rulez.magwas.zenta.model.IAttribute;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.impl.AttributeBase;
 
 
@@ -10,7 +10,7 @@ public class Attribute extends AttributeBase implements IAttribute {
 
 	private Direction direction;
 
-	public Attribute(IRelationClass relation, IObjectClass connectedObject,
+	public Attribute(IBasicRelationship relation, IBasicObject connectedObject,
 			Direction whichend) {
 		super();
 		this.connectedObject = connectedObject;

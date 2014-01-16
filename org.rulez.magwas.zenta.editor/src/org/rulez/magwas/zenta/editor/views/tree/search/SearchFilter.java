@@ -21,7 +21,7 @@ import org.rulez.magwas.zenta.model.IFolderContainer;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.util.StringUtils;
 
 
@@ -38,7 +38,7 @@ public class SearchFilter extends ViewerFilter {
     private boolean fFilterName;
     private boolean fFilterDocumentation;
 
-    private List<IReferencesModelObject> fObjectFilter = new ArrayList<IReferencesModelObject>();
+    private List<IBasicObject> fObjectFilter = new ArrayList<IBasicObject>();
     private List<String> fPropertiesFilter = new ArrayList<String>();
 
     private boolean fShowAllFolders = false;
@@ -227,7 +227,7 @@ public class SearchFilter extends ViewerFilter {
         }
     }
 
-    public void addObjectFilter(IReferencesModelObject eClass) {
+    public void addObjectFilter(IBasicObject eClass) {
         // Fresh filter
         if(!isFiltering()) {
             saveState();
@@ -236,7 +236,7 @@ public class SearchFilter extends ViewerFilter {
         refresh();
     }
 
-    public void removeObjectFilter(IReferencesModelObject eClass) {
+    public void removeObjectFilter(IBasicObject eClass) {
         fObjectFilter.remove(eClass);
         refresh();
     }

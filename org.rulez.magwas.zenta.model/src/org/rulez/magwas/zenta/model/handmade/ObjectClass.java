@@ -1,104 +1,122 @@
 package org.rulez.magwas.zenta.model.handmade;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.util.StringUtils;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.IAttribute.Direction;
+import org.rulez.magwas.zenta.model.impl.BasicObjectBase;
 
-public class ObjectClass extends AbstractObjectClass implements IObjectClass {
+public class ObjectClass extends BasicObjectBase implements IObjectClass {
 
-	protected ObjectClass() {
+	public ObjectClass(IBasicObject ancestor) {
+		setAncestor(ancestor);
 	}
 
-	public ObjectClass(IBasicObject reference, ITemplate template) {
-		super(reference,template);
-		if(!(this instanceof RelationClass)) {
-			IObjectClass ancie = getAncestorClass(reference);
-			setAncestor(ancie);
-			reference.setObjectClass(ancie.getId());
+	public ObjectClass() {
+	}
+
+	@Override
+	public boolean isAllowedRelation(IBasicRelationship relclass, Direction direction) {
+		List<IBasicRelationship> alloweds = getAllowedRelations().get(direction);
+		if(alloweds.contains(relclass))
+			return true;
+		return false;
+	}
+
+	@Override
+	public Map<Direction,List<IBasicRelationship>> getAllowedRelations() {
+
+		Map<Direction,List<IBasicRelationship>> ret = new HashMap<Direction,List<IBasicRelationship>>();
+		ret.put(Direction.SOURCE, new ArrayList<IBasicRelationship>());
+		ret.put(Direction.TARGET, new ArrayList<IBasicRelationship>());
+		ret.get(Direction.SOURCE).add(this.getMetamodel().getBuiltinRelationClass());
+		ret.get(Direction.TARGET).add(this.getMetamodel().getBuiltinRelationClass());
+		for(IAttribute att : getAttributes()) {
+			addParents(ret.get(((IAttribute) att).getDirection()),(IBasicRelationship) att.getRelation());
 		}
+		return ret;
 	}
-        private IObjectClass getAncestorClass(IBasicObject reference) {
-            String refClassId = reference.getObjectClass();
-    		String referenceId = reference.getId();
-    		IMetamodel metamodel = getMetamodel();
-    		IObjectClass ancie = null;
-    		if(haveAncestor(refClassId, referenceId))
-    			ancie = getAncestorClass(refClassId, metamodel);
-    		if(ancie == null)
-    			ancie=metamodel.getBuiltinObjectClass();
-            return ancie;
-        }
-    		private boolean haveAncestor(String refClassId, String referenceId) {
-    			return	refClassId != null &&
-    					!"basicobject".equals(refClassId) &&
-    					!referenceId.equals(refClassId);
-    		}
-    		private IObjectClass getAncestorClass(String refClassId, IMetamodel metamodel) {
-    			IBasicObject ancestorElement = (IBasicObject) ZentaModelUtils.getObjectByID(metamodel.getModel(), refClassId);
-    			return metamodel.getObjectClassReferencing(ancestorElement);
-    		}
+	private void addParents(List<IBasicRelationship> list, IBasicRelationship relation) {
+		if(!list.contains(relation))
+			list.add(relation);
+		IBasicRelationship ancestor = (IBasicRelationship) relation.getAncestor();
+		if(ancestor != null)
+			addParents(list,ancestor);
+	}
+
 
 	@Override
 	public IBasicObject create(IFolder folder) {
 		IBasicObject obj = IZentaFactory.eINSTANCE.createBasicObject();
-		obj.setObjectClass(this.getId());
-		postCreate(obj,folder);
+		obj.setAncestor(this);
+		folder.getElements().add(obj);
 		return obj;
 	}
 
 	@Override
-	public String getHelpHintTitle() {
-		return getName();
-	}
-
-	@Override
-	public String getHelpHintContent() {
-		IBasicObject ref = this.reference;
-		if(null == ref)
-			return "";
-		String doc = ref.getDocumentation();
-		List<IReferencesModelObject> ancestry = this.getAncestry();
-		List<String> ancestorNames = new ArrayList<String>();
-		for( IReferencesModelObject a : ancestry) {
-			ancestorNames.add(a.getName());
-		}
-		String ancestryNames = StringUtils.join(ancestorNames, " => ");
-		return String.format("%s\nAncestry: %s\n", doc, ancestryNames);
-	}
-
-	@Override
-	public List<IReferencesModelObject> getAncestry() {
-		ArrayList<IReferencesModelObject> ancestry = new ArrayList<IReferencesModelObject>();
-		return getAncestry(ancestry);
-	}
-
-	@Override
-	public List<IReferencesModelObject> getAncestry(List<IReferencesModelObject> ancestry) {
-		ancestry.add(this);
-		return ((IReferencesModelObject)ancestor).getAncestry(ancestry);
-	}
-
-	@Override
 	public boolean isObject() {
-		return !(this instanceof RelationClass);
+		return true;
 	}
 
 	@Override
 	public boolean isRelation() {
-		return (this instanceof RelationClass);
+		return false;
+	}
+
+	@Override
+	public String getHelpHintTitle() {
+		return ObjectClassMixin.getHelpHintTitle(this);
+	}
+
+	@Override
+	public String getHelpHintContent() {
+		return ObjectClassMixin.getHelpHintContent(this);
+	}
+
+	@Override
+	public IMetamodel getMetamodel() {
+		return ObjectClassMixin.getMetamodel(this);
+	}
+
+	@Override
+	public List<IBasicObject> getAncestry(List<IBasicObject> ancestry) {
+		return ObjectClassMixin.getAncestry(this,ancestry);
+	}
+
+	@Override
+	public List<IBasicObject> getAncestry() {
+		return ObjectClassMixin.getAncestry(this);
+	}
+
+	@Override
+	public void setAsTemplate(ITemplate template) {
+		ObjectClassMixin.setAsTemplate(this, template);
+	}
+	
+	@Override
+	public IBasicObject getDefiningElement() {
+		return ObjectClassMixin.getDefiningElement(this);
 	}
 
 	@Override
 	public boolean isTemplate() {
-		return true;
+		return ObjectClassMixin.isTemplate(this);
 	}
+
+	@Override
+	public String getDefiningName() {
+		return ObjectClassMixin.getDefiningName(this);
+	}
+
 }

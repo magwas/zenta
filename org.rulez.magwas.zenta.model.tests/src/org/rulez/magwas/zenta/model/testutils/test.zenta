@@ -71,7 +71,7 @@
         </child>
         <property key="Template"/>
       </element>
-      <element xsi:type="zenta:BasicObject" id="7b9a078c" name="Title" objectClass="7b9a078c"/>
+      <element xsi:type="zenta:BasicObject" id="7b9a078c" name="Title" ancestor="7b9a078c"/>
     </folder>
     <folder name="shapechange" id="13144af6">
       <element xsi:type="zenta:ZentaDiagramModel" id="22d134df" name="shapechange">

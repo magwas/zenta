@@ -11,10 +11,9 @@ import java.util.List;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
 
@@ -149,7 +148,7 @@ public class DerivedRelationsUtils {
         
         // Check validity of weakest relationship in each chain and remove chain if the weakest relationship is not valid
         for(List<IBasicRelationship> chain : chains) {
-        	IRelationClass relationshipClass = getWeakestType(chain);
+        	IBasicRelationship relationshipClass = getWeakestType(chain);
             boolean isValid = metamodel.isValidRelationship((IBasicObject)element1, (IBasicObject)element2, relationshipClass);
             if(isValid) {
                 result.add(chain);
@@ -218,11 +217,11 @@ public class DerivedRelationsUtils {
      * @param chain
      * @return The weakest type of relationship in a chain of relationships
      */
-    public IRelationClass getWeakestType(List<IBasicRelationship> chain) {
+    public IBasicRelationship getWeakestType(List<IBasicRelationship> chain) {
 		int weakest = weaklist.size() - 1;
         
         for(IBasicRelationship rel : chain) {
-            int index = weaklist.indexOf(metamodel.getClassReferencing(rel));
+            int index = weaklist.indexOf(rel);
             if(index < weakest) {
                 weakest = index;
             }
@@ -245,7 +244,7 @@ public class DerivedRelationsUtils {
     private int weakestFound;
     private int iterations;
 
-	private List<IRelationClass> weaklist;
+	private List<IBasicRelationship> weaklist;
     
     /**
      * @param sourceElement
@@ -325,7 +324,7 @@ public class DerivedRelationsUtils {
                     _printChain(chain, finalTarget);
                 }
 
-                IRelationClass weakest = getWeakestType(chain);
+                IBasicRelationship weakest = getWeakestType(chain);
                 int index = weaklist.indexOf(weakest);
                 if(index < weakestFound) {
                     weakestFound = index;

@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IObjectClass;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 
@@ -40,8 +40,9 @@ public class AttributeTest {
 		IBasicRelationship rel = testdata.createNewRelationClass("test relation");
 		IBasicObject source = (IBasicObject) rel.getSource();
 		IBasicObject target = (IBasicObject) rel.getTarget();
-		IObjectClass sc = (IObjectClass) testdata.metamodel.getClassReferencing(source);
-		IObjectClass tc = (IObjectClass) testdata.metamodel.getClassReferencing(target);
+		IBasicObject sc = source.getDefiningElement();
+		IBasicObject tc = target.getDefiningElement();
+		System.out.printf("sc = %s\n attrs=%s\n", sc, sc.getAttributes());
 		assertTrue(0 < sc.getAttributes().size());
 		assertTrue(0 < tc.getAttributes().size());
 	}

@@ -32,9 +32,8 @@ import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UnTestedException;
@@ -179,7 +178,7 @@ public class SearchWidget extends Composite {
         IMetamodel mm;
 		for(IZentaModel model : models) {
         	mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
-            for(IObjectClass eClass : mm.getObjectClasses()) {
+            for(IBasicObject eClass : mm.getObjectClasses()) {
                 businessMenu.add(createObjectAction(eClass));
             }
         }
@@ -188,7 +187,7 @@ public class SearchWidget extends Composite {
         dropDownAction.add(relationsMenu);
 		for(IZentaModel model : models) {
         	mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
-	        for(IRelationClass eClass : mm.getRelationClasses()) {
+	        for(IBasicRelationship eClass : mm.getRelationClasses()) {
 	            relationsMenu.add(createObjectAction(eClass));
 	        }
 		}
@@ -236,7 +235,7 @@ public class SearchWidget extends Composite {
         fSearchFilter.setFilterOnName(true);
     }
 
-	private IAction createObjectAction(final IReferencesModelObject eClass) {
+	private IAction createObjectAction(final IBasicObject eClass) {
         IAction action = new Action(eClass.getName(), IAction.AS_CHECK_BOX) {
             @Override
             public void run() {

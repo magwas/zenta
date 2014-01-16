@@ -87,12 +87,12 @@ public interface IAttribute extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation</em>' reference.
-	 * @see #setRelation(IRelationClass)
+	 * @see #setRelation(IBasicRelationship)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getAttribute_Relation()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
-	IRelationClass getRelation();
+	IBasicRelationship getRelation();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IAttribute#getRelation <em>Relation</em>}' reference.
@@ -102,7 +102,7 @@ public interface IAttribute extends EObject {
 	 * @see #getRelation()
 	 * @generated
 	 */
-	void setRelation(IRelationClass value);
+	void setRelation(IBasicRelationship value);
 
 	/**
 	 * Returns the value of the '<em><b>Connected Object</b></em>' reference.
@@ -113,12 +113,12 @@ public interface IAttribute extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connected Object</em>' reference.
-	 * @see #setConnectedObject(IObjectClass)
+	 * @see #setConnectedObject(IBasicObject)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getAttribute_ConnectedObject()
 	 * @model resolveProxies="false" required="true"
 	 * @generated
 	 */
-	IObjectClass getConnectedObject();
+	IBasicObject getConnectedObject();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IAttribute#getConnectedObject <em>Connected Object</em>}' reference.
@@ -128,7 +128,7 @@ public interface IAttribute extends EObject {
 	 * @see #getConnectedObject()
 	 * @generated
 	 */
-	void setConnectedObject(IObjectClass value);
+	void setConnectedObject(IBasicObject value);
 
 	public enum Direction {
 		SOURCE,TARGET

@@ -15,7 +15,6 @@ import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
@@ -60,10 +59,10 @@ public class BasicConnectionEditPartTest {
 	@Test
 	public void A_newly_created_nondefining_connection_have_the_appearance_of_the_defining_relation() {
 		String id = "9c441eb7";
-		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
+		IBasicRelationship baseRelationClass = (IBasicRelationship) testdata.metamodel.getClassById(id);
 		IBasicRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		assertNotNull(rel);
-		assertNotSame(rel.getId(),rel.getObjectClass());
+		assertNotSame(rel,rel.getDefiningElement());
 		testdata.focusOnDiagram("63f1b081");
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
 		assertNotNull(editPart);
@@ -97,11 +96,11 @@ public class BasicConnectionEditPartTest {
 	@Test
 	public void ToolTip_displays_the_RelationClass() {
 		String id = "9c441eb7";
-		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
+		IBasicRelationship baseRelationClass = (IBasicRelationship) testdata.metamodel.getClassById(id);
 		IBasicRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		rel.setName("Displayable Relation Name");
 		assertNotNull(rel);
-		assertNotSame(rel.getId(),rel.getObjectClass());
+		assertNotSame(rel,rel.getDefiningElement());
 		testdata.focusOnDiagram("63f1b081");
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
 		assertNotNull(editPart);
@@ -113,11 +112,11 @@ public class BasicConnectionEditPartTest {
 	@Test
 	public void ToolTip_displays_the_RelationClass_of_the_defining_element() {
 		String id = "9c441eb7";
-		IRelationClass baseRelationClass = (IRelationClass) testdata.metamodel.getClassById(id);
+		IBasicRelationship baseRelationClass = (IBasicRelationship) testdata.metamodel.getClassById(id);
 		IZentaDiagramModel dm = testdata.getTemplateDiagramModel();
 		IBasicRelationship rel = testdata.createNewConnection("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",baseRelationClass,dm);
 		assertNotNull(rel);
-		assertNotSame(rel.getId(),rel.getObjectClass());
+		assertNotSame(rel,rel.getDefiningElement());
 		testdata.focusOnDiagram(dm.getId());
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
 		assertNotNull(editPart);
@@ -125,7 +124,7 @@ public class BasicConnectionEditPartTest {
 		assertEquals("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",toolTip.getText());
 		assertEquals("RelationClass: describes",toolTip.getType());
 		assertEquals("test OC 1 áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP test OC 2",ZentaLabelProvider.INSTANCE.getRelationshipSentence(rel));
-		assertEquals("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",testdata.metamodel.getClassOf(rel).getName());
+		assertEquals("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",rel.getDefiningElement().getName());
 	}
 
 }

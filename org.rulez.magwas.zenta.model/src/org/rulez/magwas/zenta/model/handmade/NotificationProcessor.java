@@ -206,12 +206,12 @@ public class NotificationProcessor {
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IBasicObject.class;
-			featureId = IZentaPackage.BASIC_OBJECT__OBJECT_CLASS;
+			featureId = IZentaPackage.BASIC_OBJECT__ANCESTOR;
 			hasNew = true;
 			}
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IBasicObject element = (IBasicObject) notifier;
-				mm.processElementObjectClassChange(element);
+				mm.updateFiguresFor(element);
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IBasicObject.class;

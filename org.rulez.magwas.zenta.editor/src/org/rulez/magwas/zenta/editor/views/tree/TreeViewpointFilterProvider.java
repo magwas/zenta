@@ -23,7 +23,6 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.model.IBasicObject;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;

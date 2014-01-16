@@ -6,10 +6,9 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.eclipse.gef.commands.Command;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 
 
 
@@ -22,12 +21,12 @@ public class CreateRelationCommand extends Command {
     
     private IZentaElement fParent;
     private IZentaElement fChild;
-    private IRelationClass fType;
+    private IBasicRelationship fType;
     
     private IFolder fFolder;
     private IBasicRelationship fRelation;
     
-    public CreateRelationCommand(IZentaElement parent, IZentaElement child, IRelationClass type) {
+    public CreateRelationCommand(IZentaElement parent, IZentaElement child, IBasicRelationship type) {
         fParent = parent;
         fChild = child;
         fType = type;

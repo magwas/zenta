@@ -34,11 +34,12 @@ import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IOrJunction;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
 import org.rulez.magwas.zenta.model.ITemplate;
+import org.rulez.magwas.zenta.model.handmade.ObjectClass;
+import org.rulez.magwas.zenta.model.handmade.RelationClass;
 import org.rulez.magwas.zenta.model.handmade.ZentaFactory;
 
 
@@ -108,8 +109,6 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 			case IZentaPackage.TEMPLATE: return createTemplate();
 			case IZentaPackage.BASIC_OBJECT: return createBasicObject();
 			case IZentaPackage.BASIC_RELATIONSHIP: return createBasicRelationship();
-			case IZentaPackage.OBJECT_CLASS: return createObjectClass();
-			case IZentaPackage.RELATION_CLASS: return createRelationClass();
 			case IZentaPackage.ATTRIBUTE: return createAttribute();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -174,11 +173,10 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     public IBasicObject createBasicObject() {
-		BasicObjectBase basicObject = new BasicObjectBase();
-		return basicObject;
+    	return new ObjectClass();
 	}
 
 
@@ -353,7 +351,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public IRelationClass createRelationClass() {
+	public IBasicRelationship createRelationClass() {
 		throw new RuntimeException("should not be called");
 	}
 
@@ -401,10 +399,10 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public IBasicRelationship createBasicRelationship() {
-		BasicRelationshipBase basicRelationship = new BasicRelationshipBase();
+		BasicRelationshipBase basicRelationship = new RelationClass();
 		return basicRelationship;
 	}
 

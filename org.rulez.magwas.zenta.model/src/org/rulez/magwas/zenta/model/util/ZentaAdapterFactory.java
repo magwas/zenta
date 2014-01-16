@@ -49,12 +49,9 @@ import org.rulez.magwas.zenta.model.IJunctionElement;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.INameable;
-import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IOrJunction;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
@@ -289,18 +286,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseBasicRelationship(IBasicRelationship object) {
 				return createBasicRelationshipAdapter();
-			}
-			@Override
-			public Adapter caseReferencesModelObject(IReferencesModelObject object) {
-				return createReferencesModelObjectAdapter();
-			}
-			@Override
-			public Adapter caseObjectClass(IObjectClass object) {
-				return createObjectClassAdapter();
-			}
-			@Override
-			public Adapter caseRelationClass(IRelationClass object) {
-				return createRelationClassAdapter();
 			}
 			@Override
 			public Adapter caseAttribute(IAttribute object) {
@@ -929,34 +914,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IReferencesModelObject <em>References Model Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.model.IReferencesModelObject
-	 * @generated
-	 */
-	public Adapter createReferencesModelObjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IObjectClass <em>Object Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.model.IObjectClass
-	 * @generated
-	 */
-	public Adapter createObjectClassAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IAttribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -967,20 +924,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAttributeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.rulez.magwas.zenta.model.IRelationClass <em>Relation Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.rulez.magwas.zenta.model.IRelationClass
-	 * @generated
-	 */
-	public Adapter createRelationClassAdapter() {
 		return null;
 	}
 

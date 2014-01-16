@@ -360,6 +360,6 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
     @Override
 	public IBasicRelationship getDefiningElement() {
 		IBasicRelationship relation = getRelationship();
-        return relation.getDefiningElement(this);
+        return (IBasicRelationship) relation.getDefiningElement();
 	}
 } //DiagramModelConnection

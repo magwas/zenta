@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -30,11 +30,20 @@ public class TemplateTest {
 	@Before
 	public void setUp() throws Exception {
 		testdata = new ModelTestData();
+		assertNotNull(ZentaModelUtils.getObjectByID(testdata.model, "c3d03626"));
 		model = testdata.getModel();
+		assertNotNull(ZentaModelUtils.getObjectByID(model, "c3d03626"));
 		diagramModel = testdata.getTemplateDiagramModel();
+		assertNotNull(ZentaModelUtils.getObjectByID(model, "c3d03626"));
+		setupMeta();
+	}
+
+	public void setupMeta() {
 		metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+		assertNotNull(ZentaModelUtils.getObjectByID(model, "c3d03626"));
 		fixture = metamodel.getBuiltinTemplate();
 		template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
+		assertNotNull(ZentaModelUtils.getObjectByID(model, "c3d03626"));
 	}
 
 	@After
@@ -44,18 +53,19 @@ public class TemplateTest {
 	
 	@Test
 	public void There_is_a_default_template_named_Builtins() {
+		System.out.printf("fixture = %s\n", fixture);
 		assertEquals("Builtins",fixture.getName());
 	}
 	
 	@Test
 	public void The_Builtin_template_have_one_ObjectClass() {
-		List<IObjectClass> objects = fixture.getObjectClasses();
+		List<IBasicObject> objects = fixture.getObjectClasses();
 		assertEquals(1,objects.size());
 	}
 
 	@Test
 	public void The_Builtin_template_have_one_RelationClass() {
-		List<IRelationClass> relations = fixture.getRelationClasses();
+		List<IBasicRelationship> relations = fixture.getRelationClasses();
 		assertEquals(1,relations.size());
 	}
 
@@ -72,24 +82,48 @@ public class TemplateTest {
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_diagram() {
 		IBasicObject classTemplate = (IBasicObject) ZentaModelUtils.getObjectByID(model, "23138a61");
-		assertTrue(null != template.getObjectClassReferencingElement(classTemplate));
+		assertTrue(template == classTemplate.getTemplate());
 	}
 
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_embedded_elements_of_the_diagram() {
 		IBasicObject classTemplate = (IBasicObject) ZentaModelUtils.getObjectByID(model, "c3d03626");
-		IZentaDiagramModel tdm = testdata.getTemplateDiagramModel();
-		metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
-		assertNotNull(tdm);
-		template = metamodel.getTemplateFor(tdm);
-		assertNotNull(template);
-		System.out.printf("template=%s\nobj=%s\n", template,classTemplate);
-		assertTrue(null != template.getObjectClassReferencingElement( classTemplate));
+		System.out.printf("model=%s\ntemplate=%s\nobj=%s\nct=%s\n", model,template,classTemplate,classTemplate.getTemplate());
+		//System.out.printf("hh %s\n",classTemplate.getTemplate().getDiagram());
+		assertTrue(template == ((IBasicObject) classTemplate).getTemplate());
 	}
 	
 	@Test
 	public void The_template_contains_the_relationclasses_for_the_diagram() {
-		IBasicRelationship classTemplate = (IBasicRelationship) ZentaModelUtils.getObjectByID(model, "b0e2bfd8");
-		assertTrue(null != template.getRelationClassReferencingElement(classTemplate));
+		IBasicRelationship classTemplate = (IBasicRelationship) ZentaModelUtils.getObjectByID(model, "a972e26e");
+		System.out.printf("model=%s\ntemplate=%s\nobj=%s\nct=%s\n", model,template,classTemplate,classTemplate.getTemplate());
+		//System.out.printf("hh %s\n",classTemplate.getTemplate().getDiagram());
+		assertTrue(template == classTemplate.getTemplate());
 	}
+	
+	@Test
+	public void If_a_relationship_occurs_in_more_templates_removing_it_from_one_does_not_make_it_undefining() {
+		IBasicRelationship rel = (IBasicRelationship) ZentaModelUtils.getObjectByID(model, "b0e2bfd8");
+		assertTrue(rel.isTemplate());
+		IDiagramModel dm = rel.getTemplate().getDiagram();
+		for(IDiagramModelZentaConnection dmo : rel.getDiagConnections())
+			if(dmo.getDiagramModel().equals(dm))
+				dmo.getSource().getSourceConnections().remove(dmo);
+		assertTrue(rel.isTemplate());
+		assertNotSame(dm,rel.getTemplate().getDiagram());
+		
+	}
+	
+	@Test
+	public void If_an_object_occurs_in_more_templates_removing_it_from_one_does_not_make_it_undefining() {
+		IBasicObject obj = (IBasicObject) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
+		assertTrue(obj.isTemplate());
+		IDiagramModel dm = obj.getTemplate().getDiagram();
+		for(IDiagramModelZentaObject dmo : obj.getDiagObjects())
+			if(dmo.getDiagramModel().equals(dm))
+				((IDiagramModelContainer)dmo.eContainer()).getChildren().remove(dmo);
+		assertTrue(obj.isTemplate());
+		assertNotSame(dm,obj.getTemplate().getDiagram());
+	}
+
 }

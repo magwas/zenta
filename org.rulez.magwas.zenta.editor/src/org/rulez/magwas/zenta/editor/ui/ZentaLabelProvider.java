@@ -11,10 +11,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
-import org.rulez.magwas.zenta.model.IIdentifier;
-import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
@@ -134,11 +131,17 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
         return null;
     }
 
-    /**
+    public ImageDescriptor getImageDescriptor(IBasicObject obj) {
+		if (!obj.isTemplate())
+			obj = obj.getAncestor();
+		return getImageDescriptorNonTemplate(obj.eClass());
+	}
+
+	/**
      * @param eClass
      * @return An ImageDescriptor for an EClass
      */
-    public ImageDescriptor getImageDescriptor(EClass eClass) {
+    public ImageDescriptor getImageDescriptorNonTemplate(EClass eClass) {
         IElementUIProvider provider = ElementUIFactory.INSTANCE.getProvider(eClass);
         if(provider != null) {
             return provider.getImageDescriptor();
@@ -207,25 +210,13 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
             if(relation.getSource() != null && relation.getTarget() != null) {
                 String nameSource = ZentaLabelProvider.INSTANCE.getLabel(relation.getSource());
                 String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
-                IMetamodel metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(relation.getZentaModel());
-                IReferencesModelObject klass = metamodel.getClassOf(relation);
-                String relname;
-				if(null != klass)
-                	relname = klass.getName();
-                else
-                	relname = "relates to";
+                IBasicObject klass = relation.getDefiningElement();
+                String relname = klass.getName();
                 return String.format("%s %s %s", nameSource, relname, nameTarget);
             }
         }
         
         return ""; //$NON-NLS-1$
     }
-
-	public ImageDescriptor getImageDescriptor(IReferencesModelObject eClass) {
-		IIdentifier reference = eClass.getReference();
-		if(null == reference)
-			reference = IZentaFactory.eINSTANCE.createBasicObject();
-		return ZentaLabelProvider.INSTANCE.getImageDescriptor(reference.eClass());
-	}
 
 }

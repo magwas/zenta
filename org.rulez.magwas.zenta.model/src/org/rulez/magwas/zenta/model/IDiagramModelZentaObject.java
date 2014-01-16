@@ -98,4 +98,6 @@ public interface IDiagramModelZentaObject extends IDiagramModelObject, IDiagramM
 
 	String getFinalElementShape();
 
+	void refreshVisuals();
+
 } // IDiagramModelZentaObject

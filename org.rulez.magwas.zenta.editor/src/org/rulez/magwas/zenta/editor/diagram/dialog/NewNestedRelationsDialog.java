@@ -40,7 +40,7 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.IBasicObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 
@@ -64,7 +64,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
     
     private class Mapping {
         private IZentaElement element;
-        private List<IRelationClass> validRelations;
+        private List<IBasicRelationship> validRelations;
         private String[] names;
         private int selectedIndex;
         
@@ -90,11 +90,11 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
             return selectedIndex;
         }
         
-        IRelationClass getSelectedType() {
+        IBasicRelationship getSelectedType() {
             return validRelations.get(selectedIndex);
         }
         
-        void setSelectedType(IRelationClass selectedClass) {
+        void setSelectedType(IBasicRelationship selectedClass) {
             int index = validRelations.indexOf(selectedClass);
             selectedIndex = (index == -1) ? 0 : index;
         }
@@ -110,11 +110,11 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
             return names;
         }
         
-        private List<IRelationClass> createValidRelations(IViewpoint vp, IZentaElement sourceElement, IZentaElement targetElement) {
-            List<IRelationClass> list = new ArrayList<IRelationClass>();
+        private List<IBasicRelationship> createValidRelations(IViewpoint vp, IZentaElement sourceElement, IZentaElement targetElement) {
+            List<IBasicRelationship> list = new ArrayList<IBasicRelationship>();
             // Entry for "none"
             list.add(null);
-            for(IRelationClass eClass : vp.getRelationClasses()) {
+            for(IBasicRelationship eClass : vp.getRelationClasses()) {
                 if(vp.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)targetElement, eClass)) {
                     list.add(eClass); 
                 }
@@ -187,8 +187,8 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
         return composite;
     }
     
-    public List<IRelationClass> getSelectedTypes() {
-        List<IRelationClass> list = new ArrayList<IRelationClass>();
+    public List<IBasicRelationship> getSelectedTypes() {
+        List<IBasicRelationship> list = new ArrayList<IBasicRelationship>();
         
         for(Mapping mapping : fMappings) {
             if(mapping.getSelectedType() != null) {
@@ -321,7 +321,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
                 
                 // Ctrl key pressed, set others to same if possible or (none) if not
                 if(fModKeyPressed) {
-                    IRelationClass selectedClass = ((Mapping)element).getSelectedType();
+                    IBasicRelationship selectedClass = ((Mapping)element).getSelectedType();
                     for(Mapping mapping : fMappings) {
                         if(mapping != element) {
                             mapping.setSelectedType(selectedClass);

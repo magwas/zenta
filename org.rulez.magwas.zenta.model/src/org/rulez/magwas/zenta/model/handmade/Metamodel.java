@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -15,15 +16,11 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.impl.MetamodelBase;
 
@@ -83,6 +80,8 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	public ITemplate getTemplateFor(IDiagramModel diagramModel) {
 		for(ITemplate template : getTemplates()) {
 			IDiagramModel dm = template.getDiagram();
+			if(dm == null && template != this.builtinTemplate)
+				throw new RuntimeException("template with no diagram ref");
 			if(diagramModel.equals(dm))
 				return (ITemplate) template;
 		}
@@ -96,13 +95,13 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	}
 
 	@Override
-	public IObjectClass getBuiltinObjectClass() {
-		return (IObjectClass) builtinTemplate.getObjectClasses().get(0);
+	public IBasicObject getBuiltinObjectClass() {
+		return (IBasicObject) builtinTemplate.getRootObjectClass();
 	}
 
 	@Override
-	public IRelationClass getBuiltinRelationClass() {
-		return (IRelationClass) builtinTemplate.getRelationClasses().get(0);
+	public IBasicRelationship getBuiltinRelationClass() {
+		return (IBasicRelationship) builtinTemplate.getRootRelationClass();
 	}
 
 	@Override
@@ -110,89 +109,58 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		return builtinTemplate;
 	}
 
-	@Override
-	public IObjectClass getObjectClassReferencing(
-			IBasicObject element) {
-		return (IObjectClass) getClassById(element.getId());
-	}
 
 	@Override
-	public IRelationClass getRelationClassReferencing(IBasicRelationship relation) {
-		return (IRelationClass) getClassById(relation.getId());
-	}
-
-	@Override
-	public boolean hasRelationClassReferencing(IBasicRelationship relation) {
-		return null != getRelationClassReferencing(relation);
-	}
-
-	@Override
-	public boolean hasObjectClassReferencing(IBasicObject elementToAdd) {
-		return null != getObjectClassReferencing(elementToAdd);
-	}
-
-	@Override
-	public List<IObjectClass> getObjectClasses() {
-		List<IObjectClass> ret = new ArrayList<IObjectClass>();
+	public List<IBasicObject> getObjectClasses() {
+		List<IBasicObject> ret = new ArrayList<IBasicObject>();
 		for(ITemplate template : getTemplates()) {
-			ret.addAll((List<? extends IObjectClass>) template.getObjectClasses());
+			ret.addAll((List<? extends IBasicObject>) template.getObjectClasses());
 		}
 		return ret;
 	}
 
 	@Override
-	public List<IRelationClass> getRelationClasses() {
-		List<IRelationClass> ret = new ArrayList<IRelationClass>();
+	public List<IBasicRelationship> getRelationClasses() {
+		List<IBasicRelationship> ret = new ArrayList<IBasicRelationship>();
 		for(ITemplate template : getTemplates()) {
-			ret.addAll((Collection<? extends IRelationClass>) template.getRelationClasses());
+			ret.addAll((Collection<? extends IBasicRelationship>) template.getRelationClasses());
 		}
 		return ret;
 	}
 
 	@Override
-	public Collection<IRelationClass> getRelationships(IBasicObject object) {
+	public Collection<IBasicRelationship> getRelationships(IBasicObject object) {
 		return getRelationClasses();
 	}
 
 	@Override
-	public IReferencesModelObject getClassById(String id) {
+	public IBasicObject getClassById(String id) {
 		if(id == null)
 			return null;
-		ArrayList<IReferencesModelObject> classlist = new ArrayList<IReferencesModelObject>();
+		ArrayList<IBasicObject> classlist = new ArrayList<IBasicObject>();
 		classlist.addAll(getObjectClasses());
 		classlist.addAll(getRelationClasses());
-		for(IReferencesModelObject klass : classlist) {
-			if(id.equals(((IReferencesModelObject)klass).getId()))
-				return (IReferencesModelObject) klass;
+		for(IBasicObject klass : classlist) {
+			if(id.equals(((IBasicObject)klass).getId()))
+				return (IBasicObject) klass;
 		}
 		return null;
 	}
 
 	@Override
-	public List<IRelationClass> getWeaklist() {
-		return new ArrayList<IRelationClass>();//TODO getWeaklist
+	public List<IBasicRelationship> getWeaklist() {
+		return new ArrayList<IBasicRelationship>();//TODO getWeaklist
 	}
-
-	@Override
-	public IReferencesModelObject getClassReferencing(IBasicObject rel) {
-		return getClassById(rel.getId());
-	}
-    @Override
-    public IReferencesModelObject getClassOf(IBasicObject rel) {
-    	if(this.isDefining(rel))
-    		return getClassById(rel.getId());
-        return getClassById(rel.getObjectClass());
-    }
 
 	@Override
 	public boolean isValidRelationship(IBasicObject element1,
-			IBasicObject element2, IRelationClass relationshipClass) {
+			IBasicObject element2, IBasicRelationship relationshipClass) {
 		return getRelationClasses().contains(relationshipClass);//TODO isValidRelationship
 	}
 
 	@Override
-	public List<IObjectClass> getConnectorClasses() {
-		return new ArrayList<IObjectClass>();
+	public List<IBasicObject> getConnectorClasses() {
+		return new ArrayList<IBasicObject>();
 	}
 
 	void handleNewTemplateElement(IDiagramModelComponent dmzc) {
@@ -217,12 +185,11 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		if(null == template)
 			return;
 		IBasicRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
-		IZentaFactory.eINSTANCE.createRelationClass(element, template);
+		element.setTemplate(template);
 	}
 
 	public void processElementNameChange(IBasicObject element, String oldName, String newName) {
 		createOcIfBecameDefining(element, oldName, newName);
-		handleNameChange(element);
 	}
 
 	public void createOcIfBecameDefining(IBasicObject element, String oldName,
@@ -248,6 +215,23 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			return;
 		template.createClassBy(element);
 		element.setPropsFromDiagramObject(dmo);
+		if(element.isRelation())
+			setupEndAttributesForrelation((IBasicRelationship) element);
+	}
+
+	private void setupEndAttributesForrelation(IBasicRelationship element) {
+		IBasicObject source = (IBasicObject) element.getSource();
+		IBasicObject dest = (IBasicObject) element.getTarget();
+		setupAttribute(element, source, dest);
+		setupAttribute(element, dest, source);
+	}
+
+	public void setupAttribute(IBasicRelationship relation, IBasicObject obj1,
+			IBasicObject obj2) {
+		IAttribute att = IZentaFactory.eINSTANCE.createAttribute();
+		att.setConnectedObject(obj2);
+		att.setRelation(relation);
+		obj1.getAttributes().add(att);
 	}
 
 	private IDiagramModelComponent getDefiningModelObjectFor(IBasicObject element) {
@@ -281,38 +265,18 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		if(prop.eContainer() instanceof IZentaDiagramModel && "Template".equals(value))
 			processDiagramHasNewProperty((IZentaDiagramModel) prop.eContainer(), prop);
 	}
-
-	public void processElementObjectClassChange(IZentaElement element) {
-		handleNameChange(element);
-	}
 	
-	private void handleNameChange(IZentaElement element) {
-		IReferencesModelObject oc;
-		if(element instanceof IBasicRelationship)
-			oc = getRelationClassReferencing((IBasicRelationship) element);
-		else
-			oc = getObjectClassReferencing((IBasicObject) element);
-		if(null == oc)
-			return;
-		String definingName = IZentaFactory.eINSTANCE.getDefiningName(element);
-		oc.setName(definingName);
-	}
-
 	public void processDiagramElementAppearanceChanged(
 			IDiagramModelZentaObject dmzc, String key, String value) {
 		IBasicObject element = (IBasicObject) dmzc.getZentaElement();
-		if(isDefining(element))
+		if(element.isTemplate())
 			element.addOrUpdateProperty(key, value);
 	}
-
-	private boolean isDefining(IBasicObject element) {
-	    return null != getClassReferencing(element);
-    }
 
     public void processDiagramConnectionAppearanceChanged(
 			IDiagramModelZentaConnection dmzc, String key, String value) {
 		IBasicObject element = dmzc.getRelationship();
-		if(isDefining(element))
+		if(element.isTemplate())
 			element.addOrUpdateProperty(key, value);
 		
 	}
@@ -326,22 +290,35 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		if(dmzc instanceof IDiagramModelZentaObject) {
 			IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) dmzc;
 			IBasicObject element = (IBasicObject) dmo.getZentaElement();
-			removeClassFor(element);
+			removeClassForObject(element);
 		}
 	}
+	private void removeClassForObject(IBasicObject element) {
+		if(!element.isTemplate())
+			return;
+		IMetamodel metamodel = element.getTemplate().getMetamodel();
+		element.getTemplate().removeClass(element);
+		reinstantiateObjectClassIfStillHaveTemplate(element, metamodel);
+	}
+		private void reinstantiateObjectClassIfStillHaveTemplate(IBasicObject element,
+				IMetamodel metamodel) {
+			EList<IDiagramModelZentaObject> diagObjects = element.getDiagObjects();
+			for(IDiagramModelZentaObject dmoleft : diagObjects) {
+				IDiagramModel dm = dmoleft.getDiagramModel();
+				if(dm != null && dm.isTemplate()) {
+					ITemplate template = metamodel.getTemplateFor(dm);
+					template.getClasses().add(element);
+					return;
+				}
+			}
+		}
 
 	public void processChildRemovedFromFolder(Object oldVal) {
 		if(oldVal instanceof IBasicObject) {
 			IBasicObject element = (IBasicObject) oldVal;
 			removeFromDiagrams(element);
-			removeObjectClassDefinedBy(element);
 		}
 	}
-        private void removeObjectClassDefinedBy(IBasicObject element) {
-            IReferencesModelObject oc = this.getClassReferencing(element);
-            if(null != oc)
-            	oc.getTemplate().removeClass(oc);
-        }
         private void removeFromDiagrams(IBasicObject element) {
             if(element instanceof IBasicRelationship)
                 removeConnectionFromDiagrams(element);
@@ -361,18 +338,34 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			IDiagramModelComponent dmzc) {
 		if(dmzc instanceof IDiagramModelZentaConnection) {
 			IDiagramModelZentaConnection dmo = (IDiagramModelZentaConnection) dmzc;
-			IBasicObject element = dmo.getRelationship();
-			removeClassFor(element);
+			IBasicRelationship element = dmo.getRelationship();
+			removeClassForConnection(element);
 		}
 	}
-
-	private void removeClassFor(IBasicObject element) {
-		IDiagramModelComponent otherDMO = getDefiningModelObjectFor(element);
-		if (null == otherDMO) {
-			IReferencesModelObject oc = getClassReferencing(element);
-			if(null == oc || null == oc.getTemplate())
+		private void removeClassForConnection(IBasicRelationship element) {
+			if(!element.isTemplate())
 				return;
-			oc.getTemplate().removeClass(oc);
+			IMetamodel metamodel = element.getTemplate().getMetamodel();
+			element.getTemplate().removeClass(element);
+			reinstantiateRelationClassIfStillHaveTemplate(element, metamodel);
 		}
+			private void reinstantiateRelationClassIfStillHaveTemplate(IBasicRelationship element,
+					IMetamodel metamodel) {
+				EList<IDiagramModelZentaConnection> diagObjects = element.getDiagConnections();
+				for(IDiagramModelZentaConnection dmoleft : diagObjects) {
+					IDiagramModel dm = dmoleft.getDiagramModel();
+					if(dm != null && dm.isTemplate()) {
+						ITemplate template = metamodel.getTemplateFor(dm);
+						template.getClasses().add(element);
+						return;
+					}
+				}
+			}
+
+	public void updateFiguresFor(IBasicObject element) {
+		for(IDiagramModelZentaObject dmo : element.getDiagObjects())
+			dmo.refreshVisuals();
+		for(IBasicObject kid : element.getChildren())
+			updateFiguresFor(kid);
 	}
 }

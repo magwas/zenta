@@ -47,12 +47,9 @@ import org.rulez.magwas.zenta.model.IJunctionElement;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.INameable;
-import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IOrJunction;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
@@ -578,27 +575,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseProperties(basicRelationship);
 				if (result == null) result = caseAdapter(basicRelationship);
 				if (result == null) result = caseNameable(basicRelationship);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case IZentaPackage.REFERENCES_MODEL_OBJECT: {
-				IReferencesModelObject referencesModelObject = (IReferencesModelObject)theEObject;
-				T result = caseReferencesModelObject(referencesModelObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case IZentaPackage.OBJECT_CLASS: {
-				IObjectClass objectClass = (IObjectClass)theEObject;
-				T result = caseObjectClass(objectClass);
-				if (result == null) result = caseReferencesModelObject(objectClass);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case IZentaPackage.RELATION_CLASS: {
-				IRelationClass relationClass = (IRelationClass)theEObject;
-				T result = caseRelationClass(relationClass);
-				if (result == null) result = caseObjectClass(relationClass);
-				if (result == null) result = caseReferencesModelObject(relationClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1258,36 +1234,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>References Model Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>References Model Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseReferencesModelObject(IReferencesModelObject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Object Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Object Class</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseObjectClass(IObjectClass object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1299,21 +1245,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAttribute(IAttribute object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Relation Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Relation Class</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRelationClass(IRelationClass object) {
 		return null;
 	}
 

@@ -30,9 +30,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IObjectClass;
-import org.rulez.magwas.zenta.model.IReferencesModelObject;
-import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -61,7 +58,7 @@ public class ZentaDiagramEditorPaletteTest {
 		assertNotNull(element);
 		
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
-		for(IObjectClass klass : testdata.metamodel.getObjectClasses()) {
+		for(IBasicObject klass : testdata.metamodel.getObjectClasses()) {
 			assertTrue(haveCreatorFor(klass, children));
 		}
 	}
@@ -124,8 +121,7 @@ public class ZentaDiagramEditorPaletteTest {
 	public void Magic_Connector_magically_knows_what_to_connect_on_non_template_as_well() {
 		IBasicObject procedure = (IBasicObject) testdata.getById("f33bd0d2");
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(procedure);
-		IObjectClass oc = testdata.metamodel.getObjectClassReferencing(procedure);
-		IZentaElement element = (IZentaElement) oc.create(folder);
+		IZentaElement element = (IZentaElement) procedure.create(folder);
 		element.setName("testmcmkwtcontaw");
 		IZentaDiagramModel dia = testdata.getNonTemplateDiagramModel();
 		IDiagramModelZentaObject dmo = ModelAndEditPartTestData.createDMOFor(element);
@@ -167,7 +163,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 	@Test
 	public void The_created_objects_are_part_of_a_model() throws IOException {
-		IObjectClass userClass = (IObjectClass) testdata.metamodel.getClassById("ea94cf6c");
+		IBasicObject userClass = (IBasicObject) testdata.metamodel.getClassById("ea94cf6c");
 		IFolder folder = (IFolder) testdata.getById("13144af6");
 		ZentaElementBase newElement = (ZentaElementBase) userClass.create(folder);
 		folder.getElements().add(newElement);
@@ -181,14 +177,13 @@ public class ZentaDiagramEditorPaletteTest {
 
 		String elementName = "New test OC";
 		IBasicObject newElement = testdata.createNewObjectClass(elementName);
-		IObjectClass newOc = testdata.metamodel.getObjectClassReferencing(newElement);
 		
 		PaletteContainer objectsgroup = palette._getObjectsGroup();
 		assertNotNull(objectsgroup);
 		@SuppressWarnings("unchecked")
 		List<PaletteEntry> children = objectsgroup.getChildren();
 		
-		assertTrue(haveCreatorFor(newOc, children));
+		assertTrue(haveCreatorFor(newElement, children));
 	}
 	
 	@Test
@@ -196,7 +191,7 @@ public class ZentaDiagramEditorPaletteTest {
 		String ocName = "deletetest OC";
 		IBasicObject element = testdata.createNewObjectClass(ocName);
 		String elemId = element.getId();
-		IReferencesModelObject oc = testdata.metamodel.getClassById(elemId);
+		IBasicObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
 		
 		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
@@ -205,7 +200,7 @@ public class ZentaDiagramEditorPaletteTest {
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
 		assertTrue(haveCreatorNamed(ocName, children));
 		dia.getChildren().remove(diagElement);
-		assertNull(testdata.metamodel.getClassReferencing(element));
+		assertFalse(element.isTemplate());
 		assertFalse(haveCreatorNamed(ocName, children));
 	}
 	@Test
@@ -213,7 +208,7 @@ public class ZentaDiagramEditorPaletteTest {
 		String ocName = "deletetest OC";
 		IZentaElement element = testdata.createNewObjectClass(ocName);
 		String elemId = element.getId();
-		IReferencesModelObject oc = testdata.metamodel.getClassById(elemId);
+		IBasicObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
 
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
@@ -227,35 +222,34 @@ public class ZentaDiagramEditorPaletteTest {
 	public void If_a_new_RelationClass_is_created_it_is_shown_on_the_ViewPoint() {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
-		IBasicRelationship newElement = testdata.createNewRelationClass("New test RC");
-		IRelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
-		assertNotNull(newRc);
+		IBasicRelationship newRelation = testdata.createNewRelationClass("New test RC");
+		assertTrue(newRelation.isTemplate());
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
 		assertNotNull(relationsgroup);
 		@SuppressWarnings("unchecked")
 		List<PaletteEntry> children = relationsgroup.getChildren();
-		assertTrue(haveCreatorFor(newRc, children));
+		assertTrue(haveCreatorFor(newRelation, children));
 	}
 	@Test
 	public void If_a_RelationClass_is_deleted_it_is_removed_from_the_Palette() {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
 		IBasicRelationship newElement = testdata.createNewRelationClass("New test RC");
-		IRelationClass newRc = testdata.metamodel.getRelationClassReferencing(newElement);
-		assertNotNull(newRc);
+		assertTrue(newElement.isTemplate());
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
 		assertNotNull(relationsgroup);
 		@SuppressWarnings("unchecked")
 		List<PaletteEntry> children = relationsgroup.getChildren();
-		assertTrue(haveCreatorFor(newRc, children));
+		assertTrue(haveCreatorFor(newElement, children));
 		
 		IFolder folder = (IFolder) newElement.eContainer();
 		folder.getElements().remove(newElement);
-		assertFalse(haveCreatorFor(newRc, children));
+		assertFalse(newElement.isTemplate());
+		assertFalse(haveCreatorFor(newElement, children));
 	}
 	@Test
 	public void A_defining_element_with_a_nondefining_connection_can_be_removed() {
-		IRelationClass baserc = testdata.metamodel.getBuiltinRelationClass();
+		IBasicRelationship baserc = testdata.metamodel.getBuiltinRelationClass();
 		IDiagramModel dm = testdata.getTemplateDiagramModel();
 		IBasicRelationship newRelation = testdata.createUnnamedRelation(baserc, dm);
 
@@ -268,7 +262,7 @@ public class ZentaDiagramEditorPaletteTest {
 		
 		IDiagramModelObject ccontainer = (IDiagramModelObject) reldmc.eContainer();
 		
-		assertNotSame(newRelation.getId(),newRelation.getObjectClass());
+		assertNotSame(newRelation,newRelation.getDefiningElement());
 		EList<IDiagramModelObject> kids = container.getChildren();
 		
 		EList<IDiagramModelConnection> kkids = ccontainer.getSourceConnections();
@@ -285,7 +279,7 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 
 
-		private boolean haveCreatorFor(IReferencesModelObject klass, List<PaletteEntry> children) {
+		private boolean haveCreatorFor(IBasicObject klass, List<PaletteEntry> children) {
 			return haveCreatorNamed(klass.getName(),children);
 		}
 		private boolean haveCreatorNamed(String klass, List<PaletteEntry> children) {
