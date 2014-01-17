@@ -128,7 +128,6 @@ extends EObject
 	void setDiagram(IDiagramModel value);
 
 	void removeClass(IBasicObject oc);
-	void createClassBy(IBasicObject element);
 
 	IIdentifier create(IFolder folder);
 

@@ -31,6 +31,8 @@ public interface IObjectClass extends IHelpHintProvider {
 
 	public abstract List<IBasicObject> getAncestry();
 
+	List<IAttribute> getAttributesRecursively();
+
 
 
 } // ObjectClass

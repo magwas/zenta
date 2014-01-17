@@ -15,8 +15,6 @@ import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.diagram.dialog.NewNestedRelationDialog;
 import org.rulez.magwas.zenta.editor.diagram.dialog.NewNestedRelationsDialog;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
-import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
-import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -25,6 +23,8 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
 
 

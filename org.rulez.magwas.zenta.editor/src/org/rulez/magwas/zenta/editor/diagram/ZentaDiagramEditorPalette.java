@@ -20,15 +20,18 @@ import org.rulez.magwas.zenta.editor.diagram.tools.FormatPainterToolEntry;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.tools.PanningSelectionExtendedTool;
-import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 
 public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
     
@@ -74,22 +77,27 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	          self.processNotification(notification);
 	        }
 	    };
-	    IZentaFactory.eINSTANCE.createMetamodel(folder.getZentaModel()).eAdapters().add(adapter);
+	    IZentaModel model = folder.getZentaModel();
+		IMetamodel metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+		metamodel.eAdapters().add(adapter);
+		model.eAdapters().add(adapter);
 	}
 
     protected void processNotification(Notification notification) {
     	Object notifier = notification.getNotifier();
+    	//System.out.printf("\n-----------------\nnotifier=%s\nevent=%s\nnewVal=%s\n", notifier, notification.getEventType(), notification.getNewValue());
 		if(notification.getEventType() == Notification.ADD) {
     		if(notifier instanceof ITemplate)
     			addClassToPalette((IBasicObject) notification.getNewValue());
     	}
-    	if(notification.getEventType() == Notification.SET) {
-    		if(notifier instanceof IBasicObject)
-    			if(((IBasicObject) notifier).isRelation())
-    				changeRelationClassNameInPalette((IBasicRelationship) notifier);
-    			else 
-    				changeObjectClassNameInPalette((IBasicObject) notifier);
-    	}
+		if(notifier instanceof IBasicObject) {
+			if(!((IObjectClass) notifier).isTemplate())
+				return;
+			if(((IBasicObject) notifier).isRelation())
+				changeRelationClassNameInPalette((IBasicRelationship) notifier);
+			else 
+				changeObjectClassNameInPalette((IBasicObject) notifier);
+		}
     	if(notification.getEventType() == Notification.REMOVE) {
     		if(notifier instanceof ITemplate)
     			processClassRemove((IBasicObject) notification.getOldValue());
@@ -103,54 +111,63 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 		else if(oldValue.isObject())
 			group = this.fObjectClassGroup;
 		if(group != null) {
-			@SuppressWarnings("unchecked")
-			List<CreationToolEntry> children = group.getChildren();
-			CreationToolEntry entry = findClassEntry((IBasicObject) oldValue, children);
+			CreationToolEntry entry = findClassEntry((IBasicObject) oldValue, group);
 			group.remove(entry);
 		}
 	}
 
 	private void changeRelationClassNameInPalette(IBasicRelationship changedClass) {
-		@SuppressWarnings("unchecked")
-		List<CreationToolEntry> children = this.fRelationsGroup.getChildren();
-		renameEntry(changedClass, children);
+		renameEntry(changedClass, fRelationsGroup);
 	}
 
 	private void changeObjectClassNameInPalette(IBasicObject changedClass) {
-		@SuppressWarnings("unchecked")
-		List<CreationToolEntry> children = fObjectClassGroup.getChildren();
-		renameEntry(changedClass, children);
+		renameEntry(changedClass, fObjectClassGroup);
 	}
 
 	private void renameEntry(IBasicObject changedClass,
-			List<CreationToolEntry> children) {
-		CreationToolEntry entry = findClassEntry(changedClass, children);
-		entry.setLabel(changedClass.getName());
+			PaletteContainer fObjectClassGroup2) {
+		PaletteEntry entry = findClassEntry(changedClass, fObjectClassGroup2);
+		if(null == entry)
+			entry = addClassToPalette(changedClass);
+		entry.setLabel(changedClass.getDefiningName());
 	}
 	
 	private CreationToolEntry findClassEntry(IBasicObject changedClass,
-			List<CreationToolEntry> children) {
-		for(CreationToolEntry entry : children)
-			if(entry.getId().equals(changedClass.getId()))
-				return entry;
+			PaletteContainer group) {
+		for(Object entry : group.getChildren())
+			if(((CreationToolEntry)entry).getId().equals(changedClass.getId()))
+				return (CreationToolEntry)entry;
 		return null;
 	}
 
 
-	private void addClassToPalette(IBasicObject newValue) {
-		if(newValue.isRelation())
-			addRelationClassToPalette((IBasicRelationship) newValue);
-		else if(newValue.isObject())
-			addObjectClassToPalette((IBasicObject) newValue);
+	private PaletteEntry addClassToPalette(IBasicObject newValue) {
+		PaletteContainer group = getGroupFor(newValue);
+		return addObjectClassToPalette((IBasicObject) newValue, group);
 	}
-		private void addObjectClassToPalette(IBasicObject newOc) {
-			PaletteEntry entry = createCombinedTemplateCreationEntry(newOc, null);
-			fObjectClassGroup.add(entry);
+		private PaletteContainer getGroupFor(IBasicObject newValue) {
+			PaletteContainer group;
+			if(newValue.isRelation())
+				group = fRelationsGroup;
+			else if(newValue.isObject())
+				group = fObjectClassGroup;
+			else
+				throw new IllegalArgumentException(newValue.toString());
+			return group;
 		}
-		private void addRelationClassToPalette(IBasicRelationship newRc) {
-			ConnectionCreationToolEntry entry = createConnectionCreationToolEntry(newRc, null);
-			fRelationsGroup.add(entry);
+		private PaletteEntry addObjectClassToPalette(IBasicObject newOc, PaletteContainer group) {
+			PaletteEntry entry = setEntryFor(newOc, group);
+			return entry;
 		}
+			private PaletteEntry setEntryFor(IBasicObject newOc,
+					PaletteContainer group) {
+				CreationToolEntry entry = findClassEntry(newOc,group);
+				if(null != entry)
+					return entry;
+				entry = createCombinedTemplateCreationEntry(newOc, null);
+				group.add(entry);
+				return entry;
+			}
 
 	public void setViewpoint(IViewpoint viewpoint) {
         if(fViewpoint != viewpoint) {
@@ -297,7 +314,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
     
     private CombinedTemplateCreationEntry createCombinedTemplateCreationEntry(IBasicObject klass, String description) {
         CombinedTemplateCreationEntry entry = new CombinedTemplateCreationEntry(
-                klass.getName(),
+                klass.getDefiningName(),
                 description,
                 new ZentaDiagramModelFactory(klass,folder),
                 ZentaLabelProvider.INSTANCE.getImageDescriptor(klass),
@@ -315,8 +332,8 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
                 name,
                 description,
                 new ZentaDiagramModelFactory(eClass,folder),
-                fViewpoint.getImageDescriptor(eClass),
-                fViewpoint.getImageDescriptor(eClass));
+                ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass),
+                ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass));
         
         entry.setToolProperty(AbstractTool.PROPERTY_UNLOAD_WHEN_FINISHED, true);
         entry.setId(eClass.getId());

@@ -3,13 +3,13 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model.viewpoints;
+package org.rulez.magwas.zenta.model.viewpoints;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
+import java.util.Map;
+
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -44,7 +44,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
         List<IBasicObject> allowedList = getAllowedList();
 		if(allowedList == null)
             return true;
-       	if(!allowedList.contains(type))
+       	if(!allowedList.contains(type.getDefiningElement()))
        		return false;
        	return true;
     };
@@ -75,12 +75,12 @@ public abstract class AbstractViewpoint implements IViewpoint {
 			IZentaElement sourceElement, IZentaElement targetElement) {
 		IBasicObject sc = (IBasicObject) sourceElement;
 		IBasicObject tc = (IBasicObject) targetElement;
-		return getValidRelationships(sc.getDefiningElement(),tc.getDefiningElement());
+		return getValidRelationshipsByClass(sc.getDefiningElement(),tc.getDefiningElement());
 	}
 
 	@Override
-	public List<IBasicRelationship> getValidRelationships(IBasicRelationship sc,
-			IBasicRelationship tc) {
+	public List<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sc,
+			IBasicObject tc) {
 		List<IBasicRelationship> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
 		List<IBasicRelationship> destrels = tc.getAllowedRelations().get(Direction.TARGET);
 		List<IBasicRelationship> ret = new ArrayList<IBasicRelationship>();
@@ -92,20 +92,6 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public Collection<IBasicObject> getAllowedTargets(IBasicRelationship oc) {
-        List<IBasicRelationship> allowedRelations = oc.getAllowedRelations().get(Direction.SOURCE);
-        List<IBasicObject> canConnectTo = new ArrayList<IBasicObject>();
-        for(IBasicRelationship rel : allowedRelations)
-            for(IBasicObject targetclass : metamodel.getObjectClasses()) {
-                boolean alreadyContains = canConnectTo.contains(targetclass);
-                if(!alreadyContains &&
-                   ((IBasicRelationship)targetclass).getAllowedRelations().get(Direction.TARGET).contains(rel))
-                    canConnectTo.add(targetclass);
-            }
-        return canConnectTo;
-    }
-
-    @Override
 	public List<IBasicRelationship> getRelationClasses() {
 		return metamodel.getRelationClasses();
 	}
@@ -153,11 +139,6 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public ImageDescriptor getImageDescriptor(IBasicObject eClass) {
-		return ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass);
-	}
-
-	@Override
 	public IBasicRelationship getNoteConnection() {
 		throw new UnTestedException();
 	}
@@ -182,6 +163,32 @@ public abstract class AbstractViewpoint implements IViewpoint {
 				allowedtypes.add((IBasicObject) rc);
 		}
 	    return allowedtypes;
+	}
+
+	@Override
+	public Collection<IBasicObject> getAllowedTargets(IBasicRelationship oc) {
+	    List<IBasicRelationship> allowedRelations = oc.getAllowedRelations().get(Direction.SOURCE);
+	    List<IBasicObject> canConnectTo = new ArrayList<IBasicObject>();
+	    for(IBasicRelationship rel : allowedRelations)
+	        for(IBasicObject targetclass : metamodel.getObjectClasses()) {
+	            boolean alreadyContains = canConnectTo.contains(targetclass);
+	            if(!alreadyContains &&
+	               ((IBasicRelationship)targetclass).getAllowedRelations().get(Direction.TARGET).contains(rel))
+	                canConnectTo.add(targetclass);
+	        }
+	    return canConnectTo;
+	}
+
+	@Override
+	public Collection<IBasicObject> getAllowedTargets(IBasicObject oc) {
+		List<IBasicObject> ret = new ArrayList<IBasicObject>();
+		Map<Direction, List<IBasicRelationship>> rels = oc.getAllowedRelations();
+		for(IBasicRelationship rel : rels.get(Direction.SOURCE)) {
+			for(IBasicObject target: rel.getAllowedTargets())
+				if(!ret.contains(target))
+					ret.add(target);
+		}
+		return ret;
 	}
 
 }

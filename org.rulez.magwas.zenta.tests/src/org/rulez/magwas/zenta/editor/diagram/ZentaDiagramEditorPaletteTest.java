@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -59,6 +60,7 @@ public class ZentaDiagramEditorPaletteTest {
 		
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
 		for(IBasicObject klass : testdata.metamodel.getObjectClasses()) {
+			System.out.printf("klass=%s\n", klass);
 			assertTrue(haveCreatorFor(klass, children));
 		}
 	}
@@ -95,17 +97,17 @@ public class ZentaDiagramEditorPaletteTest {
 		List<String> expectedMenu = Arrays.asList(
 				"Basic Object",
 				"Basic Object/Basic Relation",
-				"User",
-				"User/Basic Relation",
 				"Data",
 				"Data/Basic Relation",
-				"Procedure",
-				"Procedure/Basic Relation",
-				"Procedure/TriesToDo",
 				"ProcessStep",
 				"ProcessStep/Basic Relation",
 				"NotActuallyDocumentation",
 				"NotActuallyDocumentation/Basic Relation",
+				"Procedure",
+				"Procedure/Basic Relation",
+				"Procedure/TriesToDo",
+				"User",
+				"User/Basic Relation",
 				"Title",
 				"Title/Basic Relation"
 				);
@@ -114,7 +116,7 @@ public class ZentaDiagramEditorPaletteTest {
 		tool._setRequest(req);
 		tool._setSkipModalMenu();
 		tool.handleCreateConnection();
-		assertEquals(expectedMenu,tool._getMenuItems());
+		assertEquals(expectedMenu.toString(),tool._getMenuItems().toString());
 	}
 
 	@Test
@@ -158,7 +160,7 @@ public class ZentaDiagramEditorPaletteTest {
 		tool._setRequest(req);
 		tool._setSkipModalMenu();
 		tool.handleCreateConnection();
-		assertEquals(expectedMenu,tool._getMenuItems());
+		assertEquals(new HashSet<String>(expectedMenu),new HashSet<String>(tool._getMenuItems()));
 	}
 
 	@Test
@@ -175,6 +177,11 @@ public class ZentaDiagramEditorPaletteTest {
 	public void If_a_new_ObjectClass_is_created_it_is_shown_on_the_ViewPoint() {
 		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
 
+		PaletteContainer objectsgroup0 = palette._getObjectsGroup();
+		assertNotNull(objectsgroup0);
+		@SuppressWarnings("unchecked")
+		List<PaletteEntry> children0 = objectsgroup0.getChildren();
+
 		String elementName = "New test OC";
 		IBasicObject newElement = testdata.createNewObjectClass(elementName);
 		
@@ -182,7 +189,6 @@ public class ZentaDiagramEditorPaletteTest {
 		assertNotNull(objectsgroup);
 		@SuppressWarnings("unchecked")
 		List<PaletteEntry> children = objectsgroup.getChildren();
-		
 		assertTrue(haveCreatorFor(newElement, children));
 	}
 	
@@ -252,6 +258,8 @@ public class ZentaDiagramEditorPaletteTest {
 		IBasicRelationship baserc = testdata.metamodel.getBuiltinRelationClass();
 		IDiagramModel dm = testdata.getTemplateDiagramModel();
 		IBasicRelationship newRelation = testdata.createUnnamedRelation(baserc, dm);
+		System.out.printf("relation = %s\n props=%s\n", newRelation, newRelation.getProperties());
+		assertFalse(newRelation.isTemplate());
 
 		IZentaElement destElem = newRelation.getTarget();
 		
@@ -262,7 +270,7 @@ public class ZentaDiagramEditorPaletteTest {
 		
 		IDiagramModelObject ccontainer = (IDiagramModelObject) reldmc.eContainer();
 		
-		assertNotSame(newRelation,newRelation.getDefiningElement());
+		assertFalse(newRelation.isTemplate());
 		EList<IDiagramModelObject> kids = container.getChildren();
 		
 		EList<IDiagramModelConnection> kkids = ccontainer.getSourceConnections();
@@ -280,7 +288,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 
 		private boolean haveCreatorFor(IBasicObject klass, List<PaletteEntry> children) {
-			return haveCreatorNamed(klass.getName(),children);
+			return haveCreatorNamed(klass.getDefiningName(),children);
 		}
 		private boolean haveCreatorNamed(String klass, List<PaletteEntry> children) {
 			for ( PaletteEntry kid : children) {

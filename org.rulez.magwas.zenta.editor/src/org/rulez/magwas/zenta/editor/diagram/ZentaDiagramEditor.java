@@ -32,8 +32,6 @@ import org.rulez.magwas.zenta.editor.diagram.dnd.ZentaDiagramTransferDropTargetL
 import org.rulez.magwas.zenta.editor.diagram.editparts.ZentaDiagramEditPartFactory;
 import org.rulez.magwas.zenta.editor.diagram.util.ExtendedViewportAutoexposeHelper;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
-import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
-import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.ConnectionPreferences;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
@@ -43,6 +41,8 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
 
 

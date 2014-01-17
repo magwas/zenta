@@ -18,12 +18,12 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
-import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
+import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
 
 

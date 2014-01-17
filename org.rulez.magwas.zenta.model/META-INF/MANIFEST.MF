@@ -7,7 +7,8 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.rulez.magwas.zenta.model,
  org.rulez.magwas.zenta.model.impl,
- org.rulez.magwas.zenta.model.util
+ org.rulez.magwas.zenta.model.util,
+ org.rulez.magwas.zenta.model.viewpoints
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  uk.ac.bolton.jdom,

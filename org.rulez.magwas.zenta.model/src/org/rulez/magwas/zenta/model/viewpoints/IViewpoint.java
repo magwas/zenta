@@ -3,12 +3,11 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model.viewpoints;
+package org.rulez.magwas.zenta.model.viewpoints;
 
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -46,7 +45,7 @@ public interface IViewpoint {
 	boolean isValidRelationshipStart(IBasicObject iZentaElement,
 			IBasicRelationship relationshipType);
 
-	List<IBasicRelationship> getValidRelationships(IBasicRelationship sourceObjectType, IBasicRelationship targetObjectType);
+	List<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sourceObjectType, IBasicObject targetObjectType);
     
 	List<IBasicRelationship> getValidRelationships(IZentaElement sourceElement,
 			IZentaElement targetElement);
@@ -54,13 +53,13 @@ public interface IViewpoint {
 	List<IBasicRelationship> getSourceRelationClassesFor(
 			IDiagramModelZentaObject sourceDiagramModelObject);
 
+	List<IBasicRelationship> getSourceRelationClassesFor(IBasicObject startElement);
+
 	List<IBasicRelationship> getRelationClasses();
 	List<IBasicObject> getObjectClasses();
 	List<IBasicObject> getConnectorClasses();
 
 	IIdentifier create(IBasicObject eClass);
-
-	ImageDescriptor getImageDescriptor(IBasicObject eClass);
 
 	IBasicRelationship getNoteConnection();
 
@@ -71,8 +70,6 @@ public interface IViewpoint {
 
 	boolean isValidRelationship(IBasicObject sourceclass,
 			IBasicObject targetclass, IBasicRelationship relationclass);
-
-	List<IBasicRelationship> getSourceRelationClassesFor(IBasicObject startElement);
 
 	List<IBasicRelationship> getTargetRelationClassesFor(
 			IBasicObject targetclass);

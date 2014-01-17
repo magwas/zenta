@@ -106,7 +106,25 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 	@Override
 	public void setAsTemplate(ITemplate template) {
 		ObjectClassMixin.setAsTemplate(this, template);
+		setupEndAttributesForrelation();
+
 	}
+		private void setupEndAttributesForrelation() {
+			IBasicObject source = (IBasicObject) getSource();
+			IBasicObject dest = (IBasicObject) getTarget();
+			assert(source != null);
+			assert(dest != null);
+			setupAttribute(source, dest, Direction.SOURCE);
+			setupAttribute(dest, source, Direction.TARGET);
+		}
+			private void setupAttribute(IBasicObject obj1,
+					IBasicObject obj2, Direction dir) {
+				IAttribute att = IZentaFactory.eINSTANCE.createAttribute();
+				att.setDirection(dir);
+				att.setConnectedObject(obj2);
+				att.setRelation(this);
+				obj1.getAttributes().add(att);
+			}
 
 	@Override
 	public String getHelpHintTitle() {
@@ -127,6 +145,11 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 	public String getDefiningName() {
 		return ObjectClassMixin.getDefiningName(this);
 	}
+	
+	@Override
+	public List<IAttribute> getAttributesRecursively() {
+		return ObjectClassMixin.getAttributesRecursively(this);
+	}
 
 	@Override
 	public boolean isAllowedRelation(IBasicRelationship relclass,
@@ -137,6 +160,17 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 	@Override
 	public Map<Direction, List<IBasicRelationship>> getAllowedRelations() {
 		throw new RuntimeException("We are not that abstract yet");
+	}
+
+	@Override
+	public List<IBasicObject> getAllowedTargets() {
+		List<IBasicObject> ret = new ArrayList<IBasicObject>();
+		ret.add((IBasicObject) getTarget());
+		for(IBasicObject kid : this.getChildren())
+			for(IBasicObject target: ((IBasicRelationship)kid).getAllowedTargets())
+				if(!ret.contains(target))
+					ret.add(target);
+		return ret;
 	}
 
 }

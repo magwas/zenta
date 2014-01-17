@@ -36,8 +36,6 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractBaseEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.IZentaEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.GroupEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IContainerFigure;
-import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
-import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
@@ -51,6 +49,8 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
+import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
 
 
@@ -196,7 +196,6 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	private boolean createElementAndConnection(IDiagramModelZentaObject sourceDiagramModelObject, Point location) {
 		// Grab this now as it will disappear after menu is shown
 		EditPartViewer viewer = getCurrentViewer();
-		
 		// Default parent
 		IDiagramModelContainer parent = sourceDiagramModelObject.getDiagramModel();
 		
@@ -378,7 +377,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 
 	private MenuItem addElementAction(Menu menu, final IBasicObject type) {
 		final MenuItem item = new MenuItem(menu, SWT.CASCADE);
-		item.setText(type.getName());
+		item.setText(type.getDefiningName());
 		item.setImage(ZentaLabelProvider.INSTANCE.getImage(type));
 		
 		// Add hover listener to notify Hints View and also set element if elements first
@@ -410,7 +409,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	
 	private MenuItem addConnectionAction(Menu menu, final IBasicRelationship relationshipType) {
 		final MenuItem item = new MenuItem(menu, SWT.CASCADE);
-		item.setText(relationshipType.getName());
+		item.setText(relationshipType.getDefiningName());
 		item.setImage(ZentaLabelProvider.INSTANCE.getImage(relationshipType));
 		// Add hover listener to notify Hints View
 		item.addArmListener(new ArmListener() {

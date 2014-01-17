@@ -185,7 +185,8 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		if(null == template)
 			return;
 		IBasicRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
-		element.setTemplate(template);
+		if(!"".equals(element.getDefiningName()))
+			element.setTemplate(template);
 	}
 
 	public void processElementNameChange(IBasicObject element, String oldName, String newName) {
@@ -213,25 +214,8 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		template = getTemplateFor(dmo);
 		if(null == template)
 			return;
-		template.createClassBy(element);
+		element.setAsTemplate(template);
 		element.setPropsFromDiagramObject(dmo);
-		if(element.isRelation())
-			setupEndAttributesForrelation((IBasicRelationship) element);
-	}
-
-	private void setupEndAttributesForrelation(IBasicRelationship element) {
-		IBasicObject source = (IBasicObject) element.getSource();
-		IBasicObject dest = (IBasicObject) element.getTarget();
-		setupAttribute(element, source, dest);
-		setupAttribute(element, dest, source);
-	}
-
-	public void setupAttribute(IBasicRelationship relation, IBasicObject obj1,
-			IBasicObject obj2) {
-		IAttribute att = IZentaFactory.eINSTANCE.createAttribute();
-		att.setConnectedObject(obj2);
-		att.setRelation(relation);
-		obj1.getAttributes().add(att);
 	}
 
 	private IDiagramModelComponent getDefiningModelObjectFor(IBasicObject element) {

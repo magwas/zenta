@@ -100,7 +100,7 @@ public class BasicConnectionEditPartTest {
 		IBasicRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
 		rel.setName("Displayable Relation Name");
 		assertNotNull(rel);
-		assertNotSame(rel,rel.getDefiningElement());
+		assertFalse(rel.isTemplate());
 		testdata.focusOnDiagram("63f1b081");
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
 		assertNotNull(editPart);
@@ -116,7 +116,7 @@ public class BasicConnectionEditPartTest {
 		IZentaDiagramModel dm = testdata.getTemplateDiagramModel();
 		IBasicRelationship rel = testdata.createNewConnection("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",baseRelationClass,dm);
 		assertNotNull(rel);
-		assertNotSame(rel,rel.getDefiningElement());
+		assertTrue(rel.isTemplate());
 		testdata.focusOnDiagram(dm.getId());
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
 		assertNotNull(editPart);

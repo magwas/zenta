@@ -1,5 +1,6 @@
 package org.rulez.magwas.zenta.model.testutils;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -126,6 +127,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		diagram.getChildren().add(dmo);
 		diagram.getChildren().add(dmo2);
 		dmo.addConnection(diagramRelation);
+		assertFalse(rel.isTemplate());
 		return rel;
 	}
 

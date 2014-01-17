@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -36,18 +37,20 @@ public class ObjectClass extends BasicObjectBase implements IObjectClass {
 
 	@Override
 	public Map<Direction,List<IBasicRelationship>> getAllowedRelations() {
-
 		Map<Direction,List<IBasicRelationship>> ret = new HashMap<Direction,List<IBasicRelationship>>();
 		ret.put(Direction.SOURCE, new ArrayList<IBasicRelationship>());
 		ret.put(Direction.TARGET, new ArrayList<IBasicRelationship>());
 		ret.get(Direction.SOURCE).add(this.getMetamodel().getBuiltinRelationClass());
 		ret.get(Direction.TARGET).add(this.getMetamodel().getBuiltinRelationClass());
-		for(IAttribute att : getAttributes()) {
-			addParents(ret.get(((IAttribute) att).getDirection()),(IBasicRelationship) att.getRelation());
+		for(IAttribute att : getAttributesRecursively()) {
+			addParents(ret.get(att.getDirection()),(IBasicRelationship) att.getRelation());
 		}
 		return ret;
 	}
+	
 	private void addParents(List<IBasicRelationship> list, IBasicRelationship relation) {
+		assert(relation != null);
+		assert(list != null);
 		if(!list.contains(relation))
 			list.add(relation);
 		IBasicRelationship ancestor = (IBasicRelationship) relation.getAncestor();
@@ -117,6 +120,11 @@ public class ObjectClass extends BasicObjectBase implements IObjectClass {
 	@Override
 	public String getDefiningName() {
 		return ObjectClassMixin.getDefiningName(this);
+	}
+
+	@Override
+	public List<IAttribute> getAttributesRecursively() {
+		return ObjectClassMixin.getAttributesRecursively(this);
 	}
 
 }

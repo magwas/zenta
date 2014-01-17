@@ -16,13 +16,9 @@ public class BuiltinTemplate extends Template {
 		setPath("builtin");
 		setMetamodel(metamodel);
 		rootObjectClass = new RootObjectClass(this);
-		getClasses().add(getRootObjectClass());
-		rootRelationClass = new RootRelationClass(this);
-		getClasses().add(getRootRelationClass());
+		rootRelationClass = new RootRelationClass(this,rootObjectClass);
 		IZentaModel model = metamodel.getModel();
-		System.out.printf("model = %s\n", model);
 		IFolder folder = model.getDefaultFolderForElement(rootObjectClass);
-		//folder.getElements().add(this);
 		folder.getElements().add(rootObjectClass);
 		folder.getElements().add(rootRelationClass);
 	}

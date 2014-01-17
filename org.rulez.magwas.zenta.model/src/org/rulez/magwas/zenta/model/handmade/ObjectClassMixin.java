@@ -2,6 +2,9 @@ package org.rulez.magwas.zenta.model.handmade;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.eclipse.emf.common.util.EList;
+import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IProperties;
@@ -68,5 +71,12 @@ public abstract class ObjectClassMixin {
                                             return prop;
                     return null;
             }
+
+	public static List<IAttribute> getAttributesRecursively(IBasicObject self) {
+		EList<IAttribute> atts = self.getAttributes();
+		 IBasicObject ancie = self.getAncestor();
+		atts.addAll(ancie.getAttributesRecursively());
+		return atts;
+	}
 
 }

@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +52,6 @@ public class TemplateTest {
 	
 	@Test
 	public void There_is_a_default_template_named_Builtins() {
-		System.out.printf("fixture = %s\n", fixture);
 		assertEquals("Builtins",fixture.getName());
 	}
 	
@@ -88,16 +86,12 @@ public class TemplateTest {
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_embedded_elements_of_the_diagram() {
 		IBasicObject classTemplate = (IBasicObject) ZentaModelUtils.getObjectByID(model, "c3d03626");
-		System.out.printf("model=%s\ntemplate=%s\nobj=%s\nct=%s\n", model,template,classTemplate,classTemplate.getTemplate());
-		//System.out.printf("hh %s\n",classTemplate.getTemplate().getDiagram());
 		assertTrue(template == ((IBasicObject) classTemplate).getTemplate());
 	}
 	
 	@Test
 	public void The_template_contains_the_relationclasses_for_the_diagram() {
 		IBasicRelationship classTemplate = (IBasicRelationship) ZentaModelUtils.getObjectByID(model, "a972e26e");
-		System.out.printf("model=%s\ntemplate=%s\nobj=%s\nct=%s\n", model,template,classTemplate,classTemplate.getTemplate());
-		//System.out.printf("hh %s\n",classTemplate.getTemplate().getDiagram());
 		assertTrue(template == classTemplate.getTemplate());
 	}
 	

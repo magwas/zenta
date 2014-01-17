@@ -13,10 +13,10 @@ import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 
 
 

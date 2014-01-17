@@ -165,7 +165,7 @@ implements IDiagramModelObjectFigure {
             if(!StringUtils.isSet(text)) { // Name was blank
                 toolTipFigure.setText(name);
             }
-            String typeName = element.getName();
+            String typeName = element.getAncestor().getDefiningName();
             toolTipFigure.setType(Messages.AbstractDiagramModelObjectFigure_0 + " " + typeName); //$NON-NLS-1$
         }
 

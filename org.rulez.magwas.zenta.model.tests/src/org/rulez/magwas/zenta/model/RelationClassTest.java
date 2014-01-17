@@ -51,7 +51,7 @@ public class RelationClassTest {
 	@Test
 	public void testGetChildren() {
 		EList<IBasicObject> kids = fixture.getChildren();
-		assertEquals(4,kids.size());
+		assertEquals(6,kids.size());
 	}
 
 	@Test

@@ -17,7 +17,6 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
-import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.impl.TemplateBase;
 
 public class Template extends TemplateBase implements ITemplate {
@@ -43,12 +42,18 @@ public class Template extends TemplateBase implements ITemplate {
 		}
 			private void extractDiagramElement(IDiagramModelZentaObject kid) {
 				IBasicObject zentaElement = (IBasicObject) kid.getZentaElement();
+				setObjectAncestorIfEmpty(zentaElement);
 				if(! "".equals(zentaElement.getDefiningName()))
 					zentaElement.setAsTemplate(this);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
 				for (IDiagramModelObject aKid : myKids)
 					extractDiagramElement((IDiagramModelZentaObject) aKid);
 			}
+			private void setObjectAncestorIfEmpty(IBasicObject zentaElement) {
+				if(null == zentaElement.getAncestor())
+					zentaElement.setAncestor(this.getMetamodel().getBuiltinObjectClass());
+			}
+
 		private void extractRelationClasses(IDiagramModel diagram) {
 			EList<IDiagramModelObject> kids = diagram.getChildren();
 			for (IDiagramModelObject kid : kids)
@@ -72,19 +77,19 @@ public class Template extends TemplateBase implements ITemplate {
 							return;
 						IDiagramModelZentaConnection dmc = (IDiagramModelZentaConnection)conn;
 						IBasicRelationship relationship = (IBasicRelationship) dmc.getRelationship();
+						setRelationAncestorIfEmpty(relationship);
 						if("".equals(relationship.getDefiningName()))
 							return;
 						relationship.setAsTemplate(this);
 					}
+						private void setRelationAncestorIfEmpty(IBasicRelationship zentaElement) {
+							if(null == zentaElement.getAncestor())
+								zentaElement.setAncestor(this.getMetamodel().getBuiltinRelationClass());
+						}
 	
 	@Override
 	public IIdentifier create(IFolder folder) {
 		return IZentaFactory.eINSTANCE.createZentaDiagramModel();
-	}
-
-	@Override
-	public void createClassBy(IBasicObject element) {
-		classes.add(element);
 	}
 
 	@Override

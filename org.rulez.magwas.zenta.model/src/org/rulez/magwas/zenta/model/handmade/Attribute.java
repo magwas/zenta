@@ -26,5 +26,9 @@ public class Attribute extends AttributeBase implements IAttribute {
 	public Direction getDirection() {
 		return direction;
 	}
+	@Override
+	public void setDirection(Direction dir) {
+		direction = dir;
+	}
 
 } //AttributeImpl

@@ -3,14 +3,12 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model.viewpoints;
+package org.rulez.magwas.zenta.model.viewpoints;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -30,16 +28,7 @@ public class ViewpointsManager {
     
     public static ViewpointsManager INSTANCE = new ViewpointsManager();
     private static Map<IDiagramModel,IViewpoint> registry = new HashMap<IDiagramModel,IViewpoint>();
-    
-    /**
-     * @param viewPoint
-     * @return an ImageDesciptor for a Viewpoint
-     */
-    public ImageDescriptor getImageDescriptor(IViewpoint viewPoint) {
         
-        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_VIEWPOINTS_16);
-    }
-    
     private ViewpointsManager() {
     }
     

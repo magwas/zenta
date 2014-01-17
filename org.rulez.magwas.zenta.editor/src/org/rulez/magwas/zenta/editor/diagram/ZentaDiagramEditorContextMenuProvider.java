@@ -14,8 +14,8 @@ import org.eclipse.jface.action.Separator;
 import org.rulez.magwas.zenta.editor.diagram.actions.CreateDerivedRelationAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.DeleteFromModelAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.ShowStructuralChainsAction;
-import org.rulez.magwas.zenta.editor.model.viewpoints.IViewpoint;
-import org.rulez.magwas.zenta.editor.model.viewpoints.ViewpointsManager;
+import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
 
 /**

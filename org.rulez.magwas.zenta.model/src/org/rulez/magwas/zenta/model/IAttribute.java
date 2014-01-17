@@ -135,6 +135,7 @@ public interface IAttribute extends EObject {
 	}
 
 	Direction getDirection();
+	void setDirection(Direction dir);
 
 
 } // AttributeBase

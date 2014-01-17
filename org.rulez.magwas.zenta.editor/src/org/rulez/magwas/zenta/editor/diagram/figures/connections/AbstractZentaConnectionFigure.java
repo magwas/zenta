@@ -57,7 +57,7 @@ extends AbstractDiagramConnectionFigure implements IZentaConnectionFigure {
         String text = ZentaLabelProvider.INSTANCE.getLabel(relation);
         toolTipFigure.setText(text);
 
-        String className = relation.getDefiningName();
+        String className = relation.getAncestor().getDefiningName();
         toolTipFigure.setType(Messages.AbstractZentaConnectionFigure_0 + " " + className); //$NON-NLS-1$
 
         String rubric = ZentaLabelProvider.INSTANCE.getRelationshipSentence(relation);
