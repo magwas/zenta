@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.tools;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -49,7 +48,6 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
-import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
@@ -121,7 +119,6 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		// User clicked on Zenta target edit part
 		if(targetEditPart.getModel() instanceof IDiagramModelZentaObject) {
 			IDiagramModelZentaObject mo = (IDiagramModelZentaObject) targetEditPart.getModel();
-			viewPoint = ViewpointsManager.INSTANCE.getViewpoint(mo);
 			return createConnection(request, sourceDiagramModelObject, mo);
 		}
 		

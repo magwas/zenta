@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.editor.diagram;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.IEditorPart;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;

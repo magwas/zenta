@@ -237,7 +237,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 			PaletteEntry noteEntry = new CombinedTemplateCreationEntry(
 	                Messages.ZentaDiagramEditorPalette_2,
 	                Messages.ZentaDiagramEditorPalette_3,
-	                new ZentaDiagramModelFactoryNonClassed(IZentaPackage.eINSTANCE.getDiagramModelNote(),folder),
+	                new ZentaDiagramModelFactoryNonClassed(IZentaPackage.eINSTANCE.getDiagramModelNote()),
 	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16),
 	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16));
 	        group.add(noteEntry);
@@ -246,7 +246,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 			PaletteEntry groupEntry = new CombinedTemplateCreationEntry(
 	                Messages.ZentaDiagramEditorPalette_4,
 	                Messages.ZentaDiagramEditorPalette_5,
-	                new ZentaDiagramModelFactoryNonClassed(IZentaPackage.eINSTANCE.getDiagramModelGroup(),folder),
+	                new ZentaDiagramModelFactoryNonClassed(IZentaPackage.eINSTANCE.getDiagramModelGroup()),
 	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16),
 	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16));
 	        group.add(groupEntry);
@@ -344,7 +344,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         ConnectionCreationToolEntry entry = new ConnectionCreationToolEntry(
                 name,
                 description,
-                new ZentaDiagramModelFactoryNonClassed(eClass,folder),
+                new ZentaDiagramModelFactoryNonClassed(eClass),
                 ZentaLabelProvider.INSTANCE.getImageDescriptorNonTemplate(eClass),
                 ZentaLabelProvider.INSTANCE.getImageDescriptorNonTemplate(eClass));
         
