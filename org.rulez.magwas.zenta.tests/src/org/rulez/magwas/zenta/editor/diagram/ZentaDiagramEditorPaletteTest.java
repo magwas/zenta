@@ -164,7 +164,7 @@ public class ZentaDiagramEditorPaletteTest {
 				"User/Basic Relation",
 				"Title",
 				"Title/Basic Relation"
-				);
+				));
 
 		assertEquals(expectedMenu,tool.getMenu());
 		IEditorModelManager.INSTANCE.saveModel(data.model);
@@ -172,7 +172,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 	@Test
 	public void Magic_Connector_magically_knows_what_to_connect_on_non_template_as_well() throws IOException {
-		IZentaElement procedure = (IZentaElement) testdata.getById("f33bd0d2");
+		IBasicObject procedure = (IBasicObject) testdata.getById("f33bd0d2");
 		IFolder folder = ModelAndMetaModelTestData.getFolderByKid(procedure);
 		IZentaElement element = (IZentaElement) procedure.create(folder);
 		element.setName("testmcmkwtcontaw");

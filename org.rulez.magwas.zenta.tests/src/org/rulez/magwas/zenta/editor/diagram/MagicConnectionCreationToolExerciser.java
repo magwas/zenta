@@ -10,6 +10,8 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IRelationClass;
@@ -103,9 +105,9 @@ public class MagicConnectionCreationToolExerciser extends
 
 					private void addToFactory(Object data) {
 						if(data instanceof IRelationClass)
-							getFactory().setRelationshipType((IRelationClass) data);
+							getFactory().setRelationshipType((IBasicRelationship) data);
 						else if(data instanceof IObjectClass)
-							getFactory().setElementType((IObjectClass) data);
+							getFactory().setElementType((IBasicObject) data);
 					}
 	public Object getMenu() {
 		return savedMenu;
