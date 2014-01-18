@@ -1,11 +1,9 @@
 package org.rulez.magwas.zenta.model.handmade;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
 

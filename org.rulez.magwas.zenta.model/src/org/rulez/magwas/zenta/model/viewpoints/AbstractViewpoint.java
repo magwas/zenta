@@ -62,12 +62,10 @@ public abstract class AbstractViewpoint implements IViewpoint {
 		return getSourceRelationClassesFor(sourceElement).contains(relationshipType);
 	}
 
-
-
 	@Override
 	public boolean isValidRelationship(IBasicObject sourceElement,
-			IBasicObject targetElement, IBasicRelationship eClass) {
-		return isValidRelationship(sourceElement,targetElement,eClass);
+			IBasicObject targetElement, IBasicRelationship relation) {
+		return (getValidRelationships(sourceElement,targetElement).contains(relation));
 	}
 
 	@Override

@@ -28,5 +28,4 @@ public class ZentaResourceBase extends XMLResourceImpl {
 	public ZentaResourceBase(URI uri) {
 		super(uri);
 	}
-
 } //ZentaResource

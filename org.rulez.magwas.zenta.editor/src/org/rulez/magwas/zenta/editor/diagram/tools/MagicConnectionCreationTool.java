@@ -49,6 +49,7 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
@@ -88,6 +89,9 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 
 
 	private ArrayList<String> menuitems;
+
+
+	private IBasicRelationship rel;
 	
 	public MagicConnectionCreationTool() {
 	   setDefaultCursor(cursor);
@@ -147,7 +151,9 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	@Override
 	protected void setCurrentCommand(Command c) {
 		// Guard against Mac threading issue
+		System.out.printf("setCurrentCommand %s\n", c);
 		if(fCanSetCurrentCommand) {
+			System.out.printf("really\n");
 			super.setCurrentCommand(c);
 		}
 	}
@@ -272,7 +278,10 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	}
 		private void runMenu(Menu menu) {
 			if (skipModalMenu == true) {
-				activateFirstMenuItem(menu);
+				System.out.printf("relationshiptype = %s\n", rel);
+				getFactory().setRelationshipType(rel);
+				//menu.setVisible(true);
+				//activateFirstMenuItem(menu);
 				return;
 			}
 			Display display = menu.getDisplay();
@@ -286,10 +295,11 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 				menuitems =new ArrayList<String>();
 				dumpMenuItems(menu,"");
 				MenuItem menuitem = menu.getItem(0);
+				System.out.printf("menuitem=%s\n", menuitem);
 				menuitem.setSelection(true);
 				Event event = new Event();
 				event.button=1;
-				menu.notifyListeners(SWT.SELECTED, event);
+				menuitem.notifyListeners(SWT.Selection, event);
 			}
 
 			private void dumpMenuItems(Menu menu, String start) {
@@ -411,6 +421,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		final MenuItem item = new MenuItem(menu, SWT.CASCADE);
 		item.setText(relationshipType.getDefiningName());
 		item.setImage(ZentaLabelProvider.INSTANCE.getImage(relationshipType));
+		rel = relationshipType;
 		// Add hover listener to notify Hints View
 		item.addArmListener(new ArmListener() {
 			@Override
@@ -425,6 +436,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		item.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				System.out.printf("set relationship %s\n", relationshipType);
 				getFactory().setRelationshipType(relationshipType);
 			}
 		});
@@ -586,8 +598,11 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		}
 	}
 
-	public void _setRequest(CreateConnectionRequest req) {
-		this.setTargetRequest(req);		
+	public void _setTargetRequest(CreateConnectionRequest req) {
+		setTargetRequest(req);		
+	}
+	public void _setTargetEditPart(EditPart editpart) {
+		setTargetEditPart(editpart);
 	}
 	public ArrayList<String> _getMenuItems(){
 		return menuitems;

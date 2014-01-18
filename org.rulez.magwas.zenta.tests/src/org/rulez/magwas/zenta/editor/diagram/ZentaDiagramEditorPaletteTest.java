@@ -4,15 +4,20 @@ package org.rulez.magwas.zenta.editor.diagram;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.requests.CreateConnectionRequest;
+import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gef.tools.TargetingTool;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
 import org.junit.After;
@@ -34,9 +39,14 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase;
 import org.rulez.magwas.zenta.model.impl.ZentaElementBase;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
+import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
+import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.ModelAndEditPartTestData;
+import org.rulez.magwas.zenta.tests.UITestWindow;
 
 public class ZentaDiagramEditorPaletteTest {
 
@@ -66,22 +76,116 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 	
 	@Test
-	public void Magic_Connector_magically_connects_two_diagram_objects() {
+	public void The_palette_contains_controls() {
+		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		PaletteContainer objectsgroup = palette._getControlsGroup();
+		assertNotNull(objectsgroup);
+		@SuppressWarnings("unchecked")
+		List<PaletteEntry> children = objectsgroup.getChildren();
+		List<String> expectedMenu = Arrays.asList(
+				"Palette Entry (Select)",
+				"Palette Container (Marquee Selection Tools)",
+				"Palette Entry (Format Painter (empty))"
+				);
+		assertEquals(expectedMenu.toString(),children.toString());
+	}
+	@Test
+	public void The_palette_contains_extras_group_with_two_entries_if_no_viewpoint_is_set() {
+		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		palette.setViewpoint(null);
+		assertNull(palette._getViewPoint());
+		PaletteContainer objectsgroup = palette._getExtrasGroup();
+		assertNotNull(objectsgroup);
+		@SuppressWarnings("unchecked")
+		List<PaletteEntry> children = objectsgroup.getChildren();
+		List<String> expectedMenu = Arrays.asList(
+				"Palette Entry (Note)",
+				"Palette Entry (Group)"
+				);
+		assertEquals(expectedMenu.toString(),children.toString());
+	}
+	@Test
+	public void The_palette_contains_extras_group_with_three_entries_if_viewpoint_is_set() {
+		assertNotNull(testdata.model);
+		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(testdata.getTemplateDiagramModel());
+		assertNotNull(vp);
+		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		palette.setViewpoint(vp);
+		PaletteContainer objectsgroup = palette._getExtrasGroup();
+		assertNotNull(objectsgroup);
+		@SuppressWarnings("unchecked")
+		List<PaletteEntry> children = objectsgroup.getChildren();
+		System.out.printf("child=%s\n", children);
+		List<String> expectedMenu = Arrays.asList(
+				"Palette Entry (Note)",
+				"Palette Entry (Group)",
+				"Palette Entry (Connection)"
+				);
+		assertEquals(expectedMenu.toString(),children.toString());		
+	}
+	
+	@HaveGUI(waitUser = false)
+	@Test
+	public void Magic_Connector_magically_connects_two_diagram_objects() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		UITestWindow win = new UITestWindow();
 		ModelAndEditPartTestData data = new ModelAndEditPartTestData();
+		IBasicRelationship relationshipType = data.metamodel.getBuiltinRelationClass();
+		IBasicObject elementType = data.metamodel.getBuiltinObjectClass();
 		IFolder folder = ModelAndEditPartTestData.getFolderByKid(data.getTemplateDiagramModel());
+		BasicObjectEditPart spart = (BasicObjectEditPart) data.getEditPartFor("b2608459");
+		BasicObjectEditPart tpart = (BasicObjectEditPart) data.getEditPartFor("88f40127");
+		IDiagramModelZentaObject selement = spart.getModel();
+		IDiagramModelZentaObject delement = tpart.getModel();
+		assertEquals(1,selement.getSourceConnections().size());
+		DiagramModelZentaConnectionBase conn = (DiagramModelZentaConnectionBase) selement.getSourceConnections().get(0);
+		System.out.printf("conn = %s\n", conn.getRelationship());
+		
 		MagicConnectionModelFactory factory = new MagicConnectionModelFactory(folder);
+		factory.setRelationshipType(relationshipType);
+		factory.setElementType(elementType);
+		System.out.printf("factory=%s\n", factory);
+		
+		CreateConnectionRequest treq = new CreateConnectionRequest();
+		treq.setSourceEditPart(spart);
+		treq.setTargetEditPart(tpart);
+		treq.setFactory(factory);
+		treq.setType(RequestConstants.REQ_CONNECTION_END);
+		
 		tool = new MagicConnectionCreationTool();
 		tool.setFactory(factory);
 		tool.setViewer(data.editor.getGraphicalViewer());
-		CreateConnectionRequest req = new CreateConnectionRequest();
-		EditPart spart = data.getEditPartFor("b2608459");
-		EditPart tpart = data.getEditPartFor("88f40127");
-		req.setSourceEditPart(spart);
-		req.setTargetEditPart(tpart);
-		tool._setRequest(req);
+		tool._setTargetRequest(treq);
+		tool._setTargetEditPart(tpart);
 		tool._setSkipModalMenu();
+		Object toolot = ((MagicConnectionModelFactory)reflectedCall(tool, "getFactory")).getObjectType();
+		Object treqot = ((MagicConnectionModelFactory)reflectedCallClassed(treq,CreateRequest.class , "getFactory")).getObjectType();
+		Object targetcommand = reflectedCallClassed(tool, TargetingTool.class, "getCommand");
+		System.out.printf("toolot = %s\n treqot=%s\n targetcommand=%s\n treq=%s\n", toolot, treqot, targetcommand, treq);
 		tool.handleCreateConnection();
-		assertEquals(Arrays.asList("Basic Relation", "TriesToDo"),tool._getMenuItems());
+		
+		//assertEquals(Arrays.asList("Basic Relation", "TriesToDo"),tool._getMenuItems());
+		System.out.printf("s = %s\n d=%s\n", selement.getZentaElement(), delement.getZentaElement());
+		DiagramModelZentaConnectionBase conn2 = (DiagramModelZentaConnectionBase) selement.getSourceConnections().get(0);
+		System.out.printf("conn = %s\n", conn2.getRelationship());
+		assertEquals(2,selement.getSourceConnections().size());
+		win.showWindow();
+	}
+
+	private Object reflectedCallClassed (Object object, Class<? extends Object> methodKlass,
+			String methodname) throws NoSuchMethodException,
+			IllegalAccessException, InvocationTargetException {
+		Method method = methodKlass.getDeclaredMethod(methodname);
+		method.setAccessible(true);
+		return method.invoke(methodKlass.cast(object));
+	}
+
+	private Object reflectedCall(Object object,
+			String methodname) throws NoSuchMethodException,
+			IllegalAccessException, InvocationTargetException {
+		Class<? extends Object> klass = object.getClass();
+		Method method = klass.getDeclaredMethod(methodname);
+		method.setAccessible(true);
+		return method.invoke(object);
 	}
 	
 	@Test
@@ -113,7 +217,7 @@ public class ZentaDiagramEditorPaletteTest {
 				);
 
 		req.setSourceEditPart(spart);
-		tool._setRequest(req);
+		tool._setTargetRequest(req);
 		tool._setSkipModalMenu();
 		tool.handleCreateConnection();
 		assertEquals(expectedMenu.toString(),tool._getMenuItems().toString());
@@ -157,7 +261,7 @@ public class ZentaDiagramEditorPaletteTest {
 				);
 
 		req.setSourceEditPart(editPart);
-		tool._setRequest(req);
+		tool._setTargetRequest(req);
 		tool._setSkipModalMenu();
 		tool.handleCreateConnection();
 		assertEquals(new HashSet<String>(expectedMenu),new HashSet<String>(tool._getMenuItems()));
@@ -179,8 +283,6 @@ public class ZentaDiagramEditorPaletteTest {
 
 		PaletteContainer objectsgroup0 = palette._getObjectsGroup();
 		assertNotNull(objectsgroup0);
-		@SuppressWarnings("unchecked")
-		List<PaletteEntry> children0 = objectsgroup0.getChildren();
 
 		String elementName = "New test OC";
 		IBasicObject newElement = testdata.createNewObjectClass(elementName);

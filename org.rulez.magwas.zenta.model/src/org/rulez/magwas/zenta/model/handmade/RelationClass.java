@@ -43,6 +43,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		return obj;
 	}
 
+	@Override
 	public String getHelpHintContent() {
 		String doc = getDocumentation();
 		List<IBasicObject> ancestry = this.getAncestry();
@@ -172,5 +173,4 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 					ret.add(target);
 		return ret;
 	}
-
 }

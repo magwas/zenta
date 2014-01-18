@@ -26,5 +26,4 @@ extends AbstractZentaEditableTextFlowEditPart {
     public void shapeShift(String shapename) {
     	((BasicObjectFigure)this.getFigure()).setFigureShape(shapename);
     }
- 
 }

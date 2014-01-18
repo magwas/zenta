@@ -201,6 +201,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
         
         @Override
         public boolean canExecute() {
+        	System.out.printf("source=%s\n target=%s\n this=%s\n", fSource, fTarget, this);
             if(super.canExecute()) {
             	IBasicRelationship classType = (IBasicRelationship)fRequest.getNewObjectType();
                 return isValidConnection(fSource, fTarget, classType);

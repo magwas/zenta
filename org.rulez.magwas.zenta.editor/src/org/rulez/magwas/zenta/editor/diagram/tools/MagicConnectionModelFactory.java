@@ -50,15 +50,17 @@ public class MagicConnectionModelFactory implements ICreationFactory {
     }
     
     public Object getNewObject() {
+    	System.out.printf("object is created\n");
         return new ZentaDiagramModelFactory(fRelationshipTemplate,folder).getNewObject();
     }
 
     public Object getObjectType() {
+    	System.out.printf("getNewObjectType %s in %s\n", fRelationshipTemplate, this);
         return fRelationshipTemplate;
     }
     
     public void clear() {
-        fRelationshipTemplate = null;
-        fElementTemplate = null;
+        //fRelationshipTemplate = null;
+        //fElementTemplate = null;
     }
 }

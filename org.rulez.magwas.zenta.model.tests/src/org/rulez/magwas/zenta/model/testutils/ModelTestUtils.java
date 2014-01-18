@@ -60,10 +60,6 @@ public class ModelTestUtils {
 		}
 		return resource;			
 	}
-		public static class CannotLoadTheResource extends RuntimeException {
-			private static final long serialVersionUID = 1L;
-	
-		}
 
 	public static String convertNameToResourcePath(String filename) {
 		String resourcePath = ModelTestData.class.getResource(filename).getFile();

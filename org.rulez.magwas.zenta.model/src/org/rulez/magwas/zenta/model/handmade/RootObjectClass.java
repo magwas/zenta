@@ -2,7 +2,6 @@ package org.rulez.magwas.zenta.model.handmade;
 
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaFactory;

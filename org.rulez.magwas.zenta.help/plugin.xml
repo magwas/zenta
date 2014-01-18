@@ -229,7 +229,7 @@
    <extension
          point="org.rulez.magwas.zenta.help.hints">
       <hint
-            class="org.rulez.magwas.zenta.editor.model.viewpoints.TotalViewpoint"
+            class="org.rulez.magwas.zenta.model.viewpoints.TotalViewpoint"
             file="hints/viewpoint_total.html"
             title="%hint.title.93">
       </hint>

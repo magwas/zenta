@@ -155,7 +155,7 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
         return null;
     }
     
-    private String getImageName(EClass eClass) {
+	private String getImageName(EClass eClass) {
         switch(eClass.getClassifierID()) {
             // Other
             case IZentaPackage.ZENTA_MODEL:
