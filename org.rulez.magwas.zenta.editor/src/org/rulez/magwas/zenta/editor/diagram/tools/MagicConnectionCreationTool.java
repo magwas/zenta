@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.tools;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -28,7 +27,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
@@ -84,15 +82,6 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 
 	private Menu menu;
 
-
-	private boolean skipModalMenu = false;
-
-
-	private ArrayList<String> menuitems;
-
-
-	private IBasicRelationship rel;
-	
 	public MagicConnectionCreationTool() {
 	   setDefaultCursor(cursor);
 	   setDisabledCursor(cursor);
@@ -244,7 +233,9 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		eraseSourceFeedback();
 
 		// No selection
-		if(getFactory().getElementType() == null || getFactory().getRelationshipType() == null) {
+		IObjectClass elementType = getFactory().getElementType();
+		IRelationClass relationshipType = getFactory().getRelationshipType();
+		if(elementType == null || relationshipType == null) {
 			getFactory().clear();
 			return false;
 		}
@@ -276,14 +267,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		
 		return true;
 	}
-		private void runMenu(Menu menu) {
-			if (skipModalMenu == true) {
-				System.out.printf("relationshiptype = %s\n", rel);
-				getFactory().setRelationshipType(rel);
-				//menu.setVisible(true);
-				//activateFirstMenuItem(menu);
-				return;
-			}
+		protected void runMenu(Menu menu) {
 			Display display = menu.getDisplay();
 			while(!menu.isDisposed() && menu.isVisible()) {
 				if(!display.readAndDispatch()) {
@@ -320,11 +304,13 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	private void addConnectionActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject) {
 		IZentaDiagramModel zdm = (IZentaDiagramModel) sourceDiagramModelObject.getDiagramModel();
 		IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(zdm);
-		for(IBasicRelationship relationshipType : viewpoint.getSourceRelationClassesFor(sourceDiagramModelObject)) {
-			if(viewpoint.isValidRelationshipStart((IBasicObject)sourceDiagramModelObject.getZentaElement(), relationshipType)) {
+		for(IRelationClass relationshipType : viewpoint.getSourceRelationClassesFor(sourceDiagramModelObject)) {
+			IZentaElement zentaElement = sourceDiagramModelObject.getZentaElement();
+			if(viewpoint.isValidRelationshipStart(zentaElement, relationshipType)) {
 				MenuItem item = addConnectionAction(menu, relationshipType);
 				Menu subMenu = new Menu(item);
 				item.setMenu(subMenu);
+				subMenu.setData(zentaElement);
 				
 				addConnectionActions(subMenu, sourceDiagramModelObject, viewpoint.getObjectClasses(), relationshipType);
 				addConnectionActions(subMenu, sourceDiagramModelObject, viewpoint.getConnectorClasses(), relationshipType);
@@ -345,6 +331,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	private void addConnectionActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject, Collection<IBasicObject> objectclassses, IBasicRelationship relationshipType) {
 		boolean added = false;
 		IZentaElement sourceElement = sourceDiagramModelObject.getZentaElement();
+		menu.setData(relationshipType);
 		for(IBasicObject type : objectclassses) {
 			// Check if allowed by Viewpoint
 			if(!isAllowedTargetTypeInViewpoint(sourceDiagramModelObject, type)) {
@@ -376,6 +363,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 			MenuItem item = addElementAction(menu, targetObjectType);
 			Menu subMenu = new Menu(item);
 			item.setMenu(subMenu);
+			subMenu.setData(targetObjectType);
 			List<IBasicRelationship> validRelationships = viewPoint.getValidRelationships(oc, targetObjectType);
 			for(IBasicRelationship typeRel : validRelationships)
 				addConnectionAction(subMenu, typeRel);
@@ -389,6 +377,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		final MenuItem item = new MenuItem(menu, SWT.CASCADE);
 		item.setText(type.getDefiningName());
 		item.setImage(ZentaLabelProvider.INSTANCE.getImage(type));
+		item.setData(type);
 		
 		// Add hover listener to notify Hints View and also set element if elements first
 		item.addArmListener(new ArmListener() {
@@ -421,7 +410,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		final MenuItem item = new MenuItem(menu, SWT.CASCADE);
 		item.setText(relationshipType.getDefiningName());
 		item.setImage(ZentaLabelProvider.INSTANCE.getImage(relationshipType));
-		rel = relationshipType;
+		item.setData(relationshipType);
 		// Add hover listener to notify Hints View
 		item.addArmListener(new ArmListener() {
 			@Override
@@ -598,13 +587,4 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		}
 	}
 
-	public void _setTargetRequest(CreateConnectionRequest req) {
-		setTargetRequest(req);		
-	}
-	public void _setTargetEditPart(EditPart editpart) {
-		setTargetEditPart(editpart);
-	}
-	public ArrayList<String> _getMenuItems(){
-		return menuitems;
-	}
 }
