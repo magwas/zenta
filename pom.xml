@@ -47,7 +47,7 @@
    <repository>
      <id>GEF</id>
      <layout>p2</layout>
-     <url>http://download.eclipse.org/tools/gef/updates/milestones/</url>
+     <url>http://download.eclipse.org/tools/gef/updates/releases/</url>
    </repository>
    <!--repository>
      <id>indigo</id>
