@@ -1,13 +1,18 @@
 package org.rulez.magwas.zenta.model.util;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -82,14 +87,32 @@ public class Util {
 	public static Document createXmlDocumentFromFileName(String respath) {
         String xml;
 		try {
-			xml = new String(Files.readAllBytes(Paths.get(respath)),
-			        "UTF8");
+			xml = readFile(respath);
 	        return createXmlDocumentFromString(xml);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
     
+	public static String readFile(String respath) throws IOException {
+		String everything;
+	    BufferedReader br = new BufferedReader(new FileReader(respath));
+	    String lineSeparator = System.getProperty("line.separator");
+	    try {
+	        StringBuilder sb = new StringBuilder();
+	        String line = br.readLine();
+
+	        while (line != null) {
+	            sb.append(line);
+	            sb.append(lineSeparator);
+	            line = br.readLine();
+	        }
+	        everything = sb.toString();
+	    } finally {
+	        br.close();
+	    }
+	    return everything;
+	}
     public static Document createXmlDocumentFromString(String xmlString)
             throws ParserConfigurationException, SAXException, IOException {
         if (xmlString == null)
@@ -106,4 +129,28 @@ public class Util {
         return document;
     }
     
+    public static void copyFile(File source, File dest) throws IOException {
+        InputStream is = null;
+        try {
+            is = new FileInputStream(source);
+            copyStreamToFile(is, dest);
+        } finally {
+            is.close();
+        }
+    }
+
+	public static void copyStreamToFile( InputStream is, File dest)
+			throws FileNotFoundException, IOException {
+		OutputStream os = null;
+		try {
+			os = new FileOutputStream(dest);
+			byte[] buffer = new byte[1024];
+			int length;
+			while ((length = is.read(buffer)) > 0) {
+			    os.write(buffer, 0, length);
+			}
+		} finally {
+			os.close();
+		}
+	}
 }

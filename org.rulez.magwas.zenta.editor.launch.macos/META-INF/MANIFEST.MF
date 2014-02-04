@@ -5,6 +5,6 @@ Bundle-SymbolicName: org.rulez.magwas.zenta.editor.launch.macos;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: Árpád Magosányi
 Fragment-Host: org.rulez.magwas.zenta.editor;bundle-version="1.2.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-PlatformFilter: (osgi.ws=cocoa)
 Import-Package: org.rulez.magwas.zenta.widgets

@@ -6,7 +6,6 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +19,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.NSResolver;
+import org.rulez.magwas.zenta.model.util.Util;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -45,7 +45,7 @@ public class ModelTestUtils {
 		try {
 			temp = File.createTempFile("test", ".zenta");
 			temp.delete();
-			Files.copy(stream, temp.toPath());
+			Util.copyStreamToFile(stream, temp);
 			IZentaPackage.eINSTANCE.eClass();
 	        ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
 	        resource = resourceSet.createResource(URI.createFileURI(temp.getAbsolutePath()));
