@@ -51,7 +51,6 @@ public class MagicConnectionCreationToolExerciser extends
 		setConnectionSource(getTargetEditPart());
 		Command command = getCommand();
 		CreateConnectionRequest targetRequest = (CreateConnectionRequest) getTargetRequest();
-		System.out.printf("targetRequest = %s\n", targetRequest);
 		targetRequest
 				.setSourceEditPart(getTargetEditPart());
 		if (command != null) {
@@ -68,7 +67,6 @@ public class MagicConnectionCreationToolExerciser extends
 		MagicConnectionModelFactory factory = new MagicConnectionModelFactory(folder);
 		setEditDomain(source.getViewer().getEditDomain());
 
-		System.out.printf("source=%s\n", source);
 		setViewer(source.getViewer());
 		setFactory(factory);
 	}
@@ -88,7 +86,6 @@ public class MagicConnectionCreationToolExerciser extends
 					String name = start+item.getText();
 					if(name.equals(menuitemName))
 						executeMenuItem(menu, item);
-					System.out.printf("name=%s\n", name);
 					savedMenu.add(name);
 					Menu submenu = item.getMenu();
 					if(null != submenu)
@@ -96,10 +93,8 @@ public class MagicConnectionCreationToolExerciser extends
 				}
 			}
 				private void executeMenuItem(Menu menu, MenuItem item) {
-					System.out.printf("setting\n menu=%s\n item=%s\n", menu.getData(), item.getData());
 					addToFactory(item.getData());
 					addToFactory(menu.getData());
-					System.out.printf("set\n element=%s\n rel=%s\n", getFactory().getElementType(), getFactory().getRelationshipType());
 					failed = false;
 				}
 

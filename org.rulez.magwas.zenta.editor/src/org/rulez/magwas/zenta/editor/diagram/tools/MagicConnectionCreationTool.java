@@ -139,9 +139,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	@Override
 	protected void setCurrentCommand(Command c) {
 		// Guard against Mac threading issue
-		System.out.printf("setCurrentCommand %s\n", c);
 		if(fCanSetCurrentCommand) {
-			System.out.printf("really\n");
 			super.setCurrentCommand(c);
 		}
 	}
@@ -399,7 +397,6 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		item.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.printf("set relationship %s\n", relationshipType);
 				getFactory().setRelationshipType(relationshipType);
 			}
 		});

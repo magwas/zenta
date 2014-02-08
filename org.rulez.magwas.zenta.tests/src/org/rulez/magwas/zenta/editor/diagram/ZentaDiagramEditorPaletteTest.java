@@ -62,7 +62,6 @@ public class ZentaDiagramEditorPaletteTest {
 		
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
 		for(IBasicObject klass : testdata.metamodel.getObjectClasses()) {
-			System.out.printf("klass=%s\n", klass);
 			assertTrue(haveCreatorFor(klass, children));
 		}
 	}
@@ -107,7 +106,6 @@ public class ZentaDiagramEditorPaletteTest {
 		assertNotNull(objectsgroup);
 		@SuppressWarnings("unchecked")
 		List<PaletteEntry> children = objectsgroup.getChildren();
-		System.out.printf("child=%s\n", children);
 		List<String> expectedMenu = Arrays.asList(
 				"Palette Entry (Note)",
 				"Palette Entry (Group)",
@@ -292,7 +290,6 @@ public class ZentaDiagramEditorPaletteTest {
 		IBasicRelationship baserc = testdata.metamodel.getBuiltinRelationClass();
 		IDiagramModel dm = testdata.getTemplateDiagramModel();
 		IBasicRelationship newRelation = testdata.createUnnamedRelation(baserc, dm);
-		System.out.printf("relation = %s\n props=%s\n", newRelation, newRelation.getProperties());
 		assertFalse(newRelation.isTemplate());
 
 		IZentaElement destElem = newRelation.getTarget();
