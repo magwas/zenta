@@ -13,6 +13,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
@@ -94,7 +95,7 @@ public class TreeModelViewActionFactory {
                 element.setName(getText());
                 // Execute Command
                 Command cmd = new NewElementCommand(folder, element);
-                CommandStack commandStack = (CommandStack)folder.getAdapter(CommandStack.class);
+                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(folder);
                 commandStack.execute(cmd);
             }
         };
@@ -113,7 +114,7 @@ public class TreeModelViewActionFactory {
                 
                 // Execute Command
                 Command cmd = new NewDiagramCommand(folder, diagramModel, Messages.TreeModelViewActionFactory_1);
-                CommandStack commandStack = (CommandStack)folder.getAdapter(CommandStack.class);
+                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(folder);
                 commandStack.execute(cmd);
             }
         };
@@ -136,7 +137,7 @@ public class TreeModelViewActionFactory {
                 
                 // Execute Command
                 Command cmd = new NewDiagramCommand(folder, sketchModel, Messages.TreeModelViewActionFactory_3);
-                CommandStack commandStack = (CommandStack)folder.getAdapter(CommandStack.class);
+                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(folder);
                 commandStack.execute(cmd);
             }
         };

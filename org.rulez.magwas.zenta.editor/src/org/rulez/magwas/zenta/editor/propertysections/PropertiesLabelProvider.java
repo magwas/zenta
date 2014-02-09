@@ -15,7 +15,7 @@ import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 

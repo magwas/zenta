@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.model.util;
+package org.rulez.magwas.zenta.model.handmade.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,15 +11,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
 
 
@@ -40,9 +45,8 @@ public class ZentaModelUtils {
      * @return The matching EObject in the model given its ID or null if not found
      */
     public static EObject getObjectByID(IZentaModel model, String id) {
-        if(id == null || model == null) {
-            return null;
-        }
+    	Util.assertNonNull(id);
+    	Util.assertNonNull(model);
         
         if(id.equals(model.getId())) {
             return model;
@@ -56,7 +60,7 @@ public class ZentaModelUtils {
             }
         }
 
-        return null;
+        throw new AssertionError();
     }
 
     /**
@@ -71,7 +75,7 @@ public class ZentaModelUtils {
      * @param element The Zenta element to check
      * @return A list of all source relationships that an element has
      */
-    public static List<IBasicRelationship> getSourceRelationships(IZentaElement element) {
+    public static NonNullList<IBasicRelationship> getSourceRelationships(IZentaElement element) {
         return __getRelationships(element, SOURCE_RELATIONSHIPS);
     }
     
@@ -79,27 +83,31 @@ public class ZentaModelUtils {
      * @param element The Zenta element to check
      * @return A list of all target relationships that an element has
      */
-    public static List<IBasicRelationship> getTargetRelationships(IZentaElement element) {
+    public static NonNullList<IBasicRelationship> getTargetRelationships(IZentaElement element) {
         return __getRelationships(element, TARGET_RELATIONSHIPS);
     }
 
-    private static List<IBasicRelationship> __getRelationships(IZentaElement element, int type) {
-        List<IBasicRelationship> relationships = new ArrayList<IBasicRelationship>();
+	private static NonNullList<IBasicRelationship> __getRelationships(IZentaElement element, int type) {
+        NonNullList<IBasicRelationship> relationships = new NonNullArrayList<IBasicRelationship>();
         
-        if(element.getZentaModel() != null) { // An important guard because the element might have been deleted
-        	for (IFolder  folder : element.getZentaModel().getFolders()) {
-        		__getRelationshipsForElement(folder, element, type, relationships);
-        	}
-        			
+    	IZentaModel zentaModel = element.getZentaModel();
+        if(zentaModel != null) { // An important guard because the element might have been deleted
+			EList<IFolder> folders = zentaModel.getFolders();
+			childFolders(element, type, relationships, folders);
         }
         
         return relationships;
     }
-    
-    private static void __getRelationshipsForElement(IFolder folder, IZentaElement element, int type, List<IBasicRelationship> relationships) {
-        if(folder == null || element == null) {
-            return;
-        }
+
+		@SuppressWarnings("null")
+		private static void childFolders(IZentaElement element, int type,
+				List<IBasicRelationship> relationships, EList<IFolder> folders) {
+			for (@NonNull IFolder  folder : folders) {
+				__getRelationshipsForElement(folder, element, type, relationships);
+			}
+		}
+
+	private static void __getRelationshipsForElement(IFolder folder, IZentaElement element, int type, List<IBasicRelationship> relationships) {
         
         for(EObject object : folder.getElements()) {
             if(object instanceof IBasicRelationship) {
@@ -118,9 +126,8 @@ public class ZentaModelUtils {
         }
         
         // Child folders
-        for(IFolder f : folder.getFolders()) {
-            __getRelationshipsForElement(f, element, type, relationships);
-        }
+        EList<IFolder> folders = folder.getFolders();
+		childFolders(element, type, relationships, folders);
     }
 
 	/**

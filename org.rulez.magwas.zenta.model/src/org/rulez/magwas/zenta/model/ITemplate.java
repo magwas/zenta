@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -127,13 +128,13 @@ extends EObject
 	 */
 	void setDiagram(IDiagramModel value);
 
-	void removeClass(IBasicObject oc);
+	void removeClass(@NonNull IBasicObject oc);
 
-	IIdentifier create(IFolder folder);
+	IIdentifier create(@NonNull IFolder folder);
 
-	List<IBasicObject> getObjectClasses();
+	@NonNull List<IBasicObject> getObjectClasses();
 
-	List<IBasicRelationship> getRelationClasses();
+	@NonNull List<IBasicRelationship> getRelationClasses();
 
 	String getName();
 

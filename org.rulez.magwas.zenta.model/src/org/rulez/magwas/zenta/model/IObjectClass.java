@@ -5,33 +5,29 @@ package org.rulez.magwas.zenta.model;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
 
 public interface IObjectClass extends IHelpHintProvider {
 	
-	IBasicObject create(IFolder folder);
+	@NonNull IBasicObject create(@NonNull IFolder folder);
 	
 	boolean isObject();
 	boolean isRelation();
 	boolean isTemplate();
-	void setAsTemplate(ITemplate template);
-	IBasicObject getDefiningElement();
+	void setAsTemplate(@NonNull ITemplate template);
+	@NonNull IBasicObject getDefiningElement();
 
-	public boolean isAllowedRelation(IBasicRelationship relclass, Direction direction);
-	public Map<Direction,List<IBasicRelationship>> getAllowedRelations();
+	public boolean isAllowedRelation(@NonNull IBasicRelationship relclass, @NonNull Direction direction);
+	public @NonNull Map<Direction,List<IBasicRelationship>> getAllowedRelations();
 
-
-	ITemplate getTemplate();
-
-	IMetamodel getMetamodel();
-
-	String getId();
+	@NonNull IMetamodel getMetamodel();
 	
-	public abstract List<IBasicObject> getAncestry(List<IBasicObject> ancestry);
+	public abstract @NonNull List<IBasicObject> getAncestry(@NonNull List<IBasicObject> ancestry);
 
-	public abstract List<IBasicObject> getAncestry();
+	public abstract @NonNull List<IBasicObject> getAncestry();
 
-	List<IAttribute> getAttributesRecursively();
+	@NonNull List<IAttribute> getAttributesRecursively();
 
 
 

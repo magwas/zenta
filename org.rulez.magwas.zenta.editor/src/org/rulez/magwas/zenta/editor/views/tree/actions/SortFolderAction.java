@@ -9,6 +9,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.views.tree.commands.SortFolderCommand;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -35,7 +36,7 @@ public class SortFolderAction extends ViewerAction {
         if(selected instanceof IFolder) {
             IFolder folder = (IFolder)selected;
             Command cmd = new SortFolderCommand(folder);
-            CommandStack commandStack = (CommandStack)folder.getAdapter(CommandStack.class);
+            CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(folder);
             commandStack.execute(cmd);
         }
     }

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -280,12 +281,18 @@ public class FolderBase extends EObjectImpl implements IFolder {
         return ((IZentaModelElement)eContainer()).getZentaModel();
     }
 
+    
+    @SuppressWarnings("null")
+	public @NonNull EList<IFolder> getFolders() {
+    	return getFolders_gen();
+    }
+
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<IFolder> getFolders() {
+    public EList<IFolder> getFolders_gen() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.FOLDER__FOLDERS);
 		}

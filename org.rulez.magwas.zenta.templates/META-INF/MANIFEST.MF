@@ -18,3 +18,4 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.rulez.magwas.zenta.templates.dialog,
  org.rulez.magwas.zenta.templates.model,
  org.rulez.magwas.zenta.templates.wizard
+Import-Package: org.eclipse.jdt.annotation

@@ -17,7 +17,7 @@ import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 

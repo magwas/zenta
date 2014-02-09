@@ -282,14 +282,15 @@ public class Thumbnail extends Figure implements UpdateListener {
 				thumbnailGraphics.dispose();
 				thumbnailGraphics = null;
 			}
-			if (thumbnailGC != null) {
+			GC tgc = thumbnailGC;
+			if (tgc != null) {
 			    
 // *******************************************************************************************************************************
 // Workaround for Eclipse bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=339132
 			    if(PlatformUtils.isMac()) {
 			        try {
 			            // package private "drawable" field of GC is Image class
-			            Object image = MacOSReflect.getPrivateField(thumbnailGC, "drawable"); //$NON-NLS-1$
+			            Object image = MacOSReflect.getPrivateField(tgc, "drawable"); //$NON-NLS-1$
 			            if(image != null) {
 			                // Call package private method getRepresentation() on Image to return NSBitmapImageRep type
 			                Object nsBitmapImageRep = MacOSReflect.executeMethod(image, "getRepresentation"); //$NON-NLS-1$

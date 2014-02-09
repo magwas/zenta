@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 

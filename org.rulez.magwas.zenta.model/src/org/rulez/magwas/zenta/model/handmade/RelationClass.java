@@ -16,8 +16,9 @@ import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.BasicRelationshipBase;
-import org.rulez.magwas.zenta.model.util.StringUtils;
 
 public class RelationClass extends BasicRelationshipBase implements IBasicRelationship, IRelationClass {
 
@@ -25,6 +26,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		setAncestor(ancestor);
 	}
 	
+	@SuppressWarnings("null")
 	protected RelationClass(ITemplate template) {
 		template.getClasses().add(this);
 		setTemplate(template);
@@ -45,13 +47,18 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 
 	@Override
 	public String getHelpHintContent() {
-		String doc = getDocumentation();
+		String doc = Util.assertNonNull(getDocumentation());
 		List<IBasicObject> ancestry = this.getAncestry();
 		List<String> ancestorNames = new ArrayList<String>();
 		for( IBasicObject a : ancestry) {
 			ancestorNames.add(a.getName());
 		}
 		String ancestryNames = StringUtils.join(ancestorNames, " => ");
+		return formatHelpString(doc, ancestryNames);
+	}
+
+	@SuppressWarnings("null")
+	public String formatHelpString(String doc, String ancestryNames) {
 		return String.format("%s\nAncestry: %s\n", doc, ancestryNames);
 	}
 
@@ -110,6 +117,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		setupEndAttributesForrelation();
 
 	}
+		@SuppressWarnings("null")
 		private void setupEndAttributesForrelation() {
 			IBasicObject source = (IBasicObject) getSource();
 			IBasicObject dest = (IBasicObject) getTarget();

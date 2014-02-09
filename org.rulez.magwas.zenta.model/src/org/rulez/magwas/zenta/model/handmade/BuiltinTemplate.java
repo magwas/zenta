@@ -3,6 +3,7 @@ package org.rulez.magwas.zenta.model.handmade;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public class BuiltinTemplate extends Template {
 	
@@ -15,10 +16,11 @@ public class BuiltinTemplate extends Template {
 		super();
 		setPath("builtin");
 		setMetamodel(metamodel);
-		rootObjectClass = new RootObjectClass(this);
-		rootRelationClass = new RootRelationClass(this,rootObjectClass);
+		RootObjectClass roc = new RootObjectClass(this);
+		rootObjectClass = roc;
+		rootRelationClass = new RootRelationClass(this,roc);
 		IZentaModel model = metamodel.getModel();
-		IFolder folder = model.getDefaultFolderForElement(rootObjectClass);
+		IFolder folder = model.getDefaultFolderForElement(roc);
 		folder.getElements().add(rootObjectClass);
 		folder.getElements().add(rootRelationClass);
 	}
@@ -31,11 +33,11 @@ public class BuiltinTemplate extends Template {
 
 
 	public RootObjectClass getRootObjectClass() {
-		return rootObjectClass;
+		return Util.assertNonNull(rootObjectClass);
 	}
 
 	public RootRelationClass getRootRelationClass() {
-		return rootRelationClass;
+		return Util.assertNonNull(rootRelationClass);
 	}
 
 }

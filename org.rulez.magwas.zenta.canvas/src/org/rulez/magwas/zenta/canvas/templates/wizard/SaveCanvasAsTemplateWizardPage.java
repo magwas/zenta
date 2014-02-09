@@ -7,6 +7,7 @@ package org.rulez.magwas.zenta.canvas.templates.wizard;
 
 import java.io.File;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
@@ -31,7 +32,8 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.TemplateUtils;
 
@@ -68,7 +70,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
     }
 
     @Override
-    public void createControl(Composite parent) {
+    public void createControl(@Nullable Composite parent) {
         GridData gd;
         Label label;
         
@@ -93,7 +95,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         // Single text control so strip CRLFs
         UIUtils.conformSingleTextControl(fFileTextField);
         fFileTextField.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent e) {
+            public void modifyText(@Nullable ModifyEvent e) {
                 validateFields();
             }
         });
@@ -102,7 +104,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         fileButton.setText(Messages.SaveCanvasAsTemplateWizardPage_4);
         fileButton.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void widgetSelected(SelectionEvent e) {
+            public void widgetSelected(@Nullable SelectionEvent e) {
                 File file = chooseFile();
                 if(file != null) {
                     fFileTextField.setText(file.getPath());
@@ -127,7 +129,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         // Single text control so strip CRLFs
         UIUtils.conformSingleTextControl(fNameTextField);
         fNameTextField.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent e) {
+            public void modifyText(@Nullable ModifyEvent e) {
                 validateFields();
             }
         });
@@ -157,7 +159,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         fButtonIncludeThumbnail.setSelection(true);
         fButtonIncludeThumbnail.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void widgetSelected(SelectionEvent e) {
+            public void widgetSelected(@Nullable SelectionEvent e) {
                 fPreviewLabel.setEnabled(fButtonIncludeThumbnail.getSelection());
             }
         });
@@ -181,7 +183,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         // the TrayDialog is resized and this label is asked to relayout.
         fPreviewLabel.addDisposeListener(new DisposeListener() {
             @Override
-            public void widgetDisposed(DisposeEvent e) {
+            public void widgetDisposed(@Nullable DisposeEvent e) {
                 disposePreviewImage();
             }
         });
@@ -197,7 +199,8 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
             int oldTime;
             
             @Override
-            public void controlResized(ControlEvent e) {
+            public void controlResized(@Nullable ControlEvent eo) {
+            	ControlEvent e = Util.assertNonNull(eo);
                 if(e.time - oldTime > 10) {
                     disposePreviewImage();
                     TemplateUtils.createThumbnailPreviewImage(fCanvasModel, fPreviewLabel);
@@ -213,28 +216,28 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
      * @return The File for the template
      */
     public String getFileName() {
-        return fFileTextField.getText();
+        return Util.assertNonNull(fFileTextField.getText());
     }
 
     /**
      * @return The Name for the template
      */
     public String getTemplateName() {
-        return fNameTextField.getText();
+        return Util.assertNonNull(fNameTextField.getText());
     }
     
     /**
      * @return The Name for the template
      */
     public String getTemplateDescription() {
-        return fDescriptionTextField.getText();
+        return Util.assertNonNull(fDescriptionTextField.getText());
     }
     
     public boolean includeThumbnail() {
         return fButtonIncludeThumbnail.getSelection();
     }
     
-    private File chooseFile() {
+    private @Nullable File chooseFile() {
         FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
         dialog.setText(Messages.SaveCanvasAsTemplateWizardPage_9);
         dialog.setFilterExtensions(new String[] { "*" + fTemplateManager.getTemplateFileExtension(), "*.*" } ); //$NON-NLS-1$ //$NON-NLS-2$
@@ -268,7 +271,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
     /**
      * Update the page status
      */
-    private void updateStatus(String message) {
+    private void updateStatus(@Nullable String message) {
         setErrorMessage(message);
         setPageComplete(message == null);
     }

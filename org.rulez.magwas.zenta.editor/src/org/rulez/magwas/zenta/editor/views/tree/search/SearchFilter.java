@@ -22,7 +22,7 @@ import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IBasicObject;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 /**

@@ -32,7 +32,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IFolderContainer;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 

@@ -22,7 +22,8 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IJunctionElement;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 
@@ -33,27 +34,23 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  */
 public class DiagramModelUtils {
     
-    /**
-     * Find all diagram models that element is referenced in (appears as graphical entity).
-     * @param element The element to check on.
-     * @return A List of diagram models (may be empty, but never null)
-     */
     public static List<IDiagramModel> findReferencedDiagramsForElement(IZentaElement element) {
         List<IDiagramModel> models = new ArrayList<IDiagramModel>();
         
-        if(element != null && element.getZentaModel() != null) {
+        if(element.getZentaModel() != null) {
             for(IDiagramModel diagramModel : element.getZentaModel().getDiagramModels()) {
-                // Find it
-                boolean result = !findDiagramModelComponentsForElement(diagramModel, element).isEmpty();
-                
-                // Not found, maybe it's expressed as a nested parent/child
-                if(!result && element instanceof IBasicRelationship && ConnectionPreferences.useNestedConnections()) {
-                    result = !findNestedComponentsForRelationship(diagramModel, (IBasicRelationship)element).isEmpty();
-                }
-                
-                if(result && !models.contains(diagramModel)) {
-                    models.add(diagramModel);
-                }
+            	if(null != diagramModel) {
+                    boolean result = !findDiagramModelComponentsForElement(diagramModel, element).isEmpty();
+                    
+                    // Not found, maybe it's expressed as a nested parent/child
+                    if(!result && element instanceof IBasicRelationship && ConnectionPreferences.useNestedConnections()) {
+                        result = !findNestedComponentsForRelationship(diagramModel, (IBasicRelationship)element).isEmpty();
+                    }
+                    
+                    if(result && !models.contains(diagramModel)) {
+                        models.add(diagramModel);
+                    }
+            	}
             }
         }
         
@@ -65,12 +62,13 @@ public class DiagramModelUtils {
      * @return true if element is referenced in any diagram model
      */
     public static boolean isElementReferencedInDiagrams(IZentaElement element) {
-        if(element == null || element.getZentaModel() == null) {
+        if(element.getZentaModel() == null) {
             return false;
         }
         
         for(IDiagramModel diagramModel : element.getZentaModel().getDiagramModels()) {
-            if(isElementReferencedInDiagram(diagramModel, element)) {
+            IDiagramModel dm = Util.assertNonNull(diagramModel);
+			if(isElementReferencedInDiagram(dm, element)) {
                 return true;
             }
         }

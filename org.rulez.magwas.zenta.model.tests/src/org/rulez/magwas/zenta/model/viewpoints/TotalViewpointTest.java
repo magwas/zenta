@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.After;
@@ -15,6 +16,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
@@ -30,7 +32,7 @@ public class TotalViewpointTest {
 	public void setUp() {
 		testdata = new ModelAndMetaModelTestData();
 		dm = testdata.getTemplateDiagramModel();
-		vp = ViewpointsManager.INSTANCE.getViewpoint(dm);
+		vp = ViewpointsManager.INSTANCE.getViewpoint(Util.assertNonNull(dm));
 	}
 
 	@After
@@ -44,10 +46,11 @@ public class TotalViewpointTest {
 
 	@Test
 	public void There_is_one_instance_of_ViewPoint_for_each_diagram() {
-		IViewpoint vp2 = ViewpointsManager.INSTANCE.getViewpoint(dm);
+		IViewpoint vp2 = ViewpointsManager.INSTANCE.getViewpoint(Util.assertNonNull(dm));
 		assertEquals(vp,vp2);
 	}
 	
+	@SuppressWarnings("null")
 	@Test
 	public void Allowed_connections_are_based_on_the_metamodel() {
 		IBasicObject sourceElement = (IBasicObject) testdata.getElementById("ea94cf6c");//User
@@ -85,30 +88,54 @@ public class TotalViewpointTest {
 	public void Root_RelationClass_connects_to_everything() {
 		IBasicRelationship builtinRelationClass = testdata.metamodel.getBuiltinRelationClass();
 		Collection<IBasicObject> targets = builtinRelationClass.getAllowedTargets();
-		List<String> expectedTargets = definingNames(testdata.metamodel.getObjectClasses());
-		assertEquals(expectedTargets.toString(),definingNames(targets).toString());
+		HashSet<String> expectedTargets = ModelTestUtils.definingNames(testdata.metamodel.getObjectClasses());
+		ModelTestUtils.assertEqualsAsSet(expectedTargets,ModelTestUtils.definingNames(targets));
 	}
 
 	@Test
 	public void Root_ObjectClass_connects_to_everything() {
 		IBasicObject builtinObjectClass = testdata.metamodel.getBuiltinObjectClass();
 		Collection<IBasicObject> targets = vp.getAllowedTargets(builtinObjectClass);
-		List<String> expectedTargets = definingNames(testdata.metamodel.getObjectClasses());
-		assertEquals(expectedTargets.toString(),definingNames(targets).toString());
+		HashSet<String> expectedTargets = ModelTestUtils.definingNames(testdata.metamodel.getObjectClasses());
+		ModelTestUtils.assertEqualsAsSet(expectedTargets,ModelTestUtils.definingNames(targets));
 	}
 	@Test
 	public void Magic_Connector_magically_knows_what_to_connect() {
 		IBasicObject element = (IBasicObject) testdata.getElementById("ea94cf6c");
 		Collection<IBasicObject> targets = vp.getAllowedTargets(element);
-		List<String> expectedTargets = definingNames(element.getTemplate().getMetamodel().getObjectClasses());
-		assertEquals(expectedTargets.toString(),definingNames(targets).toString());
+		HashSet<String> expectedTargets = ModelTestUtils.definingNames(element.getTemplate().getMetamodel().getObjectClasses());
+		ModelTestUtils.assertEqualsAsSet(expectedTargets,ModelTestUtils.definingNames(targets));
 	}
 
-	private List<String> definingNames(Collection<IBasicObject> targets) {
-		List<String> ret = new ArrayList<String>();
-		for(IBasicObject obj : targets)
-			ret.add(obj.getDefiningName()+"\n");
-		return ret;
+	@Test
+	public void Allowed_targets_contain_everything() {
+		IBasicObject element = (IBasicObject) testdata.getElementById("f33bd0d2");
+		Collection<IBasicObject> targets = vp.getAllowedTargets(element);
+		HashSet<String> expectedTargets = new HashSet<String>(Arrays.asList(
+				"Basic Object",
+				"Data",
+				"ProcessStep",
+				"NotActuallyDocumentation",
+				"Procedure",
+				"User",
+				"Title"));
+		ModelTestUtils.assertEqualsAsSet(expectedTargets,ModelTestUtils.definingNames(targets));
+	}
+
+	@Test
+	public void Allowed_connections_contain_Basic_Relationship() {
+		IBasicObject dataElement = (IBasicObject) testdata.getElementById("23138a61");
+		IBasicObject processStepElement = (IBasicObject) testdata.getElementById("c3d03626");
+		Collection<IBasicRelationship> targets = vp.getValidRelationships(dataElement, processStepElement);
+		HashSet<String> expectedTargets = new HashSet<String>(Arrays.asList(
+				"Basic Object",
+				"Data",
+				"ProcessStep",
+				"NotActuallyDocumentation",
+				"Procedure",
+				"User",
+				"Title"));
+		ModelTestUtils.assertEqualsAsSet(expectedTargets,ModelTestUtils.definingNames(targets));
 	}
 
 }

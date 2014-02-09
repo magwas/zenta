@@ -12,6 +12,7 @@ import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class MetamodelBuilderTest {
@@ -26,7 +27,7 @@ public class MetamodelBuilderTest {
 		testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTemplateDiagramModel();
-		metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+		metamodel = IZentaFactory.eINSTANCE.createMetamodel(Util.assertNonNull(model));
 	}
 	
 	@Test
@@ -46,7 +47,7 @@ public class MetamodelBuilderTest {
 		EList<ITemplate> templates = metamodel.getTemplates();
 		assertTrue(2 <= templates.size());
 		int tsize = metamodel.getTemplates().size();
-		ITemplate template = metamodel.getTemplateFor(diagramModel);
+		ITemplate template = metamodel.getTemplateFor(Util.assertNonNull(diagramModel));
 		assertEquals(tsize,metamodel.getTemplates().size());
 		assertNotNull(template);
 	}

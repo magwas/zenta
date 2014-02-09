@@ -23,6 +23,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
@@ -31,8 +32,9 @@ import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
-import org.rulez.magwas.zenta.model.util.FileUtils;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 
@@ -43,7 +45,11 @@ import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
  */
 public class ArchiveManager implements IArchiveManager {
     
-    /**
+    public class BadPathForImage extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
+
+	/**
      * Raw image bytes loaded for all images in use in this model
      */
     static ByteArrayStorage BYTE_ARRAY_STORAGE = new ByteArrayStorage();
@@ -69,7 +75,8 @@ public class ArchiveManager implements IArchiveManager {
      */
     private EContentAdapter fModelAdapter = new EContentAdapter() {
         @Override
-        public void notifyChanged(Notification msg) {
+        public void notifyChanged(@Nullable Notification msgo) {
+        	Notification msg = Util.assertNonNull(msgo);
             super.notifyChanged(msg);
 
             // IDiagramModelImageProvider added
@@ -98,11 +105,19 @@ public class ArchiveManager implements IArchiveManager {
      * @param model The owning model
      */
     public ArchiveManager(IZentaModel model) {
-        fModel = model;
-        fModel.eAdapters().add(fModelAdapter);
+        setfModel(model);
+        getfModel().eAdapters().add(fModelAdapter);
     }
 
-    @Override
+    public IZentaModel getfModel() {
+		return Util.assertNonNull(fModel);
+	}
+
+	public void setfModel(IZentaModel fModel) {
+		this.fModel = fModel;
+	}
+
+	@Override
     public String addImageFromFile(File file) throws IOException {
         // Get bytes
         byte[] bytes = BYTE_ARRAY_STORAGE.getBytesFromFile(file);
@@ -134,15 +149,14 @@ public class ArchiveManager implements IArchiveManager {
         if(BYTE_ARRAY_STORAGE.hasEntry(path)) {
             return new Image(Display.getCurrent(), BYTE_ARRAY_STORAGE.getInputStream(path));
         }
-        
-        return null;
+        throw new BadPathForImage();
     }
     
     @Override
     public List<String> getImagePaths() {
         List<String> list = new ArrayList<String>();
         
-        for(Iterator<EObject> iter = fModel.eAllContents(); iter.hasNext();) {
+        for(Iterator<EObject> iter = getfModel().eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IDiagramModelImageProvider) {
                 String imagePath = ((IDiagramModelImageProvider)element).getImagePath();
@@ -160,14 +174,15 @@ public class ArchiveManager implements IArchiveManager {
      */
     @Override
     public void loadImages() throws IOException {
-        if(!fImagesLoaded && loadImagesFromModelFile(fModel.getFile())) {
+        File file = getfModel().getFile();
+		if(!fImagesLoaded && loadImagesFromModelFile(file)) {
             fImagesLoaded = true;
         }
     }
     
     @Override
-    public boolean loadImagesFromModelFile(File file) throws IOException {
-        if(file == null || !file.exists() || !FACTORY.isArchiveFile(file)) {
+    public boolean loadImagesFromModelFile(@Nullable File file) throws IOException {
+        if(null == file || !file.exists() || !FACTORY.isArchiveFile(file)) {
             return false;
         }
         
@@ -180,7 +195,7 @@ public class ArchiveManager implements IArchiveManager {
                 // Add to ByteArrayStorage
                 if(!BYTE_ARRAY_STORAGE.hasEntry(entryName)) {
                     InputStream in = zipFile.getInputStream(zipEntry);
-                    BYTE_ARRAY_STORAGE.addStreamEntry(entryName, in);
+                    BYTE_ARRAY_STORAGE.addStreamEntry(entryName, Util.assertNonNull(in));
                 }
                 
                 // Add to list
@@ -197,7 +212,7 @@ public class ArchiveManager implements IArchiveManager {
     
     @Override
     public boolean hasImages() {
-        for(Iterator<EObject> iter = fModel.eAllContents(); iter.hasNext();) {
+        for(Iterator<EObject> iter = getfModel().eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IDiagramModelImageProvider) {
                 String imagePath = ((IDiagramModelImageProvider)element).getImagePath();
@@ -211,7 +226,7 @@ public class ArchiveManager implements IArchiveManager {
     
     @Override
     public void saveModel() throws IOException {
-        File file = fModel.getFile();
+        File file = getfModel().getFile();
         
         if(file == null) {
             return;
@@ -221,7 +236,7 @@ public class ArchiveManager implements IArchiveManager {
             saveModelToArchiveFile(file);
         }
         else {
-            ZentaModelUtils.saveModelToXMLFile(fModel, file);
+            ZentaModelUtils.saveModelToXMLFile(getfModel(), file);
         }
     }
     
@@ -232,7 +247,7 @@ public class ArchiveManager implements IArchiveManager {
         // Temp file for xml model file
         File tmpFile = File.createTempFile("zenta", null); //$NON-NLS-1$
         tmpFile.deleteOnExit();
-        ZentaModelUtils.saveModelToXMLFile(fModel, tmpFile);
+        ZentaModelUtils.saveModelToXMLFile(getfModel(), tmpFile);
         
         // Create Zip File output stream to model's file
         BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file));
@@ -254,20 +269,18 @@ public class ArchiveManager implements IArchiveManager {
     private void saveImages(ZipOutputStream zOut) throws IOException {
         List<String> added = new ArrayList<String>();
         
-        for(Iterator<EObject> iter = fModel.eAllContents(); iter.hasNext();) {
+        for(Iterator<EObject> iter = getfModel().eAllContents(); iter.hasNext();) {
             EObject eObject = iter.next();
             if(eObject instanceof IDiagramModelImageProvider) {
                 IDiagramModelImageProvider imageProvider = (IDiagramModelImageProvider)eObject;
                 String imagePath = imageProvider.getImagePath();
                 if(imagePath != null && !added.contains(imagePath)) {
                     byte[] bytes = BYTE_ARRAY_STORAGE.getEntry(imagePath);
-                    if(bytes != null) {
-                        ZipEntry zipEntry = new ZipEntry(imagePath);
-                        zOut.putNextEntry(zipEntry);
-                        zOut.write(bytes);
-                        zOut.closeEntry();
-                        added.add(imagePath);
-                    }
+                    ZipEntry zipEntry = new ZipEntry(imagePath);
+                    zOut.putNextEntry(zipEntry);
+                    zOut.write(bytes);
+                    zOut.closeEntry();
+                    added.add(imagePath);
                 }
             }
         }
@@ -288,7 +301,7 @@ public class ArchiveManager implements IArchiveManager {
     
     @Override
     public void dispose() {
-        fModel.eAdapters().remove(fModelAdapter);
+        getfModel().eAdapters().remove(fModelAdapter);
         
         if(!fLoadedImagePaths.isEmpty()) {
             unloadUnusedImages();
@@ -305,18 +318,20 @@ public class ArchiveManager implements IArchiveManager {
         List<String> allPathsInUse = new ArrayList<String>();
         
         for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
-            if(model != fModel) { // don't bother with this model as we no longer use any images
+            if(model != getfModel()) { // don't bother with this model as we no longer use any images
                 ArchiveManager archiveManager = (ArchiveManager)model.getAdapter(IArchiveManager.class);
-                for(String imagePath : archiveManager.fLoadedImagePaths) {
-                    if(!allPathsInUse.contains(imagePath)) {
-                        allPathsInUse.add(imagePath);
-                    }
-                }
+                if(null != archiveManager)
+	                for(String imagePath : archiveManager.fLoadedImagePaths) {
+	                    if(!allPathsInUse.contains(imagePath)) {
+	                        allPathsInUse.add(imagePath);
+	                    }
+	                }
             }
         }
         
         // Release all unused image data and cached images that are not in image paths
-        for(String imagePath : fLoadedImagePaths) {
+        for(String imagePatho : fLoadedImagePaths) {
+        	String imagePath = Util.assertNonNull(imagePatho);
             if(!allPathsInUse.contains(imagePath)) {
                 BYTE_ARRAY_STORAGE.removeEntry(imagePath);
             }

@@ -19,12 +19,13 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 public class ModelTestData {
 
 	public Resource resource;
-	public File file;
+	private File file;
 	public IZentaModel model;
 	
 	public ModelTestData(String resourcename) {
@@ -36,15 +37,16 @@ public class ModelTestData {
 		private void initialize(String resourcename) {
 			resource = ModelTestUtils.getZentaModelResource(resourcename);
 			assertNotNull(resource);
-			file = new File(resource.getURI().toFileString());
-			assertNotNull(file);
+			setFile(new File(resource.getURI().toFileString()));
+			assertNotNull(getFile());
 			model = getModel();
 		}
 	
 	public IZentaModel getModel() {
-		if( null != model )
-			return model;
-		return (IZentaModel)resource.getContents().get(0);
+		IZentaModel m = model;
+		if( null == m )
+			m = (IZentaModel)resource.getContents().get(0);
+		return Util.assertNonNull(m);
 	}
 	
 	public void saveResource() throws IOException {
@@ -66,7 +68,7 @@ public class ModelTestData {
     }
 
 	public Resource getResource() {
-		return resource;
+		return Util.assertNonNull(resource);
 	}
 
 	public EObject getById(String id) {
@@ -105,7 +107,7 @@ public class ModelTestData {
 
 	public static IFolder getFolderByKid(EObject selected) {
 		IFolder folder = ((IFolder)selected.eContainer());
-		return folder;
+		return Util.assertNonNull(folder);
 	}
 
 	public static void assertNotEquals(String string, String string2) {
@@ -121,5 +123,11 @@ public class ModelTestData {
 		List<String> properties = userObject.getPropertyNamed(propname);
 		assertEquals(1,properties.size());
 		assertEquals(value, properties.get(0));
+	}
+	public File getFile() {
+		return Util.assertNonNull(file);
+	}
+	public void setFile(File file) {
+		this.file = file;
 	}
 }

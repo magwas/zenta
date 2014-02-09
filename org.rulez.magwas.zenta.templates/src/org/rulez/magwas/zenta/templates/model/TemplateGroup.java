@@ -10,7 +10,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.eclipse.jdt.annotation.Nullable;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -33,7 +37,7 @@ public class TemplateGroup implements ITemplateGroup {
     }
 
     public String getName() {
-        return fName;
+        return Util.assertNonNull(fName);
     }
 
     public void setName(String name) {
@@ -41,7 +45,7 @@ public class TemplateGroup implements ITemplateGroup {
     }
 
     public List<ITemplate> getTemplates() {
-        return fTemplates;
+        return Util.assertNonNull(fTemplates);
     }
 
     public void addTemplate(ITemplate template) {
@@ -54,11 +58,13 @@ public class TemplateGroup implements ITemplateGroup {
 
     @Override
     public List<ITemplate> getSortedTemplates() {
-        List<ITemplate> list = new ArrayList<ITemplate>(getTemplates());
+        NonNullList<ITemplate> list = new NonNullArrayList<ITemplate>(getTemplates());
         
         Collections.sort(list, new Comparator<ITemplate>() {
             @Override
-            public int compare(ITemplate t1, ITemplate t2) {
+            public int compare(@Nullable ITemplate t1, @Nullable ITemplate t2) {
+            	if(t1 == null || t2 == null)
+            		throw new AssertionError();
                 String name1 = StringUtils.safeString(t1.getName()).toLowerCase().trim();
                 String name2 = StringUtils.safeString(t2.getName()).toLowerCase().trim();
                 return name1.compareTo(name2);

@@ -7,8 +7,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.junit.Assert;
-import org.rulez.magwas.zenta.model.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 public class XmlTestCase {
@@ -28,7 +29,7 @@ public class XmlTestCase {
                     + "_policy.xml");
         } catch (IOException e) {
             policyDoc = null;
-        }
+        } 
         
         resultDoc = Util.createXmlDocumentFromResource(this, casename
                 + "_out.xml");
@@ -37,8 +38,12 @@ public class XmlTestCase {
     public void assertOK() {
         resultDoc.normalizeDocument();
         testDoc.normalizeDocument();
-        String resultString = Util.xml2String(resultDoc.getDocumentElement()).replaceAll(" *", "");
-        String docString = Util.xml2String(testDoc.getDocumentElement()).replaceAll(" *", "");
+        Element de = resultDoc.getDocumentElement();
+		Element deChecked = Util.assertNonNull(de);
+		String resultString = Util.xml2String(deChecked).replaceAll(" *", "");
+        Element testDe = testDoc.getDocumentElement();
+		Element testDeChecked = Util.assertNonNull(testDe);
+		String docString = Util.xml2String(testDeChecked).replaceAll(" *", "");
         System.out.println("policy=" + policyDoc);
         if (!resultString.equals(docString)) {
             System.out.println(resultString);

@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.model.util;
+package org.rulez.magwas.zenta.model.handmade.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -11,11 +11,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * Some useful File Utilities
@@ -40,7 +44,8 @@ public final class FileUtils  {
 		String fileName = file.getName();
 		int i = fileName.lastIndexOf('.');
 		if(i > 0 && i < fileName.length() - 1) {
-			return fileName.substring(i).toLowerCase();
+			String lc = fileName.substring(i).toLowerCase();
+			return Util.assertNonNull(lc);
 		}
 		return ""; //$NON-NLS-1$
 	}
@@ -54,7 +59,8 @@ public final class FileUtils  {
 		String fileName = file.getName();
 		int i = fileName.lastIndexOf('.');
 		if(i > 0 && i < fileName.length() - 1) {
-		    return fileName.substring(0, i);
+		    String fn = fileName.substring(0, i);
+			return Util.assertNonNull(fn);
 		}
 		else {
 		    return fileName;
@@ -72,7 +78,8 @@ public final class FileUtils  {
 	    
 	    for(File file : files) {
 	        if(file.isDirectory()) {
-	            num += getFileSize(file.listFiles());
+	            File[] fa = file.listFiles();
+				num += getFileSize(Util.assertNonNull(fa));
 	        }
 	        else {
 	            num += file.length();
@@ -100,7 +107,7 @@ public final class FileUtils  {
 	 * @param destFolder
 	 * @throws IOException 
 	 */
-	public static void copyFiles(File[] files, File destFolder, IProgressMonitor progressMonitor) throws IOException {
+	public static void copyFiles(File[] files, File destFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
 	    if(!destFolder.isDirectory()) {
             throw new IOException("Parent folder should be directory"); //$NON-NLS-1$
         }
@@ -129,7 +136,7 @@ public final class FileUtils  {
      * @param destFolder
      * @throws IOException 
      */
-    public static void moveFiles(File[] files, File destFolder, IProgressMonitor progressMonitor) throws IOException {
+    public static void moveFiles(File[] files, File destFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
         if(!destFolder.isDirectory()) {
             throw new IOException("Parent folder should be directory"); //$NON-NLS-1$
         }
@@ -158,7 +165,7 @@ public final class FileUtils  {
 	 * @param progressMonitor An optional IProgressMonitor.  Can be null.
 	 * @throws IOException On error or if there is a IProgressMonitor and user pressed Cancel
 	 */
-	public static void copyFolder(File srcFolder, File destFolder, IProgressMonitor progressMonitor) throws IOException {
+	public static void copyFolder(File srcFolder, File destFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
 	    if(srcFolder.equals(destFolder)) {
 	        throw new IOException("Source and target folders cannot be the same."); //$NON-NLS-1$
 	    }
@@ -243,7 +250,7 @@ public final class FileUtils  {
 	/**
      * Move a Folder
      */
-    public static void moveFolder(File srcFolder, File destFolder, IProgressMonitor progressMonitor) throws IOException {
+    public static void moveFolder(File srcFolder, File destFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
         copyFolder(srcFolder, destFolder, progressMonitor);
         deleteFolder(srcFolder);
     }
@@ -261,9 +268,6 @@ public final class FileUtils  {
 	 * @param afolder -  a folder
 	 */
 	public static void deleteFolder(File afolder) throws IOException {
-	    if(afolder == null) {
-	        return;
-	    }
 	    
 	    // Not root directories
 	    // This way does not work where afolder = new File("aFolder");
@@ -296,13 +300,13 @@ public final class FileUtils  {
 	 * @return The sorted files as an array
 	 */
 	public static File[] sortFiles(File[] files) {
-	    if(files == null || files.length == 0) {
+	    if(files.length == 0) {
 	        return files;
 	    }
 	    
 	    Arrays.sort(files, new Comparator<File>() {
             @Override
-            public int compare(File f1, File f2) {
+            public int compare(@Nullable File f1, @Nullable File f2) {
                 if(f1 == null || f2 == null) {
                     return 0;
                 }
@@ -322,30 +326,36 @@ public final class FileUtils  {
 	/**
 	 * Get a relative path for a file given its relationship to basePath
 	 */
-    @SuppressWarnings("deprecation")
     public static String getRelativePath(File path, File basePath) {
         try {
-            String dir = path.toURL().toExternalForm();
-            String baseDir = appendSeparator(basePath.toURL().toExternalForm(), "/"); //$NON-NLS-1$
+        	File bp = basePath;
+            String dir = toUrl(path);
+            String baseDir = appendSeparator(toUrl(basePath), "/"); //$NON-NLS-1$
             StringBuffer result = new StringBuffer();
             while (dir.indexOf(baseDir) == -1) {
-                basePath = basePath.getParentFile();
-                if(basePath == null) {
-                    return path.getName();
+                bp = bp.getParentFile();
+                if(bp == null) {
+                    return Util.assertNonNull(path.getName());
                 }
-                baseDir = appendSeparator(basePath.toURL().toExternalForm(), "/"); //$NON-NLS-1$
+                baseDir = appendSeparator(toUrl(bp), "/"); //$NON-NLS-1$
                 result.append("../"); //$NON-NLS-1$
             }
             if (dir.indexOf(baseDir) == 0) {
                 String delta = dir.substring(baseDir.length());
                 result.append(delta);
             }
-            return result.toString();
+            return Util.assertNonNull(result.toString());
         } catch(Exception ex) {
             ex.printStackTrace();
-            return path.getName();
+            return Util.assertNonNull(path.getName());
         }
     }
+
+	private static String toUrl(File path) throws MalformedURLException {
+		URI uri = path.toURI();
+		URL url = uri.toURL();
+		return Util.assertNonNull(url.toExternalForm());
+	}
 	
     /**
      * Appends the platform specific path separator to the end of a path.
@@ -355,7 +365,7 @@ public final class FileUtils  {
      * @return the path name appended with the platform specific path separator
      */
     public static String appendSeparator(String path) {
-        return appendSeparator(path, File.separator);
+        return appendSeparator(path, Util.assertNonNull(File.separator));
     }
 
     /**
@@ -392,7 +402,7 @@ public final class FileUtils  {
 
         } while(tmpFile.exists());
         
-        return tmpFile.getName();
+        return Util.assertNonNull(tmpFile.getName());
     }
 
     /**
@@ -404,7 +414,8 @@ public final class FileUtils  {
         if(!StringUtils.isSet(name)) {
             return "untitled"; //$NON-NLS-1$
         }
-        return name.replaceAll("[^a-zA-Z0-9]", "_"); //$NON-NLS-1$ //$NON-NLS-2$
+        String r = name.replaceAll("[^a-zA-Z0-9]", "_"); //$NON-NLS-1$ //$NON-NLS-2$
+        return Util.assertNonNull(r);
     }
 }
 

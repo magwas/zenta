@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
+import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils;
 
 
 /**

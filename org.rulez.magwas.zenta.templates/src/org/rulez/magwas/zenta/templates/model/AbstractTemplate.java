@@ -15,14 +15,16 @@ import java.util.List;
 import java.util.UUID;
 import java.util.zip.ZipOutputStream;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
-import org.rulez.magwas.zenta.model.util.FileUtils;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
@@ -52,7 +54,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
     /**
      * @param id If this is null a new id will be generated
      */
-    public AbstractTemplate(String id) {
+    public AbstractTemplate(@Nullable String id) {
         if(id == null) {
             id = UUID.randomUUID().toString().split("-")[0]; //$NON-NLS-1$
         }
@@ -64,7 +66,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         if(!fManifestLoaded) {
             loadManifest();
         }
-        return fName;
+        return Util.assertNonNull(fName);
     }
     
     @Override
@@ -77,7 +79,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         if(!fManifestLoaded) {
             loadManifest();
         }
-        return fDescription;
+        return Util.assertNonNull(fDescription);
     }
     
     @Override
@@ -90,41 +92,53 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         if(!fManifestLoaded) {
             loadManifest();
         }
-        
-        if(fKeyThumbnailImage == null && fKeyThumbnailPath != null) {
-            fKeyThumbnailImage = loadImage(fKeyThumbnailPath);
+        String tnp = getThumbNailPath();
+        if(fKeyThumbnailImage == null) {
+            fKeyThumbnailImage = loadImage(tnp);
         }
         
-        if(fKeyThumbnailImage == null) {
+        return imageByKyeOrDefault();
+    }
+
+	@SuppressWarnings("null")
+	public Image imageByKyeOrDefault() {
+		if(fKeyThumbnailImage == null) {
             return IZentaImages.ImageFactory.getImage(IZentaImages.DEFAULT_MODEL_THUMB);
         }
         else {
             return fKeyThumbnailImage;
         }
-    }
+	}
+
+	public String getThumbNailPath() {
+		return Util.assertNonNull(fKeyThumbnailPath);
+	}
     
     @Override
     public Image[] getThumbnails() {
-        if(fThumbnails == null) {
-            List<Image> list = new ArrayList<Image>();
-            int i = 1;
-            Image image;
-            do {
-                image = loadImage(TemplateManager.ZIP_ENTRY_THUMBNAILS + i++ + ".png"); //$NON-NLS-1$
-                if(image != null) {
-                    list.add(image);
-                }
-            }
-            while(image != null);
-            fThumbnails = list.toArray(new Image[list.size()]);
+    	Image[] thumbnails = fThumbnails;
+        if(thumbnails == null) {
+        	thumbnails = loadThumbnails();
+        	fThumbnails = thumbnails;
         }
-        
-        return fThumbnails;
+        return thumbnails;
     }
+
+	@SuppressWarnings("null")
+	public Image[] loadThumbnails() {
+		List<Image> list = new ArrayList<Image>();
+		Image image;
+		int i = 1;
+		do {
+		    image = loadImage(TemplateManager.ZIP_ENTRY_THUMBNAILS + i++ + ".png"); //$NON-NLS-1$
+		    list.add(image);
+		} while(image != null);
+		return  list.toArray(new Image[list.size()]);
+	}
 
     @Override
     public File getFile() {
-        return fFile;
+        return Util.assertNonNull(fFile);
     }
 
     @Override
@@ -134,7 +148,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
 
     @Override
     public String getID() {
-        return fID;
+        return Util.assertNonNull(fID);
     }
 
     @Override
@@ -161,24 +175,24 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         elementDescription.setText(getDescription());
         root.addContent(elementDescription);
         
-        if(fKeyThumbnailPath != null) {
-            Element elementKeyThumb = new Element(ITemplateXMLTags.XML_TEMPLATE_ELEMENT_KEY_THUMBNAIL);
-            elementKeyThumb.setText(fKeyThumbnailPath);
-            root.addContent(elementKeyThumb);
-        }
+        Element elementKeyThumb = new Element(ITemplateXMLTags.XML_TEMPLATE_ELEMENT_KEY_THUMBNAIL);
+        elementKeyThumb.setText(getThumbNailPath());
+        root.addContent(elementKeyThumb);
         
         String manifest = JDOMUtils.write2XMLString(doc);
         
         // Model
-        String model = ZipUtils.extractZipEntry(fFile, TemplateManager.ZIP_ENTRY_MODEL);
+        String model = ZipUtils.extractZipEntry(getFile(), TemplateManager.getZipEntryModel());
+        if(null == model)
+        	throw new AssertionError();
         
         // Start a zip stream
-        File tmpFile = File.createTempFile("architemplate", null); //$NON-NLS-1$
+        File tmpFile = Util.assertNonNull(File.createTempFile("architemplate", null)); //$NON-NLS-1$
         BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(tmpFile));
         ZipOutputStream zOut = new ZipOutputStream(out);
         
-        ZipUtils.addStringToZip(manifest, TemplateManager.ZIP_ENTRY_MANIFEST, zOut);
-        ZipUtils.addStringToZip(model, TemplateManager.ZIP_ENTRY_MODEL, zOut);
+        ZipUtils.addStringToZip(manifest, TemplateManager.getZipEntryManifest(), zOut);
+        ZipUtils.addStringToZip(model, TemplateManager.getZipEntryModel(), zOut);
 
         // Thumbnails
         Image[] images = getThumbnails();
@@ -192,7 +206,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
 
         // Delete and copy
         fFile.delete();
-        FileUtils.copyFile(tmpFile, fFile, false);
+        FileUtils.copyFile(tmpFile, getFile(), false);
         tmpFile.delete();
     }
     
@@ -205,7 +219,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         if(fFile != null && fFile.exists()) {
             try {
                 // Manifest
-                String manifest = ZipUtils.extractZipEntry(fFile, TemplateManager.ZIP_ENTRY_MANIFEST);
+                String manifest = ZipUtils.extractZipEntry(getFile(), TemplateManager.getZipEntryManifest());
                 if(manifest != null) {
                     Document doc = JDOMUtils.readXMLString(manifest);
                     Element rootElement = doc.getRootElement();
@@ -235,32 +249,31 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         }
     }
     
-    private Image loadImage(String imgName) {
-        Image image = null;
+    private @Nullable Image loadImage(String imgName) {
+    	if (fFile == null || (!fFile.exists()))
+    		return null;
         
-        if(fFile != null && fFile.exists() && imgName != null) {
-            InputStream stream = null;
+        Image image = null;
+        InputStream stream = null;
+        try {
+            stream = ZipUtils.getZipEntryStream(getFile(), imgName);
+            if (stream == null)
+            	return null;
+            image = new Image(null, stream);
+        }
+        catch(IOException ex) {
+        }
+        finally {
             try {
-                stream = ZipUtils.getZipEntryStream(fFile, imgName);
                 if(stream != null) {
-                    image = new Image(null, stream);
+                    stream.close();
                 }
             }
             catch(IOException ex) {
-                ex.printStackTrace();
-            }
-            finally {
-                try {
-                    if(stream != null) {
-                        stream.close();
-                    }
-                }
-                catch(IOException ex) {
-                    ex.printStackTrace();
-                }
+            	throw new RuntimeException(ex);
             }
         }
-        
+
         return image;
     }
 

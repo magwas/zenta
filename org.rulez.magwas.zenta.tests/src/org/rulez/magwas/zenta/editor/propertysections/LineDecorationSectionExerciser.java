@@ -28,7 +28,7 @@ public class LineDecorationSectionExerciser extends LineDecorationSection {
 	LineDecorationSectionExerciser(ModelAndEditPartTestData data) throws PartInitException {
 		super();
 		//setEditorForSection(editor,data);
-		createControlsForSection( data.editor);
+		createControlsForSection( data.getEditor());
 	}
 	
 		void createControlsForSection( ZentaDiagramEditor editor) {

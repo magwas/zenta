@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.lang.reflect.Method;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -16,6 +17,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public class UITestWindow {
 
@@ -23,13 +25,14 @@ public class UITestWindow {
 	private Composite compositeForTest;
 	
 	public UITestWindow() {
-		shell = new Shell();
+		Shell shelln = new Shell();
+		shell = shelln;
 		//no, Shell cannot be subclassed
-		shell.setBounds(new Rectangle(0,0,200,200));
-		shell.setLayout(new GridLayout(1,true));
-		setBackgroundWhite(shell);
-        compositeForTest = new Composite(shell, 0);
-        Composite buttonCompo = new Composite(shell, 3);
+		shelln.setBounds(new Rectangle(0,0,200,200));
+		shelln.setLayout(new GridLayout(1,true));
+		setBackgroundWhite(shelln);
+        compositeForTest = new Composite(shelln, 0);
+        Composite buttonCompo = new Composite(shelln, 3);
         buttonCompo.setLayout(new FillLayout());
         addOKButton(buttonCompo);
         addNotNiceButton(buttonCompo);
@@ -48,7 +51,7 @@ public class UITestWindow {
 		    private SelectionAdapter createDisposer() {
 		        return new SelectionAdapter() {
 		            @Override
-		            public void widgetSelected(SelectionEvent e) {
+		            public void widgetSelected(@Nullable SelectionEvent e) {
 		                shell.dispose();
 		            }
 		        };
@@ -62,7 +65,7 @@ public class UITestWindow {
 		    private SelectionAdapter createFailDisposer() {
 		        return new SelectionAdapter() {
 		            @Override
-		            public void widgetSelected(SelectionEvent e) {
+		            public void widgetSelected(@Nullable SelectionEvent e) {
 		                fail("Not Nice!");
 		            }
 		        };
@@ -75,7 +78,7 @@ public class UITestWindow {
 		compositeForTest.setLayoutData(data);	
 	}
 	public Composite getComposite() {
-		return compositeForTest;
+		return Util.assertNonNull(compositeForTest);
 	}
 
 	public Composite getNewHiddenComposite() {
@@ -87,7 +90,7 @@ public class UITestWindow {
 		shell.pack();
 		shell.open();
 		Method method = findTestMethod();
-		TestCaseImageSaver.save(method,compositeForTest);
+		TestCaseImageSaver.save(method,getComposite());
 		if (method.getAnnotation(HaveGUI.class).waitUser())
 			runLoopWhileShellExists();
 	}
@@ -99,6 +102,7 @@ public class UITestWindow {
 					display.sleep();
 		}
 
+		@SuppressWarnings("null")
 		private Method findTestMethod()  {
 			StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 			return findTestMethodInFrame(stackTraceElements);
@@ -116,7 +120,8 @@ public class UITestWindow {
 				private static final long serialVersionUID = 1L;
 			}
 
-			private static Method getMethodIfAnnotated(StackTraceElement frame) {
+			private static @Nullable Method getMethodIfAnnotated(@Nullable StackTraceElement frameo) {
+				StackTraceElement frame = Util.assertNonNull(frameo);
 				String classname = frame.getClassName();
 				String methodname = frame.getMethodName();
 				try {

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.jdt.annotation.NonNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,12 +21,13 @@ import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class ObjectClassTest{
 
-	protected IBasicObject fixture = null;
+	protected IBasicObject fixture;
 	private ModelAndMetaModelTestData testdata;
 	private IZentaModel model;
 	private IZentaDiagramModel diagramModel;
@@ -41,7 +43,7 @@ public class ObjectClassTest{
 	@After
 	public void tearDown() throws Exception {
 		this.fixture = null;
-		testdata.file.delete();
+		testdata.getFile().delete();
 	}
 
 	@Test
@@ -49,11 +51,13 @@ public class ObjectClassTest{
 		assertEquals("Basic Object",fixture.getName());
 	}
 
+	@SuppressWarnings("null")
 	@Test(expected = IZentaFactory.BuiltinClassShouldNotHaveAncestor.class)
 	public void The_ancestor_cannot_be_set_for_the_Builtin_ObjectClass() {
 		fixture.setAncestor(fixture);
 	}
 	
+	@SuppressWarnings("null")
 	@Test
 	public void if_an_ObjectClass_is_set_as_ancestor_then_the_number_of_its_kids_grows() {
 		EList<IBasicObject> kids = fixture.getChildren();
@@ -69,6 +73,7 @@ public class ObjectClassTest{
 		testdata.getTestObjectClass();
 	}
 	
+	@SuppressWarnings("null")
 	@Test
 	public void The_elements_of_the_template_are_converted_to_ObjectClass() {
 		ITemplate template = testdata.metamodel.getTemplateFor(diagramModel);
@@ -86,8 +91,7 @@ public class ObjectClassTest{
 	@Test
 	public void There_is_only_one_ObjectClass_for_an_element_occuring_more_times_in_a_template() {
 		String id = "e13c9626";
-		IZentaDiagramModel getDiagramModelById = testdata.getZDiagramModelById(id);
-		IZentaDiagramModel dm = getDiagramModelById;
+		@NonNull IZentaDiagramModel dm = testdata.getZDiagramModelById(id);
 		ITemplate template = testdata.metamodel.getTemplateFor(dm);
 		String id2 = "8495ea84";
 		IZentaElement element = testdata.getElementById(id2);
@@ -103,7 +107,7 @@ public class ObjectClassTest{
 		String id = "a885cd76";
 		IBasicObject elementToAdd = (IBasicObject) testdata.getElementById(id);
 		assertFalse(elementToAdd.isTemplate());
-		addElementToDiagramModel(diagramModel,elementToAdd);
+		addElementToDiagramModel(Util.assertNonNull(diagramModel),elementToAdd);
 		assertTrue(elementToAdd.isTemplate());
 	}
 	
@@ -169,7 +173,7 @@ public class ObjectClassTest{
 	public void When_the_model_is_loaded_the_diagram_elements_are_not_converted_according_to_the_defining_element() {
 		ModelTestData data = new ModelTestData();
 		ensureVirginDMOsForLoadTest(data);
-		IZentaFactory.eINSTANCE.createMetamodel(data.model);
+		IZentaFactory.eINSTANCE.createMetamodel(Util.assertNonNull(data.model));
 		ensureVirginDMOsForLoadTest(data);
 		ensureCorrectFinalAttributes(data);
 	}
@@ -218,7 +222,7 @@ public class ObjectClassTest{
 		ModelTestData.assertNotEquals(4,dmo.getTextAlignment());
 		ModelTestData.assertNotEquals("#ffa500",dmo.getFillColor());
 
-		element.setAncestor(parent);
+		element.setAncestor(Util.assertNonNull(parent));
 
 		ModelTestData.assertNotEquals("ellipseShape",dmo.getElementShape());
 		ModelTestData.assertNotEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());
@@ -354,7 +358,7 @@ public class ObjectClassTest{
 		assertFalse(element.isTemplate());
 	}
 	
-	@Test
+	@Test(expected=java.util.NoSuchElementException.class)
 	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IZentaElement element = testdata.createNewObjectClass("deletetest OC");
 		String elemId = element.getId();
@@ -364,7 +368,7 @@ public class ObjectClassTest{
 		assertNotNull(oc);
 		((IFolder)element.eContainer()).getElements().remove(element);
 		assertNull(dmo.eContainer());
-		assertNull(testdata.metamodel.getClassById(elemId));
+		testdata.metamodel.getClassById(elemId);
 	}
 	
 	@Test

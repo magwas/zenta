@@ -11,7 +11,7 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.Locator;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 

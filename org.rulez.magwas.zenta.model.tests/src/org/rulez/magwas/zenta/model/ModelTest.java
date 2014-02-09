@@ -12,11 +12,11 @@ import javax.xml.xpath.XPathExpressionException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
-import org.rulez.magwas.zenta.model.util.Util;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -39,7 +39,7 @@ public class ModelTest {
 		assertEquals("Procedure",bo.getName());
 		testdata.saveResource();
 		String path = testdata.resource.getURI().devicePath();
-		Document testDoc = Util.createXmlDocumentFromFileName(path);
+		Document testDoc = Util.createXmlDocumentFromFileName(Util.assertNonNull(path));
         String xpathExpression = "//sourceConnection[@id='24e3c661']";
 	    Element node = ModelTestUtils.getElementByXpath(testDoc, xpathExpression);
         assertEquals("b0e2bfd8",node.getAttribute("relationship"));
@@ -56,7 +56,7 @@ public class ModelTest {
 	public void The_model_can_be_saved() {
 		ModelTestData testdata = new ModelAndMetaModelTestData();
 		File file = new File("/tmp/foo.zenta");
-		ZentaModelUtils.saveModelToXMLFile(testdata.model, file);
+		ZentaModelUtils.saveModelToXMLFile(testdata.getModel(), file);
 	}
 
 }

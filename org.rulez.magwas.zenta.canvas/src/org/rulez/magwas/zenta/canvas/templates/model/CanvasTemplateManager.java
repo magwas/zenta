@@ -17,6 +17,7 @@ import org.rulez.magwas.zenta.canvas.CanvasEditorPlugin;
 import org.rulez.magwas.zenta.canvas.ICanvasImages;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.ITemplateXMLTags;
@@ -33,13 +34,13 @@ import uk.ac.bolton.jdom.JDOMUtils;
  * @author Phillip Beauvoir
  */
 public class CanvasTemplateManager extends TemplateManager {
-    
-    public static final String CANVAS_TEMPLATE_FILE_EXTENSION = ".archicanvas"; //$NON-NLS-1$
+
+	public static final String CANVAS_TEMPLATE_FILE_EXTENSION = ".archicanvas"; //$NON-NLS-1$
     private File fUserTemplatesFile = new File(ZentaEditorPlugin.INSTANCE.getUserDataFolder(), "canvasses.xml"); //$NON-NLS-1$
 
     @Override
     protected ITemplateGroup loadInbuiltTemplates() {
-        ITemplateGroup group = new TemplateGroup(Messages.CanvasTemplateManager_0);
+        ITemplateGroup group = newBuiltinTemplateGroup();
         File folder = CanvasEditorPlugin.INSTANCE.getTemplatesFolder();
         if(folder.exists()) {
             for(File file : folder.listFiles()) {
@@ -53,9 +54,14 @@ public class CanvasTemplateManager extends TemplateManager {
         return group;
     }
 
+	@SuppressWarnings("null")
+	private TemplateGroup newBuiltinTemplateGroup() {
+		return new TemplateGroup(Messages.CanvasTemplateManager_0);
+	}
+
     @Override
     public File getUserTemplatesManifestFile() {
-        return fUserTemplatesFile;
+        return Util.assertNonNull(fUserTemplatesFile);
     }
 
     @Override
@@ -75,25 +81,25 @@ public class CanvasTemplateManager extends TemplateManager {
 
     @Override
     protected ITemplate createTemplate(String type) {
-        if(CanvasModelTemplate.XML_CANVAS_TEMPLATE_ATTRIBUTE_TYPE_MODEL.equals(type)) {
-            return new CanvasModelTemplate();
-        }
-        return null;
+        if(!CanvasModelTemplate.XML_CANVAS_TEMPLATE_ATTRIBUTE_TYPE_MODEL.equals(type))
+        	throw new IllegalTemplateTypeException();
+        return new CanvasModelTemplate();
     }
     
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public Image getMainImage() {
         return ICanvasImages.ImageFactory.getImage(ICanvasImages.ICON_CANVAS_MODEL_16);
     }
     
     @Override
     protected boolean isValidTemplateFile(File file) throws IOException {
-        if(file == null || !file.exists()) {
+        if(!file.exists()) {
             return false;
         }
         
         // Ensure the template is of the right kind
-        String xmlString = ZipUtils.extractZipEntry(file, ZIP_ENTRY_MANIFEST);
+        String xmlString = ZipUtils.extractZipEntry(file, getZipEntryManifest());
         if(xmlString == null) {
             return false;
         }

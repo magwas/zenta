@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IDiagramConne
 import org.rulez.magwas.zenta.editor.diagram.figures.connections.ConnectionDecorationFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 public class LineDecorationSection extends AbstractZentaPropertySection {
 

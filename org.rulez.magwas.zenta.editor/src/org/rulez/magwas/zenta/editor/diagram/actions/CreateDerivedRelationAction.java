@@ -43,6 +43,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IWorkbenchPart;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -52,8 +54,8 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils;
-import org.rulez.magwas.zenta.model.util.DerivedRelationsUtils.TooComplicatedException;
+import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils;
+import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils.TooComplicatedException;
 
 
 
@@ -162,7 +164,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
 			}
 		private void createChoosenChain(CreateDerivedConnectionDialog dialog) {
 			if(dialog.open() == IDialogConstants.OK_ID) {
-	            List<IBasicRelationship> chain = dialog.getSelectedChain();
+	            NonNullList<IBasicRelationship> chain = dialog.getSelectedChain();
 	            if(chain != null) {
 	                ChainList chainList = dialog.getSelectedChainList();
 	                IBasicRelationship relationshipClass = drutil.getWeakestType(chain);
@@ -183,7 +185,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         IDiagramModelZentaObject tgtDiagramObject;
         IZentaElement srcElement;
         IZentaElement tgtElement;
-        List<List<IBasicRelationship>> chains;
+        NonNullList<NonNullList<IBasicRelationship>> chains;
         boolean isTooComplicated;
         
         ChainList(IDiagramModelZentaObject srcDiagramObject, IDiagramModelZentaObject tgtDiagramObject) {
@@ -210,7 +212,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
             }
         }
         
-        List<List<IBasicRelationship>> getChains() {
+        NonNullList<NonNullList<IBasicRelationship>> getChains() {
             if(hasExistingDirectRelationship()) {
                 return null;
             }
@@ -227,7 +229,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         private static final String DIALOG_SETTINGS_SECTION = "CreateDerivedConnectionDialog"; //$NON-NLS-1$
 
         private ChainList chainList1, chainList2;
-        private List<IBasicRelationship> selectedChain;
+        private NonNullList<IBasicRelationship> selectedChain;
         private ChainList selectedChainList;
         
         public CreateDerivedConnectionDialog(Shell parentShell, ChainList chainList1, ChainList chainList2) {
@@ -310,7 +312,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
             getButton(IDialogConstants.OK_ID).setEnabled(false);
         }
         
-        public List<IBasicRelationship> getSelectedChain() {
+        public NonNullList<IBasicRelationship> getSelectedChain() {
             return selectedChain;
         }
         
@@ -322,7 +324,8 @@ public class CreateDerivedRelationAction extends SelectionAction {
         @Override
         public void selectionChanged(SelectionChangedEvent event) {
             IStructuredSelection selection = (IStructuredSelection)event.getSelection();
-            selectedChain = (List<IBasicRelationship>)selection.getFirstElement();
+            List<IBasicRelationship> fe = (List<IBasicRelationship>)selection.getFirstElement();
+			selectedChain = new NonNullArrayList<IBasicRelationship>(fe);
             selectedChainList = (ChainList)((TableViewer)event.getSource()).getInput();
             getButton(IDialogConstants.OK_ID).setEnabled(!selection.isEmpty());
         }
@@ -407,7 +410,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                 }
 
                 @SuppressWarnings("unchecked")
-                List<IBasicRelationship> chain = (List<IBasicRelationship>)element;
+                NonNullList<IBasicRelationship> chain = new NonNullArrayList<IBasicRelationship>((List<IBasicRelationship>)element);
                 ChainList chainList = (ChainList)getInput();
 
                 switch(columnIndex) {
@@ -437,7 +440,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                 return ""; //$NON-NLS-1$
             }
             
-            private String getRelationshipText(List<IBasicRelationship> chain, IBasicRelationship relation) {
+            private String getRelationshipText(NonNullList<IBasicRelationship> chain, IBasicRelationship relation) {
                 if(drutil.isBidirectionalRelationship(relation)) {
                     int index = chain.indexOf(relation);
                     if(index > 0) {

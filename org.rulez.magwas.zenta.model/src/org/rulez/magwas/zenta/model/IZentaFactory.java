@@ -7,6 +7,8 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * <!-- begin-user-doc -->
@@ -163,9 +165,9 @@ public interface IZentaFactory extends EFactory {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Diagram Model</em>'.
-	 * @generated
+	 * @generated NOT
 	 */
-	IZentaDiagramModel createZentaDiagramModel();
+	@NonNull IZentaDiagramModel createZentaDiagramModel();
 
 	/**
 	 * Returns a new object of class '<em>Diagram Model Zenta Object</em>'.
@@ -257,14 +259,14 @@ public interface IZentaFactory extends EFactory {
 	 */
 	IZentaPackage getZentaPackage();
 
-	IMetamodel createMetamodel(IZentaModel zentaModel);
+	@NonNull IMetamodel createMetamodel(@NonNull IZentaModel zentaModel);
 
-	String getDefiningName(IIdentifier ref);
+	@NonNull String getDefiningName(@NonNull IIdentifier ref);
 
-	IMetamodel getMetamodelFor(IZentaModelElement modelElement);
+	@Nullable IMetamodel getMetamodelFor(@NonNull IZentaModelElement modelElement);
 
-	ITemplate createTemplate(IZentaDiagramModel diagram, IMetamodel metamodel);
+	@NonNull ITemplate createTemplate(@NonNull IZentaDiagramModel diagram, @NonNull IMetamodel metamodel);
 
-	IMetamodel getMetamodelFor(IZentaModel model2);
+	@Nullable IMetamodel findMetamodelFor(@NonNull IZentaModel model2);
 
 } //IZentaFactory

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -33,7 +34,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.util.IDAdapter;
+import org.rulez.magwas.zenta.model.handmade.util.IDAdapter;
 
 
 /**
@@ -354,13 +355,17 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_MODEL__DOCUMENTATION, oldDocumentation, documentation));
 	}
+    @SuppressWarnings("null")
+	public @NonNull EList<IFolder> getFolders() {
+    	return getFolders_gen();
+    }
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<IFolder> getFolders() {
+    public EList<IFolder> getFolders_gen() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.ZENTA_MODEL__FOLDERS);
 		}
@@ -416,11 +421,12 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      */
     public void setDefaults() {
         // Element has no ID so allocate one
-        if(getId() == null) {
+        String id = getId();
+		if(id == null) {
             setId(fIDAdapter.getNewID());
         }
         else {
-            fIDAdapter.registerID(getId());
+            fIDAdapter.registerID(id);
         }
 
         addDefaultFolders();

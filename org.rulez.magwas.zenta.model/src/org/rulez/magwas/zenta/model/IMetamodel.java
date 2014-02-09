@@ -2,12 +2,11 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.handmade.BuiltinTemplate;
 
 /**
@@ -47,21 +46,21 @@ public interface IMetamodel extends EObject {
 
     IZentaModel getModel();
     
-    IBasicObject getClassById(String classId);
-	IBasicObject getBuiltinObjectClass();
-	IBasicRelationship getBuiltinRelationClass();
+    @NonNull IBasicObject getClassById(@NonNull String classId);
+    @NonNull IBasicObject getBuiltinObjectClass();
+    @NonNull IBasicRelationship getBuiltinRelationClass();
 	
-    BuiltinTemplate getBuiltinTemplate();
-    ITemplate getTemplateFor(IDiagramModel dm);
-    ITemplate getTemplateFor(IDiagramModelComponent element);
+    @NonNull BuiltinTemplate getBuiltinTemplate();
+    ITemplate getTemplateFor(@NonNull IDiagramModel dm);
+    ITemplate getTemplateFor(@NonNull IDiagramModelComponent element);
     
-	List<IBasicObject> getObjectClasses();
-	List<IBasicRelationship> getRelationClasses();
-	List<IBasicObject> getConnectorClasses();
+    @NonNull NonNullList<IBasicObject> getObjectClasses();
+    @NonNull NonNullList<IBasicRelationship> getRelationClasses();
+    @NonNull NonNullList<IBasicObject> getConnectorClasses();
 	
-	Collection<IBasicRelationship> getRelationships(IBasicObject object);
-	List<IBasicRelationship> getWeaklist();
-	boolean isValidRelationship(IBasicObject element1, IBasicObject element2,
-			IBasicRelationship relationshipClass);
+    @NonNull NonNullList<IBasicRelationship> getRelationships(@NonNull IBasicObject object);
+    @NonNull NonNullList<IBasicRelationship> getWeaklist();
+    boolean isValidRelationship(@NonNull IBasicObject element1, @NonNull IBasicObject element2,
+			@NonNull IBasicRelationship relationshipClass);
 
 } // MetamodelBase

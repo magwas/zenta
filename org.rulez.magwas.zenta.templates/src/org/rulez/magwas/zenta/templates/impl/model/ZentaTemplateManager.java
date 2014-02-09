@@ -16,6 +16,7 @@ import org.jdom.JDOMException;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.templates.ZentaEditorTemplatesPlugin;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
@@ -43,7 +44,7 @@ public class ZentaTemplateManager extends TemplateManager {
     
     @Override
     protected ITemplateGroup loadInbuiltTemplates() {
-        ITemplateGroup group = new TemplateGroup(Messages.ZentaTemplateManager_2);
+        ITemplateGroup group = newTemplateGroup();
         File folder = ZentaEditorTemplatesPlugin.INSTANCE.getTemplatesFolder();
         if(folder.exists()) {
             for(File file : folder.listFiles()) {
@@ -57,9 +58,14 @@ public class ZentaTemplateManager extends TemplateManager {
         return group;
     }
 
+	@SuppressWarnings("null")
+	private TemplateGroup newTemplateGroup() {
+		return new TemplateGroup(Messages.ZentaTemplateManager_2);
+	}
+
     @Override
     public File getUserTemplatesManifestFile() {
-        return fUserTemplatesFile;
+        return Util.assertNonNull(fUserTemplatesFile);
     }
 
     @Override
@@ -70,7 +76,7 @@ public class ZentaTemplateManager extends TemplateManager {
     @Override
     public ITemplate createTemplate(File file) throws IOException {
         if(isValidTemplateFile(file)) {
-            return new ZentaModelTemplate(null);
+            return new ZentaModelTemplate();
         }
         else {
             throw new IOException(Messages.ZentaTemplateManager_0);
@@ -79,25 +85,26 @@ public class ZentaTemplateManager extends TemplateManager {
 
     @Override
     protected ITemplate createTemplate(String type) {
-        if(ZentaModelTemplate.XML_TEMPLATE_ATTRIBUTE_TYPE_MODEL.equals(type)) {
-            return new ZentaModelTemplate();
+        if(!ZentaModelTemplate.XML_TEMPLATE_ATTRIBUTE_TYPE_MODEL.equals(type)) {
+        	throw new IllegalTemplateTypeException();
         }
-        return null;
+        return new ZentaModelTemplate();
     }
     
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public Image getMainImage() {
         return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_MODELS_16);
     }
     
     @Override
     protected boolean isValidTemplateFile(File file) throws IOException {
-        if(file == null || !file.exists()) {
+        if(!file.exists()) {
             return false;
         }
         
         // Ensure the template is of the right kind
-        String xmlString = ZipUtils.extractZipEntry(file, ZIP_ENTRY_MANIFEST);
+        String xmlString = ZipUtils.extractZipEntry(file, getZipEntryManifest());
         if(xmlString == null) {
             return false;
         }

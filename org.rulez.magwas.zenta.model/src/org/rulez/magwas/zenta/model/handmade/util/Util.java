@@ -1,4 +1,4 @@
-package org.rulez.magwas.zenta.model.util;
+package org.rulez.magwas.zenta.model.handmade.util;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,6 +26,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
@@ -37,7 +38,8 @@ public class Util {
     public static String now() {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
-        return sdf.format(cal.getTime());
+        String now = sdf.format(cal.getTime());
+		return assertNonNull(now);
         
     }
     
@@ -52,7 +54,7 @@ public class Util {
             transformer.transform(source, result);
             
             String xmlString = result.getWriter().toString();
-            return xmlString;
+            return assertNonNull(xmlString);
         } catch (Exception e) {
         	throw new RuntimeException(e);
         }
@@ -70,7 +72,7 @@ public class Util {
             URISyntaxException {
         InputStream stream = instance.getClass().getResourceAsStream(filename);
         if(null == stream)
-        	return null;
+        	throw new IOException(String.format("no such file: %s", filename));
         String xml = convertStreamToString(stream);
         stream.close();
         return xml;
@@ -81,7 +83,7 @@ public class Util {
 			java.util.Scanner s = scanner.useDelimiter("\\A");
 	        String ret = s.hasNext() ? s.next() : "";
 			scanner.close();
-			return ret;
+			return assertNonNull(ret);
 	    }
 
 	public static Document createXmlDocumentFromFileName(String respath) {
@@ -111,12 +113,10 @@ public class Util {
 	    } finally {
 	        br.close();
 	    }
-	    return everything;
+	    return assertNonNull(everything);
 	}
     public static Document createXmlDocumentFromString(String xmlString)
             throws ParserConfigurationException, SAXException, IOException {
-        if (xmlString == null)
-        	return null;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;
         factory.setNamespaceAware(true);
@@ -126,7 +126,7 @@ public class Util {
         builder = factory.newDocumentBuilder();
         Document document = builder.parse(new InputSource(new StringReader(
                 xmlString)));
-        return document;
+        return assertNonNull(document);
     }
     
     public static void copyFile(File source, File dest) throws IOException {
@@ -135,7 +135,8 @@ public class Util {
             is = new FileInputStream(source);
             copyStreamToFile(is, dest);
         } finally {
-            is.close();
+        	if(is != null)
+        		is.close();
         }
     }
 
@@ -150,7 +151,13 @@ public class Util {
 			    os.write(buffer, 0, length);
 			}
 		} finally {
-			os.close();
+			if (os!= null)
+				os.close();
 		}
+	}
+
+	public static <T> T assertNonNull(@Nullable T r) {
+		if(null == r) throw new AssertionError();
+		return r;
 	}
 }

@@ -61,7 +61,8 @@ public class ZentaEditorTemplatesPlugin extends AbstractUIPlugin implements ISta
      * @return The File Location of this plugin
      */
     public File getPluginFolder() {
-        if(fPluginFolder == null) {
+    	File pf = fPluginFolder;
+        if(pf == null) {
             URL url = getBundle().getEntry("/"); //$NON-NLS-1$
             try {
                 url = FileLocator.resolve(url);
@@ -69,10 +70,10 @@ public class ZentaEditorTemplatesPlugin extends AbstractUIPlugin implements ISta
             catch(IOException ex) {
                 ex.printStackTrace();
             }
-            fPluginFolder = new File(url.getPath());
+            pf = new File(url.getPath());
         }
-        
-        return fPluginFolder;
+        fPluginFolder = pf;
+        return pf;
     }
 
 }

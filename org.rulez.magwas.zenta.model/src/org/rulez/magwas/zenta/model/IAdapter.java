@@ -7,6 +7,7 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +26,7 @@ public interface IAdapter extends EObject {
 	 * @model
 	 * @generated
 	 */
-	Object getAdapter(Object adapter);
+	@Nullable Object getAdapter(Object adapter);
 
 	/**
 	 * <!-- begin-user-doc -->

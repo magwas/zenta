@@ -20,6 +20,7 @@ import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
 import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
@@ -28,6 +29,7 @@ import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -53,12 +55,12 @@ public class NewCanvasFromTemplateWizard extends Wizard {
     public NewCanvasFromTemplateWizard(IFolder folder) {
         setWindowTitle(Messages.NewCanvasFromTemplateWizard_0);
         fFolder = folder;
-        fTemplateManager = new CanvasTemplateManager();
+        setfTemplateManager(new CanvasTemplateManager());
     }
     
     @Override
     public void addPages() {
-        fMainPage = new NewCanvasFromTemplateWizardPage(fTemplateManager);
+        fMainPage = new NewCanvasFromTemplateWizardPage(getfTemplateManager());
         addPage(fMainPage);
     }
 
@@ -74,7 +76,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         fErrorMessage = null;
         
         final File zipFile = template.getFile();
-        if(zipFile != null && zipFile.exists()) {
+        if(zipFile.exists()) {
             BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
                 @Override
                 public void run() {
@@ -82,7 +84,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
                         fErrorMessage = null;
                         File tmp = File.createTempFile("~architemplate", null); //$NON-NLS-1$
                         tmp.deleteOnExit();
-                        File file = ZipUtils.extractZipEntry(zipFile, TemplateManager.ZIP_ENTRY_MODEL, tmp);
+                        File file = ZipUtils.extractZipEntry(zipFile, TemplateManager.getZipEntryModel(), tmp);
                         if(file != null && file.exists()) {
                             createNewCanvasFromTemplate(file);
                         }
@@ -151,18 +153,26 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         
         // Load the images from the template model's file now
         if(isArchiveFormat) {
-            IArchiveManager archiveManager = (IArchiveManager)fFolder.getAdapter(IArchiveManager.class);
+            IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(fFolder);
             archiveManager.loadImagesFromModelFile(file); 
         }
         
         Command cmd = new NewDiagramCommand(fFolder, canvasModel, Messages.NewCanvasFromTemplateWizard_5);
-        CommandStack commandStack = (CommandStack)fFolder.getAdapter(CommandStack.class);
+        CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(fFolder);
         commandStack.execute(cmd);
     }
     
     @Override
     public void dispose() {
         super.dispose();
-        fTemplateManager.dispose();
+        getfTemplateManager().dispose();
     }
+
+	public TemplateManager getfTemplateManager() {
+		return Util.assertNonNull(fTemplateManager);
+	}
+
+	public void setfTemplateManager(TemplateManager fTemplateManager) {
+		this.fTemplateManager = fTemplateManager;
+	}
 }

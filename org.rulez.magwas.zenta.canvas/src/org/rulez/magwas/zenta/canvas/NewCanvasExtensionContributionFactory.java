@@ -26,6 +26,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasFactory;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.canvas.templates.wizard.NewCanvasFromTemplateWizard;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedWizardDialog;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -86,7 +87,7 @@ public class NewCanvasExtensionContributionFactory extends ExtensionContribution
 
                 // Execute Command
                 Command cmd = new NewDiagramCommand(fCurrentFolder, canvasModel, Messages.NewCanvasExtensionContributionFactory_1);
-                CommandStack commandStack = (CommandStack)fCurrentFolder.getAdapter(CommandStack.class);
+                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(fCurrentFolder);
                 commandStack.execute(cmd);
             }
             else {

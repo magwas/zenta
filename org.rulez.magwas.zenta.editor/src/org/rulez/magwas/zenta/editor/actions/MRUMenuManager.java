@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 
@@ -184,7 +184,8 @@ public class MRUMenuManager extends MenuManager implements PropertyChangeListene
             setText(getShortPath(file));
         }
         
-        @Override
+        @SuppressWarnings("null")
+		@Override
         public void run() {
             if(file.exists()) {
                 if(!IEditorModelManager.INSTANCE.isModelLoaded(file)) {

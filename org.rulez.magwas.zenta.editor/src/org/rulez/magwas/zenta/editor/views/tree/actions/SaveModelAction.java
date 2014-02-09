@@ -7,12 +7,14 @@ package org.rulez.magwas.zenta.editor.views.tree.actions;
 
 import java.io.IOException;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -25,7 +27,7 @@ public class SaveModelAction extends ViewerAction {
     
     private ITreeModelView fView;
     
-    public SaveModelAction(ITreeModelView view) {
+    public SaveModelAction(@NonNull ITreeModelView view) {
         super(view.getSelectionProvider());
         setText(Messages.SaveModelAction_0);
         
@@ -52,7 +54,9 @@ public class SaveModelAction extends ViewerAction {
 
     @Override
     public void update(IStructuredSelection selection) {
-        setEnabled(IEditorModelManager.INSTANCE.isModelDirty(getModel()));
+        IZentaModel model = getModel();
+        if(null != model)
+        	setEnabled(IEditorModelManager.INSTANCE.isModelDirty(model));
     }
 
     private IZentaModel getModel() {

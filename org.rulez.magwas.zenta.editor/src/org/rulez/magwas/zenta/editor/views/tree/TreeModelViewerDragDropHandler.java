@@ -23,6 +23,7 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeItem;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
@@ -225,7 +226,7 @@ public class TreeModelViewerDragDropHandler {
             }
         }
         
-        final CommandStack stack = (CommandStack)newParent.getAdapter(CommandStack.class);
+        final CommandStack stack = EditorModelManagerNoGUI.obtainCommandStack(newParent);
         
         /*
          * Bug in Mac Carbon introduced in Eclipse 3.6.1 - http://bugs.eclipse.org/bugs/show_bug.cgi?id=341895

@@ -23,7 +23,7 @@ import org.eclipse.draw2d.text.TextFlow;
 import org.eclipse.swt.SWT;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.model.IDiagramModelNote;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 /**

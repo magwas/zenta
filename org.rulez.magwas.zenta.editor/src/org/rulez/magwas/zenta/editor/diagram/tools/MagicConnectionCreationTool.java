@@ -104,6 +104,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		EditPart targetEditPart = request.getTargetEditPart();
 		
 		if(sourceEditPart == null || sourceEditPart == targetEditPart) {
+			System.out.printf("no conenction creation\n");
 			eraseSourceFeedback();
 			return false;
 		}
@@ -111,19 +112,14 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 
 		viewPoint = ViewpointsManager.INSTANCE.getViewpoint(sourceDiagramModelObject);
 
-		// If targetEditPart is null then user clicked on the canvas or in a non-Zenta Editpart
-		if(targetEditPart == null) {
-			return createElementAndConnection(sourceDiagramModelObject, request.getLocation());
-		}
-		
-		// User clicked on Zenta target edit part
-		if(targetEditPart.getModel() instanceof IDiagramModelZentaObject) {
+		if((targetEditPart != null) && (targetEditPart.getModel() instanceof IDiagramModelZentaObject)) {
+			System.out.printf("has target editpart\n");
 			IDiagramModelZentaObject mo = (IDiagramModelZentaObject) targetEditPart.getModel();
 			return createConnection(request, sourceDiagramModelObject, mo);
+		} else {
+			System.out.printf("no target editpart\n");
+			return createElementAndConnection(sourceDiagramModelObject, request.getLocation());
 		}
-		
-		eraseSourceFeedback();
-		return false;
 	}
 	
 	@Override
@@ -327,6 +323,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	private void addElementActions(Menu menu, IDiagramModelZentaObject sourceDiagramModelObject) {
 		IBasicObject oc = (IBasicObject) viewPoint.getObjectClassOf(sourceDiagramModelObject);
 		Collection<IBasicObject> allowedTargets = viewPoint.getAllowedTargets(oc);
+		System.out.printf("addElementActions %s\n %s\n", oc, allowedTargets);
 		addElementActions(menu, oc, allowedTargets);
 	}
 	
@@ -373,6 +370,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	}
 
 	private void addConnectionActions(Menu menu, IZentaElement sourceElement, IZentaElement targetElement) {
+		System.out.printf("addConnectionActions %s\n %s\n %s\n", sourceElement, targetElement, viewPoint.getValidRelationships(sourceElement, targetElement));
 		for(IBasicRelationship type : viewPoint.getValidRelationships(sourceElement, targetElement)) {
 			addConnectionAction(menu, type);
 		}

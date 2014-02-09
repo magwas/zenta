@@ -30,7 +30,7 @@ import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 

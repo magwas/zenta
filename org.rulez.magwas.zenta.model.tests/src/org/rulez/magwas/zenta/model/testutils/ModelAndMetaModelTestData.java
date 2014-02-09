@@ -14,20 +14,21 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 public class ModelAndMetaModelTestData extends ModelTestData {
 
 	public IDiagramModelZentaConnection connection;
-	public IZentaDiagramModel diagramModel;
+	private IZentaDiagramModel diagramModel;
 	public IDiagramModelZentaConnection connection2;
 	public IMetamodel metamodel;
 
 	public ModelAndMetaModelTestData() {
 		super();
         setUpMetaModel();
-		diagramModel = getTemplateDiagramModel();
-		assertNotNull(diagramModel);
+		setDiagramModel(getTemplateDiagramModel());
+		assertNotNull(getDiagramModel());
 		connection = getDMRById("24e3c661");
 		assertNotNull(connection);
 		connection2 = getDMRById("99e9c255");
@@ -39,7 +40,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		setUpMetaModel();
 	}
 		private void setUpMetaModel() {
-			metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+			metamodel = IZentaFactory.eINSTANCE.createMetamodel(Util.assertNonNull(model));
 	        assertNotNull(metamodel);
 	        assertNotNull(metamodel.getTemplates());
 		}
@@ -61,7 +62,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 	}
 
 	public IBasicObject getTestObjectClass() {
-		IBasicObject element = (IBasicObject) ZentaModelUtils.getObjectByID(model, "ea94cf6c");
+		IBasicObject element = (IBasicObject) ZentaModelUtils.getObjectByID(Util.assertNonNull(model), "ea94cf6c");
 		ITemplate template = (ITemplate) metamodel.getBuiltinTemplate();
 		assertNotNull(template);
 		assertNotNull(template.getMetamodel());
@@ -111,7 +112,8 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 			IBasicRelationship baseRelationClass, IDiagramModel diagram) {
 		IZentaElement sourceElement = createClassedTestElement();
 		IZentaElement targetElement = createClassedTestElement();
-		IBasicRelationship rel = (IBasicRelationship) baseRelationClass.create((IFolder) sourceElement.eContainer());
+		IFolder container = (IFolder) sourceElement.eContainer();
+		IBasicRelationship rel = (IBasicRelationship) baseRelationClass.create(Util.assertNonNull(container));
 		rel.setSource(sourceElement);
 		rel.setTarget(targetElement);
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(sourceElement);
@@ -129,6 +131,12 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		dmo.addConnection(diagramRelation);
 		assertFalse(rel.isTemplate());
 		return rel;
+	}
+	public IZentaDiagramModel getDiagramModel() {
+		return Util.assertNonNull(diagramModel);
+	}
+	public void setDiagramModel(IZentaDiagramModel diagramModel) {
+		this.diagramModel = diagramModel;
 	}
 
 }

@@ -17,6 +17,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.TemplateBase;
 
 public class Template extends TemplateBase implements ITemplate {
@@ -42,12 +43,14 @@ public class Template extends TemplateBase implements ITemplate {
 		}
 			private void extractDiagramElement(IDiagramModelZentaObject kid) {
 				IBasicObject zentaElement = (IBasicObject) kid.getZentaElement();
-				setObjectAncestorIfEmpty(zentaElement);
+				setObjectAncestorIfEmpty(Util.assertNonNull(zentaElement));
 				if(! "".equals(zentaElement.getDefiningName()))
 					zentaElement.setAsTemplate(this);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
-				for (IDiagramModelObject aKid : myKids)
-					extractDiagramElement((IDiagramModelZentaObject) aKid);
+				for (IDiagramModelObject aKid : myKids) {
+					IDiagramModelZentaObject k = (IDiagramModelZentaObject) aKid;
+					extractDiagramElement(Util.assertNonNull(k));
+				}
 			}
 			private void setObjectAncestorIfEmpty(IBasicObject zentaElement) {
 				if(null == zentaElement.getAncestor())
@@ -62,14 +65,16 @@ public class Template extends TemplateBase implements ITemplate {
 		}
 			private void extractConnsFromDiagramElement(IDiagramModelZentaObject kid) {
 				EList<IDiagramModelObject> myKids = kid.getChildren();
-				for (IDiagramModelObject aKid : myKids)
-					extractConnsFromDiagramElement((IDiagramModelZentaObject) aKid);
+				for (IDiagramModelObject aKid : myKids) {
+					IDiagramModelZentaObject k = (IDiagramModelZentaObject) aKid;
+					extractConnsFromDiagramElement(Util.assertNonNull(k));
+				}
 				extractConnectionsForDiagramElement(kid);
 			}
 				private void extractConnectionsForDiagramElement(
 						IDiagramModelZentaObject kid) {
 					for (IDiagramModelConnection conn : kid.getSourceConnections())
-						extractRelationClassFor(conn);
+						extractRelationClassFor(Util.assertNonNull(conn));
 				}
 					private void extractRelationClassFor(
 							IDiagramModelConnection conn) {
@@ -77,7 +82,7 @@ public class Template extends TemplateBase implements ITemplate {
 							return;
 						IDiagramModelZentaConnection dmc = (IDiagramModelZentaConnection)conn;
 						IBasicRelationship relationship = (IBasicRelationship) dmc.getRelationship();
-						setRelationAncestorIfEmpty(relationship);
+						setRelationAncestorIfEmpty(Util.assertNonNull(relationship));
 						if("".equals(relationship.getDefiningName()))
 							return;
 						relationship.setAsTemplate(this);
@@ -98,7 +103,8 @@ public class Template extends TemplateBase implements ITemplate {
 		for(IBasicObject c : this.getClasses())
 			if(!(c instanceof RelationClass))
 				ret.add(c);
-		return Collections.unmodifiableList(ret);
+		List<IBasicObject> l = Collections.unmodifiableList(ret);
+		return Util.assertNonNull(l);
 	}
 
 	@Override
@@ -107,12 +113,14 @@ public class Template extends TemplateBase implements ITemplate {
 		for(IBasicObject c : this.getClasses())
 			if((c instanceof RelationClass))
 				ret.add((IBasicRelationship) c);
-		return Collections.unmodifiableList(ret);
+		List<IBasicRelationship> l = Collections.unmodifiableList(ret);
+		return Util.assertNonNull(l);
 	}
 
 	@Override
 	public String getName() {
-		return getDiagram().getName();
+		String name = getDiagram().getName();
+		return Util.assertNonNull(name);
 	}
 
 }

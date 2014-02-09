@@ -30,8 +30,6 @@ public class TreeModelViewActionFactoryTest {
 	public ModelAndEditPartTestData testdata;
 	private TreeModelViewActionFactory fixture;
 	
-	//FIXME: no connectors
-
 	@Before
 	public void Initializes_with_a_model() {
 		testdata = new ModelAndEditPartTestData();
@@ -41,7 +39,7 @@ public class TreeModelViewActionFactoryTest {
 	
 	@After
 	public void tearDown() throws IOException {
-		IEditorModelManager.INSTANCE.saveModel(testdata.model);
+		IEditorModelManager.INSTANCE.saveModel(testdata.getModel());
 		fixture = null;
 		assertNull(testdata.getStatus());
 	}

@@ -25,6 +25,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
+import org.rulez.magwas.nonnul.NonNullList;
+import org.rulez.magwas.nonnul.NonNullListIterator;
 import org.rulez.magwas.zenta.editor.actions.AbstractDropDownAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
@@ -37,7 +39,7 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UnTestedException;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 
@@ -174,19 +176,23 @@ public class SearchWidget extends Composite {
         
         MenuManager businessMenu = new MenuManager(Messages.SearchWidget_6);
         dropDownAction.add(businessMenu);
-        List<IZentaModel> models = IEditorModelManager.INSTANCE.getModels();
+        NonNullList<IZentaModel> models = IEditorModelManager.INSTANCE.getModels();
         IMetamodel mm;
-		for(IZentaModel model : models) {
-        	mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
-            for(IBasicObject eClass : mm.getObjectClasses()) {
-                businessMenu.add(createObjectAction(eClass));
-            }
-        }
+		for (NonNullListIterator<IZentaModel> iterator = models.iterator(); iterator
+				.hasNext();) {
+			IZentaModel model = iterator.next();
+			mm = IZentaFactory.eINSTANCE.findMetamodelFor(model);
+        	if(null != mm)
+	            for(IBasicObject eClass : mm.getObjectClasses()) {
+	                businessMenu.add(createObjectAction(eClass));
+	            }
+		}
 
         MenuManager relationsMenu = new MenuManager(Messages.SearchWidget_11);
         dropDownAction.add(relationsMenu);
-		for(IZentaModel model : models) {
-        	mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
+		for (int i = 0; i < models.size(); i++) {
+			IZentaModel model = models.get(i);
+			mm = IZentaFactory.eINSTANCE.createMetamodel(model);
 	        for(IBasicRelationship eClass : mm.getRelationClasses()) {
 	            relationsMenu.add(createObjectAction(eClass));
 	        }

@@ -9,6 +9,7 @@ package org.rulez.magwas.zenta.model;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +43,6 @@ public interface IFolderContainer extends EObject {
 	 *        extendedMetaData="name='folder' kind='element'"
 	 * @generated
 	 */
-	EList<IFolder> getFolders();
+	@NonNull EList<IFolder> getFolders();
 
 } // IFolderContainer

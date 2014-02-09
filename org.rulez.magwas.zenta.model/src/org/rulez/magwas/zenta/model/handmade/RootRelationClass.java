@@ -2,10 +2,12 @@ package org.rulez.magwas.zenta.model.handmade;
 
 import java.util.List;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public class RootRelationClass extends RelationClass {
 	
@@ -19,7 +21,7 @@ public class RootRelationClass extends RelationClass {
 	}
 	
 	@Override
-	public void setAncestor(IBasicObject ancestor) {
+	public void setAncestor(@Nullable IBasicObject ancestor) {
 		throw new IZentaFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 	
@@ -31,7 +33,7 @@ public class RootRelationClass extends RelationClass {
 
 	@Override
 	public List<IAttribute> getAttributesRecursively() {
-		return getAttributes();
+		return Util.assertNonNull(getAttributes());
 	}
 
 	@Override

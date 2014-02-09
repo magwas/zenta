@@ -3,10 +3,12 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.model.util;
+package org.rulez.magwas.zenta.model.handmade.util;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * Some useful String Utilities
@@ -30,7 +32,7 @@ public final class StringUtils {
      * @param input input string (may be null)
      * @return input if not null, or the empty string if input is null
      */
-    public static String safeString(String input) {
+    public static String safeString(@Nullable String input) {
         if(input != null) {
             return input;
         }
@@ -44,7 +46,7 @@ public final class StringUtils {
      * @param input
      * @return
      */
-    public static boolean isSet(String input) {
+    public static boolean isSet(@Nullable String input) {
         return input != null && !ZERO_LENGTH_STRING.equals(input);
     }
     
@@ -98,7 +100,8 @@ public final class StringUtils {
         if(!StringUtils.isSet(id)) {
             return id;
         }
-        return id.replaceAll("[^a-zA-Z0-9-]", "_"); //$NON-NLS-1$ //$NON-NLS-2$
+        String newId = id.replaceAll("[^a-zA-Z0-9-]", "_"); //$NON-NLS-1$ //$NON-NLS-2$
+		return Util.assertNonNull(newId); 
     }
     
     /**
@@ -108,7 +111,7 @@ public final class StringUtils {
      */
     public static String escapeAmpersandsInText(String text) {
         if(isSet(text)) {
-            return text.replaceAll("&", "&&");  //$NON-NLS-1$//$NON-NLS-2$
+            return Util.assertNonNull(text.replaceAll("&", "&&"));  //$NON-NLS-1$//$NON-NLS-2$
         }
         return text;
     }
@@ -125,6 +128,7 @@ public final class StringUtils {
             sb.append(delim);
             sb.append(iter.next().toString());
         }
-        return sb.toString();
+        String joined = sb.toString();
+		return Util.assertNonNull(joined);
     }
 }

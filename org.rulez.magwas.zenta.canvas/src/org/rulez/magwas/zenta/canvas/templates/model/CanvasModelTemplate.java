@@ -5,6 +5,7 @@
  */
 package org.rulez.magwas.zenta.canvas.templates.model;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.canvas.ICanvasImages;
 import org.rulez.magwas.zenta.templates.model.AbstractTemplate;
@@ -23,7 +24,7 @@ public class CanvasModelTemplate extends AbstractTemplate {
     public CanvasModelTemplate() {
     }
     
-    public CanvasModelTemplate(String id) {
+    public CanvasModelTemplate(@Nullable String id) {
         super(id);
     }
 

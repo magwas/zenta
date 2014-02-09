@@ -42,7 +42,7 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.TemplateGroup;

@@ -2,6 +2,7 @@ package org.rulez.magwas.zenta.model.handmade;
 
 import java.util.List;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -13,11 +14,12 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 		super();
 		setId(IZentaElement.basicObjectClassId);
 		setName("Basic Object");
-		this.setAsTemplate(builtinTemplate);
+		setAsTemplate(builtinTemplate);
+		if(!(getTemplate() == builtinTemplate)) throw new AssertionError();
 	}
 	
 	@Override
-	public void setAncestor(IBasicObject ancestor) {
+	public void setAncestor(@Nullable IBasicObject ancestor) {
 		throw new IZentaFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 	
@@ -27,6 +29,7 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 		return ancestry;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public List<IAttribute> getAttributesRecursively() {
 		return getAttributes();

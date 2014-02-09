@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAndJunction;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -183,9 +184,9 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-    public IZentaDiagramModel createZentaDiagramModel() {
+    @NonNull public IZentaDiagramModel createZentaDiagramModel() {
 		ZentaDiagramModelBase zentaDiagramModel = new ZentaDiagramModelBase();
 		return zentaDiagramModel;
 	}

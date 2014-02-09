@@ -15,6 +15,7 @@ import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.BasicObjectBase;
 
 public class ObjectClass extends BasicObjectBase implements IObjectClass {
@@ -42,7 +43,9 @@ public class ObjectClass extends BasicObjectBase implements IObjectClass {
 		ret.get(Direction.SOURCE).add(this.getMetamodel().getBuiltinRelationClass());
 		ret.get(Direction.TARGET).add(this.getMetamodel().getBuiltinRelationClass());
 		for(IAttribute att : getAttributesRecursively()) {
-			addParents(ret.get(att.getDirection()),(IBasicRelationship) att.getRelation());
+			List<IBasicRelationship> list = ret.get(att.getDirection());
+			IBasicRelationship relation = (IBasicRelationship) att.getRelation();
+			addParents(Util.assertNonNull(list), Util.assertNonNull(relation));
 		}
 		return ret;
 	}

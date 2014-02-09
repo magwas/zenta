@@ -8,8 +8,9 @@ package org.rulez.magwas.zenta.editor.model;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
+import org.eclipse.jdt.annotation.Nullable;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
 import org.rulez.magwas.zenta.editor.model.compatibility.LaterModelVersionException;
 import org.rulez.magwas.zenta.editor.model.impl.EditorModelManager;
@@ -51,25 +52,12 @@ public interface IEditorModelManager {
      */
     String ADAPTER_PROPERTY_MODEL_SAVED = "saved"; //$NON-NLS-1$
     
-    /**
-     * The singleton instance of the Editor Model Manager
-     */
     IEditorModelManager INSTANCE = new EditorModelManager();
     
-    /**
-     * @return Models
-     */
-    List<IZentaModel> getModels();
+    NonNullList<IZentaModel> getModels();
 
-    /**
-     * @return New Model
-     */
     IZentaModel createNewModel();
     
-    /**
-     * Register a model in the manager
-     * @param model
-     */
     void registerModel(IZentaModel model);
     
     /**
@@ -120,7 +108,7 @@ public interface IEditorModelManager {
      * @param model
      * @return True if model has been changed and needs saving
      */
-    boolean isModelDirty(IZentaModel model);
+    boolean isModelDirty( IZentaModel model);
     
     /**
      * Save the state of loaded models
@@ -165,5 +153,5 @@ public interface IEditorModelManager {
 
 	void alreadyOpenDialog(File file);
 
-	String askSavePath();
+	@Nullable String askSavePath();
 }

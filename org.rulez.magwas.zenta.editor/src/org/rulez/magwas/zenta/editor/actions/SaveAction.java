@@ -78,7 +78,8 @@ public class SaveAction extends AbstractModelSelectionAction {
     @Override
     protected void updateState() {
         IZentaModel model = getActiveZentaModel();
-        setEnabled(IEditorModelManager.INSTANCE.isModelDirty(model));
+        if(null != model)
+        	setEnabled(IEditorModelManager.INSTANCE.isModelDirty(model));
     }
     
     @Override

@@ -13,7 +13,7 @@ import org.rulez.magwas.zenta.export.DocField;
 import org.rulez.magwas.zenta.export.IEventLog;
 import org.rulez.magwas.zenta.export.IndirectChildrenAdder;
 import org.rulez.magwas.zenta.model.NSResolver;
-import org.rulez.magwas.zenta.model.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.export.NodeMassager;
 import org.rulez.magwas.zenta.export.PropertyAdder;
 import org.rulez.magwas.zenta.export.RichElement;

@@ -17,7 +17,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.IEditorLabelProvider;
 import org.rulez.magwas.zenta.model.INameable;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 

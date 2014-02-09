@@ -11,13 +11,14 @@ import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.export.EventLog;
 import org.rulez.magwas.zenta.export.IPreferenceConstants;
 import org.rulez.magwas.zenta.export.StyledHtmlPlugin;
 import org.rulez.magwas.zenta.export.Widgets;
 import org.rulez.magwas.zenta.export.steps.StepFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -50,7 +51,7 @@ public class StyledHtml implements IModelExporter {
      * org.rulez.magwas.zenta.editor.model.IModelExporter#export(uk.ac.bolton
      * .zenta.model.IZentaModel)
      */
-    public void export(IZentaModel model) {
+    public void export(@NonNull IZentaModel model) {
         log = new EventLog("Styled export");
         log.issueInfo("starting styled export", Util.now());
         String stylepath = StyledHtmlPlugin.INSTANCE.getPreferenceStore()

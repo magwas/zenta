@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.rulez.magwas.zenta.export.RichExport;
 import org.rulez.magwas.zenta.export.steps.Step;
 import org.rulez.magwas.zenta.export.steps.StepFactory;
-import org.rulez.magwas.zenta.model.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.w3c.dom.Element;
 

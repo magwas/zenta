@@ -25,6 +25,7 @@ import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaModelTemplate;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
@@ -60,28 +61,28 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
     
     public SaveZentaModelAsTemplateWizard(IZentaModel model) {
         setWindowTitle(Messages.SaveZentaModelAsTemplateWizard_0);
-        fModel = model;
-        fTemplateManager = new ZentaTemplateManager();
+        setfModel(model);
+        setfTemplateManager(new ZentaTemplateManager());
     }
     
     @Override
     public void addPages() {
-        fPage1 = new SaveZentaModelAsTemplateWizardPage(fModel, fTemplateManager);
+        fPage1 = new SaveZentaModelAsTemplateWizardPage(getfModel(), getfTemplateManager());
         addPage(fPage1);
-        fPage2 = new SaveZentaModelAsTemplateToCollectionWizardPage(fTemplateManager);
+        fPage2 = new SaveZentaModelAsTemplateToCollectionWizardPage(getfTemplateManager());
         addPage(fPage2);
     }
 
     @Override
     public boolean performFinish() {
         // This before the thread starts
-        fZipFile = new File(fPage1.getFileName());
+        setfZipFile(new File(fPage1.getFileName()));
         
         // Make sure the file does not already exist
-        if(fZipFile.exists()) {
+        if(getfZipFile().exists()) {
             boolean result = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
                     Messages.SaveZentaModelAsTemplateWizard_1,
-                    NLS.bind(Messages.SaveZentaModelAsTemplateWizard_2, fZipFile.getPath()));
+                    NLS.bind(Messages.SaveZentaModelAsTemplateWizard_2, getfZipFile().getPath()));
             if(!result) {
                 return false;
             }
@@ -92,16 +93,16 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
         fIncludeThumbnails = fPage1.includeThumbnails();
         fSelectedDiagramModel = fPage1.getSelectedDiagramModel();
         fDoStoreInCollection = fPage2.doStoreInCollection();
-        fSelectedTemplateGroup = fPage2.getTemplateGroup();
+        setfSelectedTemplateGroup(fPage2.getTemplateGroup());
         
         BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
             @Override
             public void run() {
                 try {
-                    createZipFile(fZipFile);
+                    createZipFile(getfZipFile());
                     
                     if(fDoStoreInCollection) {
-                        fTemplateManager.addTemplateEntry(fZipFile, fSelectedTemplateGroup);
+                        getfTemplateManager().addTemplateEntry(getfZipFile(), getfSelectedTemplateGroup());
                     }
                 }
                 catch(final IOException ex) {
@@ -131,12 +132,12 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
 
             // Add Manifest
             String manifest = createManifest();
-            ZipUtils.addStringToZip(manifest, TemplateManager.ZIP_ENTRY_MANIFEST, zOut);
+            ZipUtils.addStringToZip(manifest, TemplateManager.getZipEntryManifest(), zOut);
             
             // Add any thumbnails
             if(fIncludeThumbnails) {
                 int i = 1;
-                for(IDiagramModel dm : fModel.getDiagramModels()) {
+                for(IDiagramModel dm : getfModel().getDiagramModels()) {
                     Image image = TemplateUtils.createThumbnailImage(dm);
                     ZipUtils.addImageToZip(image, TemplateManager.ZIP_ENTRY_THUMBNAILS + i++ + ".png", zOut, SWT.IMAGE_PNG, null); //$NON-NLS-1$
                     image.dispose();
@@ -149,7 +150,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
              * several times to create thumbnails.
              */
             File tempFile = saveModelToTempFile();
-            ZipUtils.addFileToZip(tempFile, TemplateManager.ZIP_ENTRY_MODEL, zOut);
+            ZipUtils.addFileToZip(tempFile, TemplateManager.getZipEntryModel(), zOut);
             tempFile.delete();
         }
         finally {
@@ -189,7 +190,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
         if(fIncludeThumbnails) {
             if(fSelectedDiagramModel != null) {
                 int i = 1;
-                for(IDiagramModel dm : fModel.getDiagramModels()) {
+                for(IDiagramModel dm : getfModel().getDiagramModels()) {
                     if(dm == fSelectedDiagramModel) {
                         String keyThumb = TemplateManager.ZIP_ENTRY_THUMBNAILS + i + ".png"; //$NON-NLS-1$
                         Element elementKeyThumb = new Element(ITemplateXMLTags.XML_TEMPLATE_ELEMENT_KEY_THUMBNAIL);
@@ -210,7 +211,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
         tmpFile.deleteOnExit();
         
         // Copy the model
-        IZentaModel tempModel = EcoreUtil.copy(fModel);
+        IZentaModel tempModel = EcoreUtil.copy(getfModel());
         tempModel.eAdapters().clear();
         tempModel.setFile(tmpFile);
         
@@ -225,6 +226,38 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
     @Override
     public void dispose() {
         super.dispose();
-        fTemplateManager.dispose();
+        getfTemplateManager().dispose();
     }
+
+	public File getfZipFile() {
+		return Util.assertNonNull(fZipFile);
+	}
+
+	public void setfZipFile(File fZipFile) {
+		this.fZipFile = fZipFile;
+	}
+
+	public TemplateManager getfTemplateManager() {
+		return Util.assertNonNull(fTemplateManager);
+	}
+
+	public void setfTemplateManager(TemplateManager fTemplateManager) {
+		this.fTemplateManager = fTemplateManager;
+	}
+
+	public IZentaModel getfModel() {
+		return Util.assertNonNull(fModel);
+	}
+
+	public void setfModel(IZentaModel fModel) {
+		this.fModel = fModel;
+	}
+
+	public ITemplateGroup getfSelectedTemplateGroup() {
+		return Util.assertNonNull(fSelectedTemplateGroup);
+	}
+
+	public void setfSelectedTemplateGroup(ITemplateGroup fSelectedTemplateGroup) {
+		this.fSelectedTemplateGroup = fSelectedTemplateGroup;
+	}
 }

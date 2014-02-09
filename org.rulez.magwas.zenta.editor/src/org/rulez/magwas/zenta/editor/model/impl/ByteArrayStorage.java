@@ -11,10 +11,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+
+import org.eclipse.jdt.annotation.Nullable;
+import org.rulez.magwas.nonnul.NonNullEntry;
+import org.rulez.magwas.nonnul.NonNullHashMap;
+import org.rulez.magwas.nonnul.NonNullList;
+import org.rulez.magwas.nonnul.NonNullMap;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 /**
  * Byte Array Storage Unit
@@ -23,22 +26,22 @@ import java.util.Set;
  */
 public class ByteArrayStorage {
     
-    private Map<String, byte[]> fdataTable = new HashMap<String, byte[]>();
+    public class NoSuchFileError extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
+
+	private NonNullMap<String, byte[]> fdataTable = new NonNullHashMap<String, byte[]>();
     
     InputStream getInputStream(String entryName) {
-        if(entryName != null) {
-            byte[] bytes = fdataTable.get(entryName);
-            if(bytes != null) {
-                return new ByteArrayInputStream(bytes);
-            }
-        }
-        return null;
+        byte[] bytes = fdataTable.get(entryName);
+        return new ByteArrayInputStream(bytes);
     }
 
-    String getKey(byte[] bytes) {
-        for(Entry<String, byte[]> entry : fdataTable.entrySet()) {
+    @Nullable String getKey(byte[] bytes) {
+        for(NonNullEntry<String, byte[]> entry : fdataTable.getEntrySet()) {
             byte[] entryBytes = entry.getValue();
-            if(isEqual(bytes, entryBytes)) {
+            byte[] b = Util.assertNonNull(entryBytes);
+			if(isEqual(bytes, b)) {
                 return entry.getKey();
             }
         }
@@ -47,17 +50,13 @@ public class ByteArrayStorage {
     }
     
     long getEntrySize(String entryName) {
-        if(entryName != null) {
             byte[] bytes = fdataTable.get(entryName);
-            if(bytes != null) {
-                return bytes.length;
-            }
-        }
-        return -1;
+            byte[] b = Util.assertNonNull(bytes);
+			return b.length;
     }
     
-    Set<Entry<String, byte[]>> getEntrySet() {
-        return fdataTable.entrySet();
+    NonNullList<NonNullEntry<String, byte[]>> getEntrySet() {
+        return fdataTable.getEntrySet();
     }
 
     boolean hasEntries() {
@@ -97,18 +96,13 @@ public class ByteArrayStorage {
     }
     
     byte[] getBytesFromFile(File file) throws IOException {
-        // Get the bytes from the file
-        if(file != null && file.exists()) {
-            InputStream in = new FileInputStream(file);
-            return getBytesFromStream(in);
-        }
-        return null;
+    	if(!file.exists())
+    		throw new NoSuchFileError();
+        InputStream in = new FileInputStream(file);
+        return getBytesFromStream(in);
     }
     
     private boolean isEqual(byte[] b1, byte[] b2) {
-        if(b1 == null || b2 == null) {
-            return false;
-        }
         
         if(b1.length == b2.length) {
             int i = 0;
@@ -142,6 +136,7 @@ public class ByteArrayStorage {
             in.close();
         }
         
-        return out.toByteArray();
+        byte[] r = out.toByteArray();
+		return Util.assertNonNull(r);
     }
 }

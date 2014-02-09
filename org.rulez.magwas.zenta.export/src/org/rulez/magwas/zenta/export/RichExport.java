@@ -17,6 +17,7 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.editor.model.IModelExporter;
 import org.rulez.magwas.zenta.export.Enricher;
 import org.rulez.magwas.zenta.export.EventLog;
@@ -65,7 +66,7 @@ public class RichExport implements IModelExporter {
     }
     
 	@Override
-	public void export(IZentaModel model) throws IOException {
+	public void export(@NonNull IZentaModel model) throws IOException {
         File target = Widgets.askSaveFile(IPreferenceConstants.LAST_RICH_PATH,
                 new String[] { "*.xml" });
         if (null == target) {

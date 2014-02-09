@@ -14,6 +14,7 @@ import java.util.List;
 import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
 import org.jdom.Element;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
@@ -26,8 +27,13 @@ import uk.ac.bolton.jdom.JDOMUtils;
  */
 public abstract class TemplateManager implements ITemplateXMLTags {
     
-    public static final String ZIP_ENTRY_MANIFEST = "manifest.xml"; //$NON-NLS-1$
-    public static final String ZIP_ENTRY_MODEL = "model.zenta"; //$NON-NLS-1$
+    public class IllegalTemplateTypeException extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
+
+    
+    private static final String ZIP_ENTRY_MANIFEST = "manifest.xml"; //$NON-NLS-1$
+    private static final String ZIP_ENTRY_MODEL = "model.zenta"; //$NON-NLS-1$
     public static final String ZIP_ENTRY_THUMBNAILS = "Thumbnails/"; //$NON-NLS-1$
     
     public static final int THUMBNAIL_WIDTH = 512;
@@ -64,9 +70,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
         template.setFile(templateFile);
         addUserTemplate(template);
         // Add to user group
-        if(group != null) {
-            group.addTemplate(template);
-        }
+        group.addTemplate(template);
         saveUserTemplatesManifest();
     }
 
@@ -77,7 +81,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
         if(fInbuiltTemplateGroup == null) {
             fInbuiltTemplateGroup = loadInbuiltTemplates();
         }
-        return fInbuiltTemplateGroup;
+        return Util.assertNonNull(fInbuiltTemplateGroup);
     }
 
     /**
@@ -88,7 +92,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
             loadUserTemplates();
         }
         
-        return fUserTemplates;
+        return Util.assertNonNull(fUserTemplates);
     } 
     
     /**
@@ -99,7 +103,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
             loadUserTemplates();
         }
         
-        return fUserTemplateGroups;
+        return Util.assertNonNull(fUserTemplateGroups);
     }
 
     /**
@@ -118,14 +122,6 @@ public abstract class TemplateManager implements ITemplateXMLTags {
      * @return true if it exists.
      */
     public boolean hasTemplateFile(File templateFile, ITemplateGroup group) {
-        if(templateFile == null) {
-            return false;
-        }
-        
-        if(group == null) {
-            group = AllUserTemplatesGroup;
-        }
-        
         for(ITemplate template : group.getTemplates()) {
             if(templateFile.equals(template.getFile())) {
                 return true;
@@ -163,18 +159,16 @@ public abstract class TemplateManager implements ITemplateXMLTags {
         for(Object child : rootElement.getChildren(XML_TEMPLATE_ELEMENT_TEMPLATE)) {
             Element templateElement = (Element)child;
             String type = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_TYPE);
-            ITemplate template = createTemplate(type);
-            if(template != null) {
-                String id = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_ID);
-                String path = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_FILE);
-                if(id != null && path != null) {
-                    File file = new File(path);
-                    if(file.exists()) {
-                        template.setID(id);
-                        template.setFile(file);
-                        fUserTemplates.add(template);
-                        userTemplateMap.put(id, template);
-                    }
+            ITemplate template = createTemplate(Util.assertNonNull(type));
+            String id = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_ID);
+            String path = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_FILE);
+            if(id != null && path != null) {
+                File file = new File(path);
+                if(file.exists()) {
+                    template.setID(id);
+                    template.setFile(file);
+                    fUserTemplates.add(template);
+                    userTemplateMap.put(id, template);
                 }
             }
         }
@@ -183,7 +177,8 @@ public abstract class TemplateManager implements ITemplateXMLTags {
         for(Object child : rootElement.getChildren(XML_TEMPLATE_ELEMENT_GROUP)) {
             Element groupElement = (Element)child;
             ITemplateGroup templateGroup = new TemplateGroup();
-            templateGroup.setName(groupElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_NAME));
+            String groupname = groupElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_NAME);
+            templateGroup.setName(Util.assertNonNull(groupname));
             fUserTemplateGroups.add(templateGroup);
 
             // Template refs
@@ -232,7 +227,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
     }
     
     public void addUserTemplate(ITemplate template) {
-        if(template != null && !getUserTemplates().contains(template)) {
+        if(!getUserTemplates().contains(template)) {
             getUserTemplates().add(template);
         }
     }
@@ -304,4 +299,12 @@ public abstract class TemplateManager implements ITemplateXMLTags {
      * @throws IOException if an error loading occurs or if it is the wrong format
      */
     protected abstract boolean isValidTemplateFile(File file) throws IOException;
+
+	public static String getZipEntryModel() {
+		return ZIP_ENTRY_MODEL;
+	}
+
+	public static String getZipEntryManifest() {
+		return ZIP_ENTRY_MANIFEST;
+	}
 }

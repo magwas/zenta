@@ -7,6 +7,7 @@ package org.rulez.magwas.zenta.templates.impl.wizard;
 
 import java.io.File;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -34,7 +35,8 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.ModelViewsTreeViewer;
@@ -74,10 +76,10 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
     }
 
     @Override
-    public void createControl(Composite parent) {
+    public void createControl(@Nullable Composite parent) {
         GridData gd;
         Label label;
-        
+        Util.assertNonNull(parent);
         Composite container = new Composite(parent, SWT.NULL);
         container.setLayout(new GridLayout());
         setControl(container);
@@ -99,7 +101,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         // Single text control so strip CRLFs
         UIUtils.conformSingleTextControl(fFileTextField);
         fFileTextField.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent e) {
+            public void modifyText(@Nullable ModifyEvent e) {
                 validateFields();
             }
         });
@@ -108,7 +110,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         fileButton.setText(Messages.SaveZentaModelAsTemplateWizardPage_6);
         fileButton.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void widgetSelected(SelectionEvent e) {
+            public void widgetSelected(@Nullable SelectionEvent e) {
                 File file = chooseFile();
                 if(file != null) {
                     fFileTextField.setText(file.getPath());
@@ -133,7 +135,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         // Single text control so strip CRLFs
         UIUtils.conformSingleTextControl(fNameTextField);
         fNameTextField.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent e) {
+            public void modifyText(@Nullable ModifyEvent e) {
                 validateFields();
             }
         });
@@ -165,7 +167,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         fButtonIncludeThumbs.setEnabled(thumbsEnabled);
         fButtonIncludeThumbs.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void widgetSelected(SelectionEvent e) {
+            public void widgetSelected(@Nullable SelectionEvent e) {
                 fModelViewsTreeViewer.getControl().setEnabled(fButtonIncludeThumbs.getSelection());
                 fPreviewLabel.setEnabled(fButtonIncludeThumbs.getSelection());
             }
@@ -199,14 +201,15 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         // the TrayDialog is resized and this label is asked to relayout.
         fPreviewLabel.addDisposeListener(new DisposeListener() {
             @Override
-            public void widgetDisposed(DisposeEvent e) {
+            public void widgetDisposed(@Nullable DisposeEvent e) {
                 disposePreviewImage();
             }
         });
         
         fModelViewsTreeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
-            public void selectionChanged(SelectionChangedEvent event) {
+            public void selectionChanged(@Nullable SelectionChangedEvent evento) {
+            	SelectionChangedEvent event = Util.assertNonNull(evento);
                 disposePreviewImage();
 
                 Object o = ((IStructuredSelection)event.getSelection()).getFirstElement();
@@ -241,21 +244,21 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
      * @return The File for the template
      */
     public String getFileName() {
-        return fFileTextField.getText();
+        return Util.assertNonNull(fFileTextField.getText());
     }
 
     /**
      * @return The Name for the template
      */
     public String getTemplateName() {
-        return fNameTextField.getText();
+        return Util.assertNonNull(fNameTextField.getText());
     }
     
     /**
      * @return The Name for the template
      */
     public String getTemplateDescription() {
-        return fDescriptionTextField.getText();
+        return Util.assertNonNull(fDescriptionTextField.getText());
     }
     
     public boolean includeThumbnails() {
@@ -265,7 +268,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
     /**
      * @return The Selected Diagram Model for the key thumbnail
      */
-    public IDiagramModel getSelectedDiagramModel() {
+    public @Nullable IDiagramModel getSelectedDiagramModel() {
         Object o = ((IStructuredSelection)fModelViewsTreeViewer.getSelection()).getFirstElement();
         if(o instanceof IDiagramModel) {
             return (IDiagramModel)o;
@@ -273,7 +276,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         return null;
     }
     
-    private File chooseFile() {
+    private @Nullable File chooseFile() {
         FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
         dialog.setText(Messages.SaveZentaModelAsTemplateWizardPage_11);
         dialog.setFilterExtensions(new String[] { "*" + fTemplateManager.getTemplateFileExtension(), "*.*" } ); //$NON-NLS-1$ //$NON-NLS-2$
@@ -307,7 +310,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
     /**
      * Update the page status
      */
-    private void updateStatus(String message) {
+    private void updateStatus(@Nullable String message) {
         setErrorMessage(message);
         setPageComplete(message == null);
     }

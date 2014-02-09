@@ -3,6 +3,7 @@ package org.rulez.magwas.zenta.model;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
@@ -19,7 +20,7 @@ import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
-import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class RelationClassTest {
@@ -28,18 +29,15 @@ public class RelationClassTest {
 
 	private IMetamodel metamodel;
 
-	private IZentaModel model;
-
 	private ModelTestData testdata;
 
+	@SuppressWarnings("null")
 	@Before
 	public void setUp() throws Exception {
 		testdata = new ModelTestData();
-		model = testdata.getModel();
-		
 		ensureVirginDMRsForLoadTest(testdata);
 
-		metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+		metamodel = IZentaFactory.eINSTANCE.createMetamodel(testdata.getModel());
 		fixture = metamodel.getBuiltinRelationClass();
 	}
 
@@ -153,7 +151,7 @@ public class RelationClassTest {
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineDecoration", "DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration");
 		
 		ensureVirginDMRsForLoadTest(testdata);
-		IZentaFactory.eINSTANCE.createMetamodel(testdata.model);
+		IZentaFactory.eINSTANCE.createMetamodel(testdata.getModel());
 		ensureVirginDMRsForLoadTest(testdata);
 		ensureCorrectFinalAttributes(testdata);
 
@@ -249,7 +247,7 @@ public class RelationClassTest {
 		assertFalse(element.isTemplate());
 	}
 	
-	@Test
+	@Test()
 	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IBasicRelationship element = createRelationClass();
 		String elemId = element.getId();
@@ -258,7 +256,14 @@ public class RelationClassTest {
 		IBasicObject oc = metamodel.getClassById(elemId);
 		assertNotNull(oc);
 		((IFolder)element.eContainer()).getElements().remove(element);
-		assertNull(metamodel.getClassById(elemId));
+		boolean thrown = false;
+		try {
+			metamodel.getClassById(elemId);
+		} catch (NoSuchElementException e) {
+			thrown = true;
+		}
+		assertTrue(thrown);
+			
 	}
 	
 	@Test
@@ -281,7 +286,7 @@ public class RelationClassTest {
 
 	private IBasicRelationship createRelationClass(IBasicRelationship parentClass, String name) {
 		IFolder folder = (IFolder) parentClass.eContainer();
-		IBasicRelationship modelRelation= (IBasicRelationship) parentClass.create(folder);
+		IBasicRelationship modelRelation= (IBasicRelationship) parentClass.create(Util.assertNonNull(folder));
 		IDiagramModelZentaObject diagramElement1 = (IDiagramModelZentaObject) testdata.getDMOById("b2608459");//User
 		IDiagramModelZentaObject diagramElement2 = (IDiagramModelZentaObject) testdata.getDMOById("88f40127");//Procedure
 		modelRelation.setName(name);

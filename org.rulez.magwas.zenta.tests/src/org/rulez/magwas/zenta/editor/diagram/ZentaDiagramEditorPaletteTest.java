@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
@@ -68,7 +69,7 @@ public class ZentaDiagramEditorPaletteTest {
 	
 	@Test
 	public void The_palette_contains_controls() {
-		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
 		PaletteContainer objectsgroup = palette._getControlsGroup();
 		assertNotNull(objectsgroup);
 		@SuppressWarnings("unchecked")
@@ -82,7 +83,7 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 	@Test
 	public void The_palette_contains_extras_group_with_two_entries_if_no_viewpoint_is_set() {
-		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
 		palette.setViewpoint(null);
 		assertNull(palette._getViewPoint());
 		PaletteContainer objectsgroup = palette._getExtrasGroup();
@@ -100,7 +101,7 @@ public class ZentaDiagramEditorPaletteTest {
 		assertNotNull(testdata.model);
 		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(testdata.getTemplateDiagramModel());
 		assertNotNull(vp);
-		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
 		palette.setViewpoint(vp);
 		PaletteContainer objectsgroup = palette._getExtrasGroup();
 		assertNotNull(objectsgroup);
@@ -173,6 +174,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 		assertEquals(0,spart.getModel().getSourceConnections().size());
 		tool = new MagicConnectionCreationToolExerciser(spart, "Basic Object/Basic Relation", testdata);
+		System.out.printf("menu=\n %s\n", tool.getMenu());
 		assertFalse(tool.failed);
 		assertEquals(1,spart.getModel().getSourceConnections().size());
 		Set<String> expectedMenu = new HashSet<String>(Arrays.asList(
@@ -209,7 +211,7 @@ public class ZentaDiagramEditorPaletteTest {
 	
 	@Test
 	public void If_a_new_ObjectClass_is_created_it_is_shown_on_the_ViewPoint() {
-		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
 
 		PaletteContainer objectsgroup0 = palette._getObjectsGroup();
 		assertNotNull(objectsgroup0);
@@ -253,12 +255,18 @@ public class ZentaDiagramEditorPaletteTest {
 		assertTrue(haveCreatorNamed(ocName, children));
 		
 		((IFolder)element.eContainer()).getElements().remove(element);
-		assertNull(testdata.metamodel.getClassById(elemId));
+		boolean thrown = false;
+		try {
+			testdata.metamodel.getClassById(elemId);
+		} catch (NoSuchElementException e) {
+			thrown = true;
+		}
+		assertTrue(thrown);
 		assertFalse(haveCreatorNamed(ocName, children));
 	}
 	@Test
 	public void If_a_new_RelationClass_is_created_it_is_shown_on_the_ViewPoint() {
-		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
 
 		IBasicRelationship newRelation = testdata.createNewRelationClass("New test RC");
 		assertTrue(newRelation.isTemplate());
@@ -270,7 +278,7 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 	@Test
 	public void If_a_RelationClass_is_deleted_it_is_removed_from_the_Palette() {
-		ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+		ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
 
 		IBasicRelationship newElement = testdata.createNewRelationClass("New test RC");
 		assertTrue(newElement.isTemplate());
@@ -330,7 +338,7 @@ public class ZentaDiagramEditorPaletteTest {
 			return false;
 		}
 		private List<PaletteEntry> getObjectClassPaletteEntries() {
-			ZentaDiagramEditorPalette palette = testdata.editor.getPaletteRoot();
+			ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
 			PaletteContainer objectsgroup = palette._getObjectsGroup();
 			assertNotNull(objectsgroup);
 			@SuppressWarnings("unchecked")

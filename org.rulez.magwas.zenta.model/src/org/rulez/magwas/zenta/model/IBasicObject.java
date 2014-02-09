@@ -7,7 +7,7 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -121,6 +121,6 @@ public interface IBasicObject extends IZentaElement, IObjectClass {
 	 */
 	void setTemplate(ITemplate value);
 
-	String getDefiningName();
+	@NonNull String getDefiningName();
 
 } // IBasicObject

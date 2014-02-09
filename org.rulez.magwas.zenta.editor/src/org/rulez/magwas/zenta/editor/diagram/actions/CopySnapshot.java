@@ -35,6 +35,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -597,7 +598,8 @@ public final class CopySnapshot {
 
         @Override
         public void execute() {
-            fConnection.connect(fSource, fTarget);
+            IDiagramModelObject source = Util.assertNonNull(fSource);
+			fConnection.connect(source, fTarget);
             
             // If it's an Zenta model type Add relationship to default folder
             if(fConnection instanceof IDiagramModelZentaConnection && fDoCreateZentaElement) {

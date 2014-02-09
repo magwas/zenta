@@ -4,6 +4,7 @@ import java.util.HashMap;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
@@ -15,6 +16,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.handmade.Attribute;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.ZentaFactoryBase;
 
 public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
@@ -41,7 +43,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 
 	@Override
 	public IMetamodel createMetamodel(IZentaModel zentaModel) {
-		IMetamodel mm = getMetamodelFor(zentaModel);
+		IMetamodel mm = findMetamodelFor(zentaModel);
 		if(null == mm)
 			mm = new Metamodel(zentaModel);
 		registry.put(zentaModel, mm);
@@ -49,7 +51,16 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	}
 	
 	@Override
-	public IMetamodel getMetamodelFor(IZentaModel model2) {
+	@Nullable public IMetamodel getMetamodelFor(IZentaModelElement modelElement) {
+		IZentaModel model = modelElement.getZentaModel();
+		if (null == model)
+			return null;
+		return findMetamodelFor(model);
+	}
+
+	@Override
+	@Nullable
+	public IMetamodel findMetamodelFor(IZentaModel model2) {
 		return registry.get(model2);
 	}
 
@@ -71,10 +82,10 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	public String getDefiningName(IIdentifier ref) {
 		IProperty prop = getObjectClassProperty((IProperties) ref);
 		if(null != prop)
-			return prop.getValue();
-		return ref.getName();
+			return Util.assertNonNull(prop.getValue());
+		return Util.assertNonNull(ref.getName());
 	}
-		private IProperty getObjectClassProperty(IProperties ref) {
+		private @Nullable IProperty getObjectClassProperty(IProperties ref) {
 			for(IProperty prop: ref.getProperties())
 				if("className".equals(prop.getKey()))
 						return prop;
@@ -83,12 +94,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 
 	@Override
 	public IMetamodel createMetamodel() {
-		return null;
+		throw new AssertionError();
 	}
 
-	@Override
-	public IMetamodel getMetamodelFor(IZentaModelElement modelElement) {
-		IZentaModel model = modelElement.getZentaModel();
-		return getMetamodelFor(model);
-	}
 }

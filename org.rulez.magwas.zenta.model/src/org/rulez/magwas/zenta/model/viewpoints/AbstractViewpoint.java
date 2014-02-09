@@ -20,8 +20,10 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -35,7 +37,8 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	private IFolder folder;
 
     public AbstractViewpoint(IDiagramModel dm) {
-		metamodel = IZentaFactory.eINSTANCE.createMetamodel(dm.getZentaModel());
+		IZentaModel model = dm.getZentaModel();
+		metamodel = IZentaFactory.eINSTANCE.createMetamodel(Util.assertNonNull(model));
 		folder = (IFolder) dm.eContainer();
 	}
 
@@ -133,7 +136,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public IIdentifier create(IBasicObject eClass) {
-		return eClass.create(folder);
+		return eClass.create(Util.assertNonNull(folder));
 	}
 
 	@Override

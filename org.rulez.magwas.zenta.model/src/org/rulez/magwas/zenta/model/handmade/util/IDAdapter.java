@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.model.util;
+package org.rulez.magwas.zenta.model.handmade.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,8 @@ import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IIdentifier;
 
 
@@ -36,7 +38,8 @@ public class IDAdapter extends EContentAdapter {
     private List<String> fUsedIDs = new ArrayList<String>();
 
     @Override
-    public void notifyChanged(Notification msg) {
+    public void notifyChanged(@Nullable Notification msgo) {
+    	Notification msg = Util.assertNonNull(msgo);
         super.notifyChanged(msg);
 
         if(msg.getEventType() == Notification.ADD) {
@@ -56,7 +59,7 @@ public class IDAdapter extends EContentAdapter {
     }
 
     public void registerID(String id) {
-        if(id != null && !fUsedIDs.contains(id)) {
+        if(!fUsedIDs.contains(id)) {
             fUsedIDs.add(id); 
         }
     }
@@ -65,9 +68,10 @@ public class IDAdapter extends EContentAdapter {
      * @return A new unique ID to be used for objects in the model
      */
     public String getNewID() {
-        String id;
+        @NonNull String id;
         do {
-            id = UUID.randomUUID().toString().split("-")[0]; //$NON-NLS-1$
+            String rid = UUID.randomUUID().toString().split("-")[0];
+			id = Util.assertNonNull(rid); //$NON-NLS-1$
         }
         while(fUsedIDs.contains(id));
         

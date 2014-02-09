@@ -55,6 +55,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -365,7 +366,7 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
         checkRenames(compoundCmd);
         checkDeletions(compoundCmd);
 
-        CommandStack stack = (CommandStack)fZentaModel.getAdapter(CommandStack.class);
+        CommandStack stack = EditorModelManagerNoGUI.obtainCommandStack(fZentaModel);
         stack.execute(compoundCmd.unwrap());
     }
 

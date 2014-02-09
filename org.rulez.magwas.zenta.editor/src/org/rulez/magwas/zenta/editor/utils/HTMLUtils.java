@@ -54,11 +54,11 @@ public class HTMLUtils {
      * @param str
      * @return
      */
-    public static String stripTags(String str) {
-        if (str == null || str.indexOf('<') == -1 || str.indexOf('>') == -1) {
+    @SuppressWarnings("null")
+	public static String stripTags(String str) {
+        if (str.indexOf('<') == -1 || str.indexOf('>') == -1) {
             return str;
         }
-        
         str = HTML_TAG_REGEX_PATTERN.matcher(str).replaceAll(""); //$NON-NLS-1$
         return str;
     }
@@ -70,18 +70,12 @@ public class HTMLUtils {
     public static void openLinkInBrowser(String href) {
         // format the href for an html file (file:///<filename.html>
         // required for Mac only.
-        if(href.startsWith("file:")) { //$NON-NLS-1$
-            href = href.substring(5);
-            while(href.startsWith("/")) { //$NON-NLS-1$
-                href = href.substring(1);
-            }
-            href = "file:///" + href; //$NON-NLS-1$
-        }
+        href = canoniCaliseFileHref(href);
         
         IWorkbenchBrowserSupport support = PlatformUI.getWorkbench().getBrowserSupport();
         try {
             IWebBrowser browser = support.getExternalBrowser();
-            browser.openURL(new URL(urlEncodeForSpaces(href.toCharArray())));
+            browser.openURL(new URL(urlEncodeForSpaces(href)));
         }
         catch(MalformedURLException ex) {
             ex.printStackTrace();
@@ -91,7 +85,25 @@ public class HTMLUtils {
         }
     }
 
-    private static String urlEncodeForSpaces(char[] input) {
+	@SuppressWarnings("null")
+	private static String urlEncodeForSpaces(String href) {
+		return urlEncodeForSpaces(href.toCharArray());
+	}
+
+	@SuppressWarnings("null")
+	private static String canoniCaliseFileHref(String href) {
+		if(href.startsWith("file:")) { //$NON-NLS-1$
+            href = href.substring(5);
+            while(href.startsWith("/")) { //$NON-NLS-1$
+                href = href.substring(1);
+            }
+            href = "file:///" + href; //$NON-NLS-1$
+        }
+		return href;
+	}
+
+    @SuppressWarnings("null")
+	private static String urlEncodeForSpaces(char[] input) {
         StringBuffer retu = new StringBuffer(input.length);
         for(int i = 0; i < input.length; i++) {
             if(input[i] == ' ') {

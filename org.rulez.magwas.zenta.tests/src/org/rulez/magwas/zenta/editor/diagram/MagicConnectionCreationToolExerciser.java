@@ -81,9 +81,11 @@ public class MagicConnectionCreationToolExerciser extends
 			saveMenuItem(menu,"");
 		}
 			private void saveMenuItem(Menu menu, String start) {
+				System.out.printf("menuitemcount = %s\n", menu.getItemCount());
 				for(int i = 0 ; i < menu.getItemCount(); i++) {
 					MenuItem item = menu.getItem(i);
 					String name = start+item.getText();
+					System.out.printf("name = %s menuitemname = %s\n",name, menuitemName);
 					if(name.equals(menuitemName))
 						executeMenuItem(menu, item);
 					savedMenu.add(name);

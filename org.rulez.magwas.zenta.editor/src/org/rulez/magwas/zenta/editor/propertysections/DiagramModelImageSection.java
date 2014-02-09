@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PlatformUI;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -185,7 +186,7 @@ public class DiagramModelImageSection extends AbstractZentaPropertySection {
                     return;
                 }
                 
-                IArchiveManager archiveManager = (IArchiveManager)getEObject().getAdapter(IArchiveManager.class);
+                IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(getEObject());
                 path = archiveManager.addImageFromFile(file);
             }
             // User selected a Gallery image path

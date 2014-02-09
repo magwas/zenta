@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -70,7 +71,8 @@ public final class JDOMUtils {
 	 * @return The resulting String
 	 * @throws IOException
 	 */
-	public static String write2XMLString(Document doc) throws IOException {
+	@SuppressWarnings("null")
+	public static @NonNull String write2XMLString(Document doc) throws IOException {
 		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 		
         StringWriter out = new StringWriter();

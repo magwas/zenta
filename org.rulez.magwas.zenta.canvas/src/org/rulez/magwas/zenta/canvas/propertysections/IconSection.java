@@ -37,6 +37,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IIconic;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.propertysections.DiagramModelImageSection;
@@ -217,7 +218,7 @@ public class IconSection extends DiagramModelImageSection {
         disposeImage();
         
         if(fIconic.getImagePath() != null) {
-            IArchiveManager archiveManager = (IArchiveManager)fIconic.getAdapter(IArchiveManager.class);
+            IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(fIconic);
             
             Image image = null;
             try {

@@ -6,7 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model Element</b></em>'.

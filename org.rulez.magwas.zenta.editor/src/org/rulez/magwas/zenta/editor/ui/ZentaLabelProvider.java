@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ISketchModel;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 

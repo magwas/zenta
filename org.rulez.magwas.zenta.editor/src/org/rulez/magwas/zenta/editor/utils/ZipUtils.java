@@ -15,16 +15,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
-import org.rulez.magwas.zenta.model.util.FileUtils;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
+import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 
 /**
  * Some useful Zip Utilities
@@ -42,7 +46,7 @@ public final class ZipUtils {
         // Signature first 4 bytes of zip file
         final byte[] sig = new byte[] { 0x50, 0x4B, 0x3, 0x4 };
         
-        if(file != null && file.canRead()) {
+        if(file.canRead()) {
             byte[] buf = new byte[4];
 
             FileInputStream is = null;
@@ -91,41 +95,40 @@ public final class ZipUtils {
                                        File srcFolder,
                                        ZipOutputStream zOut,
                                        File[] exclude,
-                                       IProgressMonitor progressMonitor) throws IOException {
+                                       @Nullable IProgressMonitor progressMonitor) throws IOException {
         
-        File[] files = srcFolder.listFiles();
+        List<File> fs = Arrays.asList(srcFolder.listFiles());
+		NonNullList<File> files = new NonNullArrayList<File>(fs);
         
-        for(int i = 0; i < files.length; i++) {
+        for(File cfile: files) {
             // If we have a Progress Monitor...
             if(progressMonitor != null) {
-                progressMonitor.setTaskName(files[i].getName());
+                progressMonitor.setTaskName(cfile.getName());
                 if(progressMonitor.isCanceled()) {
                     throw new IOException("User cancelled."); //$NON-NLS-1$
                 }
             }
             
             // Sub-folder
-            if(files[i].isDirectory()) {
-                addFolderToZip(rootFolder, files[i], zOut, exclude, progressMonitor);
+            if(cfile.isDirectory()) {
+                addFolderToZip(rootFolder, cfile, zOut, exclude, progressMonitor);
             }
             
             else {
                 boolean do_add_file = true;
                 
                 // Check for excluded file
-                if(exclude != null) {
-                    for(File file_exclude : exclude) {
-                        if(file_exclude.equals(files[i])) {
-                            do_add_file = false;
-                            break;
-                        }
+                for(File file_exclude : exclude) {
+                    if(file_exclude.equals(cfile)) {
+                        do_add_file = false;
+                        break;
                     }
                 }
                     
                 if(do_add_file) {
                     // Get a relative path
-                    String entryName = FileUtils.getRelativePath(files[i], rootFolder);
-                    addFileToZip(files[i], entryName, zOut);
+                    String entryName = FileUtils.getRelativePath(cfile, rootFolder);
+                    addFileToZip(cfile, entryName, zOut);
                 }
             }
         }        
@@ -179,7 +182,7 @@ public final class ZipUtils {
 	 * @param progressMonitor
 	 * @throws IOException
 	 */
-	public static void addImageToZip(Image image, String entryName, ZipOutputStream zOut, int format, IProgressMonitor progressMonitor) throws IOException {
+	public static void addImageToZip(Image image, String entryName, ZipOutputStream zOut, int format, @Nullable IProgressMonitor progressMonitor) throws IOException {
 	    ZipEntry zipEntry = new ZipEntry(entryName);
 	    
 	    try {
@@ -256,7 +259,7 @@ public final class ZipUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String extractZipEntry(File zipFile, String entryName) throws IOException {
+	public static @Nullable String extractZipEntry(File zipFile, String entryName) throws IOException {
 		ZipEntry zipEntry;
 		ZipInputStream zIn;
 		int bit;
@@ -301,7 +304,7 @@ public final class ZipUtils {
      * @return A Zip Entry Stream
      * @throws IOException
      */
-    public static InputStream getZipEntryStream(File zipFile, String entryName) throws IOException {
+    public static @Nullable InputStream getZipEntryStream(File zipFile, String entryName) throws IOException {
         ZipEntry zipEntry;
         ZipInputStream zIn;
         
@@ -338,7 +341,7 @@ public final class ZipUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static File extractZipEntry(File zipFile, String entryName, File outFile) throws IOException {
+	public static @Nullable File extractZipEntry(File zipFile, String entryName, File outFile) throws IOException {
 		ZipInputStream zIn;
 		ZipEntry zipEntry;
 		int bytesRead;
@@ -394,7 +397,7 @@ public final class ZipUtils {
 	public static List<String> getZipFileEntryNames(File zipFile) throws IOException {
         List<String> fileList = new ArrayList<String>();
 
-        if(zipFile == null || !zipFile.canRead()) {
+        if(!zipFile.canRead()) {
             return fileList;
         }
         
@@ -448,7 +451,7 @@ public final class ZipUtils {
 	 * @return false if the progressMonitor is cancelled
 	 * @throws IOException If error or user cancelled
 	 */
-	public static void unpackZip(File zipFile, File targetFolder, IProgressMonitor progressMonitor) throws IOException {
+	public static void unpackZip(File zipFile, File targetFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
 	    targetFolder.mkdirs();
 		
 		BufferedInputStream in = null;

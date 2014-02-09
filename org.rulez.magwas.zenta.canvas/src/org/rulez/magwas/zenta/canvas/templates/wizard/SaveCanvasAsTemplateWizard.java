@@ -33,6 +33,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ModelVersion;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.ITemplateXMLTags;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -64,28 +65,28 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
     
     public SaveCanvasAsTemplateWizard(ICanvasModel canvasModel) {
         setWindowTitle(Messages.SaveCanvasAsTemplateWizard_0);
-        fCanvasModel = canvasModel;
-        fTemplateManager = new CanvasTemplateManager();
+        setfCanvasModel(canvasModel);
+        setfTemplateManager(new CanvasTemplateManager());
     }
     
     @Override
     public void addPages() {
-        fPage1 = new SaveCanvasAsTemplateWizardPage(fCanvasModel, fTemplateManager);
+        fPage1 = new SaveCanvasAsTemplateWizardPage(getfCanvasModel(), getfTemplateManager());
         addPage(fPage1);
-        fPage2 = new SaveCanvasAsTemplateToCollectionWizardPage(fTemplateManager);
+        fPage2 = new SaveCanvasAsTemplateToCollectionWizardPage(getfTemplateManager());
         addPage(fPage2);
     }
 
     @Override
     public boolean performFinish() {
         // This before the thread starts
-        fZipFile = new File(fPage1.getFileName());
+        setfZipFile(new File(fPage1.getFileName()));
         
         // Make sure the file does not already exist
-        if(fZipFile.exists()) {
+        if(getfZipFile().exists()) {
             boolean result = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
                     Messages.SaveCanvasAsTemplateWizard_1,
-                    NLS.bind(Messages.SaveCanvasAsTemplateWizard_2, fZipFile));
+                    NLS.bind(Messages.SaveCanvasAsTemplateWizard_2, getfZipFile()));
             if(!result) {
                 return false;
             }
@@ -95,16 +96,16 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         fTemplateDescription = fPage1.getTemplateDescription();
         fIncludeThumbnail = fPage1.includeThumbnail();
         fDoStoreInCollection = fPage2.doStoreInCollection();
-        fSelectedTemplateGroup = fPage2.getTemplateGroup();
+        setfSelectedTemplateGroup(Util.assertNonNull(fPage2.getTemplateGroup()));
 
         BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
             @Override
             public void run() {
                 try {
-                    createZipFile(fZipFile);
+                    createZipFile(getfZipFile());
                     
                     if(fDoStoreInCollection) {
-                        fTemplateManager.addTemplateEntry(fZipFile, fSelectedTemplateGroup);
+                        getfTemplateManager().addTemplateEntry(getfZipFile(), getfSelectedTemplateGroup());
                     }
                 }
                 catch(final IOException ex) {
@@ -134,18 +135,16 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
 
             // Model File
             File modelFile = saveModelToTempFile();
-            ZipUtils.addFileToZip(modelFile, TemplateManager.ZIP_ENTRY_MODEL, zOut);
-            if(modelFile != null) {
-                modelFile.delete();
-            }
+            ZipUtils.addFileToZip(modelFile, TemplateManager.getZipEntryModel(), zOut);
+            modelFile.delete();
             
             // Manifest
             String manifest = createManifest();
-            ZipUtils.addStringToZip(manifest, TemplateManager.ZIP_ENTRY_MANIFEST, zOut);
+            ZipUtils.addStringToZip(manifest, TemplateManager.getZipEntryManifest(), zOut);
             
             // Thumbnail
             if(fIncludeThumbnail) {
-                Image image = TemplateUtils.createThumbnailImage(fCanvasModel);
+                Image image = TemplateUtils.createThumbnailImage(getfCanvasModel());
                 ZipUtils.addImageToZip(image, TemplateManager.ZIP_ENTRY_THUMBNAILS + "1.png", zOut, SWT.IMAGE_PNG, null); //$NON-NLS-1$
                 image.dispose();
             }
@@ -208,7 +207,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         tempModel.setName(Messages.SaveCanvasAsTemplateWizard_4);
 
         // Get the Canvas copy
-        ICanvasModel copyCanvas = EcoreUtil.copy(fCanvasModel);
+        ICanvasModel copyCanvas = EcoreUtil.copy(getfCanvasModel());
         
         // Remove any unsupported elements
         for(Iterator<EObject> iter = copyCanvas.eAllContents(); iter.hasNext();) {
@@ -236,6 +235,38 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
     @Override
     public void dispose() {
         super.dispose();
-        fTemplateManager.dispose();
+        getfTemplateManager().dispose();
     }
+
+	private File getfZipFile() {
+		return Util.assertNonNull(fZipFile);
+	}
+
+	private void setfZipFile(File fZipFile) {
+		this.fZipFile = fZipFile;
+	}
+
+	private TemplateManager getfTemplateManager() {
+		return Util.assertNonNull(fTemplateManager);
+	}
+
+	private void setfTemplateManager(TemplateManager fTemplateManager) {
+		this.fTemplateManager = fTemplateManager;
+	}
+
+	private ICanvasModel getfCanvasModel() {
+		return Util.assertNonNull(fCanvasModel);
+	}
+
+	private void setfCanvasModel(ICanvasModel fCanvasModel) {
+		this.fCanvasModel = fCanvasModel;
+	}
+
+	private ITemplateGroup getfSelectedTemplateGroup() {
+		return Util.assertNonNull(fSelectedTemplateGroup);
+	}
+
+	private void setfSelectedTemplateGroup(ITemplateGroup fSelectedTemplateGroup) {
+		this.fSelectedTemplateGroup = fSelectedTemplateGroup;
+	}
 }

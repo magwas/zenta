@@ -11,8 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -29,16 +31,21 @@ public class MacOSReflect {
     /**
      * The cached class of org.eclipse.swt.internal.cocoa.OS
      */
-    public static Class OS;
+    private static Class OS;
     
     static {
-        try {
-            OS = Class.forName("org.eclipse.swt.internal.cocoa.OS"); //$NON-NLS-1$
+        obtainOSClass();
+    }
+
+	@SuppressWarnings("null")
+	private static void obtainOSClass() {
+		try {
+            setOS(Class.forName("org.eclipse.swt.internal.cocoa.OS")); //$NON-NLS-1$
         }
         catch(ClassNotFoundException ex) {
             throw new RuntimeException(ex);
         }
-    }
+	}
     
     /**
      * Mac NSUInteger type
@@ -68,7 +75,7 @@ public class MacOSReflect {
      * @param arg
      */
     public static void objc_msgSend(long target, long sel, long arg) throws Exception {
-        executeLong(OS, "objc_msgSend", new Class[] { NSUInteger, NSUInteger, NSUInteger }, target, sel, arg); //$NON-NLS-1$
+        executeLong(getOS(), "objc_msgSend", new Class[] { NSUInteger, NSUInteger, NSUInteger }, target, sel, arg); //$NON-NLS-1$
     }
 
     /**
@@ -79,7 +86,7 @@ public class MacOSReflect {
     public static long selector(String sel) throws Exception {
         Number selector = fSelectors.get(sel);
         if(selector == null) {
-            selector = (Number)(OS.getMethod("sel_registerName", String.class).invoke(null, sel)); //$NON-NLS-1$
+            selector = (Number)(getOS().getMethod("sel_registerName", String.class).invoke(null, sel)); //$NON-NLS-1$
             fSelectors.put(sel, selector);
         }
         return selector.longValue();
@@ -95,7 +102,8 @@ public class MacOSReflect {
         Field fieldView = Control.class.getDeclaredField("view"); //$NON-NLS-1$
         Object nsView = fieldView.get(shell);
         Method methodWindow = fieldView.getType().getDeclaredMethod("window"); //$NON-NLS-1$
-        return methodWindow.invoke(nsView, new Object[] {});
+        Object nsw = methodWindow.invoke(nsView, new Object[] {});
+		return Util.assertNonNull(nsw);
     }
     
     /**
@@ -145,11 +153,12 @@ public class MacOSReflect {
      * @param field
      * @return
      */
-    public static Object getField(Object object, String field) throws Exception {
+    @SuppressWarnings("null")
+	public static Object getField(Object object, String field) throws Exception {
         return (object instanceof Class ? (Class)object : object.getClass()).getField(field).get(object);
     }
 
-    public static Object getPrivateField(Object object, String field) throws Exception {
+    public static @Nullable Object getPrivateField(Object object, String field) throws Exception {
         Field f = object.getClass().getDeclaredField(field);
         f.setAccessible(true);
         return f.get(object);
@@ -161,11 +170,19 @@ public class MacOSReflect {
      * @param method
      * @return
      */
-    public static Object executeMethod(Object object, String method) throws Exception {
+    public static @Nullable Object executeMethod(Object object, String method) throws Exception {
         Class clazz = (Class)(object instanceof Class ? object : object.getClass());
         Method m = clazz.getDeclaredMethod(method, new Class[] {});
         m.setAccessible(true);
         return m.invoke(object, new Object[] {});
     }
+
+	public static Class getOS() {
+		return Util.assertNonNull(OS);
+	}
+
+	public static void setOS(Class oS) {
+		OS = oS;
+	}
 
 }

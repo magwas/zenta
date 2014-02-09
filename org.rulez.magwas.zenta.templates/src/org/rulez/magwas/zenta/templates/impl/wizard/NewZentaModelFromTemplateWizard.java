@@ -67,25 +67,20 @@ public class NewZentaModelFromTemplateWizard extends Wizard {
                     try {
                         File tmp = File.createTempFile("~architemplate", null); //$NON-NLS-1$
                         tmp.deleteOnExit();
-                        File file = ZipUtils.extractZipEntry(zipFile, TemplateManager.ZIP_ENTRY_MODEL, tmp);
+                        File file = ZipUtils.extractZipEntry(zipFile, TemplateManager.getZipEntryModel(), tmp);
                         if(file != null && file.exists()) {
                             IZentaModel model = IEditorModelManager.INSTANCE.openModel(file);
-                            if(model != null) {
-                                // New name
-                                model.setName(Messages.NewZentaModelFromTemplateWizard_1 + " " + model.getName()); //$NON-NLS-1$
-                                
-                                // Set latest model version (need to do this in case we immediately save as Template)
-                                model.setVersion(ModelVersion.VERSION);
-                                
-                                // Set file to null
-                                model.setFile(null);
-                                
-                                // Edit in-place in Tree
-                                UIRequestManager.INSTANCE.fireRequest(new TreeEditElementRequest(this, model));
-                            }
-                            else {
-                                fErrorMessage = Messages.NewZentaModelFromTemplateWizard_2;
-                            }
+                            // New name
+                            model.setName(Messages.NewZentaModelFromTemplateWizard_1 + " " + model.getName()); //$NON-NLS-1$
+                            
+                            // Set latest model version (need to do this in case we immediately save as Template)
+                            model.setVersion(ModelVersion.VERSION);
+                            
+                            // Set file to null
+                            model.setFile(null);
+                            
+                            // Edit in-place in Tree
+                            UIRequestManager.INSTANCE.fireRequest(new TreeEditElementRequest(this, model));
                         }
                         else {
                             fErrorMessage = Messages.NewZentaModelFromTemplateWizard_2;

@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.ITemplate;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public abstract class ObjectClassMixin {
 
@@ -21,11 +26,14 @@ public abstract class ObjectClassMixin {
 	}
 
 	public static IMetamodel getMetamodel(IBasicObject self) {
-		return (IMetamodel) self.getTemplate().getMetamodel();
+		IZentaModel model = Util.assertNonNull(self.getZentaModel());
+		IMetamodel mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
+		return (IMetamodel) Util.assertNonNull(mm);
 	}
 
 	public static String getHelpHintTitle(IBasicObject self) {
-		return self.getName();
+		String name = self.getName();
+		return Util.assertNonNull(name);
 	}
 
 	public static String getHelpHintContent(IBasicObject self) {
@@ -36,6 +44,11 @@ public abstract class ObjectClassMixin {
 			ancestorNames.add(a.getName());
 		}
 		String ancestryNames = StringUtils.join(ancestorNames, " => ");
+		return createHelpString(Util.assertNonNull(doc), ancestryNames);
+	}
+
+	@SuppressWarnings("null")
+	private static String createHelpString(String doc, String ancestryNames) {
 		return String.format("%s\nAncestry: %s\n", doc, ancestryNames);
 	}
 
@@ -52,7 +65,13 @@ public abstract class ObjectClassMixin {
 	public static IBasicObject getDefiningElement(IBasicObject self) {
 		if(self.isTemplate())
 			return self;
-		return self.getAncestor();
+		IBasicObject ancestor = self.getAncestor();
+		if(null == ancestor)
+			if(self instanceof IBasicRelationship)
+				return self.getMetamodel().getBuiltinRelationClass();
+			else
+				return self.getMetamodel().getBuiltinObjectClass();				
+		return ancestor;
 	}
 
 	public static boolean isTemplate(IBasicObject self) {
@@ -62,10 +81,10 @@ public abstract class ObjectClassMixin {
     public static String getDefiningName(IBasicObject self) {
     	IProperty prop = getObjectClassProperty(self);
             if(null != prop)
-                    return prop.getValue();
-            return self.getName();
+                    return Util.assertNonNull(prop.getValue());
+            return Util.assertNonNull(self.getName());
     }
-            private static IProperty getObjectClassProperty(IProperties self) {
+            private static @Nullable IProperty getObjectClassProperty(IProperties self) {
                     for(IProperty prop: self.getProperties())
                             if("className".equals(prop.getKey()))
                                             return prop;

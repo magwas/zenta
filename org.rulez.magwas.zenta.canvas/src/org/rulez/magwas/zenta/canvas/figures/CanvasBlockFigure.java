@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModelBlock;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractContainerFigure;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.model.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 
 
 /**

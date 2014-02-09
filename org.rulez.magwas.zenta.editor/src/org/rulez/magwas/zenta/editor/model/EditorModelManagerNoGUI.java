@@ -5,9 +5,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.EventObject;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
@@ -16,11 +14,16 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CommandStackListener;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchListener;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
+import org.rulez.magwas.nonnul.NonNullListIterator;
 import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
@@ -32,17 +35,23 @@ import org.rulez.magwas.zenta.editor.model.impl.Messages;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
+import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.UnTestedException;
-import org.rulez.magwas.zenta.model.util.FileUtils;
+import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
 public class EditorModelManagerNoGUI implements IEditorModelManager {
+
+	public class NoSuchFileException extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
 
 	/**
 	 * Listener list
@@ -51,7 +60,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	/**
 	 * Models Open
 	 */
-	private List<IZentaModel> fModels;
+	private NonNullList<IZentaModel> fModels;
 	/**
 	 * Backing File
 	 */
@@ -60,13 +69,14 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	 * Listen to the App closing so we can ask to save
 	 */
 	protected IWorkbenchListener workBenchListener = new IWorkbenchListener() {
-	        public void postShutdown(IWorkbench workbench) {
+	        public void postShutdown(@Nullable IWorkbench workbench) {
 	        }
 	
-	        public boolean preShutdown(IWorkbench  workbench, boolean forced) {
-	            // Handle modified models
-	            for(IZentaModel model : getModels()) {
-	                if(isModelDirty(model)) {
+	        public boolean preShutdown(@Nullable IWorkbench  workbench, boolean forced) {
+	            for (NonNullListIterator<IZentaModel> iterator = getModels().iterator(); iterator
+						.hasNext();) {
+					IZentaModel model = iterator.next();
+					if(isModelDirty(model)) {
 	                    try {
 	                        boolean result = askSaveModel(model);
 	                        if(!result) {
@@ -77,7 +87,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	                        ex.printStackTrace();
 	                    }
 	                }
-	            }
+				}
 	            
 	            return true;
 	        }
@@ -87,10 +97,11 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 		super();
 	}
 
+	@SuppressWarnings("null")
 	@Override
-	public List<IZentaModel> getModels() {
+	public NonNullList<IZentaModel> getModels() {
 	    if(fModels == null) {
-	        fModels = new ArrayList<IZentaModel>();
+	        fModels = new NonNullArrayList<IZentaModel>();
 	        
 	        try {
 	            loadState();
@@ -137,21 +148,19 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 
 	@Override
 	public IZentaModel openModel(File file) {
-	    if(file == null || !file.exists() || isModelLoaded(file)) {
-	        return null;
+	    if(isModelLoaded(file)) {
+	    	throw new NoSuchFileException();
 	    }
 	    
 	    IZentaModel model = loadModel(file);
-	    if(model != null) {
-	        // Open Views of newly opened model if set in Preferences
-	        if(Preferences.doOpenDiagramsOnLoad()) {
-	            for(IDiagramModel dm : model.getDiagramModels()) {
-	                EditorManager.openDiagramEditor(dm);
-	            }
-	        }
-	        
-	        firePropertyChange(this, PROPERTY_MODEL_OPENED, null, model);
-	    }
+        // Open Views of newly opened model if set in Preferences
+        if(Preferences.doOpenDiagramsOnLoad()) {
+            for(IDiagramModel dm : model.getDiagramModels()) {
+                EditorManager.openDiagramEditor(dm);
+            }
+        }
+        
+        firePropertyChange(this, PROPERTY_MODEL_OPENED, null, model);
 	    
 	    return model;
 	}
@@ -174,8 +183,8 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 
 	@Override
 	public IZentaModel loadModel(File file) {
-	    if(file == null || !file.exists()) {
-	        return null;
+	    if(!file.exists()) {
+	    	throw new NoSuchFileException();
 	    }
 	    
 	    // Ascertain if this is an archive file
@@ -199,7 +208,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	        // Incompatible, don't load it
 	        catch(IncompatibleModelException ex1) {
 	            incompatibleDialog(file, ex1);
-	            return null;
+	            throw new RuntimeException(ex1);
 	        }
 	    }
 	    
@@ -210,7 +219,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    catch(LaterModelVersionException ex) {
 	        boolean answer = laterModelDialog(file, ex);
 	        if(!answer) {
-	            return null;
+	            throw new RuntimeException(ex);
 	        }
 	    }
 	    
@@ -223,7 +232,8 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	
 	
 	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
-	    IZentaFactory.eINSTANCE.createMetamodel(model);
+	    IZentaModel m = Util.assertNonNull(model);
+		IZentaFactory.eINSTANCE.createMetamodel(m);
 	    model.setFile(file);
 	    model.setDefaults();
 	    getModels().add(model);
@@ -265,6 +275,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    // Close the corresponding GEF editor(s) for this model *FIRST* before removing from model
 	    EditorManager.closeDiagramEditors(model);
 	    
+	    System.out.printf("removing %s\n",model);
 	    getModels().remove(model);
 	    model.eAdapters().clear();
 	    firePropertyChange(this, PROPERTY_MODEL_REMOVED, null, model);
@@ -325,12 +336,12 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    model.setVersion(ModelVersion.VERSION);
 	    
 	    // Use Archive Manager to save contents
-	    IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
+	    IArchiveManager archiveManager = obtainArchiveManager(model);
 	    archiveManager.saveModel();
 	    
 	    // Set CommandStack Save point
 	    CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
-	    stack.markSaveLocation();
+	    Util.assertNonNull(stack).markSaveLocation();
 	    // Send notification to Tree
 	    firePropertyChange(model, COMMAND_STACK_CHANGED, true, false);
 	    
@@ -358,35 +369,32 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 
 	@Override
 	public boolean isModelLoaded(File file) {
-	    if(file != null) {
-	        for(IZentaModel model : getModels()) {
-	            if(file.equals(model.getFile())) {
-	                return true;
-	            }
-	        }
+        IZentaModel modellke = findModelByfile(file);
+	    return modellke != null;
+	}
+
+	private @Nullable IZentaModel findModelByfile(File file) {
+		for(IZentaModel model : getModels()) {
+            if(file.equals(model.getFile())) {
+                return model;
+            }
 	    }
-	    
-	    return false;
+		return null;
 	}
 
 	@Override
 	public boolean isModelDirty(IZentaModel model) {
-	    if(model == null) {
-	        return false;
-	    }
-	    
-	    CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
-	    return stack != null && stack.isDirty();
+		IZentaModel m = Util.assertNonNull(model);
+	    CommandStack stack = EditorModelManagerNoGUI.obtainCommandStack(m);
+	    return stack.isDirty();
 	}
 
 	/**
 	 * Ask user for file name to save model
 	 * @return the file or null
 	 */
-	private File askSaveModel() {
+	private @Nullable File askSaveModel() {
 	    String path = askSavePath();
-	    if(null == path)
-	    	return null;
 	    File file = new File(path);
 	    
 	    // Make sure we don't already have it open
@@ -410,7 +418,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 
 
 
-	public String askSavePath() {
+	public @Nullable String askSavePath() {
 		throw new UnTestedException();
 	}
 
@@ -431,7 +439,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    
 	    // Forward on CommandStack Event to Tree
 	    cmdStack.addCommandStackListener(new CommandStackListener() {
-	        public void commandStackChanged(EventObject event) {
+	        public void commandStackChanged(@Nullable EventObject event) {
 	            // Send notification to Tree
 	            firePropertyChange(model, COMMAND_STACK_CHANGED, false, true);
 	        }
@@ -531,7 +539,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    fListeners.removePropertyChangeListener(listener);
 	}
 
-	public void firePropertyChange(Object source, String prop, Object oldValue,
+	public void firePropertyChange(Object source, String prop, @Nullable Object oldValue,
 			Object newValue) {
 			    fListeners.firePropertyChange(new PropertyChangeEvent(source, prop, oldValue, newValue));
 			}
@@ -542,11 +550,22 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
      */
     class ECoreAdapter extends EContentAdapter {
         @Override
-        public void notifyChanged(Notification msg) {
+        public void notifyChanged(@Nullable Notification msgo) {
+        	Notification msg = Util.assertNonNull(msgo);
             super.notifyChanged(msg);
-            // Forward on to listeners...
             firePropertyChange(this, PROPERTY_ECORE_EVENT, null, msg);
         }
     }
+
+	public static IArchiveManager obtainArchiveManager(@Nullable IAdapter obj) {
+		IAdapter ob = Util.assertNonNull(obj);
+		IArchiveManager adapter = (IArchiveManager) ob.getAdapter(IArchiveManager.class);
+		return Util.assertNonNull(adapter);
+	}
+	public static CommandStack obtainCommandStack(@Nullable IAdapter obj) {
+		IAdapter ob = Util.assertNonNull(obj);
+		CommandStack adapter = (CommandStack) ob.getAdapter(CommandStack.class);
+		return Util.assertNonNull(adapter);
+	}
 
 }
