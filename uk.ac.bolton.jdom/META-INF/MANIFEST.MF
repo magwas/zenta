@@ -35,3 +35,4 @@ Bundle-ClassPath: jaxen-1.1.3.jar,
  jdom.jar,
  uk.ac.bolton.jdom.jar,
  saxon9he.jar
+Require-Bundle: org.eclipse.jdt.annotation;bundle-version="1.0.1"
