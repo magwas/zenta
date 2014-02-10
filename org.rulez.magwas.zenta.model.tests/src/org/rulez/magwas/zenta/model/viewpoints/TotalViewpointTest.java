@@ -128,14 +128,7 @@ public class TotalViewpointTest {
 		IBasicObject processStepElement = (IBasicObject) testdata.getElementById("c3d03626");
 		Collection<IBasicRelationship> targets = vp.getValidRelationships(dataElement, processStepElement);
 		HashSet<String> expectedTargets = new HashSet<String>(Arrays.asList(
-				"Basic Object",
-				"Data",
-				"ProcessStep",
-				"NotActuallyDocumentation",
-				"Procedure",
-				"User",
-				"Title"));
+				"Basic Relation"));
 		ModelTestUtils.assertEqualsAsSet(expectedTargets,ModelTestUtils.definingNames(targets));
 	}
-
 }

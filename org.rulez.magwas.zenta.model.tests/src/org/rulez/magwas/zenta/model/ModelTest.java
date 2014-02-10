@@ -59,4 +59,66 @@ public class ModelTest {
 		ZentaModelUtils.saveModelToXMLFile(testdata.getModel(), file);
 	}
 
+	@Test
+	public void setDefaults_adds_folders() {
+		createModel();
+	}
+
+	@SuppressWarnings("null")
+		private IFolder createModel() {
+			IZentaFactory factory = IZentaFactory.eINSTANCE;
+			IZentaModel model = factory.createZentaModel();
+			model.setDefaults();
+			IFolder folder = model.getFolders().get(0);
+			assertNotNull(folder);
+			return folder;
+		}
+	
+	@Test
+	public void DiagramModel_can_be_added_to_folder() {
+		IFolder folder = createModel();
+		addDiagrammodelToFolder(folder);
+	}
+		private IZentaDiagramModel addDiagrammodelToFolder(IFolder folder) {
+			IZentaFactory factory = IZentaFactory.eINSTANCE;
+			IZentaDiagramModel dm = factory.createZentaDiagramModel();
+			folder.getElements().add(dm);
+			assertTrue(folder.getElements().contains(dm));
+			return dm;
+		}
+	@Test
+	public void Element_can_be_added_to_model() {
+		IFolder folder = createModel();
+		String name = "testOne";
+		IBasicObject e = addElementToFolder(folder,name);
+		assertEquals(e.getName(),name);
+	}
+		private IBasicObject addElementToFolder(IFolder folder, String name) {
+			IZentaFactory factory = IZentaFactory.eINSTANCE;
+			IBasicObject obj = factory.createBasicObject();
+			obj.setName(name);
+			folder.getElements().add(obj);
+			assertTrue(folder.getElements().contains(obj));
+			return obj;
+		}
+
+	@Test
+	public void Element_can_be_added_to_Diagram() {
+		IFolder folder = createModel();
+		String name = "testTwo";
+		IBasicObject e = addElementToFolder(folder,name);
+		IZentaDiagramModel dm = addDiagrammodelToFolder(folder);
+		IDiagramModelZentaObject de = addElementToModel(e,dm);
+		assertEquals(e, de.getZentaElement());
+	}
+
+	private IDiagramModelZentaObject addElementToModel(IBasicObject e, IZentaDiagramModel dm) {
+		IZentaFactory factory = IZentaFactory.eINSTANCE;
+		IDiagramModelZentaObject dmo = factory.createDiagramModelZentaObject();
+		dmo.setZentaElement(e);
+		dm.getChildren().add(dmo);
+		assertTrue(dm.getChildren().contains(dmo));
+		return dmo;
+	}
+
 }
