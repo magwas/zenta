@@ -25,7 +25,7 @@ public class MetamodelTest {
 	public void setUp() throws Exception {
 		ModelTestData data = new ModelTestData();
 		IZentaModel m = Util.assertNonNull(data.model);
-		this.fixture = IZentaFactory.eINSTANCE.createMetamodel(m);
+		this.fixture = IZentaFactory.eINSTANCE.getMetamodelFor(m);
 	}
 
 	@After

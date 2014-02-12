@@ -173,7 +173,7 @@ public class ObjectClassTest{
 	public void When_the_model_is_loaded_the_diagram_elements_are_not_converted_according_to_the_defining_element() {
 		ModelTestData data = new ModelTestData();
 		ensureVirginDMOsForLoadTest(data);
-		IZentaFactory.eINSTANCE.createMetamodel(Util.assertNonNull(data.model));
+		IZentaFactory.eINSTANCE.getMetamodelFor(Util.assertNonNull(data.model));
 		ensureVirginDMOsForLoadTest(data);
 		ensureCorrectFinalAttributes(data);
 	}

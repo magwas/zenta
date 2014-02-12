@@ -40,7 +40,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		setUpMetaModel();
 	}
 		private void setUpMetaModel() {
-			metamodel = IZentaFactory.eINSTANCE.createMetamodel(Util.assertNonNull(model));
+			metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(Util.assertNonNull(model));
 	        assertNotNull(metamodel);
 	        assertNotNull(metamodel.getTemplates());
 		}

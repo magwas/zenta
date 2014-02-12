@@ -45,7 +45,7 @@ public class TreeModelViewActionFactory {
 	private IMetamodel metamodel;
 
     public TreeModelViewActionFactory(IZentaModel model) {
-    	metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+    	metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(model);
     }
 
     /**

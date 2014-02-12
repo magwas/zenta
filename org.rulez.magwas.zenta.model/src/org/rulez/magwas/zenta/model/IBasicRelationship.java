@@ -9,6 +9,7 @@ package org.rulez.magwas.zenta.model;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.jdt.annotation.NonNull;
 
 
 /**
@@ -102,4 +103,6 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	EList<IDiagramModelZentaConnection> getDiagConnections();
 
 	List<IBasicObject> getAllowedTargets();
+	@NonNull IBasicRelationship create(@NonNull IFolder folder);
+
 } // IBasicRelationship

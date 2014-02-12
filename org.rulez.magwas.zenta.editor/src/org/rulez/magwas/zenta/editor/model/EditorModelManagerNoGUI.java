@@ -118,7 +118,6 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	public IZentaModel createNewModel() {
 	    IZentaModel model = IZentaFactory.eINSTANCE.createZentaModel();
 	    model.setName(Messages.EditorModelManager_0);
-	    model.setDefaults();
 	    
 	    // Add one default diagram
 	    IDiagramModel diagramModel = IZentaFactory.eINSTANCE.createZentaDiagramModel();
@@ -233,9 +232,8 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	
 	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
 	    IZentaModel m = Util.assertNonNull(model);
-		IZentaFactory.eINSTANCE.createMetamodel(m);
+		IZentaFactory.eINSTANCE.getMetamodelFor(m);
 	    model.setFile(file);
-	    model.setDefaults();
 	    getModels().add(model);
 	    model.eAdapters().add(new ECoreAdapter());
 	

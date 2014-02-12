@@ -38,7 +38,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
     public AbstractViewpoint(IDiagramModel dm) {
 		IZentaModel model = dm.getZentaModel();
-		metamodel = IZentaFactory.eINSTANCE.createMetamodel(Util.assertNonNull(model));
+		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(Util.assertNonNull(model));
 		folder = (IFolder) dm.eContainer();
 	}
 

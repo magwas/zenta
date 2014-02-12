@@ -88,14 +88,6 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	 * @model
 	 * @generated
 	 */
-	void setDefaults();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	IFolder addDerivedRelationsFolder();
 
 	/**

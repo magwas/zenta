@@ -259,11 +259,11 @@ public interface IZentaFactory extends EFactory {
 	 */
 	IZentaPackage getZentaPackage();
 
-	@NonNull IMetamodel createMetamodel(@NonNull IZentaModel zentaModel);
+	@NonNull IMetamodel getMetamodelFor(@NonNull IZentaModel zentaModel);
 
 	@NonNull String getDefiningName(@NonNull IIdentifier ref);
 
-	@Nullable IMetamodel getMetamodelFor(@NonNull IZentaModelElement modelElement);
+	@NonNull IMetamodel getMetamodelFor(@NonNull IZentaModelElement modelElement);
 
 	@NonNull ITemplate createTemplate(@NonNull IZentaDiagramModel diagram, @NonNull IMetamodel metamodel);
 

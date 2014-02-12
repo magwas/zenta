@@ -5,18 +5,25 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
+import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
+import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -68,7 +75,7 @@ public class ModelTest {
 		private IFolder createModel() {
 			IZentaFactory factory = IZentaFactory.eINSTANCE;
 			IZentaModel model = factory.createZentaModel();
-			model.setDefaults();
+			//model.setDefaults();
 			IFolder folder = model.getFolders().get(0);
 			assertNotNull(folder);
 			return folder;
@@ -108,17 +115,120 @@ public class ModelTest {
 		String name = "testTwo";
 		IBasicObject e = addElementToFolder(folder,name);
 		IZentaDiagramModel dm = addDiagrammodelToFolder(folder);
-		IDiagramModelZentaObject de = addElementToModel(e,dm);
+		IDiagramModelZentaObject de = addElementToDiagram(e,dm);
 		assertEquals(e, de.getZentaElement());
 	}
 
-	private IDiagramModelZentaObject addElementToModel(IBasicObject e, IZentaDiagramModel dm) {
+		private IDiagramModelZentaObject addElementToDiagram(IBasicObject e, IZentaDiagramModel dm) {
+			IZentaFactory factory = IZentaFactory.eINSTANCE;
+			IDiagramModelZentaObject dmo = factory.createDiagramModelZentaObject();
+			dmo.setZentaElement(e);
+			dm.getChildren().add(dmo);
+			assertTrue(dm.getChildren().contains(dmo));
+			return dmo;
+		}
+
+	@Test
+	public void Model_have_metamodel_when_created() {
 		IZentaFactory factory = IZentaFactory.eINSTANCE;
-		IDiagramModelZentaObject dmo = factory.createDiagramModelZentaObject();
-		dmo.setZentaElement(e);
-		dm.getChildren().add(dmo);
-		assertTrue(dm.getChildren().contains(dmo));
-		return dmo;
+		IFolder folder = createModel();
+		IZentaModel model = folder.getZentaModel();
+		assertNotNull(model);
+		IMetamodel metamodel = factory.getMetamodelFor(model);
+		NonNullList<IBasicObject> ocs = metamodel.getObjectClasses();
+		List<String> names = Util.assertNonNull(Arrays.asList("Basic Object"));
+		ModelTestUtils.assertEqualsAsSet(names,ModelTestUtils.definingNames(ocs));
+		NonNullList<IBasicObject> rcs = metamodel.getObjectClasses();
+		List<String> relnames = Util.assertNonNull(Arrays.asList("Basic Object"));
+		ModelTestUtils.assertEqualsAsSet(relnames,ModelTestUtils.definingNames(rcs));
 	}
 
+	@Test
+	public void When_diagram_is_converted_to_template_the_objectclasses_are_generated() {
+		IFolder folder = createModel();
+		String name = "testThree";
+		IBasicObject e = addElementToFolder(folder,name);
+		IZentaDiagramModel dm = addDiagrammodelToFolder(folder);
+		IDiagramModelZentaObject de = addElementToDiagram(e,dm);
+		assertEquals(e, de.getZentaElement());
+		IZentaFactory factory = makeTemplate(dm);
+		IMetamodel metamodel = factory.getMetamodelFor(dm);
+		NonNullList<IBasicObject> ocs = metamodel.getObjectClasses();
+		List<String> names = Util.assertNonNull(Arrays.asList("testThree", "Basic Object"));
+		ModelTestUtils.assertEqualsAsSet(names,ModelTestUtils.definingNames(ocs));
+	}
+
+	@Test
+	public void When_diagram_is_converted_to_template_the_relationclasses_are_generated() {
+		IFolder folder = createModel();
+		IZentaDiagramModel dm = createDmWithRel(folder, "testFour", "testFive");
+		IZentaFactory factory = makeTemplate(dm);
+		IMetamodel metamodel = factory.getMetamodelFor(dm);
+		NonNullList<IBasicRelationship> rcs = metamodel.getRelationClasses();
+		List<String> names = Util.assertNonNull(Arrays.asList("testRelation", "Basic Relation"));
+		ModelTestUtils.assertEqualsAsSet(names,ModelTestUtils.definingNames(rcs));
+	}
+
+		private IDiagramModelZentaConnection createRelationWithDMC(IBasicObject e, IBasicObject e2, IZentaDiagramModel dm, String name) {
+			IBasicRelationship rel = createRelationship(e, e2, name);
+			IZentaFactory factory2 = IZentaFactory.eINSTANCE;
+			IDiagramModelZentaConnection zmc = factory2.createDiagramModelZentaConnection();
+			IDiagramModelZentaObject sourceDmo = addElementToDiagram(e,dm);
+			IDiagramModelZentaObject targetDmo = addElementToDiagram(e2,dm);
+			zmc.setSource(sourceDmo);
+			zmc.setTarget(targetDmo);
+			sourceDmo.addConnection(zmc);
+			zmc.setRelationship(rel);
+			return zmc;
+		}
+		
+		private IBasicRelationship createRelationship(IBasicObject e, IBasicObject e2, String name) {
+			IZentaFactory factory2 = IZentaFactory.eINSTANCE;
+			IBasicRelationship rel = factory2.createBasicRelationship();
+			rel.setName(name);
+			rel.setSource(e);
+			rel.setTarget(e2);
+			return rel;
+		}
+
+	@Test
+	public void Non_template_objects_can_be_legally_connected_with_connection_according_to_the_template() {
+		IFolder folder = createModel();
+		IBasicObject oc1 = addElementToFolder(folder,"testOC1");
+		IBasicObject oc2 = addElementToFolder(folder,"testOC2");
+		IZentaDiagramModel templateDM = addDiagrammodelToFolder(folder);
+		IBasicRelationship rc = createRelationWithDMC(oc1, oc2,templateDM,"testRelationka").getRelationship();
+		makeTemplate(templateDM);
+		
+		IZentaDiagramModel dm2 = addDiagrammodelToFolder(folder);
+		IBasicObject e1 = oc1.create(folder);
+		IBasicObject e2 = oc2.create(folder);
+		IBasicRelationship rel = rc.create(folder);
+		rel.setSource(e1);
+		rel.setTarget(e2);
+		addElementToDiagram(e1,dm2);
+		addElementToDiagram(e2,dm2);
+		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(Util.assertNonNull(dm2));
+		List<IBasicRelationship> rcs = vp.getValidRelationships(e1, e2);
+
+		List<String> names = Util.assertNonNull(Arrays.asList("testRelationka", "Basic Relation"));
+		ModelTestUtils.assertEqualsAsSet(names,ModelTestUtils.definingNames(rcs));
+	}
+
+	private IZentaFactory makeTemplate(IZentaDiagramModel dm) {
+			IZentaFactory factory = IZentaFactory.eINSTANCE;
+			IProperty prop = factory.createProperty();
+			prop.setKey("Template");
+			dm.getProperties().add(prop);
+			return factory;
+		}
+	
+		private IZentaDiagramModel createDmWithRel(IFolder folder, String name,
+				String name2) {
+			IBasicObject e = addElementToFolder(folder,name);
+			IBasicObject e2 = addElementToFolder(folder,name2);
+			IZentaDiagramModel dm = addDiagrammodelToFolder(folder);
+			createRelationWithDMC(e, e2,dm,"testRelation");
+			return dm;
+		}
 }

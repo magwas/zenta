@@ -68,7 +68,6 @@ public class NewModelWithCanvasExtensionContributionFactory extends ExtensionCon
         public void run() {
             IZentaModel model = IZentaFactory.eINSTANCE.createZentaModel();
             model.setName(Messages.NewModelWithCanvasExtensionContributionFactory_1);
-            model.setDefaults();
             IEditorModelManager.INSTANCE.registerModel(model);
             
             IFolder folder = model.getFolders().get(0);

@@ -92,7 +92,7 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	        }
 	    };
 	    IZentaModel model = folder.getZentaModel();
-		IMetamodel metamodel = IZentaFactory.eINSTANCE.createMetamodel(model);
+		IMetamodel metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(model);
 		metamodel.eAdapters().add(adapter);
 		model.eAdapters().add(adapter);
 	}

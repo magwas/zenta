@@ -199,7 +199,6 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         
         // Create a new container Zenta model
         IZentaModel tempModel = IZentaFactory.eINSTANCE.createZentaModel();
-        tempModel.setDefaults();
         tempModel.eAdapters().clear(); // Remove this after default folders have been added, as we'll generate our own IDs
         tempModel.setId(EcoreUtil.generateUUID());
         tempModel.setFile(tmpFile);

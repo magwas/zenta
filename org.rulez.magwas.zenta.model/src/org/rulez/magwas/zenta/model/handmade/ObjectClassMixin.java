@@ -13,7 +13,6 @@ import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
@@ -26,8 +25,7 @@ public abstract class ObjectClassMixin {
 	}
 
 	public static IMetamodel getMetamodel(IBasicObject self) {
-		IZentaModel model = Util.assertNonNull(self.getZentaModel());
-		IMetamodel mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
+		IMetamodel mm = IZentaFactory.eINSTANCE.getMetamodelFor(self);
 		return (IMetamodel) Util.assertNonNull(mm);
 	}
 

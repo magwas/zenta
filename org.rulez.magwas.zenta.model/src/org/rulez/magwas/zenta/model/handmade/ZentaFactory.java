@@ -42,7 +42,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	}
 
 	@Override
-	public IMetamodel createMetamodel(IZentaModel zentaModel) {
+	public IMetamodel getMetamodelFor(IZentaModel zentaModel) {
 		IMetamodel mm = findMetamodelFor(zentaModel);
 		if(null == mm)
 			mm = new Metamodel(zentaModel);
@@ -51,11 +51,10 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	}
 	
 	@Override
-	@Nullable public IMetamodel getMetamodelFor(IZentaModelElement modelElement) {
+	public IMetamodel getMetamodelFor(IZentaModelElement modelElement) {
 		IZentaModel model = modelElement.getZentaModel();
-		if (null == model)
-			return null;
-		return findMetamodelFor(model);
+		IZentaModel m = Util.assertNonNull(model);
+		return getMetamodelFor(m);
 	}
 
 	@Override
@@ -63,7 +62,6 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	public IMetamodel findMetamodelFor(IZentaModel model2) {
 		return registry.get(model2);
 	}
-
 
 	@Override
 	public ITemplate createTemplate(IZentaDiagramModel reference, IMetamodel metamodel) {

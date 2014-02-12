@@ -192,7 +192,7 @@ public class SearchWidget extends Composite {
         dropDownAction.add(relationsMenu);
 		for (int i = 0; i < models.size(); i++) {
 			IZentaModel model = models.get(i);
-			mm = IZentaFactory.eINSTANCE.createMetamodel(model);
+			mm = IZentaFactory.eINSTANCE.getMetamodelFor(model);
 	        for(IBasicRelationship eClass : mm.getRelationClasses()) {
 	            relationsMenu.add(createObjectAction(eClass));
 	        }

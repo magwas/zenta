@@ -27,7 +27,7 @@ public class MetamodelBuilderTest {
 		testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTemplateDiagramModel();
-		metamodel = IZentaFactory.eINSTANCE.createMetamodel(Util.assertNonNull(model));
+		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(Util.assertNonNull(model));
 	}
 	
 	@Test

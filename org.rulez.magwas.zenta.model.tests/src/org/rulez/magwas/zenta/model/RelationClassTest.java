@@ -37,7 +37,7 @@ public class RelationClassTest {
 		testdata = new ModelTestData();
 		ensureVirginDMRsForLoadTest(testdata);
 
-		metamodel = IZentaFactory.eINSTANCE.createMetamodel(testdata.getModel());
+		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(testdata.getModel());
 		fixture = metamodel.getBuiltinRelationClass();
 	}
 
@@ -151,7 +151,7 @@ public class RelationClassTest {
 		ModelTestData.assertOnePropertyWithNameAndValue(relation, "lineDecoration", "DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration");
 		
 		ensureVirginDMRsForLoadTest(testdata);
-		IZentaFactory.eINSTANCE.createMetamodel(testdata.getModel());
+		IZentaFactory.eINSTANCE.getMetamodelFor(testdata.getModel());
 		ensureVirginDMRsForLoadTest(testdata);
 		ensureCorrectFinalAttributes(testdata);
 

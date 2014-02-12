@@ -186,12 +186,10 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
     protected ZentaModelBase() {
         super();
         eAdapters().add(fIDAdapter);
+        this.setDefaults();
     }
     
-    /**
-     * Add any default folders
-     */
-    protected void addDefaultFolders() {
+    private void addDefaultFolders() {
     	if(this.getFolders().size() == 0) {
             IFolder folder = IZentaFactory.eINSTANCE.createFolder();
             folder.setName(MessagesBase.ZentaModel_0);
@@ -414,12 +412,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_MODEL__VERSION, oldVersion, version));
 	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public void setDefaults() {
+    private void setDefaults() {
         // Element has no ID so allocate one
         String id = getId();
 		if(id == null) {

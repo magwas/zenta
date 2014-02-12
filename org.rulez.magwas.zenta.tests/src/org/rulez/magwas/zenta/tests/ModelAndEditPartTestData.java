@@ -88,7 +88,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
             }
         });
         assertNotNull(model);
-        metamodel = IZentaFactory.eINSTANCE.createMetamodel(getModel());
+        metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(getModel());
         assertNotNull(metamodel);
 	}
 

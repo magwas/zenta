@@ -35,7 +35,7 @@ public class TemplateTest {
 	}
 
 	public void setupMeta() {
-		metamodel = IZentaFactory.eINSTANCE.createMetamodel(testdata.getModel());
+		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(testdata.getModel());
 		assertNotNull(ZentaModelUtils.getObjectByID(testdata.getModel(), "c3d03626"));
 		fixture = metamodel.getBuiltinTemplate();
 		template = metamodel.getTemplateFor(testdata.getTemplateDiagramModel());
