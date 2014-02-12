@@ -42,7 +42,7 @@ public interface IBasicObject extends IZentaElement, IObjectClass {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attributes</em>' containment reference list.
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject_Attributes()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" derived="true"
 	 * @generated
 	 */
 	EList<IAttribute> getAttributes();

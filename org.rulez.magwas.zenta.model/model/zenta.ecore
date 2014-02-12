@@ -281,7 +281,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//ZentaElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
-        eType="#//Attribute" containment="true" resolveProxies="false"/>
+        eType="#//Attribute" transient="true" derived="true" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ancestor" lowerBound="1"
         eType="#//BasicObject" resolveProxies="false" eOpposite="#//BasicObject/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
