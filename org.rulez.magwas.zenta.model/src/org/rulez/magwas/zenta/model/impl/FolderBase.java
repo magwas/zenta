@@ -282,17 +282,13 @@ public class FolderBase extends EObjectImpl implements IFolder {
     }
 
     
-    @SuppressWarnings("null")
-	public @NonNull EList<IFolder> getFolders() {
-    	return getFolders_gen();
-    }
-
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<IFolder> getFolders_gen() {
+    @SuppressWarnings("null")
+	public @NonNull EList<IFolder> getFolders() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.FOLDER__FOLDERS);
 		}

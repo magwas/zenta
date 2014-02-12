@@ -353,17 +353,14 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.ZENTA_MODEL__DOCUMENTATION, oldDocumentation, documentation));
 	}
-    @SuppressWarnings("null")
-	public @NonNull EList<IFolder> getFolders() {
-    	return getFolders_gen();
-    }
 
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<IFolder> getFolders_gen() {
+    @SuppressWarnings("null")
+	public @NonNull EList<IFolder> getFolders() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.ZENTA_MODEL__FOLDERS);
 		}

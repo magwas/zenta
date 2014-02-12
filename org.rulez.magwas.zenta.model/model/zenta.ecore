@@ -256,7 +256,6 @@
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="model"/>
     </eAnnotations>
-    <eOperations name="setDefaults"/>
     <eOperations name="addDerivedRelationsFolder" eType="#//Folder"/>
     <eOperations name="removeDerivedRelationsFolder"/>
     <eOperations name="getDefaultFolderForElement" eType="#//Folder">
