@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.annotation.Nullable;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -20,6 +22,7 @@ public abstract class ObjectClassMixin {
 
 
 	public static void setAsTemplate(IBasicObject self, ITemplate template) {
+		System.out.printf("setting template %s\n for %s\n", template, self);
 		template.getClasses().add(self);
 		self.setTemplate(template);
 	}
@@ -90,8 +93,8 @@ public abstract class ObjectClassMixin {
             }
 
 	public static List<IAttribute> getAttributesRecursively(IBasicObject self) {
-		EList<IAttribute> atts = self.getAttributes();
-		 IBasicObject ancie = self.getAncestor();
+		NonNullList<IAttribute> atts = new NonNullArrayList<IAttribute>(self.getAttributes());
+		IBasicObject ancie = self.getAncestor();
 		atts.addAll(ancie.getAttributesRecursively());
 		return atts;
 	}

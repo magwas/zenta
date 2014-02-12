@@ -194,7 +194,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			return;
 		IBasicRelationship element =((IDiagramModelZentaConnection) dmzc).getRelationship();
 		if(!"".equals(element.getDefiningName()))
-			element.setTemplate(template);
+			element.setAsTemplate(template);
 	}
 
 	public void processElementNameChange(IBasicObject element, String oldName, String newName) {

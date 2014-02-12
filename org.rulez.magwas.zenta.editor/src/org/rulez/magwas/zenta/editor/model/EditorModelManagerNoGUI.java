@@ -393,6 +393,8 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	 */
 	private @Nullable File askSaveModel() {
 	    String path = askSavePath();
+	    if(path == null)
+	    	return null;
 	    File file = new File(path);
 	    
 	    // Make sure we don't already have it open
@@ -522,7 +524,9 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	                Element modelElement = (Element)e;
 	                String filePath = modelElement.getAttributeValue("file"); //$NON-NLS-1$
 	                if(filePath != null) {
-	                    loadModel(new File(filePath));
+	                    File file = new File(filePath);
+	                    if(file.exists())
+	                    	loadModel(file);
 	                }
 	            }
 	        }

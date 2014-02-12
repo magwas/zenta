@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -706,6 +707,11 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 		result.append(version);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public IMetamodel getMetamodel() {
+		return IZentaFactory.eINSTANCE.getMetamodelFor(this);
 	}
 
 } //ZentaModel

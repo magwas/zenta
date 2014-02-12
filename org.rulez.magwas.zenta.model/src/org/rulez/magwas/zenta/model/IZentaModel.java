@@ -121,5 +121,7 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	 * @generated
 	 */
 	EList<IDiagramModel> getDiagramModels();
+	
+	IMetamodel getMetamodel();
 
 } // IZentaModel
