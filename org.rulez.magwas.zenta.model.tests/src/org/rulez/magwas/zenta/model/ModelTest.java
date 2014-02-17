@@ -245,9 +245,7 @@ public class ModelTest {
 		rel.setTarget(oc2_2);
 		addElementToDiagram(oc2_1,templateDM);
 		addElementToDiagram(oc2_2,templateDM);
-		System.out.printf("================================");
 		IBasicRelationship rc2 = createRelationWithDMC(oc2_1, oc2_2,templateDM,"secondGenrelation").getRelationship();
-		System.out.printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 		assertTrue(rc2.isTemplate());
 		NonNullList<IBasicRelationship> rcss = mm.getRelationClasses();
 		List<String> rcsnames = Util.assertNonNull(Arrays.asList("secondGenrelation", "testRelationka2", "Basic Relation"));

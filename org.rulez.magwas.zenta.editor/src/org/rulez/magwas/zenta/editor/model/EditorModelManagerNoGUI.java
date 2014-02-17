@@ -273,7 +273,6 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    // Close the corresponding GEF editor(s) for this model *FIRST* before removing from model
 	    EditorManager.closeDiagramEditors(model);
 	    
-	    System.out.printf("removing %s\n",model);
 	    getModels().remove(model);
 	    model.eAdapters().clear();
 	    firePropertyChange(this, PROPERTY_MODEL_REMOVED, null, model);

@@ -22,7 +22,6 @@ public abstract class ObjectClassMixin {
 
 
 	public static void setAsTemplate(IBasicObject self, ITemplate template) {
-		System.out.printf("setting template %s\n for %s\n", template, self);
 		template.getClasses().add(self);
 		self.setTemplate(template);
 	}

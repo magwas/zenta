@@ -84,8 +84,6 @@ public abstract class AbstractViewpoint implements IViewpoint {
 			IBasicObject tc) {
 		List<IBasicRelationship> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
 		List<IBasicRelationship> destrels = tc.getAllowedRelations().get(Direction.TARGET);
-		System.out.printf("sourcerels =%s\n for %s\n", sourcerels,sc);
-		System.out.printf("destrels =%s\n for %s\n", destrels, tc);
 		List<IBasicRelationship> ret = new ArrayList<IBasicRelationship>();
 		for(IBasicRelationship rel : sourcerels) {
 			if(destrels.contains(rel) && !ret.contains(rel))

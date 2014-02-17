@@ -174,7 +174,6 @@ public class ZentaDiagramEditorPaletteTest {
 
 		assertEquals(0,spart.getModel().getSourceConnections().size());
 		tool = new MagicConnectionCreationToolExerciser(spart, "Basic Object/Basic Relation", testdata);
-		System.out.printf("menu=\n %s\n", tool.getMenu());
 		assertFalse(tool.failed);
 		assertEquals(1,spart.getModel().getSourceConnections().size());
 		Set<String> expectedMenu = new HashSet<String>(Arrays.asList(
