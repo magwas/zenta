@@ -33,7 +33,7 @@ public class RootRelationClass extends RelationClass {
 
 	@Override
 	public List<IAttribute> getAttributesRecursively() {
-		return Util.assertNonNull(getAttributes());
+		return Util.verifyNonNull(getAttributes());
 	}
 
 	@Override

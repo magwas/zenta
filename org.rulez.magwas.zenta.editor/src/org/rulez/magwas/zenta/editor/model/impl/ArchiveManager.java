@@ -76,7 +76,7 @@ public class ArchiveManager implements IArchiveManager {
     private EContentAdapter fModelAdapter = new EContentAdapter() {
         @Override
         public void notifyChanged(@Nullable Notification msgo) {
-        	Notification msg = Util.assertNonNull(msgo);
+        	Notification msg = Util.verifyNonNull(msgo);
             super.notifyChanged(msg);
 
             // IDiagramModelImageProvider added
@@ -110,7 +110,7 @@ public class ArchiveManager implements IArchiveManager {
     }
 
     public IZentaModel getfModel() {
-		return Util.assertNonNull(fModel);
+		return Util.verifyNonNull(fModel);
 	}
 
 	public void setfModel(IZentaModel fModel) {
@@ -195,7 +195,7 @@ public class ArchiveManager implements IArchiveManager {
                 // Add to ByteArrayStorage
                 if(!BYTE_ARRAY_STORAGE.hasEntry(entryName)) {
                     InputStream in = zipFile.getInputStream(zipEntry);
-                    BYTE_ARRAY_STORAGE.addStreamEntry(entryName, Util.assertNonNull(in));
+                    BYTE_ARRAY_STORAGE.addStreamEntry(entryName, Util.verifyNonNull(in));
                 }
                 
                 // Add to list
@@ -331,7 +331,7 @@ public class ArchiveManager implements IArchiveManager {
         
         // Release all unused image data and cached images that are not in image paths
         for(String imagePatho : fLoadedImagePaths) {
-        	String imagePath = Util.assertNonNull(imagePatho);
+        	String imagePath = Util.verifyNonNull(imagePatho);
             if(!allPathsInUse.contains(imagePath)) {
                 BYTE_ARRAY_STORAGE.removeEntry(imagePath);
             }

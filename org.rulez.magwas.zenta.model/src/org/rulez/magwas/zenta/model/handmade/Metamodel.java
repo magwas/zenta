@@ -50,7 +50,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		private void initializeMetaModel() {
 			EList<IDiagramModel> diagrams = model.getDiagramModels();
 			for(IDiagramModel diagramo : diagrams) {
-				IDiagramModel diagram = Util.assertNonNull(diagramo);
+				IDiagramModel diagram = Util.verifyNonNull(diagramo);
 				extractTemplate((IZentaDiagramModel)diagram);
 			}
 		}
@@ -73,7 +73,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			final Metamodel self = this;
 			EContentAdapter adapter = new EContentAdapter() {
 		        public void notifyChanged(@Nullable Notification notificationo) {
-		          Notification notification = Util.assertNonNull(notificationo);
+		          Notification notification = Util.verifyNonNull(notificationo);
 		          super.notifyChanged(notification);
 		          NotificationProcessor.processNotification(self,notification);
 		        }
@@ -83,7 +83,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 
 	@Override
 	public @Nullable ITemplate getTemplateFor(@Nullable IDiagramModel diagramModelo) {
-		IDiagramModel diagramModel = Util.assertNonNull(diagramModelo);
+		IDiagramModel diagramModel = Util.verifyNonNull(diagramModelo);
 		for(ITemplate template : getTemplates()) {
 			IDiagramModel dm = template.getDiagram();
 			if(dm == null && template != this.builtinTemplate)
@@ -96,7 +96,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 
 	@Override
 	public @Nullable ITemplate getTemplateFor(@Nullable IDiagramModelComponent elemento) {
-		IDiagramModelComponent element = Util.assertNonNull(elemento);
+		IDiagramModelComponent element = Util.verifyNonNull(elemento);
 		IDiagramModel dm = element.getDiagramModel();
 		if (null == dm)
 			return null;
@@ -115,7 +115,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 
 	@Override
 	public BuiltinTemplate getBuiltinTemplate() {
-		return Util.assertNonNull(builtinTemplate);
+		return Util.verifyNonNull(builtinTemplate);
 	}
 
 
@@ -178,7 +178,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		if(null == template)
 			return;
 		IBasicObject elemento = (IBasicObject) ((IDiagramModelZentaObject) dmzc).getZentaElement();
-		IBasicObject element = Util.assertNonNull(elemento);
+		IBasicObject element = Util.verifyNonNull(elemento);
 		createOCforElement(element);
 	}
 
@@ -250,7 +250,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 				extractTemplate(dm);
 		}
 		for(IDiagramModelObject dmoo : dm.getChildren()) {
-			IDiagramModelObject dmo = Util.assertNonNull(dmoo);
+			IDiagramModelObject dmo = Util.verifyNonNull(dmoo);
 			handleNewTemplateElement(dmo);
 		}
 	}
@@ -258,7 +258,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	public void processPropertyChange(IProperty prop, String value) {
 		if(prop.eContainer() instanceof IZentaDiagramModel && "Template".equals(value)) {
 			IZentaDiagramModel container = (IZentaDiagramModel) prop.eContainer();
-			processDiagramHasNewProperty(Util.assertNonNull(container), prop);
+			processDiagramHasNewProperty(Util.verifyNonNull(container), prop);
 		}
 	}
 	
@@ -279,14 +279,14 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 
 	@Override
 	public IZentaModel getModel() {
-		return Util.assertNonNull(model);
+		return Util.verifyNonNull(model);
 	}
 
 	public void processChildRemovedFromDiagram(IDiagramModelComponent dmzc) {
 		if(dmzc instanceof IDiagramModelZentaObject) {
 			IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) dmzc;
 			IBasicObject element = (IBasicObject) dmo.getZentaElement();
-			removeClassForObject(Util.assertNonNull(element));
+			removeClassForObject(Util.verifyNonNull(element));
 		}
 	}
 	private void removeClassForObject(IBasicObject element) {
@@ -294,7 +294,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			return;
 		IMetamodel metamodel = element.getTemplate().getMetamodel();
 		element.getTemplate().removeClass(element);
-		reinstantiateObjectClassIfStillHaveTemplate(element, Util.assertNonNull(metamodel));
+		reinstantiateObjectClassIfStillHaveTemplate(element, Util.verifyNonNull(metamodel));
 	}
 		private void reinstantiateObjectClassIfStillHaveTemplate(IBasicObject element,
 				IMetamodel metamodel) {
@@ -335,7 +335,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		if(dmzc instanceof IDiagramModelZentaConnection) {
 			IDiagramModelZentaConnection dmo = (IDiagramModelZentaConnection) dmzc;
 			IBasicRelationship element = dmo.getRelationship();
-			removeClassForConnection(Util.assertNonNull(element));
+			removeClassForConnection(Util.verifyNonNull(element));
 		}
 	}
 		private void removeClassForConnection(IBasicRelationship element) {
@@ -343,7 +343,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 				return;
 			IMetamodel metamodel = element.getTemplate().getMetamodel();
 			element.getTemplate().removeClass(element);
-			reinstantiateRelationClassIfStillHaveTemplate(element, Util.assertNonNull(metamodel));
+			reinstantiateRelationClassIfStillHaveTemplate(element, Util.verifyNonNull(metamodel));
 		}
 			private void reinstantiateRelationClassIfStillHaveTemplate(IBasicRelationship element,
 					IMetamodel metamodel) {
@@ -362,6 +362,6 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		for(IDiagramModelZentaObject dmo : element.getDiagObjects())
 			dmo.refreshVisuals();
 		for(IBasicObject kid : element.getChildren())
-			updateFiguresFor(Util.assertNonNull(kid));
+			updateFiguresFor(Util.verifyNonNull(kid));
 	}
 }

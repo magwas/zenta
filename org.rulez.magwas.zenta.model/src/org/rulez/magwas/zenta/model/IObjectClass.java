@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
 
 public interface IObjectClass extends IHelpHintProvider {
@@ -19,7 +20,7 @@ public interface IObjectClass extends IHelpHintProvider {
 	@NonNull IBasicObject getDefiningElement();
 
 	public boolean isAllowedRelation(@NonNull IBasicRelationship relclass, @NonNull Direction direction);
-	public @NonNull Map<Direction,List<IBasicRelationship>> getAllowedRelations();
+	public @NonNull Map<Direction,NonNullList<IBasicRelationship>> getAllowedRelations();
 
 	@NonNull IMetamodel getMetamodel();
 	

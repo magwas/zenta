@@ -10,6 +10,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -38,7 +41,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
     public AbstractViewpoint(IDiagramModel dm) {
 		IZentaModel model = dm.getZentaModel();
-		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(Util.assertNonNull(model));
+		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(Util.verifyNonNull(model));
 		folder = (IFolder) dm.eContainer();
 	}
 
@@ -72,7 +75,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public List<IBasicRelationship> getValidRelationships(
+	public @NonNull NonNullList<IBasicRelationship> getValidRelationships(
 			IZentaElement sourceElement, IZentaElement targetElement) {
 		IBasicObject sc = (IBasicObject) sourceElement;
 		IBasicObject tc = (IBasicObject) targetElement;
@@ -80,11 +83,11 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public List<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sc,
+	public @NonNull NonNullList<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sc,
 			IBasicObject tc) {
-		List<IBasicRelationship> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
-		List<IBasicRelationship> destrels = tc.getAllowedRelations().get(Direction.TARGET);
-		List<IBasicRelationship> ret = new ArrayList<IBasicRelationship>();
+		NonNullList<IBasicRelationship> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
+		NonNullList<IBasicRelationship> destrels = tc.getAllowedRelations().get(Direction.TARGET);
+		NonNullList<IBasicRelationship> ret = new NonNullArrayList<IBasicRelationship>();
 		for(IBasicRelationship rel : sourcerels) {
 			if(destrels.contains(rel) && !ret.contains(rel))
 				ret.add(rel);
@@ -113,12 +116,12 @@ public abstract class AbstractViewpoint implements IViewpoint {
     }
 	
 	@Override
-	public List<IBasicRelationship> getSourceRelationClassesFor(IBasicObject startElement) {
+	public NonNullList<IBasicRelationship> getSourceRelationClassesFor(IBasicObject startElement) {
 		return startElement.getAllowedRelations().get(Direction.SOURCE);
 	}
 
 	@Override
-	public List<IBasicRelationship> getTargetRelationClassesFor(
+	public NonNullList<IBasicRelationship> getTargetRelationClassesFor(
 			IBasicObject targetclass) {
 		return metamodel.getRelationClasses();
 	}
@@ -136,7 +139,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public IIdentifier create(IBasicObject eClass) {
-		return eClass.create(Util.assertNonNull(folder));
+		return eClass.create(Util.verifyNonNull(folder));
 	}
 
 	@Override
@@ -183,7 +186,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public Collection<IBasicObject> getAllowedTargets(IBasicObject oc) {
 		List<IBasicObject> ret = new ArrayList<IBasicObject>();
-		Map<Direction, List<IBasicRelationship>> rels = oc.getAllowedRelations();
+		Map<Direction, NonNullList<IBasicRelationship>> rels = oc.getAllowedRelations();
 		for(IBasicRelationship rel : rels.get(Direction.SOURCE)) {
 			for(IBasicObject target: rel.getAllowedTargets())
 				if(!ret.contains(target))

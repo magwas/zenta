@@ -46,7 +46,7 @@ public class ModelTestData {
 		IZentaModel m = model;
 		if( null == m )
 			m = (IZentaModel)resource.getContents().get(0);
-		return Util.assertNonNull(m);
+		return Util.verifyNonNull(m);
 	}
 	
 	public void saveResource() throws IOException {
@@ -68,7 +68,7 @@ public class ModelTestData {
     }
 
 	public Resource getResource() {
-		return Util.assertNonNull(resource);
+		return Util.verifyNonNull(resource);
 	}
 
 	public EObject getById(String id) {
@@ -107,7 +107,7 @@ public class ModelTestData {
 
 	public static IFolder getFolderByKid(EObject selected) {
 		IFolder folder = ((IFolder)selected.eContainer());
-		return Util.assertNonNull(folder);
+		return Util.verifyNonNull(folder);
 	}
 
 	public static void assertNotEquals(String string, String string2) {
@@ -125,7 +125,7 @@ public class ModelTestData {
 		assertEquals(value, properties.get(0));
 	}
 	public File getFile() {
-		return Util.assertNonNull(file);
+		return Util.verifyNonNull(file);
 	}
 	public void setFile(File file) {
 		this.file = file;

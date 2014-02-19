@@ -96,7 +96,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         fTemplateDescription = fPage1.getTemplateDescription();
         fIncludeThumbnail = fPage1.includeThumbnail();
         fDoStoreInCollection = fPage2.doStoreInCollection();
-        setfSelectedTemplateGroup(Util.assertNonNull(fPage2.getTemplateGroup()));
+        setfSelectedTemplateGroup(Util.verifyNonNull(fPage2.getTemplateGroup()));
 
         BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
             @Override
@@ -238,7 +238,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
     }
 
 	private File getfZipFile() {
-		return Util.assertNonNull(fZipFile);
+		return Util.verifyNonNull(fZipFile);
 	}
 
 	private void setfZipFile(File fZipFile) {
@@ -246,7 +246,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
 	}
 
 	private TemplateManager getfTemplateManager() {
-		return Util.assertNonNull(fTemplateManager);
+		return Util.verifyNonNull(fTemplateManager);
 	}
 
 	private void setfTemplateManager(TemplateManager fTemplateManager) {
@@ -254,7 +254,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
 	}
 
 	private ICanvasModel getfCanvasModel() {
-		return Util.assertNonNull(fCanvasModel);
+		return Util.verifyNonNull(fCanvasModel);
 	}
 
 	private void setfCanvasModel(ICanvasModel fCanvasModel) {
@@ -262,7 +262,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
 	}
 
 	private ITemplateGroup getfSelectedTemplateGroup() {
-		return Util.assertNonNull(fSelectedTemplateGroup);
+		return Util.verifyNonNull(fSelectedTemplateGroup);
 	}
 
 	private void setfSelectedTemplateGroup(ITemplateGroup fSelectedTemplateGroup) {

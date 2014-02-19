@@ -36,12 +36,12 @@ public class ModelTestUtils {
         xpath.setNamespaceContext(nss);
 		Element node = (Element) xpath.evaluate(xpathExpression,
                 xmlDoc, XPathConstants.NODE);
-		return Util.assertNonNull(node);
+		return Util.verifyNonNull(node);
 	}
 
 	public static Resource getZentaModelResource(String filename) {
 		InputStream streamo = ModelTestData.class.getResourceAsStream(filename);
-		InputStream stream = Util.assertNonNull(streamo);
+		InputStream stream = Util.verifyNonNull(streamo);
 		File temp;
 		Resource resource;
 		try {

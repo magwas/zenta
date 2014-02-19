@@ -40,7 +40,7 @@ public class ByteArrayStorage {
     @Nullable String getKey(byte[] bytes) {
         for(NonNullEntry<String, byte[]> entry : fdataTable.getEntrySet()) {
             byte[] entryBytes = entry.getValue();
-            byte[] b = Util.assertNonNull(entryBytes);
+            byte[] b = Util.verifyNonNull(entryBytes);
 			if(isEqual(bytes, b)) {
                 return entry.getKey();
             }
@@ -51,7 +51,7 @@ public class ByteArrayStorage {
     
     long getEntrySize(String entryName) {
             byte[] bytes = fdataTable.get(entryName);
-            byte[] b = Util.assertNonNull(bytes);
+            byte[] b = Util.verifyNonNull(bytes);
 			return b.length;
     }
     
@@ -137,6 +137,6 @@ public class ByteArrayStorage {
         }
         
         byte[] r = out.toByteArray();
-		return Util.assertNonNull(r);
+		return Util.verifyNonNull(r);
     }
 }

@@ -26,11 +26,11 @@ public class Attribute extends AttributeBase implements IAttribute {
 
 	@Override
 	public Direction getDirection() {
-		return Util.assertNonNull(direction);
+		return Util.verifyNonNull(direction);
 	}
 	@Override
 	public void setDirection(@Nullable Direction dir) {
-		Util.assertNonNull(dir);
+		Util.verifyNonNull(dir);
 		direction = dir;
 	}
 

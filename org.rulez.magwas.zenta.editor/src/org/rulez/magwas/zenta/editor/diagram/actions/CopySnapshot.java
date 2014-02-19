@@ -598,7 +598,7 @@ public final class CopySnapshot {
 
         @Override
         public void execute() {
-            IDiagramModelObject source = Util.assertNonNull(fSource);
+            IDiagramModelObject source = Util.verifyNonNull(fSource);
 			fConnection.connect(source, fTarget);
             
             // If it's an Zenta model type Add relationship to default folder

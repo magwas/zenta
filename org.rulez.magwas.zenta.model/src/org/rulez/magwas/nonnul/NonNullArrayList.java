@@ -22,13 +22,13 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 
 	@Override
 	public boolean add(@Nullable T e) {
-		Util.assertNonNull(e);
+		Util.verifyNonNull(e);
 		return super.add(e);
 	}
 
 	@Override
 	public void add(int index, @Nullable T element) {
-		Util.assertNonNull(element);
+		Util.verifyNonNull(element);
 		super.add(index, element);
 	}
 
@@ -39,9 +39,9 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 	}
 
 	public void checkCollection(@Nullable Collection<? extends Object> c) {
-		Collection<? extends Object> cc = Util.assertNonNull(c);
+		Collection<? extends Object> cc = Util.verifyNonNull(c);
 		for (Object i : cc) {
-			Util.assertNonNull(i);
+			Util.verifyNonNull(i);
 		}
 	}
 
@@ -75,7 +75,7 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 	@SuppressWarnings("null")
 	@Override
 	public  T set(int index, @Nullable T element) {
-		Util.assertNonNull(element);
+		Util.verifyNonNull(element);
 		return super.set(index, element);
 	}
 
@@ -104,7 +104,7 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 	
 	public T get(int i) {
 		T r = super.get(i);
-		return Util.assertNonNull(r);
+		return Util.verifyNonNull(r);
 	}
 
 }

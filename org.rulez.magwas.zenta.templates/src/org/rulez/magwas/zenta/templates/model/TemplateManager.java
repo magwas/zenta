@@ -81,7 +81,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
         if(fInbuiltTemplateGroup == null) {
             fInbuiltTemplateGroup = loadInbuiltTemplates();
         }
-        return Util.assertNonNull(fInbuiltTemplateGroup);
+        return Util.verifyNonNull(fInbuiltTemplateGroup);
     }
 
     /**
@@ -92,7 +92,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
             loadUserTemplates();
         }
         
-        return Util.assertNonNull(fUserTemplates);
+        return Util.verifyNonNull(fUserTemplates);
     } 
     
     /**
@@ -103,7 +103,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
             loadUserTemplates();
         }
         
-        return Util.assertNonNull(fUserTemplateGroups);
+        return Util.verifyNonNull(fUserTemplateGroups);
     }
 
     /**
@@ -159,7 +159,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
         for(Object child : rootElement.getChildren(XML_TEMPLATE_ELEMENT_TEMPLATE)) {
             Element templateElement = (Element)child;
             String type = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_TYPE);
-            ITemplate template = createTemplate(Util.assertNonNull(type));
+            ITemplate template = createTemplate(Util.verifyNonNull(type));
             String id = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_ID);
             String path = templateElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_FILE);
             if(id != null && path != null) {
@@ -178,7 +178,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
             Element groupElement = (Element)child;
             ITemplateGroup templateGroup = new TemplateGroup();
             String groupname = groupElement.getAttributeValue(XML_TEMPLATE_ATTRIBUTE_NAME);
-            templateGroup.setName(Util.assertNonNull(groupname));
+            templateGroup.setName(Util.verifyNonNull(groupname));
             fUserTemplateGroups.add(templateGroup);
 
             // Template refs

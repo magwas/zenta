@@ -28,12 +28,12 @@ public abstract class ObjectClassMixin {
 
 	public static IMetamodel getMetamodel(IBasicObject self) {
 		IMetamodel mm = IZentaFactory.eINSTANCE.getMetamodelFor(self);
-		return (IMetamodel) Util.assertNonNull(mm);
+		return (IMetamodel) Util.verifyNonNull(mm);
 	}
 
 	public static String getHelpHintTitle(IBasicObject self) {
 		String name = self.getName();
-		return Util.assertNonNull(name);
+		return Util.verifyNonNull(name);
 	}
 
 	public static String getHelpHintContent(IBasicObject self) {
@@ -44,7 +44,7 @@ public abstract class ObjectClassMixin {
 			ancestorNames.add(a.getName());
 		}
 		String ancestryNames = StringUtils.join(ancestorNames, " => ");
-		return createHelpString(Util.assertNonNull(doc), ancestryNames);
+		return createHelpString(Util.verifyNonNull(doc), ancestryNames);
 	}
 
 	@SuppressWarnings("null")
@@ -81,8 +81,8 @@ public abstract class ObjectClassMixin {
     public static String getDefiningName(IBasicObject self) {
     	IProperty prop = getObjectClassProperty(self);
             if(null != prop)
-                    return Util.assertNonNull(prop.getValue());
-            return Util.assertNonNull(self.getName());
+                    return Util.verifyNonNull(prop.getValue());
+            return Util.verifyNonNull(self.getName());
     }
             private static @Nullable IProperty getObjectClassProperty(IProperties self) {
                     for(IProperty prop: self.getProperties())
@@ -94,7 +94,8 @@ public abstract class ObjectClassMixin {
 	public static List<IAttribute> getAttributesRecursively(IBasicObject self) {
 		NonNullList<IAttribute> atts = new NonNullArrayList<IAttribute>(self.getAttributes());
 		IBasicObject ancie = self.getAncestor();
-		atts.addAll(ancie.getAttributesRecursively());
+		if(ancie != null)
+			atts.addAll(ancie.getAttributesRecursively());
 		return atts;
 	}
 

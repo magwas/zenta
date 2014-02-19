@@ -61,7 +61,7 @@ public class CanvasTemplateManager extends TemplateManager {
 
     @Override
     public File getUserTemplatesManifestFile() {
-        return Util.assertNonNull(fUserTemplatesFile);
+        return Util.verifyNonNull(fUserTemplatesFile);
     }
 
     @Override

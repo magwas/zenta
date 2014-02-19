@@ -39,10 +39,10 @@ public class XmlTestCase {
         resultDoc.normalizeDocument();
         testDoc.normalizeDocument();
         Element de = resultDoc.getDocumentElement();
-		Element deChecked = Util.assertNonNull(de);
+		Element deChecked = Util.verifyNonNull(de);
 		String resultString = Util.xml2String(deChecked).replaceAll(" *", "");
         Element testDe = testDoc.getDocumentElement();
-		Element testDeChecked = Util.assertNonNull(testDe);
+		Element testDeChecked = Util.verifyNonNull(testDe);
 		String docString = Util.xml2String(testDeChecked).replaceAll(" *", "");
         System.out.println("policy=" + policyDoc);
         if (!resultString.equals(docString)) {

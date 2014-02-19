@@ -107,7 +107,7 @@ public class ObjectClassTest{
 		String id = "a885cd76";
 		IBasicObject elementToAdd = (IBasicObject) testdata.getElementById(id);
 		assertFalse(elementToAdd.isTemplate());
-		addElementToDiagramModel(Util.assertNonNull(diagramModel),elementToAdd);
+		addElementToDiagramModel(Util.verifyNonNull(diagramModel),elementToAdd);
 		assertTrue(elementToAdd.isTemplate());
 	}
 	
@@ -173,7 +173,7 @@ public class ObjectClassTest{
 	public void When_the_model_is_loaded_the_diagram_elements_are_not_converted_according_to_the_defining_element() {
 		ModelTestData data = new ModelTestData();
 		ensureVirginDMOsForLoadTest(data);
-		IZentaFactory.eINSTANCE.getMetamodelFor(Util.assertNonNull(data.model));
+		IZentaFactory.eINSTANCE.getMetamodelFor(Util.verifyNonNull(data.model));
 		ensureVirginDMOsForLoadTest(data);
 		ensureCorrectFinalAttributes(data);
 	}
@@ -222,7 +222,7 @@ public class ObjectClassTest{
 		ModelTestData.assertNotEquals(4,dmo.getTextAlignment());
 		ModelTestData.assertNotEquals("#ffa500",dmo.getFillColor());
 
-		element.setAncestor(Util.assertNonNull(parent));
+		element.setAncestor(Util.verifyNonNull(parent));
 
 		ModelTestData.assertNotEquals("ellipseShape",dmo.getElementShape());
 		ModelTestData.assertNotEquals("1|Arial Black|11.0|1|GTK|1|",dmo.getFont());

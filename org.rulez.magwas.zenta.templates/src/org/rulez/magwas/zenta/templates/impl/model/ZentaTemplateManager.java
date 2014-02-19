@@ -65,7 +65,7 @@ public class ZentaTemplateManager extends TemplateManager {
 
     @Override
     public File getUserTemplatesManifestFile() {
-        return Util.assertNonNull(fUserTemplatesFile);
+        return Util.verifyNonNull(fUserTemplatesFile);
     }
 
     @Override

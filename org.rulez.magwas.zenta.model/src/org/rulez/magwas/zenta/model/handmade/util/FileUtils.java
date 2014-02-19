@@ -45,7 +45,7 @@ public final class FileUtils  {
 		int i = fileName.lastIndexOf('.');
 		if(i > 0 && i < fileName.length() - 1) {
 			String lc = fileName.substring(i).toLowerCase();
-			return Util.assertNonNull(lc);
+			return Util.verifyNonNull(lc);
 		}
 		return ""; //$NON-NLS-1$
 	}
@@ -60,7 +60,7 @@ public final class FileUtils  {
 		int i = fileName.lastIndexOf('.');
 		if(i > 0 && i < fileName.length() - 1) {
 		    String fn = fileName.substring(0, i);
-			return Util.assertNonNull(fn);
+			return Util.verifyNonNull(fn);
 		}
 		else {
 		    return fileName;
@@ -79,7 +79,7 @@ public final class FileUtils  {
 	    for(File file : files) {
 	        if(file.isDirectory()) {
 	            File[] fa = file.listFiles();
-				num += getFileSize(Util.assertNonNull(fa));
+				num += getFileSize(Util.verifyNonNull(fa));
 	        }
 	        else {
 	            num += file.length();
@@ -335,7 +335,7 @@ public final class FileUtils  {
             while (dir.indexOf(baseDir) == -1) {
                 bp = bp.getParentFile();
                 if(bp == null) {
-                    return Util.assertNonNull(path.getName());
+                    return Util.verifyNonNull(path.getName());
                 }
                 baseDir = appendSeparator(toUrl(bp), "/"); //$NON-NLS-1$
                 result.append("../"); //$NON-NLS-1$
@@ -344,17 +344,17 @@ public final class FileUtils  {
                 String delta = dir.substring(baseDir.length());
                 result.append(delta);
             }
-            return Util.assertNonNull(result.toString());
+            return Util.verifyNonNull(result.toString());
         } catch(Exception ex) {
             ex.printStackTrace();
-            return Util.assertNonNull(path.getName());
+            return Util.verifyNonNull(path.getName());
         }
     }
 
 	private static String toUrl(File path) throws MalformedURLException {
 		URI uri = path.toURI();
 		URL url = uri.toURL();
-		return Util.assertNonNull(url.toExternalForm());
+		return Util.verifyNonNull(url.toExternalForm());
 	}
 	
     /**
@@ -365,7 +365,7 @@ public final class FileUtils  {
      * @return the path name appended with the platform specific path separator
      */
     public static String appendSeparator(String path) {
-        return appendSeparator(path, Util.assertNonNull(File.separator));
+        return appendSeparator(path, Util.verifyNonNull(File.separator));
     }
 
     /**
@@ -402,7 +402,7 @@ public final class FileUtils  {
 
         } while(tmpFile.exists());
         
-        return Util.assertNonNull(tmpFile.getName());
+        return Util.verifyNonNull(tmpFile.getName());
     }
 
     /**
@@ -415,7 +415,7 @@ public final class FileUtils  {
             return "untitled"; //$NON-NLS-1$
         }
         String r = name.replaceAll("[^a-zA-Z0-9]", "_"); //$NON-NLS-1$ //$NON-NLS-2$
-        return Util.assertNonNull(r);
+        return Util.verifyNonNull(r);
     }
 }
 

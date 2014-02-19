@@ -43,13 +43,13 @@ public class Template extends TemplateBase implements ITemplate {
 		}
 			private void extractDiagramElement(IDiagramModelZentaObject kid) {
 				IBasicObject zentaElement = (IBasicObject) kid.getZentaElement();
-				setObjectAncestorIfEmpty(Util.assertNonNull(zentaElement));
+				setObjectAncestorIfEmpty(Util.verifyNonNull(zentaElement));
 				if(! "".equals(zentaElement.getDefiningName()))
 					zentaElement.setAsTemplate(this);
 				EList<IDiagramModelObject> myKids = kid.getChildren();
 				for (IDiagramModelObject aKid : myKids) {
 					IDiagramModelZentaObject k = (IDiagramModelZentaObject) aKid;
-					extractDiagramElement(Util.assertNonNull(k));
+					extractDiagramElement(Util.verifyNonNull(k));
 				}
 			}
 			private void setObjectAncestorIfEmpty(IBasicObject zentaElement) {
@@ -67,14 +67,14 @@ public class Template extends TemplateBase implements ITemplate {
 				EList<IDiagramModelObject> myKids = kid.getChildren();
 				for (IDiagramModelObject aKid : myKids) {
 					IDiagramModelZentaObject k = (IDiagramModelZentaObject) aKid;
-					extractConnsFromDiagramElement(Util.assertNonNull(k));
+					extractConnsFromDiagramElement(Util.verifyNonNull(k));
 				}
 				extractConnectionsForDiagramElement(kid);
 			}
 				private void extractConnectionsForDiagramElement(
 						IDiagramModelZentaObject kid) {
 					for (IDiagramModelConnection conn : kid.getSourceConnections())
-						extractRelationClassFor(Util.assertNonNull(conn));
+						extractRelationClassFor(Util.verifyNonNull(conn));
 				}
 					private void extractRelationClassFor(
 							IDiagramModelConnection conn) {
@@ -82,7 +82,7 @@ public class Template extends TemplateBase implements ITemplate {
 							return;
 						IDiagramModelZentaConnection dmc = (IDiagramModelZentaConnection)conn;
 						IBasicRelationship relationship = (IBasicRelationship) dmc.getRelationship();
-						setRelationAncestorIfEmpty(Util.assertNonNull(relationship));
+						setRelationAncestorIfEmpty(Util.verifyNonNull(relationship));
 						if("".equals(relationship.getDefiningName()))
 							return;
 						relationship.setAsTemplate(this);
@@ -104,7 +104,7 @@ public class Template extends TemplateBase implements ITemplate {
 			if(!(c instanceof RelationClass))
 				ret.add(c);
 		List<IBasicObject> l = Collections.unmodifiableList(ret);
-		return Util.assertNonNull(l);
+		return Util.verifyNonNull(l);
 	}
 
 	@Override
@@ -114,13 +114,13 @@ public class Template extends TemplateBase implements ITemplate {
 			if((c instanceof RelationClass))
 				ret.add((IBasicRelationship) c);
 		List<IBasicRelationship> l = Collections.unmodifiableList(ret);
-		return Util.assertNonNull(l);
+		return Util.verifyNonNull(l);
 	}
 
 	@Override
 	public String getName() {
 		String name = getDiagram().getName();
-		return Util.assertNonNull(name);
+		return Util.verifyNonNull(name);
 	}
 
 }

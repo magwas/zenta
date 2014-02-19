@@ -231,7 +231,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	
 	
 	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
-	    IZentaModel m = Util.assertNonNull(model);
+	    IZentaModel m = Util.verifyNonNull(model);
 		IZentaFactory.eINSTANCE.getMetamodelFor(m);
 	    model.setFile(file);
 	    getModels().add(model);
@@ -338,7 +338,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    
 	    // Set CommandStack Save point
 	    CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
-	    Util.assertNonNull(stack).markSaveLocation();
+	    Util.verifyNonNull(stack).markSaveLocation();
 	    // Send notification to Tree
 	    firePropertyChange(model, COMMAND_STACK_CHANGED, true, false);
 	    
@@ -381,7 +381,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 
 	@Override
 	public boolean isModelDirty(IZentaModel model) {
-		IZentaModel m = Util.assertNonNull(model);
+		IZentaModel m = Util.verifyNonNull(model);
 	    CommandStack stack = EditorModelManagerNoGUI.obtainCommandStack(m);
 	    return stack.isDirty();
 	}
@@ -552,21 +552,21 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
     class ECoreAdapter extends EContentAdapter {
         @Override
         public void notifyChanged(@Nullable Notification msgo) {
-        	Notification msg = Util.assertNonNull(msgo);
+        	Notification msg = Util.verifyNonNull(msgo);
             super.notifyChanged(msg);
             firePropertyChange(this, PROPERTY_ECORE_EVENT, null, msg);
         }
     }
 
 	public static IArchiveManager obtainArchiveManager(@Nullable IAdapter obj) {
-		IAdapter ob = Util.assertNonNull(obj);
+		IAdapter ob = Util.verifyNonNull(obj);
 		IArchiveManager adapter = (IArchiveManager) ob.getAdapter(IArchiveManager.class);
-		return Util.assertNonNull(adapter);
+		return Util.verifyNonNull(adapter);
 	}
 	public static CommandStack obtainCommandStack(@Nullable IAdapter obj) {
-		IAdapter ob = Util.assertNonNull(obj);
+		IAdapter ob = Util.verifyNonNull(obj);
 		CommandStack adapter = (CommandStack) ob.getAdapter(CommandStack.class);
-		return Util.assertNonNull(adapter);
+		return Util.verifyNonNull(adapter);
 	}
 
 }

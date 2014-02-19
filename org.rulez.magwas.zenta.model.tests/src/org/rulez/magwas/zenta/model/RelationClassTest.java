@@ -286,7 +286,7 @@ public class RelationClassTest {
 
 	private IBasicRelationship createRelationClass(IBasicRelationship parentClass, String name) {
 		IFolder folder = (IFolder) parentClass.eContainer();
-		IBasicRelationship modelRelation= (IBasicRelationship) parentClass.create(Util.assertNonNull(folder));
+		IBasicRelationship modelRelation= (IBasicRelationship) parentClass.create(Util.verifyNonNull(folder));
 		IDiagramModelZentaObject diagramElement1 = (IDiagramModelZentaObject) testdata.getDMOById("b2608459");//User
 		IDiagramModelZentaObject diagramElement2 = (IDiagramModelZentaObject) testdata.getDMOById("88f40127");//Procedure
 		modelRelation.setName(name);

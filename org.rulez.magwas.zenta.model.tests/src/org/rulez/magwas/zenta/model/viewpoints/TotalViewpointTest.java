@@ -32,7 +32,7 @@ public class TotalViewpointTest {
 	public void setUp() {
 		testdata = new ModelAndMetaModelTestData();
 		dm = testdata.getTemplateDiagramModel();
-		vp = ViewpointsManager.INSTANCE.getViewpoint(Util.assertNonNull(dm));
+		vp = ViewpointsManager.INSTANCE.getViewpoint(Util.verifyNonNull(dm));
 	}
 
 	@After
@@ -46,7 +46,7 @@ public class TotalViewpointTest {
 
 	@Test
 	public void There_is_one_instance_of_ViewPoint_for_each_diagram() {
-		IViewpoint vp2 = ViewpointsManager.INSTANCE.getViewpoint(Util.assertNonNull(dm));
+		IViewpoint vp2 = ViewpointsManager.INSTANCE.getViewpoint(Util.verifyNonNull(dm));
 		assertEquals(vp,vp2);
 	}
 	

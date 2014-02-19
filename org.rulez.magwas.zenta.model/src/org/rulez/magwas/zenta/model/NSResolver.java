@@ -22,7 +22,7 @@ public class NSResolver extends HashMap<String, String> implements
 	@Override
 	public String getNamespaceURI(@Nullable String arg0) {
 		String r = this.get(arg0);
-		return Util.assertNonNull(r);
+		return Util.verifyNonNull(r);
 	}
 
 	@Override

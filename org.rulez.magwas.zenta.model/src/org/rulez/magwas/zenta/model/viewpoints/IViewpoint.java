@@ -8,6 +8,8 @@ package org.rulez.magwas.zenta.model.viewpoints;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
@@ -47,13 +49,13 @@ public interface IViewpoint {
 
 	List<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sourceObjectType, IBasicObject targetObjectType);
     
-	List<IBasicRelationship> getValidRelationships(IZentaElement sourceElement,
+	@NonNull NonNullList<IBasicRelationship> getValidRelationships(IZentaElement sourceElement,
 			IZentaElement targetElement);
 
 	List<IBasicRelationship> getSourceRelationClassesFor(
 			IDiagramModelZentaObject sourceDiagramModelObject);
 
-	List<IBasicRelationship> getSourceRelationClassesFor(IBasicObject startElement);
+	NonNullList<IBasicRelationship> getSourceRelationClassesFor(IBasicObject startElement);
 
 	List<IBasicRelationship> getRelationClasses();
 	List<IBasicObject> getObjectClasses();
@@ -71,7 +73,7 @@ public interface IViewpoint {
 	boolean isValidRelationship(IBasicObject sourceclass,
 			IBasicObject targetclass, IBasicRelationship relationclass);
 
-	List<IBasicRelationship> getTargetRelationClassesFor(
+	NonNullList<IBasicRelationship> getTargetRelationClassesFor(
 			IBasicObject targetclass);
 
     Collection<IBasicObject> getAllowedTargets(

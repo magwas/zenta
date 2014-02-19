@@ -39,7 +39,7 @@ public class IDAdapter extends EContentAdapter {
 
     @Override
     public void notifyChanged(@Nullable Notification msgo) {
-    	Notification msg = Util.assertNonNull(msgo);
+    	Notification msg = Util.verifyNonNull(msgo);
         super.notifyChanged(msg);
 
         if(msg.getEventType() == Notification.ADD) {
@@ -71,7 +71,7 @@ public class IDAdapter extends EContentAdapter {
         @NonNull String id;
         do {
             String rid = UUID.randomUUID().toString().split("-")[0];
-			id = Util.assertNonNull(rid); //$NON-NLS-1$
+			id = Util.verifyNonNull(rid); //$NON-NLS-1$
         }
         while(fUsedIDs.contains(id));
         

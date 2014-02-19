@@ -187,7 +187,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
     protected ZentaModelBase() {
         super();
         eAdapters().add(fIDAdapter);
-        this.setDefaults();
+        setDefaults();
     }
     
     private void addDefaultFolders() {
@@ -419,7 +419,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
         else {
             fIDAdapter.registerID(id);
         }
-
         addDefaultFolders();
     }
     

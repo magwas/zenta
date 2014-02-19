@@ -39,7 +39,7 @@ public class Util {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
         String now = sdf.format(cal.getTime());
-		return assertNonNull(now);
+		return verifyNonNull(now);
         
     }
     
@@ -54,7 +54,7 @@ public class Util {
             transformer.transform(source, result);
             
             String xmlString = result.getWriter().toString();
-            return assertNonNull(xmlString);
+            return verifyNonNull(xmlString);
         } catch (Exception e) {
         	throw new RuntimeException(e);
         }
@@ -83,7 +83,7 @@ public class Util {
 			java.util.Scanner s = scanner.useDelimiter("\\A");
 	        String ret = s.hasNext() ? s.next() : "";
 			scanner.close();
-			return assertNonNull(ret);
+			return verifyNonNull(ret);
 	    }
 
 	public static Document createXmlDocumentFromFileName(String respath) {
@@ -113,7 +113,7 @@ public class Util {
 	    } finally {
 	        br.close();
 	    }
-	    return assertNonNull(everything);
+	    return verifyNonNull(everything);
 	}
     public static Document createXmlDocumentFromString(String xmlString)
             throws ParserConfigurationException, SAXException, IOException {
@@ -126,7 +126,7 @@ public class Util {
         builder = factory.newDocumentBuilder();
         Document document = builder.parse(new InputSource(new StringReader(
                 xmlString)));
-        return assertNonNull(document);
+        return verifyNonNull(document);
     }
     
     public static void copyFile(File source, File dest) throws IOException {
@@ -156,7 +156,7 @@ public class Util {
 		}
 	}
 
-	public static <T> T assertNonNull(@Nullable T r) {
+	public static <T> T verifyNonNull(@Nullable T r) {
 		if(null == r) throw new AssertionError();
 		return r;
 	}

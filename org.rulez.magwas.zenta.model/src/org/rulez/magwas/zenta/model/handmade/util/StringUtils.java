@@ -101,7 +101,7 @@ public final class StringUtils {
             return id;
         }
         String newId = id.replaceAll("[^a-zA-Z0-9-]", "_"); //$NON-NLS-1$ //$NON-NLS-2$
-		return Util.assertNonNull(newId); 
+		return Util.verifyNonNull(newId); 
     }
     
     /**
@@ -111,7 +111,7 @@ public final class StringUtils {
      */
     public static String escapeAmpersandsInText(String text) {
         if(isSet(text)) {
-            return Util.assertNonNull(text.replaceAll("&", "&&"));  //$NON-NLS-1$//$NON-NLS-2$
+            return Util.verifyNonNull(text.replaceAll("&", "&&"));  //$NON-NLS-1$//$NON-NLS-2$
         }
         return text;
     }
@@ -129,6 +129,6 @@ public final class StringUtils {
             sb.append(iter.next().toString());
         }
         String joined = sb.toString();
-		return Util.assertNonNull(joined);
+		return Util.verifyNonNull(joined);
     }
 }

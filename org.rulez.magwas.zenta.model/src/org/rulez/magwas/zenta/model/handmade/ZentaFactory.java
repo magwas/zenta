@@ -53,7 +53,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	@Override
 	public IMetamodel getMetamodelFor(IZentaModelElement modelElement) {
 		IZentaModel model = modelElement.getZentaModel();
-		IZentaModel m = Util.assertNonNull(model);
+		IZentaModel m = Util.verifyNonNull(model);
 		return getMetamodelFor(m);
 	}
 
@@ -80,8 +80,8 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	public String getDefiningName(IIdentifier ref) {
 		IProperty prop = getObjectClassProperty((IProperties) ref);
 		if(null != prop)
-			return Util.assertNonNull(prop.getValue());
-		return Util.assertNonNull(ref.getName());
+			return Util.verifyNonNull(prop.getValue());
+		return Util.verifyNonNull(ref.getName());
 	}
 		private @Nullable IProperty getObjectClassProperty(IProperties ref) {
 			for(IProperty prop: ref.getProperties())

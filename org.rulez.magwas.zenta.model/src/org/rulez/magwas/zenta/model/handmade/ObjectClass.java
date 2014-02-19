@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -36,16 +38,16 @@ public class ObjectClass extends BasicObjectBase implements IObjectClass {
 	}
 
 	@Override
-	public Map<Direction,List<IBasicRelationship>> getAllowedRelations() {
-		Map<Direction,List<IBasicRelationship>> ret = new HashMap<Direction,List<IBasicRelationship>>();
-		ret.put(Direction.SOURCE, new ArrayList<IBasicRelationship>());
-		ret.put(Direction.TARGET, new ArrayList<IBasicRelationship>());
+	public Map<Direction,NonNullList<IBasicRelationship>> getAllowedRelations() {
+		Map<Direction, NonNullList<IBasicRelationship>> ret = new HashMap<Direction,NonNullList<IBasicRelationship>>();
+		ret.put(Direction.SOURCE, new NonNullArrayList<IBasicRelationship>());
+		ret.put(Direction.TARGET, new NonNullArrayList<IBasicRelationship>());
 		ret.get(Direction.SOURCE).add(this.getMetamodel().getBuiltinRelationClass());
 		ret.get(Direction.TARGET).add(this.getMetamodel().getBuiltinRelationClass());
 		for(IAttribute att : getAttributesRecursively()) {
 			List<IBasicRelationship> list = ret.get(att.getDirection());
 			IBasicRelationship relation = (IBasicRelationship) att.getRelation();
-			addParents(Util.assertNonNull(list), Util.assertNonNull(relation));
+			addParents(Util.verifyNonNull(list), Util.verifyNonNull(relation));
 		}
 		return ret;
 	}

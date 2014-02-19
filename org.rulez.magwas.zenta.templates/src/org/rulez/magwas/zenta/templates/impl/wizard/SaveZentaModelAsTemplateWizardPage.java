@@ -79,7 +79,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
     public void createControl(@Nullable Composite parent) {
         GridData gd;
         Label label;
-        Util.assertNonNull(parent);
+        Util.verifyNonNull(parent);
         Composite container = new Composite(parent, SWT.NULL);
         container.setLayout(new GridLayout());
         setControl(container);
@@ -209,7 +209,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         fModelViewsTreeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
             public void selectionChanged(@Nullable SelectionChangedEvent evento) {
-            	SelectionChangedEvent event = Util.assertNonNull(evento);
+            	SelectionChangedEvent event = Util.verifyNonNull(evento);
                 disposePreviewImage();
 
                 Object o = ((IStructuredSelection)event.getSelection()).getFirstElement();
@@ -244,21 +244,21 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
      * @return The File for the template
      */
     public String getFileName() {
-        return Util.assertNonNull(fFileTextField.getText());
+        return Util.verifyNonNull(fFileTextField.getText());
     }
 
     /**
      * @return The Name for the template
      */
     public String getTemplateName() {
-        return Util.assertNonNull(fNameTextField.getText());
+        return Util.verifyNonNull(fNameTextField.getText());
     }
     
     /**
      * @return The Name for the template
      */
     public String getTemplateDescription() {
-        return Util.assertNonNull(fDescriptionTextField.getText());
+        return Util.verifyNonNull(fDescriptionTextField.getText());
     }
     
     public boolean includeThumbnails() {

@@ -78,7 +78,7 @@ public class UITestWindow {
 		compositeForTest.setLayoutData(data);	
 	}
 	public Composite getComposite() {
-		return Util.assertNonNull(compositeForTest);
+		return Util.verifyNonNull(compositeForTest);
 	}
 
 	public Composite getNewHiddenComposite() {
@@ -121,7 +121,7 @@ public class UITestWindow {
 			}
 
 			private static @Nullable Method getMethodIfAnnotated(@Nullable StackTraceElement frameo) {
-				StackTraceElement frame = Util.assertNonNull(frameo);
+				StackTraceElement frame = Util.verifyNonNull(frameo);
 				String classname = frame.getClassName();
 				String methodname = frame.getMethodName();
 				try {

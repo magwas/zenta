@@ -33,11 +33,11 @@ public class BuiltinTemplate extends Template {
 
 
 	public RootObjectClass getRootObjectClass() {
-		return Util.assertNonNull(rootObjectClass);
+		return Util.verifyNonNull(rootObjectClass);
 	}
 
 	public RootRelationClass getRootRelationClass() {
-		return Util.assertNonNull(rootRelationClass);
+		return Util.verifyNonNull(rootRelationClass);
 	}
 
 }

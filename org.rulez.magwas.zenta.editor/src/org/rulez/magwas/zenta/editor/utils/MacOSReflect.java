@@ -103,7 +103,7 @@ public class MacOSReflect {
         Object nsView = fieldView.get(shell);
         Method methodWindow = fieldView.getType().getDeclaredMethod("window"); //$NON-NLS-1$
         Object nsw = methodWindow.invoke(nsView, new Object[] {});
-		return Util.assertNonNull(nsw);
+		return Util.verifyNonNull(nsw);
     }
     
     /**
@@ -178,7 +178,7 @@ public class MacOSReflect {
     }
 
 	public static Class getOS() {
-		return Util.assertNonNull(OS);
+		return Util.verifyNonNull(OS);
 	}
 
 	public static void setOS(Class oS) {

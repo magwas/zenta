@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -47,7 +48,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 
 	@Override
 	public String getHelpHintContent() {
-		String doc = Util.assertNonNull(getDocumentation());
+		String doc = Util.verifyNonNull(getDocumentation());
 		List<IBasicObject> ancestry = this.getAncestry();
 		List<String> ancestorNames = new ArrayList<String>();
 		for( IBasicObject a : ancestry) {
@@ -167,7 +168,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 	}
 
 	@Override
-	public Map<Direction, List<IBasicRelationship>> getAllowedRelations() {
+	public Map<Direction, NonNullList<IBasicRelationship>> getAllowedRelations() {
 		throw new RuntimeException("We are not that abstract yet");
 	}
 

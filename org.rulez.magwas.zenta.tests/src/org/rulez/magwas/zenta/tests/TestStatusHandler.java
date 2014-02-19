@@ -11,7 +11,7 @@ public class TestStatusHandler extends StatusHandler {
 	
 	@Override
 	public void show(@Nullable IStatus status, @Nullable String title) {
-		this.status = Util.assertNonNull(status);
+		this.status = Util.verifyNonNull(status);
 	}
 
 }

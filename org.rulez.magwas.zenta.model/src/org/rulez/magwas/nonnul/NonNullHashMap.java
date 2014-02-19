@@ -23,8 +23,8 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 		Set<java.util.Map.Entry<T1, T2>> s = super.entrySet();
 		NonNullList<NonNullEntry<T1, T2>> r = new NonNullArrayList<NonNullEntry<T1, T2>>();
 		for (java.util.Map.Entry<T1, T2> e : s ) {
-			T1 key = Util.assertNonNull(e.getKey());
-			T2 value = Util.assertNonNull(e.getValue());
+			T1 key = Util.verifyNonNull(e.getKey());
+			T2 value = Util.verifyNonNull(e.getValue());
 			NonNullEntry<T1, T2> entry = new NonNullEntry<T1, T2>(key,value);
 			r.add(entry);
 		}
@@ -34,7 +34,7 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 	@Override
 	public T2 get(@Nullable Object key) {
 		T2 r = super.get(key);
-		return Util.assertNonNull(r);
+		return Util.verifyNonNull(r);
 	}
 
 	@Override
@@ -44,18 +44,18 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 
 	@Override
 	public T2 put(@Nullable T1 key, @Nullable T2 value) {
-		T1 k = Util.assertNonNull(key);
-		T2 v = Util.assertNonNull(value);
+		T1 k = Util.verifyNonNull(key);
+		T2 v = Util.verifyNonNull(value);
 		T2 r = super.put(k, v);
-		return Util.assertNonNull(r);
+		return Util.verifyNonNull(r);
 	}
 
 	@Override
 	public void putAll(@Nullable Map<? extends T1, ? extends T2> mo) {
-		Map<? extends T1, ? extends T2> m = Util.assertNonNull(mo);
+		Map<? extends T1, ? extends T2> m = Util.verifyNonNull(mo);
 		for(T1 k : m.keySet()) {
-			Util.assertNonNull(k);
-			Util.assertNonNull(m.get(k));
+			Util.verifyNonNull(k);
+			Util.verifyNonNull(m.get(k));
 		}
 		super.putAll(m);
 	}

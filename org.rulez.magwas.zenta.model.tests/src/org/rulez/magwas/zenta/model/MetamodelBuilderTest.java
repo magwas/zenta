@@ -27,7 +27,7 @@ public class MetamodelBuilderTest {
 		testdata = new ModelTestData();
 		model = testdata.getModel();
 		diagramModel = testdata.getTemplateDiagramModel();
-		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(Util.assertNonNull(model));
+		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(Util.verifyNonNull(model));
 	}
 	
 	@Test
@@ -47,7 +47,7 @@ public class MetamodelBuilderTest {
 		EList<ITemplate> templates = metamodel.getTemplates();
 		assertTrue(2 <= templates.size());
 		int tsize = metamodel.getTemplates().size();
-		ITemplate template = metamodel.getTemplateFor(Util.assertNonNull(diagramModel));
+		ITemplate template = metamodel.getTemplateFor(Util.verifyNonNull(diagramModel));
 		assertEquals(tsize,metamodel.getTemplates().size());
 		assertNotNull(template);
 	}

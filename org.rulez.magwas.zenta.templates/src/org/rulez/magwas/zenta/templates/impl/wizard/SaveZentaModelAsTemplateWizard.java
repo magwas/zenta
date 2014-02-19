@@ -230,7 +230,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
     }
 
 	public File getfZipFile() {
-		return Util.assertNonNull(fZipFile);
+		return Util.verifyNonNull(fZipFile);
 	}
 
 	public void setfZipFile(File fZipFile) {
@@ -238,7 +238,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
 	}
 
 	public TemplateManager getfTemplateManager() {
-		return Util.assertNonNull(fTemplateManager);
+		return Util.verifyNonNull(fTemplateManager);
 	}
 
 	public void setfTemplateManager(TemplateManager fTemplateManager) {
@@ -246,7 +246,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
 	}
 
 	public IZentaModel getfModel() {
-		return Util.assertNonNull(fModel);
+		return Util.verifyNonNull(fModel);
 	}
 
 	public void setfModel(IZentaModel fModel) {
@@ -254,7 +254,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
 	}
 
 	public ITemplateGroup getfSelectedTemplateGroup() {
-		return Util.assertNonNull(fSelectedTemplateGroup);
+		return Util.verifyNonNull(fSelectedTemplateGroup);
 	}
 
 	public void setfSelectedTemplateGroup(ITemplateGroup fSelectedTemplateGroup) {

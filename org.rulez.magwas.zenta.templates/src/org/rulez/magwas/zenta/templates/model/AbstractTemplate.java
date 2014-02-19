@@ -66,7 +66,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         if(!fManifestLoaded) {
             loadManifest();
         }
-        return Util.assertNonNull(fName);
+        return Util.verifyNonNull(fName);
     }
     
     @Override
@@ -79,7 +79,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         if(!fManifestLoaded) {
             loadManifest();
         }
-        return Util.assertNonNull(fDescription);
+        return Util.verifyNonNull(fDescription);
     }
     
     @Override
@@ -111,7 +111,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
 	}
 
 	public String getThumbNailPath() {
-		return Util.assertNonNull(fKeyThumbnailPath);
+		return Util.verifyNonNull(fKeyThumbnailPath);
 	}
     
     @Override
@@ -138,7 +138,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
 
     @Override
     public File getFile() {
-        return Util.assertNonNull(fFile);
+        return Util.verifyNonNull(fFile);
     }
 
     @Override
@@ -148,7 +148,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
 
     @Override
     public String getID() {
-        return Util.assertNonNull(fID);
+        return Util.verifyNonNull(fID);
     }
 
     @Override
@@ -187,7 +187,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         	throw new AssertionError();
         
         // Start a zip stream
-        File tmpFile = Util.assertNonNull(File.createTempFile("architemplate", null)); //$NON-NLS-1$
+        File tmpFile = Util.verifyNonNull(File.createTempFile("architemplate", null)); //$NON-NLS-1$
         BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(tmpFile));
         ZipOutputStream zOut = new ZipOutputStream(out);
         

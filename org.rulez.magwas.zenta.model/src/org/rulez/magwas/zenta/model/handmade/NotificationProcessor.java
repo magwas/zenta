@@ -97,7 +97,7 @@ public class NotificationProcessor {
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				String elementShape = dmzc.getElementShape();
-				mm.processDiagramElementAppearanceChanged(dmzc,"elementShape",Util.assertNonNull(elementShape));
+				mm.processDiagramElementAppearanceChanged(dmzc,"elementShape",Util.verifyNonNull(elementShape));
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaObject.class;
@@ -107,7 +107,7 @@ public class NotificationProcessor {
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				String fillColor = dmzc.getFillColor();
-				mm.processDiagramElementAppearanceChanged(dmzc,"fillColor",Util.assertNonNull(fillColor));
+				mm.processDiagramElementAppearanceChanged(dmzc,"fillColor",Util.verifyNonNull(fillColor));
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaObject.class;
@@ -117,7 +117,7 @@ public class NotificationProcessor {
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				String font = dmzc.getFont();
-				mm.processDiagramElementAppearanceChanged(dmzc,"font",Util.assertNonNull(font));
+				mm.processDiagramElementAppearanceChanged(dmzc,"font",Util.verifyNonNull(font));
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaObject.class;
@@ -127,7 +127,7 @@ public class NotificationProcessor {
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				String fontColor = dmzc.getFontColor();
-				mm.processDiagramElementAppearanceChanged(dmzc,"fontColor",Util.assertNonNull(fontColor));
+				mm.processDiagramElementAppearanceChanged(dmzc,"fontColor",Util.verifyNonNull(fontColor));
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaObject.class;
@@ -157,7 +157,7 @@ public class NotificationProcessor {
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				String font = dmzc.getFont();
-				mm.processDiagramConnectionAppearanceChanged(dmzc,"font",Util.assertNonNull(font));
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"font",Util.verifyNonNull(font));
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaConnection.class;
@@ -167,7 +167,7 @@ public class NotificationProcessor {
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				String fontColor = dmzc.getFontColor();
-				mm.processDiagramConnectionAppearanceChanged(dmzc,"fontColor",Util.assertNonNull(fontColor));
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"fontColor",Util.verifyNonNull(fontColor));
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaConnection.class;
@@ -177,7 +177,7 @@ public class NotificationProcessor {
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				String lineColor = dmzc.getLineColor();
-				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineColor",Util.assertNonNull(lineColor));
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineColor",Util.verifyNonNull(lineColor));
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaConnection.class;
@@ -187,7 +187,7 @@ public class NotificationProcessor {
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				String lineDecoration = dmzc.getLineDecoration();
-				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineDecoration",Util.assertNonNull(lineDecoration));
+				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineDecoration",Util.verifyNonNull(lineDecoration));
 			}});
 		addCase(new DecisionCase(){{
 			notifierClass = IDiagramModelZentaConnection.class;
@@ -253,7 +253,7 @@ public class NotificationProcessor {
 				branch = new HashMap<Integer,Map<Boolean,Map<Boolean,DecisionCase>>>();
 				decisionTree.put(aCase.notifierClass, branch);
 			}
-			return Util.assertNonNull(branch);
+			return Util.verifyNonNull(branch);
 		}
 		private static void addToDecisiontreeByHasNew(DecisionCase aCase,
 				Map<Integer, Map<Boolean, Map<Boolean, DecisionCase>>> branch) {
@@ -277,7 +277,7 @@ public class NotificationProcessor {
 					subbranch = new HashMap<Boolean,Map<Boolean,DecisionCase>>();
 					branch.put(aCase.featureId,subbranch);
 				}
-				return Util.assertNonNull(subbranch);
+				return Util.verifyNonNull(subbranch);
 			}
 			private static void addToDecisionTreeByHasOld(DecisionCase aCase,
 					Map<Boolean, Map<Boolean, DecisionCase>> subbranch, boolean hasNew) {
@@ -307,7 +307,7 @@ public class NotificationProcessor {
 	@SuppressWarnings("null")
 	public static void processNotification(Metamodel mm,Notification notification) {
 		EObject lastObject = (EObject) notification.getNotifier();
-		//System.out.printf("notifier = %s\nfeature=%s\nold=%s\nnew=%s\n\n", lastObject,notification.getFeature(),notification.getOldValue(),notification.getNewValue());
+		System.out.printf("notifier = %s\nfeature=%s\nold=%s\nnew=%s\n\n", lastObject,notification.getFeature(),notification.getOldValue(),notification.getNewValue());
 		for(Class<?> klass : decisionTree.keySet())
 			if(klass.isInstance(lastObject))
 				processClassMatch(mm,notification,klass,decisionTree.get(klass));

@@ -169,7 +169,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
     }
 
 	public TemplateManager getfTemplateManager() {
-		return Util.assertNonNull(fTemplateManager);
+		return Util.verifyNonNull(fTemplateManager);
 	}
 
 	public void setfTemplateManager(TemplateManager fTemplateManager) {

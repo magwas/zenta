@@ -18,13 +18,13 @@ public class MetamodelTest {
 	protected IMetamodel fixture = null;
 
 	protected IMetamodel getFixture() {
-		return Util.assertNonNull(fixture);
+		return Util.verifyNonNull(fixture);
 	}
 
 	@Before
 	public void setUp() throws Exception {
 		ModelTestData data = new ModelTestData();
-		IZentaModel m = Util.assertNonNull(data.model);
+		IZentaModel m = Util.verifyNonNull(data.model);
 		this.fixture = IZentaFactory.eINSTANCE.getMetamodelFor(m);
 	}
 

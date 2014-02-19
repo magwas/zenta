@@ -44,8 +44,8 @@ public class ZentaModelUtils {
      * @return The matching EObject in the model given its ID or null if not found
      */
     public static EObject getObjectByID(IZentaModel model, String id) {
-    	Util.assertNonNull(id);
-    	Util.assertNonNull(model);
+    	Util.verifyNonNull(id);
+    	Util.verifyNonNull(model);
         
         if(id.equals(model.getId())) {
             return model;

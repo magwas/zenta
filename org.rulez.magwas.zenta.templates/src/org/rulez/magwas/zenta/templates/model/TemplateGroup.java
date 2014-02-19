@@ -37,7 +37,7 @@ public class TemplateGroup implements ITemplateGroup {
     }
 
     public String getName() {
-        return Util.assertNonNull(fName);
+        return Util.verifyNonNull(fName);
     }
 
     public void setName(String name) {
@@ -45,7 +45,7 @@ public class TemplateGroup implements ITemplateGroup {
     }
 
     public List<ITemplate> getTemplates() {
-        return Util.assertNonNull(fTemplates);
+        return Util.verifyNonNull(fTemplates);
     }
 
     public void addTemplate(ITemplate template) {

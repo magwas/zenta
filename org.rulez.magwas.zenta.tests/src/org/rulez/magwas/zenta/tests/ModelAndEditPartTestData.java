@@ -77,7 +77,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 
 	private void initializeEditorWithDMO(IZentaDiagramModel dMO) {
 		ZentaDiagramEditor ed = (ZentaDiagramEditor) EditorManager.openDiagramEditor((IDiagramModel)dMO);
-		setEditor(Util.assertNonNull(ed));
+		setEditor(Util.verifyNonNull(ed));
 		assertNotNull(getEditor());
 	}
 
@@ -117,7 +117,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 		GraphicalViewer graphicalViewer = ed.getGraphicalViewer();
 		Map<?, ?> registry = graphicalViewer.getEditPartRegistry();
 		EditPart ep = (EditPart) registry.get(mo);
-		return Util.assertNonNull(ep);
+		return Util.verifyNonNull(ep);
 	}
 
 	public void selectDiagElement(IDiagramModelZentaObject diagElement) {

@@ -67,7 +67,7 @@ public class DiagramModelUtils {
         }
         
         for(IDiagramModel diagramModel : element.getZentaModel().getDiagramModels()) {
-            IDiagramModel dm = Util.assertNonNull(diagramModel);
+            IDiagramModel dm = Util.verifyNonNull(diagramModel);
 			if(isElementReferencedInDiagram(dm, element)) {
                 return true;
             }

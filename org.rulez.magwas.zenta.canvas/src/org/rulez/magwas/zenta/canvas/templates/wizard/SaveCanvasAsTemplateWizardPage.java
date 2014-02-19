@@ -200,7 +200,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
             
             @Override
             public void controlResized(@Nullable ControlEvent eo) {
-            	ControlEvent e = Util.assertNonNull(eo);
+            	ControlEvent e = Util.verifyNonNull(eo);
                 if(e.time - oldTime > 10) {
                     disposePreviewImage();
                     TemplateUtils.createThumbnailPreviewImage(fCanvasModel, fPreviewLabel);
@@ -216,21 +216,21 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
      * @return The File for the template
      */
     public String getFileName() {
-        return Util.assertNonNull(fFileTextField.getText());
+        return Util.verifyNonNull(fFileTextField.getText());
     }
 
     /**
      * @return The Name for the template
      */
     public String getTemplateName() {
-        return Util.assertNonNull(fNameTextField.getText());
+        return Util.verifyNonNull(fNameTextField.getText());
     }
     
     /**
      * @return The Name for the template
      */
     public String getTemplateDescription() {
-        return Util.assertNonNull(fDescriptionTextField.getText());
+        return Util.verifyNonNull(fDescriptionTextField.getText());
     }
     
     public boolean includeThumbnail() {
