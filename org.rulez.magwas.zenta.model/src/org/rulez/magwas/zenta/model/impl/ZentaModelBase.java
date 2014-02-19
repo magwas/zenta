@@ -51,6 +51,7 @@ import org.rulez.magwas.zenta.model.handmade.util.IDAdapter;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getZentaModel <em>Zenta Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getElements <em>Elements</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getFile <em>File</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getVersion <em>Version</em>}</li>
  * </ul>
@@ -132,6 +133,15 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 */
 	protected String documentation = DOCUMENTATION_EDEFAULT;
 				/**
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EObject> elements;
+				/**
 	 * The default value of the '{@link #getFile() <em>File</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -190,14 +200,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
         setDefaults();
     }
     
-    private void addDefaultFolders() {
-    	if(this.getFolders().size() == 0) {
-            IFolder folder = IZentaFactory.eINSTANCE.createFolder();
-            folder.setName(MessagesBase.ZentaModel_0);
-            getFolders().add(folder);
-    	}
-    }
-
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -357,6 +359,18 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<EObject> getElements() {
+		if (elements == null) {
+			elements = new EObjectContainmentEList<EObject>(EObject.class, this, IZentaPackage.ZENTA_MODEL__ELEMENTS);
+		}
+		return elements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -419,7 +433,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
         else {
             fIDAdapter.registerID(id);
         }
-        addDefaultFolders();
     }
     
     /**
@@ -450,7 +463,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 * @generated NOT
 	 */
 	public IFolder getDefaultFolderForElement(EObject element) {
-		return getFolders().get(0);
+		return (IFolder) this;
 	}
 
 				/**
@@ -465,6 +478,8 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				return ((InternalEList<?>)getFolders()).basicRemove(otherEnd, msgs);
 			case IZentaPackage.ZENTA_MODEL__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case IZentaPackage.ZENTA_MODEL__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -489,6 +504,8 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				return getProperties();
 			case IZentaPackage.ZENTA_MODEL__DOCUMENTATION:
 				return getDocumentation();
+			case IZentaPackage.ZENTA_MODEL__ELEMENTS:
+				return getElements();
 			case IZentaPackage.ZENTA_MODEL__FILE:
 				return getFile();
 			case IZentaPackage.ZENTA_MODEL__VERSION:
@@ -523,6 +540,10 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 			case IZentaPackage.ZENTA_MODEL__DOCUMENTATION:
 				setDocumentation((String)newValue);
 				return;
+			case IZentaPackage.ZENTA_MODEL__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends EObject>)newValue);
+				return;
 			case IZentaPackage.ZENTA_MODEL__FILE:
 				setFile((File)newValue);
 				return;
@@ -556,6 +577,9 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 			case IZentaPackage.ZENTA_MODEL__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
+			case IZentaPackage.ZENTA_MODEL__ELEMENTS:
+				getElements().clear();
+				return;
 			case IZentaPackage.ZENTA_MODEL__FILE:
 				setFile(FILE_EDEFAULT);
 				return;
@@ -586,6 +610,8 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				return properties != null && !properties.isEmpty();
 			case IZentaPackage.ZENTA_MODEL__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+			case IZentaPackage.ZENTA_MODEL__ELEMENTS:
+				return elements != null && !elements.isEmpty();
 			case IZentaPackage.ZENTA_MODEL__FILE:
 				return FILE_EDEFAULT == null ? file != null : !FILE_EDEFAULT.equals(file);
 			case IZentaPackage.ZENTA_MODEL__VERSION:
@@ -636,6 +662,12 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				default: return -1;
 			}
 		}
+		if (baseClass == IFolder.class) {
+			switch (derivedFeatureID) {
+				case IZentaPackage.ZENTA_MODEL__ELEMENTS: return IZentaPackage.FOLDER__ELEMENTS;
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -678,6 +710,12 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 		if (baseClass == IDocumentable.class) {
 			switch (baseFeatureID) {
 				case IZentaPackage.DOCUMENTABLE__DOCUMENTATION: return IZentaPackage.ZENTA_MODEL__DOCUMENTATION;
+				default: return -1;
+			}
+		}
+		if (baseClass == IFolder.class) {
+			switch (baseFeatureID) {
+				case IZentaPackage.FOLDER__ELEMENTS: return IZentaPackage.ZENTA_MODEL__ELEMENTS;
 				default: return -1;
 			}
 		}

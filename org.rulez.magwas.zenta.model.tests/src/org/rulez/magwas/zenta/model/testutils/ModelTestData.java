@@ -58,12 +58,12 @@ public class ModelTestData {
 
 	public IZentaDiagramModel getTemplateDiagramModel() {
 		IZentaModel model = getModel();
-		IZentaDiagramModel diagramModel = (IZentaDiagramModel) ZentaModelUtils.getObjectByID(model, "2ea99535");
+		IZentaDiagramModel diagramModel = (IZentaDiagramModel) Util.verifyNonNull(ZentaModelUtils.getObjectByID(model, "2ea99535"));
 		return diagramModel;
 	}
     public IZentaDiagramModel getNonTemplateDiagramModel() {
         IZentaModel model = getModel();
-        IZentaDiagramModel diagramModel = (IZentaDiagramModel) ZentaModelUtils.getObjectByID(model, "63f1b081");
+        IZentaDiagramModel diagramModel = (IZentaDiagramModel) Util.verifyNonNull(ZentaModelUtils.getObjectByID(model, "63f1b081"));
         return diagramModel;
     }
 
@@ -72,27 +72,27 @@ public class ModelTestData {
 	}
 
 	public EObject getById(String id) {
-		return ZentaModelUtils.getObjectByID(getModel(), id);
+		return Util.verifyNonNull(ZentaModelUtils.getObjectByID(getModel(), id));
 	}
 
 	public IZentaDiagramModel getZDiagramModelById(String id) {
-		return (IZentaDiagramModel) ZentaModelUtils.getObjectByID(getModel(),id);
+		return (IZentaDiagramModel) Util.verifyNonNull(ZentaModelUtils.getObjectByID(getModel(),id));
 	}
 
 	public IZentaElement getElementById(String id) {
-		return (IZentaElement) ZentaModelUtils.getObjectByID(getModel(), id);
+		return (IZentaElement) Util.verifyNonNull(ZentaModelUtils.getObjectByID(getModel(), id));
 	}
 
 	public IDiagramModelObject getDMOById(String id) {
-		return (IDiagramModelObject) ZentaModelUtils.getObjectByID(getModel(),id);
+		return (IDiagramModelObject) Util.verifyNonNull(ZentaModelUtils.getObjectByID(getModel(),id));
 	}
 
 	public IBasicRelationship getRelationByID(String id) {
-		return (IBasicRelationship) ZentaModelUtils.getObjectByID(getModel(), id);
+		return (IBasicRelationship) Util.verifyNonNull(ZentaModelUtils.getObjectByID(getModel(), id));
 	}
 
 	public IDiagramModelZentaConnection getDMRById(String id3) {
-		return (IDiagramModelZentaConnection) ZentaModelUtils.getObjectByID(getModel(),id3);
+		return (IDiagramModelZentaConnection) Util.verifyNonNull(ZentaModelUtils.getObjectByID(getModel(),id3));
 	}
 
 	public static IDiagramModelZentaObject createDMOFor(IZentaElement newElement) {

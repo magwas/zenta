@@ -13,6 +13,9 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +25,7 @@ import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
@@ -66,14 +70,25 @@ public class ModelTest {
 	public void The_objects_are_loaded_in_the_model() {
 		ModelTestData testdata = new ModelTestData();
 		IZentaModel model = testdata.getModel();
-		IBasicObject element = (IBasicObject) ZentaModelUtils.getObjectByID(model, "c3d03626");
+		IBasicObject element = (IBasicObject) Util.verifyNonNull(ZentaModelUtils.getObjectByID(model, "c3d03626"));
 		assertEquals("ProcessStep",element.getName());
 	}
+
 	@Test
-	public void The_model_can_be_saved() {
+	public void The_model_can_be_saved_and_loaded_in_idempotent_way() throws IOException {
 		ModelTestData testdata = new ModelAndMetaModelTestData();
 		File file = new File("/tmp/foo.zenta");
 		ZentaModelUtils.saveModelToXMLFile(testdata.getModel(), file);
+	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
+	    Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
+        resource.load(null);
+	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
+	    model.getMetamodel();
+	    File file2 = new File("/tmp/bar.zenta");
+		ZentaModelUtils.saveModelToXMLFile(model, file2);
+		String string1 = Util.readFile(file.getAbsolutePath());
+		String string2 = Util.readFile(file2.getAbsolutePath());
+		assertEquals(string1,string2);
 	}
 
 	@Test
@@ -358,7 +373,7 @@ public class ModelTest {
 			return folder;
 		}
 		public void setFolder(IZentaModel model) {
-			this.folder = model.getFolders().get(0);
+			this.folder = (IFolder) model;
 		}
 		@SuppressWarnings("null")
 		public IBasicObject getFirstgenSource() {
@@ -417,9 +432,4 @@ public class ModelTest {
 		ModelTestUtils.assertEqualsAsSet(rcsnames,ModelTestUtils.definingNames(rcss));
 	}
 
-	
-	@Test
-	public void Saving_and_loading_and_saving_is_idempotent() {
-		
-	}
 }

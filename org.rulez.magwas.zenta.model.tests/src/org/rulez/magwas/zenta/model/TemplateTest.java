@@ -13,6 +13,7 @@ import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
@@ -76,25 +77,25 @@ public class TemplateTest {
 	
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_diagram() {
-		IBasicObject classTemplate = (IBasicObject) ZentaModelUtils.getObjectByID(testdata.getModel(), "23138a61");
+		IBasicObject classTemplate = (IBasicObject) Util.verifyNonNull(ZentaModelUtils.getObjectByID(testdata.getModel(), "23138a61"));
 		assertTrue(template == classTemplate.getTemplate());
 	}
 
 	@Test
 	public void The_template_contains_the_objectclasses_for_the_embedded_elements_of_the_diagram() {
-		IBasicObject classTemplate = (IBasicObject) ZentaModelUtils.getObjectByID(testdata.getModel(), "c3d03626");
+		IBasicObject classTemplate = (IBasicObject) Util.verifyNonNull(ZentaModelUtils.getObjectByID(testdata.getModel(), "c3d03626"));
 		assertTrue(template == ((IBasicObject) classTemplate).getTemplate());
 	}
 	
 	@Test
 	public void The_template_contains_the_relationclasses_for_the_diagram() {
-		IBasicRelationship classTemplate = (IBasicRelationship) ZentaModelUtils.getObjectByID(testdata.getModel(), "a972e26e");
+		IBasicRelationship classTemplate = (IBasicRelationship) Util.verifyNonNull(ZentaModelUtils.getObjectByID(testdata.getModel(), "a972e26e"));
 		assertTrue(template == classTemplate.getTemplate());
 	}
 	
 	@Test
 	public void If_a_relationship_occurs_in_more_templates_removing_it_from_one_does_not_make_it_undefining() {
-		IBasicRelationship rel = (IBasicRelationship) ZentaModelUtils.getObjectByID(testdata.getModel(), "b0e2bfd8");
+		IBasicRelationship rel = (IBasicRelationship) Util.verifyNonNull(ZentaModelUtils.getObjectByID(testdata.getModel(), "b0e2bfd8"));
 		assertTrue(rel.isTemplate());
 		IDiagramModel dm = rel.getTemplate().getDiagram();
 		for(IDiagramModelZentaConnection dmo : rel.getDiagConnections())
@@ -107,7 +108,7 @@ public class TemplateTest {
 	
 	@Test
 	public void If_an_object_occurs_in_more_templates_removing_it_from_one_does_not_make_it_undefining() {
-		IBasicObject obj = (IBasicObject) ZentaModelUtils.getObjectByID(testdata.getModel(), "ea94cf6c");
+		IBasicObject obj = (IBasicObject) Util.verifyNonNull(ZentaModelUtils.getObjectByID(testdata.getModel(), "ea94cf6c"));
 		assertTrue(obj.isTemplate());
 		IDiagramModel dm = obj.getTemplate().getDiagram();
 		for(IDiagramModelZentaObject dmo : obj.getDiagObjects())

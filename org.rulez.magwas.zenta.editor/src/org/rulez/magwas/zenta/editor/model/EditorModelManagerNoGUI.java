@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CommandStackListener;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchListener;
@@ -122,7 +121,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    // Add one default diagram
 	    IDiagramModel diagramModel = IZentaFactory.eINSTANCE.createZentaDiagramModel();
 	    diagramModel.setName(Messages.EditorModelManager_1);
-	    model.getFolders().get(0).getElements().add(diagramModel);
+	    model.getElements().add(diagramModel);
 	    
 	    // Register
 	    registerModel(model);

@@ -527,13 +527,14 @@ public class ZentaSwitch<T> extends Switch<T> {
 			case IZentaPackage.ZENTA_MODEL: {
 				IZentaModel zentaModel = (IZentaModel)theEObject;
 				T result = caseZentaModel(zentaModel);
+				if (result == null) result = caseFolder(zentaModel);
 				if (result == null) result = caseFolderContainer(zentaModel);
+				if (result == null) result = caseNameable(zentaModel);
 				if (result == null) result = caseIdentifier(zentaModel);
 				if (result == null) result = caseZentaModelElement(zentaModel);
+				if (result == null) result = caseAdapter(zentaModel);
 				if (result == null) result = caseProperties(zentaModel);
 				if (result == null) result = caseDocumentable(zentaModel);
-				if (result == null) result = caseNameable(zentaModel);
-				if (result == null) result = caseAdapter(zentaModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

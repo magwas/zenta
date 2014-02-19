@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -43,7 +44,7 @@ public class ZentaModelUtils {
      * @param id The ID of the object to search for
      * @return The matching EObject in the model given its ID or null if not found
      */
-    public static EObject getObjectByID(IZentaModel model, String id) {
+    public static @Nullable EObject getObjectByID(IZentaModel model, String id) {
     	Util.verifyNonNull(id);
     	Util.verifyNonNull(model);
         
@@ -58,8 +59,7 @@ public class ZentaModelUtils {
                 return element;
             }
         }
-
-        throw new AssertionError();
+        return null;
     }
 
     /**

@@ -1,9 +1,13 @@
 package org.rulez.magwas.zenta.model.handmade;
 
+import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 public class BuiltinTemplate extends Template {
 	
@@ -16,13 +20,13 @@ public class BuiltinTemplate extends Template {
 		super();
 		setPath("builtin");
 		setMetamodel(metamodel);
-		RootObjectClass roc = new RootObjectClass(this);
-		rootObjectClass = roc;
-		rootRelationClass = new RootRelationClass(this,roc);
 		IZentaModel model = metamodel.getModel();
-		IFolder folder = model.getDefaultFolderForElement(roc);
-		folder.getElements().add(rootObjectClass);
-		folder.getElements().add(rootRelationClass);
+		IBasicObject f = (IBasicObject) ZentaModelUtils.getObjectByID(model, RootObjectClass.basicObjectClassId);
+		rootObjectClass = new RootObjectClass(this, f);
+		IBasicRelationship rrc = (IBasicRelationship) ZentaModelUtils.getObjectByID(model, RootRelationClass.basicRelationClassId);
+		rootRelationClass = new RootRelationClass(this, rootObjectClass , rrc);
+		model.getElements().add(rootObjectClass);
+		model.getElements().add(rootRelationClass);
 	}
 
 	

@@ -62,7 +62,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 	}
 
 	public IBasicObject getTestObjectClass() {
-		IBasicObject element = (IBasicObject) ZentaModelUtils.getObjectByID(Util.verifyNonNull(model), "ea94cf6c");
+		IBasicObject element = (IBasicObject) Util.verifyNonNull(ZentaModelUtils.getObjectByID(Util.verifyNonNull(model), "ea94cf6c"));
 		ITemplate template = (ITemplate) metamodel.getBuiltinTemplate();
 		assertNotNull(template);
 		assertNotNull(template.getMetamodel());

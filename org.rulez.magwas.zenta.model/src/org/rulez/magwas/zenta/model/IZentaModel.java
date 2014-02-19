@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model extendedMetaData="name='model'"
  * @generated
  */
-public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, IZentaModelElement, IProperties, IDocumentable {
+public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, IZentaModelElement, IProperties, IDocumentable, IFolder {
 	/**
 	 * Returns the value of the '<em><b>File</b></em>' attribute.
 	 * <!-- begin-user-doc -->

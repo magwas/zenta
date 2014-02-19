@@ -26,12 +26,13 @@ public class InvalidModelLoadtest {
 
 	@Test
 	public void Model_with_invalid_diagram_object_can_be_loaded() throws IOException {
+		int n = IEditorModelManager.INSTANCE.getModels().size();
 		testdata = new ModelAndEditPartTestData("invalid.zenta");
 		assertNotNull(testdata.model);
 		ZentaDiagramEditor editor = testdata.focusOnDiagram("ced9cad1");
 		assertNotNull(editor);
 		IEditorModelManager.INSTANCE.closeModel(testdata.model);
-		assertEquals(0, IEditorModelManager.INSTANCE.getModels().size());
+		assertEquals(n, IEditorModelManager.INSTANCE.getModels().size());
 	}
 
 }

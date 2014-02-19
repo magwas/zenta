@@ -1741,6 +1741,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		zentaModelEClass.getESuperTypes().add(this.getZentaModelElement());
 		zentaModelEClass.getESuperTypes().add(this.getProperties());
 		zentaModelEClass.getESuperTypes().add(this.getDocumentable());
+		zentaModelEClass.getESuperTypes().add(this.getFolder());
 		basicObjectEClass.getESuperTypes().add(this.getZentaElement());
 		basicRelationshipEClass.getESuperTypes().add(this.getBasicObject());
 

@@ -3108,13 +3108,22 @@ public interface IZentaPackage extends EPackage {
 	int ZENTA_MODEL__DOCUMENTATION = FOLDER_CONTAINER_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_MODEL__ELEMENTS = FOLDER_CONTAINER_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ZENTA_MODEL__FILE = FOLDER_CONTAINER_FEATURE_COUNT + 5;
+	int ZENTA_MODEL__FILE = FOLDER_CONTAINER_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -3123,7 +3132,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ZENTA_MODEL__VERSION = FOLDER_CONTAINER_FEATURE_COUNT + 6;
+	int ZENTA_MODEL__VERSION = FOLDER_CONTAINER_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Model</em>' class.
@@ -3132,7 +3141,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ZENTA_MODEL_FEATURE_COUNT = FOLDER_CONTAINER_FEATURE_COUNT + 7;
+	int ZENTA_MODEL_FEATURE_COUNT = FOLDER_CONTAINER_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.MetamodelBase <em>Metamodel</em>}' class.
