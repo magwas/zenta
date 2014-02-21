@@ -14,7 +14,6 @@ import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 

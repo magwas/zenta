@@ -8,7 +8,8 @@ package org.rulez.magwas.zenta.editor.model.commands;
 import org.eclipse.gef.commands.Command;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.INameable;
+import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.IZentaModel.ElementState;
 
 
 
@@ -19,36 +20,29 @@ import org.rulez.magwas.zenta.model.INameable;
  */
 public class DeleteElementCommand extends Command {
     
-    private INameable fElement;
-    private int fIndex;
-    private IFolder fFolder;
+	private ElementState save = new ElementState();
 
-    public DeleteElementCommand(INameable element) {
-        fFolder = (IFolder)element.eContainer();
-        fElement = element;
-        setLabel(Messages.DeleteElementCommand_0 + " " + ZentaLabelProvider.INSTANCE.getLabel(fElement)); //$NON-NLS-1$
+    public DeleteElementCommand(IZentaElement element) {
+    	save.folder = (IFolder)element.eContainer();
+    	save.element = element;
+        setLabel(Messages.DeleteElementCommand_0 + " " + ZentaLabelProvider.INSTANCE.getLabel(save.element)); //$NON-NLS-1$
     }
     
     @Override
     public void execute() {
-        // Ensure fIndex is stored just before execute because if this is part of a composite delete action
-        // then the index positions will have changed
-        fIndex = fFolder.getElements().indexOf(fElement); 
-        if(fIndex != -1) { // might be already be deleted from Command in CompoundCommand
-            fFolder.getElements().remove(fElement);
-        }
+    	save.folder.getZentaModel().delete(save);
     }
     
     @Override
     public void undo() {
-        if(fIndex != -1) { // might be already be deleted from Command in CompoundCommand
-            fFolder.getElements().add(fIndex, fElement);
+        if(save.index != -1) { 
+        	save.folder.getZentaModel().undelete(save);
         }
     }
     
     @Override
     public void dispose() {
-        fElement = null;
-        fFolder = null;
+    	save.element = null;
+    	save.folder = null;
     }
 }

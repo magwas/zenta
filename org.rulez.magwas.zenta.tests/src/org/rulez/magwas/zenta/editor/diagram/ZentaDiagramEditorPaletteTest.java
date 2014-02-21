@@ -123,7 +123,7 @@ public class ZentaDiagramEditorPaletteTest {
 		tool = new MagicConnectionCreationToolExerciser(spart, tpart, "TriesToDo", data);
 		assertFalse(tool.failed);
 		assertEquals(2,spart.getModel().getSourceConnections().size());
-		IEditorModelManager.INSTANCE.saveModel(data.model);
+		IEditorModelManager.INSTANCE.saveModel(data.getModel());
 	}
 	
 	@Test
@@ -156,7 +156,7 @@ public class ZentaDiagramEditorPaletteTest {
 				));
 
 		assertEquals(expectedMenu,tool.getMenu());
-		IEditorModelManager.INSTANCE.saveModel(data.model);
+		IEditorModelManager.INSTANCE.saveModel(data.getModel());
 	}
 
 	@Test
@@ -195,7 +195,7 @@ public class ZentaDiagramEditorPaletteTest {
 				"Title/Basic Relation"
 				));
 		assertEquals(expectedMenu,tool.getMenu());
-		IEditorModelManager.INSTANCE.saveModel(testdata.model);
+		IEditorModelManager.INSTANCE.saveModel(testdata.getModel());
 	}
 
 	@Test
@@ -205,7 +205,7 @@ public class ZentaDiagramEditorPaletteTest {
 		ZentaElementBase newElement = (ZentaElementBase) userClass.create(folder);
 		folder.getElements().add(newElement);
 		assertEquals(testdata.model,newElement.getZentaModel());
-		IEditorModelManager.INSTANCE.saveModel(testdata.model);
+		IEditorModelManager.INSTANCE.saveModel(testdata.getModel());
 	}
 	
 	@Test
@@ -252,8 +252,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 		List<PaletteEntry> children = getObjectClassPaletteEntries();
 		assertTrue(haveCreatorNamed(ocName, children));
-		
-		((IFolder)element.eContainer()).getElements().remove(element);
+		element.getZentaModel().delete(element);
 		boolean thrown = false;
 		try {
 			testdata.metamodel.getClassById(elemId);
@@ -287,8 +286,7 @@ public class ZentaDiagramEditorPaletteTest {
 		List<PaletteEntry> children = relationsgroup.getChildren();
 		assertTrue(haveCreatorFor(newElement, children));
 		
-		IFolder folder = (IFolder) newElement.eContainer();
-		folder.getElements().remove(newElement);
+		newElement.getZentaModel().delete(newElement);
 		assertFalse(newElement.isTemplate());
 		assertFalse(haveCreatorFor(newElement, children));
 	}

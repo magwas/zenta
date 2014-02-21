@@ -40,7 +40,7 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 	 * @return the value of the '<em>Bounds</em>' containment reference.
 	 * @see #setBounds(IBounds)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelObject_Bounds()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	IBounds getBounds();

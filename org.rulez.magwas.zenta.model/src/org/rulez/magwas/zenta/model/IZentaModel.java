@@ -7,9 +7,11 @@
 package org.rulez.magwas.zenta.model;
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.rulez.magwas.zenta.model.IDiagramModel.DiagramModelObjectState;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +31,15 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, IZentaModelElement, IProperties, IDocumentable, IFolder {
+	public class ElementState {
+
+		public IFolder folder;
+		public IZentaElement element;
+		public int index;
+		public List<DiagramModelObjectState> diagobjs;
+
+	}
+
 	/**
 	 * Returns the value of the '<em><b>File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -85,22 +96,6 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	IFolder addDerivedRelationsFolder();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void removeDerivedRelationsFolder();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model elementRequired="true"
 	 * @generated
 	 */
@@ -124,4 +119,10 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	
 	IMetamodel getMetamodel();
 
+	void delete(IZentaElement element);
+
+	public ElementState delete(ElementState state);
+
+	void undelete(ElementState state);
+	
 } // IZentaModel

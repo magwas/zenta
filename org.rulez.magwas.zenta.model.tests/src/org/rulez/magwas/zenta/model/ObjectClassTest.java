@@ -366,7 +366,7 @@ public class ObjectClassTest{
 		assertNotNull(dmo);
 		IBasicObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
-		((IFolder)element.eContainer()).getElements().remove(element);
+		element.getZentaModel().delete(element);
 		assertNull(dmo.eContainer());
 		testdata.metamodel.getClassById(elemId);
 	}

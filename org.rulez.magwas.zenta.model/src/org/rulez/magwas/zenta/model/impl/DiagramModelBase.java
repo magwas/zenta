@@ -6,8 +6,10 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,6 +24,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -604,5 +609,107 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
 		result.append(')');
 		return result.toString();
 	}
+
+	@Override
+	public DiagramModelObjectState deleteDiagramObject(DiagramModelObjectState save) {
+		if(save.object instanceof IDiagramModelObject)
+			return deleteObjectFromContainer(save);
+		else
+			return deleteConnectionFromObject(save);
+	}
+		private DiagramModelObjectState deleteConnectionFromObject(DiagramModelObjectState save) {
+			IDiagramModelConnection conn = (IDiagramModelConnection) save.object;
+			conn.disconnect();
+			return save;
+		}
+		private DiagramModelObjectState deleteObjectFromContainer(
+				DiagramModelObjectState save) {
+			save.sourceConnections = new ArrayList<IDiagramModelConnection>();
+			save.targetConnections = new ArrayList<IDiagramModelConnection>();
+			deleteObjectClassIfItIsZentaObjectInTemplate(save);
+	 		storeCopyOfConnections(save);
+	 		executeAndEnsureIndexIsStoredJustBeforeExecuting(save);
+	        removeConnectionsOnTheCopy(save);
+	        return save;
+		}
+			private void deleteObjectClassIfItIsZentaObjectInTemplate(DiagramModelObjectState save) {
+				IDiagramModelObject obj = (IDiagramModelObject) save.object;
+				if (obj instanceof IDiagramModelZentaObject)
+					deleteObjectClassIfItIsTemplate((IDiagramModelZentaObject)obj, save);
+			}
+			private void deleteObjectClassIfItIsTemplate(IDiagramModelZentaObject obj, DiagramModelObjectState save) {
+				IDiagramModel dm = save.parent.getDiagramModel();
+				if(dm.isTemplate()) {
+					String ocid = obj.getZentaElement().getId();
+					@SuppressWarnings("null")
+					IBasicObject oc = dm.getZentaModel().getMetamodel().getClassById(ocid);
+					oc.getTemplate().getClasses().remove(oc);
+				}
+			}
+	
+			private void removeConnectionsOnTheCopy(DiagramModelObjectState save) {
+				removeConnections(save.sourceConnections);
+		        removeConnections(save.targetConnections);
+			}
+			    private void removeConnections(List<IDiagramModelConnection> connections) {
+			        for(IDiagramModelConnection conn : connections) {
+			            conn.disconnect();
+			        }
+			    }
+			private void executeAndEnsureIndexIsStoredJustBeforeExecuting(
+					DiagramModelObjectState save) {
+				IDiagramModelContainer parent = (IDiagramModelContainer) save.parent;
+				save.index = parent.getChildren().indexOf(save.object); 
+		        if(save.index != -1) {
+		        	parent.getChildren().remove(save.object);
+		        }
+			}
+			private void storeCopyOfConnections(DiagramModelObjectState save) {
+				IDiagramModelObject object = (IDiagramModelObject) save.object;
+				save.sourceConnections.addAll(object.getSourceConnections());
+				save.targetConnections.addAll(object.getTargetConnections());
+			}
+
+	@Override
+	public DiagramModelObjectState deleteDiagramObject(IDiagramModelComponent object) {
+		DiagramModelObjectState save = new DiagramModelObjectState();
+		save.parent = (IDiagramModelContainer) object.eContainer();
+		save.object = object;
+		deleteDiagramObject(save);
+		return save;
+	}
+
+	@Override
+	public void undeleteDiagramObject(DiagramModelObjectState save) {
+		if(save.parent instanceof IDiagramModelContainer)
+			undeleteObjectFromContainer(save);
+		else
+			undeleteConnectionFromObject(save);
+		
+	}
+
+		private void undeleteConnectionFromObject(DiagramModelObjectState save) {
+			IDiagramModelConnection conn = (IDiagramModelConnection) save.object;
+			conn.reconnect();
+		}
+	
+		private void undeleteObjectFromContainer(DiagramModelObjectState save) {
+			if(save.index != -1) { 
+	        	IDiagramModelContainer parent = (IDiagramModelContainer) save.parent;
+				parent.getChildren().add(save.index, (IDiagramModelObject) save.object);
+	        }
+	        
+	        addConnections(save.sourceConnections);
+	        addConnections(save.targetConnections);
+	        
+	        save.sourceConnections.clear();
+	        save.targetConnections.clear();
+		}
+	
+		    private void addConnections(List<IDiagramModelConnection> connections) {
+		        for(IDiagramModelConnection conn : connections) {
+		            conn.reconnect();
+		        }
+		    }
 
 } //DiagramModel

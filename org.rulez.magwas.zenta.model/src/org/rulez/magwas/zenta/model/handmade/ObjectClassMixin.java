@@ -3,7 +3,6 @@ package org.rulez.magwas.zenta.model.handmade;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;

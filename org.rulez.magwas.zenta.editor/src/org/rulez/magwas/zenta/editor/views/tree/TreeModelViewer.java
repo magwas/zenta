@@ -172,12 +172,8 @@ public class TreeModelViewer extends TreeViewer {
             if(parentElement instanceof IEditorModelManager) {
             	return ((IEditorModelManager)parentElement).getModels().toArray();
             }
-            
-            if(parentElement instanceof IZentaModel) {
-            	return ((IZentaModel)parentElement).getFolders().toArray();
-            }
 
-            if(parentElement instanceof IFolder) {
+            if((parentElement instanceof IFolder) || (parentElement instanceof IZentaModel)) {
                 List<Object> list = new ArrayList<Object>();
                 
                 // Folders

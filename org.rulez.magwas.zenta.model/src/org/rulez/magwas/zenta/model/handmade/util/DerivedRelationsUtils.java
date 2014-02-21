@@ -5,8 +5,6 @@
  */
 package org.rulez.magwas.zenta.model.handmade.util;
 
-import java.util.Iterator;
-
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;

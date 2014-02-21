@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface IBounds extends EObject {
 	/**
 	 * Returns the value of the '<em><b>X</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>X</em>' attribute isn't clear,
@@ -39,7 +40,7 @@ public interface IBounds extends EObject {
 	 * @return the value of the '<em>X</em>' attribute.
 	 * @see #setX(int)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds_X()
-	 * @model
+	 * @model default="10"
 	 * @generated
 	 */
 	int getX();
@@ -56,6 +57,7 @@ public interface IBounds extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Y</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Y</em>' attribute isn't clear,
@@ -65,7 +67,7 @@ public interface IBounds extends EObject {
 	 * @return the value of the '<em>Y</em>' attribute.
 	 * @see #setY(int)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds_Y()
-	 * @model
+	 * @model default="10"
 	 * @generated
 	 */
 	int getY();
@@ -82,7 +84,7 @@ public interface IBounds extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Width</b></em>' attribute.
-	 * The default value is <code>"-1"</code>.
+	 * The default value is <code>"120"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Width</em>' attribute isn't clear,
@@ -92,7 +94,7 @@ public interface IBounds extends EObject {
 	 * @return the value of the '<em>Width</em>' attribute.
 	 * @see #setWidth(int)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds_Width()
-	 * @model default="-1"
+	 * @model default="120"
 	 * @generated
 	 */
 	int getWidth();
@@ -109,7 +111,7 @@ public interface IBounds extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.
-	 * The default value is <code>"-1"</code>.
+	 * The default value is <code>"55"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Height</em>' attribute isn't clear,
@@ -119,7 +121,7 @@ public interface IBounds extends EObject {
 	 * @return the value of the '<em>Height</em>' attribute.
 	 * @see #setHeight(int)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds_Height()
-	 * @model default="-1"
+	 * @model default="55"
 	 * @generated
 	 */
 	int getHeight();

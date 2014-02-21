@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.zip.ZipFile;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.model.impl.ArchiveManager;
 import org.rulez.magwas.zenta.model.IZentaModel;

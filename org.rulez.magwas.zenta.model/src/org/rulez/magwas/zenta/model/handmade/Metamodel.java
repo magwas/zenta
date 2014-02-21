@@ -13,7 +13,6 @@ import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
-import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -308,27 +307,6 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 				}
 			}
 		}
-
-	public void processChildRemovedFromFolder(Object oldVal) {
-		if(oldVal instanceof IBasicObject) {
-			IBasicObject element = (IBasicObject) oldVal;
-			removeFromDiagrams(element);
-		}
-	}
-        private void removeFromDiagrams(IBasicObject element) {
-            if(element instanceof IBasicRelationship)
-                removeConnectionFromDiagrams(element);
-            else
-                removeObjectFromDiagrams(element);
-        }
-            private void removeObjectFromDiagrams(IBasicObject element) {
-                for(IDiagramModelZentaObject dmo: element.getDiagObjects())
-                    ((IDiagramModelContainer)dmo.eContainer()).getChildren().remove(dmo);
-            }
-            private void removeConnectionFromDiagrams(IBasicObject element) {
-                for(IDiagramModelZentaConnection dmzc: ((IBasicRelationship)element).getDiagConnections())
-                    ((IDiagramModelZentaObject)dmzc.eContainer()).getSourceConnections().remove(dmzc);
-            }
 
 	public void processConnectionRemovedFromDiagramElement(
 			IDiagramModelComponent dmzc) {

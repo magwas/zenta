@@ -10,7 +10,6 @@ import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -41,15 +40,7 @@ public class NotificationProcessor {
 				IDiagramModelComponent dmzc = (IDiagramModelComponent) oldVal;
 				mm.processChildRemovedFromDiagram(dmzc);
 			}});
-		addCase(new DecisionCase(){{
-			notifierClass = IFolder.class;
-			featureId = IZentaPackage.FOLDER__ELEMENTS;
-			hasOld = true;
-			hasNew = false;
-			}
-			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
-				mm.processChildRemovedFromFolder(oldVal);
-			}});
+
 		addCase(new DecisionCase(){{
 			notifierClass = IZentaDiagramModel.class;
 			featureId = IZentaPackage.ZENTA_DIAGRAM_MODEL__PROPERTIES;
@@ -307,7 +298,15 @@ public class NotificationProcessor {
 	@SuppressWarnings("null")
 	public static void processNotification(Metamodel mm,Notification notification) {
 		EObject lastObject = (EObject) notification.getNotifier();
-		//System.out.printf("notifier = %s\nfeature=%s\nold=%s\nnew=%s\n\n", lastObject,notification.getFeature(),notification.getOldValue(),notification.getNewValue());
+
+		/*
+		System.out.printf("notifier = %s\nEventtype=%s\nfeature=%s\nold=%s\nnew=%s\n\n", 
+				lastObject,
+				notification.getEventType(),
+				notification.getFeature(),
+				notification.getOldValue(),
+				notification.getNewValue());
+		*/
 		for(Class<?> klass : decisionTree.keySet())
 			if(klass.isInstance(lastObject))
 				processClassMatch(mm,notification,klass,decisionTree.get(klass));
@@ -330,6 +329,7 @@ public class NotificationProcessor {
 				private static void processNewMatch(Metamodel mm,
 						Notification notification, Map<Boolean, DecisionCase> map) {
 					DecisionCase match = map.get(notification.getOldValue() != null);
+					//System.out.printf("match=%s\n\n", match);
 					if(null != match)
 						match.run(mm, notification.getNotifier(),notification.getOldValue(),notification.getNewValue());
 				}

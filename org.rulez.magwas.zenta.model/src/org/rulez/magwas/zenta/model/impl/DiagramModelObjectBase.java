@@ -132,10 +132,10 @@ public abstract class DiagramModelObjectBase extends DiagramModelComponentBase i
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @see #getBounds()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-    protected IBounds bounds;
+    protected IBounds bounds = new BoundsBase();
 
     /**
 	 * The cached value of the '{@link #getSourceConnections() <em>Source Connections</em>}' containment reference list.

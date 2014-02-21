@@ -99,10 +99,12 @@ public class DiagramModelUtils {
     
     /**
      * Find all Diagram Model Components for a given element or relationship in a Diagram Model
+     * FIXME use getDiagObjects/Connections instead of this
      * @param diagramModel
      * @param element
      * @return The list
      */
+    @Deprecated
     public static List<IDiagramModelComponent> findDiagramModelComponentsForElement(IDiagramModel diagramModel, IZentaElement element) {
         List<IDiagramModelComponent> list = new ArrayList<IDiagramModelComponent>();
         
@@ -118,16 +120,19 @@ public class DiagramModelUtils {
 
     /**
      * Find all Diagram Model Objects in a Container for a given element
+     * FIXME use getDiagObjects/Connections instead of this
      * @param parent
      * @param element
      * @return The list
      */
+    @Deprecated
     public static List<IDiagramModelZentaObject> findDiagramModelObjectsForElement(IDiagramModelContainer parent, IZentaElement element) {
         List<IDiagramModelZentaObject> list = new ArrayList<IDiagramModelZentaObject>();
         __findDiagramModelObjectsForElement(list, parent, element);
         return list;
     }
     
+    @Deprecated
     private static void __findDiagramModelObjectsForElement(List<IDiagramModelZentaObject> list, IDiagramModelContainer parent, IZentaElement element) {
         for(IDiagramModelObject object : parent.getChildren()) {
             if(object instanceof IDiagramModelZentaObject) {
@@ -147,12 +152,14 @@ public class DiagramModelUtils {
      * @param relationship
      * @return
      */
+    @Deprecated
     public static List<IDiagramModelZentaConnection> findDiagramModelConnectionsForRelation(IDiagramModelContainer parent, IBasicRelationship relationship) {
         List<IDiagramModelZentaConnection> list = new ArrayList<IDiagramModelZentaConnection>();
         __findDiagramModelConnectionsForRelation(list, parent, relationship);
         return list;
     }
 
+    @Deprecated
     private static void __findDiagramModelConnectionsForRelation(List<IDiagramModelZentaConnection> list, IDiagramModelContainer parent, IBasicRelationship relationship) {
         for(IDiagramModelObject object : parent.getChildren()) {
             for(IDiagramModelConnection connection : object.getSourceConnections()) {

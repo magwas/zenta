@@ -14,17 +14,16 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.ui.actions.SelectionAction;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.diagram.commands.DiagramCommandFactory;
-import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
 import org.rulez.magwas.zenta.editor.model.commands.DeleteElementCommand;
 import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
@@ -76,7 +75,7 @@ public class DeleteFromModelAction extends SelectionAction {
             if(object instanceof EditPart) {
                 Object model = ((EditPart)object).getModel();
                 if(model instanceof IDiagramModelZentaObject) {
-                    IZentaElement element = ((IDiagramModelZentaObject)model).getZentaElement();
+                    IZentaElement element = Util.verifyNonNull(((IDiagramModelZentaObject)model).getZentaElement());
                     if(!elements.contains(element)) {
                         elements.add(element);
                     }
@@ -95,16 +94,6 @@ public class DeleteFromModelAction extends SelectionAction {
                 }
             }
         }
-        
-        // Gather referenced diagram objects
-        for(IZentaElement element : elements) {
-            for(IDiagramModel diagramModel : element.getZentaModel().getDiagramModels()) {
-                for(IDiagramModelComponent dc : DiagramModelUtils.findDiagramModelComponentsForElement(diagramModel, element)) {
-                    diagramObjects.add(dc);
-                }
-            }
-        }
-        
         // Create commands
         
         CompoundCommand compoundCommand = new NonNotifyingCompoundCommand(TEXT);
