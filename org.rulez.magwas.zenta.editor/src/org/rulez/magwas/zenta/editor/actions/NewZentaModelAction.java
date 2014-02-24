@@ -12,6 +12,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.ui.services.UIRequestManager;
 import org.rulez.magwas.zenta.editor.views.tree.TreeEditElementRequest;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
 
 
@@ -39,7 +40,9 @@ implements IWorkbenchAction
         IZentaModel model = IEditorModelManager.INSTANCE.createNewModel();
         
         // Open Diagram Editor
-        EditorManager.openDiagramEditor(model.getDefaultDiagramModel());
+        IDiagramModel dm = model.getDefaultDiagramModel();
+        if(null != dm)
+        	EditorManager.openDiagramEditor(dm);
         
         // Edit in-place in Tree
         UIRequestManager.INSTANCE.fireRequest(new TreeEditElementRequest(this, model));

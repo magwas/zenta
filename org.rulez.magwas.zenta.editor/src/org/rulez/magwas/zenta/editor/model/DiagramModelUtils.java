@@ -35,26 +35,16 @@ import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 public class DiagramModelUtils {
     
     public static List<IDiagramModel> findReferencedDiagramsForElement(IZentaElement element) {
-        List<IDiagramModel> models = new ArrayList<IDiagramModel>();
-        
-        if(element.getZentaModel() != null) {
-            for(IDiagramModel diagramModel : element.getZentaModel().getDiagramModels()) {
-            	if(null != diagramModel) {
-                    boolean result = !findDiagramModelComponentsForElement(diagramModel, element).isEmpty();
-                    
-                    // Not found, maybe it's expressed as a nested parent/child
-                    if(!result && element instanceof IBasicRelationship && ConnectionPreferences.useNestedConnections()) {
-                        result = !findNestedComponentsForRelationship(diagramModel, (IBasicRelationship)element).isEmpty();
-                    }
-                    
-                    if(result && !models.contains(diagramModel)) {
-                        models.add(diagramModel);
-                    }
-            	}
-            }
-        }
-        
-        return models;
+        ArrayList<IDiagramModel> results = new ArrayList<IDiagramModel>();
+        for ( IDiagramModelZentaObject dm : element.getDiagObjects())
+        	if(!results.contains(dm.getDiagramModel()))
+        		results.add(dm.getDiagramModel());
+        if(element instanceof IBasicRelationship && ConnectionPreferences.useNestedConnections())
+            for ( IDiagramModelZentaObject dm : findNestedComponentsForRelationship((IBasicRelationship) element))
+            	if(!results.contains(dm.getDiagramModel()))
+            		results.add(dm.getDiagramModel());
+        	
+        return results;
     }
     
     /**
@@ -62,9 +52,6 @@ public class DiagramModelUtils {
      * @return true if element is referenced in any diagram model
      */
     public static boolean isElementReferencedInDiagrams(IZentaElement element) {
-        if(element.getZentaModel() == null) {
-            return false;
-        }
         
         for(IDiagramModel diagramModel : element.getZentaModel().getDiagramModels()) {
             IDiagramModel dm = Util.verifyNonNull(diagramModel);
@@ -87,7 +74,7 @@ public class DiagramModelUtils {
         
         // Expressed as a nested parent/child
         if(element instanceof IBasicRelationship && ConnectionPreferences.useNestedConnections()) {
-            if(!findNestedComponentsForRelationship(diagramModel, (IBasicRelationship)element).isEmpty()) {
+            if(!findNestedComponentsForRelationship((IBasicRelationship)element).isEmpty()) {
                 return true;
             }
         }
@@ -213,19 +200,23 @@ public class DiagramModelUtils {
      * @param relation
      * @return
      */
-    public static List<IDiagramModelZentaObject[]> findNestedComponentsForRelationship(IDiagramModel diagramModel, IBasicRelationship relation) {
-        IZentaElement src = relation.getSource();
+    public static List<IDiagramModelZentaObject> findNestedComponentsForRelationship(IBasicRelationship relation) {
+        List<IDiagramModelZentaObject> list = new ArrayList<IDiagramModelZentaObject>();
+    	if(!relation.isConnected())
+    		return list;
+    		
+    	IZentaElement src = relation.getSource();
         IZentaElement tgt = relation.getTarget();
         
-        List<IDiagramModelZentaObject> srcList = findDiagramModelObjectsForElement(diagramModel, src);
-        List<IDiagramModelZentaObject> tgtList = findDiagramModelObjectsForElement(diagramModel, tgt);
+        List<IDiagramModelZentaObject> srcList = src.getDiagObjects();
+        List<IDiagramModelZentaObject> tgtList = tgt.getDiagObjects();
         
-        List<IDiagramModelZentaObject[]> list = new ArrayList<IDiagramModelZentaObject[]>();
         
         for(IDiagramModelZentaObject dmo1 : srcList) {
             for(IDiagramModelZentaObject dmo2 : tgtList) {
                 if(isNestedRelationship(dmo1, dmo2)) {
-                    list.add(new IDiagramModelZentaObject[] {dmo1, dmo2});
+                    list.add(dmo1);
+                    list.add(dmo2);
                 }
             }
         }

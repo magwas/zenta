@@ -46,6 +46,7 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
+	@NonNull
 	IZentaElement getSource();
 
 	/**
@@ -72,6 +73,7 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
+	@NonNull
 	IZentaElement getTarget();
 
 	/**
@@ -104,5 +106,7 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 
 	List<IBasicObject> getAllowedTargets();
 	@NonNull IBasicRelationship create(@NonNull IFolder folder);
+	
+	boolean isConnected();
 
 } // IBasicRelationship

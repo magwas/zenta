@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.model.viewpoints;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.jdt.annotation.NonNull;
@@ -76,10 +75,10 @@ public interface IViewpoint {
 	NonNullList<IBasicRelationship> getTargetRelationClassesFor(
 			IBasicObject targetclass);
 
-    Collection<IBasicObject> getAllowedTargets(
+    NonNullList<IBasicObject> getAllowedTargets(
             IBasicRelationship oc);
 
-    Collection<IBasicObject> getAllowedTargets(
+    NonNullList<IBasicObject> getAllowedTargets(
     		IBasicObject oc);
 
     IBasicObject getObjectClassOf(

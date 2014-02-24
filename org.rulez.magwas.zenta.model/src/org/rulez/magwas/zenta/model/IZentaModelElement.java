@@ -6,6 +6,8 @@
  */
 package org.rulez.magwas.zenta.model;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model Element</b></em>'.
@@ -36,6 +38,7 @@ public interface IZentaModelElement extends IAdapter {
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true"
 	 * @generated
 	 */
+	@NonNull
 	IZentaModel getZentaModel();
 
 } // IZentaModelElement

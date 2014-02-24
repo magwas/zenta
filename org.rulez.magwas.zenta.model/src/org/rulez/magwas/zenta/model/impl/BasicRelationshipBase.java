@@ -14,11 +14,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -87,10 +89,11 @@ abstract public class BasicRelationshipBase extends BasicObjectBase implements I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+    @NonNull
 	public IZentaElement getSource() {
-		return source;
+		return Util.verifyNonNull(source);
 	}
 
 				/**
@@ -108,10 +111,11 @@ abstract public class BasicRelationshipBase extends BasicObjectBase implements I
 				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+	@NonNull
 	public IZentaElement getTarget() {
-		return target;
+		return Util.verifyNonNull(target);
 	}
 
 				/**

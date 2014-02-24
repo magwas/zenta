@@ -402,6 +402,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+    @NonNull
 	public IBasicRelationship createBasicRelationship() {
 		BasicRelationshipBase basicRelationship = new RelationClass();
 		return basicRelationship;

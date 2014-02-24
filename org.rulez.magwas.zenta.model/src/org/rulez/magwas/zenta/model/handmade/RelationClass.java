@@ -182,4 +182,10 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 					ret.add(target);
 		return ret;
 	}
+
+	@Override
+	public boolean isConnected() {
+		return (source != null) && (target != null);
+	}
+
 }

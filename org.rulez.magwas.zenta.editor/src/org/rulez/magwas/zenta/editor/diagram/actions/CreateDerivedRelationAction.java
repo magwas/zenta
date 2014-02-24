@@ -13,6 +13,7 @@ import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.ui.actions.SelectionAction;
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
@@ -55,6 +56,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils.TooComplicatedException;
 
 
@@ -73,7 +75,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
 
     public CreateDerivedRelationAction(IWorkbenchPart part, IDiagramModel model) {
         super(part);
-        this.folder = (IFolder)model.eContainer();
+        this.setFolder((IFolder)model.eContainer());
         setText(TEXT);
         setId(ID);
         setSelectionProvider((ISelectionProvider)part.getAdapter(GraphicalViewer.class));
@@ -168,7 +170,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
 	            if(chain != null) {
 	                ChainList chainList = dialog.getSelectedChainList();
 	                IBasicRelationship relationshipClass = drutil.getWeakestType(chain);
-	                IBasicRelationship relation = (IBasicRelationship) relationshipClass.create(folder);
+	                IBasicRelationship relation = (IBasicRelationship) relationshipClass.create(getFolder());
 	                CommandStack stack = (CommandStack)getWorkbenchPart().getAdapter(CommandStack.class);
 	                stack.execute(new CreateDerivedConnectionCommand(chainList.srcDiagramObject, chainList.tgtDiagramObject, relation));
 	            }
@@ -177,22 +179,31 @@ public class CreateDerivedRelationAction extends SelectionAction {
     
     // ================================ Helper Classes =====================================
     
-    /**
+	@NonNull
+    public IFolder getFolder() {
+			return Util.verifyNonNull(folder);
+	}
+
+		public void setFolder(IFolder folder) {
+			this.folder = folder;
+		}
+
+	/**
      * Convenience class to group things together
      */
     private class ChainList {
         IDiagramModelZentaObject srcDiagramObject;
         IDiagramModelZentaObject tgtDiagramObject;
-        IZentaElement srcElement;
-        IZentaElement tgtElement;
+        private IZentaElement srcElement;
+        private IZentaElement tgtElement;
         NonNullList<NonNullList<IBasicRelationship>> chains;
         boolean isTooComplicated;
         
         ChainList(IDiagramModelZentaObject srcDiagramObject, IDiagramModelZentaObject tgtDiagramObject) {
             this.srcDiagramObject = srcDiagramObject;
             this.tgtDiagramObject = tgtDiagramObject;
-            srcElement = srcDiagramObject.getZentaElement();
-            tgtElement = tgtDiagramObject.getZentaElement();
+            setSrcElement(srcDiagramObject.getZentaElement());
+            setTgtElement(tgtDiagramObject.getZentaElement());
             
             if(!hasExistingDirectRelationship()) {
                 findChains();
@@ -200,12 +211,12 @@ public class CreateDerivedRelationAction extends SelectionAction {
         }
         
         boolean hasExistingDirectRelationship() {
-            return drutil.hasDirectStructuralRelationship(srcElement, tgtElement);
+            return drutil.hasDirectStructuralRelationship(getSrcElement(), getTgtElement());
         }
         
         private void findChains() {
             try {
-                chains = drutil.getDerivedRelationshipChains(srcElement, tgtElement);
+                chains = drutil.getDerivedRelationshipChains(getSrcElement(), getTgtElement());
             }
             catch(TooComplicatedException ex) {
                 isTooComplicated = true;
@@ -219,6 +230,24 @@ public class CreateDerivedRelationAction extends SelectionAction {
             
             return chains;
         }
+
+        @NonNull
+		public IZentaElement getSrcElement() {
+			return Util.verifyNonNull(srcElement);
+		}
+
+		public void setSrcElement(IZentaElement srcElement) {
+			this.srcElement = srcElement;
+		}
+
+        @NonNull
+		public IZentaElement getTgtElement() {
+			return Util.verifyNonNull(tgtElement);
+		}
+
+		public void setTgtElement(IZentaElement tgtElement) {
+			this.tgtElement = tgtElement;
+		}
     }
     
     /**
@@ -300,7 +329,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         
         private CLabel createLabel(Composite parent, ChainList chainList) {
             CLabel label = new CLabel(parent, SWT.NULL);
-            String text = NLS.bind(Messages.CreateDerivedRelationAction_8, chainList.srcElement.getName(), chainList.tgtElement.getName());
+            String text = NLS.bind(Messages.CreateDerivedRelationAction_8, chainList.getSrcElement().getName(), chainList.getTgtElement().getName());
             label.setText(text);
             label.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
             return label;
@@ -416,7 +445,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                 switch(columnIndex) {
                     // Chain
                     case 0:
-                        String s = chainList.srcElement.getName();
+                        String s = chainList.getSrcElement().getName();
                         s += " --> "; //$NON-NLS-1$
                         for(int i = 1; i < chain.size(); i++) {
                             IBasicRelationship relation = chain.get(i);
@@ -428,7 +457,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                                 s += " --> "; //$NON-NLS-1$
                             }
                         }
-                        s += chainList.tgtElement.getName();
+                        s += chainList.getTgtElement().getName();
                         
                         return s; 
 
@@ -440,7 +469,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                 return ""; //$NON-NLS-1$
             }
             
-            private String getRelationshipText(NonNullList<IBasicRelationship> chain, IBasicRelationship relation) {
+            private String getRelationshipText(NonNullList<IBasicRelationship> chain, @NonNull IBasicRelationship relation) {
                 if(drutil.isBidirectionalRelationship(relation)) {
                     int index = chain.indexOf(relation);
                     if(index > 0) {
@@ -491,7 +520,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         }
         
         private void addToModel() {
-            fConnection.addRelationshipToModel(folder);
+            fConnection.addRelationshipToModel(getFolder());
         }
         
         @Override

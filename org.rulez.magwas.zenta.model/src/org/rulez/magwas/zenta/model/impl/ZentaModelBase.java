@@ -42,6 +42,7 @@ import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.handmade.util.IDAdapter;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -284,6 +285,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @NonNull
     public String getName() {
 		return name;
 	}
@@ -326,6 +328,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
      * @generated NOT
      */
+    @NonNull
     public IZentaModel getZentaModel() {
         return this;
     }
@@ -368,6 +371,8 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("null")
+	@NonNull
 	public EList<EObject> getElements() {
 		if (elements == null) {
 			elements = new EObjectContainmentEList<EObject>(EObject.class, this, IZentaPackage.ZENTA_MODEL__ELEMENTS);

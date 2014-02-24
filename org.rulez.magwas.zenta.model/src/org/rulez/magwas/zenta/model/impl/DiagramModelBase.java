@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
@@ -40,6 +41,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -190,10 +192,11 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+    @NonNull
     public String getName() {
-		return name;
+		return Util.verifyNonNull(name);
 	}
 
     /**
@@ -222,10 +225,8 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
      * <!-- end-user-doc -->
      * @generated NOT
      */
+    @NonNull
     public IZentaModel getZentaModel() {
-        if(eContainer() == null) {
-            return null;
-        }
         return ((IZentaModelElement)eContainer()).getZentaModel();
     }
 

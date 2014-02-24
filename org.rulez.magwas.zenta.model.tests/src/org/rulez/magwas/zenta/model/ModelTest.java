@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,6 +16,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jdt.annotation.NonNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -81,7 +81,8 @@ public class ModelTest {
 	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
 	    Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
         resource.load(null);
-	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
+	    @SuppressWarnings("null")
+		@NonNull IZentaModel model = (IZentaModel)resource.getContents().get(0);
 	    
 	    IDiagramModelObject dmo = Util.verifyNonNull((IDiagramModelObject) ZentaModelUtils.getObjectByID(model, dmoid));
 	    IBounds bounds = dmo.getBounds();
@@ -108,11 +109,71 @@ public class ModelTest {
 	    File file2 = new File("/tmp/bar.zenta");
 		ZentaModelUtils.saveModelToXMLFile(model, file2);
 		
-		String string1 = Util.readFile(file.getAbsolutePath());
-		String string2 = Util.readFile(file2.getAbsolutePath());
-		assertEquals(string1,string2);
+		assertFilesAreSame(file, file2);
 	}
 
+	private void assertFilesAreSame(File file, File file2) throws IOException {
+		@SuppressWarnings("null")
+		@NonNull String absolutePath = file.getAbsolutePath();
+		@SuppressWarnings("null")
+		@NonNull String absolutePath2 = file2.getAbsolutePath();
+		String string1 = Util.readFile(absolutePath);
+		String string2 = Util.readFile(absolutePath2);
+		assertEquals(string1,string2);
+	}
+	@Test
+	public void Model_with_moved_builtin_classes_can_be_loaded() throws IOException {
+		builder.createFirstGeneration();
+		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		builder.createThirdGeneration();
+		
+		IZentaModel model0 = builder.getModel();
+		IFolder folder = IZentaFactory.eINSTANCE.createFolder();
+		folder.getElements().addAll(model0.getElements());
+		model0.getFolders().add(folder);
+
+		File file = new File("/tmp/foo.zenta");
+		ZentaModelUtils.saveModelToXMLFile(builder.getModel(), file);
+	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
+	    Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
+        resource.load(null);
+	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
+	    model.getMetamodel();
+	    File file2 = new File("/tmp/bar.zenta");
+		ZentaModelUtils.saveModelToXMLFile(model, file2);
+		
+		assertFilesAreSame(file, file2);
+	}
+
+	@Test
+	public void Object_ancestry_is_built_correctly() throws IOException {
+		builder.createFirstGeneration();
+		
+		IMetamodel mm = builder.getMetamodel();
+		builder.assertIsAllFirstGenSources(builder.firstgenSource.getAncestry());
+		builder.assertIsAllFirstGenRelations(builder.getFirstgenRelation().getAncestry());
+		builder.assertIsAllFirstGenObjects(mm.getObjectClasses());
+		builder.assertIsAllFirstGenRelations(mm.getRelationClasses());
+		assertTrue(builder.firstgenSource.isTemplate());
+		assertTrue(builder.firstgenTarget.isTemplate());
+		assertTrue(builder.firstgenRelation.isTemplate());
+		
+		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		
+		builder.assertIsAllSecondGenSources(builder.secondgenSource.getAncestry());
+		builder.assertIsAllSecondGenRelations(builder.getSecondgenRelation().getAncestry());
+		builder.assertIsAllSecondGenObjects(mm.getObjectClasses());
+		builder.assertIsAllSecondGenRelations(mm.getRelationClasses());
+		assertTrue(builder.firstgenSource.isTemplate());
+		assertTrue(builder.firstgenTarget.isTemplate());
+		assertTrue(builder.firstgenRelation.isTemplate());
+		assertTrue(builder.secondgenSource.isTemplate());
+		assertTrue(builder.secondgenTarget.isTemplate());
+		assertTrue(builder.secondgenRelation.isTemplate());
+		
+		builder.createThirdGenerationWithRelation();
+		builder.assertMetaIsOK();
+	}
 	@Test
 	public void setDefaults_adds_folders() {
 		builder.createModel();
@@ -145,7 +206,7 @@ public class ModelTest {
 		
 		IDiagramModelZentaObject de = builder.addElementToDiagram("testTwo");
 		
-		assertEquals(builder.lastAddedElement, de.getZentaElement());
+		assertEquals(builder.getLastAddedElement(), de.getZentaElement());
 	}
 
 	@Test
@@ -154,8 +215,8 @@ public class ModelTest {
 		
 		IMetamodel metamodel = builder.getMetamodel();
 		
-		NonNullList<IBasicObject> ocs = metamodel.getObjectClasses();
-		assertListHaveDefiningNames(ocs, "Basic Object");
+		List<IBasicObject> ocs = metamodel.getObjectClasses();
+		builder.assertIsElements(ocs, 1, 1);
 		NonNullList<IBasicRelationship> rcs = metamodel.getRelationClasses();
 		assertListHaveDefiningNames(rcs, "Basic Relation");
 	}
@@ -163,26 +224,24 @@ public class ModelTest {
 	@Test
 	public void When_diagram_is_converted_to_template_the_relationclasses_are_generated() {
 		builder.createModel().addTemplateDiagrammodel();
-		
-		builder.createRelationWithDMC(builder.SECONDGEN_OBJECT_1, builder.SECONDGEN_OBJECT_2, builder.SECONDGEN_RELATION);
+		builder.createFirstGenerationNoTemplate();
 		builder.makeTemplate();
 		
 		IMetamodel metamodel = builder.getMetamodel();
 		NonNullList<IBasicRelationship> rcs = metamodel.getRelationClasses();
-		List<String> names = Util.verifyNonNull(Arrays.asList(builder.SECONDGEN_RELATION, "Basic Relation"));
-		ModelTestUtils.assertEqualsAsSet(names,ModelTestUtils.definingNames(rcs));
+		builder.assertIsAllFirstGenRelations(rcs);
 	}
 
 	@Test
 	public void When_diagram_is_converted_to_template_the_objectclasses_are_generated() {
 		builder.createFirstGeneration();
 		
-		assertTrue(builder.firstgenRelation.isTemplate());
+		assertTrue(builder.getFirstgenRelation().isTemplate());
 		assertTrue(builder.getFirstgenTarget().isTemplate());
 		
 		IMetamodel mm = builder.getFirstgenTarget().getZentaModel().getMetamodel();
 		NonNullList<IBasicObject> ocs = mm.getObjectClasses();
-		assertListHaveDefiningNames(ocs, builder.SECONDGEN_OBJECT_1, builder.SECONDGEN_OBJECT_2, "Basic Object");
+		builder.assertIsAllFirstGenObjects(ocs);
 		
 	}
 
@@ -195,7 +254,7 @@ public class ModelTest {
 		
 		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(Util.verifyNonNull(builder.getDiagramModel()));
 		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getSecondgenSource(), builder.getSecondgenTarget());
-		assertListHaveDefiningNames(rcs, builder.SECONDGEN_RELATION, "Basic Relation");
+		builder.assertIsAllFirstGenRelations(rcs);
 	}
 
 	@Test
@@ -206,45 +265,52 @@ public class ModelTest {
 		
 		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(Util.verifyNonNull(builder.getTemplateDiagram()));
 		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getSecondgenSource(), builder.getSecondgenTarget());
-		assertListHaveDefiningNames(rcs, builder.SECONDGEN_RELATION, "Basic Relation");
+		builder.assertIsAllFirstGenRelations(rcs);
 	}
 
 	@Test
-	public void Objects_appearing_in_a_template_can_be_put_to_another_folder() {
+	public void Objects_appearing_in_a_template_can_be_put_to_another_folder() throws IOException {
 		builder.createFirstGeneration();
 		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
 		IFolder newFolder = IZentaFactory.eINSTANCE.createFolder();
 		newFolder.setName("newFolder");
 		builder.folder.getFolders().add(newFolder);
 		
-		assertEquals(2, builder.secondgenSource.getDiagObjects().size());
+		assertEquals(1, builder.secondgenSource.getDiagObjects().size());
 		IDiagramModelZentaObject diagobj1 = builder.secondgenSource.getDiagObjects().get(0);
-		IDiagramModelZentaObject diagobj2 = builder.secondgenSource.getDiagObjects().get(1);
 		
 		newFolder.getElements().add(builder.secondgenSource);
 		
 		assertEquals("newFolder", ((IFolder)builder.secondgenSource.eContainer()).getName());
-		assertEquals(2, builder.secondgenSource.getDiagObjects().size());
+		assertEquals(1, builder.secondgenSource.getDiagObjects().size());
 		assertEquals(diagobj1, builder.secondgenSource.getDiagObjects().get(0));
-		assertEquals(diagobj2, builder.secondgenSource.getDiagObjects().get(1));
 		
 		IMetamodel mm = builder.getFirstgenTarget().getZentaModel().getMetamodel();
 		NonNullList<IBasicRelationship> rcss = mm.getRelationClasses();
-		builder.assertIsAllThirdGenRelations(rcss);
+		builder.assertIsAllSecondGenRelations(rcss);
 
 		EList<EObject> elements = newFolder.getElements();
 		elements.add(builder.firstgenSource);
 		assertTrue(builder.secondgenSource.isTemplate());
 		assertTrue(builder.firstgenSource.isTemplate());
-		assertTrue(builder.firstgenRelation.isTemplate());
+		assertTrue(builder.getFirstgenRelation().isTemplate());
 
 		assertEquals("newFolder", ((IFolder)builder.secondgenSource.eContainer()).getName());
-		assertEquals(2, builder.secondgenSource.getDiagObjects().size());
+		assertEquals(1, builder.secondgenSource.getDiagObjects().size());
 		assertEquals(diagobj1, builder.secondgenSource.getDiagObjects().get(0));
-		assertEquals(diagobj2, builder.secondgenSource.getDiagObjects().get(1));
 		
 		NonNullList<IBasicRelationship> rcss2 = mm.getRelationClasses();
-		builder.assertIsAllThirdGenRelations(rcss2);
+		builder.assertIsAllSecondGenRelations(rcss2);
+		File file = new File("/tmp/baz.zenta");
+		ZentaModelUtils.saveModelToXMLFile(builder.getModel(), file);
+	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
+	    Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
+        resource.load(null);
+	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
+	    model.getMetamodel();
+	    File file2 = new File("/tmp/qqx.zenta");
+		ZentaModelUtils.saveModelToXMLFile(model, file2);
+		assertFilesAreSame(file, file2);
 	}
 	
 	@Test
@@ -254,7 +320,7 @@ public class ModelTest {
 		
 		IMetamodel mm = builder.getFirstgenTarget().getZentaModel().getMetamodel();
 		NonNullList<IBasicRelationship> rcss = mm.getRelationClasses();
-		builder.assertIsAllThirdGenRelations(rcss);
+		builder.assertIsAllSecondGenRelations(rcss);
 	}
 
 	@Test
@@ -266,41 +332,41 @@ public class ModelTest {
 		builder.createThirdGeneration();
 		
 		
-		IBasicObject ancie = builder.thirdGenerationSource.getAncestor();
+		IBasicObject ancie = builder.getThirdGenSource().getAncestor();
 		assertEquals(builder.secondgenSource, ancie);
-		assertEquals(builder.secondgenSource, builder.thirdGenerationSource.getDefiningElement());
+		assertEquals(builder.secondgenSource, builder.getThirdGenSource().getDefiningElement());
 		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(Util.verifyNonNull(builder.getDiagramModel()));
 		
-		NonNullList<IBasicRelationship> startrcs = vp.getSourceRelationClassesFor(builder.secondgenSource);
-		builder.assertIsAllThirdGenRelations(startrcs);
+		NonNullList<IBasicRelationship> startrcs = vp.getSourceRelationClassesFor(builder.getSecondgenSource());
+		builder.assertIsAllSecondGenRelations(startrcs);
 		
-		NonNullList<IBasicRelationship> targetrcs = vp.getTargetRelationClassesFor(builder.secondgenTarget);
-		builder.assertIsAllThirdGenRelations(targetrcs);
+		NonNullList<IBasicRelationship> targetrcs = vp.getTargetRelationClassesFor(builder.getSecondgenTarget());
+		builder.assertIsAllSecondGenRelations(targetrcs);
 		
-		Collection<IBasicObject> targets = vp.getAllowedTargets(builder.secondgenSource);
-		List<String> targetocnames = Util.verifyNonNull(Arrays.asList(
-				builder.THIRDGEN_OBJECT_2, builder.SECONDGEN_OBJECT_2, "Basic Object", builder.SECONDGEN_OBJECT_1, builder.THIRDGEN_OBJECT_1));
-		ModelTestUtils.assertEqualsAsSet(targetocnames,ModelTestUtils.definingNames(targets));
+		NonNullList<IBasicObject> targets = vp.getAllowedTargets(builder.getSecondgenSource());
+		builder.assertIsAllSecondGenObjects(targets);
 
+		@SuppressWarnings("null")
+		@NonNull
 		NonNullList<IBasicRelationship> oc1relsafter = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
-		builder.assertIsAllThirdGenRelations(oc1relsafter);
+		builder.assertIsAllSecondGenRelations(oc1relsafter);
 
-		NonNullList<IBasicRelationship> estartrcs = vp.getSourceRelationClassesFor(builder.thirdGenerationSource);
-		builder.assertIsAllThirdGenRelations(estartrcs);
+		NonNullList<IBasicRelationship> estartrcs = vp.getSourceRelationClassesFor(builder.getThirdGenSource());
+		builder.assertIsAllSecondGenRelations(estartrcs);
 		
+		@SuppressWarnings("null")
+		@NonNull
 		NonNullList<IBasicRelationship> oc1relsafter2 = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
-		builder.assertIsAllThirdGenRelations(oc1relsafter2);
+		builder.assertIsAllSecondGenRelations(oc1relsafter2);
 
-		NonNullList<IBasicRelationship> etargetrcs = vp.getTargetRelationClassesFor(builder.thirdGenerationTarget);
-		builder.assertIsAllThirdGenRelations(etargetrcs);
+		NonNullList<IBasicRelationship> etargetrcs = vp.getTargetRelationClassesFor(builder.getThirdGenTarget());
+		builder.assertIsAllSecondGenRelations(etargetrcs);
 		
-		Collection<IBasicObject> etargets = vp.getAllowedTargets(builder.secondgenSource);
-		List<String> etargetocnames = Util.verifyNonNull(Arrays.asList(
-				builder.THIRDGEN_OBJECT_2, builder.SECONDGEN_OBJECT_2, "Basic Object", builder.SECONDGEN_OBJECT_1, builder.THIRDGEN_OBJECT_1));
-		ModelTestUtils.assertEqualsAsSet(etargetocnames,ModelTestUtils.definingNames(etargets));
+		NonNullList<IBasicObject> etargets = vp.getAllowedTargets(builder.getSecondgenSource());
+		builder.assertIsAllSecondGenObjects(etargets);
 		
-		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.thirdGenerationSource, builder.thirdGenerationTarget);
-		builder.assertIsAllThirdGenRelations(rcs);
+		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getThirdGenSource(), builder.getThirdGenTarget());
+		builder.assertIsAllSecondGenRelations(rcs);
 	}
 
 	

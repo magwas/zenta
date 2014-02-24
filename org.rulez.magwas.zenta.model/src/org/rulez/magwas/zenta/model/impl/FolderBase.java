@@ -31,6 +31,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -163,10 +164,11 @@ public class FolderBase extends EObjectImpl implements IFolder {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+    @NonNull
     public String getName() {
-		return name;
+		return Util.verifyNonNull(name);
 	}
 
     /**
@@ -240,6 +242,8 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
     public EList<EObject> getElements() {
 		if (elements == null) {
 			elements = new EObjectContainmentEList<EObject>(EObject.class, this, IZentaPackage.FOLDER__ELEMENTS);
@@ -274,10 +278,8 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
      * @generated NOT
      */
+    @NonNull
     public IZentaModel getZentaModel() {
-        if(eContainer() == null) {
-            return null;
-        }
         return ((IZentaModelElement)eContainer()).getZentaModel();
     }
 

@@ -12,7 +12,6 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Element</b></em>'.
@@ -31,8 +30,10 @@ import org.eclipse.emf.ecore.EAttribute;
  */
 public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneable, INameable, IDocumentable, IProperties {
 
-	String basicObjectClassId = "basicobject";
-	String basicRelationClassId = "basicrelation";
+	final String basicObjectClassId = "basicobject";
+	final String basicRelationClassId = "basicrelation";
+	final public String basicObjectClassName = "Basic Object";
+	final public String basicRelationClassName = "Basic Relation";
 
 	/**
 	 * Returns the value of the '<em><b>Diag Objects</b></em>' reference list.

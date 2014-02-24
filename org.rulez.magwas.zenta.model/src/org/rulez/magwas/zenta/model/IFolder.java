@@ -9,6 +9,7 @@ package org.rulez.magwas.zenta.model;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +43,7 @@ public interface IFolder extends IZentaModelElement, IFolderContainer, INameable
 	 *        extendedMetaData="name='element' kind='element'"
 	 * @generated
 	 */
-	EList<EObject> getElements();
+	@NonNull EList<EObject> getElements();
 
 
 } // IFolder

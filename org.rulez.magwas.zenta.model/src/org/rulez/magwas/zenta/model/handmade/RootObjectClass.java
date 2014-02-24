@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
@@ -15,17 +16,24 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 	RootObjectClass(BuiltinTemplate builtinTemplate, @Nullable IBasicObject modelObject, EList<EObject> container) {
 		super();
 		setId(IZentaElement.basicObjectClassId);
-		setName("Basic Object");
+		setName(IZentaElement.basicObjectClassName);
+		addOrReplaceInModel(modelObject, container);
+
+		setAsTemplate(builtinTemplate);
+		if(!(getTemplate() == builtinTemplate)) throw new AssertionError();
+	}
+
+	private void addOrReplaceInModel(@Nullable IBasicObject modelObject,
+			EList<EObject> container) {
 		int i=0;
 		if(modelObject!=null) {
 			this.getChildren().addAll(modelObject.getChildren());
+			IFolder f = (IFolder) modelObject.eContainer();
+			container = f.getElements();
 			i = container.indexOf(modelObject);
 			container.remove(modelObject);
 		}
 		container.add(i, this);
-
-		setAsTemplate(builtinTemplate);
-		if(!(getTemplate() == builtinTemplate)) throw new AssertionError();
 	}
 	
 	@Override

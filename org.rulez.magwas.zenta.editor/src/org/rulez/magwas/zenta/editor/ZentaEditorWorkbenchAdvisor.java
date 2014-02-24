@@ -60,5 +60,6 @@ extends WorkbenchAdvisor
 		return MainPerspective.ID;
 	}
 	public void eventLoopException(Throwable exception) {
+		exception.printStackTrace();
 	}
 }

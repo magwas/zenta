@@ -121,8 +121,10 @@ public interface IBasicObject extends IZentaElement, IObjectClass {
 	 */
 	void setTemplate(ITemplate value);
 
-	@NonNull String getDefiningName();
+	@NonNull
+	String getDefiningName();
 	
+	@NonNull
 	IZentaModel getZentaModel();
 
 

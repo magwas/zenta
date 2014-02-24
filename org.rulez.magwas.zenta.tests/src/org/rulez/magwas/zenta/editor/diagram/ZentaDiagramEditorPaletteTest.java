@@ -14,11 +14,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteEntry;
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.nonnul.NonNullListIterator;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditorPalette;
 import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
@@ -33,6 +35,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.ZentaElementBase;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
@@ -61,9 +64,11 @@ public class ZentaDiagramEditorPaletteTest {
 		EObject element = testdata.getById("2ea99535");
 		assertNotNull(element);
 		
-		List<PaletteEntry> children = getObjectClassPaletteEntries();
-		for(IBasicObject klass : testdata.metamodel.getObjectClasses()) {
-			assertTrue(haveCreatorFor(klass, children));
+		List<PaletteEntry> children = ModelAndEditPartTestData.getObjectClassPaletteEntries(testdata.getEditor());
+		for (NonNullListIterator<IBasicObject> iterator = testdata.metamodel.getObjectClasses().iterator(); iterator
+				.hasNext();) {
+			IBasicObject klass = iterator.next();
+			assertTrue(ModelAndEditPartTestData.haveCreatorFor(klass, children));
 		}
 	}
 	
@@ -219,10 +224,8 @@ public class ZentaDiagramEditorPaletteTest {
 		IBasicObject newElement = testdata.createNewObjectClass(elementName);
 		
 		PaletteContainer objectsgroup = palette._getObjectsGroup();
-		assertNotNull(objectsgroup);
-		@SuppressWarnings("unchecked")
-		List<PaletteEntry> children = objectsgroup.getChildren();
-		assertTrue(haveCreatorFor(newElement, children));
+		List<PaletteEntry> children = getChildrenForRelationsGroup(objectsgroup);
+		assertTrue(ModelAndEditPartTestData.haveCreatorFor(newElement, children));
 	}
 	
 	@Test
@@ -236,11 +239,11 @@ public class ZentaDiagramEditorPaletteTest {
 		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
 		IDiagramModelContainer dia = (IDiagramModelContainer) diagElement.eContainer();
 		
-		List<PaletteEntry> children = getObjectClassPaletteEntries();
-		assertTrue(haveCreatorNamed(ocName, children));
+		List<PaletteEntry> children = ModelAndEditPartTestData.getObjectClassPaletteEntries(testdata.getEditor());
+		assertTrue(ModelAndEditPartTestData.haveCreatorNamed(ocName, children));
 		dia.getChildren().remove(diagElement);
 		assertFalse(element.isTemplate());
-		assertFalse(haveCreatorNamed(ocName, children));
+		assertFalse(ModelAndEditPartTestData.haveCreatorNamed(ocName, children));
 	}
 	@Test
 	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted_from_the_palette() {
@@ -250,8 +253,8 @@ public class ZentaDiagramEditorPaletteTest {
 		IBasicObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
 
-		List<PaletteEntry> children = getObjectClassPaletteEntries();
-		assertTrue(haveCreatorNamed(ocName, children));
+		List<PaletteEntry> children = ModelAndEditPartTestData.getObjectClassPaletteEntries(testdata.getEditor());
+		assertTrue(ModelAndEditPartTestData.haveCreatorNamed(ocName, children));
 		element.getZentaModel().delete(element);
 		boolean thrown = false;
 		try {
@@ -260,7 +263,7 @@ public class ZentaDiagramEditorPaletteTest {
 			thrown = true;
 		}
 		assertTrue(thrown);
-		assertFalse(haveCreatorNamed(ocName, children));
+		assertFalse(ModelAndEditPartTestData.haveCreatorNamed(ocName, children));
 	}
 	@Test
 	public void If_a_new_RelationClass_is_created_it_is_shown_on_the_ViewPoint() {
@@ -269,10 +272,16 @@ public class ZentaDiagramEditorPaletteTest {
 		IBasicRelationship newRelation = testdata.createNewRelationClass("New test RC");
 		assertTrue(newRelation.isTemplate());
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
+		@NonNull List<PaletteEntry> children = getChildrenForRelationsGroup(relationsgroup);
+		assertTrue(ModelAndEditPartTestData.haveCreatorFor(newRelation, children));
+	}
+
+	private @NonNull List<PaletteEntry> getChildrenForRelationsGroup(
+			PaletteContainer relationsgroup) {
 		assertNotNull(relationsgroup);
 		@SuppressWarnings("unchecked")
-		List<PaletteEntry> children = relationsgroup.getChildren();
-		assertTrue(haveCreatorFor(newRelation, children));
+		List<PaletteEntry> children = Util.verifyNonNull(relationsgroup.getChildren());
+		return children;
 	}
 	@Test
 	public void If_a_RelationClass_is_deleted_it_is_removed_from_the_Palette() {
@@ -281,14 +290,12 @@ public class ZentaDiagramEditorPaletteTest {
 		IBasicRelationship newElement = testdata.createNewRelationClass("New test RC");
 		assertTrue(newElement.isTemplate());
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
-		assertNotNull(relationsgroup);
-		@SuppressWarnings("unchecked")
-		List<PaletteEntry> children = relationsgroup.getChildren();
-		assertTrue(haveCreatorFor(newElement, children));
+		List<PaletteEntry> children = getChildrenForRelationsGroup(relationsgroup);
+		assertTrue(ModelAndEditPartTestData.haveCreatorFor(newElement, children));
 		
 		newElement.getZentaModel().delete(newElement);
 		assertFalse(newElement.isTemplate());
-		assertFalse(haveCreatorFor(newElement, children));
+		assertFalse(ModelAndEditPartTestData.haveCreatorFor(newElement, children));
 	}
 	@Test
 	public void A_defining_element_with_a_nondefining_connection_can_be_removed() {
@@ -321,25 +328,4 @@ public class ZentaDiagramEditorPaletteTest {
 		assertEquals(nn-1,kkids.size());
 		assertEquals(n-1,kids.size());
 	}
-
-
-		private boolean haveCreatorFor(IBasicObject klass, List<PaletteEntry> children) {
-			return haveCreatorNamed(klass.getDefiningName(),children);
-		}
-		private boolean haveCreatorNamed(String klass, List<PaletteEntry> children) {
-			for ( PaletteEntry kid : children) {
-				String label = kid.getLabel();
-				if(klass.equals(label))
-					return true;
-			}
-			return false;
-		}
-		private List<PaletteEntry> getObjectClassPaletteEntries() {
-			ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
-			PaletteContainer objectsgroup = palette._getObjectsGroup();
-			assertNotNull(objectsgroup);
-			@SuppressWarnings("unchecked")
-			List<PaletteEntry> children = objectsgroup.getChildren();
-			return children;
-		}
 }

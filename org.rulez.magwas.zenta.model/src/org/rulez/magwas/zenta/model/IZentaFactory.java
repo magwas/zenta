@@ -92,7 +92,7 @@ public interface IZentaFactory extends EFactory {
 	 * @return a new object of class '<em>Basic Relationship</em>'.
 	 * @generated
 	 */
-	IBasicRelationship createBasicRelationship();
+	@NonNull IBasicRelationship createBasicRelationship();
 
 	IDiagramModelReference createDiagramModelReference();
 

@@ -124,7 +124,7 @@ implements IZentaConnectionEditPart {
     
     protected void showStructural() {
         IBasicRelationship relation = getModel().getRelationship();
-        DerivedRelationsUtils drutil = new DerivedRelationsUtils(getModel().getRelationship().getZentaModel());
+        DerivedRelationsUtils drutil = new DerivedRelationsUtils(relation.getZentaModel());
         boolean doHighlight = drutil.isInDerivedChain(relation);
         getFigure().highlight(doHighlight);
     }

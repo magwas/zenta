@@ -8,13 +8,13 @@ package org.rulez.magwas.zenta.editor.ui.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorFactoryExtensionHandler;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorInput;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
@@ -25,6 +25,7 @@ import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.ISketchModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -41,27 +42,24 @@ public class EditorManager {
      * @param input
      * @param editorID
      */
+	@NonNull
     public static IEditorPart openEditor(IEditorInput input, String editorID) {
         IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
         try {
-            return page.openEditor(input, editorID);
-        }
-        catch(PartInitException ex) {
-            Logger.logError("Could not open Editor " + editorID); //$NON-NLS-1$
-            ex.printStackTrace();
-            return null;
-        }
+			return Util.verifyNonNull(page.openEditor(input, editorID));
+		} catch (PartInitException e) {
+			throw new RuntimeException(e);
+		}
     }
 
     /**
      * Open the Diagram Editor for a given DiagramModel Model
      * @param name
      */
-    public static IDiagramModelEditor openDiagramEditor(IDiagramModel model) {
-        if(model == null || model.eContainer() == null) {
-            return null;
-        }
-        
+    public static @NonNull IDiagramModelEditor openDiagramEditor(@NonNull IDiagramModel model) {
+        if(model.eContainer() == null)
+        	throw new IllegalArgumentException();
+
         String id = null;
         IEditorInput editorInput = null;
         
@@ -85,10 +83,11 @@ public class EditorManager {
             throw new RuntimeException("Unsupported model type"); //$NON-NLS-1$
         }
         
+        @NonNull
         IEditorPart part = openEditor(editorInput, id);
         
         // Check it actually is IDiagramModelEditor, it could be an org.eclipse.ui.internal.ErrorEditorPart if an error occurs
-        return part instanceof IDiagramModelEditor ? (IDiagramModelEditor)part : null;
+        return (IDiagramModelEditor) part;
     }
     
     /**

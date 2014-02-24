@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -109,7 +110,8 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
 			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP, newRelationship, newRelationship));
 	}
 
-				@Override
+	@Override
+	@NonNull
     public String getName() {
         if(getRelationship() != null) {
             return getRelationship().getName();
@@ -143,12 +145,8 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
             IBasicRelationship relationship = getRelationship();
             IZentaElement src = ((IDiagramModelZentaObject)source).getZentaElement();
             IZentaElement tgt = ((IDiagramModelZentaObject)target).getZentaElement();
-            if(relationship.getSource() != src) { //optimised
-                relationship.setSource(src); 
-            }
-            if(relationship.getTarget() != tgt) { //optimised
-                relationship.setTarget(tgt);
-            }
+            relationship.setSource(src); 
+            relationship.setTarget(tgt);
         }
     }
 

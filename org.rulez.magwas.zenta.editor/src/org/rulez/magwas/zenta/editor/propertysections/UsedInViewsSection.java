@@ -32,6 +32,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -91,7 +92,8 @@ public class UsedInViewsSection extends AbstractZentaPropertySection {
             }
             
             public Object[] getElements(Object inputElement) {
-                return DiagramModelUtils.findReferencedDiagramsForElement((IZentaElement)inputElement).toArray();
+                IZentaElement ie = Util.verifyNonNull((IZentaElement)inputElement);
+				return DiagramModelUtils.findReferencedDiagramsForElement(ie).toArray();
             }
         });
         

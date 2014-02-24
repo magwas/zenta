@@ -5,6 +5,7 @@
  */
 package org.rulez.magwas.zenta.editor.ui;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.resource.CompositeImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -19,6 +20,7 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.rulez.magwas.zenta.editor.ui.components.CompositeMultiImageDescriptor;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -45,7 +47,12 @@ public class ImageFactory {
      *          the logical name of the image to retrieve
      * @return the shared image represented by the given key
      */
+    @NonNull
     public Image getImage(String imageName) {
+    	Image img = findImage(imageName);
+    	return Util.verifyNonNull(img);
+    }
+    public Image findImage(String imageName) {
         if(imageName == null) {
             throw new IllegalArgumentException("Image name cannot be null"); //$NON-NLS-1$
         }
@@ -77,11 +84,11 @@ public class ImageFactory {
         // Make a registry name, cached
         String key_name = imageName + overlayName + quadrant;
         
-        Image image = getImage(key_name);
+        Image image = findImage(key_name);
         
         // Make it and cache it
         if(image == null) {
-            Image underlay = getImage(imageName);
+            Image underlay = findImage(imageName);
             ImageDescriptor overlay = getImageDescriptor(overlayName);
             if(underlay != null && overlay != null) {
                 image = new DecorationOverlayIcon(underlay, overlay, quadrant).createImage();

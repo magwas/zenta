@@ -8,6 +8,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
@@ -20,10 +21,17 @@ public class RootRelationClass extends RelationClass {
 		setTarget(rootObjectClass);
 		setAsTemplate(builtinTemplate);
 		setId(IZentaElement.basicRelationClassId);
-		setName("Basic Relation");
+		setName(IZentaElement.basicRelationClassName);
+		addOrReplaceInModel(modelRelation, container);
+	}
+
+	private void addOrReplaceInModel(@Nullable IBasicRelationship modelRelation,
+			EList<EObject> container) {
 		int i=0;
 		if(modelRelation!=null) {
 			this.getChildren().addAll(modelRelation.getChildren());
+			IFolder f = (IFolder) modelRelation.eContainer();
+			container = f.getElements();
 			i = container.indexOf(modelRelation);
 			container.remove(modelRelation);
 		}

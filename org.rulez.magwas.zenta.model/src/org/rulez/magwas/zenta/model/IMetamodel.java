@@ -44,7 +44,7 @@ public interface IMetamodel extends EObject {
 	 */
 	EList<ITemplate> getTemplates();
 
-    IZentaModel getModel();
+    @NonNull IZentaModel getModel();
     
     @NonNull IBasicObject getClassById(@NonNull String classId);
     @NonNull IBasicObject getBuiltinObjectClass();

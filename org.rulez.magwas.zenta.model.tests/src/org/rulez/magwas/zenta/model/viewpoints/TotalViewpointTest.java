@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -88,6 +89,7 @@ public class TotalViewpointTest {
 	public void Root_RelationClass_connects_to_everything() {
 		IBasicRelationship builtinRelationClass = testdata.metamodel.getBuiltinRelationClass();
 		Collection<IBasicObject> targets = builtinRelationClass.getAllowedTargets();
+		@NonNull
 		HashSet<String> expectedTargets = ModelTestUtils.definingNames(testdata.metamodel.getObjectClasses());
 		ModelTestUtils.assertEqualsAsSet(expectedTargets,ModelTestUtils.definingNames(targets));
 	}

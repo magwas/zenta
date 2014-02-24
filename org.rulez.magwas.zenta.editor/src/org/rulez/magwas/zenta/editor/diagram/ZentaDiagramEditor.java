@@ -171,7 +171,7 @@ implements IZentaDiagramEditor {
         
         for(IZentaElement element : elements) {
             // Find Diagram Components
-            for(IDiagramModelComponent dc : DiagramModelUtils.findDiagramModelComponentsForElement(getModel(), element)) {
+            for(IDiagramModelComponent dc : element.getDiagObjects()) {
                 EditPart editPart = (EditPart)getGraphicalViewer().getEditPartRegistry().get(dc);
                 if(editPart != null && editPart.isSelectable() && !editParts.contains(editPart)) {
                     editParts.add(editPart);
@@ -180,16 +180,21 @@ implements IZentaDiagramEditor {
             
             // Find Components from nested connections
             if(ConnectionPreferences.useNestedConnections() && element instanceof IBasicRelationship) {
-                for(IDiagramModelZentaObject[] list : DiagramModelUtils.findNestedComponentsForRelationship(getModel(), (IBasicRelationship)element)) {
-                    EditPart editPart1 = (EditPart)getGraphicalViewer().getEditPartRegistry().get(list[0]);
-                    EditPart editPart2 = (EditPart)getGraphicalViewer().getEditPartRegistry().get(list[1]);
+                List<IDiagramModelZentaObject> findNestedComponentsForRelationship = DiagramModelUtils.findNestedComponentsForRelationship( (IBasicRelationship)element);
+				for (int i = 0; i < findNestedComponentsForRelationship.size(); i+=2) {
+					IDiagramModelZentaObject src = findNestedComponentsForRelationship
+							.get(i);
+					IDiagramModelZentaObject tgt = findNestedComponentsForRelationship
+							.get(i+1);
+					EditPart editPart1 = (EditPart)getGraphicalViewer().getEditPartRegistry().get(src);
+                    EditPart editPart2 = (EditPart)getGraphicalViewer().getEditPartRegistry().get(tgt);
                     if(editPart1 != null && editPart1.isSelectable() && !editParts.contains(editPart1)) {
                         editParts.add(editPart1);
                     }
                     if(editPart2 != null && editPart2.isSelectable() && !editParts.contains(editPart2)) {
                         editParts.add(editPart2);
                     }
-                }
+				}
             }
         }
         

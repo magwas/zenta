@@ -3,11 +3,14 @@ package org.rulez.magwas.zenta.tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.util.Policy;
@@ -15,9 +18,11 @@ import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditorPalette;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -128,10 +133,32 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 	}
 
 	public ZentaDiagramEditor getEditor() {
-		return editor;
+		return Util.verifyNonNull(editor);
 	}
 
 	public void setEditor(ZentaDiagramEditor editor) {
 		this.editor = editor;
+	}
+
+	public static boolean haveCreatorFor(IBasicObject klass, List<PaletteEntry> children) {
+		return haveCreatorNamed(klass.getDefiningName(),children);
+	}
+
+	public static boolean haveCreatorNamed(String klass, List<PaletteEntry> children) {
+		for ( PaletteEntry kid : children) {
+			String label = kid.getLabel();
+			if(klass.equals(label))
+				return true;
+		}
+		return false;
+	}
+
+	public static List<PaletteEntry> getObjectClassPaletteEntries(ZentaDiagramEditor editor) {
+		ZentaDiagramEditorPalette palette = editor.getPaletteRoot();
+		PaletteContainer objectsgroup = palette._getObjectsGroup();
+		assertNotNull(objectsgroup);
+		@SuppressWarnings("unchecked")
+		List<PaletteEntry> children = objectsgroup.getChildren();
+		return Util.verifyNonNull(children);
 	}
 }

@@ -167,9 +167,11 @@ public class TreeViewpointFilterProvider implements IPartListener {
                 IZentaModel model = ((IZentaElement)element).getZentaModel();
                 if(model == fActiveDiagramModel.getZentaModel()) {
                     if(element instanceof IBasicRelationship) {
+                    	if (!((IBasicRelationship) element).isConnected())
+                            return ColorFactory.get(255, 0, 0);
                         IBasicObject source = (IBasicObject) ((IBasicRelationship)element).getSource();
                         IBasicObject target = (IBasicObject) ((IBasicRelationship)element).getTarget();
-                        if( source == null|| target == null ||!viewpoint.isAllowedType(source) || !viewpoint.isAllowedType(target)) {
+                        if( !viewpoint.isAllowedType(source) || !viewpoint.isAllowedType(target)) {
                             return ColorFactory.get(128, 128, 128);
                         }
                     }

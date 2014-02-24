@@ -1,28 +1,40 @@
 package org.rulez.magwas.zenta.editor.views.tree.actions;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.junit.Test;
-import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.testutils.TestModel;
+import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
+import org.rulez.magwas.zenta.tests.HaveGUI;
+import org.rulez.magwas.zenta.tests.UITestWindow;
 
 public class OpenDiagramActionTest {
 	@Test
-	public void When_a_view_displayed_and_objects_moved_objects_are_not_dropped_out() {
+	@HaveGUI(waitUser = false)
+	public void When_a_view_displayed_and_objects_moved_objects_are_not_dropped_out() throws IOException {
+		UITestWindow win = new UITestWindow();
+
 		TestModel builder = new TestModel();
 		builder.createFirstGeneration();
 		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		builder.createThirdGenerationWithRelation();
 		IZentaModel model = builder.getModel();
 		assertNotNull(model);
 		IEditorModelManager.INSTANCE.openModel(model);
@@ -32,32 +44,39 @@ public class OpenDiagramActionTest {
 		OpenDiagramAction action = new OpenDiagramAction((ISelectionProvider) treeView.getViewer());
 		
 		assertTrue(builder.secondgenSource.isTemplate());
-		assertEquals(2, builder.secondgenSource.getDiagObjects().size());
-		IDiagramModelZentaObject diagobj1 = builder.secondgenSource.getDiagObjects().get(0);
-		IDiagramModelZentaObject diagobj2 = builder.secondgenSource.getDiagObjects().get(1);
+		assertEquals(1, builder.secondgenSource.getDiagObjects().size());
 		
 		action.run();
+
 		IFolder newFolder = IZentaFactory.eINSTANCE.createFolder();
 		newFolder.setName("newFolder");
 		builder.folder.getFolders().add(newFolder);
 		newFolder.getElements().add(builder.secondgenSource);
 		assertTrue(builder.secondgenSource.isTemplate());
 		assertTrue(builder.firstgenSource.isTemplate());
-		assertTrue(builder.firstgenRelation.isTemplate());
+		assertTrue(builder.getFirstgenRelation().isTemplate());
 
 		newFolder.getElements().add(builder.firstgenSource);
 		
-		assertTrue(builder.secondgenSource.isTemplate());
-		assertTrue(builder.firstgenSource.isTemplate());
-		assertTrue(builder.firstgenRelation.isTemplate());
+		builder.assertMetaIsOK();
 
-		assertEquals("newFolder", ((IFolder)builder.secondgenSource.eContainer()).getName());
-		assertEquals(2, builder.secondgenSource.getDiagObjects().size());
-		assertEquals(diagobj1, builder.secondgenSource.getDiagObjects().get(0));
-		assertEquals(diagobj2, builder.secondgenSource.getDiagObjects().get(1));
-		IMetamodel mm = builder.getMetamodel();
-		NonNullList<IBasicRelationship> rcss2 = mm.getRelationClasses();
-		builder.assertIsAllThirdGenRelations(rcss2);
+		File file = new File("/tmp/foo.zenta");
+		ZentaModelUtils.saveModelToXMLFile(builder.getModel(), file);
+	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
+	    Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
+        resource.load(null);
+	    IZentaModel model2 = (IZentaModel)resource.getContents().get(0);
+	    model2.getMetamodel();
+	    File file2 = new File("/tmp/bar.zenta");
+		ZentaModelUtils.saveModelToXMLFile(model2, file2);
+		
+		@SuppressWarnings("null")
+		String string1 = Util.readFile(file.getAbsolutePath());
+		@SuppressWarnings("null")
+		String string2 = Util.readFile(file2.getAbsolutePath());
+		assertEquals(string1,string2);
+		IEditorModelManager.INSTANCE.openModel(model2);
+		win.showWindow();
 
 	}
 

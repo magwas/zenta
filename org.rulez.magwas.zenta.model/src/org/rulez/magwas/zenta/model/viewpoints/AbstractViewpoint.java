@@ -6,7 +6,6 @@
 package org.rulez.magwas.zenta.model.viewpoints;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -170,9 +169,9 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public Collection<IBasicObject> getAllowedTargets(IBasicRelationship oc) {
+	public NonNullList<IBasicObject> getAllowedTargets(IBasicRelationship oc) {
 	    List<IBasicRelationship> allowedRelations = oc.getAllowedRelations().get(Direction.SOURCE);
-	    List<IBasicObject> canConnectTo = new ArrayList<IBasicObject>();
+	    NonNullList<IBasicObject> canConnectTo = new NonNullArrayList<IBasicObject>();
 	    for(IBasicRelationship rel : allowedRelations)
 	        for(IBasicObject targetclass : metamodel.getObjectClasses()) {
 	            boolean alreadyContains = canConnectTo.contains(targetclass);
@@ -184,8 +183,8 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public Collection<IBasicObject> getAllowedTargets(IBasicObject oc) {
-		List<IBasicObject> ret = new ArrayList<IBasicObject>();
+	public NonNullList<IBasicObject> getAllowedTargets(IBasicObject oc) {
+		NonNullList<IBasicObject> ret = new NonNullArrayList<IBasicObject>();
 		Map<Direction, NonNullList<IBasicRelationship>> rels = oc.getAllowedRelations();
 		for(IBasicRelationship rel : rels.get(Direction.SOURCE)) {
 			for(IBasicObject target: rel.getAllowedTargets())

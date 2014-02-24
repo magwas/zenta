@@ -5,6 +5,8 @@
  */
 package org.rulez.magwas.zenta.model.handmade.util;
 
+import java.util.Iterator;
+
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
@@ -45,7 +47,7 @@ public class DerivedRelationsUtils {
         
         // Get relations from source element
         IZentaElement source = relation.getSource();
-        if(source != null && source.getZentaModel() != null) { // An important guard because the element might have been deleted
+        if(source != null ) { // An important guard because the element might have been deleted
             for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(source).iterator(); iterator
 					.hasNext();) {
 				@NonNull
@@ -73,7 +75,7 @@ public class DerivedRelationsUtils {
         
         // Get relations from target element
         IZentaElement target = relation.getTarget();
-        if(target != null && target.getZentaModel() != null) { // An important guard because the element might have been deleted
+        if(target != null) { // An important guard because the element might have been deleted
             for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(target).iterator(); iterator
 					.hasNext();) {
 				IBasicRelationship rel = iterator.next();
@@ -249,20 +251,20 @@ public class DerivedRelationsUtils {
      * @throws TooComplicatedException 
      */
     private NonNullList<NonNullList<IBasicRelationship>> findChains(IZentaElement sourceElement, IZentaElement targetElement) throws TooComplicatedException {
-        finalTarget = targetElement;
+        setFinalTarget(targetElement);
         temp_chain = new NonNullArrayList<IBasicRelationship>();
-        chains = new NonNullArrayList<NonNullList<IBasicRelationship>>();
+        setChains(new NonNullArrayList<NonNullList<IBasicRelationship>>());
         weakestFound = weaklist.size();
         iterations = 0;
         
         // Easy win check
         if(!_hasTargetElementValidRelations(targetElement)) {
-            return chains;
+            return getChains();
         }
         
         _traverse(sourceElement);
         
-        return chains;
+        return getChains();
     }
     
     private void _traverse(IZentaElement element) throws TooComplicatedException {
@@ -278,23 +280,21 @@ public class DerivedRelationsUtils {
         
         //System.out.println("TRAVERSING FROM: " + element.getName());
         
-        /*
-         * Traverse thru source relationships first
-         */
-        for(IBasicRelationship rel : ZentaModelUtils.getSourceRelationships(element)) {
-            if(isStructuralRelationship(rel)) {
+        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(element).iterator(); iterator
+				.hasNext();) {
+			IBasicRelationship rel = iterator.next();
+			if(isStructuralRelationship(rel)) {
                 _addRelationshipToTempChain(rel, true);
             }
-        }
+		}
         
-        /*
-         * Then thru the Bi-directional target relationships
-         */
-        for(IBasicRelationship rel : ZentaModelUtils.getTargetRelationships(element)) {
-            if(isBidirectionalRelationship(rel)) {
+        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(element).iterator(); iterator
+				.hasNext();) {
+			IBasicRelationship rel = iterator.next();
+			if(isBidirectionalRelationship(rel)) {
                 _addRelationshipToTempChain(rel, false);
             }
-        }
+		}
     }
 
     private void _addRelationshipToTempChain(IBasicRelationship relation, boolean forwards) throws TooComplicatedException {
@@ -305,19 +305,20 @@ public class DerivedRelationsUtils {
         }
         
         // If we get the target element we are traversing fowards, otherwise backwards from a bi-directional check
+        @NonNull
         IZentaElement element = forwards ? relation.getTarget() : relation.getSource();
         
         // Arrived at target
-        if(finalTarget == element) {
+        if(getFinalTarget() == element) {
             if(temp_chain.size() > 0) { // Only chains of length 2 or greater
                 //System.out.println("Reached target from: " + element.getName());
                 NonNullList<IBasicRelationship> chain = new NonNullArrayList<IBasicRelationship>(temp_chain); // make a copy because temp_chain will have relation removed, below
                 chain.add(relation);
                 
                 // Duplicate check - there must be a loop?
-                if(_containsChain(chain, chains)) {
+                if(_containsChain(chain, getChains())) {
                     System.err.println("Duplicate chain:"); //$NON-NLS-1$
-                    _printChain(chain, finalTarget);
+                    _printChain(chain, getFinalTarget());
                 }
 
                 IBasicRelationship weakest = getWeakestType(chain);
@@ -326,7 +327,7 @@ public class DerivedRelationsUtils {
                     weakestFound = index;
                 }
 
-                chains.add(chain);
+                getChains().add(chain);
             }
         }
         // Move onto next element in chain
@@ -344,17 +345,21 @@ public class DerivedRelationsUtils {
      * bi-directional relationships then don't bother traversing.
      */
     private boolean _hasTargetElementValidRelations(IZentaElement targetElement) {
-        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(targetElement)) {
-            if(isBidirectionalRelationship(relation)) {
+        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(targetElement).iterator(); iterator
+				.hasNext();) {
+			IBasicRelationship relation = iterator.next();
+			if(isBidirectionalRelationship(relation)) {
                 return true;
             }
-        }
+		}
         
-        for(IBasicRelationship relation : ZentaModelUtils.getTargetRelationships(targetElement)) {
-            if(isStructuralRelationship(relation)) {
+        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(targetElement).iterator(); iterator
+				.hasNext();) {
+			IBasicRelationship relation = iterator.next();
+			if(isStructuralRelationship(relation)) {
                 return true;
             }
-        }
+		}
         
         return false;
     }
@@ -418,4 +423,20 @@ public class DerivedRelationsUtils {
             return relation.getSource().getName();
         }
     }
+
+	public NonNullList<NonNullList<IBasicRelationship>> getChains() {
+		return chains;
+	}
+
+	public void setChains(NonNullList<NonNullList<IBasicRelationship>> chains) {
+		this.chains = chains;
+	}
+
+	public IZentaElement getFinalTarget() {
+		return finalTarget;
+	}
+
+	public void setFinalTarget(IZentaElement finalTarget) {
+		this.finalTarget = finalTarget;
+	}
 }

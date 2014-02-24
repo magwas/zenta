@@ -218,7 +218,7 @@ public class TreeModelViewer extends TreeViewer {
                 }
             }
             
-            if(element instanceof IBasicRelationship) {
+            if(element instanceof IBasicRelationship && ((IBasicRelationship) element).isConnected()) {
                 IBasicRelationship relationship = (IBasicRelationship)element;
                 name += " ("; //$NON-NLS-1$
                 name += ZentaLabelProvider.INSTANCE.getLabel(relationship.getSource());
