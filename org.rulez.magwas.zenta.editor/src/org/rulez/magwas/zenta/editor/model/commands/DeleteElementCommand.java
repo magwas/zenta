@@ -9,7 +9,6 @@ import org.eclipse.gef.commands.Command;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.IZentaModel.ElementState;
 
 
 
@@ -20,7 +19,7 @@ import org.rulez.magwas.zenta.model.IZentaModel.ElementState;
  */
 public class DeleteElementCommand extends Command {
     
-	private ElementState save = new ElementState();
+	private IZentaElement.ElementState save = new IZentaElement.ElementState();
 
     public DeleteElementCommand(IZentaElement element) {
     	save.folder = (IFolder)element.eContainer();
@@ -30,13 +29,13 @@ public class DeleteElementCommand extends Command {
     
     @Override
     public void execute() {
-    	save.folder.getZentaModel().delete(save);
+    	save.element.delete(save);
     }
     
     @Override
     public void undo() {
         if(save.index != -1) { 
-        	save.folder.getZentaModel().undelete(save);
+        	save.undelete();
         }
     }
     

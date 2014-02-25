@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.UndoState;
 
 
 /**
@@ -177,4 +179,14 @@ public class ZentaDiagramModelBase extends DiagramModelBase implements IZentaDia
                     ret.add(prop.getValue());
             return ret;
         }
+
+		@Override
+		public UndoState delete() {
+			throw new UnTestedException();
+		}
+
+		@Override
+		public UndoState delete(UndoState save) {
+			throw new UnTestedException();
+		}
 } //ZentaDiagramModel

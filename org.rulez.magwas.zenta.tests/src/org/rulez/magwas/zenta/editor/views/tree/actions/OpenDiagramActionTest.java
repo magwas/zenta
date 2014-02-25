@@ -44,7 +44,7 @@ public class OpenDiagramActionTest {
 		OpenDiagramAction action = new OpenDiagramAction((ISelectionProvider) treeView.getViewer());
 		
 		assertTrue(builder.secondgenSource.isTemplate());
-		assertEquals(1, builder.secondgenSource.getDiagObjects().size());
+		assertEquals(1, builder.secondgenSource.getDiagComponents().size());
 		
 		action.run();
 

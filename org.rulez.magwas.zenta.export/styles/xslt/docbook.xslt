@@ -7,9 +7,6 @@
 	xmlns:report="http://magwas.rulez.org/my"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:fn="http://www.w3.org/2005/xpath-functions">
-<!--FIXME:
-	xmlns:canvas="http://magwas.rulez.org/zenta/canvas"
--->
 
 	<xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" omit-xml-declaration="no"/>
 

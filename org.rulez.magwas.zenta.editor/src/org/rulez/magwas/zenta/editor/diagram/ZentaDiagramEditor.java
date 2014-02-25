@@ -171,7 +171,7 @@ implements IZentaDiagramEditor {
         
         for(IZentaElement element : elements) {
             // Find Diagram Components
-            for(IDiagramModelComponent dc : element.getDiagObjects()) {
+            for(IDiagramModelComponent dc : element.getDiagComponents()) {
                 EditPart editPart = (EditPart)getGraphicalViewer().getEditPartRegistry().get(dc);
                 if(editPart != null && editPart.isSelectable() && !editParts.contains(editPart)) {
                     editParts.add(editPart);

@@ -255,8 +255,7 @@ public class RelationClassTest {
 		assertNotNull(dmo);
 		IBasicObject oc = metamodel.getClassById(elemId);
 		assertNotNull(oc);
-		IZentaModel model = element.getZentaModel();
-		model.delete(element);
+		element.delete();
 		boolean thrown = false;
 		try {
 			metamodel.getClassById(elemId);

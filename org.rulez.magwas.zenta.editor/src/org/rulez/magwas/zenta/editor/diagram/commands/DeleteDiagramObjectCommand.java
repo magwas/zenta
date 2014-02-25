@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.diagram.commands;
 
 import org.eclipse.gef.commands.Command;
-import org.rulez.magwas.zenta.model.IDiagramModel.DiagramModelObjectState;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent.DiagramModelObjectState;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
@@ -40,12 +40,12 @@ class DeleteDiagramObjectCommand extends Command {
     
     @Override
     public void execute() {
-    	save.parent.getDiagramModel().deleteDiagramObject(save);
+    	save.object.delete(save);
     }
     
     @Override
     public void undo() {
-    	save.parent.getDiagramModel().undeleteDiagramObject(save);
+    	save.undelete();
     }
     @Override
     public void dispose() {

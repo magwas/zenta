@@ -74,7 +74,7 @@ public class ModelTest {
 		builder.createFirstGeneration();
 		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
 		builder.createThirdGeneration();
-	    String dmoid = builder.getFirstgenSource().getDiagObjects().get(0).getId();
+	    String dmoid = builder.getFirstgenSource().getDiagComponents().get(0).getId();
 
 		File file = new File("/tmp/foo.zenta");
 		ZentaModelUtils.saveModelToXMLFile(builder.getModel(), file);
@@ -276,14 +276,14 @@ public class ModelTest {
 		newFolder.setName("newFolder");
 		builder.folder.getFolders().add(newFolder);
 		
-		assertEquals(1, builder.secondgenSource.getDiagObjects().size());
-		IDiagramModelZentaObject diagobj1 = builder.secondgenSource.getDiagObjects().get(0);
+		assertEquals(1, builder.secondgenSource.getDiagComponents().size());
+		IDiagramModelZentaObject diagobj1 = (IDiagramModelZentaObject) builder.secondgenSource.getDiagComponents().get(0);
 		
 		newFolder.getElements().add(builder.secondgenSource);
 		
 		assertEquals("newFolder", ((IFolder)builder.secondgenSource.eContainer()).getName());
-		assertEquals(1, builder.secondgenSource.getDiagObjects().size());
-		assertEquals(diagobj1, builder.secondgenSource.getDiagObjects().get(0));
+		assertEquals(1, builder.secondgenSource.getDiagComponents().size());
+		assertEquals(diagobj1, builder.secondgenSource.getDiagComponents().get(0));
 		
 		IMetamodel mm = builder.getFirstgenTarget().getZentaModel().getMetamodel();
 		NonNullList<IBasicRelationship> rcss = mm.getRelationClasses();
@@ -296,8 +296,8 @@ public class ModelTest {
 		assertTrue(builder.getFirstgenRelation().isTemplate());
 
 		assertEquals("newFolder", ((IFolder)builder.secondgenSource.eContainer()).getName());
-		assertEquals(1, builder.secondgenSource.getDiagObjects().size());
-		assertEquals(diagobj1, builder.secondgenSource.getDiagObjects().get(0));
+		assertEquals(1, builder.secondgenSource.getDiagComponents().size());
+		assertEquals(diagobj1, builder.secondgenSource.getDiagComponents().get(0));
 		
 		NonNullList<IBasicRelationship> rcss2 = mm.getRelationClasses();
 		builder.assertIsAllSecondGenRelations(rcss2);

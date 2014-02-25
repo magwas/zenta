@@ -64,6 +64,7 @@ public class BasicConnectionEditPartTest {
 		assertNotNull(rel);
 		assertNotSame(rel,rel.getDefiningElement());
 		testdata.focusOnDiagram("63f1b081");
+		@SuppressWarnings("null")
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
 		assertNotNull(editPart);
 		assertTrue(editPart.getFigure().isEnabled());
@@ -102,7 +103,8 @@ public class BasicConnectionEditPartTest {
 		assertNotNull(rel);
 		assertFalse(rel.isTemplate());
 		testdata.focusOnDiagram("63f1b081");
-		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
+		@SuppressWarnings("null")
+		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagComponents().get(0));
 		assertNotNull(editPart);
 		ToolTipFigure toolTip = (ToolTipFigure) editPart.getFigure().getToolTip();
 		assertEquals("Displayable Relation Name",toolTip.getText());
@@ -118,7 +120,8 @@ public class BasicConnectionEditPartTest {
 		assertNotNull(rel);
 		assertTrue(rel.isTemplate());
 		testdata.focusOnDiagram(dm.getId());
-		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
+		@SuppressWarnings("null")
+		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagComponents().get(0));
 		assertNotNull(editPart);
 		ToolTipFigure toolTip = (ToolTipFigure) editPart.getFigure().getToolTip();
 		assertEquals("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",toolTip.getText());

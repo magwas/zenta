@@ -6,6 +6,7 @@
  */
 package org.rulez.magwas.zenta.model;
 
+
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -32,6 +33,19 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAttribute, IProperties, IDocumentable {
+	public class DiagramModelConnectionState implements UndoState {
+		public IDiagramModelConnection object;
+
+		public void undelete() {
+			object.reconnect();
+		}
+	}
+	@Override
+	UndoState delete();
+	@Override
+	UndoState delete(UndoState save);
+
+	
     /**
      * Text Position at source
      */

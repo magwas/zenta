@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.IDiagramModel.DiagramModelObjectState;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -283,11 +282,11 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     @NonNull
     public String getName() {
-		return name;
+		return Util.verifyNonNull(name);
 	}
 
     /**
@@ -740,41 +739,6 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 		return IZentaFactory.eINSTANCE.getMetamodelFor(this);
 	}
 
-	@Override
-	public ElementState delete(ElementState state) {
-		state.diagobjs = new ArrayList<DiagramModelObjectState>();
-		IZentaElement element = state.element;
 
-        state.index = state.folder.getElements().indexOf(element); 
-        deleteDiagramObjects(state, element);
-        if(state.index != -1) { 
-            state.folder.getElements().remove(element);
-        }
-        return state;
-	}
-		private void deleteDiagramObjects(ElementState state, IZentaElement element) {
-			List<IDiagramModelComponent> dmos = new ArrayList<IDiagramModelComponent>();
-			if (element instanceof IBasicRelationship)
-				dmos.addAll(((IBasicRelationship) element).getDiagConnections());
-			else
-				dmos.addAll(element.getDiagObjects());
-			for(IDiagramModelComponent dmo : dmos)
-	        	state.diagobjs.add(dmo.getDiagramModel().deleteDiagramObject(dmo));
-		}
-
-	@Override
-	public void delete(IZentaElement element) {
-		ElementState state = new ElementState();
-		state.element = element;
-		state.folder = (IFolder) element.eContainer();
-		delete(state);
-	}
-
-	@Override
-	public void undelete(ElementState state) {
-        state.folder.getElements().add(state.index, state.element);
-		for(DiagramModelObjectState dmost : state.diagobjs)
-			dmost.parent.getDiagramModel().undeleteDiagramObject(dmost);
-	}
 
 } //ZentaModel

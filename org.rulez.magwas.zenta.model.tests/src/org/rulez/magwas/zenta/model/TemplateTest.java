@@ -111,7 +111,7 @@ public class TemplateTest {
 		IBasicObject obj = (IBasicObject) Util.verifyNonNull(ZentaModelUtils.getObjectByID(testdata.getModel(), "ea94cf6c"));
 		assertTrue(obj.isTemplate());
 		IDiagramModel dm = obj.getTemplate().getDiagram();
-		for(IDiagramModelZentaObject dmo : obj.getDiagObjects())
+		for(IDiagramModelComponent dmo : obj.getDiagComponents())
 			if(dmo.getDiagramModel().equals(dm))
 				((IDiagramModelContainer)dmo.eContainer()).getChildren().remove(dmo);
 		assertTrue(obj.isTemplate());

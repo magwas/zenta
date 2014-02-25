@@ -24,6 +24,7 @@ import org.rulez.magwas.zenta.model.IDocumentable;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.UndoState;
 
 
 /**
@@ -976,6 +977,21 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 		result.append(type);
 		result.append(')');
 		return result.toString();
+	}
+	@Override
+	public UndoState delete() {
+		DiagramModelConnectionState save = new DiagramModelConnectionState();
+		save.object = this;
+		delete(save);
+		return save;
+	}
+
+	@Override
+	public UndoState delete(UndoState s) {
+		DiagramModelConnectionState save = (DiagramModelConnectionState) s;
+		IDiagramModelConnection conn = (IDiagramModelConnection) save.object;
+		conn.disconnect();
+		return (DiagramModelConnectionState) save;
 	}
 
 } //DiagramModelConnection

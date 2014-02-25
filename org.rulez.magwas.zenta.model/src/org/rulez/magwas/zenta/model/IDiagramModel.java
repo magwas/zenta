@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import java.util.List;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -26,15 +24,6 @@ import java.util.List;
  * @generated
  */
 public interface IDiagramModel extends IZentaModelElement, IDiagramModelContainer, IDocumentable, IProperties {
-	public class DiagramModelObjectState {
-
-		public List<IDiagramModelConnection> sourceConnections;
-		public List<IDiagramModelConnection> targetConnections;
-		public int index;
-		public IDiagramModelComponent parent;
-		public IDiagramModelComponent object;
-
-	}
 
 
     /*
@@ -73,11 +62,5 @@ public interface IDiagramModel extends IZentaModelElement, IDiagramModelContaine
 	void setConnectionRouterType(int value);
 
     boolean isTemplate();
-
-    DiagramModelObjectState deleteDiagramObject(DiagramModelObjectState save);
-
-	void undeleteDiagramObject(DiagramModelObjectState save);
-
-	DiagramModelObjectState deleteDiagramObject(IDiagramModelComponent object);
 
 } // IDiagramModel

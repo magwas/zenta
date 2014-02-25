@@ -36,7 +36,7 @@ public class DiagramModelUtils {
     
     public static List<IDiagramModel> findReferencedDiagramsForElement(IZentaElement element) {
         ArrayList<IDiagramModel> results = new ArrayList<IDiagramModel>();
-        for ( IDiagramModelZentaObject dm : element.getDiagObjects())
+        for ( IDiagramModelComponent dm : element.getDiagComponents())
         	if(!results.contains(dm.getDiagramModel()))
         		results.add(dm.getDiagramModel());
         if(element instanceof IBasicRelationship && ConnectionPreferences.useNestedConnections())
@@ -208,8 +208,8 @@ public class DiagramModelUtils {
     	IZentaElement src = relation.getSource();
         IZentaElement tgt = relation.getTarget();
         
-        List<IDiagramModelZentaObject> srcList = src.getDiagObjects();
-        List<IDiagramModelZentaObject> tgtList = tgt.getDiagObjects();
+        List<IDiagramModelZentaObject> srcList = (List<IDiagramModelZentaObject>) src.getDiagComponents();
+        List<IDiagramModelZentaObject> tgtList = (List<IDiagramModelZentaObject>) tgt.getDiagComponents();
         
         
         for(IDiagramModelZentaObject dmo1 : srcList) {

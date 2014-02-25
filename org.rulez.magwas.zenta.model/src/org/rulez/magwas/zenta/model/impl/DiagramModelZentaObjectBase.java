@@ -471,9 +471,4 @@ public class DiagramModelZentaObjectBase extends DiagramModelObjectBase implemen
     	IBasicObject element = (IBasicObject) getZentaElement();
         return element.getDefiningElement();
     }
-	@Override
-	public void refreshVisuals() {
-		// TODO Auto-generated method stub
-		// somehow issue the right nitification
-	}
 }

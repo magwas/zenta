@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,18 +31,13 @@ import org.eclipse.emf.ecore.EAttribute;
  */
 public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneable, INameable, IDocumentable, IProperties {
 
-	final String basicObjectClassId = "basicobject";
-	final String basicRelationClassId = "basicrelation";
-	final public String basicObjectClassName = "Basic Object";
-	final public String basicRelationClassName = "Basic Relation";
-
 	/**
 	 * Returns the value of the '<em><b>Diag Objects</b></em>' reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IDiagramModelZentaObject}.
 	 * It is bidirectional and its opposite is '{@link org.rulez.magwas.zenta.model.IDiagramModelZentaObject#getZentaElement <em>Zenta Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Diag Objects</em>' reference isn't clear,
+	 * If the meaning of the '<em>Diag Objects</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -53,6 +49,25 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	 */
 	EList<IDiagramModelZentaObject> getDiagObjects();
 
+
+	public class ElementState implements UndoState {
+		public IFolder folder;
+		public IZentaElement element;
+		public int index;
+		public List<UndoState> diagobjs;
+		public void undelete() {
+	        folder.getElements().add(index, element);
+			for(UndoState dmost : diagobjs)
+				dmost.undelete();
+		}
+
+	}
+
+	final String basicObjectClassId = "basicobject";
+	final String basicRelationClassId = "basicrelation";
+	final public String basicObjectClassName = "Basic Object";
+	final public String basicRelationClassName = "Basic Relation";
+
 	Map<String, EAttribute> getObjectAppearanceProperties();
 
 	List<String> getPropertyNamed(String propname);
@@ -60,5 +75,13 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	void setPropsFromDiagramObject(IDiagramModelComponent dmo);
 	
 	void addOrUpdateProperty(String key, String value);
+
+	void delete();
+	
+	void delete(ElementState state);
+	
+	@NonNull
+	EList<? extends IDiagramModelComponent> getDiagComponents();
+
 
 } // IZentaElement

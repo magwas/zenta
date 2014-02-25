@@ -6,6 +6,8 @@
  */
 package org.rulez.magwas.zenta.model;
 
+import java.util.List;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +26,41 @@ package org.rulez.magwas.zenta.model;
  * @generated
  */
 public interface IDiagramModelComponent extends IIdentifier, ICloneable, IAdapter, INameable {
+	public class DiagramModelObjectState implements UndoState {
+
+		public List<IDiagramModelConnection> sourceConnections;
+		public List<IDiagramModelConnection> targetConnections;
+		public int index;
+		public IDiagramModelContainer parent;
+		public IDiagramModelObject object;
+
+		public void undelete() {
+			undeleteObjectFromContainer();
+		}
+
+			private void undeleteObjectFromContainer() {
+				if(index != -1) { 
+					parent.getChildren().add(index,object);
+		        }
+		        
+		        addConnections(sourceConnections);
+		        addConnections(targetConnections);
+		        
+		        sourceConnections.clear();
+		        targetConnections.clear();
+			}
+		
+			    private void addConnections(List<IDiagramModelConnection> connections) {
+			        for(IDiagramModelConnection conn : connections) {
+			            conn.reconnect();
+			        }
+			    }
+
+
+	}
+	UndoState delete();
+	UndoState delete(UndoState save);
+
 	/**
 	 * Returns the value of the '<em><b>Diagram Model</b></em>' reference.
 	 * <!-- begin-user-doc -->

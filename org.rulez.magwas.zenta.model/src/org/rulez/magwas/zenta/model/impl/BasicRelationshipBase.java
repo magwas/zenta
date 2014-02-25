@@ -135,6 +135,8 @@ abstract public class BasicRelationshipBase extends BasicObjectBase implements I
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("null")
+	@NonNull
 	public EList<IDiagramModelZentaConnection> getDiagConnections() {
 		if (diagConnections == null) {
 			diagConnections = new EObjectWithInverseResolvingEList<IDiagramModelZentaConnection>(IDiagramModelZentaConnection.class, this, IZentaPackage.BASIC_RELATIONSHIP__DIAG_CONNECTIONS, IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP);

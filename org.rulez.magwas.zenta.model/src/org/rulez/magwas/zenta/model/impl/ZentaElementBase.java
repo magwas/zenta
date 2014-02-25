@@ -29,6 +29,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -40,6 +41,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -164,11 +166,11 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     @NonNull
     public String getName() {
-		return name;
+		return Util.verifyNonNull(name);
 	}
 
     /**
@@ -227,6 +229,8 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
 	public EList<IDiagramModelZentaObject> getDiagObjects() {
 		if (diagObjects == null) {
 			diagObjects = new EObjectWithInverseResolvingEList<IDiagramModelZentaObject>(IDiagramModelZentaObject.class, this, IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS, IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT);
@@ -597,5 +601,39 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 				prop.setValue(value);
 				propertiess.add(prop);
 			}
+
+		@Override
+		public void delete() {
+			ElementState state = new ElementState();
+			state.element = this;
+			state.folder = (IFolder) eContainer();
+			delete(state);
+		}
+
+		@Override
+		public void delete(ElementState state) {
+			state.diagobjs = new ArrayList<UndoState>();
+			
+			state.index = state.folder.getElements().indexOf(this); 
+			deleteDiagramObjects(state);
+			if(state.index != -1) { 
+			    state.folder.getElements().remove(this);
+			}
+		}
+		
+			protected void deleteDiagramObjects(@NonNull ElementState state) {
+				List<IDiagramModelComponent> dmos = new ArrayList<IDiagramModelComponent>();
+				dmos.addAll(getDiagComponents());
+				for(IDiagramModelComponent dmo : dmos)
+		        	state.diagobjs.add(dmo.delete());
+			}
+
+		
+		@Override
+		@NonNull
+		public EList<? extends IDiagramModelComponent> getDiagComponents() {
+			return getDiagObjects();
+		}
+
 
 }

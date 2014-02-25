@@ -102,6 +102,7 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	 * @model opposite="relationship" transient="true" derived="true"
 	 * @generated
 	 */
+	@NonNull
 	EList<IDiagramModelZentaConnection> getDiagConnections();
 
 	List<IBasicObject> getAllowedTargets();

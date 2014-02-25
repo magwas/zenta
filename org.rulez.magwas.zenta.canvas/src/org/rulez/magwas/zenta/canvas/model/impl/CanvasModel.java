@@ -12,6 +12,8 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IHintProvider;
 import org.rulez.magwas.zenta.model.IHelpHintProvider;
+import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.impl.DiagramModelBase;
 
 
@@ -271,5 +273,15 @@ public class CanvasModel extends DiagramModelBase implements ICanvasModel {
     public boolean isTemplate() {
         return false;
     }
+
+	@Override
+	public UndoState delete() {
+		throw new UnTestedException();
+	}
+
+	@Override
+	public UndoState delete(UndoState save) {
+		throw new UnTestedException();
+	}
 
 } //CanvasModel

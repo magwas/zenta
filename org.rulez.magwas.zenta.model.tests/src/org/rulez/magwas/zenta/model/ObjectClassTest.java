@@ -352,7 +352,7 @@ public class ObjectClassTest{
 	public void When_a_defining_diagram_object_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IBasicObject element = testdata.createNewObjectClass("deletetest OC");
 		assertTrue(element.isTemplate());
-		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
+		IDiagramModelZentaObject diagElement = (IDiagramModelZentaObject) element.getDiagComponents().get(0);
 		IDiagramModelContainer dia = (IDiagramModelContainer) diagElement.eContainer();
 		dia.getChildren().remove(diagElement);
 		assertFalse(element.isTemplate());
@@ -362,11 +362,11 @@ public class ObjectClassTest{
 	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IZentaElement element = testdata.createNewObjectClass("deletetest OC");
 		String elemId = element.getId();
-		IDiagramModelZentaObject dmo = element.getDiagObjects().get(0);
+		IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) element.getDiagComponents().get(0);
 		assertNotNull(dmo);
 		IBasicObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
-		element.getZentaModel().delete(element);
+		element.delete();
 		assertNull(dmo.eContainer());
 		testdata.metamodel.getClassById(elemId);
 	}

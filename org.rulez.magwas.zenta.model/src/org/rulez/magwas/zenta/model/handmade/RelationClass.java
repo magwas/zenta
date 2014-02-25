@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IRelationClass;
@@ -186,6 +188,11 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 	@Override
 	public boolean isConnected() {
 		return (source != null) && (target != null);
+	}
+
+	@Override
+	public EList<? extends IDiagramModelComponent> getDiagComponents() {
+		return getDiagConnections();
 	}
 
 }

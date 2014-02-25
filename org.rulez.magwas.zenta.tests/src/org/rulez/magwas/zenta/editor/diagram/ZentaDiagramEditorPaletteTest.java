@@ -236,7 +236,7 @@ public class ZentaDiagramEditorPaletteTest {
 		IBasicObject oc = testdata.metamodel.getClassById(elemId);
 		assertNotNull(oc);
 		
-		IDiagramModelZentaObject diagElement = element.getDiagObjects().get(0);
+		IDiagramModelZentaObject diagElement = (IDiagramModelZentaObject) element.getDiagComponents().get(0);
 		IDiagramModelContainer dia = (IDiagramModelContainer) diagElement.eContainer();
 		
 		List<PaletteEntry> children = ModelAndEditPartTestData.getObjectClassPaletteEntries(testdata.getEditor());
@@ -255,7 +255,7 @@ public class ZentaDiagramEditorPaletteTest {
 
 		List<PaletteEntry> children = ModelAndEditPartTestData.getObjectClassPaletteEntries(testdata.getEditor());
 		assertTrue(ModelAndEditPartTestData.haveCreatorNamed(ocName, children));
-		element.getZentaModel().delete(element);
+		element.delete();
 		boolean thrown = false;
 		try {
 			testdata.metamodel.getClassById(elemId);
@@ -293,7 +293,7 @@ public class ZentaDiagramEditorPaletteTest {
 		List<PaletteEntry> children = getChildrenForRelationsGroup(relationsgroup);
 		assertTrue(ModelAndEditPartTestData.haveCreatorFor(newElement, children));
 		
-		newElement.getZentaModel().delete(newElement);
+		newElement.delete();
 		assertFalse(newElement.isTemplate());
 		assertFalse(ModelAndEditPartTestData.haveCreatorFor(newElement, children));
 	}
@@ -308,7 +308,7 @@ public class ZentaDiagramEditorPaletteTest {
 		
 		IDiagramModelZentaConnection reldmc = newRelation.getDiagConnections().get(0);
 		assertNotNull(reldmc.eContainer());
-		IDiagramModelZentaObject dmo = destElem.getDiagObjects().get(0);
+		IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) destElem.getDiagComponents().get(0);
 		IDiagramModelContainer container = (IDiagramModelContainer) dmo.eContainer();
 		
 		IDiagramModelObject ccontainer = (IDiagramModelObject) reldmc.eContainer();

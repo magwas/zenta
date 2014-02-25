@@ -227,10 +227,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 
 	private @Nullable IDiagramModelComponent getDefiningModelObjectFor(IBasicObject element) {
 		EList<? extends IDiagramModelComponent> dmos;
-		if(element instanceof IBasicRelationship)
-			dmos = ((IBasicRelationship)element).getDiagConnections();
-		else
-			dmos = element.getDiagObjects();
+		dmos = element.getDiagComponents();
 		for(IDiagramModelComponent dmo : dmos) {
 			IDiagramModel dia = dmo.getDiagramModel();
 			if(null == dia)
@@ -297,7 +294,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	}
 		private void reinstantiateObjectClassIfStillHaveTemplate(IBasicObject element,
 				IMetamodel metamodel) {
-			EList<IDiagramModelZentaObject> diagObjects = element.getDiagObjects();
+			EList<IDiagramModelZentaObject> diagObjects = (EList<IDiagramModelZentaObject>) element.getDiagComponents();
 			for(IDiagramModelZentaObject dmoleft : diagObjects) {
 				IDiagramModel dm = dmoleft.getDiagramModel();
 				if(dm != null && dm.isTemplate()) {
@@ -325,7 +322,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		}
 			private void reinstantiateRelationClassIfStillHaveTemplate(IBasicRelationship element,
 					IMetamodel metamodel) {
-				EList<IDiagramModelZentaConnection> diagObjects = element.getDiagConnections();
+				EList<IDiagramModelZentaConnection> diagObjects = (EList<IDiagramModelZentaConnection>) element.getDiagComponents();
 				for(IDiagramModelZentaConnection dmoleft : diagObjects) {
 					IDiagramModel dm = dmoleft.getDiagramModel();
 					if(dm != null && dm.isTemplate()) {
@@ -337,8 +334,6 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			}
 
 	public void updateFiguresFor(IBasicObject element) {
-		for(IDiagramModelZentaObject dmo : element.getDiagObjects())
-			dmo.refreshVisuals();
 		for(IBasicObject kid : element.getChildren())
 			updateFiguresFor(Util.verifyNonNull(kid));
 	}

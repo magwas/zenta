@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ISketchModel;
+import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.UndoState;
 
 /**
  * <!-- begin-user-doc -->
@@ -163,4 +165,14 @@ public class SketchModelBase extends DiagramModelBase implements ISketchModel {
     public boolean isTemplate() {
         return false;
     }
+
+	@Override
+	public UndoState delete() {
+		throw new UnTestedException();
+	}
+
+	@Override
+	public UndoState delete(UndoState save) {
+		throw new UnTestedException();
+	}
 } //SketchModel
