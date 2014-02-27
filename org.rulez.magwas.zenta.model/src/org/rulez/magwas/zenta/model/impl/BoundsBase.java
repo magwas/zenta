@@ -79,7 +79,7 @@ public class BoundsBase extends EObjectImpl implements IBounds {
 	 * @generated
 	 * @ordered
 	 */
-    protected static final int WIDTH_EDEFAULT = 120;
+    public static final int WIDTH_EDEFAULT = 120;
 
     /**
 	 * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -99,7 +99,7 @@ public class BoundsBase extends EObjectImpl implements IBounds {
 	 * @generated
 	 * @ordered
 	 */
-    protected static final int HEIGHT_EDEFAULT = 55;
+    public static final int HEIGHT_EDEFAULT = 55;
 
     /**
 	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.

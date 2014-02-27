@@ -19,6 +19,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 public class ConnectionLineColorCommand extends EObjectFeatureCommand {
     
     public ConnectionLineColorCommand(IDiagramModelConnection connection, String rgb) {
-        super(Messages.ConnectionLineColorCommand_0, connection, IZentaPackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_COLOR, rgb);
+        super(Messages.ConnectionLineColorCommand_0, connection, IZentaPackage.Literals.DIAGRAM_MODEL_COMPONENT__LINE_COLOR, rgb);
     }
 }

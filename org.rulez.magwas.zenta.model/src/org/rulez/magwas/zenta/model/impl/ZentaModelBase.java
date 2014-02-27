@@ -247,14 +247,15 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      */
     public EList<IDiagramModel> getDiagramModels() {
         EList<IDiagramModel> list = new BasicEList<IDiagramModel>();
+        _getDiagramModels(this, list);
         
-        EList<IFolder> fl = this.getFolders();
+/*        EList<IFolder> fl = this.getFolders();
         for(IFolder folder: fl) {
             if(folder != null) {
                 _getDiagramModels(folder, list);
             }        	
         }
-        
+*/        
         return list;
     }
     

@@ -44,8 +44,6 @@ import org.rulez.magwas.zenta.model.UndoState;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getSource <em>Source</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getTarget <em>Target</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getBendpoints <em>Bendpoints</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getLineWidth <em>Line Width</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getLineColor <em>Line Color</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getLineDecoration <em>Line Decoration</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getType <em>Type</em>}</li>
  * </ul>
@@ -102,7 +100,7 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 	 * @generated
 	 * @ordered
 	 */
-    protected static final int TEXT_ALIGNMENT_EDEFAULT = 0;
+    protected static final int TEXT_ALIGNMENT_EDEFAULT = 2;
 
     /**
 	 * The cached value of the '{@link #getTextAlignment() <em>Text Alignment</em>}' attribute.
@@ -213,46 +211,6 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 	 * @ordered
 	 */
     protected EList<IDiagramModelBendpoint> bendpoints;
-
-    /**
-	 * The default value of the '{@link #getLineWidth() <em>Line Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getLineWidth()
-	 * @generated
-	 * @ordered
-	 */
-    protected static final int LINE_WIDTH_EDEFAULT = 1;
-
-    /**
-	 * The cached value of the '{@link #getLineWidth() <em>Line Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getLineWidth()
-	 * @generated
-	 * @ordered
-	 */
-    protected int lineWidth = LINE_WIDTH_EDEFAULT;
-
-    /**
-	 * The default value of the '{@link #getLineColor() <em>Line Color</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getLineColor()
-	 * @generated
-	 * @ordered
-	 */
-    protected static final String LINE_COLOR_EDEFAULT = null;
-
-    /**
-	 * The cached value of the '{@link #getLineColor() <em>Line Color</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getLineColor()
-	 * @generated
-	 * @ordered
-	 */
-    protected String lineColor = LINE_COLOR_EDEFAULT;
 
     /**
 	 * The default value of the '{@link #getLineDecoration() <em>Line Decoration</em>}' attribute.
@@ -533,40 +491,8 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
     public int getFinalLineWidth() {
 		return getLineWidth();
 	}
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public void setLineWidth(int newLineWidth) {
-		int oldLineWidth = lineWidth;
-		lineWidth = newLineWidth;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH, oldLineWidth, lineWidth));
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public String getLineColor() {
-		return lineColor;
-	}
     public String getFinalLineColor() {
 		return lineColor;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public void setLineColor(String newLineColor) {
-		String oldLineColor = lineColor;
-		lineColor = newLineColor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR, oldLineColor, lineColor));
 	}
 
     /**
@@ -660,13 +586,15 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
     }
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
-     */
+	 * @generated
+	 */
     public int getDefaultTextAlignment() {
-        return TEXT_ALIGNMENT_CENTER;
-    }
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
 
     /**
 	 * <!-- begin-user-doc -->
@@ -720,10 +648,6 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 				return getTarget();
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
 				return getBendpoints();
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
-				return getLineWidth();
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
-				return getLineColor();
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION:
 				return getLineDecoration();
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__TYPE:
@@ -773,12 +697,6 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 				getBendpoints().clear();
 				getBendpoints().addAll((Collection<? extends IDiagramModelBendpoint>)newValue);
 				return;
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
-				setLineWidth((Integer)newValue);
-				return;
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
-				setLineColor((String)newValue);
-				return;
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION:
 				setLineDecoration((String)newValue);
 				return;
@@ -827,12 +745,6 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
 				getBendpoints().clear();
 				return;
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
-				setLineWidth(LINE_WIDTH_EDEFAULT);
-				return;
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
-				setLineColor(LINE_COLOR_EDEFAULT);
-				return;
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION:
 				setLineDecoration(LINE_DECORATION_EDEFAULT);
 				return;
@@ -871,10 +783,6 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 				return target != null;
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__BENDPOINTS:
 				return bendpoints != null && !bendpoints.isEmpty();
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH:
-				return lineWidth != LINE_WIDTH_EDEFAULT;
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_COLOR:
-				return LINE_COLOR_EDEFAULT == null ? lineColor != null : !LINE_COLOR_EDEFAULT.equals(lineColor);
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__LINE_DECORATION:
 				return LINE_DECORATION_EDEFAULT == null ? lineDecoration != null : !LINE_DECORATION_EDEFAULT.equals(lineDecoration);
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION__TYPE:
@@ -967,10 +875,6 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 		result.append(documentation);
 		result.append(", text: ");
 		result.append(text);
-		result.append(", lineWidth: ");
-		result.append(lineWidth);
-		result.append(", lineColor: ");
-		result.append(lineColor);
 		result.append(", lineDecoration: ");
 		result.append(lineDecoration);
 		result.append(", type: ");

@@ -49,7 +49,7 @@ public class BasicObjectEditPartTest {
 		Color fontColor = figure.getTextControl().getForegroundColor();
 		assertEquals("#ffffff",ColorFactory.convertRGBToString(fontColor.getRGB()));
 		int textAlignment = ((BlockFlow)figure.getTextControl().getParent()).getHorizontalAligment();
-		assertEquals(4,textAlignment);
+		assertEquals(2,textAlignment);
 		assertEquals("ellipseShape",((DiagramModelZentaObjectBase)testdata.getDMOById("b2608459")).getFinalElementShape());
 		Font font = figure.getTextControl().getFont();
 		assertArrayEquals(FontFactory.get("1|Arial Black|11.0|1|GTK|1|").getFontData(),font.getFontData());

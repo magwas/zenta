@@ -184,13 +184,13 @@ public class ObjectClassTest{
 			assertEquals("ellipseShape",diagObject2.getFinalElementShape());
 			assertEquals("1|Arial Black|11.0|1|GTK|1|",diagObject2.getFinalFont());
 			assertEquals("#ffffff",diagObject2.getFinalFontColor());
-			assertEquals(4,diagObject2.getFinalTextAlignment());
+			assertEquals(2,diagObject2.getFinalTextAlignment());
 			assertEquals("#ffa500",diagObject2.getFinalFillColor());
 	
 			assertEquals("ellipseShape",diagObject1.getFinalElementShape());
 			assertEquals("1|Arial Black|11.0|1|GTK|1|",diagObject1.getFinalFont());
 			assertEquals("#ffffff",diagObject1.getFinalFontColor());
-			assertEquals(4,diagObject1.getFinalTextAlignment());
+			assertEquals(2,diagObject1.getFinalTextAlignment());
 			assertEquals("#ffa500",diagObject1.getFinalFillColor());
 		}
 		private void ensureVirginDMOsForLoadTest(ModelTestData data) {

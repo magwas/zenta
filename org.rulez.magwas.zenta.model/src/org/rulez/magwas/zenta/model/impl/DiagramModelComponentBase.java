@@ -41,6 +41,8 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getName <em>Name</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getId <em>Id</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getDiagramModel <em>Diagram Model</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getLineWidth <em>Line Width</em>}</li>
+ *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getLineColor <em>Line Color</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,6 +107,46 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 	 * @ordered
 	 */
 				   protected String id = ID_EDEFAULT;
+
+				/**
+	 * The default value of the '{@link #getLineWidth() <em>Line Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLineWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LINE_WIDTH_EDEFAULT = 1;
+
+				/**
+	 * The cached value of the '{@link #getLineWidth() <em>Line Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLineWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected int lineWidth = LINE_WIDTH_EDEFAULT;
+
+				/**
+	 * The default value of the '{@link #getLineColor() <em>Line Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLineColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LINE_COLOR_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getLineColor() <em>Line Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLineColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected String lineColor = LINE_COLOR_EDEFAULT;
 
 				/**
      * Adapter Map for arbitrary objects
@@ -186,6 +228,48 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
     }
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getLineWidth() {
+		return lineWidth;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLineWidth(int newLineWidth) {
+		int oldLineWidth = lineWidth;
+		lineWidth = newLineWidth;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_WIDTH, oldLineWidth, lineWidth));
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLineColor() {
+		return lineColor;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLineColor(String newLineColor) {
+		String oldLineColor = lineColor;
+		lineColor = newLineColor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_COLOR, oldLineColor, lineColor));
+	}
+
+				/**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT
@@ -232,6 +316,10 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 				return getId();
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
 				return getDiagramModel();
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_WIDTH:
+				return getLineWidth();
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_COLOR:
+				return getLineColor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -249,6 +337,12 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 				return;
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				setId((String)newValue);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_WIDTH:
+				setLineWidth((Integer)newValue);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_COLOR:
+				setLineColor((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -268,6 +362,12 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_WIDTH:
+				setLineWidth(LINE_WIDTH_EDEFAULT);
+				return;
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_COLOR:
+				setLineColor(LINE_COLOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -286,6 +386,10 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL:
 				return getDiagramModel() != null;
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_WIDTH:
+				return lineWidth != LINE_WIDTH_EDEFAULT;
+			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__LINE_COLOR:
+				return LINE_COLOR_EDEFAULT == null ? lineColor != null : !LINE_COLOR_EDEFAULT.equals(lineColor);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -304,6 +408,10 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 		result.append(name);
 		result.append(", id: ");
 		result.append(id);
+		result.append(", lineWidth: ");
+		result.append(lineWidth);
+		result.append(", lineColor: ");
+		result.append(lineColor);
 		result.append(')');
 		return result.toString();
 	}

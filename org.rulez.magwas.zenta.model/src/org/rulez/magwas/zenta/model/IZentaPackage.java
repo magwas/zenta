@@ -936,13 +936,31 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL = IDENTIFIER_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_COMPONENT__LINE_WIDTH = IDENTIFIER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_COMPONENT__LINE_COLOR = IDENTIFIER_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Diagram Model Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT = IDENTIFIER_FEATURE_COUNT + 1;
+	int DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT = IDENTIFIER_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.IDiagramModelContainer <em>Diagram Model Container</em>}' class.
@@ -980,6 +998,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_CONTAINER__DIAGRAM_MODEL = DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_CONTAINER__LINE_WIDTH = DIAGRAM_MODEL_COMPONENT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_CONTAINER__LINE_COLOR = DIAGRAM_MODEL_COMPONENT__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -1045,6 +1081,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL = DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_OBJECT__LINE_WIDTH = DIAGRAM_MODEL_COMPONENT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_OBJECT__LINE_COLOR = DIAGRAM_MODEL_COMPONENT__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -1172,6 +1226,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_REFERENCE__DIAGRAM_MODEL = DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_REFERENCE__LINE_WIDTH = DIAGRAM_MODEL_OBJECT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_REFERENCE__LINE_COLOR = DIAGRAM_MODEL_OBJECT__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -1308,6 +1380,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_GROUP__DIAGRAM_MODEL = DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_GROUP__LINE_WIDTH = DIAGRAM_MODEL_OBJECT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_GROUP__LINE_COLOR = DIAGRAM_MODEL_OBJECT__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -1464,6 +1554,24 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_NOTE__DIAGRAM_MODEL = DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_NOTE__LINE_WIDTH = DIAGRAM_MODEL_OBJECT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_NOTE__LINE_COLOR = DIAGRAM_MODEL_OBJECT__LINE_COLOR;
+
+	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1598,6 +1706,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_IMAGE__DIAGRAM_MODEL = DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_IMAGE__LINE_WIDTH = DIAGRAM_MODEL_OBJECT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_IMAGE__LINE_COLOR = DIAGRAM_MODEL_OBJECT__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -1745,6 +1871,24 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_CONNECTION__DIAGRAM_MODEL = DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_CONNECTION__LINE_WIDTH = DIAGRAM_MODEL_COMPONENT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_CONNECTION__LINE_COLOR = DIAGRAM_MODEL_COMPONENT__LINE_COLOR;
+
+	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1835,31 +1979,13 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_CONNECTION__BENDPOINTS = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_CONNECTION__LINE_WIDTH = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_CONNECTION__LINE_COLOR = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 11;
-
-	/**
 	 * The feature id for the '<em><b>Line Decoration</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL_CONNECTION__LINE_DECORATION = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 12;
+	int DIAGRAM_MODEL_CONNECTION__LINE_DECORATION = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1868,7 +1994,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL_CONNECTION__TYPE = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 13;
+	int DIAGRAM_MODEL_CONNECTION__TYPE = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Diagram Model Connection</em>' class.
@@ -1877,7 +2003,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 14;
+	int DIAGRAM_MODEL_CONNECTION_FEATURE_COUNT = DIAGRAM_MODEL_COMPONENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase <em>Diagram Model Bendpoint</em>}' class.
@@ -2165,13 +2291,31 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL__DIAGRAM_MODEL = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__LINE_WIDTH = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL__LINE_COLOR = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL__CHILDREN = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int DIAGRAM_MODEL__CHILDREN = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2180,7 +2324,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL__DOCUMENTATION = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int DIAGRAM_MODEL__DOCUMENTATION = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -2189,7 +2333,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL__PROPERTIES = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int DIAGRAM_MODEL__PROPERTIES = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Connection Router Type</b></em>' attribute.
@@ -2198,7 +2342,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Diagram Model</em>' class.
@@ -2207,7 +2351,7 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIAGRAM_MODEL_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 7;
+	int DIAGRAM_MODEL_FEATURE_COUNT = ZENTA_MODEL_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModelBase <em>Diagram Model</em>}' class.
@@ -2254,6 +2398,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ZENTA_DIAGRAM_MODEL__DIAGRAM_MODEL = DIAGRAM_MODEL__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_DIAGRAM_MODEL__LINE_WIDTH = DIAGRAM_MODEL__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ZENTA_DIAGRAM_MODEL__LINE_COLOR = DIAGRAM_MODEL__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -2345,6 +2507,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_ZENTA_OBJECT__DIAGRAM_MODEL = DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_ZENTA_OBJECT__LINE_WIDTH = DIAGRAM_MODEL_OBJECT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_ZENTA_OBJECT__LINE_COLOR = DIAGRAM_MODEL_OBJECT__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -2501,6 +2681,24 @@ public interface IZentaPackage extends EPackage {
 	int DIAGRAM_MODEL_ZENTA_CONNECTION__DIAGRAM_MODEL = DIAGRAM_MODEL_CONNECTION__DIAGRAM_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_WIDTH = DIAGRAM_MODEL_CONNECTION__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_COLOR = DIAGRAM_MODEL_CONNECTION__LINE_COLOR;
+
+	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2589,24 +2787,6 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAGRAM_MODEL_ZENTA_CONNECTION__BENDPOINTS = DIAGRAM_MODEL_CONNECTION__BENDPOINTS;
-
-	/**
-	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_WIDTH = DIAGRAM_MODEL_CONNECTION__LINE_WIDTH;
-
-	/**
-	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_COLOR = DIAGRAM_MODEL_CONNECTION__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Line Decoration</b></em>' attribute.
@@ -2701,6 +2881,24 @@ public interface IZentaPackage extends EPackage {
 	int SKETCH_MODEL__DIAGRAM_MODEL = DIAGRAM_MODEL__DIAGRAM_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SKETCH_MODEL__LINE_WIDTH = DIAGRAM_MODEL__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SKETCH_MODEL__LINE_COLOR = DIAGRAM_MODEL__LINE_COLOR;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2790,6 +2988,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SKETCH_MODEL_STICKY__DIAGRAM_MODEL = DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SKETCH_MODEL_STICKY__LINE_WIDTH = DIAGRAM_MODEL_OBJECT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SKETCH_MODEL_STICKY__LINE_COLOR = DIAGRAM_MODEL_OBJECT__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -2944,6 +3160,24 @@ public interface IZentaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SKETCH_MODEL_ACTOR__DIAGRAM_MODEL = DIAGRAM_MODEL_OBJECT__DIAGRAM_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Line Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SKETCH_MODEL_ACTOR__LINE_WIDTH = DIAGRAM_MODEL_OBJECT__LINE_WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Line Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SKETCH_MODEL_ACTOR__LINE_COLOR = DIAGRAM_MODEL_OBJECT__LINE_COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Font</b></em>' attribute.
@@ -3927,6 +4161,28 @@ public interface IZentaPackage extends EPackage {
 	EReference getDiagramModelComponent_DiagramModel();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.IDiagramModelComponent#getLineWidth <em>Line Width</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Width</em>'.
+	 * @see org.rulez.magwas.zenta.model.IDiagramModelComponent#getLineWidth()
+	 * @see #getDiagramModelComponent()
+	 * @generated
+	 */
+	EAttribute getDiagramModelComponent_LineWidth();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.IDiagramModelComponent#getLineColor <em>Line Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Color</em>'.
+	 * @see org.rulez.magwas.zenta.model.IDiagramModelComponent#getLineColor()
+	 * @see #getDiagramModelComponent()
+	 * @generated
+	 */
+	EAttribute getDiagramModelComponent_LineColor();
+
+	/**
 	 * Returns the meta object for class '{@link org.rulez.magwas.zenta.model.IDiagramModelContainer <em>Diagram Model Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4137,28 +4393,6 @@ public interface IZentaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDiagramModelConnection_Bendpoints();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineWidth <em>Line Width</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Line Width</em>'.
-	 * @see org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineWidth()
-	 * @see #getDiagramModelConnection()
-	 * @generated
-	 */
-	EAttribute getDiagramModelConnection_LineWidth();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineColor <em>Line Color</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Line Color</em>'.
-	 * @see org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineColor()
-	 * @see #getDiagramModelConnection()
-	 * @generated
-	 */
-	EAttribute getDiagramModelConnection_LineColor();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineDecoration <em>Line Decoration</em>}'.
@@ -5091,6 +5325,22 @@ public interface IZentaPackage extends EPackage {
 		EReference DIAGRAM_MODEL_COMPONENT__DIAGRAM_MODEL = eINSTANCE.getDiagramModelComponent_DiagramModel();
 
 		/**
+		 * The meta object literal for the '<em><b>Line Width</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIAGRAM_MODEL_COMPONENT__LINE_WIDTH = eINSTANCE.getDiagramModelComponent_LineWidth();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIAGRAM_MODEL_COMPONENT__LINE_COLOR = eINSTANCE.getDiagramModelComponent_LineColor();
+
+		/**
 		 * The meta object literal for the '{@link org.rulez.magwas.zenta.model.IDiagramModelContainer <em>Diagram Model Container</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5265,22 +5515,6 @@ public interface IZentaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DIAGRAM_MODEL_CONNECTION__BENDPOINTS = eINSTANCE.getDiagramModelConnection_Bendpoints();
-
-		/**
-		 * The meta object literal for the '<em><b>Line Width</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DIAGRAM_MODEL_CONNECTION__LINE_WIDTH = eINSTANCE.getDiagramModelConnection_LineWidth();
-
-		/**
-		 * The meta object literal for the '<em><b>Line Color</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DIAGRAM_MODEL_CONNECTION__LINE_COLOR = eINSTANCE.getDiagramModelConnection_LineColor();
 
 		/**
 		 * The meta object literal for the '<em><b>Line Decoration</b></em>' attribute feature.

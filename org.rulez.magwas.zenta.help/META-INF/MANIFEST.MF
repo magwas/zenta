@@ -19,5 +19,6 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: org.rulez.magwas.zenta.help.jar
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.rulez.magwas.zenta.help.hints
+Export-Package: org.rulez.magwas.zenta.help.cheatsheets,
+ org.rulez.magwas.zenta.help.hints
 Eclipse-BundleShape: dir

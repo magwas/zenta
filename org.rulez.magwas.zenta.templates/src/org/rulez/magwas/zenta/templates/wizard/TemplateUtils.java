@@ -38,10 +38,10 @@ public class TemplateUtils {
     public static void createThumbnailPreviewImage(IDiagramModel diagramModel, Label label) {
         Shell shell = new Shell();
         GraphicalViewer diagramViewer = DiagramUtils.createViewer(diagramModel, shell);
-        Rectangle bounds = DiagramUtils.getDiagramExtents(diagramViewer);
+        Rectangle bounds = DiagramUtils.getMinimumBounds(diagramViewer);
         double ratio = Math.min(1, Math.min((double)label.getBounds().width / bounds.width,
                 (double)label.getBounds().height / bounds.height));
-        Image image = DiagramUtils.createScaledImage(diagramViewer, ratio);
+        Image image = DiagramUtils.createImage(diagramViewer, ratio,0);
         label.setImage(image);
         shell.dispose();
     }
@@ -54,10 +54,10 @@ public class TemplateUtils {
     public static Image createThumbnailImage(IDiagramModel diagramModel) {
         Shell shell = new Shell();
         GraphicalViewer diagramViewer = DiagramUtils.createViewer(diagramModel, shell);
-        Rectangle bounds = DiagramUtils.getDiagramExtents(diagramViewer);
+        Rectangle bounds = DiagramUtils.getMinimumBounds(diagramViewer);
         double ratio = Math.min(1, Math.min((double)TemplateManager.THUMBNAIL_WIDTH / bounds.width,
                 (double)TemplateManager.THUMBNAIL_HEIGHT / bounds.height));
-        Image image = DiagramUtils.createScaledImage(diagramViewer, ratio);
+        Image image = DiagramUtils.createImage(diagramViewer, ratio, 0);
         shell.dispose();
 
         // Draw a border

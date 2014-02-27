@@ -92,8 +92,8 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		props.put("font",IZentaPackage.eINSTANCE.getFontAttribute_Font());
 		props.put("fontColor",IZentaPackage.eINSTANCE.getFontAttribute_FontColor());
 		props.put("textPosition",IZentaPackage.eINSTANCE.getFontAttribute_TextPosition());
-		props.put("lineWidth",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineWidth());
-		props.put("lineColor",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineColor());
+		props.put("lineWidth",IZentaPackage.eINSTANCE.getDiagramModelComponent_LineWidth());
+		props.put("lineColor",IZentaPackage.eINSTANCE.getDiagramModelComponent_LineColor());
 		props.put("lineDecoration",IZentaPackage.eINSTANCE.getDiagramModelConnection_LineDecoration());
 		return props;
 	}

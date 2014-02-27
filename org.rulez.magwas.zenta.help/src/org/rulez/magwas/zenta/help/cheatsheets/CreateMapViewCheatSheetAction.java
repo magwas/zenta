@@ -23,6 +23,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -72,7 +73,7 @@ implements ICheatSheetAction {
                 y += 120;
             }
             
-            IFolder folder = model.getFolders().get(0);
+            IFolder folder = model;
             
             stack.execute(new NewViewCommand(folder, diagramModel));
         }
@@ -88,10 +89,10 @@ implements ICheatSheetAction {
             fDiagramModel = model;
         }
         
-        @Override
+		@Override
         public void execute() {
             fParent.getElements().add(0, fDiagramModel);
-            EditorManager.openDiagramEditor(fDiagramModel);
+            EditorManager.openDiagramEditor(Util.verifyNonNull(fDiagramModel));
         }
         
         @Override

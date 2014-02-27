@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -88,6 +89,7 @@ public class SketchModelStickyBase extends DiagramModelObjectBase implements ISk
 	 */
     protected SketchModelStickyBase() {
 		super();
+		setTextAlignment(getDefaultTextAlignment());
 	}
 
     /**
@@ -112,6 +114,10 @@ public class SketchModelStickyBase extends DiagramModelObjectBase implements ISk
 		return children;
 	}
 
+    @Override
+    public int getDefaultTextAlignment() {
+		return IFontAttribute.TEXT_ALIGNMENT_LEFT;
+    }
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -145,13 +151,6 @@ public class SketchModelStickyBase extends DiagramModelObjectBase implements ISk
 		return properties;
 	}
 
-    /** 
-     * Left Justified
-     */
-    @Override
-    public int getDefaultTextAlignment() {
-        return TEXT_ALIGNMENT_LEFT;
-    }
 
     @Override
     public EObject getCopy() {

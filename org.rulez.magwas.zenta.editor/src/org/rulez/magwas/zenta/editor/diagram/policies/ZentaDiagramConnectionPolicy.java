@@ -93,7 +93,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
             IZentaElement newSourceElement = ((IDiagramModelZentaObject)newSource).getZentaElement();
 
             for(IDiagramModel diagramModel : newSourceElement.getZentaModel().getDiagramModels()) {
-                for(IDiagramModelZentaConnection matchingConnection : DiagramModelUtils.findDiagramModelConnectionsForRelation(diagramModel, relationship)) {
+                for(IDiagramModelZentaConnection matchingConnection : relationship.getDiagConnections()) {
                     IDiagramModelZentaObject matchingSource = null;
 
                     // Same Diagram so use the new source

@@ -95,7 +95,7 @@ public abstract class DiagramModelObjectBase extends DiagramModelComponentBase i
 	 * @generated
 	 * @ordered
 	 */
-    protected static final int TEXT_ALIGNMENT_EDEFAULT = 0;
+    protected static final int TEXT_ALIGNMENT_EDEFAULT = 2;
 
     /**
 	 * The cached value of the '{@link #getTextAlignment() <em>Text Alignment</em>}' attribute.
@@ -384,7 +384,7 @@ public abstract class DiagramModelObjectBase extends DiagramModelComponentBase i
 
     public int getFinalTextAlignment() {
     	if(textAlignment == TEXT_ALIGNMENT_NONE)
-    		return TEXT_ALIGNMENT_CENTER;
+    		return getDefaultTextAlignment();
     	return textAlignment;
     }
     /**

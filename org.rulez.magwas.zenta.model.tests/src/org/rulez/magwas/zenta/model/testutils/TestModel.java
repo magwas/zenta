@@ -14,6 +14,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -59,6 +60,8 @@ public class TestModel {
 	public IZentaModel model;
 	public IBasicRelationship secondgenRelation;
 	private IBasicRelationship thirdGenerationRelation;
+	public ISketchModel sketchModel;
+	private IZentaDiagramModel emptyDiagramModel;
 	public TestModel createModel() {
 		IZentaFactory factory = IZentaFactory.eINSTANCE;
 		model = factory.createZentaModel();
@@ -383,6 +386,19 @@ public class TestModel {
 	}
 	public void setThirdGenTarget(IBasicObject thirdGenTarget) {
 		this.thirdGenTarget = thirdGenTarget;
+	}
+	public void createFullModel() {
+		createFirstGeneration();
+		createSecondGenerationWithrelation(getTemplateDiagram());
+		createThirdGeneration();
+		arrangeDMOs(getDiagramModel());
+		arrangeDMOs(getTemplateDiagram());
+	}
+	public IZentaDiagramModel getEmptyDiagramModel() {
+		return emptyDiagramModel;
+	}
+	public void setEmptyDiagramModel(IZentaDiagramModel emptyDiagramModel) {
+		this.emptyDiagramModel = emptyDiagramModel;
 	}
 	
 }

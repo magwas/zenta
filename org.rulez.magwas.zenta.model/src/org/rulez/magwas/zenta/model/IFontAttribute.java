@@ -98,6 +98,7 @@ public interface IFontAttribute extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Text Alignment</b></em>' attribute.
+	 * The default value is <code>"2"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Text Alignment</em>' attribute isn't clear,
@@ -107,7 +108,7 @@ public interface IFontAttribute extends EObject {
 	 * @return the value of the '<em>Text Alignment</em>' attribute.
 	 * @see #setTextAlignment(int)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getFontAttribute_TextAlignment()
-	 * @model
+	 * @model default="2"
 	 * @generated
 	 */
 	int getTextAlignment();

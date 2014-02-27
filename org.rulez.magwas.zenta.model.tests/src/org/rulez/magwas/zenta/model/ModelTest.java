@@ -71,9 +71,7 @@ public class ModelTest {
 
 	@Test
 	public void Diagram_objects_have_bounds() throws IOException {
-		builder.createFirstGeneration();
-		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
-		builder.createThirdGeneration();
+		builder.createFullModel();
 	    String dmoid = builder.getFirstgenSource().getDiagComponents().get(0).getId();
 
 		File file = new File("/tmp/foo.zenta");
@@ -92,12 +90,10 @@ public class ModelTest {
 	    assertTrue(bounds.getWidth()>0);
 	    assertTrue(bounds.getHeight()>0);
 	}
-	
+
 	@Test
 	public void The_model_can_be_saved_and_loaded_in_idempotent_way() throws IOException {
-		builder.createFirstGeneration();
-		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
-		builder.createThirdGeneration();
+		builder.createFullModel();
 
 		File file = new File("/tmp/foo.zenta");
 		ZentaModelUtils.saveModelToXMLFile(builder.getModel(), file);
@@ -123,9 +119,7 @@ public class ModelTest {
 	}
 	@Test
 	public void Model_with_moved_builtin_classes_can_be_loaded() throws IOException {
-		builder.createFirstGeneration();
-		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
-		builder.createThirdGeneration();
+		builder.createFullModel();
 		
 		IZentaModel model0 = builder.getModel();
 		IFolder folder = IZentaFactory.eINSTANCE.createFolder();
@@ -325,11 +319,7 @@ public class ModelTest {
 
 	@Test
 	public void Second_generation_non_template_objects_can_be_legally_connected_with_connection_according_to_the_template() {
-		builder.createFirstGeneration();
-		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
-		
-		
-		builder.createThirdGeneration();
+		builder.createFullModel();
 		
 		
 		IBasicObject ancie = builder.getThirdGenSource().getAncestor();
@@ -369,7 +359,37 @@ public class ModelTest {
 		builder.assertIsAllSecondGenRelations(rcs);
 	}
 
-	
+	@Test
+	public void getDiagramModels_finds_all_diagram_models() {
+		builder.createFirstGeneration();
+		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		builder.createThirdGenerationWithRelation();
+		IZentaModel model = builder.getModel();
+		
+		EList<IDiagramModel> dms = model.getDiagramModels();
+		
+		assertEquals(2, dms.size());
+
+	}
+
+	@Test
+	public void getDiagramModels_finds_diagram_models_put_in_subfolder() {
+		builder.createFirstGeneration();
+		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		builder.createThirdGenerationWithRelation();
+		IZentaModel model = builder.getModel();
+		IFolder folder1 = builder.factory.createFolder();
+		IFolder folder2 = builder.factory.createFolder();
+		builder.getModel().getFolders().add(folder1);
+		folder1.getFolders().add(folder2);
+		folder2.getElements().add(builder.getTemplateDiagram());
+		
+		EList<IDiagramModel> dms = model.getDiagramModels();
+		
+		assertEquals(2, dms.size());
+
+	}
+
 	private void assertListHaveDefiningNames(NonNullList<? extends IBasicObject> list,
 			String... names) {
 		List<String> namelist = Util.verifyNonNull(Arrays.asList(names));

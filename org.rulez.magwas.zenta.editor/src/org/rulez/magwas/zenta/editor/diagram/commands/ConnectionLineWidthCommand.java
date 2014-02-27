@@ -19,6 +19,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 public class ConnectionLineWidthCommand extends EObjectFeatureCommand {
     
     public ConnectionLineWidthCommand(IDiagramModelConnection connection, int lineWidth) {
-        super(Messages.ConnectionLineWidthCommand_0, connection, IZentaPackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH, lineWidth);
+        super(Messages.ConnectionLineWidthCommand_0, connection, IZentaPackage.Literals.DIAGRAM_MODEL_COMPONENT__LINE_WIDTH, lineWidth);
     }
 }

@@ -45,7 +45,7 @@ public class DiagramConnectionSection extends AbstractZentaPropertySection {
             if(feature == IZentaPackage.Literals.FONT_ATTRIBUTE__TEXT_POSITION) {
                 refreshTextPositionCombo();
             }
-            else if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_WIDTH) {
+            else if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_COMPONENT__LINE_WIDTH) {
                 refreshLineWidthCombo();
             }
             else if(feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {

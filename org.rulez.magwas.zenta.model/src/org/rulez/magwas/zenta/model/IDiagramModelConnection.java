@@ -21,8 +21,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getSource <em>Source</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getTarget <em>Target</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getBendpoints <em>Bendpoints</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineWidth <em>Line Width</em>}</li>
- *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineColor <em>Line Color</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineDecoration <em>Line Decoration</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getType <em>Type</em>}</li>
  * </ul>
@@ -174,59 +172,6 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * @generated
 	 */
 	EList<IDiagramModelBendpoint> getBendpoints();
-
-	/**
-	 * Returns the value of the '<em><b>Line Width</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Line Width</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Line Width</em>' attribute.
-	 * @see #setLineWidth(int)
-	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_LineWidth()
-	 * @model default="1"
-	 * @generated
-	 */
-	int getLineWidth();
-
-	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineWidth <em>Line Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Line Width</em>' attribute.
-	 * @see #getLineWidth()
-	 * @generated
-	 */
-	void setLineWidth(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Line Color</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Line Color</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Line Color</em>' attribute.
-	 * @see #setLineColor(String)
-	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection_LineColor()
-	 * @model
-	 * @generated
-	 */
-	String getLineColor();
-
-	/**
-	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineColor <em>Line Color</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Line Color</em>' attribute.
-	 * @see #getLineColor()
-	 * @generated
-	 */
-	void setLineColor(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Line Decoration</b></em>' attribute.

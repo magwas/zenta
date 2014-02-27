@@ -46,7 +46,7 @@ public class LineColorSection extends AbstractZentaPropertySection {
         public void notifyChanged(Notification msg) {
             Object feature = msg.getFeature();
             // Color event (From Undo/Redo and here)
-            if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_CONNECTION__LINE_COLOR ||
+            if(feature == IZentaPackage.Literals.DIAGRAM_MODEL_COMPONENT__LINE_COLOR ||
                     feature == IZentaPackage.Literals.LOCKABLE__LOCKED) {
                 refreshControls();
             }

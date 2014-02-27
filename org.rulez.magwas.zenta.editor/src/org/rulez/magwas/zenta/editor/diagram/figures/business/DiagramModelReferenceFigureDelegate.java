@@ -6,6 +6,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
 public class DiagramModelReferenceFigureDelegate extends
@@ -18,7 +19,7 @@ public class DiagramModelReferenceFigureDelegate extends
 
 	@Override
     public Image getImage() {
-        IDiagramModelZentaObject referencedObject = (IDiagramModelZentaObject)owner.getDiagramModelObject();
+        IDiagramModelObject referencedObject = owner.getDiagramModelObject();
 		IDiagramModel dm = referencedObject.getDiagramModel();
         return dm == null ? IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DIAGRAM_16) : ZentaLabelProvider.INSTANCE.getImage(dm.eClass());
     }
