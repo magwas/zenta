@@ -35,14 +35,15 @@ public class ZentaDiagramModelTests extends DiagramModelTests {
     // ---------------------------------------------------------------------------------------------
     
     @Test
-    public void testGetViewpoint() {
+    public void DiagramModel_have_a_ViewPoint_associated() {
         assertEquals(0, dm.getViewpoint());
         dm.setViewpoint(1);
         assertEquals(1, dm.getViewpoint());
     }
 
-    @Test
-    public void testGetChildren() {
+    @SuppressWarnings("null")
+	@Test
+    public void DiagramModel_have_children() {
         CommonTests.testList(dm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelZentaObject());
         CommonTests.testList(dm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelGroup());
         CommonTests.testList(dm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelNote());

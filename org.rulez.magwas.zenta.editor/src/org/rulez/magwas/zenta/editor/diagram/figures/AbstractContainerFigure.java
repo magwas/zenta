@@ -55,7 +55,7 @@ implements IContainerFigure {
     }
     
     @Override
-    protected boolean useLocalCoordinates() {
+    public boolean useLocalCoordinates() {
         // Very important!
         return true;
     }

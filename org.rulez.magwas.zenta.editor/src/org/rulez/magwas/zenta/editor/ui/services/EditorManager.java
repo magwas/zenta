@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
@@ -56,8 +57,8 @@ public class EditorManager {
      * Open the Diagram Editor for a given DiagramModel Model
      * @param name
      */
-    public static @NonNull IDiagramModelEditor openDiagramEditor(@NonNull IDiagramModel model) {
-        if(model.eContainer() == null)
+    public static @NonNull IDiagramModelEditor openDiagramEditor(@Nullable IDiagramModel model) {
+        if(model == null || model.eContainer() == null)
         	throw new IllegalArgumentException();
 
         String id = null;

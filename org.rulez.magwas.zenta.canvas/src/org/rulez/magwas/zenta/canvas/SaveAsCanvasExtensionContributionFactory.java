@@ -63,9 +63,10 @@ public class SaveAsCanvasExtensionContributionFactory extends ExtensionContribut
 
         @Override
         public void run() {
-            if(fCurrentCanvasModel != null) {
-                WizardDialog dialog = new ExtendedWizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                                      new SaveCanvasAsTemplateWizard(fCurrentCanvasModel),
+            ICanvasModel ccm = fCurrentCanvasModel;
+            if(ccm != null) {
+				WizardDialog dialog = new ExtendedWizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                                      new SaveCanvasAsTemplateWizard(ccm),
                                       "SaveCanvasAsTemplateWizard"); //$NON-NLS-1$
                 dialog.open();
             }

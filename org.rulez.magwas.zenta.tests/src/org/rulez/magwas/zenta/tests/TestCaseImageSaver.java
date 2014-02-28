@@ -3,6 +3,7 @@ package org.rulez.magwas.zenta.tests;
 import java.io.File;
 import java.lang.reflect.Method;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -10,6 +11,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public class TestCaseImageSaver {
 
@@ -26,7 +28,7 @@ public class TestCaseImageSaver {
 			return image;
 		}
 		private static void saveWidgetToFile(Method method, Image image) {
-			String name = method.getName();
+			String name = Util.verifyNonNull(method.getName());
 			ImageLoader loader = new ImageLoader();
 		    loader.data = new ImageData[] {image.getImageData()};
 			String fileName = constructImageFileName(name);
@@ -37,7 +39,9 @@ public class TestCaseImageSaver {
 				if (!dir.exists())
 					throw new TestsShouldRunWithSourceRootAsCWD();
 			    String filename = String.format("%s.png",name);
-			    return new File(dir,filename).getPath();
+			    @SuppressWarnings("null")
+				@NonNull String path = new File(dir,filename).getPath();
+				return path;
 			}
 				public static class TestsShouldRunWithSourceRootAsCWD extends RuntimeException {
 					private static final long serialVersionUID = 1L;

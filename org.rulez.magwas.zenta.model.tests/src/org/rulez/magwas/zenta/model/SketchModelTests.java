@@ -34,14 +34,14 @@ public class SketchModelTests extends DiagramModelTests {
     // ---------------------------------------------------------------------------------------------
     
     @Test
-    public void testGetBackground() {
+    public void SketchModel_can_have_one_of_the_predefined_backgrounds() {
         assertEquals(1, sm.getBackground());
         sm.setBackground(2);
         assertEquals(2, sm.getBackground());
     }
 
-    @Test
-    public void testGetChildren() {
+	@Test
+    public void SketchModel_have_children() {
         CommonTests.testList(sm.getChildren(), IZentaPackage.eINSTANCE.getSketchModelActor());
         CommonTests.testList(sm.getChildren(), IZentaPackage.eINSTANCE.getSketchModelSticky());
         CommonTests.testList(sm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelGroup());

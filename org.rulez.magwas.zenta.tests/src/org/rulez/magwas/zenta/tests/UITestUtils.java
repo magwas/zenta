@@ -1,8 +1,10 @@
 package org.rulez.magwas.zenta.tests;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +18,13 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public class UITestUtils {
 
@@ -37,28 +42,35 @@ public class UITestUtils {
         treeView.getViewer().setSelection(new StructuredSelection(elements), true);
 	}
 
-	public static IWorkbenchWindow getWorkbenchWindow() {
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		return workbench.getActiveWorkbenchWindow();
-	}
-	
 	public static IViewPart openView(String viewId) throws WorkbenchException,
 			PartInitException {
+		IWorkbenchWindow wbw = prepareWorkBenchWindow();
+		IViewPart view = wbw.getActivePage().showView(viewId);
+		return Util.verifyNonNull(view);
+	}
+
+	private static IWorkbenchWindow prepareWorkBenchWindow()
+			throws WorkbenchException {
 		String perspectiveId = "org.rulez.magwas.zenta.editor.perspectiveMain";
 		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow wbw = workbench.getActiveWorkbenchWindow();
+		IWorkbenchWindow wbw = Util.verifyNonNull(workbench.getActiveWorkbenchWindow());
 		workbench.showPerspective(perspectiveId, wbw);
-		IViewPart view = wbw.getActivePage().showView(viewId);
-		return view;
+		return wbw;
 	}
 
 	public static IEditorPart openEditor(String editorId, IEditorInput input) throws WorkbenchException {
-		String perspectiveId = "org.rulez.magwas.zenta.editor.perspectiveMain";
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow wbw = workbench.getActiveWorkbenchWindow();
-		workbench.showPerspective(perspectiveId, wbw);
+		IWorkbenchWindow wbw = prepareWorkBenchWindow();
 		IEditorPart view = wbw.getActivePage().openEditor(input, editorId);
-		return view;
+		return Util.verifyNonNull(view);
+	}
+
+	@SuppressWarnings("null")
+	public static void closeAllModels()
+			throws IOException {
+		NonNullList<IZentaModel> models = new NonNullArrayList<IZentaModel>(IEditorModelManager.INSTANCE.getModels());
+		for(IZentaModel model : models) {
+			assertTrue(IEditorModelManager.INSTANCE.closeModel(model));
+		}
 	}
 
 }

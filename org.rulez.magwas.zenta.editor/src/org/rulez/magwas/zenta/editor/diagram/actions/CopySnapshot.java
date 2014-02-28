@@ -331,7 +331,7 @@ public final class CopySnapshot {
         for(IDiagramModelConnection connection : fOriginalToSnapshotConnectionsMapping.keySet()) {
             if(connection instanceof IDiagramModelZentaConnection) {
                 IBasicRelationship originalRelationship = ((IDiagramModelZentaConnection)connection).getRelationship();
-                if(originalRelationship == null || originalRelationship.eContainer() == null) { // zenta relationship was deleted
+                if(originalRelationship.eContainer() == null) { // zenta relationship was deleted
                     return true;
                 }
                 if(!DiagramModelUtils.findDiagramModelConnectionsForRelation(targetDiagramModel, originalRelationship).isEmpty()) { // already on diagram

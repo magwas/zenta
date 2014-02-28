@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -98,6 +99,8 @@ abstract public class BasicObjectBase extends ZentaElementBase implements IBasic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
 	public EList<IAttribute> getAttributes() {
 		if (attributes == null) {
 			attributes = new EObjectContainmentEList<IAttribute>(IAttribute.class, this, IZentaPackage.BASIC_OBJECT__ATTRIBUTES);

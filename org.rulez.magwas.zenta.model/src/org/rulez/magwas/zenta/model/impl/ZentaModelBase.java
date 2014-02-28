@@ -6,10 +6,8 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -25,10 +23,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IMetamodel;
-import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -338,6 +333,8 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.ZENTA_MODEL__PROPERTIES);

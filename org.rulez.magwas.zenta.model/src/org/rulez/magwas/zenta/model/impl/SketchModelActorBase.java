@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDocumentable;
 import org.rulez.magwas.zenta.model.IProperties;
@@ -110,6 +111,8 @@ public class SketchModelActorBase extends DiagramModelObjectBase implements ISke
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.SKETCH_MODEL_ACTOR__PROPERTIES);

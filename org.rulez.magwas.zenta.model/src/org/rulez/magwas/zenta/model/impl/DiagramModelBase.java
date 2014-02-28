@@ -6,10 +6,8 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -25,9 +23,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
-import org.rulez.magwas.zenta.model.IBasicObject;
-import org.rulez.magwas.zenta.model.IDiagramModelConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -394,6 +389,8 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.DIAGRAM_MODEL__PROPERTIES);

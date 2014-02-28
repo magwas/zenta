@@ -12,6 +12,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -59,10 +60,11 @@ public class DiagramModelReferenceBase extends DiagramModelObjectBase implements
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+    @NonNull
     public IDiagramModel getReferencedModel() {
-		return referencedModel;
+		return Util.verifyNonNull(referencedModel);
 	}
 
     /**

@@ -36,9 +36,7 @@ implements IColoredEditPart, ITextAlignedEditPart {
         
         // Listen to referenced model
         IDiagramModel ref = ((IDiagramModelReference)getModel()).getReferencedModel();
-        if(ref != null) {
-            ref.eAdapters().add(getECoreAdapter());
-        }
+        ref.eAdapters().add(getECoreAdapter());
     }
     
     @Override
@@ -47,9 +45,7 @@ implements IColoredEditPart, ITextAlignedEditPart {
         
         // Unlisten to referenced model
         IDiagramModel ref = ((IDiagramModelReference)getModel()).getReferencedModel();
-        if(ref != null) {
-            ref.eAdapters().remove(getECoreAdapter());
-        }
+        ref.eAdapters().remove(getECoreAdapter());
     }
 
     @Override

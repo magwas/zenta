@@ -35,8 +35,9 @@ public class CommonTests {
         assertEquals("doc", documentable.getDocumentation());
     }
 
-    public static void testProperties(IProperties properties) {
-        testList(properties.getProperties(), IZentaPackage.eINSTANCE.getProperty());
+	public static void testProperties(IProperties properties) {
+        EClass prop = IZentaPackage.eINSTANCE.getProperty();
+		testList(properties.getProperties(), prop);
         
         String key = "some_key", value = "some_value";
         

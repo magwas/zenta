@@ -47,13 +47,13 @@ public class RelationClassTest {
 	}
 
 	@Test
-	public void testGetChildren() {
+	public void have_children() {
 		EList<IBasicObject> kids = fixture.getChildren();
 		assertEquals(6,kids.size());
 	}
 
 	@Test
-	public void testGetName() {
+	public void have_name() {
 		assertEquals("Basic Relation",fixture.getName());
 	}
 	

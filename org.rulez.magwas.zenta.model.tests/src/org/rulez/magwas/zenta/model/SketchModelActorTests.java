@@ -35,8 +35,8 @@ public class SketchModelActorTests extends DiagramModelObjectTests {
 
     @Override
     @Test
-    public void testGetCopy() {
-        super.testGetCopy();
+    public void can_be_copied() {
+        super.can_be_copied();
         
         actor.getProperties().add(IZentaFactory.eINSTANCE.createProperty());
         
@@ -48,13 +48,15 @@ public class SketchModelActorTests extends DiagramModelObjectTests {
         assertEquals(actor.getProperties().size(), copy.getProperties().size());
     }
 
-    @Test
-    public void testGetDocumentation() {
+    @SuppressWarnings("null")
+	@Test
+    public void SketchModelActor_have_documentation() {
         CommonTests.testGetDocumentation(actor);
     }
 
-    @Test
-    public void testGetProperties() {
+    @SuppressWarnings("null")
+	@Test
+    public void SketchModelActor_have_Properties() {
         CommonTests.testProperties(actor);
     }
 

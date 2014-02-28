@@ -389,7 +389,7 @@ public class ModelTest {
 		assertEquals(2, dms.size());
 
 	}
-
+	
 	private void assertListHaveDefiningNames(NonNullList<? extends IBasicObject> list,
 			String... names) {
 		List<String> namelist = Util.verifyNonNull(Arrays.asList(names));

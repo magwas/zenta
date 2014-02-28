@@ -230,6 +230,8 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.FOLDER__PROPERTIES);

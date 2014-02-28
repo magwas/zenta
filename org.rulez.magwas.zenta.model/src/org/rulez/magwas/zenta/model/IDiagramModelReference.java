@@ -6,6 +6,8 @@
  */
 package org.rulez.magwas.zenta.model;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -39,6 +41,7 @@ public interface IDiagramModelReference extends IDiagramModelObject {
 	 *        extendedMetaData="name='model' kind='attribute'"
 	 * @generated
 	 */
+	@NonNull
 	IDiagramModel getReferencedModel();
 
 	/**

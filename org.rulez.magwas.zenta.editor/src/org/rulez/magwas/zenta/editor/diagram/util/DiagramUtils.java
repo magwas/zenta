@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.util;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.FreeformLayer;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;

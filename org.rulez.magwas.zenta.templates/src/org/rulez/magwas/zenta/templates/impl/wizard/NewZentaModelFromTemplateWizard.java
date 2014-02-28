@@ -60,7 +60,7 @@ public class NewZentaModelFromTemplateWizard extends Wizard {
         
         fErrorMessage = null;
         final File zipFile = template.getFile();
-        if(zipFile != null && zipFile.exists()) {
+        if(zipFile.exists()) {
             BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
                 @Override
                 public void run() {

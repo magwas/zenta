@@ -60,7 +60,7 @@ public class ZentaDiagramEditorPaletteTest {
 	}
 
 	@Test
-	public void havePalette() throws PartInitException, WorkbenchException {
+	public void Editor_have_an_associated_palette() throws PartInitException, WorkbenchException {
 		EObject element = testdata.getById("2ea99535");
 		assertNotNull(element);
 		

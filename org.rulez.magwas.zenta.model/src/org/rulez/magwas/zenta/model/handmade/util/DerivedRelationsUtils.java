@@ -45,58 +45,54 @@ public class DerivedRelationsUtils {
         
         // Get relations from source element
         IZentaElement source = relation.getSource();
-        if(source != null ) { // An important guard because the element might have been deleted
-            for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(source).iterator(); iterator
-					.hasNext();) {
-				@NonNull
-				IBasicRelationship rel = iterator.next();
-				if(rel != relation) {
-                    if(isStructuralRelationship(rel) && rel.getSource() != relation.getTarget()) {
-                        return true;
-                    }
+        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(source).iterator(); iterator
+				.hasNext();) {
+			@NonNull
+			IBasicRelationship rel = iterator.next();
+			if(rel != relation) {
+                if(isStructuralRelationship(rel) && rel.getSource() != relation.getTarget()) {
+                    return true;
                 }
-			}
-            
-            for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(source).iterator(); iterator
-					.hasNext();) {
-				IBasicRelationship rel = iterator.next();
-				if(rel != relation) {
-                    if(isBidirectionalRelationship(rel)) {
-                        return true;
-                    }
-                    if(isStructuralRelationship(rel) && isBidirectionalRelationship(relation)) {
-                        return true;
-                    }
+            }
+		}
+        
+        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(source).iterator(); iterator
+				.hasNext();) {
+			IBasicRelationship rel = iterator.next();
+			if(rel != relation) {
+                if(isBidirectionalRelationship(rel)) {
+                    return true;
                 }
-			}
-        }
+                if(isStructuralRelationship(rel) && isBidirectionalRelationship(relation)) {
+                    return true;
+                }
+            }
+		}
         
         // Get relations from target element
         IZentaElement target = relation.getTarget();
-        if(target != null) { // An important guard because the element might have been deleted
-            for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(target).iterator(); iterator
-					.hasNext();) {
-				IBasicRelationship rel = iterator.next();
-				if(rel != relation) {
-                    if(isStructuralRelationship(rel) && rel.getTarget() != relation.getSource()) {
-                        return true;
-                    }
+        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(target).iterator(); iterator
+				.hasNext();) {
+			IBasicRelationship rel = iterator.next();
+			if(rel != relation) {
+                if(isStructuralRelationship(rel) && rel.getTarget() != relation.getSource()) {
+                    return true;
                 }
-			}
-            
-            for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(target).iterator(); iterator
-					.hasNext();) {
-				IBasicRelationship rel = iterator.next();
-				if(rel != relation) {
-                    if(isBidirectionalRelationship(rel)) {
-                        return true;
-                    }
-                    if(isStructuralRelationship(rel) && isBidirectionalRelationship(relation)) {
-                        return true;
-                    }
+            }
+		}
+        
+        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(target).iterator(); iterator
+				.hasNext();) {
+			IBasicRelationship rel = iterator.next();
+			if(rel != relation) {
+                if(isBidirectionalRelationship(rel)) {
+                    return true;
                 }
-			}
-        }
+                if(isStructuralRelationship(rel) && isBidirectionalRelationship(relation)) {
+                    return true;
+                }
+            }
+		}
         
         return false;
     }

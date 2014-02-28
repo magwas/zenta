@@ -29,7 +29,8 @@ public abstract class DiagramModelComponentTests {
         dm = IZentaFactory.eINSTANCE.createZentaDiagramModel();
     }
     
-    @Test
+    @SuppressWarnings("null")
+	@Test
     public void testGetID() {
         assertNull(component.getId());
         
@@ -40,26 +41,28 @@ public abstract class DiagramModelComponentTests {
         assertNotNull(component.getId());
     }
         
-    @Test
-    public void testGetName() {
+    @SuppressWarnings("null")
+	@Test
+    public void have_name() {
         CommonTests.testGetName(component);
     }
  
     @Test
-    public void testGetDiagramModel() {
+    public void have_DiagramModel_associated() {
         assertNull(component.getDiagramModel());
         
         dm.getChildren().add((IDiagramModelObject)component);
         assertSame(dm, component.getDiagramModel());
     }
     
-    @Test
-    public void testGetAdapter() {
+    @SuppressWarnings("null")
+	@Test
+    public void have_adapter() {
         CommonTests.testGetAdapter(component);
     }
     
     @Test
-    public void testGetCopy() {
+    public void can_be_copied() {
         component.setName("name");
         IDiagramModelComponent copy = (IDiagramModelComponent)component.getCopy();
         assertNotSame(component, copy);

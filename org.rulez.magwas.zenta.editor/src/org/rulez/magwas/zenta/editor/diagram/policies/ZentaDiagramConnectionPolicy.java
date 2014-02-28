@@ -13,6 +13,7 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Display;
@@ -143,7 +144,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
             CompoundCommand result = new CompoundCommand();
 
             // Check for matching connections in this and other diagrams
-            IBasicRelationship relationship = ((IDiagramModelZentaConnection)connection).getRelationship();
+            @NonNull IBasicRelationship relationship = ((IDiagramModelZentaConnection)connection).getRelationship();
             IZentaElement newTargetElement = ((IDiagramModelZentaObject)newTarget).getZentaElement();
 
             for(IDiagramModel diagramModel : newTargetElement.getZentaModel().getDiagramModels()) {

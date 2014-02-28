@@ -90,10 +90,8 @@ public class ZentaModelUtils {
         NonNullList<IBasicRelationship> relationships = new NonNullArrayList<IBasicRelationship>();
         
     	IZentaModel zentaModel = element.getZentaModel();
-        if(zentaModel != null) { // An important guard because the element might have been deleted
-			EList<IFolder> folders = zentaModel.getFolders();
-			childFolders(element, type, relationships, folders);
-        }
+		EList<IFolder> folders = zentaModel.getFolders();
+		childFolders(element, type, relationships, folders);
         
         return relationships;
     }

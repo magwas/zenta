@@ -66,4 +66,8 @@ public interface IPreferenceConstants {
     String USE_ORTHOGONAL_ANCHOR = "orthogonalAnchor"; //$NON-NLS-1$
     
     String ANIMATE_VISUALISER_NODES = "animateVisualiserNodes"; //$NON-NLS-1$
+
+    String DERIVE_ELEMENT_LINE_COLOR = "deriveElementLineColor"; //$NON-NLS-1$
+
+    String DERIVE_ELEMENT_LINE_COLOR_FACTOR = "deriveElementLineColorFactor"; //$NON-NLS-1$
 }

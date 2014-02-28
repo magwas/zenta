@@ -32,12 +32,10 @@ import org.rulez.magwas.zenta.editor.diagram.util.DiagramUtils;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
-import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
-import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.impl.BoundsBase;
 import org.rulez.magwas.zenta.model.testutils.TestModel;
 import org.rulez.magwas.zenta.tests.HaveGUI;
@@ -50,7 +48,6 @@ public class DiagramUtilTests {
         return new JUnit4TestAdapter(DiagramUtilTests.class);
     }
     
-    private static IZentaModel model;
 	private static TestModel builder;
     
     @BeforeClass
@@ -61,11 +58,10 @@ public class DiagramUtilTests {
 		builder.getModel().getElements().add(builder.sketchModel);
 		builder.setEmptyDiagramModel(builder.factory.createZentaDiagramModel());
 		builder.getModel().getElements().add(builder.getEmptyDiagramModel());
-		model = builder.getModel();
     }
 
     @Test
-    public void testCreateViewer_ZentaModel() {
+    public void a_Zenta_diagram_can_be_viewed() {
         IDiagramModel dm = builder.getTemplateDiagram();
         assertTrue(dm instanceof IZentaDiagramModel);
         
@@ -83,7 +79,7 @@ public class DiagramUtilTests {
     }
 
     @Test
-    public void testCreateViewer_SketchModel() {
+    public void a_Sketch_model_can_be_viewed() {
         IDiagramModel dm = builder.sketchModel;
         assertTrue(dm instanceof ISketchModel);
         
@@ -101,7 +97,7 @@ public class DiagramUtilTests {
     }
     
     @Test
-    public void testCreateImage_Model_NoChildren() {
+    public void an_empty_diagram_can_be_viewed() {
         // This is the blank View
         IDiagramModel dm = builder.getEmptyDiagramModel();
         Image img = DiagramUtils.createImage(dm, 1, 0);
@@ -126,7 +122,7 @@ public class DiagramUtilTests {
     }
    
     @Test
-    public void testCreateImage_Model_NoChildren_Scaled() {
+    public void scaled_image_can_be_created_from_an_empty_diagram() {
         IDiagramModel dm = builder.getEmptyDiagramModel();
         
         // Blank View is minimum 100 x 100
@@ -141,7 +137,7 @@ public class DiagramUtilTests {
     
     @Test
     @HaveGUI(waitUser = false)
-    public void testCreateImage_Model_Scaled() {
+    public void scaled_image_can_be_created_from_a_diagram() {
     	UITestWindow win = new UITestWindow();
         IDiagramModel dm = builder.getTemplateDiagram();
         IEditorModelManager.INSTANCE.openModel(builder.getModel());
@@ -165,7 +161,7 @@ public class DiagramUtilTests {
     }
 
     @Test
-    public void testCreateImage_GraphicalViewer() {
+    public void image_can_be_created_using_a_viewer() {
         IDiagramModel dm = builder.getTemplateDiagram();
         
         Shell shell = new Shell();
@@ -178,7 +174,7 @@ public class DiagramUtilTests {
     }
     
     @Test
-    public void testCreateImage_Figure() {
+    public void image_can_be_created_using_a_figure() {
         IFigure rootFigure = new FreeformLayer();
         org.eclipse.draw2d.geometry.Rectangle rect1 = new org.eclipse.draw2d.geometry.Rectangle(0, 0, 1000, 1000);
         rootFigure.setBounds(rect1);
@@ -204,7 +200,7 @@ public class DiagramUtilTests {
     }
 
     @Test
-    public void testGetDiagram_IsMinimumSize() {
+    public void there_is_a_minimum_diagram_size() {
         IDiagramModel dm = builder.getEmptyDiagramModel();
         
         Shell shell = new Shell();

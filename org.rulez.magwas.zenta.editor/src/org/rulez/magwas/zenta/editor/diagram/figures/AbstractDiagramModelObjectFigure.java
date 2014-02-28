@@ -12,6 +12,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
@@ -48,6 +49,8 @@ implements IDiagramModelObjectFigure {
     }
     
     private IFigureDelegate delegate;
+
+    private Color fLineColor;
     public IFigureDelegate getFigureDelegate() {
 		return delegate;
     }
@@ -111,7 +114,7 @@ implements IDiagramModelObjectFigure {
     /**
      * Set the fill color to that in the model, or failing that, as per default
      */
-    protected void setFillColor() {
+    public void setFillColor() {
         String val = fDiagramModelObject.getFinalFillColor();
         Color c = ColorFactory.get(val);
         if(c != fFillColor) {
@@ -133,7 +136,7 @@ implements IDiagramModelObjectFigure {
     /**
      * Set the font color to that in the model, or failing that, as per default
      */
-    protected void setFontColor() {
+    public void setFontColor() {
         String val = fDiagramModelObject.getFinalFontColor();
         Color c = ColorFactory.get(val);
         if(c != fFontColor) {
@@ -165,7 +168,8 @@ implements IDiagramModelObjectFigure {
             if(!StringUtils.isSet(text)) { // Name was blank
                 toolTipFigure.setText(name);
             }
-            String typeName = element.getAncestor().getDefiningName();
+            IBasicObject ancestor = element.getAncestor();
+            String typeName = ancestor.getDefiningName();
             toolTipFigure.setType(Messages.AbstractDiagramModelObjectFigure_0 + " " + typeName); //$NON-NLS-1$
         }
 
@@ -182,5 +186,29 @@ implements IDiagramModelObjectFigure {
     }
     
     public void dispose() {
+    }
+    public void setLineColor() {
+        String val = fDiagramModelObject.getLineColor();
+        Color c = ColorFactory.get(val);
+        if(c != fLineColor) {
+            fLineColor = c;
+            repaint();
+        }            
+    }
+    
+    /**
+     * @return The Line Color to use
+     */
+    public Color getLineColor() {
+        // User preference to derive element line colour
+        if(Preferences.STORE.getBoolean(IPreferenceConstants.DERIVE_ELEMENT_LINE_COLOR)) {
+            return ColorFactory.getDarkerColor(getFillColor(),
+                    Preferences.STORE.getInt(IPreferenceConstants.DERIVE_ELEMENT_LINE_COLOR_FACTOR) / 10f);
+        }
+        
+        if(fLineColor == null) {
+            return ColorFactory.getDefaultLineColor(getDiagramModelObject());
+        }
+        return fLineColor;
     }
 }

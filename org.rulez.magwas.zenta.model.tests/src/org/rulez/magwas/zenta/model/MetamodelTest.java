@@ -34,12 +34,12 @@ public class MetamodelTest {
 	}
 	
 	@Test
-	public void testHave_builtin_template() {
+	public void Have_builtin_template() {
 		assertEquals("Builtins",fixture.getTemplates().get(0).getName());
 	}
 
 	@Test
-	public void testHave_builtin_ObjectClass() {
+	public void Have_builtin_ObjectClass() {
 		assertEquals("Basic Object",fixture.getTemplates().get(0).getClasses().get(0).getName());
 	}
 	

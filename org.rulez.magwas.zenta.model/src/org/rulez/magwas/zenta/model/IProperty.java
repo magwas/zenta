@@ -7,6 +7,7 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +43,7 @@ public interface IProperty extends EObject {
 	 * @model default=""
 	 * @generated
 	 */
+	@NonNull
 	String getKey();
 
 	/**

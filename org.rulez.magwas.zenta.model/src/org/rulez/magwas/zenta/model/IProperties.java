@@ -9,6 +9,7 @@ package org.rulez.magwas.zenta.model;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +43,7 @@ public interface IProperties extends EObject {
 	 *        extendedMetaData="name='property' kind='element'"
 	 * @generated
 	 */
+	@NonNull
 	EList<IProperty> getProperties();
 
 } // IProperties

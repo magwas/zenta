@@ -29,13 +29,14 @@ public abstract class DiagramModelTests {
         model = IZentaFactory.eINSTANCE.createZentaModel();
     }
 
-    @Test
-    public void testGetName() {
+    @SuppressWarnings("null")
+	@Test
+    public void DiagramModel_have_name() {
         CommonTests.testGetName(dm);
     }
 
     @Test
-    public void testGetDiagramModel() {
+    public void DiagramModel_have_itself_associated_as_its_DiagramModel() {
         assertSame(dm, dm.getDiagramModel());
     }
 
@@ -45,13 +46,13 @@ public abstract class DiagramModelTests {
     }
     
     @Test
-    public void testGetZentaModel() {
+    public void DiagramModel_have_Zenta_model_associated() {
         model.getElements().add(dm);
         assertSame(model, dm.getZentaModel());
     }
 
     @Test
-    public void testGetID() {
+    public void DiagramModel_have_ID() {
         assertNull(dm.getId());
         
         model.getElements().add(dm);
@@ -59,29 +60,32 @@ public abstract class DiagramModelTests {
     }
 
     @Test
-    public void testGetConnectionRouterType() {
+    public void DiagramModel_have_connection_router_type_associated() {
         assertEquals(IDiagramModel.CONNECTION_ROUTER_BENDPOINT, dm.getConnectionRouterType());
         dm.setConnectionRouterType(IDiagramModel.CONNECTION_ROUTER_MANHATTAN);
         assertEquals(IDiagramModel.CONNECTION_ROUTER_MANHATTAN, dm.getConnectionRouterType());
     }
     
-    @Test
-    public void testGetDocumentation() {
+    @SuppressWarnings("null")
+	@Test
+    public void DiagramModel_have_documentation() {
         CommonTests.testGetDocumentation(dm);
     }
 
-    @Test
-    public void testGetProperties() {
+    @SuppressWarnings("null")
+	@Test
+    public void DiagramModel_can_have_properties() {
         CommonTests.testProperties(dm);
     }
 
-    @Test
-    public void testGetAdapter() {
+    @SuppressWarnings("null")
+	@Test
+    public void DiagramModel_have_adapter() {
         CommonTests.testGetAdapter(dm);
     }
 
     @Test
-    public void testGetCopy() {
+    public void A_DiagramModel_can_be_copied() {
         dm.setName("name");
         dm.setDocumentation("doc");
         

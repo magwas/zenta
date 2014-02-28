@@ -100,7 +100,6 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         return imageByKyeOrDefault();
     }
 
-	@SuppressWarnings("null")
 	public Image imageByKyeOrDefault() {
 		if(fKeyThumbnailImage == null) {
             return IZentaImages.ImageFactory.getImage(IZentaImages.DEFAULT_MODEL_THUMB);
@@ -124,7 +123,6 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         return thumbnails;
     }
 
-	@SuppressWarnings("null")
 	public Image[] loadThumbnails() {
 		List<Image> list = new ArrayList<Image>();
 		Image image;

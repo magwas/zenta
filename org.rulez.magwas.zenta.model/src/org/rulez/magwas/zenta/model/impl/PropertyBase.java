@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IProperty;
 
@@ -211,8 +212,12 @@ public class PropertyBase extends EObjectImpl implements IProperty {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @NonNull
     public String getKey() {
-		return key;
+    	String k = key;
+    	if(k == null)
+    		return "";
+		return k;
 	}
 
     /**

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -144,6 +145,8 @@ public class SketchModelStickyBase extends DiagramModelObjectBase implements ISk
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.SKETCH_MODEL_STICKY__PROPERTIES);

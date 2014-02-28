@@ -46,6 +46,7 @@ public class LineDecorationSectionTest {
 			assertNotNull(section.getWidgetFactory());
 		}
 		
+	@SuppressWarnings("null")
 	@After
 	public void tearDown() throws IOException {
 		IEditorModelManager.INSTANCE.saveModel(data.model);
@@ -55,25 +56,25 @@ public class LineDecorationSectionTest {
 
 	@Test
 	@HaveGUI(waitUser=false)
-	public void testTheGUIShowsButtonsForEachDecorationsAndADefaultButton() {
+	public void The_GUI_shows_buttons_for_each_decorations_and_a_default_button() {
 		section.run();
 	}
 
 	@Test
-	public void testThereIsADefaultButton() {
+	public void There_is_a_default_button() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
 		assertEquals(Button.class,but.getClass());
 	}
 
 	@Test
-	public void testInvalidDecorationNameIsIgnoredOnGUI() {
+	public void invalid_decoration_name_is_ignored_on_the_GUI() {
 		IDiagramModelZentaConnection mco = data.connection;
 		mco.setLineDecoration("foo");
 	}
 	
 	@Test
-	public void testPushingDefaultButtonWhenNoDecorationsResultsNoDecoration() {
+	public void pushing_default_button_when_no_decoration_results_in_no_decoration() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
 		IDiagramModelZentaConnection mco = data.connection;
@@ -83,7 +84,7 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	public void testPushingDefaultButtonWhenThereAreDecorationsResultNoDecoration() {
+	public void pushing_default_button_when_there_is_decoration_results_in_no_decoration() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = ((Button)exerciser.getInternal("DefaultButton"));
 		Button but2 = exerciser.getButton("DashedLineDecoration");
@@ -99,7 +100,7 @@ public class LineDecorationSectionTest {
 
 
 	@Test
-	public void testPushingADecorationButtonResultsInTheDecorationBeingSet() {
+	public void Pushing_a_decoration_button_results_in_the_decoration_being_set() {
 		Button but = section.getButton("DashedLineDecoration");
 		IDiagramModelZentaConnection mco = data.connection;
 		assertEquals(null,mco.getLineDecoration());		
@@ -109,7 +110,7 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	public void testWhenTwoButtonsArePushedBothDecorationsAreSet() {
+	public void When_two_buttons_are_pushed_both_decorations_are_set() {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		Button but = exerciser.getButton("DashedLineDecoration");
 		Button but2 = exerciser.getButton("SmallEndArrowDecoration");
@@ -122,7 +123,7 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	public void testWhenAnObjectHaveADecorationSetOnInitialisationTheCorrespondingButtonIsPushed() throws PartInitException {
+	public void When_an_object_have_a_decoration_set_on_initialisation_the_corresponding_button_is_pushed() throws PartInitException {
 		data = new ModelAndEditPartTestData();
 		data.connection.setLineDecoration("DashedLineDecoration");
 		section = new LineDecorationSectionExerciser(data);
@@ -132,7 +133,7 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	public void testWhenADecoratonSetOnTheModelObjectTheCOrrespondingButtonGetsSelected() {
+	public void When_a_decoration_set_on_the_model_object_the_corresponding_button_gets_selected() {
 		Button but = section.getButton("DashedLineDecoration");
 		IDiagramModelZentaConnection mco = data.connection;
 		mco.setLineDecoration("DashedLineDecoration");
@@ -141,14 +142,14 @@ public class LineDecorationSectionTest {
 	}
 
 	@Test
-	public void testNoCrashWhenNoModelObjectSelected() throws PartInitException {
+	public void A_model_object_can_be_selected() throws PartInitException {
 		LineDecorationSectionExerciser exerciser = getExerciser();
 		exerciser.nullModelObject();
 		section.refreshControls();
 	}
 
 	@Test
-	public void testWhenPartSelectionIsChangedButtonStateFollowsIt() throws PartInitException {
+	public void When_part_selection_is_changed_button_state_follows_it() throws PartInitException {
 		data = new ModelAndEditPartTestData();
 		IDiagramModelZentaConnection conn = data.connection;
 		conn.setLineDecoration("DashedLineDecoration");
@@ -166,7 +167,7 @@ public class LineDecorationSectionTest {
 
 
 	@Test
-	public void testWhenPartSelectionIsChangedToAnUndecoratedObjectButtonsGetDeselected() throws PartInitException {
+	public void When_part_selection_is_changed_to_an_undecorated_object_buttons_get_deselected() throws PartInitException {
 		data = new ModelAndEditPartTestData();
 		IDiagramModelZentaConnection conn = data.connection;
 		conn.setLineDecoration("DashedLineDecoration");

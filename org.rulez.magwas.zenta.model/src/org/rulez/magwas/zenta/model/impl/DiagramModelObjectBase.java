@@ -429,11 +429,7 @@ public abstract class DiagramModelObjectBase extends DiagramModelComponentBase i
         if(connection == null) {
             throw new IllegalArgumentException("Connection was null"); //$NON-NLS-1$
         }
-        if(connection.getSource() == connection.getTarget()) {
-            //throw new IllegalArgumentException("Connection source is same as target!");
-        }
         
-        // This used to be "if/else if". This way it is possible for source == target (recursive) - just in case!
         if(connection.getSource() == this) {
             getSourceConnections().add(connection);
         }

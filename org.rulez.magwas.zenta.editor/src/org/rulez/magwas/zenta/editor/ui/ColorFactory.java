@@ -15,6 +15,7 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
@@ -29,6 +30,8 @@ import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 public class ColorFactory {
     
     public static final Color COLOR_BUSINESS = new Color(null, 255, 255, 181);
+
+    private static final Color DEFAULT_LINE_COLOR = new Color(null, 0, 0, 0);
     
     /**
      * Color Registry
@@ -201,4 +204,9 @@ public class ColorFactory {
         
         return get(convertRGBToString(rgb));
     }
+
+	public static Color getDefaultLineColor(
+			IDiagramModelObject diagramModelObject) {
+		return DEFAULT_LINE_COLOR;
+	}
 }

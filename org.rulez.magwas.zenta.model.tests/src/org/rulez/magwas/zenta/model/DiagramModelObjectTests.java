@@ -22,154 +22,162 @@ public abstract class DiagramModelObjectTests extends DiagramModelComponentTests
     
     @Before
     public void runBeforeEachDiagramModelObjectTest() {
-        object = (IDiagramModelObject)getComponent();
+        setObject((IDiagramModelObject)getComponent());
     }
 
     @Test
-    public void testGetBounds() {
+    public void have_bounds() {
         IBounds bounds = IZentaFactory.eINSTANCE.createBounds();
-        object.setBounds(bounds);
-        assertSame(bounds, object.getBounds());
+        getObject().setBounds(bounds);
+        assertSame(bounds, getObject().getBounds());
     }
     
     @Test
-    public void testGetSourceConnections() {
-        assertTrue(object.getSourceConnections().isEmpty());
+    public void can_have_connections_associated_for_which_it_is_the_source() {
+        assertTrue(getObject().getSourceConnections().isEmpty());
         
         IDiagramModelConnection conn = IZentaFactory.eINSTANCE.createDiagramModelConnection();
-        object.getSourceConnections().add(conn);
-        assertSame(conn, object.getSourceConnections().get(0));
+        getObject().getSourceConnections().add(conn);
+        assertSame(conn, getObject().getSourceConnections().get(0));
     }
     
     @Test
-    public void testGetTargetConnections() {
-        assertTrue(object.getTargetConnections().isEmpty());
+    public void can_have_connections_associated_for_which_it_is_the_target() {
+        assertTrue(getObject().getTargetConnections().isEmpty());
         
         IDiagramModelConnection conn = IZentaFactory.eINSTANCE.createDiagramModelConnection();
-        object.getTargetConnections().add(conn);
-        assertSame(conn, object.getTargetConnections().get(0));
+        getObject().getTargetConnections().add(conn);
+        assertSame(conn, getObject().getTargetConnections().get(0));
     }
     
     @Test
-    public void testGetFillColor() {
-        assertNull(object.getFillColor());
-        object.setFillColor("#ffffff");
-        assertEquals("#ffffff", object.getFillColor());
+    public void have_fill_color() {
+        assertNull(getObject().getFillColor());
+        getObject().setFillColor("#ffffff");
+        assertEquals("#ffffff", getObject().getFillColor());
     }
 
     @Test
-    public void testGetFont() {
-        assertNull(object.getFont());
-        object.setFont("Arial");
-        assertEquals("Arial", object.getFont());
+    public void have_font() {
+        assertNull(getObject().getFont());
+        getObject().setFont("Arial");
+        assertEquals("Arial", getObject().getFont());
     }
     
     @Test
-    public void testGetFontColor() {
-        assertNull(object.getFontColor());
-        object.setFontColor("#ffffff");
-        assertEquals("#ffffff", object.getFontColor());
+    public void have_font_color() {
+        assertNull(getObject().getFontColor());
+        getObject().setFontColor("#ffffff");
+        assertEquals("#ffffff", getObject().getFontColor());
     }
     
     @Test
-    public void testGetTextAlignment() {
-    	System.out.printf("%s\n", object.getClass());
-        assertEquals(object.getDefaultTextAlignment(), object.getTextAlignment());
-        object.setTextAlignment(2);
-        assertEquals(2, object.getTextAlignment());
+    public void have_text_alignment() {
+        assertEquals(getObject().getDefaultTextAlignment(), getObject().getTextAlignment());
+        getObject().setTextAlignment(2);
+        assertEquals(2, getObject().getTextAlignment());
     }
     
     @Test
-    public void testGetTextPosition() {
-        assertEquals(IFontAttribute.TEXT_POSITION_TOP_LEFT, object.getTextPosition());
-        object.setTextPosition(2);
-        assertEquals(2, object.getTextPosition());
+    public void have_text_position() {
+        assertEquals(IFontAttribute.TEXT_POSITION_TOP_LEFT, getObject().getTextPosition());
+        getObject().setTextPosition(2);
+        assertEquals(2, getObject().getTextPosition());
     }
     
     @Test
-    public void testGetLineWidth() {
-        assertEquals(1, object.getLineWidth());
-        object.setLineWidth(2);
-        assertEquals(2, object.getLineWidth());
+    public void have_line_width() {
+        assertEquals(1, getObject().getLineWidth());
+        getObject().setLineWidth(2);
+        assertEquals(2, getObject().getLineWidth());
     }
     
     @Test
-    public void testGetLineColor() {
-        assertNull(object.getLineColor());
-        object.setLineColor("#ffffff");
-        assertEquals("#ffffff", object.getLineColor());
+    public void have_line_color() {
+        assertNull(getObject().getLineColor());
+        getObject().setLineColor("#ffffff");
+        assertEquals("#ffffff", getObject().getLineColor());
     }
     
-    @Test
-    public void testAddConnection() {
+    @Test(expected=AssertionError.class)
+    public void a_connection_without_connections_cannot_be_added_to_diagram() {
         IDiagramModelConnection conn = IZentaFactory.eINSTANCE.createDiagramModelConnection();
-        
-        // Should not be added if connection source or target not set
-        object.addConnection(conn);
-        assertTrue(object.getSourceConnections().isEmpty());
-        assertTrue(object.getTargetConnections().isEmpty());
-        
+        getObject().addConnection(conn);
+    }    
+    @Test
+    public void a_connection_can_be_added_to_it() {
+        IDiagramModelConnection conn = IZentaFactory.eINSTANCE.createDiagramModelConnection();
+                
         // Now should be OK
-        conn.setSource(object);
-        conn.setTarget(object);
-        object.addConnection(conn);
+        conn.setSource(getObject());
+        conn.setTarget(getObject());
+        getObject().addConnection(conn);
         
-        assertTrue(object.getSourceConnections().contains(conn));
-        assertTrue(object.getTargetConnections().contains(conn));
+        assertTrue(getObject().getSourceConnections().contains(conn));
+        assertTrue(getObject().getTargetConnections().contains(conn));
     }
     
     @Test
-    public void testRemoveConnection() {
+    public void a_connection_can_be_removed_from_it() {
         IDiagramModelConnection conn = IZentaFactory.eINSTANCE.createDiagramModelConnection();
-        conn.setSource(object);
-        conn.setTarget(object);
+        conn.setSource(getObject());
+        conn.setTarget(getObject());
 
-        object.addConnection(conn);
-        assertTrue(object.getSourceConnections().contains(conn));
-        assertTrue(object.getTargetConnections().contains(conn));
+        getObject().addConnection(conn);
+        assertTrue(getObject().getSourceConnections().contains(conn));
+        assertTrue(getObject().getTargetConnections().contains(conn));
         
         // Try to remove bogus connection
         IDiagramModelConnection conn2 = IZentaFactory.eINSTANCE.createDiagramModelConnection();
         conn2.setSource(IZentaFactory.eINSTANCE.createDiagramModelNote());
         conn2.setTarget(IZentaFactory.eINSTANCE.createDiagramModelNote());
-        object.removeConnection(conn2);
-        assertTrue(object.getSourceConnections().contains(conn));
-        assertTrue(object.getTargetConnections().contains(conn));
+        getObject().removeConnection(conn2);
+        assertTrue(getObject().getSourceConnections().contains(conn));
+        assertTrue(getObject().getTargetConnections().contains(conn));
 
         // Now do it properly
-        object.removeConnection(conn);
-        assertTrue(object.getSourceConnections().isEmpty());
-        assertTrue(object.getTargetConnections().isEmpty());
+        getObject().removeConnection(conn);
+        assertTrue(getObject().getSourceConnections().isEmpty());
+        assertTrue(getObject().getTargetConnections().isEmpty());
     }
 
     @Test
-    public void testGetDefaultTextAlignment() {
-        assertEquals(IFontAttribute.TEXT_ALIGNMENT_CENTER, object.getDefaultTextAlignment());
+    public void default_text_alignment() {
+        assertEquals(IFontAttribute.TEXT_ALIGNMENT_CENTER, getObject().getDefaultTextAlignment());
     }
     
     @Override
     @Test
-    public void testGetCopy() {
-        super.testGetCopy();
+    public void can_be_copied() {
+        super.can_be_copied();
         
         IDiagramModelConnection conn = IZentaFactory.eINSTANCE.createDiagramModelConnection();
-        conn.setSource(object);
-        conn.setTarget(object);
-        object.addConnection(conn);
-        assertTrue(object.getSourceConnections().contains(conn));
-        assertTrue(object.getTargetConnections().contains(conn));
+        conn.setSource(getObject());
+        conn.setTarget(getObject());
+        getObject().addConnection(conn);
+        assertTrue(getObject().getSourceConnections().contains(conn));
+        assertTrue(getObject().getTargetConnections().contains(conn));
         
         IBounds bounds = IZentaFactory.eINSTANCE.createBounds(2, 4, 6, 8);
-        object.setBounds(bounds);
+        getObject().setBounds(bounds);
         
-        IDiagramModelObject copy = (IDiagramModelObject)object.getCopy();
+        IDiagramModelObject copy = (IDiagramModelObject)getObject().getCopy();
         
-        assertNotSame(object, copy);
+        assertNotSame(getObject(), copy);
         assertTrue(copy.getSourceConnections().isEmpty());
         assertTrue(copy.getTargetConnections().isEmpty());
         assertNotSame(bounds, copy.getBounds());
         assertEquals(bounds.getX(), copy.getBounds().getX());
         assertEquals(bounds.getY(), copy.getBounds().getY());
     }
+
+	@SuppressWarnings("null")
+	public IDiagramModelObject getObject() {
+		return object;
+	}
+
+	public void setObject(IDiagramModelObject object) {
+		this.object = object;
+	}
 
 }

@@ -45,6 +45,7 @@ public interface IBasicObject extends IZentaElement, IObjectClass {
 	 * @model containment="true" transient="true" derived="true"
 	 * @generated
 	 */
+	@NonNull
 	EList<IAttribute> getAttributes();
 
 	/**

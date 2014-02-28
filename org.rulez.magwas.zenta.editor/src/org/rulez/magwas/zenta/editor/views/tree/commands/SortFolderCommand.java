@@ -40,27 +40,35 @@ public class SortFolderCommand extends Command implements Comparator<EObject>  {
         }
     }
     
-    @Override
+	@Override
     public void execute() {
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);
+        signalStart();
         
         ECollections.sort(fFolder.getElements(), this);
         
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
+        signalEnd();
     }
-    
-    @Override
-    public void undo() {
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
+
+	@SuppressWarnings("null")
+	private void signalEnd() {
+		IEditorModelManager.INSTANCE.firePropertyChange(this,
+                IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
+	}
+
+	@SuppressWarnings("null")
+	private void signalStart() {
+		IEditorModelManager.INSTANCE.firePropertyChange(this,
                 IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);
+	}
+    
+	@Override
+    public void undo() {
+        signalStart();
 
         fFolder.getElements().clear();
         fFolder.getElements().addAll(fList);
         
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
+        signalEnd();
     }
     
     @Override

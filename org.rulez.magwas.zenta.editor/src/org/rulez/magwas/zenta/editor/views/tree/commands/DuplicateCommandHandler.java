@@ -29,6 +29,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -199,17 +200,18 @@ public class DuplicateCommandHandler {
         public void execute() {
             // We have to add the diagram model to the model first so that child objects can be allocated IDs.
             // See org.rulez.magwas.zenta.model.util.IDAdapter
-            fDiagramModelCopy = (IDiagramModel)fDiagramModelOriginal.getCopy();
-            fDiagramModelCopy.setName(fDiagramModelOriginal.getName() + " " + Messages.DuplicateCommandHandler_3); //$NON-NLS-1$
-            fParent.getElements().add(fDiagramModelCopy);
+            IDiagramModel dmcopy = (IDiagramModel)fDiagramModelOriginal.getCopy();
+			fDiagramModelCopy = dmcopy;
+			dmcopy.setName(fDiagramModelOriginal.getName() + " " + Messages.DuplicateCommandHandler_3); //$NON-NLS-1$
+            fParent.getElements().add(dmcopy);
             
-            fNewObjects.add(fDiagramModelCopy);
+            fNewObjects.add(dmcopy);
             
             // Add children
             copyChildren();
 
             // Open Editor
-            EditorManager.openDiagramEditor(fDiagramModelCopy);
+            EditorManager.openDiagramEditor(dmcopy);
         }
         
         @Override
@@ -223,7 +225,7 @@ public class DuplicateCommandHandler {
         public void redo() {
             fParent.getElements().add(fDiagramModelCopy);
             // Open Editor
-            EditorManager.openDiagramEditor(fDiagramModelCopy);
+            EditorManager.openDiagramEditor(Util.verifyNonNull(fDiagramModelCopy));
         }
         
         private void copyChildren() {

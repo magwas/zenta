@@ -43,6 +43,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.TemplateGroup;
@@ -229,7 +230,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
 
         fNameTextField.addModifyListener(new ModifyListener() {
             public void modifyText(ModifyEvent e) {
-                String text = fNameTextField.getText();
+                String text = Util.verifyNonNull(fNameTextField.getText());
                 if(fIsSettingFields || !StringUtils.isSet(text)) {
                     return;
                 }
@@ -267,7 +268,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
                     return;
                 }
                 if(fSelectedTemplate != null) {
-                    fSelectedTemplate.setDescription(fDescriptionTextField.getText());
+                    fSelectedTemplate.setDescription(Util.verifyNonNull(fDescriptionTextField.getText()));
                     if(!fModifiedTemplates.contains(fSelectedTemplate)) {
                         fModifiedTemplates.add(fSelectedTemplate);
                     }
@@ -381,7 +382,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
                 validator);
         
         if(dialog.open() == Window.OK) {
-            String name = dialog.getValue();
+            String name = Util.verifyNonNull(dialog.getValue());
             if(StringUtils.isSetAfterTrim(name)) {
                 ITemplateGroup group = new TemplateGroup(name);
                 fTemplateManager.getUserTemplateGroups().add(group);
@@ -413,7 +414,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
             // Do it this way because we can't get template parents
             for(TreeItem item : fTreeViewer.getTree().getSelection()) {
                 if(item.getData() instanceof ITemplate) {
-                    ITemplate template = (ITemplate)item.getData();
+                    ITemplate template = (ITemplate)Util.verifyNonNull(item.getData());
                     TreeItem parent = item.getParentItem();
                     if(parent.getData() instanceof ITemplateGroup) {
                         ((ITemplateGroup)parent.getData()).removeTemplate(template);

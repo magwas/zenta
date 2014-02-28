@@ -22,6 +22,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -70,10 +71,11 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+    @NonNull
 	public IBasicRelationship getRelationship() {
-		return relationship;
+		return Util.verifyNonNull(relationship);
 	}
 
 				/**
@@ -158,7 +160,7 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
      */
     public void addRelationshipToModel(IFolder parent) {
         IBasicRelationship relationship = getRelationship();
-        if(relationship != null && relationship.eContainer() == null) {
+        if(relationship.eContainer() == null) {
             if(parent == null) {
             	throw new UnTestedException();
             }
@@ -173,11 +175,9 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
      */
     public void removeRelationshipFromModel() {
         IBasicRelationship relationship = getRelationship();
-        if(relationship != null) {
-            IFolder folder = (IFolder)relationship.eContainer();
-            if(folder != null) {
-                folder.getElements().remove(relationship);
-            }
+        IFolder folder = (IFolder)relationship.eContainer();
+        if(folder != null) {
+            folder.getElements().remove(relationship);
         }
     }
 

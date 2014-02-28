@@ -217,6 +217,8 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
      * <!-- end-user-doc -->
 	 * @generated
 	 */
+    @SuppressWarnings("null")
+	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.ZENTA_ELEMENT__PROPERTIES);

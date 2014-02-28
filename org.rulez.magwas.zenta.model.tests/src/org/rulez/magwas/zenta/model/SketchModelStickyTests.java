@@ -37,14 +37,14 @@ public class SketchModelStickyTests extends DiagramModelObjectTests {
 
     @Override
     @Test
-    public void testGetDefaultTextAlignment() {
+    public void default_text_alignment() {
         assertEquals(IFontAttribute.TEXT_ALIGNMENT_LEFT, sticky.getDefaultTextAlignment());
     }
 
     @Override
     @Test
-    public void testGetCopy() {
-        super.testGetCopy();
+    public void can_be_copied() {
+        super.can_be_copied();
         
         sticky.setContent("hello");
         sticky.getProperties().add(IZentaFactory.eINSTANCE.createProperty());
@@ -62,22 +62,23 @@ public class SketchModelStickyTests extends DiagramModelObjectTests {
         assertEquals(sticky.getProperties().size(), copy.getProperties().size());
     }
 
-    @Test
-    public void testGetChildren() {
+	@Test
+    public void have_children() {
         CommonTests.testList(sticky.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelGroup());
         CommonTests.testList(sticky.getChildren(), IZentaPackage.eINSTANCE.getSketchModelActor());
         CommonTests.testList(sticky.getChildren(), IZentaPackage.eINSTANCE.getSketchModelActor());
     }
     
     @Test
-    public void testGetContent() {
+    public void have_content() {
         assertEquals("", sticky.getContent());
         sticky.setContent("doc");
         assertEquals("doc", sticky.getContent());
     }
 
-    @Test
-    public void testGetProperties() {
+    @SuppressWarnings("null")
+	@Test
+    public void can_have_properties() {
         CommonTests.testProperties(sticky);
     }
 

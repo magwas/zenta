@@ -6,6 +6,8 @@
  */
 package org.rulez.magwas.zenta.model;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -40,6 +42,7 @@ public interface IDiagramModelZentaConnection extends IDiagramModelConnection {
 	 * @model opposite="diagConnections" resolveProxies="false"
 	 * @generated
 	 */
+	@NonNull
 	IBasicRelationship getRelationship();
 
 	/**

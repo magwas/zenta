@@ -7,7 +7,6 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 
 public class DiagramModelReferenceFigureDelegate extends
 		RectangleFigureDelegate {

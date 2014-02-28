@@ -13,7 +13,6 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.help.cheatsheets.CreateMapViewCheatSheetAction;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 import org.rulez.magwas.zenta.model.testutils.TestModel;
 import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.UITestWindow;
@@ -55,7 +54,7 @@ public class CreateMapViewCheatSheetActionTest {
 	}
 	@Test
 	@HaveGUI(waitUser = false)
-	public void CanCreateMapView() throws IOException {
+	public void A_map_view_can_be_created_using_cheat_sheet() throws IOException {
 		CSM csm = new CSM();
 		TestModel builder = new TestModel();
 		builder.createFirstGeneration();
