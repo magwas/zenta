@@ -8,6 +8,9 @@ package org.rulez.magwas.zenta.model;
 
 import java.util.List;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -76,7 +79,9 @@ public interface IDiagramModelComponent extends IIdentifier, ICloneable, IAdapte
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true"
 	 * @generated
 	 */
+	@NonNull
 	IDiagramModel getDiagramModel();
+	@Nullable IDiagramModel findDiagramModel();
 	/**
 	 * Returns the value of the '<em><b>Line Width</b></em>' attribute.
 	 * The default value is <code>"1"</code>.

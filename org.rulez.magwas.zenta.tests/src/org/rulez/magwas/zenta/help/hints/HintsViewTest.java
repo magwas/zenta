@@ -34,6 +34,7 @@ public class HintsViewTest {
 		assertNull(testdata.getStatus());
 	}
 
+	@SuppressWarnings("null")
 	@Test
 	@HaveGUI(waitUser = false)
 	public void The_Hints_view_contains_useful_information_about_the_selected_object() throws PartInitException, WorkbenchException {

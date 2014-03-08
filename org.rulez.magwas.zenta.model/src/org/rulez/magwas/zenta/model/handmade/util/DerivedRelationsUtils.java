@@ -419,7 +419,7 @@ public class DerivedRelationsUtils {
     }
 
 	public NonNullList<NonNullList<IBasicRelationship>> getChains() {
-		return chains;
+		return Util.verifyNonNull(chains);
 	}
 
 	public void setChains(NonNullList<NonNullList<IBasicRelationship>> chains) {
@@ -427,7 +427,7 @@ public class DerivedRelationsUtils {
 	}
 
 	public IZentaElement getFinalTarget() {
-		return finalTarget;
+		return Util.verifyNonNull(finalTarget);
 	}
 
 	public void setFinalTarget(IZentaElement finalTarget) {

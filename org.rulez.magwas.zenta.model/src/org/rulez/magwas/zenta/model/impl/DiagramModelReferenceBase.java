@@ -82,12 +82,12 @@ public class DiagramModelReferenceBase extends DiagramModelObjectBase implements
     @Override
     @NonNull
     public String getName() {
-        if(getReferencedModel() != null) {
             return getReferencedModel().getName();
-        }
-        else {
-            return ""; //$NON-NLS-1$
-        }
+    }
+    
+    @Override
+    public void setName(String name) {
+            this.name = name;
     }
 
     /**

@@ -220,11 +220,19 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public IDiagramModel getDiagramModel() {
+    public @NonNull IDiagramModel getDiagramModel() {
         if(eContainer() == null) {
-            return null;
+        	throw new AssertionError();
         }
         return ((IDiagramModelComponent)eContainer()).getDiagramModel();
+    }
+
+    @Override
+    public IDiagramModel findDiagramModel() {
+        if(eContainer() == null) {
+        	return null;
+        }
+        return ((IDiagramModelComponent)eContainer()).findDiagramModel();
     }
 
     /**

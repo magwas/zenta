@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -308,30 +309,45 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             public void run() {
                 IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(model);
                 
-                for(String path : archiveManager.getImagePaths()) {
-                    Image thumbnail = fImageCache.get(path);
-                    if(thumbnail == null) {
-                        try {
-                            Image image = archiveManager.createImage(path);
-                            if(image != null) {
-                                thumbnail = ImageFactory.getScaledImage(image, MAX_GALLERY_ITEM_SIZE);
-                                image.dispose();
-                                fImageCache.put(path, thumbnail);
-                            }
-                        }
-                        catch(Exception ex) {
-                            ex.printStackTrace();
-                            continue;
-                        }
-                    }
-                    
-                    GalleryItem item = new GalleryItem(fGalleryRoot, SWT.NONE);
-                    item.setImage(thumbnail);
-                    item.setData(path);
-                }
+                generateScaledImages(archiveManager);
                 
                 fGallery.redraw(); // at some scale settings this is needed
             }
+
+			@SuppressWarnings("null")
+			private void generateScaledImages(IArchiveManager archiveManager) {
+				for(@NonNull String path : archiveManager.getImagePaths()) {
+                    generateOneScaledImage(archiveManager,
+							path);
+                }
+			}
+
+			private void generateOneScaledImage(
+					IArchiveManager archiveManager, @NonNull String path) {
+				Image thumbnail = fImageCache.get(path);
+				if(thumbnail == null) {
+				    thumbnail = generateNewThumbnail(archiveManager, path);
+				}
+				
+				GalleryItem item = new GalleryItem(fGalleryRoot, SWT.NONE);
+				item.setImage(thumbnail);
+				item.setData(path);
+				return;
+			}
+
+			private Image generateNewThumbnail(IArchiveManager archiveManager,
+					@NonNull String path) {
+				try {
+				    Image image = archiveManager.createImage(path);
+				    Image thumbnail = ImageFactory.getScaledImage(image, MAX_GALLERY_ITEM_SIZE);
+				    image.dispose();
+				    fImageCache.put(path, thumbnail);
+					return thumbnail;
+				}
+				catch(Exception ex) {
+					throw new RuntimeException(ex);
+				}
+			}
         });
     }
 

@@ -12,7 +12,7 @@ public interface NonNullMap<T1, T2> extends Map<T1, T2> {
 	public NonNullList<NonNullEntry<T1, T2>> getEntrySet();
 
 	@Override
-	public T2 put(@Nullable T1 key, @Nullable T2 value);
+	public @Nullable T2 put(@Nullable T1 key, @Nullable T2 value);
 
 	@Override
 	public T2 remove(@Nullable Object key);

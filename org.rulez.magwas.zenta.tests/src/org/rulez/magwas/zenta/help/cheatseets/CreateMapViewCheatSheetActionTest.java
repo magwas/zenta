@@ -13,6 +13,7 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.help.cheatsheets.CreateMapViewCheatSheetAction;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.testutils.TestModel;
 import org.rulez.magwas.zenta.tests.HaveGUI;
 import org.rulez.magwas.zenta.tests.UITestWindow;
@@ -23,31 +24,26 @@ public class CreateMapViewCheatSheetActionTest {
 
 		@Override
 		public String getCheatSheetID() {
-			// TODO Auto-generated method stub
-			return null;
+			throw new UnTestedException();
 		}
 
 		@Override
 		public String getData(String key) {
-			// TODO Auto-generated method stub
-			return null;
+			throw new UnTestedException();
 		}
 
 		@Override
 		public void setData(String key, String data) {
-			// TODO Auto-generated method stub
-			
+			throw new UnTestedException();
 		}
 
 		@Override
 		public ICheatSheetManager getParent() {
-			// TODO Auto-generated method stub
-			return null;
+			throw new UnTestedException();
 		}
 
 		@Override
-		public Set getKeySet() {
-			// TODO Auto-generated method stub
+		public Set<Object> getKeySet() {
 			return null;
 		}
 		

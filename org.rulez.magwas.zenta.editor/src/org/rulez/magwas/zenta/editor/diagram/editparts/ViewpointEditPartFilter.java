@@ -30,9 +30,7 @@ public class ViewpointEditPartFilter implements IChildEditPartFilter, IConnectio
         
         if(childObject instanceof IDiagramModelObject) {
             IZentaDiagramModel dm = (IZentaDiagramModel)((IDiagramModelObject)childObject).getDiagramModel();
-            if(dm != null) {
-                viewPoint = ViewpointsManager.INSTANCE.getViewpoint(dm);
-            }
+            viewPoint = ViewpointsManager.INSTANCE.getViewpoint(dm);
         }
         
         if(viewPoint != null) {

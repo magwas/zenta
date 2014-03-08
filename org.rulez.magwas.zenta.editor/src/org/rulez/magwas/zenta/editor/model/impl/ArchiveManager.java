@@ -23,6 +23,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -159,8 +160,8 @@ public class ArchiveManager implements IArchiveManager {
         for(Iterator<EObject> iter = getfModel().eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IDiagramModelImageProvider) {
-                String imagePath = ((IDiagramModelImageProvider)element).getImagePath();
-                if(imagePath != null && !list.contains(imagePath)) {
+                @NonNull String imagePath = Util.verifyNonNull(((IDiagramModelImageProvider)element).getImagePath());
+                if(!list.contains(imagePath)) {
                     list.add(imagePath);
                 }
             }
@@ -215,10 +216,7 @@ public class ArchiveManager implements IArchiveManager {
         for(Iterator<EObject> iter = getfModel().eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IDiagramModelImageProvider) {
-                String imagePath = ((IDiagramModelImageProvider)element).getImagePath();
-                if(imagePath != null) {
-                    return true;
-                }
+                return true;
             }
         }
         return false;
@@ -273,8 +271,8 @@ public class ArchiveManager implements IArchiveManager {
             EObject eObject = iter.next();
             if(eObject instanceof IDiagramModelImageProvider) {
                 IDiagramModelImageProvider imageProvider = (IDiagramModelImageProvider)eObject;
-                String imagePath = imageProvider.getImagePath();
-                if(imagePath != null && !added.contains(imagePath)) {
+                @NonNull String imagePath = Util.verifyNonNull(imageProvider.getImagePath());
+                if(!added.contains(imagePath)) {
                     byte[] bytes = BYTE_ARRAY_STORAGE.getEntry(imagePath);
                     ZipEntry zipEntry = new ZipEntry(imagePath);
                     zOut.putNextEntry(zipEntry);

@@ -208,8 +208,10 @@ public class DiagramModelUtils {
     	IZentaElement src = relation.getSource();
         IZentaElement tgt = relation.getTarget();
         
-        List<IDiagramModelZentaObject> srcList = (List<IDiagramModelZentaObject>) src.getDiagComponents();
-        List<IDiagramModelZentaObject> tgtList = (List<IDiagramModelZentaObject>) tgt.getDiagComponents();
+        @SuppressWarnings("unchecked")
+		List<IDiagramModelZentaObject> srcList = (List<IDiagramModelZentaObject>) src.getDiagComponents();
+        @SuppressWarnings("unchecked")
+		List<IDiagramModelZentaObject> tgtList = (List<IDiagramModelZentaObject>) tgt.getDiagComponents();
         
         
         for(IDiagramModelZentaObject dmo1 : srcList) {

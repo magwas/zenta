@@ -94,9 +94,9 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	}
 
 	@Override
-	public @Nullable ITemplate getTemplateFor(@Nullable IDiagramModelComponent elemento) {
+	public @Nullable ITemplate findTemplateFor(@Nullable IDiagramModelComponent elemento) {
 		IDiagramModelComponent element = Util.verifyNonNull(elemento);
-		IDiagramModel dm = element.getDiagramModel();
+		IDiagramModel dm = element.findDiagramModel();
 		if (null == dm)
 			return null;
 		return getTemplateFor(dm);
@@ -215,21 +215,21 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	public void createOCforElement(IBasicObject element) {
 		ITemplate template;
 		IDiagramModelComponent dmo;
-		dmo = getDefiningModelObjectFor(element);
+		dmo = findDefiningModelObjectFor(element);
 		if(dmo == null)
 			return;
-		template = getTemplateFor(dmo);
+		template = findTemplateFor(dmo);
 		if(null == template)
 			return;
 		element.setAsTemplate(template);
 		element.setPropsFromDiagramObject(dmo);
 	}
 
-	private @Nullable IDiagramModelComponent getDefiningModelObjectFor(IBasicObject element) {
+	private @Nullable IDiagramModelComponent findDefiningModelObjectFor(IBasicObject element) {
 		EList<? extends IDiagramModelComponent> dmos;
 		dmos = element.getDiagComponents();
 		for(IDiagramModelComponent dmo : dmos) {
-			IDiagramModel dia = dmo.getDiagramModel();
+			IDiagramModel dia = dmo.findDiagramModel();
 			if(null == dia)
 				return null;
 			if(dia.isTemplate())
@@ -294,9 +294,10 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	}
 		private void reinstantiateObjectClassIfStillHaveTemplate(IBasicObject element,
 				IMetamodel metamodel) {
+			@SuppressWarnings("unchecked")
 			EList<IDiagramModelZentaObject> diagObjects = (EList<IDiagramModelZentaObject>) element.getDiagComponents();
 			for(IDiagramModelZentaObject dmoleft : diagObjects) {
-				IDiagramModel dm = dmoleft.getDiagramModel();
+				IDiagramModel dm = dmoleft.findDiagramModel();
 				if(dm != null && dm.isTemplate()) {
 					ITemplate template = metamodel.getTemplateFor(dm);
 					template.getClasses().add(element);
@@ -322,9 +323,10 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		}
 			private void reinstantiateRelationClassIfStillHaveTemplate(IBasicRelationship element,
 					IMetamodel metamodel) {
+				@SuppressWarnings("unchecked")
 				EList<IDiagramModelZentaConnection> diagObjects = (EList<IDiagramModelZentaConnection>) element.getDiagComponents();
 				for(IDiagramModelZentaConnection dmoleft : diagObjects) {
-					IDiagramModel dm = dmoleft.getDiagramModel();
+					IDiagramModel dm = dmoleft.findDiagramModel();
 					if(dm != null && dm.isTemplate()) {
 						ITemplate template = metamodel.getTemplateFor(dm);
 						template.getClasses().add(element);

@@ -207,13 +207,11 @@ public class ZentaLabelProvider implements IEditorLabelProvider {
      */
     public String getRelationshipSentence(IBasicRelationship relation) {
         if(relation != null) {
-            if(relation.getSource() != null && relation.getTarget() != null) {
-                String nameSource = ZentaLabelProvider.INSTANCE.getLabel(relation.getSource());
-                String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
-                IBasicObject klass = relation.getDefiningElement();
-                String relname = klass.getName();
-                return String.format("%s %s %s", nameSource, relname, nameTarget);
-            }
+            String nameSource = ZentaLabelProvider.INSTANCE.getLabel(relation.getSource());
+            String nameTarget = ZentaLabelProvider.INSTANCE.getLabel(relation.getTarget());
+            IBasicObject klass = relation.getDefiningElement();
+            String relname = klass.getName();
+            return String.format("%s %s %s", nameSource, relname, nameTarget);
         }
         
         return ""; //$NON-NLS-1$

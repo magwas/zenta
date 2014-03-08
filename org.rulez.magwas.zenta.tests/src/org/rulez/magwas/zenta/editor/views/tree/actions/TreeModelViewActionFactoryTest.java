@@ -33,7 +33,7 @@ public class TreeModelViewActionFactoryTest {
 	@Before
 	public void Initializes_with_a_model() {
 		testdata = new ModelAndEditPartTestData();
-		fixture = new TreeModelViewActionFactory(testdata.model);
+		fixture = new TreeModelViewActionFactory(testdata.getModel());
 		assertNotNull(fixture.getMetamodel());
 	}
 	

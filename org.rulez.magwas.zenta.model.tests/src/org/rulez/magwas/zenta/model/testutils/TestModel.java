@@ -395,7 +395,7 @@ public class TestModel {
 		arrangeDMOs(getTemplateDiagram());
 	}
 	public IZentaDiagramModel getEmptyDiagramModel() {
-		return emptyDiagramModel;
+		return Util.verifyNonNull(emptyDiagramModel);
 	}
 	public void setEmptyDiagramModel(IZentaDiagramModel emptyDiagramModel) {
 		this.emptyDiagramModel = emptyDiagramModel;

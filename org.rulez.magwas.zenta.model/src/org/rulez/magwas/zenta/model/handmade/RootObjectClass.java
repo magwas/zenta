@@ -47,7 +47,6 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 		return ancestry;
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public List<IAttribute> getAttributesRecursively() {
 		return getAttributes();

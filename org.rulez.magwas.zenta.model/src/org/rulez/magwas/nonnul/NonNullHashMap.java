@@ -43,11 +43,12 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 	}
 
 	@Override
+	@Nullable
 	public T2 put(@Nullable T1 key, @Nullable T2 value) {
 		T1 k = Util.verifyNonNull(key);
 		T2 v = Util.verifyNonNull(value);
 		T2 r = super.put(k, v);
-		return Util.verifyNonNull(r);
+		return r;
 	}
 
 	@Override

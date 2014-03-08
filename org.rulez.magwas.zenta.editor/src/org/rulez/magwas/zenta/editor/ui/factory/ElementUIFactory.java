@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.rulez.magwas.zenta.editor.ui.factory.business.BasicObjectUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.connections.BasicConnectionUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.connections.LineConnectionUIProvider;
+import org.rulez.magwas.zenta.editor.ui.factory.diagram.DiagramImageUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.diagram.DiagramModelReferenceUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.diagram.GroupUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.diagram.NoteUIProvider;
@@ -51,6 +52,7 @@ public class ElementUIFactory {
         
         registerProvider(new SketchActorUIProvider());
         registerProvider(new SketchStickyUIProvider());
+        registerProvider(new DiagramImageUIProvider());
     }
     
     private Map<EClass, IElementUIProvider> map = new HashMap<EClass, IElementUIProvider>();

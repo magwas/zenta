@@ -18,6 +18,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -68,7 +69,7 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
             return null;
         }
         
-        Object object = fTemplate.create(folder);
+        Object object = fTemplate.create(Util.verifyNonNull(folder));
         
         // Connection created from Relationship ITemplate
         if(object instanceof IBasicRelationship) {

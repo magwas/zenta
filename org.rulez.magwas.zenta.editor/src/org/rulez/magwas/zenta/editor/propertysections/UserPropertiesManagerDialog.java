@@ -306,13 +306,11 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
             EObject element = iter.next();
             if(element instanceof IProperty) {
                 String key = ((IProperty)element).getKey();
-                if(key != null) {
-                    if(fKeysTable.containsKey(key)) {
-                        fKeysTable.get(key).usedTimes++;
-                    }
-                    else {
-                        fKeysTable.put(key, new KeyEntry(key));
-                    }
+                if(fKeysTable.containsKey(key)) {
+                    fKeysTable.get(key).usedTimes++;
+                }
+                else {
+                    fKeysTable.put(key, new KeyEntry(key));
                 }
             }
         }
@@ -379,7 +377,7 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
             if(element instanceof IProperty) {
                 IProperty property = (IProperty)element;
                 String key = property.getKey();
-                if(key != null && !fKeysTable.containsKey(key)) {
+                if(!fKeysTable.containsKey(key)) {
                     Command cmd = new DeletePropertyKeyCommand(((IProperties)property.eContainer()).getProperties(), property);
                     compoundCmd.add(cmd);
                 }
@@ -408,7 +406,7 @@ public class UserPropertiesManagerDialog extends ExtendedTitleAreaDialog {
             EObject element = iter.next();
             if(element instanceof IProperty) {
                 String key = ((IProperty)element).getKey();
-                if(key != null && key.equals(oldName)) {
+                if(key.equals(oldName)) {
                     Command cmd = new RenamePropertyKeyCommand((IProperty)element, oldName, newName);
                     compoundCmd.add(cmd);
                 }

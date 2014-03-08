@@ -544,7 +544,19 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 			    fListeners.firePropertyChange(new PropertyChangeEvent(source, prop, oldValue, newValue));
 			}
 
-    /**
+    @SuppressWarnings("null")
+	public static void signalEnd(Object self) {
+		IEditorModelManager.INSTANCE.firePropertyChange(self,
+	            IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
+	}
+
+	@SuppressWarnings("null")
+	public static void signalStart(Object self) {
+		IEditorModelManager.INSTANCE.firePropertyChange(self,
+	            IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);
+	}
+
+	/**
      * Adapter listener class.
      * Forwards on messages so that listeners don't have to adapt to ECore objects
      */

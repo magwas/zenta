@@ -11,6 +11,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
@@ -28,6 +29,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 
@@ -44,7 +46,7 @@ public class TreeModelViewActionFactory {
 
 	private IMetamodel metamodel;
 
-    public TreeModelViewActionFactory(IZentaModel model) {
+    public TreeModelViewActionFactory(@NonNull IZentaModel model) {
     	metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(model);
     }
 
@@ -91,11 +93,12 @@ public class TreeModelViewActionFactory {
             @Override
             public void run() {
                 // Create a new Zenta Element, set its name
-                IZentaElement element = (IZentaElement) eClass.create(folder);
+                IFolder f = Util.verifyNonNull(folder);
+				IZentaElement element = (IZentaElement) eClass.create(f);
                 element.setName(getText());
                 // Execute Command
-                Command cmd = new NewElementCommand(folder, element);
-                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(folder);
+                Command cmd = new NewElementCommand(f, element);
+                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(f);
                 commandStack.execute(cmd);
             }
         };

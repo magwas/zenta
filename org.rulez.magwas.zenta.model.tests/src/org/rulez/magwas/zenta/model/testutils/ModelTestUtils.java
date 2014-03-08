@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -18,6 +19,7 @@ import javax.xml.xpath.XPathFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.NSResolver;
@@ -67,7 +69,7 @@ public class ModelTestUtils {
 	public static String convertNameToResourcePath(String filename) {
 		String resourcePath = ModelTestData.class.getResource(filename).getFile();
 		File file = new File(resourcePath);
-        String path = file.getAbsolutePath();
+        String path = System.getProperty("user.dir") +"/../org.rulez.magwas.zenta.model.tests/src" + file.getAbsolutePath();
 		return path;
 	}
 
@@ -90,5 +92,26 @@ public class ModelTestUtils {
 			ret.add(obj.getDefiningName());
 		return new HashSet<String>(ret);
 	}
+    public static @Nullable Object getPrivateField(Object object, String field) throws Exception {
+        @SuppressWarnings("null")
+		Field f = getField(object.getClass(), field);
+        f.setAccessible(true);
+        return f.get(object);
+    }
+    @SuppressWarnings("null")
+	private static Field getField(Class<?> clazz, String fieldName) throws NoSuchFieldException {
+        try {
+            return clazz.getDeclaredField(fieldName);
+        }
+        catch(NoSuchFieldException ex) {
+            Class<?> superClass = clazz.getSuperclass();
+            if(superClass == null) {
+                throw ex;
+            }
+            else {
+                return getField(superClass, fieldName);
+            }
+        }
+    }
 
 }

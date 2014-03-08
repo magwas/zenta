@@ -253,9 +253,17 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
      * <!-- end-user-doc -->
      * @generated NOT
      */
+    @NonNull
     public IDiagramModel getDiagramModel() {
         return this;
     }
+    
+    @Override
+    @NonNull
+    public IDiagramModel findDiagramModel() {
+        return this;
+    }
+    
 
     /**
 	 * <!-- begin-user-doc -->

@@ -67,12 +67,10 @@ public class DiagramEditorInputFactory implements IElementFactory {
      */
     public static void saveState(IMemento memento, DiagramEditorInput input) {
         IDiagramModel diagramModel = input.getDiagramModel();
-        if(diagramModel != null && diagramModel.getZentaModel() != null) {
+        if(diagramModel != null ) {
             memento.putString(TAG_VIEW_ID, diagramModel.getId());
             String name = diagramModel.getName();
-            if(name != null) {
-                memento.putString(TAG_VIEW_NAME, name);
-            }
+            memento.putString(TAG_VIEW_NAME, name);
             File file = diagramModel.getZentaModel().getFile();
             if(file != null) {
                 memento.putString(TAG_VIEW_FILE, file.getAbsolutePath());

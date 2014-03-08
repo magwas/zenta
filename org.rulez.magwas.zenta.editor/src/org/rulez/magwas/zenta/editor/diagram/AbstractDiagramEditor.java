@@ -805,9 +805,6 @@ implements IDiagramModelEditor, IContextProvider, ITabbedPropertySheetPageContri
         
         // Remove listeners
         Preferences.STORE.removePropertyChangeListener(appPreferencesListener);
-        
-        if(getModel() != null && getModel().getZentaModel() != null) {
-            getModel().getZentaModel().eAdapters().remove(eCoreAdapter);
-        }
+        getModel().getZentaModel().eAdapters().remove(eCoreAdapter);
     }
 }

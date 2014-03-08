@@ -69,6 +69,7 @@ public class ModelTest {
 		assertEquals("ProcessStep",element.getName());
 	}
 
+	@SuppressWarnings("null")
 	@Test
 	public void Diagram_objects_have_bounds() throws IOException {
 		builder.createFullModel();
@@ -79,8 +80,7 @@ public class ModelTest {
 	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
 	    Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
         resource.load(null);
-	    @SuppressWarnings("null")
-		@NonNull IZentaModel model = (IZentaModel)resource.getContents().get(0);
+		IZentaModel model = (IZentaModel)resource.getContents().get(0);
 	    
 	    IDiagramModelObject dmo = Util.verifyNonNull((IDiagramModelObject) ZentaModelUtils.getObjectByID(model, dmoid));
 	    IBounds bounds = dmo.getBounds();

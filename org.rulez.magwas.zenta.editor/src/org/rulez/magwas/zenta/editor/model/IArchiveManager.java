@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.model.impl.ArchiveManager;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -66,7 +67,7 @@ public interface IArchiveManager {
          * @return The URI
          */
         public static URI createArchiveModelURI(File file) {
-            return URI.createURI(getArchiveFilePath(file) + "!/model.xml"); //$NON-NLS-1$
+            return Util.verifyNonNull(URI.createURI(getArchiveFilePath(file) + "!/model.xml")); //$NON-NLS-1$
         }
         
         /**

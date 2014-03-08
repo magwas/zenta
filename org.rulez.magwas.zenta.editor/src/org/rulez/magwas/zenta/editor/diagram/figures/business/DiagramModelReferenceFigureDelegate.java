@@ -3,7 +3,6 @@ package org.rulez.magwas.zenta.editor.diagram.figures.business;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -20,7 +19,7 @@ public class DiagramModelReferenceFigureDelegate extends
     public Image getImage() {
         IDiagramModelObject referencedObject = owner.getDiagramModelObject();
 		IDiagramModel dm = referencedObject.getDiagramModel();
-        return dm == null ? IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DIAGRAM_16) : ZentaLabelProvider.INSTANCE.getImage(dm.eClass());
+        return ZentaLabelProvider.INSTANCE.getImage(dm.eClass());
     }
 
 }

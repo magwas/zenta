@@ -28,7 +28,8 @@ public class NewZentaModelFromTemplateWizardPage extends NewModelFromTemplateWiz
         setDescription(Messages.NewZentaModelFromTemplateWizardPage_2);
     }
     
-    @Override
+    @SuppressWarnings("null")
+	@Override
     protected String getHelpID() {
         return HELP_ID;
     }

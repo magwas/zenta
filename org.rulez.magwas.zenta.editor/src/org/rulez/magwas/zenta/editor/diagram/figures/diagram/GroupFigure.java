@@ -30,7 +30,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 public class GroupFigure
 extends AbstractLabelContainerFigure {
     
-    protected static Dimension DEFAULT_SIZE = new Dimension(400, 140);
+    public static Dimension DEFAULT_SIZE = new Dimension(400, 140);
     protected static int FOLD_HEIGHT = 18;
     protected static int SHADOW_OFFSET = 2;
     

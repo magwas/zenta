@@ -85,7 +85,6 @@ public class TotalViewpointTest {
 		return actualList;
 	}
 	
-	@SuppressWarnings("null")
 	@Test
 	public void Root_RelationClass_connects_to_everything() {
 		IBasicRelationship builtinRelationClass = testdata.metamodel.getBuiltinRelationClass();

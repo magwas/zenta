@@ -52,7 +52,7 @@ public interface IMetamodel extends EObject {
 	
     @NonNull BuiltinTemplate getBuiltinTemplate();
     ITemplate getTemplateFor(@NonNull IDiagramModel dm);
-    ITemplate getTemplateFor(@NonNull IDiagramModelComponent element);
+    ITemplate findTemplateFor(@NonNull IDiagramModelComponent element);
     
     @NonNull NonNullList<IBasicObject> getObjectClasses();
     @NonNull NonNullList<IBasicRelationship> getRelationClasses();

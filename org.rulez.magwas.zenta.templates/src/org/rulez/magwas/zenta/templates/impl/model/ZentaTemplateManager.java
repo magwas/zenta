@@ -91,7 +91,6 @@ public class ZentaTemplateManager extends TemplateManager {
         return new ZentaModelTemplate();
     }
     
-    @SuppressWarnings("null")
 	@Override
     public Image getMainImage() {
         return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_MODELS_16);

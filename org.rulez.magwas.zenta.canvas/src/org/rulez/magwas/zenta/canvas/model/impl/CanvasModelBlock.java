@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModelBlock;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IHintProvider;
@@ -30,6 +31,7 @@ import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.ITextContent;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase;
 
 
@@ -305,10 +307,10 @@ public class CanvasModelBlock extends DiagramModelObjectBase implements ICanvasM
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
-    public String getImagePath() {
-        return imagePath;
+    public @NonNull String getImagePath() {
+        return Util.verifyNonNull(imagePath);
     }
 
     /**
@@ -316,7 +318,7 @@ public class CanvasModelBlock extends DiagramModelObjectBase implements ICanvasM
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setImagePath(String newImagePath) {
+    public void setImagePath(@Nullable String newImagePath) {
         String oldImagePath = imagePath;
         imagePath = newImagePath;
         if (eNotificationRequired())

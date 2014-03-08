@@ -73,14 +73,20 @@ public class PropertiesLabelProvider implements ILabelProvider {
             element = ((EditPart)element).getModel();
         }
         
-        // Check the main label provider
+        String ret = " ";
+        ret = checkTheMainLabelProvider(element, ret);
+        
+        return ret; // Ensure the title bar is displayed //$NON-NLS-1$
+    }
+
+	@SuppressWarnings("null")
+	private String checkTheMainLabelProvider(Object element, String ret) {
         String text = ZentaLabelProvider.INSTANCE.getLabel(element);
         if(StringUtils.isSet(text)) {
-            return StringUtils.escapeAmpersandsInText(text);
+            ret = StringUtils.escapeAmpersandsInText(text);
         }
-        
-        return " "; // Ensure the title bar is displayed //$NON-NLS-1$
-    }
+		return ret;
+	}
 
     private String getZentaElementText(IZentaElement element) {
         String name = StringUtils.escapeAmpersandsInText(element.getName());

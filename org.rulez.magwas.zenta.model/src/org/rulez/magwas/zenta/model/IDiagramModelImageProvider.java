@@ -7,6 +7,7 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,6 +50,6 @@ public interface IDiagramModelImageProvider extends EObject {
 	 * @see #getImagePath()
 	 * @generated
 	 */
-	void setImagePath(String value);
+	void setImagePath(@Nullable String value);
 
 } // IDiagramModelImageProvider

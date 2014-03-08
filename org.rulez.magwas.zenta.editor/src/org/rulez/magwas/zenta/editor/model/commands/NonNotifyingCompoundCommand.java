@@ -6,7 +6,7 @@
 package org.rulez.magwas.zenta.editor.model.commands;
 
 import org.eclipse.gef.commands.CompoundCommand;
-import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 
 
 
@@ -27,34 +27,22 @@ public class NonNotifyingCompoundCommand extends CompoundCommand {
     
     @Override
     public void execute() {
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);
-        
+        EditorModelManagerNoGUI.signalStart(this);
         super.execute();
-        
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
+        EditorModelManagerNoGUI.signalEnd(this);
     }
     
     @Override
     public void undo() {
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);
-        
+        EditorModelManagerNoGUI.signalStart(this);
         super.undo();
-        
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
+        EditorModelManagerNoGUI.signalEnd(this);
     }
     
     @Override
-    public void redo() { // redo() as called by CompoundCommand is *not* the same as execute()!
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);
-        
+    public void redo() {
+        EditorModelManagerNoGUI.signalStart(this);
         super.redo();
-        
-        IEditorModelManager.INSTANCE.firePropertyChange(this,
-                IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
+        EditorModelManagerNoGUI.signalEnd(this);
     }
 }

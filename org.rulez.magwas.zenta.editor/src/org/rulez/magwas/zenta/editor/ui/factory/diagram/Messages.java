@@ -11,6 +11,8 @@ public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.ui.factory.diagram.messages"; //$NON-NLS-1$
 
+	public static final String DiagramImageUIProvider_0 = "Image";
+
     public static String DiagramModelReferenceUIProvider_0;
 
     public static String GroupUIProvider_0;

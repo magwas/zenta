@@ -11,6 +11,8 @@ import org.rulez.magwas.zenta.editor.diagram.commands.DeleteDiagramConnectionCom
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.connections.BasicConnectionFigure;
+import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
+import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
@@ -96,6 +98,7 @@ public class BasicConnectionEditPartTest {
 	
 	@Test
 	public void ToolTip_displays_the_RelationClass() {
+		Preferences.STORE.setValue(IPreferenceConstants.VIEW_TOOLTIPS, true);
 		String id = "9c441eb7";
 		IBasicRelationship baseRelationClass = (IBasicRelationship) testdata.metamodel.getClassById(id);
 		IBasicRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
@@ -107,12 +110,14 @@ public class BasicConnectionEditPartTest {
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagComponents().get(0));
 		assertNotNull(editPart);
 		ToolTipFigure toolTip = (ToolTipFigure) editPart.getFigure().getToolTip();
-		assertEquals("Displayable Relation Name",toolTip.getText());
+		String tooltiptext = toolTip.getText();
+		assertEquals("Displayable Relation Name",tooltiptext);
 		assertEquals("RelationClass: describes",toolTip.getType());
 		assertEquals("test OC 1 describes test OC 2",ZentaLabelProvider.INSTANCE.getRelationshipSentence(rel));
 	}
 	@Test
 	public void ToolTip_displays_the_RelationClass_of_the_defining_element() {
+		Preferences.STORE.setValue(IPreferenceConstants.VIEW_TOOLTIPS, true);
 		String id = "9c441eb7";
 		IBasicRelationship baseRelationClass = (IBasicRelationship) testdata.metamodel.getClassById(id);
 		IZentaDiagramModel dm = testdata.getTemplateDiagramModel();

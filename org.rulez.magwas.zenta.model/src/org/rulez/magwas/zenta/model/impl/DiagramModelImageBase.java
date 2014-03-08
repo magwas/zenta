@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBorderObject;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
@@ -117,15 +118,15 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
 	 * @generated
 	 */
     public String getImagePath() {
-		return imagePath;
-	}
+        return imagePath;
+    }
 
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setImagePath(String newImagePath) {
+    public void setImagePath(@Nullable String newImagePath) {
 		String oldImagePath = imagePath;
 		imagePath = newImagePath;
 		if (eNotificationRequired())

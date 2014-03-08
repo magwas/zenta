@@ -34,7 +34,7 @@ import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 public class NoteFigure
 extends AbstractDiagramModelObjectFigure {
     
-    static Dimension DEFAULT_SIZE = new Dimension(185, 80);
+    public static Dimension DEFAULT_SIZE = new Dimension(185, 80);
     
     private TextFlow fTextFlow;
     

@@ -41,7 +41,6 @@ public class ZentaDiagramModelTests extends DiagramModelTests {
         assertEquals(1, dm.getViewpoint());
     }
 
-    @SuppressWarnings("null")
 	@Test
     public void DiagramModel_have_children() {
         CommonTests.testList(dm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelZentaObject());

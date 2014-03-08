@@ -49,10 +49,10 @@ public abstract class DiagramModelComponentTests {
  
     @Test
     public void have_DiagramModel_associated() {
-        assertNull(component.getDiagramModel());
+        assertNull(component.findDiagramModel());
         
         dm.getChildren().add((IDiagramModelObject)component);
-        assertSame(dm, component.getDiagramModel());
+        assertSame(dm, component.findDiagramModel());
     }
     
     @SuppressWarnings("null")

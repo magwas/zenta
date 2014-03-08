@@ -50,7 +50,7 @@ public class ViewpointsManager {
     }
     
      public boolean isAllowedType(IDiagramModelComponent dmo) {
-        if(dmo instanceof IDiagramModelZentaObject && dmo.getDiagramModel() instanceof IZentaDiagramModel) {
+        if(dmo instanceof IDiagramModelZentaObject && dmo.findDiagramModel() instanceof IZentaDiagramModel) {
         	IDiagramModelZentaObject dmzo = (IDiagramModelZentaObject)dmo;
 			if (null == dmzo.getZentaElement()) {
         		return false;

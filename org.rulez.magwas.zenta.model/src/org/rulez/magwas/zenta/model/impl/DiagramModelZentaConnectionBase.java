@@ -115,19 +115,12 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
 	@Override
 	@NonNull
     public String getName() {
-        if(getRelationship() != null) {
-            return getRelationship().getName();
-        }
-        else {
-            return super.getName();
-        }
+        return getRelationship().getName();
     }
 
     @Override
     public void setName(String name) {
-        if(getRelationship() != null) {
-            getRelationship().setName(name);
-        }
+        getRelationship().setName(name);
     }
     
     @Override

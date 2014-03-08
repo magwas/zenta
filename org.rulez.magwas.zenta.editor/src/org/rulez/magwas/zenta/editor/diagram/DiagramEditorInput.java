@@ -37,7 +37,7 @@ implements IEditorInput, IPersistableElement {
     }
     
     public boolean exists() {
-        return fModel.getZentaModel() != null;
+        return fModel != null;
     }
 
     public ImageDescriptor getImageDescriptor() {
@@ -45,7 +45,7 @@ implements IEditorInput, IPersistableElement {
     }
 
     public String getName() {
-        return fModel.getZentaModel() == null ? Messages.DiagramEditorInput_0 : fModel.getZentaModel().getName() + ": " + fModel.getName(); //$NON-NLS-1$
+        return fModel.getZentaModel().getName() + ": " + fModel.getName(); //$NON-NLS-1$
     }
 
     public String getToolTipText() {
@@ -75,10 +75,6 @@ implements IEditorInput, IPersistableElement {
     }
 
     public IPersistableElement getPersistable() {
-        // This can happen somehow (but can't remember how - so, a sanity check)
-        if(fModel.getZentaModel() == null) {
-            return null;
-        }
         
         // Not saved, or a new file based on a template
         if(fModel.getZentaModel().getFile() == null) {

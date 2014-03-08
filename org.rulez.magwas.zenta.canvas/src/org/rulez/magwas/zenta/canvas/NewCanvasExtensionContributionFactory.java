@@ -117,9 +117,10 @@ public class NewCanvasExtensionContributionFactory extends ExtensionContribution
         
         @Override
         public void run() {
-            if(fCurrentFolder != null) {
+            IFolder cf = fCurrentFolder;
+			if(cf != null) {
                 WizardDialog dialog = new ExtendedWizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                                      new NewCanvasFromTemplateWizard(fCurrentFolder),
+                                      new NewCanvasFromTemplateWizard(cf),
                                       "NewCanvasFromTemplateWizard"); //$NON-NLS-1$
                 dialog.open();
             }

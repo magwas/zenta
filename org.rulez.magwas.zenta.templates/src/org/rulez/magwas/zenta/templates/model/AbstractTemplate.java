@@ -101,11 +101,12 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
     }
 
 	public Image imageByKyeOrDefault() {
-		if(fKeyThumbnailImage == null) {
+		Image tni = fKeyThumbnailImage;
+		if(tni == null) {
             return IZentaImages.ImageFactory.getImage(IZentaImages.DEFAULT_MODEL_THUMB);
         }
         else {
-            return fKeyThumbnailImage;
+            return tni;
         }
 	}
 

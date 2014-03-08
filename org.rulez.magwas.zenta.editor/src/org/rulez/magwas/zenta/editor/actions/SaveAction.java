@@ -9,6 +9,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
@@ -17,6 +18,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -58,7 +60,7 @@ public class SaveAction extends AbstractModelSelectionAction {
         setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_ETOOL_SAVE_EDIT));
         setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_ETOOL_SAVE_EDIT_DISABLED));
         
-        IEditorModelManager.INSTANCE.addPropertyChangeListener(commandStackListener);
+        IEditorModelManager.INSTANCE.addPropertyChangeListener(getCommandStackListener());
     }
     
     @Override
@@ -85,11 +87,9 @@ public class SaveAction extends AbstractModelSelectionAction {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if(workbenchWindow != null) {
-            Shell shell = workbenchWindow.getShell();
-            if(shell != null && !shell.isDisposed()) {
-                shell.setModified(enabled);
-            }
+        Shell shell = workbenchWindow.getShell();
+        if(shell != null && !shell.isDisposed()) {
+            shell.setModified(enabled);
         }
     }
 
@@ -97,6 +97,15 @@ public class SaveAction extends AbstractModelSelectionAction {
     public void dispose() {
         super.dispose();
         workbenchWindow.getPartService().removePartListener(this);
-        IEditorModelManager.INSTANCE.removePropertyChangeListener(commandStackListener);
+        IEditorModelManager.INSTANCE.removePropertyChangeListener(getCommandStackListener());
     }
+
+    @NonNull
+	public PropertyChangeListener getCommandStackListener() {
+		return Util.verifyNonNull(commandStackListener);
+	}
+
+	public void setCommandStackListener(PropertyChangeListener commandStackListener) {
+		this.commandStackListener = commandStackListener;
+	}
 }

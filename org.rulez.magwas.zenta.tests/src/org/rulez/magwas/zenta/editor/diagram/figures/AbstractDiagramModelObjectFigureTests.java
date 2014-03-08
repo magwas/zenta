@@ -12,9 +12,11 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.swt.graphics.Color;
 import org.junit.AfterClass;
@@ -48,15 +50,18 @@ public abstract class AbstractDiagramModelObjectFigureTests {
     
     // Convenience method to find a Figure in an EditPart in a Viewer from the model object
     protected IFigure getFigureFromViewer(Object modelObject) {
-        return ((GraphicalEditPart)editor.getGraphicalViewer().getEditPartRegistry().get(modelObject)).getFigure();
+        @SuppressWarnings("rawtypes")
+		Map registry = editor.getGraphicalViewer().getEditPartRegistry();
+		GraphicalEditPart editPart = (GraphicalEditPart)registry.get(modelObject);
+		return editPart.getFigure();
     }
     
-	@SuppressWarnings("null")
 	@BeforeClass
     public static void runOnceBeforeAllTests() {
         // Create a model with a default DiagramModel and open the editor
         IEditorModelManager editorModeManager = new EditorModelManagerNoGUI();
         model = editorModeManager.createNewModel();
+        editorModeManager.openModel(model);
         dm = model.getDefaultDiagramModel();
         assertNotNull(dm);
         editor = EditorManager.openDiagramEditor(dm);
@@ -132,5 +137,14 @@ public abstract class AbstractDiagramModelObjectFigureTests {
     public void text_control_can_be_clicked() {
         assertFalse(abstractFigure.didClickTextControl(new Point(10, 10)));
     }
+
+	protected Point getAnchor(IFigure figure) {
+		IFigure p = figure.getParent();
+		Rectangle b = figure.getBounds();
+		Point a = new Point(b.x,b.y);
+		if(null != p)
+			a = a.getTranslated(getAnchor(p));
+		return a;	
+	}
 
 }

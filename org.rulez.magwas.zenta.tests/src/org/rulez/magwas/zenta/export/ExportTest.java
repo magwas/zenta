@@ -52,6 +52,7 @@ public class ExportTest {
 		String policy = "newpolicy.style";
 		runDefaultStyleInDir(policy, data.model, temp);
 		File policyfile = new File(temp,"policy.xml");
+		@SuppressWarnings("null")
 		Document testDoc = Util.createXmlDocumentFromFileName(policyfile.getAbsolutePath());
         Element node = (Element) xpath.evaluate("//objectClass[@name='Procedure']",
                 testDoc, XPathConstants.NODE);

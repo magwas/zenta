@@ -154,4 +154,5 @@ public interface IEditorModelManager {
 	void alreadyOpenDialog(File file);
 
 	@Nullable String askSavePath();
+
 }
