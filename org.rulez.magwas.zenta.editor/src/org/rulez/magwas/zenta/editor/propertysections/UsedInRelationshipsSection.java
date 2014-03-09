@@ -30,7 +30,6 @@ import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 
@@ -90,7 +89,7 @@ public class UsedInRelationshipsSection extends AbstractZentaPropertySection {
             }
             
             public Object[] getElements(Object inputElement) {
-                return ZentaModelUtils.getRelationships((IZentaElement)inputElement).toArray();
+                return ((IZentaElement) inputElement).getRelationships().toArray();
             }
         });
         

@@ -41,8 +41,7 @@ implements IWorkbenchAction
         
         // Open Diagram Editor
         IDiagramModel dm = model.getDefaultDiagramModel();
-        if(null != dm)
-        	EditorManager.openDiagramEditor(dm);
+        EditorManager.openDiagramEditor(dm);
         
         // Edit in-place in Tree
         UIRequestManager.INSTANCE.fireRequest(new TreeEditElementRequest(this, model));

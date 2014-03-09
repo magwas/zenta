@@ -1,5 +1,5 @@
 workspace/
 target/
-org.rulez.magwas.zenta.tests/generated-images/*
+org.rulez.magwas.zenta.integrationtests/generated-images/*
 *.jar
 .settings/

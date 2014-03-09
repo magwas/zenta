@@ -12,7 +12,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -22,8 +21,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -35,6 +37,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.handmade.util.IDAdapter;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
@@ -141,7 +144,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EObject> elements;
+	protected EList<INameable> elements;
 				/**
 	 * The default value of the '{@link #getFile() <em>File</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -229,10 +232,17 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
      * @generated NOT
      */
+    @NonNull
     public IDiagramModel getDefaultDiagramModel() {
-        EList<IDiagramModel> list = getDiagramModels();
-        return list.size() > 0 ? list.get(0) : null;
+        NonNullList<IDiagramModel> list = getDiagramModels();
+        return list.size() > 0 ? list.get(0) : createDefaultDiagramModel();
     }
+		private @NonNull IZentaDiagramModel createDefaultDiagramModel() {
+			IZentaDiagramModel dm = IZentaFactory.eINSTANCE.createZentaDiagramModel();
+			getElements().add(dm);
+			dm.setName("Default Diagram Model");
+			return dm;
+		}
 
     /**
      * <!-- begin-user-doc -->
@@ -240,21 +250,14 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public EList<IDiagramModel> getDiagramModels() {
-        EList<IDiagramModel> list = new BasicEList<IDiagramModel>();
+    public @NonNull NonNullList<IDiagramModel> getDiagramModels() {
+    	NonNullList<IDiagramModel> list = new NonNullArrayList<IDiagramModel>();
         _getDiagramModels(this, list);
         
-/*        EList<IFolder> fl = this.getFolders();
-        for(IFolder folder: fl) {
-            if(folder != null) {
-                _getDiagramModels(folder, list);
-            }        	
-        }
-*/        
         return list;
     }
     
-    private void _getDiagramModels(IFolder folder, EList<IDiagramModel> list) {
+    private void _getDiagramModels(IFolder folder, NonNullList<IDiagramModel> list) {
         for(EObject object : folder.getElements()) {
             if(object instanceof IDiagramModel) {
                 list.add((IDiagramModel)object);
@@ -370,9 +373,9 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 */
 	@SuppressWarnings("null")
 	@NonNull
-	public EList<EObject> getElements() {
+	public EList<INameable> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentEList<EObject>(EObject.class, this, IZentaPackage.ZENTA_MODEL__ELEMENTS);
+			elements = new EObjectContainmentEList<INameable>(INameable.class, this, IZentaPackage.ZENTA_MODEL__ELEMENTS);
 		}
 		return elements;
 	}
@@ -528,7 +531,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 				return;
 			case IZentaPackage.ZENTA_MODEL__ELEMENTS:
 				getElements().clear();
-				getElements().addAll((Collection<? extends EObject>)newValue);
+				getElements().addAll((Collection<? extends INameable>)newValue);
 				return;
 			case IZentaPackage.ZENTA_MODEL__FILE:
 				setFile((File)newValue);
@@ -581,7 +584,8 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IZentaPackage.ZENTA_MODEL__FOLDERS:
@@ -735,6 +739,30 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	@Override
 	public IMetamodel getMetamodel() {
 		return IZentaFactory.eINSTANCE.getMetamodelFor(this);
+	}
+
+	@Override
+	public boolean hasDiagramReferences() {
+		return false;
+	}
+	@Override
+	public boolean isDeleted() {
+		return null == eContainer();
+	}
+
+	@Override
+	public UndoState delete() {
+		throw new IllegalArgumentException();
+	}
+
+	@Override
+	public UndoState delete(UndoState state) {
+		throw new IllegalArgumentException();
+	}
+
+	@Override
+	public UndoState prepareDelete() {
+		throw new IllegalArgumentException();
 	}
 
 

@@ -29,7 +29,6 @@ import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 
@@ -126,7 +125,7 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
         for(IDiagramModelZentaObject dmo : diagramObjects) {
             IZentaElement element = dmo.getZentaElement();
 
-            for(IBasicRelationship relation : ZentaModelUtils.getRelationships(element)) {
+            for(IBasicRelationship relation : element.getRelationships()) {
                 /*
                  * If the user holds down the Copy key (Ctrl on win/lnx, Alt on Mac) then linked connections
                  * are not added on drag and drop. However, any selected relations' linked objects are added.
@@ -301,7 +300,7 @@ public class ZentaDNDEditPolicy extends AbstractDNDEditPolicy {
             fElementsToAdd.add(element);
             
             // And its relationships
-            for(IBasicRelationship relationship : ZentaModelUtils.getRelationships(element)) {
+            for(IBasicRelationship relationship : element.getRelationships()) {
                 if(!fRelationsToAdd.contains(relationship)) {
                     fRelationsToAdd.add(relationship);
                 }

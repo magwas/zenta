@@ -42,7 +42,7 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
  * 
  * @author Phillip Beauvoir
  */
-public class TreeModelViewer extends TreeViewer {
+public class TreeModelViewer extends TreeViewer implements ITreeModelViewer{
     
     private TreeCellEditor fCellEditor;
     
@@ -135,6 +135,7 @@ public class TreeModelViewer extends TreeViewer {
      * @param element the element
      * @return the TreeItem or null
      */
+    @Override
     public TreeItem findTreeItem(Object element) {
         Widget item = findItem(element);
         return (TreeItem)(item instanceof TreeItem ? item : null);

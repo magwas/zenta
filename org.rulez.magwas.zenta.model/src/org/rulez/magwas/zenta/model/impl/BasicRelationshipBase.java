@@ -20,7 +20,6 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -89,11 +88,11 @@ abstract public class BasicRelationshipBase extends BasicObjectBase implements I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
     @NonNull
 	public IZentaElement getSource() {
-		return Util.verifyNonNull(source);
+		return source;
 	}
 
 				/**
@@ -111,11 +110,11 @@ abstract public class BasicRelationshipBase extends BasicObjectBase implements I
 				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@NonNull
 	public IZentaElement getTarget() {
-		return Util.verifyNonNull(target);
+		return target;
 	}
 
 				/**

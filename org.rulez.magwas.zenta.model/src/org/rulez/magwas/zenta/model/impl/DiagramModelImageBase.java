@@ -118,8 +118,8 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
 	 * @generated
 	 */
     public String getImagePath() {
-        return imagePath;
-    }
+		return imagePath;
+	}
 
     /**
 	 * <!-- begin-user-doc -->

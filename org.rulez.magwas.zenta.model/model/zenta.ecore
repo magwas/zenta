@@ -73,17 +73,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="#//ZentaModelElement #//FolderContainer #//Nameable #//Identifier #//Documentable #//Properties">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"
-        resolveProxies="false">
+        eType="#//Nameable" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="element"/>
         <details key="kind" value="element"/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ZentaElement" abstract="true" eSuperTypes="#//ZentaModelElement #//Identifier #//Cloneable #//Nameable #//Documentable #//Properties">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="diagObjects" upperBound="-1"
-        eType="#//DiagramModelZentaObject" transient="true" derived="true" eOpposite="#//DiagramModelZentaObject/zentaElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JunctionElement" abstract="true" interface="true"
       eSuperTypes="#//ZentaElement"/>
@@ -279,6 +274,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" lowerBound="1"
         eType="#//Metamodel" eOpposite="#//Metamodel/templates"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagram" eType="#//DiagramModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ZentaElement" abstract="true" eSuperTypes="#//ZentaModelElement #//Identifier #//Cloneable #//Nameable #//Documentable #//Properties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagObjects" upperBound="-1"
+        eType="#//DiagramModelZentaObject" transient="true" derived="true" eOpposite="#//DiagramModelZentaObject/zentaElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicObject" eSuperTypes="#//ZentaElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"

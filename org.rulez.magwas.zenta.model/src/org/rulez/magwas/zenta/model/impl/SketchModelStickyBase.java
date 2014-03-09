@@ -86,7 +86,7 @@ public class SketchModelStickyBase extends DiagramModelObjectBase implements ISk
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     protected SketchModelStickyBase() {
 		super();

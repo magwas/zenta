@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
 import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
+import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -27,15 +28,15 @@ import org.rulez.magwas.zenta.model.IFolder;
 public class SortFolderCommand extends Command implements Comparator<EObject>  {
     
     private IFolder fFolder;
-    private List<EObject> fList;
+    private List<INameable> fList;
 
     public SortFolderCommand(IFolder folder) {
         setLabel(Messages.SortFolderCommand_0);
         fFolder = folder;
         
         // Keep a copy of the orginal order
-        fList = new ArrayList<EObject>();
-        for(EObject o : fFolder.getElements()) {
+        fList = new ArrayList<INameable>();
+        for(INameable o : fFolder.getElements()) {
             fList.add(o);
         }
     }

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
+import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -175,8 +176,8 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 	}
 
 	@Override
-	public List<IBasicObject> getAllowedTargets() {
-		List<IBasicObject> ret = new ArrayList<IBasicObject>();
+	public NonNullList<IBasicObject> getAllowedTargets() {
+		NonNullList<IBasicObject> ret = new NonNullArrayList<IBasicObject>();
 		ret.add((IBasicObject) getTarget());
 		for(IBasicObject kid : this.getChildren())
 			for(IBasicObject target: ((IBasicRelationship)kid).getAllowedTargets())

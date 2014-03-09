@@ -45,7 +45,7 @@ public class DerivedRelationsUtils {
         
         // Get relations from source element
         IZentaElement source = relation.getSource();
-        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(source).iterator(); iterator
+        for (NonNullListIterator<IBasicRelationship> iterator = source.getTargetRelationships().iterator(); iterator
 				.hasNext();) {
 			@NonNull
 			IBasicRelationship rel = iterator.next();
@@ -56,7 +56,7 @@ public class DerivedRelationsUtils {
             }
 		}
         
-        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(source).iterator(); iterator
+        for (NonNullListIterator<IBasicRelationship> iterator = source.getSourceRelationships().iterator(); iterator
 				.hasNext();) {
 			IBasicRelationship rel = iterator.next();
 			if(rel != relation) {
@@ -71,7 +71,7 @@ public class DerivedRelationsUtils {
         
         // Get relations from target element
         IZentaElement target = relation.getTarget();
-        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(target).iterator(); iterator
+        for (NonNullListIterator<IBasicRelationship> iterator = target.getSourceRelationships().iterator(); iterator
 				.hasNext();) {
 			IBasicRelationship rel = iterator.next();
 			if(rel != relation) {
@@ -81,7 +81,7 @@ public class DerivedRelationsUtils {
             }
 		}
         
-        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(target).iterator(); iterator
+        for (NonNullListIterator<IBasicRelationship> iterator = target.getTargetRelationships().iterator(); iterator
 				.hasNext();) {
 			IBasicRelationship rel = iterator.next();
 			if(rel != relation) {
@@ -119,7 +119,7 @@ public class DerivedRelationsUtils {
      * @return True if element1 has a direct Structural relationship to element2
      */
     public boolean hasDirectStructuralRelationship(IZentaElement element1, IZentaElement element2) {
-        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(element1)) {
+        for(IBasicRelationship relation : element1.getSourceRelationships()) {
             if(relation.getTarget() == element2 && isStructuralRelationship(relation)) {
                 return true;
             }
@@ -274,7 +274,7 @@ public class DerivedRelationsUtils {
         
         //System.out.println("TRAVERSING FROM: " + element.getName());
         
-        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(element).iterator(); iterator
+        for (NonNullListIterator<IBasicRelationship> iterator = element.getSourceRelationships().iterator(); iterator
 				.hasNext();) {
 			IBasicRelationship rel = iterator.next();
 			if(isStructuralRelationship(rel)) {
@@ -282,7 +282,7 @@ public class DerivedRelationsUtils {
             }
 		}
         
-        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(element).iterator(); iterator
+        for (NonNullListIterator<IBasicRelationship> iterator = element.getTargetRelationships().iterator(); iterator
 				.hasNext();) {
 			IBasicRelationship rel = iterator.next();
 			if(isBidirectionalRelationship(rel)) {
@@ -339,7 +339,7 @@ public class DerivedRelationsUtils {
      * bi-directional relationships then don't bother traversing.
      */
     private boolean _hasTargetElementValidRelations(IZentaElement targetElement) {
-        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getSourceRelationships(targetElement).iterator(); iterator
+        for (NonNullListIterator<IBasicRelationship> iterator = targetElement.getSourceRelationships().iterator(); iterator
 				.hasNext();) {
 			IBasicRelationship relation = iterator.next();
 			if(isBidirectionalRelationship(relation)) {
@@ -347,7 +347,7 @@ public class DerivedRelationsUtils {
             }
 		}
         
-        for (NonNullListIterator<IBasicRelationship> iterator = ZentaModelUtils.getTargetRelationships(targetElement).iterator(); iterator
+        for (NonNullListIterator<IBasicRelationship> iterator = targetElement.getTargetRelationships().iterator(); iterator
 				.hasNext();) {
 			IBasicRelationship relation = iterator.next();
 			if(isStructuralRelationship(relation)) {

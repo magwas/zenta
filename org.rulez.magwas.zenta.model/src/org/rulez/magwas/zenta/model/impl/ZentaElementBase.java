@@ -26,7 +26,10 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullArrayList;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -64,6 +67,11 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  * @generated
  */
 public abstract class ZentaElementBase extends EObjectImpl implements IZentaElement {
+	
+    private static final int SOURCE_RELATIONSHIPS = 1;
+	private static final int TARGET_RELATIONSHIPS = 2;
+
+
     /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -422,7 +430,8 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IZentaPackage.ZENTA_ELEMENT__ZENTA_MODEL:
@@ -604,23 +613,64 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 				propertiess.add(prop);
 			}
 
-		@Override
-		public void delete() {
-			ElementState state = new ElementState();
-			state.element = this;
-			state.folder = (IFolder) eContainer();
-			delete(state);
+		public class ElementState implements UndoState {
+			public IFolder folder;
+			public IZentaElement element;
+			public int index;
+			public List<UndoState> diagobjs;
+			public ArrayList<UndoState> relationStates;
+			public void undelete() {
+		        folder.getElements().add(index, element);
+				for(UndoState dmost : diagobjs)
+					dmost.undelete();
+				for(UndoState rs : relationStates)
+					rs.undelete();
+			}
+			@Override
+			public INameable getElement() {
+				return element;
+			}
 		}
 
 		@Override
-		public void delete(ElementState state) {
+		public UndoState delete() {
+			ElementState state = prepareDelete();
+			delete(state);
+			return state;
+		}
+
+		@Override
+		public ElementState prepareDelete() {
+			ElementState state = new ElementState();
+			prepareUndoState(state);
+			return state;
+		}
+
+		protected void prepareUndoState(ElementState state) {
+			state.element = this;
+			state.folder = (IFolder) eContainer();
+		}
+
+		@Override
+		public boolean isDeleted() {
+			return null == eContainer();
+		}
+		@Override
+		public UndoState delete(UndoState st) {
+			ElementState state = (ElementState) st;
 			state.diagobjs = new ArrayList<UndoState>();
-			
 			state.index = state.folder.getElements().indexOf(this); 
 			deleteDiagramObjects(state);
+			state.relationStates = new ArrayList<UndoState>();
+			NonNullList<IBasicRelationship> relationships = getRelationships();
+			for(IZentaElement rel : relationships) {
+				if(!rel.isDeleted())
+					state.relationStates.add(rel.delete());
+			}
 			if(state.index != -1) { 
 			    state.folder.getElements().remove(this);
 			}
+			return state;
 		}
 		
 			protected void deleteDiagramObjects(@NonNull ElementState state) {
@@ -636,6 +686,71 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 		public EList<? extends IDiagramModelComponent> getDiagComponents() {
 			return getDiagObjects();
 		}
+
+		@Override
+		public boolean hasDiagramReferences() {
+			return !getDiagComponents().isEmpty();
+		}
+
+		@Override
+		@NonNull
+	    public NonNullList<IBasicRelationship> getRelationships() {
+	        return __getRelationships(SOURCE_RELATIONSHIPS | TARGET_RELATIONSHIPS);
+	    }
+	    
+		@Override
+		@NonNull
+	    public NonNullList<IBasicRelationship> getSourceRelationships() {
+	        return __getRelationships(SOURCE_RELATIONSHIPS);
+	    }
+	    
+		@Override
+		@NonNull
+		public NonNullList<IBasicRelationship> getTargetRelationships() {
+	        return __getRelationships(TARGET_RELATIONSHIPS);
+	    }
+
+		@NonNull
+		private NonNullList<IBasicRelationship> __getRelationships(int type) {
+	        NonNullList<IBasicRelationship> relationships = new NonNullArrayList<IBasicRelationship>();
+	        
+	    	List<IFolder> folders = new ArrayList<IFolder>();
+			folders.add(getZentaModel());
+			childFolders(this, type, relationships, folders);
+	        
+	        return relationships;
+	    }
+
+			@SuppressWarnings("null")
+			private void childFolders(IZentaElement element, int type, 
+					List<IBasicRelationship> relationships, List<IFolder> folders) {
+				for (@NonNull IFolder  folder : folders) {
+					__getRelationshipsForElement(folder, element, type, relationships);
+				}
+			}
+
+		private void __getRelationshipsForElement(IFolder folder, IZentaElement element, int type, List<IBasicRelationship> relationships) {
+	        
+	        for(EObject object : folder.getElements()) {
+	            if(object instanceof IBasicRelationship) {
+	                IBasicRelationship relationship = (IBasicRelationship)object;
+	                if((type & SOURCE_RELATIONSHIPS) != 0) {
+	                    if(relationship.getSource() == element && !relationships.contains(relationship)) {
+	                        relationships.add(relationship);
+	                    }
+	                }
+	                if((type & TARGET_RELATIONSHIPS) != 0) {
+	                    if(relationship.getTarget() == element && !relationships.contains(relationship)) {
+	                        relationships.add(relationship);
+	                    }
+	                }
+	            }
+	        }
+	        
+	        // Child folders
+	        EList<IFolder> folders = folder.getFolders();
+			childFolders(element, type, relationships, folders);
+	    }
 
 
 }

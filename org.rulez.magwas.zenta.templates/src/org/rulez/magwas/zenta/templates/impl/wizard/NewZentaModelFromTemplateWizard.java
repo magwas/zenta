@@ -18,6 +18,7 @@ import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.editor.views.tree.TreeEditElementRequest;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -44,7 +45,7 @@ public class NewZentaModelFromTemplateWizard extends Wizard {
     
     @Override
     public void addPages() {
-        fMainPage = new NewZentaModelFromTemplateWizardPage(fTemplateManager);
+        fMainPage = new NewZentaModelFromTemplateWizardPage(Util.verifyNonNull(fTemplateManager));
         addPage(fMainPage);
     }
 

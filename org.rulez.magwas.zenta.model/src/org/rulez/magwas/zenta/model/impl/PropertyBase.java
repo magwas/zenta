@@ -214,10 +214,7 @@ public class PropertyBase extends EObjectImpl implements IProperty {
 	 */
     @NonNull
     public String getKey() {
-    	String k = key;
-    	if(k == null)
-    		return "";
-		return k;
+		return key;
 	}
 
     /**

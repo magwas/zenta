@@ -24,7 +24,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 
@@ -80,7 +79,7 @@ public class DeleteFromModelAction extends SelectionAction {
                         elements.add(element);
                     }
                     // Element's relationships
-                    for(IBasicRelationship relation :  ZentaModelUtils.getRelationships(element)) {
+                    for(IBasicRelationship relation :  element.getRelationships()) {
                         if(!elements.contains(relation)) {
                             elements.add(relation);
                         }

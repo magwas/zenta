@@ -23,7 +23,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IJunctionElement;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 
@@ -247,7 +246,7 @@ public class DiagramModelUtils {
      * Check if there is already a nested type relationship between parent (source) and child (target)
      */
     public static boolean hasNestedConnectionTypeRelationship(IZentaElement parent, IZentaElement child) {
-        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(parent)) {
+        for(IBasicRelationship relation : parent.getSourceRelationships()) {
             if(relation.getTarget() == child && isNestedConnectionTypeRelationship(relation)) {
                 return true;
             }

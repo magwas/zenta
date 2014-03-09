@@ -31,7 +31,6 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.UnTestedException;
-import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
@@ -348,7 +347,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
      * @return an existing relationship or null
      */
     private IBasicRelationship getExistingRelationshipOfType(EClass classType, IDiagramModelZentaObject source, IDiagramModelZentaObject target) {
-        for(IBasicRelationship relation : ZentaModelUtils.getSourceRelationships(source.getZentaElement())) {
+        for(IBasicRelationship relation : source.getZentaElement().getSourceRelationships()) {
             if(relation.eClass().equals(classType) && relation.getTarget() == target.getZentaElement()) {
                 return relation;
             }

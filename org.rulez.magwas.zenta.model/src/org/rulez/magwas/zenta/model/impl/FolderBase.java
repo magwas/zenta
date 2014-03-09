@@ -5,8 +5,10 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,6 +33,7 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -54,7 +57,8 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  * @generated
  */
 public class FolderBase extends EObjectImpl implements IFolder {
-    /**
+
+	/**
 	 * The cached value of the '{@link #getFolders() <em>Folders</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -134,7 +138,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<EObject> elements;
+    protected EList<INameable> elements;
 
     
     /**
@@ -246,9 +250,9 @@ public class FolderBase extends EObjectImpl implements IFolder {
 	 */
     @SuppressWarnings("null")
 	@NonNull
-    public EList<EObject> getElements() {
+    public EList<INameable> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentEList<EObject>(EObject.class, this, IZentaPackage.FOLDER__ELEMENTS);
+			elements = new EObjectContainmentEList<INameable>(INameable.class, this, IZentaPackage.FOLDER__ELEMENTS);
 		}
 		return elements;
 	}
@@ -371,7 +375,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
 				return;
 			case IZentaPackage.FOLDER__ELEMENTS:
 				getElements().clear();
-				getElements().addAll((Collection<? extends EObject>)newValue);
+				getElements().addAll((Collection<? extends INameable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -412,7 +416,8 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IZentaPackage.FOLDER__ZENTA_MODEL:
@@ -531,6 +536,63 @@ public class FolderBase extends EObjectImpl implements IFolder {
 		result.append(documentation);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public boolean hasDiagramReferences() {
+		for(IFolder f : getFolders())
+			if(f.hasDiagramReferences())
+				return true;
+		for(EObject e: getElements())
+			if(((INameable) e).hasDiagramReferences())
+				return true;
+		return false;
+	}
+
+	@Override
+	public boolean isDeleted() {
+		return null == eContainer();
+	}
+
+    private class FolderDeleteState implements UndoState {
+		public List<UndoState> elements = new ArrayList<UndoState>();
+		public FolderBase self;
+		public IFolderContainer parent;
+		@Override
+		public void undelete() {
+			parent.getFolders().add(self);
+			for(UndoState o: elements)
+				o.undelete();
+		}
+		@Override
+		public INameable getElement() {
+			return self;
+		}
+	}
+
+	@Override
+	public UndoState delete() {
+		FolderDeleteState state = (FolderDeleteState) prepareDelete();
+		return delete(state);
+	}
+
+	@Override
+	public UndoState prepareDelete() {
+		FolderDeleteState state = new FolderDeleteState();
+		state.self = this;
+		state.parent = (IFolderContainer) eContainer();
+		return state;
+	}
+
+	@Override
+	public UndoState delete(UndoState st) {
+		FolderDeleteState state = (FolderDeleteState) st;
+		for(IFolder o : new ArrayList<IFolder>(getFolders()))
+			state.elements.add(o.delete());
+		for(INameable o : new ArrayList<INameable>(getElements()))
+			state.elements.add(o.delete());
+		state.parent.getFolders().remove(this);
+		return state;
 	}
 
 } //Folder

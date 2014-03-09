@@ -38,6 +38,11 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 		public void undelete() {
 			object.reconnect();
 		}
+
+		@Override
+		public INameable getElement() {
+			return object;
+		}
 	}
 	@Override
 	UndoState delete();

@@ -385,7 +385,8 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL_COMPONENT__NAME:
@@ -426,10 +427,16 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 
 	@Override
 	public UndoState delete() {
+		UndoState save = prepareDelete();
+		delete(save);
+		return save;
+	}
+
+	@Override
+	public UndoState prepareDelete() {
 		DiagramModelObjectState save = new DiagramModelObjectState();
 		save.parent = (IDiagramModelContainer) eContainer();
 		save.object = (IDiagramModelObject) this;
-		delete(save);
 		return save;
 	}
 
@@ -486,6 +493,13 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 				save.targetConnections.addAll(object.getTargetConnections());
 			}
 
-
+			@Override
+			public boolean hasDiagramReferences() {
+				return false;
+			}
+			@Override
+			public boolean isDeleted() {
+				return null == eContainer();
+			}
 
 }

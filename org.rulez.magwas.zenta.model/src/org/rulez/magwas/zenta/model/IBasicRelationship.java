@@ -6,10 +6,9 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullList;
 
 
 /**
@@ -105,7 +104,7 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	@NonNull
 	EList<IDiagramModelZentaConnection> getDiagConnections();
 
-	List<IBasicObject> getAllowedTargets();
+	@NonNull NonNullList<IBasicObject> getAllowedTargets();
 	@NonNull IBasicRelationship create(@NonNull IFolder folder);
 	
 	boolean isConnected();

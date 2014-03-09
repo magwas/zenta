@@ -48,7 +48,7 @@ public interface IDiagramModelImageProvider extends EObject {
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Image Path</em>' attribute.
 	 * @see #getImagePath()
-	 * @generated
+	 * @generated NOT
 	 */
 	void setImagePath(@Nullable String value);
 

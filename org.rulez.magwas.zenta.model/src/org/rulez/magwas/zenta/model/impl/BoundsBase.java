@@ -76,7 +76,7 @@ public class BoundsBase extends EObjectImpl implements IBounds {
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @see #getWidth()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
     public static final int WIDTH_EDEFAULT = 120;
@@ -96,7 +96,7 @@ public class BoundsBase extends EObjectImpl implements IBounds {
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @see #getHeight()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
     public static final int HEIGHT_EDEFAULT = 55;

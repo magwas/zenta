@@ -5,7 +5,9 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -20,6 +22,7 @@ import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicObject;
+import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.handmade.RootObjectClass;
 import org.rulez.magwas.zenta.model.handmade.RootRelationClass;
 
@@ -371,4 +374,39 @@ abstract public class BasicObjectBase extends ZentaElementBase implements IBasic
 		return super.eIsSet(featureID);
 	}
 
+	private class BasicObjectDeleteState extends ElementState {
+		public ArrayList<IBasicObject> kids = new ArrayList<IBasicObject>();
+
+		public void undelete() {
+			super.undelete();
+			for(IBasicObject kid : kids) {
+				kid.setAncestor((IBasicObject) element);
+			}
+		}
+
+	}
+	@Override
+	public UndoState delete() {
+		BasicObjectDeleteState state = prepareDelete();
+		delete(state);
+		return state;
+	}
+
+	@Override
+	public BasicObjectDeleteState prepareDelete() {
+		BasicObjectDeleteState state = new BasicObjectDeleteState();
+		prepareUndoState(state);
+		return state;
+	}
+	
+	@Override
+	public UndoState delete(UndoState st) {
+		BasicObjectDeleteState state = (BasicObjectDeleteState) st;
+		state.kids.addAll(this.getChildren());
+		for(IBasicObject kid : state.kids) {
+			kid.setAncestor(getAncestor());
+		}
+		super.delete(state);
+		return state;
+	}
 } //BasicObject

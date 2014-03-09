@@ -8,8 +8,9 @@ package org.rulez.magwas.zenta.model;
 
 import java.io.File;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullList;
 
 /**
  * <!-- begin-user-doc -->
@@ -94,17 +95,18 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 * @generated
+	 * @generated NOT
 	 */
+	@NonNull
 	IDiagramModel getDefaultDiagramModel();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 * @generated
+	 * @generated NOT
 	 */
-	EList<IDiagramModel> getDiagramModels();
+	NonNullList<IDiagramModel> getDiagramModels();
 	
 	IMetamodel getMetamodel();
 

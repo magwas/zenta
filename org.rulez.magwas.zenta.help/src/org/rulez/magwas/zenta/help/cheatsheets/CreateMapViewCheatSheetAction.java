@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.help.cheatsheets;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
@@ -14,6 +13,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.cheatsheets.ICheatSheetAction;
 import org.eclipse.ui.cheatsheets.ICheatSheetManager;
+import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
@@ -51,7 +51,7 @@ implements ICheatSheetAction {
             return;
         }
         
-		EList<IDiagramModel> diagramModels = model.getDiagramModels();
+		NonNullList<IDiagramModel> diagramModels = model.getDiagramModels();
         if(diagramModels.size() < 2) {
             MessageDialog.openWarning(Display.getCurrent().getActiveShell(), Messages.CreateMapViewCheatSheetAction_4,
                     Messages.CreateMapViewCheatSheetAction_5);

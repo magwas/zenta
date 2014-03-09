@@ -155,4 +155,6 @@ public interface IEditorModelManager {
 
 	@Nullable String askSavePath();
 
+	boolean removeModelWithoutDirtyCheck(IZentaModel model);
+
 }

@@ -269,7 +269,12 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	        }
 	    }
 	    
-	    // Close the corresponding GEF editor(s) for this model *FIRST* before removing from model
+	    return removeModelWithoutDirtyCheck(model);
+	}
+
+	@Override
+	public boolean removeModelWithoutDirtyCheck(IZentaModel model) {
+		// Close the corresponding GEF editor(s) for this model *FIRST* before removing from model
 	    EditorManager.closeDiagramEditors(model);
 	    
 	    getModels().remove(model);

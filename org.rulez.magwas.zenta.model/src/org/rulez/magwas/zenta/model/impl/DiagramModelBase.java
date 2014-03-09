@@ -36,6 +36,8 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
+import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -569,7 +571,8 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL__ZENTA_MODEL:
@@ -726,6 +729,30 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
 		result.append(connectionRouterType);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public boolean hasDiagramReferences() {
+		return false;
+	}
+	@Override
+	public boolean isDeleted() {
+		return null == eContainer();
+	}
+	
+	@Override
+	public UndoState delete() {
+		throw new UnTestedException();
+	}
+
+	@Override
+	public UndoState delete(UndoState save) {
+		throw new UnTestedException();
+	}
+
+	@Override
+	public UndoState prepareDelete() {
+		throw new UnTestedException();
 	}
 
 

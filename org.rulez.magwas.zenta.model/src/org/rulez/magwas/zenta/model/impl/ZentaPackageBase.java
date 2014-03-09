@@ -1523,9 +1523,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		folderEClass = createEClass(FOLDER);
 		createEReference(folderEClass, FOLDER__ELEMENTS);
 
-		zentaElementEClass = createEClass(ZENTA_ELEMENT);
-		createEReference(zentaElementEClass, ZENTA_ELEMENT__DIAG_OBJECTS);
-
 		junctionElementEClass = createEClass(JUNCTION_ELEMENT);
 
 		interfaceElementEClass = createEClass(INTERFACE_ELEMENT);
@@ -1629,6 +1626,9 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		createEReference(templateEClass, TEMPLATE__METAMODEL);
 		createEReference(templateEClass, TEMPLATE__DIAGRAM);
 
+		zentaElementEClass = createEClass(ZENTA_ELEMENT);
+		createEReference(zentaElementEClass, ZENTA_ELEMENT__DIAG_OBJECTS);
+
 		basicObjectEClass = createEClass(BASIC_OBJECT);
 		createEReference(basicObjectEClass, BASIC_OBJECT__ATTRIBUTES);
 		createEReference(basicObjectEClass, BASIC_OBJECT__ANCESTOR);
@@ -1686,12 +1686,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		folderEClass.getESuperTypes().add(this.getIdentifier());
 		folderEClass.getESuperTypes().add(this.getDocumentable());
 		folderEClass.getESuperTypes().add(this.getProperties());
-		zentaElementEClass.getESuperTypes().add(this.getZentaModelElement());
-		zentaElementEClass.getESuperTypes().add(this.getIdentifier());
-		zentaElementEClass.getESuperTypes().add(this.getCloneable());
-		zentaElementEClass.getESuperTypes().add(this.getNameable());
-		zentaElementEClass.getESuperTypes().add(this.getDocumentable());
-		zentaElementEClass.getESuperTypes().add(this.getProperties());
 		junctionElementEClass.getESuperTypes().add(this.getZentaElement());
 		interfaceElementEClass.getESuperTypes().add(this.getZentaElement());
 		junctionEClass.getESuperTypes().add(this.getJunctionElement());
@@ -1742,6 +1736,12 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		zentaModelEClass.getESuperTypes().add(this.getProperties());
 		zentaModelEClass.getESuperTypes().add(this.getDocumentable());
 		zentaModelEClass.getESuperTypes().add(this.getFolder());
+		zentaElementEClass.getESuperTypes().add(this.getZentaModelElement());
+		zentaElementEClass.getESuperTypes().add(this.getIdentifier());
+		zentaElementEClass.getESuperTypes().add(this.getCloneable());
+		zentaElementEClass.getESuperTypes().add(this.getNameable());
+		zentaElementEClass.getESuperTypes().add(this.getDocumentable());
+		zentaElementEClass.getESuperTypes().add(this.getProperties());
 		basicObjectEClass.getESuperTypes().add(this.getZentaElement());
 		basicRelationshipEClass.getESuperTypes().add(this.getBasicObject());
 
@@ -1786,10 +1786,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		initEReference(getZentaModelElement_ZentaModel(), this.getZentaModel(), null, "zentaModel", null, 0, 1, IZentaModelElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(folderEClass, IFolder.class, "Folder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFolder_Elements(), ecorePackage.getEObject(), null, "elements", null, 0, -1, IFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(zentaElementEClass, IZentaElement.class, "ZentaElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getZentaElement_DiagObjects(), this.getDiagramModelZentaObject(), this.getDiagramModelZentaObject_ZentaElement(), "diagObjects", null, 0, -1, IZentaElement.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getFolder_Elements(), this.getNameable(), null, "elements", null, 0, -1, IFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(junctionElementEClass, IJunctionElement.class, "JunctionElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1934,6 +1931,9 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		initEAttribute(getTemplate_Path(), ecorePackage.getEString(), "path", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTemplate_Metamodel(), this.getMetamodel(), this.getMetamodel_Templates(), "metamodel", null, 1, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTemplate_Diagram(), this.getDiagramModel(), null, "diagram", null, 0, 1, ITemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(zentaElementEClass, IZentaElement.class, "ZentaElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getZentaElement_DiagObjects(), this.getDiagramModelZentaObject(), this.getDiagramModelZentaObject_ZentaElement(), "diagObjects", null, 0, -1, IZentaElement.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(basicObjectEClass, IBasicObject.class, "BasicObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBasicObject_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, IBasicObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);

@@ -189,19 +189,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IZentaPackage.ZENTA_ELEMENT: {
-				IZentaElement zentaElement = (IZentaElement)theEObject;
-				T result = caseZentaElement(zentaElement);
-				if (result == null) result = caseZentaModelElement(zentaElement);
-				if (result == null) result = caseIdentifier(zentaElement);
-				if (result == null) result = caseCloneable(zentaElement);
-				if (result == null) result = caseDocumentable(zentaElement);
-				if (result == null) result = caseProperties(zentaElement);
-				if (result == null) result = caseAdapter(zentaElement);
-				if (result == null) result = caseNameable(zentaElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IZentaPackage.JUNCTION_ELEMENT: {
 				IJunctionElement junctionElement = (IJunctionElement)theEObject;
 				T result = caseJunctionElement(junctionElement);
@@ -547,6 +534,19 @@ public class ZentaSwitch<T> extends Switch<T> {
 			case IZentaPackage.TEMPLATE: {
 				ITemplate template = (ITemplate)theEObject;
 				T result = caseTemplate(template);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IZentaPackage.ZENTA_ELEMENT: {
+				IZentaElement zentaElement = (IZentaElement)theEObject;
+				T result = caseZentaElement(zentaElement);
+				if (result == null) result = caseZentaModelElement(zentaElement);
+				if (result == null) result = caseIdentifier(zentaElement);
+				if (result == null) result = caseCloneable(zentaElement);
+				if (result == null) result = caseDocumentable(zentaElement);
+				if (result == null) result = caseProperties(zentaElement);
+				if (result == null) result = caseAdapter(zentaElement);
+				if (result == null) result = caseNameable(zentaElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

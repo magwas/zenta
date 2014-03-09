@@ -12,6 +12,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.jdt.annotation.NonNull;
+import org.rulez.magwas.nonnul.NonNullList;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,21 +49,6 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	 * @generated
 	 */
 	EList<IDiagramModelZentaObject> getDiagObjects();
-
-
-	public class ElementState implements UndoState {
-		public IFolder folder;
-		public IZentaElement element;
-		public int index;
-		public List<UndoState> diagobjs;
-		public void undelete() {
-	        folder.getElements().add(index, element);
-			for(UndoState dmost : diagobjs)
-				dmost.undelete();
-		}
-
-	}
-
 	final String basicObjectClassId = "basicobject";
 	final String basicRelationClassId = "basicrelation";
 	final public String basicObjectClassName = "Basic Object";
@@ -75,13 +61,15 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	void setPropsFromDiagramObject(IDiagramModelComponent dmo);
 	
 	void addOrUpdateProperty(String key, String value);
-
-	void delete();
-	
-	void delete(ElementState state);
 	
 	@NonNull
 	EList<? extends IDiagramModelComponent> getDiagComponents();
 
+	@NonNull
+    NonNullList<IBasicRelationship> getRelationships();
+	@NonNull
+    NonNullList<IBasicRelationship> getSourceRelationships();
+	@NonNull
+    NonNullList<IBasicRelationship> getTargetRelationships();
 
 } // IZentaElement

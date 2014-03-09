@@ -61,10 +61,13 @@ public interface IDiagramModelComponent extends IIdentifier, ICloneable, IAdapte
 			        }
 			    }
 
+				@Override
+				public INameable getElement() {
+					return object;
+				}
+
 
 	}
-	UndoState delete();
-	UndoState delete(UndoState save);
 
 	/**
 	 * Returns the value of the '<em><b>Diagram Model</b></em>' reference.

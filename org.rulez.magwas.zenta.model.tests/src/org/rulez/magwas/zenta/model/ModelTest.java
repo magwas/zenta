@@ -13,7 +13,6 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.annotation.NonNull;
@@ -283,7 +282,7 @@ public class ModelTest {
 		NonNullList<IBasicRelationship> rcss = mm.getRelationClasses();
 		builder.assertIsAllSecondGenRelations(rcss);
 
-		EList<EObject> elements = newFolder.getElements();
+		EList<INameable> elements = newFolder.getElements();
 		elements.add(builder.firstgenSource);
 		assertTrue(builder.secondgenSource.isTemplate());
 		assertTrue(builder.firstgenSource.isTemplate());
@@ -366,7 +365,7 @@ public class ModelTest {
 		builder.createThirdGenerationWithRelation();
 		IZentaModel model = builder.getModel();
 		
-		EList<IDiagramModel> dms = model.getDiagramModels();
+		NonNullList<IDiagramModel> dms = model.getDiagramModels();
 		
 		assertEquals(2, dms.size());
 
@@ -384,7 +383,7 @@ public class ModelTest {
 		folder1.getFolders().add(folder2);
 		folder2.getElements().add(builder.getTemplateDiagram());
 		
-		EList<IDiagramModel> dms = model.getDiagramModels();
+		NonNullList<IDiagramModel> dms = model.getDiagramModels();
 		
 		assertEquals(2, dms.size());
 

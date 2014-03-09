@@ -20,7 +20,7 @@
     <module>org.rulez.magwas.zenta.editor.fullscreen.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.win32</module>
-    <module>org.rulez.magwas.zenta.tests</module>
+    <module>org.rulez.magwas.zenta.integrationtests</module>
   </modules>
  
   <properties>
@@ -33,6 +33,11 @@
      <id>3.8</id>
      <layout>p2</layout>
      <url>http://download.eclipse.org/eclipse/updates/3.8/R-3.8.1-201209141540</url>
+   </repository>
+   <repository>
+     <id>orbit</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/</url>
    </repository>
    <repository>
      <id>3.8updates</id>

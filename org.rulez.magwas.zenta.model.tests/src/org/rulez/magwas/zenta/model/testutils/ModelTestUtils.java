@@ -65,7 +65,6 @@ public class ModelTestUtils {
 		return resource;			
 	}
 
-	@SuppressWarnings("null")
 	public static String convertNameToResourcePath(String filename) {
 		String resourcePath = ModelTestData.class.getResource(filename).getFile();
 		File file = new File(resourcePath);

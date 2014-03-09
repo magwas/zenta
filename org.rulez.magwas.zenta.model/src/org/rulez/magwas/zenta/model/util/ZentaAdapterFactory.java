@@ -160,10 +160,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 				return createFolderAdapter();
 			}
 			@Override
-			public Adapter caseZentaElement(IZentaElement object) {
-				return createZentaElementAdapter();
-			}
-			@Override
 			public Adapter caseJunctionElement(IJunctionElement object) {
 				return createJunctionElementAdapter();
 			}
@@ -278,6 +274,10 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTemplate(ITemplate object) {
 				return createTemplateAdapter();
+			}
+			@Override
+			public Adapter caseZentaElement(IZentaElement object) {
+				return createZentaElementAdapter();
 			}
 			@Override
 			public Adapter caseBasicObject(IBasicObject object) {

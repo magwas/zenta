@@ -3,17 +3,17 @@ package org.rulez.magwas.zenta.model.handmade;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
 
 public class RootObjectClass extends ObjectClass implements IBasicObject {
 
-	RootObjectClass(BuiltinTemplate builtinTemplate, @Nullable IBasicObject modelObject, EList<EObject> container) {
+	RootObjectClass(BuiltinTemplate builtinTemplate, @Nullable IBasicObject modelObject, EList<INameable> container) {
 		super();
 		setId(IZentaElement.basicObjectClassId);
 		setName(IZentaElement.basicObjectClassName);
@@ -24,7 +24,7 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 	}
 
 	private void addOrReplaceInModel(@Nullable IBasicObject modelObject,
-			EList<EObject> container) {
+			EList<INameable> container) {
 		int i=0;
 		if(modelObject!=null) {
 			this.getChildren().addAll(modelObject.getChildren());

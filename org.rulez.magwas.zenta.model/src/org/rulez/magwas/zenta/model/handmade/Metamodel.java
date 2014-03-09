@@ -47,7 +47,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			this.getTemplates().add(builtinTemplate);
 		}	
 		private void initializeMetaModel() {
-			EList<IDiagramModel> diagrams = model.getDiagramModels();
+			NonNullList<IDiagramModel> diagrams = model.getDiagramModels();
 			for(IDiagramModel diagramo : diagrams) {
 				IDiagramModel diagram = Util.verifyNonNull(diagramo);
 				extractTemplate((IZentaDiagramModel)diagram);

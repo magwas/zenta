@@ -17,7 +17,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 
 
 
@@ -96,10 +95,10 @@ public class NavigatorViewer extends TreeViewer {
             else if(parent instanceof IZentaElement) {
                 IZentaElement element = (IZentaElement)parent;
                 if(fShowTargetElements) {
-                    return ZentaModelUtils.getSourceRelationships(element).toArray();
+                    return element.getSourceRelationships().toArray();
                 }
                 else {
-                    return ZentaModelUtils.getTargetRelationships(element).toArray();
+                    return element.getTargetRelationships().toArray();
                 }
             }
             

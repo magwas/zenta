@@ -54,4 +54,10 @@ public interface INameable extends EObject {
 	 */
 	void setName(String value);
 
+	UndoState delete();
+	UndoState prepareDelete();
+	UndoState delete(UndoState state);
+	boolean hasDiagramReferences();
+	boolean isDeleted();
+
 } // INameable
