@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
@@ -36,7 +37,6 @@ import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
-import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
@@ -740,19 +740,39 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
 		return null == eContainer();
 	}
 	
+	private class ElementState implements UndoState {
+		public IFolder folder;
+		public IDiagramModel element;
+		public int index;
+		public void undelete() {
+	        folder.getElements().add(index, element);
+		}
+		@Override
+		public INameable getElement() {
+			return element;
+		}
+	}
+
 	@Override
 	public UndoState delete() {
-		throw new UnTestedException();
+		UndoState state = prepareDelete();
+		delete(state);
+		return state;
 	}
 
 	@Override
 	public UndoState delete(UndoState save) {
-		throw new UnTestedException();
+		ElementState state = (ElementState) save;
+		state.folder.getElements().remove(this);
+		return state;
 	}
 
 	@Override
 	public UndoState prepareDelete() {
-		throw new UnTestedException();
+		ElementState state = new ElementState();
+		state.element = this;
+		state.folder = (IFolder) eContainer();
+		return state;
 	}
 
 

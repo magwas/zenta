@@ -32,12 +32,12 @@ public class IconicDelegate {
     public void updateImage() {
         disposeImage();
         
-        if(fIconic.getImagePath() != null) {
+        if(fIconic.getImagePathOrNull() != null) {
             IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(fIconic);
 
             Image image = null;
             try {
-                image = archiveManager.createImage(fIconic.getImagePath());
+                image = archiveManager.createImage(fIconic.getImagePathOrNull());
             }
             catch(Exception ex) {
                 ex.printStackTrace();

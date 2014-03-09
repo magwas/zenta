@@ -22,6 +22,7 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
 import org.rulez.magwas.zenta.model.testutils.TestModel;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
@@ -60,14 +61,14 @@ public class OpenDiagramActionTest {
 		
 		builder.assertMetaIsOK();
 
-		File file = new File("/tmp/foo.zenta");
+		File file = ModelTestUtils.createTempFile(".zenta");
 		ZentaModelUtils.saveModelToXMLFile(builder.getModel(), file);
 	    ResourceSet resourceSet = ZentaResourceFactoryBase.createResourceSet();
 	    Resource resource = resourceSet.createResource(URI.createFileURI(file.getAbsolutePath()));
         resource.load(null);
 	    IZentaModel model2 = (IZentaModel)resource.getContents().get(0);
 	    model2.getMetamodel();
-	    File file2 = new File("/tmp/bar.zenta");
+	    File file2 = ModelTestUtils.createTempFile(".zenta");
 		ZentaModelUtils.saveModelToXMLFile(model2, file2);
 		
 		@SuppressWarnings("null")

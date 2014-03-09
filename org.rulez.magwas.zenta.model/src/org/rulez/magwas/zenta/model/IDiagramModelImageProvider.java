@@ -40,14 +40,14 @@ public interface IDiagramModelImageProvider extends EObject {
 	 * @model
 	 * @generated
 	 */
-	String getImagePath();
+	String getImagePathOrNull();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IDiagramModelImageProvider#getImagePath <em>Image Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Image Path</em>' attribute.
-	 * @see #getImagePath()
+	 * @see #getImagePathOrNull()
 	 * @generated NOT
 	 */
 	void setImagePath(@Nullable String value);

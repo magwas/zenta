@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -84,7 +83,7 @@ public class ArchiveManager implements IArchiveManager {
             if(msg.getEventType() == Notification.ADD) {
                 if(msg.getNewValue() instanceof IDiagramModelImageProvider) {
                     IDiagramModelImageProvider imageProvider = (IDiagramModelImageProvider)msg.getNewValue();
-                    String imagePath = imageProvider.getImagePath();
+                    String imagePath = imageProvider.getImagePathOrNull();
                     if(imagePath != null && !fLoadedImagePaths.contains(imagePath)) {
                         fLoadedImagePaths.add(imagePath);
                     }
@@ -160,8 +159,8 @@ public class ArchiveManager implements IArchiveManager {
         for(Iterator<EObject> iter = getfModel().eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IDiagramModelImageProvider) {
-                @NonNull String imagePath = Util.verifyNonNull(((IDiagramModelImageProvider)element).getImagePath());
-                if(!list.contains(imagePath)) {
+                String imagePath = ((IDiagramModelImageProvider)element).getImagePathOrNull();
+                if(null != imagePath && !list.contains(imagePath)) {
                     list.add(imagePath);
                 }
             }
@@ -216,7 +215,8 @@ public class ArchiveManager implements IArchiveManager {
         for(Iterator<EObject> iter = getfModel().eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IDiagramModelImageProvider) {
-                return true;
+            	IDiagramModelImageProvider e = (IDiagramModelImageProvider) element;
+            	return null != e.getImagePathOrNull();
             }
         }
         return false;
@@ -271,8 +271,8 @@ public class ArchiveManager implements IArchiveManager {
             EObject eObject = iter.next();
             if(eObject instanceof IDiagramModelImageProvider) {
                 IDiagramModelImageProvider imageProvider = (IDiagramModelImageProvider)eObject;
-                @NonNull String imagePath = Util.verifyNonNull(imageProvider.getImagePath());
-                if(!added.contains(imagePath)) {
+                String imagePath = imageProvider.getImagePathOrNull();
+                if(null != imagePath && !added.contains(imagePath)) {
                     byte[] bytes = BYTE_ARRAY_STORAGE.getEntry(imagePath);
                     ZipEntry zipEntry = new ZipEntry(imagePath);
                     zOut.putNextEntry(zipEntry);
@@ -314,7 +314,7 @@ public class ArchiveManager implements IArchiveManager {
     private void unloadUnusedImages() {
         // Gather all image paths that are in use in other models
         List<String> allPathsInUse = new ArrayList<String>();
-        
+
         for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
             if(model != getfModel()) { // don't bother with this model as we no longer use any images
                 ArchiveManager archiveManager = (ArchiveManager)model.getAdapter(IArchiveManager.class);
@@ -326,7 +326,7 @@ public class ArchiveManager implements IArchiveManager {
 	                }
             }
         }
-        
+
         // Release all unused image data and cached images that are not in image paths
         for(String imagePatho : fLoadedImagePaths) {
         	String imagePath = Util.verifyNonNull(imagePatho);
@@ -335,4 +335,11 @@ public class ArchiveManager implements IArchiveManager {
             }
         }
     }
+
+	@SuppressWarnings("null")
+	public List<String> getLoadedImagePaths() {
+		if(null == fLoadedImagePaths)
+			fLoadedImagePaths = new ArrayList<String>();
+		return fLoadedImagePaths;
+	}
 }

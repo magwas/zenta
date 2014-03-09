@@ -29,7 +29,6 @@ public abstract class DiagramModelComponentTests {
         dm = IZentaFactory.eINSTANCE.createZentaDiagramModel();
     }
     
-    @SuppressWarnings("null")
 	@Test
     public void testGetID() {
         assertNull(component.getId());

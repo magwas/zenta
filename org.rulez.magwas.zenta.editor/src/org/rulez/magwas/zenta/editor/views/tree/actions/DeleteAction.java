@@ -7,17 +7,17 @@ package org.rulez.magwas.zenta.editor.views.tree.actions;
 
 import java.util.List;
 
+import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.model.commands.DeleteElementCommand;
+import org.rulez.magwas.zenta.editor.model.commands.DeleteCommand;
 import org.rulez.magwas.zenta.editor.views.tree.TreeModelViewer;
 import org.rulez.magwas.zenta.model.INameable;
-import org.rulez.magwas.zenta.model.IZentaElement;
-
-
+import org.rulez.magwas.zenta.model.IZentaModelElement;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 /**
  * Delete Action
@@ -57,17 +57,23 @@ public class DeleteAction extends ViewerAction {
             if(!doUserWantToRemoveObjectsEvenIfReferencedInDiagram())
             	return;
         }
+        
 		@SuppressWarnings("unchecked")
 		List<? extends Object> l = selection.toList();
 		for(Object e : l) {
-	        if(e instanceof IZentaElement)
-	        	new DeleteElementCommand((IZentaElement) e).execute();
+	        if(e instanceof IZentaModelElement) {
+	        	deleteUsingCommandStack((IZentaModelElement) e);
+	        }
 	        else
 				throw new IllegalArgumentException();
         }
         
     }
-
+		private void deleteUsingCommandStack(IZentaModelElement e) {
+			CommandStack stack = Util.verifyNonNull((CommandStack)(e.getZentaModel()).getAdapter(CommandStack.class));
+			DeleteCommand command = new DeleteCommand((INameable) e);
+			stack.execute(command);
+		}
 		public boolean doUserWantToRemoveObjectsEvenIfReferencedInDiagram() {
 			return MessageDialog.openQuestion(
 			        Display.getDefault().getActiveShell(),

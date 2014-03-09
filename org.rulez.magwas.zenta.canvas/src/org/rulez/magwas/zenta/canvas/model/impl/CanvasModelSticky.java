@@ -52,20 +52,20 @@ import org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase;
  */
 public class CanvasModelSticky extends DiagramModelObjectBase implements ICanvasModelSticky {
     /**
-     * The default value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
+     * The default value of the '{@link #getImagePathOrNull() <em>Image Path</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getImagePath()
+     * @see #getImagePathOrNull()
      * @generated
      * @ordered
      */
     protected static final String IMAGE_PATH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
+     * The cached value of the '{@link #getImagePathOrNull() <em>Image Path</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getImagePath()
+     * @see #getImagePathOrNull()
      * @generated
      * @ordered
      */
@@ -205,7 +205,7 @@ public class CanvasModelSticky extends DiagramModelObjectBase implements ICanvas
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public @NonNull String getImagePath() {
+    public @NonNull String getImagePathOrNull() {
         return Util.verifyNonNull(imagePath);
     }
 
@@ -363,7 +363,7 @@ public class CanvasModelSticky extends DiagramModelObjectBase implements ICanvas
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case ICanvasPackage.CANVAS_MODEL_STICKY__IMAGE_PATH:
-                return getImagePath();
+                return getImagePathOrNull();
             case ICanvasPackage.CANVAS_MODEL_STICKY__IMAGE_POSITION:
                 return getImagePosition();
             case ICanvasPackage.CANVAS_MODEL_STICKY__CONTENT:

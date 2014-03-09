@@ -29,6 +29,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class ModelTestUtils {
+	
+	public static final File TEST_MODEL_FILE_ZIPPED = new File(convertNameToResourcePath("model.zenta"));
+	public static final File TEST_MODEL_FILE_ZENTASURANCE = new File(convertNameToResourcePath("zentasurance.zenta"));
 
 	public static Element getElementByXpath(Document xmlDoc, String xpathExpression)
 			throws XPathExpressionException {
@@ -113,4 +116,9 @@ public class ModelTestUtils {
         }
     }
 
+	public static File createTempFile(String string) throws IOException {
+		File temp = File.createTempFile("temp",string);
+		temp.deleteOnExit();
+		return temp;
+	}
 }

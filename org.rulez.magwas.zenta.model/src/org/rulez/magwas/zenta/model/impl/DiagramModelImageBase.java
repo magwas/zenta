@@ -53,20 +53,20 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
     protected String borderColor = BORDER_COLOR_EDEFAULT;
 
     /**
-	 * The default value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
+	 * The default value of the '{@link #getImagePathOrNull() <em>Image Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see #getImagePath()
+	 * @see #getImagePathOrNull()
 	 * @generated
 	 * @ordered
 	 */
     protected static final String IMAGE_PATH_EDEFAULT = null;
 
     /**
-	 * The cached value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
+	 * The cached value of the '{@link #getImagePathOrNull() <em>Image Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see #getImagePath()
+	 * @see #getImagePathOrNull()
 	 * @generated
 	 * @ordered
 	 */
@@ -117,7 +117,7 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getImagePath() {
+    public String getImagePathOrNull() {
 		return imagePath;
 	}
 
@@ -144,7 +144,7 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
 			case IZentaPackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
 				return getBorderColor();
 			case IZentaPackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
-				return getImagePath();
+				return getImagePathOrNull();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

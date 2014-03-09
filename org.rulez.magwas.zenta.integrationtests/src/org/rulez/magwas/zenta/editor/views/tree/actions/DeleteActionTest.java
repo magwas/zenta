@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.junit.After;
 import org.junit.Before;
@@ -17,11 +19,16 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.TreeModelViewer;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
+import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.testutils.TestModel;
 
 public class DeleteActionTest {
 
 	private TestModel builder;
+	private ArrayList<IDiagramModelComponent> dos;
+	private IFolder folder;
 
 	@Before
 	public void setUp() {
@@ -71,7 +78,57 @@ public class DeleteActionTest {
 		}
 		
 	}
+	@Test
+	public void Delete_command_deletes_folder_its_contents_and_their_dependencies() throws IOException {
+		List<Object> l = new ArrayList<Object>();
+		folder = builder.factory.createFolder();
+		builder.getModel().getFolders().add(folder);
+		folder.getElements().add(builder.firstgenSource);
+		l.add(folder);
+		assertTrue(folder.getElements().contains(builder.firstgenSource));
+		dos = new ArrayList<IDiagramModelComponent>();
+		dos.addAll(builder.firstgenRelation.getDiagComponents());
+		dos.addAll(builder.firstgenSource.getDiagComponents());
+		
+		doDelete(l);
+		
+		assertDeleted(folder);
+		assertDeleted(builder.firstgenSource);
+		assertDeleted(builder.firstgenRelation);
+		for(IDiagramModelComponent c : dos) {
+			assertDeleted(c);
+		}
+		
+	}
 
+	@Test
+	public void Delete_can_be_undone() throws IOException {
+		Delete_command_deletes_folder_its_contents_and_their_dependencies();
+		IZentaModel model = builder.getModel();
+		CommandStack stack = Util.verifyNonNull((CommandStack) model.getAdapter(CommandStack.class));
+		
+		assertTrue(stack.canUndo());
+		Command undoCommand = stack.getUndoCommand();
+		undoCommand.undo();
+
+		assertUnDeleted(folder);
+		assertUnDeleted(builder.firstgenSource);
+		assertUnDeleted(builder.firstgenRelation);
+		for(IDiagramModelComponent c : dos) {
+			assertUnDeleted(c);
+		}
+
+	}
+	@Test
+	public void Delete_command_deletes_diagram() {
+		List<Object> l = new ArrayList<Object>();
+		l.add(builder.getDiagramModel());
+		
+		doDelete(l);
+		
+		assertDeleted(builder.getDiagramModel());
+	}
+	
 	private void doDelete(List<Object> l) {
 		IStructuredSelection s = mock(IStructuredSelection.class);
 		doReturn(l).when(s).toList();
@@ -88,6 +145,10 @@ public class DeleteActionTest {
 	private void assertDeleted(EObject obj) {
 		if(null != obj.eContainer())
 			fail(String.format("%s is not deleted", obj));
+	}
+	private void assertUnDeleted(EObject obj) {
+		if(null == obj.eContainer())
+			fail(String.format("%s is still deleted", obj));
 	}
 
 }

@@ -117,7 +117,7 @@ public class DiagramModelImageSection extends AbstractZentaPropertySection {
                     }
                 };
                 
-                actionClear.setEnabled(((IDiagramModelImageProvider)getEObject()).getImagePath() != null);
+                actionClear.setEnabled(((IDiagramModelImageProvider)getEObject()).getImagePathOrNull() != null);
                 
                 menuManager.add(actionClear);
                 
@@ -168,7 +168,7 @@ public class DiagramModelImageSection extends AbstractZentaPropertySection {
         
         ImageManagerDialog dialog = new ImageManagerDialog(getPart().getSite().getShell(),
                 getEObject().getDiagramModel().getZentaModel(),
-                ((IDiagramModelImageProvider)getEObject()).getImagePath());
+                ((IDiagramModelImageProvider)getEObject()).getImagePathOrNull());
         
         if(dialog.open() == Window.OK) {
             setImage(dialog.getSelectedObject());

@@ -7,37 +7,38 @@ package org.rulez.magwas.zenta.editor.model.commands;
 
 import org.eclipse.gef.commands.Command;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.UndoState;
 
 
 
 /**
- * Delete Zenta Element Command
+ * Delete Folder Command.
  * 
  * @author Phillip Beauvoir
  */
-public class DeleteElementCommand extends Command {
+public class DeleteCommand extends Command {
     
-	private UndoState save;
+	private UndoState state;
 
-    public DeleteElementCommand(IZentaElement element) {
-    	save = element.prepareDelete();
-        setLabel(Messages.DeleteElementCommand_0 + " " + ZentaLabelProvider.INSTANCE.getLabel(save.getElement())); //$NON-NLS-1$
+    public DeleteCommand(INameable obj) {
+    	state = obj.prepareDelete();
+        setLabel(Messages.DeleteElementCommand_0 + " " + ZentaLabelProvider.INSTANCE.getLabel(state.getElement())); //$NON-NLS-1$
+
     }
     
     @Override
     public void execute() {
-    	save.getElement().delete(save);
+    	state.getElement().delete(state);
     }
     
     @Override
     public void undo() {
-    	save.undelete();
+    	state.undelete();
     }
     
     @Override
     public void dispose() {
-    	save = null;
+    	state = null;
     }
 }
