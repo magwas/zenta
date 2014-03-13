@@ -8,6 +8,7 @@ package org.rulez.magwas.zenta.model.viewpoints;
 
 
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 /**
  * Total Viewpoint
@@ -20,7 +21,7 @@ public class TotalViewpoint extends AbstractViewpoint {
 		private static final long serialVersionUID = 1L;
 	}
 
-	TotalViewpoint(IDiagramModel dm) {
+	public TotalViewpoint(IDiagramModel dm) {
 		super(dm);
 	}
 
@@ -33,4 +34,6 @@ public class TotalViewpoint extends AbstractViewpoint {
     public int getIndex() {
         return TOTAL_VIEWPOINT;
     }
+
+
 }

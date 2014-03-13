@@ -9,20 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
+import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
@@ -37,27 +41,34 @@ public abstract class AbstractViewpoint implements IViewpoint {
         
 	protected IMetamodel metamodel;
 	private IFolder folder;
+	private IDiagramModel dm;
 
     public AbstractViewpoint(IDiagramModel dm) {
+    	this.setDm(dm);
 		IZentaModel model = dm.getZentaModel();
 		metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(Util.verifyNonNull(model));
 		folder = (IFolder) dm.eContainer();
 	}
 
 	@Override
-    public boolean isAllowedType(IBasicObject type) {
-        List<IBasicObject> allowedList = getAllowedList();
+    public boolean isAllowedType(EObject type) {
+        List<EObject> allowedList = getAllowedList();
 		if(allowedList == null)
             return true;
-       	if(!allowedList.contains(type.getDefiningElement()))
-       		return false;
+		if(type instanceof IObjectClass) {
+	       	if(!allowedList.contains(((IObjectClass) type).getDefiningElement()))
+	       		return false;
+		} else
+			if(!allowedList.contains(type))
+				return false;
+	       
        	return true;
     };
     
 	/**
      * @return A list of allowed types or null
      */
-    protected List<IBasicObject> getAllowedList() {
+    protected List<EObject> getAllowedList() {
         return getAllowedTypes();
     }
 
@@ -147,8 +158,22 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public boolean isElementVisible(IBasicObject childObject) {
+	public boolean isElementVisible(IDiagramModelObject childObject) {
+		if(childObject instanceof IDiagramModelZentaObject) {
+			IDiagramModelZentaObject asDMO = (IDiagramModelZentaObject) childObject;
+			if(!isElementVisible(asDMO.getZentaElement())) 
+				return false;
+		}
+		EObject parent = childObject.eContainer();
+		if(parent instanceof IDiagramModelZentaObject) {
+			return isElementVisible((IDiagramModelObject) parent);
+		}
 		return true;
+	}
+
+	@Override
+	public boolean isElementVisible(IZentaElement element) {
+		return null != element;
 	}
 
 	@Override
@@ -157,8 +182,8 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public List<IBasicObject> getAllowedTypes() {
-		List<IBasicObject> allowedtypes = new ArrayList<IBasicObject>();
+	public List<EObject> getAllowedTypes() {
+		List<EObject> allowedtypes = new ArrayList<EObject>();
 		for(ITemplate template : metamodel.getTemplates()) {
 			for(IBasicObject oc : template.getObjectClasses())
 				allowedtypes.add((IBasicObject) oc);
@@ -192,6 +217,16 @@ public abstract class AbstractViewpoint implements IViewpoint {
 					ret.add(target);
 		}
 		return ret;
+	}
+
+	@Override
+	public IDiagramModel getDm() {
+		return dm;
+	}
+
+	@Override
+	public void setDm(IDiagramModel dm) {
+		this.dm = dm;
 	}
 
 }

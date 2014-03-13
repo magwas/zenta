@@ -84,7 +84,9 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
+    @SuppressWarnings("null")
+	@Override
+    @NonNull
     public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case IZentaPackage.PROPERTY: return createProperty();

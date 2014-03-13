@@ -7,9 +7,12 @@ package org.rulez.magwas.zenta.model.viewpoints;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -26,7 +29,6 @@ public interface IViewpoint {
      * Index numbers of Viewpoints
      */
     int TOTAL_VIEWPOINT = 0;
-    int LAYERED_VIEWPOINT = 14;
 
     /**
      * @return The index number used when persisting the Viewpoint
@@ -36,7 +38,7 @@ public interface IViewpoint {
     /**
      * @return Allowed types
      */
-    List<IBasicObject> getAllowedTypes();
+    List<EObject> getAllowedTypes();
     
     /**
      * @return The name of the Viewpoint
@@ -64,8 +66,9 @@ public interface IViewpoint {
 
 	IBasicRelationship getNoteConnection();
 
-	boolean isAllowedType(IBasicObject element);
-	boolean isElementVisible(IBasicObject childObject);
+	boolean isAllowedType(EObject element);
+	boolean isElementVisible(IZentaElement element);
+	boolean isElementVisible(IDiagramModelObject dmo);
 
 	boolean isNestedConnectionTypeRelationship(IBasicRelationship relation);
 
@@ -83,5 +86,9 @@ public interface IViewpoint {
 
     IBasicObject getObjectClassOf(
             IDiagramModelZentaObject sourceDiagramModelObject);
+
+	IDiagramModel getDm();
+
+	void setDm(IDiagramModel dm);
 
 }
