@@ -215,49 +215,49 @@ public class TestModel {
 		}
 	}
 
-	@SuppressWarnings("null")
+	
 	public IFolder getFolder() {
 		return folder;
 	}
 	public void setFolder(IZentaModel model) {
 		this.folder = (IFolder) model;
 	}
-	@SuppressWarnings("null")
+	
 	public IBasicObject getFirstgenSource() {
 		return firstgenSource;
 	}
 	public void setFirstgenSource(IBasicObject firstgenSource) {
 		this.firstgenSource = firstgenSource;
 	}
-	@SuppressWarnings("null")
+	
 	public IBasicObject getFirstgenTarget() {
 		return firstgenTarget;
 	}
 	public void setFirstgenTarget(IBasicObject firstgenTarget) {
 		this.firstgenTarget = firstgenTarget;
 	}
-	@SuppressWarnings("null")
+	
 	public IBasicObject getSecondgenSource() {
 		return secondgenSource;
 	}
 	public void setSecondgenSource(IBasicObject secondgenSource) {
 		this.secondgenSource = secondgenSource;
 	}
-	@SuppressWarnings("null")
+	
 	public IBasicObject getSecondgenTarget() {
 		return secondgenTarget;
 	}
 	public void setSecondgenTarget(IBasicObject secondgenTarget) {
 		this.secondgenTarget = secondgenTarget;
 	}
-	@SuppressWarnings("null")
+	
 	public IZentaDiagramModel getDiagramModel() {
 		return diagramModel;
 	}
 	public void setDiagramModel(IZentaDiagramModel diagramModel) {
 		this.diagramModel = diagramModel;
 	}
-	@SuppressWarnings("null")
+	
 	public IZentaDiagramModel getTemplateDiagram() {
 		return templateDiagram;
 	}

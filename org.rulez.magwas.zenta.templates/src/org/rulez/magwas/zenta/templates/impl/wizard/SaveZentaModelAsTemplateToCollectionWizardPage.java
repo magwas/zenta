@@ -28,7 +28,7 @@ public class SaveZentaModelAsTemplateToCollectionWizardPage extends SaveModelAsT
         setDescription(Messages.SaveZentaModelAsTemplateToCollectionWizardPage_2);
     }
 
-	@SuppressWarnings("null")
+	
 	@Override
     protected String getHelpID() {
         return HELP_ID;

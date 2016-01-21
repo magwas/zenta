@@ -32,7 +32,6 @@ public abstract class AbstractViewpointTests {
     protected AbstractViewpoint vp;
     protected int index;
     
-	@SuppressWarnings("null")
 	@Test
     public void testIsElementVisible() {
         List<EObject> types = vp.getAllowedTypes();
@@ -73,7 +72,6 @@ public abstract class AbstractViewpointTests {
         assertTrue(vp.isElementVisible(eObject));
     }
 
-	@SuppressWarnings("null")
 	private @NonNull EObject createElementFromEClass(EObject t) {
 		@NonNull EObject element;
 		if(t instanceof EClass) {
@@ -87,8 +85,7 @@ public abstract class AbstractViewpointTests {
 		return element;
 	}
 
-    @SuppressWarnings("null")
-	@Test
+    @Test
     public void testIsElementVisible_Nested() {
         List<EObject> types = vp.getAllowedTypes();
         if(!types.isEmpty()) {
@@ -123,8 +120,7 @@ public abstract class AbstractViewpointTests {
         }
     }
     
-    @SuppressWarnings("null")
-	@Test
+    @Test
     public void testIsAllowedType() {
         List<EObject> types = vp.getAllowedTypes();
         if(!types.isEmpty()) {
@@ -163,8 +159,7 @@ public abstract class AbstractViewpointTests {
         assertEquals(index, vp.getIndex());
     }
     
-    @SuppressWarnings("null")
-	private IZentaElement createElementThatsNotAllowedType() {
+    private IZentaElement createElementThatsNotAllowedType() {
         for(IBasicObject eClass : vp.getObjectClasses()) {
             if(!vp.isAllowedType(eClass)) {
                 return eClass.create(eClass.getZentaModel());

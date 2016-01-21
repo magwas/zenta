@@ -66,20 +66,20 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 		throw new UnTestedException();
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public T remove(int index) {
 		return super.remove(index);
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public  T set(int index, @Nullable T element) {
 		Util.verifyNonNull(element);
 		return super.set(index, element);
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public  NonNullArrayList<T> subList(int fromIndex, int toIndex) {
 		return (NonNullArrayList<T>) super.subList(fromIndex, toIndex);

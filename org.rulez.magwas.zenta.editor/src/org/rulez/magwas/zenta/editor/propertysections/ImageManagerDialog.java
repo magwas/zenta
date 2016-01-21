@@ -314,7 +314,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                 fGallery.redraw(); // at some scale settings this is needed
             }
 
-			@SuppressWarnings("null")
+			
 			private void generateScaledImages(IArchiveManager archiveManager) {
 				for(@NonNull String path : archiveManager.getImagePaths()) {
                     generateOneScaledImage(archiveManager,

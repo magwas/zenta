@@ -61,14 +61,14 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 		super.putAll(m);
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public @NonNull T2 remove(@Nullable Object key) {
 		return super.remove(key);
 	}
 
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public @NonNull NonNullList<T2> values() {
 		return (NonNullList<T2>) super.values();

@@ -336,7 +336,6 @@ public class ArchiveManager implements IArchiveManager {
         }
     }
 
-	@SuppressWarnings("null")
 	public List<String> getLoadedImagePaths() {
 		if(null == fLoadedImagePaths)
 			fLoadedImagePaths = new ArrayList<String>();

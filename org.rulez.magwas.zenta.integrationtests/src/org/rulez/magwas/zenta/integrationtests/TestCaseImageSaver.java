@@ -39,7 +39,7 @@ public class TestCaseImageSaver {
 				if (!dir.exists())
 					throw new TestsShouldRunWithSourceRootAsCWD();
 			    String filename = String.format("%s.png",name);
-			    @SuppressWarnings("null")
+			    
 				@NonNull String path = new File(dir,filename).getPath();
 				return path;
 			}

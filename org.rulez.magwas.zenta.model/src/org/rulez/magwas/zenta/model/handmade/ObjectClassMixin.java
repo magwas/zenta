@@ -46,7 +46,7 @@ public abstract class ObjectClassMixin {
 		return createHelpString(Util.verifyNonNull(doc), ancestryNames);
 	}
 
-	@SuppressWarnings("null")
+	
 	private static String createHelpString(String doc, String ancestryNames) {
 		return String.format("%s\nAncestry: %s\n", doc, ancestryNames);
 	}

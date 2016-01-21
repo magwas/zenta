@@ -48,13 +48,13 @@ public class SketchModelActorTests extends DiagramModelObjectTests {
         assertEquals(actor.getProperties().size(), copy.getProperties().size());
     }
 
-    @SuppressWarnings("null")
+    
 	@Test
     public void SketchModelActor_have_documentation() {
         CommonTests.testGetDocumentation(actor);
     }
 
-    @SuppressWarnings("null")
+    
 	@Test
     public void SketchModelActor_have_Properties() {
         CommonTests.testProperties(actor);

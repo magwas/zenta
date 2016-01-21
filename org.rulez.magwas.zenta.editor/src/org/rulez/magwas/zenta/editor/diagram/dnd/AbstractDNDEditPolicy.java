@@ -69,7 +69,6 @@ public abstract class AbstractDNDEditPolicy extends AbstractEditPolicy {
     /**
      * @return The target parent Diagram Model
      */
-    @SuppressWarnings("null")
 	@NonNull
     protected IDiagramModel getTargetDiagramModel() {
         if(fTargetDiagramModel == null) {

@@ -35,7 +35,7 @@ public class CreateRelationCommand extends Command {
     
     @Override
     public void execute() {
-    	@SuppressWarnings("null")
+    	
 		@NonNull
     	IFolder folder = (IFolder) fParent.eContainer();
         fRelation = (IBasicRelationship) fType.create(folder);

@@ -336,7 +336,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
@@ -371,7 +371,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("null")
+	
 	@NonNull
 	public EList<INameable> getElements() {
 		if (elements == null) {
@@ -385,7 +385,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	public @NonNull EList<IFolder> getFolders() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.ZENTA_MODEL__FOLDERS);
@@ -584,7 +584,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {

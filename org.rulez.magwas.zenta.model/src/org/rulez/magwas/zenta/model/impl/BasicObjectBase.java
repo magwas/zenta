@@ -102,7 +102,7 @@ abstract public class BasicObjectBase extends ZentaElementBase implements IBasic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
 	public EList<IAttribute> getAttributes() {
 		if (attributes == null) {

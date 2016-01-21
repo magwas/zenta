@@ -51,7 +51,7 @@ public class TotalViewpointTest {
 		assertEquals(vp,vp2);
 	}
 	
-	@SuppressWarnings("null")
+	
 	@Test
 	public void Allowed_connections_are_based_on_the_metamodel() {
 		IBasicObject sourceElement = (IBasicObject) testdata.getElementById("ea94cf6c");//User

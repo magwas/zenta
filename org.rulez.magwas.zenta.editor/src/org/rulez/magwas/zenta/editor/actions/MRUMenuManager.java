@@ -184,7 +184,7 @@ public class MRUMenuManager extends MenuManager implements PropertyChangeListene
             setText(getShortPath(file));
         }
         
-        @SuppressWarnings("null")
+        
 		@Override
         public void run() {
             if(file.exists()) {

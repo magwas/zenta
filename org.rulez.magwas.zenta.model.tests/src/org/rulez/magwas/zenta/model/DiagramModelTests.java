@@ -29,7 +29,7 @@ public abstract class DiagramModelTests {
         model = IZentaFactory.eINSTANCE.createZentaModel();
     }
 
-    @SuppressWarnings("null")
+    
 	@Test
     public void DiagramModel_have_name() {
         CommonTests.testGetName(dm);
@@ -66,19 +66,19 @@ public abstract class DiagramModelTests {
         assertEquals(IDiagramModel.CONNECTION_ROUTER_MANHATTAN, dm.getConnectionRouterType());
     }
     
-    @SuppressWarnings("null")
+    
 	@Test
     public void DiagramModel_have_documentation() {
         CommonTests.testGetDocumentation(dm);
     }
 
-    @SuppressWarnings("null")
+    
 	@Test
     public void DiagramModel_can_have_properties() {
         CommonTests.testProperties(dm);
     }
 
-    @SuppressWarnings("null")
+    
 	@Test
     public void DiagramModel_have_adapter() {
         CommonTests.testGetAdapter(dm);

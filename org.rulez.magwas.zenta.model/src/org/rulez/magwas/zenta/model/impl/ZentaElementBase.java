@@ -225,7 +225,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
@@ -239,7 +239,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
 	public EList<IDiagramModelZentaObject> getDiagObjects() {
 		if (diagObjects == null) {
@@ -430,7 +430,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
@@ -721,7 +721,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	        return relationships;
 	    }
 
-			@SuppressWarnings("null")
+			
 			private void childFolders(IZentaElement element, int type, 
 					List<IBasicRelationship> relationships, List<IFolder> folders) {
 				for (@NonNull IFolder  folder : folders) {

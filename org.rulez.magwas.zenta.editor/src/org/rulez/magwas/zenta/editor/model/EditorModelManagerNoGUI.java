@@ -96,7 +96,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 		super();
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public NonNullList<IZentaModel> getModels() {
 	    if(fModels == null) {
@@ -549,13 +549,13 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 			    fListeners.firePropertyChange(new PropertyChangeEvent(source, prop, oldValue, newValue));
 			}
 
-    @SuppressWarnings("null")
+    
 	public static void signalEnd(Object self) {
 		IEditorModelManager.INSTANCE.firePropertyChange(self,
 	            IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
 	}
 
-	@SuppressWarnings("null")
+	
 	public static void signalStart(Object self) {
 		IEditorModelManager.INSTANCE.firePropertyChange(self,
 	            IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);

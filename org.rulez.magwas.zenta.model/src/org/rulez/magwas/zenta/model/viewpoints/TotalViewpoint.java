@@ -8,7 +8,6 @@ package org.rulez.magwas.zenta.model.viewpoints;
 
 
 import org.rulez.magwas.zenta.model.IDiagramModel;
-import org.rulez.magwas.zenta.model.IZentaElement;
 
 /**
  * Total Viewpoint

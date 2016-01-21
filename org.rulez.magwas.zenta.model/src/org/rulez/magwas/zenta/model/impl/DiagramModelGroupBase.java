@@ -145,7 +145,7 @@ public class DiagramModelGroupBase extends DiagramModelObjectBase implements IDi
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {

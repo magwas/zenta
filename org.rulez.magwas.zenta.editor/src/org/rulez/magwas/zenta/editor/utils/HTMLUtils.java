@@ -54,7 +54,7 @@ public class HTMLUtils {
      * @param str
      * @return
      */
-    @SuppressWarnings("null")
+    
 	public static String stripTags(String str) {
         if (str.indexOf('<') == -1 || str.indexOf('>') == -1) {
             return str;
@@ -85,12 +85,12 @@ public class HTMLUtils {
         }
     }
 
-	@SuppressWarnings("null")
+	
 	private static String urlEncodeForSpaces(String href) {
 		return urlEncodeForSpaces(href.toCharArray());
 	}
 
-	@SuppressWarnings("null")
+	
 	private static String canoniCaliseFileHref(String href) {
 		if(href.startsWith("file:")) { //$NON-NLS-1$
             href = href.substring(5);
@@ -102,7 +102,7 @@ public class HTMLUtils {
 		return href;
 	}
 
-    @SuppressWarnings("null")
+    
 	private static String urlEncodeForSpaces(char[] input) {
         StringBuffer retu = new StringBuffer(input.length);
         for(int i = 0; i < input.length; i++) {

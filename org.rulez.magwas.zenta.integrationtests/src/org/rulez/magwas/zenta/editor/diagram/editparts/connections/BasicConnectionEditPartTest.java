@@ -66,7 +66,7 @@ public class BasicConnectionEditPartTest {
 		assertNotNull(rel);
 		assertNotSame(rel,rel.getDefiningElement());
 		testdata.focusOnDiagram("63f1b081");
-		@SuppressWarnings("null")
+		
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagConnections().get(0));
 		assertNotNull(editPart);
 		assertTrue(editPart.getFigure().isEnabled());
@@ -106,7 +106,7 @@ public class BasicConnectionEditPartTest {
 		assertNotNull(rel);
 		assertFalse(rel.isTemplate());
 		testdata.focusOnDiagram("63f1b081");
-		@SuppressWarnings("null")
+		
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagComponents().get(0));
 		assertNotNull(editPart);
 		ToolTipFigure toolTip = (ToolTipFigure) editPart.getFigure().getToolTip();
@@ -125,7 +125,7 @@ public class BasicConnectionEditPartTest {
 		assertNotNull(rel);
 		assertTrue(rel.isTemplate());
 		testdata.focusOnDiagram(dm.getId());
-		@SuppressWarnings("null")
+		
 		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(rel.getDiagComponents().get(0));
 		assertNotNull(editPart);
 		ToolTipFigure toolTip = (ToolTipFigure) editPart.getFigure().getToolTip();

@@ -111,7 +111,7 @@ public class SketchModelActorBase extends DiagramModelObjectBase implements ISke
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {

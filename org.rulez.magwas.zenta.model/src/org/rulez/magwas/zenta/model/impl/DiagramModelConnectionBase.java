@@ -347,7 +347,7 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {

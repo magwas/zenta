@@ -31,7 +31,7 @@ public class RelationClassTest {
 
 	private ModelTestData testdata;
 
-	@SuppressWarnings("null")
+	
 	@Before
 	public void setUp() throws Exception {
 		testdata = new ModelTestData();

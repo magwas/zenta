@@ -268,7 +268,7 @@ public class CanvasModelSticky extends DiagramModelObjectBase implements ICanvas
      * <!-- end-user-doc -->
      * @generated
      */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<IProperty> getProperties() {
         if (properties == null) {

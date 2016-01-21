@@ -37,7 +37,7 @@ public class MacOSReflect {
         obtainOSClass();
     }
 
-	@SuppressWarnings("null")
+	
 	private static void obtainOSClass() {
 		try {
             setOS(Class.forName("org.eclipse.swt.internal.cocoa.OS")); //$NON-NLS-1$
@@ -153,7 +153,7 @@ public class MacOSReflect {
      * @param field
      * @return
      */
-    @SuppressWarnings("null")
+    
 	public static Object getField(Object object, String field) throws Exception {
         return (object instanceof Class ? (Class)object : object.getClass()).getField(field).get(object);
     }

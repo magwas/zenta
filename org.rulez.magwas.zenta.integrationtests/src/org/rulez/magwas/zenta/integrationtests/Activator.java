@@ -9,7 +9,6 @@ public class Activator implements BundleActivator {
 	private static BundleContext context;
 	private static boolean started = false;
 
-	@SuppressWarnings("null")
 	static BundleContext getContext() {
 		if(!started)
 			throw new AssertionError();

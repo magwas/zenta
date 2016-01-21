@@ -385,7 +385,7 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
@@ -464,7 +464,7 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 				IDiagramModel dm = save.parent.getDiagramModel();
 				if(dm.isTemplate()) {
 					String ocid = obj.getZentaElement().getId();
-					@SuppressWarnings("null")
+					
 					IBasicObject oc = dm.getZentaModel().getMetamodel().getClassById(ocid);
 					oc.getTemplate().getClasses().remove(oc);
 				}

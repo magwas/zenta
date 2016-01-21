@@ -24,12 +24,12 @@ public class BuiltinTemplate extends Template {
 		addRootRelationClass(model);
 	}
 		private void addRootRelationClass(IZentaModel model) {
-			@SuppressWarnings("null")
+			
 			IBasicRelationship rrc = (IBasicRelationship) ZentaModelUtils.getObjectByID(model, RootRelationClass.basicRelationClassId);
 			rootRelationClass = new RootRelationClass(this, getRootObjectClass() , rrc, model.getElements());
 		}
 		private void addRootObjectClass(IZentaModel model) {
-			@SuppressWarnings("null")
+			
 			IBasicObject f = (IBasicObject) ZentaModelUtils.getObjectByID(model, RootObjectClass.basicObjectClassId);
 			rootObjectClass = new RootObjectClass(this, f, model.getElements());
 		}

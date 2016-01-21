@@ -16,19 +16,19 @@ public class NonNullEntry<T1, T2> implements Entry<T1,T2> {
 		this.value = value;
 	}
 	
-	@SuppressWarnings("null")
+	
 	@Override
 	public @NonNull T1 getKey() {
 		return key;
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public @NonNull T2 getValue() {
 		return value;
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public @NonNull T2 setValue(@Nullable T2 arg0) {
 		T2 v = value;

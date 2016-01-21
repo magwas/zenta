@@ -121,14 +121,14 @@ public class DeleteTest {
 			fail(String.format("%s is still deleted", obj));
 	}
 
-	@SuppressWarnings("null")
+	
 	private void assertAllDiagramModelComponentsAreDeleted(
 			ArrayList<IDiagramModelComponent> dos) {
 		for(IDiagramModelComponent c : dos) {
 			assertDeleted(c);
 		}
 	}
-	@SuppressWarnings("null")
+	
 	private void assertAllDiagramModelComponentsAreUnDeleted(
 			ArrayList<IDiagramModelComponent> dos) {
 		for(IDiagramModelComponent c : dos) {

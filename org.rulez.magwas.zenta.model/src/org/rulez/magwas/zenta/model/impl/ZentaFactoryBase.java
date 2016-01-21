@@ -84,7 +84,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@Override
     @NonNull
     public EObject create(EClass eClass) {

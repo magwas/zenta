@@ -44,7 +44,7 @@ public class ArchiveManagerTests {
         return new JUnit4TestAdapter(ArchiveManagerTests.class);
     }
     
-    @SuppressWarnings("null")
+    
 	@Before
     public void runBeforeEachTest() {
         model = IZentaFactory.eINSTANCE.createZentaModel();
@@ -59,7 +59,7 @@ public class ArchiveManagerTests {
     public void tearDown() throws IOException {
     }
     
-    @SuppressWarnings("null")
+    
 	@Test
     public void ArchiveManager_for_empty_model_has_no_images_and_model_has_its_adapter() throws Exception {
         assertNotNull(archiveManager);
@@ -111,7 +111,7 @@ public class ArchiveManagerTests {
         archiveManager.addImageFromFile(new File("bogus.pomp"));
     }
     
-    @SuppressWarnings("null")
+    
 	@Test
     public void Adding_image_from_wrong_file_format_throws_an_exception() throws IOException {
         expectedEx.expect(IOException.class);
@@ -169,7 +169,7 @@ public class ArchiveManagerTests {
         assertEquals(pathName, archiveManager.getImagePaths().get(0));
     }
     
-    @SuppressWarnings("null")
+    
 	@Test
     public void Ater_loading_images_the_result_of_getLoadedImagePaths_is_not_empty() throws Exception {
         model.setFile(ModelTestUtils.TEST_MODEL_FILE_ZIPPED);

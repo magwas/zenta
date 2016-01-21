@@ -102,7 +102,7 @@ public class UITestWindow {
 					display.sleep();
 		}
 
-		@SuppressWarnings("null")
+		
 		private Method findTestMethod()  {
 			StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 			return findTestMethodInFrame(stackTraceElements);

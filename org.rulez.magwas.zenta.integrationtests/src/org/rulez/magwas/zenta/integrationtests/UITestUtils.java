@@ -64,7 +64,7 @@ public class UITestUtils {
 		return Util.verifyNonNull(view);
 	}
 
-	@SuppressWarnings("null")
+	
 	public static void closeAllModels()
 			throws IOException {
 		NonNullList<IZentaModel> models = new NonNullArrayList<IZentaModel>(IEditorModelManager.INSTANCE.getModels());

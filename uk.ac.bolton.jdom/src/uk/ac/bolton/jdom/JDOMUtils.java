@@ -71,7 +71,7 @@ public final class JDOMUtils {
 	 * @return The resulting String
 	 * @throws IOException
 	 */
-	@SuppressWarnings("null")
+	
 	public static @NonNull String write2XMLString(Document doc) throws IOException {
 		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 		

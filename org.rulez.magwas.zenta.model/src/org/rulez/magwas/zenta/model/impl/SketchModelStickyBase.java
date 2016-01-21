@@ -145,7 +145,7 @@ public class SketchModelStickyBase extends DiagramModelObjectBase implements ISk
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {

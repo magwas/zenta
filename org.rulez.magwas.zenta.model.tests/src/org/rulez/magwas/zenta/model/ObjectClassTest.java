@@ -51,13 +51,13 @@ public class ObjectClassTest{
 		assertEquals("Basic Object",fixture.getName());
 	}
 
-	@SuppressWarnings("null")
+	
 	@Test(expected = IZentaFactory.BuiltinClassShouldNotHaveAncestor.class)
 	public void The_ancestor_cannot_be_set_for_the_Builtin_ObjectClass() {
 		fixture.setAncestor(fixture);
 	}
 	
-	@SuppressWarnings("null")
+	
 	@Test
 	public void if_an_ObjectClass_is_set_as_ancestor_then_the_number_of_its_kids_grows() {
 		EList<IBasicObject> kids = fixture.getChildren();
@@ -73,7 +73,7 @@ public class ObjectClassTest{
 		testdata.getTestObjectClass();
 	}
 	
-	@SuppressWarnings("null")
+	
 	@Test
 	public void The_elements_of_the_template_are_converted_to_ObjectClass() {
 		ITemplate template = testdata.metamodel.getTemplateFor(diagramModel);

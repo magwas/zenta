@@ -68,7 +68,7 @@ public class ModelTest {
 		assertEquals("ProcessStep",element.getName());
 	}
 
-	@SuppressWarnings("null")
+	
 	@Test
 	public void Diagram_objects_have_bounds() throws IOException {
 		builder.createFullModel();
@@ -108,9 +108,9 @@ public class ModelTest {
 	}
 
 	private void assertFilesAreSame(File file, File file2) throws IOException {
-		@SuppressWarnings("null")
+		
 		@NonNull String absolutePath = file.getAbsolutePath();
-		@SuppressWarnings("null")
+		
 		@NonNull String absolutePath2 = file2.getAbsolutePath();
 		String string1 = Util.readFile(absolutePath);
 		String string2 = Util.readFile(absolutePath2);
@@ -335,7 +335,7 @@ public class ModelTest {
 		NonNullList<IBasicObject> targets = vp.getAllowedTargets(builder.getSecondgenSource());
 		builder.assertIsAllSecondGenObjects(targets);
 
-		@SuppressWarnings("null")
+		
 		@NonNull
 		NonNullList<IBasicRelationship> oc1relsafter = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
 		builder.assertIsAllSecondGenRelations(oc1relsafter);
@@ -343,7 +343,7 @@ public class ModelTest {
 		NonNullList<IBasicRelationship> estartrcs = vp.getSourceRelationClassesFor(builder.getThirdGenSource());
 		builder.assertIsAllSecondGenRelations(estartrcs);
 		
-		@SuppressWarnings("null")
+		
 		@NonNull
 		NonNullList<IBasicRelationship> oc1relsafter2 = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
 		builder.assertIsAllSecondGenRelations(oc1relsafter2);

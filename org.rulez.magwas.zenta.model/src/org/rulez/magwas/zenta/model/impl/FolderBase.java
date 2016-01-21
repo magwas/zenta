@@ -234,7 +234,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
@@ -248,7 +248,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@NonNull
     public EList<INameable> getElements() {
 		if (elements == null) {
@@ -295,7 +295,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	public @NonNull EList<IFolder> getFolders() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.FOLDER__FOLDERS);
@@ -416,7 +416,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {

@@ -466,7 +466,7 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
     private void handleDoubleClick(IProperty selected) {
         Matcher matcher = HTMLUtils.HTML_LINK_PATTERN.matcher(selected.getValue());
         if(matcher.find()) {
-            @SuppressWarnings("null")
+            
 			@NonNull String href = matcher.group();
             HTMLUtils.openLinkInBrowser(href);
         }

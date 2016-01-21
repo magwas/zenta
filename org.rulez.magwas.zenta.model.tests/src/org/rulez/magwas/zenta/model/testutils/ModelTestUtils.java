@@ -95,12 +95,12 @@ public class ModelTestUtils {
 		return new HashSet<String>(ret);
 	}
     public static @Nullable Object getPrivateField(Object object, String field) throws Exception {
-        @SuppressWarnings("null")
+        
 		Field f = getField(object.getClass(), field);
         f.setAccessible(true);
         return f.get(object);
     }
-    @SuppressWarnings("null")
+    
 	private static Field getField(Class<?> clazz, String fieldName) throws NoSuchFieldException {
         try {
             return clazz.getDeclaredField(fieldName);
