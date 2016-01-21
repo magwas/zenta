@@ -219,11 +219,6 @@
             </dependency>
             <dependency>
               <type>eclipse-plugin</type>
-              <artifactId>org.rulez.magwas.zenta.metamodel</artifactId>
-              <version>0.0.0</version>
-            </dependency>
-            <dependency>
-              <type>eclipse-plugin</type>
               <artifactId>org.rulez.magwas.zenta.model</artifactId>
               <version>0.0.0</version>
             </dependency>
