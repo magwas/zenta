@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>org.rulez.magwas.zenta.editor.build</name>
-	<comment></comment>
+	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
+		<project>org.rulez.magwas.zenta.browser</project>
+		<project>org.rulez.magwas.zenta.canvas</project>
+		<project>org.rulez.magwas.zenta.editor</project>
+		<project>org.rulez.magwas.zenta.export</project>
+		<project>org.rulez.magwas.zenta.help</project>
+		<project>org.rulez.magwas.zenta.model</project>
+		<project>org.rulez.magwas.zenta.templates</project>
+		<project>org.rulez.magwas.zenta.widgets</project>
+		<project>uk.ac.bolton.jdom</project>
+		<project>org.rulez.magwas.zenta.editor.launch.win32</project>
+		<project>org.rulez.magwas.zenta.editor.fullscreen.macos</project>
+		<project>org.rulez.magwas.zenta.editor.launch.macos</project>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 </projectDescription>
