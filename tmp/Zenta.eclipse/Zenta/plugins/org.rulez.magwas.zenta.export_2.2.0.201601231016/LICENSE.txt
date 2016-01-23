@@ -1,0 +1,4 @@
+Copyright (c) 2011 Árpád Magosányi
+
+GNU GPL v3 or later
+

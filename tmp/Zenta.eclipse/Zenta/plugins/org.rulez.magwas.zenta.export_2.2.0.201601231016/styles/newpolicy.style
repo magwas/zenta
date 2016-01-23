@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+	This style generates a policy from the model, and checks the model against the policy.
+	This is useful for generating policy files and conformance checking a model which contains the metamodel against you want to check conformance.
+	The default policy is generated from the Styledhtml model, and contains the definition for the objects needed to generate policy and more.
+-->
+<style>
+	<export target="archirich.xml" keep="true" policy="none">
+		<transform language="xslt" script="xslt/newpolicy.xslt" target="policy.xml" keep="true"/>
+	</export>
+	<export target="archirich2.xml" policy="$target/policy.xml" keep="true">
+		<transform language="xslt" script="xslt/objlist2.xslt" policy="policy.xml" target="objectlist.docbook" keep="true">
+		</transform>
+	</export>
+</style>

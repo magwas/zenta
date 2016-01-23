@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.jdt.annotation;bundle-version="1.0.1"
+Export-Package: net.sf.saxon,org.jaxen,org.jaxen.dom,org.jaxen.dom4j,o
+ rg.jaxen.expr,org.jaxen.expr.iter,org.jaxen.function,org.jaxen.functi
+ on.ext,org.jaxen.function.xslt,org.jaxen.javabean,org.jaxen.jdom,org.
+ jaxen.pattern,org.jaxen.saxpath,org.jaxen.saxpath.base,org.jaxen.saxp
+ ath.helpers,org.jaxen.util,org.jaxen.xom,org.jdom,org.jdom.adapters,o
+ rg.jdom.filter,org.jdom.input,org.jdom.output,org.jdom.transform,org.
+ jdom.xpath,org.w3c.dom,uk.ac.bolton.jdom
+Bundle-Vendor: Árpád Magosányi
+Bundle-ClassPath: jaxen-1.1.3.jar,jdom.jar,uk.ac.bolton.jdom.jar,saxon
+ 9he.jar
+Bundle-Version: 1.1.1.201601231016
+Bundle-Name: JDOM and Jaxen Utils
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: uk.ac.bolton.jdom
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

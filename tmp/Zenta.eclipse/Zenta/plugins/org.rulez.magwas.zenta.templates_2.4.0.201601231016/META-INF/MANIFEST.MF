@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Export-Package: org.rulez.magwas.zenta.templates.dialog,org.rulez.magw
+ as.zenta.templates.model,org.rulez.magwas.zenta.templates.wizard
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: org.rulez.magwas.zenta.templates.jar
+Bundle-Name: Zenta Templates
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.ui,org.rulez.magw
+ as.zenta.editor,uk.ac.bolton.jdom,org.rulez.magwas.zenta.widgets,org.
+ rulez.magwas.zenta.model;bundle-version="2.4.0"
+Bundle-Vendor: Árpád Magosányi
+Bundle-Version: 2.4.0.201601231016
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.rulez.magwas.zenta.templates.ZentaEditorTemplate
+ sPlugin
+Import-Package: org.eclipse.jdt.annotation
+Bundle-SymbolicName: org.rulez.magwas.zenta.templates;singleton:=true
+
+
