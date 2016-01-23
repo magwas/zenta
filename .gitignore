@@ -4,3 +4,4 @@ org.rulez.magwas.zenta.integrationtests/generated-images/*
 *.jar
 .settings/
 bin/
+tmp/
