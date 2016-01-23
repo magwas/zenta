@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteEntry;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
 import org.junit.After;
@@ -272,11 +271,11 @@ public class ZentaDiagramEditorPaletteTest {
 		IBasicRelationship newRelation = testdata.createNewRelationClass("New test RC");
 		assertTrue(newRelation.isTemplate());
 		PaletteContainer relationsgroup = palette._getRelationsGroup();
-		@NonNull List<PaletteEntry> children = getChildrenForRelationsGroup(relationsgroup);
+		 List<PaletteEntry> children = getChildrenForRelationsGroup(relationsgroup);
 		assertTrue(ModelAndEditPartTestData.haveCreatorFor(newRelation, children));
 	}
 
-	private @NonNull List<PaletteEntry> getChildrenForRelationsGroup(
+	private  List<PaletteEntry> getChildrenForRelationsGroup(
 			PaletteContainer relationsgroup) {
 		assertNotNull(relationsgroup);
 		@SuppressWarnings("unchecked")

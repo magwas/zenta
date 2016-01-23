@@ -11,7 +11,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
@@ -46,7 +45,7 @@ public class TreeModelViewActionFactory {
 
 	private IMetamodel metamodel;
 
-    public TreeModelViewActionFactory(@NonNull IZentaModel model) {
+    public TreeModelViewActionFactory( IZentaModel model) {
     	metamodel = IZentaFactory.eINSTANCE.getMetamodelFor(model);
     }
 

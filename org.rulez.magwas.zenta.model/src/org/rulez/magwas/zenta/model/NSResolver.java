@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import javax.xml.namespace.NamespaceContext;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public class NSResolver extends HashMap<String, String> implements
@@ -20,18 +19,18 @@ public class NSResolver extends HashMap<String, String> implements
 	}
 
 	@Override
-	public String getNamespaceURI(@Nullable String arg0) {
+	public String getNamespaceURI( String arg0) {
 		String r = this.get(arg0);
 		return Util.verifyNonNull(r);
 	}
 
 	@Override
-	public String getPrefix(@Nullable String arg0) {
+	public String getPrefix( String arg0) {
 		throw new RuntimeException("unimplemented getPrefix called!");
 	}
 
 	@Override
-	public Iterator<String> getPrefixes(@Nullable String arg0) {
+	public Iterator<String> getPrefixes( String arg0) {
 		return this.keySet().iterator();
 	}
 

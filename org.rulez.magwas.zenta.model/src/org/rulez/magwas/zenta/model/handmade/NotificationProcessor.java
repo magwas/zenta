@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -285,7 +284,7 @@ public class NotificationProcessor {
 				private static Map<Boolean, DecisionCase> getBranchByHasNew(
 						Map<Boolean, Map<Boolean, DecisionCase>> subbranch,
 						boolean hasNew) {
-					@NonNull Map<Boolean, DecisionCase> subsubbranch;
+					 Map<Boolean, DecisionCase> subsubbranch;
 					if(subbranch.containsKey(hasNew))
 						subsubbranch = subbranch.get(hasNew);
 					else {

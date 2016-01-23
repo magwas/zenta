@@ -22,7 +22,6 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
@@ -95,7 +94,7 @@ public final class ZipUtils {
                                        File srcFolder,
                                        ZipOutputStream zOut,
                                        File[] exclude,
-                                       @Nullable IProgressMonitor progressMonitor) throws IOException {
+                                        IProgressMonitor progressMonitor) throws IOException {
         
         List<File> fs = Arrays.asList(srcFolder.listFiles());
 		NonNullList<File> files = new NonNullArrayList<File>(fs);
@@ -182,7 +181,7 @@ public final class ZipUtils {
 	 * @param progressMonitor
 	 * @throws IOException
 	 */
-	public static void addImageToZip(Image image, String entryName, ZipOutputStream zOut, int format, @Nullable IProgressMonitor progressMonitor) throws IOException {
+	public static void addImageToZip(Image image, String entryName, ZipOutputStream zOut, int format,  IProgressMonitor progressMonitor) throws IOException {
 	    ZipEntry zipEntry = new ZipEntry(entryName);
 	    
 	    try {
@@ -259,7 +258,7 @@ public final class ZipUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static @Nullable String extractZipEntry(File zipFile, String entryName) throws IOException {
+	public static  String extractZipEntry(File zipFile, String entryName) throws IOException {
 		ZipEntry zipEntry;
 		ZipInputStream zIn;
 		int bit;
@@ -304,7 +303,7 @@ public final class ZipUtils {
      * @return A Zip Entry Stream
      * @throws IOException
      */
-    public static @Nullable InputStream getZipEntryStream(File zipFile, String entryName) throws IOException {
+    public static  InputStream getZipEntryStream(File zipFile, String entryName) throws IOException {
         ZipEntry zipEntry;
         ZipInputStream zIn;
         
@@ -341,7 +340,7 @@ public final class ZipUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static @Nullable File extractZipEntry(File zipFile, String entryName, File outFile) throws IOException {
+	public static  File extractZipEntry(File zipFile, String entryName, File outFile) throws IOException {
 		ZipInputStream zIn;
 		ZipEntry zipEntry;
 		int bytesRead;
@@ -451,7 +450,7 @@ public final class ZipUtils {
 	 * @return false if the progressMonitor is cancelled
 	 * @throws IOException If error or user cancelled
 	 */
-	public static void unpackZip(File zipFile, File targetFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
+	public static void unpackZip(File zipFile, File targetFolder,  IProgressMonitor progressMonitor) throws IOException {
 	    targetFolder.mkdirs();
 		
 		BufferedInputStream in = null;

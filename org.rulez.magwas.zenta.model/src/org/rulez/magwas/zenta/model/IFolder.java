@@ -8,8 +8,6 @@ package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.jdt.annotation.NonNull;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Folder</b></em>'.
@@ -42,7 +40,7 @@ public interface IFolder extends IZentaModelElement, IFolderContainer, INameable
 	 *        extendedMetaData="name='element' kind='element'"
 	 * @generated
 	 */
-	@NonNull EList<INameable> getElements();
+	EList<INameable> getElements();
 
 
 } // IFolder

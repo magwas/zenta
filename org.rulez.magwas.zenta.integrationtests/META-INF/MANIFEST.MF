@@ -21,4 +21,3 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,
  mockito-all-1.9.5.jar
-Import-Package: org.eclipse.jdt.annotation

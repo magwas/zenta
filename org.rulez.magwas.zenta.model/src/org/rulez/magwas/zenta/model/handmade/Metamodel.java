@@ -8,7 +8,6 @@ import java.util.NoSuchElementException;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -71,7 +70,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		private void setAdapter() {
 			final Metamodel self = this;
 			EContentAdapter adapter = new EContentAdapter() {
-		        public void notifyChanged(@Nullable Notification notificationo) {
+		        public void notifyChanged(Notification notificationo) {
 		          Notification notification = Util.verifyNonNull(notificationo);
 		          super.notifyChanged(notification);
 		          NotificationProcessor.processNotification(self,notification);
@@ -81,7 +80,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		}
 
 	@Override
-	public @Nullable ITemplate getTemplateFor(@Nullable IDiagramModel diagramModelo) {
+	public ITemplate getTemplateFor(IDiagramModel diagramModelo) {
 		IDiagramModel diagramModel = Util.verifyNonNull(diagramModelo);
 		for(ITemplate template : getTemplates()) {
 			IDiagramModel dm = template.getDiagram();
@@ -94,7 +93,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 	}
 
 	@Override
-	public @Nullable ITemplate findTemplateFor(@Nullable IDiagramModelComponent elemento) {
+	public ITemplate findTemplateFor(IDiagramModelComponent elemento) {
 		IDiagramModelComponent element = Util.verifyNonNull(elemento);
 		IDiagramModel dm = element.findDiagramModel();
 		if (null == dm)
@@ -225,7 +224,7 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 		element.setPropsFromDiagramObject(dmo);
 	}
 
-	private @Nullable IDiagramModelComponent findDefiningModelObjectFor(IBasicObject element) {
+	private IDiagramModelComponent findDefiningModelObjectFor(IBasicObject element) {
 		EList<? extends IDiagramModelComponent> dmos;
 		dmos = element.getDiagComponents();
 		for(IDiagramModelComponent dmo : dmos) {

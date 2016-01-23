@@ -3,7 +3,6 @@ package org.rulez.magwas.zenta.model.handmade;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -16,7 +15,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public class RootRelationClass extends RelationClass {
 	
-	protected RootRelationClass(BuiltinTemplate builtinTemplate, RootObjectClass rootObjectClass, @Nullable IBasicRelationship modelRelation, EList<INameable> container) {
+	protected RootRelationClass(BuiltinTemplate builtinTemplate, RootObjectClass rootObjectClass,  IBasicRelationship modelRelation, EList<INameable> container) {
 		super();
 		setSource(rootObjectClass);
 		setTarget(rootObjectClass);
@@ -26,7 +25,7 @@ public class RootRelationClass extends RelationClass {
 		addOrReplaceInModel(modelRelation, container);
 	}
 
-	private void addOrReplaceInModel(@Nullable IBasicRelationship modelRelation,
+	private void addOrReplaceInModel( IBasicRelationship modelRelation,
 			EList<INameable> container) {
 		int i=0;
 		if(modelRelation!=null) {
@@ -40,7 +39,7 @@ public class RootRelationClass extends RelationClass {
 	}
 	
 	@Override
-	public void setAncestor(@Nullable IBasicObject ancestor) {
+	public void setAncestor( IBasicObject ancestor) {
 		throw new IZentaFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 	

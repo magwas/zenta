@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAdapter;
@@ -176,7 +175,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
+    
     public String getName() {
 		return Util.verifyNonNull(name);
 	}
@@ -226,7 +225,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	 * @generated
 	 */
     
-	@NonNull
+	
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.ZENTA_ELEMENT__PROPERTIES);
@@ -240,7 +239,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	 * @generated
 	 */
     
-	@NonNull
+	
 	public EList<IDiagramModelZentaObject> getDiagObjects() {
 		if (diagObjects == null) {
 			diagObjects = new EObjectWithInverseResolvingEList<IDiagramModelZentaObject>(IDiagramModelZentaObject.class, this, IZentaPackage.ZENTA_ELEMENT__DIAG_OBJECTS, IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__ZENTA_ELEMENT);
@@ -318,7 +317,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    @NonNull
+    
     public IZentaModel getZentaModel() {
         return ((IZentaModelElement)eContainer()).getZentaModel();
     }
@@ -673,7 +672,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 			return state;
 		}
 		
-			protected void deleteDiagramObjects(@NonNull ElementState state) {
+			protected void deleteDiagramObjects( ElementState state) {
 				List<IDiagramModelComponent> dmos = new ArrayList<IDiagramModelComponent>();
 				dmos.addAll(getDiagComponents());
 				for(IDiagramModelComponent dmo : dmos)
@@ -682,7 +681,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 
 		
 		@Override
-		@NonNull
+		
 		public EList<? extends IDiagramModelComponent> getDiagComponents() {
 			return getDiagObjects();
 		}
@@ -693,24 +692,24 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 		}
 
 		@Override
-		@NonNull
+		
 	    public NonNullList<IBasicRelationship> getRelationships() {
 	        return __getRelationships(SOURCE_RELATIONSHIPS | TARGET_RELATIONSHIPS);
 	    }
 	    
 		@Override
-		@NonNull
+		
 	    public NonNullList<IBasicRelationship> getSourceRelationships() {
 	        return __getRelationships(SOURCE_RELATIONSHIPS);
 	    }
 	    
 		@Override
-		@NonNull
+		
 		public NonNullList<IBasicRelationship> getTargetRelationships() {
 	        return __getRelationships(TARGET_RELATIONSHIPS);
 	    }
 
-		@NonNull
+		
 		private NonNullList<IBasicRelationship> __getRelationships(int type) {
 	        NonNullList<IBasicRelationship> relationships = new NonNullArrayList<IBasicRelationship>();
 	        
@@ -724,7 +723,7 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 			
 			private void childFolders(IZentaElement element, int type, 
 					List<IBasicRelationship> relationships, List<IFolder> folders) {
-				for (@NonNull IFolder  folder : folders) {
+				for ( IFolder  folder : folders) {
 					__getRelationshipsForElement(folder, element, type, relationships);
 				}
 			}

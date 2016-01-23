@@ -8,7 +8,6 @@ package org.rulez.magwas.zenta.model.viewpoints;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -50,7 +49,7 @@ public interface IViewpoint {
 
 	List<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sourceObjectType, IBasicObject targetObjectType);
     
-	@NonNull NonNullList<IBasicRelationship> getValidRelationships(IZentaElement sourceElement,
+	NonNullList<IBasicRelationship> getValidRelationships(IZentaElement sourceElement,
 			IZentaElement targetElement);
 
 	List<IBasicRelationship> getSourceRelationClassesFor(

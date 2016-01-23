@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
@@ -198,7 +197,6 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
     public String getName() {
 		return Util.verifyNonNull(name);
 	}
@@ -220,7 +218,7 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public @NonNull IDiagramModel getDiagramModel() {
+    public IDiagramModel getDiagramModel() {
         if(eContainer() == null) {
         	throw new AssertionError();
         }

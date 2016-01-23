@@ -3,7 +3,6 @@ package org.rulez.magwas.nonnul;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.UnTestedException;
 
 public class NonNullListIterator<T> implements ListIterator<T>{
@@ -17,7 +16,7 @@ public class NonNullListIterator<T> implements ListIterator<T>{
 	}
 	
 	@Override
-	public void add(@Nullable T e) {
+	public void add( T e) {
 		throw new UnTestedException();
 	}
 
@@ -62,7 +61,7 @@ public class NonNullListIterator<T> implements ListIterator<T>{
 	}
 
 	@Override
-	public void set(@Nullable T e) {
+	public void set( T e) {
 		throw new UnTestedException();
 	}
 

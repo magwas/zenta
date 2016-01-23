@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -73,7 +72,6 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
 	public IBasicRelationship getRelationship() {
 		return Util.verifyNonNull(relationship);
 	}
@@ -113,7 +111,6 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
 	}
 
 	@Override
-	@NonNull
     public String getName() {
         return getRelationship().getName();
     }

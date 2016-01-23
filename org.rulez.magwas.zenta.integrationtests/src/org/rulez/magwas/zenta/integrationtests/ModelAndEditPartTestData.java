@@ -11,8 +11,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteEntry;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.util.Policy;
 import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.swt.custom.BusyIndicator;
@@ -95,7 +93,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
         assertNotNull(metamodel);
 	}
 
-	public @Nullable IStatus getStatus() {
+	public IStatus getStatus() {
 		return statusHandler.status;
 	}
 	public ZentaDiagramEditor focusOnDiagram(String id) {
@@ -105,7 +103,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 	}
 
 	public ZentaDiagramEditor focusOnDiagram(IDiagramModel diagramModel) {
-		@NonNull ZentaDiagramEditor ed = (ZentaDiagramEditor) EditorManager.openDiagramEditor(diagramModel);
+		ZentaDiagramEditor ed = (ZentaDiagramEditor) EditorManager.openDiagramEditor(diagramModel);
 		setEditor(ed);
 		return ed;
 	}

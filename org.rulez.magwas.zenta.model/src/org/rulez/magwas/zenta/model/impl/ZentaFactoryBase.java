@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAndJunction;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -86,7 +85,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 	 */
     
 	@Override
-    @NonNull
+    
     public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case IZentaPackage.PROPERTY: return createProperty();
@@ -188,7 +187,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull public IZentaDiagramModel createZentaDiagramModel() {
+     public IZentaDiagramModel createZentaDiagramModel() {
 		ZentaDiagramModelBase zentaDiagramModel = new ZentaDiagramModelBase();
 		return zentaDiagramModel;
 	}
@@ -404,7 +403,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
+    
 	public IBasicRelationship createBasicRelationship() {
 		BasicRelationshipBase basicRelationship = new RelationClass();
 		return basicRelationship;

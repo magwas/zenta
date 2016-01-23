@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -84,7 +83,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public @NonNull NonNullList<IBasicRelationship> getValidRelationships(
+	public NonNullList<IBasicRelationship> getValidRelationships(
 			IZentaElement sourceElement, IZentaElement targetElement) {
 		IBasicObject sc = (IBasicObject) sourceElement;
 		IBasicObject tc = (IBasicObject) targetElement;
@@ -92,7 +91,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	}
 
 	@Override
-	public @NonNull NonNullList<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sc,
+	public NonNullList<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sc,
 			IBasicObject tc) {
 		NonNullList<IBasicRelationship> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
 		NonNullList<IBasicRelationship> destrels = tc.getAllowedRelations().get(Direction.TARGET);

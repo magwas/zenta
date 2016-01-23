@@ -9,7 +9,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
@@ -100,7 +99,7 @@ public class SaveAction extends AbstractModelSelectionAction {
         IEditorModelManager.INSTANCE.removePropertyChangeListener(getCommandStackListener());
     }
 
-    @NonNull
+    
 	public PropertyChangeListener getCommandStackListener() {
 		return Util.verifyNonNull(commandStackListener);
 	}

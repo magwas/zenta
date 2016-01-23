@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
@@ -158,7 +157,7 @@ public class MacOSReflect {
         return (object instanceof Class ? (Class)object : object.getClass()).getField(field).get(object);
     }
 
-    public static @Nullable Object getPrivateField(Object object, String field) throws Exception {
+    public static Object getPrivateField(Object object, String field) throws Exception {
         Field f = object.getClass().getDeclaredField(field);
         f.setAccessible(true);
         return f.get(object);
@@ -170,7 +169,7 @@ public class MacOSReflect {
      * @param method
      * @return
      */
-    public static @Nullable Object executeMethod(Object object, String method) throws Exception {
+    public static Object executeMethod(Object object, String method) throws Exception {
         Class clazz = (Class)(object instanceof Class ? object : object.getClass());
         Method m = clazz.getDeclaredMethod(method, new Class[] {});
         m.setAccessible(true);

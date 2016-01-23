@@ -3,7 +3,6 @@ package org.rulez.magwas.nonnul;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
@@ -11,7 +10,7 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 
 	private static final long serialVersionUID = 1L;
 
-	public NonNullArrayList(@Nullable Collection<T> c) {
+	public NonNullArrayList( Collection<T> c) {
 		super(c);
 		checkCollection(c);
 	}
@@ -21,24 +20,24 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 	}
 
 	@Override
-	public boolean add(@Nullable T e) {
+	public boolean add( T e) {
 		Util.verifyNonNull(e);
 		return super.add(e);
 	}
 
 	@Override
-	public void add(int index, @Nullable T element) {
+	public void add(int index,  T element) {
 		Util.verifyNonNull(element);
 		super.add(index, element);
 	}
 
 	@Override
-	public boolean addAll(@Nullable Collection<? extends T> c) {
+	public boolean addAll( Collection<? extends T> c) {
 		checkCollection(c);
 		return super.addAll(c);
 	}
 
-	public void checkCollection(@Nullable Collection<? extends Object> c) {
+	public void checkCollection( Collection<? extends Object> c) {
 		Collection<? extends Object> cc = Util.verifyNonNull(c);
 		for (Object i : cc) {
 			Util.verifyNonNull(i);
@@ -46,7 +45,7 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 	}
 
 	@Override
-	public boolean addAll(int index, @Nullable Collection<? extends T> c) {
+	public boolean addAll(int index,  Collection<? extends T> c) {
 		checkCollection(c);
 		return super.addAll(index, c);
 	}
@@ -74,7 +73,7 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 
 	
 	@Override
-	public  T set(int index, @Nullable T element) {
+	public  T set(int index,  T element) {
 		Util.verifyNonNull(element);
 		return super.set(index, element);
 	}
@@ -98,7 +97,7 @@ public class NonNullArrayList<T> extends ArrayList<T> implements NonNullList<T> 
 
 	@SuppressWarnings("hiding")
 	@Override
-	public <T> T[] toArray(@Nullable T[] a) {
+	public <T> T[] toArray( T[] a) {
 		throw new UnTestedException();
 	}
 	

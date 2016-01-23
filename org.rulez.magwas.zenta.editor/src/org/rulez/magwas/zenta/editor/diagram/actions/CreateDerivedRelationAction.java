@@ -13,7 +13,6 @@ import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.ui.actions.SelectionAction;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
@@ -179,7 +178,6 @@ public class CreateDerivedRelationAction extends SelectionAction {
     
     // ================================ Helper Classes =====================================
     
-	@NonNull
     public IFolder getFolder() {
 			return Util.verifyNonNull(folder);
 	}
@@ -231,7 +229,6 @@ public class CreateDerivedRelationAction extends SelectionAction {
             return chains;
         }
 
-        @NonNull
 		public IZentaElement getSrcElement() {
 			return Util.verifyNonNull(srcElement);
 		}
@@ -240,7 +237,6 @@ public class CreateDerivedRelationAction extends SelectionAction {
 			this.srcElement = srcElement;
 		}
 
-        @NonNull
 		public IZentaElement getTgtElement() {
 			return Util.verifyNonNull(tgtElement);
 		}
@@ -469,7 +465,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
                 return ""; //$NON-NLS-1$
             }
             
-            private String getRelationshipText(NonNullList<IBasicRelationship> chain, @NonNull IBasicRelationship relation) {
+            private String getRelationshipText(NonNullList<IBasicRelationship> chain, IBasicRelationship relation) {
                 if(drutil.isBidirectionalRelationship(relation)) {
                     int index = chain.indexOf(relation);
                     if(index > 0) {

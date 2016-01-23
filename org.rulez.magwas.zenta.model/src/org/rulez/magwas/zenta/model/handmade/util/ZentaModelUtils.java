@@ -11,7 +11,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.util.ZentaResourceBase;
@@ -34,7 +33,7 @@ public class ZentaModelUtils {
      * @param id The ID of the object to search for
      * @return The matching EObject in the model given its ID or null if not found
      */
-    public static @Nullable EObject getObjectByID(IZentaModel model, String id) {
+    public static  EObject getObjectByID(IZentaModel model, String id) {
     	Util.verifyNonNull(id);
     	Util.verifyNonNull(model);
         

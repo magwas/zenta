@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullList;
 
 /**
@@ -62,14 +61,14 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	
 	void addOrUpdateProperty(String key, String value);
 	
-	@NonNull
+	
 	EList<? extends IDiagramModelComponent> getDiagComponents();
 
-	@NonNull
+	
     NonNullList<IBasicRelationship> getRelationships();
-	@NonNull
+	
     NonNullList<IBasicRelationship> getSourceRelationships();
-	@NonNull
+	
     NonNullList<IBasicRelationship> getTargetRelationships();
 
 } // IZentaElement

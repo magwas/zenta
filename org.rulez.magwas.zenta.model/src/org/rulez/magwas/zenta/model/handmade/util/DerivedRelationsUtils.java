@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.model.handmade.util;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.nonnul.NonNullListIterator;
@@ -47,7 +46,6 @@ public class DerivedRelationsUtils {
         IZentaElement source = relation.getSource();
         for (NonNullListIterator<IBasicRelationship> iterator = source.getTargetRelationships().iterator(); iterator
 				.hasNext();) {
-			@NonNull
 			IBasicRelationship rel = iterator.next();
 			if(rel != relation) {
                 if(isStructuralRelationship(rel) && rel.getSource() != relation.getTarget()) {
@@ -299,7 +297,7 @@ public class DerivedRelationsUtils {
         }
         
         // If we get the target element we are traversing fowards, otherwise backwards from a bi-directional check
-        @NonNull
+        
         IZentaElement element = forwards ? relation.getTarget() : relation.getSource();
         
         // Arrived at target

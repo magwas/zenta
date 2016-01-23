@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.zip.ZipOutputStream;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
@@ -54,7 +53,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
     /**
      * @param id If this is null a new id will be generated
      */
-    public AbstractTemplate(@Nullable String id) {
+    public AbstractTemplate(String id) {
         if(id == null) {
             id = UUID.randomUUID().toString().split("-")[0]; //$NON-NLS-1$
         }
@@ -248,7 +247,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         }
     }
     
-    private @Nullable Image loadImage(String imgName) {
+    private Image loadImage(String imgName) {
     	if (fFile == null || (!fFile.exists()))
     		return null;
         

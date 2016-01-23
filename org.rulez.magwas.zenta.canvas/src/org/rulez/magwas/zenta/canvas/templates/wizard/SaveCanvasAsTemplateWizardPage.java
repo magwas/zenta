@@ -7,7 +7,6 @@ package org.rulez.magwas.zenta.canvas.templates.wizard;
 
 import java.io.File;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
@@ -70,7 +69,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
     }
 
     @Override
-    public void createControl(@Nullable Composite parent) {
+    public void createControl( Composite parent) {
         GridData gd;
         Label label;
         
@@ -95,7 +94,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         // Single text control so strip CRLFs
         UIUtils.conformSingleTextControl(fFileTextField);
         fFileTextField.addModifyListener(new ModifyListener() {
-            public void modifyText(@Nullable ModifyEvent e) {
+            public void modifyText( ModifyEvent e) {
                 validateFields();
             }
         });
@@ -104,7 +103,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         fileButton.setText(Messages.SaveCanvasAsTemplateWizardPage_4);
         fileButton.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void widgetSelected(@Nullable SelectionEvent e) {
+            public void widgetSelected( SelectionEvent e) {
                 File file = chooseFile();
                 if(file != null) {
                     fFileTextField.setText(file.getPath());
@@ -129,7 +128,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         // Single text control so strip CRLFs
         UIUtils.conformSingleTextControl(fNameTextField);
         fNameTextField.addModifyListener(new ModifyListener() {
-            public void modifyText(@Nullable ModifyEvent e) {
+            public void modifyText( ModifyEvent e) {
                 validateFields();
             }
         });
@@ -159,7 +158,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         fButtonIncludeThumbnail.setSelection(true);
         fButtonIncludeThumbnail.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void widgetSelected(@Nullable SelectionEvent e) {
+            public void widgetSelected( SelectionEvent e) {
                 fPreviewLabel.setEnabled(fButtonIncludeThumbnail.getSelection());
             }
         });
@@ -183,7 +182,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         // the TrayDialog is resized and this label is asked to relayout.
         fPreviewLabel.addDisposeListener(new DisposeListener() {
             @Override
-            public void widgetDisposed(@Nullable DisposeEvent e) {
+            public void widgetDisposed( DisposeEvent e) {
                 disposePreviewImage();
             }
         });
@@ -199,7 +198,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
             int oldTime;
             
             @Override
-            public void controlResized(@Nullable ControlEvent eo) {
+            public void controlResized( ControlEvent eo) {
             	ControlEvent e = Util.verifyNonNull(eo);
                 if(e.time - oldTime > 10) {
                     disposePreviewImage();
@@ -237,7 +236,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
         return fButtonIncludeThumbnail.getSelection();
     }
     
-    private @Nullable File chooseFile() {
+    private  File chooseFile() {
         FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
         dialog.setText(Messages.SaveCanvasAsTemplateWizardPage_9);
         dialog.setFilterExtensions(new String[] { "*" + fTemplateManager.getTemplateFileExtension(), "*.*" } ); //$NON-NLS-1$ //$NON-NLS-2$
@@ -271,7 +270,7 @@ public class SaveCanvasAsTemplateWizardPage extends WizardPage {
     /**
      * Update the page status
      */
-    private void updateStatus(@Nullable String message) {
+    private void updateStatus( String message) {
         setErrorMessage(message);
         setPageComplete(message == null);
     }

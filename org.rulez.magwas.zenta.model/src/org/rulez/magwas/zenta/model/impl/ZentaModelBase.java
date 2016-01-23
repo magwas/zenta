@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAdapter;
@@ -232,12 +231,12 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    @NonNull
+    
     public IDiagramModel getDefaultDiagramModel() {
         NonNullList<IDiagramModel> list = getDiagramModels();
         return list.size() > 0 ? list.get(0) : createDefaultDiagramModel();
     }
-		private @NonNull IZentaDiagramModel createDefaultDiagramModel() {
+		private  IZentaDiagramModel createDefaultDiagramModel() {
 			IZentaDiagramModel dm = IZentaFactory.eINSTANCE.createZentaDiagramModel();
 			getElements().add(dm);
 			dm.setName("Default Diagram Model");
@@ -250,7 +249,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public @NonNull NonNullList<IDiagramModel> getDiagramModels() {
+    public  NonNullList<IDiagramModel> getDiagramModels() {
     	NonNullList<IDiagramModel> list = new NonNullArrayList<IDiagramModel>();
         _getDiagramModels(this, list);
         
@@ -283,7 +282,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
+    
     public String getName() {
 		return Util.verifyNonNull(name);
 	}
@@ -326,7 +325,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    @NonNull
+    
     public IZentaModel getZentaModel() {
         return this;
     }
@@ -337,7 +336,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 * @generated
 	 */
     
-	@NonNull
+	
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.ZENTA_MODEL__PROPERTIES);
@@ -372,7 +371,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 * @generated
 	 */
 	
-	@NonNull
+	
 	public EList<INameable> getElements() {
 		if (elements == null) {
 			elements = new EObjectContainmentEList<INameable>(INameable.class, this, IZentaPackage.ZENTA_MODEL__ELEMENTS);
@@ -386,7 +385,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	 * @generated
 	 */
     
-	public @NonNull EList<IFolder> getFolders() {
+	public  EList<IFolder> getFolders() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.ZENTA_MODEL__FOLDERS);
 		}

@@ -19,7 +19,6 @@ import java.util.Comparator;
 import java.util.Random;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * Some useful File Utilities
@@ -107,7 +106,7 @@ public final class FileUtils  {
 	 * @param destFolder
 	 * @throws IOException 
 	 */
-	public static void copyFiles(File[] files, File destFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
+	public static void copyFiles(File[] files, File destFolder, IProgressMonitor progressMonitor) throws IOException {
 	    if(!destFolder.isDirectory()) {
             throw new IOException("Parent folder should be directory"); //$NON-NLS-1$
         }
@@ -136,7 +135,7 @@ public final class FileUtils  {
      * @param destFolder
      * @throws IOException 
      */
-    public static void moveFiles(File[] files, File destFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
+    public static void moveFiles(File[] files, File destFolder, IProgressMonitor progressMonitor) throws IOException {
         if(!destFolder.isDirectory()) {
             throw new IOException("Parent folder should be directory"); //$NON-NLS-1$
         }
@@ -165,7 +164,7 @@ public final class FileUtils  {
 	 * @param progressMonitor An optional IProgressMonitor.  Can be null.
 	 * @throws IOException On error or if there is a IProgressMonitor and user pressed Cancel
 	 */
-	public static void copyFolder(File srcFolder, File destFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
+	public static void copyFolder(File srcFolder, File destFolder, IProgressMonitor progressMonitor) throws IOException {
 	    if(srcFolder.equals(destFolder)) {
 	        throw new IOException("Source and target folders cannot be the same."); //$NON-NLS-1$
 	    }
@@ -250,7 +249,7 @@ public final class FileUtils  {
 	/**
      * Move a Folder
      */
-    public static void moveFolder(File srcFolder, File destFolder, @Nullable IProgressMonitor progressMonitor) throws IOException {
+    public static void moveFolder(File srcFolder, File destFolder, IProgressMonitor progressMonitor) throws IOException {
         copyFolder(srcFolder, destFolder, progressMonitor);
         deleteFolder(srcFolder);
     }
@@ -306,7 +305,7 @@ public final class FileUtils  {
 	    
 	    Arrays.sort(files, new Comparator<File>() {
             @Override
-            public int compare(@Nullable File f1, @Nullable File f2) {
+            public int compare(File f1, File f2) {
                 if(f1 == null || f2 == null) {
                     return 0;
                 }

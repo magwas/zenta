@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -109,9 +108,9 @@ public class ModelTest {
 
 	private void assertFilesAreSame(File file, File file2) throws IOException {
 		
-		@NonNull String absolutePath = file.getAbsolutePath();
+		 String absolutePath = file.getAbsolutePath();
 		
-		@NonNull String absolutePath2 = file2.getAbsolutePath();
+		 String absolutePath2 = file2.getAbsolutePath();
 		String string1 = Util.readFile(absolutePath);
 		String string2 = Util.readFile(absolutePath2);
 		assertEquals(string1,string2);
@@ -336,7 +335,7 @@ public class ModelTest {
 		builder.assertIsAllSecondGenObjects(targets);
 
 		
-		@NonNull
+		
 		NonNullList<IBasicRelationship> oc1relsafter = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
 		builder.assertIsAllSecondGenRelations(oc1relsafter);
 
@@ -344,7 +343,7 @@ public class ModelTest {
 		builder.assertIsAllSecondGenRelations(estartrcs);
 		
 		
-		@NonNull
+		
 		NonNullList<IBasicRelationship> oc1relsafter2 = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
 		builder.assertIsAllSecondGenRelations(oc1relsafter2);
 

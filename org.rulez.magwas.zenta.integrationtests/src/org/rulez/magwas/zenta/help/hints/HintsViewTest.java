@@ -2,7 +2,6 @@ package org.rulez.magwas.zenta.help.hints;
 
 import static org.junit.Assert.*;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
@@ -105,7 +104,6 @@ public class HintsViewTest {
 		String id = "ea94cf6c";//User
 		IZentaElement element = testdata.getElementById(id);
 		assertNotNull(element);
-		@NonNull
 		IDiagramModelZentaObject diagElement = Util.verifyNonNull((IDiagramModelZentaObject) element.getDiagComponents().get(0));
 		assertNotNull(diagElement);
 		testdata.selectDiagElement(diagElement);

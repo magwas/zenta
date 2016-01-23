@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -233,7 +232,6 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
     public String getName() {
 		return Util.verifyNonNull(name);
 	}
@@ -255,13 +253,11 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    @NonNull
     public IDiagramModel getDiagramModel() {
         return this;
     }
     
     @Override
-    @NonNull
     public IDiagramModel findDiagramModel() {
         return this;
     }
@@ -314,7 +310,6 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    @NonNull
     public IZentaModel getZentaModel() {
         return ((IZentaModelElement)eContainer()).getZentaModel();
     }
@@ -400,7 +395,6 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
 	 * @generated
 	 */
     
-	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.DIAGRAM_MODEL__PROPERTIES);

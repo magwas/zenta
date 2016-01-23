@@ -11,8 +11,6 @@ import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IIdentifier;
 
 
@@ -38,7 +36,7 @@ public class IDAdapter extends EContentAdapter {
     private List<String> fUsedIDs = new ArrayList<String>();
 
     @Override
-    public void notifyChanged(@Nullable Notification msgo) {
+    public void notifyChanged(Notification msgo) {
     	Notification msg = Util.verifyNonNull(msgo);
         super.notifyChanged(msg);
 
@@ -68,7 +66,7 @@ public class IDAdapter extends EContentAdapter {
      * @return A new unique ID to be used for objects in the model
      */
     public String getNewID() {
-        @NonNull String id;
+        String id;
         do {
             String rid = UUID.randomUUID().toString().split("-")[0];
 			id = Util.verifyNonNull(rid); //$NON-NLS-1$

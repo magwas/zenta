@@ -2,8 +2,6 @@ package org.rulez.magwas.nonnul;
 
 import java.util.Map.Entry;
 
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 public class NonNullEntry<T1, T2> implements Entry<T1,T2> {
@@ -18,19 +16,19 @@ public class NonNullEntry<T1, T2> implements Entry<T1,T2> {
 	
 	
 	@Override
-	public @NonNull T1 getKey() {
+	public  T1 getKey() {
 		return key;
 	}
 
 	
 	@Override
-	public @NonNull T2 getValue() {
+	public  T2 getValue() {
 		return value;
 	}
 
 	
 	@Override
-	public @NonNull T2 setValue(@Nullable T2 arg0) {
+	public  T2 setValue( T2 arg0) {
 		T2 v = value;
 		value = Util.verifyNonNull(arg0);
 		return v;

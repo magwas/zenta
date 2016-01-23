@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
@@ -348,7 +347,6 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
 	 * @generated
 	 */
     
-	@NonNull
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.DIAGRAM_MODEL_CONNECTION__PROPERTIES);
@@ -432,7 +430,6 @@ public class DiagramModelConnectionBase extends DiagramModelComponentBase implem
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
     public IDiagramModelObject getSource() {
 		return Util.verifyNonNull(source);
 	}

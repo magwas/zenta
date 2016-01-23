@@ -5,7 +5,6 @@ package org.rulez.magwas.zenta.model;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.handmade.BuiltinTemplate;
 
@@ -44,23 +43,23 @@ public interface IMetamodel extends EObject {
 	 */
 	EList<ITemplate> getTemplates();
 
-    @NonNull IZentaModel getModel();
+    IZentaModel getModel();
     
-    @NonNull IBasicObject getClassById(@NonNull String classId);
-    @NonNull IBasicObject getBuiltinObjectClass();
-    @NonNull IBasicRelationship getBuiltinRelationClass();
+    IBasicObject getClassById(String classId);
+    IBasicObject getBuiltinObjectClass();
+    IBasicRelationship getBuiltinRelationClass();
 	
-    @NonNull BuiltinTemplate getBuiltinTemplate();
-    ITemplate getTemplateFor(@NonNull IDiagramModel dm);
-    ITemplate findTemplateFor(@NonNull IDiagramModelComponent element);
+    BuiltinTemplate getBuiltinTemplate();
+    ITemplate getTemplateFor(IDiagramModel dm);
+    ITemplate findTemplateFor(IDiagramModelComponent element);
     
-    @NonNull NonNullList<IBasicObject> getObjectClasses();
-    @NonNull NonNullList<IBasicRelationship> getRelationClasses();
-    @NonNull NonNullList<IBasicObject> getConnectorClasses();
+    NonNullList<IBasicObject> getObjectClasses();
+    NonNullList<IBasicRelationship> getRelationClasses();
+    NonNullList<IBasicObject> getConnectorClasses();
 	
-    @NonNull NonNullList<IBasicRelationship> getRelationships(@NonNull IBasicObject object);
-    @NonNull NonNullList<IBasicRelationship> getWeaklist();
-    boolean isValidRelationship(@NonNull IBasicObject element1, @NonNull IBasicObject element2,
-			@NonNull IBasicRelationship relationshipClass);
+    NonNullList<IBasicRelationship> getRelationships(IBasicObject object);
+    NonNullList<IBasicRelationship> getWeaklist();
+    boolean isValidRelationship(IBasicObject element1, IBasicObject element2,
+			IBasicRelationship relationshipClass);
 
 } // MetamodelBase

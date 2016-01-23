@@ -1,6 +1,5 @@
 package org.rulez.magwas.zenta.model.handmade;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IMetamodel;
@@ -19,7 +18,7 @@ public class BuiltinTemplate extends Template {
 		super();
 		setPath("builtin");
 		setMetamodel(metamodel);
-		@NonNull IZentaModel model = metamodel.getModel();
+		IZentaModel model = metamodel.getModel();
 		addRootObjectClass(model);
 		addRootRelationClass(model);
 	}

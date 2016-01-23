@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullMap;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
@@ -32,7 +30,7 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 	}
 
 	@Override
-	public T2 get(@Nullable Object key) {
+	public T2 get( Object key) {
 		T2 r = super.get(key);
 		return Util.verifyNonNull(r);
 	}
@@ -43,8 +41,8 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 	}
 
 	@Override
-	@Nullable
-	public T2 put(@Nullable T1 key, @Nullable T2 value) {
+	
+	public T2 put( T1 key,  T2 value) {
 		T1 k = Util.verifyNonNull(key);
 		T2 v = Util.verifyNonNull(value);
 		T2 r = super.put(k, v);
@@ -52,7 +50,7 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 	}
 
 	@Override
-	public void putAll(@Nullable Map<? extends T1, ? extends T2> mo) {
+	public void putAll( Map<? extends T1, ? extends T2> mo) {
 		Map<? extends T1, ? extends T2> m = Util.verifyNonNull(mo);
 		for(T1 k : m.keySet()) {
 			Util.verifyNonNull(k);
@@ -63,14 +61,14 @@ public class NonNullHashMap<T1, T2> extends HashMap<T1,T2> implements NonNullMap
 
 	
 	@Override
-	public @NonNull T2 remove(@Nullable Object key) {
+	public  T2 remove( Object key) {
 		return super.remove(key);
 	}
 
 
 	
 	@Override
-	public @NonNull NonNullList<T2> values() {
+	public  NonNullList<T2> values() {
 		return (NonNullList<T2>) super.values();
 	}
 

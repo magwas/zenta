@@ -16,8 +16,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.views.properties.tabbed;visibility:=reexport,
  uk.ac.bolton.jdom,
  org.rulez.magwas.zenta.widgets,
- org.rulez.magwas.zenta.model;bundle-version="2.4.0",
- org.eclipse.jdt.annotation;bundle-version="1.0.1"
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0"
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: org.rulez.magwas.zenta.editor.jar
 Export-Package: .,

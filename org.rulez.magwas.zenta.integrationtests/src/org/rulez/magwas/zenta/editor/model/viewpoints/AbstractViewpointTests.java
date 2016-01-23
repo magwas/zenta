@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -38,7 +37,6 @@ public abstract class AbstractViewpointTests {
         if(!types.isEmpty()) {
             for(EObject t : types) {
                 // All allowed types
-				@NonNull
 				EObject element = createElementFromEClass(t);
 				if(element instanceof IZentaElement) {
 	                assertTrue(vp.isElementVisible((IZentaElement) element));
@@ -72,8 +70,8 @@ public abstract class AbstractViewpointTests {
         assertTrue(vp.isElementVisible(eObject));
     }
 
-	private @NonNull EObject createElementFromEClass(EObject t) {
-		@NonNull EObject element;
+	private EObject createElementFromEClass(EObject t) {
+		EObject element;
 		if(t instanceof EClass) {
 			element = IZentaFactory.eINSTANCE.create((EClass) t);
 		} else if (t instanceof IBasicObject) {
