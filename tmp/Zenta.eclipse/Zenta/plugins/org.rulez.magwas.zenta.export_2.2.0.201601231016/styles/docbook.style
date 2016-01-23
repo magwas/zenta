@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<style>
-	<copy source="emptydir" target="pics"/>
-	<diagrams target="pics"/>
-	<export target="archirich.xml" policy="policy.xml" keep="false">
-		<transform language="xslt" script="xslt/docbook.xslt" target="index.docbook" keep="true" flat="false" part="all">
-		</transform>
-	</export>
-</style>
