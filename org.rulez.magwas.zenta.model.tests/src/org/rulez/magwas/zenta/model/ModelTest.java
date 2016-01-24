@@ -168,7 +168,7 @@ public class ModelTest {
 	}
 
 	@Test
-	public void Ancestor_always_exists() throws IOException {
+	public void Ancestor_always_exists_for_elements() throws IOException {
 		builder.createFirstGeneration();
 		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
 		builder.createThirdGenerationWithRelation();
@@ -184,6 +184,22 @@ public class ModelTest {
 		assertNotNull(obj.getAncestor());
 	}
 
+	@Test
+	public void Ancestor_always_exists_for_relations() throws IOException {
+		builder.createFirstGeneration();
+		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		builder.createThirdGenerationWithRelation();
+		IBasicObject obj = builder.getThirdGenerationRelation();
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		System.out.println(obj.getAncestor());
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		System.out.println(obj.getAncestor());
+		assertNotNull(obj.getAncestor());
+	}
 	@Test
 	public void setDefaults_adds_folders() {
 		builder.createModel();
