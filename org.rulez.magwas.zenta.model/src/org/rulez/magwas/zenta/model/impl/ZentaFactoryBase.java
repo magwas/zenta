@@ -5,6 +5,9 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -63,10 +66,18 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 			}
 		}
 		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
+			logException(exception);
 		}
 		return new ZentaFactory();
 	}
+	public static void logException(Exception exception) {
+		EcorePlugin.INSTANCE.log(exception);
+		StringWriter sw = new StringWriter();
+		exception.printStackTrace(new PrintWriter(sw));
+		String stacktrace = sw.toString();
+		EcorePlugin.INSTANCE.log(stacktrace);
+	}
+
 
     /**
 	 * Creates an instance of the factory.

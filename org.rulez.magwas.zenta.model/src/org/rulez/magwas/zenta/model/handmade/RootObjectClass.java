@@ -9,6 +9,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.UndoState;
 
 public class RootObjectClass extends ObjectClass implements IBasicObject {
 
@@ -51,4 +52,9 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 		return getAttributes();
 	}
 
+	@Override
+	public UndoState delete(UndoState st) {
+		return st;
+	}
+	
 }

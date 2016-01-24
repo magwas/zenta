@@ -29,7 +29,8 @@ public class DeleteCommand extends Command {
     
     @Override
     public void execute() {
-    	state.getElement().delete(state);
+    	INameable element = state.getElement();
+		element.delete(state);
     }
     
     @Override

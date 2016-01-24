@@ -78,6 +78,20 @@ public class DeleteActionTest {
 		}
 		
 	}
+
+	@Test
+	public void Delete_command_does_not_delete_root_object() throws IOException {
+		List<Object> l = new ArrayList<Object>();
+		IBasicObject rootElement = builder.getFirstgenSource().getAncestor();
+		l.add(rootElement);
+		
+		assertUnDeleted(rootElement);
+		doDelete(l);
+		assertUnDeleted(rootElement);
+		
+	}
+
+	
 	@Test
 	public void Delete_command_deletes_folder_its_contents_and_their_dependencies() throws IOException {
 		List<Object> l = new ArrayList<Object>();

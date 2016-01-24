@@ -1,9 +1,9 @@
 package org.rulez.magwas.zenta.model.handmade;
 
 import java.util.HashMap;
+
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
@@ -31,7 +31,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 			}
 		}
 		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
+			logException(exception);
 		}
 		return new ZentaFactory();
 	}

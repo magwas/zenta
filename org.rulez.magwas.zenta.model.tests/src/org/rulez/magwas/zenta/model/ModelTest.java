@@ -166,6 +166,24 @@ public class ModelTest {
 		builder.createThirdGenerationWithRelation();
 		builder.assertMetaIsOK();
 	}
+
+	@Test
+	public void Ancestor_always_exists() throws IOException {
+		builder.createFirstGeneration();
+		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		builder.createThirdGenerationWithRelation();
+		IBasicObject obj = builder.getThirdGenSource();
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		System.out.println(obj.getAncestor());
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		System.out.println(obj.getAncestor());
+		assertNotNull(obj.getAncestor());
+	}
+
 	@Test
 	public void setDefaults_adds_folders() {
 		builder.createModel();

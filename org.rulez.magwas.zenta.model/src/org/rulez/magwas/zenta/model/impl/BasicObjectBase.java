@@ -372,7 +372,7 @@ abstract public class BasicObjectBase extends ZentaElementBase implements IBasic
 		return super.eIsSet(featureID);
 	}
 
-	private class BasicObjectDeleteState extends ElementState {
+	public class BasicObjectDeleteState extends ElementState {
 		public ArrayList<IBasicObject> kids = new ArrayList<IBasicObject>();
 
 		public void undelete() {
