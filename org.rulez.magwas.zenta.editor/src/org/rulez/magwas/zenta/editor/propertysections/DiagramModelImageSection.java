@@ -35,6 +35,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.ILockable;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -199,7 +200,7 @@ public class DiagramModelImageSection extends AbstractZentaPropertySection {
             }
         }
         catch(IOException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
             MessageDialog.openError(getPart().getSite().getShell(),
                     Messages.DiagramModelImageSection_5,
                     Messages.DiagramModelImageSection_6);

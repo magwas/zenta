@@ -7,6 +7,7 @@ package org.rulez.magwas.zenta.editor.diagram.actions;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
@@ -17,6 +18,7 @@ import org.rulez.magwas.zenta.editor.model.commands.NonNotifyingCompoundCommand;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
+import org.rulez.magwas.zenta.model.IZentaElement;
 
 
 
@@ -62,10 +64,23 @@ public class DeleteFromModelAction extends SelectionAction {
         CompoundCommand compoundCommand = new NonNotifyingCompoundCommand(TEXT);
         
         for(Object element : selection) {
-        	if(element instanceof INameable) {
-		        Command cmd = new DeleteCommand((INameable) element);
-		        compoundCommand.add(cmd);
+        	if (element instanceof EditPart) {
+        		element = ((EditPart)element).getModel();
         	}
+	        if (element instanceof IDiagramModelZentaConnection) {
+	        	IDiagramModelZentaConnection dmo = (IDiagramModelZentaConnection) element;
+	        	IZentaElement modelElement = dmo.getRelationship();
+		        Command cmd2 = new DeleteCommand((INameable) modelElement);
+		        compoundCommand.add(cmd2);		        	
+	        } else if (element instanceof IDiagramModelZentaObject) {
+	        	IDiagramModelZentaObject dmo = (IDiagramModelZentaObject) element;
+	        	IZentaElement modelElement = dmo.getZentaElement();
+		        Command cmd2 = new DeleteCommand((INameable) modelElement);
+		        compoundCommand.add(cmd2);
+	        } else {
+	        	EcorePlugin.INSTANCE.log(String.format("don't know how toremove %s\n",element));
+	        	throw new UnsupportedOperationException();
+	        }
         }
         
         execute(compoundCommand);

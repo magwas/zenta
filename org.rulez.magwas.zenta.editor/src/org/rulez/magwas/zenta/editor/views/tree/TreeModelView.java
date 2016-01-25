@@ -72,6 +72,7 @@ import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -449,7 +450,7 @@ implements ITreeModelView, IUIRequestListener {
             IEditorModelManager.INSTANCE.saveState();
         }
         catch(IOException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
     }
     

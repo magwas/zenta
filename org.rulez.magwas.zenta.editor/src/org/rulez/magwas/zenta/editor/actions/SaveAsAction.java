@@ -14,6 +14,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -41,7 +42,7 @@ public class SaveAsAction extends AbstractModelSelectionAction {
             }
             catch(IOException ex) {
                 MessageDialog.openError(workbenchWindow.getShell(), Messages.SaveAsAction_1, ex.getMessage());
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
     }

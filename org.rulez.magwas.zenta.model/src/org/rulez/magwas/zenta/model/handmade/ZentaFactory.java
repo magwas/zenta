@@ -17,6 +17,7 @@ import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.handmade.Attribute;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.ZentaFactoryBase;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 
@@ -31,7 +32,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 			}
 		}
 		catch (Exception exception) {
-			logException(exception);
+			LogUtil.logException(exception);
 		}
 		return new ZentaFactory();
 	}

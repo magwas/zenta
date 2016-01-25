@@ -30,6 +30,7 @@ import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -94,7 +95,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
                         tmp.delete();
                     }
                     catch(Exception ex) {
-                        ex.printStackTrace();
+            			LogUtil.logException(ex);
                         fErrorMessage = Messages.NewCanvasFromTemplateWizard_2 + " " + ex.getMessage(); //$NON-NLS-1$
                     }
                 }

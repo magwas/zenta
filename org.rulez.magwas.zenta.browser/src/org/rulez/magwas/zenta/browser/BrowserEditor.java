@@ -19,6 +19,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * An Eclipse Editor containing a Browser component
@@ -90,7 +91,7 @@ public class BrowserEditor extends EditorPart implements IBrowserEditor {
             browser.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
         }
         catch(SWTError error) {
-            error.printStackTrace();
+			LogUtil.logException(error);
         }
         
         return browser;

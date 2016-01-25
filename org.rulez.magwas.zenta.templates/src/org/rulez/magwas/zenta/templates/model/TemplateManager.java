@@ -15,6 +15,7 @@ import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
@@ -147,7 +148,7 @@ public abstract class TemplateManager implements ITemplateXMLTags {
             doc = JDOMUtils.readXMLFile(getUserTemplatesManifestFile());
         }
         catch(Exception ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
             return;
         }
         

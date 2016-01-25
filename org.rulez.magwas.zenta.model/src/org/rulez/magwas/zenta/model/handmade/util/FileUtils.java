@@ -19,6 +19,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * Some useful File Utilities
@@ -345,7 +346,7 @@ public final class FileUtils  {
             }
             return Util.verifyNonNull(result.toString());
         } catch(Exception ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
             return Util.verifyNonNull(path.getName());
         }
     }

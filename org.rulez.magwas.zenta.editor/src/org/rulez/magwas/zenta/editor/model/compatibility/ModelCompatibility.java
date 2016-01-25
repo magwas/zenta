@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.xmi.XMIException;
 import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.xml.sax.SAXParseException;
 
 
@@ -45,7 +46,7 @@ public class ModelCompatibility {
             if(isCatastrophicError(diagnostic)) {
                 IncompatibleModelException ex = new IncompatibleModelException(diagnostic.getMessage());
                 Logger.logError("Error opening model", ex); //$NON-NLS-1$
-                ex.printStackTrace();
+                LogUtil.logException(ex);
                 throw ex;
             }
         }
@@ -102,7 +103,7 @@ public class ModelCompatibility {
                 }
             } 
             catch(CoreException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             } 
         }
     }

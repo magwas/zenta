@@ -41,6 +41,7 @@ import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
 import uk.ac.bolton.jdom.JDOMUtils;
@@ -82,7 +83,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	                        }
 	                    }
 	                    catch(IOException ex) {
-	                        ex.printStackTrace();
+	                        LogUtil.logException(ex);
 	                    }
 	                }
 				}
@@ -105,7 +106,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	            loadState();
 	        }
 	        catch(Exception ex) {
-	            ex.printStackTrace();
+	            LogUtil.logException(ex);
 	        }
 	    }
 	    
@@ -486,7 +487,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    }
 	    catch(IOException ex) {
 	        Logger.logError("Could not load images", ex); //$NON-NLS-1$
-	        ex.printStackTrace();
+	        LogUtil.logException(ex);
 	    }
 	    
 	    return archiveManager;

@@ -12,6 +12,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.rulez.magwas.zenta.editor.model.IModelImporter;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -40,7 +41,7 @@ implements IWorkbenchAction {
             }
             catch(IOException ex) {
                 MessageDialog.openError(workbenchWindow.getShell(), Messages.ImportModelAction_0, ex.getMessage());
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
     }

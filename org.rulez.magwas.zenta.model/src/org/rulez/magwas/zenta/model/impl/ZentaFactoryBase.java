@@ -5,15 +5,11 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.rulez.magwas.zenta.model.IAndJunction;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -44,7 +40,7 @@ import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.handmade.ObjectClass;
 import org.rulez.magwas.zenta.model.handmade.RelationClass;
 import org.rulez.magwas.zenta.model.handmade.ZentaFactory;
-
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,19 +62,11 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 			}
 		}
 		catch (Exception exception) {
-			logException(exception);
+			LogUtil.logException(exception);
 		}
 		return new ZentaFactory();
 	}
-	public static void logException(Exception exception) {
-		EcorePlugin.INSTANCE.log(exception);
-		StringWriter sw = new StringWriter();
-		exception.printStackTrace(new PrintWriter(sw));
-		String stacktrace = sw.toString();
-		EcorePlugin.INSTANCE.log(stacktrace);
-	}
-
-
+    
     /**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->

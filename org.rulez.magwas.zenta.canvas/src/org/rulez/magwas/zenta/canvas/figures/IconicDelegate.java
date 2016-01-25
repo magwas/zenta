@@ -13,6 +13,7 @@ import org.rulez.magwas.zenta.canvas.model.IIconic;
 import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -40,7 +41,7 @@ public class IconicDelegate {
                 image = archiveManager.createImage(fIconic.getImagePathOrNull());
             }
             catch(Exception ex) {
-                ex.printStackTrace();
+    			LogUtil.logException(ex);
             }
             
             if(image != null) {

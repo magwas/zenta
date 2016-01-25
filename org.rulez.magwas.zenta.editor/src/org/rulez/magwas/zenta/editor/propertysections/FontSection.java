@@ -100,7 +100,7 @@ public class FontSection extends AbstractZentaPropertySection {
                             fontData = new FontData(fontValue);
                         }
                         catch(Exception ex) {
-                            //ex.printStackTrace();
+                            //LogUtil.logException(ex);
                         }
                     }
                     
@@ -164,7 +164,7 @@ public class FontSection extends AbstractZentaPropertySection {
                 defaultFontData = new FontData(fontValue);
             }
             catch(Exception ex) {
-                //ex.printStackTrace();
+                //LogUtil.logException(ex);
             }
         }
         

@@ -27,6 +27,7 @@ import org.rulez.magwas.zenta.editor.diagram.dnd.DiagramDropRequest;
 import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -97,7 +98,7 @@ public class CanvasDNDEditPolicy extends AbstractDNDEditPolicy {
                 pathName = archiveManager.addImageFromFile(file);
             }
             catch(IOException ex) {
-                ex.printStackTrace();
+    			LogUtil.logException(ex);
                 pathName = "";
             }
             canvasModelImage.setImagePath(pathName);
@@ -108,7 +109,7 @@ public class CanvasDNDEditPolicy extends AbstractDNDEditPolicy {
                 image = archiveManager.createImage(pathName);
             }
             catch(Exception ex) {
-                ex.printStackTrace();
+    			LogUtil.logException(ex);
                 continue;
             }
             

@@ -13,6 +13,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -78,10 +79,10 @@ public class HTMLUtils {
             browser.openURL(new URL(urlEncodeForSpaces(href)));
         }
         catch(MalformedURLException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         catch(PartInitException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
     }
 

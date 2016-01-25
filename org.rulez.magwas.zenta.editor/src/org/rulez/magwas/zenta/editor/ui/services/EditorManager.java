@@ -25,6 +25,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -105,7 +106,7 @@ public class EditorManager {
                 }
             }
             catch(PartInitException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
     }

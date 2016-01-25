@@ -16,6 +16,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -132,7 +133,7 @@ public class ZentaEditorPlugin extends AbstractUIPlugin {
                 url = FileLocator.resolve(url);
             }
             catch(IOException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
             fPluginFolder = new File(url.getPath());
         }

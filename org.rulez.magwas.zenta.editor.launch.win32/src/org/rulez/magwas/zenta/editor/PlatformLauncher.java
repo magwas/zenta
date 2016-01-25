@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.rulez.magwas.zenta.editor.IPlatformLauncher;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 public class PlatformLauncher implements IPlatformLauncher {
@@ -122,7 +123,7 @@ public class PlatformLauncher implements IPlatformLauncher {
             length = (Integer)invokeWindowsOSMethod("GetWindowTextLength", hWnd, getWordClass()); //$NON-NLS-1$
         }
         catch(Exception ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         
         return length > 0;
@@ -160,7 +161,7 @@ public class PlatformLauncher implements IPlatformLauncher {
             invokeWindowsOSMethod("SetFocus", hWnd, getWordClass()); //$NON-NLS-1$
         }
         catch(Exception ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
     }
     

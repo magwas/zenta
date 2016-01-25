@@ -13,6 +13,7 @@ import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -45,7 +46,7 @@ public class SaveModelAction extends ViewerAction {
             }
             catch(IOException ex) {
                 MessageDialog.openError(fView.getSite().getShell(), Messages.SaveModelAction_1, ex.getMessage());
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
     }

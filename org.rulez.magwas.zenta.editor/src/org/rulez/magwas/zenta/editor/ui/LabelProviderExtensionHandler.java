@@ -13,6 +13,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.graphics.Image;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -50,7 +51,7 @@ public class LabelProviderExtensionHandler {
                 }
             } 
             catch(CoreException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             } 
         }
     }

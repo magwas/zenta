@@ -28,6 +28,7 @@ import org.eclipse.swt.graphics.ImageLoader;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * Some useful Zip Utilities
@@ -492,7 +493,7 @@ public final class ZipUtils {
 							try {
 								Thread.sleep(2);
 							} catch(InterruptedException ex) {
-								ex.printStackTrace();
+								LogUtil.logException(ex);
 							}
 							sleep_count = 0;
 						}

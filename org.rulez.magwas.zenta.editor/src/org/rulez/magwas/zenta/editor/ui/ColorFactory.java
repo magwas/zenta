@@ -19,6 +19,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -170,7 +171,7 @@ public class ColorFactory {
             return new RGB(red, green, blue);
         }
         catch(NumberFormatException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         
         return null;

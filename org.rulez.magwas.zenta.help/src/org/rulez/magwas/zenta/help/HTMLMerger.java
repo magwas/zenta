@@ -12,6 +12,8 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.rulez.magwas.zenta.model.util.LogUtil;
+
 
 /**
  * Utility class called from "merge-html.xml" Ant script.
@@ -79,7 +81,7 @@ public class HTMLMerger {
             System.out.println("Closed Output Stream"); //$NON-NLS-1$
         }
         catch(IOException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
     }
     
@@ -116,7 +118,7 @@ public class HTMLMerger {
             s = readFileAsString(file);
         }
         catch(IOException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         int start = s.indexOf("<body>") + 6; //$NON-NLS-1$
         int end = s.indexOf("</body>"); //$NON-NLS-1$

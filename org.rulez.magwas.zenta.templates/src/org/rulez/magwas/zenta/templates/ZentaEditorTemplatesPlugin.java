@@ -13,6 +13,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.IStartup;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * Activator
@@ -52,7 +53,7 @@ public class ZentaEditorTemplatesPlugin extends AbstractUIPlugin implements ISta
             url = FileLocator.resolve(url);
         }
         catch(IOException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         return new File(url.getPath()); 
     }
@@ -68,7 +69,7 @@ public class ZentaEditorTemplatesPlugin extends AbstractUIPlugin implements ISta
                 url = FileLocator.resolve(url);
             }
             catch(IOException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
             pf = new File(url.getPath());
         }

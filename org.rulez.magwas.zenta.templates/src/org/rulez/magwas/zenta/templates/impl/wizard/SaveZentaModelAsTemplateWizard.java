@@ -26,6 +26,7 @@ import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaModelTemplate;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
@@ -106,7 +107,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
                     }
                 }
                 catch(final IOException ex) {
-                    ex.printStackTrace();
+                    LogUtil.logException(ex);
                     Display.getCurrent().asyncExec(new Runnable() { // Display after wizard closes
                         public void run() {
                             MessageDialog.openError(getShell(), Messages.SaveZentaModelAsTemplateWizard_3, ex.getMessage());

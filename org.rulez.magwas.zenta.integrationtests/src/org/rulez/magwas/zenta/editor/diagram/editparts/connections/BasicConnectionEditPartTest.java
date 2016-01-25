@@ -2,11 +2,16 @@ package org.rulez.magwas.zenta.editor.diagram.editparts.connections;
 
 import static org.junit.Assert.*;
 
+import org.eclipse.gef.EditPartViewer;
+import org.eclipse.gef.ui.actions.ActionRegistry;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.actions.DeleteFromModelAction;
 import org.rulez.magwas.zenta.editor.diagram.commands.DeleteDiagramConnectionCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.BasicConnectionEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
@@ -17,6 +22,7 @@ import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.integrationtests.ModelAndEditPartTestData;
+import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -133,6 +139,38 @@ public class BasicConnectionEditPartTest {
 		assertEquals("RelationClass: describes",toolTip.getType());
 		assertEquals("test OC 1 áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP test OC 2",ZentaLabelProvider.INSTANCE.getRelationshipSentence(rel));
 		assertEquals("áRVÍZTŰRŐ TÜKÖRFÚRÓGÉP",rel.getDefiningElement().getName());
+	}
+	
+	@Test
+	public void It_is_possible_to_delete_from_model_through_a_diagram_connection() {
+		String id = "9c441eb7";
+		IBasicRelationship baseRelationClass = (IBasicRelationship) testdata.metamodel.getClassById(id);
+		IBasicRelationship rel = testdata.createNewNondefiningRelationBasedOn(baseRelationClass);
+		rel.setName("Displayable Relation Name");
+		assertNotNull(rel);
+		assertFalse(rel.isTemplate());
+		IZentaDiagramModel dia = testdata.getNonTemplateDiagramModel();
+		testdata.focusOnDiagram(dia.getId());
+		
+		IDiagramModelComponent dmo = rel.getDiagComponents().get(0);
+		BasicConnectionEditPart editPart = (BasicConnectionEditPart) testdata.getEditPartFor(dmo);
+		assertNotNull(editPart);
+
+		
+		testdata.focusOnDiagram(dia.getId());
+		EditPartViewer viewer = editPart.getViewer();
+		
+		viewer.appendSelection(editPart);
+		
+		ZentaDiagramEditor editor = testdata.getEditor();
+		ActionRegistry actionregistry = (ActionRegistry) editor.getAdapter(ActionRegistry.class);
+		IAction action = actionregistry.getAction(DeleteFromModelAction.ID);
+		
+		assertNotNull(rel.eContainer());
+		assertNotNull(dmo.eContainer());
+		action.run();
+		assertNull(dmo.eContainer());
+		assertNull(rel.eContainer());
 	}
 
 }

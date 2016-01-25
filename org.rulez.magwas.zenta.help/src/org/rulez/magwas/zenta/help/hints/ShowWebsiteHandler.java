@@ -13,6 +13,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -33,7 +34,7 @@ public class ShowWebsiteHandler extends AbstractHandler {
             }
         }
         catch(Exception ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         return null;
     }

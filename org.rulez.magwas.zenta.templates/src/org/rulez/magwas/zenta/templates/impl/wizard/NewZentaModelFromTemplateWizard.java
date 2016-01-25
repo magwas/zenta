@@ -19,6 +19,7 @@ import org.rulez.magwas.zenta.editor.views.tree.TreeEditElementRequest;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -89,7 +90,7 @@ public class NewZentaModelFromTemplateWizard extends Wizard {
                         tmp.delete();
                     }
                     catch(IOException ex) {
-                        ex.printStackTrace();
+                        LogUtil.logException(ex);
                         fErrorMessage = ex.getMessage();
                     }
                 }

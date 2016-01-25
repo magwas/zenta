@@ -44,6 +44,7 @@ import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.TemplateGroup;
@@ -307,7 +308,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
                     fTemplateManager.dispose();
                 }
                 catch(IOException ex) {
-                    ex.printStackTrace();
+                    LogUtil.logException(ex);
                     MessageDialog.openError(null, Messages.TemplateManagerDialog_12, ex.getMessage());
                 }
             }

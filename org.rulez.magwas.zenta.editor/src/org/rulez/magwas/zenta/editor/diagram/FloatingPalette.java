@@ -20,6 +20,7 @@ import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -170,7 +171,7 @@ public class FloatingPalette {
                 }
             }
             catch(Exception ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
     }

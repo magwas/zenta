@@ -12,6 +12,7 @@ import org.eclipse.ui.ISources;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.services.IEvaluationService;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -39,7 +40,7 @@ public class ShowToolbarAction extends Action {
             setText(isVisible() ? Messages.ShowToolbarAction_0 : Messages.ShowToolbarAction_1);
         }
         catch(Exception ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
     };
     
