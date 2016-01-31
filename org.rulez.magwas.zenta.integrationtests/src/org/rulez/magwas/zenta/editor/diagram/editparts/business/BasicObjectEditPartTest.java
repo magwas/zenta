@@ -5,11 +5,9 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 
 import org.eclipse.draw2d.text.BlockFlow;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.ui.actions.ActionRegistry;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.junit.After;

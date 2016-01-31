@@ -22,7 +22,6 @@ import org.jdom.JDOMException;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.nonnul.NonNullListIterator;
-import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
 import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
@@ -486,7 +485,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	        archiveManager.loadImages();
 	    }
 	    catch(IOException ex) {
-	        Logger.logError("Could not load images", ex); //$NON-NLS-1$
+	        LogUtil.logError("Could not load images", ex); //$NON-NLS-1$
 	        LogUtil.logException(ex);
 	    }
 	    

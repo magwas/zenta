@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.xmi.ClassNotFoundException;
 import org.eclipse.emf.ecore.xmi.PackageNotFoundException;
 import org.eclipse.emf.ecore.xmi.XMIException;
-import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.util.LogUtil;
@@ -34,10 +33,10 @@ public class ModelCompatibility {
         for(Diagnostic diagnostic : resource.getErrors()) {
             System.err.println(diagnostic);
             if(isCatastrophicError(diagnostic)) {
-                Logger.logError(diagnostic.getMessage());
+                LogUtil.logError(diagnostic.getMessage());
             }
             else {
-                Logger.logWarning(diagnostic.getMessage());
+                LogUtil.logWarning(diagnostic.getMessage());
             }
         }
 
@@ -45,7 +44,7 @@ public class ModelCompatibility {
         for(Diagnostic diagnostic : resource.getErrors()) {
             if(isCatastrophicError(diagnostic)) {
                 IncompatibleModelException ex = new IncompatibleModelException(diagnostic.getMessage());
-                Logger.logError("Error opening model", ex); //$NON-NLS-1$
+                LogUtil.logError("Error opening model", ex); //$NON-NLS-1$
                 LogUtil.logException(ex);
                 throw ex;
             }

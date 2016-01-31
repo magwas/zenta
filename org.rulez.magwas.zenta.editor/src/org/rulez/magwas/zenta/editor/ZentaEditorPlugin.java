@@ -109,7 +109,7 @@ public class ZentaEditorPlugin extends AbstractUIPlugin {
         
         Location instanceLoc = Platform.getInstanceLocation();
         if(instanceLoc == null) {
-            Logger.logWarning("Instance Location is null. Using user.home"); //$NON-NLS-1$
+            LogUtil.logWarning("Instance Location is null. Using user.home"); //$NON-NLS-1$
             return new File(System.getProperty("user.home")); //$NON-NLS-1$
         }
         else {

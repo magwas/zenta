@@ -10,9 +10,8 @@ import org.rulez.magwas.zenta.export.EventLog;
 import org.rulez.magwas.zenta.export.StyledHtml;
 import org.rulez.magwas.zenta.export.StyledHtmlPlugin;
 import org.rulez.magwas.zenta.model.IZentaModel;
-
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.Logger;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -37,19 +36,19 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
      }
 
     void runcmd() {
-  		 Logger.logInfo("starting Styledhtml");
+  		 LogUtil.logInfo("starting Styledhtml");
          String[] args = Platform.getCommandLineArgs();
       	 IZentaModel model = null;
        	 File targetdir = null;
        	 int i = 0;
        	 while (i < args.length)
        	 {
-      		 Logger.logInfo("next arg:" + args[i]);
+      		 LogUtil.logInfo("next arg:" + args[i]);
            	 if (args[i].equals("-load"))
            	 {
                	 i++;
                	 String modelpath = args[i];
-               	Logger.logInfo("loading model "+ modelpath);
+               	LogUtil.logInfo("loading model "+ modelpath);
                	 File file = new File(modelpath);
                	 model = getModel(file);
                	 if (null == model) {
@@ -60,14 +59,14 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
            	 {
                	 i++;
                	 String tpath = args[i];
-               	Logger.logInfo("setting targetpath " + tpath);
+               	LogUtil.logInfo("setting targetpath " + tpath);
                	 targetdir = new File(tpath);
            	 }
            	 if (args[i].equals("-runstyle"))
            	 {
                	 i++;
                	 String stylepath = args[i];
-               	Logger.logInfo("running style "+ stylepath);
+               	LogUtil.logInfo("running style "+ stylepath);
                	EventLog log = new EventLog("Styled export");
                	 if(model != null){
                		 if(targetdir == null) {
@@ -76,12 +75,12 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
                        	 StyledHtml.export(model, stylepath, log, targetdir);            			 
                		 }
                	 } else {
-               		Logger.logInfo("cannot run style "+stylepath + ": no model");
+               		LogUtil.logInfo("cannot run style "+stylepath + ": no model");
                	 }
            	 }
            	 if (args[i].equals("-exit"))
            	 {
-           		Logger.logInfo("exiting nicely");
+           		LogUtil.logInfo("exiting nicely");
            		 PlatformUI.getWorkbench().close();
            	 }
            	 i++;
