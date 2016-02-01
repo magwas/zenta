@@ -11,6 +11,7 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -38,7 +39,7 @@ public class CloseModelAction extends ViewerAction {
                     }
                 }
                 catch(IOException ex) {
-                    ex.printStackTrace();
+                    LogUtil.logException(ex);
                 }
             }
         }

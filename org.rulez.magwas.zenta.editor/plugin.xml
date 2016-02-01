@@ -36,10 +36,6 @@
      <property
            name="windowImages"
            value="../org.rulez.magwas.zenta.editor/img/app-16.png,../org.rulez.magwas.zenta.editor/img/app-32.png,../org.rulez.magwas.zenta.editor/img/app-48.png,../org.rulez.magwas.zenta.editor/img/app-64.png,../org.rulez.magwas.zenta.editor/img/app-128.png"/>
-     <property
-           name="preferenceCustomization"
-           value="plugin_customization.ini">
-     </property>
       </product>
 	</extension>
 	

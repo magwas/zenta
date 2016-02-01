@@ -8,7 +8,6 @@ package org.rulez.magwas.zenta.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
@@ -62,7 +61,6 @@ public class DiagramModelReferenceBase extends DiagramModelObjectBase implements
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
     public IDiagramModel getReferencedModel() {
 		return Util.verifyNonNull(referencedModel);
 	}
@@ -80,7 +78,6 @@ public class DiagramModelReferenceBase extends DiagramModelObjectBase implements
 	}
 
     @Override
-    @NonNull
     public String getName() {
             return getReferencedModel().getName();
     }

@@ -171,7 +171,7 @@ public abstract class DiagramModelObjectTests extends DiagramModelComponentTests
         assertEquals(bounds.getY(), copy.getBounds().getY());
     }
 
-	@SuppressWarnings("null")
+	
 	public IDiagramModelObject getObject() {
 		return object;
 	}

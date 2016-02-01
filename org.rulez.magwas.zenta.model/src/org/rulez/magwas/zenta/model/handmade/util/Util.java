@@ -26,7 +26,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
@@ -156,7 +155,7 @@ public class Util {
 		}
 	}
 
-	public static <T> T verifyNonNull(@Nullable T r) {
+	public static <T> T verifyNonNull( T r) {
 		if(null == r) throw new AssertionError();
 		return r;
 	}

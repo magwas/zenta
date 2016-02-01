@@ -8,8 +8,6 @@ package org.rulez.magwas.zenta.model.handmade.util;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.jdt.annotation.Nullable;
-
 /**
  * Some useful String Utilities
  *
@@ -32,7 +30,7 @@ public final class StringUtils {
      * @param input input string (may be null)
      * @return input if not null, or the empty string if input is null
      */
-    public static String safeString(@Nullable String input) {
+    public static String safeString( String input) {
         if(input != null) {
             return input;
         }
@@ -46,7 +44,7 @@ public final class StringUtils {
      * @param input
      * @return
      */
-    public static boolean isSet(@Nullable String input) {
+    public static boolean isSet( String input) {
         return input != null && !ZERO_LENGTH_STRING.equals(input);
     }
     

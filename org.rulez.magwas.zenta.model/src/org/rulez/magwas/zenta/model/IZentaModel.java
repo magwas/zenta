@@ -9,7 +9,6 @@ package org.rulez.magwas.zenta.model;
 import java.io.File;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullList;
 
 /**
@@ -97,7 +96,7 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	 * @model kind="operation"
 	 * @generated NOT
 	 */
-	@NonNull
+	
 	IDiagramModel getDefaultDiagramModel();
 
 	/**

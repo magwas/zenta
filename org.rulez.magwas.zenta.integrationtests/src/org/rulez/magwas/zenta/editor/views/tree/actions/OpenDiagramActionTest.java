@@ -71,9 +71,9 @@ public class OpenDiagramActionTest {
 	    File file2 = ModelTestUtils.createTempFile(".zenta");
 		ZentaModelUtils.saveModelToXMLFile(model2, file2);
 		
-		@SuppressWarnings("null")
+		
 		String string1 = Util.readFile(file.getAbsolutePath());
-		@SuppressWarnings("null")
+		
 		String string2 = Util.readFile(file2.getAbsolutePath());
 		assertEquals(string1,string2);
 		IEditorModelManager.INSTANCE.openModel(model2);

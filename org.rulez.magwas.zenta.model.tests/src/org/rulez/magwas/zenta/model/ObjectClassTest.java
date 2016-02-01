@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,13 +50,13 @@ public class ObjectClassTest{
 		assertEquals("Basic Object",fixture.getName());
 	}
 
-	@SuppressWarnings("null")
+	
 	@Test(expected = IZentaFactory.BuiltinClassShouldNotHaveAncestor.class)
 	public void The_ancestor_cannot_be_set_for_the_Builtin_ObjectClass() {
 		fixture.setAncestor(fixture);
 	}
 	
-	@SuppressWarnings("null")
+	
 	@Test
 	public void if_an_ObjectClass_is_set_as_ancestor_then_the_number_of_its_kids_grows() {
 		EList<IBasicObject> kids = fixture.getChildren();
@@ -73,7 +72,7 @@ public class ObjectClassTest{
 		testdata.getTestObjectClass();
 	}
 	
-	@SuppressWarnings("null")
+	
 	@Test
 	public void The_elements_of_the_template_are_converted_to_ObjectClass() {
 		ITemplate template = testdata.metamodel.getTemplateFor(diagramModel);
@@ -91,7 +90,7 @@ public class ObjectClassTest{
 	@Test
 	public void There_is_only_one_ObjectClass_for_an_element_occuring_more_times_in_a_template() {
 		String id = "e13c9626";
-		@NonNull IZentaDiagramModel dm = testdata.getZDiagramModelById(id);
+		 IZentaDiagramModel dm = testdata.getZDiagramModelById(id);
 		ITemplate template = testdata.metamodel.getTemplateFor(dm);
 		String id2 = "8495ea84";
 		IZentaElement element = testdata.getElementById(id2);

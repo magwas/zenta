@@ -9,7 +9,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
@@ -19,6 +18,7 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -72,7 +72,7 @@ public class SaveAction extends AbstractModelSelectionAction {
             }
             catch(IOException ex) {
                 MessageDialog.openError(workbenchWindow.getShell(), Messages.SaveAction_1, ex.getMessage());
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
     }
@@ -100,7 +100,7 @@ public class SaveAction extends AbstractModelSelectionAction {
         IEditorModelManager.INSTANCE.removePropertyChangeListener(getCommandStackListener());
     }
 
-    @NonNull
+    
 	public PropertyChangeListener getCommandStackListener() {
 		return Util.verifyNonNull(commandStackListener);
 	}

@@ -8,8 +8,6 @@ package org.rulez.magwas.zenta.editor.ui.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
@@ -27,6 +25,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -43,7 +42,6 @@ public class EditorManager {
      * @param input
      * @param editorID
      */
-	@NonNull
     public static IEditorPart openEditor(IEditorInput input, String editorID) {
         IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
         try {
@@ -57,7 +55,7 @@ public class EditorManager {
      * Open the Diagram Editor for a given DiagramModel Model
      * @param name
      */
-    public static @NonNull IDiagramModelEditor openDiagramEditor(@Nullable IDiagramModel model) {
+    public static IDiagramModelEditor openDiagramEditor( IDiagramModel model) {
         if(model == null || model.eContainer() == null)
         	throw new IllegalArgumentException();
 
@@ -84,7 +82,6 @@ public class EditorManager {
             throw new RuntimeException("Unsupported model type"); //$NON-NLS-1$
         }
         
-        @NonNull
         IEditorPart part = openEditor(editorInput, id);
         
         // Check it actually is IDiagramModelEditor, it could be an org.eclipse.ui.internal.ErrorEditorPart if an error occurs
@@ -109,7 +106,7 @@ public class EditorManager {
                 }
             }
             catch(PartInitException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
     }

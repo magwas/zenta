@@ -38,6 +38,7 @@ import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.views.navigator.INavigatorView;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -511,7 +512,7 @@ extends ActionBarAdvisor {
                 }
             } 
             catch(CoreException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             } 
         }
     }
@@ -532,7 +533,7 @@ extends ActionBarAdvisor {
                 }
             } 
             catch(CoreException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             } 
         }
     }

@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -32,14 +31,12 @@ public abstract class AbstractViewpointTests {
     protected AbstractViewpoint vp;
     protected int index;
     
-	@SuppressWarnings("null")
 	@Test
     public void testIsElementVisible() {
         List<EObject> types = vp.getAllowedTypes();
         if(!types.isEmpty()) {
             for(EObject t : types) {
                 // All allowed types
-				@NonNull
 				EObject element = createElementFromEClass(t);
 				if(element instanceof IZentaElement) {
 	                assertTrue(vp.isElementVisible((IZentaElement) element));
@@ -73,9 +70,8 @@ public abstract class AbstractViewpointTests {
         assertTrue(vp.isElementVisible(eObject));
     }
 
-	@SuppressWarnings("null")
-	private @NonNull EObject createElementFromEClass(EObject t) {
-		@NonNull EObject element;
+	private EObject createElementFromEClass(EObject t) {
+		EObject element;
 		if(t instanceof EClass) {
 			element = IZentaFactory.eINSTANCE.create((EClass) t);
 		} else if (t instanceof IBasicObject) {
@@ -87,8 +83,7 @@ public abstract class AbstractViewpointTests {
 		return element;
 	}
 
-    @SuppressWarnings("null")
-	@Test
+    @Test
     public void testIsElementVisible_Nested() {
         List<EObject> types = vp.getAllowedTypes();
         if(!types.isEmpty()) {
@@ -123,8 +118,7 @@ public abstract class AbstractViewpointTests {
         }
     }
     
-    @SuppressWarnings("null")
-	@Test
+    @Test
     public void testIsAllowedType() {
         List<EObject> types = vp.getAllowedTypes();
         if(!types.isEmpty()) {
@@ -163,8 +157,7 @@ public abstract class AbstractViewpointTests {
         assertEquals(index, vp.getIndex());
     }
     
-    @SuppressWarnings("null")
-	private IZentaElement createElementThatsNotAllowedType() {
+    private IZentaElement createElementThatsNotAllowedType() {
         for(IBasicObject eClass : vp.getObjectClasses()) {
             if(!vp.isAllowedType(eClass)) {
                 return eClass.create(eClass.getZentaModel());

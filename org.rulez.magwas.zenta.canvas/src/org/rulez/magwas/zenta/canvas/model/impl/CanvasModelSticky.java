@@ -15,8 +15,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModelSticky;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.INotesContent;
@@ -205,7 +203,7 @@ public class CanvasModelSticky extends DiagramModelObjectBase implements ICanvas
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public @NonNull String getImagePathOrNull() {
+    public String getImagePathOrNull() {
         return Util.verifyNonNull(imagePath);
     }
 
@@ -214,7 +212,7 @@ public class CanvasModelSticky extends DiagramModelObjectBase implements ICanvas
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setImagePath(@Nullable String newImagePath) {
+    public void setImagePath(String newImagePath) {
         String oldImagePath = imagePath;
         imagePath = newImagePath;
         if (eNotificationRequired())
@@ -268,8 +266,6 @@ public class CanvasModelSticky extends DiagramModelObjectBase implements ICanvas
      * <!-- end-user-doc -->
      * @generated
      */
-    @SuppressWarnings("null")
-	@NonNull
     public EList<IProperty> getProperties() {
         if (properties == null) {
             properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, ICanvasPackage.CANVAS_MODEL_STICKY__PROPERTIES);

@@ -7,7 +7,6 @@ package org.rulez.magwas.zenta.templates.impl.wizard;
 
 import java.io.File;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -76,7 +75,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
     }
 
     @Override
-    public void createControl(@Nullable Composite parent) {
+    public void createControl( Composite parent) {
         GridData gd;
         Label label;
         Util.verifyNonNull(parent);
@@ -101,7 +100,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         // Single text control so strip CRLFs
         UIUtils.conformSingleTextControl(fFileTextField);
         fFileTextField.addModifyListener(new ModifyListener() {
-            public void modifyText(@Nullable ModifyEvent e) {
+            public void modifyText( ModifyEvent e) {
                 validateFields();
             }
         });
@@ -110,7 +109,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         fileButton.setText(Messages.SaveZentaModelAsTemplateWizardPage_6);
         fileButton.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void widgetSelected(@Nullable SelectionEvent e) {
+            public void widgetSelected( SelectionEvent e) {
                 File file = chooseFile();
                 if(file != null) {
                     fFileTextField.setText(file.getPath());
@@ -135,7 +134,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         // Single text control so strip CRLFs
         UIUtils.conformSingleTextControl(fNameTextField);
         fNameTextField.addModifyListener(new ModifyListener() {
-            public void modifyText(@Nullable ModifyEvent e) {
+            public void modifyText( ModifyEvent e) {
                 validateFields();
             }
         });
@@ -167,7 +166,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         fButtonIncludeThumbs.setEnabled(thumbsEnabled);
         fButtonIncludeThumbs.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void widgetSelected(@Nullable SelectionEvent e) {
+            public void widgetSelected( SelectionEvent e) {
                 fModelViewsTreeViewer.getControl().setEnabled(fButtonIncludeThumbs.getSelection());
                 fPreviewLabel.setEnabled(fButtonIncludeThumbs.getSelection());
             }
@@ -201,14 +200,14 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         // the TrayDialog is resized and this label is asked to relayout.
         fPreviewLabel.addDisposeListener(new DisposeListener() {
             @Override
-            public void widgetDisposed(@Nullable DisposeEvent e) {
+            public void widgetDisposed( DisposeEvent e) {
                 disposePreviewImage();
             }
         });
         
         fModelViewsTreeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
-            public void selectionChanged(@Nullable SelectionChangedEvent evento) {
+            public void selectionChanged( SelectionChangedEvent evento) {
             	SelectionChangedEvent event = Util.verifyNonNull(evento);
                 disposePreviewImage();
 
@@ -268,7 +267,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
     /**
      * @return The Selected Diagram Model for the key thumbnail
      */
-    public @Nullable IDiagramModel getSelectedDiagramModel() {
+    public  IDiagramModel getSelectedDiagramModel() {
         Object o = ((IStructuredSelection)fModelViewsTreeViewer.getSelection()).getFirstElement();
         if(o instanceof IDiagramModel) {
             return (IDiagramModel)o;
@@ -276,7 +275,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
         return null;
     }
     
-    private @Nullable File chooseFile() {
+    private  File chooseFile() {
         FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
         dialog.setText(Messages.SaveZentaModelAsTemplateWizardPage_11);
         dialog.setFilterExtensions(new String[] { "*" + fTemplateManager.getTemplateFileExtension(), "*.*" } ); //$NON-NLS-1$ //$NON-NLS-2$
@@ -310,7 +309,7 @@ public class SaveZentaModelAsTemplateWizardPage extends WizardPage {
     /**
      * Update the page status
      */
-    private void updateStatus(@Nullable String message) {
+    private void updateStatus( String message) {
         setErrorMessage(message);
         setPageComplete(message == null);
     }

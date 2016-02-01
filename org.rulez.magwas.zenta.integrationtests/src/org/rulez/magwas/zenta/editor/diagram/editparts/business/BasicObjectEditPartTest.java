@@ -5,11 +5,16 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 
 import org.eclipse.draw2d.text.BlockFlow;
+import org.eclipse.gef.EditPartViewer;
+import org.eclipse.gef.ui.actions.ActionRegistry;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.actions.DeleteFromModelAction;
 import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.ToolTipFigure;
@@ -70,6 +75,30 @@ public class BasicObjectEditPartTest {
 		assertNotNull(editPart);
 		assertTrue(editPart.getFigure().isEnabled());
 	}
+
+	@Test
+	public void It_is_possible_to_delete_from_model_through_a_diagram_object() {
+		IZentaElement element = testdata.createClassedTestElement();
+		IZentaDiagramModel dia = testdata.getNonTemplateDiagramModel();
+		IDiagramModelZentaObject dmo = ModelAndEditPartTestData.createDMOFor(element);
+		dia.getChildren().add(dmo);
+		testdata.focusOnDiagram(dia.getId());
+		BasicObjectEditPart editPart = (BasicObjectEditPart) testdata.getEditPartFor(dmo.getId());
+		EditPartViewer viewer = editPart.getViewer();
+		
+		viewer.appendSelection(editPart);
+		
+		ZentaDiagramEditor editor = testdata.getEditor();
+		ActionRegistry actionregistry = (ActionRegistry) editor.getAdapter(ActionRegistry.class);
+		IAction action = actionregistry.getAction(DeleteFromModelAction.ID);
+		
+		assertNotNull(element.eContainer());
+		assertNotNull(dmo.eContainer());
+		action.run();
+		assertNull(dmo.eContainer());
+		assertNull(element.eContainer());
+	}
+
 	@Test
 	public void NonDefining_elements_are_not_disabled_in_template() {
 		IZentaDiagramModel dia = testdata.getTemplateDiagramModel();

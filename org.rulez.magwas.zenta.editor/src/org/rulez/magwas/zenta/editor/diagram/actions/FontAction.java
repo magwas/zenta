@@ -84,7 +84,7 @@ public class FontAction extends SelectionAction {
                     fontData = new FontData(fontValue);
                 }
                 catch(Exception ex) {
-                    //ex.printStackTrace();
+                    //LogUtil.logException(ex);
                 }
             }
         }

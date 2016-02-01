@@ -2,7 +2,6 @@ package org.rulez.magwas.zenta.help.hints;
 
 import static org.junit.Assert.*;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
@@ -34,7 +33,7 @@ public class HintsViewTest {
 		assertNull(testdata.getStatus());
 	}
 
-	@SuppressWarnings("null")
+	
 	@Test
 	@HaveGUI(waitUser = false)
 	public void The_Hints_view_contains_useful_information_about_the_selected_object() throws PartInitException, WorkbenchException {
@@ -105,7 +104,6 @@ public class HintsViewTest {
 		String id = "ea94cf6c";//User
 		IZentaElement element = testdata.getElementById(id);
 		assertNotNull(element);
-		@NonNull
 		IDiagramModelZentaObject diagElement = Util.verifyNonNull((IDiagramModelZentaObject) element.getDiagComponents().get(0));
 		assertNotNull(diagElement);
 		testdata.selectDiagElement(diagElement);

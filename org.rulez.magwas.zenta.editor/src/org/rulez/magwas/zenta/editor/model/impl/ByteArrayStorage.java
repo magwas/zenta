@@ -12,7 +12,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullEntry;
 import org.rulez.magwas.nonnul.NonNullHashMap;
 import org.rulez.magwas.nonnul.NonNullList;
@@ -37,7 +36,7 @@ public class ByteArrayStorage {
         return new ByteArrayInputStream(bytes);
     }
 
-    @Nullable String getKey(byte[] bytes) {
+    String getKey(byte[] bytes) {
         for(NonNullEntry<String, byte[]> entry : fdataTable.getEntrySet()) {
             byte[] entryBytes = entry.getValue();
             byte[] b = Util.verifyNonNull(entryBytes);

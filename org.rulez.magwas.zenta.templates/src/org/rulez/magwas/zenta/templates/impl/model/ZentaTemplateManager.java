@@ -58,7 +58,7 @@ public class ZentaTemplateManager extends TemplateManager {
         return group;
     }
 
-	@SuppressWarnings("null")
+	
 	private TemplateGroup newTemplateGroup() {
 		return new TemplateGroup(Messages.ZentaTemplateManager_2);
 	}

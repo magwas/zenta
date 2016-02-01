@@ -76,7 +76,7 @@ public class SketchModelStickyTests extends DiagramModelObjectTests {
         assertEquals("doc", sticky.getContent());
     }
 
-    @SuppressWarnings("null")
+    
 	@Test
     public void can_have_properties() {
         CommonTests.testProperties(sticky);

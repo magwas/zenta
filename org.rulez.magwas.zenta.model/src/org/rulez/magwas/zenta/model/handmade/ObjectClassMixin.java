@@ -3,7 +3,6 @@ package org.rulez.magwas.zenta.model.handmade;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute;
@@ -46,7 +45,7 @@ public abstract class ObjectClassMixin {
 		return createHelpString(Util.verifyNonNull(doc), ancestryNames);
 	}
 
-	@SuppressWarnings("null")
+	
 	private static String createHelpString(String doc, String ancestryNames) {
 		return String.format("%s\nAncestry: %s\n", doc, ancestryNames);
 	}
@@ -83,7 +82,7 @@ public abstract class ObjectClassMixin {
                     return Util.verifyNonNull(prop.getValue());
             return Util.verifyNonNull(self.getName());
     }
-            private static @Nullable IProperty getObjectClassProperty(IProperties self) {
+            private static  IProperty getObjectClassProperty(IProperties self) {
                     for(IProperty prop: self.getProperties())
                             if("className".equals(prop.getKey()))
                                             return prop;

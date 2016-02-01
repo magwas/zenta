@@ -7,13 +7,13 @@ package org.rulez.magwas.zenta.editor.views.tree.actions;
 
 import java.io.IOException;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -26,7 +26,7 @@ public class SaveModelAction extends ViewerAction {
     
     private ITreeModelView fView;
     
-    public SaveModelAction(@NonNull ITreeModelView view) {
+    public SaveModelAction( ITreeModelView view) {
         super(view.getSelectionProvider());
         setText(Messages.SaveModelAction_0);
         
@@ -46,7 +46,7 @@ public class SaveModelAction extends ViewerAction {
             }
             catch(IOException ex) {
                 MessageDialog.openError(fView.getSite().getShell(), Messages.SaveModelAction_1, ex.getMessage());
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
     }

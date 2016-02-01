@@ -12,7 +12,6 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.AbstractEditPolicy;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.editor.diagram.figures.IContainerFigure;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -69,8 +68,6 @@ public abstract class AbstractDNDEditPolicy extends AbstractEditPolicy {
     /**
      * @return The target parent Diagram Model
      */
-    @SuppressWarnings("null")
-	@NonNull
     protected IDiagramModel getTargetDiagramModel() {
         if(fTargetDiagramModel == null) {
             fTargetDiagramModel = getTargetContainer().getDiagramModel();

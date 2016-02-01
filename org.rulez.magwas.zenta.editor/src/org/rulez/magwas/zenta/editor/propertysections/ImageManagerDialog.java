@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -314,16 +313,16 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                 fGallery.redraw(); // at some scale settings this is needed
             }
 
-			@SuppressWarnings("null")
+			
 			private void generateScaledImages(IArchiveManager archiveManager) {
-				for(@NonNull String path : archiveManager.getImagePaths()) {
+				for(String path : archiveManager.getImagePaths()) {
                     generateOneScaledImage(archiveManager,
 							path);
                 }
 			}
 
 			private void generateOneScaledImage(
-					IArchiveManager archiveManager, @NonNull String path) {
+					IArchiveManager archiveManager, String path) {
 				Image thumbnail = fImageCache.get(path);
 				if(thumbnail == null) {
 				    thumbnail = generateNewThumbnail(archiveManager, path);
@@ -336,7 +335,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
 			}
 
 			private Image generateNewThumbnail(IArchiveManager archiveManager,
-					@NonNull String path) {
+					String path) {
 				try {
 				    Image image = archiveManager.createImage(path);
 				    Image thumbnail = ImageFactory.getScaledImage(image, MAX_GALLERY_ITEM_SIZE);

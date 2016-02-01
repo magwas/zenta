@@ -20,6 +20,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -109,7 +110,7 @@ public class TreeStateHelper {
                 }
                 catch(Exception ex) {
                     // We don't want to fail just for some stupid string operation
-                    ex.printStackTrace();
+                    LogUtil.logException(ex);
                 }
             }
         }

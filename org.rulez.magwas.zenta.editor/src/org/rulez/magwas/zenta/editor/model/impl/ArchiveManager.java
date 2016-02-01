@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
@@ -75,7 +74,7 @@ public class ArchiveManager implements IArchiveManager {
      */
     private EContentAdapter fModelAdapter = new EContentAdapter() {
         @Override
-        public void notifyChanged(@Nullable Notification msgo) {
+        public void notifyChanged(Notification msgo) {
         	Notification msg = Util.verifyNonNull(msgo);
             super.notifyChanged(msg);
 
@@ -181,7 +180,7 @@ public class ArchiveManager implements IArchiveManager {
     }
     
     @Override
-    public boolean loadImagesFromModelFile(@Nullable File file) throws IOException {
+    public boolean loadImagesFromModelFile(File file) throws IOException {
         if(null == file || !file.exists() || !FACTORY.isArchiveFile(file)) {
             return false;
         }
@@ -336,7 +335,6 @@ public class ArchiveManager implements IArchiveManager {
         }
     }
 
-	@SuppressWarnings("null")
 	public List<String> getLoadedImagePaths() {
 		if(null == fLoadedImagePaths)
 			fLoadedImagePaths = new ArrayList<String>();

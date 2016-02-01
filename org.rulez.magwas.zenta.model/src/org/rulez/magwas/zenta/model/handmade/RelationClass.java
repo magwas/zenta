@@ -30,7 +30,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		setAncestor(ancestor);
 	}
 	
-	@SuppressWarnings("null")
+	
 	protected RelationClass(ITemplate template) {
 		template.getClasses().add(this);
 		setTemplate(template);
@@ -61,7 +61,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		return formatHelpString(doc, ancestryNames);
 	}
 
-	@SuppressWarnings("null")
+	
 	public String formatHelpString(String doc, String ancestryNames) {
 		return String.format("%s\nAncestry: %s\n", doc, ancestryNames);
 	}
@@ -121,7 +121,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		setupEndAttributesForrelation();
 
 	}
-		@SuppressWarnings("null")
+		
 		private void setupEndAttributesForrelation() {
 			IBasicObject source = (IBasicObject) getSource();
 			IBasicObject dest = (IBasicObject) getTarget();

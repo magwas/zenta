@@ -19,7 +19,6 @@ import javax.xml.xpath.XPathFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.NSResolver;
@@ -94,13 +93,13 @@ public class ModelTestUtils {
 			ret.add(obj.getDefiningName());
 		return new HashSet<String>(ret);
 	}
-    public static @Nullable Object getPrivateField(Object object, String field) throws Exception {
-        @SuppressWarnings("null")
+    public static  Object getPrivateField(Object object, String field) throws Exception {
+        
 		Field f = getField(object.getClass(), field);
         f.setAccessible(true);
         return f.get(object);
     }
-    @SuppressWarnings("null")
+    
 	private static Field getField(Class<?> clazz, String fieldName) throws NoSuchFieldException {
         try {
             return clazz.getDeclaredField(fieldName);

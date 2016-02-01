@@ -20,6 +20,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -151,7 +152,7 @@ public class DiagramImageFigure extends AbstractDiagramModelObjectFigure {
                 image = archiveManager.createImage(imagePath);
             }
             catch(Exception ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             }
         }
         

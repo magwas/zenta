@@ -5,7 +5,6 @@
  */
 package org.rulez.magwas.zenta.editor.ui;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.resource.CompositeImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -47,7 +46,7 @@ public class ImageFactory {
      *          the logical name of the image to retrieve
      * @return the shared image represented by the given key
      */
-    @NonNull
+    
     public Image getImage(String imageName) {
     	Image img = findImage(imageName);
     	return Util.verifyNonNull(img);

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -125,7 +124,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__TEXT_ALIGNMENT;
 			hasNew = true;
 			}
-			@SuppressWarnings("null")
+			
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				mm.processDiagramElementAppearanceChanged(dmzc,"textAlignment",new Integer(dmzc.getTextAlignment()).toString());
@@ -135,7 +134,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT__TEXT_POSITION;
 			hasNew = true;
 			}
-			@SuppressWarnings("null")
+			
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaObject dmzc = (IDiagramModelZentaObject) notifier;
 				mm.processDiagramElementAppearanceChanged(dmzc,"textPosition",new Integer(dmzc.getTextPosition()).toString());
@@ -185,7 +184,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__LINE_WIDTH;
 			hasNew = true;
 			}
-			@SuppressWarnings("null")
+			
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"lineWidth",new Integer(dmzc.getLineWidth()).toString());
@@ -195,7 +194,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__TEXT_ALIGNMENT;
 			hasNew = true;
 			}
-			@SuppressWarnings("null")
+			
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"textAlignment",new Integer(dmzc.getTextAlignment()).toString());
@@ -205,7 +204,7 @@ public class NotificationProcessor {
 			featureId = IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__TEXT_POSITION;
 			hasNew = true;
 			}
-			@SuppressWarnings("null")
+			
 			public void run(Metamodel mm, Object notifier, Object oldVal, Object newVal) {
 				IDiagramModelZentaConnection dmzc = (IDiagramModelZentaConnection) notifier;
 				mm.processDiagramConnectionAppearanceChanged(dmzc,"textPosition",new Integer(dmzc.getTextPosition()).toString());
@@ -281,11 +280,11 @@ public class NotificationProcessor {
 					subsubbranch.put(false, aCase);
 				}
 			}
-				@SuppressWarnings("null")
+				
 				private static Map<Boolean, DecisionCase> getBranchByHasNew(
 						Map<Boolean, Map<Boolean, DecisionCase>> subbranch,
 						boolean hasNew) {
-					@NonNull Map<Boolean, DecisionCase> subsubbranch;
+					 Map<Boolean, DecisionCase> subsubbranch;
 					if(subbranch.containsKey(hasNew))
 						subsubbranch = subbranch.get(hasNew);
 					else {
@@ -295,7 +294,7 @@ public class NotificationProcessor {
 					return subsubbranch;
 				}
 	
-	@SuppressWarnings("null")
+	
 	public static void processNotification(Metamodel mm,Notification notification) {
 		EObject lastObject = (EObject) notification.getNotifier();
 
@@ -325,7 +324,7 @@ public class NotificationProcessor {
 				if(null != match)
 					processNewMatch(mm,notification,match);
 			}
-				@SuppressWarnings("null")
+				
 				private static void processNewMatch(Metamodel mm,
 						Notification notification, Map<Boolean, DecisionCase> map) {
 					DecisionCase match = map.get(notification.getOldValue() != null);

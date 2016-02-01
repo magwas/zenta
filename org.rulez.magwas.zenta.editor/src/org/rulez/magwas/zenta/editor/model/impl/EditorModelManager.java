@@ -7,7 +7,6 @@ package org.rulez.magwas.zenta.editor.model.impl;
 
 import java.io.File;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
@@ -90,7 +89,7 @@ public class EditorModelManager extends EditorModelManagerNoGUI {
 	}
 
     @Override
-	public @Nullable String askSavePath() {
+	public String askSavePath() {
 		// On Mac if the app is minimised in the dock Display.getCurrent().getActiveShell() will return null
 	    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	    shell.setActive(); // Get focus on Mac

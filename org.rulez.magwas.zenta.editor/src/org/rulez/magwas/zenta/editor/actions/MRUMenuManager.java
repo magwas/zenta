@@ -25,6 +25,7 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -170,7 +171,7 @@ public class MRUMenuManager extends MenuManager implements PropertyChangeListene
             }
         }
         catch(Exception ex) { // Catch any exceptions otherwise the app won't load
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         
         return path;
@@ -184,7 +185,7 @@ public class MRUMenuManager extends MenuManager implements PropertyChangeListene
             setText(getShortPath(file));
         }
         
-        @SuppressWarnings("null")
+        
 		@Override
         public void run() {
             if(file.exists()) {

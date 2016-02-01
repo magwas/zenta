@@ -15,6 +15,7 @@ import org.eclipse.osgi.service.datalocation.Location;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.ui.FigureFactory;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -101,7 +102,7 @@ implements IApplication {
          */
         Location instanceLoc = Platform.getInstanceLocation();
         if(instanceLoc == null) {
-            Logger.logError(
+            LogUtil.logError(
                     "Instance Location is null, cannot set it in setWorkbenchDataLocation(URL)", //$NON-NLS-1$
                     null);
         }

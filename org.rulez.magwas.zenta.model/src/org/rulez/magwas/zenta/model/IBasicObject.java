@@ -7,7 +7,6 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,7 +44,6 @@ public interface IBasicObject extends IZentaElement, IObjectClass {
 	 * @model containment="true" transient="true" derived="true"
 	 * @generated
 	 */
-	@NonNull
 	EList<IAttribute> getAttributes();
 
 	/**
@@ -122,10 +120,8 @@ public interface IBasicObject extends IZentaElement, IObjectClass {
 	 */
 	void setTemplate(ITemplate value);
 
-	@NonNull
 	String getDefiningName();
 	
-	@NonNull
 	IZentaModel getZentaModel();
 
 

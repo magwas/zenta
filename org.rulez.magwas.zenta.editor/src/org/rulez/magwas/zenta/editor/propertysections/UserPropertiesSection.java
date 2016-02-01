@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
@@ -466,8 +465,8 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
     private void handleDoubleClick(IProperty selected) {
         Matcher matcher = HTMLUtils.HTML_LINK_PATTERN.matcher(selected.getValue());
         if(matcher.find()) {
-            @SuppressWarnings("null")
-			@NonNull String href = matcher.group();
+            
+			 String href = matcher.group();
             HTMLUtils.openLinkInBrowser(href);
         }
     }

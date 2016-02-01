@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CommandStackListener;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchListener;
 import org.jdom.Document;
@@ -23,7 +22,6 @@ import org.jdom.JDOMException;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.nonnul.NonNullListIterator;
-import org.rulez.magwas.zenta.editor.Logger;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
 import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
@@ -42,6 +40,7 @@ import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
 import uk.ac.bolton.jdom.JDOMUtils;
@@ -68,10 +67,10 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	 * Listen to the App closing so we can ask to save
 	 */
 	protected IWorkbenchListener workBenchListener = new IWorkbenchListener() {
-	        public void postShutdown(@Nullable IWorkbench workbench) {
+	        public void postShutdown(IWorkbench workbench) {
 	        }
 	
-	        public boolean preShutdown(@Nullable IWorkbench  workbench, boolean forced) {
+	        public boolean preShutdown(IWorkbench  workbench, boolean forced) {
 	            for (NonNullListIterator<IZentaModel> iterator = getModels().iterator(); iterator
 						.hasNext();) {
 					IZentaModel model = iterator.next();
@@ -83,7 +82,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	                        }
 	                    }
 	                    catch(IOException ex) {
-	                        ex.printStackTrace();
+	                        LogUtil.logException(ex);
 	                    }
 	                }
 				}
@@ -96,7 +95,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 		super();
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
 	public NonNullList<IZentaModel> getModels() {
 	    if(fModels == null) {
@@ -106,7 +105,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	            loadState();
 	        }
 	        catch(Exception ex) {
-	            ex.printStackTrace();
+	            LogUtil.logException(ex);
 	        }
 	    }
 	    
@@ -374,7 +373,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    return modellke != null;
 	}
 
-	private @Nullable IZentaModel findModelByfile(File file) {
+	private IZentaModel findModelByfile(File file) {
 		for(IZentaModel model : getModels()) {
             if(file.equals(model.getFile())) {
                 return model;
@@ -394,7 +393,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	 * Ask user for file name to save model
 	 * @return the file or null
 	 */
-	private @Nullable File askSaveModel() {
+	private File askSaveModel() {
 	    String path = askSavePath();
 	    if(path == null)
 	    	return null;
@@ -421,7 +420,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 
 
 
-	public @Nullable String askSavePath() {
+	public String askSavePath() {
 		throw new UnTestedException();
 	}
 
@@ -442,7 +441,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    
 	    // Forward on CommandStack Event to Tree
 	    cmdStack.addCommandStackListener(new CommandStackListener() {
-	        public void commandStackChanged(@Nullable EventObject event) {
+	        public void commandStackChanged(EventObject event) {
 	            // Send notification to Tree
 	            firePropertyChange(model, COMMAND_STACK_CHANGED, false, true);
 	        }
@@ -486,8 +485,8 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	        archiveManager.loadImages();
 	    }
 	    catch(IOException ex) {
-	        Logger.logError("Could not load images", ex); //$NON-NLS-1$
-	        ex.printStackTrace();
+	        LogUtil.logError("Could not load images", ex); //$NON-NLS-1$
+	        LogUtil.logException(ex);
 	    }
 	    
 	    return archiveManager;
@@ -544,18 +543,18 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    fListeners.removePropertyChangeListener(listener);
 	}
 
-	public void firePropertyChange(Object source, String prop, @Nullable Object oldValue,
+	public void firePropertyChange(Object source, String prop, Object oldValue,
 			Object newValue) {
 			    fListeners.firePropertyChange(new PropertyChangeEvent(source, prop, oldValue, newValue));
 			}
 
-    @SuppressWarnings("null")
+    
 	public static void signalEnd(Object self) {
 		IEditorModelManager.INSTANCE.firePropertyChange(self,
 	            IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
 	}
 
-	@SuppressWarnings("null")
+	
 	public static void signalStart(Object self) {
 		IEditorModelManager.INSTANCE.firePropertyChange(self,
 	            IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);
@@ -567,19 +566,19 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
      */
     class ECoreAdapter extends EContentAdapter {
         @Override
-        public void notifyChanged(@Nullable Notification msgo) {
+        public void notifyChanged(Notification msgo) {
         	Notification msg = Util.verifyNonNull(msgo);
             super.notifyChanged(msg);
             firePropertyChange(this, PROPERTY_ECORE_EVENT, null, msg);
         }
     }
 
-	public static IArchiveManager obtainArchiveManager(@Nullable IAdapter obj) {
+	public static IArchiveManager obtainArchiveManager(IAdapter obj) {
 		IAdapter ob = Util.verifyNonNull(obj);
 		IArchiveManager adapter = (IArchiveManager) ob.getAdapter(IArchiveManager.class);
 		return Util.verifyNonNull(adapter);
 	}
-	public static CommandStack obtainCommandStack(@Nullable IAdapter obj) {
+	public static CommandStack obtainCommandStack(IAdapter obj) {
 		IAdapter ob = Util.verifyNonNull(obj);
 		CommandStack adapter = (CommandStack) ob.getAdapter(CommandStack.class);
 		return Util.verifyNonNull(adapter);

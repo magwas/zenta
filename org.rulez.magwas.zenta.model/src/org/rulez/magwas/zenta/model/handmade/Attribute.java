@@ -1,6 +1,5 @@
 package org.rulez.magwas.zenta.model.handmade;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -29,7 +28,7 @@ public class Attribute extends AttributeBase implements IAttribute {
 		return Util.verifyNonNull(direction);
 	}
 	@Override
-	public void setDirection(@Nullable Direction dir) {
+	public void setDirection(Direction dir) {
 		Util.verifyNonNull(dir);
 		direction = dir;
 	}

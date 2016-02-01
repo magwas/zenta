@@ -3,17 +3,17 @@ package org.rulez.magwas.zenta.model.handmade;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.UndoState;
 
 public class RootObjectClass extends ObjectClass implements IBasicObject {
 
-	RootObjectClass(BuiltinTemplate builtinTemplate, @Nullable IBasicObject modelObject, EList<INameable> container) {
+	RootObjectClass(BuiltinTemplate builtinTemplate,  IBasicObject modelObject, EList<INameable> container) {
 		super();
 		setId(IZentaElement.basicObjectClassId);
 		setName(IZentaElement.basicObjectClassName);
@@ -23,7 +23,7 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 		if(!(getTemplate() == builtinTemplate)) throw new AssertionError();
 	}
 
-	private void addOrReplaceInModel(@Nullable IBasicObject modelObject,
+	private void addOrReplaceInModel( IBasicObject modelObject,
 			EList<INameable> container) {
 		int i=0;
 		if(modelObject!=null) {
@@ -37,7 +37,7 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 	}
 	
 	@Override
-	public void setAncestor(@Nullable IBasicObject ancestor) {
+	public void setAncestor( IBasicObject ancestor) {
 		throw new IZentaFactory.BuiltinClassShouldNotHaveAncestor();
 	}
 	
@@ -52,4 +52,9 @@ public class RootObjectClass extends ObjectClass implements IBasicObject {
 		return getAttributes();
 	}
 
+	@Override
+	public UndoState delete(UndoState st) {
+		return st;
+	}
+	
 }

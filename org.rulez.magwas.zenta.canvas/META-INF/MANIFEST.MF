@@ -13,8 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  uk.ac.bolton.jdom,
  org.rulez.magwas.zenta.help,
  org.rulez.magwas.zenta.templates,
- org.rulez.magwas.zenta.model;bundle-version="2.4.0",
- org.eclipse.jdt.annotation;bundle-version="1.0.1"
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0"
 Bundle-ClassPath: org.rulez.magwas.zenta.canvas.jar
 Bundle-Activator: org.rulez.magwas.zenta.canvas.CanvasEditorPlugin
 Bundle-ActivationPolicy: lazy

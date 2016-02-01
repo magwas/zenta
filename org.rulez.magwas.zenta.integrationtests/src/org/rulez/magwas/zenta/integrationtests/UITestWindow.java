@@ -4,7 +4,6 @@ import static org.junit.Assert.fail;
 
 import java.lang.reflect.Method;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -51,7 +50,7 @@ public class UITestWindow {
 		    private SelectionAdapter createDisposer() {
 		        return new SelectionAdapter() {
 		            @Override
-		            public void widgetSelected(@Nullable SelectionEvent e) {
+		            public void widgetSelected( SelectionEvent e) {
 		                shell.dispose();
 		            }
 		        };
@@ -65,7 +64,7 @@ public class UITestWindow {
 		    private SelectionAdapter createFailDisposer() {
 		        return new SelectionAdapter() {
 		            @Override
-		            public void widgetSelected(@Nullable SelectionEvent e) {
+		            public void widgetSelected( SelectionEvent e) {
 		                fail("Not Nice!");
 		            }
 		        };
@@ -102,7 +101,7 @@ public class UITestWindow {
 					display.sleep();
 		}
 
-		@SuppressWarnings("null")
+		
 		private Method findTestMethod()  {
 			StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 			return findTestMethodInFrame(stackTraceElements);
@@ -120,7 +119,7 @@ public class UITestWindow {
 				private static final long serialVersionUID = 1L;
 			}
 
-			private static @Nullable Method getMethodIfAnnotated(@Nullable StackTraceElement frameo) {
+			private static  Method getMethodIfAnnotated( StackTraceElement frameo) {
 				StackTraceElement frame = Util.verifyNonNull(frameo);
 				String classname = frame.getClassName();
 				String methodname = frame.getMethodName();

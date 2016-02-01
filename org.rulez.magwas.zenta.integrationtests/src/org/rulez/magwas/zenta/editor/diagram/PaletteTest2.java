@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteEntry;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.Test;
 import org.rulez.magwas.nonnul.NonNullListIterator;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
@@ -37,13 +36,13 @@ public class PaletteTest2 {
 		PaletteContainer objectsgroup = palette._getObjectsGroup();
 		assertNotNull(objectsgroup);
 		@SuppressWarnings("unchecked")
-		@NonNull
+		
 		List<PaletteEntry> children = Util.verifyNonNull(objectsgroup.getChildren());
 		builder.assertMetaIsOK();
 		IMetamodel mm = builder.getMetamodel();
 		for (NonNullListIterator<IBasicObject> iterator = mm.getObjectClasses().iterator(); iterator
 				.hasNext();) {
-			@NonNull IBasicObject klass = iterator.next();
+			 IBasicObject klass = iterator.next();
 			assertTrue(ModelAndEditPartTestData.haveCreatorFor(klass, children));
 		}
 		win.showWindow();

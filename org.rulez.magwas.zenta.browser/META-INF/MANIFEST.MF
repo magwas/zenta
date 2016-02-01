@@ -19,3 +19,4 @@ Export-Package: org.rulez.magwas.zenta.browser;
    org.eclipse.swt.widgets,
    org.eclipse.swt.browser"
 Bundle-ActivationPolicy: lazy
+Import-Package: org.rulez.magwas.zenta.model.util

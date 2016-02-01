@@ -40,7 +40,7 @@ public abstract class DiagramModelComponentTests {
         assertNotNull(component.getId());
     }
         
-    @SuppressWarnings("null")
+    
 	@Test
     public void have_name() {
         CommonTests.testGetName(component);
@@ -54,7 +54,7 @@ public abstract class DiagramModelComponentTests {
         assertSame(dm, component.findDiagramModel());
     }
     
-    @SuppressWarnings("null")
+    
 	@Test
     public void have_adapter() {
         CommonTests.testGetAdapter(component);

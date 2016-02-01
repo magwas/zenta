@@ -1,10 +1,9 @@
 package org.rulez.magwas.zenta.model.handmade;
 
 import java.util.HashMap;
+
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
@@ -18,6 +17,7 @@ import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.handmade.Attribute;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.ZentaFactoryBase;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 
@@ -32,7 +32,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 			}
 		}
 		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
+			LogUtil.logException(exception);
 		}
 		return new ZentaFactory();
 	}
@@ -58,7 +58,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	}
 
 	@Override
-	@Nullable
+	
 	public IMetamodel findMetamodelFor(IZentaModel model2) {
 		return registry.get(model2);
 	}
@@ -83,7 +83,7 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 			return Util.verifyNonNull(prop.getValue());
 		return Util.verifyNonNull(ref.getName());
 	}
-		private @Nullable IProperty getObjectClassProperty(IProperties ref) {
+		private  IProperty getObjectClassProperty(IProperties ref) {
 			for(IProperty prop: ref.getProperties())
 				if("className".equals(prop.getKey()))
 						return prop;

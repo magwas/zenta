@@ -15,7 +15,6 @@ import java.io.IOException;
 import junit.framework.JUnit4TestAdapter;
 
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
@@ -170,7 +169,7 @@ public class DiagramImageFigureTests extends AbstractDiagramModelObjectFigureTes
         assertEquals(new Rectangle(0, 0, 268, 268), image.getBounds());
     }
    
-    private void addImage(@NonNull File file) throws IOException {
+    private void addImage(File file) throws IOException {
         IArchiveManager archiveManager = (IArchiveManager)Util.verifyNonNull(dmImage.getAdapter(IArchiveManager.class));
         String path = archiveManager.addImageFromFile(file);
         dmImage.setImagePath(path);

@@ -24,7 +24,7 @@ public class InvalidModelLoadtest {
 		assertNull(testdata.getStatus());
 	}
 
-	@SuppressWarnings("null")
+	
 	@Test
 	public void Model_with_invalid_diagram_object_can_be_loaded() throws IOException {
 		int n = IEditorModelManager.INSTANCE.getModels().size();

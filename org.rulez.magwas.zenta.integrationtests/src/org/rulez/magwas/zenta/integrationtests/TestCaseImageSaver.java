@@ -3,7 +3,6 @@ package org.rulez.magwas.zenta.integrationtests;
 import java.io.File;
 import java.lang.reflect.Method;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -39,8 +38,8 @@ public class TestCaseImageSaver {
 				if (!dir.exists())
 					throw new TestsShouldRunWithSourceRootAsCWD();
 			    String filename = String.format("%s.png",name);
-			    @SuppressWarnings("null")
-				@NonNull String path = new File(dir,filename).getPath();
+			    
+				 String path = new File(dir,filename).getPath();
 				return path;
 			}
 				public static class TestsShouldRunWithSourceRootAsCWD extends RuntimeException {

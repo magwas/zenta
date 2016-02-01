@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
@@ -170,7 +169,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
     public String getName() {
 		return Util.verifyNonNull(name);
 	}
@@ -234,8 +232,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
-	@NonNull
+    
     public EList<IProperty> getProperties() {
 		if (properties == null) {
 			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IZentaPackage.FOLDER__PROPERTIES);
@@ -248,8 +245,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
-	@NonNull
+    
     public EList<INameable> getElements() {
 		if (elements == null) {
 			elements = new EObjectContainmentEList<INameable>(INameable.class, this, IZentaPackage.FOLDER__ELEMENTS);
@@ -284,7 +280,6 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    @NonNull
     public IZentaModel getZentaModel() {
         return ((IZentaModelElement)eContainer()).getZentaModel();
     }
@@ -295,8 +290,8 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
-	public @NonNull EList<IFolder> getFolders() {
+    
+	public EList<IFolder> getFolders() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<IFolder>(IFolder.class, this, IZentaPackage.FOLDER__FOLDERS);
 		}
@@ -416,7 +411,7 @@ public class FolderBase extends EObjectImpl implements IFolder {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {

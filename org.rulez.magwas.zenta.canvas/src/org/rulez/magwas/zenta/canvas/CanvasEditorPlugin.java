@@ -12,6 +12,7 @@ import java.net.URL;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * Activator
@@ -45,7 +46,7 @@ public class CanvasEditorPlugin extends AbstractUIPlugin {
             url = FileLocator.resolve(url);
         }
         catch(IOException ex) {
-            ex.printStackTrace();
+			LogUtil.logException(ex);
         }
         return new File(url.getPath()); 
     }
@@ -60,7 +61,7 @@ public class CanvasEditorPlugin extends AbstractUIPlugin {
                 url = FileLocator.resolve(url);
             }
             catch(IOException ex) {
-                ex.printStackTrace();
+    			LogUtil.logException(ex);
             }
             fPluginFolder = new File(url.getPath());
         }

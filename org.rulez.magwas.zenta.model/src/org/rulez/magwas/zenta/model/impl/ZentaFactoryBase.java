@@ -10,8 +10,6 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IAndJunction;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -42,7 +40,7 @@ import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.handmade.ObjectClass;
 import org.rulez.magwas.zenta.model.handmade.RelationClass;
 import org.rulez.magwas.zenta.model.handmade.ZentaFactory;
-
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,11 +62,11 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 			}
 		}
 		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
+			LogUtil.logException(exception);
 		}
 		return new ZentaFactory();
 	}
-
+    
     /**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -84,9 +82,9 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("null")
+    
 	@Override
-    @NonNull
+    
     public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case IZentaPackage.PROPERTY: return createProperty();
@@ -188,7 +186,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
      * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull public IZentaDiagramModel createZentaDiagramModel() {
+     public IZentaDiagramModel createZentaDiagramModel() {
 		ZentaDiagramModelBase zentaDiagramModel = new ZentaDiagramModelBase();
 		return zentaDiagramModel;
 	}
@@ -404,7 +402,7 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-    @NonNull
+    
 	public IBasicRelationship createBasicRelationship() {
 		BasicRelationshipBase basicRelationship = new RelationClass();
 		return basicRelationship;

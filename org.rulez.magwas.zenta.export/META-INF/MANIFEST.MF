@@ -13,5 +13,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.rulez.magwas.zenta.editor;bundle-version="2.4.0",
  org.rulez.magwas.zenta.model;bundle-version="2.4.0",
  org.rulez.magwas.zenta.browser;bundle-version="2.2.0",
- uk.ac.bolton.jdom;bundle-version="1.1.1",
- org.eclipse.jdt.annotation;bundle-version="1.0.1"
+ uk.ac.bolton.jdom;bundle-version="1.1.1"

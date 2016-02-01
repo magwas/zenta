@@ -46,7 +46,7 @@ public class LineDecorationSectionTest {
 			assertNotNull(section.getWidgetFactory());
 		}
 		
-	@SuppressWarnings("null")
+	
 	@After
 	public void tearDown() throws IOException {
 		IEditorModelManager.INSTANCE.saveModel(data.model);

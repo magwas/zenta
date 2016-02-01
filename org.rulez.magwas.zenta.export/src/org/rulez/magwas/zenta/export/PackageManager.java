@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.Enumeration;
 
 import org.eclipse.core.runtime.Platform;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 public class PackageManager {
 
@@ -34,7 +35,7 @@ public class PackageManager {
     			}
 			} catch (IOException ex) {
 				Widgets.tellProblem("Could not extract contents",ex.toString());
-				ex.printStackTrace();
+				LogUtil.logException(ex);
 			}
         }
 

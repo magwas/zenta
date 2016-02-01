@@ -84,7 +84,7 @@ public final class FontFactory {
                     FontRegistry.put(DEFAULT_VIEW_FONT_NAME, new FontData[] { fd });
                 }
                 catch(Exception ex) {
-                    //ex.printStackTrace();
+                    //LogUtil.logException(ex);
                     setDefaultViewOSFontData();
                 }
             }

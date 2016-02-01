@@ -40,7 +40,7 @@ public class NewCanvasFromTemplateWizardPage extends NewModelFromTemplateWizardP
         return new CanvasTemplateManagerDialog(getShell(), new CanvasTemplateManager());
     }
     
-    @SuppressWarnings("null")
+    
 	@Override
     protected String getHelpID() {
         return HELP_ID;

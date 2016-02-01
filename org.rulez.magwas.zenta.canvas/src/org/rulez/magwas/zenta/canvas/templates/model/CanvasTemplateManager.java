@@ -54,7 +54,7 @@ public class CanvasTemplateManager extends TemplateManager {
         return group;
     }
 
-	@SuppressWarnings("null")
+	
 	private TemplateGroup newBuiltinTemplateGroup() {
 		return new TemplateGroup(Messages.CanvasTemplateManager_0);
 	}

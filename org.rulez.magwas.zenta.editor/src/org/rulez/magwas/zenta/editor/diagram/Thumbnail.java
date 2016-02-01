@@ -18,6 +18,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.utils.MacOSReflect;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 //Workaround for Eclipse bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=339132
@@ -301,7 +302,7 @@ public class Thumbnail extends Figure implements UpdateListener {
 			            }
 			        } 
 			        catch(Exception ex) {
-			            ex.printStackTrace();
+			            LogUtil.logException(ex);
 			        }
 			    }
 // Direction workaround

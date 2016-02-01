@@ -5,7 +5,6 @@ package org.rulez.magwas.zenta.model;
 import static org.junit.Assert.*;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,7 +50,7 @@ public class AttributeTest {
 	@Test
 	public void The_ObjectClass_have_attributes_for_each_of_its_relationships() {
 		IBasicObject user = (IBasicObject) testdata.getElementById("ea94cf6c");//User
-		@NonNull
+		
 		EList<IAttribute> atts = user.getAttributes();
 		assertHaveItemFor("does", atts);
 		assertEquals(2,atts.size());

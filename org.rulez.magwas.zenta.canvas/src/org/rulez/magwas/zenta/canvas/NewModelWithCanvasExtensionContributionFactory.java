@@ -28,6 +28,7 @@ import org.rulez.magwas.zenta.editor.ui.components.ExtendedWizardDialog;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -83,7 +84,7 @@ public class NewModelWithCanvasExtensionContributionFactory extends ExtensionCon
                     IEditorModelManager.INSTANCE.closeModel(model);
                 }
                 catch(IOException ex) {
-                    ex.printStackTrace();
+                    LogUtil.logException(ex);
                 }
             }
         }

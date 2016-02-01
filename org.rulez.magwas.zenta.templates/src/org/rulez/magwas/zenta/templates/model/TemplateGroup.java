@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
@@ -62,7 +61,7 @@ public class TemplateGroup implements ITemplateGroup {
         
         Collections.sort(list, new Comparator<ITemplate>() {
             @Override
-            public int compare(@Nullable ITemplate t1, @Nullable ITemplate t2) {
+            public int compare( ITemplate t1,  ITemplate t2) {
             	if(t1 == null || t2 == null)
             		throw new AssertionError();
                 String name1 = StringUtils.safeString(t1.getName()).toLowerCase().trim();

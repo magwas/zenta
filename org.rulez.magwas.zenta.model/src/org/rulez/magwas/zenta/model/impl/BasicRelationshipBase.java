@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
@@ -90,7 +89,6 @@ abstract public class BasicRelationshipBase extends BasicObjectBase implements I
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @NonNull
 	public IZentaElement getSource() {
 		return source;
 	}
@@ -112,7 +110,6 @@ abstract public class BasicRelationshipBase extends BasicObjectBase implements I
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@NonNull
 	public IZentaElement getTarget() {
 		return target;
 	}
@@ -134,8 +131,6 @@ abstract public class BasicRelationshipBase extends BasicObjectBase implements I
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("null")
-	@NonNull
 	public EList<IDiagramModelZentaConnection> getDiagConnections() {
 		if (diagConnections == null) {
 			diagConnections = new EObjectWithInverseResolvingEList<IDiagramModelZentaConnection>(IDiagramModelZentaConnection.class, this, IZentaPackage.BASIC_RELATIONSHIP__DIAG_CONNECTIONS, IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP);

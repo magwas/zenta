@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.jdt.annotation.NonNull;
 
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
@@ -372,7 +371,7 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	}
 
 	@Override
-	public void removeClass(@NonNull IBasicObject oc) {
+	public void removeClass( IBasicObject oc) {
 		getClasses().remove(oc);
 	}
 

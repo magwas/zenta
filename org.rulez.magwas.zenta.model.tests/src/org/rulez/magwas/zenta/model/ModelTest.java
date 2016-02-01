@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -68,7 +67,7 @@ public class ModelTest {
 		assertEquals("ProcessStep",element.getName());
 	}
 
-	@SuppressWarnings("null")
+	
 	@Test
 	public void Diagram_objects_have_bounds() throws IOException {
 		builder.createFullModel();
@@ -108,10 +107,10 @@ public class ModelTest {
 	}
 
 	private void assertFilesAreSame(File file, File file2) throws IOException {
-		@SuppressWarnings("null")
-		@NonNull String absolutePath = file.getAbsolutePath();
-		@SuppressWarnings("null")
-		@NonNull String absolutePath2 = file2.getAbsolutePath();
+		
+		 String absolutePath = file.getAbsolutePath();
+		
+		 String absolutePath2 = file2.getAbsolutePath();
 		String string1 = Util.readFile(absolutePath);
 		String string2 = Util.readFile(absolutePath2);
 		assertEquals(string1,string2);
@@ -166,6 +165,40 @@ public class ModelTest {
 		
 		builder.createThirdGenerationWithRelation();
 		builder.assertMetaIsOK();
+	}
+
+	@Test
+	public void Ancestor_always_exists_for_elements() throws IOException {
+		builder.createFirstGeneration();
+		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		builder.createThirdGenerationWithRelation();
+		IBasicObject obj = builder.getThirdGenSource();
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		System.out.println(obj.getAncestor());
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		System.out.println(obj.getAncestor());
+		assertNotNull(obj.getAncestor());
+	}
+
+	@Test
+	public void Ancestor_always_exists_for_relations() throws IOException {
+		builder.createFirstGeneration();
+		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
+		builder.createThirdGenerationWithRelation();
+		IBasicObject obj = builder.getThirdGenerationRelation();
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		System.out.println(obj.getAncestor());
+		assertNotNull(obj.getAncestor());
+		obj.getAncestor().delete();
+		System.out.println(obj.getAncestor());
+		assertNotNull(obj.getAncestor());
 	}
 	@Test
 	public void setDefaults_adds_folders() {
@@ -335,16 +368,16 @@ public class ModelTest {
 		NonNullList<IBasicObject> targets = vp.getAllowedTargets(builder.getSecondgenSource());
 		builder.assertIsAllSecondGenObjects(targets);
 
-		@SuppressWarnings("null")
-		@NonNull
+		
+		
 		NonNullList<IBasicRelationship> oc1relsafter = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
 		builder.assertIsAllSecondGenRelations(oc1relsafter);
 
 		NonNullList<IBasicRelationship> estartrcs = vp.getSourceRelationClassesFor(builder.getThirdGenSource());
 		builder.assertIsAllSecondGenRelations(estartrcs);
 		
-		@SuppressWarnings("null")
-		@NonNull
+		
+		
 		NonNullList<IBasicRelationship> oc1relsafter2 = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
 		builder.assertIsAllSecondGenRelations(oc1relsafter2);
 

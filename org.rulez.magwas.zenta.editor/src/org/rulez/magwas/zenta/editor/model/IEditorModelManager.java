@@ -9,7 +9,6 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
 import org.rulez.magwas.zenta.editor.model.compatibility.LaterModelVersionException;
@@ -153,7 +152,7 @@ public interface IEditorModelManager {
 
 	void alreadyOpenDialog(File file);
 
-	@Nullable String askSavePath();
+	String askSavePath();
 
 	boolean removeModelWithoutDirtyCheck(IZentaModel model);
 

@@ -14,7 +14,7 @@ import java.util.Properties;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
-import org.rulez.magwas.zenta.editor.Logger;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * Window State
@@ -67,7 +67,7 @@ public class WindowState {
                 }
             }
             catch(IOException e) {
-                Logger.logError("Failed to load properties from lock file: " + file.getAbsolutePath(), e); //$NON-NLS-1$
+                LogUtil.logError("Failed to load properties from lock file: " + file.getAbsolutePath(), e); //$NON-NLS-1$
             }
         }
     }
@@ -88,7 +88,7 @@ public class WindowState {
             }
         }
         catch(IOException e) {
-            Logger.logError("Failed to save properties to lock file: " + file.getAbsolutePath(), e); //$NON-NLS-1$
+            LogUtil.logError("Failed to save properties to lock file: " + file.getAbsolutePath(), e); //$NON-NLS-1$
         }
     }
 

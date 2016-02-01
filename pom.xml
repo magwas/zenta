@@ -30,36 +30,21 @@
  
   <repositories>
    <repository>
-     <id>3.8</id>
+     <id>4.4</id>
      <layout>p2</layout>
-     <url>http://download.eclipse.org/eclipse/updates/3.8/R-3.8.1-201209141540</url>
+     <url>http://download.eclipse.org/eclipse/updates/4.4</url>
    </repository>
    <repository>
      <id>orbit</id>
      <layout>p2</layout>
-     <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/</url>
-   </repository>
-   <repository>
-     <id>3.8updates</id>
-     <layout>p2</layout>
-     <url>http://download.eclipse.org/eclipse/updates/3.8</url>
-   </repository>
-   <repository>
-     <id>EMF</id>
-     <layout>p2</layout>
-     <url>http://download.eclipse.org/modeling/emf/emf/updates/releases/</url>
+     <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url>
    </repository>
    <repository>
      <id>GEF</id>
      <layout>p2</layout>
      <url>http://download.eclipse.org/tools/gef/updates/releases/</url>
    </repository>
-   <!--repository>
-     <id>indigo</id>
-     <layout>p2</layout>
-     <url>http://download.eclipse.org/releases/indigo</url>
-   </repository-->
-  </repositories>
+ </repositories>
  
   <build>
     <plugins>
@@ -104,7 +89,61 @@
         </configuration>
       </plugin>
     </plugins>
+  	<pluginManagement>
+  		<plugins>
+  			<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+  			<plugin>
+  				<groupId>org.eclipse.m2e</groupId>
+  				<artifactId>lifecycle-mapping</artifactId>
+  				<version>1.0.0</version>
+  				<configuration>
+  					<lifecycleMappingMetadata>
+  						<pluginExecutions>
+  							<pluginExecution>
+  								<pluginExecutionFilter>
+  									<groupId>
+  										org.eclipse.tycho
+  									</groupId>
+  									<artifactId>
+  										tycho-packaging-plugin
+  									</artifactId>
+  									<versionRange>
+  										[0.19.0,)
+  									</versionRange>
+  									<goals>
+  										<goal>validate-id</goal>
+  										<goal>build-qualifier</goal>
+  										<goal>validate-version</goal>
+  									</goals>
+  								</pluginExecutionFilter>
+  								<action>
+  									<ignore></ignore>
+  								</action>
+  							</pluginExecution>
+  							<pluginExecution>
+  								<pluginExecutionFilter>
+  									<groupId>
+  										org.eclipse.tycho
+  									</groupId>
+  									<artifactId>
+  										tycho-compiler-plugin
+  									</artifactId>
+  									<versionRange>
+  										[0.19.0,)
+  									</versionRange>
+  									<goals>
+  										<goal>compile</goal>
+  									</goals>
+  								</pluginExecutionFilter>
+  								<action>
+  									<ignore></ignore>
+  								</action>
+  							</pluginExecution>
+  						</pluginExecutions>
+  					</lifecycleMappingMetadata>
+  				</configuration>
+  			</plugin>
+  		</plugins>
+  	</pluginManagement>
   </build>
-   
- 
 </project>

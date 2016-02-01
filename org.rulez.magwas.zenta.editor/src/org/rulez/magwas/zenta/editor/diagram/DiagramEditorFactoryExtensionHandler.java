@@ -13,6 +13,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -58,7 +59,7 @@ public class DiagramEditorFactoryExtensionHandler {
                 }
             } 
             catch(CoreException ex) {
-                ex.printStackTrace();
+                LogUtil.logException(ex);
             } 
         }
     }

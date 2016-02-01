@@ -34,6 +34,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.ITemplateXMLTags;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -109,7 +110,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
                     }
                 }
                 catch(final IOException ex) {
-                    ex.printStackTrace();
+        			LogUtil.logException(ex);
                     Display.getCurrent().asyncExec(new Runnable() { // Display after wizard closes
                         public void run() {
                             MessageDialog.openError(getShell(), Messages.SaveCanvasAsTemplateWizard_3, ex.getMessage());

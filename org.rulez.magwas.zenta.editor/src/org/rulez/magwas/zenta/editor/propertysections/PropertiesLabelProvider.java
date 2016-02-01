@@ -79,7 +79,7 @@ public class PropertiesLabelProvider implements ILabelProvider {
         return ret; // Ensure the title bar is displayed //$NON-NLS-1$
     }
 
-	@SuppressWarnings("null")
+	
 	private String checkTheMainLabelProvider(Object element, String ret) {
         String text = ZentaLabelProvider.INSTANCE.getLabel(element);
         if(StringUtils.isSet(text)) {

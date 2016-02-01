@@ -45,6 +45,7 @@ import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.ILockable;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -225,7 +226,7 @@ public class IconSection extends DiagramModelImageSection {
                 image = archiveManager.createImage(fIconic.getImagePathOrNull());
             }
             catch(Exception ex) {
-                ex.printStackTrace();
+    			LogUtil.logException(ex);
             }
             
             if(image != null) {

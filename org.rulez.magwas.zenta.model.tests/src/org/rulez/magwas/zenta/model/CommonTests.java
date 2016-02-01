@@ -13,7 +13,6 @@ import static org.junit.Assert.assertTrue;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.Nullable;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -58,7 +57,7 @@ public class CommonTests {
     }
   
     @SuppressWarnings("unchecked")
-    public static <T extends EObject> void testList(@Nullable EList<T> lista, @Nullable EClass type) {
+    public static <T extends EObject> void testList( EList<T> lista,  EClass type) {
     	EList<T> list = Util.verifyNonNull(lista);
         assertTrue(list.isEmpty());
         list.add((T)IZentaFactory.eINSTANCE.create(type));

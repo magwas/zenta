@@ -102,7 +102,7 @@ public class LineDecorationSection extends AbstractZentaPropertySection {
 						sendDecors(decors);
 					}
 						private void sendDecors(List<String> decors) {
-							@SuppressWarnings("null")
+							
 							String thename = StringUtils.join(decors," ");
 							getCommandStack().execute(new LineDecorationCommand(modelObject, thename));
 							editPart.refreshFigure();

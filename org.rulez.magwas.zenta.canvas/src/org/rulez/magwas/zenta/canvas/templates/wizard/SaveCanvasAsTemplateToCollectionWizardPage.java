@@ -28,7 +28,7 @@ public class SaveCanvasAsTemplateToCollectionWizardPage extends SaveModelAsTempl
         setDescription(Messages.SaveCanvasAsTemplateToCollectionWizardPage_1);
     }
 
-    @SuppressWarnings("null")
+    
 	@Override
     protected String getHelpID() {
         return HELP_ID;

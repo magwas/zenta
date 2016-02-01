@@ -11,6 +11,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.views.properties.ICustomPropertiesView;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -38,7 +39,7 @@ public class ViewManager {
             viewPart = page.showView(viewID);
         }
         catch(PartInitException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         
         return viewPart;
@@ -95,7 +96,7 @@ public class ViewManager {
             viewPart = page.showView(viewID, secondaryID, IWorkbenchPage.VIEW_ACTIVATE);
         }
         catch(PartInitException ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
         }
         return viewPart;
     }

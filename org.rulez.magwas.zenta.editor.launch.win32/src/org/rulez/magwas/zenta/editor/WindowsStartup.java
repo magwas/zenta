@@ -16,6 +16,7 @@ import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
  * Windows Startup code
@@ -66,7 +67,7 @@ public class WindowsStartup implements IStartup {
             return (Number)f.get(shell);
         }
         catch(Exception ex) {
-            ex.printStackTrace();
+            LogUtil.logException(ex);
             return 0;
         }
     }

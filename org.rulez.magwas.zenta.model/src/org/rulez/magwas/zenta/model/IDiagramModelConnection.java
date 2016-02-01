@@ -8,7 +8,6 @@ package org.rulez.magwas.zenta.model;
 
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * <!-- begin-user-doc -->
@@ -124,7 +123,7 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
-	@NonNull
+	
 	IDiagramModelObject getSource();
 
 	/**

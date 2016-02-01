@@ -7,7 +7,6 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.jdt.annotation.NonNull;
 import org.rulez.magwas.nonnul.NonNullList;
 
 
@@ -45,7 +44,6 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
-	@NonNull
 	IZentaElement getSource();
 
 	/**
@@ -72,7 +70,6 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	 * @model resolveProxies="false"
 	 * @generated
 	 */
-	@NonNull
 	IZentaElement getTarget();
 
 	/**
@@ -101,11 +98,10 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	 * @model opposite="relationship" transient="true" derived="true"
 	 * @generated
 	 */
-	@NonNull
 	EList<IDiagramModelZentaConnection> getDiagConnections();
 
-	@NonNull NonNullList<IBasicObject> getAllowedTargets();
-	@NonNull IBasicRelationship create(@NonNull IFolder folder);
+	NonNullList<IBasicObject> getAllowedTargets();
+	IBasicRelationship create(IFolder folder);
 	
 	boolean isConnected();
 
