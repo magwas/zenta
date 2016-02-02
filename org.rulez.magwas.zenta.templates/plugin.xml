@@ -48,7 +48,7 @@
    </extension>
    <extension
          point="org.eclipse.ui.startup">
-      <startup></startup>
+      <startup class="org.rulez.magwas.zenta.templates.ZentaEditorTemplatesPlugin"/>
    </extension>
 
 </plugin>
