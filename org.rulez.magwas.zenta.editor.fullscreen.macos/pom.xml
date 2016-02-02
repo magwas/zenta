@@ -24,11 +24,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <ws>cocoa</ws>
         <arch>x86_64</arch>
        </environment>
-       <environment>
-        <os>macosx</os>
-        <ws>cocoa</ws>
-        <arch>x86</arch>
-       </environment>
       </environments>
      </configuration>
     </plugin>
