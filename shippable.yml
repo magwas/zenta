@@ -1,0 +1,8 @@
+build_image: magwas/edemotest:zentabuild
+before_install:
+- export DISPLAY=:0
+- Xvnc :0&
+script:
+- mvn -o install
+- tools/upload
+
