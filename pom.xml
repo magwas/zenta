@@ -45,6 +45,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <maven.compiler.debug>true</maven.compiler.debug>    
     
     <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
+    <maven.clean.plugin.version>3.0.0</maven.clean.plugin.version>
     
   </properties>
  
@@ -69,18 +70,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <build>
     <outputDirectory>bin</outputDirectory>
     <plugins>
-      <plugin>
-        <artifactId>maven-clean-plugin</artifactId>
-        <version>3.0.0</version>
-        <configuration>
-          <filesets>
-            <fileset>
-              <directory>bin</directory>
-              <followSymlinks>false</followSymlinks>
-            </fileset>
-          </filesets>
-        </configuration>
-      </plugin> 
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-packaging-plugin</artifactId>
@@ -146,10 +135,22 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     </plugins>
     <pluginManagement>
         <plugins>
-            <plugin>
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>${maven.clean.plugin.version}</version>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>bin</directory>
+                  <followSymlinks>false</followSymlinks>
+                </fileset>
+              </filesets>
+            </configuration>
+          </plugin> 
+          <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>${maven.dependency.plugin.version}</version>
-            </plugin>
+          </plugin>
         </plugins>
     </pluginManagement>
   </build>
