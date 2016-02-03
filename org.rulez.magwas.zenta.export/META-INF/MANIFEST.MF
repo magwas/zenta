@@ -4,7 +4,6 @@ Bundle-Name: Export the model as styled html
 Bundle-SymbolicName: org.rulez.magwas.zenta.export;singleton:=true
 Bundle-Version: 2.2.0.qualifier
 Bundle-Vendor: Árpád Magosányi
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.rulez.magwas.zenta.export
 Bundle-ClassPath: org.rulez.magwas.zenta.export.jar
 Bundle-Activator: org.rulez.magwas.zenta.export.StyledHtmlPlugin

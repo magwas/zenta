@@ -8,6 +8,5 @@ Bundle-Activator: org.rulez.magwas.zenta.editor.browser.BrowserPlugin
 Bundle-Vendor: Árpád Magosányi
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.rulez.magwas.zenta.editor.browser

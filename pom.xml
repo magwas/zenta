@@ -28,7 +28,24 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
  
   <properties>
     <tycho-version>0.19.0</tycho-version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+    <jdk.version>1.6</jdk.version>
+    <jdk.full.version>JavaSE-${jdk.version}</jdk.full.version>
+    <project.encoding>UTF-8</project.encoding>
+    
+    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+
+    <maven.compiler.source>${jdk.version}</maven.compiler.source>
+    <maven.compiler.target>${jdk.version}</maven.compiler.target>
+    <maven.compiler.compilerVersion>${jdk.version}</maven.compiler.compilerVersion>
+    <maven.compiler.fork>true</maven.compiler.fork>
+    <maven.compiler.verbose>true</maven.compiler.verbose>
+    <maven.compiler.optimize>true</maven.compiler.optimize>
+    <maven.compiler.debug>true</maven.compiler.debug>    
+    
+    <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
+    
   </properties>
  
   <repositories>
@@ -66,6 +83,18 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
       </plugin> 
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-packaging-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+                <Bundle-RequiredExecutionEnvironment>${jdk.full.version}</Bundle-RequiredExecutionEnvironment>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>   
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
         <extensions>true</extensions>
@@ -75,6 +104,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho-version}</version>
         <configuration>
+          <executionEnvironment>${jdk.full.version}</executionEnvironment>
           <dependency-resolution>
                 <extraRequirements>
                     <requirement>

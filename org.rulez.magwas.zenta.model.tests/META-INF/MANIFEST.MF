@@ -8,7 +8,6 @@ Bundle-Vendor: Árpád Magosányi
 Require-Bundle: org.eclipse.core.runtime,
  org.rulez.magwas.zenta.model;bundle-version="2.4.0",
  org.junit
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.rulez.magwas.zenta.model.testutils
 Import-Package: net.sf.saxon

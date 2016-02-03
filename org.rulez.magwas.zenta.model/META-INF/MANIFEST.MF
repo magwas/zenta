@@ -16,5 +16,4 @@ Require-Bundle: org.eclipse.core.runtime,
  uk.ac.bolton.jdom,
  org.eclipse.emf.ecore.xmi;visibility:=reexport;bundle-version="2.9.1"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: org.rulez.magwas.zenta.model.jar
