@@ -3,6 +3,7 @@ before_install:
 - export DISPLAY=:0
 - Xvnc :0&
 script:
-- mvn -o install
+- mkdir ./org.rulez.magwas.zenta.integrationtests/generated-images
+- mvn install
 - tools/upload
 
