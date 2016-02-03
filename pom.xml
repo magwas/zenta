@@ -47,7 +47,20 @@
  </repositories>
  
   <build>
+    <outputDirectory>bin</outputDirectory>
     <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>bin</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin> 
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
@@ -59,7 +72,7 @@
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho-version}</version>
         <configuration>
-            <dependency-resolution>
+          <dependency-resolution>
                 <extraRequirements>
                     <requirement>
                         <type>eclipse-plugin</type>
@@ -67,7 +80,7 @@
                         <versionRange>0.0.0</versionRange>
                     </requirement>
                 </extraRequirements>
-            </dependency-resolution>
+          </dependency-resolution>
           <environments>
             <environment>
               <os>linux</os>
