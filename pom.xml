@@ -144,6 +144,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         </configuration>
       </plugin>
     </plugins>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
   </build>
   
   <profiles>
@@ -191,6 +199,19 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                                 <action>
                                     <ignore></ignore>
                                 </action>
+                    </pluginExecution>
+                    <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>org.apache.maven.plugins</groupId>
+                                                <artifactId>maven-dependency-plugin</artifactId>
+                                                <versionRange>${maven.dependency.plugin.version}</versionRange>
+                                                <goals>
+                                                    <goal>copy</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
                     </pluginExecution>
                   </pluginExecutions>
                 </lifecycleMappingMetadata>
