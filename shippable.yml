@@ -1,0 +1,10 @@
+build_image: magwas/edemotest:zentabuild
+before_install:
+- export DISPLAY=:0
+- apt-get -y install tightvncserver
+- Xvnc :0&
+script:
+- mkdir ./org.rulez.magwas.zenta.integrationtests/generated-images
+- mvn install
+- tools/upload
+
