@@ -4,7 +4,6 @@ Bundle-Name: Zenta Widgets
 Bundle-SymbolicName: org.rulez.magwas.zenta.widgets;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: Árpád Magosányi
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: org.rulez.magwas.zenta.widgets.jar,
  lib/org.eclipse.nebula.widgets.gallery_0.5.3.201111151116.jar,
  lib/org.eclipse.nebula.widgets.grid_1.0.0.201112231516.jar

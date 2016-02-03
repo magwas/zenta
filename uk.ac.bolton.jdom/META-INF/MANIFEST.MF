@@ -30,8 +30,7 @@ Export-Package: net.sf.saxon,
  org.jdom.xpath,
  org.w3c.dom,
  uk.ac.bolton.jdom
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-ClassPath: jaxen-1.1.3.jar,
- jdom.jar,
+Bundle-ClassPath: lib/jaxen.jar,
+ lib/jdom.jar,
  uk.ac.bolton.jdom.jar,
- saxon9he.jar
+ lib/saxon9he.jar
