@@ -33,12 +33,12 @@ import org.rulez.magwas.zenta.model.UnTestedException;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase#getChildren <em>Children</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase#getZentaElement <em>Zenta Element</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaObjectBase#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

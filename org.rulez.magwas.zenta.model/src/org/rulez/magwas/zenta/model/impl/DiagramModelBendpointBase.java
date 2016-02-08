@@ -21,13 +21,13 @@ import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase#getStartX <em>Start X</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase#getStartY <em>Start Y</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase#getEndX <em>End X</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBendpointBase#getEndY <em>End Y</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

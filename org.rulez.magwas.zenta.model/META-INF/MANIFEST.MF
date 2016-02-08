@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.rulez.magwas.zenta.model;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.rulez.magwas.nonnul,
  org.rulez.magwas.zenta.model,
  org.rulez.magwas.zenta.model.handmade.util,
@@ -14,6 +15,6 @@ Export-Package: org.rulez.magwas.nonnul,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  uk.ac.bolton.jdom,
- org.eclipse.emf.ecore.xmi;visibility:=reexport;bundle-version="2.9.1"
+ org.eclipse.emf.ecore.xmi;bundle-version="2.9.1";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: org.rulez.magwas.zenta.model.jar

@@ -90,7 +90,7 @@ public class PropertyAdder implements NodeMassager {
                 return true;
             }
         } catch (XPathExpressionException e) {
-            // issue warning, with error message compiled from policy
+            // TODO: issue warning, with error message compiled from policy
             log.printStackTrace(e);
         }
         return false;

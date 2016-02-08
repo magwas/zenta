@@ -22,11 +22,11 @@ import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelImageBase#getBorderColor <em>Border Color</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelImageBase#getImagePath <em>Image Path</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -52,20 +52,20 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
     protected String borderColor = BORDER_COLOR_EDEFAULT;
 
     /**
-	 * The default value of the '{@link #getImagePathOrNull() <em>Image Path</em>}' attribute.
+	 * The default value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see #getImagePathOrNull()
+	 * @see #getImagePath()
 	 * @generated
 	 * @ordered
 	 */
     protected static final String IMAGE_PATH_EDEFAULT = null;
 
     /**
-	 * The cached value of the '{@link #getImagePathOrNull() <em>Image Path</em>}' attribute.
+	 * The cached value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see #getImagePathOrNull()
+	 * @see #getImagePath()
 	 * @generated
 	 * @ordered
 	 */
@@ -113,14 +113,14 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
-    public String getImagePathOrNull() {
+	public String getImagePathOrNull() {
 		return imagePath;
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated

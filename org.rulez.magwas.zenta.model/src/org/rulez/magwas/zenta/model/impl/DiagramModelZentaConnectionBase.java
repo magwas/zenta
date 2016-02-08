@@ -30,10 +30,10 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelZentaConnectionBase#getRelationship <em>Relationship</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -83,7 +83,6 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
 	 */
 	public NotificationChain basicSetRelationship(IBasicRelationship newRelationship, NotificationChain msgs) {
 		IBasicRelationship oldRelationship = relationship;
-		Util.verifyNonNull(newRelationship);
 		relationship = newRelationship;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP, oldRelationship, newRelationship);

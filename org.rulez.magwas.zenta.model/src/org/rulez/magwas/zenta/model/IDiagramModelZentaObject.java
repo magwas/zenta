@@ -14,11 +14,11 @@ package org.rulez.magwas.zenta.model;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelZentaObject#getZentaElement <em>Zenta Element</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelZentaObject#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelZentaObject()
  * @model extendedMetaData="name='DiagramObject'"

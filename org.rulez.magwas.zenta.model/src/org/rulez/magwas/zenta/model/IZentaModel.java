@@ -18,11 +18,11 @@ import org.rulez.magwas.nonnul.NonNullList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IZentaModel#getFile <em>File</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IZentaModel#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getZentaModel()
  * @model extendedMetaData="name='model'"

@@ -31,6 +31,7 @@ import org.rulez.magwas.zenta.model.IFontAttribute;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getFont <em>Font</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getFontColor <em>Font Color</em>}</li>
@@ -42,7 +43,6 @@ import org.rulez.magwas.zenta.model.IFontAttribute;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getFillColor <em>Fill Color</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase#getElementShape <em>Element Shape</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

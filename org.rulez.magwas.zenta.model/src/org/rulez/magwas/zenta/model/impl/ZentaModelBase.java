@@ -47,6 +47,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getFolders <em>Folders</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getName <em>Name</em>}</li>
@@ -58,7 +59,6 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getFile <em>File</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaModelBase#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

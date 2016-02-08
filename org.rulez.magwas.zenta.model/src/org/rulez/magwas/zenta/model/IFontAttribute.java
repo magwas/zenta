@@ -15,13 +15,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IFontAttribute#getFont <em>Font</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IFontAttribute#getFontColor <em>Font Color</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IFontAttribute#getTextAlignment <em>Text Alignment</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IFontAttribute#getTextPosition <em>Text Position</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getFontAttribute()
  * @model interface="true" abstract="true"

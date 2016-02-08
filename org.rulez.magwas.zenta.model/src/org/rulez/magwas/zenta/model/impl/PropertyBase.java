@@ -19,12 +19,12 @@ import org.rulez.magwas.zenta.model.IProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.PropertyBase#getKey <em>Key</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.PropertyBase#getValue <em>Value</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.PropertyBase#isGenerated <em>Generated</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

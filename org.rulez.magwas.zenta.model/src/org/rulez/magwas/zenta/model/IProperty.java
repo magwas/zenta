@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IProperty#getKey <em>Key</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IProperty#getValue <em>Value</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IProperty#isGenerated <em>Generated</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getProperty()
  * @model

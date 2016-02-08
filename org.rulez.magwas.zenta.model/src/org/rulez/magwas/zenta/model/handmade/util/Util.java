@@ -156,7 +156,9 @@ public class Util {
 	}
 
 	public static <T> T verifyNonNull( T r) {
-		if(null == r) throw new AssertionError();
+		if(null == r) {
+			throw new AssertionError();
+		}
 		return r;
 	}
 }

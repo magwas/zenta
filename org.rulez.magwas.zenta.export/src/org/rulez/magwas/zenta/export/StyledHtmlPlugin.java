@@ -9,6 +9,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.rulez.magwas.zenta.export.EventLog;
 import org.rulez.magwas.zenta.export.StyledHtml;
 import org.rulez.magwas.zenta.export.StyledHtmlPlugin;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
@@ -81,7 +82,8 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
            	 if (args[i].equals("-exit"))
            	 {
            		LogUtil.logInfo("exiting nicely");
-           		 PlatformUI.getWorkbench().close();
+           		IZentaFactory.eINSTANCE.getEditorInterface().bailOut();
+           		//PlatformUI.getWorkbench().close();
            	 }
            	 i++;
        	 }

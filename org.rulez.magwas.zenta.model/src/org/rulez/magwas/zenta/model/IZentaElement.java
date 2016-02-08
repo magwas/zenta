@@ -20,10 +20,10 @@ import org.rulez.magwas.nonnul.NonNullList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IZentaElement#getDiagObjects <em>Diag Objects</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getZentaElement()
  * @model abstract="true"

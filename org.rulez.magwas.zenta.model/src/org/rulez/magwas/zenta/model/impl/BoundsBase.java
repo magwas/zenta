@@ -20,13 +20,13 @@ import org.rulez.magwas.zenta.model.IBounds;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.BoundsBase#getX <em>X</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.BoundsBase#getY <em>Y</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.BoundsBase#getWidth <em>Width</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.BoundsBase#getHeight <em>Height</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

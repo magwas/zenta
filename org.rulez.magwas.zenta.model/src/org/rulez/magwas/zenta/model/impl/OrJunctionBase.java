@@ -14,8 +14,6 @@ import org.rulez.magwas.zenta.model.IOrJunction;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Or Junction</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

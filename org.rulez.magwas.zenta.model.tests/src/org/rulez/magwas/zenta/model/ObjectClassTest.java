@@ -67,6 +67,12 @@ public class ObjectClassTest{
 		assertEquals(n+1,kids.size());
 	}
 
+	@Test(expected=AssertionError.class)
+	public void null_cannot_be_set_as_ancestor() {
+		IBasicObject obj2 = testdata.createNewObjectClass("foobar");
+		obj2.setAncestor(null);
+	}
+
 	@Test
 	public void ObjectClass_can_be_created_using_a_zenta_object() {
 		testdata.getTestObjectClass();

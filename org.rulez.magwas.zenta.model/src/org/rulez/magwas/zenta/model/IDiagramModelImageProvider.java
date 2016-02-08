@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelImageProvider#getImagePath <em>Image Path</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelImageProvider()
  * @model interface="true" abstract="true"
@@ -37,7 +37,7 @@ public interface IDiagramModelImageProvider extends EObject {
 	 * @see #setImagePath(String)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelImageProvider_ImagePath()
 	 * @model
-	 * @generated
+	 * @generated NOT
 	 */
 	String getImagePathOrNull();
 

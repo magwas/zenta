@@ -13,10 +13,10 @@ package org.rulez.magwas.zenta.model;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IZentaDiagramModel#getViewpoint <em>Viewpoint</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getZentaDiagramModel()
  * @model

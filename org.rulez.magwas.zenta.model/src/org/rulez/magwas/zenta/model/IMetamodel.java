@@ -15,10 +15,10 @@ import org.rulez.magwas.zenta.model.handmade.BuiltinTemplate;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IMetamodel#getTemplates <em>Templates</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getMetamodel()
  * @model

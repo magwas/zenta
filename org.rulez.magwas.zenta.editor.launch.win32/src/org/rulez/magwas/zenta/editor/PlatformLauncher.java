@@ -141,7 +141,7 @@ public class PlatformLauncher implements IPlatformLauncher {
                 }
             }
             catch(NumberFormatException e) {
-                e.printStackTrace();
+            	LogUtil.logException(e);
             }
         }
         return 0;

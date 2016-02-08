@@ -34,6 +34,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getFont <em>Font</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getFontColor <em>Font Color</em>}</li>
@@ -48,7 +49,6 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getLineDecoration <em>Line Decoration</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelConnectionBase#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

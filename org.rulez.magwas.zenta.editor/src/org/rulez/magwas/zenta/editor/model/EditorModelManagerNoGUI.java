@@ -8,8 +8,10 @@ import java.io.IOException;
 import java.util.EventObject;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.commands.CommandStack;
@@ -33,6 +35,7 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.model.IAdapter;
+import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
@@ -40,6 +43,7 @@ import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
@@ -208,7 +212,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	            throw new RuntimeException(ex1);
 	        }
 	    }
-	    
+	    analyzeModelLoad(resource);
 	    // Once loaded - Check version number compatibility with user
 	    try {
 	        ModelCompatibility.checkVersion(resource);
@@ -248,6 +252,27 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    firePropertyChange(this, PROPERTY_MODEL_LOADED, null, model);
 	
 	    return model;
+	}
+
+
+	private void analyzeModelLoad(Resource resource) {
+		EList<Diagnostic> errors = resource.getErrors();
+		if (errors.size() == 0)
+			System.out.println("No errors in load");
+		for (Diagnostic d : errors) {
+			System.out.println("Error: "+ d);
+		}
+		EList<Diagnostic> warnings = resource.getWarnings();
+		if (warnings.size() == 0)
+			System.out.println("No warnings in load");
+		for (Diagnostic d : warnings) {
+			System.out.println("Error: "+ d);
+		}
+		System.out.println("loaded:"+resource.isLoaded());
+		
+		IZentaModel model = (IZentaModel)resource.getContents().get(0);
+		IBasicObject obj = (IBasicObject) ZentaModelUtils.getObjectByID(model, "3fbeb90c");
+		System.out.println("ancestor="+obj.getAncestor());
 	}
 
 	public boolean laterModelDialog(File file, LaterModelVersionException ex) {

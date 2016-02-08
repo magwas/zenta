@@ -32,12 +32,12 @@ import org.rulez.magwas.zenta.model.ITextContent;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelStickyBase#getChildren <em>Children</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelStickyBase#getContent <em>Content</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelStickyBase#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

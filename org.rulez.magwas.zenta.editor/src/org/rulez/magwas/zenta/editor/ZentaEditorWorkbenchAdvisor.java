@@ -13,6 +13,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.rulez.magwas.zenta.editor.perspectives.MainPerspective;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -60,6 +61,6 @@ extends WorkbenchAdvisor
 		return MainPerspective.ID;
 	}
 	public void eventLoopException(Throwable exception) {
-		exception.printStackTrace();
+		LogUtil.logException(exception);
 	}
 }

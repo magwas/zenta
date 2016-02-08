@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getBounds <em>Bounds</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getSourceConnections <em>Source Connections</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getFillColor <em>Fill Color</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelObject#getElementShape <em>Element Shape</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelObject()
  * @model abstract="true"

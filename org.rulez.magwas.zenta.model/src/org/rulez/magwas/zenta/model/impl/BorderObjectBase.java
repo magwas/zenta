@@ -21,10 +21,10 @@ import org.rulez.magwas.zenta.model.IBorderObject;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.BorderObjectBase#getBorderColor <em>Border Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -24,10 +24,10 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.ZentaDiagramModelBase#getViewpoint <em>Viewpoint</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

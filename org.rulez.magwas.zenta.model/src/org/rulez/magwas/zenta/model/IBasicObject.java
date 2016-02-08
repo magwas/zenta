@@ -16,13 +16,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getAncestor <em>Ancestor</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getChildren <em>Children</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IBasicObject#getTemplate <em>Template</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject()
  * @model
@@ -87,7 +87,7 @@ public interface IBasicObject extends IZentaElement, IObjectClass {
 	 * @return the value of the '<em>Children</em>' reference list.
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getBasicObject_Children()
 	 * @see org.rulez.magwas.zenta.model.IBasicObject#getAncestor
-	 * @model opposite="ancestor" resolveProxies="false" derived="true"
+	 * @model opposite="ancestor" resolveProxies="false" transient="true" derived="true"
 	 * @generated
 	 */
 	EList<IBasicObject> getChildren();

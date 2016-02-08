@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo source connections without relation
+xpather 'for $i in //sourceConnection return if (//element[@id=$i/@relationship]) then none else $i' $1
+echo missing children
+ids=$(xpather "for \$i in //@children return for \$j in tokenize(\$i, ' ') return if (//element[@id=\$j]) then none else string(\$j)" $1 )
+for id in $ids ; do echo $id; done |sort |uniq -c
+echo relationships without source
+xpather "//*[@xsi:type='zenta:BasicRelationship' and not(@source)]" $1
+echo "objects without ancestor"
+xpather "//element[@xsi:type='zenta:BasicObject' and not(@ancestor) and not(@id='basicobject')]" $1
+echo "relations without ancestor"
+xpather "for \$i in //element[@xsi:type='zenta:BasicRelationship' and not(@ancestor) and not(@id='basicrelation')] return (\$i,string(//element[@id=\$i/@source]/@name),string(//element[@id=\$i/@target]/@name),'EOL')" $1 | sed 's/EOL/\n/g'

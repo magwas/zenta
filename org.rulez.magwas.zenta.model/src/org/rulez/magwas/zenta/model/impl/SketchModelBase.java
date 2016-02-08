@@ -20,10 +20,10 @@ import org.rulez.magwas.zenta.model.UndoState;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelBase#getBackground <em>Background</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

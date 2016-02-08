@@ -12,17 +12,20 @@ import java.net.URL;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.osgi.service.datalocation.Location;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
+import org.rulez.magwas.zenta.model.IEditorModelInterface;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class ZentaEditorPlugin extends AbstractUIPlugin {
+public class ZentaEditorPlugin extends AbstractUIPlugin implements IEditorModelInterface {
 
     /**
      * ID of the plug-in
@@ -52,6 +55,7 @@ public class ZentaEditorPlugin extends AbstractUIPlugin {
     @Override
     public void start(BundleContext context) throws Exception {
         super.start(context);
+        IZentaFactory.eINSTANCE.setEditorInterface(this);
     }
 
     /**
@@ -155,4 +159,9 @@ public class ZentaEditorPlugin extends AbstractUIPlugin {
     public String getId(){
         return getBundle().getSymbolicName();
     }
+    
+	public void bailOut() {
+		PlatformUI.getWorkbench().close();
+	}
+
 }

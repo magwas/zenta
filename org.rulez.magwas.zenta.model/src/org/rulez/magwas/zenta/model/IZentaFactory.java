@@ -267,4 +267,8 @@ public interface IZentaFactory extends EFactory {
 
 	 IMetamodel findMetamodelFor( IZentaModel model2);
 
+	 void setEditorInterface(IEditorModelInterface iface);
+
+	 IEditorModelInterface getEditorInterface();
+
 } //IZentaFactory

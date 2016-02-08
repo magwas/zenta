@@ -46,6 +46,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBase#getZentaModel <em>Zenta Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBase#getName <em>Name</em>}</li>
@@ -58,7 +59,6 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBase#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelBase#getConnectionRouterType <em>Connection Router Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -31,12 +31,12 @@ import org.rulez.magwas.zenta.model.IProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase#getChildren <em>Children</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelGroupBase#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

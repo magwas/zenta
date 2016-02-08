@@ -36,6 +36,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getName <em>Name</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getId <em>Id</em>}</li>
@@ -43,7 +44,6 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getLineWidth <em>Line Width</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.DiagramModelComponentBase#getLineColor <em>Line Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.rulez.magwas.zenta.model.IAttribute;
+import org.rulez.magwas.zenta.model.IEditorModelInterface;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IProperties;
@@ -36,6 +37,8 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 		}
 		return new ZentaFactory();
 	}
+
+	private IEditorModelInterface editorInterface;
 
 	public ZentaFactory() {
 		super();
@@ -93,6 +96,16 @@ public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {
 	@Override
 	public IMetamodel createMetamodel() {
 		throw new AssertionError();
+	}
+
+	@Override
+	public void setEditorInterface(IEditorModelInterface iface) {
+		this.editorInterface = iface;
+	}
+
+	@Override
+	public IEditorModelInterface getEditorInterface() {
+		return this.editorInterface;
 	}
 
 }

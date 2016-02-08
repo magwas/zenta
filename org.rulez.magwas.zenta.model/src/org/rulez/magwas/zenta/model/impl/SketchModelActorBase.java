@@ -27,11 +27,11 @@ import org.rulez.magwas.zenta.model.ISketchModelActor;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelActorBase#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.impl.SketchModelActorBase#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

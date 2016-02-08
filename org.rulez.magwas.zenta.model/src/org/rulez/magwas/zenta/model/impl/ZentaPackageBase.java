@@ -1938,7 +1938,7 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		initEClass(basicObjectEClass, IBasicObject.class, "BasicObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBasicObject_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, IBasicObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getBasicObject_Ancestor(), this.getBasicObject(), this.getBasicObject_Children(), "ancestor", null, 1, 1, IBasicObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBasicObject_Children(), this.getBasicObject(), this.getBasicObject_Ancestor(), "children", null, 0, -1, IBasicObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getBasicObject_Children(), this.getBasicObject(), this.getBasicObject_Ancestor(), "children", null, 0, -1, IBasicObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getBasicObject_Template(), this.getTemplate(), this.getTemplate_Classes(), "template", null, 0, 1, IBasicObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(basicRelationshipEClass, IBasicRelationship.class, "BasicRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1970,92 +1970,92 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	 * @generated
 	 */
     protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
 		addAnnotation
 		  (getProperties_Properties(), 
 		   source, 
 		   new String[] {
 			 "name", "property",
 			 "kind", "element"
-		   });		
+		   });	
 		addAnnotation
 		  (getTextContent_Content(), 
 		   source, 
 		   new String[] {
 			 "kind", "element"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentable_Documentation(), 
 		   source, 
 		   new String[] {
 			 "kind", "element"
-		   });		
+		   });	
 		addAnnotation
 		  (getFolderContainer_Folders(), 
 		   source, 
 		   new String[] {
 			 "name", "folder",
 			 "kind", "element"
-		   });		
+		   });	
 		addAnnotation
 		  (getFolder_Elements(), 
 		   source, 
 		   new String[] {
 			 "name", "element",
 			 "kind", "element"
-		   });		
+		   });	
 		addAnnotation
 		  (getDiagramModelContainer_Children(), 
 		   source, 
 		   new String[] {
 			 "name", "child",
 			 "kind", "element"
-		   });		
+		   });	
 		addAnnotation
 		  (getDiagramModelReference_ReferencedModel(), 
 		   source, 
 		   new String[] {
 			 "name", "model",
 			 "kind", "attribute"
-		   });		
+		   });	
 		addAnnotation
 		  (getDiagramModelObject_SourceConnections(), 
 		   source, 
 		   new String[] {
 			 "name", "sourceConnection",
 			 "kind", "element"
-		   });		
+		   });	
 		addAnnotation
 		  (diagramModelGroupEClass, 
 		   source, 
 		   new String[] {
 			 "name", "Group"
-		   });		
+		   });	
 		addAnnotation
 		  (diagramModelNoteEClass, 
 		   source, 
 		   new String[] {
 			 "name", "Note"
-		   });		
+		   });	
 		addAnnotation
 		  (getDiagramModelConnection_Bendpoints(), 
 		   source, 
 		   new String[] {
 			 "name", "bendpoint",
 			 "kind", "element"
-		   });		
+		   });	
 		addAnnotation
 		  (diagramModelZentaObjectEClass, 
 		   source, 
 		   new String[] {
 			 "name", "DiagramObject"
-		   });		
+		   });	
 		addAnnotation
 		  (diagramModelZentaConnectionEClass, 
 		   source, 
 		   new String[] {
 			 "name", "Connection"
-		   });		
+		   });	
 		addAnnotation
 		  (zentaModelEClass, 
 		   source, 

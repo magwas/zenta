@@ -6,6 +6,7 @@ import java.io.StringWriter;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 
 public class LogUtil {
 
@@ -109,6 +110,7 @@ public class LogUtil {
 		exception.printStackTrace(new PrintWriter(sw));
 		String stacktrace = sw.toString();
 		EcorePlugin.INSTANCE.log(stacktrace);
+   		IZentaFactory.eINSTANCE.getEditorInterface().bailOut();
 	}
 
 }

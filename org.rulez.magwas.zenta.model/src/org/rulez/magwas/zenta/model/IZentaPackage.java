@@ -4560,7 +4560,7 @@ public interface IZentaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Image Path</em>'.
-	 * @see org.rulez.magwas.zenta.model.IDiagramModelImageProvider#getImagePathOrNull()
+	 * @see org.rulez.magwas.zenta.model.IDiagramModelImageProvider#getImagePath()
 	 * @see #getDiagramModelImageProvider()
 	 * @generated
 	 */
