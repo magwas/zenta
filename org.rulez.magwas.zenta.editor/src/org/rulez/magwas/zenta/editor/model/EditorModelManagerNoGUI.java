@@ -269,10 +269,6 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 			System.out.println("Error: "+ d);
 		}
 		System.out.println("loaded:"+resource.isLoaded());
-		
-		IZentaModel model = (IZentaModel)resource.getContents().get(0);
-		IBasicObject obj = (IBasicObject) ZentaModelUtils.getObjectByID(model, "3fbeb90c");
-		System.out.println("ancestor="+obj.getAncestor());
 	}
 
 	public boolean laterModelDialog(File file, LaterModelVersionException ex) {
