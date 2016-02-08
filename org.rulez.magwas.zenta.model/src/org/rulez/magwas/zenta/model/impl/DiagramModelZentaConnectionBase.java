@@ -83,6 +83,7 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
 	 */
 	public NotificationChain basicSetRelationship(IBasicRelationship newRelationship, NotificationChain msgs) {
 		IBasicRelationship oldRelationship = relationship;
+		Util.verifyNonNull(newRelationship);
 		relationship = newRelationship;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION__RELATIONSHIP, oldRelationship, newRelationship);
