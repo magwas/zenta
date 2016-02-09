@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.rulez.magwas.zenta.model;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.rulez.magwas.nonnul,
  org.rulez.magwas.zenta.model,
  org.rulez.magwas.zenta.model.handmade.util,
