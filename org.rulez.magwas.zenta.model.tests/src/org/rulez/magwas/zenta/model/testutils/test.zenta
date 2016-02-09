@@ -2,13 +2,12 @@
 <zenta:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zenta="http://magwas.rulez.org/zenta" name="test modell" id="69b3786c" version="2.2.1">
   <folder name="Business" id="196115c6">
     <folder name="New Folder" id="915ee5e9">
-      <element xsi:type="zenta:BasicObject" id="8e4e0614" name="Basic Object3"/>
-      <element xsi:type="zenta:BasicObject" id="252d482c" name="NotDefinesObjectClass">
+      <element xsi:type="zenta:BasicObject" name="NotDefinesObjectClass" id="252d482c" ancestor="basicobject">
         <property key="className"/>
       </element>
     </folder>
     <folder name="metamodel" id="d1d69251">
-      <element xsi:type="zenta:ZentaDiagramModel" id="2ea99535" name="template">
+      <element xsi:type="zenta:ZentaDiagramModel" name="template" id="2ea99535">
         <child xsi:type="zenta:DiagramObject" id="b2608459" zentaElement="ea94cf6c">
           <bounds x="108" y="24"/>
           <sourceConnection xsi:type="zenta:Connection" id="24e3c661" source="b2608459" target="88f40127" relationship="b0e2bfd8"/>
@@ -32,19 +31,19 @@
         </child>
         <property key="Template"/>
       </element>
-      <element xsi:type="zenta:BasicObject" id="ea94cf6c" name="User">
+      <element xsi:type="zenta:BasicObject" name="User" id="ea94cf6c" ancestor="basicobject">
         <property key="elementShape" value="ellipseShape"/>
         <property key="font" value="1|Arial Black|11.0|1|GTK|1|"/>
         <property key="fontColor" value="#ffffff"/>
         <property key="textAlignment" value="4"/>
         <property key="fillColor" value="#ffa500"/>
       </element>
-      <element xsi:type="zenta:BasicObject" id="23138a61" name="Data">
+      <element xsi:type="zenta:BasicObject" name="Data" id="23138a61" ancestor="basicobject">
         <property key="elementShape" value="emptyShape"/>
       </element>
-      <element xsi:type="zenta:BasicObject" id="f33bd0d2" name="Procedure"/>
-      <element xsi:type="zenta:BasicObject" id="c3d03626" name="ProcessStep"/>
-      <element xsi:type="zenta:ZentaDiagramModel" id="e13c9626" name="metamodel2">
+      <element xsi:type="zenta:BasicObject" name="Procedure" id="f33bd0d2" ancestor="basicobject"/>
+      <element xsi:type="zenta:BasicObject" name="ProcessStep" id="c3d03626" ancestor="basicobject"/>
+      <element xsi:type="zenta:ZentaDiagramModel" name="metamodel2" id="e13c9626">
         <child xsi:type="zenta:DiagramObject" id="77809b07" targetConnections="9dc4d23a" zentaElement="8495ea84">
           <bounds x="180" y="87" width="169" height="58"/>
           <sourceConnection xsi:type="zenta:Connection" id="7e9ecb61" source="77809b07" target="312451b4" relationship="2fb235de"/>
@@ -71,10 +70,10 @@
         </child>
         <property key="Template"/>
       </element>
-      <element xsi:type="zenta:BasicObject" id="7b9a078c" name="Title" ancestor="7b9a078c"/>
+      <element xsi:type="zenta:BasicObject" name="Title" id="7b9a078c" ancestor="basicobject"/>
     </folder>
     <folder name="shapechange" id="13144af6">
-      <element xsi:type="zenta:ZentaDiagramModel" id="22d134df" name="shapechange">
+      <element xsi:type="zenta:ZentaDiagramModel" name="shapechange" id="22d134df">
         <child xsi:type="zenta:DiagramObject" id="be229c75" zentaElement="85b00ede">
           <bounds x="252" y="143"/>
           <sourceConnection xsi:type="zenta:Connection" id="2454f71b" source="be229c75" target="dee06f23" relationship="8aeb2efb"/>
@@ -83,13 +82,13 @@
           <bounds x="448" y="270"/>
         </child>
       </element>
-      <element xsi:type="zenta:BasicObject" id="85b00ede" name="shapechange test object"/>
+      <element xsi:type="zenta:BasicObject" name="shapechange test object" id="85b00ede" ancestor="basicobject"/>
       <element xsi:type="zenta:BasicRelationship" id="8aeb2efb" source="85b00ede" target="f33bd0d2"/>
     </folder>
-    <element xsi:type="zenta:BasicObject" id="a885cd76" name="Test Object"/>
-    <element xsi:type="zenta:BasicObject" id="8c485316" name="Basic Object1"/>
-    <element xsi:type="zenta:BasicObject" id="6e8b1d43" name="Basic Object"/>
-    <element xsi:type="zenta:ZentaDiagramModel" id="63f1b081" name="non-template">
+    <element xsi:type="zenta:BasicObject" name="Test Object" id="a885cd76" ancestor="basicobject" />
+    <element xsi:type="zenta:BasicObject" name="Basic Object1" id="8c485316" ancestor="basicobject" />
+    <element xsi:type="zenta:BasicObject" name="Basic Object" id="6e8b1d43" ancestor="basicobject" />
+    <element xsi:type="zenta:ZentaDiagramModel" name="non-template" id="63f1b081">
       <child xsi:type="zenta:DiagramObject" id="173f7753" zentaElement="f33bd0d2">
         <bounds x="215" y="137"/>
         <sourceConnection xsi:type="zenta:Connection" id="0a589074" source="173f7753" target="f170d1e3" relationship="44041ead"/>
@@ -102,18 +101,18 @@
         <bounds x="139" y="47"/>
       </child>
     </element>
-    <element xsi:type="zenta:BasicObject" id="8495ea84" name="documentation">
+    <element xsi:type="zenta:BasicObject" name="documentation" id="8495ea84" ancestor="basicobject">
       <property key="className" value="NotActuallyDocumentation"/>
     </element>
-    <element xsi:type="zenta:BasicObject" id="e79192be"/>
-    <element xsi:type="zenta:Junction" id="ed95a7e7" name="Junction"/>
-    <element xsi:type="zenta:BasicRelationship" id="b0e2bfd8" name="does" source="ea94cf6c" target="f33bd0d2">
+    <element xsi:type="zenta:BasicObject" id="e79192be" ancestor="basicobject"/>
+    <element xsi:type="zenta:Junction" name="Junction" id="ed95a7e7"/>
+    <element xsi:type="zenta:BasicRelationship" name="does" id="b0e2bfd8" ancestor="basicrelation" source="ea94cf6c" target="f33bd0d2">
       <property key="className" value="TriesToDo"/>
     </element>
-    <element xsi:type="zenta:BasicRelationship" id="a972e26e" name="uses" source="f33bd0d2" target="23138a61"/>
+    <element xsi:type="zenta:BasicRelationship" name="uses" id="a972e26e" ancestor="basicrelation" source="f33bd0d2" target="23138a61"/>
     <element xsi:type="zenta:BasicRelationship" id="44041ead" source="f33bd0d2" target="c3d03626"/>
-    <element xsi:type="zenta:BasicRelationship" id="3da94729" name="contains" source="c3d03626" target="f33bd0d2"/>
-    <element xsi:type="zenta:BasicRelationship" id="9c441eb7" name="describes" source="f33bd0d2" target="8495ea84">
+    <element xsi:type="zenta:BasicRelationship" name="contains" id="3da94729" ancestor="basicrelation" source="c3d03626" target="f33bd0d2"/>
+    <element xsi:type="zenta:BasicRelationship" name="describes" id="9c441eb7" ancestor="basicrelation" source="f33bd0d2" target="8495ea84">
       <property key="font" value="1|Andika|10.0|3|GTK|1|"/>
       <property key="fontColor" value="#ff0000"/>
       <property key="textPosition" value="0"/>
@@ -121,10 +120,12 @@
       <property key="lineColor" value="#0000ff"/>
       <property key="lineDecoration" value="DiamondSourceDecoration SparseDashedLineDecoration BigArrowTargetDecoration"/>
     </element>
-    <element xsi:type="zenta:BasicRelationship" id="77d87cf5" source="8495ea84" target="ea94cf6c"/>
-    <element xsi:type="zenta:BasicRelationship" id="9a97ee2f" name="test to add to the template" source="ea94cf6c" target="c3d03626"/>
-    <element xsi:type="zenta:BasicRelationship" id="2fb235de" name="This is actually unnamed" source="8495ea84" target="7b9a078c">
+    <element xsi:type="zenta:BasicRelationship" id="77d87cf5" ancestor="basicrelation" source="8495ea84" target="ea94cf6c"/>
+    <element xsi:type="zenta:BasicRelationship" name="test to add to the template" id="9a97ee2f" source="ea94cf6c" target="c3d03626"/>
+    <element xsi:type="zenta:BasicRelationship" name="This is actually unnamed" id="2fb235de" ancestor="basicrelation" source="8495ea84" target="7b9a078c">
       <property key="className"/>
     </element>
   </folder>
+  <element xsi:type="zenta:BasicRelationship" name="Basic Relation" id="basicrelation" source="basicobject" target="basicobject"/>
+  <element xsi:type="zenta:BasicObject" name="Basic Object" id="basicobject"/>
 </zenta:model>

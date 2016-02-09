@@ -24,6 +24,7 @@ import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.handmade.RootObjectClass;
 import org.rulez.magwas.zenta.model.handmade.RootRelationClass;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -136,9 +137,10 @@ abstract public class BasicObjectBase extends ZentaElementBase implements IBasic
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setAncestor(IBasicObject newAncestor) {
+		Util.verifyNonNull(newAncestor);
 		if (newAncestor != ancestor) {
 			NotificationChain msgs = null;
 			if (ancestor != null)

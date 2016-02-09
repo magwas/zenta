@@ -177,10 +177,8 @@ public class ModelTest {
 		obj.getAncestor().delete();
 		assertNotNull(obj.getAncestor());
 		obj.getAncestor().delete();
-		System.out.println(obj.getAncestor());
 		assertNotNull(obj.getAncestor());
 		obj.getAncestor().delete();
-		System.out.println(obj.getAncestor());
 		assertNotNull(obj.getAncestor());
 	}
 
