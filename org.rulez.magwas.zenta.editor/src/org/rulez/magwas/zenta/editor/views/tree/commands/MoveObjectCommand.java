@@ -19,7 +19,6 @@ public class MoveObjectCommand extends Command {
     private IFolder fOldParent;
     private IFolder fNewParent;
     private INameable fElement;
-    private int fOldPos;
     
     public MoveObjectCommand(IFolder newParent, INameable element) {
         super(Messages.MoveObjectCommand_0 + " " + element.getName()); //$NON-NLS-1$
@@ -30,7 +29,6 @@ public class MoveObjectCommand extends Command {
     
     @Override
     public void execute() {
-        fOldPos = fOldParent.getElements().indexOf(fElement); // do this here as its part of a compound command
         redo();
     }
     

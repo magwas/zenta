@@ -6,9 +6,7 @@
 package org.rulez.magwas.zenta.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.rulez.magwas.zenta.model.IAndJunction;
-import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 
 

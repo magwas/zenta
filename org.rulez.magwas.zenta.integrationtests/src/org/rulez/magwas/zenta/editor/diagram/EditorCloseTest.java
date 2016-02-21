@@ -4,15 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.ui.IWorkbenchPage;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IZentaPackage;
 
 public class EditorCloseTest extends EditorTest {
 
