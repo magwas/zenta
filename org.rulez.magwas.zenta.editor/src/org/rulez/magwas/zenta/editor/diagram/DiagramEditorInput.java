@@ -78,6 +78,8 @@ implements IEditorInput, IPersistableElement {
     public IPersistableElement getPersistable() {
         
         // Not saved, or a new file based on a template
+    	if (fModel == null || fModel.eContainer() == null)
+    		return null;
         IZentaModel zentaModel = fModel.getZentaModel();
 		if((zentaModel == null) || (zentaModel.getFile() == null)) {
             return null;

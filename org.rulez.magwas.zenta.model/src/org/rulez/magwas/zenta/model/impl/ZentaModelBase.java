@@ -756,17 +756,18 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 
 	@Override
 	public UndoState delete(UndoState state) {
-		throw new IllegalArgumentException();
+		return state;
 	}
-
+	
 	@Override
 	public UndoState prepareDelete() {
 		throw new IllegalArgumentException();
+//		return new ModelDeleteState(this);
 	}
+	
 	@Override
-	public void move(IFolder oldParent, IFolder newParent){
+	public void move(IFolder oldFolder, IFolder newFolder) {
 		throw new IllegalArgumentException();
 	}
-
 
 } //ZentaModel

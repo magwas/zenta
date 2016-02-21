@@ -58,6 +58,7 @@ implements IZentaDiagramEditor {
      * Palette
      */
     private ZentaDiagramEditorPalette fPalette;
+	private boolean willMove;
     
     @Override
     protected void applicationPreferencesChanged(PropertyChangeEvent event) {
@@ -249,7 +250,13 @@ implements IZentaDiagramEditor {
                 setViewpoint();
             }
         } else if((msg.getOldValue() == this.fDiagramModel) && (msg.getEventType() == Notification.REMOVE)) {
-        	getSite().getPage().closeEditor(this, false);
+        	if (willMove) {
+        		willMove = false;
+        	} else {
+        		getSite().getPage().closeEditor(this, false);
+        	}
+        } else if ((msg.getOldValue() == this.fDiagramModel) && msg.getEventType() == Notification.MOVE) {
+        	willMove=true;
         }
     }
     

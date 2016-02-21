@@ -771,12 +771,13 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
 		state.folder = (IFolder) eContainer();
 		return state;
 	}
-
+	
 	@Override
-	public void move(IFolder oldParent, IFolder newParent){
-		if (oldParent != this.eContainer)
-			throw new IllegalArgumentException();
-		this.eContainer = (InternalEObject) newParent;
+	public void move(IFolder oldFolder, IFolder newFolder) {
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.MOVE, this.eStaticClass().getClassifierID(), this, this));
+		oldFolder.getElements().remove(this);
+		newFolder.getElements().add(this);
 	}
 
 

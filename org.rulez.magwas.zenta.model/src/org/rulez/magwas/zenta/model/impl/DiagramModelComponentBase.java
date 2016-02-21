@@ -501,12 +501,12 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 			public boolean isDeleted() {
 				return null == eContainer();
 			}
-
-			@Override
-			public void move(IFolder oldParent, IFolder newParent){
-				if (oldParent != this.eContainer)
-					throw new IllegalArgumentException();
-				this.eContainer = (InternalEObject) newParent;
-			}
+		@Override
+		public void move(IFolder oldFolder, IFolder newFolder) {
+			if (eNotificationRequired())
+				eNotify(new ENotificationImpl(this, Notification.MOVE, this.eStaticClass().getClassifierID(), this, this));
+			oldFolder.getElements().remove(this);
+			newFolder.getElements().add(this);
+		}
 
 }

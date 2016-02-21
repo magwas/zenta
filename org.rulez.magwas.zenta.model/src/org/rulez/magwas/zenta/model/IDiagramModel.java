@@ -63,4 +63,6 @@ public interface IDiagramModel extends IZentaModelElement, IDiagramModelContaine
 
     boolean isTemplate();
 
+	void move(IFolder oldFolder, IFolder newFolder);
+
 } // IDiagramModel
