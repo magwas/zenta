@@ -36,14 +36,16 @@ public class MoveObjectCommand extends Command {
     
     @Override
     public void undo() {
-        fNewParent.getElements().remove(fElement);
-        fOldParent.getElements().add(fOldPos, fElement);
+    	fElement.move(fNewParent,fOldParent);
+//    	fNewParent.getElements().remove(fElement);
+//    	fOldParent.getElements().add(fElement);
     }
     
     @Override
     public void redo() {
-        fOldParent.getElements().remove(fElement);
-        fNewParent.getElements().add(fElement);
+    	fElement.move(fOldParent,fNewParent);
+//    	fOldParent.getElements().remove(fElement);
+//    	fNewParent.getElements().add(fElement);
     }
     
     @Override

@@ -16,7 +16,6 @@ import org.rulez.magwas.zenta.model.IObjectClass;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
-import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.BasicObjectBase;
 
 public class ObjectClass extends BasicObjectBase implements IObjectClass {
@@ -29,36 +28,38 @@ public class ObjectClass extends BasicObjectBase implements IObjectClass {
 	}
 
 	@Override
-	public boolean isAllowedRelation(IBasicRelationship relclass, Direction direction) {
-		List<IBasicRelationship> alloweds = getAllowedRelations().get(direction);
+	public boolean isAllowedRelation(IBasicRelationship relclass, Direction direction, boolean includeBasic) {
+		List<IBasicRelationship> alloweds = getAllowedRelations(includeBasic).get(direction);
 		if(alloweds.contains(relclass))
 			return true;
 		return false;
 	}
 
 	@Override
-	public Map<Direction,NonNullList<IBasicRelationship>> getAllowedRelations() {
+	public Map<Direction,NonNullList<IBasicRelationship>> getAllowedRelations(boolean includeBasic) {
 		Map<Direction, NonNullList<IBasicRelationship>> ret = new HashMap<Direction,NonNullList<IBasicRelationship>>();
 		ret.put(Direction.SOURCE, new NonNullArrayList<IBasicRelationship>());
 		ret.put(Direction.TARGET, new NonNullArrayList<IBasicRelationship>());
-		ret.get(Direction.SOURCE).add(this.getMetamodel().getBuiltinRelationClass());
-		ret.get(Direction.TARGET).add(this.getMetamodel().getBuiltinRelationClass());
+		if ((!includeBasic) && "basicobject".equals(id))
+			return ret;
 		for(IAttribute att : getAttributesRecursively()) {
 			List<IBasicRelationship> list = ret.get(att.getDirection());
 			IBasicRelationship relation = (IBasicRelationship) att.getRelation();
-			addParents(Util.verifyNonNull(list), Util.verifyNonNull(relation));
+			addParents(list,relation, includeBasic);
 		}
 		return ret;
 	}
 	
-	private void addParents(List<IBasicRelationship> list, IBasicRelationship relation) {
+	private void addParents(List<IBasicRelationship> list, IBasicRelationship relation, boolean includeBasic) {
 		assert(relation != null);
 		assert(list != null);
+		if((!includeBasic) && relation.getId().equals("basicrelation"))
+			return;
 		if(!list.contains(relation))
 			list.add(relation);
 		IBasicRelationship ancestor = (IBasicRelationship) relation.getAncestor();
 		if(ancestor != null)
-			addParents(list,ancestor);
+			addParents(list,ancestor, includeBasic);
 	}
 
 
@@ -112,6 +113,9 @@ public class ObjectClass extends BasicObjectBase implements IObjectClass {
 	
 	@Override
 	public IBasicObject getDefiningElement() {
+		//FIXME horrible hack
+		if (id=="basicobject")
+			return this;
 		return ObjectClassMixin.getDefiningElement(this);
 	}
 

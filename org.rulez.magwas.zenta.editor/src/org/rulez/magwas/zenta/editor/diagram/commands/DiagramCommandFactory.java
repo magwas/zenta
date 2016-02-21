@@ -141,7 +141,7 @@ public final class DiagramCommandFactory {
         }
         
         // Check valid relations
-        if(vp.getValidRelationships((IBasicObject)parent, (IBasicObject)child).size() > 0)
+        if(vp.getValidRelationships((IBasicObject)parent, (IBasicObject)child, true).size() > 0)
         	return true;
 		return false;
     }

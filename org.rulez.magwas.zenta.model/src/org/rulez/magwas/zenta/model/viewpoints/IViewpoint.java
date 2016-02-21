@@ -45,12 +45,12 @@ public interface IViewpoint {
     String getName();
 
 	boolean isValidRelationshipStart(IBasicObject iZentaElement,
-			IBasicRelationship relationshipType);
+			IBasicRelationship relationshipType, boolean includeBasic);
 
-	List<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sourceObjectType, IBasicObject targetObjectType);
+	List<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sourceObjectType, IBasicObject targetObjectType, boolean includeBasic);
     
 	NonNullList<IBasicRelationship> getValidRelationships(IZentaElement sourceElement,
-			IZentaElement targetElement);
+			IZentaElement targetElement, boolean includeBasic);
 
 	List<IBasicRelationship> getSourceRelationClassesFor(
 			IDiagramModelZentaObject sourceDiagramModelObject);
@@ -72,7 +72,7 @@ public interface IViewpoint {
 	boolean isNestedConnectionTypeRelationship(IBasicRelationship relation);
 
 	boolean isValidRelationship(IBasicObject sourceclass,
-			IBasicObject targetclass, IBasicRelationship relationclass);
+			IBasicObject targetclass, IBasicRelationship relationclass, boolean includeBasic);
 
 	NonNullList<IBasicRelationship> getTargetRelationClassesFor(
 			IBasicObject targetclass);

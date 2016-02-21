@@ -590,4 +590,11 @@ public class FolderBase extends EObjectImpl implements IFolder {
 		return state;
 	}
 
+	@Override
+	public void move(IFolder oldParent, IFolder newParent){
+		if (oldParent != this.eContainer)
+			throw new IllegalArgumentException();
+		this.eContainer = (InternalEObject) newParent;
+	}
+
 } //Folder

@@ -320,7 +320,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
 
         IDiagramModel dm = source.getDiagramModel();
         IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(dm);
-        return vp.isValidRelationshipStart((IBasicObject)source.getZentaElement(), relationshipType);
+        return vp.isValidRelationshipStart((IBasicObject)source.getZentaElement(), relationshipType, true);
     }
     
     /**
@@ -335,7 +335,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
             IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(source);
             IZentaElement sourceElement = ((IDiagramModelZentaObject)source).getZentaElement();
             IZentaElement targetElement = ((IDiagramModelZentaObject)target).getZentaElement();
-            return vp.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)targetElement, rel);
+            return vp.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)targetElement, rel, true);
         }
         return true;
     }

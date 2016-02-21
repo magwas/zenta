@@ -161,6 +161,10 @@ public class TreeViewpointFilterProvider implements IPartListener {
      */
     public Color getTextColor(Object element) {
         if(isActive() && fActiveDiagramModel != null && element instanceof IZentaElement) {
+        	if (null == fActiveDiagramModel.eContainer()) {
+        		fActiveDiagramModel=null;
+                return ColorFactory.get(128, 128, 128);
+        	}
             IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(fActiveDiagramModel);
             if(viewpoint != null) {
                 // From same model as active diagram

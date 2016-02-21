@@ -84,6 +84,7 @@ public class MagicConnectionCreationToolExerciser extends
 				for(int i = 0 ; i < menu.getItemCount(); i++) {
 					MenuItem item = menu.getItem(i);
 					String name = start+item.getText();
+					System.out.println(name);
 					if(name.equals(menuitemName))
 						executeMenuItem(menu, item);
 					savedMenu.add(name);

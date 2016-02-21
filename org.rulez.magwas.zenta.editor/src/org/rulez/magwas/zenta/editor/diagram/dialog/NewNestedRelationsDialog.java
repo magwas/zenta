@@ -115,7 +115,7 @@ public class NewNestedRelationsDialog extends ExtendedTitleAreaDialog implements
             // Entry for "none"
             list.add(null);
             for(IBasicRelationship eClass : vp.getRelationClasses()) {
-                if(vp.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)targetElement, eClass)) {
+                if(vp.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)targetElement, eClass, false)) {
                     list.add(eClass); 
                 }
             }

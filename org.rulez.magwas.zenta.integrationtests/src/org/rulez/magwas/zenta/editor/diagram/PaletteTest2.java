@@ -9,29 +9,25 @@ import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteEntry;
 import org.junit.Test;
 import org.rulez.magwas.nonnul.NonNullListIterator;
-import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.integrationtests.HaveGUI;
 import org.rulez.magwas.zenta.integrationtests.ModelAndEditPartTestData;
 import org.rulez.magwas.zenta.integrationtests.UITestWindow;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.model.testutils.TestModel;
 
-public class PaletteTest2 {
+public class PaletteTest2 extends EditorTest {
 
 	@Test
 	@HaveGUI(waitUser = false)
 	public void All_bjectClasses_are_on_the_palette() {
+		ZentaDiagramEditor ed = openDiagramEditorWithFirstGeneration();
+
 		UITestWindow win = new UITestWindow();
-		TestModel builder = new TestModel();
-		builder.createFirstGeneration();
+
 		builder.createSecondGenerationWithrelation(builder.getTemplateDiagram());
 		builder.createThirdGenerationWithRelation();
-		IEditorModelManager.INSTANCE.openModel(builder.getModel());
 		
-		ZentaDiagramEditor ed = (ZentaDiagramEditor) EditorManager.openDiagramEditor(builder.getTemplateDiagram());
 		ZentaDiagramEditorPalette palette = ed.getPaletteRoot();
 		PaletteContainer objectsgroup = palette._getObjectsGroup();
 		assertNotNull(objectsgroup);

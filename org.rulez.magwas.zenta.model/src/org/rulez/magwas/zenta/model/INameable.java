@@ -58,5 +58,6 @@ public interface INameable extends EObject {
 	UndoState delete(UndoState state);
 	boolean hasDiagramReferences();
 	boolean isDeleted();
+	public void move(IFolder oldParent, IFolder newParent);
 
 } // INameable

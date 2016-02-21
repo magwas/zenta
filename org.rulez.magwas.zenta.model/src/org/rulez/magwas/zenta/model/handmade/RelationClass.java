@@ -166,12 +166,12 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 
 	@Override
 	public boolean isAllowedRelation(IBasicRelationship relclass,
-			Direction direction) {
+			Direction direction, boolean includeBasic) {
 		throw new RuntimeException("We are not that abstract yet");
 	}
 
 	@Override
-	public Map<Direction, NonNullList<IBasicRelationship>> getAllowedRelations() {
+	public Map<Direction, NonNullList<IBasicRelationship>> getAllowedRelations(boolean includeBasic) {
 		throw new RuntimeException("We are not that abstract yet");
 	}
 

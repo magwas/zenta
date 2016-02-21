@@ -18,8 +18,8 @@ public interface IObjectClass extends IHelpHintProvider {
 	void setAsTemplate(ITemplate template);
 	IBasicObject getDefiningElement();
 
-	public boolean isAllowedRelation(IBasicRelationship relclass, Direction direction);
-	public Map<Direction,NonNullList<IBasicRelationship>> getAllowedRelations();
+	public boolean isAllowedRelation(IBasicRelationship relclass, Direction direction, boolean includeBasic);
+	public Map<Direction,NonNullList<IBasicRelationship>> getAllowedRelations(boolean includeBasic);
 
 	IMetamodel getMetamodel();
 	

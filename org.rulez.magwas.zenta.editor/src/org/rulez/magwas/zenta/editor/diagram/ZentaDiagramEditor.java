@@ -248,6 +248,8 @@ implements IZentaDiagramEditor {
             if(msg.getNotifier() == getModel() && msg.getFeature() == IZentaPackage.Literals.ZENTA_DIAGRAM_MODEL__VIEWPOINT) {
                 setViewpoint();
             }
+        } else if((msg.getOldValue() == this.fDiagramModel) && (msg.getEventType() == Notification.REMOVE)) {
+        	getSite().getPage().closeEditor(this, false);
         }
     }
     

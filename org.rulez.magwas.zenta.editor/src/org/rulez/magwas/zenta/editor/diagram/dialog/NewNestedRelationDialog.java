@@ -165,7 +165,7 @@ public class NewNestedRelationDialog extends ExtendedTitleAreaDialog {
             
             
             public Object[] getElements(Object parent) {
-            	fValidRelations = vp.getValidRelationships(fParentElement, fChildElement);
+            	fValidRelations = vp.getValidRelationships(fParentElement, fChildElement, false);
                 return fValidRelations.toArray();
             }
         }

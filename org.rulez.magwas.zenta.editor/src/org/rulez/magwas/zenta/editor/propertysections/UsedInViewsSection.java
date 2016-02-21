@@ -117,7 +117,7 @@ public class UsedInViewsSection extends AbstractZentaPropertySection {
                 Object o = ((IStructuredSelection)event.getSelection()).getFirstElement();
                 if(o instanceof IDiagramModel) {
                     IDiagramModel diagramModel = (IDiagramModel)o;
-                    IDiagramModelEditor editor = EditorManager.openDiagramEditor(diagramModel);
+                    IDiagramModelEditor editor = (IDiagramModelEditor) EditorManager.openDiagramEditor(diagramModel);
                     if(editor instanceof IZentaDiagramEditor) {
                         ((IZentaDiagramEditor)editor).selectElements(new IZentaElement[] { fZentaElement });
                     }

@@ -72,29 +72,29 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public boolean isValidRelationshipStart(IBasicObject sourceElement,
-			IBasicRelationship relationshipType) {
+			IBasicRelationship relationshipType, boolean includeBasic) {
 		return getSourceRelationClassesFor(sourceElement).contains(relationshipType);
 	}
 
 	@Override
 	public boolean isValidRelationship(IBasicObject sourceElement,
-			IBasicObject targetElement, IBasicRelationship relation) {
-		return (getValidRelationships(sourceElement,targetElement).contains(relation));
+			IBasicObject targetElement, IBasicRelationship relation, boolean includeBasic) {
+		return (getValidRelationships(sourceElement,targetElement, includeBasic).contains(relation));
 	}
 
 	@Override
 	public NonNullList<IBasicRelationship> getValidRelationships(
-			IZentaElement sourceElement, IZentaElement targetElement) {
+			IZentaElement sourceElement, IZentaElement targetElement, boolean includeBasic) {
 		IBasicObject sc = (IBasicObject) sourceElement;
 		IBasicObject tc = (IBasicObject) targetElement;
-		return getValidRelationshipsByClass(sc.getDefiningElement(),tc.getDefiningElement());
+		return getValidRelationshipsByClass(sc.getDefiningElement(),tc.getDefiningElement(), includeBasic);
 	}
 
 	@Override
 	public NonNullList<IBasicRelationship> getValidRelationshipsByClass(IBasicObject sc,
-			IBasicObject tc) {
-		NonNullList<IBasicRelationship> sourcerels = sc.getAllowedRelations().get(Direction.SOURCE);
-		NonNullList<IBasicRelationship> destrels = tc.getAllowedRelations().get(Direction.TARGET);
+			IBasicObject tc, boolean includeBasic) {
+		NonNullList<IBasicRelationship> sourcerels = sc.getAllowedRelations(includeBasic).get(Direction.SOURCE);
+		NonNullList<IBasicRelationship> destrels = tc.getAllowedRelations(includeBasic).get(Direction.TARGET);
 		NonNullList<IBasicRelationship> ret = new NonNullArrayList<IBasicRelationship>();
 		for(IBasicRelationship rel : sourcerels) {
 			if(destrels.contains(rel) && !ret.contains(rel))
@@ -125,7 +125,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	
 	@Override
 	public NonNullList<IBasicRelationship> getSourceRelationClassesFor(IBasicObject startElement) {
-		return startElement.getAllowedRelations().get(Direction.SOURCE);
+		return startElement.getAllowedRelations(true).get(Direction.SOURCE);
 	}
 
 	@Override
@@ -193,13 +193,13 @@ public abstract class AbstractViewpoint implements IViewpoint {
 
 	@Override
 	public NonNullList<IBasicObject> getAllowedTargets(IBasicRelationship oc) {
-	    List<IBasicRelationship> allowedRelations = oc.getAllowedRelations().get(Direction.SOURCE);
+	    List<IBasicRelationship> allowedRelations = oc.getAllowedRelations(true).get(Direction.SOURCE);
 	    NonNullList<IBasicObject> canConnectTo = new NonNullArrayList<IBasicObject>();
 	    for(IBasicRelationship rel : allowedRelations)
 	        for(IBasicObject targetclass : metamodel.getObjectClasses()) {
 	            boolean alreadyContains = canConnectTo.contains(targetclass);
 	            if(!alreadyContains &&
-	               ((IBasicRelationship)targetclass).getAllowedRelations().get(Direction.TARGET).contains(rel))
+	               ((IBasicRelationship)targetclass).getAllowedRelations(true).get(Direction.TARGET).contains(rel))
 	                canConnectTo.add(targetclass);
 	        }
 	    return canConnectTo;
@@ -208,7 +208,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 	@Override
 	public NonNullList<IBasicObject> getAllowedTargets(IBasicObject oc) {
 		NonNullList<IBasicObject> ret = new NonNullArrayList<IBasicObject>();
-		Map<Direction, NonNullList<IBasicRelationship>> rels = oc.getAllowedRelations();
+		Map<Direction, NonNullList<IBasicRelationship>> rels = oc.getAllowedRelations(true);
 		for(IBasicRelationship rel : rels.get(Direction.SOURCE)) {
 			for(IBasicObject target: rel.getAllowedTargets())
 				if(!ret.contains(target))

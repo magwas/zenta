@@ -277,7 +277,7 @@ public class ModelTest {
 		builder.createSecondGeneration(builder.getDiagramModel());
 		
 		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(Util.verifyNonNull(builder.getDiagramModel()));
-		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getSecondgenSource(), builder.getSecondgenTarget());
+		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getSecondgenSource(), builder.getSecondgenTarget(), true);
 		builder.assertIsAllFirstGenRelations(rcs);
 	}
 
@@ -288,7 +288,7 @@ public class ModelTest {
 		builder.createSecondGeneration(builder.getTemplateDiagram());
 		
 		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(Util.verifyNonNull(builder.getTemplateDiagram()));
-		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getSecondgenSource(), builder.getSecondgenTarget());
+		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getSecondgenSource(), builder.getSecondgenTarget(), true);
 		builder.assertIsAllFirstGenRelations(rcs);
 	}
 
@@ -368,7 +368,7 @@ public class ModelTest {
 
 		
 		
-		NonNullList<IBasicRelationship> oc1relsafter = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
+		NonNullList<IBasicRelationship> oc1relsafter = builder.secondgenSource.getAllowedRelations(true).get(Direction.SOURCE);
 		builder.assertIsAllSecondGenRelations(oc1relsafter);
 
 		NonNullList<IBasicRelationship> estartrcs = vp.getSourceRelationClassesFor(builder.getThirdGenSource());
@@ -376,7 +376,7 @@ public class ModelTest {
 		
 		
 		
-		NonNullList<IBasicRelationship> oc1relsafter2 = builder.secondgenSource.getAllowedRelations().get(Direction.SOURCE);
+		NonNullList<IBasicRelationship> oc1relsafter2 = builder.secondgenSource.getAllowedRelations(true).get(Direction.SOURCE);
 		builder.assertIsAllSecondGenRelations(oc1relsafter2);
 
 		NonNullList<IBasicRelationship> etargetrcs = vp.getTargetRelationClassesFor(builder.getThirdGenTarget());
@@ -385,7 +385,7 @@ public class ModelTest {
 		NonNullList<IBasicObject> etargets = vp.getAllowedTargets(builder.getSecondgenSource());
 		builder.assertIsAllSecondGenObjects(etargets);
 		
-		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getThirdGenSource(), builder.getThirdGenTarget());
+		NonNullList<IBasicRelationship> rcs = vp.getValidRelationships(builder.getThirdGenSource(), builder.getThirdGenTarget(), true);
 		builder.assertIsAllSecondGenRelations(rcs);
 	}
 

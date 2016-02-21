@@ -400,5 +400,4 @@ public class TestModel {
 	public void setEmptyDiagramModel(IZentaDiagramModel emptyDiagramModel) {
 		this.emptyDiagramModel = emptyDiagramModel;
 	}
-	
 }

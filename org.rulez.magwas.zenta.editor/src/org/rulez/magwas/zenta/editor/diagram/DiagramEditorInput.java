@@ -12,6 +12,7 @@ import org.eclipse.ui.IPersistableElement;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IZentaModel;
 
 
 
@@ -77,7 +78,8 @@ implements IEditorInput, IPersistableElement {
     public IPersistableElement getPersistable() {
         
         // Not saved, or a new file based on a template
-        if(fModel.getZentaModel().getFile() == null) {
+        IZentaModel zentaModel = fModel.getZentaModel();
+		if((zentaModel == null) || (zentaModel.getFile() == null)) {
             return null;
         }
         

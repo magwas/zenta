@@ -14,6 +14,7 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.ErrorEditorPart;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorFactoryExtensionHandler;
 import org.rulez.magwas.zenta.editor.diagram.DiagramEditorInput;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
@@ -55,7 +56,7 @@ public class EditorManager {
      * Open the Diagram Editor for a given DiagramModel Model
      * @param name
      */
-    public static IDiagramModelEditor openDiagramEditor( IDiagramModel model) {
+    public static IEditorPart openDiagramEditor( IDiagramModel model) {
         if(model == null || model.eContainer() == null)
         	throw new IllegalArgumentException();
 
@@ -84,8 +85,7 @@ public class EditorManager {
         
         IEditorPart part = openEditor(editorInput, id);
         
-        // Check it actually is IDiagramModelEditor, it could be an org.eclipse.ui.internal.ErrorEditorPart if an error occurs
-        return (IDiagramModelEditor) part;
+        return part;
     }
     
     /**

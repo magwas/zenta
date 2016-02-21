@@ -319,7 +319,8 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
      */
     
     public IZentaModel getZentaModel() {
-        return ((IZentaModelElement)eContainer()).getZentaModel();
+        IZentaModelElement container = (IZentaModelElement)eContainer();
+		return container.getZentaModel();
     }
 
     /**
@@ -750,6 +751,13 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	        EList<IFolder> folders = folder.getFolders();
 			childFolders(element, type, relationships, folders);
 	    }
+
+		@Override
+		public void move(IFolder oldParent, IFolder newParent){
+			if (oldParent != this.eContainer)
+				throw new IllegalArgumentException();
+			this.eContainer = (InternalEObject) newParent;
+		}
 
 
 }

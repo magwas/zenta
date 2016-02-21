@@ -64,7 +64,7 @@ public abstract class AbstractDiagramModelObjectFigureTests {
         editorModeManager.openModel(model);
         dm = model.getDefaultDiagramModel();
         assertNotNull(dm);
-        editor = EditorManager.openDiagramEditor(dm);
+        editor = (IDiagramModelEditor) EditorManager.openDiagramEditor(dm);
     }
 
     @Before

@@ -271,7 +271,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		IViewpoint viewpoint = ViewpointsManager.INSTANCE.getViewpoint(zdm);
 		for(IBasicRelationship relationshipType : viewpoint.getSourceRelationClassesFor(sourceDiagramModelObject)) {
 			IBasicObject zentaElement = (IBasicObject) sourceDiagramModelObject.getZentaElement();
-			if(viewpoint.isValidRelationshipStart(zentaElement, relationshipType)) {
+			if(viewpoint.isValidRelationshipStart(zentaElement, relationshipType, false)) {
 				MenuItem item = addConnectionAction(menu, relationshipType);
 				Menu subMenu = new Menu(item);
 				item.setMenu(subMenu);
@@ -303,7 +303,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 				continue;
 			}
 
-			if(viewPoint.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)type, relationshipType)) {
+			if(viewPoint.isValidRelationship((IBasicObject)sourceElement, (IBasicObject)type, relationshipType, false)) {
 				added = true;
 				addElementAction(menu, type);
 			}
@@ -329,7 +329,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 			Menu subMenu = new Menu(item);
 			item.setMenu(subMenu);
 			subMenu.setData(targetObjectType);
-			List<IBasicRelationship> validRelationships = viewPoint.getValidRelationships(oc, targetObjectType);
+			List<IBasicRelationship> validRelationships = viewPoint.getValidRelationships(oc, targetObjectType, false);
 			for(IBasicRelationship typeRel : validRelationships)
 				addConnectionAction(subMenu, typeRel);
 			if(subMenu.getItemCount() == 0) {
@@ -366,7 +366,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	}
 
 	private void addConnectionActions(Menu menu, IZentaElement sourceElement, IZentaElement targetElement) {
-		for(IBasicRelationship type : viewPoint.getValidRelationships(sourceElement, targetElement)) {
+		for(IBasicRelationship type : viewPoint.getValidRelationships(sourceElement, targetElement, false)) {
 			addConnectionAction(menu, type);
 		}
 	}

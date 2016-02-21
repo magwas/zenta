@@ -763,7 +763,10 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 	public UndoState prepareDelete() {
 		throw new IllegalArgumentException();
 	}
-
+	@Override
+	public void move(IFolder oldParent, IFolder newParent){
+		throw new IllegalArgumentException();
+	}
 
 
 } //ZentaModel

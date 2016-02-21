@@ -137,26 +137,13 @@ public class ZentaDiagramEditorPaletteTest {
 		ModelAndEditPartTestData data = new ModelAndEditPartTestData();
 		BasicObjectEditPart spart = (BasicObjectEditPart) data.getEditPartFor("b2608459");
 		assertEquals(1,spart.getModel().getSourceConnections().size());
-		tool = new MagicConnectionCreationToolExerciser(spart, "Basic Object/Basic Relation", data);
+		tool = new MagicConnectionCreationToolExerciser(spart, "Procedure/TriesToDo", data);
 		assertFalse(tool.failed);
 		win.showWindow();
 		assertEquals(2,spart.getModel().getSourceConnections().size());
 		Set<String> expectedMenu = new HashSet<String>(Arrays.asList(
-				"Basic Object",
-				"Basic Object/Basic Relation",
-				"Data",
-				"Data/Basic Relation",
-				"ProcessStep",
-				"ProcessStep/Basic Relation",
-				"NotActuallyDocumentation",
-				"NotActuallyDocumentation/Basic Relation",
 				"Procedure",
-				"Procedure/Basic Relation",
-				"Procedure/TriesToDo",
-				"User",
-				"User/Basic Relation",
-				"Title",
-				"Title/Basic Relation"
+				"Procedure/TriesToDo"
 				));
 
 		assertEquals(expectedMenu,tool.getMenu());
@@ -177,26 +164,14 @@ public class ZentaDiagramEditorPaletteTest {
 		assertNotNull(spart);
 
 		assertEquals(0,spart.getModel().getSourceConnections().size());
-		tool = new MagicConnectionCreationToolExerciser(spart, "Basic Object/Basic Relation", testdata);
+		tool = new MagicConnectionCreationToolExerciser(spart, "NotActuallyDocumentation/describes", testdata);
 		assertFalse(tool.failed);
 		assertEquals(1,spart.getModel().getSourceConnections().size());
 		Set<String> expectedMenu = new HashSet<String>(Arrays.asList(
-				"Basic Object",
-				"Basic Object/Basic Relation",
-				"User",
-				"User/Basic Relation",
-				"Data",
-				"Data/Basic Relation",
-				"Data/uses",
-				"Procedure",
-				"Procedure/Basic Relation",
-				"ProcessStep",
-				"ProcessStep/Basic Relation",
 				"NotActuallyDocumentation",
-				"NotActuallyDocumentation/Basic Relation",
 				"NotActuallyDocumentation/describes",
-				"Title",
-				"Title/Basic Relation"
+				"Data",
+				"Data/uses"
 				));
 		assertEquals(expectedMenu,tool.getMenu());
 		IEditorModelManager.INSTANCE.saveModel(testdata.getModel());

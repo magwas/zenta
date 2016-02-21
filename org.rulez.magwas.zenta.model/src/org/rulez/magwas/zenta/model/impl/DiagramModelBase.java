@@ -311,7 +311,8 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
      * @generated NOT
      */
     public IZentaModel getZentaModel() {
-        return ((IZentaModelElement)eContainer()).getZentaModel();
+        IZentaModelElement container = (IZentaModelElement)eContainer();
+		return container.getZentaModel();
     }
 
     /**
@@ -757,6 +758,8 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
 	@Override
 	public UndoState delete(UndoState save) {
 		ElementState state = (ElementState) save;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.REMOVE, IZentaPackage.DIAGRAM_MODEL, this, this));
 		state.folder.getElements().remove(this);
 		return state;
 	}
@@ -767,6 +770,13 @@ public abstract class DiagramModelBase extends EObjectImpl implements IDiagramMo
 		state.element = this;
 		state.folder = (IFolder) eContainer();
 		return state;
+	}
+
+	@Override
+	public void move(IFolder oldParent, IFolder newParent){
+		if (oldParent != this.eContainer)
+			throw new IllegalArgumentException();
+		this.eContainer = (InternalEObject) newParent;
 	}
 
 

@@ -56,7 +56,7 @@ public class TotalViewpointTest {
 		IBasicObject sourceElement = (IBasicObject) testdata.getElementById("ea94cf6c");//User
 		IDiagramModelZentaObject sourceDiagElement = (IDiagramModelZentaObject) testdata.getDMOById("b2608459");
 		IBasicObject targetElement = (IBasicObject) testdata.getElementById("f33bd0d2");//Process
-		List<IBasicRelationship> rels = vp.getValidRelationships(sourceElement, targetElement);
+		List<IBasicRelationship> rels = vp.getValidRelationships(sourceElement, targetElement, true);
 		List<String> expectedList = Arrays.asList("Basic Relation","TriesToDo");
 		ArrayList<String> actualList = getClassNames(rels);
 		ModelTestUtils.assertEqualsAsSet(expectedList,actualList);
@@ -71,7 +71,7 @@ public class TotalViewpointTest {
 		IZentaElement e1 = testdata.getElementById(procedureId);
 		String processStepId = "c3d03626";
 		IZentaElement e2 = testdata.getElementById(processStepId);
-		List<IBasicRelationship> valids = vp.getValidRelationships(e1, e2);
+		List<IBasicRelationship> valids = vp.getValidRelationships(e1, e2, true);
 		assertEquals(1,valids.size());
 		assertEquals("Basic Relation",valids.get(0).getName());
 	}
@@ -127,7 +127,7 @@ public class TotalViewpointTest {
 	public void Allowed_connections_contain_Basic_Relationship() {
 		IBasicObject dataElement = (IBasicObject) testdata.getElementById("23138a61");
 		IBasicObject processStepElement = (IBasicObject) testdata.getElementById("c3d03626");
-		Collection<IBasicRelationship> targets = vp.getValidRelationships(dataElement, processStepElement);
+		Collection<IBasicRelationship> targets = vp.getValidRelationships(dataElement, processStepElement, true);
 		HashSet<String> expectedTargets = new HashSet<String>(Arrays.asList(
 				"Basic Relation"));
 		ModelTestUtils.assertEqualsAsSet(expectedTargets,ModelTestUtils.definingNames(targets));
