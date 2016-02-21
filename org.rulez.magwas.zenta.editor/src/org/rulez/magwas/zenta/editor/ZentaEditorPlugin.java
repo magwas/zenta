@@ -16,9 +16,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.model.IEditorModelInterface;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
@@ -162,6 +164,11 @@ public class ZentaEditorPlugin extends AbstractUIPlugin implements IEditorModelI
     
 	public void bailOut() {
 		PlatformUI.getWorkbench().close();
+	}
+
+	@Override
+	public void removeModel(IZentaModel model) {
+		EditorModelManagerNoGUI.INSTANCE.removeModelWithoutDirtyCheck(model);
 	}
 
 }

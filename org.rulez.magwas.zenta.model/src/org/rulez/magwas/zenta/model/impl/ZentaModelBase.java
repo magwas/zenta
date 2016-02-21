@@ -756,13 +756,13 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
 
 	@Override
 	public UndoState delete(UndoState state) {
+		IZentaFactory.eINSTANCE.getEditorInterface().removeModel(this);
 		return state;
 	}
 	
 	@Override
 	public UndoState prepareDelete() {
-		throw new IllegalArgumentException();
-//		return new ModelDeleteState(this);
+		return new ModelDeleteState(this);
 	}
 	
 	@Override

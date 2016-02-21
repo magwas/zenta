@@ -30,7 +30,6 @@ import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerExc
 import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
 import org.rulez.magwas.zenta.editor.model.compatibility.LaterModelVersionException;
 import org.rulez.magwas.zenta.editor.model.compatibility.ModelCompatibility;
-import org.rulez.magwas.zenta.editor.model.impl.Messages;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
@@ -44,6 +43,7 @@ import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.editor.model.impl.Messages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
