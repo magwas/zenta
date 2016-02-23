@@ -10,9 +10,10 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPersistableElement;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -42,7 +43,7 @@ implements IEditorInput, IPersistableElement {
     }
 
     public ImageDescriptor getImageDescriptor() {
-        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DIAGRAM_16);
+        return IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DIAGRAM_16);
     }
 
     public String getName() {

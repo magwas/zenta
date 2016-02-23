@@ -8,8 +8,9 @@ package org.rulez.magwas.zenta.editor.views.tree.actions;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.views.tree.TreeSelectionSynchroniser;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -22,7 +23,7 @@ public class LinkToEditorAction extends Action {
     
     public LinkToEditorAction() {
         super(Messages.LinkToEditorAction_0, IAction.AS_CHECK_BOX);
-        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_LINKED_16));
+        setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_LINKED_16));
         setChecked(Preferences.doLinkView());
     }
     

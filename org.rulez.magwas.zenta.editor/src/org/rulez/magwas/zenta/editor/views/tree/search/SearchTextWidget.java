@@ -15,9 +15,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -42,7 +43,7 @@ public class SearchTextWidget extends Composite {
             }
             else if(fCancelLabel == null) {
                 fCancelLabel = new Label(SearchTextWidget.this, SWT.NULL);
-                fCancelLabel.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_CANCEL_SEARCH_16));
+                fCancelLabel.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_CANCEL_SEARCH_16));
                 fCancelLabel.setBackground(fTextControl.getBackground());
                 
                 GridData gd = new GridData(SWT.NONE, SWT.FILL, false, true);
@@ -72,7 +73,7 @@ public class SearchTextWidget extends Composite {
         setLayout(layout);
         
         Label label = new Label(this, SWT.NULL);
-        label.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_SEARCH_16));
+        label.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_SEARCH_16));
         GridData gd = new GridData(SWT.NONE, SWT.FILL, false, true);
         label.setLayoutData(gd);
         

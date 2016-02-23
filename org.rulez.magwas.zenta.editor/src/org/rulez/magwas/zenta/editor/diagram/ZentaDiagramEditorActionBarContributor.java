@@ -17,7 +17,8 @@ import org.rulez.magwas.zenta.editor.actions.ZentaEditorActionFactory;
 import org.rulez.magwas.zenta.editor.diagram.actions.CreateDerivedRelationAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.DeleteFromModelAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.ShowStructuralChainsAction;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 
@@ -39,13 +40,13 @@ extends AbstractDiagramEditorActionBarContributor {
         
         // Show Structural Chains
         RetargetAction retargetAction = new LabelRetargetAction(ShowStructuralChainsAction.ID, ShowStructuralChainsAction.DEFAULT_TEXT);
-        retargetAction.setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DERIVED_16));
+        retargetAction.setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DERIVED_16));
         addRetargetAction(retargetAction);
         
         // Create Derived Relation
         retargetAction = new RetargetAction(CreateDerivedRelationAction.ID, CreateDerivedRelationAction.TEXT);
-        retargetAction.setImageDescriptor(new DecorationOverlayIcon(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DERIVED_SM_16),
-                        IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NEW_OVERLAY_16), IDecoration.TOP_LEFT));
+        retargetAction.setImageDescriptor(new DecorationOverlayIcon(IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_DERIVED_SM_16),
+                        IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NEW_OVERLAY_16), IDecoration.TOP_LEFT));
         addRetargetAction(retargetAction);
         
         // Delete From Model

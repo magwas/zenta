@@ -46,7 +46,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -57,6 +57,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils.TooComplicatedException;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -78,7 +79,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         setText(TEXT);
         setId(ID);
         setSelectionProvider((ISelectionProvider)part.getAdapter(GraphicalViewer.class));
-        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DERIVED_16));
+        setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DERIVED_16));
     }
 
     @Override
@@ -268,7 +269,7 @@ public class CreateDerivedRelationAction extends SelectionAction {
         protected void configureShell(Shell shell) {
             super.configureShell(shell);
             shell.setText(Messages.CreateDerivedRelationAction_6);
-            shell.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DERIVED_16));
+            shell.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_DERIVED_16));
         }
         
         @Override

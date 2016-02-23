@@ -19,8 +19,8 @@ import org.rulez.magwas.zenta.editor.diagram.tools.FormatPainterToolEntry;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionCreationTool;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.tools.PanningSelectionExtendedTool;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IObjectClass;
@@ -31,6 +31,7 @@ import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 
 public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
@@ -238,8 +239,8 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	                Messages.ZentaDiagramEditorPalette_2,
 	                Messages.ZentaDiagramEditorPalette_3,
 	                new ZentaDiagramModelFactoryNonClassed(IZentaPackage.eINSTANCE.getDiagramModelNote()),
-	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16),
-	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16));
+	                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16),
+	                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16));
 	        group.add(noteEntry);
 		}
 		private void createGroupObjectEntry(PaletteContainer group) {
@@ -247,8 +248,8 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 	                Messages.ZentaDiagramEditorPalette_4,
 	                Messages.ZentaDiagramEditorPalette_5,
 	                new ZentaDiagramModelFactoryNonClassed(IZentaPackage.eINSTANCE.getDiagramModelGroup()),
-	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16),
-	                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16));
+	                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16),
+	                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16));
 	        group.add(groupEntry);
 		}
 		private void createNoteConnection(PaletteContainer group) {
@@ -289,8 +290,8 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 		            Messages.ZentaDiagramEditorPalette_14,
 		            Messages.ZentaDiagramEditorPalette_15,
 		            new MagicConnectionModelFactory(folder),
-		            IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_MAGIC_CONNECTION_16),
-		            IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_MAGIC_CONNECTION_16));
+		            IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_MAGIC_CONNECTION_16),
+		            IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_MAGIC_CONNECTION_16));
 		    
 		    magicConnectionEntry.setToolClass(MagicConnectionCreationTool.class);
 		    magicConnectionEntry.setToolProperty(AbstractTool.PROPERTY_UNLOAD_WHEN_FINISHED, true);

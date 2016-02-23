@@ -13,10 +13,11 @@ import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.RGB;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -27,11 +28,11 @@ import org.rulez.magwas.zenta.model.IDiagramModelObject;
  */
 public class FormatPainterInfo {
     
-    protected static ImageData cursorImageData = IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.CURSOR_IMG_FORMAT_PAINTER).getImageData();
+    protected static ImageData cursorImageData = IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.CURSOR_IMG_FORMAT_PAINTER).getImageData();
     
     protected static Cursor defaultCursor = new Cursor(
             null,
-            IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.CURSOR_IMG_FORMAT_PAINTER_GREY).getImageData(),
+            IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.CURSOR_IMG_FORMAT_PAINTER_GREY).getImageData(),
             0,
             cursorImageData.height - 1);
     

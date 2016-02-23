@@ -19,11 +19,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
 import org.jdom.Element;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 import uk.ac.bolton.jdom.JDOMUtils;
@@ -103,7 +104,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
 	public Image imageByKyeOrDefault() {
 		Image tni = fKeyThumbnailImage;
 		if(tni == null) {
-            return IZentaImages.ImageFactory.getImage(IZentaImages.DEFAULT_MODEL_THUMB);
+            return IZentaUIImages.ImageFactory.getImage(IZentaImages.DEFAULT_MODEL_THUMB);
         }
         else {
             return tni;

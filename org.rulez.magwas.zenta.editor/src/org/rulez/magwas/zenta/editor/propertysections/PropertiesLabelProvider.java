@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor.propertysections;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -47,7 +48,7 @@ public class PropertiesLabelProvider implements ILabelProvider {
             element = ((IDiagramModelZentaConnection)element).getRelationship();
         }
 
-        return ZentaLabelProvider.INSTANCE.getImage(element);
+        return ZentaLabelProvider.INSTANCE.getImage((EObject) element);
     }
 
     public String getText(Object element) {
@@ -81,7 +82,7 @@ public class PropertiesLabelProvider implements ILabelProvider {
 
 	
 	private String checkTheMainLabelProvider(Object element, String ret) {
-        String text = ZentaLabelProvider.INSTANCE.getLabel(element);
+        String text = ZentaLabelProvider.INSTANCE.getLabel((EObject) element);
         if(StringUtils.isSet(text)) {
             ret = StringUtils.escapeAmpersandsInText(text);
         }

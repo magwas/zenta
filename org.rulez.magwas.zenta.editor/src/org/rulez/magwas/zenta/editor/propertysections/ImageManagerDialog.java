@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -56,10 +57,11 @@ import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.INameable;
 
 
@@ -93,7 +95,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
 
     public ImageManagerDialog(Shell parentShell, IZentaModel selectedModel, String selectedImagePath) {
         super(parentShell, "ImageManagerDialog"); //$NON-NLS-1$
-        setTitleImage(IZentaImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setTitleImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
         setShellStyle(getShellStyle() | SWT.RESIZE);
         
         fSelectedModel = selectedModel;
@@ -448,7 +450,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             
             @Override
             public Image getImage(Object element) {
-                return ZentaLabelProvider.INSTANCE.getImage(element);
+                return ZentaLabelProvider.INSTANCE.getImage((EObject) element);
             }
         }
     }

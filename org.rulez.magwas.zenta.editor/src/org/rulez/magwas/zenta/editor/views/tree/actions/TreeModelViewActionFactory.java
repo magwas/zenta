@@ -16,7 +16,7 @@ import org.eclipse.jface.action.IAction;
 import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
@@ -29,6 +29,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -121,7 +122,7 @@ public class TreeModelViewActionFactory {
             }
         };
 
-        action.setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DIAGRAM_16));
+        action.setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DIAGRAM_16));
         return action;
     }
     
@@ -144,7 +145,7 @@ public class TreeModelViewActionFactory {
             }
         };
 
-        action.setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_SKETCH_16));
+        action.setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_SKETCH_16));
         return action;
     }
 

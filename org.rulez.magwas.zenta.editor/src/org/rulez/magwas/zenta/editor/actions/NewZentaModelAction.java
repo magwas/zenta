@@ -8,12 +8,13 @@ package org.rulez.magwas.zenta.editor.actions;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.editor.ui.services.UIRequestManager;
 import org.rulez.magwas.zenta.editor.views.tree.TreeEditElementRequest;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 /**
@@ -27,7 +28,7 @@ implements IWorkbenchAction
 {
     
     public NewZentaModelAction() {
-        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NEW_FILE_16));
+        setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NEW_FILE_16));
         setText(Messages.NewZentaModelAction_0);
         setToolTipText(Messages.NewZentaModelAction_1);
         setId("org.rulez.magwas.zenta.editor.action.newModel"); //$NON-NLS-1$

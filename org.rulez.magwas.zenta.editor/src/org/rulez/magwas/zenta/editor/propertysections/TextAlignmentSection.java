@@ -18,8 +18,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.TextAlignmentCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.ITextAlignedEditPart;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.ILockable;
 
@@ -88,15 +89,15 @@ public class TextAlignmentSection extends AbstractZentaPropertySection {
         }
         
         // Left Button
-        fAlignmentButtons[0].setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_LEFT));
+        fAlignmentButtons[0].setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_LEFT));
         fAlignmentButtons[0].setData(IFontAttribute.TEXT_ALIGNMENT_LEFT);
 
         // Center Button
-        fAlignmentButtons[1].setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_CENTER));
+        fAlignmentButtons[1].setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_CENTER));
         fAlignmentButtons[1].setData(IFontAttribute.TEXT_ALIGNMENT_CENTER);
 
         // Right Button
-        fAlignmentButtons[2].setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_RIGHT));
+        fAlignmentButtons[2].setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_ALIGN_TEXT_RIGHT));
         fAlignmentButtons[2].setData(IFontAttribute.TEXT_ALIGNMENT_RIGHT);
         
         // Help

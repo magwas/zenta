@@ -14,7 +14,6 @@ import org.eclipse.swt.graphics.RGB;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
-import org.rulez.magwas.zenta.editor.ui.factory.IElementUIProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -28,12 +27,16 @@ import org.rulez.magwas.zenta.model.util.LogUtil;
  * 
  * @author Phillip Beauvoir
  */
-public class ColorFactory {
+public class ColorFactory {//FIXME: move down logic to model layer, use string representation
     
     public static final Color COLOR_BUSINESS = new Color(null, 255, 255, 181);
 
     private static final Color DEFAULT_LINE_COLOR = new Color(null, 0, 0, 0);
-    
+
+    public static final String COLOR_STRING_BUSINESS = "#FFFFB5";
+
+    private static final String DEFAULT_LINE_COLOR_STRING = "#000000";
+
     /**
      * Color Registry
      */
@@ -50,7 +53,7 @@ public class ColorFactory {
     
     public static Color get(String rgbValue) {
         if(rgbValue == null) {
-            return null;
+            return null;//FIXME throw new IllegalArgmentException();
         }
         
         if(!ColorRegistry.hasValueFor(rgbValue)) {

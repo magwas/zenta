@@ -122,12 +122,12 @@ public class NavigatorViewer extends TreeViewer {
         
         @Override
         public String getText(Object element) {
-            return ZentaLabelProvider.INSTANCE.getLabel(element);
+            return ZentaLabelProvider.INSTANCE.getLabel((EObject) element);
         }
         
         @Override
         public Image getImage(Object element) {
-            return ZentaLabelProvider.INSTANCE.getImage(element);
+            return ZentaLabelProvider.INSTANCE.getImage((EObject) element);
         }
     }
     

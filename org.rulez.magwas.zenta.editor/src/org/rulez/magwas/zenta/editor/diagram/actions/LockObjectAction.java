@@ -13,8 +13,9 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.ui.actions.SelectionAction;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.diagram.commands.LockObjectCommand;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.ILockable;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 /**
@@ -31,7 +32,7 @@ public class LockObjectAction extends SelectionAction {
         setText(Messages.LockObjectAction_0);
         setId(ID);
         setToolTipText(Messages.LockObjectAction_1);
-        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_LOCK_16));
+        setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_LOCK_16));
     }
 
     @Override
@@ -60,8 +61,8 @@ public class LockObjectAction extends SelectionAction {
     private void updateText() {
         boolean lock = isToLock();
         setText(lock ? Messages.LockObjectAction_0 : Messages.LockObjectAction_2);
-        setImageDescriptor(lock ? IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_LOCK_16) :
-            IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_UNLOCK_16));
+        setImageDescriptor(lock ? IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_LOCK_16) :
+            IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_UNLOCK_16));
     }
 
     @Override

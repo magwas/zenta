@@ -84,7 +84,7 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectNonNotifyingCompoundCommand;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.editor.ui.components.StringComboBoxCellEditor;
@@ -97,6 +97,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -304,7 +305,7 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
 
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_PLUS);
+                return IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_PLUS);
             }
         };
 
@@ -327,7 +328,7 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
 
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_MUTIPLE);
+                return IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_MUTIPLE);
             }
         };
 
@@ -357,7 +358,7 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
 
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_SMALL_X);
+                return IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_SMALL_X);
             }
         };
         fActionRemoveProperty.setEnabled(false);
@@ -380,7 +381,7 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
 
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_COG);
+                return IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_COG);
             }
         };
 
@@ -1038,7 +1039,7 @@ public class UserPropertiesSection extends AbstractZentaPropertySection {
 
         public MultipleAddDialog(Shell parentShell) {
             super(parentShell, "ZentaPropertiesMultipleAddDialog"); //$NON-NLS-1$
-            setTitleImage(IZentaImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_IMPORT_PREF_WIZARD));
+            setTitleImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ECLIPSE_IMAGE_IMPORT_PREF_WIZARD));
             setShellStyle(getShellStyle() | SWT.RESIZE);
 
             keys = getAllUniquePropertyKeysForModel();

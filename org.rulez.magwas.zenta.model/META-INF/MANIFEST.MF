@@ -9,6 +9,7 @@ Export-Package: org.rulez.magwas.nonnul,
  org.rulez.magwas.zenta.model,
  org.rulez.magwas.zenta.model.handmade.util,
  org.rulez.magwas.zenta.model.impl,
+ org.rulez.magwas.zenta.model.info,
  org.rulez.magwas.zenta.model.util,
  org.rulez.magwas.zenta.model.viewpoints
 Require-Bundle: org.eclipse.core.runtime,

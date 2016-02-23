@@ -13,8 +13,9 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.palette.ToolEntry;
 import org.rulez.magwas.zenta.editor.diagram.tools.FormatPainterInfo.PaintFormat;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -94,12 +95,12 @@ public class FormatPainterToolEntry extends ToolEntry implements PropertyChangeL
     
     protected void setIcons() {
         if(FormatPainterInfo.INSTANCE.isFat()) {
-            setLargeIcon(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FORMAT_PAINTER_16));
-            setSmallIcon(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FORMAT_PAINTER_16));
+            setLargeIcon(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FORMAT_PAINTER_16));
+            setSmallIcon(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FORMAT_PAINTER_16));
         }
         else {
-            setLargeIcon(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FORMAT_PAINTER_GREY_16));
-            setSmallIcon(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FORMAT_PAINTER_GREY_16));
+            setLargeIcon(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FORMAT_PAINTER_GREY_16));
+            setSmallIcon(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FORMAT_PAINTER_GREY_16));
         }
     }
     

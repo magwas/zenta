@@ -16,10 +16,11 @@ import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
@@ -112,7 +113,7 @@ public class DiagramImageFigure extends AbstractDiagramModelObjectFigure {
         }
         else {
             super.paintFigure(graphics);
-            Image image = IZentaImages.ImageFactory.getImage(IZentaImages.ICON_LANDSCAPE_16);
+            Image image = IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_LANDSCAPE_16);
             graphics.drawImage(image, bounds.x + (bounds.width / 2) - 7, bounds.y + (bounds.height / 2) - 7);
         }
         

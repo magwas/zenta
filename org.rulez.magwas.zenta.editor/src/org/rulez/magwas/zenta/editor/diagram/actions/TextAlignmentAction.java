@@ -18,10 +18,11 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.actions.RetargetAction;
 import org.rulez.magwas.zenta.editor.diagram.commands.TextAlignmentCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.ITextAlignedEditPart;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.ILockable;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -66,11 +67,11 @@ public class TextAlignmentAction extends SelectionAction {
         List<TextAlignmentAction> list = new ArrayList<TextAlignmentAction>();
         
         list.add(new TextAlignmentAction(part, IFontAttribute.TEXT_ALIGNMENT_LEFT, ACTION_LEFT_ID, ACTION_LEFT_TEXT,
-                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ALIGN_TEXT_LEFT)));
+                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ALIGN_TEXT_LEFT)));
         list.add(new TextAlignmentAction(part, IFontAttribute.TEXT_ALIGNMENT_CENTER, ACTION_CENTER_ID, ACTION_CENTER_TEXT,
-                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ALIGN_TEXT_CENTER)));
+                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ALIGN_TEXT_CENTER)));
         list.add(new TextAlignmentAction(part, IFontAttribute.TEXT_ALIGNMENT_RIGHT, ACTION_RIGHT_ID, ACTION_RIGHT_TEXT,
-                IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ALIGN_TEXT_RIGHT)));
+                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ALIGN_TEXT_RIGHT)));
      
         return list;
     }

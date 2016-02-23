@@ -109,7 +109,7 @@ public class ModelViewsTreeViewer extends TreeViewer {
         
         @Override
         public Image getImage(Object element) {
-            return ZentaLabelProvider.INSTANCE.getImage(element);
+            return ZentaLabelProvider.INSTANCE.getImage((EObject) element);
         }
     }
 }

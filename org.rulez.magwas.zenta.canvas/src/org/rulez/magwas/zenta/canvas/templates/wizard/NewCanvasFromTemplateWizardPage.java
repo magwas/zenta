@@ -7,7 +7,8 @@ package org.rulez.magwas.zenta.canvas.templates.wizard;
 
 import org.rulez.magwas.zenta.canvas.templates.dialog.CanvasTemplateManagerDialog;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.templates.dialog.TemplateManagerDialog;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.NewModelFromTemplateWizardPage;
@@ -31,7 +32,7 @@ public class NewCanvasFromTemplateWizardPage extends NewModelFromTemplateWizardP
     protected void init() {
         setTitle(Messages.NewCanvasFromTemplateWizardPage_0);
         setDescription(Messages.NewCanvasFromTemplateWizardPage_1);
-        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
+        setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ECLIPSE_IMAGE_NEW_WIZARD));
     }
 
     @Override

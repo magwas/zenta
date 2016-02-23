@@ -6,7 +6,8 @@
 package org.rulez.magwas.zenta.templates.impl.model;
 
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.templates.model.AbstractTemplate;
 
 
@@ -29,7 +30,7 @@ public class ZentaModelTemplate extends AbstractTemplate {
 
     @Override
     public Image getImage() {
-        return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_MODELS_16);
+        return IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_MODELS_16);
     }
 
     @Override

@@ -71,8 +71,8 @@ public class TreeModelViewer extends TreeViewer implements ITreeModelViewer{
                     return cat1 - cat2;
                 }
                                 
-                String name1 = ZentaLabelProvider.INSTANCE.getLabel(e1);
-                String name2 = ZentaLabelProvider.INSTANCE.getLabel(e2);
+                String name1 = ZentaLabelProvider.INSTANCE.getLabel((EObject) e1);
+                String name2 = ZentaLabelProvider.INSTANCE.getLabel((EObject) e2);
                 
                 if(name1 == null) {
                     name1 = "";//$NON-NLS-1$
@@ -209,7 +209,7 @@ public class TreeModelViewer extends TreeViewer implements ITreeModelViewer{
         
         @Override
         public String getText(Object element) {
-            String name = ZentaLabelProvider.INSTANCE.getLabel(element);
+            String name = ZentaLabelProvider.INSTANCE.getLabel((EObject) element);
             
             // If a dirty model show asterisk
             if(element instanceof IZentaModel) {
@@ -233,7 +233,7 @@ public class TreeModelViewer extends TreeViewer implements ITreeModelViewer{
         
         @Override
         public Image getImage(Object element) {
-            return ZentaLabelProvider.INSTANCE.getImage(element);
+            return ZentaLabelProvider.INSTANCE.getImage((EObject) element);
         }
         
         @Override

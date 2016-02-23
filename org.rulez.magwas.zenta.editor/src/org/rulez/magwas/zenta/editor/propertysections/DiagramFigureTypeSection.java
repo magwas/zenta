@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.editparts.IZentaEditPart;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -159,7 +159,7 @@ public class DiagramFigureTypeSection extends AbstractZentaPropertySection {
         }
         
         void setImage(String imageName) {
-            label.setImage(imageName == null ? null : IZentaImages.ImageFactory.getImage(imageName));
+            label.setImage(imageName == null ? null : IZentaUIImages.ImageFactory.getImage(imageName));
         }
         
         void setSelected(boolean set) {

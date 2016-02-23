@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor.preferences;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ICheckStateProvider;
@@ -185,7 +186,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
             
             @Override
             public Image getImage(Object element) {
-                return ZentaLabelProvider.INSTANCE.getImage(element);
+                return ZentaLabelProvider.INSTANCE.getImage((EObject) element);
             }
         });
         

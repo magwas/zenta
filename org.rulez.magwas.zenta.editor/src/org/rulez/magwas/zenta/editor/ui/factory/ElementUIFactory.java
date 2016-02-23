@@ -9,18 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
-import org.rulez.magwas.zenta.editor.ui.factory.business.BasicObjectUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.connections.BasicConnectionUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.connections.LineConnectionUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.diagram.DiagramImageUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.diagram.DiagramModelReferenceUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.diagram.GroupUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.diagram.NoteUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.junctions.AndJunctionUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.junctions.JunctionUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.junctions.OrJunctionUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.sketch.SketchActorUIProvider;
-import org.rulez.magwas.zenta.editor.ui.factory.sketch.SketchStickyUIProvider;
+import org.rulez.magwas.zenta.editor.ui.IElementUIProvider;
 
 
 

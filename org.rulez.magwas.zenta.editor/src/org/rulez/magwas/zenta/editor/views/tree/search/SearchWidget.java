@@ -29,7 +29,7 @@ import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.nonnul.NonNullListIterator;
 import org.rulez.magwas.zenta.editor.actions.AbstractDropDownAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.model.IMetamodel;
@@ -40,6 +40,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -158,7 +159,7 @@ public class SearchWidget extends Composite {
             
             @Override
             public ImageDescriptor getImageDescriptor() {
-                return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FILTER_16);
+                return IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_FILTER_16);
             }
         };
         toolBarmanager.add(dropDownAction);

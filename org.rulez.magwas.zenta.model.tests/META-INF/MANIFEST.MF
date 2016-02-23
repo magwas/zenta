@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Tests
-Bundle-SymbolicName: org.rulez.magwas.zenta.model.tests
+Bundle-SymbolicName: org.rulez.magwas.zenta.model.tests;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.rulez.magwas.zenta.model.Activator
 Bundle-Vendor: Árpád Magosányi

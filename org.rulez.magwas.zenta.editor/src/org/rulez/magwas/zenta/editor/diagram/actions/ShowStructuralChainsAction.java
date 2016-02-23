@@ -9,7 +9,8 @@ import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.ui.actions.WorkbenchPartAction;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -27,7 +28,7 @@ public class ShowStructuralChainsAction extends WorkbenchPartAction {
         super(part);
         setId(ID);
         setText(DEFAULT_TEXT);
-        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DERIVED_16));
+        setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DERIVED_16));
     }
     
     @Override

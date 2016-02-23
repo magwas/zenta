@@ -18,8 +18,9 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 /**
@@ -67,7 +68,7 @@ implements IWorkbenchAction
     
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_OPEN_16);
+        return IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_OPEN_16);
     }
     
     /**

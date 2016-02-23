@@ -13,10 +13,11 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.ui.actions.SelectionAction;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.diagram.commands.SetConstraintObjectCommand;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.ILockable;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 /**
@@ -36,7 +37,7 @@ public class DefaultEditPartSizeAction extends SelectionAction {
         setText(TEXT);
         setId(ID);
         setToolTipText(Messages.DefaultEditPartSizeAction_1);
-        setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DEFAULT_SIZE));
+        setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DEFAULT_SIZE));
     }
 
     @Override

@@ -107,7 +107,7 @@ public class UsedInRelationshipsSection extends AbstractZentaPropertySection {
             
             @Override
             public Image getImage(Object element) {
-                return ZentaLabelProvider.INSTANCE.getImage(element);
+                return ZentaLabelProvider.INSTANCE.getImage((EObject) element);
             }
         });
         

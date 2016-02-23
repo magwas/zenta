@@ -32,12 +32,13 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.rulez.magwas.zenta.editor.model.IModelExporter;
 import org.rulez.magwas.zenta.editor.model.IModelImporter;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.components.HeapStatusWidget.HeapStatusWidgetToolBarContributionItem;
 import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.views.navigator.INavigatorView;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
@@ -198,11 +199,11 @@ extends ActionBarAdvisor {
         register(fShowModelsView);
         
         fShowPropertiesView = new ToggleViewAction(Messages.ZentaEditorActionBarAdvisor_3, ViewManager.PROPERTIES_VIEW,
-                "org.rulez.magwas.zenta.editor.action.showPropertiesView", IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ECLIPSE_IMAGE_PROPERTIES_VIEW_ICON)); //$NON-NLS-1$
+                "org.rulez.magwas.zenta.editor.action.showPropertiesView", IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ECLIPSE_IMAGE_PROPERTIES_VIEW_ICON)); //$NON-NLS-1$
         register(fShowPropertiesView);
         
         fShowOutlineView = new ToggleViewAction(Messages.ZentaEditorActionBarAdvisor_4, ViewManager.OUTLINE_VIEW,
-                "org.rulez.magwas.zenta.editor.action.showOutlineView", IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ECLIPSE_IMAGE_OUTLINE_VIEW_ICON)); //$NON-NLS-1$
+                "org.rulez.magwas.zenta.editor.action.showOutlineView", IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ECLIPSE_IMAGE_OUTLINE_VIEW_ICON)); //$NON-NLS-1$
         register(fShowOutlineView);
         
         fShowNavigatorView = new ToggleViewAction(Messages.ZentaEditorActionBarAdvisor_5, INavigatorView.ID,

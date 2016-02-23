@@ -11,7 +11,7 @@ import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 
 
 /**
@@ -85,11 +85,11 @@ class PoofAnimater {
     }
     
     private void loadImages() {
-        image[0] = IZentaImages.ImageFactory.getImage("img/poof1.png"); //$NON-NLS-1$
-        image[1] = IZentaImages.ImageFactory.getImage("img/poof2.png"); //$NON-NLS-1$
-        image[2] = IZentaImages.ImageFactory.getImage("img/poof3.png"); //$NON-NLS-1$
-        image[3] = IZentaImages.ImageFactory.getImage("img/poof4.png"); //$NON-NLS-1$
-        image[4] = IZentaImages.ImageFactory.getImage("img/poof5.png"); //$NON-NLS-1$
+        image[0] = IZentaUIImages.ImageFactory.getImage("img/poof1.png"); //$NON-NLS-1$
+        image[1] = IZentaUIImages.ImageFactory.getImage("img/poof2.png"); //$NON-NLS-1$
+        image[2] = IZentaUIImages.ImageFactory.getImage("img/poof3.png"); //$NON-NLS-1$
+        image[3] = IZentaUIImages.ImageFactory.getImage("img/poof4.png"); //$NON-NLS-1$
+        image[4] = IZentaUIImages.ImageFactory.getImage("img/poof5.png"); //$NON-NLS-1$
         width = image[0].getImageData().width;
         height = image[0].getImageData().height;
     }

@@ -50,9 +50,10 @@ import org.rulez.magwas.zenta.editor.diagram.actions.SendBackwardAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.SendToBackAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.TextAlignmentAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.TextPositionAction;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -103,12 +104,12 @@ extends ActionBarContributor {
         
         // Default Size
         RetargetAction retargetAction = new RetargetAction(DefaultEditPartSizeAction.ID, DefaultEditPartSizeAction.TEXT);
-        retargetAction.setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DEFAULT_SIZE));
+        retargetAction.setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_DEFAULT_SIZE));
         addRetargetAction(retargetAction);
         
         // Reset Aspect Ratio
         retargetAction = new RetargetAction(ResetAspectRatioAction.ID, ResetAspectRatioAction.TEXT);
-        retargetAction.setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ASPECT_RATIO));
+        retargetAction.setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_ASPECT_RATIO));
         addRetargetAction(retargetAction);
         
         // Export as Image

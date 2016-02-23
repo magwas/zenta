@@ -36,8 +36,8 @@ import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.GroupEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IContainerFigure;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
 import org.rulez.magwas.zenta.editor.ui.services.ComponentSelectionManager;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IFolder;
@@ -45,6 +45,7 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -62,7 +63,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 	
 	private static Cursor cursor = new Cursor(
 			null,
-			IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.CURSOR_IMG_MAGIC_CONNECTOR).getImageData(),
+			IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.CURSOR_IMG_MAGIC_CONNECTOR).getImageData(),
 			0,
 			0);
 

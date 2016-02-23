@@ -26,8 +26,9 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionLineTypeCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.LineConnectionEditPart;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.ILockable;
 
@@ -203,15 +204,15 @@ public class DiagramConnectionLineStyleSection extends AbstractZentaPropertySect
 
         @Override
         protected void addActions(MenuManager menuManager) {
-            IAction action = createAction(Messages.DiagramConnectionLineStyleSection_2, IDiagramModelConnection.LINE_SOLID, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_SOLID));
+            IAction action = createAction(Messages.DiagramConnectionLineStyleSection_2, IDiagramModelConnection.LINE_SOLID, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_SOLID));
             menuManager.add(action);
             action.setChecked((fConnection.getType() & IDiagramModelConnection.LINE_DASHED) == 0 &
                               (fConnection.getType() & IDiagramModelConnection.LINE_DOTTED) == 0);
             
-            action = createAction(Messages.DiagramConnectionLineStyleSection_3, IDiagramModelConnection.LINE_DASHED, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_DASHED));
+            action = createAction(Messages.DiagramConnectionLineStyleSection_3, IDiagramModelConnection.LINE_DASHED, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_DASHED));
             menuManager.add(action);
 
-            action = createAction(Messages.DiagramConnectionLineStyleSection_4, IDiagramModelConnection.LINE_DOTTED, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_DOTTED));
+            action = createAction(Messages.DiagramConnectionLineStyleSection_4, IDiagramModelConnection.LINE_DOTTED, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_DOTTED));
             menuManager.add(action);
         }
         
@@ -221,15 +222,15 @@ public class DiagramConnectionLineStyleSection extends AbstractZentaPropertySect
             
             if((connectionType & IDiagramModelConnection.LINE_DASHED) != 0) {
                 fValue = IDiagramModelConnection.LINE_DASHED;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.LINE_DASHED));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.LINE_DASHED));
             }
             else if((connectionType & IDiagramModelConnection.LINE_DOTTED) != 0) {
                 fValue = IDiagramModelConnection.LINE_DOTTED;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.LINE_DOTTED));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.LINE_DOTTED));
             }
             else {
                 fValue = IDiagramModelConnection.LINE_SOLID;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.LINE_SOLID));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.LINE_SOLID));
             }
         }
     }
@@ -241,19 +242,19 @@ public class DiagramConnectionLineStyleSection extends AbstractZentaPropertySect
 
         @Override
         protected void addActions(MenuManager menuManager) {
-            IAction action = createAction(Messages.DiagramConnectionLineStyleSection_6, IDiagramModelConnection.ARROW_NONE, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_SOLID));
+            IAction action = createAction(Messages.DiagramConnectionLineStyleSection_6, IDiagramModelConnection.ARROW_NONE, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_SOLID));
             action.setChecked((fConnection.getType() & IDiagramModelConnection.ARROW_FILL_SOURCE) == 0 &
                               (fConnection.getType() & IDiagramModelConnection.ARROW_HOLLOW_SOURCE) == 0 &
                               (fConnection.getType() & IDiagramModelConnection.ARROW_LINE_SOURCE) == 0);
             menuManager.add(action);
             
-            action = createAction(Messages.DiagramConnectionLineStyleSection_7, IDiagramModelConnection.ARROW_FILL_SOURCE, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_SOURCE_FILL));
+            action = createAction(Messages.DiagramConnectionLineStyleSection_7, IDiagramModelConnection.ARROW_FILL_SOURCE, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_SOURCE_FILL));
             menuManager.add(action);
 
-            action = createAction(Messages.DiagramConnectionLineStyleSection_8, IDiagramModelConnection.ARROW_HOLLOW_SOURCE, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_SOURCE_HOLLOW));
+            action = createAction(Messages.DiagramConnectionLineStyleSection_8, IDiagramModelConnection.ARROW_HOLLOW_SOURCE, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_SOURCE_HOLLOW));
             menuManager.add(action);
 
-            action = createAction(Messages.DiagramConnectionLineStyleSection_9, IDiagramModelConnection.ARROW_LINE_SOURCE, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_SOURCE_LINE));
+            action = createAction(Messages.DiagramConnectionLineStyleSection_9, IDiagramModelConnection.ARROW_LINE_SOURCE, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_SOURCE_LINE));
             menuManager.add(action);
         }
         
@@ -263,19 +264,19 @@ public class DiagramConnectionLineStyleSection extends AbstractZentaPropertySect
             
             if((connectionType & IDiagramModelConnection.ARROW_FILL_SOURCE) != 0) {
                 fValue = IDiagramModelConnection.ARROW_FILL_SOURCE;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ARROW_SOURCE_FILL));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ARROW_SOURCE_FILL));
             }
             else if((connectionType & IDiagramModelConnection.ARROW_HOLLOW_SOURCE) != 0) {
                 fValue = IDiagramModelConnection.ARROW_HOLLOW_SOURCE;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ARROW_SOURCE_HOLLOW));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ARROW_SOURCE_HOLLOW));
             }
             else if((connectionType & IDiagramModelConnection.ARROW_LINE_SOURCE) != 0) {
                 fValue = IDiagramModelConnection.ARROW_LINE_SOURCE;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ARROW_SOURCE_LINE));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ARROW_SOURCE_LINE));
             }
             else {
                 fValue = IDiagramModelConnection.ARROW_NONE;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.LINE_SOLID));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.LINE_SOLID));
             }
         }
     }
@@ -287,19 +288,19 @@ public class DiagramConnectionLineStyleSection extends AbstractZentaPropertySect
 
         @Override
         protected void addActions(MenuManager menuManager) {
-            IAction action = createAction(Messages.DiagramConnectionLineStyleSection_11, IDiagramModelConnection.ARROW_NONE, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_SOLID));
+            IAction action = createAction(Messages.DiagramConnectionLineStyleSection_11, IDiagramModelConnection.ARROW_NONE, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.LINE_SOLID));
             action.setChecked((fConnection.getType() & IDiagramModelConnection.ARROW_FILL_TARGET) == 0 &
                               (fConnection.getType() & IDiagramModelConnection.ARROW_HOLLOW_TARGET) == 0 &
                               (fConnection.getType() & IDiagramModelConnection.ARROW_LINE_TARGET) == 0);
             menuManager.add(action);
             
-            action = createAction(Messages.DiagramConnectionLineStyleSection_12, IDiagramModelConnection.ARROW_FILL_TARGET, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_TARGET_FILL));
+            action = createAction(Messages.DiagramConnectionLineStyleSection_12, IDiagramModelConnection.ARROW_FILL_TARGET, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_TARGET_FILL));
             menuManager.add(action);
 
-            action = createAction(Messages.DiagramConnectionLineStyleSection_13, IDiagramModelConnection.ARROW_HOLLOW_TARGET, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_TARGET_HOLLOW));
+            action = createAction(Messages.DiagramConnectionLineStyleSection_13, IDiagramModelConnection.ARROW_HOLLOW_TARGET, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_TARGET_HOLLOW));
             menuManager.add(action);
 
-            action = createAction(Messages.DiagramConnectionLineStyleSection_14, IDiagramModelConnection.ARROW_LINE_TARGET, IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_TARGET_LINE));
+            action = createAction(Messages.DiagramConnectionLineStyleSection_14, IDiagramModelConnection.ARROW_LINE_TARGET, IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ARROW_TARGET_LINE));
             menuManager.add(action);
         }
         
@@ -309,19 +310,19 @@ public class DiagramConnectionLineStyleSection extends AbstractZentaPropertySect
             
             if((connectionType & IDiagramModelConnection.ARROW_FILL_TARGET) != 0) {
                 fValue = IDiagramModelConnection.ARROW_FILL_TARGET;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ARROW_TARGET_FILL));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ARROW_TARGET_FILL));
             }
             else if((connectionType & IDiagramModelConnection.ARROW_HOLLOW_TARGET) != 0) {
                 fValue = IDiagramModelConnection.ARROW_HOLLOW_TARGET;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ARROW_TARGET_HOLLOW));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ARROW_TARGET_HOLLOW));
             }
             else if((connectionType & IDiagramModelConnection.ARROW_LINE_TARGET) != 0) {
                 fValue = IDiagramModelConnection.ARROW_LINE_TARGET;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.ARROW_TARGET_LINE));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.ARROW_TARGET_LINE));
             }
             else {
                 fValue = IDiagramModelConnection.ARROW_NONE;
-                fButton.setImage(IZentaImages.ImageFactory.getImage(IZentaImages.LINE_SOLID));
+                fButton.setImage(IZentaUIImages.ImageFactory.getImage(IZentaImages.LINE_SOLID));
             }
         }
     }

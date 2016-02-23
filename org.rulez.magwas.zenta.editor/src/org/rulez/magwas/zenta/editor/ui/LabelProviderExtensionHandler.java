@@ -1,8 +1,3 @@
-/**
- * This program and the accompanying materials
- * are made available under the terms of the License
- * which accompanies this distribution in the file LICENSE.txt
- */
 package org.rulez.magwas.zenta.editor.ui;
 
 import java.util.ArrayList;
@@ -12,72 +7,26 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.graphics.Image;
+import org.rulez.magwas.zenta.model.info.IInfoProvider;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
-
-/**
- * Manages Label Provider Extensions
- * 
- * @author Phillip Beauvoir
- */
-public class LabelProviderExtensionHandler {
-    
-    public static String EXTENSIONPOINT = "org.rulez.magwas.zenta.editor.labelProvider"; //$NON-NLS-1$
-    
-    public static LabelProviderExtensionHandler INSTANCE = new LabelProviderExtensionHandler();
-    
-    private List<IEditorLabelProvider> factories = new ArrayList<IEditorLabelProvider>();
+public class LabelProviderExtensionHandler {//FIXME: refactor with InfoProviderExtensionHandler
     
     private LabelProviderExtensionHandler() {
         registerProviders();
     }
     
-    /**
-     * @return All Registered Label Providers 
-     */
-    public List<IEditorLabelProvider> getRegisteredProviders() {
-        return factories;
-    }
-    
-    private void registerProviders() {
-        IExtensionRegistry registry = Platform.getExtensionRegistry();
-        for(IConfigurationElement configurationElement : registry.getConfigurationElementsFor(EXTENSIONPOINT)) {
-            try {
-                String id = configurationElement.getAttribute("id"); //$NON-NLS-1$
-                IEditorLabelProvider provider = (IEditorLabelProvider)configurationElement.createExecutableExtension("class"); //$NON-NLS-1$
-                if(id != null && provider != null) {
-                    factories.add(provider);
-                }
-            } 
-            catch(CoreException ex) {
-                LogUtil.logException(ex);
-            } 
-        }
-    }
+	public static String EXTENSIONPOINT = "org.rulez.magwas.zenta.editor.labelProvider";
+	public static LabelProviderExtensionHandler INSTANCE = new LabelProviderExtensionHandler();
+	private List<IEditorLabelProvider> factories = new ArrayList<IEditorLabelProvider>();
 
-    /**
-     * Return a text label for a given element in a registered Label Provider Extension
-     * @param element The element to find the label for
-     * @return The label if found, or null
-     */
-    public String getLabel(Object element) {
-        for(IEditorLabelProvider provider : getRegisteredProviders()) {
-            String label = provider.getLabel(element);
-            if(label != null) {
-                return label;
-            }
-        }
-        
-        return null;
-    }
-    
-    /**
-     * Return an image for a given element in a registered Label Provider Extension
-     * @param element The element to find the image for
-     * @return The image if found, or null
-     */
-    public Image getImage(Object element) {
+	public List<IEditorLabelProvider> getRegisteredProviders() {
+	    return factories;
+	}
+
+    public Image getImage(EObject element) {
         for(IEditorLabelProvider provider : getRegisteredProviders()) {
             Image image = provider.getImage(element);
             if(image != null) {
@@ -87,4 +36,30 @@ public class LabelProviderExtensionHandler {
         
         return null;
     }
+    public String getImageInfo(EObject element) {
+        for(IInfoProvider provider : getRegisteredProviders()) {
+            String imageInfo = provider.getImageInfo(element);
+            if(imageInfo != null) {
+                return imageInfo;
+            }
+        }
+        return null;
+    }
+
+    protected void registerProviders() {
+	    IExtensionRegistry registry = Platform.getExtensionRegistry();
+	    for(IConfigurationElement configurationElement : registry.getConfigurationElementsFor(EXTENSIONPOINT)) {
+	        try {
+	            String id = configurationElement.getAttribute("id"); //$NON-NLS-1$
+	            IEditorLabelProvider provider = (IEditorLabelProvider)configurationElement.createExecutableExtension("class"); //$NON-NLS-1$
+	            if(id != null && provider != null) {
+	                factories.add(provider);
+	            }
+	        } 
+	        catch(CoreException ex) {
+	            LogUtil.logException(ex);
+	        } 
+	    }
+	}
+
 }

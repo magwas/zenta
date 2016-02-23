@@ -37,7 +37,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.DrillDownAdapter;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.views.AbstractModelView;
 import org.rulez.magwas.zenta.editor.views.tree.actions.IViewerAction;
 import org.rulez.magwas.zenta.editor.views.tree.actions.PropertiesAction;
@@ -45,6 +45,7 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -165,14 +166,14 @@ implements INavigatorView, ISelectionListener {
         fActionPinContent = new Action(Messages.NavigatorView_0, IAction.AS_CHECK_BOX) {
             {
                 setToolTipText(Messages.NavigatorView_1);
-                setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_PIN_16));
+                setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_PIN_16));
             }
         };
         
         fActionNavDown = new Action(Messages.NavigatorView_2, IAction.AS_RADIO_BUTTON) {
             {
                 setToolTipText(Messages.NavigatorView_3);
-                setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NAVIGATOR_DOWNWARD_16));
+                setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NAVIGATOR_DOWNWARD_16));
                 setChecked(true);
             }
             
@@ -186,7 +187,7 @@ implements INavigatorView, ISelectionListener {
         fActionNavUp = new Action(Messages.NavigatorView_4, IAction.AS_RADIO_BUTTON) {
             {
                 setToolTipText(Messages.NavigatorView_5);
-                setImageDescriptor(IZentaImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NAVIGATOR_UPWARD_16));
+                setImageDescriptor(IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NAVIGATOR_UPWARD_16));
             }
             
             @Override

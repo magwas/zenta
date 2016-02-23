@@ -28,11 +28,12 @@ import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
 import org.rulez.magwas.zenta.editor.diagram.editparts.IZentaEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.connections.IZentaConnectionEditPart;
 import org.rulez.magwas.zenta.editor.model.DiagramModelUtils;
-import org.rulez.magwas.zenta.editor.ui.IZentaImages;
+import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.info.IZentaImages;
 
 
 
@@ -105,7 +106,7 @@ public class UsedInViewsSection extends AbstractZentaPropertySection {
             
             @Override
             public Image getImage(Object element) {
-                return IZentaImages.ImageFactory.getImage(IZentaImages.ICON_DIAGRAM_16);
+                return IZentaUIImages.ImageFactory.getImage(IZentaImages.ICON_DIAGRAM_16);
             }
         });
         
