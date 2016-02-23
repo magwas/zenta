@@ -33,7 +33,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.TemplateUtils;
 

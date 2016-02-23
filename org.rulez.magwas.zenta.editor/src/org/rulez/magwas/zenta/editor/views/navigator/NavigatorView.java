@@ -45,7 +45,7 @@ import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 

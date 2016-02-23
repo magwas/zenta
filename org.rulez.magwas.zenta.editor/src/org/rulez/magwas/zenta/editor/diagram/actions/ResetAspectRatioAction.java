@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.ILockable;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 /**

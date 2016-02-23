@@ -7,7 +7,7 @@ package org.rulez.magwas.zenta.templates.impl.model;
 
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.templates.model.AbstractTemplate;
 
 

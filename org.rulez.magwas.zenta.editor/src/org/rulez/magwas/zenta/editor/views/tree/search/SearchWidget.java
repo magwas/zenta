@@ -40,7 +40,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UnTestedException;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 

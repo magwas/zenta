@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.rulez.magwas.zenta.controller.labelProvider">
+      <labelProvider
+            class="org.rulez.magwas.zenta.controller.tests.TestInfoProvider"
+            id="org.rulez.magwas.zenta.controller.tests.labelProvider">
+      </labelProvider>
+   </extension>
+
+</plugin>

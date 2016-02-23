@@ -15,7 +15,7 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 

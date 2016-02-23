@@ -53,7 +53,7 @@ import org.rulez.magwas.zenta.editor.diagram.actions.TextPositionAction;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.components.CellEditorGlobalActionHandler;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 

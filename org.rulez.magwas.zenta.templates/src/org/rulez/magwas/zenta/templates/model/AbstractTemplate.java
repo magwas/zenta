@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 import uk.ac.bolton.jdom.JDOMUtils;

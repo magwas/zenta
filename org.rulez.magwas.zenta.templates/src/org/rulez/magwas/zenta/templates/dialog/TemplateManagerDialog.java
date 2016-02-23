@@ -44,7 +44,7 @@ import org.rulez.magwas.zenta.editor.ui.UIUtils;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;

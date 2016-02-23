@@ -57,7 +57,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.DerivedRelationsUtils.TooComplicatedException;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 

@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 

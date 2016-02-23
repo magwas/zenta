@@ -8,7 +8,7 @@ package org.rulez.magwas.zenta.canvas.templates.wizard;
 import org.rulez.magwas.zenta.canvas.templates.dialog.CanvasTemplateManagerDialog;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.templates.dialog.TemplateManagerDialog;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.NewModelFromTemplateWizardPage;

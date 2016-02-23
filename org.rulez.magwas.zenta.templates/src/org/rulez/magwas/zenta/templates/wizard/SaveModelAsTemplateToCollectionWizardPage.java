@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.TemplateGroup;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;

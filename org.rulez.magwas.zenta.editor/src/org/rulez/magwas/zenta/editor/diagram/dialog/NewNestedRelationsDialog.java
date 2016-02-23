@@ -41,7 +41,7 @@ import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 
 

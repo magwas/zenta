@@ -18,7 +18,7 @@ import org.rulez.magwas.zenta.editor.diagram.actions.CreateDerivedRelationAction
 import org.rulez.magwas.zenta.editor.diagram.actions.DeleteFromModelAction;
 import org.rulez.magwas.zenta.editor.diagram.actions.ShowStructuralChainsAction;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 import org.rulez.magwas.zenta.model.viewpoints.ViewpointsManager;
 

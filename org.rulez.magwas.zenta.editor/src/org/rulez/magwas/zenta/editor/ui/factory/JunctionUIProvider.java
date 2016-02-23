@@ -5,10 +5,10 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
+import org.rulez.magwas.zenta.controller.info.JunctionInfoProvider;
 import org.rulez.magwas.zenta.editor.diagram.editparts.junctions.JunctionEditPart;
 import org.rulez.magwas.zenta.editor.ui.IElementUIProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
-import org.rulez.magwas.zenta.model.info.JunctionInfoProvider;
 
 
 public class JunctionUIProvider extends JunctionInfoProvider implements IElementUIProvider {

@@ -20,7 +20,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.TextAlignmentCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.ITextAlignedEditPart;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.IFontAttribute;
 import org.rulez.magwas.zenta.model.ILockable;
 

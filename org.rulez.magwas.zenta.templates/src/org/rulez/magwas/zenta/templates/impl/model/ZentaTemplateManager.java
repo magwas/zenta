@@ -17,7 +17,7 @@ import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.templates.ZentaEditorTemplatesPlugin;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;

@@ -9,7 +9,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.model.info.IInfoProvider;
+import org.rulez.magwas.zenta.controller.IInfoProvider;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 public class LabelProviderExtensionHandler {//FIXME: refactor with InfoProviderExtensionHandler

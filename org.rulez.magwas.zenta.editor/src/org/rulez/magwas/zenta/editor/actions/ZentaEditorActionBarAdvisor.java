@@ -38,7 +38,7 @@ import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.editor.views.navigator.INavigatorView;
 import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 

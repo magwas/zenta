@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.ConnectionLineTypeCommand;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.LineConnectionEditPart;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.ILockable;
 

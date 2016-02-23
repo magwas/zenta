@@ -7,11 +7,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rulez.magwas.zenta.controller.InfoProvider;
 import org.rulez.magwas.zenta.integrationtests.ModelAndEditPartTestData;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaPackage;
-import org.rulez.magwas.zenta.model.info.InfoProvider;
 
 public class ZentaLabelProviderTest {
 

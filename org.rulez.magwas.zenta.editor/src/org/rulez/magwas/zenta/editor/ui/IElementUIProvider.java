@@ -5,8 +5,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.model.IElementInfoProvider;
-
+import org.rulez.magwas.zenta.controller.IElementInfoProvider;
 
 public interface IElementUIProvider extends IElementInfoProvider, IEditorLabelProvider {
     

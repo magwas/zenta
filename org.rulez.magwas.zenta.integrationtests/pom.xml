@@ -5,12 +5,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <parent>
     <groupId>org.rulez.magwas.zenta</groupId>
     <artifactId>parent</artifactId>
-    <version>2.4.0.qualifier</version>
+    <version>2.4.0-SNAPSHOT</version>
   </parent>
  
   <artifactId>org.rulez.magwas.zenta.integrationtests</artifactId>
   <packaging>eclipse-test-plugin</packaging>
-  <version>1.0.0.qualifier</version>
+  <version>1.0.0-SNAPSHOT</version>
   
   <properties>
     <lib.dir>${project.basedir}/lib/</lib.dir>

@@ -10,7 +10,7 @@ import org.eclipse.gef.ui.actions.WorkbenchPartAction;
 import org.eclipse.ui.IWorkbenchPart;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 

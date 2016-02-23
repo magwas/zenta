@@ -13,7 +13,7 @@ import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.views.tree.commands.SortFolderCommand;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 

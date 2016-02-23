@@ -12,7 +12,7 @@ import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.editor.ui.IEditorLabelProvider;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 public class CanvasLabelProvider implements IEditorLabelProvider {
     

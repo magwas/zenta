@@ -24,7 +24,7 @@ import org.rulez.magwas.zenta.editor.diagram.sketch.editparts.SketchEditPartFact
 import org.rulez.magwas.zenta.editor.diagram.util.ExtendedViewportAutoexposeHelper;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.model.ISketchModel;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 

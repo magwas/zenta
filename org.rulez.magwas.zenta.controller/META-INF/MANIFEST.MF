@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.rulez.magwas.zenta.controller;singleton:=true
+Bundle-Version: 2.4.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.rulez.magwas.zenta.controller;uses:="org.rulez.magwas.zenta.model,org.eclipse.emf.ecore",
+ org.rulez.magwas.zenta.controller.info;x-friends:="org.rulez.magwas.zenta.controller.tests";
+  uses:="org.eclipse.osgi.util,
+   org.eclipse.emf.ecore,
+   org.rulez.magwas.zenta.controller"
+Require-Bundle: org.eclipse.core.runtime,
+ org.rulez.magwas.zenta.model;bundle-version="2.4.0"
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: org.rulez.magwas.zenta.controller.jar

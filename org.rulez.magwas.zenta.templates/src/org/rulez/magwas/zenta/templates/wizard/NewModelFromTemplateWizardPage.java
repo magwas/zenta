@@ -47,7 +47,7 @@ import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedWizardDialog;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.templates.dialog.TemplateManagerDialog;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
 import org.rulez.magwas.zenta.templates.model.ITemplate;

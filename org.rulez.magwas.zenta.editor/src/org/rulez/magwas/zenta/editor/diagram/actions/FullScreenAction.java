@@ -37,7 +37,7 @@ import org.rulez.magwas.zenta.editor.diagram.FloatingPalette;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.components.PartListenerAdapter;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 

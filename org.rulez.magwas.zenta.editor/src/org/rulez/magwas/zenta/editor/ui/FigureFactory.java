@@ -14,7 +14,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BasicObjectFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessValueFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.DiagramModelReferenceFigureDelegate;
-import org.rulez.magwas.zenta.model.info.IZentaImages;
+import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
 public class FigureFactory {

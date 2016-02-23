@@ -6,9 +6,9 @@
 package org.rulez.magwas.zenta.editor.ui.factory;
 
 import org.eclipse.gef.EditPart;
+import org.rulez.magwas.zenta.controller.info.GroupInfoProvider;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.GroupEditPart;
 import org.rulez.magwas.zenta.editor.ui.IElementUIProvider;
-import org.rulez.magwas.zenta.model.info.GroupInfoProvider;
 
 public class GroupUIProvider extends GroupInfoProvider implements IElementUIProvider {
 

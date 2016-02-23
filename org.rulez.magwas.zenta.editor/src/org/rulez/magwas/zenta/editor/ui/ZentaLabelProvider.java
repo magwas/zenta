@@ -5,8 +5,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
+import org.rulez.magwas.zenta.controller.InfoProvider;
 import org.rulez.magwas.zenta.model.IBasicObject;
-import org.rulez.magwas.zenta.model.info.InfoProvider;
 
 public class ZentaLabelProvider extends InfoProvider implements IEditorLabelProvider {
     
