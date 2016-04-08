@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteEntry;
@@ -159,4 +161,12 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 		List<PaletteEntry> children = objectsgroup.getChildren();
 		return Util.verifyNonNull(children);
 	}
+	public IFigure getAFigure() {
+		String mo = "b2608459";
+		GraphicalEditPart editPart = (GraphicalEditPart) getEditPartFor(mo);
+		IFigure figure = editPart.getFigure();
+		return figure;
+	}
+	
+
 }

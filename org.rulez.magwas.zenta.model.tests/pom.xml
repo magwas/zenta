@@ -12,4 +12,19 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <packaging>eclipse-test-plugin</packaging>
   <version>1.0.0-SNAPSHOT</version>
    
+  <build>
+   <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <useJDK>BREE</useJDK>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
+
+

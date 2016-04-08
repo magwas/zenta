@@ -18,6 +18,7 @@ public class InfoProviderExtensionHandlerTest {
 
 	@Before
 	public void setUp() {
+		System.out.println(InfoProviderExtensionHandler.INSTANCE);
 		handler = InfoProviderExtensionHandler.INSTANCE;
 		targetObject = IZentaPackage.eINSTANCE.getAttribute();
 	}

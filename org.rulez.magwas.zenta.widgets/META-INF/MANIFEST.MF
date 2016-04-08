@@ -21,3 +21,4 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui
 Bundle-Activator: org.rulez.magwas.zenta.widgets.ZentaWidgetsPlugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -8,6 +8,7 @@ Export-Package: org.rulez.magwas.zenta.export
 Bundle-ClassPath: org.rulez.magwas.zenta.export.jar
 Bundle-Activator: org.rulez.magwas.zenta.export.StyledHtmlPlugin
 Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.runtime,
  org.rulez.magwas.zenta.editor;bundle-version="2.4.0",
  org.rulez.magwas.zenta.model;bundle-version="2.4.0",

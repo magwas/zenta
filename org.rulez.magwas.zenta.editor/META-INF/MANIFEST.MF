@@ -20,6 +20,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.rulez.magwas.zenta.controller;bundle-version="2.4.0"
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: org.rulez.magwas.zenta.editor.jar
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: .,
  org.rulez.magwas.zenta.editor,
  org.rulez.magwas.zenta.editor.actions,

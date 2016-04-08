@@ -5,7 +5,7 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.figures;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -50,7 +50,17 @@ public class AllZentaTypeFigureTests extends AbstractTextFlowFigureTests {
     @Override
     protected AbstractDiagramModelObjectFigure createFigure() {
         IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
-        dmo.setBounds(IZentaFactory.eINSTANCE.createBounds());
+        return getViewedFigure(dmo);
+    }
+
+    protected AbstractDiagramModelObjectFigure createShapedFigure(String shape) {
+        IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+        dmo.setElementShape(shape);
+        return getViewedFigure(dmo);
+    }
+
+	private AbstractDiagramModelObjectFigure getViewedFigure(IDiagramModelZentaObject dmo) {
+		dmo.setBounds(IZentaFactory.eINSTANCE.createBounds());
         IBasicObject ze = (IBasicObject)IZentaFactory.eINSTANCE.create(eClass);
         ze.setAncestor(model.getMetamodel().getBuiltinObjectClass());
         model.getElements().add(ze);
@@ -59,7 +69,7 @@ public class AllZentaTypeFigureTests extends AbstractTextFlowFigureTests {
         dm.getChildren().add(dmo);
         
         return (AbstractDiagramModelObjectFigure)getFigureFromViewer(dmo);
-    }
+	}
     
     @Override
     @Test
@@ -76,4 +86,5 @@ public class AllZentaTypeFigureTests extends AbstractTextFlowFigureTests {
         
         runner.start();
     }
+    
 }

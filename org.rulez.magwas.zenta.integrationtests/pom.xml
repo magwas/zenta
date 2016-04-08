@@ -219,11 +219,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             </dependency>
             <dependency>
               <type>eclipse-plugin</type>
-              <artifactId>org.rulez.magwas.zenta.canvas</artifactId>
-              <version>0.0.0</version>
-            </dependency>
-            <dependency>
-              <type>eclipse-plugin</type>
               <artifactId>org.rulez.magwas.zenta.editor</artifactId>
               <version>0.0.0</version>
             </dependency>
@@ -244,11 +239,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             </dependency>
             <dependency>
               <type>eclipse-plugin</type>
-              <artifactId>org.rulez.magwas.zenta.templates</artifactId>
-              <version>0.0.0</version>
-            </dependency>
-            <dependency>
-              <type>eclipse-plugin</type>
               <artifactId>org.rulez.magwas.zenta.widgets</artifactId>
               <version>0.0.0</version>
             </dependency>
@@ -262,16 +252,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
               <artifactId>org.eclipse.core.runtime</artifactId>
               <version>0.0.0</version>
             </dependency>
-            <!--dependency>
-              <type>eclipse-plugin</type>
-              <artifactId>org.eclipse.swtbot.eclipse.core</artifactId>
-              <version>0.0.0</version>
-            </dependency>
-            <dependency>
-              <type>eclipse-plugin</type>
-              <artifactId>org.eclipse.swtbot.junit4_x</artifactId>
-              <version>0.0.0</version>
-            </dependency-->
           </dependencies>
         </configuration>
       </plugin>

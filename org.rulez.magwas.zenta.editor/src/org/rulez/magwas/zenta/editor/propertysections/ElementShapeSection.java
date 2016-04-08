@@ -89,7 +89,7 @@ public class ElementShapeSection extends AbstractZentaPropertySection {
         }
 
         GridData gd = new GridData(SWT.NONE, SWT.NONE, false, false);
-        gd.widthHint = ITabbedLayoutConstants.BUTTON_WIDTH;
+        gd.widthHint = ITabbedLayoutConstants.BUTTON_WIDTH*3;
         fShapeSelector.getButton().setLayoutData(gd);
         getWidgetFactory().adapt(fShapeSelector.getButton(), true, true);
         fShapeSelector.addListener(shapeListener);

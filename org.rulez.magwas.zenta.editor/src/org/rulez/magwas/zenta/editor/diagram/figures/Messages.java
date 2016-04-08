@@ -10,7 +10,6 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
 
     private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.diagram.figures.messages"; //$NON-NLS-1$
-
     public static String AbstractDiagramModelObjectFigure_0;
     static {
         // initialize resource bundle

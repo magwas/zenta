@@ -31,6 +31,7 @@
    </launcher>
 
    <vm>
+      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</linux>
    </vm>
 
    <plugins>
@@ -99,6 +100,7 @@
       <plugin id="org.eclipse.equinox.http.servlet"/>
       <plugin id="org.eclipse.equinox.jsp.jasper"/>
       <plugin id="org.eclipse.equinox.jsp.jasper.registry"/>
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins"/>
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.region" fragment="true"/>
       <plugin id="org.eclipse.equinox.registry"/>
@@ -140,6 +142,7 @@
       <plugin id="org.eclipse.update.configurator"/>
       <plugin id="org.rulez.magwas.zenta.browser"/>
       <plugin id="org.rulez.magwas.zenta.canvas"/>
+      <plugin id="org.rulez.magwas.zenta.controller"/>
       <plugin id="org.rulez.magwas.zenta.editor"/>
       <plugin id="org.rulez.magwas.zenta.editor.fullscreen.macos" fragment="true"/>
       <plugin id="org.rulez.magwas.zenta.editor.launch.macos" fragment="true"/>

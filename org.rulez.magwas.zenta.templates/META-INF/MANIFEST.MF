@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ClassPath: org.rulez.magwas.zenta.templates.jar
 Bundle-Activator: org.rulez.magwas.zenta.templates.ZentaEditorTemplatesPlugin
 Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.rulez.magwas.zenta.templates.dialog,
  org.rulez.magwas.zenta.templates.model,
  org.rulez.magwas.zenta.templates.wizard

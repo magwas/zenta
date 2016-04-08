@@ -3,6 +3,7 @@ package org.rulez.magwas.zenta.editor.diagram.figures.business;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.graphics.Color;
 import org.rulez.magwas.zenta.editor.diagram.figures.IDiagramModelObjectFigure;
 import org.rulez.magwas.zenta.editor.diagram.figures.RectangleFigureDelegate;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
@@ -35,11 +36,12 @@ public class BasicObjectFigureDelegate extends RectangleFigureDelegate {
         bounds.height -= SHADOW_OFFSET;
         
         // Top bit
-        graphics.setBackgroundColor(ColorFactory.getDarkerColor(getFillColor()));
+        Color fillColor = getFillColor();
+		graphics.setBackgroundColor(ColorFactory.getDarkerColor(fillColor));
         graphics.fillRectangle(bounds.x, bounds.y, bounds.width, flangeFactor);
         
         // Main Fill
-        graphics.setBackgroundColor(getFillColor());
+        graphics.setBackgroundColor(fillColor);
         graphics.fillRectangle(bounds.x, bounds.y + flangeFactor - 1, bounds.width, bounds.height - flangeFactor + 1);
         
         // Outline

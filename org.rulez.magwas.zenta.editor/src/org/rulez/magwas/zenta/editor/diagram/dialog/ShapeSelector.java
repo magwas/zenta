@@ -23,8 +23,12 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.ScrollBar;
 import org.eclipse.swt.widgets.Shell;
 import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
+import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
 import org.rulez.magwas.zenta.editor.ui.FigureFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 
@@ -48,16 +52,36 @@ public class ShapeSelector extends EventManager {
             	dropMenu.dispose();
             	dropMenu = null;
             }
+            
+            class verticalBar implements Listener{
+            	Composite composite;
+            	public int iconcount=10;
+				private ScrollBar vBar;
+            	public verticalBar(Composite composite)
+            	{
+            		this.composite = composite;
+                    vBar = dropMenu.getVerticalBar();
+                    vBar.addListener (SWT.Selection,this);
+            	}
+			@Override
+			public void handleEvent(Event event) {
+        		Point location = composite.getLocation ();
+        		location.y = -vBar.getSelection ()*iconcount*65/250;
+        		composite.setLocation (location);
+			}
+            }
             @Override
             public void widgetSelected(SelectionEvent e) {
                 int iconcount= 0;
                 if(dropMenu == null) {
-                    dropMenu = new Shell(dropMenu, SWT.APPLICATION_MODAL);
-                    dropMenu.setLayout(new FillLayout(SWT.VERTICAL));
+                    dropMenu = new Shell(dropMenu, SWT.APPLICATION_MODAL|SWT.V_SCROLL);
+                    final Composite composite = new Composite (dropMenu, SWT.BORDER);
+                    verticalBar vBar = new verticalBar(composite);
+                    composite.setLayout(new FillLayout(SWT.VERTICAL));
                     Set<String> names = FigureFactory.getFigureNames();
                     for(String name : names) {
                     	iconcount++;
-                        Button but1 = new Button(dropMenu,SWT.PUSH);
+                        Button but1 = new Button(composite,SWT.PUSH);
                         Image img = FigureFactory.getImageForName(name);
                         but1.setImage(img);
                         final String thename = name;
@@ -69,7 +93,9 @@ public class ShapeSelector extends EventManager {
                         });
 
                     }
-                    dropMenu.setSize(40, iconcount*34);
+                    vBar.iconcount = iconcount;
+                    composite.setSize(142, iconcount*65);
+                    dropMenu.setSize(152, 250);
                 }
                 Point bounds = fButton.getLocation();
                 

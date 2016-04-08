@@ -16,6 +16,7 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
+import org.rulez.magwas.zenta.editor.ui.FigureFactory;
 import org.rulez.magwas.zenta.editor.ui.FontFactory;
 import org.rulez.magwas.zenta.editor.utils.PlatformUtils;
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -38,7 +39,9 @@ implements IDiagramModelObjectFigure {
     private Color fFillColor;
     private Color fFontColor;
     
-    
+    public AbstractDiagramModelObjectFigure() {
+    	
+    }
     public AbstractDiagramModelObjectFigure(IDiagramModelObject diagramModelObject){
         fDiagramModelObject = diagramModelObject;
         setUI();
@@ -60,7 +63,7 @@ implements IDiagramModelObjectFigure {
     	if(delegate != null) {
         	isenabled = delegate.isEnabled();
     	}
-        delegate = org.rulez.magwas.zenta.editor.ui.FigureFactory.getDelegate(shape, this);
+        delegate = FigureFactory.getDelegate(shape, this);
         delegate.setEnabled(isenabled);
     }
     

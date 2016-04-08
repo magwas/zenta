@@ -6,3 +6,4 @@ Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: Árpád Magosányi
 Fragment-Host: org.eclipse.ui
 Eclipse-PlatformFilter: (osgi.ws=cocoa)
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

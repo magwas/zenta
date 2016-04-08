@@ -34,3 +34,4 @@ Bundle-ClassPath: lib/jaxen.jar,
  lib/jdom.jar,
  uk.ac.bolton.jdom.jar,
  lib/saxon9he.jar
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
