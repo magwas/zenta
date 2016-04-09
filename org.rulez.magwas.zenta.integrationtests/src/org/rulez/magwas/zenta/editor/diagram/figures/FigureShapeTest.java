@@ -1,7 +1,6 @@
 package org.rulez.magwas.zenta.editor.diagram.figures;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.swt.SWT;
@@ -16,32 +15,14 @@ import org.rulez.magwas.zenta.integrationtests.ModelAndEditPartTestData;
 public class FigureShapeTest {
 
 	private IFigure figure;
-	private List<String> names;
+	private Set<String> names;
 	private ModelAndEditPartTestData testData;
 
 	@Before
 	public void setUp() {
 		testData = new ModelAndEditPartTestData();
 		figure = testData.getAFigure();
-		names = Arrays.asList(
-				"emptyShape",
-				"roundedRectangleShape",
-				"ellipseShape",
-				"ellipseShape2",
-				"deviceShape",
-				"deviceShape2",
-				"applicationShape",
-				"nodeShape",
-				"artifactShape",
-				"representationShape",
-				"processShape",
-				"serviceShape",
-				"productShape",
-				"contractShape",
-				"eventShape",
-				"meaningShape",
-				"deliverableShape",
-				"motivationShape");
+		names = FigureFactory.getFigureNames();
 	}
 
 	@Test

@@ -25,7 +25,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <module>org.rulez.magwas.zenta.editor.fullscreen.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.win32</module>
-    <module>org.rulez.magwas.zenta.integrationtests</module>
+    <!--module>org.rulez.magwas.zenta.integrationtests</module-->
   </modules>
  
   <properties>
@@ -132,6 +132,26 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
               <arch>x86_64</arch>
             </environment>
           </environments>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-toolchains-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>toolchain</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <toolchains>
+            <jdk>
+              <version>1.8</version>
+              <vendor>sun</vendor>
+            </jdk>
+          </toolchains>
         </configuration>
       </plugin>
     </plugins>

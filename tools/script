@@ -1,0 +1,9 @@
+#!/bin/bash
+set -xe
+export DISPLAY=:0
+Xvnc :0&
+mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
+cp toolchains.xml ~/.m2
+mvn install
+tools/upload
+

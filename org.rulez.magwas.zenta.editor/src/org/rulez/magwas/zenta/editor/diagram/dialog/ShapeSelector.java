@@ -28,7 +28,6 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ScrollBar;
 import org.eclipse.swt.widgets.Shell;
 import org.rulez.magwas.zenta.editor.diagram.editparts.business.BasicObjectEditPart;
-import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
 import org.rulez.magwas.zenta.editor.ui.FigureFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 

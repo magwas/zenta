@@ -60,7 +60,6 @@ public class RectangleFigureDelegate extends AbstractFigureDelegate {
         
         // Image icon
         Image image = getImage();
-        System.out.printf("image=%s\n", image);
 		if(image != null) {
             graphics.drawImage(image, calculateImageLocation());
         }

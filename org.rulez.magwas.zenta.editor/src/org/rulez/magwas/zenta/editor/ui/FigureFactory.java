@@ -34,6 +34,7 @@ import org.rulez.magwas.zenta.editor.diagram.figures.TechnologyDeviceFigureDeleg
 import org.rulez.magwas.zenta.editor.diagram.figures.TechnologyNodeFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BasicObjectFigureDelegate;
 import org.rulez.magwas.zenta.editor.diagram.figures.business.BusinessValueFigureDelegate;
+import org.rulez.magwas.zenta.editor.diagram.figures.business.DiagramModelReferenceFigureDelegate;
 public class FigureFactory {
 
 	public static final String RECTANGLE_ELEMENT_SHAPE = "rectangleElementShape";
@@ -63,6 +64,7 @@ public class FigureFactory {
 		figureClassMap.put("meaningShape", BusinessMeaningFigure.class);
 		figureClassMap.put("deliverableShape", DeliverableFigure.class);
 		figureClassMap.put("motivationShape", AbstractMotivationFigure.class);
+		figureClassMap.put("diagramReferenceShape", DiagramModelReferenceFigureDelegate.class);
 	}
 	
 	public static FigureFactory getInstance() {
