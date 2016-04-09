@@ -1,4 +1,7 @@
 build_image: magwas/edemotest:zentabuild
+language: python
+python:
+  - 2.7
 script:
 - tools/script
 
