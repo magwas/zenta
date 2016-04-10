@@ -13,7 +13,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
@@ -29,6 +29,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.manager.AbstractEditorModelManager;
 import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
@@ -98,7 +99,7 @@ public class TreeModelViewActionFactory {
                 element.setName(getText());
                 // Execute Command
                 Command cmd = new NewElementCommand(f, element);
-                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(f);
+                CommandStack commandStack = IEditorModelManager.INSTANCE.obtainCommandStack(f);
                 commandStack.execute(cmd);
             }
         };
@@ -117,7 +118,7 @@ public class TreeModelViewActionFactory {
                 
                 // Execute Command
                 Command cmd = new NewDiagramCommand(folder, diagramModel, Messages.TreeModelViewActionFactory_1);
-                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(folder);
+                CommandStack commandStack = IEditorModelManager.INSTANCE.obtainCommandStack(folder);
                 commandStack.execute(cmd);
             }
         };
@@ -140,7 +141,7 @@ public class TreeModelViewActionFactory {
                 
                 // Execute Command
                 Command cmd = new NewDiagramCommand(folder, sketchModel, Messages.TreeModelViewActionFactory_3);
-                CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(folder);
+                CommandStack commandStack = IEditorModelManager.INSTANCE.obtainCommandStack(folder);
                 commandStack.execute(cmd);
             }
         };

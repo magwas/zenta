@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.rulez.magwas.zenta.model.IAttribute;
-import org.rulez.magwas.zenta.model.IEditorModelInterface;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IProperties;
@@ -18,6 +17,7 @@ import org.rulez.magwas.zenta.model.IZentaModelElement;
 import org.rulez.magwas.zenta.model.handmade.Attribute;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.ZentaFactoryBase;
+import org.rulez.magwas.zenta.model.manager.IEditorModelInterface;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 public class ZentaFactory extends ZentaFactoryBase implements IZentaFactory {

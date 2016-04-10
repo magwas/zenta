@@ -26,15 +26,16 @@ import org.jdom.Element;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasModelTemplate;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
-import org.rulez.magwas.zenta.editor.utils.ZipUtils;
+import org.rulez.magwas.zenta.editor.model.impl.EditorModelImage;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.util.LogUtil;
+import org.rulez.magwas.zenta.model.util.ZipUtils;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
 import org.rulez.magwas.zenta.templates.model.ITemplateXMLTags;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
@@ -146,7 +147,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
             // Thumbnail
             if(fIncludeThumbnail) {
                 Image image = TemplateUtils.createThumbnailImage(getfCanvasModel());
-                ZipUtils.addImageToZip(image, TemplateManager.ZIP_ENTRY_THUMBNAILS + "1.png", zOut, SWT.IMAGE_PNG, null); //$NON-NLS-1$
+                ZipUtils.addImageToZip(new EditorModelImage(image), TemplateManager.ZIP_ENTRY_THUMBNAILS + "1.png", zOut, SWT.IMAGE_PNG, null); //$NON-NLS-1$
                 image.dispose();
             }
         }

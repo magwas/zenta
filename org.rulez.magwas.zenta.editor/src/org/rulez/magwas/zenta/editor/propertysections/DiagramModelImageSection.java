@@ -27,10 +27,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
@@ -187,7 +187,7 @@ public class DiagramModelImageSection extends AbstractZentaPropertySection {
                     return;
                 }
                 
-                IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(getEObject());
+                IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(getEObject());
                 path = archiveManager.addImageFromFile(file);
             }
             // User selected a Gallery image path

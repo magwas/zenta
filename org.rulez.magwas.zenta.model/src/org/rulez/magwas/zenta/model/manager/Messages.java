@@ -3,13 +3,13 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model.impl;
+package org.rulez.magwas.zenta.model.manager;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 
-    private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.editor.model.impl.messages"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "org.rulez.magwas.zenta.model.manager.messages"; //$NON-NLS-1$
 
     public static String EditorModelManager_0;
 

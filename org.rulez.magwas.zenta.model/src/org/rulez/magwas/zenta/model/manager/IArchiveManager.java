@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model;
+package org.rulez.magwas.zenta.model.manager;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.zip.ZipFile;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.swt.graphics.Image;
-import org.rulez.magwas.zenta.editor.model.impl.ArchiveManager;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.manager.impl.ArchiveManager;
 
 
 /**
@@ -32,7 +32,11 @@ public interface IArchiveManager {
          * @return The IArchiveManager instance
          */
         public static IArchiveManager createArchiveManager(IZentaModel model) {
-            return new ArchiveManager(model);
+        	IArchiveManager manager = new ArchiveManager(model);
+        	IEditorModelInterface editorInterface = IZentaFactory.eINSTANCE.getEditorInterface();
+			IModelImageManager imageManager = editorInterface.getImageManagerForArchiveManager(manager);
+        	manager.setImageManager(imageManager);
+            return manager ;
         }
         
         /**
@@ -95,8 +99,8 @@ public interface IArchiveManager {
      * @return the Image object or null
      * @throws Exception
      */
-    Image createImage(String path) throws Exception;
-
+    IModelImage createImage(String path) throws Exception;
+    
     /**
      * Get a list of Image entry paths as used in the current state of the model.<br>
      * This will not include duplicates.
@@ -133,4 +137,10 @@ public interface IArchiveManager {
      * Dispose and unload any assets no longer referenced
      */
     void dispose();
+
+	ByteArrayStorage getStorage();
+
+	void setImageManager(IModelImageManager imageManager);
+
+	List<String> getLoadedImagePaths();
 }

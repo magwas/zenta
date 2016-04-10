@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model.impl;
+package org.rulez.magwas.zenta.model.manager;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -31,12 +31,12 @@ public class ByteArrayStorage {
 
 	private NonNullMap<String, byte[]> fdataTable = new NonNullHashMap<String, byte[]>();
     
-    InputStream getInputStream(String entryName) {
+    public InputStream getInputStream(String entryName) {
         byte[] bytes = fdataTable.get(entryName);
         return new ByteArrayInputStream(bytes);
     }
 
-    String getKey(byte[] bytes) {
+    public String getKey(byte[] bytes) {
         for(NonNullEntry<String, byte[]> entry : fdataTable.getEntrySet()) {
             byte[] entryBytes = entry.getValue();
             byte[] b = Util.verifyNonNull(entryBytes);
@@ -62,15 +62,15 @@ public class ByteArrayStorage {
         return !fdataTable.isEmpty();
     }
     
-    boolean hasEntry(String entryName) {
+    public boolean hasEntry(String entryName) {
         return fdataTable.containsKey(entryName);
     }
     
-    void removeEntry(String entryName) {
+    public void removeEntry(String entryName) {
         fdataTable.remove(entryName);
     }
     
-    byte[] getEntry(String entryName) {
+    public byte[] getEntry(String entryName) {
         return fdataTable.get(entryName);
     }
     
@@ -78,12 +78,12 @@ public class ByteArrayStorage {
         addStreamEntry(entryName, new FileInputStream(file));
     }
     
-    void addStreamEntry(String entryName, InputStream in) throws IOException {
+    public void addStreamEntry(String entryName, InputStream in) throws IOException {
         byte[] bytes = getBytesFromStream(in);
         addByteContentEntry(entryName, bytes);
     }
 
-    void addByteContentEntry(String entryName, byte[] bytes) {
+    public void addByteContentEntry(String entryName, byte[] bytes) {
         // If we have these bytes already, let's re-reference them
         String key = getKey(bytes);
         if(key != null) {
@@ -94,7 +94,7 @@ public class ByteArrayStorage {
         }
     }
     
-    byte[] getBytesFromFile(File file) throws IOException {
+    public byte[] getBytesFromFile(File file) throws IOException {
     	if(!file.exists())
     		throw new NoSuchFileError();
         InputStream in = new FileInputStream(file);

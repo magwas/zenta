@@ -10,9 +10,9 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.rulez.magwas.zenta.canvas.model.IIconic;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
@@ -34,11 +34,11 @@ public class IconicDelegate {
         disposeImage();
         
         if(fIconic.getImagePathOrNull() != null) {
-            IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(fIconic);
+            IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(fIconic);
 
             Image image = null;
             try {
-                image = archiveManager.createImage(fIconic.getImagePathOrNull());
+                image = archiveManager.createImage(fIconic.getImagePathOrNull()).adapt(Image.class);
             }
             catch(Exception ex) {
     			LogUtil.logException(ex);

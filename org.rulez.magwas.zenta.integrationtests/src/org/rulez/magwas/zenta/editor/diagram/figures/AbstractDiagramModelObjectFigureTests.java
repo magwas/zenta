@@ -24,8 +24,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.IDiagramModelEditor;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.editor.model.impl.EditorModelManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
@@ -34,6 +34,7 @@ import org.rulez.magwas.zenta.integrationtests.UITestUtils;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.manager.AbstractEditorModelManager;
 
 
 @SuppressWarnings("nls")
@@ -59,7 +60,7 @@ public abstract class AbstractDiagramModelObjectFigureTests {
 	@BeforeClass
     public static void runOnceBeforeAllTests() {
         // Create a model with a default DiagramModel and open the editor
-        IEditorModelManager editorModeManager = new EditorModelManagerNoGUI();
+        IEditorModelManager editorModeManager = new EditorModelManager();
         model = editorModeManager.createNewModel();
         editorModeManager.openModel(model);
         dm = model.getDefaultDiagramModel();

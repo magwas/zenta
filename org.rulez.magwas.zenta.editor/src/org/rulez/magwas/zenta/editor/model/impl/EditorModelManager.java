@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor.model.impl;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -14,11 +15,21 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchListener;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
-import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
-import org.rulez.magwas.zenta.editor.model.compatibility.LaterModelVersionException;
+import org.eclipse.gef.commands.CommandStack;
+import org.rulez.magwas.nonnul.NonNullListIterator;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
+import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.manager.AbstractEditorModelManager;
+import org.rulez.magwas.zenta.model.manager.IncompatibleModelException;
+import org.rulez.magwas.zenta.model.manager.LaterModelVersionException;
+import org.rulez.magwas.zenta.model.manager.Messages;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 
@@ -33,9 +44,35 @@ import org.rulez.magwas.zenta.model.IZentaModel;
  * 
  * @author Phillip Beauvoir
  */
-public class EditorModelManager extends EditorModelManagerNoGUI {
+public class EditorModelManager extends AbstractEditorModelManager implements IEditorModelManager{
     
-    public EditorModelManager() {
+	protected IWorkbenchListener workBenchListener = new IWorkbenchListener() {
+        public void postShutdown(IWorkbench workbench) {
+        }
+
+        public boolean preShutdown(IWorkbench  workbench, boolean forced) {
+            for (NonNullListIterator<IZentaModel> iterator = getModels().iterator(); iterator
+					.hasNext();) {
+				IZentaModel model = iterator.next();
+				if(isModelDirty(model)) {
+                    try {
+                        boolean result = askSaveModel(model);
+                        if(!result) {
+                            return false;
+                        }
+                    }
+                    catch(IOException ex) {
+                        LogUtil.logException(ex);
+                    }
+                }
+			}
+            
+            return true;
+        }
+
+    };
+
+	public EditorModelManager() {
         PlatformUI.getWorkbench().addWorkbenchListener(workBenchListener);
     }
 
@@ -106,6 +143,45 @@ public class EditorModelManager extends EditorModelManagerNoGUI {
 	        path += ZENTA_FILE_EXTENSION;
 	    }
 		return path;
+	}
+
+	@Override
+	public boolean isModelDirty(IZentaModel model) {
+		IZentaModel m = Util.verifyNonNull(model);
+	    CommandStack stack = obtainCommandStack(m);
+	    return stack.isDirty();
+	}
+
+	@Override
+	public CommandStack obtainCommandStack(IAdapter obj) {
+		IAdapter ob = Util.verifyNonNull(obj);
+		CommandStack adapter = (CommandStack) ob.getAdapter(CommandStack.class);
+		return Util.verifyNonNull(adapter);
+	}
+
+	private void deleteCommandStack(IZentaModel model) {
+	    CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
+	    if(stack != null) {
+	        stack.dispose();
+	    }
+	}
+
+	@Override
+	public boolean removeModelWithoutDirtyCheck(IZentaModel model) {
+		// Close the corresponding GEF editor(s) for this model *FIRST* before removing from model
+	    EditorManager.closeDiagramEditors(model);
+	    
+	    getModels().remove(model);
+	    model.eAdapters().clear();
+	    firePropertyChange(this, PROPERTY_MODEL_REMOVED, null, model);
+	    
+	    // Delete the CommandStack *LAST* because GEF Editor(s) will still reference it!
+	    deleteCommandStack(model);
+	    
+	    // Delete Archive Manager
+	    deleteArchiveManager(model);
+	
+	    return true;
 	}
 
 }

@@ -7,6 +7,7 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.ecore.EFactory;
+import org.rulez.magwas.zenta.model.manager.IEditorModelInterface;
 
 /**
  * <!-- begin-user-doc -->

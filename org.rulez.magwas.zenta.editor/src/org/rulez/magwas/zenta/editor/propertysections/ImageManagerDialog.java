@@ -53,14 +53,13 @@ import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.PlatformUI;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -258,7 +257,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             public void run() {
                 // Make selection of model in table if it has images
                 if(fSelectedModel != null) {
-                    IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(fSelectedModel);
+                    IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(fSelectedModel);
                     if(archiveManager.hasImages()) {
                         // Select model
                         fModelsViewer.setSelection(new StructuredSelection(fSelectedModel));
@@ -278,7 +277,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                     // Else select the first valid model that's open
                     else {
                         for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
-                            archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(model);
+                            archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(model);
                             if(archiveManager.hasImages()) {
                                 fModelsViewer.setSelection(new StructuredSelection(model));
                                 break;
@@ -308,7 +307,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
         BusyIndicator.showWhile(null, new Runnable() {
             @Override
             public void run() {
-                IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(model);
+                IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(model);
                 
                 generateScaledImages(archiveManager);
                 
@@ -339,7 +338,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
 			private Image generateNewThumbnail(IArchiveManager archiveManager,
 					String path) {
 				try {
-				    Image image = archiveManager.createImage(path);
+				    Image image = archiveManager.createImage(path).adapt(Image.class);
 				    Image thumbnail = ImageFactory.getScaledImage(image, MAX_GALLERY_ITEM_SIZE);
 				    image.dispose();
 				    fImageCache.put(path, thumbnail);
@@ -427,7 +426,7 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
                 List<Object> list = new ArrayList<Object>();
                 
                 for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
-                    IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(model);
+                    IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(model);
                     if(archiveManager.hasImages()) {
                         list.add(model);
                     }

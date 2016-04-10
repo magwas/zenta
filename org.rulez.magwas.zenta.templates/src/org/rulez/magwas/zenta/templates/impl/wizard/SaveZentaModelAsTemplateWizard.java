@@ -21,12 +21,13 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.jdom.Document;
 import org.jdom.Element;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
-import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.editor.model.impl.EditorModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.util.LogUtil;
+import org.rulez.magwas.zenta.model.util.ZipUtils;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaModelTemplate;
 import org.rulez.magwas.zenta.templates.impl.model.ZentaTemplateManager;
 import org.rulez.magwas.zenta.templates.model.ITemplateGroup;
@@ -140,7 +141,7 @@ public class SaveZentaModelAsTemplateWizard extends Wizard {
                 int i = 1;
                 for(IDiagramModel dm : getfModel().getDiagramModels()) {
                     Image image = TemplateUtils.createThumbnailImage(dm);
-                    ZipUtils.addImageToZip(image, TemplateManager.ZIP_ENTRY_THUMBNAILS + i++ + ".png", zOut, SWT.IMAGE_PNG, null); //$NON-NLS-1$
+                    ZipUtils.addImageToZip(new EditorModelImage(image), TemplateManager.ZIP_ENTRY_THUMBNAILS + i++ + ".png", zOut, SWT.IMAGE_PNG, null); //$NON-NLS-1$
                     image.dispose();
                 }
             }

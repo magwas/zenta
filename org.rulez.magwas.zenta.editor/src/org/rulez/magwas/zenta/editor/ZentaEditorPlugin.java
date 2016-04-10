@@ -7,20 +7,36 @@ package org.rulez.magwas.zenta.editor;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
+import java.util.EventObject;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.gef.commands.CommandStack;
+import org.eclipse.gef.commands.CommandStackListener;
 import org.eclipse.osgi.service.datalocation.Location;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
+import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.editor.model.impl.EditorModelImageManager;
+import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.model.IEditorModelInterface;
+import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
+import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
+import org.rulez.magwas.zenta.model.manager.IEditorModelInterface;
+import org.rulez.magwas.zenta.model.manager.IEditorModelManagerNoGUI;
+import org.rulez.magwas.zenta.model.manager.IModelImageManager;
+import org.rulez.magwas.zenta.model.manager.ModelImage;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
@@ -168,7 +184,84 @@ public class ZentaEditorPlugin extends AbstractUIPlugin implements IEditorModelI
 
 	@Override
 	public void removeModel(IZentaModel model) {
-		EditorModelManagerNoGUI.INSTANCE.removeModelWithoutDirtyCheck(model);
+		getModelManager().removeModelWithoutDirtyCheck(model);
+	}
+
+	@Override
+	public boolean askSaveModel(IZentaModel model, IEditorModelManagerNoGUI manager) throws IOException {
+	    int result = manager.saveModelDialog(model);
+	    
+	    // Yes
+	    if(result == 0) {
+	        return manager.saveModel(model);
+	    }
+	    // No
+	    if(result == 1) {
+	        return true;
+	    }
+	    // Cancel
+	    return false;
+	}
+
+	@Override
+	public void createNewCommandStack(final IZentaModel model, IEditorModelManagerNoGUI manager) {
+	    CommandStack cmdStack = new CommandStack();
+	    
+	    // Forward on CommandStack Event to Tree
+	    cmdStack.addCommandStackListener(new CommandStackListener() {
+	        public void commandStackChanged(EventObject event) {
+	            // Send notification to Tree
+	            manager.firePropertyChange(model, IEditorModelManager.COMMAND_STACK_CHANGED, false, true);
+	        }
+	    });
+	    
+	    // Animate Commands
+	    AnimationUtil.registerCommandStack(cmdStack);
+	    
+	    model.setAdapter(CommandStack.class, cmdStack);
+	}
+
+	@Override
+	public void setCommandStackSavePoint(IZentaModel model) {
+	    CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
+	    Util.verifyNonNull(stack).markSaveLocation();
+	}
+
+	@Override
+	public void saveImageToStream(ModelImage image, OutputStream zOut, int format) {
+		ImageLoader loader = new ImageLoader();
+        loader.data = new ImageData[] { (ImageData) image.getImageData() };
+        loader.save(zOut, format);
+	}
+
+	@Override
+	public IModelImageManager getImageManagerForArchiveManager(IArchiveManager archiveManager) {
+		return new EditorModelImageManager(archiveManager);
+	}
+
+	@Override
+	public IEditorModelManagerNoGUI getModelManager() {
+        return IEditorModelManager.INSTANCE;
+	}
+
+	@Override
+	public void openDiagramEditor(IDiagramModel dm) {
+		EditorManager.openDiagramEditor(dm);
+	}
+
+	@Override
+	public boolean shouldBackupOnSave() {
+			return Preferences.STORE.getBoolean(IPreferenceConstants.BACKUP_ON_SAVE);
+	}
+
+	@Override
+	public boolean doOpenDiagramsOnLoad() {
+		return Preferences.doOpenDiagramsOnLoad();
+	}
+
+	@Override
+	public void closeDiagramEditors(IZentaModel model) {
+		EditorManager.closeDiagramEditors(model);
 	}
 
 }

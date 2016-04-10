@@ -3,10 +3,9 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model.impl;
+package org.rulez.magwas.zenta.model.manager.impl;
 
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,19 +22,17 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
-import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
-
-
+import org.rulez.magwas.zenta.model.manager.ByteArrayStorage;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
+import org.rulez.magwas.zenta.model.manager.IModelImage;
+import org.rulez.magwas.zenta.model.manager.IModelImageManager;
+import org.rulez.magwas.zenta.model.util.ZipUtils;
 
 /**
  * Archive Manager
@@ -44,11 +41,7 @@ import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
  */
 public class ArchiveManager implements IArchiveManager {
     
-    public class BadPathForImage extends RuntimeException {
-		private static final long serialVersionUID = 1L;
-	}
-
-	/**
+    /**
      * Raw image bytes loaded for all images in use in this model
      */
     static ByteArrayStorage BYTE_ARRAY_STORAGE = new ByteArrayStorage();
@@ -58,6 +51,12 @@ public class ArchiveManager implements IArchiveManager {
      */
     private IZentaModel fModel;
     
+    private IModelImageManager imageManager;
+    
+    @Override
+    public void setImageManager(IModelImageManager imageManager) {
+    	this.imageManager = imageManager;
+    }
     /**
      * Images are loaded
      */
@@ -127,7 +126,7 @@ public class ArchiveManager implements IArchiveManager {
         if(entryName == null) {
             // Is this actually a valid Image file? Test it...
             try {
-                new Image(Display.getCurrent(), new ByteArrayInputStream(bytes));
+                imageManager.createImageFromData(bytes);
             }
             catch(Throwable ex) {
                 throw new IOException("Not a supported image file", ex); //$NON-NLS-1$
@@ -143,13 +142,6 @@ public class ArchiveManager implements IArchiveManager {
         return entryName;
     }
     
-    @Override
-    public Image createImage(String path) throws Exception {
-        if(BYTE_ARRAY_STORAGE.hasEntry(path)) {
-            return new Image(Display.getCurrent(), BYTE_ARRAY_STORAGE.getInputStream(path));
-        }
-        throw new BadPathForImage();
-    }
     
     @Override
     public List<String> getImagePaths() {
@@ -301,43 +293,33 @@ public class ArchiveManager implements IArchiveManager {
         getfModel().eAdapters().remove(fModelAdapter);
         
         if(!fLoadedImagePaths.isEmpty()) {
-            unloadUnusedImages();
+        	List<String> allPathsInUse = imageManager.getUsedImagePaths();
+            // Release all unused image data and cached images that are not in image paths
+            for(String imagePatho : fLoadedImagePaths) {
+            	String imagePath = Util.verifyNonNull(imagePatho);
+                if(!allPathsInUse.contains(imagePath)) {
+                	getStorage().removeEntry(imagePath);
+                }
+            }
         }
-        
         fLoadedImagePaths = null;
     }
     
-    /**
-     * Unload any images not in use in other models
-     */
-    private void unloadUnusedImages() {
-        // Gather all image paths that are in use in other models
-        List<String> allPathsInUse = new ArrayList<String>();
-
-        for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
-            if(model != getfModel()) { // don't bother with this model as we no longer use any images
-                ArchiveManager archiveManager = (ArchiveManager)model.getAdapter(IArchiveManager.class);
-                if(null != archiveManager)
-	                for(String imagePath : archiveManager.fLoadedImagePaths) {
-	                    if(!allPathsInUse.contains(imagePath)) {
-	                        allPathsInUse.add(imagePath);
-	                    }
-	                }
-            }
-        }
-
-        // Release all unused image data and cached images that are not in image paths
-        for(String imagePatho : fLoadedImagePaths) {
-        	String imagePath = Util.verifyNonNull(imagePatho);
-            if(!allPathsInUse.contains(imagePath)) {
-                BYTE_ARRAY_STORAGE.removeEntry(imagePath);
-            }
-        }
-    }
 
 	public List<String> getLoadedImagePaths() {
 		if(null == fLoadedImagePaths)
 			fLoadedImagePaths = new ArrayList<String>();
 		return fLoadedImagePaths;
 	}
+
+	@Override
+	public IModelImage createImage(String path) throws Exception {
+		return imageManager.createImage(path);
+	}
+
+	@Override
+	public ByteArrayStorage getStorage() {
+		return BYTE_ARRAY_STORAGE;
+	}
+
 }

@@ -9,10 +9,11 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewFolderCommand;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.manager.AbstractEditorModelManager;
 import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.IFolder;
 
@@ -43,7 +44,7 @@ public class NewFolderAction extends ViewerAction {
             folder.setName(Messages.NewFolderAction_1);
             // Execute Command
             Command cmd = new NewFolderCommand(parent, folder);
-            CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(parent);
+            CommandStack commandStack = IEditorModelManager.INSTANCE.obtainCommandStack(parent);
             commandStack.execute(cmd);
         }
     }

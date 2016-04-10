@@ -19,13 +19,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.jdom.Document;
 import org.jdom.Element;
+import org.rulez.magwas.zenta.editor.model.impl.EditorModelImage;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
-import org.rulez.magwas.zenta.editor.utils.ZipUtils;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
+import org.rulez.magwas.zenta.model.util.ZipUtils;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
@@ -198,7 +199,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
         Image[] images = getThumbnails();
         int i = 1;
         for(Image image : images) {
-            ZipUtils.addImageToZip(image, TemplateManager.ZIP_ENTRY_THUMBNAILS + i++ + ".png", zOut, SWT.IMAGE_PNG, null); //$NON-NLS-1$
+            ZipUtils.addImageToZip(new EditorModelImage(image), TemplateManager.ZIP_ENTRY_THUMBNAILS + i++ + ".png", zOut, SWT.IMAGE_PNG, null); //$NON-NLS-1$
         }
         
         zOut.flush();

@@ -24,9 +24,9 @@ import org.rulez.magwas.zenta.editor.diagram.commands.AddDiagramModelReferenceCo
 import org.rulez.magwas.zenta.editor.diagram.commands.AddDiagramObjectCommand;
 import org.rulez.magwas.zenta.editor.diagram.dnd.AbstractDNDEditPolicy;
 import org.rulez.magwas.zenta.editor.diagram.dnd.DiagramDropRequest;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
@@ -92,7 +92,7 @@ public class CanvasDNDEditPolicy extends AbstractDNDEditPolicy {
 
             ICanvasModelImage canvasModelImage = ICanvasFactory.eINSTANCE.createCanvasModelImage();
             canvasModelImage.setName(Messages.CanvasDNDEditPolicy_1);
-            IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(getTargetContainer());
+            IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(getTargetContainer());
             String pathName;
             try {
                 pathName = archiveManager.addImageFromFile(file);
@@ -106,7 +106,7 @@ public class CanvasDNDEditPolicy extends AbstractDNDEditPolicy {
             // Get width and height of the image
             Image image = null;
             try {
-                image = archiveManager.createImage(pathName);
+                image = archiveManager.createImage(pathName).adapt(Image.class);
             }
             catch(Exception ex) {
     			LogUtil.logException(ex);

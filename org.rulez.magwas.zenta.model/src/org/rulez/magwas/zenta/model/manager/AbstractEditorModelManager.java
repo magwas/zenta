@@ -1,11 +1,10 @@
-package org.rulez.magwas.zenta.editor.model;
+package org.rulez.magwas.zenta.model.manager;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
-import java.util.EventObject;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -14,40 +13,27 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.gef.commands.CommandStack;
-import org.eclipse.gef.commands.CommandStackListener;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchListener;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
-import org.rulez.magwas.nonnul.NonNullListIterator;
-import org.rulez.magwas.zenta.editor.ZentaEditorPlugin;
-import org.rulez.magwas.zenta.editor.diagram.util.AnimationUtil;
-import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
-import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
-import org.rulez.magwas.zenta.editor.model.compatibility.LaterModelVersionException;
-import org.rulez.magwas.zenta.editor.model.compatibility.ModelCompatibility;
-import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
-import org.rulez.magwas.zenta.editor.preferences.Preferences;
-import org.rulez.magwas.zenta.editor.ui.services.EditorManager;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.compatibility.CompatibilityHandlerException;
+import org.rulez.magwas.zenta.model.compatibility.ModelCompatibility;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
-import org.rulez.magwas.zenta.editor.model.impl.Messages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
-public class EditorModelManagerNoGUI implements IEditorModelManager {
+public abstract class AbstractEditorModelManager implements IEditorModelManagerNoGUI {
 
 	public class NoSuchFileException extends RuntimeException {
 		private static final long serialVersionUID = 1L;
@@ -64,36 +50,11 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	/**
 	 * Backing File
 	 */
-	private File backingFile = new File(ZentaEditorPlugin.INSTANCE.getUserDataFolder(), "models.xml");
-	/**
-	 * Listen to the App closing so we can ask to save
-	 */
-	protected IWorkbenchListener workBenchListener = new IWorkbenchListener() {
-	        public void postShutdown(IWorkbench workbench) {
-	        }
+	IEditorModelInterface editorInterface = IZentaFactory.eINSTANCE.getEditorInterface();
 	
-	        public boolean preShutdown(IWorkbench  workbench, boolean forced) {
-	            for (NonNullListIterator<IZentaModel> iterator = getModels().iterator(); iterator
-						.hasNext();) {
-					IZentaModel model = iterator.next();
-					if(isModelDirty(model)) {
-	                    try {
-	                        boolean result = askSaveModel(model);
-	                        if(!result) {
-	                            return false;
-	                        }
-	                    }
-	                    catch(IOException ex) {
-	                        LogUtil.logException(ex);
-	                    }
-	                }
-				}
-	            
-	            return true;
-	        }
-	    };
+	private File backingFile = new File(editorInterface.getUserDataFolder(), "models.xml");
 
-	public EditorModelManagerNoGUI() {
+	public AbstractEditorModelManager() {
 		super();
 	}
 
@@ -136,7 +97,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    getModels().add(model);
 	    
 	    // New Command Stack
-	    createNewCommandStack(model);
+	    editorInterface.createNewCommandStack(model, this);
 	    
 	    // New Archive Manager
 	    createNewArchiveManager(model);
@@ -153,9 +114,9 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    
 	    IZentaModel model = loadModel(file);
         // Open Views of newly opened model if set in Preferences
-        if(Preferences.doOpenDiagramsOnLoad()) {
+        if(editorInterface.doOpenDiagramsOnLoad()) {
             for(IDiagramModel dm : model.getDiagramModels()) {
-                EditorManager.openDiagramEditor(dm);
+                editorInterface.openDiagramEditor(dm);
             }
         }
         
@@ -169,8 +130,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    // Add to Models
 	    getModels().add(model);
 	    
-	    // New Command Stack
-	    createNewCommandStack(model);
+	    editorInterface.createNewCommandStack(model, this);
 	    
 	    // New Archive Manager
 	    createNewArchiveManager(model);
@@ -237,8 +197,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    getModels().add(model);
 	    model.eAdapters().add(new ECoreAdapter());
 	
-	    // New Command Stack
-	    createNewCommandStack(model);
+	    editorInterface.createNewCommandStack(model, this);
 	    
 	    // New Archive Manager
 	    createNewArchiveManager(model);
@@ -255,14 +214,10 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 
 	private void analyzeModelLoad(Resource resource) {
 		EList<Diagnostic> errors = resource.getErrors();
-		if (errors.size() == 0)
-			System.out.println("No errors in load");
 		for (Diagnostic d : errors) {
 			System.out.println("Error: "+ d);
 		}
 		EList<Diagnostic> warnings = resource.getWarnings();
-		if (warnings.size() == 0)
-			System.out.println("No warnings in load");
 		for (Diagnostic d : warnings) {
 			System.out.println("Error: "+ d);
 		}
@@ -293,14 +248,11 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	@Override
 	public boolean removeModelWithoutDirtyCheck(IZentaModel model) {
 		// Close the corresponding GEF editor(s) for this model *FIRST* before removing from model
-	    EditorManager.closeDiagramEditors(model);
+	    editorInterface.closeDiagramEditors(model);
 	    
 	    getModels().remove(model);
 	    model.eAdapters().clear();
 	    firePropertyChange(this, PROPERTY_MODEL_REMOVED, null, model);
-	    
-	    // Delete the CommandStack *LAST* because GEF Editor(s) will still reference it!
-	    deleteCommandStack(model);
 	    
 	    // Delete Archive Manager
 	    deleteArchiveManager(model);
@@ -308,26 +260,6 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    return true;
 	}
 
-	/**
-	 * Show dialog to save modified model
-	 * @param model
-	 * @return true if the user chose to save the model or chose not to save the model, false if cancelled
-	 * @throws IOException 
-	 */
-	private boolean askSaveModel(IZentaModel model) throws IOException {
-	    int result = saveModelDialog(model);
-	    
-	    // Yes
-	    if(result == 0) {
-	        return saveModel(model);
-	    }
-	    // No
-	    if(result == 1) {
-	        return true;
-	    }
-	    // Cancel
-	    return false;
-	}
 
 	public int saveModelDialog(IZentaModel model) {
 		throw new UnTestedException();
@@ -347,7 +279,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    File file = model.getFile();
 	    
 	    // Save backup (if set in Preferences)
-	    if(Preferences.STORE.getBoolean(IPreferenceConstants.BACKUP_ON_SAVE) && file.exists()) {
+	    if(editorInterface.shouldBackupOnSave() && file.exists()) {
 	        FileUtils.copyFile(file, new File(model.getFile().getAbsolutePath() + ".bak"), false); //$NON-NLS-1$
 	    }
 	    
@@ -358,9 +290,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	    IArchiveManager archiveManager = obtainArchiveManager(model);
 	    archiveManager.saveModel();
 	    
-	    // Set CommandStack Save point
-	    CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
-	    Util.verifyNonNull(stack).markSaveLocation();
+	    editorInterface.setCommandStackSavePoint(model);
 	    // Send notification to Tree
 	    firePropertyChange(model, COMMAND_STACK_CHANGED, true, false);
 	    
@@ -399,13 +329,6 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
             }
 	    }
 		return null;
-	}
-
-	@Override
-	public boolean isModelDirty(IZentaModel model) {
-		IZentaModel m = Util.verifyNonNull(model);
-	    CommandStack stack = EditorModelManagerNoGUI.obtainCommandStack(m);
-	    return stack.isDirty();
 	}
 
 	/**
@@ -451,37 +374,6 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 		throw new UnTestedException();
 	}
 
-	/**
-	 * Create a new ComandStack for the Model
-	 * @param model
-	 */
-	private void createNewCommandStack(final IZentaModel model) {
-	    CommandStack cmdStack = new CommandStack();
-	    
-	    // Forward on CommandStack Event to Tree
-	    cmdStack.addCommandStackListener(new CommandStackListener() {
-	        public void commandStackChanged(EventObject event) {
-	            // Send notification to Tree
-	            firePropertyChange(model, COMMAND_STACK_CHANGED, false, true);
-	        }
-	    });
-	    
-	    // Animate Commands
-	    AnimationUtil.registerCommandStack(cmdStack);
-	    
-	    model.setAdapter(CommandStack.class, cmdStack);
-	}
-
-	/**
-	 * Remove a CommandStack
-	 * @param model
-	 */
-	private void deleteCommandStack(IZentaModel model) {
-	    CommandStack stack = (CommandStack)model.getAdapter(CommandStack.class);
-	    if(stack != null) {
-	        stack.dispose();
-	    }
-	}
 
 	/**
 	 * Set all diagram models in a model to be marked as "saved" - this for the editor view persistence
@@ -514,7 +406,7 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 	/**
 	 * Remove the model's ArchiveManager
 	 */
-	private void deleteArchiveManager(IZentaModel model) {
+	public void deleteArchiveManager(IZentaModel model) {
 	    IArchiveManager archiveManager = (IArchiveManager)model.getAdapter(IArchiveManager.class);
 	    if(archiveManager != null) {
 	        archiveManager.dispose();
@@ -567,16 +459,16 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
 			    fListeners.firePropertyChange(new PropertyChangeEvent(source, prop, oldValue, newValue));
 			}
 
-    
-	public static void signalEnd(Object self) {
-		IEditorModelManager.INSTANCE.firePropertyChange(self,
-	            IEditorModelManager.PROPERTY_ECORE_EVENTS_END, false, true);
+    @Override
+	public void signalEnd(Object self) {
+		editorInterface.getModelManager().firePropertyChange(self,
+	            IEditorModelManagerNoGUI.PROPERTY_ECORE_EVENTS_END, false, true);
 	}
 
-	
-	public static void signalStart(Object self) {
-		IEditorModelManager.INSTANCE.firePropertyChange(self,
-	            IEditorModelManager.PROPERTY_ECORE_EVENTS_START, false, true);
+	@Override
+	public void signalStart(Object self) {
+		editorInterface.getModelManager().firePropertyChange(self,
+				IEditorModelManagerNoGUI.PROPERTY_ECORE_EVENTS_START, false, true);
 	}
 
 	/**
@@ -592,15 +484,15 @@ public class EditorModelManagerNoGUI implements IEditorModelManager {
         }
     }
 
-	public static IArchiveManager obtainArchiveManager(IAdapter obj) {
+    @Override
+	public IArchiveManager obtainArchiveManager(IAdapter obj) {
 		IAdapter ob = Util.verifyNonNull(obj);
 		IArchiveManager adapter = (IArchiveManager) ob.getAdapter(IArchiveManager.class);
 		return Util.verifyNonNull(adapter);
 	}
-	public static CommandStack obtainCommandStack(IAdapter obj) {
-		IAdapter ob = Util.verifyNonNull(obj);
-		CommandStack adapter = (CommandStack) ob.getAdapter(CommandStack.class);
-		return Util.verifyNonNull(adapter);
+
+	public boolean askSaveModel(IZentaModel model) throws IOException {
+		return editorInterface.askSaveModel(model, this);
 	}
 
 }

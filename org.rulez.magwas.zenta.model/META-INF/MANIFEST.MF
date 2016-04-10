@@ -7,8 +7,11 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.rulez.magwas.nonnul,
  org.rulez.magwas.zenta.model,
+ org.rulez.magwas.zenta.model.compatibility,
  org.rulez.magwas.zenta.model.handmade.util,
- org.rulez.magwas.zenta.model.impl,
+ org.rulez.magwas.zenta.model.impl;x-friends:="org.rulez.magwas.zenta.model.tests",
+ org.rulez.magwas.zenta.model.manager,
+ org.rulez.magwas.zenta.model.manager.impl;x-friends:="org.rulez.magwas.zenta.model.tests",
  org.rulez.magwas.zenta.model.util,
  org.rulez.magwas.zenta.model.viewpoints
 Require-Bundle: org.eclipse.core.runtime,

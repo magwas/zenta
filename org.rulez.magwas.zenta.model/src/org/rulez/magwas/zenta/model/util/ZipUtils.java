@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.utils;
+package org.rulez.magwas.zenta.model.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -22,13 +22,11 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.graphics.ImageLoader;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
-import org.rulez.magwas.zenta.model.util.LogUtil;
+import org.rulez.magwas.zenta.model.manager.ModelImage;
 
 /**
  * Some useful Zip Utilities
@@ -182,7 +180,7 @@ public final class ZipUtils {
 	 * @param progressMonitor
 	 * @throws IOException
 	 */
-	public static void addImageToZip(Image image, String entryName, ZipOutputStream zOut, int format,  IProgressMonitor progressMonitor) throws IOException {
+	public static void addImageToZip(ModelImage image, String entryName, ZipOutputStream zOut, int format,  IProgressMonitor progressMonitor) throws IOException {
 	    ZipEntry zipEntry = new ZipEntry(entryName);
 	    
 	    try {
@@ -195,9 +193,7 @@ public final class ZipUtils {
             return;
         }
         
-        ImageLoader loader = new ImageLoader();
-        loader.data = new ImageData[] { image.getImageData() };
-        loader.save(zOut, format);
+        IZentaFactory.eINSTANCE.getEditorInterface().saveImageToStream(image, zOut, format);
         zOut.closeEntry();
 	}
 

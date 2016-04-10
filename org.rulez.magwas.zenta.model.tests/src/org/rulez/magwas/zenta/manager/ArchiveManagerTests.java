@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model.impl;
+package org.rulez.magwas.zenta.manager;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,33 +12,106 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import junit.framework.JUnit4TestAdapter;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.swt.graphics.Image;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.manager.ByteArrayStorage;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
+import org.rulez.magwas.zenta.model.manager.IModelImage;
+import org.rulez.magwas.zenta.model.manager.IModelImageManager;
+import org.rulez.magwas.zenta.model.manager.ModelImage;
+import org.rulez.magwas.zenta.model.manager.UnknownImageFormatException;
+import org.rulez.magwas.zenta.model.manager.impl.ArchiveManager;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
 
+class TestModelImage extends ModelImage {
+
+	public TestModelImage(BufferedImage img) {
+		super(img);
+	}
+
+	@Override
+	public Object getImageData() {
+		return adapt(BufferedImage.class).getData();
+	}
+	
+}
+
+class TestImageManager implements IModelImageManager {
+
+	List<String> usedImagePaths = new ArrayList<String>();
+	private ByteArrayStorage storage;
+	
+	public TestImageManager(IArchiveManager archiveManager) {
+		storage = archiveManager.getStorage();
+	}
+
+	@Override
+	public IModelImage createImage(String path) throws Exception {
+		BufferedImage img = null;
+		if (storage.hasEntry(path)) {
+			return createImageFromData(storage.getEntry(path));
+		}
+		System.out.printf("create(%s)",  path);
+		usedImagePaths.add(path);
+		img = ImageIO.read(new File(path));
+		System.out.printf("img=%s", img);
+		return new TestModelImage(img);
+	}
+
+	@Override
+	public IModelImage createImageFromData(byte[] bytes) throws UnknownImageFormatException {
+		InputStream is = new ByteArrayInputStream(bytes);
+		BufferedImage img;
+		try {
+			img = ImageIO.read(is);
+		} catch (Exception e) {
+			throw new UnknownImageFormatException();
+		}
+		if (null == img) {
+			throw new UnknownImageFormatException();
+		}
+		System.out.printf("Img=%s", img);
+		return new TestModelImage(img);
+	}
+
+	@Override
+	public IModelImage convertToModelImage(Object uiSpecificImage) throws UnknownImageFormatException {
+		throw new UnknownImageFormatException();
+	}
+
+	@Override
+	public List<String> getUsedImagePaths() {
+		return usedImagePaths;
+	}
+	
+}
 
 @SuppressWarnings("nls")
 public class ArchiveManagerTests {
     
     private IZentaModel model;
     private IDiagramModel dm;
-    private ArchiveManager archiveManager;
+    private IArchiveManager archiveManager;
     
     public static junit.framework.Test suite() {
         return new JUnit4TestAdapter(ArchiveManagerTests.class);
@@ -53,6 +126,8 @@ public class ArchiveManagerTests {
         model.getDefaultFolderForElement(dm).getElements().add(dm);
         
         archiveManager = new ArchiveManager(model);
+        TestImageManager imageManager = new TestImageManager(archiveManager);
+		archiveManager.setImageManager(imageManager);
     }
     
     @After
@@ -140,20 +215,21 @@ public class ArchiveManagerTests {
 		return new File(ModelTestUtils.convertNameToResourcePath("img1.png"));
 	}
     
-    @Test(expected=RuntimeException.class)
+    @Test(expected=Exception.class)
     public void create_image_with_wrong_path_throws_exception() throws Exception {
         archiveManager.createImage("something");
     }
     
     @Test
-    public void An_image_can_be_creates_from_a_diagram_model() throws Exception {
+    public void An_image_can_be_created_from_a_diagram_model() throws Exception {
         IDiagramModelImage dmImage = IZentaFactory.eINSTANCE.createDiagramModelImage();
         dm.getChildren().add(dmImage);
         
         File imgFile = img1File();
+        System.out.printf("file=%s\n", imgFile);
         String pathName = archiveManager.addImageFromFile(imgFile);
         
-        Image image = archiveManager.createImage(pathName);
+        IModelImage image = archiveManager.createImage(pathName);
         assertNotNull(image);
     }
     

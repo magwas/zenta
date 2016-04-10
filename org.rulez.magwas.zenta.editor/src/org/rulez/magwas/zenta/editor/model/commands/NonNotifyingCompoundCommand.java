@@ -6,8 +6,7 @@
 package org.rulez.magwas.zenta.editor.model.commands;
 
 import org.eclipse.gef.commands.CompoundCommand;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
-
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 
 
 /**
@@ -27,22 +26,22 @@ public class NonNotifyingCompoundCommand extends CompoundCommand {
     
     @Override
     public void execute() {
-        EditorModelManagerNoGUI.signalStart(this);
+        IEditorModelManager.INSTANCE.signalStart(this);
         super.execute();
-        EditorModelManagerNoGUI.signalEnd(this);
+        IEditorModelManager.INSTANCE.signalEnd(this);
     }
     
     @Override
     public void undo() {
-        EditorModelManagerNoGUI.signalStart(this);
+    	IEditorModelManager.INSTANCE.signalStart(this);
         super.undo();
-        EditorModelManagerNoGUI.signalEnd(this);
+        IEditorModelManager.INSTANCE.signalEnd(this);
     }
     
     @Override
     public void redo() {
-        EditorModelManagerNoGUI.signalStart(this);
+    	IEditorModelManager.INSTANCE.signalStart(this);
         super.redo();
-        EditorModelManagerNoGUI.signalEnd(this);
+        IEditorModelManager.INSTANCE.signalEnd(this);
     }
 }

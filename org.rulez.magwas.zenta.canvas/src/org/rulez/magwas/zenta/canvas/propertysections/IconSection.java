@@ -37,13 +37,13 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.canvas.model.ICanvasPackage;
 import org.rulez.magwas.zenta.canvas.model.IIconic;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.model.commands.EObjectFeatureCommand;
 import org.rulez.magwas.zenta.editor.propertysections.DiagramModelImageSection;
 import org.rulez.magwas.zenta.editor.propertysections.ITabbedLayoutConstants;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.ILockable;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
@@ -219,11 +219,11 @@ public class IconSection extends DiagramModelImageSection {
         disposeImage();
         
         if(fIconic.getImagePathOrNull() != null) {
-            IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(fIconic);
+            IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(fIconic);
             
             Image image = null;
             try {
-                image = archiveManager.createImage(fIconic.getImagePathOrNull());
+                image = archiveManager.createImage(fIconic.getImagePathOrNull()).adapt(Image.class);
             }
             catch(Exception ex) {
     			LogUtil.logException(ex);

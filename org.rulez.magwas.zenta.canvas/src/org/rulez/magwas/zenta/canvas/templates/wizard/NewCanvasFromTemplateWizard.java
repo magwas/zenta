@@ -20,18 +20,18 @@ import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
 import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
-import org.rulez.magwas.zenta.editor.model.compatibility.CompatibilityHandlerException;
-import org.rulez.magwas.zenta.editor.model.compatibility.IncompatibleModelException;
-import org.rulez.magwas.zenta.editor.model.compatibility.ModelCompatibility;
-import org.rulez.magwas.zenta.editor.utils.ZipUtils;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.compatibility.CompatibilityHandlerException;
+import org.rulez.magwas.zenta.model.compatibility.ModelCompatibility;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
+import org.rulez.magwas.zenta.model.manager.IncompatibleModelException;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
+import org.rulez.magwas.zenta.model.util.ZipUtils;
 import org.rulez.magwas.zenta.templates.model.ITemplate;
 import org.rulez.magwas.zenta.templates.model.TemplateManager;
 import org.rulez.magwas.zenta.templates.wizard.TemplateUtils;
@@ -154,12 +154,12 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         
         // Load the images from the template model's file now
         if(isArchiveFormat) {
-            IArchiveManager archiveManager = EditorModelManagerNoGUI.obtainArchiveManager(fFolder);
+            IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(fFolder);
             archiveManager.loadImagesFromModelFile(file); 
         }
         
         Command cmd = new NewDiagramCommand(fFolder, canvasModel, Messages.NewCanvasFromTemplateWizard_5);
-        CommandStack commandStack = EditorModelManagerNoGUI.obtainCommandStack(fFolder);
+        CommandStack commandStack = IEditorModelManager.INSTANCE.obtainCommandStack(fFolder);
         commandStack.execute(cmd);
     }
     

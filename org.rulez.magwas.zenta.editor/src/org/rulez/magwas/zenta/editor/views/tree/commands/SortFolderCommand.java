@@ -12,9 +12,10 @@ import java.util.List;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
-import org.rulez.magwas.zenta.editor.model.EditorModelManagerNoGUI;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.manager.AbstractEditorModelManager;
+import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IFolder;
 
@@ -43,17 +44,17 @@ public class SortFolderCommand extends Command implements Comparator<EObject>  {
     
 	@Override
     public void execute() {
-        EditorModelManagerNoGUI.signalStart(this);
+		IEditorModelManager.INSTANCE.signalStart(this);
         ECollections.sort(fFolder.getElements(), this);
-        EditorModelManagerNoGUI.signalEnd(this);
+        IEditorModelManager.INSTANCE.signalEnd(this);
     }
 
 	@Override
     public void undo() {
-        EditorModelManagerNoGUI.signalStart(this);
+		IEditorModelManager.INSTANCE.signalStart(this);
         fFolder.getElements().clear();
         fFolder.getElements().addAll(fList);
-        EditorModelManagerNoGUI.signalEnd(this);
+        IEditorModelManager.INSTANCE.signalEnd(this);
     }
     
     @Override

@@ -21,12 +21,12 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.junit.Assert;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractDiagramModelObjectFigureTests;
-import org.rulez.magwas.zenta.editor.model.IArchiveManager;
 import org.rulez.magwas.zenta.integrationtests.AsyncTestRunner;
 import org.rulez.magwas.zenta.model.IBounds;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
 
 @SuppressWarnings("nls")

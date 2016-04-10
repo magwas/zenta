@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.editor.model.compatibility;
+package org.rulez.magwas.zenta.model.compatibility;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.xmi.PackageNotFoundException;
 import org.eclipse.emf.ecore.xmi.XMIException;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
+import org.rulez.magwas.zenta.model.manager.IncompatibleModelException;
+import org.rulez.magwas.zenta.model.manager.LaterModelVersionException;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.xml.sax.SAXParseException;
 
