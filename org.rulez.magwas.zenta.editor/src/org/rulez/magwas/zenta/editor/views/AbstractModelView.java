@@ -93,7 +93,7 @@ implements IContextProvider, PropertyChangeListener, ITabbedPropertySheetPageCon
         return ZentaEditorPlugin.PLUGIN_ID;
     }
 
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     public Object getAdapter(Class adapter) {
         /*

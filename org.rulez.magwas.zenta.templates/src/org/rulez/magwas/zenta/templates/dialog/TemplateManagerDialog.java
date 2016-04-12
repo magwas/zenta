@@ -308,7 +308,7 @@ public class TemplateManagerDialog extends ExtendedTitleAreaDialog {
                     // Dispose
                     fTemplateManager.dispose();
                 }
-                catch(IOException ex) {
+                catch(Exception ex) {
                     LogUtil.logException(ex);
                     MessageDialog.openError(null, Messages.TemplateManagerDialog_12, ex.getMessage());
                 }

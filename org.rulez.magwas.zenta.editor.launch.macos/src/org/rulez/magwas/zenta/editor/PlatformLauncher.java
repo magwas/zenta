@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -15,6 +16,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.IPlatformLauncher;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 
 
 /**
@@ -59,23 +61,29 @@ public class PlatformLauncher implements IPlatformLauncher {
                         // Restore the Shell even if we have the file open in case it is minimised
                         window.getShell().setMinimized(false);
                         // Open the file *not* on a thread
-                        if(!IEditorModelManager.INSTANCE.isModelLoaded(file)) {
-                            IEditorModelManager.INSTANCE.openModel(file);
-                        }
+                        openModelFile(file);
                     }
                     // Workbench not created, App is being launched from *.zenta file on desktop
                     else {
                         // Open the file *on* a thread so the Workbench can have time to open and then open any diagrams if set in Prefs
                         display.asyncExec(new Runnable() {
                             public void run() {
-                                if(!IEditorModelManager.INSTANCE.isModelLoaded(file)) {
-                                    IEditorModelManager.INSTANCE.openModel(file);
-                                }
+                                openModelFile(file);
                             };
                         });
                     }                    
                 }
             }
+
+			private void openModelFile(final File file) {
+				if(!IEditorModelManager.INSTANCE.isModelLoaded(file)) {
+				    try {
+						IEditorModelManager.INSTANCE.openModel(file);
+					} catch (IOException e) {
+						LogUtil.logException(e);
+					}
+				}
+			}
         });
     }
 

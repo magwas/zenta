@@ -13,6 +13,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.xmi.PackageNotFoundException;
+import org.eclipse.emf.ecore.xmi.XMIException;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -24,20 +26,15 @@ import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.UnTestedException;
-import org.rulez.magwas.zenta.model.compatibility.CompatibilityHandlerException;
-import org.rulez.magwas.zenta.model.compatibility.ModelCompatibility;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
+import org.xml.sax.SAXParseException;
 
 import uk.ac.bolton.jdom.JDOMUtils;
 
 public abstract class AbstractEditorModelManager implements IEditorModelManagerNoGUI {
-
-	public class NoSuchFileException extends RuntimeException {
-		private static final long serialVersionUID = 1L;
-	}
 
 	/**
 	 * Listener list
@@ -107,9 +104,9 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	}
 
 	@Override
-	public IZentaModel openModel(File file) {
+	public IZentaModel openModel(File file) throws IOException {
 	    if(isModelLoaded(file)) {
-	    	throw new NoSuchFileException();
+	    	return findModelByfile(file);
 	    }
 	    
 	    IZentaModel model = loadModel(file);
@@ -141,7 +138,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	}
 
 	@Override
-	public IZentaModel loadModel(File file) {
+	public IZentaModel loadModel(File file) throws IOException {
 	    if(!file.exists()) {
 	    	throw new NoSuchFileException();
 	    }
@@ -157,38 +154,28 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	
 	    // Load the model file
 	    try {
-	        resource.load(null);
-	    }
-	    catch(IOException ex) {
-	        // Error occured loading model. Was it a disaster?
-	        try {
-	            ModelCompatibility.checkErrors(resource);
+	    	resource.load(null);
+	    } catch(IOException ex) {
+	    	boolean catastrophee=false;
+	        for(Diagnostic diagnostic : resource.getErrors()) {
+	            System.err.println(diagnostic);
+	            if(isCatastrophicError(diagnostic)) {
+	            	catastrophee = true;
+	                LogUtil.logError(diagnostic.getMessage());
+	            }
+	            else {
+	                LogUtil.logWarning(diagnostic.getMessage());
+	            }
 	        }
-	        // Incompatible, don't load it
-	        catch(IncompatibleModelException ex1) {
-	            incompatibleDialog(file, ex1);
-	            throw new RuntimeException(ex1);
-	        }
-	    }
+
+            if(catastrophee) {
+                throw ex;
+            }
+
+        }
+
 	    analyzeModelLoad(resource);
-	    // Once loaded - Check version number compatibility with user
-	    try {
-	        ModelCompatibility.checkVersion(resource);
-	    }
-	    catch(LaterModelVersionException ex) {
-	        boolean answer = laterModelDialog(file, ex);
-	        if(!answer) {
-	            throw new RuntimeException(ex);
-	        }
-	    }
 	    
-	    // And then fix any backward compatibility issues
-	    try {
-	        ModelCompatibility.fixCompatibility(resource);
-	    }
-	    catch(CompatibilityHandlerException ex) {
-	    }
-	
 	
 	    IZentaModel model = (IZentaModel)resource.getContents().get(0);
 	    IZentaModel m = Util.verifyNonNull(model);
@@ -210,6 +197,31 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	
 	    return model;
 	}
+    private static boolean isCatastrophicError(Diagnostic diagnostic) {
+        // Package not found - total disaster
+        if(diagnostic instanceof PackageNotFoundException) {
+            return true;
+        }
+        
+        // Class not found that matches xml declaration - not good
+        if(diagnostic instanceof ClassNotFoundException) {
+            return true;
+        }
+        
+        // Allow an IllegalValueException because an illegal value will default to a default value
+
+        // Allow a FeatureNotFoundException because a feature might get deprecated
+        
+        // Last case is a Sax parse error
+        if(diagnostic instanceof XMIException) {
+            XMIException ex = (XMIException)diagnostic;
+            if(ex.getCause() instanceof SAXParseException) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
 
 	private void analyzeModelLoad(Resource resource) {
@@ -222,14 +234,6 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 			System.out.println("Error: "+ d);
 		}
 		System.out.println("loaded:"+resource.isLoaded());
-	}
-
-	public boolean laterModelDialog(File file, LaterModelVersionException ex) {
-		throw new RuntimeException(ex);
-	}
-
-	public void incompatibleDialog(File file, IncompatibleModelException ex1) {
-		throw new RuntimeException(ex1);
 	}
 
 	@Override
@@ -269,7 +273,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	public boolean saveModel(IZentaModel model) throws IOException {
 	    // First time to save...
 	    if(model.getFile() == null) {
-	        File file = askSaveModel();
+	        File file = askFilenameForModelSave(model);
 	        if(file == null) { // cancelled
 	            return false;
 	        }
@@ -304,7 +308,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 
 	@Override
 	public boolean saveModelAs(IZentaModel model) throws IOException {
-	    File file = askSaveModel();
+	    File file = askFilenameForModelSave(model);
 	    if(file == null) {
 	        return false;
 	    }
@@ -333,10 +337,11 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 
 	/**
 	 * Ask user for file name to save model
+	 * @param model 
 	 * @return the file or null
 	 */
-	private File askSaveModel() {
-	    String path = askSavePath();
+	private File askFilenameForModelSave(IZentaModel model) {
+	    String path = askSavePath(model);
 	    if(path == null)
 	    	return null;
 	    File file = new File(path);
@@ -362,8 +367,8 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 
 
 
-	public String askSavePath() {
-		throw new UnTestedException();
+	public String askSavePath(IZentaModel model) {
+		return editorInterface.askSavePath(model);
 	}
 
 	public void alreadyOpenDialog(File file) {
@@ -371,7 +376,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	}
 
 	public boolean sureToOverwriteDialog(File file) {
-		throw new UnTestedException();
+		return editorInterface.sureToOverwriteDialog(file);
 	}
 
 
@@ -428,7 +433,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	    JDOMUtils.write2XMLFile(doc, backingFile);
 	}
 
-	private void loadState() throws IOException, JDOMException {
+	void loadState() throws IOException, JDOMException {
 	    if(backingFile.exists()) {
 	        Document doc = JDOMUtils.readXMLFile(backingFile);
 	        if(doc.hasRootElement()) {

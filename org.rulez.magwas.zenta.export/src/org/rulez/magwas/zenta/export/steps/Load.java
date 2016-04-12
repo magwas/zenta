@@ -9,7 +9,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
+import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 
 /**
@@ -34,7 +34,7 @@ public class Load extends Step {
 	@Override
 	public boolean doit(Element arg0, File current) {
 		factory.log.issueInfo("loading model from", current.getAbsolutePath());
-    	IEditorModelManager.INSTANCE.openModel(current);
+    	IEditorModelManager.INSTANCE.openModelOrSaySorry(Display.getCurrent().getActiveShell(), current);
         for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
             if(current.equals(model.getFile())) {
         		StepFactory sf = new StepFactory(factory.log,model,factory.styledir, factory.targetdir);

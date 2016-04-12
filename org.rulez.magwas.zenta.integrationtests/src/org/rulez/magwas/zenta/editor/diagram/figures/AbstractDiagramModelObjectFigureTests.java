@@ -34,7 +34,6 @@ import org.rulez.magwas.zenta.integrationtests.UITestUtils;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.manager.AbstractEditorModelManager;
 
 
 @SuppressWarnings("nls")

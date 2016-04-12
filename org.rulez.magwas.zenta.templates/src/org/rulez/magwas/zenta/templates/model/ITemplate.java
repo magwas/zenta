@@ -83,8 +83,9 @@ public interface ITemplate {
     /**
      * Save the template file
      * @throws IOException 
+     * @throws Exception 
      */
-    void save() throws IOException;
+    void save() throws IOException, Exception;
     
     /**
      * Dispose

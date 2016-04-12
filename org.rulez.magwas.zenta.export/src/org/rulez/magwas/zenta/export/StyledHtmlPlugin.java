@@ -53,7 +53,7 @@ public class StyledHtmlPlugin extends AbstractUIPlugin {
                	 File file = new File(modelpath);
                	 model = getModel(file);
                	 if (null == model) {
-               		 model = IEditorModelManager.INSTANCE.openModel(file);
+               		 model = IEditorModelManager.INSTANCE.openModelOrSaySorry(Display.getCurrent().getActiveShell(), file);
                	 }
 		   	 }
            	 if (args[i].equals("-targetdir"))

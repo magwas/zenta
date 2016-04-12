@@ -27,6 +27,9 @@
         </child>
         <property key="Template"/>
       </element>
+      <element xsi:type="zenta:BasicObject" name="Basic Object" id="basicobject"/>
+      <element xsi:type="zenta:BasicObject" name="Basic Object2" id="71a4e1cf" ancestor="basicobject"/>
+      <element xsi:type="zenta:BasicRelationship" name="Basic relation" id="basicrelation"/>
       <element xsi:type="zenta:BasicObject" name="THING" ancestor="basicobject" id="2603d1f1">
         <property key="fontColor"/>
         <property key="fillColor"/>

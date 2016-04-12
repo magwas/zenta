@@ -26,8 +26,6 @@ import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.manager.AbstractEditorModelManager;
-import org.rulez.magwas.zenta.model.manager.IncompatibleModelException;
-import org.rulez.magwas.zenta.model.manager.LaterModelVersionException;
 import org.rulez.magwas.zenta.model.manager.Messages;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
@@ -77,23 +75,6 @@ public class EditorModelManager extends AbstractEditorModelManager implements IE
     }
 
     @Override
-    public boolean laterModelDialog(File file, LaterModelVersionException ex) {
-		boolean answer = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
-		        Messages.EditorModelManager_4,
-		        NLS.bind(Messages.EditorModelManager_5,
-		                file, ex.getVersion()));
-		return answer;
-	}
-
-    @Override
-	public void incompatibleDialog(File file, IncompatibleModelException ex1) {
-		MessageDialog.openError(Display.getCurrent().getActiveShell(),
-		        Messages.EditorModelManager_2,
-		        NLS.bind(Messages.EditorModelManager_3, file)
-		        + "\n" + ex1.getMessage()); //$NON-NLS-1$
-	}
-    
-    @Override
     public int saveModelDialog(IZentaModel model) {
 		MessageDialog dialog = new MessageDialog(Display.getCurrent().getActiveShell(),
                 Messages.EditorModelManager_6,
@@ -126,7 +107,7 @@ public class EditorModelManager extends AbstractEditorModelManager implements IE
 	}
 
     @Override
-	public String askSavePath() {
+	public String askSavePath(IZentaModel model) {
 		// On Mac if the app is minimised in the dock Display.getCurrent().getActiveShell() will return null
 	    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	    shell.setActive(); // Get focus on Mac
@@ -182,6 +163,20 @@ public class EditorModelManager extends AbstractEditorModelManager implements IE
 	    deleteArchiveManager(model);
 	
 	    return true;
+	}
+
+	@Override
+	public IZentaModel openModelOrSaySorry(Shell activeShell, final File file) {
+		IZentaModel model=null;
+		try {
+			model = IEditorModelManager.INSTANCE.openModel(file);
+		} catch (IOException e) {
+            LogUtil.logException(e);
+            MessageDialog.openInformation(activeShell,
+                    Messages.EditorModelManager_2,
+                    NLS.bind(Messages.EditorModelManager_3, file));
+		}
+		return model;
 	}
 
 }

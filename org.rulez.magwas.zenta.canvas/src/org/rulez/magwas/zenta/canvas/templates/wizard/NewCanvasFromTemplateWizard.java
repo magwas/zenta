@@ -15,7 +15,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.rulez.magwas.zenta.canvas.model.ICanvasModel;
@@ -23,12 +22,9 @@ import org.rulez.magwas.zenta.canvas.templates.model.CanvasTemplateManager;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.compatibility.CompatibilityHandlerException;
-import org.rulez.magwas.zenta.model.compatibility.ModelCompatibility;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.manager.IArchiveManager;
-import org.rulez.magwas.zenta.model.manager.IncompatibleModelException;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 import org.rulez.magwas.zenta.model.util.ZipUtils;
@@ -110,7 +106,7 @@ public class NewCanvasFromTemplateWizard extends Wizard {
         return fErrorMessage == null;
     }
 
-    private void createNewCanvasFromTemplate(File file) throws IncompatibleModelException, IOException {
+    private void createNewCanvasFromTemplate(File file) throws IOException {
         // Ascertain if this is a zip file
         boolean isArchiveFormat = IArchiveManager.FACTORY.isArchiveFile(file);
         
@@ -121,29 +117,8 @@ public class NewCanvasFromTemplateWizard extends Wizard {
 
         // Load the template file
         // Wrap in try/catch to load as much as possible
-        try {
-            resource.load(null);
-        }
-        catch(IOException ex) {
-            // Error occured loading model. Was it a disaster?
-            try {
-                ModelCompatibility.checkErrors(resource);
-            }
-            // Incompatible
-            catch(IncompatibleModelException ex1) {
-                fErrorMessage = NLS.bind(Messages.NewCanvasFromTemplateWizard_4, file)
-                                + "\n" + ex1.getMessage(); //$NON-NLS-1$
-                throw ex1;
-            }
-        }
-        
-        // And then fix any backward compatibility issues
-        try {
-            ModelCompatibility.fixCompatibility(resource);
-        }
-        catch(CompatibilityHandlerException ex) {
-        }
-        
+        resource.load(null);
+                
         // Pull out the Canvas model
         IZentaModel templateModel = (IZentaModel)resource.getContents().get(0);
         IFolder folderViews = templateModel.getFolders().get(0);

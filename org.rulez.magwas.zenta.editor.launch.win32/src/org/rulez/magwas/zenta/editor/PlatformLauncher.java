@@ -6,6 +6,7 @@
 package org.rulez.magwas.zenta.editor;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
@@ -85,7 +86,11 @@ public class PlatformLauncher implements IPlatformLauncher {
             if(s != null) {
                 File file = new File(s);
                 if(file.isFile() && !IEditorModelManager.INSTANCE.isModelLoaded(file)) {
-                    IEditorModelManager.INSTANCE.openModel(file);
+                    try {
+						IEditorModelManager.INSTANCE.openModel(file);
+					} catch (IOException e) {
+						LogUtil.logException(e);
+					}
                 }
             }
         }

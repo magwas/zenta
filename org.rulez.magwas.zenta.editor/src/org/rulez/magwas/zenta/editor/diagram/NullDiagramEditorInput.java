@@ -53,7 +53,7 @@ implements IEditorInput {
         return getName();
     }
 
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Object getAdapter(Class adapter) {
         return null;
     }

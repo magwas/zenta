@@ -8,6 +8,7 @@ package org.rulez.magwas.zenta.editor.actions;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -192,7 +193,12 @@ public class MRUMenuManager extends MenuManager implements PropertyChangeListene
                 if(!IEditorModelManager.INSTANCE.isModelLoaded(file)) {
                     BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
                         public void run() {
-                            IEditorModelManager.INSTANCE.openModel(file);
+                            try {
+								IEditorModelManager.INSTANCE.openModel(file);
+								return;
+							} catch (IOException e) {
+								LogUtil.logException(e);
+							}
                         }
                     });
                 }

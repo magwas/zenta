@@ -30,7 +30,6 @@ import org.rulez.magwas.zenta.editor.views.tree.commands.MoveFolderCommand;
 import org.rulez.magwas.zenta.editor.views.tree.commands.MoveObjectCommand;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IZentaModelElement;
-import org.rulez.magwas.zenta.model.manager.AbstractEditorModelManager;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.INameable;
 
@@ -198,7 +197,7 @@ public class TreeModelViewerDragDropHandler {
                     // Zenta
                     if(file.getName().toLowerCase().endsWith(IEditorModelManager.ZENTA_FILE_EXTENSION)
                             && !IEditorModelManager.INSTANCE.isModelLoaded(file)) {
-                        IEditorModelManager.INSTANCE.openModel(file);
+                        IEditorModelManager.INSTANCE.openModelOrSaySorry(Display.getCurrent().getActiveShell(), file);
                     }
                 }
             }

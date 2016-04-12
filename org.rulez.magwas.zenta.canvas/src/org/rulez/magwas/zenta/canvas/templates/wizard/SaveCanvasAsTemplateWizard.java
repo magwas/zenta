@@ -110,7 +110,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
                         getfTemplateManager().addTemplateEntry(getfZipFile(), getfSelectedTemplateGroup());
                     }
                 }
-                catch(final IOException ex) {
+                catch(final Exception ex) {
         			LogUtil.logException(ex);
                     Display.getCurrent().asyncExec(new Runnable() { // Display after wizard closes
                         public void run() {
@@ -124,7 +124,7 @@ public class SaveCanvasAsTemplateWizard extends Wizard {
         return true;
     }
     
-    private void createZipFile(File zipFile) throws IOException {
+    private void createZipFile(File zipFile) throws Exception {
         ZipOutputStream zOut = null;
         
         try {

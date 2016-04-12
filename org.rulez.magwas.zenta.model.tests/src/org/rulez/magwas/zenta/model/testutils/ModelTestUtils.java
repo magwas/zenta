@@ -40,7 +40,7 @@ public class ModelTestUtils {
         xpath.setNamespaceContext(nss);
 		Element node = (Element) xpath.evaluate(xpathExpression,
                 xmlDoc, XPathConstants.NODE);
-		return Util.verifyNonNull(node);
+		return node;
 	}
 
 	public static Resource getZentaModelResource(String filename) {

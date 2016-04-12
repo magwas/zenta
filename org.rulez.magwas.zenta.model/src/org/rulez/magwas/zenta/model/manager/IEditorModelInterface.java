@@ -22,7 +22,7 @@ public interface IEditorModelInterface {
 	
 	public void setCommandStackSavePoint(IZentaModel model);
 	
-	public void saveImageToStream(ModelImage image, OutputStream zOut, int format);
+	public void saveImageToStream(ModelImage image, OutputStream zOut, int format) throws Exception;
 	
 	public IModelImageManager getImageManagerForArchiveManager(IArchiveManager archiveManager);
 
@@ -35,4 +35,8 @@ public interface IEditorModelInterface {
 	public boolean doOpenDiagramsOnLoad();
 
 	public void closeDiagramEditors(IZentaModel model);
+
+	public String askSavePath(IZentaModel model);
+
+	public boolean sureToOverwriteDialog(File file);
 }

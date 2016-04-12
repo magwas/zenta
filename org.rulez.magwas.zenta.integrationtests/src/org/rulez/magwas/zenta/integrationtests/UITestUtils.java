@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewPart;
@@ -30,7 +31,7 @@ public class UITestUtils {
 
 	public static IZentaModel openTestModel(String modelName) {
 		File file = new File("resources",modelName);
-		IEditorModelManager.INSTANCE.openModel(file);
+		IEditorModelManager.INSTANCE.openModelOrSaySorry(Display.getCurrent().getActiveShell(), file);
 		return IEditorModelManager.INSTANCE.getModels().get(0);
 	}
 

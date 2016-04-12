@@ -87,7 +87,7 @@ public class ModelAndEditPartTestData extends ModelAndMetaModelTestData {
 	private void openModelAndMetaModel() {
 		BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
 			public void run() {
-                model = IEditorModelManager.INSTANCE.openModel(getFile());
+                model = IEditorModelManager.INSTANCE.openModelOrSaySorry(Display.getCurrent().getActiveShell(), getFile());
             }
         });
         assertNotNull(model);

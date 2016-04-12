@@ -639,13 +639,6 @@
          </separator>
       </menuContribution>
    </extension>
-   <extension
-         point="org.rulez.magwas.zenta.editor.compatibilityHandler">
-      <compatibilityHandler
-            class="org.rulez.magwas.zenta.editor.model.compatibility.handlers.FixConnectionTextNames"
-            id="org.rulez.magwas.zenta.editor.compatibility.connectionTextHandler">
-      </compatibilityHandler>
-   </extension>
 
 
 </plugin>

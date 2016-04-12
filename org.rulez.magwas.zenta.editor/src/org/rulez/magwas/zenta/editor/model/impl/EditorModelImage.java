@@ -11,7 +11,7 @@ public class EditorModelImage extends ModelImage implements IModelImage {
 	}
 
 	@Override
-	public Object getImageData() {
+	public Object getImageData() throws Exception {
 		return adapt(Image.class).getImageData();
 	}
 

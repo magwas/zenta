@@ -2,15 +2,18 @@ package org.rulez.magwas.zenta.model.manager;
 
 public abstract class ModelImage implements IModelImage {
 
-	private Object backedImage;
+	private Object backingImage;
 	
 	public ModelImage(Object image) {
-		backedImage = image;
+		backingImage = image;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> T adapt(Class<T> klass) {
-		return (T) backedImage;
+	public <T> T adapt(Class<T> klass) throws IncompatibleClassException {
+		if (! klass.isInstance(backingImage)) {
+			throw new IncompatibleClassException();
+		}
+		return (T) backingImage;
 	}
 }

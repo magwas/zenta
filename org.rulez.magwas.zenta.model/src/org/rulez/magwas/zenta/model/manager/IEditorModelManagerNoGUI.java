@@ -46,8 +46,9 @@ public interface IEditorModelManagerNoGUI {
     /**
      * Open a model by loading it and opening its Views
      * @return The newly opened model or null
+     * @throws IOException 
      */
-    IZentaModel openModel(File file);
+    IZentaModel openModel(File file) throws IOException;
     
     /**
      * Open an existing model
@@ -59,8 +60,9 @@ public interface IEditorModelManagerNoGUI {
      * Load a model
      * @param file
      * @return The newly loaded model or null
+     * @throws IOException 
      */
-    IZentaModel loadModel(File file);
+    IZentaModel loadModel(File file) throws IOException;
     
     /**
      * Close a model
@@ -119,17 +121,13 @@ public interface IEditorModelManagerNoGUI {
      */
     void firePropertyChange(Object source, String prop, Object oldValue, Object newValue);
 
-	boolean laterModelDialog(File file, LaterModelVersionException ex);
-
-	void incompatibleDialog(File file, IncompatibleModelException ex1);
-
 	int saveModelDialog(IZentaModel model);
 
 	boolean sureToOverwriteDialog(File file);
 
 	void alreadyOpenDialog(File file);
 
-	String askSavePath();
+	String askSavePath(IZentaModel model);
 
 	boolean removeModelWithoutDirtyCheck(IZentaModel model);
 

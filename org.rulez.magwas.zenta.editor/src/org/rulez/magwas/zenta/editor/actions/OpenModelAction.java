@@ -15,6 +15,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
@@ -42,7 +43,8 @@ implements IWorkbenchAction
     
     @Override
     public void run() {
-        FileDialog dialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.OPEN);
+        Shell activeShell = Display.getCurrent().getActiveShell();
+		FileDialog dialog = new FileDialog(activeShell, SWT.OPEN);
         dialog.setFilterExtensions(new String[] { IEditorModelManager.ZENTA_FILE_WILDCARD, "*.xml", "*.*" } ); //$NON-NLS-1$ //$NON-NLS-2$
         String path = dialog.open();
         if(path != null) {
@@ -51,7 +53,7 @@ implements IWorkbenchAction
             // Check it's not already open
             IZentaModel model = getModel(file);
             if(model != null) {
-                MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
+                MessageDialog.openInformation(activeShell,
                                                 Messages.OpenModelAction_2,
                                                 NLS.bind(Messages.OpenModelAction_3,
                                                         file.getName(), model.getName()));
@@ -60,8 +62,9 @@ implements IWorkbenchAction
             
             BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
                 public void run() {
-                    IEditorModelManager.INSTANCE.openModel(file);
+                	IEditorModelManager.INSTANCE.openModelOrSaySorry(activeShell, file);
                 }
+
             });
         }
     }

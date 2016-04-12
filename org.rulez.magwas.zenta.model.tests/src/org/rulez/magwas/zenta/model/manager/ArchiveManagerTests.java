@@ -3,7 +3,7 @@
  * are made available under the terms of the License
  * which accompanies this distribution in the file LICENSE.txt
  */
-package org.rulez.magwas.zenta.manager;
+package org.rulez.magwas.zenta.model.manager;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -38,23 +38,9 @@ import org.rulez.magwas.zenta.model.manager.ByteArrayStorage;
 import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.manager.IModelImage;
 import org.rulez.magwas.zenta.model.manager.IModelImageManager;
-import org.rulez.magwas.zenta.model.manager.ModelImage;
 import org.rulez.magwas.zenta.model.manager.UnknownImageFormatException;
 import org.rulez.magwas.zenta.model.manager.impl.ArchiveManager;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
-
-class TestModelImage extends ModelImage {
-
-	public TestModelImage(BufferedImage img) {
-		super(img);
-	}
-
-	@Override
-	public Object getImageData() {
-		return adapt(BufferedImage.class).getData();
-	}
-	
-}
 
 class TestImageManager implements IModelImageManager {
 
@@ -71,10 +57,8 @@ class TestImageManager implements IModelImageManager {
 		if (storage.hasEntry(path)) {
 			return createImageFromData(storage.getEntry(path));
 		}
-		System.out.printf("create(%s)",  path);
 		usedImagePaths.add(path);
 		img = ImageIO.read(new File(path));
-		System.out.printf("img=%s", img);
 		return new TestModelImage(img);
 	}
 
@@ -90,7 +74,6 @@ class TestImageManager implements IModelImageManager {
 		if (null == img) {
 			throw new UnknownImageFormatException();
 		}
-		System.out.printf("Img=%s", img);
 		return new TestModelImage(img);
 	}
 

@@ -228,7 +228,7 @@ public class ZentaEditorPlugin extends AbstractUIPlugin implements IEditorModelI
 	}
 
 	@Override
-	public void saveImageToStream(ModelImage image, OutputStream zOut, int format) {
+	public void saveImageToStream(ModelImage image, OutputStream zOut, int format) throws Exception {
 		ImageLoader loader = new ImageLoader();
         loader.data = new ImageData[] { (ImageData) image.getImageData() };
         loader.save(zOut, format);
@@ -262,6 +262,16 @@ public class ZentaEditorPlugin extends AbstractUIPlugin implements IEditorModelI
 	@Override
 	public void closeDiagramEditors(IZentaModel model) {
 		EditorManager.closeDiagramEditors(model);
+	}
+
+	@Override
+	public String askSavePath(IZentaModel model) {
+		return getModelManager().askSavePath(model);
+	}
+
+	@Override
+	public boolean sureToOverwriteDialog(File file) {
+		return getModelManager().sureToOverwriteDialog(file);
 	}
 
 }

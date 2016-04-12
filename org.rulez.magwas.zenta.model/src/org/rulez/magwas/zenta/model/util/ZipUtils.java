@@ -178,9 +178,9 @@ public final class ZipUtils {
 	 * @param zOut
 	 * @param format could be SWT.IMAGE_BMP, SWT.IMAGE_BMP, etc
 	 * @param progressMonitor
-	 * @throws IOException
+	 * @throws Exception 
 	 */
-	public static void addImageToZip(ModelImage image, String entryName, ZipOutputStream zOut, int format,  IProgressMonitor progressMonitor) throws IOException {
+	public static void addImageToZip(ModelImage image, String entryName, ZipOutputStream zOut, int format,  IProgressMonitor progressMonitor) throws Exception {
 	    ZipEntry zipEntry = new ZipEntry(entryName);
 	    
 	    try {

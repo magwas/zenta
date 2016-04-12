@@ -158,7 +158,7 @@ public abstract class AbstractTemplate implements ITemplate, ITemplateXMLTags {
     }
     
     @Override
-    public void save() throws IOException {
+    public void save() throws Exception {
         if(fFile == null || !fFile.exists()) {
             return;
         }
