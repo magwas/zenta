@@ -27,29 +27,23 @@ import org.eclipse.core.runtime.spi.IRegistryProvider;
 import org.jdom.JDOMException;
 
 
-public class AbstractEditorModelManagerTest {
+public class AbstractEditorModelManagerTest implements IModelManagerTest {
 
 	private TestModelManager modelManager;
 	private IEditorModelInterface iface;
 	private IZentaModel model;
 	private File tempFile;
 	private String absolutePath;
-	private boolean isDirty=false;
+	boolean isDirty=false;
 	private File testUserDir;
-
-	class TestModelManager extends AbstractEditorModelManager {
-
-		@Override
-		public boolean isModelDirty(IZentaModel model) {
-			return isDirty;
-		}
-		
-	}
+	static boolean providerHasBeenSet = false;
 
 	@BeforeClass
 	public static void setupClass() throws CoreException {
 		IRegistryProvider provider = mock(IRegistryProvider.class);
-		RegistryFactory.setDefaultRegistryProvider(provider);
+		if(null == RegistryFactory.getRegistry()) {
+			RegistryFactory.setDefaultRegistryProvider(provider);
+		}
 	}
 
 	@Before
@@ -76,7 +70,7 @@ public class AbstractEditorModelManagerTest {
 		testUserDir.delete();
 		assertTrue(testUserDir.mkdir());
 		when(iface.getUserDataFolder()).thenReturn(testUserDir);
-		modelManager = new TestModelManager();
+		modelManager = new TestModelManager(this);
 	}
 
 	@Test
@@ -240,6 +234,11 @@ public class AbstractEditorModelManagerTest {
 		out.close();
 		modelManager.loadState();
 		assertEquals(modelnum+1, modelManager.getModels().size());
+	}
+
+	@Override
+	public boolean isDirty() {
+		return isDirty;
 	}
 	
 }

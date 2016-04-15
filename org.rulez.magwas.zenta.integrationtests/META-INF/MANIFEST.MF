@@ -18,7 +18,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.cheatsheets;bundle-version="3.4.200",
  org.junit;bundle-version="4.11.0",
  org.rulez.magwas.zenta.controller;bundle-version="2.4.0",
- org.eclipse.draw2d
+ org.eclipse.draw2d,
+ uk.ac.bolton.jdom;bundle-version="1.1.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,

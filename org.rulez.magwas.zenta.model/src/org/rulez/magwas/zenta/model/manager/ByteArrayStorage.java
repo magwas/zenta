@@ -43,17 +43,17 @@ public class ByteArrayStorage {
         return null;
     }
     
-    long getEntrySize(String entryName) {
+    public long getEntrySize(String entryName) {
             byte[] bytes = fdataTable.get(entryName);
             byte[] b = Util.verifyNonNull(bytes);
 			return b.length;
     }
     
-    NonNullList<NonNullEntry<String, byte[]>> getEntrySet() {
+    public NonNullList<NonNullEntry<String, byte[]>> getEntrySet() {
         return fdataTable.getEntrySet();
     }
 
-    boolean hasEntries() {
+    public boolean hasEntries() {
         return !fdataTable.isEmpty();
     }
     
@@ -69,7 +69,7 @@ public class ByteArrayStorage {
         return fdataTable.get(entryName);
     }
     
-    void addFileContentEntry(String entryName, File file) throws IOException {
+    public void addFileContentEntry(String entryName, File file) throws IOException {
         addStreamEntry(entryName, new FileInputStream(file));
     }
     

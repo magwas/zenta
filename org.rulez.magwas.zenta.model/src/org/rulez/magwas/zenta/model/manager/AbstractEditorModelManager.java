@@ -156,22 +156,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	    try {
 	    	resource.load(null);
 	    } catch(IOException ex) {
-	    	boolean catastrophee=false;
-	        for(Diagnostic diagnostic : resource.getErrors()) {
-	            System.err.println(diagnostic);
-	            if(isCatastrophicError(diagnostic)) {
-	            	catastrophee = true;
-	                LogUtil.logError(diagnostic.getMessage());
-	            }
-	            else {
-	                LogUtil.logWarning(diagnostic.getMessage());
-	            }
-	        }
-
-            if(catastrophee) {
-                throw ex;
-            }
-
+	    	logErrorsAndMaybeThrowException(resource, ex);
         }
 
 	    analyzeModelLoad(resource);
@@ -197,22 +182,34 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	
 	    return model;
 	}
+
+
+	private void logErrorsAndMaybeThrowException(Resource resource, IOException ex) throws IOException {
+		boolean catastrophee=false;
+		for(Diagnostic diagnostic : resource.getErrors()) {
+		    System.err.println(diagnostic);
+		    if(isCatastrophicError(diagnostic)) {
+		    	catastrophee = true;
+		        LogUtil.logError(diagnostic.getMessage());
+		    }
+		    else {
+		        LogUtil.logWarning(diagnostic.getMessage());
+		    }
+		}
+
+		if(catastrophee) {
+		    throw ex;
+		}
+	}
     private static boolean isCatastrophicError(Diagnostic diagnostic) {
-        // Package not found - total disaster
         if(diagnostic instanceof PackageNotFoundException) {
             return true;
         }
         
-        // Class not found that matches xml declaration - not good
         if(diagnostic instanceof ClassNotFoundException) {
             return true;
         }
         
-        // Allow an IllegalValueException because an illegal value will default to a default value
-
-        // Allow a FeatureNotFoundException because a feature might get deprecated
-        
-        // Last case is a Sax parse error
         if(diagnostic instanceof XMIException) {
             XMIException ex = (XMIException)diagnostic;
             if(ex.getCause() instanceof SAXParseException) {
@@ -433,7 +430,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	    JDOMUtils.write2XMLFile(doc, backingFile);
 	}
 
-	void loadState() throws IOException, JDOMException {
+	public void loadState() throws IOException, JDOMException {
 	    if(backingFile.exists()) {
 	        Document doc = JDOMUtils.readXMLFile(backingFile);
 	        if(doc.hasRootElement()) {
