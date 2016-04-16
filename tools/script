@@ -3,7 +3,10 @@ set -xe
 export DISPLAY=:0
 Xvnc :0&
 mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
+rm -rf ~/.m2
+mkdir -p ~/.m2
 cp toolchains.xml ~/.m2
 mvn install
-tools/upload
+cd org.rulez.magwas.zenta.integrationtests
+mvn install
 
