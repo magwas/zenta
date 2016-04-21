@@ -18,11 +18,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <!-- These labels are used in .classpath, build.properties and META-INF/MANIFEST.MF -->
         <jdom.generic.name>jdom</jdom.generic.name>
         <jaxen.generic.name>jaxen</jaxen.generic.name>
-        <saxon.generic.name>saxon9he</saxon.generic.name>
+        <saxon.generic.name>saxon9</saxon.generic.name>
 
         <jdom.version>1.1.2</jdom.version>
         <jaxen.version>1.1.3</jaxen.version>
-        <saxon.version>9.6.0-1</saxon.version>
+        <saxon.version>9.1.0.8</saxon.version>
   </properties>
     
   <build>
@@ -78,16 +78,16 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                                             <destFileName>${jaxen.generic.name}-src.jar</destFileName>
                                         </artifactItem>
                                         <artifactItem>
-                                            <groupId>net.sf.saxon</groupId>
-                                            <artifactId>Saxon-HE</artifactId>
+                                            <groupId>net.sourceforge.saxon</groupId>
+                                            <artifactId>saxon</artifactId>
                                             <version>${saxon.version}</version>
                                             <type>jar</type>
                                             <overWrite>false</overWrite>
                                             <destFileName>${saxon.generic.name}.jar</destFileName>
                                         </artifactItem>
                                         <artifactItem>
-                                            <groupId>net.sf.saxon</groupId>
-                                            <artifactId>Saxon-HE</artifactId>
+                                            <groupId>net.sourceforge.saxon</groupId>
+                                            <artifactId>saxon</artifactId>
                                             <version>${saxon.version}</version>
                                             <type>jar</type>
                                             <overWrite>false</overWrite>

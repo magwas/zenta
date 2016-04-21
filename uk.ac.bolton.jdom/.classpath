@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry exported="true" kind="lib" path="lib/jaxen.jar" sourcepath="lib/jaxen-src.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jdom.jar" sourcepath="lib/jdom-src.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/saxon9he.jar" sourcepath="lib/saxon9he-src.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/saxon9.jar" sourcepath="lib/saxon9-src.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
