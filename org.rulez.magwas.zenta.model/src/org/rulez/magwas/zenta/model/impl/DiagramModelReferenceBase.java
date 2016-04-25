@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.ModelConsistencyException;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
@@ -68,9 +69,11 @@ public class DiagramModelReferenceBase extends DiagramModelObjectBase implements
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     public void setReferencedModel(IDiagramModel newReferencedModel) {
+    	if (isChecked())
+    		checkReferencedModel(newReferencedModel);
 		IDiagramModel oldReferencedModel = referencedModel;
 		referencedModel = newReferencedModel;
 		if (eNotificationRequired())
@@ -84,7 +87,7 @@ public class DiagramModelReferenceBase extends DiagramModelObjectBase implements
     
     @Override
     public void setName(String name) {
-            this.name = name;
+    	throw new ModelConsistencyException("you do not set the name of a diagram reference", this);
     }
 
     /**

@@ -12,15 +12,11 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
+import javax.imageio.IIOException;
 
 import junit.framework.JUnit4TestAdapter;
 
@@ -34,64 +30,17 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.manager.ByteArrayStorage;
 import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.model.manager.IModelImage;
-import org.rulez.magwas.zenta.model.manager.IModelImageManager;
-import org.rulez.magwas.zenta.model.manager.UnknownImageFormatException;
 import org.rulez.magwas.zenta.model.manager.impl.ArchiveManager;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
-
-class TestImageManager implements IModelImageManager {
-
-	List<String> usedImagePaths = new ArrayList<String>();
-	private ByteArrayStorage storage;
-	
-	public TestImageManager(IArchiveManager archiveManager) {
-		storage = archiveManager.getStorage();
-	}
-
-	@Override
-	public IModelImage createImage(String path) throws Exception {
-		BufferedImage img = null;
-		if (storage.hasEntry(path)) {
-			return createImageFromData(storage.getEntry(path));
-		}
-		usedImagePaths.add(path);
-		img = ImageIO.read(new File(path));
-		return new TestModelImage(img);
-	}
-
-	@Override
-	public IModelImage createImageFromData(byte[] bytes) throws UnknownImageFormatException {
-		InputStream is = new ByteArrayInputStream(bytes);
-		BufferedImage img;
-		try {
-			img = ImageIO.read(is);
-		} catch (Exception e) {
-			throw new UnknownImageFormatException();
-		}
-		if (null == img) {
-			throw new UnknownImageFormatException();
-		}
-		return new TestModelImage(img);
-	}
-
-	@Override
-	public IModelImage convertToModelImage(Object uiSpecificImage) throws UnknownImageFormatException {
-		throw new UnknownImageFormatException();
-	}
-
-	@Override
-	public List<String> getUsedImagePaths() {
-		return usedImagePaths;
-	}
-	
-}
 
 @SuppressWarnings("nls")
 public class ArchiveManagerTests {
     
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
+
     private IZentaModel model;
     private IDiagramModel dm;
     private IArchiveManager archiveManager;
@@ -122,9 +71,8 @@ public class ArchiveManagerTests {
     public void ArchiveManager_for_empty_model_has_no_images_and_model_has_its_adapter() throws Exception {
         assertNotNull(archiveManager);
         
-        // Should have an ID Adapter and an extra EContentAdapter adapter
-        assertEquals(2, model.eAdapters().size());
-        assertEquals(ModelTestUtils.getPrivateField(archiveManager, "fModelAdapter"), model.eAdapters().get(1));
+        assertEquals(3, model.eAdapters().size());
+        assertEquals(ModelTestUtils.getPrivateField(archiveManager, "fModelAdapter"), model.eAdapters().get(2));
         
         assertTrue(archiveManager.getImagePaths().isEmpty());
         assertFalse(archiveManager.hasImages());
@@ -198,8 +146,9 @@ public class ArchiveManagerTests {
 		return new File(ModelTestUtils.convertNameToResourcePath("img1.png"));
 	}
     
-    @Test(expected=Exception.class)
+    @Test
     public void create_image_with_wrong_path_throws_exception() throws Exception {
+    	exception.expect(IIOException.class);
         archiveManager.createImage("something");
     }
     
@@ -318,12 +267,12 @@ public class ArchiveManagerTests {
         archiveManager.loadImagesFromModelFile(ModelTestUtils.TEST_MODEL_FILE_ZIPPED);
         dmImage.setImagePath(archiveManager.getLoadedImagePaths().get(0));
         
-        assertEquals(2, model.eAdapters().size());
+        assertEquals(3, model.eAdapters().size());
         assertFalse(archiveManager.getLoadedImagePaths().isEmpty());
         
         archiveManager.dispose();
         
-        assertEquals(1, model.eAdapters().size());
+        assertEquals(2, model.eAdapters().size());
         assertTrue(archiveManager.getLoadedImagePaths().isEmpty());
     }
 }

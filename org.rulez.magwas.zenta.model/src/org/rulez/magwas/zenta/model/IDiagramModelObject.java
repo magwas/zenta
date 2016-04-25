@@ -172,4 +172,10 @@ public interface IDiagramModelObject extends IDiagramModelComponent, IFontAttrib
 
 	String getFinalFont();
 
+	default void checkBounds(IBounds bounds) {
+		if ( bounds == null )
+			throw new ModelConsistencyException("bounds cannot be null", this);
+	}
+
+
 } // IDiagramModelObject

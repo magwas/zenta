@@ -18,4 +18,8 @@ package org.rulez.magwas.zenta.model;
  * @generated
  */
 public interface ISketchModelActor extends IDiagramModelObject, IDocumentable, IProperties {
+	default void check() {
+		// TODO unimplemented check
+	}
+
 } // ISketchModelActor

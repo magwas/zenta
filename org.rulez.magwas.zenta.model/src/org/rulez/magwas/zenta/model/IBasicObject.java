@@ -124,5 +124,23 @@ public interface IBasicObject extends IZentaElement, IObjectClass {
 	
 	IZentaModel getZentaModel();
 
+	default void checkAttributes() {
+		for(IAttribute att: getAttributes()) {
+			att.check();
+		}
+	}
+
+	default void check() {
+		checkDocumentation(getDocumentation());
+		checkId(getId());
+		setChecked(true);
+	}
+
+	default void checkDiagObjects() {
+		for( IDiagramModelZentaObject obj: getDiagObjects()) {
+			obj.check();
+		}
+	}
+
 
 } // IBasicObject

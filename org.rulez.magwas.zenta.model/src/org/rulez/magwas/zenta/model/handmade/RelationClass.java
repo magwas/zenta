@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.rulez.magwas.nonnul.NonNullArrayList;
@@ -17,6 +18,7 @@ import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.ITemplate;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IAttribute.Direction;
@@ -28,6 +30,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 
 	public RelationClass(IBasicRelationship ancestor) {
 		setAncestor(ancestor);
+		addAdapter();
 	}
 	
 	
@@ -36,9 +39,17 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		setTemplate(template);
 		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.SOURCE, (IBasicRelationship) getSource());
 		addAttributesToRelatedObjectClasses(template, IAttribute.Direction.TARGET, (IBasicRelationship) getTarget());
+		addAdapter();
 	}
 
 	public RelationClass() {
+		addAdapter();
+	}
+
+
+	private void addAdapter() {
+		Adapter object = new AttributeChangeAdapter();
+		eAdapters().add(object);
 	}
 
 	@Override
@@ -132,10 +143,7 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		}
 			private void setupAttribute(IBasicObject obj1,
 					IBasicObject obj2, Direction dir) {
-				IAttribute att = IZentaFactory.eINSTANCE.createAttribute();
-				att.setDirection(dir);
-				att.setConnectedObject(obj2);
-				att.setRelation(this);
+				IAttribute att = IZentaFactory.eINSTANCE.createAttribute(this,obj2,dir);
 				obj1.getAttributes().add(att);
 			}
 
@@ -196,4 +204,24 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 		return getDiagConnections();
 	}
 
+	@Override
+	public void setName(String value) {
+		if(isChecked())
+			checkName(value);
+		super.setName(value);
+	}
+
+	@Override
+	public void setSource(IZentaElement value) {
+		if(isChecked())
+			checkSource(value);
+		super.setSource(value);
+	}
+
+	@Override
+	public void setTarget(IZentaElement value) {
+		if(isChecked())
+			checkTarget(value);
+		super.setTarget(value);
+	}
 }

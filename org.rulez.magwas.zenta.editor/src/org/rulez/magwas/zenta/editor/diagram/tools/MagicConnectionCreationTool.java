@@ -45,6 +45,7 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IRelationClass;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
@@ -526,9 +527,7 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		@Override
 		public void execute() {
 			IFolder folder = (IFolder) fSource.getDiagramModel().eContainer();
-			fConnection = (IDiagramModelZentaConnection)new ZentaDiagramModelFactory(fTemplate, folder).getNewObject();
-			fConnection.connect(fSource, fTarget);
-			fConnection.addRelationshipToModel(null);
+			ZentaDiagramModelFactory.createChildDiagramConnection(folder, fTemplate, fSource, fTarget);
 		}
 		
 		@Override

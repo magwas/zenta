@@ -10,8 +10,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 import org.rulez.magwas.zenta.model.IBorderObject;
 
 
@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.model.IBorderObject;
  *
  * @generated
  */
-public abstract class BorderObjectBase extends EObjectImpl implements IBorderObject {
+public abstract class BorderObjectBase extends ZentaObjectImpl implements IBorderObject {
     /**
 	 * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
 	 * <!-- begin-user-doc -->

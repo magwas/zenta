@@ -10,11 +10,10 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -24,6 +23,7 @@ import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +42,7 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
  * </p>
  *
  */
-abstract public class TemplateBase extends EObjectImpl implements ITemplate {
+abstract public class TemplateBase extends ZentaObjectImpl implements ITemplate {
 	/**
 	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -162,7 +162,7 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	 */
 	public void setMetamodel(IMetamodel newMetamodel) {
 		if (newMetamodel != eInternalContainer() || (eContainerFeatureID() != IZentaPackage.TEMPLATE__METAMODEL && newMetamodel != null)) {
-			if (EcoreUtil.isAncestor(this, newMetamodel))
+			if (EcoreUtil.isAncestor(this, (EObject)newMetamodel))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
@@ -182,7 +182,7 @@ abstract public class TemplateBase extends EObjectImpl implements ITemplate {
 	 * @generated
 	 */
 	public IDiagramModel getDiagram() {
-		if (diagram != null && diagram.eIsProxy()) {
+		if (diagram != null && ((EObject)diagram).eIsProxy()) {
 			InternalEObject oldDiagram = (InternalEObject)diagram;
 			diagram = (IDiagramModel)eResolveProxy(oldDiagram);
 			if (diagram != oldDiagram) {

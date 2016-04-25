@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -28,6 +27,7 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.UndoState;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -48,7 +48,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *
  * @generated
  */
-public abstract class DiagramModelComponentBase extends EObjectImpl implements IDiagramModelComponent {
+public abstract class DiagramModelComponentBase extends ZentaObjectImpl implements IDiagramModelComponent {
 
 	protected static Object getValueFromStringForFeature(EAttribute feature,
 			String valuestring) {
@@ -184,9 +184,11 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
     public void setId(String newId) {
+    	if (isChecked())
+    		checkId(newId);
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
@@ -208,6 +210,8 @@ public abstract class DiagramModelComponentBase extends EObjectImpl implements I
 	 * @generated
 	 */
     public void setName(String newName) {
+    	if (isChecked())
+    		checkName(newName);
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())

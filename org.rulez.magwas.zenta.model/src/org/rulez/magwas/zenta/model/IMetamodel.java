@@ -4,7 +4,6 @@ package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.handmade.BuiltinTemplate;
 
@@ -22,9 +21,10 @@ import org.rulez.magwas.zenta.model.handmade.BuiltinTemplate;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getMetamodel()
  * @model
+ * @extends ZentaObject
  * @generated
  */
-public interface IMetamodel extends EObject {
+public interface IMetamodel extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Templates</b></em>' containment reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.model.ITemplate}.
@@ -61,5 +61,10 @@ public interface IMetamodel extends EObject {
     NonNullList<IBasicRelationship> getWeaklist();
     boolean isValidRelationship(IBasicObject element1, IBasicObject element2,
 			IBasicRelationship relationshipClass);
+
+	default void check() {
+		//TODO unimplemented check
+	}
+
 
 } // MetamodelBase

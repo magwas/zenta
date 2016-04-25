@@ -2,8 +2,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>AttributeBase Base</b></em>'.
@@ -11,19 +9,20 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IAttribute#getMinOccurs <em>Min Occurs</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IAttribute#getMaxOccurs <em>Max Occurs</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IAttribute#getRelation <em>Relation</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IAttribute#getConnectedObject <em>Connected Object</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getAttribute()
  * @model
+ * @extends ZentaObject
  * @generated
  */
-public interface IAttribute extends EObject {
+public interface IAttribute extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Min Occurs</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
@@ -137,5 +136,26 @@ public interface IAttribute extends EObject {
 	Direction getDirection();
 	void setDirection(Direction dir);
 
+	default void checkRelation(IBasicRelationship relation) {
+		if(relation == null)
+			throw new ModelConsistencyException("relation cannot be null", this);
+	}
+
+	default void checkDirection(Direction direction) {
+		if(direction == null)
+			throw new ModelConsistencyException("direction cannot be null", this);
+	}
+
+	default void checkConnectedObject(IBasicObject direction) {
+		if(direction == null)
+			throw new ModelConsistencyException("direction cannot be null", this);
+	}
+
+	default void check() {
+		checkRelation(getRelation());
+		checkDirection(getDirection());
+		checkConnectedObject(getConnectedObject());
+		setChecked(true);
+	}
 
 } // AttributeBase

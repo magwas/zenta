@@ -21,6 +21,7 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class RelationClassTest {
@@ -286,12 +287,12 @@ public class RelationClassTest {
 
 	private IBasicRelationship createRelationClass(IBasicRelationship parentClass, String name) {
 		IFolder folder = (IFolder) parentClass.eContainer();
-		IBasicRelationship modelRelation= (IBasicRelationship) parentClass.create(Util.verifyNonNull(folder));
 		IDiagramModelZentaObject diagramElement1 = (IDiagramModelZentaObject) testdata.getDMOById("b2608459");//User
 		IDiagramModelZentaObject diagramElement2 = (IDiagramModelZentaObject) testdata.getDMOById("88f40127");//Procedure
-		modelRelation.setName(name);
-		modelRelation.setSource(diagramElement1.getZentaElement());
-		modelRelation.setTarget(diagramElement2.getZentaElement());
+		IBasicRelationship modelRelation = ZentaModelUtils.createChildRelation(
+				parentClass, folder, name, 
+				diagramElement1.getZentaElement(),
+				diagramElement2.getZentaElement());
 		return createRelationClass(modelRelation, diagramElement1,
 				diagramElement2);
 	}

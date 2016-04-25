@@ -18,4 +18,8 @@ package org.rulez.magwas.zenta.model;
  * @generated
  */
 public interface IDiagramModelImage extends IDiagramModelObject, IBorderObject, IDiagramModelImageProvider {
+	default void check() {
+		// TODO unimplemented check
+	}
+
 } // IDiagramModelImage

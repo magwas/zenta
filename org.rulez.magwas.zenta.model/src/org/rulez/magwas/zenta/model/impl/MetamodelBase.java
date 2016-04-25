@@ -11,14 +11,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +31,7 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
  * </p>
  *
  */
-abstract public class MetamodelBase extends EObjectImpl implements IMetamodel {
+abstract public class MetamodelBase extends ZentaObjectImpl implements IMetamodel {
 	/**
 	 * The cached value of the '{@link #getTemplates() <em>Templates</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

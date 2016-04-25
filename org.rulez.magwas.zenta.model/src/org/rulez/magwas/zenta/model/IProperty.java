@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Property</b></em>'.
@@ -24,9 +22,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getProperty()
  * @model
+ * @extends ZentaObject
  * @generated
  */
-public interface IProperty extends EObject {
+public interface IProperty extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Key</b></em>' attribute.
 	 * The default value is <code>""</code>.

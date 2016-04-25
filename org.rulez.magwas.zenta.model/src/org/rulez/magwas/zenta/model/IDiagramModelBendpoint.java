@@ -14,13 +14,13 @@ package org.rulez.magwas.zenta.model;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelBendpoint#getStartX <em>Start X</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelBendpoint#getStartY <em>Start Y</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelBendpoint#getEndX <em>End X</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelBendpoint#getEndY <em>End Y</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelBendpoint()
  * @model

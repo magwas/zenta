@@ -144,7 +144,7 @@ public class DiagramImageFigure extends AbstractDiagramModelObjectFigure {
     public Image getOriginalImage() {
         Image image = null;
         
-        String imagePath = getDiagramModelObject().getImagePathOrNull();
+        String imagePath = getDiagramModelObject().getImagePath();
         
         if(imagePath != null) {
             Object ob = getDiagramModelObject().getAdapter(IArchiveManager.class);

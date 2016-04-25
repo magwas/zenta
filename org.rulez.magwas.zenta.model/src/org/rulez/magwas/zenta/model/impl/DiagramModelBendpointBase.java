@@ -9,9 +9,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 
 
@@ -31,7 +31,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
  *
  * @generated
  */
-public class DiagramModelBendpointBase extends EObjectImpl implements IDiagramModelBendpoint {
+public class DiagramModelBendpointBase extends ZentaObjectImpl implements IDiagramModelBendpoint {
     /**
 	 * The default value of the '{@link #getStartX() <em>Start X</em>}' attribute.
 	 * <!-- begin-user-doc -->

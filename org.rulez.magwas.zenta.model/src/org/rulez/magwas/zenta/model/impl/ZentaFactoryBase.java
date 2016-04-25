@@ -5,6 +5,8 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -40,6 +42,8 @@ import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.handmade.ObjectClass;
 import org.rulez.magwas.zenta.model.handmade.RelationClass;
 import org.rulez.magwas.zenta.model.handmade.ZentaFactory;
+import org.rulez.magwas.zenta.model.handmade.ZentaModel;
+import org.rulez.magwas.zenta.model.handmade.util.IDAdapter;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**
@@ -87,30 +91,30 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
     
     public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case IZentaPackage.PROPERTY: return createProperty();
-			case IZentaPackage.FOLDER: return createFolder();
-			case IZentaPackage.JUNCTION: return createJunction();
-			case IZentaPackage.AND_JUNCTION: return createAndJunction();
-			case IZentaPackage.OR_JUNCTION: return createOrJunction();
-			case IZentaPackage.DIAGRAM_MODEL_REFERENCE: return createDiagramModelReference();
-			case IZentaPackage.DIAGRAM_MODEL_GROUP: return createDiagramModelGroup();
-			case IZentaPackage.DIAGRAM_MODEL_NOTE: return createDiagramModelNote();
-			case IZentaPackage.DIAGRAM_MODEL_IMAGE: return createDiagramModelImage();
-			case IZentaPackage.DIAGRAM_MODEL_CONNECTION: return createDiagramModelConnection();
-			case IZentaPackage.DIAGRAM_MODEL_BENDPOINT: return createDiagramModelBendpoint();
-			case IZentaPackage.BOUNDS: return createBounds();
-			case IZentaPackage.ZENTA_DIAGRAM_MODEL: return createZentaDiagramModel();
-			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT: return createDiagramModelZentaObject();
-			case IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION: return createDiagramModelZentaConnection();
-			case IZentaPackage.SKETCH_MODEL: return createSketchModel();
-			case IZentaPackage.SKETCH_MODEL_STICKY: return createSketchModelSticky();
-			case IZentaPackage.SKETCH_MODEL_ACTOR: return createSketchModelActor();
-			case IZentaPackage.ZENTA_MODEL: return createZentaModel();
-			case IZentaPackage.METAMODEL: return createMetamodel();
-			case IZentaPackage.TEMPLATE: return createTemplate();
-			case IZentaPackage.BASIC_OBJECT: return createBasicObject();
-			case IZentaPackage.BASIC_RELATIONSHIP: return createBasicRelationship();
-			case IZentaPackage.ATTRIBUTE: return createAttribute();
+			case IZentaPackage.PROPERTY: return (EObject)createProperty();
+			case IZentaPackage.FOLDER: return (EObject)createFolder();
+			case IZentaPackage.JUNCTION: return (EObject)createJunction();
+			case IZentaPackage.AND_JUNCTION: return (EObject)createAndJunction();
+			case IZentaPackage.OR_JUNCTION: return (EObject)createOrJunction();
+			case IZentaPackage.DIAGRAM_MODEL_REFERENCE: return (EObject)createDiagramModelReference();
+			case IZentaPackage.DIAGRAM_MODEL_GROUP: return (EObject)createDiagramModelGroup();
+			case IZentaPackage.DIAGRAM_MODEL_NOTE: return (EObject)createDiagramModelNote();
+			case IZentaPackage.DIAGRAM_MODEL_IMAGE: return (EObject)createDiagramModelImage();
+			case IZentaPackage.DIAGRAM_MODEL_CONNECTION: return (EObject)createDiagramModelConnection();
+			case IZentaPackage.DIAGRAM_MODEL_BENDPOINT: return (EObject)createDiagramModelBendpoint();
+			case IZentaPackage.BOUNDS: return (EObject)createBounds();
+			case IZentaPackage.ZENTA_DIAGRAM_MODEL: return (EObject)createZentaDiagramModel();
+			case IZentaPackage.DIAGRAM_MODEL_ZENTA_OBJECT: return (EObject)createDiagramModelZentaObject();
+			case IZentaPackage.DIAGRAM_MODEL_ZENTA_CONNECTION: return (EObject)createDiagramModelZentaConnection();
+			case IZentaPackage.SKETCH_MODEL: return (EObject)createSketchModel();
+			case IZentaPackage.SKETCH_MODEL_STICKY: return (EObject)createSketchModelSticky();
+			case IZentaPackage.SKETCH_MODEL_ACTOR: return (EObject)createSketchModelActor();
+			case IZentaPackage.ZENTA_MODEL: return (EObject)createZentaModel();
+			case IZentaPackage.METAMODEL: return (EObject)createMetamodel();
+			case IZentaPackage.TEMPLATE: return (EObject)createTemplate();
+			case IZentaPackage.BASIC_OBJECT: return (EObject)createBasicObject();
+			case IZentaPackage.BASIC_RELATIONSHIP: return (EObject)createBasicRelationship();
+			case IZentaPackage.ATTRIBUTE: return (EObject)createAttribute();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -174,17 +178,17 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
     public IBasicObject createBasicObject() {
-    	return new ObjectClass();
+    	ObjectClass objectClass = new ObjectClass();
+		return objectClass;
 	}
-
 
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
      public IZentaDiagramModel createZentaDiagramModel() {
 		ZentaDiagramModelBase zentaDiagramModel = new ZentaDiagramModelBase();
@@ -356,15 +360,6 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 		throw new RuntimeException("should not be called");
 	}
 
-				public IBounds createBounds(int x, int y, int width, int height) {
-        BoundsBase bounds = new BoundsBase();
-        bounds.setX(x);
-        bounds.setY(y);
-        bounds.setWidth(width);
-        bounds.setHeight(height);
-        return bounds;
-    }
-    
 
     /**
 	 * <!-- begin-user-doc -->
@@ -400,13 +395,9 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
     
-	public IBasicRelationship createBasicRelationship() {
-		BasicRelationshipBase basicRelationship = new RelationClass();
-		return basicRelationship;
-	}
 
 				/**
 	 * <!-- begin-user-doc -->

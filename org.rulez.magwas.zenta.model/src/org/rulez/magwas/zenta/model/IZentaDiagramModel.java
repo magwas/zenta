@@ -49,4 +49,10 @@ public interface IZentaDiagramModel extends IDiagramModel {
 	 */
 	void setViewpoint(int value);
 
+	default void check() {
+		checkId(getId());
+		checkDocumentation(getDocumentation());
+		setChecked(true);
+	}
+
 } // IZentaDiagramModel

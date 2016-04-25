@@ -81,7 +81,7 @@ public class ArchiveManager implements IArchiveManager {
             if(msg.getEventType() == Notification.ADD) {
                 if(msg.getNewValue() instanceof IDiagramModelImageProvider) {
                     IDiagramModelImageProvider imageProvider = (IDiagramModelImageProvider)msg.getNewValue();
-                    String imagePath = imageProvider.getImagePathOrNull();
+                    String imagePath = imageProvider.getImagePath();
                     if(imagePath != null && !fLoadedImagePaths.contains(imagePath)) {
                         fLoadedImagePaths.add(imagePath);
                     }
@@ -150,7 +150,7 @@ public class ArchiveManager implements IArchiveManager {
         for(Iterator<EObject> iter = getfModel().eAllContents(); iter.hasNext();) {
             EObject element = iter.next();
             if(element instanceof IDiagramModelImageProvider) {
-                String imagePath = ((IDiagramModelImageProvider)element).getImagePathOrNull();
+                String imagePath = ((IDiagramModelImageProvider)element).getImagePath();
                 if(null != imagePath && !list.contains(imagePath)) {
                     list.add(imagePath);
                 }
@@ -207,7 +207,7 @@ public class ArchiveManager implements IArchiveManager {
             EObject element = iter.next();
             if(element instanceof IDiagramModelImageProvider) {
             	IDiagramModelImageProvider e = (IDiagramModelImageProvider) element;
-            	return null != e.getImagePathOrNull();
+            	return null != e.getImagePath();
             }
         }
         return false;
@@ -262,7 +262,7 @@ public class ArchiveManager implements IArchiveManager {
             EObject eObject = iter.next();
             if(eObject instanceof IDiagramModelImageProvider) {
                 IDiagramModelImageProvider imageProvider = (IDiagramModelImageProvider)eObject;
-                String imagePath = imageProvider.getImagePathOrNull();
+                String imagePath = imageProvider.getImagePath();
                 if(null != imagePath && !added.contains(imagePath)) {
                     byte[] bytes = BYTE_ARRAY_STORAGE.getEntry(imagePath);
                     ZipEntry zipEntry = new ZipEntry(imagePath);

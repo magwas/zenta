@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.zenta.model.IAdapter;
@@ -33,6 +32,7 @@ import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UndoState;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -55,7 +55,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *
  * @generated
  */
-public class FolderBase extends EObjectImpl implements IFolder {
+public class FolderBase extends ZentaObjectImpl implements IFolder {
 
 	/**
 	 * The cached value of the '{@link #getFolders() <em>Folders</em>}' containment reference list.

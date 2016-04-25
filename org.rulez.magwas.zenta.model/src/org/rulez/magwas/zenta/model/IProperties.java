@@ -8,8 +8,6 @@ package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Properties</b></em>'.
@@ -24,9 +22,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getProperties()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface IProperties extends EObject {
+public interface IProperties extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IProperty}.

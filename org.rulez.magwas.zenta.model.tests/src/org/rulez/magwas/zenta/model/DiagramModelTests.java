@@ -12,12 +12,17 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 
 @SuppressWarnings("nls")
 public abstract class DiagramModelTests {
     
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
+
     protected abstract IDiagramModel getDiagramModel();
     
     private IZentaModel model;
@@ -40,8 +45,9 @@ public abstract class DiagramModelTests {
         assertSame(dm, dm.getDiagramModel());
     }
 
-    @Test(expected=NullPointerException.class)
+    @Test
     public void getZentaModel_throws_exception_when_diagram_is_not_in_model() {
+    	exception.expect(NullPointerException.class);
     	dm.getZentaModel();
     }
     
@@ -53,9 +59,6 @@ public abstract class DiagramModelTests {
 
     @Test
     public void DiagramModel_have_ID() {
-        assertNull(dm.getId());
-        
-        model.getElements().add(dm);
         assertNotNull(dm.getId());
     }
 

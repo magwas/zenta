@@ -56,20 +56,20 @@ import org.rulez.magwas.zenta.model.impl.DiagramModelObjectBase;
  */
 public class CanvasModelBlock extends DiagramModelObjectBase implements ICanvasModelBlock {
     /**
-     * The default value of the '{@link #getImagePathOrNull() <em>Image Path</em>}' attribute.
+     * The default value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getImagePathOrNull()
+     * @see #getImagePath()
      * @generated
      * @ordered
      */
     protected static final String IMAGE_PATH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getImagePathOrNull() <em>Image Path</em>}' attribute.
+     * The cached value of the '{@link #getImagePath() <em>Image Path</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getImagePathOrNull()
+     * @see #getImagePath()
      * @generated
      * @ordered
      */
@@ -303,9 +303,9 @@ public class CanvasModelBlock extends DiagramModelObjectBase implements ICanvasM
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
-    public String getImagePathOrNull() {
+    public String getImagePath() {
         return Util.verifyNonNull(imagePath);
     }
 
@@ -452,7 +452,7 @@ public class CanvasModelBlock extends DiagramModelObjectBase implements ICanvasM
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case ICanvasPackage.CANVAS_MODEL_BLOCK__IMAGE_PATH:
-                return getImagePathOrNull();
+                return getImagePath();
             case ICanvasPackage.CANVAS_MODEL_BLOCK__IMAGE_POSITION:
                 return getImagePosition();
             case ICanvasPackage.CANVAS_MODEL_BLOCK__CHILDREN:

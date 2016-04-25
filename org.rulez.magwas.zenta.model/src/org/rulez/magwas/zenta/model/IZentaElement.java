@@ -71,4 +71,8 @@ public interface IZentaElement extends IZentaModelElement, IIdentifier, ICloneab
 	
     NonNullList<IBasicRelationship> getTargetRelationships();
 
+	default void check() {
+		//TODO unimplemented check
+	}
+
 } // IZentaElement

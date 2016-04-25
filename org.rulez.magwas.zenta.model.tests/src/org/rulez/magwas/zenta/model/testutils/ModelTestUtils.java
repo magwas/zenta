@@ -19,6 +19,8 @@ import javax.xml.xpath.XPathFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.NSResolver;
@@ -102,7 +104,14 @@ public class ModelTestUtils {
         f.setAccessible(true);
         return f.get(object);
     }
-    
+
+    public static  void setPrivateField(Object object, String field, Object value) throws Exception {
+        
+		Field f = getField(object.getClass(), field);
+        f.setAccessible(true);
+        f.set(object,value);
+    }
+
 	private static Field getField(Class<?> clazz, String fieldName) throws NoSuchFieldException {
         try {
             return clazz.getDeclaredField(fieldName);

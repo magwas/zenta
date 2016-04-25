@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Diagram Model Image Provider</b></em>'.
@@ -22,9 +20,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelImageProvider()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface IDiagramModelImageProvider extends EObject {
+public interface IDiagramModelImageProvider extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Image Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -37,16 +36,16 @@ public interface IDiagramModelImageProvider extends EObject {
 	 * @see #setImagePath(String)
 	 * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelImageProvider_ImagePath()
 	 * @model
-	 * @generated NOT
+	 * @generated
 	 */
-	String getImagePathOrNull();
+	String getImagePath();
 
 	/**
 	 * Sets the value of the '{@link org.rulez.magwas.zenta.model.IDiagramModelImageProvider#getImagePath <em>Image Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Image Path</em>' attribute.
-	 * @see #getImagePathOrNull()
+	 * @see #getImagePath()
 	 * @generated NOT
 	 */
 	void setImagePath(String value);

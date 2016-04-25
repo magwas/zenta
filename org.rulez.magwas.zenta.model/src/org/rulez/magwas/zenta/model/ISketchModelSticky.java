@@ -18,4 +18,8 @@ package org.rulez.magwas.zenta.model;
  * @generated
  */
 public interface ISketchModelSticky extends IDiagramModelObject, IDiagramModelContainer, ITextContent, IProperties {
+	default void check() {
+		// TODO unimplemented check
+	}
+
 } // ISketchModelSticky

@@ -18,9 +18,13 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.ModelConsistencyException;
+import org.rulez.magwas.zenta.model.ZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.manager.IArchiveManager;
+import org.rulez.magwas.zenta.model.manager.TestModelManager;
 
 public class ModelTestData {
 
@@ -42,11 +46,25 @@ public class ModelTestData {
 			model = getModel();
 		}
 	
-	public IZentaModel getModel() {
+	public IZentaModel getModel() {//FIXME: should use ModelManager
 		IZentaModel m = model;
 		if( null == m )
 			m = (IZentaModel)resource.getContents().get(0);
+		checkModel(m);
 		return Util.verifyNonNull(m);
+	}
+	private void checkModel(IZentaModel m) {
+		boolean okay=false;
+		while(!okay) {
+			try {
+				m.check();
+				okay = true;
+			} catch(ModelConsistencyException ex) {
+				ZentaObject element = ex.getElement();
+				System.out.printf("element=%s\ncontainer=%s", element, element.eContainer());
+				((IFolder)element.eContainer()).getElements().remove(element);
+			}
+		}
 	}
 	
 	public void saveResource() throws IOException {
@@ -90,7 +108,9 @@ public class ModelTestData {
 	public IBasicRelationship getRelationByID(String id) {
 		return (IBasicRelationship) Util.verifyNonNull(ZentaModelUtils.getObjectByID(getModel(), id));
 	}
-
+	public IBasicRelationship getARelation () {
+		return getRelationByID("44041ead");
+	}
 	public IDiagramModelZentaConnection getDMRById(String id3) {
 		return (IDiagramModelZentaConnection) Util.verifyNonNull(ZentaModelUtils.getObjectByID(getModel(),id3));
 	}

@@ -7,11 +7,14 @@ package org.rulez.magwas.zenta.editor.diagram.figures.diagram;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.rulez.magwas.zenta.editor.diagram.figures.AbstractTextFlowFigureTests;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.ModelConsistencyException;
 
 import junit.framework.JUnit4TestAdapter;
 
@@ -24,7 +27,9 @@ public class DiagramModelReferenceFigureTests extends AbstractTextFlowFigureTest
     
     private DiagramModelReferenceFigure figure;
     private IDiagramModelReference dmRef;
-    
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
+
 
     @Override
     protected DiagramModelReferenceFigure createFigure() {
@@ -42,9 +47,8 @@ public class DiagramModelReferenceFigureTests extends AbstractTextFlowFigureTest
     @Override
     @Test
     public void its_text_can_be_set() {
-        String name = diagramModelObject.getName();
-        assertEquals(name, textFlowFigure.getTextControl().getText());
+    	//actually not
+    	exception.expect(ModelConsistencyException.class);
         diagramModelObject.setName("Fido");
-        assertEquals(name, diagramModelObject.getName()); // Should not be set
     }
 }

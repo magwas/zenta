@@ -20,11 +20,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  */
 public class ByteArrayStorage {
     
-    public class NoSuchFileError extends RuntimeException {
-		private static final long serialVersionUID = 1L;
-	}
-
-	private NonNullMap<String, byte[]> fdataTable = new NonNullHashMap<String, byte[]>();
+    private NonNullMap<String, byte[]> fdataTable = new NonNullHashMap<String, byte[]>();
     
     public InputStream getInputStream(String entryName) {
         byte[] bytes = fdataTable.get(entryName);

@@ -22,10 +22,13 @@ import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAdapter;
 import org.rulez.magwas.zenta.model.IDiagramModel;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.ModelConsistencyException;
 import org.rulez.magwas.zenta.model.ModelVersion;
 import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.ZentaObject;
 import org.rulez.magwas.zenta.model.handmade.util.FileUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.util.LogUtil;
@@ -84,7 +87,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	    
 	    // Register
 	    registerModel(model);
-	    
+	    model.check();
 	    return model;
 	}
 
@@ -166,6 +169,7 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	    IZentaModel m = Util.verifyNonNull(model);
 		IZentaFactory.eINSTANCE.getMetamodelFor(m);
 	    model.setFile(file);
+	    checkModel(model);
 	    getModels().add(model);
 	    model.eAdapters().add(new ECoreAdapter());
 	
@@ -181,6 +185,20 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 	    firePropertyChange(this, PROPERTY_MODEL_LOADED, null, model);
 	
 	    return model;
+	}
+
+	private void checkModel(IZentaModel m) {
+		boolean okay=false;
+		while(!okay) {
+			try {
+				m.check();
+				okay = true;
+			} catch(ModelConsistencyException ex) {
+				ZentaObject element = ex.getElement();
+				System.out.printf("element=%s\ncontainer=%s", element, element.eContainer());
+				((IFolder)element.eContainer()).getElements().remove(element);
+			}
+		}
 	}
 
 

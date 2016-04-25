@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getText <em>Text</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getSource <em>Source</em>}</li>
@@ -24,7 +25,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getLineDecoration <em>Line Decoration</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelConnection#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelConnection()
  * @model
@@ -264,5 +264,12 @@ public interface IDiagramModelConnection extends IDiagramModelComponent, IFontAt
 	int getFinalLineWidth();
 
 	String getFinalLineColor();
+
+	default void check() {
+		checkId(getId());
+		checkName(getName());
+		checkDocumentation(getDocumentation());
+		setChecked(true);
+	}
 
 } // IDiagramModelConnection

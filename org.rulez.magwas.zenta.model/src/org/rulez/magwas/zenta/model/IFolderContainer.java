@@ -8,8 +8,6 @@ package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Folder Container</b></em>'.
@@ -24,9 +22,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getFolderContainer()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface IFolderContainer extends EObject {
+public interface IFolderContainer extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Folders</b></em>' containment reference list.
 	 * The list contents are of type {@link org.rulez.magwas.zenta.model.IFolder}.
@@ -43,5 +42,12 @@ public interface IFolderContainer extends EObject {
 	 * @generated
 	 */
 	EList<IFolder> getFolders();
+
+	default void checkFolders() {
+		for(IFolder element: getFolders()){
+			element.check();
+		}
+	}
+
 
 } // IFolderContainer

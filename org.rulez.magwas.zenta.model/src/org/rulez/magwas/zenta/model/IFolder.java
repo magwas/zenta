@@ -42,5 +42,25 @@ public interface IFolder extends IZentaModelElement, IFolderContainer, INameable
 	 */
 	EList<INameable> getElements();
 
+	default void check() {
+		checkId(getId());
+		checkName(getName());
+		checkDocumentation(getDocumentation());
+		checkElements();
+		setChecked(true);
+	}
+
+	default void checkElements() {
+		for(INameable element: getElements()){
+			element.check();
+		}
+	}
+
+	default void checkFolders() {
+		for ( INameable e : getFolders()) {
+			e.check();
+		}
+	}
+
 
 } // IFolder

@@ -24,4 +24,7 @@ import org.rulez.magwas.zenta.model.ITextContent;
  * @generated
  */
 public interface ICanvasModelBlock extends IIconic, IDiagramModelContainer, IProperties, ILockable, IBorderObject, IHelpHintProvider, IHintProvider, ITextContent {
+	default void check() {
+		// TODO unimplemented check
+	}
 } // ICanvasModelBlock

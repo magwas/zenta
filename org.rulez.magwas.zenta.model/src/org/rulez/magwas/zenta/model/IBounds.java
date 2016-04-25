@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Bounds</b></em>'.
@@ -15,19 +13,20 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IBounds#getX <em>X</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IBounds#getY <em>Y</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IBounds#getWidth <em>Width</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IBounds#getHeight <em>Height</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getBounds()
  * @model
+ * @extends ZentaObject
  * @generated
  */
-public interface IBounds extends EObject {
+public interface IBounds extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>X</b></em>' attribute.
 	 * The default value is <code>"10"</code>.

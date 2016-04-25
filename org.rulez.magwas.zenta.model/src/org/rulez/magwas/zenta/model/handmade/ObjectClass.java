@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.rulez.magwas.nonnul.NonNullArrayList;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.IAttribute;
@@ -22,9 +23,13 @@ public class ObjectClass extends BasicObjectBase implements IObjectClass {
 
 	public ObjectClass(IBasicObject ancestor) {
 		setAncestor(ancestor);
+		Adapter object = new AttributeChangeAdapter();
+		eAdapters().add(object);
 	}
 
 	public ObjectClass() {
+		Adapter object = new AttributeChangeAdapter();
+		eAdapters().add(object);
 	}
 
 	@Override

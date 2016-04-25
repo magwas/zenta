@@ -49,4 +49,12 @@ public interface IIdentifier extends INameable {
 	 */
 	void setId(String value);
 
+	default void checkId(String value) {
+		if ( value == null )
+			throw new ModelConsistencyException("id cannot be null", this);
+	}
+	
+	default void initId() {
+		setId(IZentaFactory.eINSTANCE.getNewID());
+	}
 } // IIdentifier

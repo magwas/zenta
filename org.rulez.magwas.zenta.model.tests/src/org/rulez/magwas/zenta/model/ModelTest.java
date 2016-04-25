@@ -426,4 +426,10 @@ public class ModelTest {
 		ModelTestUtils.assertEqualsAsSet(namelist,ModelTestUtils.definingNames(list));
 	}
 
+	@Test
+	public void invalid_model_is_loaded_without_problem_parts() {
+		ModelTestData testdata = new ModelTestData("invalid.zenta");
+		assertNotNull(testdata.model);
+	}
+
 }

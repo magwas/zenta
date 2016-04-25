@@ -29,8 +29,20 @@ public class Attribute extends AttributeBase implements IAttribute {
 	}
 	@Override
 	public void setDirection(Direction dir) {
-		Util.verifyNonNull(dir);
+		checkDirection(dir);
 		direction = dir;
+	}
+
+	@Override
+	public void setRelation(IBasicRelationship rel) {
+		checkRelation(rel);
+		relation=rel;
+	}
+
+	@Override
+	public void setConnectedObject(IBasicObject obj) {
+		checkConnectedObject(obj);
+		connectedObject=obj;
 	}
 
 } //AttributeImpl

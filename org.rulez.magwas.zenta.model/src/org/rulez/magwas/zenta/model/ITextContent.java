@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Text Content</b></em>'.
@@ -22,9 +20,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getTextContent()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface ITextContent extends EObject {
+public interface ITextContent extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Content</b></em>' attribute.
 	 * The default value is <code>""</code>.

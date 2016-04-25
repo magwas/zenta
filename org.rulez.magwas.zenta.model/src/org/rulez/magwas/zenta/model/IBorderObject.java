@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Border Object</b></em>'.
@@ -15,16 +13,17 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IBorderObject#getBorderColor <em>Border Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getBorderObject()
  * @model abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface IBorderObject extends EObject {
+public interface IBorderObject extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Border Color</b></em>' attribute.
 	 * <!-- begin-user-doc -->
