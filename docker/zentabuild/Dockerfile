@@ -1,4 +1,4 @@
-FROM magwas/edemotest:prezenta
+FROM magwas/zenta:prezenta
 
 RUN git clone https://github.com/magwas/zenta.git
 RUN mkdir ~/.m2
