@@ -20,4 +20,8 @@ import org.rulez.magwas.zenta.model.IHelpHintProvider;
  * @generated
  */
 public interface ICanvasModel extends IDiagramModel, IHintProvider, IHelpHintProvider {
+	default void check() {
+		// TODO unimplemented check
+	}
+
 } // ICanvasModel

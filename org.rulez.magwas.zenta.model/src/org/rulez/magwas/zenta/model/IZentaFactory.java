@@ -7,6 +7,7 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.ecore.EFactory;
+import org.rulez.magwas.zenta.model.IAttribute.Direction;
 import org.rulez.magwas.zenta.model.manager.IEditorModelInterface;
 
 /**
@@ -247,7 +248,8 @@ public interface IZentaFactory extends EFactory {
 	 * @return a new object of class '<em>Attribute</em>'.
 	 * @generated
 	 */
-	IAttribute createAttribute();
+	//IAttribute createAttribute();
+	IAttribute createAttribute(IBasicRelationship relationClass, IBasicObject obj2, Direction dir);
 
 	/**
 	 * Returns the package supported by this factory.
@@ -271,5 +273,9 @@ public interface IZentaFactory extends EFactory {
 	 void setEditorInterface(IEditorModelInterface iface);
 
 	 IEditorModelInterface getEditorInterface();
+
+	void registerID(String id);
+
+	String getNewID();
 
 } //IZentaFactory

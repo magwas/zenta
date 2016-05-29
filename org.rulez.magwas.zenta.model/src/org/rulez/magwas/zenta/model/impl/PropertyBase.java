@@ -8,8 +8,8 @@ package org.rulez.magwas.zenta.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 import org.rulez.magwas.zenta.model.IProperty;
 
 
@@ -28,7 +28,7 @@ import org.rulez.magwas.zenta.model.IProperty;
  *
  * @generated
  */
-public class PropertyBase extends EObjectImpl implements IProperty {
+public class PropertyBase extends ZentaObjectImpl implements IProperty {
     /**
 	 * The default value of the '{@link #getKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->

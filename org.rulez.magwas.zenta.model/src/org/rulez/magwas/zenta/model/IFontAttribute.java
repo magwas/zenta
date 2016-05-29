@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Font Attribute</b></em>'.
@@ -25,9 +23,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getFontAttribute()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface IFontAttribute extends EObject {
+public interface IFontAttribute extends ZentaObject {
 
     int TEXT_ALIGNMENT_NONE = 0; // Legacy support
     int TEXT_ALIGNMENT_LEFT = 1;

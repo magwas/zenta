@@ -97,5 +97,11 @@ public interface IDiagramModelZentaObject extends IDiagramModelObject, IDiagramM
 	void removeZentaElementFromModel();
 
 	String getFinalElementShape();
+	
+	default void check() {
+		checkId(getId());
+		checkBounds(getBounds());
+		setChecked(true);
+	}
 
 } // IDiagramModelZentaObject

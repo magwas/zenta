@@ -10,12 +10,17 @@ import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.rulez.magwas.nonnul.NonNullEntry;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
 
 public class ByteArrayStorageTest {
+
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
 
 	private ByteArrayStorage bas;
 	private byte[] bytes;
@@ -121,9 +126,10 @@ public class ByteArrayStorageTest {
 		assertEquals("PNG",s.substring(1, 4));
 	}
 
-	@Test(expected=Exception.class)
+	@Test
 	public void getBytesFromFile_throws_exception_for_nonexisting_file() throws IOException {
 		File file = new File("foo");
+		exception.expect(NoSuchFileError.class);
 		bas.getBytesFromFile(file);
 	}
 

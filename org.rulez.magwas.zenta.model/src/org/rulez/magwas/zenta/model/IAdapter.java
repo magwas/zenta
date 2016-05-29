@@ -6,7 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,9 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getAdapter()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface IAdapter extends EObject {
+public interface IAdapter extends ZentaObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

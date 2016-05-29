@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Documentable</b></em>'.
@@ -22,9 +20,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getDocumentable()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface IDocumentable extends EObject {
+public interface IDocumentable extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Documentation</b></em>' attribute.
 	 * The default value is <code>""</code>.
@@ -52,5 +51,10 @@ public interface IDocumentable extends EObject {
 	 * @generated
 	 */
 	void setDocumentation(String value);
+	
+	default void checkDocumentation(String value) {
+		if (null == value)
+			throw new ModelConsistencyException("documentation cannot be null", this);
+	}
 
 } // IDocumentable

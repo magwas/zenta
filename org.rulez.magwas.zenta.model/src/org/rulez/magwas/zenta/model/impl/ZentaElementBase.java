@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -44,6 +43,7 @@ import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UndoState;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -65,7 +65,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *
  * @generated
  */
-public abstract class ZentaElementBase extends EObjectImpl implements IZentaElement {
+public abstract class ZentaElementBase extends ZentaObjectImpl implements IZentaElement {
 	
     private static final int SOURCE_RELATIONSHIPS = 1;
 	private static final int TARGET_RELATIONSHIPS = 2;
@@ -213,6 +213,9 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	 * @generated
 	 */
     public void setDocumentation(String newDocumentation) {
+		if(isChecked() && newDocumentation==null)
+			checkDocumentation(newDocumentation);
+
 		String oldDocumentation = documentation;
 		documentation = newDocumentation;
 		if (eNotificationRequired())
@@ -338,6 +341,8 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 	 * @generated
 	 */
     public void setId(String newId) {
+    	if(isChecked())
+    		checkId(newId);
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
@@ -759,6 +764,5 @@ public abstract class ZentaElementBase extends EObjectImpl implements IZentaElem
 			oldFolder.getElements().remove(this);
 			newFolder.getElements().add(this);
 		}
-
 
 }

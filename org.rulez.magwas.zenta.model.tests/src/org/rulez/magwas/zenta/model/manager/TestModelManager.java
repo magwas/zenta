@@ -5,7 +5,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 public class TestModelManager extends AbstractEditorModelManager {
 
 	private IModelManagerTest test;
-	TestModelManager(IModelManagerTest test) {
+	public TestModelManager(IModelManagerTest test) {
 		this.test=test;
 	}
 	@Override

@@ -15,9 +15,10 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.rulez.magwas.nonnul.NonNullArrayList;
@@ -37,6 +38,8 @@ import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UndoState;
+import org.rulez.magwas.zenta.model.handmade.FolderChangeAdapter;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 import org.rulez.magwas.zenta.model.handmade.util.IDAdapter;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
@@ -62,7 +65,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *
  * @generated
  */
-public class ZentaModelBase extends EObjectImpl implements IZentaModel {
+public class ZentaModelBase extends ZentaObjectImpl implements IZentaModel {
     /**
 	 * The cached value of the '{@link #getFolders() <em>Folders</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -200,6 +203,7 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
     protected ZentaModelBase() {
         super();
         eAdapters().add(fIDAdapter);
+        eAdapters().add(new FolderChangeAdapter());
         setDefaults();
     }
     
@@ -208,20 +212,20 @@ public class ZentaModelBase extends EObjectImpl implements IZentaModel {
      * <!-- end-user-doc -->
      * @generated NOT
      */
-    public Object getAdapter(Object adapter) {
+	public Object getAdapter(Object adapter) {
         if(!fAdapterMap.containsKey(adapter) && eContainer() instanceof IAdapter) {
             return ((IAdapter)eContainer()).getAdapter(adapter);
         }
-        
-        return fAdapterMap.get(adapter);
+        return  fAdapterMap.get(adapter);
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @param <T>
      * @generated NOT
      */
-    public void setAdapter(Object adapter, Object object) {
+	public void setAdapter(Object adapter, Object object) {
         fAdapterMap.put(adapter, object);
     }
 

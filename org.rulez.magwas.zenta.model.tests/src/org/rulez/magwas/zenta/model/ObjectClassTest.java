@@ -2,12 +2,16 @@ package org.rulez.magwas.zenta.model;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
@@ -20,11 +24,15 @@ import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.handmade.Attribute;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
 import org.rulez.magwas.zenta.model.testutils.ModelTestData;
 
 public class ObjectClassTest{
+
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
 
 	protected IBasicObject fixture;
 	private ModelAndMetaModelTestData testdata;
@@ -51,8 +59,9 @@ public class ObjectClassTest{
 	}
 
 	
-	@Test(expected = IZentaFactory.BuiltinClassShouldNotHaveAncestor.class)
+	@Test
 	public void The_ancestor_cannot_be_set_for_the_Builtin_ObjectClass() {
+		exception.expect(IZentaFactory.BuiltinClassShouldNotHaveAncestor.class);
 		fixture.setAncestor(fixture);
 	}
 	
@@ -67,8 +76,9 @@ public class ObjectClassTest{
 		assertEquals(n+1,kids.size());
 	}
 
-	@Test(expected=AssertionError.class)
+	@Test
 	public void null_cannot_be_set_as_ancestor() {
+		exception.expect(ModelConsistencyException.class);
 		IBasicObject obj2 = testdata.createNewObjectClass("foobar");
 		obj2.setAncestor(null);
 	}
@@ -363,7 +373,7 @@ public class ObjectClassTest{
 		assertFalse(element.isTemplate());
 	}
 	
-	@Test(expected=java.util.NoSuchElementException.class)
+	@Test
 	public void When_a_defining_element_is_deleted_the_corresponding_objectclass_is_also_deleted() {
 		IZentaElement element = testdata.createNewObjectClass("deletetest OC");
 		String elemId = element.getId();
@@ -373,6 +383,7 @@ public class ObjectClassTest{
 		assertNotNull(oc);
 		element.delete();
 		assertNull(dmo.eContainer());
+		exception.expect(NoSuchElementException.class);
 		testdata.metamodel.getClassById(elemId);
 	}
 	
@@ -392,4 +403,19 @@ public class ObjectClassTest{
 		assertNotNull(oc.getHelpHintTitle());
 		assertNotNull(oc.getHelpHintContent());
 	}
+	
+	@Test
+	public void an_inconsistent_attribute_cannot_be_added_to_element() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		IBasicObject element = testdata.createNewObjectClass("attributetest OC");
+		System.out.printf("e=%s\n", element);
+		IAttribute att = testdata.createTestAttribute();
+		System.out.printf("att=%s\n", att);
+		Field field = Attribute.class.getDeclaredField("direction");
+		field.setAccessible(true);
+		field.set(att, null);
+		EList<IAttribute> attributes = element.getAttributes();
+		exception.expect(ModelConsistencyException.class);
+		attributes.add(att);
+	}
+
 }

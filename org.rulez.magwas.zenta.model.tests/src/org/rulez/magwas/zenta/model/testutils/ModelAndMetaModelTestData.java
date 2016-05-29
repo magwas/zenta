@@ -3,6 +3,7 @@ package org.rulez.magwas.zenta.model.testutils;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
@@ -113,9 +114,7 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 		IZentaElement sourceElement = createClassedTestElement();
 		IZentaElement targetElement = createClassedTestElement();
 		IFolder container = (IFolder) sourceElement.eContainer();
-		IBasicRelationship rel = (IBasicRelationship) baseRelationClass.create(Util.verifyNonNull(container));
-		rel.setSource(sourceElement);
-		rel.setTarget(targetElement);
+		IBasicRelationship rel = ZentaModelUtils.createChildRelation(baseRelationClass, container, "", sourceElement, targetElement);
 		IDiagramModelZentaObject dmo = ModelTestData.createDMOFor(sourceElement);
 		IDiagramModelZentaObject dmo2 = ModelTestData.createDMOFor(targetElement);
 		sourceElement.setName("test OC 1");
@@ -137,6 +136,12 @@ public class ModelAndMetaModelTestData extends ModelTestData {
 	}
 	public void setDiagramModel(IZentaDiagramModel diagramModel) {
 		this.diagramModel = diagramModel;
+	}
+
+	public IAttribute createTestAttribute() {
+		IBasicRelationship rel = createNewRelationClass("relation for attributetest");
+		IBasicObject a = (IBasicObject) rel.getSource();
+		return a.getDefiningElement().getAttributes().get(0);
 	}
 
 }

@@ -114,9 +114,9 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public String getImagePathOrNull() {
+	public String getImagePath() {
 		return imagePath;
 	}
 
@@ -143,7 +143,7 @@ public class DiagramModelImageBase extends DiagramModelObjectBase implements IDi
 			case IZentaPackage.DIAGRAM_MODEL_IMAGE__BORDER_COLOR:
 				return getBorderColor();
 			case IZentaPackage.DIAGRAM_MODEL_IMAGE__IMAGE_PATH:
-				return getImagePathOrNull();
+				return getImagePath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

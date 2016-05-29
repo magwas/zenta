@@ -1,5 +1,3 @@
-/**
- */
 package org.rulez.magwas.zenta.model;
 
 import static org.junit.Assert.*;
@@ -7,22 +5,32 @@ import static org.junit.Assert.*;
 import org.eclipse.emf.common.util.EList;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IAttribute.Direction;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.testutils.ModelAndMetaModelTestData;
+import org.rulez.magwas.zenta.model.testutils.ModelTestUtils;
 
 public class AttributeTest {
 
-	protected IAttribute fixture = null;
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
+	
+	protected IAttribute fixture;
 	private ModelAndMetaModelTestData testdata;
+	private IAttribute uncheckedAtt;
 
 	@Before
 	public void setUp() throws Exception {
-		this.fixture = IZentaFactory.eINSTANCE.createAttribute();
 		testdata = new ModelAndMetaModelTestData();
+		fixture = testdata.createTestAttribute();
+		fixture.check();
+		uncheckedAtt = testdata.createTestAttribute();
 	}
 	
 	@After
@@ -61,5 +69,37 @@ public class AttributeTest {
 			if(att.getRelation().getName().equals(name))
 				return;
 		fail(String.format("could not found %s in %s\n", name, atts));
+	}
+	
+	@Test
+	public void direction_cannot_be_set_to_null() {
+		exception.expect(ModelConsistencyException.class);
+		fixture.setDirection(null);
+	}
+
+	@Test
+	public void direction_cannot_be_null() throws Exception {
+		ModelTestUtils.setPrivateField(uncheckedAtt, "direction", null);
+		exception.expect(ModelConsistencyException.class);
+		uncheckedAtt.check();
+	}
+
+	@Test
+	public void relation_cannot_be_set_to_null() {
+		exception.expect(ModelConsistencyException.class);
+		fixture.setRelation(null);
+	}
+	
+	@Test()
+	public void relation_cannot_be_null() throws Exception {
+		ModelTestUtils.setPrivateField(uncheckedAtt, "relation", null);
+		exception.expect(ModelConsistencyException.class);
+		uncheckedAtt.check();
+	}
+	
+	@Test
+	public void connected_object_cannot_be_set_null() {
+		exception.expect(ModelConsistencyException.class);
+		uncheckedAtt.setConnectedObject(null);
 	}
 }

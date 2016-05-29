@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -37,6 +36,7 @@ import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UndoState;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -62,7 +62,7 @@ import org.rulez.magwas.zenta.model.handmade.util.Util;
  *
  * @generated
  */
-public abstract class DiagramModelBase extends EObjectImpl implements IDiagramModel {
+public abstract class DiagramModelBase extends ZentaObjectImpl implements IDiagramModel {
     /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

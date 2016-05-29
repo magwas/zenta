@@ -21,4 +21,9 @@ import org.rulez.magwas.zenta.model.ITextContent;
  * @generated
  */
 public interface ICanvasModelSticky extends IIconic, ITextContent, INotesContent, IProperties, ILockable, IBorderObject {
+
+	default void check() {
+		// TODO unimplemented check
+	}
+
 } // ICanvasModelSticky

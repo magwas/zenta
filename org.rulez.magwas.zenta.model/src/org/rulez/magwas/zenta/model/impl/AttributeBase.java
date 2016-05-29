@@ -7,12 +7,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.rulez.magwas.zenta.model.IAttribute;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaPackage;
+import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +28,7 @@ import org.rulez.magwas.zenta.model.IZentaPackage;
  * </p>
  *
  */
-abstract public class AttributeBase extends EObjectImpl implements IAttribute {
+abstract public class AttributeBase extends ZentaObjectImpl implements IAttribute {
 	/**
 	 * The default value of the '{@link #getMinOccurs() <em>Min Occurs</em>}' attribute.
 	 * <!-- begin-user-doc -->

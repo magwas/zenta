@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Nameable</b></em>'.
@@ -22,9 +20,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getNameable()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface INameable extends EObject {
+public interface INameable extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * The default value is <code>""</code>.
@@ -60,4 +59,9 @@ public interface INameable extends EObject {
 	boolean isDeleted();
 
 	void move(IFolder fOldParent, IFolder fNewParent);
+	
+	default void checkName(String value) {
+		if ( value == null )
+			throw new ModelConsistencyException("name cannot be null", this);
+	}
 } // INameable

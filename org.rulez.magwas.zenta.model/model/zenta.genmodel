@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.rulez.magwas.zenta.model/src" modelPluginID="org.rulez.magwas.zenta.model"
-    modelName="Zenta" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" interfaceNamePattern="I{0}" classNamePattern="{0}Base"
-    runtimePlatform="RCP">
+    modelName="Zenta" rootExtendsInterface="org.rulez.magwas.zenta.model.handmade.ZentaObject"
+    rootExtendsClass="org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false" language="" interfaceNamePattern="I{0}"
+    classNamePattern="{0}Base" runtimePlatform="RCP">
   <foreignModel>zenta.ecore</foreignModel>
   <genPackages prefix="Zenta" basePackage="org.rulez.magwas.zenta" resource="XML"
       disposableProviderFactory="true" ecorePackage="zenta.ecore#/">
@@ -30,7 +31,6 @@
     </genClasses>
     <genClasses image="false" ecoreClass="zenta.ecore#//Nameable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Nameable/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Nameable/objectClass"/>
     </genClasses>
     <genClasses image="false" ecoreClass="zenta.ecore#//TextContent">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//TextContent/content"/>
@@ -44,26 +44,11 @@
     <genClasses image="false" ecoreClass="zenta.ecore#//FolderContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//FolderContainer/folders"/>
     </genClasses>
-    <genClasses ecoreClass="zenta.ecore#//ZentaModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/file"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/version"/>
-      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/setDefaults"/>
-      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/addDerivedRelationsFolder"/>
-      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/removeDerivedRelationsFolder"/>
-      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDefaultFolderForElement">
-        <genParameters ecoreParameter="zenta.ecore#//ZentaModel/getDefaultFolderForElement/element"/>
-      </genOperations>
-      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDefaultDiagramModel"/>
-      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDiagramModels"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="zenta.ecore#//ZentaModelElement">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference zenta.ecore#//ZentaModelElement/zentaModel"/>
     </genClasses>
     <genClasses ecoreClass="zenta.ecore#//Folder">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//Folder/elements"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="zenta.ecore#//ZentaElement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//ZentaElement/diagObjects"/>
     </genClasses>
     <genClasses image="false" ecoreClass="zenta.ecore#//JunctionElement"/>
     <genClasses image="false" ecoreClass="zenta.ecore#//InterfaceElement">
@@ -72,21 +57,13 @@
     <genClasses ecoreClass="zenta.ecore#//Junction"/>
     <genClasses ecoreClass="zenta.ecore#//AndJunction"/>
     <genClasses ecoreClass="zenta.ecore#//OrJunction"/>
-    <genClasses image="false" ecoreClass="zenta.ecore#//Relationship">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Relationship/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Relationship/target"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Relationship/diagConnections"/>
-    </genClasses>
-    <genClasses ecoreClass="zenta.ecore#//BasicRelationship"/>
-    <genClasses image="false" ecoreClass="zenta.ecore#//BusinessLayerElement"/>
     <genClasses image="false" ecoreClass="zenta.ecore#//DiagramModelComponent">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelComponent/diagramModel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelComponent/lineWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelComponent/lineColor"/>
     </genClasses>
     <genClasses image="false" ecoreClass="zenta.ecore#//DiagramModelContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelContainer/children"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="zenta.ecore#//DiagramModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModel/connectionRouterType"/>
     </genClasses>
     <genClasses ecoreClass="zenta.ecore#//DiagramModelReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelReference/referencedModel"/>
@@ -118,8 +95,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelConnection/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelConnection/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//DiagramModelConnection/bendpoints"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/lineWidth"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/lineColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/lineDecoration"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModelConnection/type"/>
       <genOperations ecoreOperation="zenta.ecore#//DiagramModelConnection/connect">
@@ -176,11 +151,51 @@
       </genOperations>
       <genOperations ecoreOperation="zenta.ecore#//DiagramModelZentaConnection/removeRelationshipFromModel"/>
     </genClasses>
-    <genClasses ecoreClass="zenta.ecore#//BasicObject"/>
     <genClasses ecoreClass="zenta.ecore#//SketchModel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//SketchModel/background"/>
     </genClasses>
     <genClasses ecoreClass="zenta.ecore#//SketchModelSticky"/>
     <genClasses ecoreClass="zenta.ecore#//SketchModelActor"/>
+    <genClasses image="false" ecoreClass="zenta.ecore#//DiagramModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//DiagramModel/connectionRouterType"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//ZentaModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//ZentaModel/version"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDefaultFolderForElement">
+        <genParameters ecoreParameter="zenta.ecore#//ZentaModel/getDefaultFolderForElement/element"/>
+      </genOperations>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDefaultDiagramModel"/>
+      <genOperations ecoreOperation="zenta.ecore#//ZentaModel/getDiagramModels"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//Metamodel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//Metamodel/templates"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//Template">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Template/classes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Template/path"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference zenta.ecore#//Template/metamodel"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Template/diagram"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="zenta.ecore#//ZentaElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//ZentaElement/diagObjects"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//BasicObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference zenta.ecore#//BasicObject/attributes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//BasicObject/ancestor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//BasicObject/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//BasicObject/template"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//BasicRelationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//BasicRelationship/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//BasicRelationship/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//BasicRelationship/diagConnections"/>
+    </genClasses>
+    <genClasses ecoreClass="zenta.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Attribute/minOccurs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute zenta.ecore#//Attribute/maxOccurs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Attribute/relation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference zenta.ecore#//Attribute/connectedObject"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

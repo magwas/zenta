@@ -51,4 +51,8 @@ public interface ISketchModel extends IDiagramModel {
 	 */
 	void setBackground(int value);
 
+	default void check() {
+		// TODO unimplemented check
+	}
+
 } // ISketchModel

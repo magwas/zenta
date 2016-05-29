@@ -12,12 +12,17 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 
 @SuppressWarnings("nls")
 public abstract class DiagramModelObjectTests extends DiagramModelComponentTests {
     
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
+
     private IDiagramModelObject object;
     
     @Before
@@ -99,9 +104,10 @@ public abstract class DiagramModelObjectTests extends DiagramModelComponentTests
         assertEquals("#ffffff", getObject().getLineColor());
     }
     
-    @Test(expected=AssertionError.class)
+    @Test
     public void a_connection_without_connections_cannot_be_added_to_diagram() {
         IDiagramModelConnection conn = IZentaFactory.eINSTANCE.createDiagramModelConnection();
+        exception.expect(ModelConsistencyException.class);
         getObject().addConnection(conn);
     }    
     @Test

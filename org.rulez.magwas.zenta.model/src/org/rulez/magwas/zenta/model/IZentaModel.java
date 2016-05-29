@@ -28,7 +28,7 @@ import org.rulez.magwas.nonnul.NonNullList;
  * @model extendedMetaData="name='model'"
  * @generated
  */
-public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, IZentaModelElement, IProperties, IDocumentable, IFolder {
+public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, IZentaModelElement, IProperties, IDocumentable, IFolder, ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -109,5 +109,27 @@ public interface IZentaModel extends IFolderContainer, INameable, IIdentifier, I
 	
 	IMetamodel getMetamodel();
 
-	
+
+	default void checkVersion(String value) {
+		if ( value == null )
+			throw new ModelConsistencyException("version cannot be null", this);
+	}
+
+	default void check() {
+		checkId(getId());
+		checkName(getName());
+		checkDocumentation(getDocumentation());
+		checkVersion(getVersion());
+		checkFolders();
+		checkDiagramModels();
+		checkElements();
+		setChecked(true);
+	}
+
+	default void checkDiagramModels() {
+		for(IDiagramModel dia: getDiagramModels()){
+			dia.check();
+		}
+	}
+
 } // IZentaModel

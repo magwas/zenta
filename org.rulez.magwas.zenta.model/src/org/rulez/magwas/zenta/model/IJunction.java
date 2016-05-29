@@ -18,4 +18,11 @@ package org.rulez.magwas.zenta.model;
  * @generated
  */
 public interface IJunction extends IJunctionElement {
+	default void check() {
+		checkDocumentation(getDocumentation());
+		checkId(getId());
+		checkName(getName());
+		setChecked(true);
+	}
+
 } // IJunction

@@ -12,7 +12,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.util.ZentaResourceBase;
 import org.rulez.magwas.zenta.model.util.ZentaResourceFactoryBase;
 
@@ -69,4 +73,15 @@ public class ZentaModelUtils {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public static IBasicRelationship createChildRelation(IBasicRelationship parentClass, IFolder folder, String name, IZentaElement source, IZentaElement target ){
+		folder.setChecked(false);
+		IBasicRelationship modelRelation= (IBasicRelationship) parentClass.create(Util.verifyNonNull(folder));
+		modelRelation.setName(name);
+		modelRelation.setSource(source);
+		modelRelation.setTarget(target);
+		folder.check();
+		return modelRelation;
+	}
+	
 }

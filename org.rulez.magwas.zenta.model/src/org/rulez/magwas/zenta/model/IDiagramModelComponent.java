@@ -16,12 +16,12 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelComponent#getDiagramModel <em>Diagram Model</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelComponent#getLineWidth <em>Line Width</em>}</li>
  *   <li>{@link org.rulez.magwas.zenta.model.IDiagramModelComponent#getLineColor <em>Line Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getDiagramModelComponent()
  * @model abstract="true"

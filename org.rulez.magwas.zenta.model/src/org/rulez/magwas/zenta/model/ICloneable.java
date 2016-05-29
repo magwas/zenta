@@ -16,9 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getCloneable()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface ICloneable extends EObject {
+public interface ICloneable extends ZentaObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

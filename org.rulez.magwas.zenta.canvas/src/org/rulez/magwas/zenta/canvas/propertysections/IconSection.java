@@ -218,12 +218,12 @@ public class IconSection extends DiagramModelImageSection {
     protected void refreshPreviewImage() {
         disposeImage();
         
-        if(fIconic.getImagePathOrNull() != null) {
+        if(fIconic.getImagePath() != null) {
             IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(fIconic);
             
             Image image = null;
             try {
-                image = archiveManager.createImage(fIconic.getImagePathOrNull()).adapt(Image.class);
+                image = archiveManager.createImage(fIconic.getImagePath()).adapt(Image.class);
             }
             catch(Exception ex) {
     			LogUtil.logException(ex);

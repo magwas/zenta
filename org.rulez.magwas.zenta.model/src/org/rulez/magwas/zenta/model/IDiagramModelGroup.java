@@ -18,4 +18,8 @@ package org.rulez.magwas.zenta.model;
  * @generated
  */
 public interface IDiagramModelGroup extends IDiagramModelObject, IDiagramModelContainer, IDocumentable, IProperties {
+	default void check() {
+		// TODO unimplemented check
+	}
+
 } // IDiagramModelGroup

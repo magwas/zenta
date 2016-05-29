@@ -104,5 +104,32 @@ abstract public interface IBasicRelationship extends IBasicObject, IRelationClas
 	IBasicRelationship create(IFolder folder);
 	
 	boolean isConnected();
+	
+	default void check() {
+		checkId(getId());
+		checkDocumentation(getDocumentation());
+		checkName(getName());
+		checkSource(getSource());
+		checkTarget(getTarget());
+		setChecked(true);
+	}
+
+	default void checkSource(IZentaElement source) {
+		if(source == null)
+		{
+			throw new ModelConsistencyException("source cannot be null", this);
+		}
+	}
+
+	default void checkTarget(IZentaElement target) {
+		if(target == null)
+			throw new ModelConsistencyException("target cannot be null", this);
+	}
+
+	default void checkDiagConnections() {
+		for(IDiagramModelZentaConnection i : getDiagConnections()) {
+			i.check();
+		}
+	}
 
 } // IBasicRelationship

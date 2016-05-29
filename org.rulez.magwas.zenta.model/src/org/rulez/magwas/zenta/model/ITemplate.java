@@ -5,7 +5,6 @@ package org.rulez.magwas.zenta.model;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,10 +23,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getTemplate()
  * @model
+ * @extends ZentaObject
  * @generated
  */
 public interface ITemplate
-extends EObject 
+extends ZentaObject 
 {
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' reference list.
@@ -136,5 +136,8 @@ extends EObject
 	 List<IBasicRelationship> getRelationClasses();
 
 	String getName();
+	default void check() {
+		//TODO unimplemented check
+	}
 
 } // ITemplate

@@ -12,6 +12,7 @@ import java.util.UUID;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.rulez.magwas.zenta.model.IIdentifier;
+import org.rulez.magwas.zenta.model.IZentaFactory;
 
 
 /**
@@ -29,11 +30,6 @@ import org.rulez.magwas.zenta.model.IIdentifier;
  * @author Phillip Beauvoir
  */
 public class IDAdapter extends EContentAdapter {
-
-    /**
-     * Keep track of unique IDs. An element's ID has to be unique.
-     */
-    private List<String> fUsedIDs = new ArrayList<String>();
 
     @Override
     public void notifyChanged(Notification msgo) {
@@ -57,24 +53,10 @@ public class IDAdapter extends EContentAdapter {
     }
 
     public void registerID(String id) {
-        if(!fUsedIDs.contains(id)) {
-            fUsedIDs.add(id); 
-        }
+    	IZentaFactory.eINSTANCE.registerID(id);
     }
     
-    /**
-     * @return A new unique ID to be used for objects in the model
-     */
     public String getNewID() {
-        String id;
-        do {
-            String rid = UUID.randomUUID().toString().split("-")[0];
-			id = Util.verifyNonNull(rid); //$NON-NLS-1$
-        }
-        while(fUsedIDs.contains(id));
-        
-        registerID(id); 
-        
-        return id;
+    	return IZentaFactory.eINSTANCE.getNewID();
     }
 }

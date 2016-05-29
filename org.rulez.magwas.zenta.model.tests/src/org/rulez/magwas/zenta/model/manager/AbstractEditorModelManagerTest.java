@@ -12,7 +12,9 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -28,6 +30,9 @@ import org.jdom.JDOMException;
 
 
 public class AbstractEditorModelManagerTest implements IModelManagerTest {
+
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
 
 	private TestModelManager modelManager;
 	private IEditorModelInterface iface;
@@ -160,9 +165,10 @@ public class AbstractEditorModelManagerTest implements IModelManagerTest {
 		assertEquals("the new model", modelManager.getModels().get(1).getName());
 	}
 
-	@Test(expected=NoSuchFileException.class)
+	@Test
 	public void loadModel_throws_NoSuchFileExcepton_if_file_does_not_exists() throws IOException {
 		File file = new File("/This file does not exists");
+		exception.expect(NoSuchFileException.class);
 		modelManager.loadModel(file);
 	}
 	

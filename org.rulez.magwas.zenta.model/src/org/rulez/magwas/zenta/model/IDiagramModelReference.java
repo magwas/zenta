@@ -51,4 +51,15 @@ public interface IDiagramModelReference extends IDiagramModelObject {
 	 */
 	void setReferencedModel(IDiagramModel value);
 
+	default void check() {
+		checkId(getId());
+		checkReferencedModel(getReferencedModel());
+		setChecked(true);
+	}
+
+	default void checkReferencedModel(IDiagramModel referencedModel) {
+		if(null == referencedModel)
+			throw new ModelConsistencyException("referenced model cannot be null", this);		
+	}
+
 } // IDiagramModelReference

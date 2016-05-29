@@ -6,8 +6,6 @@
  */
 package org.rulez.magwas.zenta.model;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Lockable</b></em>'.
@@ -22,9 +20,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.rulez.magwas.zenta.model.IZentaPackage#getLockable()
  * @model interface="true" abstract="true"
+ * @extends ZentaObject
  * @generated
  */
-public interface ILockable extends EObject {
+public interface ILockable extends ZentaObject {
 	/**
 	 * Returns the value of the '<em><b>Locked</b></em>' attribute.
 	 * <!-- begin-user-doc -->

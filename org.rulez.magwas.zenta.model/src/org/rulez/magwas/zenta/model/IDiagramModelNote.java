@@ -18,4 +18,8 @@ package org.rulez.magwas.zenta.model;
  * @generated
  */
 public interface IDiagramModelNote extends IDiagramModelObject, ITextContent {
+	default void check() {
+		// TODO unimplemented check
+	}
+
 } // IDiagramModelNote

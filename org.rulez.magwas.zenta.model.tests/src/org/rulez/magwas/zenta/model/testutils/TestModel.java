@@ -62,6 +62,7 @@ public class TestModel {
 	private IBasicRelationship thirdGenerationRelation;
 	public ISketchModel sketchModel;
 	private IZentaDiagramModel emptyDiagramModel;
+
 	public TestModel createModel() {
 		IZentaFactory factory = IZentaFactory.eINSTANCE;
 		model = factory.createZentaModel();

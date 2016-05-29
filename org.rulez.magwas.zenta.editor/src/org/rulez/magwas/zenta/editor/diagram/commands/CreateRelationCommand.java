@@ -8,6 +8,7 @@ package org.rulez.magwas.zenta.editor.diagram.commands;
 import org.eclipse.gef.commands.Command;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IZentaElement;
+import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
 import org.rulez.magwas.zenta.model.IFolder;
 
 
@@ -36,9 +37,7 @@ public class CreateRelationCommand extends Command {
     public void execute() {
     	
     	IFolder folder = (IFolder) fParent.eContainer();
-        fRelation = (IBasicRelationship) fType.create(folder);
-        fRelation.setSource(fParent);
-        fRelation.setTarget(fChild);
+    	fRelation = ZentaModelUtils.createChildRelation(fType, folder, "", fParent, fChild);
         fFolder = folder;
 
         redo();

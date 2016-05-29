@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -172,7 +173,7 @@ abstract public class BasicObjectBase extends ZentaElementBase implements IBasic
 	 * @generated
 	 */
 	public ITemplate getTemplate() {
-		if (template != null && template.eIsProxy()) {
+		if (template != null && ((EObject)template).eIsProxy()) {
 			InternalEObject oldTemplate = (InternalEObject)template;
 			template = (ITemplate)eResolveProxy(oldTemplate);
 			if (template != oldTemplate) {
