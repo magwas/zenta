@@ -53,13 +53,23 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
 
 	public static IDiagramModelZentaConnection createChildDiagramConnection(
 			IFolder folder, IBasicObject template, IDiagramModelObject source, IDiagramModelObject target) {
-		folder.setChecked(false);
-		IDiagramModelZentaConnection connection = (IDiagramModelZentaConnection)new ZentaDiagramModelFactory(template, folder).
+		ConnectionAndFolder connAndFolder = (ConnectionAndFolder)new ZentaDiagramModelFactory(template, folder).
 				getNewObject();
-		connection.connect(source, target);
-		connection.addRelationshipToModel(null);
-		folder.check();
-		return connection;
+		IDiagramModelZentaConnection aConnection = createConnectionFromObject(source, target, connAndFolder);
+		return aConnection;
+	}
+
+	public static IDiagramModelZentaConnection createConnectionFromObject(IDiagramModelObject source,
+			IDiagramModelObject target, ConnectionAndFolder connAndFolder) {
+		IFolder aFolder = connAndFolder.getFolder();
+		IDiagramModelZentaConnection aConnection = connAndFolder.getConnection();
+		IBasicRelationship aRelationship = connAndFolder.getObject();
+		aFolder.setChecked(false);
+		aConnection.setRelationship((IBasicRelationship) aRelationship);
+		aFolder.getElements().add(aRelationship);
+		aConnection.connect(source, target);
+        aFolder.check();
+		return aConnection;
 	}
 
     
@@ -77,17 +87,17 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
     
 	@Override
     public Object getNewObject() {
-        if(fTemplate == null) {
-            return null;
-        }
-        
-        Object object = fTemplate.create(Util.verifyNonNull(folder));
+		System.out.printf("template=%s",fTemplate);
+        Util.verifyNonNull(fTemplate);
+        Util.verifyNonNull(folder);
+        Object object = fTemplate.create();
         
         // Connection created from Relationship ITemplate
         if(object instanceof IBasicRelationship) {
             IDiagramModelZentaConnection connection = IZentaFactory.eINSTANCE.createDiagramModelZentaConnection();
             connection.setRelationship((IBasicRelationship)object);
-            return connection;
+        	ConnectionAndFolder r = new ConnectionAndFolder((IBasicRelationship)object, folder, connection);
+            return r;
         }
         
         // Zenta Diagram Object created from Zenta Element ITemplate

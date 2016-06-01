@@ -54,9 +54,15 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 
 	@Override
 	public IBasicRelationship create(IFolder folder) {
+		IBasicRelationship obj = create();
+		folder.getElements().add(obj);
+		return obj;
+	}
+
+	@Override
+	public IBasicRelationship create() {
 		IBasicRelationship obj = IZentaFactory.eINSTANCE.createBasicRelationship();
 		obj.setAncestor(this);
-		folder.getElements().add(obj);
 		return obj;
 	}
 

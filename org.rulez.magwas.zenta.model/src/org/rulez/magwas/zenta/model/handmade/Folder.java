@@ -28,4 +28,5 @@ public class Folder extends FolderBase {
 			checkName(value);
 		super.setName(value);
 	}
+	
 }

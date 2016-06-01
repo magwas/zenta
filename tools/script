@@ -10,7 +10,7 @@ mvn install
 cd org.rulez.magwas.zenta.integrationtests
 mvn install
 git checkout -b build
-dch -D unstable -v 1.0-1.$BRANCH.$BUILD_NUMBER commit $(git rev-parse HEAD)
+dch -D $BRANCH -v 1.0-1.$BRANCH.$BUILD_NUMBER commit $(git rev-parse HEAD)
 git add --all :/
 git commit -m  "debian build"
 debuild -us -uc

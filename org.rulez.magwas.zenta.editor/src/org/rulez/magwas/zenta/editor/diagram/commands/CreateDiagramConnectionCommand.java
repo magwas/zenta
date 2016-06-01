@@ -8,10 +8,15 @@ package org.rulez.magwas.zenta.editor.diagram.commands;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.CreateConnectionRequest;
+import org.rulez.magwas.zenta.editor.diagram.ConnectionAndFolder;
+import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IFolder;
 
 
 /**
@@ -76,7 +81,7 @@ extends Command {
     public void execute() {
         // If null create new one
         if(fConnection == null) {
-            fConnection = createNewConnection();
+            fConnection = createNewConnection(fSource, fTarget);
         }
         
         // Connect
@@ -100,10 +105,14 @@ extends Command {
     
     /**
      * Create a new connection from the request
+     * @param fTarget2 
+     * @param fSource2 
      * @return The new connection
      */
-    protected IDiagramModelConnection createNewConnection() {
-        return (IDiagramModelConnection)fRequest.getNewObject();
+    protected IDiagramModelConnection createNewConnection(IDiagramModelObject source, IDiagramModelObject target) {
+    	ConnectionAndFolder connAndFolder= (ConnectionAndFolder) fRequest.getNewObject();
+        IDiagramModelZentaConnection connection = ZentaDiagramModelFactory.createConnectionFromObject(source, target, connAndFolder);
+        return connection;
     }
     
     /**

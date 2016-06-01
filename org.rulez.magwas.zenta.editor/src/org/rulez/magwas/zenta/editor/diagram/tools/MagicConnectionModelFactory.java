@@ -8,6 +8,7 @@ package org.rulez.magwas.zenta.editor.diagram.tools;
 import org.eclipse.ui.IEditorPart;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.IZentaDiagramEditor;
+import org.rulez.magwas.zenta.editor.diagram.ConnectionAndFolder;
 import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IBasicObject;
@@ -50,7 +51,8 @@ public class MagicConnectionModelFactory implements ICreationFactory {
     }
     
     public Object getNewObject() {
-        return new ZentaDiagramModelFactory(fRelationshipTemplate,folder).getNewObject();
+        ConnectionAndFolder ob = (ConnectionAndFolder) new ZentaDiagramModelFactory(fRelationshipTemplate,folder).getNewObject();
+        return ob;
     }
 
     public Object getObjectType() {

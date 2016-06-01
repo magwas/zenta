@@ -25,6 +25,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelContainer;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.UnTestedException;
+import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -198,12 +199,9 @@ public class DiagramModelZentaObjectBase extends DiagramModelObjectBase implemen
      * @generated NOT
      */
     public void addZentaElementToModel(IFolder parent) {
+    	Util.verifyNonNull(parent);
         IZentaElement element = getZentaElement();
         if(element != null && element.eContainer() == null) {
-            // If parent is null use default folder
-            if(parent == null) {
-            	throw new UnTestedException();
-            }
             parent.getElements().add(element);
         }
     }

@@ -7,6 +7,7 @@
 package org.rulez.magwas.zenta.model;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,5 +42,14 @@ public interface IDiagramModelContainer extends IDiagramModelComponent {
 	 * @generated
 	 */
 	EList<IDiagramModelObject> getChildren();
+
+	default IFolder getParentFolder() {
+		EObject parent = eContainer();
+		if (parent instanceof IFolder)
+			return (IFolder) parent;
+		return ((IDiagramModelContainer) parent).getParentFolder();
+	}
+
+
 
 } // IDiagramModelContainer
