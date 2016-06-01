@@ -244,7 +244,7 @@ public class ZentaDiagramConnectionPolicy extends GraphicalNodeEditPolicy {
 		                        NLS.bind(Messages.ZentaDiagramConnectionPolicy_1,
 		                                source.getName(), target.getName()));
 		                if(useExistingRelation) {
-		                    fConnection = createNewConnection();
+		                    fConnection = createNewConnection(source, target);
 		                    ((IDiagramModelZentaConnection)fConnection).setRelationship(relation);
 		                }
 		            }

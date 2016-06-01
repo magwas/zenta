@@ -11,6 +11,7 @@ import org.rulez.magwas.zenta.model.IAttribute.Direction;
 public interface IObjectClass extends IHelpHintProvider {
 	
 	IBasicObject create(IFolder folder);
+	IBasicObject create();
 	
 	boolean isObject();
 	boolean isRelation();

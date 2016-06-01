@@ -62,5 +62,4 @@ public interface IFolder extends IZentaModelElement, IFolderContainer, INameable
 		}
 	}
 
-
 } // IFolder

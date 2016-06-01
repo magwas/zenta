@@ -70,9 +70,15 @@ public class ObjectClass extends BasicObjectBase implements IObjectClass {
 
 	@Override
 	public IBasicObject create(IFolder folder) {
+		IBasicObject obj = create();
+		folder.getElements().add(obj);
+		return obj;
+	}
+
+	@Override
+	public IBasicObject create() {
 		IBasicObject obj = IZentaFactory.eINSTANCE.createBasicObject();
 		obj.setAncestor(this);
-		folder.getElements().add(obj);
 		return obj;
 	}
 
