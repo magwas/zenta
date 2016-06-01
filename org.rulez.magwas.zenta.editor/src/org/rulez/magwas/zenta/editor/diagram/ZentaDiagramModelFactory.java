@@ -11,6 +11,7 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
@@ -87,7 +88,6 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
     
 	@Override
     public Object getNewObject() {
-		System.out.printf("template=%s",fTemplate);
         Util.verifyNonNull(fTemplate);
         Util.verifyNonNull(folder);
         Object object = fTemplate.create();
@@ -103,13 +103,17 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
         // Zenta Diagram Object created from Zenta Element ITemplate
         else if(object instanceof IZentaElement) {
             IZentaElement element = (IZentaElement)object;
+            folder.getElements().add(element);
             element.setName(fTemplate.getName());
             return createDiagramModelZentaObject(element);
         }
         
         // Group
         else if(object instanceof IDiagramModelGroup) {
+            folder.getElements().add((INameable) object);
             ((IDiagramModelGroup)object).setName(Messages.ZentaDiagramModelFactory_0);
+        } else {
+        	throw new IllegalArgumentException();
         }
         
         return object;

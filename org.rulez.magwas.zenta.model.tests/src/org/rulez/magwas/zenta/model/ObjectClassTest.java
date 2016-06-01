@@ -407,9 +407,7 @@ public class ObjectClassTest{
 	@Test
 	public void an_inconsistent_attribute_cannot_be_added_to_element() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		IBasicObject element = testdata.createNewObjectClass("attributetest OC");
-		System.out.printf("e=%s\n", element);
 		IAttribute att = testdata.createTestAttribute();
-		System.out.printf("att=%s\n", att);
 		Field field = Attribute.class.getDeclaredField("direction");
 		field.setAccessible(true);
 		field.set(att, null);

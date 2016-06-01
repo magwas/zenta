@@ -43,7 +43,6 @@ public abstract class AbstractViewpointTests {
 	                // All allowed types as diagram objects
 	                IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
 	                dmo.setZentaElement((IZentaElement) element);
-	                System.out.printf("t = %s\n dmo=%s\n", t, dmo);
 	                assertTrue(vp.isElementVisible(dmo));
 				}
             }

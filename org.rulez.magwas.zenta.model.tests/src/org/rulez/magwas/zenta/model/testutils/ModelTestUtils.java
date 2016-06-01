@@ -71,7 +71,6 @@ public class ModelTestUtils {
 
 	public static String convertNameToResourcePath(String filename) {
 		String resourcePath = ModelTestData.class.getResource(filename).getFile();
-		System.out.printf("path=%s\n", resourcePath);
 		File file = new File(resourcePath);
 		if (file.exists())
 			return resourcePath;
