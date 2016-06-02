@@ -60,7 +60,7 @@ public class MagicConnectionModelFactory implements ICreationFactory {
     }
     
     public void clear() {
-        //fRelationshipTemplate = null;
-        //fElementTemplate = null;
+        fRelationshipTemplate = null;
+        fElementTemplate = null;
     }
 }
