@@ -49,15 +49,18 @@ public class Metamodel extends MetamodelBase implements IMetamodel {
 			NonNullList<IDiagramModel> diagrams = model.getDiagramModels();
 			for(IDiagramModel diagramo : diagrams) {
 				IDiagramModel diagram = Util.verifyNonNull(diagramo);
-				extractTemplate((IZentaDiagramModel)diagram);
+				extractTemplate(diagram);
 			}
 		}
-			private void extractTemplate(IZentaDiagramModel diagram) {
-				if (!isTemplate(diagram))
-					return;
-				ITemplate template = ZentaFactory.eINSTANCE.
-						createTemplate(diagram, this);
-				getTemplates().add(template);
+			private void extractTemplate(IDiagramModel dia) {
+				if(dia instanceof ZentaDiagramModel ) {
+					ZentaDiagramModel diagram = (ZentaDiagramModel)dia;
+					if (!isTemplate(diagram))
+						return;
+					ITemplate template = ZentaFactory.eINSTANCE.
+							createTemplate(diagram, this);
+					getTemplates().add(template);
+				}
 			}
 				private boolean isTemplate(IZentaDiagramModel diagram) {
 					EList<IProperty> properties = diagram.getProperties();

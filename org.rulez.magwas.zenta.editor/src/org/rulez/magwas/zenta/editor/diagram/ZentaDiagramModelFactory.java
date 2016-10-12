@@ -20,6 +20,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
@@ -52,25 +53,29 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
         return dmo;
     }
 
-	public static IDiagramModelZentaConnection createChildDiagramConnection(
+	public static IDiagramModelConnection createChildDiagramConnection(
 			IFolder folder, IBasicObject template, IDiagramModelObject source, IDiagramModelObject target) {
 		ConnectionAndFolder connAndFolder = (ConnectionAndFolder)new ZentaDiagramModelFactory(template, folder).
 				getNewObject();
-		IDiagramModelZentaConnection aConnection = createConnectionFromObject(source, target, connAndFolder);
+		IDiagramModelConnection aConnection = createConnectionFromObject(source, target, connAndFolder);
 		return aConnection;
 	}
 
-	public static IDiagramModelZentaConnection createConnectionFromObject(IDiagramModelObject source,
+	public static IDiagramModelConnection createConnectionFromObject(IDiagramModelObject source,
 			IDiagramModelObject target, ConnectionAndFolder connAndFolder) {
 		IFolder aFolder = connAndFolder.getFolder();
-		IDiagramModelZentaConnection aConnection = connAndFolder.getConnection();
-		IBasicRelationship aRelationship = connAndFolder.getObject();
-		aFolder.setChecked(false);
-		aConnection.setRelationship((IBasicRelationship) aRelationship);
-		aFolder.getElements().add(aRelationship);
-		aConnection.connect(source, target);
-        aFolder.check();
-		return aConnection;
+		IDiagramModelConnection connection = connAndFolder.getConnection();
+		if (connection instanceof IDiagramModelZentaConnection) {
+			IDiagramModelZentaConnection aConnection = (IDiagramModelZentaConnection) connection;
+			IBasicRelationship aRelationship = connAndFolder.getObject();
+			aFolder.setChecked(false);
+			aConnection.setRelationship((IBasicRelationship) aRelationship);
+			aFolder.getElements().add(aRelationship);
+			aConnection.connect(source, target);
+	        aFolder.check();
+			return aConnection;
+		}
+		return connection;
 	}
 
     

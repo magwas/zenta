@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.rulez.magwas.zenta.model.ModelConsistencyException;
 public class ModelImageTest {
 
 	@Rule

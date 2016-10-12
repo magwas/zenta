@@ -3,17 +3,23 @@ package org.rulez.magwas.zenta.editor.diagram;
 import static org.junit.Assert.*;
 
 import org.eclipse.gef.requests.CreateConnectionRequest;
+import org.eclipse.gef.requests.CreationFactory;
 import org.junit.Test;
 import org.rulez.magwas.zenta.editor.diagram.commands.CreateDiagramConnectionCommand;
+import org.rulez.magwas.zenta.editor.diagram.sketch.SketchModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
+import org.rulez.magwas.zenta.model.ISketchModel;
+import org.rulez.magwas.zenta.model.ISketchModelSticky;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IZentaModel;
+import org.rulez.magwas.zenta.model.IZentaPackage;
 
 public class ZentaDiagramModelFactoryTest {
 
@@ -65,4 +71,25 @@ public class ZentaDiagramModelFactoryTest {
 		assertEquals(folder,rel.eContainer());
 	}
 
+	@Test
+	public void sketch_line_connection_can_be_created() {
+		IZentaModel model = IZentaFactory.eINSTANCE.createZentaModel();
+		IFolder folder = IZentaFactory.eINSTANCE.createFolder();
+		model.getElements().add(folder);
+		ISketchModelSticky sticky1 = IZentaFactory.eINSTANCE.createSketchModelSticky();
+		ISketchModelSticky sticky2 = IZentaFactory.eINSTANCE.createSketchModelSticky();
+		ISketchModel sketch = IZentaFactory.eINSTANCE.createSketchModel();
+		folder.getElements().add(sketch);
+		folder.getElements().add(sticky1);
+		folder.getElements().add(sticky2);
+		model.check();
+		CreateConnectionRequest request = new CreateConnectionRequest();
+		CreationFactory factory = new SketchModelFactory(IZentaPackage.eINSTANCE.getDiagramModelConnection());
+		request.setFactory(factory);
+		CreateDiagramConnectionCommand a = new CreateDiagramConnectionCommand(request);
+		a.setSource(sticky1);
+		a.setTarget(sticky2);
+		a.execute();
+		assertEquals(((IDiagramModelConnection)sticky1.getSourceConnections().get(0)).getTarget(),sticky2);
+	}
 }

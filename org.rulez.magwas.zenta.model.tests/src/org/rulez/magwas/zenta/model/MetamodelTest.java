@@ -67,4 +67,13 @@ public class MetamodelTest {
 				"TriesToDo"));
 		ModelTestUtils.assertEqualsAsSet(expectedTargets,objectList);
 	}
+	
+	@Test
+	public void a_model_with_sketch_model_can_be_used_for_metamodel(){
+		ModelTestData data = new ModelTestData();
+		ISketchModel sketch = IZentaFactory.eINSTANCE.createSketchModel();
+		IZentaModel model = data.getModel();
+		model.getElements().add(sketch);
+		IZentaFactory.eINSTANCE.getMetamodelFor(model);
+	}
 }

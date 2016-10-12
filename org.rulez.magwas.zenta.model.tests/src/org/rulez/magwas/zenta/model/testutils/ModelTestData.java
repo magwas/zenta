@@ -23,8 +23,6 @@ import org.rulez.magwas.zenta.model.ZentaObject;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
-import org.rulez.magwas.zenta.model.manager.IArchiveManager;
-import org.rulez.magwas.zenta.model.manager.TestModelManager;
 
 public class ModelTestData {
 

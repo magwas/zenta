@@ -5,10 +5,6 @@
  */
 package org.rulez.magwas.zenta.model.handmade.util;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.rulez.magwas.zenta.model.IIdentifier;

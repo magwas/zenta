@@ -5,8 +5,6 @@
  */
 package org.rulez.magwas.zenta.model.impl;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -40,10 +38,7 @@ import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.handmade.ObjectClass;
-import org.rulez.magwas.zenta.model.handmade.RelationClass;
 import org.rulez.magwas.zenta.model.handmade.ZentaFactory;
-import org.rulez.magwas.zenta.model.handmade.ZentaModel;
-import org.rulez.magwas.zenta.model.handmade.util.IDAdapter;
 import org.rulez.magwas.zenta.model.util.LogUtil;
 
 /**

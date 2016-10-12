@@ -1,16 +1,16 @@
 package org.rulez.magwas.zenta.editor.diagram;
 
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
+import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IFolder;
 
 public class ConnectionAndFolder {
 
 	private IBasicRelationship object;
 	private IFolder folder;
-	private IDiagramModelZentaConnection connection;
+	private IDiagramModelConnection connection;
 
-	public ConnectionAndFolder(IBasicRelationship object, IFolder folder, IDiagramModelZentaConnection connection) {
+	public ConnectionAndFolder(IBasicRelationship object, IFolder folder, IDiagramModelConnection connection) {
 		this.setObject(object);
 		this.setFolder(folder);
 		this.setConnection(connection);
@@ -32,11 +32,11 @@ public class ConnectionAndFolder {
 		this.folder = folder;
 	}
 
-	public IDiagramModelZentaConnection getConnection() {
+	public IDiagramModelConnection getConnection() {
 		return connection;
 	}
 
-	public void setConnection(IDiagramModelZentaConnection connection) {
+	public void setConnection(IDiagramModelConnection connection) {
 		this.connection = connection;
 	}
 
