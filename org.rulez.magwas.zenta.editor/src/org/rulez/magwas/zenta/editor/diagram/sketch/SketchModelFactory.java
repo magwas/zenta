@@ -8,11 +8,14 @@ package org.rulez.magwas.zenta.editor.diagram.sketch;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.IEditorPart;
+import org.rulez.magwas.zenta.editor.diagram.ConnectionAndFolder;
 import org.rulez.magwas.zenta.editor.diagram.ICreationFactory;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.model.IZentaFactory;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelGroup;
+import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
 
@@ -73,6 +76,9 @@ public class SketchModelFactory implements ICreationFactory {
             if(fParam instanceof Integer) {
                 ((IDiagramModelConnection)object).setType((Integer)fParam);
             }
+        	ConnectionAndFolder r = new ConnectionAndFolder((IBasicRelationship)null, (IFolder) null, (IDiagramModelConnection)object);
+            return r;
+
         }
         
         return object;

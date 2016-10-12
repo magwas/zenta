@@ -15,8 +15,6 @@ import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
-import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
-import org.rulez.magwas.zenta.model.IFolder;
 
 
 /**
@@ -103,16 +101,11 @@ extends Command {
         fConnection.disconnect();
     }
     
-    /**
-     * Create a new connection from the request
-     * @param fTarget2 
-     * @param fSource2 
-     * @return The new connection
-     */
-    protected IDiagramModelConnection createNewConnection(IDiagramModelObject source, IDiagramModelObject target) {
-    	ConnectionAndFolder connAndFolder= (ConnectionAndFolder) fRequest.getNewObject();
-        IDiagramModelZentaConnection connection = ZentaDiagramModelFactory.createConnectionFromObject(source, target, connAndFolder);
-        return connection;
+	protected IDiagramModelConnection createNewConnection(IDiagramModelObject source, IDiagramModelObject target) {
+		Object newObject = fRequest.getNewObject();
+		ConnectionAndFolder connAndFolder= (ConnectionAndFolder) newObject;
+		IDiagramModelConnection connection = ZentaDiagramModelFactory.createConnectionFromObject(source, target, connAndFolder);
+		return connection;
     }
     
     /**
