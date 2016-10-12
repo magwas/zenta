@@ -8,6 +8,7 @@ import org.rulez.magwas.zenta.editor.diagram.commands.CreateDiagramConnectionCom
 import org.rulez.magwas.zenta.editor.diagram.tools.MagicConnectionModelFactory;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
+import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
@@ -18,13 +19,14 @@ public class ZentaDiagramModelFactoryTest {
 
 	@Test
 	public void DiagramModelZentaObjectobject_can_be_created_from_a_BasicObject() {
-		IBasicObject a = IZentaFactory.eINSTANCE.createBasicObject();
-		a.check();
-		IFolder b = IZentaFactory.eINSTANCE.createFolder();
-		ZentaDiagramModelFactory factory = new ZentaDiagramModelFactory(a, b);
+		IBasicObject ancestor = IZentaFactory.eINSTANCE.createBasicObject();
+		ancestor.check();
+		IFolder folder = IZentaFactory.eINSTANCE.createFolder();
+		ZentaDiagramModelFactory factory = new ZentaDiagramModelFactory(ancestor, folder);
 		assertNotNull(factory);
-		Object ob = factory.getNewObject();
+		IDiagramModelZentaObject ob = (IDiagramModelZentaObject) factory.getNewObject();
 		System.out.println(ob);
+		assertEquals(folder,ob.getZentaElement().eContainer());
 	}
 
 	@Test
@@ -57,6 +59,10 @@ public class ZentaDiagramModelFactoryTest {
 		a.setSource(diagObjectA);
 		a.setTarget(diagObjectB);
 		a.execute();
+		IDiagramModelZentaConnection conn = (IDiagramModelZentaConnection) diagObjectA.getSourceConnections().get(0);
+		IBasicRelationship rel = conn.getRelationship();
+		assertNotEquals(rel,relation);
+		assertEquals(folder,rel.eContainer());
 	}
 
 }

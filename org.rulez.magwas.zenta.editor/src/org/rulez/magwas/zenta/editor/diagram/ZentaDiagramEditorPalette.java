@@ -100,7 +100,6 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 
     protected void processNotification(Notification notification) {
     	Object notifier = notification.getNotifier();
-    	//System.out.printf("\n-----------------\nnotifier=%s\nevent=%s\nnewVal=%s\n", notifier, notification.getEventType(), notification.getNewValue());
 		if(notification.getEventType() == Notification.ADD) {
     		if(notifier instanceof ITemplate)
     			addClassToPalette((IBasicObject) notification.getNewValue());

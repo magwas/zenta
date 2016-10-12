@@ -158,7 +158,6 @@ public class ArchiveManagerTests {
         dm.getChildren().add(dmImage);
         
         File imgFile = img1File();
-        System.out.printf("file=%s\n", imgFile);
         String pathName = archiveManager.addImageFromFile(imgFile);
         
         IModelImage image = archiveManager.createImage(pathName);
