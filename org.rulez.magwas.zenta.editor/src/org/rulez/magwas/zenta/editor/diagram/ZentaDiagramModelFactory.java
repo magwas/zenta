@@ -11,13 +11,11 @@ import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.model.IFolder;
-import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
@@ -111,17 +109,9 @@ public class ZentaDiagramModelFactory implements ICreationFactory {
             folder.getElements().add(element);
             element.setName(fTemplate.getName());
             return createDiagramModelZentaObject(element);
-        }
-        
-        // Group
-        else if(object instanceof IDiagramModelGroup) {
-            folder.getElements().add((INameable) object);
-            ((IDiagramModelGroup)object).setName(Messages.ZentaDiagramModelFactory_0);
         } else {
         	throw new IllegalArgumentException();
         }
-        
-        return object;
     }
 
 	@Override

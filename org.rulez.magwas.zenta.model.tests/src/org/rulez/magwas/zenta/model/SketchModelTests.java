@@ -44,7 +44,6 @@ public class SketchModelTests extends DiagramModelTests {
     public void SketchModel_have_children() {
         CommonTests.testList(sm.getChildren(), IZentaPackage.eINSTANCE.getSketchModelActor());
         CommonTests.testList(sm.getChildren(), IZentaPackage.eINSTANCE.getSketchModelSticky());
-        CommonTests.testList(sm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelGroup());
     }
 
 }

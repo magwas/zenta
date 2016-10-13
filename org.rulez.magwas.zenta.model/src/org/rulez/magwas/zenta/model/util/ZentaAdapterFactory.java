@@ -32,10 +32,8 @@ import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
-import org.rulez.magwas.zenta.model.IDiagramModelNote;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IDocumentable;
@@ -194,14 +192,6 @@ public class ZentaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDiagramModelObject(IDiagramModelObject object) {
 				return createDiagramModelObjectAdapter();
-			}
-			@Override
-			public Adapter caseDiagramModelGroup(IDiagramModelGroup object) {
-				return createDiagramModelGroupAdapter();
-			}
-			@Override
-			public Adapter caseDiagramModelNote(IDiagramModelNote object) {
-				return createDiagramModelNoteAdapter();
 			}
 			@Override
 			public Adapter caseDiagramModelImage(IDiagramModelImage object) {

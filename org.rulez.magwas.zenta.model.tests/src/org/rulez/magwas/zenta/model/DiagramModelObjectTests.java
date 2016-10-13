@@ -133,18 +133,27 @@ public abstract class DiagramModelObjectTests extends DiagramModelComponentTests
         assertTrue(getObject().getSourceConnections().contains(conn));
         assertTrue(getObject().getTargetConnections().contains(conn));
         
-        // Try to remove bogus connection
-        IDiagramModelConnection conn2 = IZentaFactory.eINSTANCE.createDiagramModelConnection();
-        conn2.setSource(IZentaFactory.eINSTANCE.createDiagramModelNote());
-        conn2.setTarget(IZentaFactory.eINSTANCE.createDiagramModelNote());
-        getObject().removeConnection(conn2);
-        assertTrue(getObject().getSourceConnections().contains(conn));
-        assertTrue(getObject().getTargetConnections().contains(conn));
-
         // Now do it properly
         getObject().removeConnection(conn);
         assertTrue(getObject().getSourceConnections().isEmpty());
         assertTrue(getObject().getTargetConnections().isEmpty());
+    }
+
+    @Test(expected=ModelConsistencyException.class)
+    public void attempt_to_remove_bogus_connection_fails() {
+        IDiagramModelConnection conn = IZentaFactory.eINSTANCE.createDiagramModelConnection();
+        conn.setSource(getObject());
+        conn.setTarget(getObject());
+
+        getObject().addConnection(conn);
+        assertTrue(getObject().getSourceConnections().contains(conn));
+        assertTrue(getObject().getTargetConnections().contains(conn));
+        
+        // Try to remove bogus connection
+        IDiagramModelConnection conn2 = IZentaFactory.eINSTANCE.createDiagramModelConnection();
+        getObject().removeConnection(conn2);
+        assertTrue(getObject().getSourceConnections().contains(conn));
+        assertTrue(getObject().getTargetConnections().contains(conn));
     }
 
     @Test

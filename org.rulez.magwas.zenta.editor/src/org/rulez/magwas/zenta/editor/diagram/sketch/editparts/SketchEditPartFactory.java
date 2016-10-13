@@ -10,7 +10,6 @@ import org.eclipse.gef.EditPartFactory;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.EmptyEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.LineConnectionEditPart;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
@@ -52,11 +51,7 @@ implements EditPartFactory {
             child = new SketchDiagramModelReferenceEditPart();
         }
         
-        // Group
-        else if(model instanceof IDiagramModelGroup) {
-            child = new SketchGroupEditPart();
-        }
-        
+       
         // Connections
         else if(model instanceof IDiagramModelConnection) {
             child = new LineConnectionEditPart();

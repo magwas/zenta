@@ -21,8 +21,6 @@ public class ElementInfoFactory {
         
         registerProvider(new BasicConnectionInfoProvider());
         
-        registerProvider(new NoteInfoProvider());
-        registerProvider(new GroupInfoProvider());
         registerProvider(new DiagramModelReferenceInfoProvider());
         registerProvider(new LineConnectionInfoProvider());
         

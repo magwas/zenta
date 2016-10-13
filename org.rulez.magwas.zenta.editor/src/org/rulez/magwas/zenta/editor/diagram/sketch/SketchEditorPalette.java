@@ -100,12 +100,6 @@ public class SketchEditorPalette extends AbstractPaletteRoot {
                 Messages.SketchEditorPalette_3);
         group.add(groupEntry);
         
-        // Group
-        groupEntry = createCombinedTemplateCreationEntry(IZentaPackage.eINSTANCE.getDiagramModelGroup(),
-                Messages.SketchEditorPalette_4,
-                Messages.SketchEditorPalette_5);
-        group.add(groupEntry);
-    
         return group;
     }
     

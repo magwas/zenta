@@ -17,12 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.junit.Test;
 import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
-import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.model.viewpoints.AbstractViewpoint;
 
 
@@ -58,15 +55,6 @@ public abstract class AbstractViewpointTests {
             }
         }
         
-        // Other types
-        IDiagramModelObject eObject = IZentaFactory.eINSTANCE.createDiagramModelNote();
-        assertTrue(vp.isElementVisible(eObject));
-        
-        eObject = IZentaFactory.eINSTANCE.createDiagramModelGroup();
-        assertTrue(vp.isElementVisible(eObject));
-        
-        eObject = IZentaFactory.eINSTANCE.createDiagramModelNote();
-        assertTrue(vp.isElementVisible(eObject));
     }
 
 	private EObject createElementFromEClass(EObject t) {
@@ -86,17 +74,6 @@ public abstract class AbstractViewpointTests {
     public void testIsElementVisible_Nested() {
         List<EObject> types = vp.getAllowedTypes();
         if(!types.isEmpty()) {
-            // Test is visible in Group
-            IDiagramModelGroup group = IZentaFactory.eINSTANCE.createDiagramModelGroup();
-
-            for(EObject eClass : types) {
-                IZentaElement element = (IZentaElement) createElementFromEClass(eClass);
-                IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
-                dmo.setZentaElement(element);
-                group.getChildren().add(dmo);
-                
-                assertTrue(vp.isElementVisible(dmo));
-            }
 
             // Test child that is normally visible is hidden when inside of parent that is hidden
             for(EObject eClass : types) {
@@ -135,15 +112,6 @@ public abstract class AbstractViewpointTests {
             }
         }
         
-        // Other types
-        EClass eClass = IZentaPackage.eINSTANCE.getDiagramModelNote();
-        assertFalse(vp.isAllowedType(eClass));
-        
-        eClass = IZentaPackage.eINSTANCE.getDiagramModelGroup();
-        assertFalse(vp.isAllowedType(eClass));
-        
-        eClass = IZentaPackage.eINSTANCE.getDiagramModelNote();
-        assertFalse(vp.isAllowedType(eClass));
     }
     
     @Test

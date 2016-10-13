@@ -85,39 +85,6 @@ public class ZentaDiagramEditorPaletteTest {
 				);
 		assertEquals(expectedMenu.toString(),children.toString());
 	}
-	@Test
-	public void The_palette_contains_extras_group_with_two_entries_if_no_viewpoint_is_set() {
-		ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
-		palette.setViewpoint(null);
-		assertNull(palette._getViewPoint());
-		PaletteContainer objectsgroup = palette._getExtrasGroup();
-		assertNotNull(objectsgroup);
-		@SuppressWarnings("unchecked")
-		List<PaletteEntry> children = objectsgroup.getChildren();
-		List<String> expectedMenu = Arrays.asList(
-				"Palette Entry (Note)",
-				"Palette Entry (Group)"
-				);
-		assertEquals(expectedMenu.toString(),children.toString());
-	}
-	@Test
-	public void The_palette_contains_extras_group_with_three_entries_if_viewpoint_is_set() {
-		assertNotNull(testdata.model);
-		IViewpoint vp = ViewpointsManager.INSTANCE.getViewpoint(testdata.getTemplateDiagramModel());
-		assertNotNull(vp);
-		ZentaDiagramEditorPalette palette = testdata.getEditor().getPaletteRoot();
-		palette.setViewpoint(vp);
-		PaletteContainer objectsgroup = palette._getExtrasGroup();
-		assertNotNull(objectsgroup);
-		@SuppressWarnings("unchecked")
-		List<PaletteEntry> children = objectsgroup.getChildren();
-		List<String> expectedMenu = Arrays.asList(
-				"Palette Entry (Note)",
-				"Palette Entry (Group)",
-				"Palette Entry (Connection)"
-				);
-		assertEquals(expectedMenu.toString(),children.toString());		
-	}
 	
 	public void Magic_Connector_magically_connects_two_diagram_objects() throws IOException {
 		ModelAndEditPartTestData data = new ModelAndEditPartTestData();

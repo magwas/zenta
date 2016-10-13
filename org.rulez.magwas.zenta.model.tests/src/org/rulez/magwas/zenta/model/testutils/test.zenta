@@ -56,7 +56,6 @@
         <child xsi:type="zenta:DiagramObject" id="15b10f44" targetConnections="dcb9c1a2" zentaElement="8495ea84">
           <bounds x="464" y="167"/>
           <sourceConnection xsi:type="zenta:Connection" id="14300fe7" source="15b10f44" target="9404b9cd" relationship="77d87cf5"/>
-          <sourceConnection id="3da073f7" source="15b10f44" target="41de6f00"/>
         </child>
         <child xsi:type="zenta:DiagramObject" id="9404b9cd" targetConnections="14300fe7" zentaElement="ea94cf6c">
           <bounds x="227" y="349"/>
@@ -64,9 +63,6 @@
         </child>
         <child xsi:type="zenta:DiagramObject" id="312451b4" targetConnections="7e9ecb61" zentaElement="7b9a078c">
           <bounds x="504" y="48"/>
-        </child>
-        <child xsi:type="zenta:Note" id="41de6f00" targetConnections="3da073f7">
-          <bounds x="761" y="176"/>
         </child>
         <property key="Template"/>
       </element>

@@ -35,10 +35,8 @@ import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
-import org.rulez.magwas.zenta.model.IDiagramModelNote;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IDocumentable;
@@ -201,20 +199,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 	 * @generated
 	 */
     private EClass diagramModelContainerEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass diagramModelGroupEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass diagramModelNoteEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -882,24 +866,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getDiagramModelGroup() {
-		return diagramModelGroupEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EClass getDiagramModelNote() {
-		return diagramModelNoteEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EClass getDiagramModelImage() {
 		return diagramModelImageEClass;
 	}
@@ -1552,10 +1518,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		createEAttribute(diagramModelObjectEClass, DIAGRAM_MODEL_OBJECT__FILL_COLOR);
 		createEAttribute(diagramModelObjectEClass, DIAGRAM_MODEL_OBJECT__ELEMENT_SHAPE);
 
-		diagramModelGroupEClass = createEClass(DIAGRAM_MODEL_GROUP);
-
-		diagramModelNoteEClass = createEClass(DIAGRAM_MODEL_NOTE);
-
 		diagramModelImageEClass = createEClass(DIAGRAM_MODEL_IMAGE);
 
 		diagramModelConnectionEClass = createEClass(DIAGRAM_MODEL_CONNECTION);
@@ -1699,12 +1661,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		diagramModelReferenceEClass.getESuperTypes().add(this.getDiagramModelObject());
 		diagramModelObjectEClass.getESuperTypes().add(this.getDiagramModelComponent());
 		diagramModelObjectEClass.getESuperTypes().add(this.getFontAttribute());
-		diagramModelGroupEClass.getESuperTypes().add(this.getDiagramModelObject());
-		diagramModelGroupEClass.getESuperTypes().add(this.getDiagramModelContainer());
-		diagramModelGroupEClass.getESuperTypes().add(this.getDocumentable());
-		diagramModelGroupEClass.getESuperTypes().add(this.getProperties());
-		diagramModelNoteEClass.getESuperTypes().add(this.getDiagramModelObject());
-		diagramModelNoteEClass.getESuperTypes().add(this.getTextContent());
 		diagramModelImageEClass.getESuperTypes().add(this.getDiagramModelObject());
 		diagramModelImageEClass.getESuperTypes().add(this.getBorderObject());
 		diagramModelImageEClass.getESuperTypes().add(this.getDiagramModelImageProvider());
@@ -1828,10 +1784,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		addEParameter(op, ecorePackage.getEInt(), "y", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "width", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "height", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(diagramModelGroupEClass, IDiagramModelGroup.class, "DiagramModelGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(diagramModelNoteEClass, IDiagramModelNote.class, "DiagramModelNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(diagramModelImageEClass, IDiagramModelImage.class, "DiagramModelImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2024,18 +1976,6 @@ public class ZentaPackageBase extends EPackageImpl implements IZentaPackage {
 		   new String[] {
 			 "name", "sourceConnection",
 			 "kind", "element"
-		   });	
-		addAnnotation
-		  (diagramModelGroupEClass, 
-		   source, 
-		   new String[] {
-			 "name", "Group"
-		   });	
-		addAnnotation
-		  (diagramModelNoteEClass, 
-		   source, 
-		   new String[] {
-			 "name", "Note"
 		   });	
 		addAnnotation
 		  (getDiagramModelConnection_Bendpoints(), 

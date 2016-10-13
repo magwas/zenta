@@ -64,7 +64,6 @@ public class SketchModelStickyTests extends DiagramModelObjectTests {
 
 	@Test
     public void have_children() {
-        CommonTests.testList(sticky.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelGroup());
         CommonTests.testList(sticky.getChildren(), IZentaPackage.eINSTANCE.getSketchModelActor());
         CommonTests.testList(sticky.getChildren(), IZentaPackage.eINSTANCE.getSketchModelActor());
     }

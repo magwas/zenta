@@ -2,7 +2,6 @@ package org.rulez.magwas.zenta.editor.diagram;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.requests.CreationFactory;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 
 public class ZentaDiagramModelFactoryNonClassed implements CreationFactory {
@@ -19,13 +18,7 @@ public class ZentaDiagramModelFactoryNonClassed implements CreationFactory {
             return null;
         }
         
-        Object object = IZentaFactory.eINSTANCE.create(eKlass);
-        
-        // Group
-        if(object instanceof IDiagramModelGroup) {
-            ((IDiagramModelGroup)object).setName(Messages.ZentaDiagramModelFactory_0);
-        }
-        
+        Object object = IZentaFactory.eINSTANCE.create(eKlass);        
         return object;
     }
 

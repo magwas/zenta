@@ -14,7 +14,6 @@ import org.rulez.magwas.zenta.editor.ui.ColorFactory;
 import org.rulez.magwas.zenta.model.IZentaFactory;
 import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModelActor;
 import org.rulez.magwas.zenta.model.ISketchModelSticky;
@@ -65,12 +64,7 @@ public class SketchModelFactory implements ICreationFactory {
                 ((ISketchModelSticky)object).setFillColor(color);
             }
         }
-        
-        // Group
-        else if(object instanceof IDiagramModelGroup) {
-            ((IDiagramModelGroup)object).setName(Messages.SketchModelFactory_2);
-        }
-        
+            
         // Connection
         else if(object instanceof IDiagramModelConnection) {
             if(fParam instanceof Integer) {

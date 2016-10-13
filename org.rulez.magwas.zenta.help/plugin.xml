@@ -171,24 +171,9 @@
    <extension
          point="org.rulez.magwas.zenta.help.hints">
       <hint
-            class="org.rulez.magwas.zenta.model.IDiagramModelGroup"
-            file="hints/group.html"
-            title="%hint.title.57">
-      </hint>
-      <hint
             class="org.rulez.magwas.zenta.model.IDiagramModel"
             file="hints/view.html"
             title="%hint.title.58">
-      </hint>
-      <hint
-            class="org.rulez.magwas.zenta.model.IDiagramModelNote"
-            file="hints/note.html"
-            title="%hint.title.59">
-      </hint>
-      <hint
-            class="org.rulez.magwas.zenta.model.IDiagramModelReference"
-            file="hints/view_ref.html"
-            title="%hint.title.60">
       </hint>
       <hint
             class="org.rulez.magwas.zenta.model.IFolder"

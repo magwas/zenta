@@ -23,9 +23,7 @@ import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
-import org.rulez.magwas.zenta.model.IDiagramModelNote;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.IJunction;
@@ -92,8 +90,6 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
 			case IZentaPackage.AND_JUNCTION: return (EObject)createAndJunction();
 			case IZentaPackage.OR_JUNCTION: return (EObject)createOrJunction();
 			case IZentaPackage.DIAGRAM_MODEL_REFERENCE: return (EObject)createDiagramModelReference();
-			case IZentaPackage.DIAGRAM_MODEL_GROUP: return (EObject)createDiagramModelGroup();
-			case IZentaPackage.DIAGRAM_MODEL_NOTE: return (EObject)createDiagramModelNote();
 			case IZentaPackage.DIAGRAM_MODEL_IMAGE: return (EObject)createDiagramModelImage();
 			case IZentaPackage.DIAGRAM_MODEL_CONNECTION: return (EObject)createDiagramModelConnection();
 			case IZentaPackage.DIAGRAM_MODEL_BENDPOINT: return (EObject)createDiagramModelBendpoint();
@@ -208,26 +204,6 @@ abstract public class ZentaFactoryBase extends EFactoryImpl implements IZentaFac
     public IDiagramModelZentaObject createDiagramModelZentaObject() {
 		DiagramModelZentaObjectBase diagramModelZentaObject = new DiagramModelZentaObjectBase();
 		return diagramModelZentaObject;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public IDiagramModelGroup createDiagramModelGroup() {
-		DiagramModelGroupBase diagramModelGroup = new DiagramModelGroupBase();
-		return diagramModelGroup;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public IDiagramModelNote createDiagramModelNote() {
-		DiagramModelNoteBase diagramModelNote = new DiagramModelNoteBase();
-		return diagramModelNote;
 	}
 
     /**
