@@ -34,8 +34,6 @@ public class ElementUIFactory {
         registerProvider(new BasicConnectionUIProvider());
         
         registerProvider(new BasicObjectUIProvider());
-        registerProvider(new NoteUIProvider());
-        registerProvider(new GroupUIProvider());
         registerProvider(new DiagramModelReferenceUIProvider());
         registerProvider(new LineConnectionUIProvider());
         

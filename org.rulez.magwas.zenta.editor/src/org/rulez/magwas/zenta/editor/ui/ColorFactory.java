@@ -35,8 +35,6 @@ public class ColorFactory {//FIXME: move down logic to model layer, use string r
 
     public static final String COLOR_STRING_BUSINESS = "#FFFFB5";
 
-    private static final String DEFAULT_LINE_COLOR_STRING = "#000000";
-
     /**
      * Color Registry
      */

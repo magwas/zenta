@@ -240,14 +240,6 @@
                tab="appearance.tab">
          </propertySection>
          <propertySection
-               class="org.rulez.magwas.zenta.editor.propertysections.GroupSection"
-               id="groupSection"
-               tab="main.tab">
-            <input
-                  type="org.rulez.magwas.zenta.editor.diagram.editparts.diagram.GroupEditPart">
-            </input>
-         </propertySection>
-         <propertySection
                class="org.rulez.magwas.zenta.editor.propertysections.TextContentSection"
                filter="org.rulez.magwas.zenta.editor.propertysections.TextContentSection$Filter"
                id="textContentSection"

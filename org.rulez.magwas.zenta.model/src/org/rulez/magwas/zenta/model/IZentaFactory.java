@@ -97,24 +97,6 @@ public interface IZentaFactory extends EFactory {
 	IDiagramModelReference createDiagramModelReference();
 
 	/**
-	 * Returns a new object of class '<em>Diagram Model Group</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Diagram Model Group</em>'.
-	 * @generated
-	 */
-	IDiagramModelGroup createDiagramModelGroup();
-
-	/**
-	 * Returns a new object of class '<em>Diagram Model Note</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Diagram Model Note</em>'.
-	 * @generated
-	 */
-	IDiagramModelNote createDiagramModelNote();
-
-	/**
 	 * Returns a new object of class '<em>Diagram Model Image</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

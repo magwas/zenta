@@ -30,10 +30,8 @@ import org.rulez.magwas.zenta.model.IDiagramModelBendpoint;
 import org.rulez.magwas.zenta.model.IDiagramModelComponent;
 import org.rulez.magwas.zenta.model.IDiagramModelConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelContainer;
-import org.rulez.magwas.zenta.model.IDiagramModelGroup;
 import org.rulez.magwas.zenta.model.IDiagramModelImage;
 import org.rulez.magwas.zenta.model.IDiagramModelImageProvider;
-import org.rulez.magwas.zenta.model.IDiagramModelNote;
 import org.rulez.magwas.zenta.model.IDiagramModelObject;
 import org.rulez.magwas.zenta.model.IDiagramModelReference;
 import org.rulez.magwas.zenta.model.IDocumentable;
@@ -305,36 +303,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCloneable(diagramModelObject);
 				if (result == null) result = caseAdapter(diagramModelObject);
 				if (result == null) result = caseNameable(diagramModelObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case IZentaPackage.DIAGRAM_MODEL_GROUP: {
-				IDiagramModelGroup diagramModelGroup = (IDiagramModelGroup)theEObject;
-				T result = caseDiagramModelGroup(diagramModelGroup);
-				if (result == null) result = caseDiagramModelObject(diagramModelGroup);
-				if (result == null) result = caseDiagramModelContainer(diagramModelGroup);
-				if (result == null) result = caseDocumentable(diagramModelGroup);
-				if (result == null) result = caseProperties(diagramModelGroup);
-				if (result == null) result = caseDiagramModelComponent(diagramModelGroup);
-				if (result == null) result = caseFontAttribute(diagramModelGroup);
-				if (result == null) result = caseIdentifier(diagramModelGroup);
-				if (result == null) result = caseCloneable(diagramModelGroup);
-				if (result == null) result = caseAdapter(diagramModelGroup);
-				if (result == null) result = caseNameable(diagramModelGroup);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case IZentaPackage.DIAGRAM_MODEL_NOTE: {
-				IDiagramModelNote diagramModelNote = (IDiagramModelNote)theEObject;
-				T result = caseDiagramModelNote(diagramModelNote);
-				if (result == null) result = caseDiagramModelObject(diagramModelNote);
-				if (result == null) result = caseTextContent(diagramModelNote);
-				if (result == null) result = caseDiagramModelComponent(diagramModelNote);
-				if (result == null) result = caseFontAttribute(diagramModelNote);
-				if (result == null) result = caseIdentifier(diagramModelNote);
-				if (result == null) result = caseCloneable(diagramModelNote);
-				if (result == null) result = caseAdapter(diagramModelNote);
-				if (result == null) result = caseNameable(diagramModelNote);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -946,36 +914,6 @@ public class ZentaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDiagramModelObject(IDiagramModelObject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Diagram Model Group</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Diagram Model Group</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDiagramModelGroup(IDiagramModelGroup object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Diagram Model Note</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Diagram Model Note</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDiagramModelNote(IDiagramModelNote object) {
 		return null;
 	}
 

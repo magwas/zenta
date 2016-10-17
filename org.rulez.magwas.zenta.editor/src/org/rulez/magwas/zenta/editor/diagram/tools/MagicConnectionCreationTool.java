@@ -32,7 +32,6 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.rulez.magwas.zenta.editor.diagram.ZentaDiagramModelFactory;
 import org.rulez.magwas.zenta.editor.diagram.editparts.AbstractBaseEditPart;
 import org.rulez.magwas.zenta.editor.diagram.editparts.IZentaEditPart;
-import org.rulez.magwas.zenta.editor.diagram.editparts.diagram.GroupEditPart;
 import org.rulez.magwas.zenta.editor.diagram.figures.IContainerFigure;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
@@ -188,12 +187,8 @@ public class MagicConnectionCreationTool extends ConnectionCreationTool {
 		// What did we click on?
 		GraphicalEditPart targetEditPart = (GraphicalEditPart)viewer.findObjectAt(getCurrentInput().getMouseLocation());
 		
-		// If we clicked on a Group EditPart use that as parent
-		if(targetEditPart instanceof GroupEditPart) {
-			parent = (IDiagramModelContainer)targetEditPart.getModel();
-		}
 		// Or did we click on something else? Then use the parent of that
-		else if(targetEditPart instanceof AbstractBaseEditPart) {
+		if(targetEditPart instanceof AbstractBaseEditPart) {
 			targetEditPart = (GraphicalEditPart)targetEditPart.getParent();
 			parent = (IDiagramModelContainer)targetEditPart.getModel();
 		}

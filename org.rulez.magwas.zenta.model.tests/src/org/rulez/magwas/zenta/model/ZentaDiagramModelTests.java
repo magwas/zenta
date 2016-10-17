@@ -44,8 +44,6 @@ public class ZentaDiagramModelTests extends DiagramModelTests {
 	@Test
     public void DiagramModel_have_children() {
         CommonTests.testList(dm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelZentaObject());
-        CommonTests.testList(dm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelGroup());
-        CommonTests.testList(dm.getChildren(), IZentaPackage.eINSTANCE.getDiagramModelNote());
     }
 
 }

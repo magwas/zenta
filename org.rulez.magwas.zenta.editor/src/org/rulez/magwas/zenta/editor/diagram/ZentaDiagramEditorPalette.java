@@ -1,7 +1,6 @@
 package org.rulez.magwas.zenta.editor.diagram;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
@@ -30,7 +29,6 @@ import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.ITemplate;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.IZentaPackage;
 import org.rulez.magwas.zenta.controller.IZentaImages;
 import org.rulez.magwas.zenta.model.viewpoints.IViewpoint;
 
@@ -48,17 +46,12 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 
 	private PaletteContainer controlsGroup;
 
-	private PaletteContainer extrasGroup;
-
     public PaletteContainer _getObjectsGroup() {
     	return fObjectClassGroup;
     }
     
     public PaletteContainer _getControlsGroup() {
     	return controlsGroup;
-    }
-    public PaletteContainer _getExtrasGroup() {
-    	return extrasGroup;
     }
     public PaletteContainer _getRelationsGroup() {
     	return fRelationsGroup;
@@ -77,7 +70,6 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         add(fRelationsGroup);
         add(new PaletteSeparator("")); //$NON-NLS-1$
 
-        add(createExtrasGroup());
         add(new PaletteSeparator("")); //$NON-NLS-1$
         
         createZentaGroup();
@@ -193,8 +185,6 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
             remove(fObjectClassGroup);
             createZentaGroup();
             
-            createExtrasGroup();
-
         }
     }
     
@@ -223,41 +213,6 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
         return controlsGroup;
     }
 
-    private PaletteContainer createExtrasGroup() {
-        extrasGroup = new PaletteGroup(Messages.ZentaDiagramEditorPalette_1);
-        createNote(extrasGroup);
-        createGroupObjectEntry(extrasGroup);
-        if(null == fViewpoint) {
-        	return extrasGroup;
-        }
-        createNoteConnection(extrasGroup);
-        return extrasGroup;
-    }
-		private void createNote(PaletteContainer group) {
-			PaletteEntry noteEntry = new CombinedTemplateCreationEntry(
-	                Messages.ZentaDiagramEditorPalette_2,
-	                Messages.ZentaDiagramEditorPalette_3,
-	                new ZentaDiagramModelFactoryNonClassed(IZentaPackage.eINSTANCE.getDiagramModelNote()),
-	                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16),
-	                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_NOTE_16));
-	        group.add(noteEntry);
-		}
-		private void createGroupObjectEntry(PaletteContainer group) {
-			PaletteEntry groupEntry = new CombinedTemplateCreationEntry(
-	                Messages.ZentaDiagramEditorPalette_4,
-	                Messages.ZentaDiagramEditorPalette_5,
-	                new ZentaDiagramModelFactoryNonClassed(IZentaPackage.eINSTANCE.getDiagramModelGroup()),
-	                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16),
-	                IZentaUIImages.ImageFactory.getImageDescriptor(IZentaImages.ICON_GROUP_16));
-	        group.add(groupEntry);
-		}
-		private void createNoteConnection(PaletteContainer group) {
-			ConnectionCreationToolEntry entry = createConnectionCreationToolEntry(
-					IZentaPackage.eINSTANCE.getDiagramModelGroup(),
-	                Messages.ZentaDiagramEditorPalette_6,
-	                Messages.ZentaDiagramEditorPalette_7);
-	        group.add(entry);
-		}
     private PaletteContainer createObjectClassGroup() {
         PaletteContainer group = new PaletteGroup(Messages.ZentaDiagramEditorPalette_8);
         if(null == fViewpoint)
@@ -338,20 +293,6 @@ public class ZentaDiagramEditorPalette extends AbstractPaletteRoot {
 		return entry;
     }
     
-    private ConnectionCreationToolEntry createConnectionCreationToolEntry(
-			EClass eClass, String name,
-			String description) {
-        ConnectionCreationToolEntry entry = new ConnectionCreationToolEntry(
-                name,
-                description,
-                new ZentaDiagramModelFactoryNonClassed(eClass),
-                ZentaLabelProvider.INSTANCE.getImageDescriptorNonTemplate(eClass),
-                ZentaLabelProvider.INSTANCE.getImageDescriptorNonTemplate(eClass));
-        
-        entry.setToolProperty(AbstractTool.PROPERTY_UNLOAD_WHEN_FINISHED, true);
-        entry.setId(eClass.getName());
-        return entry;
-	}
 
 	private ConnectionCreationToolEntry createConnectionCreationToolEntry(IBasicRelationship eClass, String description) {
         return createConnectionCreationToolEntry(eClass, eClass.getName(), description);
