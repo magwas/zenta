@@ -17,18 +17,14 @@ import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
 import org.rulez.magwas.zenta.editor.preferences.IPreferenceConstants;
 import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
-import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.views.tree.commands.NewDiagramCommand;
-import org.rulez.magwas.zenta.editor.views.tree.commands.NewElementCommand;
 import org.rulez.magwas.zenta.model.IMetamodel;
 import org.rulez.magwas.zenta.model.IZentaFactory;
-import org.rulez.magwas.zenta.model.IBasicObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
 import org.rulez.magwas.zenta.model.IDiagramModel;
 import org.rulez.magwas.zenta.model.IFolder;
 import org.rulez.magwas.zenta.model.ISketchModel;
 import org.rulez.magwas.zenta.model.IZentaModel;
-import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.controller.IZentaImages;
 
 
@@ -74,37 +70,10 @@ public class TreeModelViewActionFactory {
             f = (IFolder)f.eContainer();
         }
 
-        for(IBasicObject eClass : metamodel.getObjectClasses()) {
-            IAction action = createNewElementAction(folder, eClass);
-            list.add(action);
-        }
-        for(IBasicObject eClass : metamodel.getConnectorClasses()) {
-            IAction action = createNewElementAction(folder, eClass);
-            list.add(action);
-        }
         list.add(createNewZentaDiagramAction(folder));
         list.add(createNewSketchAction(folder));
 
         return list;
-    }
-
-    private IAction createNewElementAction(final IFolder folder, final IBasicObject eClass) {
-        IAction action = new Action(eClass.getName()) {
-            @Override
-            public void run() {
-                // Create a new Zenta Element, set its name
-                IFolder f = Util.verifyNonNull(folder);
-				IZentaElement element = (IZentaElement) eClass.create(f);
-                element.setName(getText());
-                // Execute Command
-                Command cmd = new NewElementCommand(f, element);
-                CommandStack commandStack = IEditorModelManager.INSTANCE.obtainCommandStack(f);
-                commandStack.execute(cmd);
-            }
-        };
-
-        action.setImageDescriptor(ZentaLabelProvider.INSTANCE.getImageDescriptor(eClass));
-        return action;
     }
     
     private IAction createNewZentaDiagramAction(final IFolder folder) {
