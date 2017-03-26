@@ -4,7 +4,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
  
   <parent>
     <groupId>org.rulez.magwas.zenta</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>zenta</artifactId>
     <version>2.4.0-SNAPSHOT</version>
   </parent>
  
@@ -245,7 +245,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             <dependency>
               <type>eclipse-plugin</type>
               <artifactId>org.rulez.magwas.zenta.controller.tests</artifactId>
-              <version>1.0.0</version>
+              <version>0.0.0</version>
             </dependency>
             <dependency>
               <type>eclipse-plugin</type>
@@ -325,4 +325,15 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             </build>
         </profile>
   </profiles>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.rulez.magwas.zenta</groupId>
+  		<artifactId>
+  			org.rulez.magwas.zenta.controller.tests
+  		</artifactId>
+  		<version>1.0.0-SNAPSHOT</version>
+  		<type>eclipse-plugin</type>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
 </project>

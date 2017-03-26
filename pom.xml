@@ -21,6 +21,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <module>org.rulez.magwas.zenta.controller</module>
     <module>org.rulez.magwas.zenta.controller.tests</module>
     <module>org.rulez.magwas.zenta.model.tests</module>
+    <module>org.rulez.magwas.zenta.integrationtests</module>
     <module>org.rulez.magwas.zenta.editor.build</module>
     <module>org.rulez.magwas.zenta.editor.fullscreen.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.macos</module>
