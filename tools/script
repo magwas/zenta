@@ -4,6 +4,8 @@ export DISPLAY=:0
 Xvnc :0&
 mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
 mkdir -p ~/.m2
+mkdir -p ~/.zenta/.metadata/.plugins/org.eclipse.e4.workbench/
+cp workbench.xmi ~/.zenta/.metadata/.plugins/org.eclipse.e4.workbench/
 cp toolchains.xml ~/.m2
 cp sonar-settings.xml ~/.m2/settings.xml
 git checkout -b build
