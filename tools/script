@@ -1,17 +1,18 @@
 #!/bin/bash
 set -xe
+apt update
+apt install -y python-dev python-pip
+pip install vnc2flv
 export DISPLAY=:0
 Xvnc :0&
 mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
-rm -rf ~/.m2
 mkdir -p ~/.m2
 cp toolchains.xml ~/.m2
 cp sonar-settings.xml ~/.m2/settings.xml
-mvn clean install sonar:sonar -Dsonar.organization=edemo
-cd org.rulez.magwas.zenta.integrationtests
-mvn install
-git checkout -b build
-dch -D $BRANCH -v 1.0-1.$BRANCH.$BUILD_NUMBER commit $(git rev-parse HEAD)
+git checkout $(git rev-parse HEAD)
+dch --force-distribution -D $BRANCH -v 1.0-1.$BRANCH.$BUILD_NUMBER commit $(git rev-parse HEAD)
 git add --all :/
 git commit -m  "debian build"
+make recording
 debuild -us -uc
+git checkout $BRANCH
