@@ -9,7 +9,7 @@ cp workbench.xmi ~/.zenta/.metadata/.plugins/org.eclipse.e4.workbench/
 cp toolchains.xml ~/.m2
 cp sonar-settings.xml ~/.m2/settings.xml
 git checkout -b build
-dch -D $BRANCH -v 1.0-1.$BRANCH.$BUILD_NUMBER commit $(git rev-parse HEAD)
+dch --force-distribution -D $BRANCH -v 1.0-1.$BRANCH.$BUILD_NUMBER commit $(git rev-parse HEAD)
 git add --all :/
 git commit -m  "debian build"
 debuild -us -uc
