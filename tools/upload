@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xe
+set -x
 branch=$(echo ${TRAVIS_BRANCH}|sed 'sA/A-Ag')
 mkdir -p shippable
 
@@ -8,5 +8,8 @@ do
     cp org.rulez.magwas.zenta.editor.build/target/products/Zenta-${arch}.zip shippable/Zenta-${branch}-${arch}.zip
 done
 
+cp org.rulez.magwas.zenta.integrationtests/target/work/data/.metadata/.log shippable
 scp shippable/*.zip magwas,zenta@frs.sourceforge.net:/home/pfs/project/z/ze/zenta/unstable
 rsync -e "ssh -p 22022" -ar ../zenta_* shippable@demokracia.rulez.org:/var/www/repos/apt/debian/incoming
+repo=$(git remote -v|grep "origin.*fetch"|sed 'sA^.*github.com/AA;sA/.*AA')
+rsync -e "ssh -p 22022" -ar shippable/ shippable@demokracia.rulez.org:/var/www/adadocs/zenta/$repo/$BUILD_NUMBER
