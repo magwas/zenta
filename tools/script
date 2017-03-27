@@ -1,5 +1,8 @@
 #!/bin/bash
 set -xe
+apt update
+apt install -y python-dev python-pip
+pip install vnc2flv
 export DISPLAY=:0
 Xvnc :0&
 mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
