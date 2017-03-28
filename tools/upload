@@ -1,9 +1,9 @@
 #!/bin/bash
 set -x
 make stoprecording
+sync
 branch=$(echo ${TRAVIS_BRANCH}|sed 'sA/A-Ag')
 mkdir -p shippable
-cp /tmp/record.flv shippable
 
 for arch in linux.gtk.x86_64 linux.gtk.x86 macosx.cocoa.x86_64 win32.win32.x86_64 win32.win32.x86
 do
@@ -12,6 +12,8 @@ done
 
 scp shippable/*.zip magwas,zenta@frs.sourceforge.net:/home/pfs/project/z/ze/zenta/unstable
 rsync -e "ssh -p 22022" -ar ../zenta_* shippable@demokracia.rulez.org:/var/www/repos/apt/debian/incoming
+ls -l /tmp/record.flv
+cp /tmp/record.flv shippable
 repo=$(git remote -v|grep "origin.*fetch"|sed 'sA^.*github.com/AA;sA/.*AA')
 rsync -e "ssh -p 22022" -ar shippable/ shippable@demokracia.rulez.org:/var/www/adadocs/zenta/$repo/$BUILD_NUMBER
 normalized_branch=$(echo $BRANCH|sed 'sA[/_]A.Ag')
