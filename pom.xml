@@ -52,10 +52,16 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
  
   <repositories>
    <repository>
-     <id>4.5</id>
+     <id>2018-12</id>
      <layout>p2</layout>
-     <url>http://download.eclipse.org/eclipse/updates/4.5</url>
+     <url>http://download.eclipse.org/releases/2018-12</url>
    </repository>
+   <!--repository>
+     <id>neon</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/releases/neon/</url>
+   </repository-->
+
    <repository>
      <id>orbit</id>
      <layout>p2</layout>
@@ -109,16 +115,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
               <os>linux</os>
               <ws>gtk</ws>
               <arch>x86_64</arch>
-            </environment>
-            <environment>
-              <os>linux</os>
-              <ws>gtk</ws>
-              <arch>x86</arch>
-            </environment>
-            <environment>
-              <os>win32</os>
-              <ws>win32</ws>
-              <arch>x86</arch>
             </environment>
             <environment>
               <os>win32</os>

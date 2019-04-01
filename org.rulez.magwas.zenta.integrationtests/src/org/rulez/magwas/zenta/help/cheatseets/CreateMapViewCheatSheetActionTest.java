@@ -43,7 +43,7 @@ public class CreateMapViewCheatSheetActionTest {
 		}
 
 		@Override
-		public Set<Object> getKeySet() {
+		public Set<String> getKeySet() {
 			return null;
 		}
 		
