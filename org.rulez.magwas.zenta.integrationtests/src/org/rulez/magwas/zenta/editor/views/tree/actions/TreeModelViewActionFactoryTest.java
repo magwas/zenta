@@ -45,19 +45,6 @@ public class TreeModelViewActionFactoryTest {
 	}
 
 	@Test
-	public void Objects_are_created_in_the_respective_folder() {
-		IZentaElement selected = testdata.getElementById("8495ea84");
-		IFolder folder = ModelTestData.getFolderByKid(selected);
-		ArrayList<EObject> kidsBefore = new ArrayList<EObject>(folder.getElements());
-		IAction action = getAction(selected, "Data");
-		assertNotNull(action);
-		action.run();
-		ArrayList<EObject> kidsAfter = new ArrayList<EObject>(folder.getElements());
-		kidsAfter.removeAll(kidsBefore);
-		assertEquals(1,kidsAfter.size());
-	}
-	
-	@Test
 	public void Relations_are_created_in_the_folder_of_the_source_element() {
 		IZentaElement target = testdata.getElementById("23138a61");
 		IZentaElement source = testdata.getElementById("a885cd76");
@@ -73,7 +60,7 @@ public class TreeModelViewActionFactoryTest {
 	}
 
 	@Test
-	public void New_ObjectClasses_are_shown_in_the_New_menu() {
+	public void ObjectClasses_are_not_shown_in_the_New_menu() {
 		IFolder selected = (IFolder) testdata.getById("196115c6");//Model root folder
 		
 		IDiagramModel dm = testdata.getTemplateDiagramModel();
@@ -105,16 +92,7 @@ public class TreeModelViewActionFactoryTest {
 			if(action.getText().equals("New test OCke"))
 				found = true;
 		}
-		assertTrue(found);
+		assertFalse(found);
 	}
-	
-	private IAction getAction(IZentaElement selected, String description) {
-		List<IAction> actions = fixture.getNewObjectActions(selected);
-		for(IAction action : actions)
-			if(description.equals(action.getText()))
-				return action;
-		return null;
-	}
-	
 
 }
