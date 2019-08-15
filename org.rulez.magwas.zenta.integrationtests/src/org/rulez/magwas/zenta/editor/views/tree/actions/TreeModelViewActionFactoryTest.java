@@ -73,6 +73,35 @@ public class TreeModelViewActionFactoryTest {
 	}
 
 	@Test
+	public void New_simple_objects_are_not_shown_in_the_New_menu() {
+		IFolder selected = (IFolder) testdata.getById("196115c6");//Model root folder
+
+		IDiagramModel dm = (IDiagramModel) testdata.getById("22d134df");
+
+		String id = "ea94cf6c";//User
+		IZentaElement user = testdata.getElementById(id);
+		IFolder folder = ModelTestData.getFolderByKid(user);
+		IBasicObject oc = testdata.metamodel.getBuiltinObjectClass();
+		IBasicObject newElement = (IBasicObject) oc.create(folder);
+
+		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
+
+		assertNotNull(dmo);
+		assertFalse("emptyShape".equals(dmo.getElementShape()));
+		dmo.setElementShape("emptyShape");
+		dmo.setZentaElement(newElement);
+		dmo.setBounds(0, 0, 100, 100);
+
+
+		dm.getChildren().add(dmo);
+		newElement.setName("New test OCke");
+
+		assertFalse(newElement.isTemplate());
+
+		assertElementFound(selected, false);
+	}
+
+	@Test
 	public void New_ObjectClasses_are_shown_in_the_New_menu() {
 		IFolder selected = (IFolder) testdata.getById("196115c6");//Model root folder
 		
@@ -98,6 +127,10 @@ public class TreeModelViewActionFactoryTest {
 
 		assertTrue(newElement.isTemplate());
 
+		assertElementFound(selected, true);
+	}
+
+	private void assertElementFound(IFolder selected, boolean shouldfind) {
 		List<IAction> newactions = fixture.getNewObjectActions(selected);
 
 		boolean found = false;
@@ -105,7 +138,7 @@ public class TreeModelViewActionFactoryTest {
 			if(action.getText().equals("New test OCke"))
 				found = true;
 		}
-		assertTrue(found);
+		assertEquals(shouldfind, found);
 	}
 	
 	private IAction getAction(IZentaElement selected, String description) {
