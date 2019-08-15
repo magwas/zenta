@@ -3,6 +3,5 @@ target/
 org.rulez.magwas.zenta.integrationtests/generated-images/*
 *.jar
 *.bak
-.settings/
 bin/
 tmp/

@@ -74,7 +74,7 @@ public class ZentaLabelProviderTest {
 	}
 	@Test
 	public void image_info_is_correct_for_extension() {
-		assertEquals(fixture.getImageInfo(extensionObject),"img/example-image-which-actually-does-not-exists.png");
+		assertEquals("img/example-image-which-actually-does-not-exists.png", fixture.getImageInfo(extensionObject));
 	}
 
 	@Test
