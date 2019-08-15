@@ -252,6 +252,16 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
               <artifactId>org.eclipse.core.runtime</artifactId>
               <version>0.0.0</version>
             </dependency>
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.equinox.simpleconfigurator</artifactId>
+              <version>0.0.0</version>
+            </dependency>
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.equinox.ds</artifactId>
+              <version>0.0.0</version>
+            </dependency>
           </dependencies>
         </configuration>
       </plugin>

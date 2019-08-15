@@ -40,10 +40,10 @@ public class XmlTestCase {
         testDoc.normalizeDocument();
         Element de = resultDoc.getDocumentElement();
 		Element deChecked = Util.verifyNonNull(de);
-		String resultString = Util.xml2String(deChecked).replaceAll(" *\n", "");
+		String resultString = Util.xml2String(deChecked).replaceAll(" *", "");
         Element testDe = testDoc.getDocumentElement();
 		Element testDeChecked = Util.verifyNonNull(testDe);
-		String docString = Util.xml2String(testDeChecked).replaceAll(" *\n", "");
+		String docString = Util.xml2String(testDeChecked).replaceAll(" *", "");
         System.out.println("policy=" + policyDoc);
         if (!resultString.equals(docString)) {
             System.out.println(resultString);
