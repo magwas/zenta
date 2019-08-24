@@ -4,7 +4,7 @@ branch=$(echo ${TRAVIS_BRANCH}|sed 'sA/A-Ag')
 mkdir -p shippable
 
 find -type f -name '*.zip'
-for arch in linux.gtk.x86_64 macosx.cocoa.x86_64 win32.win32.x86_64 win32.win32.x86
+for arch in linux.gtk.x86_64 macosx.cocoa.x86_64 win32.win32.x86_64
 do
     cp org.rulez.magwas.zenta.editor.build/target/products/Zenta-${arch}.zip shippable/Zenta-${branch}-${arch}.zip
 done
