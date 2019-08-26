@@ -45,19 +45,6 @@ public class TreeModelViewActionFactoryTest {
 	}
 
 	@Test
-	public void Objects_are_created_in_the_respective_folder() {
-		IZentaElement selected = testdata.getElementById("8495ea84");
-		IFolder folder = ModelTestData.getFolderByKid(selected);
-		ArrayList<EObject> kidsBefore = new ArrayList<EObject>(folder.getElements());
-		IAction action = getAction(selected, "Data");
-		assertNotNull(action);
-		action.run();
-		ArrayList<EObject> kidsAfter = new ArrayList<EObject>(folder.getElements());
-		kidsAfter.removeAll(kidsBefore);
-		assertEquals(1,kidsAfter.size());
-	}
-	
-	@Test
 	public void Relations_are_created_in_the_folder_of_the_source_element() {
 		IZentaElement target = testdata.getElementById("23138a61");
 		IZentaElement source = testdata.getElementById("a885cd76");
@@ -148,6 +135,5 @@ public class TreeModelViewActionFactoryTest {
 				return action;
 		return null;
 	}
-	
 
 }
