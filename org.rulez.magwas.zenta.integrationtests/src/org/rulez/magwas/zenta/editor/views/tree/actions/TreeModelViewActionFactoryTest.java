@@ -60,10 +60,10 @@ public class TreeModelViewActionFactoryTest {
 	}
 
 	@Test
-	public void ObjectClasses_are_not_shown_in_the_New_menu() {
+	public void New_simple_objects_are_not_shown_in_the_New_menu() {
 		IFolder selected = (IFolder) testdata.getById("196115c6");//Model root folder
-		
-		IDiagramModel dm = testdata.getTemplateDiagramModel();
+
+		IDiagramModel dm = (IDiagramModel) testdata.getById("22d134df");
 
 		String id = "ea94cf6c";//User
 		IZentaElement user = testdata.getElementById(id);
@@ -83,16 +83,23 @@ public class TreeModelViewActionFactoryTest {
 		dm.getChildren().add(dmo);
 		newElement.setName("New test OCke");
 
-		assertTrue(newElement.isTemplate());
+		assertFalse(newElement.isTemplate());
 
+		assertElementFound(selected, false);
+	}
+
+
+	private void assertElementFound(IFolder selected, boolean shouldfind) {
 		List<IAction> newactions = fixture.getNewObjectActions(selected);
 
 		boolean found = false;
 		for(IAction action : newactions) {
+			System.out.println("action:"+ action.getText());
 			if(action.getText().equals("New test OCke"))
 				found = true;
 		}
-		assertFalse(found);
+		assertEquals(shouldfind, found);
 	}
+	
 
 }

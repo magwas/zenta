@@ -83,7 +83,6 @@ public Menutest() {
 
 public void setResult(String res) {
 	result = res;
-    System.out.println("result is "+result);	
 }
 
 public static void main(String[] args) {

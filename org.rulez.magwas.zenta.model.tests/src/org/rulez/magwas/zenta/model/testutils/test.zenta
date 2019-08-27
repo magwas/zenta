@@ -81,9 +81,9 @@
       <element xsi:type="zenta:BasicObject" name="shapechange test object" id="85b00ede" ancestor="basicobject"/>
       <element xsi:type="zenta:BasicRelationship" id="8aeb2efb" source="85b00ede" target="f33bd0d2"/>
     </folder>
-    <element xsi:type="zenta:BasicObject" name="Test Object" id="a885cd76" ancestor="basicobject" />
-    <element xsi:type="zenta:BasicObject" name="Basic Object1" id="8c485316" ancestor="basicobject" />
-    <element xsi:type="zenta:BasicObject" name="Basic Object" id="6e8b1d43" ancestor="basicobject" />
+    <element xsi:type="zenta:BasicObject" name="Test Object" id="a885cd76" ancestor="basicobject"/>
+    <element xsi:type="zenta:BasicObject" name="Basic Object1" id="8c485316" ancestor="basicobject"/>
+    <element xsi:type="zenta:BasicObject" name="Basic Object" id="6e8b1d43" ancestor="basicobject"/>
     <element xsi:type="zenta:ZentaDiagramModel" name="non-template" id="63f1b081">
       <child xsi:type="zenta:DiagramObject" id="173f7753" zentaElement="f33bd0d2">
         <bounds x="215" y="137"/>
@@ -124,4 +124,16 @@
   </folder>
   <element xsi:type="zenta:BasicRelationship" name="Basic Relation" id="basicrelation" source="basicobject" target="basicobject"/>
   <element xsi:type="zenta:BasicObject" name="Basic Object" id="basicobject"/>
+  <element xsi:type="zenta:ZentaDiagramModel" name="New Zenta View" id="015721aa-a37d-46c2-bebb-c69d083955fe">
+    <child xsi:type="zenta:DiagramObject" id="f0ea8dfa-fdc9-4e38-9bad-6c9da5a6b9cf" zentaElement="b3bf0c1c-9313-49b3-bdc6-d89f3bbedef8">
+      <bounds x="440" y="299" width="-1" height="-1"/>
+      <sourceConnection xsi:type="zenta:Connection" id="69f98098-99a6-4fe2-afab-ac9174dee86f" source="f0ea8dfa-fdc9-4e38-9bad-6c9da5a6b9cf" target="6830ebc2-08ed-49d3-865a-580278e0346a" relationship="c02de942-fe85-4ffc-a3b8-6fe42b412aa3"/>
+    </child>
+    <child xsi:type="zenta:DiagramObject" id="6830ebc2-08ed-49d3-865a-580278e0346a" targetConnections="69f98098-99a6-4fe2-afab-ac9174dee86f" zentaElement="836475c0-7c4a-48a5-9351-2d805c3ba9da">
+      <bounds x="692" y="241" width="125" height="72"/>
+    </child>
+  </element>
+  <element xsi:type="zenta:BasicObject" name="Procedure instance" id="b3bf0c1c-9313-49b3-bdc6-d89f3bbedef8" ancestor="f33bd0d2"/>
+  <element xsi:type="zenta:BasicObject" name="other documentation instance" id="836475c0-7c4a-48a5-9351-2d805c3ba9da" ancestor="8495ea84"/>
+  <element xsi:type="zenta:BasicRelationship" id="c02de942-fe85-4ffc-a3b8-6fe42b412aa3" ancestor="9c441eb7" source="b3bf0c1c-9313-49b3-bdc6-d89f3bbedef8" target="836475c0-7c4a-48a5-9351-2d805c3ba9da"/>
 </zenta:model>

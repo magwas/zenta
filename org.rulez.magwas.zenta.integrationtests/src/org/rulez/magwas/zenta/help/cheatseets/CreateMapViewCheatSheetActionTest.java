@@ -6,10 +6,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.cheatsheets.ICheatSheetManager;
 import org.junit.Test;
 import org.rulez.magwas.nonnul.NonNullList;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
+import org.rulez.magwas.zenta.editor.ui.services.ViewManager;
+import org.rulez.magwas.zenta.editor.views.tree.ITreeModelView;
+import org.rulez.magwas.zenta.editor.views.tree.TreeModelView;
 import org.rulez.magwas.zenta.help.cheatsheets.CreateMapViewCheatSheetAction;
 import org.rulez.magwas.zenta.integrationtests.HaveGUI;
 import org.rulez.magwas.zenta.integrationtests.UITestWindow;
@@ -64,6 +69,8 @@ public class CreateMapViewCheatSheetActionTest {
 			dm.setName(dm.getId());
 
 		UITestWindow win = new UITestWindow();
+		TreeModelView viewPart = (TreeModelView) ViewManager.showViewPart(ITreeModelView.ID, true);
+		viewPart.getSelectionProvider().setSelection(new StructuredSelection(model));;
 		CreateMapViewCheatSheetAction action = new CreateMapViewCheatSheetAction();
 		String[] params = {};
 		action.run(params, csm);
