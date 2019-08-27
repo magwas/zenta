@@ -8,3 +8,4 @@ Fragment-Host: org.rulez.magwas.zenta.editor;bundle-version="2.0.0"
 Eclipse-PlatformFilter: (osgi.ws=win32)
 Import-Package: org.rulez.magwas.zenta.widgets
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.ui.ide;bundle-version="3.14.200"

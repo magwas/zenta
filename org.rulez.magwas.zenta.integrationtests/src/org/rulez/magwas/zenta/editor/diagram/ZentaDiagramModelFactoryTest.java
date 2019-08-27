@@ -31,7 +31,6 @@ public class ZentaDiagramModelFactoryTest {
 		ZentaDiagramModelFactory factory = new ZentaDiagramModelFactory(ancestor, folder);
 		assertNotNull(factory);
 		IDiagramModelZentaObject ob = (IDiagramModelZentaObject) factory.getNewObject();
-		System.out.println(ob);
 		assertEquals(folder,ob.getZentaElement().eContainer());
 	}
 

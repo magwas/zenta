@@ -211,7 +211,7 @@ public abstract class AbstractViewpoint implements IViewpoint {
 		Map<Direction, NonNullList<IBasicRelationship>> rels = oc.getAllowedRelations(true);
 		for(IBasicRelationship rel : rels.get(Direction.SOURCE)) {
 			for(IBasicObject target: rel.getAllowedTargets())
-				if(!ret.contains(target))
+				if(!ret.contains(target) && target.isTemplate())
 					ret.add(target);
 		}
 		return ret;

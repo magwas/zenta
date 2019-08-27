@@ -3,7 +3,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.rulez.magwas.zenta</groupId>
-  <artifactId>parent</artifactId>
+  <artifactId>zenta</artifactId>
   <version>2.4.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   
@@ -21,6 +21,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <module>org.rulez.magwas.zenta.controller</module>
     <module>org.rulez.magwas.zenta.controller.tests</module>
     <module>org.rulez.magwas.zenta.model.tests</module>
+    <module>org.rulez.magwas.zenta.integrationtests</module>
     <module>org.rulez.magwas.zenta.editor.build</module>
     <module>org.rulez.magwas.zenta.editor.fullscreen.macos</module>
     <module>org.rulez.magwas.zenta.editor.launch.macos</module>
@@ -47,15 +48,26 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     
     <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
     <maven.clean.plugin.version>3.0.0</maven.clean.plugin.version>
-    
+    <!-- Sonar -->
+    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+    <sonar.language>java</sonar.language>  
+    <sonar.ogranization>edemo</sonar.ogranization>  
   </properties>
  
   <repositories>
    <repository>
-     <id>4.5</id>
+     <id>2018-12</id>
      <layout>p2</layout>
-     <url>http://download.eclipse.org/eclipse/updates/4.5</url>
+     <url>http://download.eclipse.org/releases/2018-12</url>
    </repository>
+   <!--repository>
+     <id>neon</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/releases/neon/</url>
+   </repository-->
+
    <repository>
      <id>orbit</id>
      <layout>p2</layout>
@@ -71,6 +83,23 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <build>
     <outputDirectory>bin</outputDirectory>
     <plugins>
+		<plugin>
+		    <groupId>org.jacoco</groupId>
+		    <artifactId>jacoco-maven-plugin</artifactId>
+		    <version>0.7.9</version>
+		    <configuration>
+		        <destFile>${sonar.jacoco.reportPath}</destFile>
+		        <append>true</append>
+		    </configuration>
+		    <executions>
+		        <execution>
+		            <id>agent</id>
+		            <goals>
+		                <goal>prepare-agent</goal>
+		            </goals>
+		        </execution>
+		    </executions>
+		</plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-packaging-plugin</artifactId>
@@ -109,16 +138,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
               <os>linux</os>
               <ws>gtk</ws>
               <arch>x86_64</arch>
-            </environment>
-            <environment>
-              <os>linux</os>
-              <ws>gtk</ws>
-              <arch>x86</arch>
-            </environment>
-            <environment>
-              <os>win32</os>
-              <ws>win32</ws>
-              <arch>x86</arch>
             </environment>
             <environment>
               <os>win32</os>

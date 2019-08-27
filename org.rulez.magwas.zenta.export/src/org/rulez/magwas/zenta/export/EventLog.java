@@ -117,7 +117,6 @@ public class EventLog implements IEventLog {
     
     private void issue(String qualifier, String modelid, Object node,
             String text, String detail) {
-        System.out.println(qualifier+":"+ text+"\n"+detail);
         Node tr = messages.createElement("tr");
         msg.appendChild(tr);
         Node qtd = messages.createElement("td");
