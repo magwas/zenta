@@ -8,7 +8,7 @@ Homepage: http://magwas.github.io/zenta/
 
 Package: zenta
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libwebkitgtk-1.0-0
+Depends: ${shlibs:Depends}, ${misc:Depends}, libwebkitgtk-1.0-0, openjdk-8-jre
 Description: metamodel-aware architecture modeling tool
  Zenta is a free, open source, cross-platform tool and editor
  to create models along with their metamodels.
