@@ -164,43 +164,7 @@ public class DerivedRelationsUtils {
      * @throws TooComplicatedException 
      */
     public IBasicRelationship createDerivedRelationship(IZentaElement element1, IZentaElement element2) throws TooComplicatedException {
-    	throw new UnTestedException();//Should be moved to metamodel
-/*
-        
-        //System.out.println("-----------------------------------");
-        //System.out.println("Starting hunt from " + element1.getName() + " --> " + element2.getName());
-        //System.out.println("-----------------------------------");
-        
-        // Traverse from element1 to element2
-        List<List<IBasicRelationship>> chains = findChains(element1, element2);
-        
-        if(chains.isEmpty()) {
-            return null;
-        }
-        
-        int weakest = weaklist.size() - 1;
-        
-        // You are the weakest link...goodbye.
-        for(List<IBasicRelationship> chain : chains) {
-            for(IBasicRelationship rel : chain) {
-                //printChain(chain);
-                int index = weaklist.indexOf(rel.eClass());
-                if(index < weakest) {
-                    weakest = index;
-                }
-            }
-        }
-        
-        EClass relationshipClass = weaklist.get(weakest);
-        //System.out.println("Weakest is: " + relationshipClass);
-        
-        boolean isValid = ZentaModelUtils.isValidRelationship(element1, element2, relationshipClass);
-        if(!isValid) {
-            return null;
-        }
-        
-        return (IBasicRelationship)IZentaFactory.eINSTANCE.create(relationshipClass);
-*/
+    	throw new UnTestedException();
     }
     
     /**
@@ -221,11 +185,6 @@ public class DerivedRelationsUtils {
     }
     
    
-    // =================================================================================== 
-    // TRAVERSE PATHS
-    // ===================================================================================
-    
-    // Too complicated
     private static final int ITERATION_LIMIT = 20000;
     
     private IZentaElement finalTarget;

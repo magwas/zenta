@@ -88,52 +88,18 @@ public class TreeModelViewActionFactoryTest {
 		assertElementFound(selected, false);
 	}
 
-	@Test
-	public void New_ObjectClasses_are_shown_in_the_New_menu() {
-		IFolder selected = (IFolder) testdata.getById("196115c6");//Model root folder
-		
-		IDiagramModel dm = testdata.getTemplateDiagramModel();
-
-		String id = "ea94cf6c";//User
-		IZentaElement user = testdata.getElementById(id);
-		IFolder folder = ModelTestData.getFolderByKid(user);
-		IBasicObject oc = testdata.metamodel.getBuiltinObjectClass();
-		IBasicObject newElement = (IBasicObject) oc.create(folder);
-
-		IDiagramModelZentaObject dmo = IZentaFactory.eINSTANCE.createDiagramModelZentaObject();
-
-		assertNotNull(dmo);
-		assertFalse("emptyShape".equals(dmo.getElementShape()));
-		dmo.setElementShape("emptyShape");
-		dmo.setZentaElement(newElement);
-		dmo.setBounds(0, 0, 100, 100);
-
-
-		dm.getChildren().add(dmo);
-		newElement.setName("New test OCke");
-
-		assertTrue(newElement.isTemplate());
-
-		assertElementFound(selected, true);
-	}
 
 	private void assertElementFound(IFolder selected, boolean shouldfind) {
 		List<IAction> newactions = fixture.getNewObjectActions(selected);
 
 		boolean found = false;
 		for(IAction action : newactions) {
+			System.out.println("action:"+ action.getText());
 			if(action.getText().equals("New test OCke"))
 				found = true;
 		}
 		assertEquals(shouldfind, found);
 	}
 	
-	private IAction getAction(IZentaElement selected, String description) {
-		List<IAction> actions = fixture.getNewObjectActions(selected);
-		for(IAction action : actions)
-			if(description.equals(action.getText()))
-				return action;
-		return null;
-	}
 
 }

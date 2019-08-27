@@ -82,7 +82,6 @@ public class IndirectChildrenAdderTest {
         expectedXML.normalizeDocument();
         actualXML.normalizeDocument();
         Element de = actualXML.getDocumentElement();
-		System.out.println(Util.xml2String(Util.verifyNonNull(de)));
         Assert.assertTrue((expectedXML.isEqualNode(actualXML)));
     }
     

@@ -1,15 +1,11 @@
 #!/bin/bash
 set -xe
-apt update
-apt install -y python-dev python-pip
-pip install vnc2flv
 export DISPLAY=:0
 Xvnc :0&
-mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
 cp toolchains.xml ~/.m2
 make zentaworkaround
 cp sonar-settings.xml ~/.m2/settings.xml
-git clean -fdx
+mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
 mvn install
 git checkout -b build
 dch -D $BRANCH -v 1.0-1.$BRANCH.$BUILD_NUMBER commit $(git rev-parse HEAD)

@@ -195,7 +195,6 @@ public abstract class AbstractEditorModelManager implements IEditorModelManagerN
 				okay = true;
 			} catch(ModelConsistencyException ex) {
 				ZentaObject element = ex.getElement();
-				System.out.printf("element=%s\ncontainer=%s", element, element.eContainer());
 				((IFolder)element.eContainer()).getElements().remove(element);
 			}
 		}

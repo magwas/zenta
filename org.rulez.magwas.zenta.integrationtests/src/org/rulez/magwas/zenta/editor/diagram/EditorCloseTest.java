@@ -45,14 +45,11 @@ public class EditorCloseTest extends EditorTest {
 		builder.getModel().getElements().add(newFolder);
 		ArrayList<EObject> kidsBefore = new ArrayList<EObject>(newFolder.getElements());
 		IFolder oldFolder = (IFolder) templateDiagram.eContainer();
-		System.out.println("oldKids:"+oldFolder.getElements());
 
 		oldFolder.getElements().remove(templateDiagram);
 		newFolder.getElements().add(templateDiagram);
 		
-		System.out.println("oldKidsafter:"+oldFolder.getElements());
 		ArrayList<EObject> kidsAfter = new ArrayList<EObject>(newFolder.getElements());
-		System.out.println("kidsAfter="+kidsAfter);
 		kidsAfter.removeAll(kidsBefore);
 		assertEquals(1,kidsAfter.size());		
 
