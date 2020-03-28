@@ -73,7 +73,7 @@ public class DiagramModelZentaConnectionBase extends DiagramModelConnectionBase 
 	 * @generated NOT
 	 */
 	public IBasicRelationship getRelationship() {
-		return Util.verifyNonNull(relationship);
+		return relationship;
 	}
 
 				/**
