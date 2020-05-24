@@ -1,4 +1,4 @@
-build_image: magwas/edemotest:zentabuild
+build_image: edemotest
 language: python
 python:
   - 2.7
