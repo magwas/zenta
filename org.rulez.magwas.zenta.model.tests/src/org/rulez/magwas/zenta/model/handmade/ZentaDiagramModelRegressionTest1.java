@@ -1,10 +1,7 @@
 package org.rulez.magwas.zenta.model.handmade;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ZentaDiagramModelRegressionTest1 {
 
 	public static boolean debug = false;
