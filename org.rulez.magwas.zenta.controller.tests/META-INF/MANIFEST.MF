@@ -12,4 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Import-Package: net.sf.saxon
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.rulez.magwas.zenta.controller.tests
+Export-Package: org.rulez.magwas.zenta.controller,
+ org.rulez.magwas.zenta.controller.info,
+ org.rulez.magwas.zenta.controller.tests
+Automatic-Module-Name: org.rulez.magwas.zenta.controller.tests

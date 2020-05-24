@@ -44,7 +44,6 @@ import org.rulez.magwas.zenta.model.IProperties;
 import org.rulez.magwas.zenta.model.IProperty;
 import org.rulez.magwas.zenta.model.UndoState;
 import org.rulez.magwas.zenta.model.handmade.ZentaObjectImpl;
-import org.rulez.magwas.zenta.model.handmade.util.Util;
 
 
 /**
@@ -177,7 +176,7 @@ public abstract class ZentaElementBase extends ZentaObjectImpl implements IZenta
 	 */
     
     public String getName() {
-		return Util.verifyNonNull(name);
+		return name;
 	}
 
     /**

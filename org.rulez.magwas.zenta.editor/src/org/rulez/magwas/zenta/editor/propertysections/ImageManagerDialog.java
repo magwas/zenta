@@ -6,25 +6,15 @@
 package org.rulez.magwas.zenta.editor.propertysections;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.layout.TableColumnLayout;
-import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.nebula.widgets.gallery.DefaultGalleryItemRenderer;
 import org.eclipse.nebula.widgets.gallery.Gallery;
 import org.eclipse.nebula.widgets.gallery.GalleryItem;
@@ -51,17 +41,14 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.PlatformUI;
 import org.rulez.magwas.zenta.editor.model.IEditorModelManager;
-import org.rulez.magwas.zenta.editor.ui.ZentaLabelProvider;
 import org.rulez.magwas.zenta.editor.ui.IZentaUIImages;
 import org.rulez.magwas.zenta.editor.ui.ImageFactory;
 import org.rulez.magwas.zenta.editor.ui.components.ExtendedTitleAreaDialog;
 import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.manager.IArchiveManager;
 import org.rulez.magwas.zenta.controller.IZentaImages;
-import org.rulez.magwas.zenta.model.INameable;
 
 
 
@@ -381,75 +368,6 @@ public class ImageManagerDialog extends ExtendedTitleAreaDialog {
             Image image = entry.getValue();
             if(image != null && !image.isDisposed()) {
                 image.dispose();
-            }
-        }
-    }
-    
-    protected class ModelsViewer extends TableViewer {
-        public ModelsViewer(Composite parent) {
-            super(parent, SWT.FULL_SELECTION);
-            setColumns();
-            setContentProvider(new ModelsViewerContentProvider());
-            setLabelProvider(new ModelsViewerLabelProvider());
-            setSorter(new ViewerSorter() {
-                @Override
-                public int category(Object element) {
-                    if(element == OPEN) {
-                        return 1;
-                    }
-                    return 0;
-                }
-            });
-        }
-        
-        protected void setColumns() {
-            Table table = getTable();
-            table.setHeaderVisible(false);
-            
-            // Use layout from parent container
-            TableColumnLayout layout = (TableColumnLayout)getControl().getParent().getLayout();
-            TableViewerColumn column = new TableViewerColumn(this, SWT.NONE);
-            layout.setColumnData(column.getColumn(), new ColumnWeightData(100, false));
-        }
-
-        protected class ModelsViewerContentProvider implements IStructuredContentProvider {
-            @Override
-            public void dispose() {
-            }
-
-            @Override
-            public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-            }
-
-            @Override
-            public Object[] getElements(Object inputElement) {
-                List<Object> list = new ArrayList<Object>();
-                
-                for(IZentaModel model : IEditorModelManager.INSTANCE.getModels()) {
-                    IArchiveManager archiveManager = IEditorModelManager.INSTANCE.obtainArchiveManager(model);
-                    if(archiveManager.hasImages()) {
-                        list.add(model);
-                    }
-                }
-                
-                list.add(OPEN);
-
-                return list.toArray();
-            }
-        }
-
-        protected class ModelsViewerLabelProvider extends LabelProvider {
-            @Override
-            public String getText(Object element) {
-                if(element instanceof INameable) {
-                    return ((INameable)element).getName();
-                }
-                return super.getText(element);
-            }
-            
-            @Override
-            public Image getImage(Object element) {
-                return ZentaLabelProvider.INSTANCE.getImage((EObject) element);
             }
         }
     }

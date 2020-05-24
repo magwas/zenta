@@ -5,6 +5,7 @@
  */
 package org.rulez.magwas.zenta.editor.diagram.editparts;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;
@@ -14,6 +15,7 @@ import org.rulez.magwas.zenta.editor.preferences.Preferences;
 import org.rulez.magwas.zenta.editor.ui.IElementUIProvider;
 import org.rulez.magwas.zenta.editor.ui.factory.ElementUIFactory;
 import org.rulez.magwas.zenta.model.IZentaDiagramModel;
+import org.rulez.magwas.zenta.model.IBasicRelationship;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaConnection;
 import org.rulez.magwas.zenta.model.IDiagramModelZentaObject;
 import org.rulez.magwas.zenta.model.IZentaElement;
@@ -36,20 +38,26 @@ implements EditPartFactory {
         IElementUIProvider provider = null;
         
         // Zenta Model Element Parts
-        if(model instanceof IDiagramModelZentaObject) {
+        ElementUIFactory instance = ElementUIFactory.INSTANCE;
+		if(model instanceof IDiagramModelZentaObject) {
             IZentaElement zentaElement = ((IDiagramModelZentaObject)model).getZentaElement();
             if(null != zentaElement)
-            	provider = ElementUIFactory.INSTANCE.getProvider(zentaElement.eClass());
+            	provider = instance.getProvider(zentaElement.eClass());
         }
         
         // Zenta Connection Model Element Parts
         else if(model instanceof IDiagramModelZentaConnection) {
-            provider = ElementUIFactory.INSTANCE.getProvider(((IDiagramModelZentaConnection)model).getRelationship().eClass());
+            IDiagramModelZentaConnection iDiagramModelZentaConnection = (IDiagramModelZentaConnection)model;
+            System.err.println("connection: " + iDiagramModelZentaConnection);
+			IBasicRelationship relationship = iDiagramModelZentaConnection.getRelationship();
+			System.err.println("relationship:"+relationship);
+			EClass eClass = relationship.eClass();
+			provider = instance.getProvider(eClass);
         }
         
         // Other
         else if(model instanceof EObject) {
-            provider = ElementUIFactory.INSTANCE.getProvider(((EObject)model).eClass());
+            provider = instance.getProvider(((EObject)model).eClass());
         }
         
         // We have a provider

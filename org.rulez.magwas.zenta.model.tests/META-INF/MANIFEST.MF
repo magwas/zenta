@@ -7,13 +7,35 @@ Bundle-Activator: org.rulez.magwas.zenta.model.Activator
 Bundle-Vendor: Árpád Magosányi
 Require-Bundle: org.eclipse.core.runtime,
  org.rulez.magwas.zenta.model;bundle-version="2.4.0",
- org.junit,
  org.rulez.magwas.zenta.controller;bundle-version="2.4.0",
  uk.ac.bolton.jdom,
- org.apache.commons.io;bundle-version="2.2.0"
+ org.apache.commons.io;bundle-version="2.2.0",
+ org.junit.jupiter.api,
+ org.junit.jupiter.engine,
+ org.junit.jupiter.migrationsupport,
+ org.junit.jupiter.params,
+ org.junit.platform.commons,
+ org.junit.platform.engine,
+ org.junit.platform.launcher,
+ org.junit.platform.runner,
+ org.junit.platform.suite.api,
+ org.junit.vintage.engine,
+ org.hamcrest.core,
+ org.opentest4j,
+ org.apiguardian
 Bundle-ActivationPolicy: lazy
-Export-Package: org.rulez.magwas.zenta.model.testutils
-Import-Package: net.sf.saxon
+Export-Package: com.kodekonveyor.annotations,
+ com.kodekonveyor.exception,
+ com.kodekonveyor.zenta.model,
+ org.rulez.magwas.zenta.model,
+ org.rulez.magwas.zenta.model.manager,
+ org.rulez.magwas.zenta.model.testutils,
+ org.rulez.magwas.zenta.model.viewpoints
+Import-Package: junit.framework;version="4.12.0",
+ net.sf.saxon,
+ org.junit;version="4.12.0",
+ org.junit.rules;version="4.12.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
  lib/mockito-all.jar
+Automatic-Module-Name: org.rulez.magwas.zenta.model.tests

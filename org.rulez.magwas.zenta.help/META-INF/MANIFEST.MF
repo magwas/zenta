@@ -22,3 +22,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.rulez.magwas.zenta.help.cheatsheets,
  org.rulez.magwas.zenta.help.hints
 Eclipse-BundleShape: dir
+Automatic-Module-Name: org.rulez.magwas.zenta.help

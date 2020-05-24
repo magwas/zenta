@@ -57,12 +57,18 @@ public class Diagrams extends Step {
     private void saveDiagrams(IZentaModel model,File targetdir) {
     	List<IDiagramModel> dias = model.getDiagramModels();
     	for (IDiagramModel dia : dias) {
+    		try {
     		Image image = DiagramUtils.createImage(dia);
     		String diagramID = dia.getId();
+    		System.err.println("saving "+ diagramID);
     		File file = new File(targetdir,diagramID+".png");
             ImageLoader loader = new ImageLoader();
             loader.data = new ImageData[] { image.getImageData() };
             loader.save(file.getAbsolutePath(), SWT.IMAGE_PNG);
+    		} catch (Exception e) {
+    			System.err.println("exception while saving diagram");
+    			e.printStackTrace(System.err);
+    		}
     	}
     }
 

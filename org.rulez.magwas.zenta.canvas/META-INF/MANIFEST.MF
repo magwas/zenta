@@ -24,5 +24,11 @@ Export-Package: org.rulez.magwas.zenta.canvas,
  org.rulez.magwas.zenta.canvas.model,
  org.rulez.magwas.zenta.canvas.model.impl,
  org.rulez.magwas.zenta.canvas.model.util,
- org.rulez.magwas.zenta.canvas.policies
+ org.rulez.magwas.zenta.canvas.policies,
+ org.rulez.magwas.zenta.canvas.preferences,
+ org.rulez.magwas.zenta.canvas.propertysections,
+ org.rulez.magwas.zenta.canvas.templates.dialog,
+ org.rulez.magwas.zenta.canvas.templates.model,
+ org.rulez.magwas.zenta.canvas.templates.wizard
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.rulez.magwas.zenta.canvas

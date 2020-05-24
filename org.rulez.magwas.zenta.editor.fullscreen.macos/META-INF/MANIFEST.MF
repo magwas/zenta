@@ -7,3 +7,4 @@ Bundle-Vendor: Árpád Magosányi
 Fragment-Host: org.eclipse.ui
 Eclipse-PlatformFilter: (osgi.ws=cocoa)
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.rulez.magwas.zenta.editor.fullscreen.macos

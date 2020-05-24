@@ -26,6 +26,8 @@ import org.rulez.magwas.zenta.model.handmade.util.StringUtils;
 import org.rulez.magwas.zenta.model.handmade.util.Util;
 import org.rulez.magwas.zenta.model.impl.BasicRelationshipBase;
 
+import com.kodekonveyor.zenta.model.BasicRelationshipCheckService;
+
 public class RelationClass extends BasicRelationshipBase implements IBasicRelationship, IRelationClass {
 
 	public RelationClass(IBasicRelationship ancestor) {
@@ -220,14 +222,14 @@ public class RelationClass extends BasicRelationshipBase implements IBasicRelati
 	@Override
 	public void setSource(IZentaElement value) {
 		if(isChecked())
-			checkSource(value);
+			BasicRelationshipCheckService.checkNotNull(value, "new source cannot be null for",this);
 		super.setSource(value);
 	}
 
 	@Override
 	public void setTarget(IZentaElement value) {
 		if(isChecked())
-			checkTarget(value);
+			BasicRelationshipCheckService.checkNotNull(value, "new target cannot be null for",this);
 		super.setTarget(value);
 	}
 }

@@ -9,3 +9,4 @@ Eclipse-PlatformFilter: (osgi.ws=cocoa)
 Import-Package: org.rulez.magwas.zenta.model.manager,
  org.rulez.magwas.zenta.widgets
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.rulez.magwas.zenta.editor.launch.macos

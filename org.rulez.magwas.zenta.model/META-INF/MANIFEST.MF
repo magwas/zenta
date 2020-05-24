@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.rulez.magwas.zenta.model;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.rulez.magwas.nonnul,
+Export-Package: com.kodekonveyor.zenta.model,
+ org.rulez.magwas.nonnul,
  org.rulez.magwas.zenta.model,
  org.rulez.magwas.zenta.model.handmade,
  org.rulez.magwas.zenta.model.handmade.util,
@@ -21,3 +22,4 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: org.rulez.magwas.zenta.model.jar
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.rulez.magwas.zenta.model

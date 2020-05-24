@@ -35,3 +35,4 @@ Bundle-ClassPath: lib/jaxen.jar,
  uk.ac.bolton.jdom.jar,
  lib/saxon9.jar
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: uk.ac.bolton.jdom

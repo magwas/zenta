@@ -60,6 +60,7 @@ public interface INameable extends ZentaObject {
 
 	void move(IFolder fOldParent, IFolder fNewParent);
 	
+	@Deprecated // BasicRelationshipCheckService
 	default void checkName(String value) {
 		if ( value == null )
 			throw new ModelConsistencyException("name cannot be null", this);

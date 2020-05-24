@@ -9,3 +9,4 @@ Eclipse-PlatformFilter: (osgi.ws=win32)
 Import-Package: org.rulez.magwas.zenta.widgets
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.ui.ide;bundle-version="3.14.200"
+Automatic-Module-Name: org.rulez.magwas.zenta.editor.launch.win32

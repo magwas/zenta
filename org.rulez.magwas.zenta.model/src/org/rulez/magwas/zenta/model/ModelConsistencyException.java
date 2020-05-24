@@ -5,7 +5,7 @@ public class ModelConsistencyException extends Error {
 	private ZentaObject element;
 
 	public ModelConsistencyException(String message, ZentaObject element) {
-		super(message);
+		super(message+": "+element);
 		this.element=element;
 	}
 	

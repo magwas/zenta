@@ -20,3 +20,4 @@ Export-Package: org.rulez.magwas.zenta.browser;
 Bundle-ActivationPolicy: lazy
 Import-Package: org.rulez.magwas.zenta.model.util
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.rulez.magwas.zenta.browser

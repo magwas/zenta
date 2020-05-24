@@ -52,6 +52,7 @@ public interface IDocumentable extends ZentaObject {
 	 */
 	void setDocumentation(String value);
 	
+	@Deprecated //BasicRelationshipCheckService
 	default void checkDocumentation(String value) {
 		if (null == value)
 			throw new ModelConsistencyException("documentation cannot be null", this);

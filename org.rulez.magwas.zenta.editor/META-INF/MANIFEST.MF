@@ -55,6 +55,7 @@ Export-Package: .,
  org.rulez.magwas.zenta.editor.propertysections,
  org.rulez.magwas.zenta.editor.ui,
  org.rulez.magwas.zenta.editor.ui.components,
+ org.rulez.magwas.zenta.editor.ui.factory,
  org.rulez.magwas.zenta.editor.ui.services,
  org.rulez.magwas.zenta.editor.utils,
  org.rulez.magwas.zenta.editor.views,
@@ -64,3 +65,4 @@ Export-Package: .,
  org.rulez.magwas.zenta.editor.views.tree.actions,
  org.rulez.magwas.zenta.editor.views.tree.commands,
  org.rulez.magwas.zenta.editor.views.tree.search
+Automatic-Module-Name: org.rulez.magwas.zenta.editor

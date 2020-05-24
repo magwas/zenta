@@ -19,3 +19,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.rulez.magwas.zenta.templates.dialog,
  org.rulez.magwas.zenta.templates.model,
  org.rulez.magwas.zenta.templates.wizard
+Automatic-Module-Name: org.rulez.magwas.zenta.templates

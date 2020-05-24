@@ -24,3 +24,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
  lib/mockito-all.jar
+Import-Package: org.junit.jupiter.api
