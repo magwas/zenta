@@ -115,6 +115,8 @@ public class ZentaDiagramModelBase extends DiagramModelBase implements IZentaDia
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IZentaPackage.ZENTA_DIAGRAM_MODEL__VIEWPOINT:
+				if (null == newValue)
+					throw new IllegalArgumentException("viewPoint ID cannot be null");
 				setViewpoint((Integer)newValue);
 				return;
 		}

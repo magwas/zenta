@@ -47,6 +47,8 @@ public interface IDiagramModelContainer extends IDiagramModelComponent {
 		EObject parent = eContainer();
 		if (parent instanceof IFolder)
 			return (IFolder) parent;
+		if(null == parent)
+			throw new IllegalArgumentException("no parent");
 		return ((IDiagramModelContainer) parent).getParentFolder();
 	}
 

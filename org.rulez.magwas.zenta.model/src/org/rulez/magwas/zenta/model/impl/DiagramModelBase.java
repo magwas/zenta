@@ -312,6 +312,8 @@ public abstract class DiagramModelBase extends ZentaObjectImpl implements IDiagr
      */
     public IZentaModel getZentaModel() {
         IZentaModelElement container = (IZentaModelElement)eContainer();
+        if(null == container)
+        	throw new IllegalArgumentException("not added to container");
 		return container.getZentaModel();
     }
 
@@ -445,6 +447,8 @@ public abstract class DiagramModelBase extends ZentaObjectImpl implements IDiagr
 	 */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    	if(null == msgs)
+    		throw new IllegalArgumentException("null msgs");
 		switch (featureID) {
 			case IZentaPackage.DIAGRAM_MODEL__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
@@ -453,7 +457,13 @@ public abstract class DiagramModelBase extends ZentaObjectImpl implements IDiagr
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
-
+    
+    @Override
+    public Object eDynamicGet(int featureID, boolean resolve, boolean coreType) {
+    	if(featureID>= IZentaPackage.ZENTA_DIAGRAM_MODEL_FEATURE_COUNT)
+    		throw new IllegalArgumentException("invalid feature id");
+    	return super.eDynamicGet(featureID, resolve, coreType);
+    }    
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -591,7 +601,11 @@ public abstract class DiagramModelBase extends ZentaObjectImpl implements IDiagr
 			case IZentaPackage.DIAGRAM_MODEL__CONNECTION_ROUTER_TYPE:
 				return connectionRouterType != CONNECTION_ROUTER_TYPE_EDEFAULT;
 		}
+		try {
 		return super.eIsSet(featureID);
+		} catch(AssertionError e) {
+			return false;
+		}
 	}
 
     /**
@@ -757,10 +771,16 @@ public abstract class DiagramModelBase extends ZentaObjectImpl implements IDiagr
 
 	@Override
 	public UndoState delete(UndoState save) {
+		if(null == save)
+			throw new IllegalArgumentException("null undostate");
 		ElementState state = (ElementState) save;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.REMOVE, IZentaPackage.DIAGRAM_MODEL, this, this));
-		state.folder.getElements().remove(this);
+		IFolder folder = state.folder;
+		if(null != folder) {
+			EList<INameable> elements = folder.getElements();
+			elements.remove(this);
+		}
 		return state;
 	}
 
@@ -776,8 +796,16 @@ public abstract class DiagramModelBase extends ZentaObjectImpl implements IDiagr
 	public void move(IFolder oldFolder, IFolder newFolder) {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.MOVE, this.eStaticClass().getClassifierID(), this, this));
-		oldFolder.getElements().remove(this);
-		newFolder.getElements().add(this);
+		if(null != oldFolder) {
+			EList<INameable> elements = oldFolder.getElements();
+			if(null != elements)
+				elements.remove(this);
+		}
+		if(null != newFolder) {
+			EList<INameable> elements = newFolder.getElements();
+			if(null != elements)
+				elements.add(this);
+		}
 	}
 
 

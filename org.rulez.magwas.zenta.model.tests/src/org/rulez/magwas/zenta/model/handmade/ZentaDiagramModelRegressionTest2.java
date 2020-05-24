@@ -1,10 +1,7 @@
 package org.rulez.magwas.zenta.model.handmade;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ZentaDiagramModelRegressionTest2 {
 
 	public static boolean debug = false;
@@ -271,8 +268,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			boolean boolean19 = false; // flaky: zentaDiagramModel0.eIsSet((int)
 										// 'a');
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -307,9 +304,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj10 = zentaDiagramModel0
 					.eDynamicGet((short) 0, false, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eObject5);
@@ -436,9 +433,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj12 = zentaDiagramModel0
 					.eDynamicGet(eStructuralFeature10, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -543,9 +540,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			boolean boolean19 = zentaDiagramModel0.eIsSet(0);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -738,8 +735,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList19 = zentaDiagramModel0
 					.eCrossReferences();
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -861,9 +858,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean32 = zentaDiagramModel0
 					.eOpenIsSet(eStructuralFeature31);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -1008,8 +1005,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList8 = zentaDiagramModel0
 					.eCrossReferences();
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -1065,9 +1062,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj12 = zentaDiagramModel0
 					.eDynamicGet(eStructuralFeature10, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -1252,9 +1249,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain38 = zentaDiagramModel0
 					.eDynamicBasicRemoveFromContainer(notificationChain37);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -1350,9 +1347,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -1395,9 +1392,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj23 = zentaDiagramModel0
 					.eGet(eStructuralFeature20, false, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -1571,9 +1568,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj10 = zentaDiagramModel0
 					.eDynamicGet(eStructuralFeature8, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -1647,9 +1644,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel15
 					.eDynamicSet(eStructuralFeature27, zentaDiagramModel44);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -1921,9 +1918,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain36 = zentaDiagramModel5
 					.eBasicRemoveFromContainer(notificationChain35);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -2033,8 +2030,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		// generation
 		try {
 // flaky:             zentaDiagramModel0.eUnset(100);
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -2123,9 +2120,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain52 = zentaDiagramModel0
 					.eInverseAdd(zentaDiagramModel26, '#', notificationChain51);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -2190,9 +2187,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eOpenUnset(eStructuralFeature13);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -2266,9 +2263,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean24 = zentaDiagramModel15
 					.eDynamicIsSet(eStructuralFeature23);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -2298,9 +2295,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain6 = zentaDiagramModel0
 					.eBasicRemoveFromContainer(notificationChain5);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -2474,9 +2471,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eDynamicSet(eStructuralFeature17, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -2527,9 +2524,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eOpenUnset(eStructuralFeature8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -2575,9 +2572,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain25 = zentaDiagramModel0
 					.eBasicRemoveFromContainer(notificationChain24);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -2623,9 +2620,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj15 = zentaDiagramModel0
 					.eGet(eStructuralFeature14);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -2677,9 +2674,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain25 = zentaDiagramModel16
 					.eDynamicBasicRemoveFromContainer(notificationChain24);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -3040,9 +3037,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			int int30 = zentaDiagramModel0.eDerivedOperationID(eOperation29);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -3105,9 +3102,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj24 = zentaDiagramModel0
 					.eInvoke(eOperation15, adapterList23);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -3437,9 +3434,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature10);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -3600,9 +3597,9 @@ public class ZentaDiagramModelRegressionTest2 {
 							zentaDiagramModel35, (byte) -1, notificationChain45
 					);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -3814,9 +3811,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel46.eDynamicUnset(eStructuralFeature57);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -3964,8 +3961,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList41 = zentaDiagramModel27
 					.eCrossReferences();
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -4039,9 +4036,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eDynamicUnset(eStructuralFeature7);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -4098,9 +4095,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eOpenSet(eStructuralFeature11, iDiagramModelObjectList36);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -4220,9 +4217,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj25 = zentaDiagramModel0
 					.eDynamicInvoke(35, adapterList24);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -4267,8 +4264,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			java.lang.Object obj22 = null; // flaky: zentaDiagramModel0.eGet(52,
 											// true, false);
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(eClass6);
@@ -4330,9 +4327,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eDynamicSet(eStructuralFeature20, boolean35);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -4435,7 +4432,7 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.UnsupportedOperationException; message: null"
 			);
-		} catch (java.lang.UnsupportedOperationException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -4480,9 +4477,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean11 = zentaDiagramModel0
 					.eOpenIsSet(eStructuralFeature10);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -4572,9 +4569,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IZentaModel iZentaModel18 = zentaDiagramModel0
 					.getZentaModel();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(eClass6);
@@ -4622,8 +4619,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			java.lang.Object obj27 = null; // flaky: zentaDiagramModel6.eGet(52,
 											// false, true);
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(adapterList5);
@@ -4742,9 +4739,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj40 = zentaDiagramModel13
 					.eDynamicGet(2, false, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -4801,9 +4798,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			boolean boolean14 = zentaDiagramModel0.eIsSet(eStructuralFeature13);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -4907,9 +4904,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain53 = zentaDiagramModel0
 					.eBasicRemoveFromContainerFeature(notificationChain52);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -5102,9 +5099,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean12 = zentaDiagramModel0
 					.eDynamicIsSet(eStructuralFeature11);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -5187,9 +5184,9 @@ public class ZentaDiagramModelRegressionTest2 {
 					eStructuralFeature32, zentaDiagramModel33
 			);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -5281,9 +5278,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IZentaModel iZentaModel33 = zentaDiagramModel0
 					.getZentaModel();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue(
@@ -5358,9 +5355,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eDynamicSet(eStructuralFeature7, zentaDiagramModel8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -5698,9 +5695,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj32 = zentaDiagramModel0
 					.eGet((byte) 0, true, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -5736,17 +5733,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		org.rulez.magwas.zenta.model.IDiagramModel iDiagramModel7 = zentaDiagramModel0
 				.findDiagramModel();
 		boolean boolean8 = zentaDiagramModel0.isDeleted();
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			org.rulez.magwas.zenta.model.UndoState undoState9 = zentaDiagramModel0
-					.delete();
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		org.rulez.magwas.zenta.model.UndoState undoState9 = zentaDiagramModel0
+				.delete();
 		org.junit.Assert.assertNull(eStore3);
 		org.junit.Assert.assertNull(str6);
 		org.junit.Assert.assertNotNull(iDiagramModel7);
@@ -5912,9 +5900,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj20 = zentaDiagramModel0
 					.eOpenGet(eStructuralFeature18, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -5956,9 +5944,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj9 = zentaDiagramModel0
 					.eGet(eStructuralFeature7, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -5992,16 +5980,7 @@ public class ZentaDiagramModelRegressionTest2 {
 		org.eclipse.emf.ecore.EObject eObject17 = zentaDiagramModel0.getCopy();
 		org.rulez.magwas.zenta.model.IFolder iFolder18 = null;
 		org.rulez.magwas.zenta.model.IFolder iFolder19 = null;
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			zentaDiagramModel0.move(iFolder18, iFolder19);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		zentaDiagramModel0.move(iFolder18, iFolder19);
 		org.junit.Assert.assertNull(obj4);
 		org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
 		org.junit.Assert.assertNull(str6);
@@ -6214,9 +6193,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean38 = zentaDiagramModel0
 					.eOpenIsSet(eStructuralFeature37);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -6363,9 +6342,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eDynamicUnset(eStructuralFeature17);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -6398,9 +6377,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -6584,16 +6563,7 @@ public class ZentaDiagramModelRegressionTest2 {
 		java.lang.String str16 = zentaDiagramModel0.getDocumentation();
 		org.rulez.magwas.zenta.model.IFolder iFolder17 = null;
 		org.rulez.magwas.zenta.model.IFolder iFolder18 = null;
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			zentaDiagramModel0.move(iFolder17, iFolder18);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		zentaDiagramModel0.move(iFolder17, iFolder18);
 		org.junit.Assert.assertNull(obj4);
 		org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
 		org.junit.Assert
@@ -6626,9 +6596,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -6693,17 +6663,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		int int51 = zentaDiagramModel0.getViewpoint();
 		org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList52 = zentaDiagramModel0
 				.eContents();
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			org.rulez.magwas.zenta.model.UndoState undoState53 = zentaDiagramModel0
-					.delete();
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		org.rulez.magwas.zenta.model.UndoState undoState53 = zentaDiagramModel0
+				.delete();
 		org.junit.Assert.assertNull(obj4);
 		org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
 		org.junit.Assert
@@ -6793,9 +6754,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj38 = zentaDiagramModel0
 					.eInvoke(eOperation6, adapterList34);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(resource3);
@@ -6874,9 +6835,9 @@ public class ZentaDiagramModelRegressionTest2 {
 					eStructuralFeature20, zentaDiagramModel21
 			);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -6998,9 +6959,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj20 = zentaDiagramModel0
 					.eGet(eStructuralFeature19);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -7090,9 +7051,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj75 = zentaDiagramModel0
 					.eDynamicInvoke('a', adapterList73);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -7256,9 +7217,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean44 = zentaDiagramModel0
 					.eDynamicIsSet(eStructuralFeature43);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -7324,9 +7285,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			int int19 = zentaDiagramModel0.eDerivedOperationID(eOperation18);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -7403,8 +7364,8 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean22 = false; // flaky:
 										// zentaDiagramModel15.eIsSet((int)
 										// (short) 100);
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -7534,9 +7495,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj19 = zentaDiagramModel0
 					.eDynamicGet(eStructuralFeature17, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -7567,9 +7528,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			int int10 = zentaDiagramModel0.eDerivedOperationID(eOperation9);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(adapterList5);
@@ -7600,9 +7561,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj11 = zentaDiagramModel0
 					.eGet(eStructuralFeature8, false, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(resource3);
@@ -7801,9 +7762,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj96 = zentaDiagramModel0
 					.eInvoke(eOperation52, adapterList94);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -7892,9 +7853,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj8 = zentaDiagramModel0
 					.eDynamicGet(eStructuralFeature6, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -7946,9 +7907,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj30 = zentaDiagramModel10
 					.eGet(eStructuralFeature29);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -8057,9 +8018,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj19 = zentaDiagramModel0
 					.eDynamicGet(0, true, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -8096,9 +8057,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.ecore.EStructuralFeature.Setting setting16 = zentaDiagramModel0
 					.eSetting(eStructuralFeature15);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -8287,9 +8248,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -8385,9 +8346,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eOpenSet(eStructuralFeature11, zentaDiagramModel42);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -8528,9 +8489,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature43);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -8743,8 +8704,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList57 = zentaDiagramModel35
 					.eCrossReferences();
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -8809,9 +8770,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain9 = zentaDiagramModel0
 					.eBasicRemoveFromContainerFeature(notificationChain8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -8942,9 +8903,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj38 = zentaDiagramModel0
 					.eGet(eStructuralFeature37);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -9135,8 +9096,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		// generation
 		try {
 // flaky:             zentaDiagramModel18.eSet((int) (short) 100, (java.lang.Object) zentaDiagramModel28);
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -9361,9 +9322,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel18.eDynamicSet((short) -1, zentaDiagramModel27);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -9428,9 +9389,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain10 = zentaDiagramModel0
 					.eBasicRemoveFromContainerFeature(notificationChain9);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -9510,9 +9471,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj6 = zentaDiagramModel0
 					.eInvoke(eOperation4, adapterList5);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue(
@@ -9562,9 +9523,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature30);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -9626,9 +9587,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain28 = zentaDiagramModel17
 					.eBasicRemoveFromContainer(notificationChain27);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(eClass6);
@@ -9731,9 +9692,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eOpenUnset(eStructuralFeature11);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -10195,9 +10156,9 @@ public class ZentaDiagramModelRegressionTest2 {
 					eStructuralFeature30, zentaDiagramModel36
 			);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -10277,8 +10238,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		// generation
 		try {
 // flaky:             zentaDiagramModel0.eSet(35, (java.lang.Object) zentaDiagramModel10);
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -10317,9 +10278,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IZentaModel iZentaModel17 = zentaDiagramModel0
 					.getZentaModel();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -10454,17 +10415,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		org.eclipse.emf.ecore.EObject eObject17 = zentaDiagramModel7.getCopy();
 		org.rulez.magwas.zenta.model.UndoState undoState18 = zentaDiagramModel7
 				.prepareDelete();
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			org.rulez.magwas.zenta.model.UndoState undoState19 = zentaDiagramModel0
-					.delete(undoState18);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		org.rulez.magwas.zenta.model.UndoState undoState19 = zentaDiagramModel0
+				.delete(undoState18);
 		org.junit.Assert.assertNull(resource3);
 		org.junit.Assert.assertNotNull(eObjectList6);
 		org.junit.Assert.assertNull(obj11);
@@ -10616,9 +10568,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IFolder iFolder29 = zentaDiagramModel10
 					.getParentFolder();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -10688,9 +10640,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj46 = zentaDiagramModel22
 					.eGet((byte) 0, false, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -10849,9 +10801,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eOpenUnset(eStructuralFeature9);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -10905,9 +10857,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.ecore.EObject eObject29 = zentaDiagramModel0
 					.eResolveProxy(internalEObject28);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -11028,9 +10980,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain10 = zentaDiagramModel0
 					.eBasicRemoveFromContainerFeature(notificationChain9);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -11176,9 +11128,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain31 = zentaDiagramModel0
 					.eInverseAdd(zentaDiagramModel13, 'a', notificationChain30);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -11235,8 +11187,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			boolean boolean23 = false; // flaky: zentaDiagramModel8.eIsSet((int)
 										// ' ');
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(eClass6);
@@ -11331,9 +11283,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj15 = zentaDiagramModel0
 					.eGet(eStructuralFeature12, true, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -11379,7 +11331,7 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.UnsupportedOperationException; message: null"
 			);
-		} catch (java.lang.UnsupportedOperationException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -11452,9 +11404,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj9 = zentaDiagramModel0
 					.eGet(eStructuralFeature6, true, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -11503,9 +11455,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj32 = zentaDiagramModel12
 					.eDynamicGet(eStructuralFeature30, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -11621,17 +11573,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		org.rulez.magwas.zenta.model.UndoState undoState84 = zentaDiagramModel64
 				.prepareDelete();
 		zentaDiagramModel28.setAdapter(int50, undoState84);
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			org.rulez.magwas.zenta.model.UndoState undoState86 = zentaDiagramModel0
-					.delete(undoState84);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		org.rulez.magwas.zenta.model.UndoState undoState86 = zentaDiagramModel0
+				.delete(undoState84);
 		org.junit.Assert.assertNull(obj4);
 		org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
 		org.junit.Assert.assertNull(str6);
@@ -11723,9 +11666,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eOpenSet(eStructuralFeature7, zentaDiagramModel8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -11795,9 +11738,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eDynamicUnset(eStructuralFeature8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -11899,9 +11842,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj12 = zentaDiagramModel0
 					.eOpenGet(eStructuralFeature10, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -12011,9 +11954,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean44 = zentaDiagramModel22
 					.eDynamicIsSet(eStructuralFeature43);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -12152,9 +12095,9 @@ public class ZentaDiagramModelRegressionTest2 {
 					eStructuralFeature7, zentaDiagramModel8
 			);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -12281,9 +12224,9 @@ public class ZentaDiagramModelRegressionTest2 {
 							zentaDiagramModel9, (short) -1, notificationChain17
 					);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -12462,7 +12405,7 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.UnsupportedOperationException; message: null"
 			);
-		} catch (java.lang.UnsupportedOperationException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -12516,9 +12459,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj19 = zentaDiagramModel0
 					.eDynamicGet((short) 1, false, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -12550,9 +12493,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.ecore.EStructuralFeature.Setting setting15 = zentaDiagramModel0
 					.eSetting(eStructuralFeature14);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -12600,9 +12543,9 @@ public class ZentaDiagramModelRegressionTest2 {
 					eStructuralFeature8, zentaDiagramModel9
 			);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -12965,9 +12908,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature7);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(resource3);
@@ -13008,9 +12951,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain22 = zentaDiagramModel8
 					.eDynamicBasicRemoveFromContainer(notificationChain21);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(eClass6);
@@ -13056,9 +12999,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel5.eDynamicUnset(eStructuralFeature23);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -13385,9 +13328,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eOpenUnset(eStructuralFeature13);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -13446,9 +13389,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eOpenSet(eStructuralFeature6, zentaDiagramModel7);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -13507,9 +13450,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature10);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -13610,9 +13553,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj54 = zentaDiagramModel0
 					.eInvoke(eOperation37, adapterList53);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -13881,9 +13824,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain37 = zentaDiagramModel5
 					.eInverseRemove(zentaDiagramModel22, 52, notificationChain36);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -14054,9 +13997,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj47 = zentaDiagramModel0
 					.eGet(eStructuralFeature44, false, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -14398,7 +14341,7 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.UnsupportedOperationException; message: null"
 			);
-		} catch (java.lang.UnsupportedOperationException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -14496,9 +14439,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			int int9 = zentaDiagramModel0.eDerivedOperationID(eOperation8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -14553,9 +14496,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			boolean boolean37 = zentaDiagramModel22.eDynamicIsSet(52);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -14623,9 +14566,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain9 = zentaDiagramModel0
 					.eBasicRemoveFromContainerFeature(notificationChain8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -14833,8 +14776,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList17 = zentaDiagramModel0
 					.eCrossReferences();
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -14903,9 +14846,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj49 = zentaDiagramModel0
 					.eOpenGet(eStructuralFeature47, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -15124,9 +15067,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain25 = zentaDiagramModel0
 					.eInverseRemove(zentaDiagramModel12, 97, notificationChain24);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -15372,9 +15315,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj74 = zentaDiagramModel13
 					.eInvoke(eOperation37, adapterList73);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -15481,9 +15424,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IZentaModel iZentaModel16 = zentaDiagramModel0
 					.getZentaModel();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -15539,8 +15482,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList36 = zentaDiagramModel22
 					.eCrossReferences();
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -15672,9 +15615,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eDynamicSet(97, obj8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue(
@@ -15796,9 +15739,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IFolder iFolder37 = zentaDiagramModel22
 					.getParentFolder();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -15899,9 +15842,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean20 = zentaDiagramModel0
 					.eOpenIsSet(eStructuralFeature19);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -16082,17 +16025,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		zentaDiagramModel22.eNotify(notification30);
 		org.rulez.magwas.zenta.model.UndoState undoState32 = zentaDiagramModel22
 				.prepareDelete();
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			org.rulez.magwas.zenta.model.UndoState undoState33 = zentaDiagramModel0
-					.delete(undoState32);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		org.rulez.magwas.zenta.model.UndoState undoState33 = zentaDiagramModel0
+				.delete(undoState32);
 		org.junit.Assert.assertNull(obj4);
 		org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
 		org.junit.Assert
@@ -16164,17 +16098,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		zentaDiagramModel5.setViewpoint((short) -1);
 		org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> eObjectItor43 = zentaDiagramModel5
 				.eAllContents();
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			org.rulez.magwas.zenta.model.UndoState undoState44 = zentaDiagramModel5
-					.delete();
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		org.rulez.magwas.zenta.model.UndoState undoState44 = zentaDiagramModel5
+				.delete();
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
 		org.junit.Assert
 				.assertEquals("'" + str4 + "' != '" + "" + "'", str4, "");
@@ -16233,9 +16158,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.ecore.EStructuralFeature.Setting setting24 = zentaDiagramModel6
 					.eSetting(eStructuralFeature23);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(adapterList5);
@@ -16296,9 +16221,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj36 = zentaDiagramModel0
 					.eGet(eStructuralFeature34, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(adapterList5);
@@ -16360,9 +16285,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj35 = zentaDiagramModel16
 					.eGet(eStructuralFeature34);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -16573,9 +16498,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eOpenUnset(eStructuralFeature6);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -16612,8 +16537,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			boolean boolean20 = false; // flaky: zentaDiagramModel0.eIsSet((int)
 										// (short) -1);
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -16658,9 +16583,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			int int23 = zentaDiagramModel0.eDerivedOperationID(eOperation22);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj9);
@@ -16725,7 +16650,7 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.ecore.EReference eReference38 = zentaDiagramModel0
 					.eContainmentFeature();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
 		} catch (java.lang.NullPointerException e) {
 			// Expected exception.
@@ -16896,9 +16821,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eDynamicSet(eStructuralFeature10, zentaDiagramModel19);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -16972,9 +16897,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean23 = zentaDiagramModel0
 					.eDynamicIsSet(eStructuralFeature22);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -17061,9 +16986,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean36 = zentaDiagramModel22
 					.eIsSet(eStructuralFeature35);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -17128,8 +17053,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		// generation
 		try {
 			boolean boolean34 = false; // flaky: zentaDiagramModel0.eIsSet(52);
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -17206,9 +17131,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IZentaModel iZentaModel23 = zentaDiagramModel0
 					.getZentaModel();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -17274,9 +17199,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj44 = zentaDiagramModel22
 					.eDynamicGet((byte) 100, false, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -17505,9 +17430,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj19 = zentaDiagramModel0
 					.eDynamicGet(eStructuralFeature17, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -17834,9 +17759,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IZentaModel iZentaModel11 = zentaDiagramModel0
 					.getZentaModel();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -17881,9 +17806,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj20 = zentaDiagramModel5
 					.eOpenGet(eStructuralFeature18, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -17969,16 +17894,7 @@ public class ZentaDiagramModelRegressionTest2 {
 		org.eclipse.emf.common.util.URI uRI16 = zentaDiagramModel0.eProxyURI();
 		org.rulez.magwas.zenta.model.IFolder iFolder17 = null;
 		org.rulez.magwas.zenta.model.IFolder iFolder18 = null;
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			zentaDiagramModel0.move(iFolder17, iFolder18);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		zentaDiagramModel0.move(iFolder17, iFolder18);
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
 		org.junit.Assert
 				.assertEquals("'" + str4 + "' != '" + "" + "'", str4, "");
@@ -18011,9 +17927,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			boolean boolean9 = zentaDiagramModel0.eIsSet(eStructuralFeature8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -18135,9 +18051,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj6 = zentaDiagramModel0
 					.eOpenGet(eStructuralFeature4, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue(
@@ -18172,7 +18088,7 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.UnsupportedOperationException; message: null"
 			);
-		} catch (java.lang.UnsupportedOperationException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -18390,9 +18306,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eOpenSet(eStructuralFeature6, zentaDiagramModel7);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -18493,16 +18409,7 @@ public class ZentaDiagramModelRegressionTest2 {
 				.eContainingFeature();
 		org.rulez.magwas.zenta.model.IFolder iFolder52 = null;
 		org.rulez.magwas.zenta.model.IFolder iFolder53 = null;
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			zentaDiagramModel0.move(iFolder52, iFolder53);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		zentaDiagramModel0.move(iFolder52, iFolder53);
 		org.junit.Assert.assertNull(obj4);
 		org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
 		org.junit.Assert
@@ -18587,9 +18494,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain36 = zentaDiagramModel26
 					.eInverseAdd(internalEObject33, 'a', notificationChain35);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(adapterList5);
@@ -18676,9 +18583,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj63 = zentaDiagramModel4
 					.eDynamicInvoke(' ', adapterList61);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -18824,9 +18731,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj20 = zentaDiagramModel0
 					.eGet(eStructuralFeature19);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -18879,8 +18786,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList30 = zentaDiagramModel8
 					.eCrossReferences();
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -18943,9 +18850,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eSet(eStructuralFeature13, eObjectItor19);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -19056,9 +18963,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.String str45 = zentaDiagramModel0
 					.eURIFragmentSegment(eStructuralFeature13, eClass42);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -19118,9 +19025,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj18 = zentaDiagramModel0
 					.eGet(eStructuralFeature15, true, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -19184,9 +19091,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			int int35 = zentaDiagramModel22
 					.eDerivedStructuralFeatureID(eStructuralFeature34);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -19365,9 +19272,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IFolder iFolder37 = zentaDiagramModel22
 					.getParentFolder();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -19439,9 +19346,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain10 = zentaDiagramModel0
 					.eBasicRemoveFromContainerFeature(notificationChain9);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -19479,9 +19386,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj16 = zentaDiagramModel0
 					.eOpenGet(eStructuralFeature14, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -19611,9 +19518,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			int int20 = zentaDiagramModel0.eDerivedOperationID(eOperation19);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -19677,9 +19584,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel5.eOpenUnset(eStructuralFeature39);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -19727,8 +19634,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> eObjectList11 = zentaDiagramModel0
 					.eCrossReferences();
-// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-		} catch (java.lang.NullPointerException e) {
+// flaky:             org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: null");
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -19777,9 +19684,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel6.eSet((byte) 10, internal29);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -19816,9 +19723,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain11 = zentaDiagramModel0
 					.eDynamicBasicRemoveFromContainer(notificationChain10);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -19853,9 +19760,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain18 = zentaDiagramModel0
 					.eDynamicBasicRemoveFromContainer(notificationChain17);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -19907,17 +19814,8 @@ public class ZentaDiagramModelRegressionTest2 {
 		zentaDiagramModel16.setLineWidth((short) 100);
 		org.rulez.magwas.zenta.model.UndoState undoState33 = zentaDiagramModel16
 				.prepareDelete();
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			org.rulez.magwas.zenta.model.UndoState undoState34 = zentaDiagramModel0
-					.delete(undoState33);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		org.rulez.magwas.zenta.model.UndoState undoState34 = zentaDiagramModel0
+				.delete(undoState33);
 		org.junit.Assert.assertNotNull(iDiagramModel3);
 		org.junit.Assert.assertNull(str4);
 		org.junit.Assert.assertNotNull(eObjectList7);
@@ -19996,9 +19894,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eOpenSet(eStructuralFeature15, eObject39);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -20074,9 +19972,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			int int36 = zentaDiagramModel22
 					.eDerivedStructuralFeatureID(eStructuralFeature35);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -20230,9 +20128,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain12 = zentaDiagramModel0
 					.eBasicRemoveFromContainerFeature(notificationChain11);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -20400,9 +20298,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain10 = zentaDiagramModel0
 					.eBasicRemoveFromContainer(notificationChain9);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -20516,9 +20414,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj37 = zentaDiagramModel24
 					.eDynamicGet(52, true, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -20610,9 +20508,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IZentaModel iZentaModel17 = zentaDiagramModel0
 					.getZentaModel();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -20652,9 +20550,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj16 = zentaDiagramModel0
 					.eGet(eStructuralFeature14, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -20777,9 +20675,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.ecore.EStructuralFeature.Setting setting7 = zentaDiagramModel0
 					.eSetting(eStructuralFeature6);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -20853,9 +20751,9 @@ public class ZentaDiagramModelRegressionTest2 {
 					eStructuralFeature21, zentaDiagramModel44
 			);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -21141,9 +21039,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eOpenUnset(eStructuralFeature6);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -21169,9 +21067,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eUnset(eStructuralFeature9);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -21438,9 +21336,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj22 = zentaDiagramModel8
 					.eGet(eStructuralFeature20, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(eClass6);
@@ -21606,9 +21504,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.rulez.magwas.zenta.model.IZentaModel iZentaModel10 = zentaDiagramModel0
 					.getZentaModel();
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(adapterList5);
@@ -21674,9 +21572,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean7 = zentaDiagramModel0
 					.eOpenIsSet(eStructuralFeature6);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -21862,9 +21760,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eDynamicSet((short) -1, obj10);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -21942,9 +21840,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean9 = zentaDiagramModel0
 					.eDynamicIsSet(eStructuralFeature8);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -21972,9 +21870,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			int int12 = zentaDiagramModel0.eDerivedOperationID(eOperation11);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -22030,9 +21928,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eDynamicSet(eStructuralFeature22, zentaDiagramModel28);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -22143,9 +22041,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean47 = zentaDiagramModel0
 					.eDynamicIsSet(eStructuralFeature46);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -22215,9 +22113,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj26 = zentaDiagramModel0
 					.eGet(eStructuralFeature23, false, true);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -22547,9 +22445,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			zentaDiagramModel0.eDynamicUnset(eStructuralFeature19);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -22662,9 +22560,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain32 = zentaDiagramModel12
 					.eBasicRemoveFromContainerFeature(notificationChain31);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -22743,9 +22641,9 @@ public class ZentaDiagramModelRegressionTest2 {
 							zentaDiagramModel26, 100, notificationChain38
 					);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -22870,9 +22768,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.ecore.EStructuralFeature.Setting setting10 = zentaDiagramModel0
 					.eSetting(eStructuralFeature9);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -22989,9 +22887,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain53 = zentaDiagramModel0
 					.eInverseAdd(zentaDiagramModel30, '#', notificationChain52);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -23129,9 +23027,9 @@ public class ZentaDiagramModelRegressionTest2 {
 					eStructuralFeature8, zentaDiagramModel9
 			);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(resource3);
@@ -23199,9 +23097,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			boolean boolean28 = zentaDiagramModel0.eIsSet(eStructuralFeature27);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(eClass6);
@@ -23294,9 +23192,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			zentaDiagramModel0
 					.eDynamicSet(eStructuralFeature10, zentaDiagramModel11);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -23501,9 +23399,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj12 = zentaDiagramModel0
 					.eDynamicGet(eStructuralFeature10, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -23536,9 +23434,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj14 = zentaDiagramModel0
 					.eDynamicGet('a', true, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -23644,9 +23542,9 @@ public class ZentaDiagramModelRegressionTest2 {
 		try {
 			int int30 = zentaDiagramModel16.eDerivedOperationID(eOperation29);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(eClass6);
@@ -23761,9 +23659,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			boolean boolean41 = zentaDiagramModel0
 					.eOpenIsSet(eStructuralFeature40);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -23863,9 +23761,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj67 = zentaDiagramModel40
 					.eInvoke(eOperation49, adapterList66);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -24012,16 +23910,7 @@ public class ZentaDiagramModelRegressionTest2 {
 				.eStore();
 		org.rulez.magwas.zenta.model.IFolder iFolder5 = null;
 		org.rulez.magwas.zenta.model.IFolder iFolder6 = null;
-		// The following exception was thrown during execution in test
-		// generation
-		try {
-			zentaDiagramModel0.move(iFolder5, iFolder6);
-			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
-			);
-		} catch (java.lang.NullPointerException e) {
-			// Expected exception.
-		}
+		zentaDiagramModel0.move(iFolder5, iFolder6);
 		org.junit.Assert.assertNull(resource3);
 		org.junit.Assert.assertNull(eStore4);
 	}
@@ -24201,9 +24090,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj20 = zentaDiagramModel0
 					.eOpenGet(eStructuralFeature18, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -24446,9 +24335,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			java.lang.Object obj52 = zentaDiagramModel37
 					.eDynamicGet(0, false, false);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -24519,9 +24408,9 @@ public class ZentaDiagramModelRegressionTest2 {
 			org.eclipse.emf.common.notify.NotificationChain notificationChain29 = zentaDiagramModel0
 					.eInverseAdd(zentaDiagramModel19, 'a', notificationChain28);
 			org.junit.Assert.fail(
-					"Expected exception of type java.lang.NullPointerException; message: null"
+					"Expected exception of type java.lang.IllegalArgumentException; message: null"
 			);
-		} catch (java.lang.NullPointerException e) {
+		} catch (java.lang.IllegalArgumentException e) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
