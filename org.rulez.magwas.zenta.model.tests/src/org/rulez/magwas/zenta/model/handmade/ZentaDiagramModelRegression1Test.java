@@ -546,7 +546,10 @@ public class ZentaDiagramModelRegression1Test {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.StringIndexOutOfBoundsException; message: String index out of range: -1"
 			);
-		} catch (java.lang.IllegalArgumentException e) {
+		} catch (
+				java.lang.IllegalArgumentException
+				| java.lang.StringIndexOutOfBoundsException e
+		) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);
@@ -10329,7 +10332,10 @@ public class ZentaDiagramModelRegression1Test {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.StringIndexOutOfBoundsException; message: String index out of range: -1"
 			);
-		} catch (java.lang.IllegalArgumentException e) {
+		} catch (
+				java.lang.IllegalArgumentException
+				| java.lang.StringIndexOutOfBoundsException e
+		) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);
@@ -11933,7 +11939,10 @@ public class ZentaDiagramModelRegression1Test {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.StringIndexOutOfBoundsException; message: String index out of range: -1"
 			);
-		} catch (java.lang.IllegalArgumentException e) {
+		} catch (
+				java.lang.IllegalArgumentException
+				| java.lang.StringIndexOutOfBoundsException e
+		) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(eStore3);
@@ -14875,7 +14884,10 @@ public class ZentaDiagramModelRegression1Test {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.StringIndexOutOfBoundsException; message: String index out of range: -1"
 			);
-		} catch (java.lang.IllegalArgumentException e) {
+		} catch (
+				java.lang.IllegalArgumentException
+				| java.lang.StringIndexOutOfBoundsException e
+		) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -17073,7 +17085,10 @@ public class ZentaDiagramModelRegression1Test {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.StringIndexOutOfBoundsException; message: String index out of range: -1"
 			);
-		} catch (java.lang.IllegalArgumentException e) {
+		} catch (
+				java.lang.IllegalArgumentException
+				| java.lang.StringIndexOutOfBoundsException e
+		) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertTrue(
@@ -19270,7 +19285,10 @@ public class ZentaDiagramModelRegression1Test {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.StringIndexOutOfBoundsException; message: String index out of range: -1"
 			);
-		} catch (java.lang.IllegalArgumentException e) {
+		} catch (
+				java.lang.IllegalArgumentException
+				| java.lang.StringIndexOutOfBoundsException e
+		) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNotNull(iDiagramModel3);

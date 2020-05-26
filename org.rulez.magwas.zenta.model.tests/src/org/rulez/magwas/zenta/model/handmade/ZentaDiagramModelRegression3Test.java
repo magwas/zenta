@@ -10914,7 +10914,10 @@ public class ZentaDiagramModelRegression3Test {
 			org.junit.Assert.fail(
 					"Expected exception of type java.lang.StringIndexOutOfBoundsException; message: String index out of range: -1"
 			);
-		} catch (java.lang.IllegalArgumentException e) {
+		} catch (
+				java.lang.IllegalArgumentException
+				| java.lang.StringIndexOutOfBoundsException e
+		) {
 			// Expected exception.
 		}
 		org.junit.Assert.assertNull(obj4);

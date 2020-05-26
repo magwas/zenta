@@ -32,6 +32,8 @@ sed -i 's|<artifactId>zenta-tools</artifactId><version>.*</version>|<artifactId>
 
 dch --force-distribution -D $distribution -v $fullversion commit $(git rev-parse HEAD)
 cat debian/changelog
+git config user.email "mag@kodekonveyor.com"
+git config user.name "Debian Build"
 git add --all ; git commit -m  "debian build"
 debuild -rfakeroot -us -uc
 
