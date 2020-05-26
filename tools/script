@@ -1,17 +1,37 @@
 #!/bin/bash
 set -xe
-export DISPLAY=:0
+export PATH=$PATH:/usr/local/toolchain/tools
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-Xvnc :0&
+export DISPLAY=:99.0
+set +e
+/sbin/start-stop-daemon --stop --quiet --pidfile /tmp/cucumber_xvfb_99.pid
+set -e
+/sbin/start-stop-daemon --start --quiet --pidfile /tmp/cucumber_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
+preserve=DISPLAY,PATH,version,normalized_branch,fullversion,issuetoken
+echo DEBUILD_PRESERVE_ENVVARS=$preserve | dd of=~/.devscripts
 cp toolchains.xml ~/.m2
 make zentaworkaround
-cp sonar-settings.xml ~/.m2/settings.xml
 mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
 mvn install
-git checkout -b build
-dch -D $BRANCH -v 1.0-1.$BRANCH.$BUILD_NUMBER commit $(git rev-parse HEAD)
-git add --all :/
-git commit -m  "debian build"
-make recording
-debuild -us -uc
-git checkout $BRANCH
+oldbranch=$(git rev-parse --abbrev-ref HEAD)
+git checkout -b build$(date +%s)
+branch=$(echo $BRANCH|sed 'sA[/_]A.Ag')
+if [ $branch = master ]
+then
+	export normalized_branch=
+	export distribution=master
+else
+	export normalized_branch=.$branch
+	export distribution=unstable
+fi
+export version=$(git describe --tags)
+mkdir -p target
+export fullversion=$(echo $version |sed 's/-\([^-]*\)-[^-]*/.\1/')${normalized_branch}
+sed -i 's|<artifactId>zenta-tools</artifactId><version>.*</version>|<artifactId>zenta-tools</artifactId><version>'"$version"'</version>|' pom.xml
+
+dch --force-distribution -D $distribution -v $fullversion commit $(git rev-parse HEAD)
+cat debian/changelog
+git add --all ; git commit -m  "debian build"
+debuild -rfakeroot -us -uc
+git checkout $oldbranch
+

@@ -1,4 +1,4 @@
-build_image: edemotest
+build_image: kodekonveyor/toolchain:2.2
 language: python
 python:
   - 2.7
