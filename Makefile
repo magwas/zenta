@@ -14,3 +14,5 @@ recording:
 stoprecording:
 	-start-stop-daemon --stop --pidfile /tmp/flvrec.pid
 
+clean:
+	git clean -fdx; rm -rf debuild

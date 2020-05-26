@@ -12,4 +12,4 @@ do
 done
 
 scp shippable/*.zip magwas,zenta@frs.sourceforge.net:/home/pfs/project/z/ze/zenta/unstable
-rsync -e "ssh -p 22022" -ar ../zenta_* shippable@demokracia.rulez.org:/var/www/repos/apt/debian/incoming
+rsync -e "ssh -p 22022" -ar zenta_* shippable@demokracia.rulez.org:/var/www/repos/apt/debian/incoming
