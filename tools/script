@@ -15,7 +15,8 @@ make zentaworkaround
 mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
 mvn install
 oldbranch=$(git rev-parse --abbrev-ref HEAD)
-git checkout -b build$(date +%s)
+git clone --branch $oldbranch . debuild
+cd debuild
 branch=$(echo $BRANCH|sed 'sA[/_]A.Ag')
 if [ $branch = master ]
 then
@@ -34,5 +35,4 @@ dch --force-distribution -D $distribution -v $fullversion commit $(git rev-parse
 cat debian/changelog
 git add --all ; git commit -m  "debian build"
 debuild -rfakeroot -us -uc
-git checkout $oldbranch
 
