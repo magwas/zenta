@@ -15,7 +15,6 @@ make zentaworkaround
 oldbranch=$(git rev-parse --abbrev-ref HEAD)
 git clone --branch $oldbranch . debuild
 cd debuild
-mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
 branch=$(echo $BRANCH|sed 'sA[/_]A.Ag')
 if [ $branch = master ]
 then
