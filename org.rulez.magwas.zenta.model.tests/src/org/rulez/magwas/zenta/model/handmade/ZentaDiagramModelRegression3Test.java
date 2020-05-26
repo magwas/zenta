@@ -2,7 +2,7 @@ package org.rulez.magwas.zenta.model.handmade;
 
 import org.junit.Test;
 
-public class ZentaDiagramModelRegressionTest3 {
+public class ZentaDiagramModelRegression3Test {
 
 	public static boolean debug = false;
 
