@@ -48,9 +48,7 @@ implements EditPartFactory {
         // Zenta Connection Model Element Parts
         else if(model instanceof IDiagramModelZentaConnection) {
             IDiagramModelZentaConnection iDiagramModelZentaConnection = (IDiagramModelZentaConnection)model;
-            System.err.println("connection: " + iDiagramModelZentaConnection);
 			IBasicRelationship relationship = iDiagramModelZentaConnection.getRelationship();
-			System.err.println("relationship:"+relationship);
 			EClass eClass = relationship.eClass();
 			provider = instance.getProvider(eClass);
         }

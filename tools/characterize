@@ -2,14 +2,15 @@
 set -xe
 export CLASSPATH=$(for i in /build/org.rulez.magwas.zenta.editor.build/target/products/Zenta/win32/win32/x86_64/Zenta/plugins/*; do printf "%s:" $i; done;echo /home/developer/lib/randoop-4.2.3/randoop-all-4.2.3.jar)
 java -cp $CLASSPATH:/build/org.rulez.magwas.zenta.model/bin randoop.main.Main help gentests |less
-project=org.rulez.magwas.zenta.model
-package=${project}.handmade
-class=ZentaDiagramModel
+
+project=org.rulez.magwas.zenta.editor
+package=${project}.propertysections
+class=ModelsViewer
 
 slashed_package=$(echo $package|sed 'sA\.A/Ag')
 #prefix=${project}.tests/src/${slashed_package}
 prefix=
 #mkdir -p $prefix
 
-java -cp $CLASSPATH:/build/org.rulez.magwas.zenta.model/bin randoop.main.Main gentests --testclass=$package.$class --error-test-basename=${class}ErrorTest --regression-test-basename=${class}RegressionTest --junit-package-name=${package}
+java -cp $CLASSPATH:/build/org.rulez.magwas.zenta.browser/bin:/build/org.rulez.magwas.zenta.canvas/bin:/build/org.rulez.magwas.zenta.controller.tests/bin:/build/org.rulez.magwas.zenta.controller/bin:/build/org.rulez.magwas.zenta.editor.browser/bin:/build/org.rulez.magwas.zenta.editor.fullscreen.macos/bin:/build/org.rulez.magwas.zenta.editor.launch.macos/bin:/build/org.rulez.magwas.zenta.editor.launch.win32/bin:/build/org.rulez.magwas.zenta.editor/bin:/build/org.rulez.magwas.zenta.export/bin:/build/org.rulez.magwas.zenta.help/bin:/build/org.rulez.magwas.zenta.integrationtests/bin:/build/org.rulez.magwas.zenta.model.tests/bin:/build/org.rulez.magwas.zenta.model/bin:/build/org.rulez.magwas.zenta.templates/bin:/build/org.rulez.magwas.zenta.widgets/bin:/build/uk.ac.bolton.jdom/bin randoop.main.Main gentests --testclass=$package.$class --error-test-basename=${class}ErrorTest --regression-test-basename=${class}RegressionTest --junit-package-name=${package}
 
