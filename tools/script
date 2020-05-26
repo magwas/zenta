@@ -8,7 +8,7 @@ set +e
 /sbin/start-stop-daemon --stop --quiet --pidfile /tmp/cucumber_xvfb_99.pid
 set -e
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/cucumber_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
-preserve=JAVA_HOME.DISPLAY,PATH,version,normalized_branch,fullversion,issuetoken
+preserve=JAVA_HOME,DISPLAY,PATH,version,normalized_branch,fullversion,issuetoken
 echo DEBUILD_PRESERVE_ENVVARS=$preserve | dd of=~/.devscripts
 cp toolchains.xml ~/.m2
 make zentaworkaround
