@@ -1,5 +1,6 @@
 #!/bin/bash
 set -xe
+sudo apt -y install openjdk-8-jdk
 export PATH=$PATH:/usr/local/toolchain/tools
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export DISPLAY=:99.0
