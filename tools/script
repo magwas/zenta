@@ -13,7 +13,6 @@ echo DEBUILD_PRESERVE_ENVVARS=$preserve | dd of=~/.devscripts
 cp toolchains.xml ~/.m2
 make zentaworkaround
 mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
-mvn install
 oldbranch=$(git rev-parse --abbrev-ref HEAD)
 git clone --branch $oldbranch . debuild
 cd debuild
