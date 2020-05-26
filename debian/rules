@@ -13,7 +13,7 @@
 	dh $@ 
 
 override_dh_auto_build:
-	DISPLAY=:0 mvn clean install sonar:sonar -Dsonar.organization=edemo
+	DISPLAY=:0 mvn clean install 
 
 override_dh_clean:
 	dh_clean

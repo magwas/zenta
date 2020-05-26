@@ -5,3 +5,4 @@ org.rulez.magwas.zenta.integrationtests/generated-images/*
 *.bak
 bin/
 tmp/
+debian/zenta.debhelper.log

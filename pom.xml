@@ -48,12 +48,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     
     <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
     <maven.clean.plugin.version>3.0.0</maven.clean.plugin.version>
-    <!-- Sonar -->
-    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
-    <sonar.language>java</sonar.language>  
-    <sonar.ogranization>edemo</sonar.ogranization>  
   </properties>
  
   <repositories>
@@ -96,10 +90,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		    <groupId>org.jacoco</groupId>
 		    <artifactId>jacoco-maven-plugin</artifactId>
 		    <version>0.7.9</version>
-		    <configuration>
-		        <destFile>${sonar.jacoco.reportPath}</destFile>
-		        <append>true</append>
-		    </configuration>
 		    <executions>
 		        <execution>
 		            <id>agent</id>
