@@ -1,0 +1,28 @@
+#!/bin/bash
+set -xe
+DEVHOME=${DEVHOME:-~/developer-home/}
+DEV_UID=$(id -u)
+DEV_GID=$(id -g)
+DOCKER_IMAGE=${DOCKER_IMAGE:-$(grep build_image shippable.yml|awk '{print $2}')}
+VNCPORT=5900
+PORTMAP="-p $VNCPORT:$VNCPORT"
+if [ -t 0 ] 
+then
+    INTERACTIVE="-i"
+else
+    INTERACTIVE=""
+fi
+if docker ps | grep -q ":$VNCPORT-"
+then
+	# port already taken by other container
+	PORTMAP=""
+fi
+
+DOCKER_IMAGE_DEVELOPER_TAG=$(echo $DOCKER_IMAGE | sed 's/:/:developer-/g')
+if [ -n "$(DOCKER_CLI_EXPERIMENTAL=enabled docker manifest inspect $DOCKER_IMAGE_DEVELOPER_TAG)" -o -n "$(docker images -q $DOCKER_IMAGE_DEVELOPER_TAG)" ] ; then
+	DOCKER_IMAGE=$DOCKER_IMAGE_DEVELOPER_TAG
+fi
+docker run --rm $PORTMAP -e issuetoken -e sonarkey -e DISPLAY -e PULL_REQUEST=false -e DEVUID=${DEV_UID} -e DEVGID=${DEV_GID} -e ORG_NAME=local \
+    -v $(pwd):/build -v ${DEVHOME}:/home/developer -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -w /build $INTERACTIVE -t ${DOCKER_IMAGE} "$@"
+

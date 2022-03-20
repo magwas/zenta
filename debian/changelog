@@ -1,3 +1,9 @@
+zenta (1.0ubuntu1) -v; urgency=medium
+
+  * 1.0-1.. commit 1625b74c50918f4ade3f19cc7553bb63a7ee5021
+
+ -- root <root@cffde5a7f659>  Sun, 20 Mar 2022 10:20:53 +0000
+
 zenta (1.0) saucy; urgency=low
 
   * Debianisation
