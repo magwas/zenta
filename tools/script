@@ -2,7 +2,7 @@
 set -xe
 sed -i 'sA<version.*package versionA<version>'"$(git describe --tags)"'</version><!--package versionA' pom.xml
 export DISPLAY=:0
-Xvnc :0&
+sudo Xvnc :0&
 cp toolchains.xml ~/.m2
 make zentaworkaround
 cp sonar-settings.xml ~/.m2/settings.xml
