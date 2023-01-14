@@ -1,0 +1,6 @@
+#!/bin/bash
+set -xe
+VERSION=$(cat VERSION)
+sed -i 'sB<version.*package versionB<version>'"$VERSION"'</version><!--package versionB' $(find -name pom.xml)
+sed -i 's~Bundle-Version:.*~Bundle-Version: '"$VERSION"'~;s~\(org.rulez.magwas.*\|uk.ac.bolton.*\)bundle-version.*~\1bundle-version="'"$VERSION"'",~' $(find -name MANIFEST.MF)
+sed -i 's/Fragment-Host\(.*\)",/Fragment-Host\1"/' $(find -name MANIFEST.MF)

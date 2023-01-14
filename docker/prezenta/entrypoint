@@ -1,0 +1,34 @@
+#!/bin/bash
+set -xe
+DEVUID=${DEVUID:-1000}
+DEVGID=${DEVGID:-1000}
+rm /dev/random
+cp -a /dev/urandom /dev/random;
+groupadd -g ${DEVGID} developer
+useradd -u ${DEVUID} -g ${DEVGID} -G sudo -d /home/developer developer
+mkdir -p /home/developer
+chown developer.developer /home/developer
+chown developer.developer /
+
+if ! dash -c "test -d /home/developer/.m2"
+then
+    cp -r /root/.m2 /home/developer 
+    echo "source prepare" | dd status=none of=/home/developer/.bashrc
+    chown -R developer.developer /home/developer
+fi
+
+
+
+export HOME=/home/developer
+
+for feature in $(ls /build/features)
+do
+    echo $feature
+    if ! dash -c "test -f /usr/local/toolchain/features/$feature"
+    then
+        echo "running feature $feature"
+        /build/features/$feature
+    fi
+done
+
+exec sudo -E -u developer env "PATH=/build/tools:$PATH" "$@"

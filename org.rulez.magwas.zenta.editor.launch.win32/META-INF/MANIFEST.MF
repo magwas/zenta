@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Zenta Windows Launcher
 Bundle-SymbolicName: org.rulez.magwas.zenta.editor.launch.win32;singleton:=true
-Bundle-Version: 2.4.0.qualifier
+Bundle-Version: 2.5.40
 Bundle-Vendor: Árpád Magosányi
-Fragment-Host: org.rulez.magwas.zenta.editor;bundle-version="2.0.0"
+Fragment-Host: org.rulez.magwas.zenta.editor;bundle-version="2.5.40"
 Eclipse-PlatformFilter: (osgi.ws=win32)
 Import-Package: org.rulez.magwas.zenta.widgets
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

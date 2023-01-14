@@ -13,11 +13,11 @@
 	dh $@ 
 
 override_dh_auto_build:
-	DISPLAY=:0 mvn clean install sonar:sonar -Dsonar.organization=edemo
+	echo DISPLAY=:0 mvn clean install is expected
 
 override_dh_clean:
-	dh_clean
-	rm -rf `find -type d -name target` `find -type f -name '*.class'` org.rulez.magwas.zenta.integrationtests/generated-images/* org.rulez.magwas.zenta.help/org.rulez.magwas.zenta.help.jar org.rulez.magwas.zenta.templates/org.rulez.magwas.zenta.templates.jar uk.ac.bolton.jdom/uk.ac.bolton.jdom.jar org.rulez.magwas.zenta.export/org.rulez.magwas.zenta.export.jar org.rulez.magwas.zenta.model/org.rulez.magwas.zenta.model.jar org.rulez.magwas.zenta.editor/org.rulez.magwas.zenta.editor.jar org.rulez.magwas.zenta.canvas/org.rulez.magwas.zenta.canvas.jar org.rulez.magwas.zenta.widgets/org.rulez.magwas.zenta.widgets.jar
+	echo dh_clean not done
+	#rm -rf `find -type d -name target` `find -type f -name '*.class'` org.rulez.magwas.zenta.integrationtests/generated-images/* org.rulez.magwas.zenta.help/org.rulez.magwas.zenta.help.jar org.rulez.magwas.zenta.templates/org.rulez.magwas.zenta.templates.jar uk.ac.bolton.jdom/uk.ac.bolton.jdom.jar org.rulez.magwas.zenta.export/org.rulez.magwas.zenta.export.jar org.rulez.magwas.zenta.model/org.rulez.magwas.zenta.model.jar org.rulez.magwas.zenta.editor/org.rulez.magwas.zenta.editor.jar org.rulez.magwas.zenta.canvas/org.rulez.magwas.zenta.canvas.jar org.rulez.magwas.zenta.widgets/org.rulez.magwas.zenta.widgets.jar
 
 override_dh_auto_install:
 	dh_auto_install
@@ -26,3 +26,4 @@ override_dh_auto_install:
 	mv debian/zenta/usr/share/Zenta debian/zenta/usr/share/zenta
 	mkdir -p debian/zenta/usr/bin
 	cp org.rulez.magwas.zenta.editor.build/branding/linux/Zenta-Ubuntu.sh debian/zenta/usr/bin/zenta
+

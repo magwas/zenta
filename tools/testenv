@@ -1,0 +1,42 @@
+#!/bin/bash
+set -xe
+DEVHOME=${DEVHOME:-~/developer-home}
+DEV_UID=$(id -u)
+DEV_GID=$(id -g)
+IMAGE=${DOCKER_IMAGE:-$(cat toolchain_version)}
+
+VNCPORT=${VNCPORT:-5900}
+PORTMAP="-p $VNCPORT:5900"
+
+#using dash is a hack to make this script testable, and still not depend anything unusual, as it is copied over to the project
+if dash -c "test -t 0" 
+then
+    INTERACTIVE="-i"
+
+    DOCKER_IMAGE_DEVELOPER_TAG=$(echo $IMAGE | sed 's/:/:developer-/g')
+    if [ -z ${DOCKER_IMAGE} ] && 
+        (
+            [ -n "$(docker images -q $DOCKER_IMAGE_DEVELOPER_TAG)" ] || 
+            [ -n "$(docker manifest inspect $DOCKER_IMAGE_DEVELOPER_TAG)" ]
+        )
+    then
+	    IMAGE=$DOCKER_IMAGE_DEVELOPER_TAG
+    fi
+else
+    INTERACTIVE=""
+fi
+
+
+echo "image: ${IMAGE}"
+
+if docker ps | grep -q ":$VNCPORT-"
+then
+	# port already taken by other container
+	PORTMAP=""
+fi
+
+docker run --rm $PORTMAP -e issuetoken -e DISPLAY -e DEVUID=${DEV_UID} -e DEVGID=${DEV_GID} \
+	-e BUILD_NUMBER -e BRANCH_NAME\
+    -v $(pwd):/build -v ${DEVHOME}:/home/developer \
+    -w /build $INTERACTIVE -t ${IMAGE} "$@"
+

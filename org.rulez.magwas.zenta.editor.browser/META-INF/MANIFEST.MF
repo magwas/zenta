@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Browser Component
 Bundle-SymbolicName: org.rulez.magwas.zenta.editor.browser;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.5.40
 Bundle-Localization: plugin
 Bundle-Activator: org.rulez.magwas.zenta.editor.browser.BrowserPlugin
 Bundle-Vendor: Árpád Magosányi
