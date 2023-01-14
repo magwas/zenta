@@ -1,5 +1,6 @@
 #!/bin/bash
 set -xe
+sed -i 'sA<version.*package versionA<version>'"$(git describe --tags)"'</version><!--package versionA' pom.xml
 export DISPLAY=:0
 Xvnc :0&
 cp toolchains.xml ~/.m2
@@ -12,6 +13,6 @@ dch --force-distribution -D $BRANCH_NAME -v $(git describe --tags) commit $(git 
 git add --all :/
 git commit -m  "debian build"
 make recording
-debuild -us -uc
+debuild -rfakeroot -us -uc
 cp ../*.deb target
 #git checkout $BRANCH
