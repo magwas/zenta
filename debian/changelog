@@ -1,3 +1,9 @@
+zenta (1.0ubuntu2) -v; urgency=medium
+
+  * 2.5-35-gf3229e6 commit f3229e6b01007d00a3b5744e515ddf982f1bd4cd
+
+ -- root <root@69384180c685>  Sat, 14 Jan 2023 06:52:50 +0000
+
 zenta (1.0ubuntu1) -v; urgency=medium
 
   * 1.0-1.. commit 1625b74c50918f4ade3f19cc7553bb63a7ee5021
