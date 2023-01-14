@@ -29,6 +29,7 @@ import org.rulez.magwas.zenta.model.IZentaModel;
 import org.rulez.magwas.zenta.model.IIdentifier;
 import org.rulez.magwas.zenta.model.INameable;
 import org.rulez.magwas.zenta.model.handmade.util.ZentaModelUtils;
+import org.rulez.magwas.zenta.model.util.LogUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -40,8 +41,6 @@ import org.rulez.magwas.zenta.editor.views.tree.TreeSelectionRequest;
 
 public class EventLog implements IEventLog {
     
-    private IBrowserEditor editor;
-    private final Browser  browser;
     private Document       messages;
     private Node           msg;
     
@@ -57,75 +56,13 @@ public class EventLog implements IEventLog {
         Node table = messages.createElement("table");
         messages.appendChild(table);
         msg = table;
-        BrowserEditorInput br = new BrowserEditorInput(null, title);
-        editor = (IBrowserEditor) EditorManager.openEditor(br,
-                IBrowserEditor.ID);
-        browser = editor.getBrowser();
         
-        Display.getDefault().asyncExec(new Runnable() { // On a thread for when
-                                                        // browser has been
-                                                        // created
-                    @Override
-                    public void run() {
-                        if (!browser.isDisposed()) {
-                            browser.addProgressListener(new ProgressListener() {
-                                @Override
-                                public void completed(ProgressEvent event) {
-                                }
-                                
-                                @Override
-                                public void changed(ProgressEvent event) {
-                                    
-                                }
-                            });
-                            browser.addLocationListener(new LocationListener() {
-                                public void changing(LocationEvent event) {
-                                    String loc = event.location;
-                                    if (loc.startsWith("zenta://")) {
-                                        String[] ids = loc.split("//")[1]
-                                                .split("/");
-                                        focusElement(ids[0], ids[1]);
-                                    }
-                                    
-                                    event.doit = false;
-                                }
-                                
-                                public void changed(LocationEvent event) {
-                                }
-                                
-                            });
-                        }
-                    }
-                });
     }
     
-    private void focusElement(String modelid, String elemid) {
-    	List<IZentaModel> model_list = IEditorModelManager.INSTANCE.getModels();
-        for (IZentaModel model : model_list) {
-            String thismodelid = model.getId();
-            if (thismodelid.equals(modelid)) {
-                EObject theElementToSelect = ZentaModelUtils.getObjectByID(
-                        model, elemid);
-                UIRequestManager.INSTANCE
-                        .fireRequest(new TreeSelectionRequest(this,
-                                new StructuredSelection(theElementToSelect),
-                                true));
-                return;
-            }
-        }
-    }
     
     private void issue(String qualifier, String modelid, Object node,
             String text, String detail) {
-        Node tr = messages.createElement("tr");
-        msg.appendChild(tr);
-        Node qtd = messages.createElement("td");
-        qtd.setTextContent(qualifier);
-        tr.appendChild(qtd);
-        Node ttd = messages.createElement("td");
-        ttd.setTextContent(text);
-        tr.appendChild(ttd);
-        Node ltd = messages.createElement("td");
+    	String elementDetail = "";
         if ((null != node) && (null != modelid)) {
             String id = null;
             String name = null;
@@ -139,26 +76,18 @@ public class EventLog implements IEventLog {
                 id = ((Element) node).getAttribute("id");
                 name = ((Element) node).getAttribute("name");
             }
+
             Node location = messages.createElement("a");
             ((Element) location).setAttribute("href", "zenta://" + modelid
                     + "/" + id);
             location.setTextContent(" at " + name + "(" + node.getClass() + ")");
-            ltd.appendChild(location);
-            tr.appendChild(ltd);
-            ltd = messages.createElement("td");
-        } else {
-            ((Element) ltd).setAttribute("colspan", "2");
-        }
-        ltd.setTextContent(detail);
-        tr.appendChild(ltd);
-        show();
-        // bs.refresh();
+            elementDetail="id="+modelid+"/"+id+" at "+name+"(" + node.getClass() + ")";
+        } 
+    	LogUtil.logWarning(qualifier+":"+modelid+":"+ modelid +elementDetail);
     }
     
     public void show() {
         String repr = xmlToString(messages);
-        
-        browser.setText(repr);
     }
     
     public void issueInfo(String text, String detail) {
