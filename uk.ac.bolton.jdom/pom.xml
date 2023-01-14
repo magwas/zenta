@@ -5,12 +5,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <parent>
     <groupId>org.rulez.magwas.zenta</groupId>
     <artifactId>zenta</artifactId>
-  <version>2.5-38-ge6f5670</version><!--package version-->
+  <version>2.5.40</version><!--package version-->
   </parent>
  
   <artifactId>uk.ac.bolton.jdom</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>2.5.40</version><!--package version-->
+
 
   <properties>
         <lib.dir>${project.basedir}/lib/</lib.dir>

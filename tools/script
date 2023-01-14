@@ -1,18 +1,21 @@
 #!/bin/bash
 set -xe
-sed -i 'sA<version.*package versionA<version>'"$(git describe --tags)"'</version><!--package versionA' pom.xml
+VERSION=$(cat VERSION)
 export DISPLAY=:0
 sudo Xvnc :0&
+sleep 1 ;reset
 cp toolchains.xml ~/.m2
 make zentaworkaround
-cp sonar-settings.xml ~/.m2/settings.xml
 mkdir -p ./org.rulez.magwas.zenta.integrationtests/generated-images
 mvn install
 git checkout -b build-$(date +%s)
-dch --force-distribution -D $BRANCH_NAME -v $(git describe --tags) commit $(git rev-parse HEAD)
+echo|dch --force-distribution -D kodekonveyor -v $(git describe --tags) commit $(git rev-parse HEAD)
 git add --all :/
 git commit -m  "debian build"
-make recording
-debuild -rfakeroot -us -uc
-cp ../*.deb target
+#make recording
+DEB_BUILD_OPTIONS=noautodbgsym debuild -rfakeroot -us -uc
+mkdir -p target
+mv ../zenta* target
+mv org.rulez.magwas.zenta.editor.build/target/products/* target
+#make stoprecording
 #git checkout $BRANCH

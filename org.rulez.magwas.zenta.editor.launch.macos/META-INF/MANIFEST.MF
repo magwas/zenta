@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Zenta Mac Launcher
 Bundle-SymbolicName: org.rulez.magwas.zenta.editor.launch.macos;singleton:=true
-Bundle-Version: 2.4.0.qualifier
+Bundle-Version: 2.5.40
 Bundle-Vendor: Árpád Magosányi
-Fragment-Host: org.rulez.magwas.zenta.editor;bundle-version="1.2.0"
+Fragment-Host: org.rulez.magwas.zenta.editor;bundle-version="2.5.40"
 Eclipse-PlatformFilter: (osgi.ws=cocoa)
 Import-Package: org.rulez.magwas.zenta.model.manager,
  org.rulez.magwas.zenta.widgets

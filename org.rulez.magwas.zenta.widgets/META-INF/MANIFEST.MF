@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Zenta Widgets
 Bundle-SymbolicName: org.rulez.magwas.zenta.widgets;singleton:=true
-Bundle-Version: 2.4.0.qualifier
+Bundle-Version: 2.5.40
 Bundle-Vendor: Árpád Magosányi
 Bundle-ClassPath: org.rulez.magwas.zenta.widgets.jar,
  lib/org.eclipse.nebula.widgets.gallery_0.5.3.201111151116.jar,

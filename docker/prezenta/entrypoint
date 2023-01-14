@@ -8,6 +8,7 @@ groupadd -g ${DEVGID} developer
 useradd -u ${DEVUID} -g ${DEVGID} -G sudo -d /home/developer developer
 mkdir -p /home/developer
 chown developer.developer /home/developer
+chown developer.developer /
 
 if ! dash -c "test -d /home/developer/.m2"
 then

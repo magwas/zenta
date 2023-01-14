@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Tests
 Bundle-SymbolicName: org.rulez.magwas.zenta.model.tests;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.5.40
 Bundle-Activator: org.rulez.magwas.zenta.model.Activator
 Bundle-Vendor: Árpád Magosányi
 Require-Bundle: org.eclipse.core.runtime,
- org.rulez.magwas.zenta.model;bundle-version="2.4.0",
+ org.rulez.magwas.zenta.model;bundle-version="2.5.40",
  org.junit,
- org.rulez.magwas.zenta.controller;bundle-version="2.4.0",
+ org.rulez.magwas.zenta.controller;bundle-version="2.5.40",
  uk.ac.bolton.jdom,
  org.apache.commons.io;bundle-version="2.2.0"
 Bundle-ActivationPolicy: lazy
