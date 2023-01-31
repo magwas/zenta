@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: JDOM and Jaxen Utils
 Bundle-SymbolicName: uk.ac.bolton.jdom
-Bundle-Version: 1.1.1.qualifier
+Bundle-Version: 2.5.40
 Bundle-Vendor: Árpád Magosányi
 Export-Package: net.sf.saxon,
  org.jaxen,

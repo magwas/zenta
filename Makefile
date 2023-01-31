@@ -1,4 +1,4 @@
-all:
+build:
 	tools/script
 
 testenv:
