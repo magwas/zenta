@@ -1,3 +1,6 @@
+# NOTE: this repository is archived. I started to work on a new model editor, Inez (Inez Is Not Even Zenta).
+
+See https://github.com/kode-konveyor/inez-server
 
 # Zenta - Zenta Es No Tan Archi
 
